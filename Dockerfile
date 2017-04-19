@@ -2,7 +2,7 @@ FROM jupyter/base-notebook
 
 USER root
 RUN apt-get -qq update
-RUN apt-get install -y wget openssl
+RUN apt-get install -y wget openssl libssl-dev curl
 RUN wget -O - https://deb.nodesource.com/setup_7.x | bash
 RUN apt-get install -y nodejs g++ make software-properties-common libzmq3-dev
 
@@ -36,6 +36,7 @@ USER jovyan
 
 RUN mkdir -p $HOME/.ipython/kernels/nodejs/
 RUN npm install
+RUN npm install babel-cli -g
 RUN node install.js
 RUN npm run build
 RUN npm run build-ext
