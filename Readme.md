@@ -1,4 +1,4 @@
-# Jupyter NodeJS
+# Jupyter + Angular2
 This is a kernel for [Jupyter](http://github.com/ipython/ipython)
 
 Get it while it's hot! or view the [example notebook](http://nbviewer.ipython.org/gist/jaredly/404a36306fdee6a1737a)
@@ -6,19 +6,14 @@ Get it while it's hot! or view the [example notebook](http://nbviewer.ipython.or
 ## Prereqs
 - IPython 3.x
 - node
-- ZeroMQ
+- Angular2
 
 ## Installation
-```bash
-git clone https://github.com/notablemind/jupyter-nodejs.git
-cd jupyter-nodejs
-mkdir -p ~/.ipython/kernels/nodejs/
-npm install && node install.js
-npm run build
-npm run build-ext
-jupyter console --kernel nodejs
-```
-
+docker build -t jupytangular .
+### Windows
+docker run --name jupytangular -it -p 8888:8888 --NotebookApp.iopub_data_rate_limit=10000000000 -v "C:\Users\brian.cullinan\Documents\jupytangular2\notebooks":/home/jovyan/notebooks jupytangular
+### *nix
+docker run --name jupytangular -it -p 8888:8888 --NotebookApp.iopub_data_rate_limit=10000000000 -v ~/jupytangular2/notebooks/:/home/jovyan/notebooks jupytangular
 And viola!
 
 ![image](https://cloud.githubusercontent.com/assets/112170/7268122/a33b186c-e882-11e4-8463-be00a6c90163.png)

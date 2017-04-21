@@ -30,9 +30,10 @@ RUN echo "/opt/conda/lib" >> /etc/ld.so.conf
 # RUN add-apt-repository ppa:chris-lea/zeromq -y
 # RUN add-apt-repository ppa:chris-lea/libpgm -y
 # RUN apt-get update
-RUN npm install -g itypescript webpack-dev-server webpack-cli babel-cli webpack webpack-merge tsc ts-node
+RUN npm install -g itypescript webpack-dev-server webpack-cli babel-cli webpack webpack-merge typescript ts-node
 RUN its --ts-install=global
 
+RUN mkdir -p $HOME/.ipython/kernels/
 RUN conda install -y jupyter_console
 RUN conda install -y -c damianavila82 rise
 RUN jupyter-nbextension install rise --py --sys-prefix
@@ -41,14 +42,14 @@ RUN jupyter-nbextension enable rise --py --sys-prefix
 RUN chown -R jovyan $HOME
 
 USER jovyan
-
 RUN npm install -f
-RUN mkdir -p $HOME/.ipython/kernels/
 
 USER root
-
 RUN ldconfig
 
 VOLUME $HOME/notebooks
 
 EXPOSE 8888
+
+ADD start-notebook.sh /usr/local/bin/
+RUN chmod a+x /usr/local/bin/start-notebook.sh
