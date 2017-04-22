@@ -6,9 +6,9 @@ var helpers = require('./helpers');
 
 module.exports = {
     entry: {
-        'polyfills': './src/polyfills.ts',
-        'vendor': './src/vendor.ts',
-        'app': './src/main.ts'
+        'polyfills': helpers.root('src', 'polyfills.ts'),
+        'vendor': helpers.root('src', 'vendor.ts'),
+        'app': helpers.root('src', 'main.ts')
     },
 
     resolve: {
@@ -72,7 +72,7 @@ module.exports = {
         }),
 
         new CopyWebpackPlugin([
-            { from: 'src/assets', to: 'assets'},
+            { from: helpers.root('src', 'assets'), to: 'assets'},
         ])
     ],
 

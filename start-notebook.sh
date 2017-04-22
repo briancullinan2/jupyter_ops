@@ -4,5 +4,5 @@
 
 set -e
 
-. /usr/local/bin/start.sh jupyter notebook --NotebookApp.iopub_data_rate_limit=10000000000 --generate-config $*
+. /usr/local/bin/start.sh jupyter notebook --NotebookApp.iopub_data_rate_limit=10000000000 $*
 

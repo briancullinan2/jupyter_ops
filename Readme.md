@@ -11,9 +11,10 @@ Get it while it's hot! or view the [example notebook](http://nbviewer.ipython.or
 ## Installation
 docker build -t jupytangular .
 ### Windows
-docker run --name jupytangular -it -p 8888:8888 --NotebookApp.iopub_data_rate_limit=10000000000 -v "C:\Users\brian.cullinan\Documents\jupytangular2\notebooks":/home/jovyan/notebooks jupytangular
+Set-NetConnectionProfile -InterfaceAlias "vEthernet (DockerNAT)" -NetworkCategory Private
+docker run --name jupytangular -it -p 8888:8888 -v "C:\Users\brian.cullinan\Documents\jupytangular2\notebooks":/home/jovyan/notebooks jupytangular
 ### *nix
-docker run --name jupytangular -it -p 8888:8888 --NotebookApp.iopub_data_rate_limit=10000000000 -v ~/jupytangular2/notebooks/:/home/jovyan/notebooks jupytangular
+docker run --name jupytangular -it -p 8888:8888 -v ~/jupytangular2/notebooks/:/home/jovyan/notebooks jupytangular
 And viola!
 
 ![image](https://cloud.githubusercontent.com/assets/112170/7268122/a33b186c-e882-11e4-8463-be00a6c90163.png)

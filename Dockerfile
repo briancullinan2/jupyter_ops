@@ -2,7 +2,7 @@ FROM jupyter/base-notebook
 
 USER root
 RUN apt-get -qq update
-RUN apt-get install -y wget openssl libssl-dev curl nodejs g++ make software-properties-common libzmq3-dev wget vim git
+RUN apt-get install -y wget openssl libssl-dev curl nodejs g++ make software-properties-common libzmq3-dev wget vim git dos2unix wkhtmltopdf
 RUN wget -O - https://deb.nodesource.com/setup_7.x | bash
 
 RUN mkdir -p $HOME
@@ -30,7 +30,7 @@ RUN echo "/opt/conda/lib" >> /etc/ld.so.conf
 # RUN add-apt-repository ppa:chris-lea/zeromq -y
 # RUN add-apt-repository ppa:chris-lea/libpgm -y
 # RUN apt-get update
-RUN npm install -g itypescript webpack-dev-server webpack-cli babel-cli webpack webpack-merge typescript ts-node
+RUN npm install -g https://github.com/megamindbrian/itypescript webpack-dev-server webpack-cli babel-cli webpack webpack-merge typescript ts-node
 RUN its --ts-install=global
 
 RUN mkdir -p $HOME/.ipython/kernels/
@@ -52,4 +52,9 @@ VOLUME $HOME/notebooks
 EXPOSE 8888
 
 ADD start-notebook.sh /usr/local/bin/
-RUN chmod a+x /usr/local/bin/start-notebook.sh
+RUN chmod o+x /usr/local/bin/start-notebook.sh
+RUN dos2unix /usr/local/bin/start-notebook.sh
+
+# Configure container startup
+ENTRYPOINT ["tini", "--"]
+CMD ["/usr/local/bin/start-notebook.sh"]

@@ -9,7 +9,7 @@ import {Subject} from 'rxjs/Subject';
     selector: 'bc-app',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TranslateService],
-    template: '<image></image>',
+    template: '<image></image><router-outlet></router-outlet>',
     encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {

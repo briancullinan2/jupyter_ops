@@ -87,6 +87,8 @@
     "@angular/compiler-cli": "latest",
     "@types/node": "latest",
     "webpack-dev-server": "latest",
-    "ipynb-loader": "latest"
+    "ipynb-loader": "latest",
+    "base64-stream" : "latest",
+    "wkhtmltoimage" : "latest"
   }
 }

@@ -34,7 +34,7 @@ export function HttpLoaderFactory(http: Http) {
         }),
         RouterModule.forRoot([
             {
-                path: '/',
+                path: '',
                 component: AppComponent
             },
 
