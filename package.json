@@ -4,7 +4,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "ng serve",
-    "build": "webpack --config webpack.config.js --progress --profile --bail",
+    "build": "webpack --display-error-details --config webpack.config.js --progress --profile --bail",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Brian Cullinan",
@@ -16,12 +16,7 @@
   "bugs": {
     "url": "https://github.com/megamindbrian/jupytangular2/issues"
   },
-  "files": [
-    "build",
-    "lib",
-    "install.js",
-    "config.js"
-  ],
+  "typings": [],
   "prepublish": "make",
   "license": "ISC",
   "dependencies": {

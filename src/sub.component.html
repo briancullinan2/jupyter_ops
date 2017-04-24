@@ -1,0 +1,36 @@
+<md-card>
+    <div class="page">
+        <div>
+            <md-card-title>{{ 'AUTH.LOGIN.TITLE' | translate }}</md-card-title>
+            <md-card-subtitle>{{ 'AUTH.LOGIN.SUBTITLE' | translate }}</md-card-subtitle>
+            <form method="POST" action="#" role="form">
+                <md-input-container>
+                    <input mdInput id="signupEmail" required type="email" placeholder="{{ 'AUTH.LOGIN.EMAIL' | translate }}" maxlength="100"
+                           [(ngModel)]="authUser.name"
+                           [ngModelOptions]="{standalone: true}">
+                </md-input-container>
+
+                <md-input-container>
+                    <input mdInput id="signupPassword" required type="password" maxlength="25" placeholder="{{ 'AUTH.LOGIN.PASSWORD' | translate }}"
+                           length="40" [(ngModel)]="authUser.password" [ngModelOptions]="{standalone: true}">
+                </md-input-container>
+                <div class="form-group">
+                    <button md-raised-button color="primary" id="signupSubmit" type="submit" (click)="login()">
+                        {{ 'AUTH.LOGIN.LOGIN' | translate }}
+                    </button>
+                </div>
+
+            </form>
+            <md-card-actions>
+                <a md-button [routerLink]="['/account/forgot']"> <i></i> {{ 'AUTH.LOGIN.FORGOT' | translate }}</a>
+                <a md-button [routerLink]="['/account/resend']"> <i></i> {{ 'AUTH.LOGIN.RESEND' | translate }}</a>
+            </md-card-actions>
+        </div>
+        <div>
+            <md-card-title>{{ 'AUTH.LOGIN.REGISTER.TITLE' | translate }}</md-card-title>
+            <md-card-subtitle>{{ 'AUTH.LOGIN.REGISTER.SUBTITLE' | translate }}</md-card-subtitle>
+            <a md-button color="primary" [routerLink]="['/account/register']"> <i></i> {{ 'AUTH.LOGIN.REGISTER.REGISTER' | translate }}</a>
+        </div>
+    </div>
+</md-card>
+

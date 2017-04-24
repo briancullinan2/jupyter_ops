@@ -19,7 +19,6 @@ ADD webpack.common.js $HOME
 ADD typings.json $HOME
 ADD helpers.js $HOME
 
-ADD ./src $HOME/src
 RUN mkdir $HOME/notebooks
 RUN chown -R jovyan $HOME
 
@@ -45,6 +44,8 @@ USER jovyan
 RUN npm install -f
 
 USER root
+ADD ./src $HOME/src
+RUN chown -R jovyan $HOME/src
 RUN ldconfig
 
 VOLUME $HOME/notebooks

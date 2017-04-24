@@ -7,9 +7,10 @@ import {Subject} from 'rxjs/Subject';
 
 @Component({
     selector: 'bc-app',
+    styleUrls: ['./app.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TranslateService],
-    template: '<image></image><router-outlet></router-outlet>',
+    template: '<router-outlet></router-outlet>',
     encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
