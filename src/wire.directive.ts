@@ -4,7 +4,7 @@ import {Directive, ElementRef, Renderer} from "@angular/core";
 
 
 @Directive({
-    selector: 'bc-toolbar, bc-app, bc-footer, md-card, md-input-container'
+    selector: 'bc-toolbar, bc-app, bc-footer, md-card'
 })
 
 export class WireDirective {

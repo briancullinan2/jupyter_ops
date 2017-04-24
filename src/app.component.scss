@@ -17,6 +17,7 @@
   /* Prevent certain elements from using their default border/bg styles */
   form, input, textarea, table, button, select, optgroup, option {
     color: inherit; background: transparent;
+    border:2px solid;
     border-image: url('/files/src/assets/noise.png') 2 stretch;
   }
 

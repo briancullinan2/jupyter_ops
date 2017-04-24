@@ -7,7 +7,7 @@ import {MaterialModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppComponent} from './app.component';
-import {SubComponent} from './sub.component';
+import * as SubComponent from './sub.component';
 
 // translation service
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
@@ -18,7 +18,7 @@ import {ImageBox} from "./test";
 import {WireDirective} from "./wire.directive";
 
 export function HttpLoaderFactory(http: Http) {
-    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+    return new TranslateHttpLoader(http, '/files/assets/i18n/', '.json');
 }
 
 @NgModule({
