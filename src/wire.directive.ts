@@ -1,10 +1,10 @@
 // imports
 
-import {Directive, ElementRef, Renderer} from "@angular/core";
+import {Directive, ElementRef, Renderer} from '@angular/core';
 
 
 @Directive({
-    selector: 'bc-toolbar, bc-app, bc-footer, md-card'
+    selector: '[class*="mat-toolbar"], bc-app, bc-footer, md-card, [md-raised-button], [md-button], md-sidenav, .mat-raised-button, form, input, textarea, table, button, select, optgroup, option'
 })
 
 export class WireDirective {

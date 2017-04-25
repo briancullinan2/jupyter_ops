@@ -7,7 +7,7 @@ import {MaterialModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppComponent} from './app.component';
-import * as SubComponent from './sub.component';
+import {SubComponent} from './sub.component';
 
 // translation service
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';

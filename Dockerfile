@@ -2,7 +2,7 @@ FROM jupyter/base-notebook
 
 USER root
 RUN apt-get -qq update
-RUN apt-get install -y wget openssl libssl-dev curl nodejs g++ make software-properties-common libzmq3-dev wget vim git dos2unix wkhtmltopdf
+RUN apt-get install -y wget openssl libssl-dev curl nodejs g++ make software-properties-common libzmq3-dev wget vim git dos2unix wkhtmltopdf xvfb
 RUN wget -O - https://deb.nodesource.com/setup_7.x | bash
 
 RUN mkdir -p $HOME

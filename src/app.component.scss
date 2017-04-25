@@ -1,10 +1,16 @@
 
-.rendered_html {
+body bc-app[ng-version] {
+
+  *, *:before, *:after {
+    color:inherit !important;
+    background:transparent !important;
+  }
 
   /* Wireframe Borders */
   [class*='wf'], [class*='wf-child'] > * {
-    border: 0px solid #aaa;
+    border: 0 solid #aaa;
     border-image: url('/files/src/assets/noise.png') 2 stretch;
+    box-shadow: none;
   }
   /* All sides */
   .wf, .wf-child > * { border-width: 2px; }
@@ -16,8 +22,7 @@
 
   /* Prevent certain elements from using their default border/bg styles */
   form, input, textarea, table, button, select, optgroup, option {
-    color: inherit; background: transparent;
-    border:2px solid;
+    border:2px solid #aaa;
     border-image: url('/files/src/assets/noise.png') 2 stretch;
   }
 
