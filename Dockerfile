@@ -2,7 +2,7 @@ FROM jupyter/base-notebook
 
 USER root
 RUN apt-get -qq update
-RUN apt-get install -y wget openssl libssl-dev curl nodejs g++ make software-properties-common libzmq3-dev wget vim git dos2unix wkhtmltopdf xvfb
+RUN apt-get install -y wget openssl libssl-dev curl nodejs g++ make software-properties-common libzmq3-dev wget vim git dos2unix wkhtmltopdf xvfb ipython graphviz
 RUN wget -O - https://deb.nodesource.com/setup_7.x | bash
 
 RUN mkdir -p $HOME
@@ -33,10 +33,18 @@ RUN npm install -g https://github.com/megamindbrian/itypescript webpack-dev-serv
 RUN its --ts-install=global
 
 RUN mkdir -p $HOME/.ipython/kernels/
+# RUN pip install ipython==6.0.0
 RUN conda install -y jupyter_console
 RUN conda install -y -c damianavila82 rise
+RUN conda install -y -c conda-forge jupyter_contrib_nbextensions
+RUN jupyter contrib nbextension install
+RUN conda install -c conda-forge jupyter_nbextensions_configurator
+RUN jupyter nbextensions_configurator enable
+RUN conda install -c conda-forge ipywidgets
 RUN jupyter-nbextension install rise --py --sys-prefix
 RUN jupyter-nbextension enable rise --py --sys-prefix
+RUN pip install gvmagic
+RUN
 
 RUN chown -R jovyan $HOME
 
