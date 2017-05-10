@@ -12,7 +12,9 @@ Get it while it's hot! or view the [example notebook](http://nbviewer.ipython.or
 docker build -t jupytangular .
 ### Windows
 Set-NetConnectionProfile -InterfaceAlias "vEthernet (DockerNAT)" -NetworkCategory Private
+
 docker run --name jupytangular -it -p 8888:8888 -v "C:\Users\brian.cullinan\Documents\jupytangular2\notebooks":/home/jovyan/notebooks jupytangular
+
 ### *nix
 docker run --name jupytangular -it -p 8888:8888 -v ~/jupytangular2/notebooks/:/home/jovyan/notebooks jupytangular
 And viola!
