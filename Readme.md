@@ -13,10 +13,10 @@ docker build -t jupytangular .
 ### Windows
 Set-NetConnectionProfile -InterfaceAlias "vEthernet (DockerNAT)" -NetworkCategory Private
 
-docker run --name jupytangular -it -p 8888:8888 -v "C:\Users\brian.cullinan\Documents\jupytangular2\notebooks":/home/jovyan/notebooks jupytangular
+docker run --name jupytangular -it -p 8888:8888 -p 6080:6080 -p 5900:5900 -v "C:\Users\brian.cullinan\Documents\jupytangular2\notebooks":/home/jovyan/notebooks jupytangular
 
 ### *nix
-docker run --name jupytangular -it -p 8888:8888 -v ~/jupytangular2/notebooks/:/home/jovyan/notebooks jupytangular
+docker run --name jupytangular -it -p 8888:8888 -p 6080:6080 -p 5900:5900 -v ~/jupytangular2/notebooks/:/home/jovyan/notebooks jupytangular
 And viola!
 
 ![image](https://cloud.githubusercontent.com/assets/112170/7268122/a33b186c-e882-11e4-8463-be00a6c90163.png)

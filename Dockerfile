@@ -2,7 +2,7 @@ FROM jupyter/base-notebook
 
 USER root
 RUN apt-get -qq update
-RUN apt-get install -y --fix-missing wget openssl libssl-dev curl nodejs g++ make software-properties-common libzmq3-dev wget vim git dos2unix wkhtmltopdf xvfb ipython graphviz apt-transport-https
+RUN apt-get install -y --fix-missing wget openssl libssl-dev curl nodejs g++ make software-properties-common libzmq3-dev wget vim git dos2unix wkhtmltopdf x11vnc net-tools xvfb ipython graphviz apt-transport-https
 RUN wget -O - https://deb.nodesource.com/setup_7.x | bash
 
 RUN mkdir -p $HOME
@@ -52,6 +52,7 @@ RUN npm install -f
 
 USER root
 ADD ./src $HOME/src
+ADD novnc $HOME/novnc
 RUN chown -R jovyan $HOME/src
 RUN ldconfig
 
