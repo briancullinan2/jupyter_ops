@@ -38,8 +38,9 @@ RUN echo "/opt/conda/lib" >> /etc/ld.so.conf
 # RUN add-apt-repository ppa:chris-lea/zeromq -y
 # RUN add-apt-repository ppa:chris-lea/libpgm -y
 # RUN apt-get update
-RUN npm install -g https://github.com/megamindbrian/itypescript webpack-dev-server webpack-cli babel-cli webpack webpack-merge typescript ts-node
+RUN npm install -g https://github.com/megamindbrian/itypescript ijavascript webpack-dev-server webpack-cli babel-cli webpack webpack-merge typescript ts-node live-server
 RUN its --ts-install=global
+RUN ijsinstall --install=global
 
 #==========
 # Selenium
@@ -93,10 +94,8 @@ RUN jupyter-nbextension install rise --py --sys-prefix
 RUN jupyter-nbextension enable rise --py --sys-prefix
 RUN pip install gvmagic
 
+RUN mkdir $HOME/.npm
 RUN chown -R jovyan $HOME
-
-USER jovyan
-RUN npm install -f
 
 USER root
 ADD ./src $HOME/src
@@ -109,6 +108,7 @@ VOLUME $HOME/notebooks
 EXPOSE 8888
 EXPOSE 6080
 EXPOSE 5900
+EXPOSE 4444
 
 ADD start-notebook.sh /usr/local/bin/
 RUN chmod o+x /usr/local/bin/start-notebook.sh
