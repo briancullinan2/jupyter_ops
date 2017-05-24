@@ -38,7 +38,7 @@ RUN echo "/opt/conda/lib" >> /etc/ld.so.conf
 # RUN add-apt-repository ppa:chris-lea/zeromq -y
 # RUN add-apt-repository ppa:chris-lea/libpgm -y
 # RUN apt-get update
-RUN npm install -g https://github.com/megamindbrian/itypescript ijavascript webpack-dev-server webpack-cli babel-cli webpack webpack-merge typescript ts-node live-server
+RUN npm install -g https://github.com/megamindbrian/itypescript ijavascript jp-kernel webpack-dev-server webpack-cli babel-cli webpack webpack-merge typescript ts-node live-server
 RUN its --ts-install=global
 RUN ijsinstall --install=global
 
