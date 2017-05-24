@@ -1,0 +1,20 @@
+﻿<button md-button #tile (click)="setSelectedProduct()"
+        [class.selected]="(catalog.selectedProduct | async) === subscription.type"
+        [class.notSelected]="notSelected() | async">
+    <md-card>
+        <md-card-title>{{ 'PURCHASE.PRODUCT.' + subscription.type.toUpperCase() + '.TITLE' | translate }}
+        </md-card-title>
+        <bc-product-description [product]="subscription.type"></bc-product-description>
+    </md-card>
+</button>
+<div class="signup"
+     *ngIf="(catalog.selectedProduct | async) === subscription.type">
+    <a md-raised-button color="primary"
+       [routerLink]="'/buy/subscriptions/' + (catalog.selectedProduct | async)">
+        {{'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.SUBSCRIBE' |
+        translate}}
+    </a>
+    <a md-raised-button *ngIf="(catalog.selectedProduct | async) != 'ActPro'" routerLink="/trial">
+        {{ 'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.TRIAL' | translate
+        }}</a>
+</div>

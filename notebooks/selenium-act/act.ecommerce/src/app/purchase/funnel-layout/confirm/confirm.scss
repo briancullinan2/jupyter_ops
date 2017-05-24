@@ -1,0 +1,18 @@
+bc-subscriptions {
+    position: relative;
+    opacity: .7;
+    display:block;
+}
+
+bc-subscriptions /deep/ {
+    md-select, md-input-container, md-checkbox {
+        position:relative;
+        z-index: -1;
+    }
+}
+
+bc-subscriptions /deep/ md-card {
+    position:relative;
+    background-color:transparent;
+    display:block;
+}

@@ -1,0 +1,30 @@
+<md-card [class.updating]="updating">
+    <md-card-title>{{ 'PURCHASE.FUNNEL.SUBTOTAL.TITLE' | translate }}</md-card-title>
+    <div class="line-item" *ngFor="let item of items()">
+        <span>{{item}}</span>
+        <span>{{lineItems[item] ? lineItems[item] : 'included'}}</span>
+    </div>
+    <h3><span>{{ 'PURCHASE.FUNNEL.SUBTOTAL.SUBTOTAL' | translate }}</span><span>{{subtotal}}</span></h3>
+    <h3><span>{{ 'PURCHASE.FUNNEL.SUBTOTAL.TAX' | translate }}</span><span>{{tax ? tax : 'included'}}</span></h3>
+    <h3 *ngIf="!today"><span>{{ 'PURCHASE.FUNNEL.SUBTOTAL.TOTAL' | translate }}</span><span>{{total}}</span></h3>
+    <h3 *ngIf="today"><span>{{ 'PURCHASE.FUNNEL.SUBTOTAL.TODAYTOTAL' | translate }}</span><span>{{total}}</span></h3>
+    <md-checkbox *ngIf="!(catalog.recentlyConfirmed | async)" [(ngModel)]="agreeToTerms">{{
+        'PURCHASE.FUNNEL.SUBTOTAL.TERMS' | translate }}
+    </md-checkbox>
+    <md-card-actions>
+        <a md-raised-button routerLink="/buy/billing" *ngIf="segments[2] == 'subscriptions' || segments[2] == 'forgot'"
+           color="primary">{{ 'PURCHASE.FUNNEL.SUBTOTAL.CONTINUEBILLING' | translate }}</a>
+        <a md-raised-button routerLink="/buy/billing" *ngIf="segments[2] == 'account'"
+           color="primary">{{ 'PURCHASE.FUNNEL.SUBTOTAL.CONTINUEBILLING' | translate }}</a>
+        <a md-raised-button routerLink="/buy/confirm" *ngIf="segments[2] == 'billing'" color="primary">{{
+            'PURCHASE.FUNNEL.SUBTOTAL.CONTINUEREVIEW' | translate }}</a>
+        <p *ngIf="segments[2] == 'confirm' && !(catalog.recentlyConfirmed | async)" color="primary">{{
+            'PURCHASE.FUNNEL.SUBTOTAL.CHARGE' | translate }}</p>
+        <button (click)="catalog.recentlyConfirmed.next(true)" md-raised-button routerLink="/buy/confirm"
+                *ngIf="segments[2] == 'confirm' && !(catalog.recentlyConfirmed | async)" color="primary">{{
+            'PURCHASE.FUNNEL.SUBTOTAL.PLACE' | translate }}
+        </button>
+    </md-card-actions>
+</md-card>
+<div *ngIf="updating" class="loading"><span></span></div>
+

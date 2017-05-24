@@ -1,0 +1,62 @@
+﻿<div class="container">
+    <div class="preview">
+        <img src="/assets/actpremiumcloud.png" *ngIf="(catalog.selectedProduct | async) == 'ActPremiumCloud'"/>
+        <img src="/assets/actpremium.jpg" *ngIf="(catalog.selectedProduct | async) == 'ActPremium'"/>
+        <img src="/assets/act-pro.png" *ngIf="(catalog.selectedProduct | async) == 'ActPro'"/>
+        <p>
+            {{ 'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.LONGDESCRIPTION' | translate
+            }}
+        </p>
+        <p *ngIf="(catalog.selectedProduct | async) == 'ActPremiumCloud'">
+            {{ 'PURCHASE.PRODUCT.ACTPREMIUMCLOUD.LONGDESCRIPTION_LINE2' | translate }}
+        </p>
+    </div>
+    <div class="long-description">
+        <md-card-title>
+            {{ 'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.TITLE' | translate}}
+        </md-card-title>
+        <md-card-subtitle>
+            {{'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.SUBTITLE' | translate }}
+        </md-card-subtitle>
+        <p>{{'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.STATEMENT' | translate }}</p>
+
+        <div class="price-columns">
+            <div class="price-dropdown">
+                <h1>{{ 'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.PRICE' | translate }}
+                    <sup *ngIf="(catalog.selectedProduct | async) == 'ActPro'">{{ 'PURCHASE.PRODUCT.ACTPRO.PRICESUP' |
+                        translate }}</sup></h1>
+                <h2>{{ 'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.PRICEPER' |
+                    translate}}</h2>
+                <br/>
+                <small *ngIf="(catalog.selectedProduct | async) == 'ActPro'">{{ 'PURCHASE.PRODUCT.ACTPRO.CALL' |
+                    translate }}
+                </small>
+            </div>
+            <div class="includes">
+                <ul>
+                    <li>{{ 'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.FEATURES_LINE1' |
+                        translate }}
+                    </li>
+                    <li>{{ 'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.FEATURES_LINE2' |
+                        translate }}
+                    </li>
+                    <li>{{ 'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.FEATURES_LINE3' |
+                        translate }}
+                    </li>
+                    <li>{{ 'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.FEATURES_LINE4' |
+                        translate }}
+                    </li>
+                    <li>{{ 'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.FEATURES_LINE5' |
+                        translate }}
+                    </li>
+                    <li>{{ 'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.FEATURES_LINE6' |
+                        translate }}
+                    </li>
+                    <li>{{ 'PURCHASE.PRODUCT.' + (catalog.selectedProduct | async)?.toUpperCase() + '.FEATURES_LINE7' |
+                        translate }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

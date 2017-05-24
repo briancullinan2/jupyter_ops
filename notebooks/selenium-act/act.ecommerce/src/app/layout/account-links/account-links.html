@@ -1,0 +1,12 @@
+﻿<button md-button aria-label="Log in to your account" routerLink="/account/login"
+        *ngIf="!(authService.loggedIn | async)">{{ 'LAYOUT.ACCOUNT.LOGIN' | translate }}
+</button>
+<button md-button routerLink="/account/logout"
+        *ngIf="authService.loggedIn | async">
+    {{ 'LAYOUT.ACCOUNT.LOGOUT' | translate }}
+</button>
+<button md-button aria-label="Log out"
+        routerLink="/account/register"
+        *ngIf="!(authService.loggedIn | async)">
+    {{ 'LAYOUT.ACCOUNT.REGISTER' | translate }}
+</button>

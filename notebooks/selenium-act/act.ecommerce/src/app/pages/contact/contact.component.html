@@ -1,0 +1,46 @@
+<md-card class="title">
+    <div class="contain">
+        <md-card-title>Contact Us</md-card-title>
+        <p>If there is anything that you would like to talk to us about please get in touch using one of the methods below.</p>
+    </div>
+</md-card>
+<div class="contain">
+    <md-card>
+        <md-card-title>Ways to get in touch</md-card-title>
+
+        <p>Webchat: <a md-raised-button color="primary">Chat with a rep</a></p>
+        <p>Sales Email: <a href="mailto:act_sales@swiftpage.com">act_sales@swiftpage.com</a></p>
+        <p>Support Email: <a href="mailto:support@act.com">support@act.com</a></p>
+        <p>Billing Email: <a href="mailto:actcustomerservice@act.com">actcustomerservice@act.com</a></p>
+        <p>Business Partner Enquiries: <a href="mailto:actpartnerorders@swiftpage.com">actpartnerorders@swiftpage.com</a></p>
+        <p>Sales and Support phone: 866-873-2006</p>
+
+        <md-card-title>Hours of operation</md-card-title>
+        <p>
+        <strong>Sales operation hours:</strong><br />
+        Monday to Friday: 8:30am to 7:00pm (EST)<br />
+            <strong>Support operation hours:</strong><br />
+        Monday to Friday: 8:30am to 8:30pm (EST)<br />
+            <strong>Webchat operation hours:</strong><br />
+        Monday to Friday: 8:30am to 8:30pm (EST)<br />
+        </p>
+        <p>All Swiftpage office locations</p>
+    </md-card>
+    <md-card class="message-wrapper">
+        <md-card-title>Send us a message</md-card-title>
+        <bc-register-form [form]="form" [registrationUser]="registrationUser"></bc-register-form>
+        <div>
+        <md-select placeholder="Enquiry type">
+            <md-option value="account">Sales or account enquiry</md-option>
+            <md-option value="support">Technical or support enquiry</md-option>
+            <md-option value="billing">Billing enquiry</md-option>
+        </md-select>
+        </div>
+        <md-input-container>
+            <textarea mdInput placeholder="Leave us a note"></textarea>
+        </md-input-container>
+        <md-card-actions>
+            <button md-raised-button color="primary" (click)="onSend()">Send</button>
+        </md-card-actions>
+    </md-card>
+</div>

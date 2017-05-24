@@ -1,0 +1,141 @@
+.banner {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white;
+    min-height: 500px;
+}
+
+/deep/ .home .mat-sidenav-content {
+    background: transparent url(/assets/background.jpg) no-repeat fixed 50% 50%;
+    background-size: cover;
+}
+
+.banner h1 {
+    font-size: 48px;
+    margin: 0;
+    line-height: 50px;
+}
+
+.banner .phoneCTA a {
+    font-size: 48px;
+    font-family: "HelveticaNeueW01-75Bold", helvetica, arial, sans serif;
+    line-height: normal;
+    color: white;
+}
+
+.current-customers {
+    background: #334444;
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.current-customers h4 {
+    font-size: 21px;
+    line-height: 24px;
+    margin: 10px auto 30px;
+    text-align: center;
+}
+
+.current-customers div.contain {
+    display: flex;
+}
+
+.current-customers .contain a {
+    width: 16%;
+    margin: 0 2%;
+}
+
+.business-solutions {
+    background: rgba(240, 240, 240, 1);
+    padding: 50px 0;
+}
+
+.business-solutions h2 {
+    color: #FE5000 !important;
+    font-size: 36px;
+    line-height: 40px;
+    margin: 0 auto 30px;
+}
+
+.business-solutions h2, .business-solutions p {
+    text-align: center;
+}
+
+.business-solutions div.contain {
+    display: flex;
+}
+
+.business-solutions .pad {
+    padding: 20px;
+    width: 33.33%;
+    color: white;
+}
+
+.business-solutions .wrap {
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+.business-solutions h3 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 29px;
+}
+
+.business-solutions .bg_blue .wrap {
+    background: #008cc5;
+}
+
+.business-solutions .bg_orange .wrap {
+    background: #FE5000;
+}
+
+.business-solutions .bg_green .wrap {
+    background: #00b19e;
+}
+
+.business-solutions .wrap p {
+    min-height: 150px;
+}
+
+.works-with {
+    text-align: center;
+    padding: 50px 0;
+    background: white;
+}
+
+.works-with h3 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 29px;
+    margin: 0 auto 40px;
+}
+
+.integrations {
+    display: flex;
+    padding: 30px 0;
+}
+
+.integrations .effects {
+    width: 25%;
+}
+
+.partners {
+    text-align: center;
+    color: white;
+    padding: 60px 0;
+    background: #223;
+}
+
+.partners h4 {
+    font-size: 21px;
+    line-height: 24px;
+    margin: 0 auto 40px;
+}
+
+
+

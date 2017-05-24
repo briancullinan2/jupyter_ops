@@ -1,0 +1,24 @@
+@import "../../../assets/colors";
+
+.title {
+    color: mat-contrast(map-get($theme, accent), 700);
+    background: mat-color(map-get($theme, accent), 700);
+    text-align: center;
+}
+
+:host > .contain {
+    display: flex;
+    flex-direction: row;
+}
+
+.contain md-card {
+    width: 50%;
+    min-height: 100%;
+}
+
+.message-wrapper {
+    background: rgba(0, 0, 0, 0.03);
+    text-align: center;
+}
+
+

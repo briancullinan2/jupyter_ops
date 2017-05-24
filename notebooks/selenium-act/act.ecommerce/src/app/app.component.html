@@ -1,0 +1,7 @@
+﻿<bc-layout [class]="route | async">
+    <bc-toolbar (openMenu)="openSidenav()"></bc-toolbar>
+    <bc-menu></bc-menu>
+    <router-outlet></router-outlet>
+    <bc-footer
+            *ngIf="router.url.indexOf('buy') == -1 || router.url.split('/')[2] == null || router.url.split('/')[2] == ''"></bc-footer>
+</bc-layout>

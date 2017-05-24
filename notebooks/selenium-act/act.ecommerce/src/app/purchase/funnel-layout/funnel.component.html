@@ -1,0 +1,11 @@
+<md-card *ngIf="router.url.indexOf('buy') > -1 && segments[2] != ''">
+    <bc-tracker></bc-tracker>
+</md-card>
+<div>
+    <div [class.isBuy]="router.url.indexOf('buy') > -1 && segments[2] != ''"
+         [class.contain]="router.url.indexOf('buy') > -1 && segments[2] != ''">
+        <router-outlet></router-outlet>
+        <bc-subtotal *ngIf="router.url.indexOf('buy') > -1 && segments[2] != ''"></bc-subtotal>
+    </div>
+</div>
+<bc-funnel-footer *ngIf="router.url.indexOf('buy') > -1 && segments[2] != ''"></bc-funnel-footer>

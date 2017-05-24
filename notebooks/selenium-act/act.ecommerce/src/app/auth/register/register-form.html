@@ -1,0 +1,27 @@
+<div [formGroup]="form">
+    <md-input-container>
+        <input mdInput type="text" maxlength="50" placeholder="{{ 'AUTH.REGISTER.FIRST' | translate }}"
+               formControlName="firstName" [(ngModel)]="registrationUser.firstName" required/>
+    </md-input-container>
+    <br/>
+    <md-input-container>
+        <input mdInput type="text" maxlength="50" placeholder="{{ 'AUTH.REGISTER.LAST' | translate }}"
+               formControlName="lastName" [(ngModel)]="registrationUser.lastName" required/>
+    </md-input-container>
+    <br/>
+    <md-input-container>
+        <input mdInput type="email" maxlength="50" placeholder="{{ 'AUTH.REGISTER.EMAIL' | translate }}"
+               formControlName="email" [(ngModel)]="registrationUser.email" required/>
+    </md-input-container>
+    <br/>
+    <md-input-container>
+        <input mdInput type="text" maxlength="25" placeholder="{{ 'AUTH.REGISTER.COMPANY' | translate }}"
+               length="40" formControlName="companyName" [(ngModel)]="registrationUser.companyName"/>
+    </md-input-container>
+    <br/>
+    <md-input-container>
+        <input mdInput type="tel" maxlength="25" placeholder="{{ 'AUTH.REGISTER.PHONE' | translate }}"
+               length="40" formControlName="phoneNumber" [(ngModel)]="registrationUser.phoneNumber"/>
+    </md-input-container>
+</div>
+

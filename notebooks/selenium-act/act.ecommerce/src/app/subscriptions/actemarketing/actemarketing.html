@@ -1,0 +1,20 @@
+<div [formGroup]="form">
+    <md-card-title>{{(product | async)?.name}}</md-card-title>
+    <div class="tiles">
+        <div *ngFor="let product of ['Unknown', 'Pro', 'Team']" class="tile"
+             [class.selected]="product == form.controls['aemTier'].value">
+            <h2><a md-button (click)="form.controls['aemTier'].setValue(product)">{{ 'PURCHASE.PRODUCT.EMARKETING.' +
+                product.toUpperCase() + '.TITLE' | translate }}</a></h2>
+        </div>
+    </div>
+    <small><a md-button (click)="openDialog()">What's included?</a></small>
+    <br/>
+    <h4>Additional contacts</h4>
+    <div class="tiles small-tiles">
+        <bc-tile-contacts [form]="form" class="tile" [name]="'contactBlocks'"></bc-tile-contacts>
+        <md-checkbox [disabled]="form.controls['aemTier'].value === 'Team'" formControlName="callList">Call List (<span
+                *ngIf="form.controls['aemTier'].value !== 'Team'">$15/month</span><span
+                *ngIf="form.controls['aemTier'].value === 'Team'">included</span>)
+        </md-checkbox>
+    </div>
+</div>

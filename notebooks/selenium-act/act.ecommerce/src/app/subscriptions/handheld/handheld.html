@@ -1,0 +1,39 @@
+<div [formGroup]="form">
+    <md-card-title>{{(product | async)?.name}}</md-card-title>
+    <div class="tiles">
+        <div class="tile"
+             [class.selected]="form.controls['hhcTier'].value === 'HHCStandard'">
+            <h2><a md-button (click)="form.controls['hhcTier'].setValue('HHCStandard')">Standard (+
+                79.95/device/year)</a></h2>
+        </div>
+        <div class="tile"
+             [class.selected]="form.controls['hhcTier'].value === 'HHCSecurePlus'">
+            <h2><a md-button (click)="form.controls['hhcTier'].setValue('HHCSecurePlus')">Secure (+
+                129.95/device/year)</a></h2>
+        </div>
+    </div>
+    <h4>Number of devices</h4>
+    <div class="tiles small-tiles natural">
+        <bc-tile-devices class="tile" [form]="form" [name]="'hhcDevices'"></bc-tile-devices>
+    </div>
+    <h4>Additional contacts</h4>
+    <div class="tiles">
+        <div class="tile"
+             [class.selected]="form.controls['hhcAdditionalContacts'].value === 'Unknown'">
+            <h2><a md-button (click)="form.controls['hhcAdditionalContacts'].setValue('Unknown')">15,000 (included)</a>
+            </h2>
+        </div>
+        <div class="tile"
+             [class.selected]="form.controls['hhcAdditionalContacts'].value === 'HHC30k'">
+            <h2><a md-button (click)="form.controls['hhcAdditionalContacts'].setValue('HHC30k')">30,000 (+
+                $10/mo)</a></h2>
+        </div>
+        <div class="tile"
+             [class.selected]="form.controls['hhcAdditionalContacts'].value === 'HHC45k'">
+            <h2><a md-button (click)="form.controls['hhcAdditionalContacts'].setValue('HHC45k')">45,000 (+
+                $20/mo)</a>
+            </h2>
+        </div>
+    </div>
+</div>
+

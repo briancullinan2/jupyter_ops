@@ -1,0 +1,16 @@
+﻿md-card > div {
+  display: flex !important;
+}
+
+md-card > div > div {
+  width: 50%;
+}
+
+md-card-title {
+  display: flex;
+  justify-content: center;
+}
+
+.contain {
+  text-align: center;
+}

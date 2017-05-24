@@ -1,0 +1,57 @@
+<div class="title-span">
+    <h1 class="contain">Request a demonstration</h1>
+    <p class="contain">If you would like one of our consultants to talk you through how Act! can transform your
+        business, fill in the
+        form and we will contact you shortly. Or contact us now on <a href="tel:866-873-2006">866-873-2006</a> and speak
+        directly to an Act!
+        representative to discuss your deployment and CRM needs.</p>
+</div>
+<div class="contain">
+    <md-card>
+        <md-card-title>Act! - Contact and Customer Manager</md-card-title>
+        <p>Act! is the trusted solution to help individuals, small businesses, and sales teams organize prospect and
+            customer details in one place, send emails, market products and services more effectively, and drive sales
+            results.</p>
+        <img id="PageLayout_C006_ctl00_ctl00_imageItem" title="screens"
+             src="/assets/actpremiumcloud.png" alt="screens">
+    </md-card>
+    <md-card class="register-wrapper">
+        <md-card-title *ngIf="!(done | async)">Try Act! Premium for Free</md-card-title>
+        <bc-register-form [form]="form" [registrationUser]="registrationUser" *ngIf="!(done | async)"></bc-register-form>
+        <md-input-container>
+            <textarea mdInput placeholder="Leave us a note"></textarea>
+        </md-input-container>
+        <div class="done" *ngIf="(done | async)">
+            <md-card-title>Check your inbox</md-card-title>
+            <p>You will receive a Welcome email to help you get started. Please allow up to 15 minutes to receive your
+                Welcome email. Note: Your Welcome email will contain login credentials to access your trial. Be sure to
+                add act_team@e.act.com to your email address book or safe list, and check your junk folder. Also keep a
+                lookout for emails on how to make the most of your trial experience.</p>
+        </div>
+        <md-card-actions *ngIf="!(done | async)">
+            <button md-raised-button color="primary" (click)="onSubmit()">Send</button>
+        </md-card-actions>
+    </md-card>
+</div>
+<div class="current-customers">
+    <h4 class="contain">They trust Act! to help run their business:</h4>
+    <div id="PageLayout_C012_Col00" class="contain">
+        <div class="sfimageWrp">
+            <img id="PageLayout_C013_ctl00_ctl00_imageItem" title="color-business-centers"
+                 src="https://www.act.com/images/default-source/Customers/color-business-centers.jpg?sfvrsn=0"
+                 alt="color-business-centers">
+        </div>
+        <div class="sfimageWrp">
+            <img id="PageLayout_C014_ctl00_ctl00_imageItem" title="morningside"
+                 src="https://www.act.com/images/default-source/Customers/morningside.png?sfvrsn=2" alt="morningside">
+        </div>
+        <div class="sfimageWrp">
+            <img id="PageLayout_C015_ctl00_ctl00_imageItem" title="mcj"
+                 src="https://www.act.com/images/default-source/Customers/mcj.jpg?sfvrsn=0" alt="mcj">
+        </div>
+        <div class="sfimageWrp">
+            <img id="PageLayout_C016_ctl00_ctl00_imageItem" title="reebok"
+                 src="https://www.act.com/images/default-source/Customers/reebok.jpg?sfvrsn=0" alt="reebok">
+        </div>
+    </div>
+</div>

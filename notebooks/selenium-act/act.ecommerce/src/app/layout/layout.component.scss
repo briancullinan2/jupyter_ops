@@ -1,0 +1,81 @@
+﻿@import '../../assets/colors';
+
+:host {
+
+    &, /deep/ md-card {
+        color: inherit;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+    }
+
+    /deep/ {
+
+        .mat-sidenav-container {
+            background: rgba(0, 0, 0, 0.03);
+            color: inherit;
+        }
+
+        .mat-card-subtitle {
+            color: inherit;
+        }
+
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: mat-color(map-get($theme, primary), 700);
+            text-decoration: none;
+            outline: none;
+        }
+
+        .mat-raised-button {
+            border-radius: 20px;
+            border: 2px solid mat-color(map-get($theme, primary), 700);
+            padding-left: 35px;
+            padding-right: 35px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .mat-button {
+            border-radius: 0;
+        }
+
+        .mat-toolbar {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .mat-toolbar-layout,
+        .contain {
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+            max-width: 1000px;
+        }
+
+        img, video, canvas, svg {
+            max-width: 100%;
+        }
+
+        .mat-input-wrapper {
+            margin: 0 !important;
+        }
+
+        .mat-card > .mat-card-actions:last-child {
+            padding-top: 40px;
+            margin: 0;
+        }
+
+        md-card.mat-card {
+            box-shadow: none;
+        }
+
+        md-select, .mat-input-container {
+            padding: 15px 0;
+            width: 220px;
+            text-align: left;
+        }
+    }
+}

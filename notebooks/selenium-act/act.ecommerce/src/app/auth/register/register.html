@@ -1,0 +1,23 @@
+﻿<md-card>
+    <div class="contain">
+        <div>
+            <md-card-title>{{ 'AUTH.REGISTER.LOGIN.TITLE' | translate }}</md-card-title>
+            <md-card-subtitle>{{ 'AUTH.REGISTER.LOGIN.SUBTITLE' | translate }}</md-card-subtitle>
+            <a md-button color="primary" [routerLink]="['/account/login']">{{ 'AUTH.REGISTER.LOGIN.LOGIN' | translate
+                }}</a>
+        </div>
+        <div>
+            <md-card-title>{{ 'AUTH.REGISTER.TITLE' | translate }}</md-card-title>
+            <md-card-subtitle>{{ 'AUTH.REGISTER.SUBTITLE' | translate }}</md-card-subtitle>
+            <form method="POST" action="#" role="form">
+                <div class="error" *ngIf="error !== ''">{{error}}</div>
+                <bc-register-form [form]="form" [registrationUser]="registrationUser"></bc-register-form>
+                <div class="form-group">
+                    <button md-raised-button color="primary" (click)="onRegister()" type="submit">
+                        {{ 'AUTH.REGISTER.SUBMIT' | translate }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</md-card>

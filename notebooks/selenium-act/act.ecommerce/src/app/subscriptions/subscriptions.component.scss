@@ -1,0 +1,12 @@
+
+md-card /deep/ md-card-title.mat-card-title {
+    margin: 15px 0 25px;
+}
+
+md-card > div {
+    display: flex;
+}
+
+.contain > div > div {
+    flex: 1 1 auto;
+}

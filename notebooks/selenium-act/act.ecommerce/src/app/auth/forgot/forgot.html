@@ -1,0 +1,14 @@
+﻿<md-card>
+    <md-card-title>{{ 'AUTH.FORGOT.TITLE' | translate }}</md-card-title>
+    <md-input-container>
+        <input mdInput id="signupEmail" type="email" maxlength="50" placeholder="{{ 'AUTH.FORGOT.EMAIL' | translate }}" [(ngModel)]="email"
+               [ngModelOptions]="{standalone: true}">
+    </md-input-container>
+    <md-card-actions>
+        <button md-raised-button color="primary" (click)="onNext()" id="nextPage" type="submit">
+            {{ 'AUTH.FORGOT.NEXT' | translate }}
+        </button>
+        <a md-button routerLink="/account/register"> <i class="fa fa-fw fa-group"></i> {{ 'AUTH.FORGOT.REGISTER' | translate }}</a>
+        <a md-button routerLink="/account/login"><i class="fa fa-fw fa-user"></i>{{ 'AUTH.FORGOT.LOGIN' | translate }}</a>
+    </md-card-actions>
+</md-card>

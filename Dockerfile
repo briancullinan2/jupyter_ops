@@ -80,7 +80,9 @@ RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.stor
   && ln -fs /opt/selenium/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
 
 
-
+#==================
+# Jupyter extensions
+#==================
 RUN mkdir -p $HOME/.ipython/kernels/
 # RUN pip install ipython==6.0.0
 RUN conda install -y jupyter_console

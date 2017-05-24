@@ -1,0 +1,36 @@
+
+@import "../../../assets/colors";
+
+:host {
+  background: black;
+  display:flex;
+  color: mat-contrast(map-get($theme, accent), 700);
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+nav {
+  width: 1000px;
+  margin: 0 auto;
+  max-width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: stretch;
+  text-align: center;
+}
+
+nav > [md-button] {
+  flex: 1 1 auto;
+  display:inline-block;
+}
+
+nav > a {
+  color: mat-contrast(map-get($theme, primary), 700)
+}
+
+nav > a:hover, nav > button:hover {
+  color: mat-contrast(map-get($theme, primary), 700);
+  background: mat-color(map-get($theme, primary), 700);
+}
