@@ -6,3 +6,17 @@ typings.json
 .idea/
 dev/
 notebooks/mobile/
+notebooks/elevate/Elevate/Elevate.aps
+notebooks/elevate/Elevate/Elevate.rc
+notebooks/elevate/Elevate/Elevate.vcproj
+notebooks/elevate/Elevate/Elevate.vcxproj.filters
+notebooks/elevate/Elevate/main.c
+notebooks/elevate/Elevate/stdafx.h
+notebooks/elevate/Elevate/resource.h
+notebooks/elevate/Elevate/Elevate.vcxproj
+notebooks/elevate/Elevate.sln
+notebooks/elevate/ShellCtxMenu.reg
+notebooks/elevate/bin/x64/Release/Elevate.exe
+notebooks/elevate/bin/x86/Release/Elevate.exe
+notebooks/elevate/README.md
+notebooks/elevate/LICENSE.md
