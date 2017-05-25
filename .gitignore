@@ -20,3 +20,6 @@ notebooks/elevate/bin/x64/Release/Elevate.exe
 notebooks/elevate/bin/x86/Release/Elevate.exe
 notebooks/elevate/README.md
 notebooks/elevate/LICENSE.md
+notebooks/InstallDocker.msi
+notebooks/elevate.zip
+notebooks/log.txt

@@ -1,6 +1,7 @@
 {
     "scripts": {
         "test": "wdio wdio.conf.js",
+        "pretest": "node server.js",
         "smoke": "mocha -t 50000 ./test/smokeTests"
     },
     "engines": {

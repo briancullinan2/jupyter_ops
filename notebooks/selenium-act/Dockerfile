@@ -1,3 +1,4 @@
+
 FROM selenium/standalone-chrome-debug
 
 RUN apt-get -qq update
