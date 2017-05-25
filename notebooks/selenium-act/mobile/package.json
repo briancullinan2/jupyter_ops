@@ -1,7 +1,7 @@
 {
     "scripts": {
         "test": "wdio wdio.conf.js",
-        "pretest": "node server.js",
+        "static": "concurrently --kill-others \"node server.js\" \"live-server --port=4200 --host=0.0.0.0 --entry-file=index.html --mount=/:/home/seluser/act.ecommerce/dist/\"",
         "smoke": "mocha -t 50000 ./test/smokeTests"
     },
     "engines": {
@@ -13,14 +13,11 @@
     },
     "devDependencies": {
         "wdio-mocha-framework": "latest",
-        "wdio-jasmine-framework": "latest",
         "@types/jasmine": "latest",
         "@types/node": "latest",
         "jasmine": "latest",
         "jasmine-core": "latest",
-        "codelyzer": "latest",
         "chai": "latest",
-        "synchronize": "latest",
         "babel-core": "latest",
         "babel-register": "latest",
         "babel-preset-env": "latest",

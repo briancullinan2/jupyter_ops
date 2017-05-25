@@ -21,7 +21,7 @@ describe('webdriver.io page', function () {
         testLib.setFirstName(browser, 'Brian');
         testLib.setUsername(browser, 'megamindbrian@gmail.com');
         testLib.clickStartTrial(browser);
-        browser.waitForExist("[name='logoutForm']", 1000);
+        browser.waitForExist('.done .mat-card-title', 1000);
     });
 
 

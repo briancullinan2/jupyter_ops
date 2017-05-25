@@ -1,7 +1,7 @@
-import {asyncIt as async} from 'synchronize';
 // import wrapper for asynchronous functions
 import {} from 'jasmine-core';
 import assert from 'assert';
+import * as async from "async";
 
 var webdriverio = require('webdriverio');
 var options = {

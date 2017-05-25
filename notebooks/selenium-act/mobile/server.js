@@ -81,6 +81,12 @@ app.post('/api/trial/create', function (req, res) {
 app.post('/api/purchase/preview', function (req, res) {
     res.send(previewResponse);
 });
+app.post('/identity/registration/register', function (req, res) {
+    res.send('');
+});
+app.post('/identity/connect/token', function (req, res) {
+    res.send({access_token: 'some token'});
+});
 try {
     app.listen(3000, function () {
         console.log('Example app listening on port 3000!');
