@@ -65,11 +65,20 @@ const previewResponse = {
 };
 
 app.use(bodyParser.json());
-
+app.use(function (req, res, next) {
+    if (req.header('Origin')) {
+        res.header("Access-Control-Allow-Origin", req.header('Origin'));
+        res.header("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type, Accept");
+    }
+    next();
+});
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.htm');
 });
-app.get('/api/purchase/preview', function (req, res) {
+app.post('/api/trial/create', function (req, res) {
+    res.send('');
+});
+app.post('/api/purchase/preview', function (req, res) {
     res.send(previewResponse);
 });
 try {

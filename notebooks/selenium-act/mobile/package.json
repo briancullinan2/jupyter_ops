@@ -27,6 +27,8 @@
         "babel-preset-es2015": "latest",
         "async": "latest",
         "tslint": "latest",
-        "typescript": "latest"
+        "typescript": "latest",
+        "express": "latest",
+        "body-parser": "latest"
     }
 }
