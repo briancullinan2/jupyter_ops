@@ -1,8 +1,0 @@
-<div [formGroup]="form" class="tiles small-tiles">
-    <bc-tile-quantity [form]="form" [term]="'Perpetual'" class="tile"
-                      *ngIf="(catalog.selectedProduct | async) != 'ActPremiumCloud'"></bc-tile-quantity>
-    <bc-tile-quantity [form]="form" [term]="'Annual'" class="tile"></bc-tile-quantity>
-    <bc-tile-quantity [form]="form" [term]="'Monthly'" class="tile"></bc-tile-quantity>
-</div>
-
-

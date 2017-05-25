@@ -1,6 +1,0 @@
-<md-card *ngIf="catalog.recentlyConfirmed | async">
-    <md-card-title>{{ 'PURCHASE.FUNNEL.THANKS.TITLE' | translate }}</md-card-title>
-    <p>{{ 'PURCHASE.FUNNEL.THANKS.EMAIL' | translate:product }}</p>
-    <p>{{ 'PURCHASE.FUNNEL.THANKS.QUESTIONS' | translate }}</p>
-</md-card>
-<bc-subscriptions *ngIf="!(catalog.recentlyConfirmed | async)"></bc-subscriptions>

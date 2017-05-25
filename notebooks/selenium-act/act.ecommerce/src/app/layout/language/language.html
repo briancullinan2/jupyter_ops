@@ -1,6 +1,0 @@
-﻿<button md-button mdTooltip="{{'LAYOUT.LANGUAGE.SELECT' | translate}}" class="md-icon-button" [mdMenuTriggerFor]="menu">
-  {{"LAYOUT.LANGUAGE." + (language | async) | translate}}
-</button>
-<md-menu #menu="mdMenu">
-  <button md-menu-item *ngFor="let lang of langs" [lang]="lang" (click)="changeLanguage(lang)">{{"LAYOUT.LANGUAGE." + lang | translate}}</button>
-</md-menu>

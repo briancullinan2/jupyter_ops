@@ -1,9 +1,0 @@
-﻿{
-  "/zuora": {
-    "target": "https://apisandbox-api.zuora.com",
-    "secure": false,
-    "pathRewrite": { "^/zuora": "" },
-    "logLevel": "debug",
-    "changeOrigin": true
-  }
-}

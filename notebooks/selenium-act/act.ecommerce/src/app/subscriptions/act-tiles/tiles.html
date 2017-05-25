@@ -1,8 +1,0 @@
-<div class="tiles">
-    <div *ngFor="let product of (products | async)" class="tile"
-         [class.selected]="product.type === (catalog.selectedProduct | async)">
-        <h2><a md-button [routerLink]="'/buy/subscriptions/' + product.type">{{ 'PURCHASE.PRODUCT.' +
-            product.type.toUpperCase() + '.TITLE' | translate }}</a></h2>
-    </div>
-</div>
-
