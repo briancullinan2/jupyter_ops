@@ -23,3 +23,5 @@ notebooks/elevate/LICENSE.md
 notebooks/InstallDocker.msi
 notebooks/elevate.zip
 notebooks/log.txt
+google_credentials.txt
+notebooks/output
