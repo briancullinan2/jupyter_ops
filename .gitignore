@@ -25,3 +25,4 @@ notebooks/elevate.zip
 notebooks/log.txt
 google_credentials.txt
 notebooks/output
+notebooks/node_modules
