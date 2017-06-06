@@ -1,5 +1,5 @@
-# Jupyter + Angular2
-This is a kernel for [Jupyter](http://github.com/ipython/ipython)
+# Jupyter + DevOps
+DevOps crestomathy in jupyter notebooks.  This is a kernel for [Jupyter](http://github.com/ipython/ipython)
 
 Get it while it's hot! or view the [example notebook](http://nbviewer.ipython.org/gist/jaredly/404a36306fdee6a1737a)
 
