@@ -15,9 +15,10 @@ if(typeof importer == 'undefined') {
         var m; co = []; while ((m = re.exec(f)) && co.push(m[1]));
         var code = JSON.parse('["//'+co.join('","')+'"]').join('');
         var footer = '\n\n;(Object.assign(module.exports, imported["'+filename+'"]))';
-        newModule._compile(code + footer, notebook);
+        var header = '\n\n__filename='+JSON.stringify(notebook)+';\n\n'
+        newModule._compile(header + code + footer, notebook);
         newModule.loaded = true;
-    })(path.join(__dirname, 'How to find answers.ipynb'));
+    })(path.join(__dirname, 'How to import a notebook.ipynb'));
 }
 module.exports = newModule.exports;
 module.exports.interpretAll = (dirname) => Promise.all([
