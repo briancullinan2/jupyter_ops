@@ -18,6 +18,7 @@
         "google-auth-library": "^0.10.0",
         "googleapis": "^19.0.0",
         "nel": "^0.5.3",
-        "renamer": "^0.6.1"
+        "renamer": "^0.6.1",
+        "webdriverio": "^4.8.0"
     }
 }

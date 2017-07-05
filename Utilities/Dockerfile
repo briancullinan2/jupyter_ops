@@ -10,10 +10,8 @@ WORKDIR /home/seluser
 USER root
 RUN mkdir /usr/profile
 RUN mkdir /usr/downloads
-RUN chown seluser:seluser -R /usr/profile
-RUN chown seluser:seluser -R /usr/downloads
-RUN chmod 777 -R /usr/profile
-RUN chmod 777 -R /usr/downloads
+RUN chown seluser -R /usr/profile
+RUN chown seluser -R /usr/downloads
 VOLUME /usr/profile
 VOLUME /data/downloads
 RUN mkdir /var/lib/apt/lists/partial
