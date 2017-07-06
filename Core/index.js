@@ -20,5 +20,4 @@ if(typeof importer == 'undefined') {
     importer(howTo, path.dirname(howTo), path.basename(howTo))
 }
 module.exports = newModule.exports;
-Object.assign(global, module.exports);
 
