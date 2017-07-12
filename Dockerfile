@@ -16,17 +16,6 @@ RUN wget -O - https://deb.nodesource.com/setup_7.x | bash
 
 RUN mkdir -p $HOME
 
-ADD .babelrc $HOME
-ADD config.js $HOME
-ADD install.js $HOME
-ADD package.json $HOME
-ADD tsconfig.json $HOME
-ADD tslint.json $HOME
-ADD yarn.lock $HOME
-ADD webpack.config.js $HOME
-ADD webpack.common.js $HOME
-ADD typings.json $HOME
-ADD helpers.js $HOME
 
 RUN mkdir $HOME/notebooks
 RUN chown -R jovyan $HOME
@@ -38,6 +27,10 @@ RUN echo "/opt/conda/lib" >> /etc/ld.so.conf
 # RUN add-apt-repository ppa:chris-lea/zeromq -y
 # RUN add-apt-repository ppa:chris-lea/libpgm -y
 # RUN apt-get update
+RUN npm config set proxy http://192.168.0.70:5080
+RUN npm config set proxy http://192.168.0.70:5080
+RUN npm config set registry http://192.168.0.70:5080
+RUN npm config set strict-ssl false
 RUN npm install -g https://github.com/megamindbrian/itypescript ijavascript jp-kernel webpack-dev-server webpack-cli babel-cli webpack webpack-merge typescript ts-node live-server
 RUN its --ts-install=global
 RUN ijsinstall --install=global

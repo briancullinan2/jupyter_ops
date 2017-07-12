@@ -16,7 +16,7 @@ if(typeof importer == 'undefined') {
         newModule._compile(code + footer, notebook);
         newModule.loaded = true;
     });
-    var howTo = path.join(__dirname, 'How to import a notebook.ipynb');
+    var howTo = path.join(__dirname, 'import notebook.ipynb');
     importer(howTo, path.dirname(howTo), path.basename(howTo))
 }
 module.exports = newModule.exports;
