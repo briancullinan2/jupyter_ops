@@ -25,6 +25,7 @@
         "renamer": "^0.6.1",
         "rewire": "^2.5.2",
         "typescript": "^2.4.1",
+        "wdio-sync": "^0.6.14",
         "webdriverio": "^4.8.0"
     }
 }
