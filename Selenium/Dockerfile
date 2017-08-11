@@ -4,6 +4,7 @@ EXPOSE 4200
 EXPOSE 4444
 EXPOSE 3000
 
+ENV DBUS_SESSION_BUS_ADDRESS /dev/null
 ENV CHROME_USER_DATA_DIR /usr/profile
 WORKDIR /home/seluser
 
@@ -27,5 +28,6 @@ RUN mkdir -p novnc ; if git --work-tree=./novnc branch | grep 'master'; then \
  fi ; ls -la novnc ; pwd
 
 RUN dos2unix /home/seluser/novnc/utils/launch.sh
+RUN sed -i -e 's/x11vnc/x11vnc -noxdamage/g' /opt/bin/entry_point.sh
 RUN sed -i '/wait \$NODE_PID/i/home/seluser/novnc/utils/launch.sh --vnc localhost:5900 &' /opt/bin/entry_point.sh
 USER seluser
