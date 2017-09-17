@@ -1,6 +1,7 @@
 // How to parse a well formatted simple notebook the cheap way?
 var path = require('path');
 var Module = require('module');
+var fs = require('fs');
 
 var newModule = new Module(__filename, process.mainModule);
 Module._cache[__filename] = newModule;
