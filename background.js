@@ -88,18 +88,8 @@ function launchApp(id, callback, errCallback) {
     });
 }
 
-chrome.webNavigation.onCompleted.addListener(function (details) {
-    console.log('Woohoo!')
-    /*
-    chrome.tabs.executeScript(details.tabId, {
-        code: ' if (document.body.innerText.indexOf("Cat") !=-1) {' +
-        '     alert("Cat not found!");' +
-        ' }'
-    });
-    */
-}, {
-    url: [{
-        // Runs on example.com, example.net, but also example.foo.com
-        hostContains: '.'
-    }]
-});
+var background, newRandomNumber;
+chrome.runtime.getBackgroundPage(function (backgroundWindow) {
+    background = backgroundWindow;
+    newRandomNumber = background.rand();
+})

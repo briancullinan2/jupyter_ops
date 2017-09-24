@@ -5,64 +5,45 @@ webpackJsonpng_seed__name_([0],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchComponent", function() { return SearchComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "COMPONENTS", function() { return COMPONENTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authRoutes", function() { return authRoutes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routing", function() { return routing; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchModule", function() { return SearchModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__imports_core_module__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__imports_search_service__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__results_component__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__result_component__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__search_component__ = __webpack_require__(360);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__results_list_component__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__imports_core_module__ = __webpack_require__(32);
 
 
 
 
 
 
-var SearchComponent = (function () {
-    function SearchComponent(service) {
-        this.service = service;
-        this.query = '';
-    }
-    SearchComponent.prototype.search = function () {
-        this.service.search(this.query).subscribe(function (r) {
-            console.log(r);
-        });
-    };
-    return SearchComponent;
-}());
-SearchComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'bc-search',
-        template: "\n        <form>\n            <md-input-container>\n                <input mdInput name=\"search\" required type=\"text\"\n                       placeholder=\"Search\"\n                       maxlength=\"100\" [(ngModel)]=\"query\" (change)=\"search()\">\n            </md-input-container>\n        </form>\n        <bc-results></bc-results>\n    ",
-        styles: ["\n        md-input-container {\n            width: 100%;\n        }\n    "]
-    }),
-    __WEBPACK_IMPORTED_MODULE_0_tslib__["__metadata"]("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__imports_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__imports_search_service__["a" /* SearchService */]) === "function" && _a || Object])
-], SearchComponent);
 
 var COMPONENTS = [
-    SearchComponent,
-    __WEBPACK_IMPORTED_MODULE_5__results_component__["a" /* ResultsComponent */]
+    __WEBPACK_IMPORTED_MODULE_2__search_component__["a" /* SearchComponent */],
+    __WEBPACK_IMPORTED_MODULE_1__result_component__["a" /* ResultComponent */],
+    __WEBPACK_IMPORTED_MODULE_3__results_list_component__["a" /* ResultsListComponent */]
 ];
 var authRoutes = [
     {
         path: '',
-        component: SearchComponent,
+        component: __WEBPACK_IMPORTED_MODULE_2__search_component__["a" /* SearchComponent */],
         data: { roles: ['anonymous', 'user'] }
     }
 ];
-var routing = __WEBPACK_IMPORTED_MODULE_3__angular_router__["RouterModule"].forChild(authRoutes);
+var routing = __WEBPACK_IMPORTED_MODULE_4__angular_router__["RouterModule"].forChild(authRoutes);
 var SearchModule = (function () {
     function SearchModule() {
     }
     return SearchModule;
 }());
 SearchModule = __WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
-        imports: __WEBPACK_IMPORTED_MODULE_2__imports_core_module__["a" /* COMMON_MODULES */].concat([
+    Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["NgModule"])({
+        imports: __WEBPACK_IMPORTED_MODULE_6__imports_core_module__["a" /* COMMON_MODULES */].concat([
             routing
         ]),
         declarations: COMPONENTS,
@@ -70,7 +51,6 @@ SearchModule = __WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
     })
 ], SearchModule);
 
-var _a;
 
 
 /***/ }),
@@ -79,9 +59,9 @@ var _a;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultsComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imports_search_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imports_search_service__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs__ = __webpack_require__(355);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prismjs__);
@@ -89,36 +69,43 @@ var _a;
 
 
 
-var ResultsComponent = (function () {
-    function ResultsComponent(service, ref) {
+__webpack_require__(356);
+var ResultComponent = (function () {
+    function ResultComponent(service, ref) {
         this.service = service;
         this.ref = ref;
-        this.query = '';
+        this.index = 0;
         this.results = [];
+        this.query = '';
     }
-    ResultsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.resultsSub = this.service.results(this.query).subscribe(function (r) {
-            _this.results = [r[0]];
-            _this.ref.detectChanges();
-        });
+    ResultComponent.prototype.ngOnInit = function () {
     };
-    ResultsComponent.prototype.ngOnDestroy = function () {
-        this.resultsSub.unsubscribe();
+    ResultComponent.prototype.ngOnDestroy = function () {
     };
-    ResultsComponent.prototype.highlight = function (code) {
+    ResultComponent.prototype.highlight = function (code) {
+        if (typeof code === 'undefined' || code === null) {
+            return '';
+        }
         return __WEBPACK_IMPORTED_MODULE_3_prismjs__["highlight"](code, __WEBPACK_IMPORTED_MODULE_3_prismjs__["languages"].javascript);
     };
-    return ResultsComponent;
+    return ResultComponent;
 }());
-ResultsComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
+__WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
+    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Input"])(),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["__metadata"]("design:type", Object)
+], ResultComponent.prototype, "index", void 0);
+__WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
+    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Input"])(),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["__metadata"]("design:type", Object)
+], ResultComponent.prototype, "results", void 0);
+ResultComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
-        selector: 'bc-results',
-        template: "\n        <pre [class]=\"'language-'+(r.lang||'javascript')\" *ngFor=\"let r of results\" [innerHTML]=\"highlight(r.code)\">\n        </pre>\n    ",
-        styles: [__webpack_require__(356)]
+        selector: 'bc-result',
+        template: __webpack_require__(357),
+        styles: [__webpack_require__(358)]
     }),
     __WEBPACK_IMPORTED_MODULE_0_tslib__["__metadata"]("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__imports_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__imports_search_service__["a" /* SearchService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_core__["ChangeDetectorRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_core__["ChangeDetectorRef"]) === "function" && _b || Object])
-], ResultsComponent);
+], ResultComponent);
 
 var _a, _b;
 
@@ -929,10 +916,80 @@ Prism.languages.js = Prism.languages.javascript;
 /***/ }),
 
 /***/ 356:
+/***/ (function(module, exports) {
+
+(function() {
+
+if (typeof self === 'undefined' || !self.Prism || !self.document) {
+	return;
+}
+
+Prism.hooks.add('complete', function (env) {
+	if (!env.code) {
+		return;
+	}
+
+	// works only for <code> wrapped inside <pre> (not inline)
+	var pre = env.element.parentNode;
+	var clsReg = /\s*\bline-numbers\b\s*/;
+	if (
+		!pre || !/pre/i.test(pre.nodeName) ||
+			// Abort only if nor the <pre> nor the <code> have the class
+		(!clsReg.test(pre.className) && !clsReg.test(env.element.className))
+	) {
+		return;
+	}
+
+	if (env.element.querySelector(".line-numbers-rows")) {
+		// Abort if line numbers already exists
+		return;
+	}
+
+	if (clsReg.test(env.element.className)) {
+		// Remove the class "line-numbers" from the <code>
+		env.element.className = env.element.className.replace(clsReg, '');
+	}
+	if (!clsReg.test(pre.className)) {
+		// Add the class "line-numbers" to the <pre>
+		pre.className += ' line-numbers';
+	}
+
+	var match = env.code.match(/\n(?!$)/g);
+	var linesNum = match ? match.length + 1 : 1;
+	var lineNumbersWrapper;
+
+	var lines = new Array(linesNum + 1);
+	lines = lines.join('<span></span>');
+
+	lineNumbersWrapper = document.createElement('span');
+	lineNumbersWrapper.setAttribute('aria-hidden', 'true');
+	lineNumbersWrapper.className = 'line-numbers-rows';
+	lineNumbersWrapper.innerHTML = lines;
+
+	if (pre.hasAttribute('data-start')) {
+		pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+	}
+
+	env.element.appendChild(lineNumbersWrapper);
+
+});
+
+}());
+
+/***/ }),
+
+/***/ 357:
+/***/ (function(module, exports) {
+
+module.exports = "<pre [class]=\"'language-'+(results[index]?.language||'javascript')\"\n     [innerHTML]=\"highlight(results[index]?.code)\"></pre>";
+
+/***/ }),
+
+/***/ 358:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(357);
+        var result = __webpack_require__(359);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -943,15 +1000,185 @@ Prism.languages.js = Prism.languages.javascript;
 
 /***/ }),
 
-/***/ 357:
+/***/ 359:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(32)(undefined);
+exports = module.exports = __webpack_require__(30)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "/deep/ {\n  /* Code blocks */\n  /* Inline code */ }\n  @media print {\n    /deep/ code[class*=\"language-\"],\n    /deep/ pre[class*=\"language-\"] {\n      text-shadow: none; } }\n  /deep/ code[class*=\"language-\"],\n  /deep/ pre[class*=\"language-\"] {\n    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;\n    -ms-hyphens: none;\n    -moz-hyphens: none;\n    -webkit-hyphens: none;\n    hyphens: none;\n    line-height: 1.5;\n    word-spacing: normal;\n    color: black;\n    text-align: left;\n    text-shadow: 0 1px white;\n    word-break: normal;\n    word-wrap: normal;\n    white-space: pre;\n    background: none;\n    -moz-tab-size: 4;\n    -o-tab-size: 4;\n    tab-size: 4; }\n  /deep/ pre[class*=\"language-\"]::-moz-selection,\n  /deep/ pre[class*=\"language-\"] ::-moz-selection,\n  /deep/ code[class*=\"language-\"]::-moz-selection,\n  /deep/ code[class*=\"language-\"] ::-moz-selection {\n    text-shadow: none;\n    background: #b3d4fc; }\n  /deep/ pre[class*=\"language-\"]::selection,\n  /deep/ pre[class*=\"language-\"] ::selection,\n  /deep/ code[class*=\"language-\"]::selection,\n  /deep/ code[class*=\"language-\"] ::selection {\n    text-shadow: none;\n    background: #b3d4fc; }\n  /deep/ pre[class*=\"language-\"] {\n    padding: 1em;\n    margin: 0.5em 0;\n    overflow: auto; }\n  /deep/ :not(pre) > code[class*=\"language-\"],\n  /deep/ pre[class*=\"language-\"] {\n    background: #f5f2f0; }\n  /deep/ :not(pre) > code[class*=\"language-\"] {\n    padding: 0.1em;\n    white-space: normal;\n    border-radius: 0.3em; }\n  /deep/ .token.comment,\n  /deep/ .token.prolog,\n  /deep/ .token.doctype,\n  /deep/ .token.cdata {\n    color: slategray; }\n  /deep/ .token.punctuation {\n    color: #999; }\n  /deep/ .namespace {\n    opacity: 0.7; }\n  /deep/ .token.property,\n  /deep/ .token.tag,\n  /deep/ .token.boolean,\n  /deep/ .token.number,\n  /deep/ .token.constant,\n  /deep/ .token.symbol,\n  /deep/ .token.deleted {\n    color: #905; }\n  /deep/ .token.selector,\n  /deep/ .token.attr-name,\n  /deep/ .token.string,\n  /deep/ .token.char,\n  /deep/ .token.builtin,\n  /deep/ .token.inserted {\n    color: #690; }\n  /deep/ .token.operator,\n  /deep/ .token.entity,\n  /deep/ .token.url,\n  /deep/ .language-css .token.string,\n  /deep/ .style .token.string {\n    color: #a67f59;\n    background: rgba(255, 255, 255, 0.5); }\n  /deep/ .token.atrule,\n  /deep/ .token.attr-value,\n  /deep/ .token.keyword {\n    color: #07a; }\n  /deep/ .token.function {\n    color: #dd4a68; }\n  /deep/ .token.regex,\n  /deep/ .token.important,\n  /deep/ .token.variable {\n    color: #e90; }\n  /deep/ .token.important,\n  /deep/ .token.bold {\n    font-weight: bold; }\n  /deep/ .token.italic {\n    font-style: italic; }\n  /deep/ .token.entity {\n    cursor: help; }\n", ""]);
+exports.push([module.i, "/**\n * Applies styles for users in high contrast mode. Note that this only applies\n * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`\n * attribute, however Chrome handles high contrast differently.\n */\n/* Theme for the ripple elements.*/\n/** The mixins below are shared between md-menu and md-select */\n/**\n * This mixin adds the correct panel transform styles based\n * on the direction that the menu panel opens.\n */\n/* stylelint-disable material/no-prefixes */\n/* stylelint-enable */\n/**\n * This mixin contains shared option styles between the select and\n * autocomplete components.\n */\n/deep/ {\n  /* Code blocks */\n  /* Inline code */ }\n  @media print {\n    /deep/ code[class*=\"language-\"],\n    /deep/ pre[class*=\"language-\"] {\n      text-shadow: none; } }\n  /deep/ code[class*=\"language-\"],\n  /deep/ pre[class*=\"language-\"] {\n    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;\n    -ms-hyphens: none;\n    -moz-hyphens: none;\n    -webkit-hyphens: none;\n    hyphens: none;\n    line-height: 1.5;\n    word-spacing: normal;\n    color: black;\n    text-align: left;\n    text-shadow: 0 1px white;\n    word-break: normal;\n    word-wrap: normal;\n    white-space: pre;\n    background: none;\n    -moz-tab-size: 4;\n    -o-tab-size: 4;\n    tab-size: 4; }\n  /deep/ pre[class*=\"language-\"]::-moz-selection,\n  /deep/ pre[class*=\"language-\"] ::-moz-selection,\n  /deep/ code[class*=\"language-\"]::-moz-selection,\n  /deep/ code[class*=\"language-\"] ::-moz-selection {\n    text-shadow: none;\n    background: #b3d4fc; }\n  /deep/ pre[class*=\"language-\"]::selection,\n  /deep/ pre[class*=\"language-\"] ::selection,\n  /deep/ code[class*=\"language-\"]::selection,\n  /deep/ code[class*=\"language-\"] ::selection {\n    text-shadow: none;\n    background: #b3d4fc; }\n  /deep/ pre[class*=\"language-\"] {\n    padding: 20px;\n    margin: 0 20px 0 0;\n    overflow: auto;\n    display: block;\n    max-height: 100%; }\n  /deep/ :not(pre) > code[class*=\"language-\"],\n  /deep/ pre[class*=\"language-\"] {\n    background: #EEEEEE; }\n  /deep/ :not(pre) > code[class*=\"language-\"] {\n    padding: 0.1em;\n    white-space: normal;\n    border-radius: 0.3em; }\n  /deep/ .token.comment,\n  /deep/ .token.prolog,\n  /deep/ .token.doctype,\n  /deep/ .token.cdata {\n    color: slategray; }\n  /deep/ .token.punctuation {\n    color: #999; }\n  /deep/ .namespace {\n    opacity: 0.7; }\n  /deep/ .token.property,\n  /deep/ .token.tag,\n  /deep/ .token.boolean,\n  /deep/ .token.number,\n  /deep/ .token.constant,\n  /deep/ .token.symbol,\n  /deep/ .token.deleted {\n    color: #905; }\n  /deep/ .token.selector,\n  /deep/ .token.attr-name,\n  /deep/ .token.string,\n  /deep/ .token.char,\n  /deep/ .token.builtin,\n  /deep/ .token.inserted {\n    color: #690; }\n  /deep/ .token.operator,\n  /deep/ .token.entity,\n  /deep/ .token.url,\n  /deep/ .language-css .token.string,\n  /deep/ .style .token.string {\n    color: #a67f59;\n    background: rgba(255, 255, 255, 0.5); }\n  /deep/ .token.atrule,\n  /deep/ .token.attr-value,\n  /deep/ .token.keyword {\n    color: #07a; }\n  /deep/ .token.function {\n    color: #dd4a68; }\n  /deep/ .token.regex,\n  /deep/ .token.important,\n  /deep/ .token.variable {\n    color: #e90; }\n  /deep/ .token.important,\n  /deep/ .token.bold {\n    font-weight: bold; }\n  /deep/ .token.italic {\n    font-style: italic; }\n  /deep/ .token.entity {\n    cursor: help; }\n  /deep/ pre.line-numbers {\n    position: relative;\n    padding-left: 3.8em;\n    counter-reset: linenumber; }\n  /deep/ pre.line-numbers > code {\n    position: relative;\n    white-space: inherit; }\n  /deep/ .line-numbers .line-numbers-rows {\n    position: absolute;\n    pointer-events: none;\n    top: 0;\n    font-size: 100%;\n    left: -3.8em;\n    width: 3em;\n    /* works for line-numbers below 1000 lines */\n    letter-spacing: -1px;\n    border-right: 1px solid #999;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  /deep/ .line-numbers-rows > span {\n    pointer-events: none;\n    display: block;\n    counter-increment: linenumber; }\n  /deep/ .line-numbers-rows > span:before {\n    content: counter(linenumber);\n    color: #999;\n    display: block;\n    padding-right: 0.8em;\n    text-align: right; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 360:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__imports_search_service__ = __webpack_require__(31);
+
+
+
+var SearchComponent = (function () {
+    function SearchComponent(service, ref) {
+        this.service = service;
+        this.ref = ref;
+        this.index = 0;
+        this.results = [];
+        this.query = '';
+    }
+    SearchComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.resultsSub = this.service.results(this.query).subscribe(function (r) {
+            _this.results = r;
+            _this.ref.detectChanges();
+        });
+    };
+    SearchComponent.prototype.ngOnDestroy = function () {
+        this.resultsSub.unsubscribe();
+    };
+    SearchComponent.prototype.search = function () {
+        this.service.search(this.query).subscribe(function (r) {
+            console.log(r);
+        });
+    };
+    return SearchComponent;
+}());
+SearchComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        selector: 'bc-search',
+        template: __webpack_require__(361),
+        styles: [__webpack_require__(362)]
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["__metadata"]("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__imports_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__imports_search_service__["a" /* SearchService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_core__["ChangeDetectorRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_core__["ChangeDetectorRef"]) === "function" && _b || Object])
+], SearchComponent);
+
+var _a, _b;
+
+
+/***/ }),
+
+/***/ 361:
+/***/ (function(module, exports) {
+
+module.exports = "<bc-result [index]=\"index\" [results]=\"results\"></bc-result>\n<form>\n    <md-input-container>\n        <input mdInput name=\"search\" required type=\"text\"\n               placeholder=\"Search\"\n               maxlength=\"100\" [(ngModel)]=\"query\" (change)=\"search()\">\n    </md-input-container>\n    <div class=\"results-wrapper\">\n        <bc-results-list (change)=\"index=$event\" [results]=\"results\"></bc-results-list>\n    </div>\n</form>";
+
+/***/ }),
+
+/***/ 362:
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(363);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
+
+/***/ }),
+
+/***/ 363:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(30)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  display: flex; }\n\nform {\n  width: 200px;\n  flex-basis: 200px;\n  flex-grow: 0;\n  flex-shrink: 1;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column; }\n\nform /deep/ * {\n  max-width: 100%;\n  overflow-wrap: break-word; }\n\n.results-wrapper {\n  display: block;\n  max-height: 100%;\n  max-width: 100%;\n  overflow: auto; }\n\nmd-input-container {\n  width: 100%; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 364:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultsListComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
+
+
+var ResultsListComponent = (function () {
+    function ResultsListComponent() {
+        this.index = 0;
+        this.change = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
+        this.results = [];
+    }
+    ResultsListComponent.prototype.getLineCount = function (r) {
+        return r.code.split('\n').length;
+    };
+    return ResultsListComponent;
+}());
+__WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])(),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["__metadata"]("design:type", Object)
+], ResultsListComponent.prototype, "index", void 0);
+__WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Output"])(),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["__metadata"]("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]) === "function" && _a || Object)
+], ResultsListComponent.prototype, "change", void 0);
+__WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])(),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["__metadata"]("design:type", Object)
+], ResultsListComponent.prototype, "results", void 0);
+ResultsListComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        selector: 'bc-results-list',
+        template: __webpack_require__(365),
+        styles: [__webpack_require__(366)]
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["__metadata"]("design:paramtypes", [])
+], ResultsListComponent);
+
+var _a;
+
+
+/***/ }),
+
+/***/ 365:
+/***/ (function(module, exports) {
+
+module.exports = "<a md-button (click)=\"(index = i) && change.emit(i)\" [class]=\"'language-'+(results[r]?.language||'javascript')\"\n   [class.selected]=\"index == i\"\n   *ngFor=\"let r of results; let i = index\">\n    <span>{{ r.filename }}</span>\n    <span>{{ r.language }}</span>\n    <span>{{ getLineCount(r) }}</span>\n</a>";
+
+/***/ }),
+
+/***/ 366:
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(367);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
+
+/***/ }),
+
+/***/ 367:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(30)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "/**\n * Applies styles for users in high contrast mode. Note that this only applies\n * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`\n * attribute, however Chrome handles high contrast differently.\n */\n/* Theme for the ripple elements.*/\n/** The mixins below are shared between md-menu and md-select */\n/**\n * This mixin adds the correct panel transform styles based\n * on the direction that the menu panel opens.\n */\n/* stylelint-disable material/no-prefixes */\n/* stylelint-enable */\n/**\n * This mixin contains shared option styles between the select and\n * autocomplete components.\n */\n:host.results-wrapper {\n  overflow: auto;\n  max-width: 100%; }\n\na {\n  padding: 10px;\n  cursor: pointer;\n  position: relative; }\n\na:hover {\n  background: #EEEEEE; }\n\na .mat-button-wrapper {\n  display: flex; }\n\na .mat-button-wrapper span:first-child {\n  overflow-wrap: break-all;\n  width: 100%; }\n\n:host {\n  display: flex;\n  flex-wrap: wrap; }\n\na .mat-button-wrapper > span:nth-child(2),\na .mat-button-wrapper > span:nth-child(3) {\n  width: 50%;\n  color: #444444; }\n\na .mat-button-wrapper > span:nth-child(3) {\n  text-align: right; }\n", ""]);
 
 // exports
 
