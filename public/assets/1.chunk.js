@@ -59,14 +59,45 @@ RecordingModule = __WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
 
 
 var RecordingComponent = (function () {
-    function RecordingComponent() {
+    function RecordingComponent(ref) {
+        this.ref = ref;
+        this.recording = false;
         this.events = [];
     }
     RecordingComponent.prototype.onClick = function (event) {
+        if (!this.recording) {
+            return;
+        }
         console.log(event);
+        var path = this.elementToXPath(event.path);
         this.events.push({
-            label: 'Another click!'
+            label: "browser.click('" + path + "')"
         });
+        this.ref.detectChanges();
+    };
+    RecordingComponent.prototype.elementToXPath = function (path) {
+        var addSegment = function (elem) {
+            var tag = elem.tagName;
+            var id = false;
+            if (typeof elem.getAttribute === 'function') {
+                id = elem.getAttribute('id');
+            }
+            var className = false;
+            if (typeof elem.getAttribute === 'function') {
+                className = (elem.getAttribute('class') || '').split(/\s/)[0];
+            }
+            return "" + (tag ? tag : '') + (id
+                ? "[@id=\"" + id + "\"]" : '') + (className
+                ? "[contains(@class, \"" + className + "\")]" : '');
+        };
+        var pathStack = [];
+        for (var _i = 0, path_1 = path; _i < path_1.length; _i++) {
+            var currentEl = path_1[_i];
+            pathStack.unshift(addSegment(currentEl));
+        }
+        return pathStack.join('/');
+    };
+    RecordingComponent.prototype.convertXPathToCss = function () {
     };
     return RecordingComponent;
 }());
@@ -81,9 +112,11 @@ RecordingComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
         selector: 'bc-recording',
         template: __webpack_require__(372),
         styles: [__webpack_require__(373)]
-    })
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["__metadata"]("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_core__["ChangeDetectorRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_core__["ChangeDetectorRef"]) === "function" && _a || Object])
 ], RecordingComponent);
 
+var _a;
 
 
 /***/ }),
@@ -91,7 +124,7 @@ RecordingComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
 /***/ 372:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"record-wrapper\">\n    <header>\n        <a md-button>⏺️</a>\n        <a md-button>⏸</a>\n    </header>\n\n    <div class=\"event-wrapper\">\n        <span *ngFor=\"let e of events\">{{ e.label }}</span>\n    </div>\n</div>\n";
+module.exports = "<div class=\"record-wrapper\">\n    <header>\n        <a md-button (click)=\"recording=true\">⏺️</a>\n        <a md-button (click)=\"recording=false\">⏸</a>\n    </header>\n\n    <pre class=\"event-wrapper\">\n        <span *ngFor=\"let e of events\">{{ e.label }}\n        </span>\n    </pre>\n</div>\n";
 
 /***/ }),
 
@@ -118,7 +151,7 @@ exports = module.exports = __webpack_require__(30)(undefined);
 
 
 // module
-exports.push([module.i, ":host .record-wrapper {\n  display: flex;\n  flex-direction: column; }\n  :host .record-wrapper a {\n    padding: 5px;\n    font-size: 30px;\n    line-height: 30px;\n    z-index: 100;\n    height: 40px;\n    width: 40px; }\n  :host .record-wrapper .event-wrapper {\n    display: flex;\n    flex-wrap: wrap; }\n", ""]);
+exports.push([module.i, ":host .record-wrapper {\n  display: flex;\n  flex-direction: column;\n  width: 30%;\n  max-width: 400px; }\n  :host .record-wrapper a {\n    padding: 5px;\n    font-size: 30px;\n    line-height: 30px;\n    z-index: 100;\n    height: 40px;\n    width: 40px; }\n  :host .record-wrapper .event-wrapper {\n    display: flex;\n    flex-wrap: wrap; }\n", ""]);
 
 // exports
 

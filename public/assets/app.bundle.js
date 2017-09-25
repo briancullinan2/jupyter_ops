@@ -269,7 +269,7 @@ AppModule = __WEBPACK_IMPORTED_MODULE_0_tslib__["__decorate"]([
         providers: [
             {
                 provide: __WEBPACK_IMPORTED_MODULE_16__angular_common__["APP_BASE_HREF"],
-                useValue: 'chrome-extension://aapnijgdinlhnhlmodcfapnahmbfebeb/public/'
+                useValue: '/'
             }
         ],
         declarations: [
@@ -538,7 +538,7 @@ module.exports = (__webpack_require__(0))(590);
 /***/ 273:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-wrapper\">\n    <a md-button routerLink=\"search\" (click)=\"expanded=!expanded\">👿</a>\n    <router-outlet></router-outlet>\n</div>\n";
+module.exports = "<div class=\"app-wrapper\">\n    <a md-button [routerLink]=\"[getNextRoute()]\">👿</a>\n    <router-outlet></router-outlet>\n</div>\n";
 
 /***/ }),
 
@@ -1088,6 +1088,11 @@ var AppComponent = (function () {
         if (typeof this.routerSub !== 'undefined') {
             this.routerSub.unsubscribe();
         }
+    };
+    AppComponent.prototype.getNextRoute = function () {
+        var paths = this.router.config[0].children.map(function (r) { return r.path; });
+        var i = paths.indexOf(this.router.url.split('/')[1]);
+        return paths[i === paths.length - 1 ? 0 : (i + 1)];
     };
     AppComponent.prototype.setLanguage = function (language) {
         var _this = this;
