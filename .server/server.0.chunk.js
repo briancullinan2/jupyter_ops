@@ -11,7 +11,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routing", function() { return routing; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchModule", function() { return SearchModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__result_component__ = __webpack_require__(667);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__result_component__ = __webpack_require__(670);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__search_component__ = __webpack_require__(673);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__results_list_component__ = __webpack_require__(677);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(46);
@@ -57,57 +57,6 @@ SearchModule = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
 /***/ }),
 
 /***/ 667:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imports_search_service__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs__ = __webpack_require__(668);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prismjs__);
-
-
-
-
-__webpack_require__(669);
-var ResultComponent = (function () {
-    function ResultComponent(service, ref) {
-        this.service = service;
-        this.ref = ref;
-        this.selected = {};
-    }
-    ResultComponent.prototype.ngOnInit = function () {
-    };
-    ResultComponent.prototype.ngOnDestroy = function () {
-    };
-    ResultComponent.prototype.highlight = function (code) {
-        if (typeof code === 'undefined' || code === null) {
-            return '';
-        }
-        return __WEBPACK_IMPORTED_MODULE_3_prismjs__["highlight"](code, __WEBPACK_IMPORTED_MODULE_3_prismjs__["languages"].javascript);
-    };
-    return ResultComponent;
-}());
-__WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
-    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["F" /* Input */])(),
-    __WEBPACK_IMPORTED_MODULE_0_tslib__["c" /* __metadata */]("design:type", Object)
-], ResultComponent.prototype, "selected", void 0);
-ResultComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
-    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["o" /* Component */])({
-        selector: 'bc-result',
-        template: __webpack_require__(670),
-        styles: [__webpack_require__(671)]
-    }),
-    __WEBPACK_IMPORTED_MODULE_0_tslib__["c" /* __metadata */]("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__imports_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__imports_search_service__["a" /* SearchService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_core__["l" /* ChangeDetectorRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_core__["l" /* ChangeDetectorRef */]) === "function" && _b || Object])
-], ResultComponent);
-
-var _a, _b;
-//# sourceMappingURL=result.component.js.map
-
-/***/ }),
-
-/***/ 668:
 /***/ (function(module, exports) {
 
 
@@ -909,7 +858,88 @@ Prism.languages.js = Prism.languages.javascript;
 
 /***/ }),
 
+/***/ 668:
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(669);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
+
+/***/ }),
+
 /***/ 669:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(111)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "/**\n * Applies styles for users in high contrast mode. Note that this only applies\n * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`\n * attribute, however Chrome handles high contrast differently.\n */\n/* Theme for the ripple elements.*/\n/** The mixins below are shared between md-menu and md-select */\n/**\n * This mixin adds the correct panel transform styles based\n * on the direction that the menu panel opens.\n */\n/* stylelint-disable material/no-prefixes */\n/* stylelint-enable */\n/**\n * This mixin contains shared option styles between the select and\n * autocomplete components.\n */\n:host .record-wrapper /deep/,\n:host .jupytangular-result /deep/ {\n  /* Code blocks */\n  /* Inline code */ }\n  @media print {\n    :host .record-wrapper /deep/ code[class*=\"language-\"],\n    :host .record-wrapper /deep/ pre[class*=\"language-\"],\n    :host .jupytangular-result /deep/ code[class*=\"language-\"],\n    :host .jupytangular-result /deep/ pre[class*=\"language-\"] {\n      text-shadow: none; } }\n  :host .record-wrapper /deep/ code[class*=\"language-\"],\n  :host .record-wrapper /deep/ pre[class*=\"language-\"],\n  :host .jupytangular-result /deep/ code[class*=\"language-\"],\n  :host .jupytangular-result /deep/ pre[class*=\"language-\"] {\n    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;\n    -ms-hyphens: none;\n    -moz-hyphens: none;\n    -webkit-hyphens: none;\n    hyphens: none;\n    line-height: 1.5;\n    word-spacing: normal;\n    color: black;\n    text-align: left;\n    text-shadow: 0 1px white;\n    word-break: normal;\n    word-wrap: normal;\n    white-space: pre;\n    background: none;\n    -moz-tab-size: 4;\n    -o-tab-size: 4;\n    tab-size: 4; }\n  :host .record-wrapper /deep/ pre[class*=\"language-\"]::-moz-selection,\n  :host .record-wrapper /deep/ pre[class*=\"language-\"] ::-moz-selection,\n  :host .record-wrapper /deep/ code[class*=\"language-\"]::-moz-selection,\n  :host .record-wrapper /deep/ code[class*=\"language-\"] ::-moz-selection,\n  :host .jupytangular-result /deep/ pre[class*=\"language-\"]::-moz-selection,\n  :host .jupytangular-result /deep/ pre[class*=\"language-\"] ::-moz-selection,\n  :host .jupytangular-result /deep/ code[class*=\"language-\"]::-moz-selection,\n  :host .jupytangular-result /deep/ code[class*=\"language-\"] ::-moz-selection {\n    text-shadow: none;\n    background: #b3d4fc; }\n  :host .record-wrapper /deep/ pre[class*=\"language-\"]::selection,\n  :host .record-wrapper /deep/ pre[class*=\"language-\"] ::selection,\n  :host .record-wrapper /deep/ code[class*=\"language-\"]::selection,\n  :host .record-wrapper /deep/ code[class*=\"language-\"] ::selection,\n  :host .jupytangular-result /deep/ pre[class*=\"language-\"]::selection,\n  :host .jupytangular-result /deep/ pre[class*=\"language-\"] ::selection,\n  :host .jupytangular-result /deep/ code[class*=\"language-\"]::selection,\n  :host .jupytangular-result /deep/ code[class*=\"language-\"] ::selection {\n    text-shadow: none;\n    background: #b3d4fc; }\n  :host .record-wrapper /deep/ pre[class*=\"language-\"],\n  :host .jupytangular-result /deep/ pre[class*=\"language-\"] {\n    padding: 0;\n    display: block; }\n  :host .record-wrapper /deep/ :not(pre) > code[class*=\"language-\"],\n  :host .jupytangular-result /deep/ :not(pre) > code[class*=\"language-\"] {\n    padding: 0.1em;\n    white-space: normal;\n    border-radius: 0.3em; }\n  :host .record-wrapper /deep/ .token.comment,\n  :host .record-wrapper /deep/ .token.prolog,\n  :host .record-wrapper /deep/ .token.doctype,\n  :host .record-wrapper /deep/ .token.cdata,\n  :host .jupytangular-result /deep/ .token.comment,\n  :host .jupytangular-result /deep/ .token.prolog,\n  :host .jupytangular-result /deep/ .token.doctype,\n  :host .jupytangular-result /deep/ .token.cdata {\n    color: slategray; }\n  :host .record-wrapper /deep/ .token.punctuation,\n  :host .jupytangular-result /deep/ .token.punctuation {\n    color: #999; }\n  :host .record-wrapper /deep/ .namespace,\n  :host .jupytangular-result /deep/ .namespace {\n    opacity: 0.7; }\n  :host .record-wrapper /deep/ .token.property,\n  :host .record-wrapper /deep/ .token.tag,\n  :host .record-wrapper /deep/ .token.boolean,\n  :host .record-wrapper /deep/ .token.number,\n  :host .record-wrapper /deep/ .token.constant,\n  :host .record-wrapper /deep/ .token.symbol,\n  :host .record-wrapper /deep/ .token.deleted,\n  :host .jupytangular-result /deep/ .token.property,\n  :host .jupytangular-result /deep/ .token.tag,\n  :host .jupytangular-result /deep/ .token.boolean,\n  :host .jupytangular-result /deep/ .token.number,\n  :host .jupytangular-result /deep/ .token.constant,\n  :host .jupytangular-result /deep/ .token.symbol,\n  :host .jupytangular-result /deep/ .token.deleted {\n    color: #905; }\n  :host .record-wrapper /deep/ .token.selector,\n  :host .record-wrapper /deep/ .token.attr-name,\n  :host .record-wrapper /deep/ .token.string,\n  :host .record-wrapper /deep/ .token.char,\n  :host .record-wrapper /deep/ .token.builtin,\n  :host .record-wrapper /deep/ .token.inserted,\n  :host .jupytangular-result /deep/ .token.selector,\n  :host .jupytangular-result /deep/ .token.attr-name,\n  :host .jupytangular-result /deep/ .token.string,\n  :host .jupytangular-result /deep/ .token.char,\n  :host .jupytangular-result /deep/ .token.builtin,\n  :host .jupytangular-result /deep/ .token.inserted {\n    color: #690; }\n  :host .record-wrapper /deep/ .token.operator,\n  :host .record-wrapper /deep/ .token.entity,\n  :host .record-wrapper /deep/ .token.url,\n  :host .record-wrapper /deep/ .language-css .token.string,\n  :host .record-wrapper /deep/ .style .token.string,\n  :host .jupytangular-result /deep/ .token.operator,\n  :host .jupytangular-result /deep/ .token.entity,\n  :host .jupytangular-result /deep/ .token.url,\n  :host .jupytangular-result /deep/ .language-css .token.string,\n  :host .jupytangular-result /deep/ .style .token.string {\n    color: #a67f59;\n    background: rgba(255, 255, 255, 0.5); }\n  :host .record-wrapper /deep/ .token.atrule,\n  :host .record-wrapper /deep/ .token.attr-value,\n  :host .record-wrapper /deep/ .token.keyword,\n  :host .jupytangular-result /deep/ .token.atrule,\n  :host .jupytangular-result /deep/ .token.attr-value,\n  :host .jupytangular-result /deep/ .token.keyword {\n    color: #07a; }\n  :host .record-wrapper /deep/ .token.function,\n  :host .jupytangular-result /deep/ .token.function {\n    color: #dd4a68; }\n  :host .record-wrapper /deep/ .token.regex,\n  :host .record-wrapper /deep/ .token.important,\n  :host .record-wrapper /deep/ .token.variable,\n  :host .jupytangular-result /deep/ .token.regex,\n  :host .jupytangular-result /deep/ .token.important,\n  :host .jupytangular-result /deep/ .token.variable {\n    color: #e90; }\n  :host .record-wrapper /deep/ .token.important,\n  :host .record-wrapper /deep/ .token.bold,\n  :host .jupytangular-result /deep/ .token.important,\n  :host .jupytangular-result /deep/ .token.bold {\n    font-weight: bold; }\n  :host .record-wrapper /deep/ .token.italic,\n  :host .jupytangular-result /deep/ .token.italic {\n    font-style: italic; }\n  :host .record-wrapper /deep/ .token.entity,\n  :host .jupytangular-result /deep/ .token.entity {\n    cursor: help; }\n  :host .record-wrapper /deep/ pre.line-numbers,\n  :host .jupytangular-result /deep/ pre.line-numbers {\n    position: relative;\n    padding-left: 3.8em;\n    counter-reset: linenumber; }\n  :host .record-wrapper /deep/ pre.line-numbers > code,\n  :host .jupytangular-result /deep/ pre.line-numbers > code {\n    position: relative;\n    white-space: inherit; }\n  :host .record-wrapper /deep/ .line-numbers .line-numbers-rows,\n  :host .jupytangular-result /deep/ .line-numbers .line-numbers-rows {\n    position: absolute;\n    pointer-events: none;\n    top: 0;\n    font-size: 100%;\n    left: -3.8em;\n    width: 3em;\n    /* works for line-numbers below 1000 lines */\n    letter-spacing: -1px;\n    border-right: 1px solid #999;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  :host .record-wrapper /deep/ .line-numbers-rows > span,\n  :host .jupytangular-result /deep/ .line-numbers-rows > span {\n    pointer-events: none;\n    display: block;\n    counter-increment: linenumber; }\n  :host .record-wrapper /deep/ .line-numbers-rows > span:before,\n  :host .jupytangular-result /deep/ .line-numbers-rows > span:before {\n    content: counter(linenumber);\n    color: #999;\n    display: block;\n    padding-right: 0.8em;\n    text-align: right; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 670:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imports_search_service__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs__ = __webpack_require__(667);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prismjs__);
+
+
+
+
+__webpack_require__(671);
+var ResultComponent = (function () {
+    function ResultComponent(service, ref) {
+        this.service = service;
+        this.ref = ref;
+        this.selected = {};
+    }
+    ResultComponent.prototype.ngOnInit = function () {
+    };
+    ResultComponent.prototype.ngOnDestroy = function () {
+    };
+    ResultComponent.prototype.highlight = function (code) {
+        if (typeof code === 'undefined' || code === null) {
+            return '';
+        }
+        return __WEBPACK_IMPORTED_MODULE_3_prismjs__["highlight"](code, __WEBPACK_IMPORTED_MODULE_3_prismjs__["languages"].javascript);
+    };
+    return ResultComponent;
+}());
+__WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["F" /* Input */])(),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["c" /* __metadata */]("design:type", Object)
+], ResultComponent.prototype, "selected", void 0);
+ResultComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["o" /* Component */])({
+        selector: 'bc-result',
+        template: __webpack_require__(672),
+        styles: [__webpack_require__(668)]
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["c" /* __metadata */]("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__imports_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__imports_search_service__["a" /* SearchService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_core__["l" /* ChangeDetectorRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_core__["l" /* ChangeDetectorRef */]) === "function" && _b || Object])
+], ResultComponent);
+
+var _a, _b;
+//# sourceMappingURL=result.component.js.map
+
+/***/ }),
+
+/***/ 671:
 /***/ (function(module, exports) {
 
 (function() {
@@ -972,40 +1002,10 @@ Prism.hooks.add('complete', function (env) {
 
 /***/ }),
 
-/***/ 670:
+/***/ 672:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"jupytangular-result\">\n    <pre [class]=\"'language-'+(selected?.language||'javascript')\"\n         [innerHTML]=\"highlight(selected?.code)\"></pre>\n</div>\n"
-
-/***/ }),
-
-/***/ 671:
-/***/ (function(module, exports, __webpack_require__) {
-
-
-        var result = __webpack_require__(672);
-
-        if (typeof result === "string") {
-            module.exports = result;
-        } else {
-            module.exports = result.toString();
-        }
-    
-
-/***/ }),
-
-/***/ 672:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(111)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "/**\n * Applies styles for users in high contrast mode. Note that this only applies\n * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`\n * attribute, however Chrome handles high contrast differently.\n */\n/* Theme for the ripple elements.*/\n/** The mixins below are shared between md-menu and md-select */\n/**\n * This mixin adds the correct panel transform styles based\n * on the direction that the menu panel opens.\n */\n/* stylelint-disable material/no-prefixes */\n/* stylelint-enable */\n/**\n * This mixin contains shared option styles between the select and\n * autocomplete components.\n */\n:host .jupytangular-result /deep/ {\n  /* Code blocks */\n  /* Inline code */ }\n  @media print {\n    :host .jupytangular-result /deep/ code[class*=\"language-\"],\n    :host .jupytangular-result /deep/ pre[class*=\"language-\"] {\n      text-shadow: none; } }\n  :host .jupytangular-result /deep/ code[class*=\"language-\"],\n  :host .jupytangular-result /deep/ pre[class*=\"language-\"] {\n    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;\n    -ms-hyphens: none;\n    -moz-hyphens: none;\n    -webkit-hyphens: none;\n    hyphens: none;\n    line-height: 1.5;\n    word-spacing: normal;\n    color: black;\n    text-align: left;\n    text-shadow: 0 1px white;\n    word-break: normal;\n    word-wrap: normal;\n    white-space: pre;\n    background: none;\n    -moz-tab-size: 4;\n    -o-tab-size: 4;\n    tab-size: 4; }\n  :host .jupytangular-result /deep/ pre[class*=\"language-\"]::-moz-selection,\n  :host .jupytangular-result /deep/ pre[class*=\"language-\"] ::-moz-selection,\n  :host .jupytangular-result /deep/ code[class*=\"language-\"]::-moz-selection,\n  :host .jupytangular-result /deep/ code[class*=\"language-\"] ::-moz-selection {\n    text-shadow: none;\n    background: #b3d4fc; }\n  :host .jupytangular-result /deep/ pre[class*=\"language-\"]::selection,\n  :host .jupytangular-result /deep/ pre[class*=\"language-\"] ::selection,\n  :host .jupytangular-result /deep/ code[class*=\"language-\"]::selection,\n  :host .jupytangular-result /deep/ code[class*=\"language-\"] ::selection {\n    text-shadow: none;\n    background: #b3d4fc; }\n  :host .jupytangular-result /deep/ pre[class*=\"language-\"] {\n    padding: 0;\n    display: block; }\n  :host .jupytangular-result /deep/ :not(pre) > code[class*=\"language-\"] {\n    padding: 0.1em;\n    white-space: normal;\n    border-radius: 0.3em; }\n  :host .jupytangular-result /deep/ .token.comment,\n  :host .jupytangular-result /deep/ .token.prolog,\n  :host .jupytangular-result /deep/ .token.doctype,\n  :host .jupytangular-result /deep/ .token.cdata {\n    color: slategray; }\n  :host .jupytangular-result /deep/ .token.punctuation {\n    color: #999; }\n  :host .jupytangular-result /deep/ .namespace {\n    opacity: 0.7; }\n  :host .jupytangular-result /deep/ .token.property,\n  :host .jupytangular-result /deep/ .token.tag,\n  :host .jupytangular-result /deep/ .token.boolean,\n  :host .jupytangular-result /deep/ .token.number,\n  :host .jupytangular-result /deep/ .token.constant,\n  :host .jupytangular-result /deep/ .token.symbol,\n  :host .jupytangular-result /deep/ .token.deleted {\n    color: #905; }\n  :host .jupytangular-result /deep/ .token.selector,\n  :host .jupytangular-result /deep/ .token.attr-name,\n  :host .jupytangular-result /deep/ .token.string,\n  :host .jupytangular-result /deep/ .token.char,\n  :host .jupytangular-result /deep/ .token.builtin,\n  :host .jupytangular-result /deep/ .token.inserted {\n    color: #690; }\n  :host .jupytangular-result /deep/ .token.operator,\n  :host .jupytangular-result /deep/ .token.entity,\n  :host .jupytangular-result /deep/ .token.url,\n  :host .jupytangular-result /deep/ .language-css .token.string,\n  :host .jupytangular-result /deep/ .style .token.string {\n    color: #a67f59;\n    background: rgba(255, 255, 255, 0.5); }\n  :host .jupytangular-result /deep/ .token.atrule,\n  :host .jupytangular-result /deep/ .token.attr-value,\n  :host .jupytangular-result /deep/ .token.keyword {\n    color: #07a; }\n  :host .jupytangular-result /deep/ .token.function {\n    color: #dd4a68; }\n  :host .jupytangular-result /deep/ .token.regex,\n  :host .jupytangular-result /deep/ .token.important,\n  :host .jupytangular-result /deep/ .token.variable {\n    color: #e90; }\n  :host .jupytangular-result /deep/ .token.important,\n  :host .jupytangular-result /deep/ .token.bold {\n    font-weight: bold; }\n  :host .jupytangular-result /deep/ .token.italic {\n    font-style: italic; }\n  :host .jupytangular-result /deep/ .token.entity {\n    cursor: help; }\n  :host .jupytangular-result /deep/ pre.line-numbers {\n    position: relative;\n    padding-left: 3.8em;\n    counter-reset: linenumber; }\n  :host .jupytangular-result /deep/ pre.line-numbers > code {\n    position: relative;\n    white-space: inherit; }\n  :host .jupytangular-result /deep/ .line-numbers .line-numbers-rows {\n    position: absolute;\n    pointer-events: none;\n    top: 0;\n    font-size: 100%;\n    left: -3.8em;\n    width: 3em;\n    /* works for line-numbers below 1000 lines */\n    letter-spacing: -1px;\n    border-right: 1px solid #999;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  :host .jupytangular-result /deep/ .line-numbers-rows > span {\n    pointer-events: none;\n    display: block;\n    counter-increment: linenumber; }\n  :host .jupytangular-result /deep/ .line-numbers-rows > span:before {\n    content: counter(linenumber);\n    color: #999;\n    display: block;\n    padding-right: 0.8em;\n    text-align: right; }\n", ""]);
-
-// exports
-
 
 /***/ }),
 
@@ -1065,7 +1065,7 @@ var _a, _b;
 /***/ 674:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jupytangular-search\">\n    <div class=\"result-scroll\">\n        <bc-result [selected]=\"selected\"></bc-result>\n    </div>\n    <form>\n        <md-input-container>\n            <input mdInput name=\"search\" required type=\"text\"\n                   placeholder=\"Search\" autocomplete=\"off\"\n                   maxlength=\"100\" [(ngModel)]=\"query\" (change)=\"search()\">\n        </md-input-container>\n        <div class=\"results-wrapper\">\n            <bc-results-list (change)=\"selected=$event\" [results]=\"results\"></bc-results-list>\n        </div>\n    </form>\n</div>\n"
+module.exports = "<div class=\"jupytangular-search\">\n    <div class=\"result-scroll\">\n        <bc-result [selected]=\"selected\"></bc-result>\n    </div>\n    <form>\n        <md-input-container>\n            <input mdInput name=\"search\" required type=\"text\"\n                   placeholder=\"Search\" autocomplete=\"off\"\n                   maxlength=\"100\" [(ngModel)]=\"query\" (change)=\"search()\">\n        </md-input-container>\n        <div class=\"results-wrapper\">\n            <bc-results-list (change)=\"selected=$event\" [results]=\"results.slice(0, 5)\"></bc-results-list>\n        </div>\n    </form>\n</div>\n"
 
 /***/ }),
 
