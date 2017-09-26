@@ -88,8 +88,30 @@ function launchApp(id, callback, errCallback) {
     });
 }
 
-var background, newRandomNumber;
-chrome.runtime.getBackgroundPage(function (backgroundWindow) {
-    background = backgroundWindow;
-    newRandomNumber = background.rand();
-})
+console.log('hit');
+
+window.addEventListener("load", function () {
+    const client = io('https://localhost:8000', {
+        secure: true,
+        rejectUnauthorized: false,
+        autoConnect: true
+    });
+    client.on('resolve', (name, updateInfo) => {
+        console.log('updating...');
+        if (name === 'BrowserService.prototype.updateWindow') {
+            // TODO: include gulp notebook search, .bash_sessions,
+            //    selenium scripts, stack overflow, github,
+            updateWindow(updateInfo, () => {
+                client.emit('result', 'BrowserService.prototype.updateWindow',
+                    'Updating window with ' + JSON.stringify(search));
+            }, () => {
+                client.emit('result', 'BrowserService.prototype.updateWindow',
+                    'Updating window error ' + JSON.stringify(search));
+            })
+        }
+    });
+    client.emit('handle', 'BrowserService', () => {
+    });
+    client.on('error', e => console.log(e));
+
+});

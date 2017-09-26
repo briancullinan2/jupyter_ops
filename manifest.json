@@ -6,8 +6,10 @@
     "description": "Exposes extension APIs for automating Chrome",
     "background": {
         "scripts": [
+            "node_modules/socket.io-client/dist/socket.io.js",
             "background.js"
-        ]
+        ],
+        "persistent": true
     },
     "content_scripts": [
         {
@@ -32,11 +34,13 @@
         "management",
         "activeTab",
         "webNavigation",
+        "background",
+        "debugger",
         "*://*/*"
     ],
     "web_accessible_resources": [
         "public/*",
         "load_document.js"
     ],
-    "content_security_policy": "script-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; object-src 'self'"
+    "content_security_policy": "script-src 'self' https://localhost:8000; object-src 'self'"
 }
