@@ -88,27 +88,81 @@ function launchApp(id, callback, errCallback) {
     });
 }
 
+var port;
+
+function setupPortIfNeeded() {
+    if (!port) {
+        port = chrome.runtime.connect(null, {name: 'content'});
+        port.postMessage({action: 'init'});
+        port.onDisconnect.addListener(function () {
+            port = null;
+        });
+    }
+}
+
 console.log('hit');
 
-window.addEventListener("load", function () {
+window.addEventListener('load', function () {
     const client = io('https://localhost:8000', {
         secure: true,
         rejectUnauthorized: false,
         autoConnect: true
     });
-    client.on('resolve', (name, updateInfo) => {
+    client.on('resolve', (name, domain, ...options) => {
         console.log('updating...');
-        if (name === 'BrowserService.prototype.updateWindow') {
-            // TODO: include gulp notebook search, .bash_sessions,
-            //    selenium scripts, stack overflow, github,
-            updateWindow(updateInfo, () => {
-                client.emit('result', 'BrowserService.prototype.updateWindow',
-                    'Updating window with ' + JSON.stringify(search));
-            }, () => {
-                client.emit('result', 'BrowserService.prototype.updateWindow',
-                    'Updating window error ' + JSON.stringify(search));
+        if (name === 'BrowserService.prototype.chrome') {
+            let current = chrome;
+            let command = domain.split('.');
+            for (const d of command) {
+                current = current[d];
+            }
+            if (typeof current === 'function') {
+                return current.apply(chrome, [...options, (...args) => {
+                    client.emit.apply(client, [
+                        'result',
+                        'BrowserService.prototype.chrome',
+                        typeof chrome.extension.lastError !== 'undefined'
+                            ? chrome.extension.lastError.message
+                            : null,
+                        JSON.stringify(args)]);
+                }]);
+            }
+        }
+        /*
+        if (name === 'BrowserService.prototype.sendCommand') {
+            chrome.windows.getAll({}, windows => {
+                for (const w of windows) {
+                    chrome.tabs.getAllInWindow(
+                        w.id,
+                        tabs => {
+                            for (const t of tabs) {
+                                if (t.url.indexOf(updateInfo.url) > -1) {
+                                    chrome.tabs.update(t.id, {active: true});
+                                    chrome.debugger.attach({
+                                        tabId: t.id
+                                    }, '1.1', () => {
+                                        if (chrome.runtime.lastError) {
+                                            // oh no!
+                                        }
+                                        // we are good
+                                        chrome.debugger.sendCommand({
+                                            tabId: t.id
+                                        }, 'Page.navigate', updateInfo, (response) => {
+                                            if (response.error) {
+                                                // oh no!
+                                            }
+                                            // we are good
+                                        });
+                                    });
+
+                                }
+                            }
+                        })
+
+                }
             })
         }
+        */
     });
     client.emit('handle', 'BrowserService', () => {
     });
