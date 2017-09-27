@@ -30,13 +30,13 @@
         }
     ],
     "permissions": [
-        "tabs",
         "windows",
         "management",
         "activeTab",
         "webNavigation",
         "background",
         "debugger",
+        "unlimitedStorage",
         "*://*/*"
     ],
     "web_accessible_resources": [
