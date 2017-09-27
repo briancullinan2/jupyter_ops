@@ -128,41 +128,6 @@ window.addEventListener('load', function () {
                 }]);
             }
         }
-        /*
-        if (name === 'BrowserService.prototype.sendCommand') {
-            chrome.windows.getAll({}, windows => {
-                for (const w of windows) {
-                    chrome.tabs.getAllInWindow(
-                        w.id,
-                        tabs => {
-                            for (const t of tabs) {
-                                if (t.url.indexOf(updateInfo.url) > -1) {
-                                    chrome.tabs.update(t.id, {active: true});
-                                    chrome.debugger.attach({
-                                        tabId: t.id
-                                    }, '1.1', () => {
-                                        if (chrome.runtime.lastError) {
-                                            // oh no!
-                                        }
-                                        // we are good
-                                        chrome.debugger.sendCommand({
-                                            tabId: t.id
-                                        }, 'Page.navigate', updateInfo, (response) => {
-                                            if (response.error) {
-                                                // oh no!
-                                            }
-                                            // we are good
-                                        });
-                                    });
-
-                                }
-                            }
-                        })
-
-                }
-            })
-        }
-        */
     });
     client.emit('handle', 'BrowserService', () => {
     });
