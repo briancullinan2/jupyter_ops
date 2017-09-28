@@ -1065,7 +1065,7 @@ var _a, _b;
 /***/ 364:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jupytangular-search\">\n    <div class=\"result-scroll\">\n        <bc-result [selected]=\"selected\"></bc-result>\n    </div>\n    <form>\n        <md-input-container>\n            <input mdInput name=\"search\" required type=\"text\"\n                   placeholder=\"Search\" autocomplete=\"off\"\n                   maxlength=\"100\" [(ngModel)]=\"query\" (change)=\"search()\">\n        </md-input-container>\n        <div class=\"results-wrapper\">\n            <bc-results-list (change)=\"selected=$event\" [results]=\"results.slice(0, 5)\"></bc-results-list>\n        </div>\n    </form>\n</div>\n";
+module.exports = "<div class=\"jupytangular-search\">\n    <div class=\"result-scroll\">\n        <bc-result [selected]=\"selected\"></bc-result>\n    </div>\n    <form>\n        <md-input-container>\n            <input mdInput name=\"search\" required type=\"text\"\n                   placeholder=\"Search\" autocomplete=\"off\"\n                   maxlength=\"100\" [(ngModel)]=\"query\" (change)=\"search()\">\n        </md-input-container>\n        <div class=\"results-wrapper\">\n            <bc-results-list (change)=\"selected=$event\" [results]=\"results\"></bc-results-list>\n        </div>\n    </form>\n</div>\n";
 
 /***/ }),
 

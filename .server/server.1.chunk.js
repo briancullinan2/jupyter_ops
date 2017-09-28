@@ -898,7 +898,12 @@ var RecordingComponent = RecordingComponent_1 = (function () {
     function RecordingComponent(ref) {
         this.ref = ref;
         this.recording = false;
-        this.events = [];
+        this.events = [
+            "\n    this.waitForVisible('bc-funnel-billing');\n    library.setCardholderName(browser, 'Selenium Test');\n    library.setCardNumber(browser, '4111111111111111');\n    this.keys('Tab');\n    this.keys('Enter');\n    this.waitForVisible('[id=\"md-option-0\"]');\n    this.click('[id=\"md-option-0\"]');\n    library.setCVV(browser, '5454');\n    this.keys('Tab');\n    this.keys('Enter');\n    this.waitForVisible('[id=\"md-option-6\"]');\n    this.click('[id=\"md-option-6\"]');\n    this.keys('Tab');\n    this.keys('Enter');\n    this.waitForVisible('[id=\"md-option-20\"]');\n    this.click('[id=\"md-option-20\"]');\n    library.setAddress(browser, '12345');\n    this.keys('Tab');\n    this.keys('Enter');\n    this.waitForVisible('[id=\"md-option-46\"]');\n    this.click('[id=\"md-option-277\"]');\n    library.setState(browser, 'Arizona');\n    library.setCity(browser, 'Scottsdale');\n    library.setZipCode(browser, '85258');\n    ".split('\n').map(function (s) { return ({
+                label: s.trim()
+            }); })
+        ];
+        this.eventOutput = this.highlight(this.events.map(function (e) { return e.label; }).join(''));
     }
     RecordingComponent.getArrayXPath = function (selector, ctx) {
         if (typeof ctx === 'undefined') {
@@ -936,8 +941,14 @@ var RecordingComponent = RecordingComponent_1 = (function () {
                 label: "browser.click('" + RecordingComponent_1.convertXPathToCss(path) + "');\n"
             });
         }
-        this.eventOutput = __WEBPACK_IMPORTED_MODULE_2_prismjs__["highlight"](this.events.map(function (e) { return e.label; }).join(''), __WEBPACK_IMPORTED_MODULE_2_prismjs__["languages"].javascript);
+        this.eventOutput = this.highlight(this.events.map(function (e) { return e.label; }).join(''));
         this.ref.detectChanges();
+    };
+    RecordingComponent.prototype.highlight = function (code) {
+        if (typeof code === 'undefined' || code === null) {
+            return '';
+        }
+        return __WEBPACK_IMPORTED_MODULE_2_prismjs__["highlight"](code, __WEBPACK_IMPORTED_MODULE_2_prismjs__["languages"].javascript);
     };
     RecordingComponent.prototype.elementToXPath = function (path) {
         var addSegment = function (elem) {

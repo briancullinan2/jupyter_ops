@@ -318,6 +318,10 @@ var appRoutes = [
         path: '',
         children: [
             {
+                path: '',
+                children: []
+            },
+            {
                 path: 'search',
                 loadChildren: function() { return new Promise(function (resolve) {  __webpack_require__.e/* require.ensure */(0).then((function (require) {    resolve(__webpack_require__(355)['SearchModule']);  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);})}
             },
