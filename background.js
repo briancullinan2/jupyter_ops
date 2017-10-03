@@ -88,20 +88,6 @@ function launchApp(id, callback, errCallback) {
     });
 }
 
-var port;
-
-function setupPortIfNeeded() {
-    if (!port) {
-        port = chrome.runtime.connect(null, {name: 'content'});
-        port.postMessage({action: 'init'});
-        port.onDisconnect.addListener(function () {
-            port = null;
-        });
-    }
-}
-
-console.log('hit');
-
 window.addEventListener('load', function () {
     const client = io('https://localhost:8000', {
         secure: true,
