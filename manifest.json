@@ -17,11 +17,19 @@
                 "<all_urls>"
             ],
             "js": [
+                "load_document.js"
+            ],
+            "run_at": "document_start"
+        },
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
                 "public/assets/polyfills.dll.js",
                 "public/assets/vendor.dll.js",
                 "public/assets/polyfills.bundle.js",
                 "public/assets/vendor.bundle.js",
-                "load_document.js",
                 "public/assets/app.bundle.js",
                 "public/assets/0.chunk.js",
                 "public/assets/1.chunk.js"
