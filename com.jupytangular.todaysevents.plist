@@ -7,26 +7,22 @@
         <key>ProgramArguments</key>
         <array>
             <string>/usr/local/bin/node</string>
-            <string> -e "require('/Users/briancullinan/jupytangular2/Core').interpretAll('run todays calendar events').then(r=>r.runInNewContext()()).then(e=>{ console.log(e); process.exit(e);}).catch(e=>{console.log(e); process.exit(e) });"</string>
+            <string>-e</string>
+            <string>require('/Users/briancullinan/jupytangular2/Core').interpretAll('run todays calendar events').then(r=>r.runInNewContext()()).then(e=>{ console.log(e); process.exit(e);}).catch(e=>{console.log(e); process.exit(e) });</string>
         </array>
+        <key>ExitTimeOut</key>
+        <integer>600</integer>
+        <key>KeepAlive</key>
+        <dict>
+            <key>SuccessfulExit</key>
+            <false/>
+        </dict>
         <key>StartInterval</key>
         <integer>300</integer>
         <key>StandardOutPath</key>
-        <string>~/myjob.log</string>
+        <string>/tmp/myjob.log</string>
         <key>StandardErrorPath</key>
-        <string>~/myjob.log</string>
-        <key>Debug</key>
-        <true/>
-        <key>SoftResourceLimits</key>
-        <dict>
-            <key>Core</key>
-            <integer>9223372036854775807</integer>
-        </dict>
-        <key>HardResourceLimits</key>
-        <dict>
-            <key>Core</key>
-            <integer>9223372036854775807</integer>
-        </dict>
+        <string>/tmp/myjob.log</string>
         <key>RunAtLoad</key>
         <true/>
     </dict>
