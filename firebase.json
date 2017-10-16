@@ -1,0 +1,6 @@
+{
+    "functions": {
+        "source": ".",
+        "exclude": "node_modules"
+    }
+}
