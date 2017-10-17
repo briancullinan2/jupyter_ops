@@ -13,6 +13,8 @@ const importer = require('./Core');
 module.exports.interpretAll = functions.https.onRequest((req, res) => {
 //    console.log(k);
 //    console.log(importer[k]);
+    console.log('interpreting ' + req.query['queries']);
     return importer.interpretAll(req.query['queries'])
-        .then(r => res.send(r));
+        .then(r => res.send(JSON.stringify(r, null, 4)))
+        .catch(e => res.send(e + ''));
 });
