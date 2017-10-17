@@ -1,6 +1,13 @@
 {
     "functions": {
         "source": ".",
-        "exclude": "node_modules"
+        "ignore": [
+            "build",
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**",
+            "functions",
+            "gulpfile.js"
+        ]
     }
 }

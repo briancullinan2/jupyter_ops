@@ -7,10 +7,12 @@ try {
 }
 
 const importer = require('./Core');
-for (const k of Object.keys(importer).filter(k => k.indexOf('[') === -1)) {
-    module.exports[k] = functions.https.onRequest((req, res) => {
-        return new Promise.resolve(importer[k](...req.query))
-            .then(r => res.send(r));
-    });
-}
+//for (const k of Object.keys(importer).filter(k => k.indexOf('[') === -1)) {
+//}
 
+module.exports.interpretAll = functions.https.onRequest((req, res) => {
+//    console.log(k);
+//    console.log(importer[k]);
+    return importer.interpretAll(req.query['queries'])
+        .then(r => res.send(r));
+});
