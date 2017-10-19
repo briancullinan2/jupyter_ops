@@ -5,7 +5,6 @@ var importedInterpret, importedIntend, importedInterpretMarkdown,
 
 // How to walk directories and files recursively and synchronously
 var glob = require('glob');
-
 var interpretAll = (dirname) => importer.import('interpret questions.ipynb')
     .then(r => {
         interpretNotebook = r['interpretNotebook'];

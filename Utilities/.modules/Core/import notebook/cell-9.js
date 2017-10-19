@@ -2,12 +2,11 @@
 var path = require('path');
 var vm = require('vm');
 
-var promiseNewContext = () => {
+var promiseNewContext = (c, ctx, newFilename) => {
     return new Promise((resolve, reject) => {
         var isPromise = false;
         var returnVal = null;
-        var newFilename = notebook + '[' + i + ']';
-        var newCtx = Object.assign({
+        var newCtx = Object.assign(ctx || {}, {
             __filename: newFilename,
             $$: {
                 async: () => {
@@ -22,7 +21,7 @@ var promiseNewContext = () => {
                 },
                 sendError: (e) => reject(e)
             }
-        }, ctx || {});
+        });
         return Promise.resolve(runInNewContext(c, newCtx, {filename: newFilename}, false))
             .then(r => {
                 if (!isPromise) {
@@ -31,7 +30,16 @@ var promiseNewContext = () => {
                 return r || returnVal;
             })
             .catch(e => reject(e))
+    })
+    /*
+    .then(r => {
+        if (typeof r === 'function') {
+            newCtx[filename + '[' + i + ']'] = r;
+            newCtx[r.name] = obj[filename + '[' + i + ']'];
+        }
+        return r;
     });
+    */
 }
 
 var runInNewContext = (code, ctx, options, isModule = true) => {

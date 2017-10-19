@@ -1,9 +1,24 @@
 // initialize
 var path = require('path');
+var fs = require('fs');
 
 // TLDR; What do we end up with?
 var getCells = ((notebook, types = ['code']) => Promise.resolve([]));
 var assignResults = (results, filename) => results;
+
+var getCellsOrDirectory = (filename) => {
+    const fname = filename.replace('.ipynb', '');
+    if (fs.existsSync(fname)
+        && fs.statSync(fname).isDirectory()) {
+        const files = fs.readdirSync(fname).filter(f => f.indexOf('.js') > -1)
+        var code = files.map(f => fs.readFileSync(path.join(fname, f)).toString());
+        return Promise.resolve(code);
+    }
+    else {
+        return getCells(filename, ['javascript', 'code'])
+            .then(cells => cells.map(c => c.source.join('')));
+    }
+}
 
 // provide a function for importing any notebook as a module and executing it
 var executeNotebook = (notebook, ctx = {}) => {
@@ -13,8 +28,7 @@ var executeNotebook = (notebook, ctx = {}) => {
     process.chdir(dirname);
     console.log(filename);
     // only read javascript kernels
-    return getCells(filename, ['javascript', 'code'])
-        .then(cells => cells.map(c => c.source.join('')))
+    return getCellsOrDirectory(filename)
         .then(cells => {
             // TODOCUMENT: Notebooks are imported in to the same context so filename and dirname are overwritten.
             if (cells.length > 0) {
@@ -25,8 +39,10 @@ var executeNotebook = (notebook, ctx = {}) => {
             }
             return cells;
         })
-        .then(cells => runAllPromises(cells.map((c, i) => promiseNewContext(c, ctx))))
+        .then(cells => runAllPromises(cells
+            .map((c, i) => promiseNewContext(c, ctx, notebook + '[' + i + ']'))))
         .then(r => {
+            console.log(r);
             const results = assignResults(r, notebook);
             process.chdir(oldDir);
             return results;
@@ -64,15 +80,16 @@ var importCells = (queries, ctx) => {
             }
             return promiseNewContext(r.fresher, ctx);
         }))
-        .then(r => typeof queries === 'string' ? r[0] : r);
+        .then(r => typeof queries === 'string' ? r[0] : r)
+        .catch(e => console.log(e));
 };
 
 // How to test if a notebook has already been imported?
 var importNotebook = (notebook, ctx) => {
-    var filename = path.basename(notebook);
     if (typeof notebook === 'undefined') {
         return Promise.resolve({});
     }
+    var filename = path.basename(notebook);
     if (typeof imported[filename] !== 'undefined') {
         return Promise.resolve(imported[filename]);
     }

@@ -11,8 +11,6 @@ imported['import notebook.ipynb'] = {
     getCells: getCells,
     'import notebook.ipynb[4]': runAllPromises,
     runAllPromises: runAllPromises,
-    'import notebook.ipynb[5]': runAllInNEL,
-    runAllInNEL: runAllInNEL,
     'import notebook.ipynb[6]': assignResults,
     assignResults: assignResults,
     'import notebook.ipynb[7]': importNotebook,

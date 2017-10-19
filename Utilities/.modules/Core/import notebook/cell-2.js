@@ -2,7 +2,7 @@
 var fs = require('fs');
 var JSONStream = require('JSONStream');
 
-streamJson = (file, parse, match = ((c) => true)) => {
+var streamJson = (file, parse, match = ((c) => true)) => {
     var file = fs.createReadStream(file)
         .pipe(JSONStream.parse(parse));
     file.on('data', (m) => match(m));
