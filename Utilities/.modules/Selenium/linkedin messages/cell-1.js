@@ -1,36 +1,1 @@
-var visitMyProfile = () => {
-    // TODO: add check for needing to go to LinkedIn
-    // TODO: add check for needing to login
-    return client.click('#nav-settings__dropdown-trigger')
-        .pause(500)
-        .click('.nav-settings__view-profile-link')
-        .pause(2000);
-}
-
-var readLinkedInProfileInfo = () => {
-    var name, title, url, phone, email;
-    return client
-        .getUrl().then(url => url.indexOf('/in/') == -1
-            ? visitMyProfile()
-            : Promise.resolve([]))
-        .isExisting('.contact-see-more-less')
-        .then(is => is ? client.click('.contact-see-more-less') : client)
-        .pause(500)
-        .then(() => Promise.all([
-            client.getText('.pv-top-card-section__name'),
-            client.getText('.pv-top-card-section__headline'),
-            client.getText('.ci-vanity-url .pv-contact-info__contact-item').catch(e => client.getUrl()),
-            // is existing?
-            client.getText('.ci-phone .pv-contact-info__contact-item').catch(e => null),
-            client.getText('.ci-email .pv-contact-info__contact-item').catch(e => null)
-        ]))
-        .then(r => ({
-            name: r[0],
-            title: r[1],
-            url: r[2],
-            phone: r[3],
-            email: r[4]
-        }));
-};
-module.exports = readLinkedInProfileInfo;
-readLinkedInProfileInfo;
+var notRobot = () => {    return client.click('')}var enterLinkedIn = () => {    console.log('LinkedIn: Sign in required');    var credentials = getCredentials('linkedin.com');    return client.isExisting('a[href*="uas/login"]')        .then(is => is ? client.click('a[href*="uas/login"]') : Promise.resolve([]))        .then(() => client.click('input[name*="session_key"]'))        .keys(credentials.username)        .pause(1000)        .then(() => console.log('LinkedIn: Require password'))        .click('input[name*="session_password"]')        .keys(credentials.password)        .submitForm('.login-form, [type="submit"]')        .pause(2000)        .isExisting('.cp-challenge-form')        .then(is => {            if (is) {                throw new Error('captcha');            }        });}var loginLinkedIn = () => {    return client        .alertText()        .then(t => t.indexOf('leave') > -1 ? client.alertAccept() : '')        .catch(e => {        })        .getUrl().then(url => {            var loggedIn = url.indexOf('linkedin') > -1 && url.indexOf('login') == -1 && url !== 'https://www.linkedin.com'            return loggedIn                ? client                    .pause(1000)                    .isExisting('iframe.authentication-iframe').then(is => is                        ? client.element('iframe.authentication-iframe')                            .then(el => client.frame(el.value))                            .then(() => enterLinkedIn())                            .frame()                        : Promise.resolve([]))                : client.url('https://www.linkedin.com/')                    .pause(1000)                    .isExisting('*=Forgot password?').then(is => is                        ? enterLinkedIn()                        : Promise.resolve([]));        })};module.exports = loginLinkedIn;loginLinkedIn;

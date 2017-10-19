@@ -1,5 +1,0 @@
-%%
-bash
-
-ng
-start

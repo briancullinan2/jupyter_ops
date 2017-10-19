@@ -1,1 +1,1 @@
-$TS.screen('act.com/nl-nl/producten/act-pro', {zoom: .5, width: 680, 'crop-h': 400});
+$TS.screen('act.com/fr-ca', {zoom: .5, width: 680, 'crop-h': 400});

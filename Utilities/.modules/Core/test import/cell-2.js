@@ -1,9 +1,1 @@
-// hole in documentation?
-/*
-$$.async();
-setTimeout(() => {
-    throw 'should only fail per cell';
-});
-never returns output
-*/
-
+$$.async();setTimeout(() => {    try {        throw 'should only fail per cell';    }    catch (e) {        $$.done(e);    }}, 10);

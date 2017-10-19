@@ -1,0 +1,1 @@
+Delete images in cmd?

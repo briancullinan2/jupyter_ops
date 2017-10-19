@@ -1,70 +1,1 @@
-var importer = require('../Core');
-
-var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
-var PROJECT_PATH = PROFILE_PATH + '/Timeline';
-
-var loadLocations, averageDestinations, reconcileTimeline,
-    runSeleniumCell, geoLocations, readAllPages, getGoogleTimeline,
-    cancelled = false;
-
-$$.async();
-importer.import([
-    'load locations export data',
-    'average latitude longitude',
-    'reconcile timeline calendar',
-    'selenium cell'
-])
-    .then(r => {
-        loadLocations = r[0];
-        averageDestinations = r[1];
-        reconcileTimeline = r[2];
-        runSeleniumCell = r[3];
-    })
-    .then(() => {
-        return loadLocations('/Users/briancullinan/Downloads/Takeout 7/Location History/Location History.json');
-    })
-    .then(geo => {
-        geoLocations = geo;
-        return runSeleniumCell([
-            'log in google',
-            'read google timeline',
-            'scrape google timeline'
-        ]);
-    })
-    .then(r => {
-        readAllPages = r[1];
-        getGoogleTimeline = r[2];
-    })
-    .then(() => getGoogleTimeline())
-    .then(() => importer.runAllPromises(readAllPages().map(promise => resolve => {
-        if (cancelled) return resolve();
-        return new Promise(promise)
-            .catch(e => console.log(e))
-            .then(timelineLocations => {
-                if (timelineLocations.length === 0) return;
-                var date = timelineLocations[0].timeline;
-                if (typeof geoLocations[date] === 'undefined') return;
-                /*
-                if(!fs.existsSync(PROJECT_PATH + '/timeline-' + date + '_.json')) {
-                    return;
-                }
-                var timelineData = JSON.parse(
-                    fs.readFileSync(PROJECT_PATH + '/timeline-' + date + '_.json')
-                    .toString());
-                */
-                console.log(date);
-                var d = averageDestinations(geoLocations[date], timelineLocations);
-                if (d.length === 0) {
-                    return;
-                }
-                return reconcileTimeline(d, date);
-            })
-            .then(r => {
-                if (typeof r !== 'undefined' && r.length > 0) cancelled = true;
-                resolve(r);
-            })
-            .catch(e => console.log(e))
-    })))
-    .then(r => $$.sendResult(r.filter(o => typeof o !== 'undefined')))
-    .catch(e => $$.sendError(e));
-
+var chrono = require('chrono-node');var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];var readTimelinePage = () => {    return client.getAllXPath({        day: ['//*[contains(@class,"timeline-subtitle")]//text()|//*[contains(@class,"timeline-title")]//text()'],        items: [            '//*[contains(@class,"timeline-item")]/parent::*/*[@jsinstance]',            {                duration: './/*[contains(@class, "duration-text")]//text()',                data: './/*[contains(@class, "timeline-item")]/@data-segment-key',                title: './/*[contains(@class, "timeline-item-title-content")][.//i]/*[not(self::i)]//text()|.//*[contains(@class, "timeline-item-title-content")][not(.//i)]//text()',                location: './/*[contains(@class, "timeline-item-text")][not(contains(@class,"add-child"))][.//a]/a//*[not(self::i)]//text()|.//*[contains(@class, "timeline-item-text")][not(contains(@class,"add-child"))][not(.//a)]/text()'            }        ]    })        .then(r => {            if (r.day.length == 0) {                return;            }            var currDate = chrono.parseDate(r.day[0] + '')                || chrono.parseDate(r.day[1] + '');            var newKey = currDate.getDate()                + months[currDate.getMonth()]                + (currDate.getFullYear() + '').substr(2, 2);            return r.items.map(i => {                var timelineData = (i.data + '').split(':');                var start, end, length;                if (timelineData.length == 3) {                    start = new Date(parseFloat(timelineData[1]));                    end = new Date(parseFloat(timelineData[2]));                    length = end.getTime() - start.getTime();                } else {                    start = chrono.parseDate(r.day + ' ' + i.duration.join('').trim().split('-')[0]);                    end = chrono.parseDate(r.day + ' ' + i.duration.join('').trim().split('-')[1]);                    length = 0;                }                var traveling = (/(Driving|Walking|Traveling|Flying|Moving).*\s+-\s+(.*),/ig).exec(i.title + ', ' + i.location)                return ({                    traveling: traveling ? traveling[0] : false,                    type: 'timeline',                    timeline: newKey,                    name: i.title,                    location: i.location,                    time: start,                    length: isNaN(length) ? 0 : length                })            })        })        .catch(e => console.log(e))};if (typeof client.readTimelinePage == 'undefined') {    client.addCommand('readTimelinePage', readTimelinePage);}module.exports = readTimelinePage;readTimelinePage;

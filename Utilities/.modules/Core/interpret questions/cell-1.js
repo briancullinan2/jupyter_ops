@@ -1,10 +1,1 @@
-var path = require('path');
-var getCells = require('../Core').getCells;
-var cacheCells = (cells, notebook) => {
-}; // defined below
-// interpret notebooks by importing them in to cache
-var cacheNotebook = (notebook) => {
-    return getCells(notebook, ['*', 'markdown', 'code'])
-        .then(cells => cacheCells(cells, notebook));
-};
-module.exports = cacheNotebook;
+// install fuseif (typeof cellCache === 'undefined') {    var cellCache = [];}var Fuse = require('fuse.js');var fuse = new Fuse(cellCache, {    shouldSort: true,    keys: ['question'],    id: 'id'});var fuseSearch = (message) => fuse.search(message);module.exports = fuseSearch;

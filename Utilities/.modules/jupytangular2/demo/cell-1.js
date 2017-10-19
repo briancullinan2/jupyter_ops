@@ -1,9 +1,9 @@
 var importer = require('./Core');
 
-// eval a cell in the current context?
+// execute every cell and provide output functions as a service?
 
-// performs cheap text based searching on cells
-var mountAndRewireAngular = importer.evalNotebook(
-    'Utilities/file system.ipynb',
-    'memory-fs' || 1); // use cheap search terms or the numeric code cell
+$$.async();
+importer.importNotebook('./Frameworks/node express.ipynb')
+    .then(r => $$.sendResult(r))
+    .catch(e => $$.sendError(e));
 

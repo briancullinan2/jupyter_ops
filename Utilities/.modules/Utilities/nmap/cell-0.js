@@ -1,4 +1,1 @@
-nmap--
-script
-smb - brute.nse
-localhost
+nmap--scriptsmb - brute.nselocalhost

@@ -1,39 +1,1 @@
-var importer = require('../Core');
-var fs = require('fs');
-
-$$.async();
-var loginFacebook, listFacebookThreads, readFacebookThread, likeAllPosts;
-importer.import(['selenium cell'])
-    .then(runSeleniumCell => runSeleniumCell([
-        'log in facebook',
-        'list facebook threads',
-        'messages from facebook',
-        'like all facebook posts'
-    ]))
-    .then(r => {
-        loginFacebook = r[0];
-        listFacebookThreads = r[1];
-        readFacebookThread = r[2];
-        likeAllPosts = r[3];
-        return loginFacebook();
-    })
-    //.then(() => listFacebookThreads())
-    //.then(threads => {
-    //    try { threads = JSON.parse(fs.readFileSync(project + '/facebook-threads.json')); }
-    //    catch (e) { threads = []; }
-    //    return importer.runAllPromises(threads.slice(450, 600)
-    //        .map(t => ((resolve) => readFacebookThread(t).then((r) => resolve(r)))));
-    //})
-    .then(r => importer.runAllPromises([
-        'https://www.facebook.com/ragunr'
-    ].map(p => (resolve) => likeAllPosts(p, true).then(r => resolve(r)))))
-
-    /*
-
-    https://www.facebook.com/dadsrawesome/videos/1165913990203850/
-    https://www.facebook.com/galacticempireofficial/videos/800461353413445/
-        */
-
-    .then(r => $$.sendResult(r))
-    .catch(e => $$.sendError(e))
-
+var importer = require('../Core');// TODO: pass profile path in as parameter becomes readFacebookProfileInfovar readFacebookProfileInfo = () => {    var profile = {};    // TODO: check for profile path    return client.execute(() => {        var people = document.evaluate(            '//*[contains(@class, "scrollable")]//h4[contains(., "Profile")]/parent::*//a',            document, null,            XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;        if (!people) {            return '';        }        people.setAttribute('target', '_self');        return people;    })        .then(r => r.value != ''            ? client.elementIdClick(r.value.ELEMENT)                .pause(2000)                .then(() => importer.runAllPromises([                    client.getText('[role="main"] h1'),                    client.isExisting('#intro_container_id li').then(is => is                        ? client.getText('#intro_container_id li')                        : Promise.resolve('')),                    client.getUrl()                ]))                .then(r => (profile = ({                    name: r[0],                    description: r[1],                    url: r[2]                })))            : client)        .then(() => profile)        .catch(e => console.log(e))};module.exports = readFacebookProfileInfo;readFacebookProfileInfo;

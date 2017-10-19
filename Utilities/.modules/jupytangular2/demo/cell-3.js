@@ -1,18 +1,11 @@
-/*
-var importer = require('./Core')));
+var importer = require('./Core');
 
-$$.async();
+// search notebooks for keywords, return the top search result and the contextual markdown and code cells?
 
-// don't do this
-Promise.all([
-    importer.import(n)
-    importer.import(n)
-    ]);
-
-// do this instead!
-runAllPromises([
-    importer.import(n)
-    importer.import(n)
-    ])
-*/
+var interpret; // store loaded functions for later use
+importer.interpretAll([
+    'docker selenium',
+    'docker vnc'
+]).then(r => $$.sendResult(r))
+    .catch(e => $$.sendError(e));
 

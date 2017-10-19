@@ -1,19 +1,1 @@
-$$.async();
-var images = [];
-new Promise((resolve, reject) => {
-    request('http://' + host + ':' + port, (err, res, body) => {
-        if (err) {
-            reject(err)
-        }
-        else {
-            resolve(body)
-        }
-    });
-}).then((body) => {
-    var nodeList = (new JSDOM(body)).window.document.querySelectorAll(query);
-    return Array.prototype.slice.call(nodeList, 0)
-        .map(i => i.getAttribute('src'));
-}).then(sources => {
-    images = sources;
-    $$.done(sources);
-}).catch(e => $$.done(e));
+if (typeof server != 'undefined') {    server.close();}var app = express();app.use('/', function (req, res) {    var url = host + req.url;    req.pipe(request(url)).pipe(res);});$$.async();try {    var server = app.listen(port, () => $$.done('server up and running on port ' + port));    server.on('error', (e) => $$.done(e));} catch (e) {    $$.done(e);}

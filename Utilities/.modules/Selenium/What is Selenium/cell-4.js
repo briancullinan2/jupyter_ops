@@ -1,1 +1,1 @@
-$$.mime({'text/html': vncIframe()});
+$$.async();getSeleniumServer()    .then(r => $$.sendResult(r))    .catch(e => $$.sendError(e));

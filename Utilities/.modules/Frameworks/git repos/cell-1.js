@@ -1,17 +1,1 @@
-mkdir - r
-act - selenium / Selenium
-cd
-act - selenium / Selenium
-git
-branch | grep
-'B-11243_Angular_Portal_POC' & > / dev / null
-if [$ ? != 0 ]
-;then
-git
-clone - b
-B - 11243
-_Angular_Portal_POC
-https://github.com/Swiftpage/Selenium.git ./
-    fi
-cd..
-/../
+mkdir - ract - selenium / act.ecommercecdact - selenium / act.ecommercegitbranch | grep'Buy_funnel' & > / dev / nullif [$ ? != 0 ];thengitclone - bBuy_funnelhttps://github.com/Swiftpage/act.ecommerce.git ./    ficd../../

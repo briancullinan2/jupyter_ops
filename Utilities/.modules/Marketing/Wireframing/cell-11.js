@@ -1,12 +1,1 @@
-$$.async();
-const url = 'act.com';
-const options = {zoom: .5, width: 680, 'crop-h': 400, 'javascript-delay': 1000};
-const encode = require('base64-stream').encode();
-const spawn = require('child_process').spawn;
-const myOptions = []
-    .concat.apply(['-q', '-f', 'jpeg'], Object.keys(options || {}).map(k => ['--' + k, options[k]]));
-const wk = spawn('xvfb-run', ['-a', '-s', '-screen 0 640x480x16', 'wkhtmltoimage', ...myOptions, url, '-']);
-console.log(['-a', '-s', '-screen 0 640x480x16', 'wkhtmltoimage', ...myOptions, url, '-'].join(' '));
-var out = '';
-wk.stderr.on('data', (d) => console.log(d));
-wk.stdout.pipe(encode).on('data', d => out += d.toString()).on('finish', () => $TS.jpg(out));
+const fs = require('fs');const js1 = fs.readFileSync('./sosmethod/dist/www/polyfills.59868df8094f160adda5.js');const js2 = fs.readFileSync('./sosmethod/dist/www/vendor.59868df8094f160adda5.js');const js3 = fs.readFileSync('./sosmethod/dist/www/app.59868df8094f160adda5.js');$$html$$ = '<bc-app style="position:relative;display:block;min-height:600px;min-width:600px;">hello!</bc-app>'    + '<script type="application/javascript">eval(atob("' + (new Buffer(js1)).toString('base64') + '"));</script>'    + '<script type="application/javascript">eval(atob("' + (new Buffer(js2)).toString('base64') + '"));</script>'    + '<script type="application/javascript">eval(atob("' + (new Buffer(js3)).toString('base64') + '"));</script>';

@@ -13,8 +13,11 @@ if (typeof importer == 'undefined') {
         var re = new RegExp('initialize([\\s\\S]*?)done', 'ig');
         var m, co = [];
         while ((m = re.exec(f)) && co.push(m[1])) ;
+        var location = 'var __filename=' + JSON.stringify(__filename) + ';'
+            + 'var __dirname=' + JSON.stringify(__dirname) + ';'
+            + 'process.chdir(' + JSON.stringify(__dirname) + ');\n';
         var code = JSON.parse('["//' + co.join('","') + '"]').join('');
-        newModule._compile(code, notebook);
+        newModule._compile(location + code, notebook);
         newModule.loaded = true;
     });
     var notebookReaderPath = path.join(__dirname, 'import notebook.ipynb');

@@ -1,0 +1,2 @@
+Automatically diff facebook friends?
+

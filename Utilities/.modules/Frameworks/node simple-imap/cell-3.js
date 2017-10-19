@@ -1,11 +1,1 @@
-htmlPrint = '';
-messages.forEach(message => {
-    var header = message.parts.filter(function (part) {
-        return part.which.indexOf('HEADER') > -1;
-    });
-    var subject = header[0].body.subject[0];
-    var from = header[0].body.from[0];
-    htmlPrint += '<li>subject: ' + subject + ', from: ' + from + '</li>\n';
-});
-$$.mime({'text/markdown': 'Usage:\n\n```html\n' + htmlPrint + '\n```\nOuput:\n'});
-
+$$.async();var config = {    imap: {        user: process.env.GOOGLE_USER,        password: process.env.GOOGLE_PASS,        host: 'imap.gmail.com',        port: 993,        tls: true,        autotls: 'required',        authTimeout: 3000    }};var connection;imaps.connect(config).then((conn) => {    connection = conn;    return conn.openBox('INBOX');}).then(inbox => {    $$.done('inbox opened');}).catch((e) => $$.done(e));

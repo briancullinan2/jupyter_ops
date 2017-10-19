@@ -1,3 +1,1 @@
-%
-reload_ext
-gvmagic
+%reload_extgvmagic

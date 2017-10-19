@@ -1,5 +1,1 @@
-..
-/novnc/u
-tils / launch.sh--
-vnc
-localhost:5900
+fluxbox - display:0x11vnc - forever - nopw - shared - rfbport - ncache5900 - display:0

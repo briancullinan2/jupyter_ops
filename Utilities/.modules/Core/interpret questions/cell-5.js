@@ -1,20 +1,1 @@
-// How to represent search results in markdown?
-var resultMarkdown = (res) => {
-    return ('\n\n\n' + res.length + ' match'
-        + (res.length !== 1 ? 'es' : '')
-        + ' found: ' + res.join(' , ') + '\n\n\n'
-        + (res.length > 0
-            ? ('\n\n\n' + cacheIds[res[0]].markdown.join('\n') + '\n\n\n'
-                + '```\n\n\n' + cacheIds[res[0]].code + '\n\n\n```\n\n\n')
-            : ''));
-};
-
-var interpretMarkdown = (results) =>
-    (typeof results[0] !== 'undefined' && typeof results[0] !== 'string'
-        ? results.reduce((str, res) => {
-            str += resultMarkdown(res);
-            return str;
-        }, '')
-        : resultMarkdown(results));
-
-module.exports = interpretMarkdown;
+// TODO: use the m flag option for regexp?var re = new RegExp('(^|\\n).*?\\?(\\s+|$)', 'ig');var re2 = new RegExp('(^|\\n)//.*\\?(\\s+|$)', 'ig')var accumulateMarkdown = (cells) => {    var counter = 0, prev = [];    return cells.reduce((md, c) => {        counter++;        var source = c.source.join('');        if (c.cell_type === 'markdown') {            prev.push(source);            return md;        } else if (c.cell_type !== 'code') {            return md;        }        // TODO: improve the counter        var cell = {code: source, markdown: prev, from: counter - 1, to: counter, language: c.language};        prev = [];        md.push(cell);        return md;    }, []);};// How to convert a string to an Array of RegEx matchesvar regexToArray = (ex, str, i = 0) => {    var co = [];    var m;    while ((m = ex.exec(str)) && co.push(m[i])) ;    return co;};module.exports = accumulateMarkdown;

@@ -1,23 +1,1 @@
-//ng(path.dirname(project), ['new', '--skip-git', '--skip-install', 'new-portal'])
-//    .then(() => ng(project, [
-//    'generate', 'module', '--spec', '--flat', 'AppServer']))
-/*
-//.then(() => npm(project, ['install'], {'save': true, bin-links': false, verbose: true, prefix: project}))
-//.then(() => npm(project, ['install', '@angular/material', '@angular/cdk'], {'save': true, bin-links': false, verbose: true, prefix: project}))
-//.then(() => npm(project, ['list'], {prefix: project}))
-//.then(() => npm(project, ['prefix'], {prefix: project}))
-//convertNgUniversal(project)
-//    .then(() => ng(project, ['build', '--aot', '--prod']))
-//.then(() => webpackAngularProject(project))
-.then(r => {
-    process.chdir(project);
-    var server = require(path.join(project, '.server', 'server.js'));
-    console.log(server);
-})
-*/
-
-// TODO:
-// build the project in memory
-// make the sockify server send us logs
-// accept logins and encrypt in to password file?
-// send mock responses to display all interfaces?  e.g. logging in displays redirect and error "you are already logged in" on login page at the same time
+var execSync = require('child_process').execSync;try {    require.resolve('@angular/cli');} catch (e) {    execSync('npm install @angular/cli');}// use utility/filesystem to mock all fs and typescript commandsvar mockTypescriptFs, cli;var importer = require('../Core');// call the CLI just like from command linevar ng = (project, args = ['generate', 'component', 'test']) => {    // set up project path    var previous = process.cwd();    var conf = {        cliArgs: args,        inputStream: null,        outputStream: process.stdout    };    // execute    return importer.import('memory-fs rewire')        .then(mockTypescriptFs => {            // overlay out temp filesystem on top of current filesystem            mockTypescriptFs(project);            cli = require('@angular/cli');            process.chdir(project);            return cli(conf);        });};module.exports = ng;

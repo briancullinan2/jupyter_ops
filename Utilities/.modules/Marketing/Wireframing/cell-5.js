@@ -1,14 +1,1 @@
-var Git = require('nodegit');
-var url = 'https://github.com/megamindbrian/sosmethod';
-var directory = './sosmethod';
-var clone = Git.Clone.clone;
-var branch = 'master';
-var cloneOptions = new Git.CloneOptions();
-cloneOptions.checkoutBranch = branch;
-
-clone(url, directory, cloneOptions)
-    .then(function (repository) {
-        console.log(repository);
-    })
-    .catch(e => console.log(e));
-0
+var exec = require('child_process').exec;child = exec('npm install nodegit');child.stderr.pipe(process.stderr);child.stdout.pipe(process.stdout);0

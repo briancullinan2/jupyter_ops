@@ -1,0 +1,1 @@
+How to run all code cells in jupyter?

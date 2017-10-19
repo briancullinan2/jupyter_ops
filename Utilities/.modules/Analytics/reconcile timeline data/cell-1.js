@@ -1,26 +1,1 @@
-var importer = require('../Core');
-var placesNearby;
-var compareTimeline = (date) => {
-    var newDate = new Date(date);
-    newDate.setHours(0, 0, 0);
-    var endDate = new Date(newDate);
-    endDate.setHours(23, 59, 59);
-    return importer.import('find a place')
-        .then(r => placesNearby = r)
-        .then((r) => importer.import('google calendar.ipynb[listEvents]'))
-        .then(listEvents => listEvents({
-            start: newDate,
-            end: endDate
-        }))
-        .then(r => r.filter(e => typeof e.event.location !== 'undefined'))
-        //.then(r => console.log(r))
-        .then(r => Promise.all(r.map(e => {
-            var cache = getTimelineCache(date);
-            cache.locations.forEach(l => {
-
-            });
-            // get nearest location event to date
-            return placesNearby();
-        })))
-};
-module.exports = compareTimeline;
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];var path = require('path');var fs = require('fs');var TIMELINE_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, 'Timeline');var getTimelineCache = (newDate) => {    var newKey = newDate.getDate()        + months[newDate.getMonth()]        + (newDate.getFullYear() + '').substr(2, 2);    try {        var locations = JSON.parse(fs.readFileSync(path.join(TIMELINE_DIR, 'location-' + dateKey + '.json')));    } catch (e) {        if (e.code !== 'EEXIST') {            throw e;        }    }    try {        var timeline = JSON.parse(fs.readFileSync(path.join(TIMELINE_DIR, 'timeline-' + dateKey + '.json')));    } catch (e) {        if (e.code !== 'EEXIST') {            throw e;        }    }    return {locations: locations, timeline: timeline};};module.exports = getTimelineCache;

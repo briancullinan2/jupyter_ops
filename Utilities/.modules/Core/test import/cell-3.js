@@ -1,2 +1,1 @@
-$$.async()
-setTimeout(() => $$.done('import successful'), 20);
+// hole in documentation?/*$$.async();setTimeout(() => {    throw 'should only fail per cell';});never returns output*/

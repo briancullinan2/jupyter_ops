@@ -1,27 +1,1 @@
-// initialize
-
-if (typeof imported !== 'object' || imported === null) {
-    var imported = {};
-}
-
-// cache results when notebooks are processed
-var assignResults = (results, notebook) => {
-    var filename = path.basename(notebook);
-    results = results.reduce((obj, r, i) => {
-        if (typeof r === 'function') {
-            obj[filename + '[' + i + ']'] = r;
-            obj[r.name] = obj[filename + '[' + i + ']'];
-        }
-        else if (typeof r === 'object' && r !== null
-            && typeof r['error'] !== 'undefined') {
-            obj[filename + '[' + i + ']'] = r['error'];
-            console.log(filename + '[' + i + ']' + '\n' + r['error']['evalue']);
-        }
-        return obj;
-    }, {});
-    // TODO: offer results as an express service instead of global context?
-    imported[filename] = results;
-    return results;
-};
-
-// $$.done() for our dumb parser
+// initializevar fs = require('fs');var JSONStream = require('JSONStream');var streamJson = (file, parse, match = ((c) => true)) => {    var file = fs.createReadStream(file)        .pipe(JSONStream.parse(parse));    file.on('data', (m) => match(m));    // create a promise out of this stream    return new Promise((resolve, reject) => {        file.on('error', e => reject(e, file));        file.on('close', () => resolve(file))    });};// $$.done() for our dumb parser

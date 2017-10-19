@@ -1,7 +1,1 @@
-export
-DISPLAY =
-:
-0
-google - chrome
-http://localhost:4200 --no-sandbox --start-fullscreen
-
+Xvfb :0 - ac - screen01024x768x24 + extensionRANDR

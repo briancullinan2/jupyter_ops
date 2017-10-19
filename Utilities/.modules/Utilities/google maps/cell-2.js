@@ -1,25 +1,1 @@
-var execSync = require('child_process').execSync;
-try {
-    require.resolve('@google/maps');
-} catch (e) {
-    execSync('npm install @google/maps');
-}
-
-var googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyDNoiOWuoAHvugP856YpmthZUKK5zA3BgQ' // geocoding
-});
-
-
-$$.async();
-
-googleMapsClient.geocode({
-    address: 'Kazimierz World Wine Bar near 33.5050330, -111.9262180'
-}, function (err, response) {
-    if (!err) {
-        $$.sendResult(response.json());
-    } else {
-        $$.sendError(err);
-    }
-});
-
-
+var lat_long = {lat: 33.5000787, lng: -111.9270344};$$.async();placesNearby('Kazimierz World Wine Bar', lat_long)    .then(r => $$.sendResult(r))    .catch(e => $$.sendError(e));

@@ -1,20 +1,1 @@
-var Promise = require('bluebird');
-
-var promisifyMock = (req, dep) => {
-    let ctx;
-    ctx = automock.mockValue(req, {
-        stubCreator: (name) => {
-            var orig = Promise.promisify(req[name.split('.')[1]], {
-                multiArgs: true,
-                context: req
-            });
-            //console.log('create stub ' + name);
-            return function () {
-                console.log(name + ' (' + arguments[0] + ') in ' + JSON.stringify(dep));
-                return orig.apply(null, arguments);
-            };
-        }
-    });
-    return ctx;
-};
-promisifyMock;
+var execSync = require('child_process').execSync;try {    require.resolve('bluebird');    require.resolve('socket.io');    require.resolve('socket.io-client');} catch (e) {    execSync('npm install bluebird automock socket.io socket.io-client');}$$.async();var importer = require('../Core');var automock;importer.import('mock all properties and functions using rewire')    .then(r => {        automock = r;        $$.sendResult('automock loaded');    });

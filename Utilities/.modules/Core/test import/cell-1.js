@@ -1,9 +1,1 @@
-$$.async();
-setTimeout(() => {
-    try {
-        throw 'should only fail per cell';
-    }
-    catch (e) {
-        $$.done(e);
-    }
-}, 10);
+$$.async()setTimeout(() => $$.done(1), 0);

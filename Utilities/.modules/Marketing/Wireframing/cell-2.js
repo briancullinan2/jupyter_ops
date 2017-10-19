@@ -1,1 +1,1 @@
-console.log('Hello NodeJS')
+var os = require('os')os.hostname()

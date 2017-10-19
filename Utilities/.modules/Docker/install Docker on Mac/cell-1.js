@@ -1,8 +1,1 @@
-$$.async();
-//  /usr/bin/osascript -e 'do shell script "/path/to/myscript args 2>&1 etc" with administrator privileges'
-var exec = require('child_process').exec;
-var installCmd = exec('npm install rimraf JSONStream', () => {
-    $$.done('installed basic node utilities, rimraf, JSONStream, etc');
-});
-installCmd.stdout.on('data', (d) => console.log(d));
-installCmd.stderr.on('data', (d) => console.log(d));
+$$.async();var exec = require('child_process').exec;var installed = false;var docker = exec('docker ps', (err, stdout, stderr) => {    if (stdout.indexOf('not found') > -1) {        $$.done('Docker not found, installing');    } else {        installed = true;        $$.done('Docker is already installed');    }});

@@ -1,19 +1,1 @@
-$$.async();
-var config = {
-    imap: {
-        user: process.env.GOOGLE_USER,
-        password: process.env.GOOGLE_PASS,
-        host: 'imap.gmail.com',
-        port: 993,
-        tls: true,
-        autotls: 'required',
-        authTimeout: 3000
-    }
-};
-var connection;
-imaps.connect(config).then((conn) => {
-    connection = conn;
-    return conn.openBox('INBOX');
-}).then(inbox => {
-    $$.done('inbox opened');
-}).catch((e) => $$.done(e));
+var fs = require('fs');var path = require('path');var exec = require('child_process').execSync;var sourceCmd = exec('npm install dotenv imap-simple mime', {stdio: [0, 1, 2]});var dotenv = require('dotenv').config;var imaps = require('imap-simple');var mime = require('mime');var output = path.join(process.cwd(), 'output');var credentials = path.join(process.cwd(), 'google_credentials.txt');var from = 'michelle@thesosmethod.com';var days = 7;dotenv({path: credentials});console.log(process.env.GOOGLE_USER);

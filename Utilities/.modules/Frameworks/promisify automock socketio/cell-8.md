@@ -1,0 +1,1 @@
+Check if sockify server is running?

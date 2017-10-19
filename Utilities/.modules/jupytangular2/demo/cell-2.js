@@ -1,10 +1,9 @@
 var importer = require('./Core');
 
-// search notebooks for keywords, return the top search result and the contextual markdown and code cells?
+// eval a cell in the current context?
 
-importer.interpret([
-    'docker selenium',
-    'docker vnc'
-]).then(r => $$.sendResult(r))
-    .catch(e => $$.sendError(e));
+// performs cheap text based searching on cells
+var mountAndRewireAngular = importer.evalNotebook(
+    'Utilities/file system.ipynb', 
+    'memory-fs' || 1); // use cheap search terms or the numeric code cell
 
