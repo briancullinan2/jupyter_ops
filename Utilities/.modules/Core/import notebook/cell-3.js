@@ -12,10 +12,10 @@ var getCells = (notebook, types = ['*', 'code']) => {
             && types.indexOf(match.value.cell_type) > -1) {
             cells[cells.length] = match.value;
         }
-    }).then((file) => {
+    }).then(() => {
         if (types.indexOf(kernel.language) === -1
             && types.indexOf('*') === -1) {
-            console.log('tried to import ' + types + JSON.stringify(kernel))
+            console.log('tried to import ' + types + JSON.stringify(kernel));
             return [];
         }
         return cells.map(c => Object.assign(c, {language: kernel.language}));
