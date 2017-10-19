@@ -14,7 +14,7 @@ var bashToRun = (code) => code.split('\n').map(l => 'RUN ' + l)
 // create a selenium Dockerfile with a vnc connection
 var identityDockerfile = (output) => {
     var DOCKERFILE = path.resolve(path.join(output, 'Dockerfile'));
-    return importer.interpretAll([
+    return importer.interpret([
         'run Mono',
         'linux dev tools',
         // add some extra services

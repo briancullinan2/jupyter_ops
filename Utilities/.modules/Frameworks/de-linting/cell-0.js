@@ -11,7 +11,7 @@ var project = PROFILE_PATH + '/AppData/Local/Temp/';
 
 $$.async();
 var diffTwoTexts;
-importer.interpretAll([
+importer.interpret([
     'diff'
 ])
     .then(r => {

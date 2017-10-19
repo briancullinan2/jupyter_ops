@@ -30,11 +30,8 @@ var getSeleniumServer = (name = 'act-selenium') => {
     }
     var DOCKERFILE = path.resolve(path.join(__dirname, 'Dockerfile'));
     return seleniumDocker(DOCKERFILE)
-        .then(() => importer.interpretAll('spawn child process'))
-        .then(r => {
-            execCmd = eval('\'use strict\';' + r.code);
-            return execCmd('docker ps -a');
-        })
+        .then(() => importer.import('spawn child process'))
+        .then(execCmd => execCmd('docker ps -a'))
         .then(r => {
             if (r[0].indexOf(name) > -1) {
                 return execCmd('docker stop ' + name)

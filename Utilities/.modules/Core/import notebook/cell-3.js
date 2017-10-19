@@ -1,7 +1,7 @@
 // initialize
 
 // How to use getCells?
-getCells = (notebook, types = ['*', 'code']) => {
+var getCells = (notebook, types = ['*', 'code']) => {
     var cells = [];
     var kernel;
     return streamJson(notebook, [true, {emitPath: true}], (match) => {

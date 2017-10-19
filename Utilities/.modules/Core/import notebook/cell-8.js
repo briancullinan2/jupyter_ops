@@ -1,12 +1,10 @@
 // initialize
 var path = require('path');
-var requireCode;
-requireCode = (code, pathToCode, global) => {
+var requireCode = (code, pathToCode, global) => {
     var Module = require('module').Module;
 
     // must have a new name for every generation otherwise cache will be returned
     var filepath = path.resolve(process.cwd(), pathToCode);
-    var filename = path.basename(filepath);
     var dirname = path.dirname(filepath);
 
     var cachedModule = Module._cache[filepath];

@@ -1,6 +1,5 @@
 var importer = require('../Core');
-var path = require('path');
-var writeFileSync = require('fs').writeFileSync;
+var fs = require('fs');
 
 // add some run commands to the bash script
 var bashToRun = (code) => code.split('\n').filter(n => n.trim().length > 0).map(l => 'RUN ' + l.trim())
@@ -8,7 +7,7 @@ var bashToRun = (code) => code.split('\n').filter(n => n.trim().length > 0).map(
 
 // create a selenium Dockerfile with a vnc connection
 var seleniumDocker = (outputFile) => {
-    return importer.interpretAll([
+    return importer.interpret([
         'run selenium',
         // add some extra services
         'linux dev tools',
@@ -22,10 +21,9 @@ var seleniumDocker = (outputFile) => {
     })
         .then(r => {
             // save the Dockerfile
-            writeFileSync(outputFile, r);
+            fs.writeFileSync(outputFile, r);
             return r;
         })
         .catch(e => console.log(e))
 };
 module.exports = seleniumDocker;
-seleniumDocker;

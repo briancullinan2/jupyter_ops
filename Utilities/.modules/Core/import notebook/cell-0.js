@@ -2,15 +2,13 @@
 var path = require('path');
 var fs = require('fs');
 
-// TLDR; What do we end up with?
-var getCells = ((notebook, types = ['code']) => Promise.resolve([]));
-var assignResults = (results, filename) => results;
-
 var getCellsOrDirectory = (filename) => {
     const fname = filename.replace('.ipynb', '');
     if (fs.existsSync(fname)
         && fs.statSync(fname).isDirectory()) {
-        const files = fs.readdirSync(fname).filter(f => f.indexOf('.js') > -1)
+        const files = fs.readdirSync(fname)
+            .sort((a, b) => parseInt(a.replace(/[^0-9]/ig, '')) - parseInt(b.replace(/[^0-9]/ig, ''))) //sort numerically
+            .filter(f => f.indexOf('.js') > -1);
         var code = files.map(f => fs.readFileSync(path.join(fname, f)).toString());
         return Promise.resolve(code);
     }
@@ -18,7 +16,7 @@ var getCellsOrDirectory = (filename) => {
         return getCells(filename, ['javascript', 'code'])
             .then(cells => cells.map(c => c.source.join('')));
     }
-}
+};
 
 // provide a function for importing any notebook as a module and executing it
 var executeNotebook = (notebook, ctx = {}) => {
@@ -42,7 +40,6 @@ var executeNotebook = (notebook, ctx = {}) => {
         .then(cells => runAllPromises(cells
             .map((c, i) => promiseNewContext(c, ctx, notebook + '[' + i + ']'))))
         .then(r => {
-            console.log(r);
             const results = assignResults(r, notebook);
             process.chdir(oldDir);
             return results;
@@ -54,20 +51,20 @@ if (typeof imported !== 'object' || imported === null) {
     var imported = {};
 }
 
-var interpret, interpretObject;
+var fuseSearch, interpretObject;
 var importCells = (queries, ctx) => {
     return Promise.resolve(
         typeof imported['interpret all notebooks.ipynb'] !== 'undefined'
             ? imported['interpret all notebooks.ipynb']
             : executeNotebook('interpret all notebooks.ipynb'))
         .then(r => {
-            interpret = r['interpret'];
+            fuseSearch = r['fuseSearch'];
             interpretObject = r['interpretObject'];
         })
         .then(() => {
             return typeof queries === 'string'
-                ? interpret(queries)
-                : Promise.all(queries.map(interpret))
+                ? fuseSearch(queries)
+                : Promise.all(queries.map(fuseSearch))
         })
         .then(r => {
             return typeof queries === 'string'

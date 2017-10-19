@@ -8,4 +8,4 @@ var runHighFiver = () => {
 };
 module.exports = runHighFiver;
 
-// node -e "require('/Users/brian.cullinan/Documents/jupytangular2/Core').interpretAll('automate youearnedit').then(r=>r.runInNewContext()()).then(e=>{ console.log(e); process.exit(e); }).catch(e=>{console.log(e); process.exit(e) });"
+// node -e "require('/Users/brian.cullinan/Documents/jupytangular2/Core').interpret('automate youearnedit').then(r=>r.runInNewContext()()).then(e=>{ console.log(e); process.exit(e); }).catch(e=>{console.log(e); process.exit(e) });"

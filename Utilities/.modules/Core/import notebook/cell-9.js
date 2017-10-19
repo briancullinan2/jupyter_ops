@@ -2,35 +2,55 @@
 var path = require('path');
 var vm = require('vm');
 
+var runner = function (resolve, reject, file) {
+    'use strict';
+    this.resolve = resolve;
+    this.reject = reject;
+    this.isAsync = false;
+    this.returnVal = null;
+    this.file = file;
+    this.async = () => {
+        this.isAsync = true;
+    };
+    this.sendResult = (r) => {
+        if (this.isAsync) {
+            return this.resolve(r);
+        } else {
+            this.returnVal = r;
+        }
+    };
+    this.sendError = (e) => {
+        console.log(e);
+        this.reject(e);
+    }
+
+};
+
 var promiseNewContext = (c, ctx, newFilename) => {
-    return new Promise((resolve, reject) => {
+    return (resolve, reject) => {
         var isPromise = false;
-        var returnVal = null;
+        var run = new runner(resolve, reject, newFilename);
         var newCtx = Object.assign(ctx || {}, {
             __filename: newFilename,
-            $$: {
-                async: () => {
-                    isPromise = true
-                },
-                sendResult: (r) => {
-                    if (isPromise) {
-                        return resolve(r);
-                    } else {
-                        returnVal = r;
-                    }
-                },
-                sendError: (e) => reject(e)
-            }
+            $$: run
         });
-        return Promise.resolve(runInNewContext(c, newCtx, {filename: newFilename}, false))
+        const result = runInNewContext(c, newCtx, {filename: newFilename}, false);
+        if (typeof result === 'object' && result !== null) {
+            if (result.constructor === Promise.prototype.constructor) {
+                isPromise = true; // will return result of promise
+            }
+        }
+        return Promise.resolve(result)
             .then(r => {
-                if (!isPromise) {
-                    return resolve(r);
+                if (!run.isAsync) {
+                    return resolve(run.returnVal || r);
+                } else if (isPromise) {
+                    return resolve(run.returnVal || r);
                 }
-                return r || returnVal;
+                return r;
             })
             .catch(e => reject(e))
-    })
+    }
     /*
     .then(r => {
         if (typeof r === 'function') {
@@ -40,7 +60,7 @@ var promiseNewContext = (c, ctx, newFilename) => {
         return r;
     });
     */
-}
+};
 
 var runInNewContext = (code, ctx, options, isModule = true) => {
     var tmpGlobal = ctx || {};

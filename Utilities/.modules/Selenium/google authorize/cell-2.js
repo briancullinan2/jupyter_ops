@@ -16,7 +16,7 @@ var approveSelenium = (authUrl) => {
 var client, getCredentials;
 var authorizeSelenium = (authUrl) => {
     console.log('Authorizing: ' + authUrl);
-    return importer.interpretAll('selenium docker')
+    return importer.import('selenium docker')
         .then(seleniumDocker => importer.import('set up selenium server', {seleniumDocker}))
         .then(getSeleniumServer => getSeleniumServer('act-selenium'))
         .then(() => importer.import('webdriver client'))

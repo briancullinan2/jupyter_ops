@@ -9,6 +9,6 @@ var runAllPromises = (promises) => {
         });
     }, Promise.resolve([]));
 };
-runAllPromises;
+
 // $$.done() for our dumb parser
 

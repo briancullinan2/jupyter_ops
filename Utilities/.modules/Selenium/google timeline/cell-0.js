@@ -2,9 +2,9 @@ var importer = require('../Core');
 
 var client, loginGoogle, getAllXPath;
 var getClient = () => {
-    return importer.interpretAll('webdriver client')
-        .then(r => {
-            client = r();
+    return importer.import('webdriver client')
+        .then(clientFactory => {
+            client = clientFactory();
             return importer.import(
                 'decrypt password',
                 {client: client()});

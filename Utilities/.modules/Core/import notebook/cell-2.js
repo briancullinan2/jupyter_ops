@@ -12,6 +12,5 @@ var streamJson = (file, parse, match = ((c) => true)) => {
         file.on('close', () => resolve(file))
     });
 };
-
 // $$.done() for our dumb parser
 

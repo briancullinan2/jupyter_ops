@@ -7,7 +7,7 @@ var accumulateMarkdown = (cells) => {
     return cells.reduce((md, c) => {
         counter++;
         var source = c.source.join('');
-        if (c.cell_type == 'markdown') {
+        if (c.cell_type === 'markdown') {
             prev.push(source);
             return md;
         } else if (c.cell_type !== 'code') {

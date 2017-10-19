@@ -2,10 +2,10 @@
 // for now, the boring solution is to assume all markdown output is a question?
 
 // How to store code markdown results for later use?
-if (typeof cellCache == 'undefined') {
+if (typeof cellCache === 'undefined') {
     var cellCache = [];
 }
-if (typeof cacheIds == 'undefined') {
+if (typeof cacheIds === 'undefined') {
     var cacheIds = {};
 }
 var cacheCells = ((cells, notebook) => {

@@ -1,9 +1,8 @@
 // install fuse
 
-if (typeof cellCache == 'undefined') {
-    var cellCache = []
+if (typeof cellCache === 'undefined') {
+    var cellCache = [];
 }
-;
 
 var Fuse = require('fuse.js');
 var fuse = new Fuse(cellCache, {
@@ -12,5 +11,5 @@ var fuse = new Fuse(cellCache, {
     id: 'id'
 });
 
-var interpret = (message) => fuse.search(message);
-module.exports = interpret;
+var fuseSearch = (message) => fuse.search(message);
+module.exports = fuseSearch;

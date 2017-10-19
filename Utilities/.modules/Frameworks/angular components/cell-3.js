@@ -1,18 +1,17 @@
 var io = require('socket.io-client');
 var importer = require('../Core');
-var path = require('path');
 
-var interpret, interpretObject;
-var interpretAll = (queries, root = '') => {
+var fuseSearch, interpretObject;
+var searchAll = (queries, root = '') => {
     return importer.import('interpret all notebooks.ipynb')
         .then((f) => {
-            interpret = f['interpret'];
+            fuseSearch = f['fuseSearch'];
             interpretObject = f['interpretObject'];
         })
         // use Promise.all to do all of your code searches up front
         .then(r => typeof queries === 'string'
-            ? interpret(queries)
-            : Promise.all(queries.map(interpret)))
+            ? fuseSearch(queries)
+            : Promise.all(queries.map(fuseSearch)))
         .then(r => interpretObject(r))
 };
 
@@ -31,7 +30,7 @@ var searchHandler = () => {
                 // TODO: include gulp notebook search, .bash_sessions,
                 //    selenium scripts, stack overflow, github, 
                 Promise.all([
-                    interpretAll(search),
+                    searchAll(search),
                     importer.import('search notebooks using gulp')
                         .then(searchNotebooks => searchNotebooks(search))
                 ])

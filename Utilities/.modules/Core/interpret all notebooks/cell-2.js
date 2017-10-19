@@ -1,8 +1,7 @@
 var path = require('path');
 
 $$.async();
-var interpret = (message) => importedInterpret(message);
-interpretAll(path.resolve(path.join(__dirname, '..')))
-    .then(() => $$.sendResult(interpret))
+cacheAll(path.resolve(path.join(__dirname, '..')))
+    .then(() => $$.sendResult(importedFuseSearch))
     .catch(e => $$.sendError(e));
-module.exports = interpret;
+module.exports = importedFuseSearch;

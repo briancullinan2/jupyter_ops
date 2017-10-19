@@ -5,10 +5,8 @@ var compareTimeline = (date) => {
     newDate.setHours(0, 0, 0);
     var endDate = new Date(newDate);
     endDate.setHours(23, 59, 59);
-    return importer.interpretAll(['find a place'])
-        .then(r => {
-            placesNearby = eval(r[0].code);
-        })
+    return importer.import('find a place')
+        .then(r => placesNearby = r)
         .then((r) => importer.import('google calendar.ipynb[listEvents]'))
         .then(listEvents => listEvents({
             start: newDate,

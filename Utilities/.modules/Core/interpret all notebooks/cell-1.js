@@ -1,17 +1,16 @@
 var path = require('path');
 var importer = require('../Core');
-var importedInterpret, importedIntend, importedInterpretMarkdown,
-    importedInterpretObject, interpretNotebook;
+var importedFuseSearch, importedInterpretMarkdown,
+    importedInterpretObject, cacheNotebook;
 
 // How to walk directories and files recursively and synchronously
 var glob = require('glob');
-var interpretAll = (dirname) => importer.import('interpret questions.ipynb')
+var cacheAll = (dirname) => importer.import('interpret questions.ipynb')
     .then(r => {
-        interpretNotebook = r['interpretNotebook'];
-        importedIntend = r['intend'];
+        cacheNotebook = r['cacheNotebook'];
         importedInterpretMarkdown = r['interpretMarkdown'];
         importedInterpretObject = r['interpretObject'];
-        importedInterpret = r['interpret'];
+        importedFuseSearch = r['fuseSearch'];
     })
     .then(() => glob.sync('**/*.ipynb', {
         ignore: ['**/node_modules/**',
@@ -20,7 +19,7 @@ var interpretAll = (dirname) => importer.import('interpret questions.ipynb')
         cwd: dirname
     }))
     .then(ns => Promise.all(ns.map(n =>
-        interpretNotebook(path.resolve(path.join(dirname, n))))))
+        cacheNotebook(path.resolve(path.join(dirname, n))))))
     .catch(e => console.log(e));
-module.exports = interpretAll;
+module.exports = cacheAll;
 

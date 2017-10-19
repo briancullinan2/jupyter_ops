@@ -11,7 +11,10 @@ var resultMarkdown = (res) => {
 
 var interpretMarkdown = (results) =>
     (typeof results[0] !== 'undefined' && typeof results[0] !== 'string'
-        ? results.reduce((str, res) => str += resultMarkdown(res), '')
+        ? results.reduce((str, res) => {
+            str += resultMarkdown(res);
+            return str;
+        }, '')
         : resultMarkdown(results));
 
 module.exports = interpretMarkdown;

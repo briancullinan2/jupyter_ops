@@ -6,7 +6,7 @@ var getThreadParticipants = (thread) => {
     var profiles = [], alreadyAt = false;
     var readLinkedInProfileInfo;
     // check for thread url and go there
-    return client.then(() => importer.interpretAll('scrape LinkedIn profile', {client}))
+    return client.then(() => importer.import('scrape LinkedIn profile', {client}))
         .then(r => (readLinkedInProfileInfo = r))
         .getUrl()
         .then(url => {

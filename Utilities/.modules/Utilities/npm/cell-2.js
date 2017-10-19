@@ -9,7 +9,7 @@ var npm = (project, args, conf) => {
     var previous = process.cwd();
     process.chdir(project);
     return importer
-        .interpretAll('memory-fs rewire')
+        .import('memory-fs rewire')
         .then(r => {
             // set up project path
             return new Promise((resolve, reject) => {
@@ -48,4 +48,4 @@ var npm = (project, args, conf) => {
             return r;
         }));
 };
-(npm);
+module.exports = npm;

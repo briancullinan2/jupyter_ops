@@ -5,7 +5,7 @@ var project = PROFILE_PATH + '/universal';
 
 $$.async();
 var left, right;
-importer.interpretAll(['search notebook component', 'files in project'])
+importer.interpret(['search notebook component', 'files in project'])
     .then(r => {
         left = r[0].code;
         var listInProject = r[1].runInNewContext({});

@@ -23,7 +23,7 @@ var getFriends = (file) => {
 
 var scrapeFacebookFriends;
 var getFriendsDiff = () => {
-    return importer.interpretAll('selenium cell')
+    return importer.import('selenium cell')
         .then(runSeleniumCell => runSeleniumCell('scrape facebook friends'))
         .then(r => (scrapeFacebookFriends = r)())
         .then(doc => {

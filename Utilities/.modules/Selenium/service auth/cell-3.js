@@ -26,7 +26,7 @@ var copyPasswordRow = (i) => {
 
 var copyPasswords = () => {
     return client.url('https://passwords.google.com')
-        .then(() => importer.interpretAll('log in google', {client, getCredentials}))
+        .then(() => importer.import('log in google', {client, getCredentials}))
         .then(() => client.loginGoogle())
         .pause(1000)
         .elements('[role="row"]')

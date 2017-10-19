@@ -53,7 +53,7 @@ var listContacts = (contact, done = false) => {
 };
 
 var updateContact = (contact) => {
-    return importer.interpretAll('import google calendar api')
+    return importer.import('import google calendar api')
         .then(getOauthClient => getOauthClient(options))
         .then(() => {
             if (contactCache.length > 0) {

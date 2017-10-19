@@ -105,6 +105,6 @@ var runTodaysEvents = () => {
 };
 module.exports = runTodaysEvents;
 
-// node -e "require('/Users/briancullinan/jupytangular2/Core').interpretAll('run todays calendar events').then(r => r.runInNewContext()()).then(e => process.exit(e)).catch(e=>{console.log(e); process.exit(e) });"
+// node -e "require('/Users/briancullinan/jupytangular2/Core').import('run todays calendar events').then(runner => runner()).then(e => process.exit(e)).catch(e=>{console.log(e); process.exit(e) });"
 
-// echo "require('/Users/briancullinan/jupytangular2/Core').interpretAll('scrape facebook events').then(r=>r.runInNewContext()()).then(e=>{console.log(e); process.exit(e) }).catch(e=>{console.log(e); process.exit(e) });" | node
+// echo "require('/Users/briancullinan/jupytangular2/Core').import('scrape facebook events').then(runner => runner()).then(e=>{console.log(e); process.exit(e) }).catch(e=>{console.log(e); process.exit(e) });" | node

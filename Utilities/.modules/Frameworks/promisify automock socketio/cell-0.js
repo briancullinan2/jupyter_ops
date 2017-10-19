@@ -10,9 +10,9 @@ try {
 $$.async();
 var importer = require('../Core');
 var automock;
-importer.interpretAll(['mock all properties and functions using rewire'])
+importer.import('mock all properties and functions using rewire')
     .then(r => {
-        automock = eval(r[0].code);
+        automock = r;
         $$.sendResult('automock loaded');
     });
 

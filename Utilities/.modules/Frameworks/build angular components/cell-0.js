@@ -21,17 +21,14 @@ var ng = (project, args = ['generate', 'component', 'test']) => {
     };
 
     // execute
-    return importer.interpretAll('memory-fs rewire')
-        .then(r => {
-            if (typeof mockTypescriptFs == 'undefined') {
-                mockTypescriptFs = eval('\'use strict\';' + r[0].code);
-                // overlay out temp filesystem on top of current filesystem
-                mockTypescriptFs(project);
-                cli = require('@angular/cli');
-            }
+    return importer.import('memory-fs rewire')
+        .then(mockTypescriptFs => {
+            // overlay out temp filesystem on top of current filesystem
+            mockTypescriptFs(project);
+            cli = require('@angular/cli');
             process.chdir(project);
             return cli(conf);
         });
 };
-ng;
+module.exports = ng;
 
