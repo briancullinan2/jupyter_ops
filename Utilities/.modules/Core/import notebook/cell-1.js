@@ -35,7 +35,7 @@ var executeCell = (c, ctx, i) => {
             obj[i] = r;
             return obj;
         })
-    .catch(e => console.log(e))
+        .catch(e => console.log(e))
 }
 
 // output nothing here, cached version of this function is assigned below.
@@ -51,21 +51,21 @@ var importNotebook = (notebook, ctx = {}) => {
     if (typeof imported[notebook] !== 'undefined') {
         return Promise.resolve(imported[notebook]);
     }
-    
+
     return Promise.resolve(fs.existsSync(notebook)
-                              ? getCellsOrDirectory(notebook)
-                              : interpret(notebook))
+        ? getCellsOrDirectory(notebook)
+        : interpret(notebook))
         .then(cells => {
-            if( typeof cells.fresher !== 'undefined') {
+            if (typeof cells.fresher !== 'undefined') {
                 return executeCell(cells, ctx, cells.id);
             } else {
                 return runAllPromises(cells
                     .map((c, i) => resolve => executeCell(c, ctx, i)
-                         .then(r => resolve(r))));
+                        .then(r => resolve(r))));
             }
         })
         .then(results => {
-            if(typeof results.reduce !== 'undefined') {
+            if (typeof results.reduce !== 'undefined') {
                 return results.reduce((obj, r) => Object.assign(obj, r), {});
             } else {
                 return results[Object.keys(results).pop()];

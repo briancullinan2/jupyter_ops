@@ -4,6 +4,6 @@ var importer = require('./Core');
 
 // performs cheap text based searching on cells
 var mountAndRewireAngular = importer.evalNotebook(
-    'Utilities/file system.ipynb', 
+    'Utilities/file system.ipynb',
     'memory-fs' || 1); // use cheap search terms or the numeric code cell
 

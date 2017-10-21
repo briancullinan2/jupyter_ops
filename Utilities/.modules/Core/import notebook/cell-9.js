@@ -1,4 +1,4 @@
-// initialize
+// initialize
 var fs = require('fs');
 
 // save for later use
@@ -61,4 +61,4 @@ var interpret = (s) => {
 };
 
 // $$.done() for our dumb parser
-
+
