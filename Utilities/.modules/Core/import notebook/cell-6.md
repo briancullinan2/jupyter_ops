@@ -1,3 +1,2 @@
-
-How to parse cells of {types} from a notebook?
+How to run all promises sequentially?
 

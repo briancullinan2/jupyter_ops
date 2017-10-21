@@ -1,3 +1,1 @@
-What do I need to have installed?
-
-How to sanity check the environment?
+How to stream json using a {match} function?

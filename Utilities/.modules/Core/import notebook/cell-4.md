@@ -1,1 +1,3 @@
-How to stream json using a {match} function?
+
+How to parse cells of {types} from a notebook?
+

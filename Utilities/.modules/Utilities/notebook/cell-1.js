@@ -1,5 +1,5 @@
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
-var moduleOutput = PROFILE_PATH + '/Documents/jupytangular2/Utilities/.modules';
+var moduleOutput = PROFILE_PATH + '/jupytangular2/Utilities/.modules';
 var importer = require('../Core');
 var fs = require('fs');
 var path = require('path');
@@ -24,7 +24,14 @@ var exportNotebook = (notebook) => {
             if(!cells.hasOwnProperty(i)) {
                 continue;
             }
-            const cellPath = path.join(moduleOutput, parent, name, 'cell-' + i + (cells[i].cell_type === 'markdown' ? '.md' : '.js'));
+            var extension;
+            if(cells[i].cell_type === 'markdown') {
+                extension = '.md';
+            } else {
+                extension = '.js';
+            }
+            const cellPath = path.join(moduleOutput, parent, name,
+                                       'cell-' + i + extension);
             fs.writeFileSync(cellPath, cells[i].source.join(''));
             results.push(cellPath);
         }

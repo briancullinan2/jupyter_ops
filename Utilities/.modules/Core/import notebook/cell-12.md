@@ -1,3 +1,1 @@
-How to import a {notebook}?
-
-How to test the import feature?
+Import arbitrary code in to a new context?
