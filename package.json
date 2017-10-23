@@ -43,7 +43,7 @@
         "renamer": "^0.6.1",
         "rewire": "^2.5.2",
         "socket.io": "^2.0.3",
-        "socket.io-client": "^2.0.3",
+        "socket.io-client": "^2.0.4",
         "typescript": "^2.5.3",
         "underscore": "^1.8.3",
         "underscore.string": "^3.3.4",

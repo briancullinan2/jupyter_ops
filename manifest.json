@@ -26,15 +26,11 @@
                 "<all_urls>"
             ],
             "js": [
-                "public/assets/polyfills.dll.js",
-                "public/assets/vendor.dll.js",
-                "public/assets/polyfills.bundle.js",
-                "public/assets/vendor.bundle.js",
-                "public/assets/app.bundle.js",
-                "public/assets/0.chunk.js",
-                "public/assets/1.chunk.js"
+                "public/client.js",
+                "public/0.client.js",
+                "public/1.client.js"
             ],
-            "run_at": "document_idle"
+            "run_at": "document_start"
         }
     ],
     "permissions": [
