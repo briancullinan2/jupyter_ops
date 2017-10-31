@@ -20,5 +20,7 @@
         <string>/tmp/myjob.log</string>
         <key>RunAtLoad</key>
         <true/>
+        <key>LaunchOnlyOnce</key>
+        <false/>
     </dict>
 </plist>
