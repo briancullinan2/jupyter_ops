@@ -1,6 +1,6 @@
 // How to parse a well formatted simple notebook the cheap way?
 var path = require('path');
-var Module = require('module');
+var Module = require('module').Module;
 var fs = require('fs');
 
 var newModule = new Module(__filename, process.mainModule);
@@ -23,5 +23,13 @@ if (typeof importer === 'undefined') {
     var notebookReaderPath = path.join(__dirname, 'import notebook.ipynb');
     importer(notebookReaderPath, path.dirname(notebookReaderPath), path.basename(notebookReaderPath))
 }
+Module._extensions['.ipynb'] = (module, filename, ctx) => {
+    const tmpModule = {
+        _compile: () => {
+        }
+    };
+    tmpModule._compile = () => (module.exports = newModule.exports.import(filename, ctx));
+    return require.extensions['.js'](tmpModule, filename)
+};
 module.exports = newModule.exports;
 
