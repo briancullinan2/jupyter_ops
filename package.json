@@ -31,6 +31,7 @@
         "gulp": "github:gulpjs/gulp#4.0",
         "gulp-clean": "^0.3.2",
         "gulp-copy": "^1.0.1",
+        "gulp-replace": "^0.6.1",
         "gulp-run": "^1.7.1",
         "gulp-tap": "^1.0.1",
         "gulp-watch": "^4.3.11",
