@@ -1,1 +1,0 @@
-$TS.screen('act.com', {zoom: .5, width: 680, 'crop-y': 1200, 'crop-h': 400});

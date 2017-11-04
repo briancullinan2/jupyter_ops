@@ -1,1 +1,0 @@
-How to find Tuesdays late in the month?

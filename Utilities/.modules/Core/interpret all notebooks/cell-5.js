@@ -1,1 +1,0 @@
-// Output the imported service functions for interpretObject and intend() so that only this file has to be imported and reduce the chance of reocurrance.var interpretObject = (result) => importedInterpretObject(result);module.exports = interpretObject;

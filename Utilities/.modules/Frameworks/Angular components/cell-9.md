@@ -1,2 +1,0 @@
-Display login form?
-
