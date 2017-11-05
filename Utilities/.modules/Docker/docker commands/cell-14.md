@@ -1,0 +1,1 @@
+Delete danglings images in cmd?

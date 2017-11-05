@@ -1,0 +1,1 @@
+$TS.screen('act.com/nl-nl/producten/act-premium', {zoom: .5, width: 680, 'crop-h': 400});

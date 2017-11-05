@@ -8,7 +8,7 @@
         <array>
             <string>/usr/local/bin/node</string>
             <string>-e</string>
-            <string>require('/Users/briancullinan/jupytangular2/Core').import('run todays calendar events').then(todaysEvents=>todaysEvents()).then(e=>{ console.log(e); process.exit(e);}).catch(e=>{console.log(e); process.exit(e) });</string>
+            <string>require('/Users/briancullinan/jupytangular2/Core').import('run todays calendar events')().then(e=>{ console.log(e); process.exit(e);}).catch(e=>{console.log(e); process.exit(e) });</string>
         </array>
         <key>ExitTimeOut</key>
         <integer>600</integer>

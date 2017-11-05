@@ -1,38 +1,10 @@
-FROM selenium/standalone-chrome-debug
-
-EXPOSE 4200
-EXPOSE 4444
-EXPOSE 3000
-
-ENV DBUS_SESSION_BUS_ADDRESS /dev/null
-ENV CHROME_USER_DATA_DIR /usr/profile
-WORKDIR /home/seluser
-
-USER root
-RUN mkdir /usr/profile
-RUN mkdir /usr/downloads
-RUN chown seluser:seluser -R /usr/profile
-RUN chown seluser:seluser -R /usr/downloads
-RUN chmod 777 -R /usr/profile
-RUN chmod 777 -R /usr/downloads
-#VOLUME /usr/profile
-#VOLUME /data/downloads
-
-RUN sed -i '/wait \$NODE_PID/ised -i -e s/exit_type":"Crashed/exit_type":"None/g /usr/profile/Default/Preferences &' /opt/bin/entry_point.sh
-RUN sed -i '/wait \$NODE_PID/ised -i -e s/exited_cleanly":false/exited_cleanly":true/g /usr/profile/Default/Preferences &' /opt/bin/entry_point.sh
-
-
-RUN mkdir /var/lib/apt/lists/partial
-RUN apt-get -qq update
-RUN apt-get install -y --fix-missing git curl wget zip unzip vim dos2unix g++ python net-tools make websockify novnc
-RUN mkdir -p novnc ; if git --work-tree=./novnc branch | grep 'master'; then \
+var importer = require('../Core');var fs = require('fs');// add some run commands to the bash scriptvar bashToRun = (code) => code.split('\n').filter(n => n.trim().length > 0).map(l => 'RUN ' + l.trim())    .join('\n').replace(/\\\s*\nRUN\s*/ig, '\\\n ');// create a selenium Dockerfile with a vnc connectionvar seleniumDocker = (outputFile) => {    return importer.interpret([        'run selenium',        // add some extra services        'linux dev tools',        'vnc html',        'vnc docker'    ]).then(r => {        // convert some results to Docker RUN commands instead of bash        r[1].code = bashToRun(r[1].code);        r[2].code = bashToRun(r[2].code);        return r.map(r => r.code).join('\n');    })        .then(r => {            // save the Dockerfile            fs.writeFileSync(outputFile, r);            return r;        })        .catch(e => console.log(e))};module.exports = seleniumDocker;
+RUN RUN mkdir /var/lib/apt/lists/partial
+RUN RUN apt-get -qq update
+RUN RUN apt-get install -y --fix-missing git curl wget zip unzip vim dos2unix g++ python net-tools make websockify novnc
+RUN RUN mkdir -p novnc ; if git --work-tree=./novnc branch | grep 'master'; then \
  echo "Already checked out novnc"; \
  else \
  git clone https://github.com/novnc/noVNC.git ./novnc ; \
  fi ; ls -la novnc ; pwd
-
-RUN dos2unix /home/seluser/novnc/utils/launch.sh
-RUN sed -i -e 's/export GEOMETRY.*/export GEOMETRY="8160x6120x24"/g' /opt/bin/entry_point.sh
-RUN sed -i -e 's/x11vnc/x11vnc -scale 1350x1024 -noxdamage/g' /opt/bin/entry_point.sh
-RUN sed -i '/wait \$NODE_PID/i/home/seluser/novnc/utils/launch.sh --vnc localhost:5900 &' /opt/bin/entry_point.sh
-USER seluser
+COPYact.ecommerce / home / seluser / act.ecommerceCOPYselenium / home / seluser / seleniumWORKDIR / home / seluser / act.ecommerceRUNnpminstallRUNnpmrunbuildWORKDIR / home / seluser / selenium / ecommerceRUNnpminstallRUNsed - i'/wait \$NODE_PID/inpm --prefix /home/seluser/selenium/ecommerce run static &' / opt / bin / entry_point.sh

@@ -1,0 +1,1 @@
+$TS.screen('act.com/au/products/act-pro', {zoom: .5, width: 680, 'crop-h': 400});

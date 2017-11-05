@@ -1,0 +1,1 @@
+How to install a kernel from just the spec?

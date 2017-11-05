@@ -1,0 +1,2 @@
+var importer = require('../Core');var scrapeLinkedInThreads = importer.import('scrape linkedin threads')
+$$.async()scrapeLinkedInThreads()    .then(r => $$.sendResult(r))    .catch(e => $$.sendError(e));
