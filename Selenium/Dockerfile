@@ -22,10 +22,10 @@ RUN sed -i '/wait \$NODE_PID/ised -i -e s/exit_type":"Crashed/exit_type":"None/g
 RUN sed -i '/wait \$NODE_PID/ised -i -e s/exited_cleanly":false/exited_cleanly":true/g /usr/profile/Default/Preferences &' /opt/bin/entry_point.sh
 
 
-RUN mkdir /var/lib/apt/lists/partial
-RUN apt-get -qq update
-RUN apt-get install -y --fix-missing git curl wget zip unzip vim dos2unix g++ python net-tools make websockify novnc
-RUN mkdir -p novnc ; if git --work-tree=./novnc branch | grep master; then \
+RUN RUN mkdir /var/lib/apt/lists/partial
+RUN RUN apt-get -qq update
+RUN RUN apt-get install -y --fix-missing git curl wget zip unzip vim dos2unix g++ python net-tools make websockify novnc
+RUN RUN mkdir -p novnc ; if git --work-tree=./novnc branch | grep master; then \
  echo "Already checked out novnc"; \
  else \
  git clone https://github.com/novnc/noVNC.git ./novnc ; \
