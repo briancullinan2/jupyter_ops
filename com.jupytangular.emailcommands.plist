@@ -13,7 +13,7 @@
             <string>/usr/local/bin/node -e "require('/Users/briancullinan/jupytangular2/Core').import('heartbeat thump')('scan commands email')"</string>
         </array>
         <key>StartInterval</key>
-        <integer>60</integer>
+        <integer>3600</integer>
         <key>StandardOutPath</key>
         <string>/tmp/myjob.log</string>
         <key>StandardErrorPath</key>
