@@ -7,7 +7,7 @@
                 <version>2.0.2</version>
                 <configuration>
                     <processTypes>
-                        <web>java</web>
+                        <web>java -Dwebdriver.chrome.chromedriver=./node_modules/selenium-standalone/.selenium/chromedriver/2.33-x64-chromedriver -jar ./node_modules/selenium-standalone/.selenium/selenium-server/3.7.1-server.jar</web>
                     </processTypes>
                 </configuration>
             </plugin>
