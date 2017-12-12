@@ -3,8 +3,6 @@
     "description": "Automation Notebooks in Jupyter",
     "license": "UNLICENSED",
     "scripts": {
-        "preinstall": "apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++",
-        "postinstall": "selenium-standalone install",
         "start": "ng serve --host 0.0.0.0 --port 9090 --app 0",
         "build": "ng build --prod --environment=prod --aot --app 0",
         "selenium": "selenium-standalone start"
