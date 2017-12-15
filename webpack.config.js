@@ -15,7 +15,7 @@ module.exports = {
     target: 'node',
     entry: './index.js',
     output: {
-        filename: './bundle.js'
+        filename: './.build/bundle.js'
     },
     plugins: [
 //    new webpack.BannerPlugin('require("source-map-support").install();',

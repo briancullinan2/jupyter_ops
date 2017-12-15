@@ -1,1 +1,0 @@
-$TS.screen('act.com/fr-fr/produits/nouveautes', {zoom: .5, width: 680, 'crop-h': 400});

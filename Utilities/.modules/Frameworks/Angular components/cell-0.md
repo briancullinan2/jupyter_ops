@@ -1,2 +1,0 @@
-Display search notebook component?
-

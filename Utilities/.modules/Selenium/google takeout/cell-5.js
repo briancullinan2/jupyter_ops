@@ -1,1 +1,0 @@
-var importer = require('../Core');$$.async();importer.import('order google takeout')    .then(googleTakeout => googleTakeout('chrome'))    .then(r => $$.sendResult(r))    .catch(e => $$.sendError(e));

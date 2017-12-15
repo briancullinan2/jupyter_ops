@@ -1,2 +1,0 @@
-var path = require('path');var getCells = require('../Core').getCells;// interpret notebooks by importing them in to cachevar cacheNotebook = (notebook) => {
-    return cacheCells(getCells(notebook, ['*', 'markdown', 'code']), notebook);};module.exports = cacheNotebook;

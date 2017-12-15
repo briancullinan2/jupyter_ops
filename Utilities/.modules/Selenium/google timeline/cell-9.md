@@ -1,2 +1,0 @@
-Load location export data?
-
