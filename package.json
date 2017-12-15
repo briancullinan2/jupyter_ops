@@ -3,8 +3,8 @@
     "description": "Automation Notebooks in Jupyter",
     "license": "UNLICENSED",
     "scripts": {
-        "start": "ng serve --host 0.0.0.0 --port 9090 --app 0",
-        "build": "ng build --prod --environment=prod --aot --app 0",
+        "start": "",
+        "build": "webpack",
         "selenium": "selenium-standalone start"
     },
     "engines": {
@@ -73,5 +73,8 @@
         "webdriverio": "^4.9.11",
         "xlsx": "^0.11.12",
         "xregexp": "^3.2.0"
+    },
+    "devDependencies": {
+        "webpack": "^3.10.0"
     }
 }
