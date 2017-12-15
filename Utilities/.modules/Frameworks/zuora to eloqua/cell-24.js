@@ -1,5 +1,5 @@
 var importer = require('../Core');
-var syncZuoraToEloqua = importer.import('upload a month to zuora');
+var syncZuoraToEloqua = importer.import('sync zuora');
 
 function handler(event, context, callback) {
     var body = event;
