@@ -2,14 +2,14 @@ var assert = require('assert');
 var fs = require('fs');
 var xlsx = require('xlsx');
 var importer = require('../Core');
-var getQuery = importer.import('zuora query');
+var getQuery = importer.import('zuora renewals query');
 var {
     zuoraBulkExport,
     zuoraBulkExportStatus,
     zuoraBulkExportFile,
     csvToJson,
     mapDataToFields
-} = importer.import('zuora export');
+} = importer.import('zuora export service');
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
 

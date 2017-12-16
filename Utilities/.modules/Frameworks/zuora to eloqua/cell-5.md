@@ -1,1 +1,1 @@
-Zuora renewals query?
+zuora renewals query?

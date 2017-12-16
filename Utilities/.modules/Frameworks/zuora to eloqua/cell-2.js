@@ -2,7 +2,7 @@ var importer = require('../Core');
 var util = require('util');
 var xlsx = require('xlsx');
 var request = importer.import('request polyfill');
-var mapDataToFields = importer.import('map zuora data to eloqua fields');
+var mapDataToFields = importer.import('zuora eloqua mapper');
 
 function getAuthHeaders(zuoraConfig) {
     return {
