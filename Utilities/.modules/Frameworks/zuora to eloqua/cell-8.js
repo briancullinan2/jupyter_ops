@@ -1,9 +1,9 @@
 var util = require('util');
 var importer = require('../Core');
-var request = importer.import('request polyfill');
+var request = importer.import('http request polyfill');
 var {
     createTemplate
-} = importer.import('eloqua template');
+} = importer.import('eloqua create template');
 
 function eloquaOauth(eloquaConfig) {
     if (typeof eloquaConfig === 'undefined'
@@ -106,7 +106,7 @@ function eloquaBulkImport(eloquaToken, eloquaConfig, instance, execution) {
             'Authorization': "Bearer " + eloquaToken.access_token
         }
     }).then(res => {
-        return res.body.uri;
+        return res.body1.uri;
     });
 }
 

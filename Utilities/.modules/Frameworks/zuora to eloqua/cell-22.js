@@ -1,13 +1,13 @@
 var importer = require('../Core');
 var util = require('util');
-var request = importer.import('request polyfill');
+var request = importer.import('http request polyfill');
 var {
     zuoraBulkExport,
     zuoraBulkExportStatus,
     zuoraBulkExportFile,
     csvToJson
-} = importer.import('zuora export');
-var {eloquaOauth} = importer.import('bulk eloqua import');
+} = importer.import('zuora export service');
+var {eloquaOauth} = importer.import('eloqua import service');
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
 
