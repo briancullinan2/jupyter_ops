@@ -179,7 +179,9 @@ module.exports.streamJson = streamJson;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _runInNewContext = __webpack_require__(1);
+var _runInNewContext = function () {
+    var r = __webpack_require__(1);return typeof r === 'function' ? r : (typeof r === 'undefined' ? 'undefined' : _typeof(r)) === 'object' && r !== null && typeof r[Object.keys(r)[0]] === 'function' ? r[Object.keys(r)[0]] : r;
+}();
 // initialize
 var path = __webpack_require__(0);
 var fs = __webpack_require__(2);
@@ -272,7 +274,11 @@ module.exports.import = importNotebook;
 "use strict";
 
 
-var streamJson = __webpack_require__(3);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var streamJson = function () {
+    var r = __webpack_require__(3);return typeof r === 'function' ? r : (typeof r === 'undefined' ? 'undefined' : _typeof(r)) === 'object' && r !== null && typeof r[Object.keys(r)[0]] === 'function' ? r[Object.keys(r)[0]] : r;
+}();
 // initialize
 
 // How to use getCells?
@@ -331,11 +337,13 @@ module.exports.runAllPromises = runAllPromises;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(__dirname) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var runInNewContext = __webpack_require__(1);
+var runInNewContext = function () {
+    var r = __webpack_require__(1);return typeof r === 'function' ? r : (typeof r === 'undefined' ? 'undefined' : _typeof(r)) === 'object' && r !== null && typeof r[Object.keys(r)[0]] === 'function' ? r[Object.keys(r)[0]] : r;
+}();
 
 // initialize
 var path = __webpack_require__(0);
@@ -352,6 +360,7 @@ var interpretObject;
 var cacheCells;
 function interpret(query) {
     if (typeof fuseSearch === 'undefined') {
+        console.log(path.join(__dirname, '../Utilities'));
         var interpreter = [__webpack_require__(24), __webpack_require__(39)].reduce(function (acc, r, i) {
             if (typeof r === 'function') {
                 acc[r.name] = r;
@@ -404,6 +413,7 @@ if (typeof module.exports === 'undefined') {
 module.exports.interpret = interpret;
 
 // $$.done() for our dumb parser
+/* WEBPACK VAR INJECTION */}.call(exports, ".output"))
 
 /***/ }),
 /* 8 */
@@ -2600,7 +2610,7 @@ module.exports = require("jsonpath");
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(__dirname) {var runInNewContext = __webpack_require__(1);
+/* WEBPACK VAR INJECTION */(function(__dirname) {var runInNewContext = (() => { const r = __webpack_require__(1); return typeof r === 'function' ? r : (typeof r === 'object' && r !== null && typeof r[Object.keys(r)[0]] === 'function' ? r[Object.keys(r)[0]] : r); })();
 var path = __webpack_require__(0);
 var glob = __webpack_require__(15);
 var fs = __webpack_require__(2);
@@ -2624,7 +2634,6 @@ function cacheAll(dirname) {
             __filename: search1.filename
         }, {}, false);
     }
-    console.log(dirname);
     return listInProject(dirname, '**/*.ipynb')
         .map(n => cacheCells(importer.getCells(n, ['*', 'markdown', 'code']), n))
 };
@@ -2638,7 +2647,6 @@ if(typeof describe === 'undefined') {
 }
 
 describe('notebook search loader', () => {
-    console.log(path.join(__dirname, '../Utilities'));
     it('should load file-system', () => {
         const filesystemPath = path.join(__dirname, '../Utilities/file system.ipynb');
         assert(fs.existsSync(filesystemPath), 'missing ' + path.resolve(filesystemPath));
@@ -2682,7 +2690,7 @@ module.exports = {
 };
 
 
-/* WEBPACK VAR INJECTION */}.call(exports, "/"))
+/* WEBPACK VAR INJECTION */}.call(exports, ".output"))
 
 /***/ }),
 /* 25 */
@@ -4942,6 +4950,7 @@ function accumulateMarkdown(cells) {
         return md;
     }, []);
 };
+module.exports = accumulateMarkdown;
 
 /***/ }),
 /* 37 */
@@ -4952,6 +4961,7 @@ function accumulateMarkdown(cells) {
 
 // TODO: interpret markdown leading up to code results and find the resulting function in the list
 // for now, the boring solution is to assume all markdown output is a question?
+var path = __webpack_require__(0);
 var MATCH_QUESTIONS = /^.*\?.*$/igm;
 //var re2 = new RegExp('(^|\\n)//.*\\?([\\n\\s]+|$)', 'ig')
 
@@ -5046,7 +5056,9 @@ module.exports = interpretMarkdown;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var runInNewContext = __webpack_require__(1);
+var runInNewContext = function () {
+    var r = __webpack_require__(1);return typeof r === 'function' ? r : (typeof r === 'undefined' ? 'undefined' : _typeof(r)) === 'object' && r !== null && typeof r[Object.keys(r)[0]] === 'function' ? r[Object.keys(r)[0]] : r;
+}();
 var importer = [__webpack_require__(4), __webpack_require__(3), __webpack_require__(5), __webpack_require__(6), __webpack_require__(7), __webpack_require__(8), __webpack_require__(1)].reduce(function (acc, r, i) {
     if (typeof r === 'function') {
         acc[r.name] = r;

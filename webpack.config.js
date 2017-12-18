@@ -53,7 +53,8 @@ module.exports = {
 //      new UglifyJsPlugin(),
     ],
     node: {
-      fs: "empty"
+      fs: "empty",
+      __dirname: true,
     },
     externals: [nodeExternals({
       whitelist: [/^(?:(?!jsonpath|aws-sdk).)*$/]
