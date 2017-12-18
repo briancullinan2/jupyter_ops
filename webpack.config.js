@@ -1,6 +1,8 @@
 var webpack = require('webpack');
 var path = require('path');
 var fs = require('fs');
+var nodeExternals = require('webpack-node-externals');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 /*
 var nodeModules = {};
@@ -48,9 +50,12 @@ module.exports = {
       ]
     },
     plugins: [
-      new webpack.optimize.UglifyJsPlugin(),
+//      new UglifyJsPlugin(),
     ],
     node: {
+      fs: "empty"
     },
-//  externals: nodeModules
+    externals: [nodeExternals({
+      whitelist: [/^(?:(?!jsonpath|aws-sdk).)*$/]
+    })],
 }
