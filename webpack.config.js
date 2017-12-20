@@ -19,44 +19,64 @@ module.exports = {
     target: 'node',
     entry: './.output/aws-rpc-wrapper.js',
     output: {
-      path: __dirname + '/.build',
-      filename: 'bundle.js',
-      libraryTarget: 'commonjs2'
+        path: __dirname,
+        filename: 'bundle.js',
+        libraryTarget: 'commonjs2'
     },
     resolve: {
-      extensions: ['.ts', '.js'],
-      modules: [
-          'node_modules',
-          path.resolve(__dirname, '..', 'node_modules')
-      ]
+        extensions: ['.ts', '.js', '.json'],
+        modules: [
+            'node_modules',
+            path.resolve(__dirname, '..', 'node_modules')
+        ]
     },
     module: {
-      rules: [
-        {
-            test: /^(?!.*\.spec\.js$).*\.js$/,
-            loader: 'babel-loader',
-            query: {
-              presets: ['latest']
+        rules: [
+            {
+                test: /^(?!.*\.spec\.js$).*\.js$/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['latest']
+                }
+            },
+            {
+                test: /(\.json)|(package\.json)$/,
+                loader: 'json-loader'
             }
-        },
-        /*
-        {
-            test: /^(?!.*\.spec\.ts$).*\.ts$/,
-            loader: 'tslint-loader',
-            enforce: 'pre',
-            options: {emitErrors: true, failOnHint:true}
-        },
-        */
-      ]
+            /*
+            {
+                test: /^(?!.*\.spec\.ts$).*\.ts$/,
+                loader: 'tslint-loader',
+                enforce: 'pre',
+                options: {emitErrors: true, failOnHint:true}
+            },
+            */
+        ]
     },
     plugins: [
-//      new UglifyJsPlugin(),
+      new UglifyJsPlugin({
+        uglifyOptions: {
+            compress: {
+                keep_fnames: true
+            },
+            mangle: {
+                keep_fnames: true
+            }
+        }
+      }),
+      new webpack.ProvidePlugin({
+          'document': 'min-document',
+          'self': 'node-noop',
+          'self.navigator.userAgent': 'empty-string',
+          'window': 'node-noop'
+      })
     ],
     node: {
-      fs: "empty",
-      __dirname: true,
-    },
+        fs: 'empty',
+        __dirname: true
+    }
+    /*
     externals: [nodeExternals({
       whitelist: [/^(?:(?!jsonpath|aws-sdk).)*$/]
-    })],
+    })],*/
 }

@@ -4,6 +4,7 @@
     "license": "UNLICENSED",
     "scripts": {
         "start": "",
+        "prebuild": "node -e \"require('/Users/briancullinan/jupytangular2/Core').import('export deploy notebook')('rpc.ipynb')\"",
         "build": "webpack",
         "selenium": "selenium-standalone start"
     },
@@ -46,6 +47,7 @@
         "imap-simple": "^3.2.0",
         "jsdom": "^11.5.1",
         "jsonpath": "^1.0.0",
+        "jsonpath-plus": "^0.16.0",
         "lockfile": "^1.0.3",
         "memory-fs": "git+https://github.com/webpack/memory-fs.git",
         "mocha": "^4.0.1",
@@ -78,6 +80,7 @@
         "babel-core": "^6.26.0",
         "babel-loader": "^7.1.2",
         "babel-preset-latest": "^6.24.1",
+        "node-noop": "^1.0.0",
         "uglifyjs-webpack-plugin": "^1.1.4",
         "webpack": "^3.10.0",
         "webpack-node-externals": "^1.6.0"
