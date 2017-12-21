@@ -4,7 +4,7 @@
     "license": "UNLICENSED",
     "scripts": {
         "start": "",
-        "prebuild": "node -e \"require('/Users/briancullinan/jupytangular2/Core').import('export deploy notebook')('rpc.ipynb')\"",
+        "prebuild": "node -e \"require('/Users/briancullinan/jupytangular2/Core').import('export deploy notebook')('aws.ipynb[rpc wrapper]')\"",
         "build": "webpack",
         "selenium": "selenium-standalone start"
     },
