@@ -17,7 +17,11 @@ fs.readdirSync('node_modules')
 
 module.exports = {
     target: 'node',
-    entry: './.output/aws-rpc-wrapper.js',
+    entry: [
+        'es6-shim',
+        'babel-polyfill',
+        './.output/aws-rpc-wrapper.js'
+    ],
     output: {
         path: __dirname,
         filename: 'bundle.js',
@@ -54,6 +58,7 @@ module.exports = {
         ]
     },
     plugins: [
+        /*
       new UglifyJsPlugin({
         uglifyOptions: {
             compress: {
@@ -63,7 +68,7 @@ module.exports = {
                 keep_fnames: true
             }
         }
-      }),
+      }),*/
       new webpack.ProvidePlugin({
           'document': 'min-document',
           'self': 'node-noop',

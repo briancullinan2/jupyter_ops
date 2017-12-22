@@ -44,8 +44,6 @@
         "Function",
         "Public"
     ],
-    "interpret all notebooks.ipynb[get markdown from all notebooks in {directory}]": [],
-    "interpret all notebooks.ipynb[test notebook search]": [],
     "reconcile timeline data.ipynb[#  read Google calendar and timeline data]": [],
     "import notebook.ipynb[#  execute and import a jupyter notebook]": [
         "Function",
@@ -92,7 +90,9 @@
         "Public"
     ],
     "interpret all notebooks.ipynb[find all notebooks]": [],
+    "interpret all notebooks.ipynb[get markdown from all notebooks in {directory}]": [],
     "interpret all notebooks.ipynb[interpret a jupyter {directory}]": [],
+    "interpret all notebooks.ipynb[test notebook search]": [],
     "interpret questions.ipynb[find questions leading up to jupter cells]": [
         "Function",
         "Public"
@@ -379,10 +379,7 @@
         "Public"
     ],
     "zuora to eloqua.ipynb[sync zuora eloqua end to end]": [],
-    "zuora to eloqua.ipynb[Create an access key for AWS: https://console.aws.amazon.com/iam/homenc2=h_m_sc#/security_credential]": [
-        "Function",
-        "Public"
-    ],
+    "zuora to eloqua.ipynb[Create an access key for AWS: https://console.aws.amazon.com/iam/homenc2=h_m_sc#/security_credential]": [],
     "zuora to eloqua.ipynb[readme]": [],
     "Good UX Intro.ipynb[Pretty simple right]": [],
     "Good UX Intro.ipynb[How do the pieces fit together]": [],
@@ -536,10 +533,7 @@
     "github.ipynb[Automatically heart issues where the solution works or a pull request is made]": [
         "Selenium"
     ],
-    "github.ipynb[Diff all package.json to identify project/stack/popularity trends]": [
-        "Function",
-        "Public"
-    ],
+    "github.ipynb[Diff all package.json to identify project/stack/popularity trends]": [],
     "github.ipynb[,download github]": [
         "Selenium"
     ],
@@ -954,7 +948,15 @@
         "Function",
         "Public"
     ],
+    "notebook.ipynb[automatic jupyter dependency injector]": [
+        "Function",
+        "Public"
+    ],
     "notebook.ipynb[export deploy notebook coordinator]": [
+        "Function",
+        "Public"
+    ],
+    "notebook.ipynb[inject cells in to notebooks when built with webpack]": [
         "Function",
         "Public"
     ],
