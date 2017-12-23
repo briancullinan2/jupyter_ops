@@ -58,7 +58,6 @@ module.exports = {
         ]
     },
     plugins: [
-        /*
       new UglifyJsPlugin({
         uglifyOptions: {
             compress: {
@@ -68,7 +67,7 @@ module.exports = {
                 keep_fnames: true
             }
         }
-      }),*/
+      }),
       new webpack.ProvidePlugin({
           'document': 'min-document',
           'self': 'node-noop',
