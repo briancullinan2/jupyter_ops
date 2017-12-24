@@ -32,6 +32,10 @@
         "Function",
         "Public"
     ],
+    "orchestration.ipynb[latest s3 bucket]": [
+        "Function",
+        "Public"
+    ],
     "file system.ipynb[project word-cloud]": [
         "Function",
         "Public"
@@ -379,7 +383,10 @@
         "Public"
     ],
     "zuora to eloqua.ipynb[sync zuora eloqua end to end]": [],
-    "zuora to eloqua.ipynb[Create an access key for AWS: https://console.aws.amazon.com/iam/homenc2=h_m_sc#/security_credential]": [],
+    "zuora to eloqua.ipynb[Create an access key for AWS: https://console.aws.amazon.com/iam/homenc2=h_m_sc#/security_credential]": [
+        "Function",
+        "Public"
+    ],
     "zuora to eloqua.ipynb[readme]": [],
     "Good UX Intro.ipynb[Pretty simple right]": [],
     "Good UX Intro.ipynb[How do the pieces fit together]": [],
@@ -389,7 +396,9 @@
     "Good UX Intro.ipynb[3. How does the sales team benefit from this]": [],
     "Good UX Intro.ipynb[2. Product owner: Begin.  Good on regressions]": [],
     "avidbrain.ipynb[Test avidbrain]": [
-        "Selenium"
+        "Selenium",
+        "Function",
+        "Public"
     ],
     "data collection.ipynb[https://www.maricopacountyattorney.org/CivicAlerts.aspxAID=400]": [],
     "data collection.ipynb[Crime reports]": [
@@ -533,7 +542,10 @@
     "github.ipynb[Automatically heart issues where the solution works or a pull request is made]": [
         "Selenium"
     ],
-    "github.ipynb[Diff all package.json to identify project/stack/popularity trends]": [],
+    "github.ipynb[Diff all package.json to identify project/stack/popularity trends]": [
+        "Function",
+        "Public"
+    ],
     "github.ipynb[,download github]": [
         "Selenium"
     ],
@@ -541,6 +553,9 @@
         "Selenium"
     ],
     "google authorize.ipynb[, exchange token for oauth client]": [
+        "Selenium"
+    ],
+    "google authorize.ipynb[google oauth token client]": [
         "Selenium"
     ],
     "google authorize.ipynb[use selenium to authorize Google access]": [
@@ -677,6 +692,11 @@
         "Function",
         "Public"
     ],
+    "orchestration.ipynb[screenshot all sessions]": [
+        "Selenium",
+        "Function",
+        "Public"
+    ],
     "selenium commands.ipynb[# What is Selenium]": [
         "Selenium"
     ],
@@ -783,7 +803,10 @@
     "What is Selenium.ipynb[connect to VNC through the web browser]": [
         "Selenium"
     ],
-    "What is Selenium.ipynb[[Click here to open](http://localhost:6080/vnc.htmlpassword=secret&host=localhost&port=6080&autoconnect=true&resize=downscale&view_only=true&reconnect=true) in a separate browser]": [],
+    "What is Selenium.ipynb[[Click here to open](http://localhost:6080/vnc.htmlpassword=secret&host=localhost&port=6080&autoconnect=true&resize=downscale&view_only=true&reconnect=true) in a separate browser]": [
+        "Function",
+        "Public"
+    ],
     "What is Selenium.ipynb[run a selenium cell on the Docker machine]": [
         "Selenium",
         "Function",
