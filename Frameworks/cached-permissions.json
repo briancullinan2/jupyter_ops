@@ -40,14 +40,19 @@
         "Function",
         "Public"
     ],
-    "file system.ipynb[Find similar filename in project]": [],
-    "file system.ipynb[list project files]": [],
-    "file system.ipynb[List all projects by names]": [],
-    "file system.ipynb[(=\\{((:[^{}]++|\\{(1)\\})++)\\})]": [
-        "Selenium",
+    "file system.ipynb[project imports d3 tree]": [
         "Function",
         "Public"
     ],
+    "file system.ipynb[Find similar filename in project]": [],
+    "file system.ipynb[list project files]": [],
+    "file system.ipynb[List all projects by names]": [],
+    "file system.ipynb[Find too long of functions using regexp]": [
+        "Function",
+        "Public"
+    ],
+    "file system.ipynb[]": [],
+    "budgeting.ipynb[]": [],
     "reconcile timeline data.ipynb[#  read Google calendar and timeline data]": [],
     "import notebook.ipynb[#  execute and import a jupyter notebook]": [
         "Function",
@@ -93,6 +98,7 @@
         "Function",
         "Public"
     ],
+    "import notebook.ipynb[]": [],
     "interpret all notebooks.ipynb[find all notebooks]": [],
     "interpret all notebooks.ipynb[get markdown from all notebooks in {directory}]": [],
     "interpret all notebooks.ipynb[interpret a jupyter {directory}]": [],
@@ -133,10 +139,13 @@
         "Function",
         "Public"
     ],
+    "interpret questions.ipynb[]": [],
     "test import.ipynb[>TODO:  MAKE THIS HEADER SMALLER]": [],
     "test import.ipynb[provide this command as a service to other notebooks]": [],
     "test import.ipynb[What to include to create inheritence in jupyter]": [],
+    "test import.ipynb[]": [],
     "test import.ipynb[import functions from notebooks]": [],
+    "demo.ipynb[]": [],
     "demo.ipynb[Markdown cell: What question does this code set out to answer]": [],
     "demo.ipynb[#  use Docker]": [],
     "demo.ipynb[Code cell: A short function with any necessary definition functions]": [],
@@ -150,6 +159,7 @@
     "docker commands.ipynb[Delete images in cmd]": [],
     "docker commands.ipynb[Delete danglings images in cmd]": [],
     "docker demo.ipynb[# What is Docker]": [],
+    "dotnet.ipynb[]": [],
     "install Docker on Mac.ipynb[#  install Docker on Mac]": [],
     "install Docker on Mac.ipynb[Is Docker already installed]": [],
     "install Docker on Mac.ipynb[Where do I download docker,What other tools do I need]": [],
@@ -163,8 +173,11 @@
     "node install.ipynb[#  use nodejs]": [],
     "node install.ipynb[install node on Linux]": [],
     "node install.ipynb[Install dev tools on Linux]": [],
+    "node install.ipynb[]": [],
+    "math.ipynb[]": [],
     "Angular 2.ipynb[# What is Angular 2]": [],
     "Angular 2.ipynb[How has Angular changed the architecture of software design]": [],
+    "Angular 2.ipynb[]": [],
     "Angular components.ipynb[Display search notebook component]": [],
     "Angular components.ipynb[Search notebook service]": [],
     "Angular components.ipynb[Display code results]": [],
@@ -172,16 +185,21 @@
         "Function",
         "Public"
     ],
+    "Angular components.ipynb[]": [],
     "Angular components.ipynb[Display login form]": [],
     "Angular components.ipynb[Authentication service]": [],
     "angular core modules.ipynb[Useful list of material and core modules]": [],
     "angular render service.ipynb[render Angular modules instead of using express]": [],
+    "angular render service.ipynb[]": [],
+    "angular-cli.ipynb[]": [],
     "autorewire.ipynb[install autorewire]": [],
     "autorewire.ipynb[mock all properties and functions using rewire]": [],
+    "autorewire.ipynb[]": [],
     "aws.ipynb[aws rpc wrapper]": [
         "Function",
         "Public"
     ],
+    "aws.ipynb[]": [],
     "build Angular components.ipynb[#  build Angular components using nodejs]": [
         "Function",
         "Public"
@@ -195,6 +213,7 @@
         "Public"
     ],
     "build Angular components.ipynb[Compile the project using webpack]": [],
+    "build Angular components.ipynb[]": [],
     "build Angular components.ipynb[Set angular theme colors]": [],
     "build Angular components.ipynb[run angular project from memory]": [],
     "build Angular components.ipynb[- more debuggable ES5 sourcemaps]": [],
@@ -208,6 +227,7 @@
         "Function",
         "Public"
     ],
+    "d3.ipynb[]": [],
     "d3.ipynb[d3 pie chart]": [
         "Function",
         "Public"
@@ -228,7 +248,9 @@
     "deploy host.ipynb[deploy aws]": [],
     "display angular.ipynb[Include the script in the response]": [],
     "display angular.ipynb[Display angular modules in jupyter]": [],
+    "display angular.ipynb[]": [],
     "fizz buzz.ipynb[http://wiki.c2.com/FizzBuzzTest]": [],
+    "fizz buzz.ipynb[]": [],
     "git repos.ipynb[# What repositories do we need]": [],
     "git repos.ipynb[Act ecommerce repository]": [],
     "git repos.ipynb[Act selenium repository]": [],
@@ -239,9 +261,11 @@
     "git repos.ipynb[run the Docker image]": [],
     "git repos.ipynb[Selenium test scripts]": [],
     "google.ipynb[firebase rpc wrapper]": [],
+    "google.ipynb[]": [],
     "gulp.ipynb[use gulp]": [],
     "gulp.ipynb[convert a gulp task to a Promise]": [],
     "gulp.ipynb[use a Promise as a gulp task]": [],
+    "gulp.ipynb[]": [],
     "gulp.ipynb[Apply universal to angular project]": [],
     "gulp.ipynb[Fix project relatives as a service for updating files when they change]": [],
     "gulp.ipynb[Find relative paths and includes]": [
@@ -250,16 +274,20 @@
     ],
     "How code should look.ipynb[# How do I want code to look]": [],
     "How code should look.ipynb[# How code should look]": [],
+    "identity server.ipynb[]": [],
     "identity server.ipynb[set up identity server]": [],
     "jupyter interaction.ipynb[Interactive cells in juypter]": [],
     "Jupyter language kernels.ipynb[#  install extra kernels in jupyter]": [],
     "Jupyter language kernels.ipynb[install bash kernel]": [],
     "Jupyter language kernels.ipynb[install ipython kernel]": [],
     "Jupyter language kernels.ipynb[install ICSharp (C#) kernel]": [],
+    "Jupyter language kernels.ipynb[]": [],
     "Jupyter language kernels.ipynb[install ruby]": [],
     "Jupyter language kernels.ipynb[install Powershell]": [],
     "jwt in csharp.ipynb[use JSON web tokens in C#]": [],
+    "jwt in csharp.ipynb[]": [],
     "karma template.ipynb[Generate a bunch of spec files]": [],
+    "karma template.ipynb[]": [],
     "ngx-translate.ipynb[Find unused/misplaced translation strings]": [],
     "node express.ipynb[#  use nodejs express]": [],
     "node express.ipynb[start a proxy using express]": [],
@@ -272,6 +300,7 @@
     "node express.ipynb[{output} image elements in the requested {format}]": [],
     "node express.ipynb[stop express server]": [],
     "node express.ipynb[express rpc wrapper]": [],
+    "node express.ipynb[]": [],
     "node simple-imap.ipynb[#  use nodejs simple-imap]": [
         "Function",
         "Public"
@@ -323,6 +352,7 @@
         "Function",
         "Public"
     ],
+    "node simple-imap.ipynb[]": [],
     "promisify automock socketio.ipynb[install promisify autorewire socketio notebook]": [
         "Function",
         "Public"
@@ -337,6 +367,7 @@
         "Public"
     ],
     "promisify automock socketio.ipynb[Check if sockify server is running]": [],
+    "promisify automock socketio.ipynb[]": [],
     "register jupter kernels.ipynb[install a kernel from just the spec]": [],
     "rpc.ipynb[filter command permission]": [
         "Function",
@@ -350,6 +381,7 @@
         "Function",
         "Public"
     ],
+    "rpc.ipynb[]": [],
     "test runner.ipynb[test cells continuously]": [
         "Function",
         "Public"
@@ -359,6 +391,7 @@
         "Public"
     ],
     "test runner.ipynb[test test runner]": [],
+    "test runner.ipynb[]": [],
     "zuora to eloqua.ipynb[,zuora export service]": [],
     "zuora to eloqua.ipynb[zuora export test]": [],
     "zuora to eloqua.ipynb[zuora renewals query]": [
@@ -374,6 +407,7 @@
     "zuora to eloqua.ipynb[eloqua import create template]": [],
     "zuora to eloqua.ipynb[eloqua import test]": [],
     "zuora to eloqua.ipynb[zuora eloqua express mock]": [],
+    "zuora to eloqua.ipynb[]": [],
     "zuora to eloqua.ipynb[aws entry point]": [
         "Function",
         "Public"
@@ -388,17 +422,25 @@
         "Public"
     ],
     "zuora to eloqua.ipynb[readme]": [],
+    "2017 Update.ipynb[]": [],
+    "ECommerce.ipynb[]": [],
     "Good UX Intro.ipynb[Pretty simple right]": [],
     "Good UX Intro.ipynb[How do the pieces fit together]": [],
     "Good UX Intro.ipynb[What benefits are we giving to the customer by presenting a subscription portal]": [],
     "Good UX Intro.ipynb[1. Who benefits from this]": [],
     "Good UX Intro.ipynb[2. How does the company benefit from this]": [],
     "Good UX Intro.ipynb[3. How does the sales team benefit from this]": [],
+    "Good UX Intro.ipynb[]": [],
     "Good UX Intro.ipynb[2. Product owner: Begin.  Good on regressions]": [],
+    "Landing Pages.ipynb[]": [],
+    "Wireframing.ipynb[]": [],
     "avidbrain.ipynb[Test avidbrain]": [
         "Selenium",
         "Function",
         "Public"
+    ],
+    "avidbrain.ipynb[]": [
+        "Selenium"
     ],
     "data collection.ipynb[https://www.maricopacountyattorney.org/CivicAlerts.aspxAID=400]": [],
     "data collection.ipynb[Crime reports]": [
@@ -420,6 +462,9 @@
         "Selenium",
         "Function",
         "Public"
+    ],
+    "facebook connections.ipynb[]": [
+        "Selenium"
     ],
     "facebook connections.ipynb[sync facebook contacts with google contacts]": [
         "Selenium",
@@ -459,6 +504,9 @@
         "Function",
         "Public"
     ],
+    "facebook data.ipynb[]": [
+        "Selenium"
+    ],
     "facebook data.ipynb[Scrape facebook friends]": [
         "Selenium",
         "Function",
@@ -495,6 +543,9 @@
         "Function",
         "Public"
     ],
+    "facebook messaging.ipynb[]": [
+        "Selenium"
+    ],
     "facebook messaging.ipynb[send facebook message]": [
         "Selenium",
         "Function",
@@ -524,6 +575,9 @@
         "Function",
         "Public"
     ],
+    "forms.ipynb[]": [
+        "Selenium"
+    ],
     "github.ipynb[Follow someone more closely]": [
         "Selenium"
     ],
@@ -549,6 +603,9 @@
     "github.ipynb[,download github]": [
         "Selenium"
     ],
+    "github.ipynb[]": [
+        "Selenium"
+    ],
     "google authorize.ipynb[authenticate to Google APIs]": [
         "Selenium"
     ],
@@ -563,6 +620,9 @@
         "Function",
         "Public"
     ],
+    "google authorize.ipynb[]": [
+        "Selenium"
+    ],
     "google takeout.ipynb[download google takeout]": [
         "Selenium",
         "Function",
@@ -572,6 +632,9 @@
         "Selenium",
         "Function",
         "Public"
+    ],
+    "google takeout.ipynb[]": [
+        "Selenium"
     ],
     "google takeout.ipynb[d3 stream my chrome history by category and site sub-divided]": [
         "Selenium"
@@ -606,6 +669,9 @@
         "Function",
         "Public"
     ],
+    "google timeline.ipynb[]": [
+        "Selenium"
+    ],
     "linkedin connections.ipynb[sync linkedin contacts with google contacts]": [
         "Selenium",
         "Function",
@@ -620,6 +686,9 @@
         "Selenium",
         "Function",
         "Public"
+    ],
+    "linkedin connections.ipynb[]": [
+        "Selenium"
     ],
     "linkedin connections.ipynb[connect on linkedin]": [
         "Selenium"
@@ -654,6 +723,9 @@
         "Function",
         "Public"
     ],
+    "linkedin messages.ipynb[]": [
+        "Selenium"
+    ],
     "linkedin messages.ipynb[scan for commands linkedin]": [
         "Selenium"
     ],
@@ -676,6 +748,9 @@
         "Selenium",
         "Function",
         "Public"
+    ],
+    "orchestration.ipynb[]": [
+        "Selenium"
     ],
     "orchestration.ipynb[send a joke]": [
         "Selenium",
@@ -700,10 +775,16 @@
     "selenium commands.ipynb[# What is Selenium]": [
         "Selenium"
     ],
+    "selenium commands.ipynb[]": [
+        "Selenium"
+    ],
     "selenium commands.ipynb[Run selenium inside of docker]": [
         "Selenium"
     ],
     "selenium demo.ipynb[Start the selenium server and crawl 16 search results at once]": [
+        "Selenium"
+    ],
+    "selenium demo.ipynb[]": [
         "Selenium"
     ],
     "selenium server.ipynb[Start a selenium http express server]": [
@@ -711,11 +792,22 @@
         "Function",
         "Public"
     ],
+    "selenium server.ipynb[]": [
+        "Selenium"
+    ],
+    "send social message.ipynb[]": [
+        "Selenium"
+    ],
     "service auth.ipynb[Decrypt passwords.json]": [
         "Selenium"
     ],
     "service auth.ipynb[Add encrypted to passwords.json]": [
         "Selenium"
+    ],
+    "service auth.ipynb[]": [
+        "Selenium",
+        "Function",
+        "Public"
     ],
     "service auth.ipynb[download passwords from google]": [
         "Selenium",
@@ -775,6 +867,9 @@
     "webdriver.ipynb[verify session]": [
         "Selenium"
     ],
+    "webdriver.ipynb[]": [
+        "Selenium"
+    ],
     "webdriver.ipynb[end the webdriver service]": [
         "Selenium"
     ],
@@ -798,6 +893,9 @@
         "Public"
     ],
     "What is Selenium.ipynb[set up selenium server]": [
+        "Selenium"
+    ],
+    "What is Selenium.ipynb[]": [
         "Selenium"
     ],
     "What is Selenium.ipynb[connect to VNC through the web browser]": [
@@ -826,29 +924,33 @@
         "Function",
         "Public"
     ],
+    "you earned it.ipynb[]": [
+        "Selenium"
+    ],
     "child process.ipynb[Spawning child processes]": [
         "Function",
         "Public"
     ],
+    "child process.ipynb[]": [],
     "compress.ipynb[Minified lzw compression]": [],
+    "compress.ipynb[]": [],
     "dates.ipynb[find Tuesdays late in the month]": [],
     "dates.ipynb[Convert a date to ISO]": [],
     "dates.ipynb[sum a list of events]": [],
     "dates.ipynb[Number of days between events]": [],
     "dates.ipynb[display recurrence line graph]": [],
+    "dates.ipynb[]": [],
     "diff.ipynb[diff]": [],
     "diff.ipynb[diff code blocks]": [],
+    "diff.ipynb[]": [],
     "file system.ipynb[use memory-fs and rewire to audit cli events]": [],
-    "file system.ipynb[project imports d3 tree]": [
-        "Function",
-        "Public"
-    ],
     "file system.ipynb[Fix project paths]": [
         "Function",
         "Public"
     ],
     "file system.ipynb[List files in a project excluding some excessive searches locations]": [],
-    "file system.ipynb[Find too long of functions using regexp]": [
+    "file system.ipynb[(=\\{((:[^{}]++|\\{(1)\\})++)\\})]": [
+        "Selenium",
         "Function",
         "Public"
     ],
@@ -860,6 +962,7 @@
     "git commands.ipynb[compare git branches]": [],
     "git commands.ipynb[interesting git commands]": [],
     "git.ipynb[Rename a bunch of files using Git and renamer]": [],
+    "git.ipynb[]": [],
     "git.ipynb[json git tree]": [
         "Function",
         "Public"
@@ -888,6 +991,7 @@
         "Function",
         "Public"
     ],
+    "google calendar.ipynb[]": [],
     "google calendar.ipynb[Correct calendar dates for timeMax and timeMin]": [],
     "google calendar.ipynb[Lookup calendar id by name or id]": [],
     "google calendar.ipynb[Show a d3 pie chart of time spent on projects]": [],
@@ -916,6 +1020,7 @@
         "Function",
         "Public"
     ],
+    "google contacts.ipynb[]": [],
     "google maps.ipynb[find a place using Google maps]": [
         "Function",
         "Public"
@@ -924,6 +1029,7 @@
         "Function",
         "Public"
     ],
+    "google maps.ipynb[]": [],
     "google maps.ipynb[use Google Geocaching]": [],
     "google maps.ipynb[cache locations nearby]": [
         "Function",
@@ -933,9 +1039,14 @@
         "Function",
         "Public"
     ],
+    "heartbeat.ipynb[run todays heartbeat items]": [],
+    "heartbeat.ipynb[]": [],
     "levenshtein.ipynb[Find the levenshtein distance]": [],
     "levenshtein.ipynb[Sort by levenshtein distance]": [],
+    "levenshtein.ipynb[]": [],
     "mono.ipynb[run Mono with docker]": [],
+    "mono.ipynb[]": [],
+    "nmap.ipynb[]": [],
     "notebook.ipynb[export cells as modules]": [
         "Function",
         "Public"
@@ -955,6 +1066,7 @@
     "notebook.ipynb[test notebook export]": [],
     "notebook.ipynb[import all cell modules]": [],
     "notebook.ipynb[import files back in to cells (two-way workflow)]": [],
+    "notebook.ipynb[]": [],
     "notebook.ipynb[import module as notebook cell]": [
         "Function",
         "Public"
@@ -992,14 +1104,20 @@
         "Function",
         "Public"
     ],
+    "npm.ipynb[]": [],
     "openssl.ipynb[create a trusted root CA]": [],
+    "openssl.ipynb[]": [],
     "openssl.ipynb[generate a self-signed cert]": [],
+    "parse.ipynb[]": [],
     "polyfills.ipynb[http request pollyfill]": [
         "Function",
         "Public"
     ],
+    "polyfills.ipynb[]": [],
+    "sql to json.ipynb[]": [],
     "uuid.ipynb[Generate a universally unique identifier]": [],
     "vnc.ipynb[# What is VNC]": [],
+    "vnc.ipynb[]": [],
     "vnc.ipynb[VNC HTML client]": [],
     "vnc.ipynb[Use vnc with live-server]": [],
     "vnc.ipynb[VNC in Docker]": []

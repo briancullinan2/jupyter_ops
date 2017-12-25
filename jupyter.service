@@ -1,0 +1,11 @@
+[Unit]
+Description=Selenium service
+
+[Service]
+ExecStart=/opt/bin/entry_point.sh
+User=seluser
+MemoryMax=600M
+
+[Install]
+WantedBy=multi-user.target
+

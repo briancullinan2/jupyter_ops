@@ -63,9 +63,7 @@ module.exports = {
             compress: {
                 keep_fnames: true
             },
-            mangle: {
-                keep_fnames: true
-            }
+            mangle: false
         }
       }),
       new webpack.ProvidePlugin({
