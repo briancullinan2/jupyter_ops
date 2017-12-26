@@ -1039,7 +1039,10 @@
         "Function",
         "Public"
     ],
-    "heartbeat.ipynb[run todays heartbeat items]": [],
+    "heartbeat.ipynb[run todays heartbeat items]": [
+        "Function",
+        "Public"
+    ],
     "heartbeat.ipynb[]": [],
     "levenshtein.ipynb[Find the levenshtein distance]": [],
     "levenshtein.ipynb[Sort by levenshtein distance]": [],
