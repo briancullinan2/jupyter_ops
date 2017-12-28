@@ -305,7 +305,10 @@
         "Function",
         "Public"
     ],
-    "node simple-imap.ipynb[log in to Gmail using imap-simple/node IMAP]": [],
+    "node simple-imap.ipynb[log in to Gmail using imap-simple/node IMAP]": [
+        "Function",
+        "Public"
+    ],
     "node simple-imap.ipynb[temporarily allow less secure apps]": [
         "Function",
         "Public"
@@ -417,10 +420,7 @@
         "Public"
     ],
     "zuora to eloqua.ipynb[sync zuora eloqua end to end]": [],
-    "zuora to eloqua.ipynb[Create an access key for AWS: https://console.aws.amazon.com/iam/homenc2=h_m_sc#/security_credential]": [
-        "Function",
-        "Public"
-    ],
+    "zuora to eloqua.ipynb[Create an access key for AWS: https://console.aws.amazon.com/iam/homenc2=h_m_sc#/security_credential]": [],
     "zuora to eloqua.ipynb[readme]": [],
     "2017 Update.ipynb[]": [],
     "ECommerce.ipynb[]": [],
@@ -888,10 +888,7 @@
         "Function",
         "Public"
     ],
-    "What is Selenium.ipynb[See [What is Docker](What%20is%20Docker.ipynb)]": [
-        "Function",
-        "Public"
-    ],
+    "What is Selenium.ipynb[See [What is Docker](What%20is%20Docker.ipynb)]": [],
     "What is Selenium.ipynb[set up selenium server]": [
         "Selenium"
     ],
@@ -901,10 +898,7 @@
     "What is Selenium.ipynb[connect to VNC through the web browser]": [
         "Selenium"
     ],
-    "What is Selenium.ipynb[[Click here to open](http://localhost:6080/vnc.htmlpassword=secret&host=localhost&port=6080&autoconnect=true&resize=downscale&view_only=true&reconnect=true) in a separate browser]": [
-        "Function",
-        "Public"
-    ],
+    "What is Selenium.ipynb[[Click here to open](http://localhost:6080/vnc.htmlpassword=secret&host=localhost&port=6080&autoconnect=true&resize=downscale&view_only=true&reconnect=true) in a separate browser]": [],
     "What is Selenium.ipynb[run a selenium cell on the Docker machine]": [
         "Selenium",
         "Function",
@@ -975,6 +969,12 @@
         "Function",
         "Public"
     ],
+    "git.ipynb[check github for commits since the current one]": [],
+    "git.ipynb[Rebase squash cherrypick automatically to create perfect feature branch]": [],
+    "git.ipynb[Reset each file one at a time to make sure there aren't any unnecessary changes]": [],
+    "git.ipynb[Use unit testing to warn about unnecessary modules]": [],
+    "git.ipynb[Plot when a TODO: item is added and when it is removed on Google Calendar, then verify by checking commit -messages, remaining comments/function names with matching keywords (split by camel casing), plot dates completed for measurement of self set tasks and short term goals, which activities are harder than others  better insight in to erroneous developer time estimates]": [],
+    "git.ipynb[Interface for searching all TODO: items  Calendar]": [],
     "google calendar.ipynb[#  use Google calendar API]": [
         "Function",
         "Public"
