@@ -36,6 +36,10 @@
         "Function",
         "Public"
     ],
+    "git.ipynb[tip git tree]": [
+        "Function",
+        "Public"
+    ],
     "file system.ipynb[project word-cloud]": [
         "Function",
         "Public"
@@ -959,10 +963,6 @@
     "git.ipynb[Rename a bunch of files using Git and renamer]": [],
     "git.ipynb[]": [],
     "git.ipynb[json git tree]": [
-        "Function",
-        "Public"
-    ],
-    "git.ipynb[tip git tree]": [
         "Function",
         "Public"
     ],
