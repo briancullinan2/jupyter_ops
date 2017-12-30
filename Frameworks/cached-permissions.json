@@ -419,6 +419,10 @@
         "Function",
         "Public"
     ],
+    "zuora to eloqua.ipynb[zuora export month]": [
+        "Function",
+        "Public"
+    ],
     "zuora to eloqua.ipynb[sync zuora eloqua]": [
         "Function",
         "Public"
@@ -601,10 +605,7 @@
     "github.ipynb[Automatically heart issues where the solution works or a pull request is made]": [
         "Selenium"
     ],
-    "github.ipynb[Diff all package.json to identify project/stack/popularity trends]": [
-        "Function",
-        "Public"
-    ],
+    "github.ipynb[Diff all package.json to identify project/stack/popularity trends]": [],
     "github.ipynb[,download github]": [
         "Selenium"
     ],
@@ -1036,6 +1037,15 @@
         "Function",
         "Public"
     ],
+    "google scheduling.ipynb[space out purple event]": [
+        "Function",
+        "Public"
+    ],
+    "google scheduling.ipynb[schedule study time]": [],
+    "google scheduling.ipynb[schedule hours per event]": [],
+    "google scheduling.ipynb[schedule inside outside of time bounds]": [],
+    "google scheduling.ipynb[remove overlaps]": [],
+    "google scheduling.ipynb[remove overlaps from events with alloable wiggle room]": [],
     "heartbeat.ipynb[heartbeat thump]": [
         "Function",
         "Public"
