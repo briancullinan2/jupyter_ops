@@ -40,6 +40,10 @@
         "Function",
         "Public"
     ],
+    "google scheduling.ipynb[calendar search heatmap]": [
+        "Function",
+        "Public"
+    ],
     "file system.ipynb[project word-cloud]": [
         "Function",
         "Public"
@@ -1076,6 +1080,7 @@
     "google scheduling.ipynb[schedule inside outside of time bounds]": [],
     "google scheduling.ipynb[remove overlaps]": [],
     "google scheduling.ipynb[remove overlaps from events with alloable wiggle room]": [],
+    "google scheduling.ipynb[prioritize events based on glob summary]": [],
     "heartbeat.ipynb[heartbeat thump]": [
         "Function",
         "Public"
