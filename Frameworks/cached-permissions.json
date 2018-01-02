@@ -1,13 +1,4 @@
 {
-    "google contacts.ipynb[google contact settings]": [
-        "Function",
-        "Inner Circle",
-        "Public"
-    ],
-    "import notebook.ipynb[search notebook questions]": [
-        "Function",
-        "Public"
-    ],
     "rpc.ipynb[permissions]": [
         "Function",
         "Public"
@@ -16,14 +7,20 @@
         "Function",
         "Public"
     ],
+    "google contacts.ipynb[google contact settings]": [
+        "Function",
+        "Inner Circle",
+        "Public"
+    ],
     "gulp.ipynb[search notebooks]": [
         "Function",
         "Public"
     ],
-    "data collection.ipynb[meta search all]": [
+    "interpret questions.ipynb[search notebook questions]": [
         "Function",
         "Public"
     ],
+    "data collection.ipynb[meta search all]": [],
     "data collection.ipynb[schedule search all]": [
         "Function",
         "Public"
@@ -32,7 +29,7 @@
         "Function",
         "Public"
     ],
-    "orchestration.ipynb[latest s3 bucket]": [
+    "aws.ipynb[latest s3 bucket]": [
         "Function",
         "Public"
     ],
@@ -45,66 +42,59 @@
         "Public"
     ],
     "file system.ipynb[project word-cloud]": [
-        "Function",
-        "Public"
+        "Function"
     ],
-    "file system.ipynb[project imports d3 tree]": [
-        "Function",
-        "Public"
+    "file system.ipynb[Find similar filename in project]": [
+        "Function"
     ],
-    "file system.ipynb[Find similar filename in project]": [],
-    "file system.ipynb[list project files]": [],
-    "file system.ipynb[List all projects by names]": [],
+    "file system.ipynb[list project files]": [
+        "Function"
+    ],
+    "file system.ipynb[List all projects by names]": [
+        "Function"
+    ],
     "file system.ipynb[Find too long of functions using regexp]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "file system.ipynb[]": [],
+    "file system.ipynb[use static code analysis to find consecutive words in template files]": [],
     "budgeting.ipynb[]": [],
     "reconcile timeline data.ipynb[#  read Google calendar and timeline data]": [],
     "import notebook.ipynb[#  execute and import a jupyter notebook]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "import notebook.ipynb[use inheritence in jupyter notebooks]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "import notebook.ipynb[make a class out of jupter notebooks]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "import notebook.ipynb[use jupyter notebooks as services]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "import notebook.ipynb[import notebook]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "import notebook.ipynb[stream json using a {match} function]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "import notebook.ipynb[parse cells of {types} from a notebook]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "import notebook.ipynb[run all promises sequentially]": [
-        "Function",
-        "Public"
+        "Function"
+    ],
+    "import notebook.ipynb[turn jupyter notebooks in to modules]": [
+        "Function"
     ],
     "import notebook.ipynb[Import arbitrary code in to the current context]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "import notebook.ipynb[Import arbitrary code in to a new context]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "import notebook.ipynb[How does node module require work]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "import notebook.ipynb[]": [],
     "interpret all notebooks.ipynb[find all notebooks]": [],
@@ -112,40 +102,22 @@
     "interpret all notebooks.ipynb[interpret a jupyter {directory}]": [],
     "interpret all notebooks.ipynb[test notebook search]": [],
     "interpret questions.ipynb[find questions leading up to jupter cells]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "interpret questions.ipynb[read markdown leading up to code cells]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "interpret questions.ipynb[This is a complex question to answer.  Perhaps using IBM Watson language alchemy]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "interpret questions.ipynb[find functions in jupyter notebooks]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "interpret questions.ipynb[cache notebook questions in fuse]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "interpret questions.ipynb[display interpreted results in markdown]": [
-        "Function",
-        "Public"
-    ],
-    "interpret questions.ipynb[answer questions using jupyter notebooks and simple search]": [
-        "Function",
-        "Public"
-    ],
-    "interpret questions.ipynb[turn jupyter notebooks in to modules]": [
-        "Function",
-        "Public"
-    ],
-    "interpret questions.ipynb[search jupter notebooks for questions and answers]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "interpret questions.ipynb[]": [],
     "test import.ipynb[>TODO:  MAKE THIS HEADER SMALLER]": [],
@@ -190,8 +162,7 @@
     "Angular components.ipynb[Search notebook service]": [],
     "Angular components.ipynb[Display code results]": [],
     "Angular components.ipynb[Sockify search notebook provider]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "Angular components.ipynb[]": [],
     "Angular components.ipynb[Display login form]": [],
@@ -204,21 +175,17 @@
     "autorewire.ipynb[mock all properties and functions using rewire]": [],
     "autorewire.ipynb[]": [],
     "aws.ipynb[aws rpc wrapper]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "aws.ipynb[]": [],
     "build Angular components.ipynb[#  build Angular components using nodejs]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "build Angular components.ipynb[Run angular-cli commands from nodejs]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "build Angular components.ipynb[Add a component to the specified project using angular-cli]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "build Angular components.ipynb[Compile the project using webpack]": [],
     "build Angular components.ipynb[]": [],
@@ -228,29 +195,26 @@
     "d3 dates.ipynb[d3 swimlane]": [],
     "d3 dates.ipynb[d3 calendar]": [],
     "d3.ipynb[Create a word-cloud]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "d3.ipynb[d3 tiered pie chart]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "d3.ipynb[]": [],
     "d3.ipynb[d3 pie chart]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "d3.ipynb[Format d3 tree]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "d3.ipynb[Display d3 tree]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "de-linting.ipynb[Automatically delint notebooks on save]": [
-        "Function",
-        "Public"
+        "Function"
+    ],
+    "de-linting.ipynb[delint notebooks]": [
+        "Function"
     ],
     "de-linting.ipynb[test de-linting service]": [],
     "deploy host.ipynb[deploy aws]": [],
@@ -277,8 +241,7 @@
     "gulp.ipynb[Apply universal to angular project]": [],
     "gulp.ipynb[Fix project relatives as a service for updating files when they change]": [],
     "gulp.ipynb[Find relative paths and includes]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "How code should look.ipynb[# How do I want code to look]": [],
     "How code should look.ipynb[# How code should look]": [],
@@ -296,6 +259,9 @@
     "jwt in csharp.ipynb[]": [],
     "karma template.ipynb[Generate a bunch of spec files]": [],
     "karma template.ipynb[]": [],
+    "ngx-translate.ipynb[]": [
+        "Function"
+    ],
     "ngx-translate.ipynb[Find unused/misplaced translation strings]": [],
     "node express.ipynb[#  use nodejs express]": [],
     "node express.ipynb[start a proxy using express]": [],
@@ -310,44 +276,34 @@
     "node express.ipynb[express rpc wrapper]": [],
     "node express.ipynb[]": [],
     "node simple-imap.ipynb[#  use nodejs simple-imap]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "node simple-imap.ipynb[log in to Gmail using imap-simple/node IMAP]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "node simple-imap.ipynb[temporarily allow less secure apps]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "node simple-imap.ipynb[, connect to Gmail using simple-imap]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "node simple-imap.ipynb[How do I connect using simple-imap and {credentials}]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "node simple-imap.ipynb[node imap client]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "node simple-imap.ipynb[search for messages using simple-imap]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "node simple-imap.ipynb[search for messages in the last few {days}]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "node simple-imap.ipynb[search for messages {from} a sender's email address]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "node simple-imap.ipynb[scan commands email]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "node simple-imap.ipynb[list the subjects from simple-imap messages]": [],
     "node simple-imap.ipynb[list the sender's email address from simple-imap messages]": [],
@@ -360,91 +316,74 @@
     "node simple-imap.ipynb[save binary {data}]": [],
     "node simple-imap.ipynb[{output} all attachments in the requested {format}]": [],
     "node simple-imap.ipynb[send email]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "node simple-imap.ipynb[]": [],
     "promisify automock socketio.ipynb[install promisify autorewire socketio notebook]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "promisify automock socketio.ipynb[mock and pass through]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "promisify automock socketio.ipynb[Create an RPC socker.io server for any module using promisify]": [],
     "promisify automock socketio.ipynb[Mock any module with promisify and socket.io-client]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "promisify automock socketio.ipynb[Check if sockify server is running]": [],
     "promisify automock socketio.ipynb[]": [],
     "register jupter kernels.ipynb[install a kernel from just the spec]": [],
     "rpc.ipynb[filter command permission]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "rpc.ipynb[store rpc result]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "rpc.ipynb[rpc result]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "rpc.ipynb[]": [],
     "test runner.ipynb[test cells continuously]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "test runner.ipynb[watch files run tests]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "test runner.ipynb[test test runner]": [],
     "test runner.ipynb[]": [],
     "zuora to eloqua.ipynb[,zuora export service]": [],
     "zuora to eloqua.ipynb[zuora export test]": [],
     "zuora to eloqua.ipynb[zuora renewals query]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "zuora to eloqua.ipynb[eloqua import service]": [],
     "zuora to eloqua.ipynb[zuora eloqua mapper]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "zuora to eloqua.ipynb[zuora eloqua mapper test]": [],
     "zuora to eloqua.ipynb[eloqua import create template]": [],
     "zuora to eloqua.ipynb[eloqua import test]": [],
     "zuora to eloqua.ipynb[zuora eloqua express mock]": [],
     "zuora to eloqua.ipynb[]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "zuora to eloqua.ipynb[aws entry point]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "zuora to eloqua.ipynb[zuora export month]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "zuora to eloqua.ipynb[sync zuora eloqua]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "zuora to eloqua.ipynb[sync zuora eloqua end to end]": [],
-    "zuora to eloqua.ipynb[readme]": [
-        "Function",
-        "Public"
-    ],
-    "zuora to eloqua.ipynb[Create an access key for AWS: https://console.aws.amazon.com/iam/homenc2=h_m_sc#/security_credential]": [],
-    "zuora to eloqua.ipynb[,calculate price]": [
-        "Function",
-        "Public"
+    "zuora to eloqua.ipynb[calculate price]": [
+        "Function"
     ],
     "zuora to eloqua.ipynb[calculate price test]": [],
+    "zuora to eloqua.ipynb[readme]": [],
+    "zuora to eloqua.ipynb[Create an access key for AWS: https://console.aws.amazon.com/iam/homenc2=h_m_sc#/security_credential]": [
+        "Function"
+    ],
     "2017 Update.ipynb[]": [],
     "ECommerce.ipynb[]": [],
     "Good UX Intro.ipynb[Pretty simple right]": [],
@@ -459,8 +398,7 @@
     "Wireframing.ipynb[]": [],
     "avidbrain.ipynb[Test avidbrain]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "avidbrain.ipynb[]": [
         "Selenium"
@@ -468,92 +406,76 @@
     "data collection.ipynb[https://www.maricopacountyattorney.org/CivicAlerts.aspxAID=400]": [],
     "data collection.ipynb[Crime reports]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "data collection.ipynb[multi crawl]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "data collection.ipynb[search results as json]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook connections.ipynb[collect facebook profiles]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook connections.ipynb[]": [
         "Selenium"
     ],
     "facebook connections.ipynb[sync facebook contacts with google contacts]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook connections.ipynb[,connect on facebook]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook connections.ipynb[connect add friends facebook]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook data.ipynb[Log in to facebook]": [
         "Selenium"
     ],
     "facebook data.ipynb[Scrape facebook profile]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook data.ipynb[Like all facebook posts]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook data.ipynb[Scrape facebook event]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook data.ipynb[Scrape facebook events]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook data.ipynb[]": [
         "Selenium"
     ],
     "facebook data.ipynb[Scrape facebook friends]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook data.ipynb[Automatically diff facebook friends]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook data.ipynb[Unfollow everyone on facebook]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook messaging.ipynb[get unread threads facebook]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook messaging.ipynb[scan commands facebook]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook messaging.ipynb[sync facebook threads]": [
         "Selenium"
@@ -563,16 +485,14 @@
     ],
     "facebook messaging.ipynb[Get messages from facebook]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "facebook messaging.ipynb[]": [
         "Selenium"
     ],
     "facebook messaging.ipynb[send facebook message]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "forms.ipynb[# Utilities for filling, clicking, reading forms]": [
         "Selenium"
@@ -582,21 +502,18 @@
     ],
     "forms.ipynb[fill select dropdown]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "forms.ipynb[map object to form]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "forms.ipynb[log in to multiple sites]": [
         "Selenium"
     ],
     "forms.ipynb[test sites logins]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "forms.ipynb[]": [
         "Selenium"
@@ -637,21 +554,18 @@
     ],
     "google authorize.ipynb[use selenium to authorize Google access]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "google authorize.ipynb[]": [
         "Selenium"
     ],
     "google takeout.ipynb[download google takeout]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "google takeout.ipynb[order google takeout]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "google takeout.ipynb[]": [
         "Selenium"
@@ -661,51 +575,42 @@
     ],
     "google timeline.ipynb[Scrape google timeline]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "google timeline.ipynb[Read single google timeline page]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "google timeline.ipynb[Load location export data]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "google timeline.ipynb[Find the average latitute and longitude at each destination]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "google timeline.ipynb[Reconcile timeline data with calendar]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "google timeline.ipynb[reconcile timeline]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "google timeline.ipynb[]": [
         "Selenium"
     ],
     "linkedin connections.ipynb[sync linkedin contacts with google contacts]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "linkedin connections.ipynb[scrape entire linkedin profile]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "linkedin connections.ipynb[scrape linkedin contacts]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "linkedin connections.ipynb[]": [
         "Selenium"
@@ -715,33 +620,27 @@
     ],
     "linkedin connections.ipynb[connect add friends linkedin]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "linkedin messages.ipynb[Log in to LinkedIn]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "linkedin messages.ipynb[Scrape LinkedIn profile]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "linkedin messages.ipynb[List LinkedIn threads]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "linkedin messages.ipynb[Read messages LinkedIn thread]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "linkedin messages.ipynb[scrape linkedin threads]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "linkedin messages.ipynb[]": [
         "Selenium"
@@ -751,46 +650,38 @@
     ],
     "orchestration.ipynb[resize selenium window]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "orchestration.ipynb[only one window]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "orchestration.ipynb[tile selenium chrome windows]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "orchestration.ipynb[get all session and window urls]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "orchestration.ipynb[]": [
         "Selenium"
     ],
     "orchestration.ipynb[send a joke]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "orchestration.ipynb[send facebook thanks]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "orchestration.ipynb[clean up old selenium sessions]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "orchestration.ipynb[screenshot all sessions]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "selenium commands.ipynb[# What is Selenium]": [
         "Selenium"
@@ -809,8 +700,7 @@
     ],
     "selenium server.ipynb[Start a selenium http express server]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "selenium server.ipynb[]": [
         "Selenium"
@@ -826,13 +716,11 @@
     ],
     "service auth.ipynb[]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "service auth.ipynb[download passwords from google]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "service auth.ipynb[log in to Google using webdriver]": [
         "Selenium"
@@ -845,38 +733,34 @@
     ],
     "utilities.ipynb[Get all elements XPath]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "utilities.ipynb[Get all elements until]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "utilities.ipynb[click spa link]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
+    ],
+    "utilities.ipynb[]": [
+        "Selenium"
     ],
     "webdriver.ipynb[start a webdriver client in node]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "webdriver.ipynb[connect to webdriver session]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "webdriver.ipynb[find webdriver sessions]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "webdriver.ipynb[Load webdriver sessions]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "webdriver.ipynb[update session]": [
         "Selenium"
@@ -895,18 +779,15 @@
     ],
     "What is Selenium.ipynb[# What is Selenium]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "What is Selenium.ipynb[What environment do we use]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "What is Selenium.ipynb[selenium docker]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "What is Selenium.ipynb[See [What is Docker](What%20is%20Docker.ipynb)]": [],
     "What is Selenium.ipynb[set up selenium server]": [
@@ -921,8 +802,7 @@
     "What is Selenium.ipynb[[Click here to open](http://localhost:6080/vnc.htmlpassword=secret&host=localhost&port=6080&autoconnect=true&resize=downscale&view_only=true&reconnect=true) in a separate browser]": [],
     "What is Selenium.ipynb[run a selenium cell on the Docker machine]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "What is Selenium.ipynb[Test docker selenium]": [
         "Selenium"
@@ -935,15 +815,13 @@
     ],
     "you earned it.ipynb[automate YouEarnedIt]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "you earned it.ipynb[]": [
         "Selenium"
     ],
     "child process.ipynb[Spawning child processes]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "child process.ipynb[]": [],
     "compress.ipynb[Minified lzw compression]": [],
@@ -958,122 +836,95 @@
     "diff.ipynb[diff code blocks]": [],
     "diff.ipynb[]": [],
     "file system.ipynb[use memory-fs and rewire to audit cli events]": [],
-    "file system.ipynb[Fix project paths]": [
-        "Function",
-        "Public"
+    "file system.ipynb[project imports d3 tree]": [
+        "Function"
     ],
-    "file system.ipynb[List files in a project excluding some excessive searches locations]": [],
+    "file system.ipynb[Fix project paths]": [
+        "Function"
+    ],
+    "file system.ipynb[List files in a project excluding some excessive searches locations]": [
+        "Function"
+    ],
     "file system.ipynb[(=\\{((:[^{}]++|\\{(1)\\})++)\\})]": [
         "Selenium",
-        "Function",
-        "Public"
+        "Function"
     ],
     "file system.ipynb[mkdirp]": [
-        "Function",
-        "Public"
+        "Function"
     ],
+    "file system.ipynb[TODO: combine with DOM minimizing service from recording app]": [],
     "git commands.ipynb[git discard whitespace]": [],
     "git commands.ipynb[compare git branches]": [],
     "git commands.ipynb[interesting git commands]": [],
     "git.ipynb[Rename a bunch of files using Git and renamer]": [],
     "git.ipynb[]": [],
     "git.ipynb[json git tree]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "git.ipynb[Display graphs of different commands and scenarios using dry-run]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "git.ipynb[check github for commits since the current one]": [],
-    "git.ipynb[Rebase squash cherrypick automatically to create perfect feature branch]": [
-        "Function",
-        "Public"
-    ],
-    "git.ipynb[Reset each file one at a time to make sure there aren't any unnecessary changes]": [
-        "Function",
-        "Public"
-    ],
-    "git.ipynb[Use unit testing to warn about unnecessary modules]": [
-        "Function",
-        "Public"
-    ],
+    "git.ipynb[Rebase squash cherrypick automatically to create perfect feature branch]": [],
+    "git.ipynb[Reset each file one at a time to make sure there aren't any unnecessary changes]": [],
+    "git.ipynb[Use unit testing to warn about unnecessary modules]": [],
     "git.ipynb[Plot when a TODO: item is added and when it is removed on Google Calendar, then verify by checking commit -messages, remaining comments/function names with matching keywords (split by camel casing), plot dates completed for measurement of self set tasks and short term goals, which activities are harder than others  better insight in to erroneous developer time estimates]": [],
-    "git.ipynb[Interface for searching all TODO: items  Calendar]": [
-        "Function",
-        "Public"
-    ],
-    "git.ipynb[,git project directory]": [
-        "Function",
-        "Public"
+    "git.ipynb[Interface for searching all TODO: items  Calendar]": [],
+    "git.ipynb[git project directory]": [
+        "Function"
     ],
     "git.ipynb[get fresh git project directory]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google calendar.ipynb[#  use Google calendar API]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google calendar.ipynb[import Google calendar API]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google calendar.ipynb[list events]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google calendar.ipynb[Run todays calendar events]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google calendar.ipynb[]": [],
     "google calendar.ipynb[Correct calendar dates for timeMax and timeMin]": [],
     "google calendar.ipynb[Lookup calendar id by name or id]": [],
     "google calendar.ipynb[Show a d3 pie chart of time spent on projects]": [],
     "google calendar.ipynb[days events]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google calendar.ipynb[Update create merge delete event]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google calendar.ipynb[Parse bookmarks file]": [],
     "google calendar.ipynb[sync chrome bookmarks]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google calendar.ipynb[sync chrome history]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google calendar.ipynb[sync chrome data]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google contacts.ipynb[list google contact]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google contacts.ipynb[]": [],
     "google maps.ipynb[find a place using Google maps]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google maps.ipynb[use places nearby API]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google maps.ipynb[]": [],
     "google maps.ipynb[use Google Geocaching]": [],
     "google maps.ipynb[cache locations nearby]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google scheduling.ipynb[space out purple event]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "google scheduling.ipynb[schedule study time]": [],
     "google scheduling.ipynb[schedule hours per event]": [],
@@ -1082,12 +933,10 @@
     "google scheduling.ipynb[remove overlaps from events with alloable wiggle room]": [],
     "google scheduling.ipynb[prioritize events based on glob summary]": [],
     "heartbeat.ipynb[heartbeat thump]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "heartbeat.ipynb[run todays heartbeat items]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "heartbeat.ipynb[]": [],
     "levenshtein.ipynb[Find the levenshtein distance]": [],
@@ -1097,61 +946,48 @@
     "mono.ipynb[]": [],
     "nmap.ipynb[]": [],
     "notebook.ipynb[export cells as modules]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "notebook.ipynb[get cell extension]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "notebook.ipynb[export all notebooks]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "notebook.ipynb[Export all notebooks to a structured folder where each cell has it's own file for linting]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "notebook.ipynb[test notebook export]": [],
     "notebook.ipynb[import all cell modules]": [],
     "notebook.ipynb[import files back in to cells (two-way workflow)]": [],
     "notebook.ipynb[]": [],
     "notebook.ipynb[import module as notebook cell]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "notebook.ipynb[- every module should have a markdown title, at least one question that the code intends to answer (), includes at least (where name is the name of any function in the code block):]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "notebook.ipynb[,get imports recursively]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "notebook.ipynb[replace notebook imports]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "notebook.ipynb[automatic jupyter dependency injector]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "notebook.ipynb[export deploy notebook coordinator]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "notebook.ipynb[inject cells in to notebooks when built with webpack]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "npm.ipynb[Replace package.json latest with actual latest version numbers]": [],
     "npm.ipynb[Check if there is a local-npm server running on Brian's machine]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "npm.ipynb[Run NPM in javscript with in-memory file-system]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "npm.ipynb[]": [],
     "openssl.ipynb[create a trusted root CA]": [],
@@ -1159,8 +995,7 @@
     "openssl.ipynb[generate a self-signed cert]": [],
     "parse.ipynb[]": [],
     "polyfills.ipynb[http request pollyfill]": [
-        "Function",
-        "Public"
+        "Function"
     ],
     "polyfills.ipynb[]": [],
     "sql to json.ipynb[]": [],
