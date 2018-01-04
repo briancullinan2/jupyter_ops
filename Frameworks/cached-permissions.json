@@ -218,6 +218,7 @@
         "Function"
     ],
     "de-linting.ipynb[test de-linting service]": [],
+    "de-linting.ipynb[]": [],
     "deploy host.ipynb[deploy aws]": [],
     "display angular.ipynb[Include the script in the response]": [],
     "display angular.ipynb[Display angular modules in jupyter]": [],
@@ -812,7 +813,8 @@
         "Selenium"
     ],
     "you earned it.ipynb[high five people in YouEarnedIt]": [
-        "Selenium"
+        "Selenium",
+        "Function"
     ],
     "you earned it.ipynb[automate YouEarnedIt]": [
         "Selenium",
