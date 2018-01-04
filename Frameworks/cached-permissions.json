@@ -98,7 +98,6 @@
     "import notebook.ipynb[How does node module require work]": [
         "Function"
     ],
-    "import notebook.ipynb[]": [],
     "interpret all notebooks.ipynb[find all notebooks]": [],
     "interpret all notebooks.ipynb[get markdown from all notebooks in {directory}]": [],
     "interpret all notebooks.ipynb[interpret a jupyter {directory}]": [],
@@ -121,7 +120,7 @@
     "interpret questions.ipynb[display interpreted results in markdown]": [
         "Function"
     ],
-    "interpret questions.ipynb[]": [],
+    "interpret questions.ipynb[search notebook interpreter test]": [],
     "test import.ipynb[>TODO:  MAKE THIS HEADER SMALLER]": [],
     "test import.ipynb[provide this command as a service to other notebooks]": [],
     "test import.ipynb[What to include to create inheritence in jupyter]": [],
