@@ -867,7 +867,12 @@
     "git.ipynb[Display graphs of different commands and scenarios using dry-run]": [
         "Function"
     ],
-    "git.ipynb[check github for commits since the current one]": [],
+    "git.ipynb[github updates]": [
+        "Function"
+    ],
+    "git.ipynb[check github for commits since the current one]": [
+        "Function"
+    ],
     "git.ipynb[Rebase squash cherrypick automatically to create perfect feature branch]": [],
     "git.ipynb[Reset each file one at a time to make sure there aren't any unnecessary changes]": [],
     "git.ipynb[Use unit testing to warn about unnecessary modules]": [],
