@@ -9,7 +9,7 @@ module.exports = {
     entry: [
         'es6-shim',
         'babel-polyfill',
-        './.output/aws-rpc-wrapper.js'
+        './.output/firebase-rpc-wrapper.js'
     ],
     output: {
         path: __dirname,
@@ -46,7 +46,6 @@ module.exports = {
         ]
     },
     plugins: [
-        /*
       new UglifyJsPlugin({
         uglifyOptions: {
             compress: {
@@ -55,7 +54,6 @@ module.exports = {
             mangle: false
         }
       }),
-      */
       new webpack.ProvidePlugin({
           'document': 'min-document',
           'self': 'node-noop',
@@ -68,6 +66,6 @@ module.exports = {
         __dirname: true
     },
     externals: [nodeExternals({
-      whitelist: [/^(?:(?!aws-sdk|googleapis|wdio|webdriverio|wdio-sync).)*$/]
+      whitelist: [/^(?:(?!aws-sdk|googleapis|wdio|webdriverio|wdio-sync|firebase-admin|firebase-functions).)*$/]
     })],
 }
