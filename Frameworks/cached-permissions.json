@@ -344,7 +344,7 @@
         "Function"
     ],
     "rpc.ipynb[]": [],
-    "test runner.ipynb[test cells continuously]": [
+    "test runner.ipynb[test cells]": [
         "Function"
     ],
     "test runner.ipynb[watch files run tests]": [
@@ -838,7 +838,9 @@
     "diff.ipynb[diff]": [],
     "diff.ipynb[diff code blocks]": [],
     "diff.ipynb[]": [],
-    "file system.ipynb[use memory-fs and rewire to audit cli events]": [],
+    "file system.ipynb[use memory-fs and rewire to audit cli events]": [
+        "Function"
+    ],
     "file system.ipynb[project imports d3 tree]": [
         "Function"
     ],

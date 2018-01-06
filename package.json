@@ -4,10 +4,13 @@
     "license": "UNLICENSED",
     "scripts": {
         "start": "",
-        "prebuild": "node -e \"require('/Users/briancullinan/jupytangular2/Core').import('export deploy notebook')(['aws.ipynb[rpc wrapper]', 'tell joke', 'latest s3 bucket'])\"",
+        "export": "node -e \"require('./Core').import('export deploy notebook')(['aws.ipynb[rpc wrapper]', 'tell joke', 'latest s3 bucket', 'calendar search heatmap'])\"",
+        "prebuild": "npm run export",
         "build": "webpack",
         "selenium": "selenium-standalone start",
-        "test": ""
+        "test": "node -e \"require('./Core').import('test cells')('test test runner')\"",
+        "delint": "",
+        "deploy": ""
     },
     "engines": {
         "node": ">= 8",

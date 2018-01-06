@@ -3,7 +3,7 @@
 <plist version="1.0">
     <dict>
         <key>Label</key>
-        <string>com.jupytangular.todaysevents</string>
+        <string>com.jupytangular.heartbeat</string>
         <key>Program</key>
         <string>/bin/bash</string>
         <key>ProgramArguments</key>

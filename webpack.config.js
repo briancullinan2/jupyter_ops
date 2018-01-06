@@ -33,12 +33,20 @@ module.exports = {
                 }
             },
             {
+                test: /^(?!.*\.spec\.ts$).*\.ts$/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['latest']
+                }
+            },
+            {
                 test: /(\.json)|(package\.json)$/,
                 loader: 'json-loader'
             }
         ]
     },
     plugins: [
+        /*
       new UglifyJsPlugin({
         uglifyOptions: {
             compress: {
@@ -47,6 +55,7 @@ module.exports = {
             mangle: false
         }
       }),
+      */
       new webpack.ProvidePlugin({
           'document': 'min-document',
           'self': 'node-noop',
@@ -57,9 +66,8 @@ module.exports = {
     node: {
         fs: 'empty',
         __dirname: true
-    }
-    /*
+    },
     externals: [nodeExternals({
-      whitelist: [/^(?:(?!jsonpath|aws-sdk).)*$/]
-    })],*/
+      whitelist: [/^(?:(?!aws-sdk|googleapis|wdio|webdriverio|wdio-sync).)*$/]
+    })],
 }
