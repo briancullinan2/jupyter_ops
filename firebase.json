@@ -1,13 +1,9 @@
 {
     "functions": {
-        "source": "bundle.js",
+        "source": ".",
         "ignore": [
-            "build",
-            "firebase.json",
             "**/.*",
-            "**/node_modules/**",
-            "functions",
-            "gulpfile.js"
+            "**/node_modules/**"
         ]
     }
 }

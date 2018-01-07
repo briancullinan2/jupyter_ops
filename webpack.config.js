@@ -66,6 +66,6 @@ module.exports = {
         __dirname: true
     },
     externals: [nodeExternals({
-      whitelist: [/^(?:(?!aws-sdk|googleapis|wdio|webdriverio|wdio-sync|firebase-admin|firebase-functions).)*$/]
+      whitelist: [/^(?:(?!googleapis|wdio|webdriverio|wdio-sync|firebase-admin|firebase-functions).)*$/]
     })],
 }
