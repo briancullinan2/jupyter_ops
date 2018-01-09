@@ -280,9 +280,7 @@
     "node simple-imap.ipynb[#  use nodejs simple-imap]": [
         "Function"
     ],
-    "node simple-imap.ipynb[log in to Gmail using imap-simple/node IMAP]": [
-        "Function"
-    ],
+    "node simple-imap.ipynb[log in to Gmail using imap-simple/node IMAP]": [],
     "node simple-imap.ipynb[temporarily allow less secure apps]": [
         "Function"
     ],
@@ -791,7 +789,9 @@
         "Selenium",
         "Function"
     ],
-    "What is Selenium.ipynb[See [What is Docker](What%20is%20Docker.ipynb)]": [],
+    "What is Selenium.ipynb[See [What is Docker](What%20is%20Docker.ipynb)]": [
+        "Function"
+    ],
     "What is Selenium.ipynb[set up selenium server]": [
         "Selenium"
     ],
@@ -878,7 +878,10 @@
     "git.ipynb[Rebase squash cherrypick automatically to create perfect feature branch]": [],
     "git.ipynb[Reset each file one at a time to make sure there aren't any unnecessary changes]": [],
     "git.ipynb[Use unit testing to warn about unnecessary modules]": [],
-    "git.ipynb[Plot when a TODO: item is added and when it is removed on Google Calendar, then verify by checking commit -messages, remaining comments/function names with matching keywords (split by camel casing), plot dates completed for measurement of self set tasks and short term goals, which activities are harder than others  better insight in to erroneous developer time estimates]": [],
+    "git.ipynb[Plot when a TODO: item is added and when it is removed on Google Calendar, then verify by checking commit -messages, remaining comments/function names with matching keywords (split by camel casing), plot dates completed for measurement of self set tasks and short term goals, which activities are harder than others  better insight in to erroneous developer time estimates]": [
+        "Selenium",
+        "Function"
+    ],
     "git.ipynb[Interface for searching all TODO: items  Calendar]": [],
     "git.ipynb[git project directory]": [
         "Function"
@@ -989,6 +992,7 @@
     "notebook.ipynb[export deploy notebook coordinator]": [
         "Function"
     ],
+    "notebook.ipynb[TODO: automatically find missing imports from distrib/Github/3rd party sources in any language]": [],
     "notebook.ipynb[inject cells in to notebooks when built with webpack]": [
         "Function"
     ],
