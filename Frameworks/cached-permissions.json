@@ -277,6 +277,7 @@
     "node express.ipynb[stop express server]": [],
     "node express.ipynb[express rpc wrapper]": [],
     "node express.ipynb[]": [],
+    "node express.ipynb[zuora eloqua express mock]": [],
     "node simple-imap.ipynb[#  use nodejs simple-imap]": [
         "Function"
     ],
@@ -368,7 +369,6 @@
     "zuora to eloqua.ipynb[test eloqua import create template]": [],
     "zuora to eloqua.ipynb[test eloqua import service]": [],
     "zuora to eloqua.ipynb[eloqua import blueprints]": [],
-    "zuora to eloqua.ipynb[zuora eloqua express mock]": [],
     "zuora to eloqua.ipynb[]": [
         "Function"
     ],
@@ -394,9 +394,7 @@
     ],
     "zuora to eloqua.ipynb[calculate price test]": [],
     "zuora to eloqua.ipynb[readme]": [],
-    "zuora to eloqua.ipynb[Create an access key for AWS: https://console.aws.amazon.com/iam/homenc2=h_m_sc#/security_credential]": [
-        "Function"
-    ],
+    "zuora to eloqua.ipynb[Create an access key for AWS: https://console.aws.amazon.com/iam/homenc2=h_m_sc#/security_credential]": [],
     "2017 Update.ipynb[]": [],
     "ECommerce.ipynb[]": [],
     "Good UX Intro.ipynb[Pretty simple right]": [],
