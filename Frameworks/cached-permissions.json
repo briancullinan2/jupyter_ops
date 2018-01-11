@@ -347,6 +347,9 @@
     "test runner.ipynb[test cells]": [
         "Function"
     ],
+    "test runner.ipynb[test runner]": [
+        "Function"
+    ],
     "test runner.ipynb[watch files run tests]": [
         "Function"
     ],
