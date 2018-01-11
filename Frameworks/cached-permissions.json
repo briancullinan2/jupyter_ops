@@ -280,9 +280,7 @@
     "node simple-imap.ipynb[#  use nodejs simple-imap]": [
         "Function"
     ],
-    "node simple-imap.ipynb[log in to Gmail using imap-simple/node IMAP]": [
-        "Function"
-    ],
+    "node simple-imap.ipynb[log in to Gmail using imap-simple/node IMAP]": [],
     "node simple-imap.ipynb[temporarily allow less secure apps]": [
         "Function"
     ],
@@ -375,9 +373,7 @@
     ],
     "zuora to eloqua.ipynb[aws entry point]": [],
     "zuora to eloqua.ipynb[test aws entry point]": [],
-    "zuora to eloqua.ipynb[notify entry point]": [
-        "Function"
-    ],
+    "zuora to eloqua.ipynb[notify entry point]": [],
     "zuora to eloqua.ipynb[test notify entry point]": [],
     "zuora to eloqua.ipynb[zuora export month]": [
         "Function"
