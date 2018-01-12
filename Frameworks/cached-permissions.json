@@ -882,6 +882,7 @@
     "git commands.ipynb[git discard whitespace]": [],
     "git commands.ipynb[compare git branches]": [],
     "git commands.ipynb[interesting git commands]": [],
+    "git commands.ipynb[cache git credentials]": [],
     "git.ipynb[Rename a bunch of files using Git and renamer]": [],
     "git.ipynb[]": [],
     "git.ipynb[json git tree]": [
