@@ -21,10 +21,10 @@
         "url": "git+https://github.com/megamindbrian/jupytangular.git"
     },
     "dependencies": {
+        "@angular-devkit/schematics": "0.0.43",
         "@angular/cli": "^1.6.0",
         "@google/maps": "^0.4.5",
         "aws-sdk": "^2.175.0",
-        "babel-polyfill": "^6.26.0",
         "bluebird": "^3.5.1",
         "body-parser": "^1.18.2",
         "chai": "^4.1.2",
@@ -34,7 +34,6 @@
         "d3-node": "^1.1.2",
         "daemon": "^1.1.0",
         "diff": "^3.4.0",
-        "es6-shim": "^0.35.3",
         "fibers": "^2.0.0",
         "firebase-admin": "^5.5.1",
         "firebase-functions": "^0.7.3",
@@ -42,13 +41,6 @@
         "glob": "^7.1.2",
         "google-auth-library": "^0.10.0",
         "googleapis": "^20.2.0",
-        "gulp": "github:gulpjs/gulp#4.0",
-        "gulp-clean": "^0.3.2",
-        "gulp-copy": "^1.0.1",
-        "gulp-replace": "^0.6.1",
-        "gulp-run": "^1.7.1",
-        "gulp-tap": "^1.0.1",
-        "gulp-watch": "^4.3.11",
         "imap-simple": "^4.0.0",
         "jsdom": "^11.5.1",
         "jsonpath-plus": "^0.16.0",
@@ -80,12 +72,21 @@
         "xregexp": "^3.2.0"
     },
     "devDependencies": {
+        "babel-polyfill": "^6.26.0",
         "babel-core": "^6.26.0",
         "babel-loader": "^7.1.2",
         "babel-preset-latest": "^6.24.1",
         "node-noop": "^1.0.0",
         "uglifyjs-webpack-plugin": "^1.1.4",
         "webpack": "^3.10.0",
-        "webpack-node-externals": "^1.6.0"
+        "webpack-node-externals": "^1.6.0",
+        "es6-shim": "^0.35.3",
+        "gulp": "github:gulpjs/gulp#4.0",
+        "gulp-clean": "^0.3.2",
+        "gulp-copy": "^1.0.1",
+        "gulp-replace": "^0.6.1",
+        "gulp-run": "^1.7.1",
+        "gulp-tap": "^1.0.1",
+        "gulp-watch": "^4.3.11"
     }
 }
