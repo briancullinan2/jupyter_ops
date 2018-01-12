@@ -840,11 +840,21 @@
     "child process.ipynb[]": [],
     "compress.ipynb[Minified lzw compression]": [],
     "compress.ipynb[]": [],
-    "dates.ipynb[find Tuesdays late in the month]": [],
-    "dates.ipynb[Convert a date to ISO]": [],
-    "dates.ipynb[sum a list of events]": [],
-    "dates.ipynb[Number of days between events]": [],
-    "dates.ipynb[display recurrence line graph]": [],
+    "dates.ipynb[find Tuesdays late in the month]": [
+        "Function"
+    ],
+    "dates.ipynb[Convert a date to ISO]": [
+        "Function"
+    ],
+    "dates.ipynb[sum a list of events]": [
+        "Function"
+    ],
+    "dates.ipynb[Number of days between events]": [
+        "Function"
+    ],
+    "dates.ipynb[display recurrence line graph]": [
+        "Function"
+    ],
     "dates.ipynb[]": [],
     "diff.ipynb[diff]": [],
     "diff.ipynb[diff code blocks]": [],
@@ -953,6 +963,7 @@
     "google scheduling.ipynb[remove overlaps]": [],
     "google scheduling.ipynb[remove overlaps from events with alloable wiggle room]": [],
     "google scheduling.ipynb[prioritize events based on glob summary]": [],
+    "google scheduling.ipynb[]": [],
     "heartbeat.ipynb[heartbeat thump]": [
         "Function"
     ],
