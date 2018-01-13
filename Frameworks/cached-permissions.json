@@ -894,7 +894,9 @@
     "git.ipynb[Display graphs of different commands and scenarios using dry-run]": [
         "Function"
     ],
-    "git.ipynb[create new calendar event]": [],
+    "git.ipynb[update git]": [
+        "Function"
+    ],
     "git.ipynb[github updates]": [
         "Function"
     ],
@@ -932,6 +934,9 @@
         "Function"
     ],
     "google calendar.ipynb[Update create merge delete event]": [
+        "Function"
+    ],
+    "google calendar.ipynb[create new calendar event]": [
         "Function"
     ],
     "google calendar.ipynb[Parse bookmarks file]": [],
