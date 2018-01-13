@@ -4,7 +4,7 @@
     "license": "UNLICENSED",
     "scripts": {
         "start": "",
-        "export": "node -e \"require('./Core').import('export deploy notebook')(['firebase rpc wrapper', 'tell joke', 'latest s3 bucket', 'calendar search heatmap'])\"",
+        "export": "node -e \"require('./Core').import('export deploy notebook')(['firebase rpc wrapper', 'tell joke', 'latest s3 bucket', 'calendar search heatmap', 'spawn child process'])\"",
         "prebuild": "npm run export",
         "build": "webpack",
         "selenium": "selenium-standalone start",

@@ -1,8 +1,8 @@
 {
     "functions": {
-        "source": ".",
+        "source": ".bundle",
         "ignore": [
-            "**/.*",
+            "**/.!(credentials)*",
             "**/node_modules/**"
         ]
     }

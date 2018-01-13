@@ -6,21 +6,23 @@ var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     target: 'node',
-    entry: [
-        'es6-shim',
-        'babel-polyfill',
-        './.output/firebase-rpc-wrapper.js'
-    ],
+    entry: {
+        'main': [
+            'es6-shim',
+            'babel-polyfill',
+            './.output/firebase-rpc-wrapper.js'
+        ]
+    },
     output: {
-        path: __dirname,
-        filename: 'bundle.js',
+        path: path.resolve(__dirname, '.bundle'),
+        filename: '[name].bundle.js',
         libraryTarget: 'commonjs2'
     },
     resolve: {
         extensions: ['.ts', '.js', '.json'],
         modules: [
             'node_modules',
-            path.resolve(__dirname, '..', 'node_modules')
+            path.resolve(__dirname, 'node_modules')
         ]
     },
     module: {
@@ -46,26 +48,26 @@ module.exports = {
         ]
     },
     plugins: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-            compress: {
-                keep_fnames: true
-            },
-            mangle: false
-        }
-      }),
-      new webpack.ProvidePlugin({
-          'document': 'min-document',
-          'self': 'node-noop',
-          'self.navigator.userAgent': 'empty-string',
-          'window': 'node-noop'
-      })
+        new UglifyJsPlugin({
+            uglifyOptions: {
+                compress: {
+                    keep_fnames: true
+                },
+                mangle: false
+            }
+        }),
+        new webpack.ProvidePlugin({
+            'document': 'min-document',
+            'self': 'node-noop',
+            'self.navigator.userAgent': 'empty-string',
+            'window': 'node-noop'
+        })
     ],
     node: {
         fs: 'empty',
         __dirname: true
     },
     externals: [nodeExternals({
-      whitelist: [/^(?:(?!googleapis|wdio|webdriverio|wdio-sync|firebase-admin|firebase-functions).)*$/]
-    })],
+        whitelist: [/^(?:(?!googleapis|wdio|webdriverio|wdio-sync|firebase-admin|firebase-functions).)*$/]
+    })]
 }
