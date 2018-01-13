@@ -8,9 +8,10 @@
         "prebuild": "npm run export",
         "build": "webpack",
         "selenium": "selenium-standalone start",
-        "test": "node -e \"require('./Core').import('test cells')('test test runner')\"",
+        "test": "node -e \"require('./Core').import('test cells')('test test runner')\" && npm run pull",
         "lint": "eslint . --fix",
-        "deploy": "git --git-dir=../jupytangular/.git reset --hard && git --git-dir=../jupytangular/.git pull --rebase"
+        "deploy": "git --git-dir=../jupytangular/.git reset --hard && git --git-dir=../jupytangular/.git pull --rebase",
+        "pull": "node -e \"require('./Core').import('update git')()\""
     },
     "engines": {
         "node": ">= 8",
