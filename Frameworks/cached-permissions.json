@@ -150,6 +150,9 @@
     "docker commands.ipynb[Delete images in cmd]": [],
     "docker commands.ipynb[Delete danglings images in cmd]": [],
     "docker demo.ipynb[# What is Docker]": [],
+    "docker demo.ipynb[selenium docker]": [
+        "Function"
+    ],
     "dotnet.ipynb[]": [],
     "install Docker on Mac.ipynb[#  install Docker on Mac]": [],
     "install Docker on Mac.ipynb[Is Docker already installed]": [],
@@ -808,19 +811,12 @@
         "Selenium",
         "Function"
     ],
-    "What is Selenium.ipynb[selenium docker]": [
-        "Selenium",
-        "Function"
-    ],
     "What is Selenium.ipynb[See [What is Docker](What%20is%20Docker.ipynb)]": [
         "Function"
     ],
     "What is Selenium.ipynb[set up selenium server]": [
         "Selenium",
         "Function"
-    ],
-    "What is Selenium.ipynb[]": [
-        "Selenium"
     ],
     "What is Selenium.ipynb[connect to VNC through the web browser]": [
         "Selenium"
