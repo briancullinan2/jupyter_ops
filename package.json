@@ -4,8 +4,9 @@
     "license": "UNLICENSED",
     "scripts": {
         "start": "",
-        "export": "node -e \"require('./Core').import('export deploy notebook')(['firebase rpc wrapper', 'tell joke', 'latest s3 bucket', 'calendar search heatmap', 'spawn child process'])\"",
-        "prebuild": "npm run export",
+        "export:public": "node -e \"require('./Core').import('export deploy notebook')(['firebase rpc wrapper', 'tell joke', 'latest s3 bucket', 'calendar search heatmap', 'spawn child process'])\"",
+        "export:notebook": "node -e \"require('./Core').import('export deploy notebook')(['import notebooks modules', 'find project files'])\"",
+        "prebuild": "npm run export:public",
         "build": "webpack",
         "selenium": "selenium-standalone start",
         "test": "node -e \"require('./Core').import('test cells')('test test runner')\" && npm run pull",
