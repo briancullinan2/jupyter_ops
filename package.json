@@ -11,6 +11,7 @@
         "build": "webpack",
         "selenium": "selenium-standalone start",
         "test": "node -e \"require('./Core').import('test cells')('test test runner')\" && npm run pull",
+        "test:zuora": "node -e \"require('./Core').import('test cells')('zuora to eloqua.ipynb')\"",
         "watch": "node -e \"require('./Core').import('watch files run tests')('**/*ipynb', 'test test runner')\"",
         "watch:zuora": "node -e \"require('./Core').import('watch files run tests')('**/zuora*ipynb', 'zuora to eloqua.ipynb')\"",
         "lint": "eslint . --fix",
