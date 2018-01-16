@@ -7,3 +7,4 @@ Utilities/.modules
 .output
 .build
 .bundle
+cached-permissions.json
