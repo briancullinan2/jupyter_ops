@@ -385,6 +385,7 @@
     "zuora to eloqua.ipynb[eloqua import create template]": [],
     "zuora to eloqua.ipynb[test eloqua import create template]": [],
     "zuora to eloqua.ipynb[eloqua import blueprints]": [],
+    "zuora to eloqua.ipynb[eloqua existing import]": [],
     "zuora to eloqua.ipynb[aws entry point]": [],
     "zuora to eloqua.ipynb[test aws entry point]": [],
     "zuora to eloqua.ipynb[notify entry point]": [],
