@@ -372,20 +372,17 @@
         "Function"
     ],
     "zuora to eloqua.ipynb[zuora export service test]": [],
-    "zuora to eloqua.ipynb[zuora renewals query]": [
-        "Function"
-    ],
+    "zuora to eloqua.ipynb[zuora renewals query]": [],
     "zuora to eloqua.ipynb[test zuora renewals query]": [],
     "zuora to eloqua.ipynb[eloqua import service]": [],
     "zuora to eloqua.ipynb[test eloqua import service]": [],
-    "zuora to eloqua.ipynb[zuora eloqua mapper]": [
-        "Function"
-    ],
+    "zuora to eloqua.ipynb[zuora eloqua mapper]": [],
     "zuora to eloqua.ipynb[zuora eloqua mapper test]": [],
     "zuora to eloqua.ipynb[eloqua import create template]": [],
     "zuora to eloqua.ipynb[test eloqua import create template]": [],
     "zuora to eloqua.ipynb[eloqua import blueprints]": [],
     "zuora to eloqua.ipynb[eloqua existing import]": [],
+    "zuora to eloqua.ipynb[test eloqua existing import]": [],
     "zuora to eloqua.ipynb[aws entry point]": [],
     "zuora to eloqua.ipynb[test aws entry point]": [],
     "zuora to eloqua.ipynb[notify entry point]": [],
@@ -402,9 +399,7 @@
     ],
     "zuora to eloqua.ipynb[calculate price test]": [],
     "zuora to eloqua.ipynb[readme]": [],
-    "zuora to eloqua.ipynb[Create an access key for AWS: https://console.aws.amazon.com/iam/homenc2=h_m_sc#/security_credential]": [
-        "Function"
-    ],
+    "zuora to eloqua.ipynb[Create an access key for AWS: https://console.aws.amazon.com/iam/homenc2=h_m_sc#/security_credential]": [],
     "2017 Update.ipynb[]": [],
     "ECommerce.ipynb[]": [],
     "Good UX Intro.ipynb[Pretty simple right]": [],
@@ -806,9 +801,7 @@
         "Selenium",
         "Function"
     ],
-    "What is Selenium.ipynb[See [What is Docker](What%20is%20Docker.ipynb)]": [
-        "Function"
-    ],
+    "What is Selenium.ipynb[See [What is Docker](What%20is%20Docker.ipynb)]": [],
     "What is Selenium.ipynb[set up selenium server]": [
         "Selenium",
         "Function"
@@ -838,6 +831,7 @@
     "you earned it.ipynb[]": [
         "Selenium"
     ],
+    "active directory.ipynb[]": [],
     "bash.ipynb[]": [],
     "child process.ipynb[]": [],
     "compress.ipynb[Minified lzw compression]": [],
@@ -1039,15 +1033,16 @@
     "openssl.ipynb[]": [],
     "openssl.ipynb[generate a self-signed cert]": [],
     "parse.ipynb[]": [],
-    "polyfills.ipynb[http request pollyfill]": [
-        "Function"
-    ],
+    "polyfills.ipynb[http request pollyfill]": [],
     "polyfills.ipynb[]": [],
+    "registry.ipynb[]": [],
     "sql to json.ipynb[]": [],
     "uuid.ipynb[Generate a universally unique identifier]": [],
     "vnc.ipynb[# What is VNC]": [],
     "vnc.ipynb[]": [],
     "vnc.ipynb[VNC HTML client]": [],
     "vnc.ipynb[Use vnc with live-server]": [],
-    "vnc.ipynb[VNC in Docker]": []
+    "vnc.ipynb[VNC in Docker]": [],
+    "windows.ipynb[list window handles]": [],
+    "windows.ipynb[monitor active windows]": []
 }

@@ -1,0 +1,8 @@
+2018-01-17 11:39:05 - using System;
+2018-01-17 11:39:05 - using System.Collections.Generic;
+2018-01-17 11:39:05 - using System.Linq;
+2018-01-17 11:39:05 - using System.Text;
+2018-01-17 11:39:05 - using System.Threading.Tasks;
+2018-01-17 11:39:05 - using ICSharp.Kernel;
+2018-01-17 11:39:05 - // Adding default usings. This file is included for each notebook when it starts.
+2018-01-17 11:50:14 - shutdown request
