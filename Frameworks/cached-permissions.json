@@ -31,6 +31,10 @@
         "Function",
         "Public"
     ],
+    "google timeline.ipynb[search timeline events]": [
+        "Function",
+        "Public"
+    ],
     "aws.ipynb[latest s3 bucket]": [
         "Function",
         "Public"
@@ -597,10 +601,6 @@
         "Selenium",
         "Function"
     ],
-    "google timeline.ipynb[Load location export data]": [
-        "Selenium",
-        "Function"
-    ],
     "google timeline.ipynb[Find the average latitute and longitude at each destination]": [
         "Selenium",
         "Function"
@@ -609,12 +609,13 @@
         "Selenium",
         "Function"
     ],
-    "google timeline.ipynb[reconcile timeline]": [
+    "google timeline.ipynb[Load location export data]": [
         "Selenium",
         "Function"
     ],
-    "google timeline.ipynb[]": [
-        "Selenium"
+    "google timeline.ipynb[reconcile timeline]": [
+        "Selenium",
+        "Function"
     ],
     "linkedin connections.ipynb[sync linkedin contacts with google contacts]": [
         "Selenium",
