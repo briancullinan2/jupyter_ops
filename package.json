@@ -4,6 +4,7 @@
     "license": "UNLICENSED",
     "scripts": {
         "ssh": "ssh -i ~/.credentials/selenium.pem -t ubuntu@ec2-54-201-232-148.us-west-2.compute.amazonaws.com",
+        "git:auto": "git add -A && git commit -m \"auto-commit\" && git push origin && git push bitbucket",
         "start:express": "node -e \"require('./Core').import('express rpc wrapper')\"",
         "start:ng": "ng serve --host 0.0.0.0 --port 9090 --app 0",
         "export:public": "node -e \"require('./Core').import('export deploy notebook')(['firebase rpc wrapper', 'tell joke', 'latest s3 bucket', 'calendar search heatmap', 'spawn child process'])\"",
@@ -24,7 +25,7 @@
         "install:node:ssh": "npm run ssh -- \"curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - && sudo apt-get update -qqy && sudo apt-get -qqy install nodejs build-essential && cd ~ && git clone https://megamindbrian@bitbucket.org/megamindbrian/jupyter_ops.git ./jupytangular && cd ~/jupytangular\"",
         "install:minimal": "npm install jsonpath-plus glob fuse.js gulp",
         "schedule:systemd": "cp ./jupyter.service /etc/systemctl/system && cp ./jupyter.timer /etc/systemctl/system && sudo systemctl daemon-reload && sudo systemctl enable juypter.timer && sudo systemctl start jupyter.timer && cp ./selenium.service /etc/systemctl/system && sudo systemctl daemon-reload && sudo systemctl enable selenium.service && sudo systemctl start selenium.service",
-        "install:selenium:aws": "node -e \"require('./Core').import('spawn child process')(require('./Core').interpret('vnc selenium server').code) && npm run install:vnc\"",
+        "install:selenium:aws": "node -e \"require('./Core').import('spawn child process')(require('./Core').interpret('vnc selenium server').code)\" && npm run install:vnc",
         "install:webdriver": "npm install wdio webdriverio fibers body-parser min-document && npm run install:vnc",
         "install:vnc" : "node -e \"require('fs').writeFileSync('/opt/bin/entry_point.sh', require('./Core').interpret('vnc entry point').code)\""
     },
