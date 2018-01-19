@@ -2,8 +2,8 @@
 Description=Jupytangular heartbeat
 
 [Service]
-ExecStart=/usr/bin/node -e "require('/home/ubuntu/jupytangular/Core).import('heartbeat')('todays heartbeat items')"
-User=seluser
+ExecStart=/usr/bin/node -e "require('/home/ubuntu/jupytangular/Core').import('heartbeat')('todays heartbeat items')"
+User=ubuntu
 MemoryMax=200M
 
 [Install]
