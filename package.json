@@ -17,7 +17,12 @@
         "lint": "eslint . --fix",
         "deploy": "git --git-dir=../jupytangular/.git reset --hard && git --git-dir=../jupytangular/.git pull --rebase",
         "pull": "node -e \"require('./Core').import('update git')()\"",
-        "install:minimal": "npm install jsonpath-plus glob fuse.js gulp"
+        "install:nodessh": "ssh -i $1 -t ubuntu@$2 \"curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - && apt-get update -qqy && apt-get -qqy install nodejs build-essential && cd ~ && git clone https://megamindbrian@bitbucket.org/megamindbrian/jupyter_ops.git ./jupytangular && cd ~/jupytangular && $3 || true\""
+        "install:minimal": "npm install jsonpath-plus glob fuse.js gulp",
+        "install:aws": "npm run install:minimal && cp ./jupyter.service /etc/systemctl/system && cp ./jupyter.timer /etc/systemctl/system && sudo systemctl daemon-reload && sudo systemctl enable juypter.timer && sudo systemctl start jupyter.timer && npm run install:selenium"
+        "install:selenium": "cp ./selenium.service /etc/systemctl/system && sudo systemctl daemon-reload && sudo systemctl enable selenium.service && sudo systemctl start selenium.service && npm run install:webdriver"
+        "install:webdriver": "npm install wdio webdriverio fibers body-parser min-document && npm run install:vnc"
+        "install:vnc" : "node -e \"require('fs').writeFileSync('/opt/bin/entry_point.sh', require('./Core').interpret('vnc entry point').code)\""
     },
     "engines": {
         "node": ">= 8",
