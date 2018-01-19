@@ -3,25 +3,29 @@
     "description": "Automation Notebooks in Jupyter",
     "license": "UNLICENSED",
     "scripts": {
-        "start": "",
+        "ssh": "ssh -i ~/.credentials/selenium.pem -t ubuntu@ec2-54-201-232-148.us-west-2.compute.amazonaws.com",
+        "start:express": "node -e \"require('./Core').import('express rpc wrapper')\"",
+        "start:ng": "ng serve --host 0.0.0.0 --port 9090 --app 0",
         "export:public": "node -e \"require('./Core').import('export deploy notebook')(['firebase rpc wrapper', 'tell joke', 'latest s3 bucket', 'calendar search heatmap', 'spawn child process'])\"",
         "export:notebook": "node -e \"require('./Core').import('export deploy notebook')(['import notebooks modules', 'find project files'])\"",
         "export:zuora": "node -e \"require('./Core').import('export deploy notebook')('zuora to eloqua.ipynb', path.resolve('../subscription.services.eloqua'), {'**/zuora-+(export|renewals|account)*': './core/', '**/!(sync)*eloqua!(-express)*': './core/', '**/aws*': './upload/', '**/notify*': './notify/', '**/+(readme|http-request)*': './'})",
         "prebuild": "npm run export:public",
         "build": "webpack",
         "selenium": "selenium-standalone start",
-        "test": "node -e \"require('./Core').import('test cells')('test test runner')\" && npm run pull",
+        "test": "node -e \"require('./Core').import('test cells')('test test runner')\" && npm run update",
         "test:zuora": "node -e \"require('./Core').import('test cells')('zuora to eloqua.ipynb')\"",
         "watch": "node -e \"require('./Core').import('watch files run tests')('**/*ipynb', 'test test runner')\"",
         "watch:zuora": "node -e \"require('./Core').import('watch files run tests')('**/zuora*ipynb', 'zuora to eloqua.ipynb')\"",
         "lint": "eslint . --fix",
         "deploy": "git --git-dir=../jupytangular/.git reset --hard && git --git-dir=../jupytangular/.git pull --rebase",
-        "pull": "node -e \"require('./Core').import('update git')()\"",
-        "install:nodessh": "ssh -i $1 -t ubuntu@$2 \"curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - && apt-get update -qqy && apt-get -qqy install nodejs build-essential && cd ~ && git clone https://megamindbrian@bitbucket.org/megamindbrian/jupyter_ops.git ./jupytangular && cd ~/jupytangular && $3 || true\""
+        "deploy:ssh": "npm run ssh -- \"cd ~/jupytangular && git reset --hard && git pull --rebase\"",
+        "update": "node -e \"require('./Core').import('update git')()\"",
+        "install:node": "curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - && sudo apt-get update -qqy && sudo apt-get -qqy install nodejs build-essential",
+        "install:node:ssh": "npm run ssh -- \"curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - && sudo apt-get update -qqy && sudo apt-get -qqy install nodejs build-essential && cd ~ && git clone https://megamindbrian@bitbucket.org/megamindbrian/jupyter_ops.git ./jupytangular && cd ~/jupytangular\"",
         "install:minimal": "npm install jsonpath-plus glob fuse.js gulp",
-        "install:aws": "npm run install:minimal && cp ./jupyter.service /etc/systemctl/system && cp ./jupyter.timer /etc/systemctl/system && sudo systemctl daemon-reload && sudo systemctl enable juypter.timer && sudo systemctl start jupyter.timer && npm run install:selenium"
-        "install:selenium": "cp ./selenium.service /etc/systemctl/system && sudo systemctl daemon-reload && sudo systemctl enable selenium.service && sudo systemctl start selenium.service && npm run install:webdriver"
-        "install:webdriver": "npm install wdio webdriverio fibers body-parser min-document && npm run install:vnc"
+        "schedule:systemd": "cp ./jupyter.service /etc/systemctl/system && cp ./jupyter.timer /etc/systemctl/system && sudo systemctl daemon-reload && sudo systemctl enable juypter.timer && sudo systemctl start jupyter.timer && cp ./selenium.service /etc/systemctl/system && sudo systemctl daemon-reload && sudo systemctl enable selenium.service && sudo systemctl start selenium.service",
+        "install:selenium:aws": "node -e \"require('./Core').import('spawn child process')(require('./Core').interpret('vnc selenium server').code) && npm run install:vnc\"",
+        "install:webdriver": "npm install wdio webdriverio fibers body-parser min-document && npm run install:vnc",
         "install:vnc" : "node -e \"require('fs').writeFileSync('/opt/bin/entry_point.sh', require('./Core').interpret('vnc entry point').code)\""
     },
     "engines": {
