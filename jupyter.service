@@ -6,9 +6,5 @@ ExecStart=/usr/bin/node -e "require('/home/ubuntu/jupytangular/Core).import('hea
 User=seluser
 MemoryMax=200M
 
-[Timer]
-OnUnitActiveSec=120s
-OnBootSec=120s
-
 [Install]
 WantedBy=timers.target
