@@ -24,8 +24,8 @@
         "install:node": "curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - && sudo apt-get update -qqy && sudo apt-get -qqy install nodejs build-essential",
         "install:node:ssh": "npm run ssh -- \"curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - && sudo apt-get update -qqy && sudo apt-get -qqy install nodejs build-essential && cd ~ && git clone https://megamindbrian@bitbucket.org/megamindbrian/jupyter_ops.git ./jupytangular && cd ~/jupytangular\"",
         "install:minimal": "npm install jsonpath-plus glob fuse.js gulp",
-        "systemd:jupyter": "cd ~/jupytangular && sudo cp ./jupyter.service /etc/systemd/system && sudo cp ./jupyter.timer /etc/systemd/system && sudo systemctl daemon-reload && sudo systemctl load juypter.timer && sudo systemctl load jupyter.service && duso systemctl enable jupyter.service",
-        "systemd:selenium": "sudo cp ./selenium.service /etc/systemd/system && sudo systemctl daemon-reload && sudo systemctl load selenium.service && sudo systemctl enable selenium.service && sudo systemctl start selenium.service",
+        "systemd:jupyter": "cd ~/jupytangular && sudo cp ./jupyter.service /etc/systemd/system && sudo cp ./jupyter.timer /etc/systemd/system && sudo systemctl daemon-reload && sudo systemctl load juypter.timer && sudo systemctl enable jupyter",
+        "systemd:selenium": "sudo cp ./selenium.service /etc/systemd/system && sudo systemctl daemon-reload && sudo systemctl enable selenium && sudo systemctl start selenium.service",
         "install:selenium:aws": "node -e \"require('./Core').import('spawn child process')(require('./Core').interpret('vnc selenium server').code)\" && npm run install:vnc",
         "install:webdriver": "npm install wdio webdriverio fibers body-parser min-document && npm run install:vnc",
         "install:vnc" : "sudo mkdir /opt/bin || true && sudo node -e \"require('fs').writeFileSync('/opt/bin/entry_point.sh', require('./Core').interpret('vnc entry point').code)\" && sudo chmod +x /opt/bin/entry_point.sh"
