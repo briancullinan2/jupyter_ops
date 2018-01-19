@@ -27,7 +27,7 @@
         "schedule:systemd": "cp ./jupyter.service /etc/systemctl/system && cp ./jupyter.timer /etc/systemctl/system && sudo systemctl daemon-reload && sudo systemctl enable juypter.timer && sudo systemctl start jupyter.timer && cp ./selenium.service /etc/systemctl/system && sudo systemctl daemon-reload && sudo systemctl enable selenium.service && sudo systemctl start selenium.service",
         "install:selenium:aws": "node -e \"require('./Core').import('spawn child process')(require('./Core').interpret('vnc selenium server').code)\" && npm run install:vnc",
         "install:webdriver": "npm install wdio webdriverio fibers body-parser min-document && npm run install:vnc",
-        "install:vnc" : "sudo mkdir /opt/bin || true && sudo node -e \"require('fs').writeFileSync('/opt/bin/entry_point.sh', require('./Core').interpret('vnc entry point').code)\" && chmod +x /opt/bin/entry_point.sh"
+        "install:vnc" : "sudo mkdir /opt/bin || true && sudo node -e \"require('fs').writeFileSync('/opt/bin/entry_point.sh', require('./Core').interpret('vnc entry point').code)\" && sudo chmod +x /opt/bin/entry_point.sh"
     },
     "engines": {
         "node": ">= 8",
