@@ -33,19 +33,23 @@
     ],
     "google timeline.ipynb[search timeline events]": [
         "Function",
-        "Public"
+        "Public",
+        "map"
     ],
     "aws.ipynb[latest s3 bucket]": [
         "Function",
-        "Public"
+        "Public",
+        "gallery"
     ],
     "git.ipynb[tip git tree]": [
         "Function",
-        "Public"
+        "Public",
+        "slider"
     ],
     "google scheduling.ipynb[calendar search heatmap]": [
         "Function",
-        "Public"
+        "Public",
+        "slider"
     ],
     "child process.ipynb[spawn child process]": [
         "Function",
@@ -66,6 +70,13 @@
     ],
     "file system.ipynb[use static code analysis to find consecutive words in template files]": [],
     "budgeting.ipynb[]": [],
+    "code analysis.ipynb[Show git repo organization options]": [],
+    "code analysis.ipynb[Show router tree, module import tree, call tree, feature tree]": [],
+    "code analysis.ipynb[Warn of changes made outside of the module or feature branch]": [],
+    "code analysis.ipynb[Lint all code  Reformat all code using webstorm]": [],
+    "code analysis.ipynb[Code analysis to combine blocks into modules]": [],
+    "code analysis.ipynb[generate unit test from logic branching]": [],
+    "code analysis.ipynb[]": [],
     "reconcile timeline data.ipynb[#  read Google calendar and timeline data]": [],
     "import notebook.ipynb[#  execute and import a jupyter notebook]": [
         "Function"
@@ -802,7 +813,9 @@
         "Selenium",
         "Function"
     ],
-    "What is Selenium.ipynb[See [What is Docker](What%20is%20Docker.ipynb)]": [],
+    "What is Selenium.ipynb[See [What is Docker](What%20is%20Docker.ipynb)]": [
+        "Function"
+    ],
     "What is Selenium.ipynb[set up selenium server]": [
         "Selenium",
         "Function"
@@ -1045,5 +1058,6 @@
     "vnc.ipynb[Use vnc with live-server]": [],
     "vnc.ipynb[VNC in Docker]": [],
     "windows.ipynb[list window handles]": [],
-    "windows.ipynb[monitor active windows]": []
+    "windows.ipynb[monitor active windows]": [],
+    "windows.ipynb[]": []
 }
