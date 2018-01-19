@@ -126,7 +126,7 @@
     "interpret all notebooks.ipynb[find all notebooks]": [],
     "interpret all notebooks.ipynb[get markdown from all notebooks in {directory}]": [],
     "interpret all notebooks.ipynb[interpret a jupyter {directory}]": [],
-    "interpret all notebooks.ipynb[test notebook search]": [],
+    "interpret all notebooks.ipynb[]": [],
     "interpret questions.ipynb[find questions leading up to jupter cells]": [
         "Function"
     ],
@@ -155,6 +155,8 @@
     "demo.ipynb[Markdown cell: What question does this code set out to answer]": [],
     "demo.ipynb[#  use Docker]": [],
     "demo.ipynb[Code cell: A short function with any necessary definition functions]": [],
+    "demo.ipynb[Install build stack on colab]": [],
+    "demo.ipynb[update notebook repo on colab]": [],
     "docker commands.ipynb[#  use Docker]": [],
     "docker commands.ipynb[Build a docker image]": [],
     "docker commands.ipynb[Restart the docker service]": [],
@@ -393,6 +395,7 @@
     "zuora to eloqua.ipynb[test eloqua import service]": [],
     "zuora to eloqua.ipynb[zuora eloqua mapper]": [],
     "zuora to eloqua.ipynb[zuora eloqua mapper test]": [],
+    "zuora to eloqua.ipynb[zuora account blueprints]": [],
     "zuora to eloqua.ipynb[eloqua import create template]": [],
     "zuora to eloqua.ipynb[test eloqua import create template]": [],
     "zuora to eloqua.ipynb[eloqua import blueprints]": [],

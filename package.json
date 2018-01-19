@@ -17,7 +17,7 @@
         "lint": "eslint . --fix",
         "deploy": "git --git-dir=../jupytangular/.git reset --hard && git --git-dir=../jupytangular/.git pull --rebase",
         "pull": "node -e \"require('./Core').import('update git')()\"",
-        "install:minimal": "npm install jsonpath-plus glob fuse.js"
+        "install:minimal": "npm install jsonpath-plus glob fuse.js gulp"
     },
     "engines": {
         "node": ">= 8",
