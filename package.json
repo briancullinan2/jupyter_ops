@@ -16,7 +16,8 @@
         "watch:zuora": "node -e \"require('./Core').import('watch files run tests')('**/zuora*ipynb', 'zuora to eloqua.ipynb')\"",
         "lint": "eslint . --fix",
         "deploy": "git --git-dir=../jupytangular/.git reset --hard && git --git-dir=../jupytangular/.git pull --rebase",
-        "pull": "node -e \"require('./Core').import('update git')()\""
+        "pull": "node -e \"require('./Core').import('update git')()\"",
+        "install:minimal": "npm install jsonpath-plus glob"
     },
     "engines": {
         "node": ">= 8",
@@ -27,8 +28,6 @@
         "url": "git+https://github.com/megamindbrian/jupytangular.git"
     },
     "dependencies": {
-        "@angular-devkit/schematics": "0.0.43",
-        "@angular/cli": "^1.6.0",
         "@google/maps": "^0.4.5",
         "acorn": "^5.3.0",
         "astq": "^2.0.4",
