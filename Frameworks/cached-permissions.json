@@ -133,7 +133,6 @@
     "interpret all notebooks.ipynb[find all notebooks]": [],
     "interpret all notebooks.ipynb[get markdown from all notebooks in {directory}]": [],
     "interpret all notebooks.ipynb[interpret a jupyter {directory}]": [],
-    "interpret all notebooks.ipynb[]": [],
     "interpret questions.ipynb[find questions leading up to jupter cells]": [
         "Function"
     ],
