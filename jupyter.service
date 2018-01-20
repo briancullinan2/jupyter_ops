@@ -2,11 +2,10 @@
 Description=Jupytangular heartbeat
 
 [Service]
-ExecStart=/usr/bin/node -e "require('/home/ubuntu/jupytangular/Core').import('heartbeat')('todays heartbeat items', ['aws'])"
+ExecStart=/usr/bin/node -e "require('/home/ubuntu/jupytangular/Core').import('todays heartbeat items')('aws')"
 User=ubuntu
 MemoryMax=200M
 Type=forking
-RemainAfterExit=true
 
 [Install]
 WantedBy=timers.target
