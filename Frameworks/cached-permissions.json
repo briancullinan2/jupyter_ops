@@ -570,7 +570,10 @@
     "github.ipynb[Automatically heart issues where the solution works or a pull request is made]": [
         "Selenium"
     ],
-    "github.ipynb[Diff all package.json to identify project/stack/popularity trends]": [],
+    "github.ipynb[Diff all package.json to identify project/stack/popularity trends]": [
+        "Selenium",
+        "Function"
+    ],
     "github.ipynb[,download github]": [
         "Selenium"
     ],
@@ -850,7 +853,15 @@
     ],
     "active directory.ipynb[]": [],
     "bash.ipynb[]": [],
-    "child process.ipynb[]": [],
+    "bash.ipynb[node webdriver support]": [],
+    "bash.ipynb[install node]": [],
+    "bash.ipynb[install notebooks]": [],
+    "bash.ipynb[install systemd]": [],
+    "bash.ipynb[install launchd]": [],
+    "child process.ipynb[test child process]": [],
+    "child process.ipynb[convert bash to one liner]": [
+        "Function"
+    ],
     "compress.ipynb[Minified lzw compression]": [],
     "compress.ipynb[]": [],
     "dates.ipynb[find Tuesdays late in the month]": [
@@ -899,6 +910,8 @@
     "git commands.ipynb[compare git branches]": [],
     "git commands.ipynb[interesting git commands]": [],
     "git commands.ipynb[cache git credentials]": [],
+    "git commands.ipynb[git auto commit]": [],
+    "git commands.ipynb[git auto rebase]": [],
     "git.ipynb[Rename a bunch of files using Git and renamer]": [],
     "git.ipynb[]": [],
     "git.ipynb[json git tree]": [
@@ -1061,6 +1074,9 @@
     "vnc.ipynb[Use vnc with live-server]": [],
     "vnc.ipynb[VNC in Docker]": [],
     "vnc.ipynb[selenium vnc server]": [],
+    "vnc.ipynb[vnc entry point]": [],
+    "vnc.ipynb[install vnc entry]": [],
+    "vnc.ipynb[install aws vnc selenium]": [],
     "windows.ipynb[list window handles]": [],
     "windows.ipynb[monitor active windows]": [],
     "windows.ipynb[]": []
