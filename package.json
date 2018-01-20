@@ -9,7 +9,7 @@
         "interpret:bash": "node -e \"console.info = () => {}; console.log(require('./Core').import('bash to one liner')(require('./Core').interpret(process.argv[1]).code))\"",
         "ssh": "ssh -i ~/.credentials/selenium.pem -t -L 5900:127.0.0.1:5900 ubuntu@ec2-54-201-232-148.us-west-2.compute.amazonaws.com",
         "ssh:creds": "npm run exec \"copy credentials\"",
-        "ssh:install": "npm run ssh \"cd ~/jupytangular && npm run install:aws\"",
+        "ssh:install": "npm run ssh \"cd ~/jupytangular && npm run install:minimal && npm run install:aws\"",
         "ssh:deploy": "npm run ssh \"cd ~/jupytangular && npm run deploy\"",
         "ssh:git": "npm run ssh -- \"cd ~/jupytangular && $(npm run -s interpret:bash \"git auto rebase\")\"",
         "git:auto": "npm run exec \"git auto commit\"",
