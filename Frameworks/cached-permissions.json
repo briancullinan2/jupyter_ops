@@ -78,6 +78,13 @@
     "code analysis.ipynb[generate unit test from logic branching]": [],
     "code analysis.ipynb[]": [],
     "reconcile timeline data.ipynb[#  read Google calendar and timeline data]": [],
+    "aws.ipynb[aws rpc wrapper]": [
+        "Function"
+    ],
+    "aws.ipynb[]": [],
+    "deploy host.ipynb[deploy aws]": [],
+    "google.ipynb[firebase rpc wrapper]": [],
+    "google.ipynb[]": [],
     "import notebook.ipynb[#  execute and import a jupyter notebook]": [
         "Function"
     ],
@@ -202,13 +209,6 @@
     "angular render service.ipynb[render Angular modules instead of using express]": [],
     "angular render service.ipynb[]": [],
     "angular-cli.ipynb[]": [],
-    "autorewire.ipynb[install autorewire]": [],
-    "autorewire.ipynb[mock all properties and functions using rewire]": [],
-    "autorewire.ipynb[]": [],
-    "aws.ipynb[aws rpc wrapper]": [
-        "Function"
-    ],
-    "aws.ipynb[]": [],
     "build Angular components.ipynb[#  build Angular components using nodejs]": [
         "Function"
     ],
@@ -223,6 +223,12 @@
     "build Angular components.ipynb[Set angular theme colors]": [],
     "build Angular components.ipynb[run angular project from memory]": [],
     "build Angular components.ipynb[- more debuggable ES5 sourcemaps]": [],
+    "display angular.ipynb[Include the script in the response]": [],
+    "display angular.ipynb[Display angular modules in jupyter]": [],
+    "display angular.ipynb[]": [],
+    "autorewire.ipynb[install autorewire]": [],
+    "autorewire.ipynb[mock all properties and functions using rewire]": [],
+    "autorewire.ipynb[]": [],
     "d3 dates.ipynb[d3 swimlane]": [],
     "d3 dates.ipynb[d3 calendar]": [],
     "d3.ipynb[Create a word-cloud]": [
@@ -249,10 +255,6 @@
     ],
     "de-linting.ipynb[test de-linting service]": [],
     "de-linting.ipynb[]": [],
-    "deploy host.ipynb[deploy aws]": [],
-    "display angular.ipynb[Include the script in the response]": [],
-    "display angular.ipynb[Display angular modules in jupyter]": [],
-    "display angular.ipynb[]": [],
     "fizz buzz.ipynb[http://wiki.c2.com/FizzBuzzTest]": [],
     "fizz buzz.ipynb[]": [],
     "git repos.ipynb[# What repositories do we need]": [],
@@ -264,8 +266,6 @@
     "git repos.ipynb[use npm cache inside of docker]": [],
     "git repos.ipynb[run the Docker image]": [],
     "git repos.ipynb[Selenium test scripts]": [],
-    "google.ipynb[firebase rpc wrapper]": [],
-    "google.ipynb[]": [],
     "gulp.ipynb[use gulp]": [],
     "gulp.ipynb[convert a gulp task to a Promise]": [],
     "gulp.ipynb[use a Promise as a gulp task]": [],
@@ -858,6 +858,7 @@
     "bash.ipynb[install notebooks]": [],
     "bash.ipynb[install systemd]": [],
     "bash.ipynb[install launchd]": [],
+    "bash.ipynb[copy credentials]": [],
     "child process.ipynb[test child process]": [],
     "child process.ipynb[convert bash to one liner]": [
         "Function"

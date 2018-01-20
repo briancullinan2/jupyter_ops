@@ -5,8 +5,9 @@
     "scripts": {
         "import": "node -e \"console.log(require('./Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))))\"",
         "exec": "node -e \"console.log(require('./Core').import('spawn child process')(require('./Core').interpret(process.argv[1]).code))\"",
+        "interpret": "node -e \"console.info = () => {}; console.log(require('./Core').interpret(process.argv[1]).code)\"",
         "interpret:bash": "node -e \"console.info = () => {}; console.log(require('./Core').import('bash to one liner')(require('./Core').interpret(process.argv[1]).code))\"",
-        "ssh": "ssh -i ~/.credentials/selenium.pem -t ubuntu@ec2-54-201-232-148.us-west-2.compute.amazonaws.com",
+        "ssh": "ssh -i ~/.credentials/selenium.pem -t -L 5900:127.0.0.1:5900 ubuntu@ec2-54-201-232-148.us-west-2.compute.amazonaws.com",
         "ssh:creds": "npm run exec \"copy credentials\"",
         "ssh:deploy": "npm run ssh \"cd ~/jupytangular && npm run deploy\"",
         "ssh:git": "npm run ssh -- \"cd ~/jupytangular && $(npm run -s interpret:bash \"git auto rebase\")\"",
