@@ -36,7 +36,7 @@
         "install:launchd": "npm run launchd:jupyter",
         "install:systemd": "npm run exec \"install systemd\"",
         "launchd:jupyter": "npm run exec \"install launchd\"",
-        "install:aws": "sudo npm run exec \"install aws vnc selenium\"",
+        "install:aws": "sudo npm run exec \"install aws vnc selenium\" && npm run install:webdriver",
         "install:webdriver": "npm run exec \"node webdriver support\"",
         "output": "node -e \"require('fs').writeFileSync(process.argv[2], require('./Core').interpret(process.argv[1]).code)\"",
         "install:vnc" : "npm run exec \"install vnc entry\""
