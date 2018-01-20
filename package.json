@@ -3,7 +3,7 @@
     "description": "Automation Notebooks in Jupyter",
     "license": "UNLICENSED",
     "scripts": {
-        "import": "node -e \"console.log(require('./Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))))\"",
+        "import": "node -e \"var result = require('./Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))); (result + '').includes('Promise') ? result.catch(e => e).then(r => console.log(r)) : console.log(result)\"",
         "exec": "node -e \"console.log(require('./Core').import('spawn child process')(require('./Core').interpret(process.argv[1]).code))\"",
         "interpret": "node -e \"console.info = () => {}; console.log(require('./Core').interpret(process.argv[1]).code)\"",
         "interpret:bash": "node -e \"console.info = () => {}; console.log(require('./Core').import('bash to one liner')(require('./Core').interpret(process.argv[1]).code))\"",
