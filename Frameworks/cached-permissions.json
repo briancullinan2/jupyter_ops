@@ -93,6 +93,7 @@
     ],
     "aws.ipynb[]": [],
     "deploy host.ipynb[deploy aws]": [],
+    "deploy host.ipynb[]": [],
     "google.ipynb[firebase rpc wrapper]": [],
     "google.ipynb[]": [],
     "import notebook.ipynb[#  execute and import a jupyter notebook]": [
