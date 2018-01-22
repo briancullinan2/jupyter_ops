@@ -68,6 +68,6 @@ module.exports = {
         __dirname: true
     },
     externals: [nodeExternals({
-        whitelist: [/^(?:(?!googleapis|wdio|webdriverio|wdio-sync|firebase-admin|firebase-functions).)*$/]
+        whitelist: [/^(?:(?!css|d3-node|asty|astq|googleapis|wdio|webdriverio|wdio-sync|firebase-admin|firebase-functions).)*$/]
     })]
 }
