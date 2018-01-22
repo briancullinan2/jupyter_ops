@@ -41,7 +41,7 @@
         "install:aws": "npm run exec \"install aws vnc selenium\" && npm run install:webdriver",
         "install:webdriver": "npm run exec \"node webdriver support\"",
         "output": "node -e \"require('fs').writeFileSync(process.argv[2], require('./Core').interpret(process.argv[1]).code)\"",
-        "install:vnc" : "npm run exec \"install vnc entry\""
+        "install:vnc": "npm run exec \"install vnc entry\""
     },
     "engines": {
         "node": ">= 8",
@@ -69,6 +69,7 @@
         "firebase-admin": "^5.8.1",
         "firebase-functions": "^0.7.3",
         "fuse.js": "^3.2.0",
+        "github": "^13.1.0",
         "glob": "^7.1.2",
         "google-auth-library": "^0.10.0",
         "googleapis": "^20.2.0",

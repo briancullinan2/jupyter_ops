@@ -51,6 +51,16 @@
         "Public",
         "slider"
     ],
+    "git.ipynb[megamind]": [
+        "Function",
+        "Public",
+        "editor"
+    ],
+    "git.ipynb[github commit html acl]": [
+        "Function",
+        "Public",
+        "editor"
+    ],
     "child process.ipynb[spawn child process]": [
         "Function",
         "Public"
