@@ -65,6 +65,15 @@
         "Function",
         "Public"
     ],
+    "twilio.ipynb[accept incoming twilio message]": [
+        "Function",
+        "Public"
+    ],
+    "twilio.ipynb[twilio reminder]": [
+        "Function",
+        "Public",
+        "scheduler"
+    ],
     "file system.ipynb[List files in a project excluding some excessive searches locations]": [
         "Function"
     ],
@@ -394,6 +403,9 @@
     ],
     "test runner.ipynb[test test runner]": [],
     "test runner.ipynb[]": [],
+    "twilio.ipynb[send a twilio message]": [
+        "Function"
+    ],
     "zuora to eloqua.ipynb[zuora export service]": [],
     "zuora to eloqua.ipynb[]": [
         "Function"
