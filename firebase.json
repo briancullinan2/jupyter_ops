@@ -3,7 +3,7 @@
         "source": ".bundle",
         "ignore": [
             "**/.!(credentials)*",
-            "**/node_modules/!(xtend|ms|ecdsa-sig-formatter|buffer-equal-constant-time|jwa|safe-buffer|base64url|asty|firebase-functions|lodash|firebase-admin|jsonwebtoken|css|d3-node|jws)"
+            "**/node_modules/!(lodash.isplainobject|lodash.isnumber|lodash.isinteger|lodash.isarray|lodash.isboolean|lodash.includes|xtend|ms|ecdsa-sig-formatter|buffer-equal-constant-time|jwa|safe-buffer|base64url|asty|firebase-functions|lodash|firebase-admin|jsonwebtoken|css|d3-node|jws)"
         ]
     }
 }
