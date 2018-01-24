@@ -25,7 +25,16 @@
     ],
     "data collection.ipynb[schedule search all]": [
         "Function",
-        "Public"
+        "Public",
+        "scheduler"
+    ],
+    "data collection.ipynb[crawl domain]": [
+        "Function"
+    ],
+    "data collection.ipynb[schedulecrawl domain]": [
+        "Function",
+        "Public",
+        "scheduler"
     ],
     "data collection.ipynb[tell joke]": [
         "Function",
@@ -571,7 +580,7 @@
         "Selenium",
         "Function"
     ],
-    "forms.ipynb[]": [
+    "forms.ipynb[get all links html]": [
         "Selenium"
     ],
     "github.ipynb[Follow someone more closely]": [
@@ -720,9 +729,6 @@
         "Selenium",
         "Function"
     ],
-    "orchestration.ipynb[]": [
-        "Selenium"
-    ],
     "orchestration.ipynb[send a joke]": [
         "Selenium",
         "Function"
@@ -730,6 +736,9 @@
     "orchestration.ipynb[send facebook thanks]": [
         "Selenium",
         "Function"
+    ],
+    "orchestration.ipynb[]": [
+        "Selenium"
     ],
     "orchestration.ipynb[clean up old selenium sessions]": [
         "Selenium",
@@ -952,15 +961,26 @@
     "git.ipynb[check github for commits since the current one]": [
         "Function"
     ],
-    "git.ipynb[Rebase squash cherrypick automatically to create perfect feature branch]": [],
-    "git.ipynb[Reset each file one at a time to make sure there aren't any unnecessary changes]": [],
-    "git.ipynb[Use unit testing to warn about unnecessary modules]": [],
+    "git.ipynb[Rebase squash cherrypick automatically to create perfect feature branch]": [
+        "Function"
+    ],
+    "git.ipynb[Reset each file one at a time to make sure there aren't any unnecessary changes]": [
+        "Function"
+    ],
+    "git.ipynb[Use unit testing to warn about unnecessary modules]": [
+        "Function"
+    ],
     "git.ipynb[Plot when a TODO: item is added and when it is removed on Google Calendar, then verify by checking commit -messages, remaining comments/function names with matching keywords (split by camel casing), plot dates completed for measurement of self set tasks and short term goals, which activities are harder than others  better insight in to erroneous developer time estimates]": [],
-    "git.ipynb[Interface for searching all TODO: items  Calendar]": [],
-    "git.ipynb[git project directory]": [
+    "git.ipynb[Interface for searching all TODO: items  Calendar]": [
+        "Function"
+    ],
+    "git.ipynb[,git project directory]": [
         "Function"
     ],
     "git.ipynb[get fresh git project directory]": [
+        "Function"
+    ],
+    "git.ipynb[get scraped page]": [
         "Function"
     ],
     "google calendar.ipynb[#  use Google calendar API]": [
