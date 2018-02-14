@@ -112,8 +112,8 @@
     "aws.ipynb[]": [],
     "deploy host.ipynb[deploy aws]": [],
     "deploy host.ipynb[]": [],
-    "google.ipynb[firebase rpc wrapper]": [],
-    "google.ipynb[]": [],
+    "firebase.ipynb[firebase rpc wrapper]": [],
+    "firebase.ipynb[]": [],
     "import notebook.ipynb[#  execute and import a jupyter notebook]": [
         "Function"
     ],
@@ -980,6 +980,9 @@
         "Function"
     ],
     "git.ipynb[get scraped page]": [
+        "Function"
+    ],
+    "git.ipynb[glob git branch]": [
         "Function"
     ],
     "google calendar.ipynb[#  use Google calendar API]": [

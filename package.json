@@ -16,6 +16,7 @@
         "git:rebase": "npm run exec \"git auto rebase\"",
         "start:express": "node -e \"require('./Core').import('express rpc wrapper')\"",
         "start:ng": "ng serve --host 0.0.0.0 --port 9090 --app 0",
+        "start:note": "source activate py36 && jupyter notebook",
         "export": "npm run import \"export deploy notebook\"",
         "export:firebase": "npm run export -- \"[['firebase rpc wrapper', 'tell joke', 'latest s3 bucket', 'calendar search heatmap', 'spawn child process', 'github html commit acl']]\"",
         "export:notebook": "npm run export -- \"[['import notebooks modules', 'find project files']]\"",
