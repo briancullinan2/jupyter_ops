@@ -794,10 +794,15 @@
         "Selenium"
     ],
     "utilities.ipynb[Scroll a specific element]": [
-        "Selenium"
+        "Selenium",
+        "Function"
     ],
     "utilities.ipynb[Get all elements XPath]": [
         "Selenium"
+    ],
+    "utilities.ipynb[get all xpath from string]": [
+        "Selenium",
+        "Function"
     ],
     "utilities.ipynb[Get all elements until]": [
         "Selenium",
@@ -1113,6 +1118,7 @@
     "polyfills.ipynb[http request pollyfill]": [],
     "polyfills.ipynb[]": [],
     "registry.ipynb[]": [],
+    "scraping.ipynb[]": [],
     "sql to json.ipynb[]": [],
     "uuid.ipynb[Generate a universally unique identifier]": [],
     "vnc.ipynb[# What is VNC]": [],

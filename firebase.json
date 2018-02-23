@@ -2,8 +2,7 @@
     "functions": {
         "source": ".bundle",
         "ignore": [
-            "**/.!(credentials)*",
-            "**/node_modules/!(asynckit|delayed-stream|combined-stream|form-data|forever-agent|caseless|stringstream|mime-db|mime-types|json-schema|core-util-is|verror|extsprintf|jsprim|asn1|sshpk|assert-plus|http-signature|aws4|aws-sign2|cryptiles|sntp|hoek|boom|hawk|json-stringify-safe|tough-cookie|extend|request|google-auth-library|googleapis|charenc|crypt|sha1|node-forge|d3-node|lodash*|xtend|ms|ecdsa-sig-formatter|buffer-equal-constant-time|jwa|safe-buffer|base64url|asty|firebase-functions|lodash|firebase-admin|jsonwebtoken|css|d3-node|jws)"
+            "**/.!(credentials)*"
         ]
     }
 }
