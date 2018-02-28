@@ -854,9 +854,7 @@
         "Selenium",
         "Function"
     ],
-    "What is Selenium.ipynb[See [What is Docker](What%20is%20Docker.ipynb)]": [
-        "Function"
-    ],
+    "What is Selenium.ipynb[See [What is Docker](What%20is%20Docker.ipynb)]": [],
     "What is Selenium.ipynb[set up selenium server]": [
         "Selenium",
         "Function"
@@ -974,7 +972,10 @@
     "git.ipynb[Use unit testing to warn about unnecessary modules]": [
         "Function"
     ],
-    "git.ipynb[Plot when a TODO: item is added and when it is removed on Google Calendar, then verify by checking commit -messages, remaining comments/function names with matching keywords (split by camel casing), plot dates completed for measurement of self set tasks and short term goals, which activities are harder than others  better insight in to erroneous developer time estimates]": [],
+    "git.ipynb[Plot when a TODO: item is added and when it is removed on Google Calendar, then verify by checking commit -messages, remaining comments/function names with matching keywords (split by camel casing), plot dates completed for measurement of self set tasks and short term goals, which activities are harder than others  better insight in to erroneous developer time estimates]": [
+        "Selenium",
+        "Function"
+    ],
     "git.ipynb[Interface for searching all TODO: items  Calendar]": [
         "Function"
     ],
@@ -1039,6 +1040,12 @@
     ],
     "google maps.ipynb[use Google Geocaching]": [],
     "google maps.ipynb[cache locations nearby]": [
+        "Function"
+    ],
+    "google maps.ipynb[Gather resturant data from google maps]": [
+        "Function"
+    ],
+    "google maps.ipynb[google maps data list]": [
         "Function"
     ],
     "google maps.ipynb[]": [],
