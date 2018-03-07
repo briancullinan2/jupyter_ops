@@ -1038,14 +1038,11 @@
     "google maps.ipynb[use places nearby API]": [
         "Function"
     ],
+    "google maps.ipynb[place details google maps]": [
+        "Function"
+    ],
     "google maps.ipynb[use Google Geocaching]": [],
     "google maps.ipynb[cache locations nearby]": [
-        "Function"
-    ],
-    "google maps.ipynb[Gather resturant data from google maps]": [
-        "Function"
-    ],
-    "google maps.ipynb[google maps data list]": [
         "Function"
     ],
     "google maps.ipynb[]": [],
@@ -1066,8 +1063,12 @@
         "Function"
     ],
     "heartbeat.ipynb[]": [],
-    "levenshtein.ipynb[Find the levenshtein distance]": [],
-    "levenshtein.ipynb[Sort by levenshtein distance]": [],
+    "levenshtein.ipynb[Find the levenshtein distance]": [
+        "Function"
+    ],
+    "levenshtein.ipynb[Sort by levenshtein distance]": [
+        "Function"
+    ],
     "levenshtein.ipynb[]": [],
     "mono.ipynb[run Mono with docker]": [],
     "mono.ipynb[]": [],
@@ -1126,6 +1127,12 @@
     "polyfills.ipynb[]": [],
     "registry.ipynb[]": [],
     "scraping.ipynb[]": [],
+    "scraping.ipynb[Gather resturant data from google maps]": [
+        "Function"
+    ],
+    "scraping.ipynb[google maps data list]": [
+        "Function"
+    ],
     "sql to json.ipynb[]": [],
     "uuid.ipynb[Generate a universally unique identifier]": [],
     "vnc.ipynb[# What is VNC]": [],
