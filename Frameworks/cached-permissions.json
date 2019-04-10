@@ -1055,6 +1055,9 @@
     "google scheduling.ipynb[remove overlaps]": [],
     "google scheduling.ipynb[remove overlaps from events with alloable wiggle room]": [],
     "google scheduling.ipynb[prioritize events based on glob summary]": [],
+    "google scheduling.ipynb[search calendar]": [
+        "Function"
+    ],
     "google scheduling.ipynb[]": [],
     "heartbeat.ipynb[heartbeat thump]": [
         "Function"
