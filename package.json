@@ -61,7 +61,9 @@
         "gulp": "^4.0.0",
         "jsonpath-plus": "^0.18.0",
         "mocha": "^6.1.4",
-        "node": "^11.13.0"
+        "mustache": "^3.0.1",
+        "node": "^11.13.0",
+        "remarkable": "^1.7.1"
     },
     "devDependencies": {}
 }
