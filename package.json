@@ -29,7 +29,7 @@
         "test:cells": "npm run import \"test cells\"",
         "test:all": "npm run test:cells -- \"['test test runner']\"",
         "test:zuora": "npm run test:cells -- \"['zuora to eloqua.ipynb']\"",
-        "test:store": "live-server --port=8080 --host=0.0.0.0 --entry-file=./.output/app.html --mount=/:./.output",
+        "test:store": "live-server --port=8080 --host=0.0.0.0 --entry-file=./.output/app.html --mount=/:./.output --middleware=/Users/briancullinan/jupytangular2/live-server-middleware.js",
         "watch": "npm run import \"watch files run tests\"",
         "watch:all": "npm run watch -- \"['**/*ipynb', 'test test runner']\"",
         "watch:zuora": "npm run watch -- \"['**/zuora*ipynb', 'zuora to eloqua.ipynb']\"",
@@ -56,6 +56,7 @@
         "url": "git+https://github.com/megamindbrian/jupytangular.git"
     },
     "dependencies": {
+        "express": "^4.16.4",
         "fuse.js": "^3.4.4",
         "glob": "^7.1.3",
         "google-spreadsheet": "^2.0.7",
