@@ -36,6 +36,7 @@
         "lint": "eslint . --fix",
         "deploy": "npm run deploy:firebase",
         "deploy:firebase": "npm run build:firebase && firebase deploy",
+        "deploy:store": "npm run test:cells -- \"['test google sheet resources']\" && npm run exec \"upload output google cloud\" ./.output && npm run exec \"copy html to google\" ./.output",
         "schedule:update": "npm run import \"update git\"",
         "install:node": "npm run exec \"install node\"",
         "install:minimal": "npm install node jsonpath-plus glob fuse.js gulp",
