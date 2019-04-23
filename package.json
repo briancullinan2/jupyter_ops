@@ -61,6 +61,7 @@
         "url": "git+https://github.com/megamindbrian/jupytangular.git"
     },
     "dependencies": {
+        "@google-cloud/storage": "^2.5.0",
         "cors": "^2.8.5",
         "express": "^4.16.4",
         "fuse.js": "^3.4.4",
