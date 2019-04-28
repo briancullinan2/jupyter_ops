@@ -7,7 +7,7 @@
 
 var getSheet = require('./get-sheet-identifier-from-link.js');
 
-exports.handler = async (req, res) => {
+async function handler(req, res) {
     res.set('Access-Control-Allow-Origin', '*');
     return await getSheet(req.query['link'])
         .then(r => res.status(200).send(r))
@@ -15,4 +15,6 @@ exports.handler = async (req, res) => {
             alt[key] = e[key] + '';
             return alt;
         }, {})));
-};
+}
+
+module.exports.handler = handler;

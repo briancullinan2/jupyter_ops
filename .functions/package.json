@@ -13,6 +13,7 @@
         "url": "git+https://github.com/megamindbrian/jupytangular.git"
     },
     "dependencies": {
-        "google-spreadsheet": "^2.0.7"
+        "google-spreadsheet": "^2.0.7",
+        "remarkable": "^1.7.1"
     }
 }
