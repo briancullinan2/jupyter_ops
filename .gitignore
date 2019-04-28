@@ -5,6 +5,7 @@ npm-debug.log*
 Utilities/ca
 Utilities/.modules
 .output
+.functions
 .build
 .bundle
 cached-permissions.json
