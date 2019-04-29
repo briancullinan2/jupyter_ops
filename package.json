@@ -40,6 +40,7 @@
         "deploy:firebase": "npm run build:firebase && firebase deploy",
         "deploy:store": "npm run test:store && npm run exec \"upload output google cloud\" ./.output \"gs://www.shopilluminati.com\" && npm run exec \"copy html to google\" ./.output \"gs://www.shopilluminati.com\"",
         "deploy:marketing": "npm run export:marketing && npm run exec \"deploy cloud function\" getSheet",
+        "deploy:sheet": "npm run test:store && npm run exec \"upload output google cloud\" ./.output \"gs://sheet-to-web.com\" && npm run exec \"copy html to google\" ./.output \"gs://sheet-to-web.com\"",
         "schedule:update": "npm run import \"update git\"",
         "install:node": "npm run exec \"install node\"",
         "install:minimal": "npm install node jsonpath-plus glob fuse.js gulp",
