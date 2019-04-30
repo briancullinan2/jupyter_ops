@@ -32,7 +32,7 @@
         "test:cells": "npm run import \"test cells\"",
         "test:all": "npm run test:cells -- \"['test test runner']\"",
         "test:zuora": "npm run test:cells -- \"['zuora to eloqua.ipynb']\"",
-        "test:sheet:info": "npm run import \"google sheets api\" -- \"['https://docs.google.com/spreadsheets/d/113mVIumItArQ_oXpfDRXP-2Kw2ms4t48oPJ68_p5P8k/edit#gid=0']\"",
+        "test:sheet:info": "npm run import \"get sheet identifier\" -- \"['https://docs.google.com/spreadsheets/d/113mVIumItArQ_oXpfDRXP-2Kw2ms4t48oPJ68_p5P8k/edit#gid=0']\"",
         "watch": "npm run import \"watch files run tests\"",
         "watch:all": "npm run watch -- \"['**/*ipynb', 'test test runner']\"",
         "watch:zuora": "npm run watch -- \"['**/zuora*ipynb', 'zuora to eloqua.ipynb']\"",
