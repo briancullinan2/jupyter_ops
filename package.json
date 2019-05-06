@@ -58,9 +58,9 @@
         "install:systemd": "npm run exec \"install systemd\"",
         "launchd:jupyter": "npm run exec \"install launchd\"",
         "install:aws": "npm run exec \"install aws vnc selenium\" && npm run install:webdriver",
-        "install:webdriver": "npm run exec \"node webdriver support\"",
+        "install:webdriver": "npm install wdio webdriverio wdio-sync",
         "install:export": "npm install ncp gulp-tap gulp-replace",
-        "install:extras": "googleapis chrono-node node-imap jsdom remarkable",
+        "install:extras": "googleapis chrono-node node-imap jsdom remarkable d3-node",
         "output": "node -e \"require('fs').writeFileSync(process.argv[2], require('./Core').interpret(process.argv[1]).code)\"",
         "install:vnc": "npm run exec \"install vnc entry\""
     },
@@ -77,6 +77,8 @@
         "@google-cloud/storage": "^2.5.0",
         "chrono-node": "^1.3.11",
         "cors": "^2.8.5",
+        "d3": "^5.9.2",
+        "d3-node": "^2.1.0",
         "dns": "^0.2.2",
         "express": "^4.16.4",
         "fuse.js": "^3.4.4",
@@ -96,7 +98,9 @@
         "ncp": "^2.0.0",
         "node": "^11.13.0",
         "remarkable": "^1.7.1",
-        "rimraf": "^2.6.3"
+        "rimraf": "^2.6.3",
+        "wdio-sync": "^0.7.3",
+        "webdriverio": "^5.8.1"
     },
     "devDependencies": {}
 }
