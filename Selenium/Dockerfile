@@ -32,7 +32,7 @@ RUN mkdir -p novnc ; if git --work-tree=./novnc branch | grep master; then \
  fi ; ls -la novnc ; pwd
 
 RUN dos2unix /home/seluser/novnc/utils/launch.sh
-RUN sed -i -e 's/export GEOMETRY.*/export GEOMETRY="8160x6120x24"/g' /opt/bin/entry_point.sh
-RUN sed -i -e 's/x11vnc/x11vnc -scale 2700x2048 -noxdamage/g' /opt/bin/entry_point.sh
-RUN sed -i '/wait \$NODE_PID/i/home/seluser/novnc/utils/launch.sh --vnc localhost:5900 &' /opt/bin/entry_point.sh
+RUN sed -i -e 's/export GEOMETRY.*/export GEOMETRY="8160x6120x24"/g' /opt/bin/start-xvfb.sh
+RUN sed -i -e 's/x11vnc/x11vnc -scale 4080x3060 -noxdamage/g' /opt/bin/start-vnc.sh
+RUN sed -i '/wait \$/i/home/seluser/novnc/utils/launch.sh --vnc localhost:5900 &' /opt/bin/entry_point.sh
 USER seluser
