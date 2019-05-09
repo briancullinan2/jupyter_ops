@@ -39,6 +39,7 @@
         "test:authorize": "npm run import \"authorize sheets\"",
         "test:calendar": "npm run import \"list events\" -- \"[{q: 'period', calendarId: 'Iga'}]\"",
         "test:resume": "rimraf ./.output && npm run import \"test google sheets resources\" -- \"['https://docs.google.com/spreadsheets/d/1dAtBQyn5vwStM6ITn7iCpp996Sus26k0bJtbGNlCX2g/edit#gid=0', 'resume.sheet-to-web.com']\"",
+        "test:bookmarks": "npm run import \"sync chrome bookmarks\"",
         "watch": "npm run import \"watch files run tests\"",
         "watch:all": "npm run watch -- \"['**/*ipynb', 'test test runner']\"",
         "watch:zuora": "npm run watch -- \"['**/zuora*ipynb', 'zuora to eloqua.ipynb']\"",
