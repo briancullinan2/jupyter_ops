@@ -31,6 +31,7 @@
         "build": "npm run build:firebase",
         "selenium": "selenium-standalone start",
         "test": "npm run test:all && npm run schedule:update",
+        "test:export": "npm run import \"export deploy notebook\" -- \"['windows.ipynb', '/Users/briancullinan/Documents/window tracker', {'**/*': './'}]\"",
         "test:cells": "npm run import \"test cells\"",
         "test:all": "npm run test:cells -- \"['test test runner']\"",
         "test:zuora": "npm run test:cells -- \"['zuora to eloqua.ipynb']\"",
