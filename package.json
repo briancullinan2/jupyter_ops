@@ -5,7 +5,7 @@
     "scripts": {
         "import": "node -e \"var result = require('./Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))); (result + '').includes('Promise') ? result.catch(e => e).then(r => console.log(r)) : console.log(result)\"",
         "exec": "node -e \"console.log(require('./Core').import('spawn child process')(require('./Core').interpret(process.argv[1]).code))\"",
-        "interpret": "node -e \"console.info = () => {}; console.log(require('./Core').interpret(process.argv[1]).code)\"",
+        "interpret": "node -e \"console.info = () => {}; console.log(require('./Core').interpret(process.argv[1]))\"",
         "interpret:bash": "node -e \"console.info = () => {}; console.log(require('./Core').import('bash to one liner')(require('./Core').interpret(process.argv[1]).code))\"",
         "ssh": "ssh -i ~/.credentials/selenium.pem -t -L 5900:127.0.0.1:5900 ubuntu@ec2-54-201-232-148.us-west-2.compute.amazonaws.com",
         "ssh:creds": "npm run exec \"copy credentials\"",
@@ -24,7 +24,7 @@
         "export:firebase": "npm run export -- \"[['firebase rpc wrapper', 'tell joke', 'latest s3 bucket', 'calendar search heatmap', 'spawn child process', 'github html commit acl']]\"",
         "export:notebook": "npm run export -- \"[['import notebooks modules', 'find project files']]\"",
         "export:sheet": "rimraf ./.functions && npm run export -- \"[['contact us handler', 'google cloud function rpc wrapper', 'sheet backend handler', 'create a sheet handler', 'google sheet handler', 'sheet marketing import handler', 'convert spreadsheet.ipynb[package.json]'], path.resolve('./.functions'), {'**/*google-sheet-handler*': './index.js', '**/*': './'}]\"",
-        "export:study": "rimraf ./.functions && npm run export -- \"[['contact us handler', 'google cloud function rpc wrapper', 'authorize app to read profile info', 'create a study sauce user directory', 'render study sauce cards page', 'create a copy of study sauce template'], path.resolve('./.functions'), {'**/*rpc-wrapper*': './index.js', '**/*': './'}]\"",
+        "export:study": "rimraf ./.functions && npm run export -- \"[['contact us handler', 'google cloud function rpc wrapper', 'authorize app to read profile info', 'create a study sauce user directory', 'render study sauce cards page', 'create a copy of study sauce template', 'convert spreadsheet.ipynb[package.json]'], path.resolve('./.functions'), {'**/*rpc-wrapper*': './index.js', '**/*': './'}]\"",
         "export:contact": "rimraf ./.functions && npm run export -- \"[['contact us handler', 'marketing scripts.ipynb[package.json]'], path.resolve('./.functions'), {'**/*contact-us-handler*': './index.js', '**/*': './'}]\"",
         "prebuild:firebase": "npm run export:firebase",
         "build:firebase": "webpack",
