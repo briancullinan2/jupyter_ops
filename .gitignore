@@ -9,3 +9,5 @@ Utilities/.modules
 .build
 .bundle
 cached-permissions.json
+Analytics/movies.sqlite.db
+Analytics/movies.sqlite.db-journal
