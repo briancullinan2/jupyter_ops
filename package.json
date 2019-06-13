@@ -19,7 +19,7 @@
         "start:note": "source activate py36 && jupyter notebook",
         "start:store": "live-server --cors --port=8080 --host=0.0.0.0 --entry-file=./.output/app.html --mount=/:./.output --middleware=/Users/briancullinan/jupytangular2/live-server-middleware.js",
         "start:selenium": "npm run import \"set up selenium server\" && docker exec -it act-selenium bash",
-        "start:study": "rimraf ./.functions && npm run export:study && npm run copy:credentials && functions deploy studyRPC --trigger-http --source=./.functions --entry-point handler --update-env-vars ENVIRONMENT=STUDY_LOCAL",
+        "start:study": "rimraf ./.functions && export ENVIRONMENT=STUDY_LOCAL && npm run export:study && npm run copy:credentials && functions deploy studyRPC --trigger-http --source=./.functions --entry-point handler --update-env-vars ENVIRONMENT=STUDY_LOCAL",
         "export": "npm run import \"export deploy notebook\"",
         "export:firebase": "npm run export -- \"[['firebase rpc wrapper', 'tell joke', 'latest s3 bucket', 'calendar search heatmap', 'spawn child process', 'github html commit acl']]\"",
         "export:notebook": "npm run export -- \"[['import notebooks modules', 'find project files']]\"",
@@ -90,7 +90,7 @@
         "install:systemd": "npm run exec \"install systemd\"",
         "install:aws": "npm run exec \"install aws vnc selenium\" && npm run install:webdriver",
         "install:webdriver": "npm install webdriverio @wdio/cli lockfile wdio-chromedriver-service",
-        "install:export": "npm install ncp gulp-tap gulp-replace escodegen esprima astq esquery eslint",
+        "install:export": "npm install ncp gulp-tap gulp-replace escodegen esprima astq esquery eslint mustache",
         "install:extras": "npm install lodash chrono-node googleapis @google/cloud-storage chrono-node imap jsdom remarkable d3-node google-auth-library mustache",
         "install:vnc": "npm run exec \"install vnc entry\"",
         "launchd:jupyter": "npm run exec \"install launchd\""
