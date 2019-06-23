@@ -106,6 +106,7 @@
     },
     "dependencies": {
         "astq": "^2.6.2",
+        "axios": "^0.19.0",
         "better-sqlite3": "^5.4.0",
         "escodegen": "^1.11.1",
         "eslint": "^5.16.0",
