@@ -9,7 +9,7 @@ Module._cache[filepath] = newModule;
 newModule.filename = filepath;
 newModule.paths = Module._nodeModulePaths(path.dirname(filepath));
 if (typeof importer === 'undefined') {
-    var notebookPath = path.join(__dirname, 'import notebook.ipynb');
+    var notebookPath = path.join(__dirname, 'import.ipynb');
     var f = fs.readFileSync(notebookPath).toString();
     var re = new RegExp('initialize([\\s\\S]*?)\\$\\$\\.done', 'ig');
     var m, co = [];
