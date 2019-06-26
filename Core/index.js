@@ -6,6 +6,7 @@ var fs = require('fs');
 var filepath = path.resolve(process.cwd(), __filename);
 var newModule = new Module(filepath, process.mainModule);
 Module._cache[filepath] = newModule;
+newModule.parent = module;
 newModule.filename = filepath;
 newModule.paths = Module._nodeModulePaths(path.dirname(filepath));
 if (typeof importer === 'undefined') {
