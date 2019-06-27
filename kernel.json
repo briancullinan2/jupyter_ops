@@ -1,0 +1,15 @@
+{
+    "argv": [
+        "npm",
+        "--cwd",
+        "/Users/briancullinan",
+        "run",
+        "import",
+        "get javascript kernel",
+        "--",
+        "[\"{connection_file}\"]"
+    ],
+    "display_name": "NodeJS",
+    "path": "['install']",
+    "language": "javascript_test"
+}
