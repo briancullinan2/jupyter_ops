@@ -122,6 +122,7 @@
         "gulp": "^4.0.2",
         "gulp-replace": "^1.0.0",
         "gulp-tap": "^1.0.1",
+        "jmp": "^2.0.0",
         "jsdom": "^15.1.1",
         "jsonpath-plus": "^0.20.0",
         "mime-types": "^2.1.24",
