@@ -1,4 +1,7 @@
 // How to parse a well formatted simple notebook the cheap way?
+
+// TODO: read create cells and import using first method
+
 var path = require('path');
 var Module = require('module').Module;
 var fs = require('fs');
