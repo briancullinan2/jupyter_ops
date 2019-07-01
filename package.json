@@ -105,6 +105,8 @@
         "url": "git+https://github.com/megamindbrian/jupyter_ops.git"
     },
     "dependencies": {
+        "@babel/core": "^7.4.5",
+        "@babel/preset-env": "^7.4.5",
         "astq": "^2.6.2",
         "axios": "^0.19.0",
         "better-sqlite3": "^5.4.0",
