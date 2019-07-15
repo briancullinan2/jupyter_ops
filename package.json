@@ -4,6 +4,7 @@
     "license": "UNLICENSED",
     "scripts": {
         "import": "node -e \"var result = require('./Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))); result && result.catch ? result.catch(e => e).then(r => console.log(r)) : console.log(result)\"",
+        "interpret": "node -e \"console.info = () => {}; console.log(require('./Core').interpret(process.argv[1]))\"",
         "exec": "node -e \"console.log(require('./Core').import('spawn child process')(require('./Core').interpret(process.argv[1]).code))\"",
         "git:auto": "npm run exec \"git auto commit\""
     },
