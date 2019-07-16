@@ -2,33 +2,37 @@
 
 // TODO: read create cells and import using first method
 
-var path = require('path');
-var Module = require('module').Module;
-var fs = require('fs');
+var path = require('path')
+var Module = require('module').Module
+var fs = require('fs')
 
-var filepath = path.resolve(process.cwd(), __filename);
-var newModule = new Module(filepath, process.mainModule);
-Module._cache[filepath] = newModule;
-newModule.parent = module;
-newModule.filename = filepath;
-newModule.paths = Module._nodeModulePaths(path.dirname(filepath));
-if (typeof importer === 'undefined') {
-    var notebookPath = path.join(__dirname, 'import.ipynb');
-    var f = fs.readFileSync(notebookPath).toString();
-    var re = new RegExp('initialize([\\s\\S]*?)\\$\\$\\.done', 'ig');
-    var m, co = [];
-    while ((m = re.exec(f)) && co.push(m[1])) ;
-    var code = JSON.parse('["//' + co.join('","') + '"]').join('\n');
-    newModule._compile(code, notebookPath);
-    newModule.loaded = true;
-}
+var notebookPath = path.resolve(path.join(__dirname, 'import.ipynb'))
+var notebook = JSON.parse(fs.readFileSync(notebookPath).toString())
+var cells = notebook.cells
+    .filter(c => c.cell_type === 'code')
+    .map(c => c.source.join(''))
+
+module.exports = cells.reduce((obj, code, i) => {
+    var cellPath = `${notebookPath}[${i}]`
+    var newModule = new Module(cellPath, process.mainModule)
+    Module._cache[cellPath] = newModule
+    Object.assign(newModule, {
+        exports: {},
+        parent: module,
+        filename: cellPath,
+        paths: Module._nodeModulePaths(path.dirname(cellPath))
+    })
+    newModule._compile(code, cellPath)
+    newModule.loaded = true
+    return Object.assign(obj, newModule.exports)
+}, {})
+
 Module._extensions['.ipynb'] = (module, filename, ctx) => {
+    console.log('hit')
     const tmpModule = {
         _compile: () => {
         }
-    };
-    tmpModule._compile = () => (module.exports = newModule.exports.import(filename, ctx));
+    }
+    tmpModule._compile = () => (module.exports = newModule.exports.import(filename, ctx))
     return require.extensions['.js'](tmpModule, filename)
-};
-module.exports = newModule.exports;
-
+}
