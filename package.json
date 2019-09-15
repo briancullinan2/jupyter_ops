@@ -3,7 +3,7 @@
     "description": "Automation Notebooks in Jupyter",
     "license": "UNLICENSED",
     "scripts": {
-        "import": "node -e \"var result = require('./Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))); result && result.catch ? result.catch(e => e).then(r => console.log(r)) : console.log(result)\"",
+        "import": "node inspect -e \"var result = require('./Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))); result && result.catch ? result.catch(e => e).then(r => console.log(r)) : console.log(result)\"",
         "interpret": "node -e \"console.info = () => {}; console.log(require('./Core').interpret(process.argv[1]))\"",
         "exec": "node -e \"console.log(require('./Core').import('spawn child process')(require('./Core').interpret(process.argv[1]).code))\"",
         "git:auto": "npm run exec \"git auto commit\""
@@ -49,6 +49,7 @@
         "mustache": "^3.0.1",
         "ncp": "^2.0.0",
         "node": "^12.4.0",
+        "node-stream-zip": "^1.8.2",
         "papaparse": "^5.0.0",
         "remarkable": "^1.7.1",
         "rimraf": "^2.6.3"
