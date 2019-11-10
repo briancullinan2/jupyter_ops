@@ -3,6 +3,7 @@
     "description": "Automation Notebooks in Jupyter",
     "license": "UNLICENSED",
     "scripts": {
+        "start": "live-server --cors --port=8080 --host=0.0.0.0 --entry-file=./.output/app.html --mount=/:./.output --middleware=/Users/briancullinan/jupyter_ops/live-server-middleware.js",
         "import": "node -e \"var result = require('./Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))); result && result.catch ? result.catch(e => e).then(r => console.log(r)) : console.log(result)\"",
         "interpret": "node -e \"console.info = () => {}; console.log(require('./Core').interpret(process.argv[1]))\"",
         "exec": "node -e \"console.log(require('./Core').import('spawn child process')(require('./Core').interpret(process.argv[1]).code))\"",
