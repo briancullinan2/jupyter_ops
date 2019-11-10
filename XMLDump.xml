@@ -8,6 +8,9 @@
 </message><message level="1">VFS Init: /Users/briancullinan/.q3a/baseq3/
 </message><message level="1">VFS Init: /Applications/ioquake3//baseq3/
 </message><message level="1">
+</message><message level="1">--- BSP ---
+</message><message level="1">Creating meta surfaces from brush faces
+</message><message level="2">WARNING: Unknown option "_keeplights"
 </message><message level="1">entering scripts/shaderlist.txt
 </message><message level="1">entering scripts/shaderlist.txt (2)
 </message><message level="1">entering scripts/shaderlist.txt (3)
@@ -17,6 +20,7 @@
 </message><message level="1">entering scripts/acid3dm5_cel.shader
 </message><message level="1">entering scripts/celshader_cel.shader
 </message><message level="1">entering scripts/base1.shader
+</message><message level="2">WARNING: Unknown surfaceparm: "noclip"
 </message><message level="1">entering scripts/base_button.shader
 </message><message level="1">entering scripts/base_door.shader
 </message><message level="1">entering scripts/base_floor.shader
@@ -75,7 +79,7 @@
 </message><message level="1">Script file scripts/ql.shader was not found
 </message><message level="1">Script file scripts/ct_infinity.shader was not found
 </message><message level="1">Script file scripts/focalpoint.shader was not found
-</message><message level="1">Loading /Users/briancullinan/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base2-converted.bsp
+</message><message level="1">Loading /Users/briancullinan/jupyter_ops/['/Users/briancullinan/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base2-c.map']
 </message><message level="3">************ ERROR ************
-Error opening /Users/briancullinan/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base2-converted.bsp: No such file or directory
+Error opening /Users/briancullinan/jupyter_ops/['/Users/briancullinan/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base2-c.map']: No such file or directory
 </message></q3map_feedback>
