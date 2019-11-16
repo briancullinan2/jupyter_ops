@@ -1,61 +1,16 @@
 # Jupyter + DevOps
-DevOps crestomathy in jupyter notebooks.  This is a kernel for [Jupyter](http://github.com/ipython/ipython)
-
-Get it while it's hot! or view the [example notebook](http://nbviewer.ipython.org/gist/jaredly/404a36306fdee6a1737a)
-
-## Prereqs
-- IPython 3.x
-- node
-- Angular2
+DevOps crestomathy in jupyter notebooks.  
 
 ## Installation
-docker build -t jupytangular .
-### Windows
-Set-NetConnectionProfile -InterfaceAlias "vEthernet (DockerNAT)" -NetworkCategory Private
 
-docker run --name jupytangular -it -p 8888:8888 -p 6080:6080 -p 5900:5900 -v "C:\Users\brian.cullinan\Documents\jupytangular2\notebooks":/home/jovyan/notebooks jupytangular
+1. install node
+2. run `npm install`
+3. run `npm run interpret "command"` to select code where command matches a line in the notebook markdown with a question mark `?` in it.
 
-### *nix
-docker run --name jupytangular -it -p 8888:8888 -p 6080:6080 -p 5900:5900 -v ~/jupytangular2/notebooks/:/home/jovyan/notebooks jupytangular
-And viola!
+## TODO
 
-![image](https://cloud.githubusercontent.com/assets/112170/7268122/a33b186c-e882-11e4-8463-be00a6c90163.png)
+1. Self-hosted / no-dependencies
+2. Documentation export
+3. Multi-lingual, runs from Python/Matlab
+4. Multi-interface, CLI, web-host, Matlab GUI, MFC, Jupyter, etc.
 
-
-Also, in the iPython notebook:
-
-![image](https://cloud.githubusercontent.com/assets/112170/7268108/70cade4e-e882-11e4-95e7-8a7375b3b888.png)
-
-
-
-## Supported features:
-
-- tab-completion (both for variables and **paths**)
-- error reporting
-- magics! The available extensions can be configured via `package/config.js`
-
-## Installation
-`node install.js [install-dir]` will install the `kernel.json` file that ipython looks for. The default is for linux machines, `~/.ipython/kernels/nodejs/`. You will have to specify an install dir for Mac and Windows (see [the docs](https://ipython.org/ipython-doc/dev/development/kernels.html#kernel-specs) for info about what that should be)
-
-## BabelJS Magic for es6+ goodness
-`%load_ext babel` and then
-
-```javascript
-%%babel
-class Awesome {
-  constructor() {
-    console.log('yeah!')
-  }
-}
-```
-
-**Hovever:** `import ...` syntax *doesn't work* because of [live bindings](https://github.com/ModuleLoader/es6-module-loader/wiki/Circular-References-&-Bindings#es6-circular-references--bindings) foo, so just use `require()` normally and all will be well.
-
-## Clojurescript compilation via a [himera](https://github.com/fogus/himera) server
-
-`%load_ext clojurescript http://himera-emh.herokuapp.com` and then
-
-```clojure
-%%clojurescript
-(clojurey goodness)
-```
