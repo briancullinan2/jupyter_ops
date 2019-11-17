@@ -18,7 +18,12 @@
         "url": "git+https://github.com/megamindbrian/jupyter_ops.git"
     },
     "dependencies": {
+        "cheerio": "^1.0.0-rc.3",
+        "google-auth-library": "^5.5.1",
+        "jsdom": "^15.2.1",
+        "jsel": "^1.1.6",
         "mustache": "^3.1.0",
+        "remarkable": "^2.0.0",
         "uuid": "^3.3.3"
     },
     "devDependencies": {}
