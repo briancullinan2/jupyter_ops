@@ -26,6 +26,7 @@
         "css": "^2.2.4",
         "d3-node": "^2.2.1",
         "eslint": "^6.7.2",
+        "esprima": "^4.0.1",
         "express": "^4.17.1",
         "fuse.js": "^3.4.5",
         "google-auth-library": "^5.5.1",
