@@ -28,7 +28,7 @@
         "eslint": "^6.7.2",
         "esprima": "^4.0.1",
         "express": "^4.17.1",
-        "fuse.js": "^3.4.5",
+        "fuse.js": "^3.4.6",
         "google-auth-library": "^5.5.1",
         "googleapis": "^45.0.0",
         "jsdom": "^15.2.1",
