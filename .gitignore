@@ -11,3 +11,4 @@ Utilities/.modules
 cached-permissions.json
 Analytics/movies.sqlite.db
 Analytics/movies.sqlite.db-journal
+*.tags
