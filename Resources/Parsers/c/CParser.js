@@ -1,7 +1,9 @@
-// Generated from ./grammars-v4-master/c/C.g4 by ANTLR 4.8
+// Generated from ./Resources/Parsers/c/C.g4 by ANTLR 4.8
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 var CListener = require('./CListener').CListener;
+var CVisitor = require('./CVisitor').CVisitor;
+
 var grammarFileName = "C.g4";
 
 
@@ -1255,6 +1257,14 @@ PrimaryExpressionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+PrimaryExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitPrimaryExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -1436,6 +1446,14 @@ GenericSelectionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+GenericSelectionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitGenericSelection(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -1512,6 +1530,14 @@ GenericAssocListContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitGenericAssocList(this);
 	}
+};
+
+GenericAssocListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitGenericAssocList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -1613,6 +1639,14 @@ GenericAssociationContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitGenericAssociation(this);
 	}
+};
+
+GenericAssociationContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitGenericAssociation(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -1785,6 +1819,14 @@ PostfixExpressionContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitPostfixExpression(this);
 	}
+};
+
+PostfixExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitPostfixExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -2040,6 +2082,14 @@ ArgumentExpressionListContext.prototype.exitRule = function(listener) {
 	}
 };
 
+ArgumentExpressionListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitArgumentExpressionList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 CParser.prototype.argumentExpressionList = function(_p) {
@@ -2175,6 +2225,14 @@ UnaryExpressionContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitUnaryExpression(this);
 	}
+};
+
+UnaryExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitUnaryExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -2329,6 +2387,14 @@ UnaryOperatorContext.prototype.exitRule = function(listener) {
 	}
 };
 
+UnaryOperatorContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitUnaryOperator(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -2415,6 +2481,14 @@ CastExpressionContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitCastExpression(this);
 	}
+};
+
+CastExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitCastExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -2531,6 +2605,14 @@ MultiplicativeExpressionContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitMultiplicativeExpression(this);
 	}
+};
+
+MultiplicativeExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitMultiplicativeExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -2668,6 +2750,14 @@ AdditiveExpressionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+AdditiveExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitAdditiveExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 CParser.prototype.additiveExpression = function(_p) {
@@ -2788,6 +2878,14 @@ ShiftExpressionContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitShiftExpression(this);
 	}
+};
+
+ShiftExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitShiftExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -2918,6 +3016,14 @@ RelationalExpressionContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitRelationalExpression(this);
 	}
+};
+
+RelationalExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitRelationalExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -3068,6 +3174,14 @@ EqualityExpressionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+EqualityExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitEqualityExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 CParser.prototype.equalityExpression = function(_p) {
@@ -3186,6 +3300,14 @@ AndExpressionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+AndExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitAndExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 CParser.prototype.andExpression = function(_p) {
@@ -3281,6 +3403,14 @@ ExclusiveOrExpressionContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitExclusiveOrExpression(this);
 	}
+};
+
+ExclusiveOrExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitExclusiveOrExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -3380,6 +3510,14 @@ InclusiveOrExpressionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+InclusiveOrExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitInclusiveOrExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 CParser.prototype.inclusiveOrExpression = function(_p) {
@@ -3477,6 +3615,14 @@ LogicalAndExpressionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+LogicalAndExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitLogicalAndExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 CParser.prototype.logicalAndExpression = function(_p) {
@@ -3572,6 +3718,14 @@ LogicalOrExpressionContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitLogicalOrExpression(this);
 	}
+};
+
+LogicalOrExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitLogicalOrExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -3679,6 +3833,14 @@ ConditionalExpressionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+ConditionalExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitConditionalExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -3767,6 +3929,14 @@ AssignmentExpressionContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitAssignmentExpression(this);
 	}
+};
+
+AssignmentExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitAssignmentExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -3893,6 +4063,14 @@ AssignmentOperatorContext.prototype.exitRule = function(listener) {
 	}
 };
 
+AssignmentOperatorContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitAssignmentOperator(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -3967,6 +4145,14 @@ ExpressionContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitExpression(this);
 	}
+};
+
+ExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -4058,6 +4244,14 @@ ConstantExpressionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+ConstantExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitConstantExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -4128,6 +4322,14 @@ DeclarationContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitDeclaration(this);
 	}
+};
+
+DeclarationContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitDeclaration(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -4223,6 +4425,14 @@ DeclarationSpecifiersContext.prototype.exitRule = function(listener) {
 	}
 };
 
+DeclarationSpecifiersContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitDeclarationSpecifiers(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -4302,6 +4512,14 @@ DeclarationSpecifiers2Context.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitDeclarationSpecifiers2(this);
 	}
+};
+
+DeclarationSpecifiers2Context.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitDeclarationSpecifiers2(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -4392,6 +4610,14 @@ DeclarationSpecifierContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitDeclarationSpecifier(this);
 	}
+};
+
+DeclarationSpecifierContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitDeclarationSpecifier(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -4494,6 +4720,14 @@ InitDeclaratorListContext.prototype.exitRule = function(listener) {
 	}
 };
 
+InitDeclaratorListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitInitDeclaratorList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 CParser.prototype.initDeclaratorList = function(_p) {
@@ -4589,6 +4823,14 @@ InitDeclaratorContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitInitDeclarator(this);
 	}
+};
+
+InitDeclaratorContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitInitDeclarator(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -4687,6 +4929,14 @@ StorageClassSpecifierContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitStorageClassSpecifier(this);
 	}
+};
+
+StorageClassSpecifierContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitStorageClassSpecifier(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -4831,6 +5081,14 @@ TypeSpecifierContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitTypeSpecifier(this);
 	}
+};
+
+TypeSpecifierContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitTypeSpecifier(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -5009,6 +5267,14 @@ StructOrUnionSpecifierContext.prototype.exitRule = function(listener) {
 	}
 };
 
+StructOrUnionSpecifierContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitStructOrUnionSpecifier(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -5104,6 +5370,14 @@ StructOrUnionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+StructOrUnionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitStructOrUnion(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -5174,6 +5448,14 @@ StructDeclarationListContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitStructDeclarationList(this);
 	}
+};
+
+StructDeclarationListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitStructDeclarationList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -5273,6 +5555,14 @@ StructDeclarationContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitStructDeclaration(this);
 	}
+};
+
+StructDeclarationContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitStructDeclaration(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -5390,6 +5680,14 @@ SpecifierQualifierListContext.prototype.exitRule = function(listener) {
 	}
 };
 
+SpecifierQualifierListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitSpecifierQualifierList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -5488,6 +5786,14 @@ StructDeclaratorListContext.prototype.exitRule = function(listener) {
 	}
 };
 
+StructDeclaratorListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitStructDeclaratorList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 CParser.prototype.structDeclaratorList = function(_p) {
@@ -5583,6 +5889,14 @@ StructDeclaratorContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitStructDeclarator(this);
 	}
+};
+
+StructDeclaratorContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitStructDeclarator(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -5688,6 +6002,14 @@ EnumSpecifierContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitEnumSpecifier(this);
 	}
+};
+
+EnumSpecifierContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitEnumSpecifier(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -5811,6 +6133,14 @@ EnumeratorListContext.prototype.exitRule = function(listener) {
 	}
 };
 
+EnumeratorListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitEnumeratorList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 CParser.prototype.enumeratorList = function(_p) {
@@ -5908,6 +6238,14 @@ EnumeratorContext.prototype.exitRule = function(listener) {
 	}
 };
 
+EnumeratorContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitEnumerator(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -5986,6 +6324,14 @@ EnumerationConstantContext.prototype.exitRule = function(listener) {
 	}
 };
 
+EnumerationConstantContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitEnumerationConstant(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -6056,6 +6402,14 @@ AtomicTypeSpecifierContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitAtomicTypeSpecifier(this);
 	}
+};
+
+AtomicTypeSpecifierContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitAtomicTypeSpecifier(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -6134,6 +6488,14 @@ TypeQualifierContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitTypeQualifier(this);
 	}
+};
+
+TypeQualifierContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitTypeQualifier(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -6222,6 +6584,14 @@ FunctionSpecifierContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitFunctionSpecifier(this);
 	}
+};
+
+FunctionSpecifierContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitFunctionSpecifier(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -6335,6 +6705,14 @@ AlignmentSpecifierContext.prototype.exitRule = function(listener) {
 	}
 };
 
+AlignmentSpecifierContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitAlignmentSpecifier(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -6434,6 +6812,14 @@ DeclaratorContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitDeclarator(this);
 	}
+};
+
+DeclaratorContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitDeclarator(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -6580,6 +6966,14 @@ DirectDeclaratorContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitDirectDeclarator(this);
 	}
+};
+
+DirectDeclaratorContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitDirectDeclarator(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -6864,6 +7258,14 @@ GccDeclaratorExtensionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+GccDeclaratorExtensionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitGccDeclaratorExtension(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -6976,6 +7378,14 @@ GccAttributeSpecifierContext.prototype.exitRule = function(listener) {
 	}
 };
 
+GccAttributeSpecifierContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitGccAttributeSpecifier(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -7063,6 +7473,14 @@ GccAttributeListContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitGccAttributeList(this);
 	}
+};
+
+GccAttributeListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitGccAttributeList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -7177,6 +7595,14 @@ GccAttributeContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitGccAttribute(this);
 	}
+};
+
+GccAttributeContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitGccAttribute(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -7423,6 +7849,14 @@ NestedParenthesesBlockContext.prototype.exitRule = function(listener) {
 	}
 };
 
+NestedParenthesesBlockContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitNestedParenthesesBlock(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -7642,6 +8076,14 @@ PointerContext.prototype.exitRule = function(listener) {
 	}
 };
 
+PointerContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitPointer(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -7769,6 +8211,14 @@ TypeQualifierListContext.prototype.exitRule = function(listener) {
 	}
 };
 
+TypeQualifierListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitTypeQualifierList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 CParser.prototype.typeQualifierList = function(_p) {
@@ -7864,6 +8314,14 @@ ParameterTypeListContext.prototype.exitRule = function(listener) {
 	}
 };
 
+ParameterTypeListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitParameterTypeList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -7948,6 +8406,14 @@ ParameterListContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitParameterList(this);
 	}
+};
+
+ParameterListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitParameterList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -8051,6 +8517,14 @@ ParameterDeclarationContext.prototype.exitRule = function(listener) {
 	}
 };
 
+ParameterDeclarationContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitParameterDeclaration(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -8141,6 +8615,14 @@ IdentifierListContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitIdentifierList(this);
 	}
+};
+
+IdentifierListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitIdentifierList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -8236,6 +8718,14 @@ TypeNameContext.prototype.exitRule = function(listener) {
 	}
 };
 
+TypeNameContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitTypeName(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -8318,6 +8808,14 @@ AbstractDeclaratorContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitAbstractDeclarator(this);
 	}
+};
+
+AbstractDeclaratorContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitAbstractDeclarator(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -8465,6 +8963,14 @@ DirectAbstractDeclaratorContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitDirectAbstractDeclarator(this);
 	}
+};
+
+DirectAbstractDeclaratorContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitDirectAbstractDeclarator(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -8791,6 +9297,14 @@ TypedefNameContext.prototype.exitRule = function(listener) {
 	}
 };
 
+TypedefNameContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitTypedefName(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -8865,6 +9379,14 @@ InitializerContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitInitializer(this);
 	}
+};
+
+InitializerContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitInitializer(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -8967,6 +9489,14 @@ InitializerListContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitInitializerList(this);
 	}
+};
+
+InitializerListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitInitializerList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -9079,6 +9609,14 @@ DesignationContext.prototype.exitRule = function(listener) {
 	}
 };
 
+DesignationContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitDesignation(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -9143,6 +9681,14 @@ DesignatorListContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitDesignatorList(this);
 	}
+};
+
+DesignatorListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitDesignatorList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -9246,6 +9792,14 @@ DesignatorContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitDesignator(this);
 	}
+};
+
+DesignatorContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitDesignator(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -9357,6 +9911,14 @@ StaticAssertDeclarationContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitStaticAssertDeclaration(this);
 	}
+};
+
+StaticAssertDeclarationContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitStaticAssertDeclaration(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -9509,6 +10071,14 @@ StatementContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitStatement(this);
 	}
+};
+
+StatementContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitStatement(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -9708,6 +10278,14 @@ LabeledStatementContext.prototype.exitRule = function(listener) {
 	}
 };
 
+LabeledStatementContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitLabeledStatement(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -9808,6 +10386,14 @@ CompoundStatementContext.prototype.exitRule = function(listener) {
 	}
 };
 
+CompoundStatementContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitCompoundStatement(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -9881,6 +10467,14 @@ BlockItemListContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitBlockItemList(this);
 	}
+};
+
+BlockItemListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitBlockItemList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -9974,6 +10568,14 @@ BlockItemContext.prototype.exitRule = function(listener) {
 	}
 };
 
+BlockItemContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitBlockItem(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -10050,6 +10652,14 @@ ExpressionStatementContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitExpressionStatement(this);
 	}
+};
+
+ExpressionStatementContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitExpressionStatement(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -10150,6 +10760,14 @@ SelectionStatementContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitSelectionStatement(this);
 	}
+};
+
+SelectionStatementContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitSelectionStatement(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -10281,6 +10899,14 @@ IterationStatementContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitIterationStatement(this);
 	}
+};
+
+IterationStatementContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitIterationStatement(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -10416,6 +11042,14 @@ ForConditionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+ForConditionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitForCondition(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -10541,6 +11175,14 @@ ForDeclarationContext.prototype.exitRule = function(listener) {
 	}
 };
 
+ForDeclarationContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitForDeclaration(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -10623,6 +11265,14 @@ ForExpressionContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitForExpression(this);
 	}
+};
+
+ForExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitForExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -10740,6 +11390,14 @@ JumpStatementContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitJumpStatement(this);
 	}
+};
+
+JumpStatementContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitJumpStatement(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -10861,6 +11519,14 @@ CompilationUnitContext.prototype.exitRule = function(listener) {
 	}
 };
 
+CompilationUnitContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitCompilationUnit(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -10932,6 +11598,14 @@ TranslationUnitContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitTranslationUnit(this);
 	}
+};
+
+TranslationUnitContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitTranslationUnit(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 
@@ -11029,6 +11703,14 @@ ExternalDeclarationContext.prototype.exitRule = function(listener) {
 	}
 };
 
+ExternalDeclarationContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitExternalDeclaration(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -11121,6 +11803,14 @@ FunctionDefinitionContext.prototype.exitRule = function(listener) {
 	}
 };
 
+FunctionDefinitionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitFunctionDefinition(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
 
 
 
@@ -11202,6 +11892,14 @@ DeclarationListContext.prototype.exitRule = function(listener) {
     if(listener instanceof CListener ) {
         listener.exitDeclarationList(this);
 	}
+};
+
+DeclarationListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CVisitor ) {
+        return visitor.visitDeclarationList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 

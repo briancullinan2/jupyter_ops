@@ -1,4 +1,4 @@
-// Generated from ./grammars-v4-master/c/C.g4 by ANTLR 4.8
+// Generated from ./Resources/Parsers/c/C.g4 by ANTLR 4.8
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
