@@ -4,3 +4,50 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+name	/Users/briancullinan/jupyter_ops/package.json	/^    "name": "jupyter_ops",$/;"	function	line:2
+description	/Users/briancullinan/jupyter_ops/package.json	/^    "description": "Automation Notebooks in Jupyter",$/;"	function	line:3
+license	/Users/briancullinan/jupyter_ops/package.json	/^    "license": "UNLICENSED",$/;"	function	line:4
+scripts	/Users/briancullinan/jupyter_ops/package.json	/^    "scripts": {$/;"	function	line:5
+start	/Users/briancullinan/jupyter_ops/package.json	/^        "start": "live-server --cors --port=8080 --host=0.0.0.0 --entry-file=.\/.output\/app.html --mount=\/:.\/.output --middleware=\/Users\/briancullinan\/jupyter_ops\/live-server-middleware.js",$/;"	function	line:6
+start:function	/Users/briancullinan/jupyter_ops/package.json	/^        "start:function": "live-server --cors --port=8181 --host=0.0.0.0 --entry-file=.\/.output\/app.html --mount=\/:.\/.output --middleware=\/Users\/briancullinan\/jupyter_ops\/.functions\/index.js",$/;"	function	line:7
+import	/Users/briancullinan/jupyter_ops/package.json	/^        "import": "node -e \\"var result = require('.\/Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))); result && result.catch ? result.catch(e => e).then(r => console.log(r)) : console.log(result)\\"",$/;"	function	line:8
+interpret	/Users/briancullinan/jupyter_ops/package.json	/^        "interpret": "node -e \\"console.info = () => {}; console.log(require('.\/Core').interpret(process.argv[1]))\\"",$/;"	function	line:9
+exec	/Users/briancullinan/jupyter_ops/package.json	/^        "exec": "node -e \\"console.log(require('.\/Core').import('spawn child process')(require('.\/Core').interpret(process.argv[1]).code))\\"",$/;"	function	line:10
+git:auto	/Users/briancullinan/jupyter_ops/package.json	/^        "git:auto": "npm run exec \\"git auto commit\\"",$/;"	function	line:11
+antlr4ts	/Users/briancullinan/jupyter_ops/package.json	/^        "antlr4ts": "antlr4ts -visitor "$/;"	function	line:12
+engines	/Users/briancullinan/jupyter_ops/package.json	/^    "engines": {$/;"	function	line:14
+node	/Users/briancullinan/jupyter_ops/package.json	/^        "node": ">= 8",$/;"	function	line:15
+npm	/Users/briancullinan/jupyter_ops/package.json	/^        "npm": ">= 6"$/;"	function	line:16
+repository	/Users/briancullinan/jupyter_ops/package.json	/^    "repository": {$/;"	function	line:18
+type	/Users/briancullinan/jupyter_ops/package.json	/^        "type": "git",$/;"	function	line:19
+url	/Users/briancullinan/jupyter_ops/package.json	/^        "url": "git+https:\/\/github.com\/megamindbrian\/jupyter_ops.git"$/;"	function	line:20
+dependencies	/Users/briancullinan/jupyter_ops/package.json	/^    "dependencies": {$/;"	function	line:22
+@google-cloud/storage	/Users/briancullinan/jupyter_ops/package.json	/^        "@google-cloud\/storage": "^4.1.3",$/;"	function	line:23
+@octokit/rest	/Users/briancullinan/jupyter_ops/package.json	/^        "@octokit\/rest": "^16.35.2",$/;"	function	line:24
+antlr4ts	/Users/briancullinan/jupyter_ops/package.json	/^        "antlr4ts": "^0.5.0-alpha.3",$/;"	function	line:25
+better-sqlite3	/Users/briancullinan/jupyter_ops/package.json	/^        "better-sqlite3": "^5.4.3",$/;"	function	line:26
+canvas	/Users/briancullinan/jupyter_ops/package.json	/^        "canvas": "^2.6.1",$/;"	function	line:27
+cheerio	/Users/briancullinan/jupyter_ops/package.json	/^        "cheerio": "^1.0.0-rc.3",$/;"	function	line:28
+chrono-node	/Users/briancullinan/jupyter_ops/package.json	/^        "chrono-node": "^1.3.11",$/;"	function	line:29
+css	/Users/briancullinan/jupyter_ops/package.json	/^        "css": "^2.2.4",$/;"	function	line:30
+d3-node	/Users/briancullinan/jupyter_ops/package.json	/^        "d3-node": "^2.2.1",$/;"	function	line:31
+defiant.js	/Users/briancullinan/jupyter_ops/package.json	/^        "defiant.js": "^2.2.6",$/;"	function	line:32
+eslint	/Users/briancullinan/jupyter_ops/package.json	/^        "eslint": "^6.7.2",$/;"	function	line:33
+esprima	/Users/briancullinan/jupyter_ops/package.json	/^        "esprima": "^4.0.1",$/;"	function	line:34
+express	/Users/briancullinan/jupyter_ops/package.json	/^        "express": "^4.17.1",$/;"	function	line:35
+fuse.js	/Users/briancullinan/jupyter_ops/package.json	/^        "fuse.js": "^3.4.6",$/;"	function	line:36
+google-auth-library	/Users/briancullinan/jupyter_ops/package.json	/^        "google-auth-library": "^5.5.1",$/;"	function	line:37
+googleapis	/Users/briancullinan/jupyter_ops/package.json	/^        "googleapis": "^45.0.0",$/;"	function	line:38
+jsdom	/Users/briancullinan/jupyter_ops/package.json	/^        "jsdom": "^15.2.1",$/;"	function	line:39
+jsel	/Users/briancullinan/jupyter_ops/package.json	/^        "jsel": "^1.1.6",$/;"	function	line:40
+mustache	/Users/briancullinan/jupyter_ops/package.json	/^        "mustache": "^3.1.0",$/;"	function	line:41
+node-stream-zip	/Users/briancullinan/jupyter_ops/package.json	/^        "node-stream-zip": "^1.9.1",$/;"	function	line:42
+puppeteer	/Users/briancullinan/jupyter_ops/package.json	/^        "puppeteer": "^2.0.0",$/;"	function	line:43
+remarkable	/Users/briancullinan/jupyter_ops/package.json	/^        "remarkable": "^2.0.0",$/;"	function	line:44
+uuid	/Users/briancullinan/jupyter_ops/package.json	/^        "uuid": "^3.3.3"$/;"	function	line:45
+devDependencies	/Users/briancullinan/jupyter_ops/package.json	/^    "devDependencies": {$/;"	function	line:47
+@babel/cli	/Users/briancullinan/jupyter_ops/package.json	/^        "@babel\/cli": "^7.8.3",$/;"	function	line:48
+@babel/core	/Users/briancullinan/jupyter_ops/package.json	/^        "@babel\/core": "^7.8.3",$/;"	function	line:49
+@babel/node	/Users/briancullinan/jupyter_ops/package.json	/^        "@babel\/node": "^7.8.3",$/;"	function	line:50
+@babel/preset-env	/Users/briancullinan/jupyter_ops/package.json	/^        "@babel\/preset-env": "^7.8.3",$/;"	function	line:51
+antlr4ts-cli	/Users/briancullinan/jupyter_ops/package.json	/^        "antlr4ts-cli": "^0.5.0-alpha.3"$/;"	function	line:52
