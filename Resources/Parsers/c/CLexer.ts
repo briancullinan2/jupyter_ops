@@ -1,4 +1,4 @@
-// Generated from ./Resources/Parsers/c/C.g4 by ANTLR 4.7.3-SNAPSHOT
+// Generated from /Users/briancullinan/jupyter_ops/Resources/Parsers/c/C.g4 by ANTLR 4.7.3-SNAPSHOT
 
 
 import { ATN } from "antlr4ts/atn/ATN";
