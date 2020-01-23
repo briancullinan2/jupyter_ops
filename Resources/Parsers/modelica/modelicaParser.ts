@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { modelicaListener } from "./modelicaListener";
-import { modelicaVisitor } from "./modelicaVisitor";
-
 
 export class modelicaParser extends Parser {
 	public static readonly T__0 = 1;
@@ -5395,14 +5393,6 @@ export class Stored_definitionContext extends ParserRuleContext {
 			listener.exitStored_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitStored_definition) {
-			return visitor.visitStored_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5428,14 +5418,6 @@ export class Class_definitionContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitClass_definition) {
 			listener.exitClass_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitClass_definition) {
-			return visitor.visitClass_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5468,14 +5450,6 @@ export class Class_specifierContext extends ParserRuleContext {
 			listener.exitClass_specifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitClass_specifier) {
-			return visitor.visitClass_specifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5495,14 +5469,6 @@ export class Class_prefixesContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitClass_prefixes) {
 			listener.exitClass_prefixes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitClass_prefixes) {
-			return visitor.visitClass_prefixes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5542,14 +5508,6 @@ export class Long_class_specifierContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitLong_class_specifier) {
 			listener.exitLong_class_specifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitLong_class_specifier) {
-			return visitor.visitLong_class_specifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5592,14 +5550,6 @@ export class Short_class_specifierContext extends ParserRuleContext {
 			listener.exitShort_class_specifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitShort_class_specifier) {
-			return visitor.visitShort_class_specifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5636,14 +5586,6 @@ export class Der_class_specifierContext extends ParserRuleContext {
 			listener.exitDer_class_specifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitDer_class_specifier) {
-			return visitor.visitDer_class_specifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5666,14 +5608,6 @@ export class Base_prefixContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitBase_prefix) {
 			listener.exitBase_prefix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitBase_prefix) {
-			return visitor.visitBase_prefix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5706,14 +5640,6 @@ export class Enum_listContext extends ParserRuleContext {
 			listener.exitEnum_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitEnum_list) {
-			return visitor.visitEnum_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5737,14 +5663,6 @@ export class Enumeration_literalContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitEnumeration_literal) {
 			listener.exitEnumeration_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitEnumeration_literal) {
-			return visitor.visitEnumeration_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5810,14 +5728,6 @@ export class CompositionContext extends ParserRuleContext {
 			listener.exitComposition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitComposition) {
-			return visitor.visitComposition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5838,14 +5748,6 @@ export class Language_specificationContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitLanguage_specification) {
 			listener.exitLanguage_specification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitLanguage_specification) {
-			return visitor.visitLanguage_specification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5876,14 +5778,6 @@ export class External_function_callContext extends ParserRuleContext {
 			listener.exitExternal_function_call(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitExternal_function_call) {
-			return visitor.visitExternal_function_call(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5912,14 +5806,6 @@ export class Element_listContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitElement_list) {
 			listener.exitElement_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitElement_list) {
-			return visitor.visitElement_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5961,14 +5847,6 @@ export class ElementContext extends ParserRuleContext {
 			listener.exitElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitElement) {
-			return visitor.visitElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5998,14 +5876,6 @@ export class Import_clauseContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitImport_clause) {
 			listener.exitImport_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitImport_clause) {
-			return visitor.visitImport_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6038,14 +5908,6 @@ export class Import_listContext extends ParserRuleContext {
 			listener.exitImport_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitImport_list) {
-			return visitor.visitImport_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6076,14 +5938,6 @@ export class Extends_clauseContext extends ParserRuleContext {
 			listener.exitExtends_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitExtends_clause) {
-			return visitor.visitExtends_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6109,14 +5963,6 @@ export class Constraining_clauseContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitConstraining_clause) {
 			listener.exitConstraining_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitConstraining_clause) {
-			return visitor.visitConstraining_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6152,14 +5998,6 @@ export class Component_clauseContext extends ParserRuleContext {
 			listener.exitComponent_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitComponent_clause) {
-			return visitor.visitComponent_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6179,14 +6017,6 @@ export class Type_prefixContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitType_prefix) {
 			listener.exitType_prefix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitType_prefix) {
-			return visitor.visitType_prefix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6211,14 +6041,6 @@ export class Type_specifierContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitType_specifier) {
 			listener.exitType_specifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitType_specifier) {
-			return visitor.visitType_specifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6251,14 +6073,6 @@ export class Component_listContext extends ParserRuleContext {
 			listener.exitComponent_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitComponent_list) {
-			return visitor.visitComponent_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6289,14 +6103,6 @@ export class Component_declarationContext extends ParserRuleContext {
 			listener.exitComponent_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitComponent_declaration) {
-			return visitor.visitComponent_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6319,14 +6125,6 @@ export class Condition_attributeContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitCondition_attribute) {
 			listener.exitCondition_attribute(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitCondition_attribute) {
-			return visitor.visitCondition_attribute(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6357,14 +6155,6 @@ export class DeclarationContext extends ParserRuleContext {
 			listener.exitDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitDeclaration) {
-			return visitor.visitDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6392,14 +6182,6 @@ export class ModificationContext extends ParserRuleContext {
 			listener.exitModification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitModification) {
-			return visitor.visitModification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6422,14 +6204,6 @@ export class Class_modificationContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitClass_modification) {
 			listener.exitClass_modification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitClass_modification) {
-			return visitor.visitClass_modification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6462,14 +6236,6 @@ export class Argument_listContext extends ParserRuleContext {
 			listener.exitArgument_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitArgument_list) {
-			return visitor.visitArgument_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6497,14 +6263,6 @@ export class ArgumentContext extends ParserRuleContext {
 			listener.exitArgument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6530,14 +6288,6 @@ export class Element_modification_or_replaceableContext extends ParserRuleContex
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitElement_modification_or_replaceable) {
 			listener.exitElement_modification_or_replaceable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitElement_modification_or_replaceable) {
-			return visitor.visitElement_modification_or_replaceable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6570,14 +6320,6 @@ export class Element_modificationContext extends ParserRuleContext {
 			listener.exitElement_modification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitElement_modification) {
-			return visitor.visitElement_modification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6606,14 +6348,6 @@ export class Element_redeclarationContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitElement_redeclaration) {
 			listener.exitElement_redeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitElement_redeclaration) {
-			return visitor.visitElement_redeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6646,14 +6380,6 @@ export class Element_replaceableContext extends ParserRuleContext {
 			listener.exitElement_replaceable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitElement_replaceable) {
-			return visitor.visitElement_replaceable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6684,14 +6410,6 @@ export class Component_clause1Context extends ParserRuleContext {
 			listener.exitComponent_clause1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitComponent_clause1) {
-			return visitor.visitComponent_clause1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6719,14 +6437,6 @@ export class Component_declaration1Context extends ParserRuleContext {
 			listener.exitComponent_declaration1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitComponent_declaration1) {
-			return visitor.visitComponent_declaration1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6752,14 +6462,6 @@ export class Short_class_definitionContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitShort_class_definition) {
 			listener.exitShort_class_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitShort_class_definition) {
-			return visitor.visitShort_class_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6792,14 +6494,6 @@ export class Equation_sectionContext extends ParserRuleContext {
 			listener.exitEquation_section(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitEquation_section) {
-			return visitor.visitEquation_section(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6828,14 +6522,6 @@ export class Algorithm_sectionContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitAlgorithm_section) {
 			listener.exitAlgorithm_section(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitAlgorithm_section) {
-			return visitor.visitAlgorithm_section(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6886,14 +6572,6 @@ export class EquationContext extends ParserRuleContext {
 			listener.exitEquation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitEquation) {
-			return visitor.visitEquation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6942,14 +6620,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6987,14 +6657,6 @@ export class If_equationContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitIf_equation) {
 			listener.exitIf_equation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitIf_equation) {
-			return visitor.visitIf_equation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7036,14 +6698,6 @@ export class If_statementContext extends ParserRuleContext {
 			listener.exitIf_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitIf_statement) {
-			return visitor.visitIf_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7075,14 +6729,6 @@ export class For_equationContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitFor_equation) {
 			listener.exitFor_equation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitFor_equation) {
-			return visitor.visitFor_equation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7118,14 +6764,6 @@ export class For_statementContext extends ParserRuleContext {
 			listener.exitFor_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitFor_statement) {
-			return visitor.visitFor_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7156,14 +6794,6 @@ export class For_indicesContext extends ParserRuleContext {
 			listener.exitFor_indices(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitFor_indices) {
-			return visitor.visitFor_indices(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7187,14 +6817,6 @@ export class For_indexContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitFor_index) {
 			listener.exitFor_index(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitFor_index) {
-			return visitor.visitFor_index(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7228,14 +6850,6 @@ export class While_statementContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitWhile_statement) {
 			listener.exitWhile_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitWhile_statement) {
-			return visitor.visitWhile_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7277,14 +6891,6 @@ export class When_equationContext extends ParserRuleContext {
 			listener.exitWhen_equation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitWhen_equation) {
-			return visitor.visitWhen_equation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7324,14 +6930,6 @@ export class When_statementContext extends ParserRuleContext {
 			listener.exitWhen_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitWhen_statement) {
-			return visitor.visitWhen_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7360,14 +6958,6 @@ export class Connect_clauseContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitConnect_clause) {
 			listener.exitConnect_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitConnect_clause) {
-			return visitor.visitConnect_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7403,14 +6993,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7439,14 +7021,6 @@ export class Simple_expressionContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitSimple_expression) {
 			listener.exitSimple_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitSimple_expression) {
-			return visitor.visitSimple_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7479,14 +7053,6 @@ export class Logical_expressionContext extends ParserRuleContext {
 			listener.exitLogical_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitLogical_expression) {
-			return visitor.visitLogical_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7517,14 +7083,6 @@ export class Logical_termContext extends ParserRuleContext {
 			listener.exitLogical_term(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitLogical_term) {
-			return visitor.visitLogical_term(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7547,14 +7105,6 @@ export class Logical_factorContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitLogical_factor) {
 			listener.exitLogical_factor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitLogical_factor) {
-			return visitor.visitLogical_factor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7590,14 +7140,6 @@ export class RelationContext extends ParserRuleContext {
 			listener.exitRelation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitRelation) {
-			return visitor.visitRelation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7617,14 +7159,6 @@ export class Rel_opContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitRel_op) {
 			listener.exitRel_op(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitRel_op) {
-			return visitor.visitRel_op(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7666,14 +7200,6 @@ export class Arithmetic_expressionContext extends ParserRuleContext {
 			listener.exitArithmetic_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitArithmetic_expression) {
-			return visitor.visitArithmetic_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7693,14 +7219,6 @@ export class Add_opContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitAdd_op) {
 			listener.exitAdd_op(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitAdd_op) {
-			return visitor.visitAdd_op(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7742,14 +7260,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7769,14 +7279,6 @@ export class Mul_opContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitMul_op) {
 			listener.exitMul_op(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitMul_op) {
-			return visitor.visitMul_op(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7807,14 +7309,6 @@ export class FactorContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitFactor) {
 			listener.exitFactor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitFactor) {
-			return visitor.visitFactor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7864,14 +7358,6 @@ export class PrimaryContext extends ParserRuleContext {
 			listener.exitPrimary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitPrimary) {
-			return visitor.visitPrimary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7900,14 +7386,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7949,14 +7427,6 @@ export class Component_referenceContext extends ParserRuleContext {
 			listener.exitComponent_reference(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitComponent_reference) {
-			return visitor.visitComponent_reference(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7979,14 +7449,6 @@ export class Function_call_argsContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitFunction_call_args) {
 			listener.exitFunction_call_args(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitFunction_call_args) {
-			return visitor.visitFunction_call_args(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8022,14 +7484,6 @@ export class Function_argumentsContext extends ParserRuleContext {
 			listener.exitFunction_arguments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitFunction_arguments) {
-			return visitor.visitFunction_arguments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8057,14 +7511,6 @@ export class Named_argumentsContext extends ParserRuleContext {
 			listener.exitNamed_arguments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitNamed_arguments) {
-			return visitor.visitNamed_arguments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8088,14 +7534,6 @@ export class Named_argumentContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitNamed_argument) {
 			listener.exitNamed_argument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitNamed_argument) {
-			return visitor.visitNamed_argument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8128,14 +7566,6 @@ export class Function_argumentContext extends ParserRuleContext {
 			listener.exitFunction_argument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitFunction_argument) {
-			return visitor.visitFunction_argument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8164,14 +7594,6 @@ export class Output_expression_listContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitOutput_expression_list) {
 			listener.exitOutput_expression_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitOutput_expression_list) {
-			return visitor.visitOutput_expression_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8204,14 +7626,6 @@ export class Expression_listContext extends ParserRuleContext {
 			listener.exitExpression_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitExpression_list) {
-			return visitor.visitExpression_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8242,14 +7656,6 @@ export class Array_subscriptsContext extends ParserRuleContext {
 			listener.exitArray_subscripts(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitArray_subscripts) {
-			return visitor.visitArray_subscripts(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8272,14 +7678,6 @@ export class SubscriptContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitSubscript) {
 			listener.exitSubscript(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitSubscript) {
-			return visitor.visitSubscript(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8307,14 +7705,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8347,14 +7737,6 @@ export class String_commentContext extends ParserRuleContext {
 			listener.exitString_comment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitString_comment) {
-			return visitor.visitString_comment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8377,14 +7759,6 @@ export class AnnotationContext extends ParserRuleContext {
 	public exitRule(listener: modelicaListener): void {
 		if (listener.exitAnnotation) {
 			listener.exitAnnotation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: modelicaVisitor<Result>): Result {
-		if (visitor.visitAnnotation) {
-			return visitor.visitAnnotation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

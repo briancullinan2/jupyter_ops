@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { calculatorListener } from "./calculatorListener";
-import { calculatorVisitor } from "./calculatorVisitor";
-
 
 export class calculatorParser extends Parser {
 	public static readonly COS = 1;
@@ -698,14 +696,6 @@ export class EquationContext extends ParserRuleContext {
 			listener.exitEquation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: calculatorVisitor<Result>): Result {
-		if (visitor.visitEquation) {
-			return visitor.visitEquation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -752,14 +742,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: calculatorListener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: calculatorVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -810,14 +792,6 @@ export class MultiplyingExpressionContext extends ParserRuleContext {
 			listener.exitMultiplyingExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: calculatorVisitor<Result>): Result {
-		if (visitor.visitMultiplyingExpression) {
-			return visitor.visitMultiplyingExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -857,14 +831,6 @@ export class PowExpressionContext extends ParserRuleContext {
 			listener.exitPowExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: calculatorVisitor<Result>): Result {
-		if (visitor.visitPowExpression) {
-			return visitor.visitPowExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -895,14 +861,6 @@ export class SignedAtomContext extends ParserRuleContext {
 	public exitRule(listener: calculatorListener): void {
 		if (listener.exitSignedAtom) {
 			listener.exitSignedAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: calculatorVisitor<Result>): Result {
-		if (visitor.visitSignedAtom) {
-			return visitor.visitSignedAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -940,14 +898,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: calculatorVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -968,14 +918,6 @@ export class ScientificContext extends ParserRuleContext {
 	public exitRule(listener: calculatorListener): void {
 		if (listener.exitScientific) {
 			listener.exitScientific(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: calculatorVisitor<Result>): Result {
-		if (visitor.visitScientific) {
-			return visitor.visitScientific(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1002,14 +944,6 @@ export class ConstantContext extends ParserRuleContext {
 			listener.exitConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: calculatorVisitor<Result>): Result {
-		if (visitor.visitConstant) {
-			return visitor.visitConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1030,14 +964,6 @@ export class VariableContext extends ParserRuleContext {
 	public exitRule(listener: calculatorListener): void {
 		if (listener.exitVariable) {
 			listener.exitVariable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: calculatorVisitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1084,14 +1010,6 @@ export class FuncContext extends ParserRuleContext {
 			listener.exitFunc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: calculatorVisitor<Result>): Result {
-		if (visitor.visitFunc) {
-			return visitor.visitFunc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1122,14 +1040,6 @@ export class FuncnameContext extends ParserRuleContext {
 			listener.exitFuncname(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: calculatorVisitor<Result>): Result {
-		if (visitor.visitFuncname) {
-			return visitor.visitFuncname(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1152,14 +1062,6 @@ export class RelopContext extends ParserRuleContext {
 	public exitRule(listener: calculatorListener): void {
 		if (listener.exitRelop) {
 			listener.exitRelop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: calculatorVisitor<Result>): Result {
-		if (visitor.visitRelop) {
-			return visitor.visitRelop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

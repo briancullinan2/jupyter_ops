@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { gff3Listener } from "./gff3Listener";
-import { gff3Visitor } from "./gff3Visitor";
-
 
 export class gff3Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -602,14 +600,6 @@ export class DocumentContext extends ParserRuleContext {
 			listener.exitDocument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitDocument) {
-			return visitor.visitDocument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -635,14 +625,6 @@ export class LineContext extends ParserRuleContext {
 	public exitRule(listener: gff3Listener): void {
 		if (listener.exitLine) {
 			listener.exitLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -694,14 +676,6 @@ export class DatalineContext extends ParserRuleContext {
 			listener.exitDataline(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitDataline) {
-			return visitor.visitDataline(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -730,14 +704,6 @@ export class AttributesContext extends ParserRuleContext {
 	public exitRule(listener: gff3Listener): void {
 		if (listener.exitAttributes) {
 			listener.exitAttributes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitAttributes) {
-			return visitor.visitAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -770,14 +736,6 @@ export class AttributeContext extends ParserRuleContext {
 			listener.exitAttribute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitAttribute) {
-			return visitor.visitAttribute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -798,14 +756,6 @@ export class SeqidContext extends ParserRuleContext {
 	public exitRule(listener: gff3Listener): void {
 		if (listener.exitSeqid) {
 			listener.exitSeqid(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitSeqid) {
-			return visitor.visitSeqid(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -830,14 +780,6 @@ export class SourceContext extends ParserRuleContext {
 			listener.exitSource(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitSource) {
-			return visitor.visitSource(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -858,14 +800,6 @@ export class TypeContext extends ParserRuleContext {
 	public exitRule(listener: gff3Listener): void {
 		if (listener.exitType) {
 			listener.exitType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -890,14 +824,6 @@ export class StartContext extends ParserRuleContext {
 			listener.exitStart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitStart) {
-			return visitor.visitStart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -918,14 +844,6 @@ export class EndContext extends ParserRuleContext {
 	public exitRule(listener: gff3Listener): void {
 		if (listener.exitEnd) {
 			listener.exitEnd(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitEnd) {
-			return visitor.visitEnd(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -950,14 +868,6 @@ export class StrandContext extends ParserRuleContext {
 			listener.exitStrand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitStrand) {
-			return visitor.visitStrand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -978,14 +888,6 @@ export class ScoreContext extends ParserRuleContext {
 	public exitRule(listener: gff3Listener): void {
 		if (listener.exitScore) {
 			listener.exitScore(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitScore) {
-			return visitor.visitScore(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1010,14 +912,6 @@ export class PhaseContext extends ParserRuleContext {
 			listener.exitPhase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitPhase) {
-			return visitor.visitPhase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1038,14 +932,6 @@ export class CommentlineContext extends ParserRuleContext {
 	public exitRule(listener: gff3Listener): void {
 		if (listener.exitCommentline) {
 			listener.exitCommentline(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gff3Visitor<Result>): Result {
-		if (visitor.visitCommentline) {
-			return visitor.visitCommentline(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

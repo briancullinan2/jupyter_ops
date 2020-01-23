@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { quakemapListener } from "./quakemapListener";
-import { quakemapVisitor } from "./quakemapVisitor";
-
 
 export class quakemapParser extends Parser {
 	public static readonly T__0 = 1;
@@ -486,14 +484,6 @@ export class MapContext extends ParserRuleContext {
 			listener.exitMap(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: quakemapVisitor<Result>): Result {
-		if (visitor.visitMap) {
-			return visitor.visitMap(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -533,14 +523,6 @@ export class EntityContext extends ParserRuleContext {
 			listener.exitEntity(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: quakemapVisitor<Result>): Result {
-		if (visitor.visitEntity) {
-			return visitor.visitEntity(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -571,14 +553,6 @@ export class KeyvalueContext extends ParserRuleContext {
 			listener.exitKeyvalue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: quakemapVisitor<Result>): Result {
-		if (visitor.visitKeyvalue) {
-			return visitor.visitKeyvalue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -607,14 +581,6 @@ export class BrushContext extends ParserRuleContext {
 	public exitRule(listener: quakemapListener): void {
 		if (listener.exitBrush) {
 			listener.exitBrush(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: quakemapVisitor<Result>): Result {
-		if (visitor.visitBrush) {
-			return visitor.visitBrush(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -659,14 +625,6 @@ export class BrushlineContext extends ParserRuleContext {
 			listener.exitBrushline(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: quakemapVisitor<Result>): Result {
-		if (visitor.visitBrushline) {
-			return visitor.visitBrushline(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -697,14 +655,6 @@ export class CoordContext extends ParserRuleContext {
 			listener.exitCoord(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: quakemapVisitor<Result>): Result {
-		if (visitor.visitCoord) {
-			return visitor.visitCoord(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -725,14 +675,6 @@ export class NumContext extends ParserRuleContext {
 	public exitRule(listener: quakemapListener): void {
 		if (listener.exitNum) {
 			listener.exitNum(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: quakemapVisitor<Result>): Result {
-		if (visitor.visitNum) {
-			return visitor.visitNum(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -757,14 +699,6 @@ export class StringContext extends ParserRuleContext {
 			listener.exitString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: quakemapVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -785,14 +719,6 @@ export class TextContext extends ParserRuleContext {
 	public exitRule(listener: quakemapListener): void {
 		if (listener.exitText) {
 			listener.exitText(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: quakemapVisitor<Result>): Result {
-		if (visitor.visitText) {
-			return visitor.visitText(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

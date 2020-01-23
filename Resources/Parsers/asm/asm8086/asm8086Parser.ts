@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { asm8086Listener } from "./asm8086Listener";
-import { asm8086Visitor } from "./asm8086Visitor";
-
 
 export class asm8086Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -1906,14 +1904,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1947,14 +1937,6 @@ export class LineContext extends ParserRuleContext {
 			listener.exitLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1985,14 +1967,6 @@ export class InstructionContext extends ParserRuleContext {
 			listener.exitInstruction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitInstruction) {
-			return visitor.visitInstruction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2015,14 +1989,6 @@ export class LblContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitLbl) {
 			listener.exitLbl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitLbl) {
-			return visitor.visitLbl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2091,14 +2057,6 @@ export class AssemblerdirectiveContext extends ParserRuleContext {
 			listener.exitAssemblerdirective(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitAssemblerdirective) {
-			return visitor.visitAssemblerdirective(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2125,14 +2083,6 @@ export class RwContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitRw) {
 			listener.exitRw(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitRw) {
-			return visitor.visitRw(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2163,14 +2113,6 @@ export class RbContext extends ParserRuleContext {
 			listener.exitRb(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitRb) {
-			return visitor.visitRb(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2199,14 +2141,6 @@ export class RsContext extends ParserRuleContext {
 			listener.exitRs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitRs) {
-			return visitor.visitRs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2230,14 +2164,6 @@ export class CsegContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitCseg) {
 			listener.exitCseg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitCseg) {
-			return visitor.visitCseg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2265,14 +2191,6 @@ export class DsegContext extends ParserRuleContext {
 			listener.exitDseg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitDseg) {
-			return visitor.visitDseg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2296,14 +2214,6 @@ export class DwContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitDw) {
 			listener.exitDw(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitDw) {
-			return visitor.visitDw(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2331,14 +2241,6 @@ export class DbContext extends ParserRuleContext {
 			listener.exitDb(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitDb) {
-			return visitor.visitDb(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2362,14 +2264,6 @@ export class DdContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitDd) {
 			listener.exitDd(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitDd) {
-			return visitor.visitDd(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2400,14 +2294,6 @@ export class EquContext extends ParserRuleContext {
 			listener.exitEqu(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitEqu) {
-			return visitor.visitEqu(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2431,14 +2317,6 @@ export class If_Context extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitIf_) {
 			listener.exitIf_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitIf_) {
-			return visitor.visitIf_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2483,14 +2361,6 @@ export class AssemblerexpressionContext extends ParserRuleContext {
 			listener.exitAssemblerexpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitAssemblerexpression) {
-			return visitor.visitAssemblerexpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2510,14 +2380,6 @@ export class AssemblerlogicalContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitAssemblerlogical) {
 			listener.exitAssemblerlogical(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitAssemblerlogical) {
-			return visitor.visitAssemblerlogical(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2551,14 +2413,6 @@ export class AssemblertermContext extends ParserRuleContext {
 			listener.exitAssemblerterm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitAssemblerterm) {
-			return visitor.visitAssemblerterm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2581,14 +2435,6 @@ export class EndifContext extends ParserRuleContext {
 			listener.exitEndif(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitEndif) {
-			return visitor.visitEndif(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2609,14 +2455,6 @@ export class EndContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitEnd) {
 			listener.exitEnd(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitEnd) {
-			return visitor.visitEnd(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2644,14 +2482,6 @@ export class OrgContext extends ParserRuleContext {
 			listener.exitOrg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitOrg) {
-			return visitor.visitOrg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2677,14 +2507,6 @@ export class TitleContext extends ParserRuleContext {
 			listener.exitTitle(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitTitle) {
-			return visitor.visitTitle(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2708,14 +2530,6 @@ export class IncludeContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitInclude) {
 			listener.exitInclude(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitInclude) {
-			return visitor.visitInclude(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2748,14 +2562,6 @@ export class ExpressionlistContext extends ParserRuleContext {
 			listener.exitExpressionlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitExpressionlist) {
-			return visitor.visitExpressionlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2778,14 +2584,6 @@ export class LabelContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitLabel) {
 			listener.exitLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2827,14 +2625,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2863,14 +2653,6 @@ export class MultiplyingExpressionContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitMultiplyingExpression) {
 			listener.exitMultiplyingExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitMultiplyingExpression) {
-			return visitor.visitMultiplyingExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2918,14 +2700,6 @@ export class ArgumentContext extends ParserRuleContext {
 			listener.exitArgument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2951,14 +2725,6 @@ export class PtrContext extends ParserRuleContext {
 			listener.exitPtr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitPtr) {
-			return visitor.visitPtr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2979,14 +2745,6 @@ export class DollarContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitDollar) {
 			listener.exitDollar(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitDollar) {
-			return visitor.visitDollar(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3011,14 +2769,6 @@ export class Register_Context extends ParserRuleContext {
 			listener.exitRegister_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitRegister_) {
-			return visitor.visitRegister_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3041,14 +2791,6 @@ export class StringContext extends ParserRuleContext {
 			listener.exitString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3069,14 +2811,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3102,14 +2836,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3130,14 +2856,6 @@ export class OpcodeContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitOpcode) {
 			listener.exitOpcode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitOpcode) {
-			return visitor.visitOpcode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3162,14 +2880,6 @@ export class RepContext extends ParserRuleContext {
 			listener.exitRep(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitRep) {
-			return visitor.visitRep(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3190,14 +2900,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: asm8086Listener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm8086Visitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

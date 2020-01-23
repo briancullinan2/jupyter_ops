@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { fenListener } from "./fenListener";
-import { fenVisitor } from "./fenVisitor";
-
 
 export class fenParser extends Parser {
 	public static readonly T__0 = 1;
@@ -602,14 +600,6 @@ export class FenContext extends ParserRuleContext {
 			listener.exitFen(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: fenVisitor<Result>): Result {
-		if (visitor.visitFen) {
-			return visitor.visitFen(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -631,14 +621,6 @@ export class ColorContext extends ParserRuleContext {
 			listener.exitColor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: fenVisitor<Result>): Result {
-		if (visitor.visitColor) {
-			return visitor.visitColor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -658,14 +640,6 @@ export class CastlingContext extends ParserRuleContext {
 	public exitRule(listener: fenListener): void {
 		if (listener.exitCastling) {
 			listener.exitCastling(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: fenVisitor<Result>): Result {
-		if (visitor.visitCastling) {
-			return visitor.visitCastling(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -692,14 +666,6 @@ export class EnpassantContext extends ParserRuleContext {
 			listener.exitEnpassant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: fenVisitor<Result>): Result {
-		if (visitor.visitEnpassant) {
-			return visitor.visitEnpassant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -720,14 +686,6 @@ export class PositionContext extends ParserRuleContext {
 	public exitRule(listener: fenListener): void {
 		if (listener.exitPosition) {
 			listener.exitPosition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: fenVisitor<Result>): Result {
-		if (visitor.visitPosition) {
-			return visitor.visitPosition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -752,14 +710,6 @@ export class HalfmoveclockContext extends ParserRuleContext {
 			listener.exitHalfmoveclock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: fenVisitor<Result>): Result {
-		if (visitor.visitHalfmoveclock) {
-			return visitor.visitHalfmoveclock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -780,14 +730,6 @@ export class FullmoveclockContext extends ParserRuleContext {
 	public exitRule(listener: fenListener): void {
 		if (listener.exitFullmoveclock) {
 			listener.exitFullmoveclock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: fenVisitor<Result>): Result {
-		if (visitor.visitFullmoveclock) {
-			return visitor.visitFullmoveclock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -818,14 +760,6 @@ export class PlacementContext extends ParserRuleContext {
 	public exitRule(listener: fenListener): void {
 		if (listener.exitPlacement) {
 			listener.exitPlacement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: fenVisitor<Result>): Result {
-		if (visitor.visitPlacement) {
-			return visitor.visitPlacement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -867,14 +801,6 @@ export class RankContext extends ParserRuleContext {
 			listener.exitRank(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: fenVisitor<Result>): Result {
-		if (visitor.visitRank) {
-			return visitor.visitRank(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -894,14 +820,6 @@ export class PieceContext extends ParserRuleContext {
 	public exitRule(listener: fenListener): void {
 		if (listener.exitPiece) {
 			listener.exitPiece(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: fenVisitor<Result>): Result {
-		if (visitor.visitPiece) {
-			return visitor.visitPiece(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

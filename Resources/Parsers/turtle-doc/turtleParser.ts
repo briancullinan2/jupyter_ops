@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { turtleListener } from "./turtleListener";
-import { turtleVisitor } from "./turtleVisitor";
-
 
 export class turtleParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1219,14 +1217,6 @@ export class TurtleDocContext extends ParserRuleContext {
 			listener.exitTurtleDoc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitTurtleDoc) {
-			return visitor.visitTurtleDoc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1253,14 +1243,6 @@ export class StatementContext extends ParserRuleContext {
 	public exitRule(listener: turtleListener): void {
 		if (listener.exitStatement) {
 			listener.exitStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1296,14 +1278,6 @@ export class DirectiveContext extends ParserRuleContext {
 			listener.exitDirective(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitDirective) {
-			return visitor.visitDirective(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1327,14 +1301,6 @@ export class PrefixIDContext extends ParserRuleContext {
 	public exitRule(listener: turtleListener): void {
 		if (listener.exitPrefixID) {
 			listener.exitPrefixID(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitPrefixID) {
-			return visitor.visitPrefixID(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1361,14 +1327,6 @@ export class BaseContext extends ParserRuleContext {
 			listener.exitBase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitBase) {
-			return visitor.visitBase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1390,14 +1348,6 @@ export class SparqlBaseContext extends ParserRuleContext {
 	public exitRule(listener: turtleListener): void {
 		if (listener.exitSparqlBase) {
 			listener.exitSparqlBase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitSparqlBase) {
-			return visitor.visitSparqlBase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1422,14 +1372,6 @@ export class SparqlPrefixContext extends ParserRuleContext {
 	public exitRule(listener: turtleListener): void {
 		if (listener.exitSparqlPrefix) {
 			listener.exitSparqlPrefix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitSparqlPrefix) {
-			return visitor.visitSparqlPrefix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1460,14 +1402,6 @@ export class TriplesContext extends ParserRuleContext {
 	public exitRule(listener: turtleListener): void {
 		if (listener.exitTriples) {
 			listener.exitTriples(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitTriples) {
-			return visitor.visitTriples(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1509,14 +1443,6 @@ export class PredicateObjectListContext extends ParserRuleContext {
 			listener.exitPredicateObjectList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitPredicateObjectList) {
-			return visitor.visitPredicateObjectList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1556,14 +1482,6 @@ export class ObjectListContext extends ParserRuleContext {
 			listener.exitObjectList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitObjectList) {
-			return visitor.visitObjectList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1590,14 +1508,6 @@ export class PredicateObjectContext extends ParserRuleContext {
 	public exitRule(listener: turtleListener): void {
 		if (listener.exitPredicateObject) {
 			listener.exitPredicateObject(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitPredicateObject) {
-			return visitor.visitPredicateObject(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1630,14 +1540,6 @@ export class SubjectContext extends ParserRuleContext {
 			listener.exitSubject(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitSubject) {
-			return visitor.visitSubject(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1660,14 +1562,6 @@ export class PredicateContext extends ParserRuleContext {
 	public exitRule(listener: turtleListener): void {
 		if (listener.exitPredicate) {
 			listener.exitPredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitPredicate) {
-			return visitor.visitPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1706,14 +1600,6 @@ export class ObjectContext extends ParserRuleContext {
 			listener.exitObject(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitObject) {
-			return visitor.visitObject(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1744,14 +1630,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1776,14 +1654,6 @@ export class BlankNodePropertyListContext extends ParserRuleContext {
 	public exitRule(listener: turtleListener): void {
 		if (listener.exitBlankNodePropertyList) {
 			listener.exitBlankNodePropertyList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitBlankNodePropertyList) {
-			return visitor.visitBlankNodePropertyList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1818,14 +1688,6 @@ export class CollectionContext extends ParserRuleContext {
 			listener.exitCollection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitCollection) {
-			return visitor.visitCollection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1848,14 +1710,6 @@ export class NumericLiteralContext extends ParserRuleContext {
 	public exitRule(listener: turtleListener): void {
 		if (listener.exitNumericLiteral) {
 			listener.exitNumericLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitNumericLiteral) {
-			return visitor.visitNumericLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1886,14 +1740,6 @@ export class RDFLiteralContext extends ParserRuleContext {
 			listener.exitRDFLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitRDFLiteral) {
-			return visitor.visitRDFLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1915,14 +1761,6 @@ export class BoolContext extends ParserRuleContext {
 	public exitRule(listener: turtleListener): void {
 		if (listener.exitBool) {
 			listener.exitBool(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitBool) {
-			return visitor.visitBool(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1950,14 +1788,6 @@ export class StringContext extends ParserRuleContext {
 			listener.exitString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1982,14 +1812,6 @@ export class IriContext extends ParserRuleContext {
 			listener.exitIri(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitIri) {
-			return visitor.visitIri(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2011,14 +1833,6 @@ export class BlankNodeContext extends ParserRuleContext {
 	public exitRule(listener: turtleListener): void {
 		if (listener.exitBlankNode) {
 			listener.exitBlankNode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: turtleVisitor<Result>): Result {
-		if (visitor.visitBlankNode) {
-			return visitor.visitBlankNode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

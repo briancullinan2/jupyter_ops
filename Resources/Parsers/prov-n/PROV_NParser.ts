@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { PROV_NListener } from "./PROV_NListener";
-import { PROV_NVisitor } from "./PROV_NVisitor";
-
 
 export class PROV_NParser extends Parser {
 	public static readonly T__0 = 1;
@@ -2711,14 +2709,6 @@ export class DocumentContext extends ParserRuleContext {
 			listener.exitDocument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitDocument) {
-			return visitor.visitDocument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2752,14 +2742,6 @@ export class NamespaceDeclarationsContext extends ParserRuleContext {
 			listener.exitNamespaceDeclarations(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitNamespaceDeclarations) {
-			return visitor.visitNamespaceDeclarations(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2780,14 +2762,6 @@ export class DefaultNamespaceDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitDefaultNamespaceDeclaration) {
 			listener.exitDefaultNamespaceDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitDefaultNamespaceDeclaration) {
-			return visitor.visitDefaultNamespaceDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2815,14 +2789,6 @@ export class NamespaceDeclarationContext extends ParserRuleContext {
 			listener.exitNamespaceDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitNamespaceDeclaration) {
-			return visitor.visitNamespaceDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2843,14 +2809,6 @@ export class NamespaceContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitNamespace) {
 			listener.exitNamespace(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitNamespace) {
-			return visitor.visitNamespace(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2891,14 +2849,6 @@ export class BundleContext extends ParserRuleContext {
 			listener.exitBundle(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitBundle) {
-			return visitor.visitBundle(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2920,14 +2870,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3005,14 +2947,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3040,14 +2974,6 @@ export class EntityExpressionContext extends ParserRuleContext {
 			listener.exitEntityExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitEntityExpression) {
-			return visitor.visitEntityExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3070,14 +2996,6 @@ export class OptionalAttributeValuePairsContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitOptionalAttributeValuePairs) {
 			listener.exitOptionalAttributeValuePairs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitOptionalAttributeValuePairs) {
-			return visitor.visitOptionalAttributeValuePairs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3110,14 +3028,6 @@ export class AttributeValuePairsContext extends ParserRuleContext {
 			listener.exitAttributeValuePairs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitAttributeValuePairs) {
-			return visitor.visitAttributeValuePairs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3145,14 +3055,6 @@ export class AttributeValuePairContext extends ParserRuleContext {
 			listener.exitAttributeValuePair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitAttributeValuePair) {
-			return visitor.visitAttributeValuePair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3174,14 +3076,6 @@ export class AttributeContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitAttribute) {
 			listener.exitAttribute(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitAttribute) {
-			return visitor.visitAttribute(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3211,14 +3105,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3244,14 +3130,6 @@ export class TypedLiteralContext extends ParserRuleContext {
 			listener.exitTypedLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitTypedLiteral) {
-			return visitor.visitTypedLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3273,14 +3151,6 @@ export class DatatypeContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitDatatype) {
 			listener.exitDatatype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitDatatype) {
-			return visitor.visitDatatype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3306,14 +3176,6 @@ export class ConvenienceNotationContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitConvenienceNotation) {
 			listener.exitConvenienceNotation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitConvenienceNotation) {
-			return visitor.visitConvenienceNotation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3352,14 +3214,6 @@ export class ActivityExpressionContext extends ParserRuleContext {
 			listener.exitActivityExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitActivityExpression) {
-			return visitor.visitActivityExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3385,14 +3239,6 @@ export class TimeOrMarkerContext extends ParserRuleContext {
 			listener.exitTimeOrMarker(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitTimeOrMarker) {
-			return visitor.visitTimeOrMarker(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3413,14 +3259,6 @@ export class TimeContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitTime) {
 			listener.exitTime(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitTime) {
-			return visitor.visitTime(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3459,14 +3297,6 @@ export class GenerationExpressionContext extends ParserRuleContext {
 			listener.exitGenerationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitGenerationExpression) {
-			return visitor.visitGenerationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3489,14 +3319,6 @@ export class OptionalIdentifierContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitOptionalIdentifier) {
 			listener.exitOptionalIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitOptionalIdentifier) {
-			return visitor.visitOptionalIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3524,14 +3346,6 @@ export class IdentifierOrMarkerContext extends ParserRuleContext {
 			listener.exitIdentifierOrMarker(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitIdentifierOrMarker) {
-			return visitor.visitIdentifierOrMarker(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3554,14 +3368,6 @@ export class EIdentifierContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitEIdentifier) {
 			listener.exitEIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitEIdentifier) {
-			return visitor.visitEIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3589,14 +3395,6 @@ export class EIdentifierOrMarkerContext extends ParserRuleContext {
 			listener.exitEIdentifierOrMarker(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitEIdentifierOrMarker) {
-			return visitor.visitEIdentifierOrMarker(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3622,14 +3420,6 @@ export class AIdentifierOrMarkerContext extends ParserRuleContext {
 			listener.exitAIdentifierOrMarker(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitAIdentifierOrMarker) {
-			return visitor.visitAIdentifierOrMarker(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3652,14 +3442,6 @@ export class AIdentifierContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitAIdentifier) {
 			listener.exitAIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitAIdentifier) {
-			return visitor.visitAIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3687,14 +3469,6 @@ export class AgIdentifierOrMarkerContext extends ParserRuleContext {
 			listener.exitAgIdentifierOrMarker(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitAgIdentifierOrMarker) {
-			return visitor.visitAgIdentifierOrMarker(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3717,14 +3491,6 @@ export class AgIdentifierContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitAgIdentifier) {
 			listener.exitAgIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitAgIdentifier) {
-			return visitor.visitAgIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3751,14 +3517,6 @@ export class CIdentifierContext extends ParserRuleContext {
 			listener.exitCIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitCIdentifier) {
-			return visitor.visitCIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3781,14 +3539,6 @@ export class GIdentifierContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitGIdentifier) {
 			listener.exitGIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitGIdentifier) {
-			return visitor.visitGIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3816,14 +3566,6 @@ export class GIdentifierOrMarkerContext extends ParserRuleContext {
 			listener.exitGIdentifierOrMarker(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitGIdentifierOrMarker) {
-			return visitor.visitGIdentifierOrMarker(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3846,14 +3588,6 @@ export class UIdentifierContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitUIdentifier) {
 			listener.exitUIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitUIdentifier) {
-			return visitor.visitUIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3879,14 +3613,6 @@ export class UIdentifierOrMarkerContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitUIdentifierOrMarker) {
 			listener.exitUIdentifierOrMarker(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitUIdentifierOrMarker) {
-			return visitor.visitUIdentifierOrMarker(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3923,14 +3649,6 @@ export class UsageExpressionContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitUsageExpression) {
 			listener.exitUsageExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitUsageExpression) {
-			return visitor.visitUsageExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3972,14 +3690,6 @@ export class StartExpressionContext extends ParserRuleContext {
 			listener.exitStartExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitStartExpression) {
-			return visitor.visitStartExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4019,14 +3729,6 @@ export class EndExpressionContext extends ParserRuleContext {
 			listener.exitEndExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitEndExpression) {
-			return visitor.visitEndExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4061,14 +3763,6 @@ export class InvalidationExpressionContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitInvalidationExpression) {
 			listener.exitInvalidationExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitInvalidationExpression) {
-			return visitor.visitInvalidationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4107,14 +3801,6 @@ export class CommunicationExpressionContext extends ParserRuleContext {
 			listener.exitCommunicationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitCommunicationExpression) {
-			return visitor.visitCommunicationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4140,14 +3826,6 @@ export class AgentExpressionContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitAgentExpression) {
 			listener.exitAgentExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitAgentExpression) {
-			return visitor.visitAgentExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4186,14 +3864,6 @@ export class AssociationExpressionContext extends ParserRuleContext {
 			listener.exitAssociationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitAssociationExpression) {
-			return visitor.visitAssociationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4225,14 +3895,6 @@ export class AttributionExpressionContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitAttributionExpression) {
 			listener.exitAttributionExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitAttributionExpression) {
-			return visitor.visitAttributionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4272,14 +3934,6 @@ export class DelegationExpressionContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitDelegationExpression) {
 			listener.exitDelegationExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitDelegationExpression) {
-			return visitor.visitDelegationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4327,14 +3981,6 @@ export class DerivationExpressionContext extends ParserRuleContext {
 			listener.exitDerivationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitDerivationExpression) {
-			return visitor.visitDerivationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4371,14 +4017,6 @@ export class InfluenceExpressionContext extends ParserRuleContext {
 			listener.exitInfluenceExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitInfluenceExpression) {
-			return visitor.visitInfluenceExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4407,14 +4045,6 @@ export class AlternateExpressionContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitAlternateExpression) {
 			listener.exitAlternateExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitAlternateExpression) {
-			return visitor.visitAlternateExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4447,14 +4077,6 @@ export class SpecializationExpressionContext extends ParserRuleContext {
 			listener.exitSpecializationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitSpecializationExpression) {
-			return visitor.visitSpecializationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4480,14 +4102,6 @@ export class MembershipExpressionContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitMembershipExpression) {
 			listener.exitMembershipExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitMembershipExpression) {
-			return visitor.visitMembershipExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4528,14 +4142,6 @@ export class ExtensibilityExpressionContext extends ParserRuleContext {
 			listener.exitExtensibilityExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitExtensibilityExpression) {
-			return visitor.visitExtensibilityExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4572,14 +4178,6 @@ export class ExtensibilityArgumentContext extends ParserRuleContext {
 			listener.exitExtensibilityArgument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitExtensibilityArgument) {
-			return visitor.visitExtensibilityArgument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4608,14 +4206,6 @@ export class ExtensibilityTupleContext extends ParserRuleContext {
 	public exitRule(listener: PROV_NListener): void {
 		if (listener.exitExtensibilityTuple) {
 			listener.exitExtensibilityTuple(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PROV_NVisitor<Result>): Result {
-		if (visitor.visitExtensibilityTuple) {
-			return visitor.visitExtensibilityTuple(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

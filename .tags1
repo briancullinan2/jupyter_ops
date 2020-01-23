@@ -4,12 +4,3 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-compilerOptions	/Users/briancullinan/jupyter_ops/tsconfig.json	/^"compilerOptions": {$/;"	function	line:2
-target	/Users/briancullinan/jupyter_ops/tsconfig.json	/^    "target": "es5",$/;"	function	line:3
-module	/Users/briancullinan/jupyter_ops/tsconfig.json	/^    "module": "commonjs",$/;"	function	line:4
-declaration	/Users/briancullinan/jupyter_ops/tsconfig.json	/^    "declaration": false,$/;"	function	line:5
-noImplicitAny	/Users/briancullinan/jupyter_ops/tsconfig.json	/^    "noImplicitAny": false,$/;"	function	line:6
-removeComments	/Users/briancullinan/jupyter_ops/tsconfig.json	/^    "removeComments": true,$/;"	function	line:7
-noLib	/Users/briancullinan/jupyter_ops/tsconfig.json	/^    "noLib": false$/;"	function	line:8
-include	/Users/briancullinan/jupyter_ops/tsconfig.json	/^"include": [$/;"	function	line:10
-exclude	/Users/briancullinan/jupyter_ops/tsconfig.json	/^"exclude": [$/;"	function	line:13

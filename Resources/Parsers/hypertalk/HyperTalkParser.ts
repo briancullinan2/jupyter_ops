@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { HyperTalkListener } from "./HyperTalkListener";
-import { HyperTalkVisitor } from "./HyperTalkVisitor";
-
 
 export class HyperTalkParser extends Parser {
 	public static readonly T__0 = 1;
@@ -10721,14 +10719,6 @@ export class ScriptContext extends ParserRuleContext {
 			listener.exitScript(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitScript) {
-			return visitor.visitScript(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10755,14 +10745,6 @@ export class ScriptletContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitScriptlet) {
 			listener.exitScriptlet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitScriptlet) {
-			return visitor.visitScriptlet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10792,14 +10774,6 @@ export class MultilineScriptletContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitMultilineScriptlet) {
 			listener.exitMultilineScriptlet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitMultilineScriptlet) {
-			return visitor.visitMultilineScriptlet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10847,14 +10821,6 @@ export class HandlerContext extends ParserRuleContext {
 			listener.exitHandler(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitHandler) {
-			return visitor.visitHandler(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10900,14 +10866,6 @@ export class FunctionContext extends ParserRuleContext {
 			listener.exitFunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitFunction) {
-			return visitor.visitFunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10933,14 +10891,6 @@ export class HandlerNameContext extends ParserRuleContext {
 			listener.exitHandlerName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitHandlerName) {
-			return visitor.visitHandlerName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10964,14 +10914,6 @@ export class ParameterListContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitParameterList) {
 			listener.exitParameterList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitParameterList) {
-			return visitor.visitParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11008,14 +10950,6 @@ export class StatementListContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitStatementList) {
 			listener.exitStatementList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitStatementList) {
-			return visitor.visitStatementList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11063,14 +10997,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11095,14 +11021,6 @@ export class GlobalStmntContext extends ParserRuleContext {
 			listener.exitGlobalStmnt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitGlobalStmnt) {
-			return visitor.visitGlobalStmnt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11125,14 +11043,6 @@ export class ReturnStmntContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitReturnStmnt) {
 			listener.exitReturnStmnt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitReturnStmnt) {
-			return visitor.visitReturnStmnt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11160,14 +11070,6 @@ export class IfStatementContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitIfStatement) {
 			listener.exitIfStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11209,14 +11111,6 @@ export class ThenStatementContext extends ParserRuleContext {
 			listener.exitThenStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitThenStatement) {
-			return visitor.visitThenStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11251,14 +11145,6 @@ export class ElseStatementContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitElseStatement) {
 			listener.exitElseStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitElseStatement) {
-			return visitor.visitElseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11297,14 +11183,6 @@ export class RepeatStatementContext extends ParserRuleContext {
 			listener.exitRepeatStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitRepeatStatement) {
-			return visitor.visitRepeatStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11328,14 +11206,6 @@ export class MessageStatementContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitMessageStatement) {
 			listener.exitMessageStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitMessageStatement) {
-			return visitor.visitMessageStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11453,14 +11323,6 @@ export class CommandStmntContext extends ParserRuleContext {
 			listener.exitCommandStmnt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitCommandStmnt) {
-			return visitor.visitCommandStmnt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11480,14 +11342,6 @@ export class RemoteNavOptionContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitRemoteNavOption) {
 			listener.exitRemoteNavOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitRemoteNavOption) {
-			return visitor.visitRemoteNavOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11520,14 +11374,6 @@ export class ConvertibleContext extends ParserRuleContext {
 			listener.exitConvertible(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitConvertible) {
-			return visitor.visitConvertible(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11555,14 +11401,6 @@ export class ConversionFormatContext extends ParserRuleContext {
 			listener.exitConversionFormat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitConversionFormat) {
-			return visitor.visitConversionFormat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11584,14 +11422,6 @@ export class LengthContext extends ParserRuleContext {
 			listener.exitLength(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitLength) {
-			return visitor.visitLength(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11611,14 +11441,6 @@ export class SortDirectionContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitSortDirection) {
 			listener.exitSortDirection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitSortDirection) {
-			return visitor.visitSortDirection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11657,14 +11479,6 @@ export class SortChunkTypeContext extends ParserRuleContext {
 			listener.exitSortChunkType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitSortChunkType) {
-			return visitor.visitSortChunkType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11684,14 +11498,6 @@ export class SortStyleContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitSortStyle) {
 			listener.exitSortStyle(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitSortStyle) {
-			return visitor.visitSortStyle(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11725,14 +11531,6 @@ export class RepeatRangeContext extends ParserRuleContext {
 			listener.exitRepeatRange(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitRepeatRange) {
-			return visitor.visitRepeatRange(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11757,14 +11555,6 @@ export class DurationContext extends ParserRuleContext {
 			listener.exitDuration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitDuration) {
-			return visitor.visitDuration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11787,14 +11577,6 @@ export class CountContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitCount) {
 			listener.exitCount(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitCount) {
-			return visitor.visitCount(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11825,14 +11607,6 @@ export class RangeContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitRange) {
 			listener.exitRange(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitRange) {
-			return visitor.visitRange(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11892,14 +11666,6 @@ export class ChunkContext extends ParserRuleContext {
 			listener.exitChunk(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitChunk) {
-			return visitor.visitChunk(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11925,14 +11691,6 @@ export class MenuContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitMenu) {
 			listener.exitMenu(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitMenu) {
-			return visitor.visitMenu(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11968,14 +11726,6 @@ export class MenuItemContext extends ParserRuleContext {
 			listener.exitMenuItem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitMenuItem) {
-			return visitor.visitMenuItem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12003,14 +11753,6 @@ export class PropertyContext extends ParserRuleContext {
 			listener.exitProperty(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitProperty) {
-			return visitor.visitProperty(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12033,14 +11775,6 @@ export class GlobalPropertyContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitGlobalProperty) {
 			listener.exitGlobalProperty(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitGlobalProperty) {
-			return visitor.visitGlobalProperty(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12074,14 +11808,6 @@ export class PartPropertyContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitPartProperty) {
 			listener.exitPartProperty(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitPartProperty) {
-			return visitor.visitPartProperty(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12135,14 +11861,6 @@ export class PartContext extends ParserRuleContext {
 			listener.exitPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitPart) {
-			return visitor.visitPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12168,14 +11886,6 @@ export class StackPartContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitStackPart) {
 			listener.exitStackPart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitStackPart) {
-			return visitor.visitStackPart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12223,14 +11933,6 @@ export class ButtonPartContext extends ParserRuleContext {
 			listener.exitButtonPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitButtonPart) {
-			return visitor.visitButtonPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12274,14 +11976,6 @@ export class FieldPartContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitFieldPart) {
 			listener.exitFieldPart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitFieldPart) {
-			return visitor.visitFieldPart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12329,14 +12023,6 @@ export class CardPartContext extends ParserRuleContext {
 			listener.exitCardPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitCardPart) {
-			return visitor.visitCardPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12379,14 +12065,6 @@ export class BkgndPartContext extends ParserRuleContext {
 			listener.exitBkgndPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitBkgndPart) {
-			return visitor.visitBkgndPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12414,14 +12092,6 @@ export class WindowPartContext extends ParserRuleContext {
 			listener.exitWindowPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitWindowPart) {
-			return visitor.visitWindowPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12447,14 +12117,6 @@ export class ListExpressionContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitListExpression) {
 			listener.exitListExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitListExpression) {
-			return visitor.visitListExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12489,14 +12151,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12541,14 +12195,6 @@ export class FactorContext extends ParserRuleContext {
 			listener.exitFactor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitFactor) {
-			return visitor.visitFactor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12589,14 +12235,6 @@ export class ContainerContext extends ParserRuleContext {
 			listener.exitContainer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitContainer) {
-			return visitor.visitContainer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12627,14 +12265,6 @@ export class MusicExpressionContext extends ParserRuleContext {
 			listener.exitMusicExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitMusicExpression) {
-			return visitor.visitMusicExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12657,14 +12287,6 @@ export class ToolExpressionContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitToolExpression) {
 			listener.exitToolExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitToolExpression) {
-			return visitor.visitToolExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12697,14 +12319,6 @@ export class EffectExpressionContext extends ParserRuleContext {
 			listener.exitEffectExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitEffectExpression) {
-			return visitor.visitEffectExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12731,14 +12345,6 @@ export class FunctionCallContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitFunctionCall) {
 			listener.exitFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitFunctionCall) {
-			return visitor.visitFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12778,14 +12384,6 @@ export class BuiltInFuncContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitBuiltInFunc) {
 			listener.exitBuiltInFunc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitBuiltInFunc) {
-			return visitor.visitBuiltInFunc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12828,14 +12426,6 @@ export class ZeroArgFuncContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitZeroArgFunc) {
 			listener.exitZeroArgFunc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitZeroArgFunc) {
-			return visitor.visitZeroArgFunc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12886,14 +12476,6 @@ export class SingleArgFuncContext extends ParserRuleContext {
 			listener.exitSingleArgFunc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitSingleArgFunc) {
-			return visitor.visitSingleArgFunc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12916,14 +12498,6 @@ export class MultiArgFuncContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitMultiArgFunc) {
 			listener.exitMultiArgFunc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitMultiArgFunc) {
-			return visitor.visitMultiArgFunc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12963,14 +12537,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12990,14 +12556,6 @@ export class PrepositionContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitPreposition) {
 			listener.exitPreposition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitPreposition) {
-			return visitor.visitPreposition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13024,14 +12582,6 @@ export class ConstantContext extends ParserRuleContext {
 			listener.exitConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitConstant) {
-			return visitor.visitConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13051,14 +12601,6 @@ export class CardinalValueContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitCardinalValue) {
 			listener.exitCardinalValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitCardinalValue) {
-			return visitor.visitCardinalValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13085,14 +12627,6 @@ export class OrdinalContext extends ParserRuleContext {
 			listener.exitOrdinal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitOrdinal) {
-			return visitor.visitOrdinal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13112,14 +12646,6 @@ export class OrdinalValueContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitOrdinalValue) {
 			listener.exitOrdinalValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitOrdinalValue) {
-			return visitor.visitOrdinalValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13143,14 +12669,6 @@ export class MouseStateContext extends ParserRuleContext {
 			listener.exitMouseState(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitMouseState) {
-			return visitor.visitMouseState(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13170,14 +12688,6 @@ export class ModifierKeyContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitModifierKey) {
 			listener.exitModifierKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitModifierKey) {
-			return visitor.visitModifierKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13201,14 +12711,6 @@ export class KnownTypeContext extends ParserRuleContext {
 			listener.exitKnownType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitKnownType) {
-			return visitor.visitKnownType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13228,14 +12730,6 @@ export class FindTypeContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitFindType) {
 			listener.exitFindType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitFindType) {
-			return visitor.visitFindType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13258,14 +12752,6 @@ export class PropertyNameContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitPropertyName) {
 			listener.exitPropertyName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitPropertyName) {
-			return visitor.visitPropertyName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13292,14 +12778,6 @@ export class PropertyValueContext extends ParserRuleContext {
 			listener.exitPropertyValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitPropertyValue) {
-			return visitor.visitPropertyValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13319,14 +12797,6 @@ export class CommandNameContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitCommandName) {
 			listener.exitCommandName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitCommandName) {
-			return visitor.visitCommandName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13350,14 +12820,6 @@ export class PictureContext extends ParserRuleContext {
 			listener.exitPicture(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitPicture) {
-			return visitor.visitPicture(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13377,14 +12839,6 @@ export class SecondsContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitSeconds) {
 			listener.exitSeconds(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitSeconds) {
-			return visitor.visitSeconds(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13408,14 +12862,6 @@ export class SpeedContext extends ParserRuleContext {
 			listener.exitSpeed(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitSpeed) {
-			return visitor.visitSpeed(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13437,14 +12883,6 @@ export class ImageContext extends ParserRuleContext {
 			listener.exitImage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitImage) {
-			return visitor.visitImage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13464,14 +12902,6 @@ export class EffectContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitEffect) {
 			listener.exitEffect(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitEffect) {
-			return visitor.visitEffect(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13498,14 +12928,6 @@ export class TimeUnitContext extends ParserRuleContext {
 			listener.exitTimeUnit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitTimeUnit) {
-			return visitor.visitTimeUnit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13525,14 +12947,6 @@ export class PositionContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitPosition) {
 			listener.exitPosition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitPosition) {
-			return visitor.visitPosition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13556,14 +12970,6 @@ export class MessageContext extends ParserRuleContext {
 			listener.exitMessage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitMessage) {
-			return visitor.visitMessage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13583,14 +12989,6 @@ export class CardsContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitCards) {
 			listener.exitCards(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitCards) {
-			return visitor.visitCards(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13614,14 +13012,6 @@ export class CardContext extends ParserRuleContext {
 			listener.exitCard(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitCard) {
-			return visitor.visitCard(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13641,14 +13031,6 @@ export class BackgroundContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitBackground) {
 			listener.exitBackground(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitBackground) {
-			return visitor.visitBackground(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13672,14 +13054,6 @@ export class ButtonContext extends ParserRuleContext {
 			listener.exitButton(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitButton) {
-			return visitor.visitButton(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13699,14 +13073,6 @@ export class FieldContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitField) {
 			listener.exitField(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitField) {
-			return visitor.visitField(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13730,14 +13096,6 @@ export class StackContext extends ParserRuleContext {
 			listener.exitStack(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitStack) {
-			return visitor.visitStack(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13757,14 +13115,6 @@ export class CharacterContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitCharacter) {
 			listener.exitCharacter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitCharacter) {
-			return visitor.visitCharacter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13788,14 +13138,6 @@ export class WordContext extends ParserRuleContext {
 			listener.exitWord(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitWord) {
-			return visitor.visitWord(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13815,14 +13157,6 @@ export class LineContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitLine) {
 			listener.exitLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13846,14 +13180,6 @@ export class ItemContext extends ParserRuleContext {
 			listener.exitItem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitItem) {
-			return visitor.visitItem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13873,14 +13199,6 @@ export class OfContext extends ParserRuleContext {
 	public exitRule(listener: HyperTalkListener): void {
 		if (listener.exitOf) {
 			listener.exitOf(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HyperTalkVisitor<Result>): Result {
-		if (visitor.visitOf) {
-			return visitor.visitOf(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

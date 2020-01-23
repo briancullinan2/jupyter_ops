@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { PhpParserListener } from "./PhpParserListener";
-import { PhpParserVisitor } from "./PhpParserVisitor";
-
 
 export class PhpParser extends Parser {
 	public static readonly SeaWhitespace = 1;
@@ -11380,14 +11378,6 @@ export class HtmlDocumentContext extends ParserRuleContext {
 			listener.exitHtmlDocument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitHtmlDocument) {
-			return visitor.visitHtmlDocument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11418,14 +11408,6 @@ export class HtmlElementOrPhpBlockContext extends ParserRuleContext {
 			listener.exitHtmlElementOrPhpBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitHtmlElementOrPhpBlock) {
-			return visitor.visitHtmlElementOrPhpBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11454,14 +11436,6 @@ export class HtmlElementsContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitHtmlElements) {
 			listener.exitHtmlElements(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitHtmlElements) {
-			return visitor.visitHtmlElements(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11516,14 +11490,6 @@ export class HtmlElementContext extends ParserRuleContext {
 			listener.exitHtmlElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitHtmlElement) {
-			return visitor.visitHtmlElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11552,14 +11518,6 @@ export class ScriptTextPartContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitScriptTextPart) {
 			listener.exitScriptTextPart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitScriptTextPart) {
-			return visitor.visitScriptTextPart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11601,14 +11559,6 @@ export class PhpBlockContext extends ParserRuleContext {
 			listener.exitPhpBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitPhpBlock) {
-			return visitor.visitPhpBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11634,14 +11584,6 @@ export class ImportStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitImportStatement) {
 			listener.exitImportStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitImportStatement) {
-			return visitor.visitImportStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11683,14 +11625,6 @@ export class TopStatementContext extends ParserRuleContext {
 			listener.exitTopStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTopStatement) {
-			return visitor.visitTopStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11717,14 +11651,6 @@ export class UseDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitUseDeclaration) {
 			listener.exitUseDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitUseDeclaration) {
-			return visitor.visitUseDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11775,14 +11701,6 @@ export class UseDeclarationContentListContext extends ParserRuleContext {
 			listener.exitUseDeclarationContentList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitUseDeclarationContentList) {
-			return visitor.visitUseDeclarationContentList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11805,14 +11723,6 @@ export class UseDeclarationContentContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitUseDeclarationContent) {
 			listener.exitUseDeclarationContent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitUseDeclarationContent) {
-			return visitor.visitUseDeclarationContent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11852,14 +11762,6 @@ export class NamespaceDeclarationContext extends ParserRuleContext {
 			listener.exitNamespaceDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitNamespaceDeclaration) {
-			return visitor.visitNamespaceDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11894,14 +11796,6 @@ export class NamespaceStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitNamespaceStatement) {
 			listener.exitNamespaceStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitNamespaceStatement) {
-			return visitor.visitNamespaceStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11947,14 +11841,6 @@ export class FunctionDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitFunctionDeclaration) {
 			listener.exitFunctionDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitFunctionDeclaration) {
-			return visitor.visitFunctionDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12015,14 +11901,6 @@ export class ClassDeclarationContext extends ParserRuleContext {
 			listener.exitClassDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitClassDeclaration) {
-			return visitor.visitClassDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12044,14 +11922,6 @@ export class ClassEntryTypeContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitClassEntryType) {
 			listener.exitClassEntryType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitClassEntryType) {
-			return visitor.visitClassEntryType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12093,14 +11963,6 @@ export class InterfaceListContext extends ParserRuleContext {
 			listener.exitInterfaceList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitInterfaceList) {
-			return visitor.visitInterfaceList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12129,14 +11991,6 @@ export class TypeParameterListInBracketsContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitTypeParameterListInBrackets) {
 			listener.exitTypeParameterListInBrackets(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTypeParameterListInBrackets) {
-			return visitor.visitTypeParameterListInBrackets(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12178,14 +12032,6 @@ export class TypeParameterListContext extends ParserRuleContext {
 			listener.exitTypeParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTypeParameterList) {
-			return visitor.visitTypeParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12225,14 +12071,6 @@ export class TypeParameterWithDefaultsListContext extends ParserRuleContext {
 			listener.exitTypeParameterWithDefaultsList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTypeParameterWithDefaultsList) {
-			return visitor.visitTypeParameterWithDefaultsList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12258,14 +12096,6 @@ export class TypeParameterDeclContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitTypeParameterDecl) {
 			listener.exitTypeParameterDecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTypeParameterDecl) {
-			return visitor.visitTypeParameterDecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12300,14 +12130,6 @@ export class TypeParameterWithDefaultDeclContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitTypeParameterWithDefaultDecl) {
 			listener.exitTypeParameterWithDefaultDecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTypeParameterWithDefaultDecl) {
-			return visitor.visitTypeParameterWithDefaultDecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12351,14 +12173,6 @@ export class GenericDynamicArgsContext extends ParserRuleContext {
 			listener.exitGenericDynamicArgs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitGenericDynamicArgs) {
-			return visitor.visitGenericDynamicArgs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12387,14 +12201,6 @@ export class AttributesContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitAttributes) {
 			listener.exitAttributes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitAttributes) {
-			return visitor.visitAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12442,14 +12248,6 @@ export class AttributesGroupContext extends ParserRuleContext {
 			listener.exitAttributesGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitAttributesGroup) {
-			return visitor.visitAttributesGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12481,14 +12279,6 @@ export class AttributeContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitAttribute) {
 			listener.exitAttribute(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitAttribute) {
-			return visitor.visitAttribute(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12530,14 +12320,6 @@ export class AttributeArgListContext extends ParserRuleContext {
 			listener.exitAttributeArgList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitAttributeArgList) {
-			return visitor.visitAttributeArgList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12577,14 +12359,6 @@ export class AttributeNamedArgListContext extends ParserRuleContext {
 			listener.exitAttributeNamedArgList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitAttributeNamedArgList) {
-			return visitor.visitAttributeNamedArgList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12609,14 +12383,6 @@ export class AttributeNamedArgContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitAttributeNamedArg) {
 			listener.exitAttributeNamedArg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitAttributeNamedArg) {
-			return visitor.visitAttributeNamedArg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12649,14 +12415,6 @@ export class InnerStatementListContext extends ParserRuleContext {
 			listener.exitInnerStatementList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitInnerStatementList) {
-			return visitor.visitInnerStatementList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12685,14 +12443,6 @@ export class InnerStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitInnerStatement) {
 			listener.exitInnerStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitInnerStatement) {
-			return visitor.visitInnerStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12787,14 +12537,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12815,14 +12557,6 @@ export class EmptyStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitEmptyStatement) {
 			listener.exitEmptyStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitEmptyStatement) {
-			return visitor.visitEmptyStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12849,14 +12583,6 @@ export class BlockStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitBlockStatement) {
 			listener.exitBlockStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitBlockStatement) {
-			return visitor.visitBlockStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12917,14 +12643,6 @@ export class IfStatementContext extends ParserRuleContext {
 			listener.exitIfStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12951,14 +12669,6 @@ export class ElseIfStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitElseIfStatement) {
 			listener.exitElseIfStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitElseIfStatement) {
-			return visitor.visitElseIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12990,14 +12700,6 @@ export class ElseIfColonStatementContext extends ParserRuleContext {
 			listener.exitElseIfColonStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitElseIfColonStatement) {
-			return visitor.visitElseIfColonStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13021,14 +12723,6 @@ export class ElseStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitElseStatement) {
 			listener.exitElseStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitElseStatement) {
-			return visitor.visitElseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13055,14 +12749,6 @@ export class ElseColonStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitElseColonStatement) {
 			listener.exitElseColonStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitElseColonStatement) {
-			return visitor.visitElseColonStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13099,14 +12785,6 @@ export class WhileStatementContext extends ParserRuleContext {
 			listener.exitWhileStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitWhileStatement) {
-			return visitor.visitWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13135,14 +12813,6 @@ export class DoWhileStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitDoWhileStatement) {
 			listener.exitDoWhileStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitDoWhileStatement) {
-			return visitor.visitDoWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13195,14 +12865,6 @@ export class ForStatementContext extends ParserRuleContext {
 			listener.exitForStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitForStatement) {
-			return visitor.visitForStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13227,14 +12889,6 @@ export class ForInitContext extends ParserRuleContext {
 			listener.exitForInit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitForInit) {
-			return visitor.visitForInit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13257,14 +12911,6 @@ export class ForUpdateContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitForUpdate) {
 			listener.exitForUpdate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitForUpdate) {
-			return visitor.visitForUpdate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13312,14 +12958,6 @@ export class SwitchStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitSwitchStatement) {
 			listener.exitSwitchStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitSwitchStatement) {
-			return visitor.visitSwitchStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13391,14 +13029,6 @@ export class SwitchBlockContext extends ParserRuleContext {
 			listener.exitSwitchBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitSwitchBlock) {
-			return visitor.visitSwitchBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13423,14 +13053,6 @@ export class BreakStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitBreakStatement) {
 			listener.exitBreakStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitBreakStatement) {
-			return visitor.visitBreakStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13459,14 +13081,6 @@ export class ContinueStatementContext extends ParserRuleContext {
 			listener.exitContinueStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitContinueStatement) {
-			return visitor.visitContinueStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13493,14 +13107,6 @@ export class ReturnStatementContext extends ParserRuleContext {
 			listener.exitReturnStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitReturnStatement) {
-			return visitor.visitReturnStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13524,14 +13130,6 @@ export class ExpressionStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitExpressionStatement) {
 			listener.exitExpressionStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitExpressionStatement) {
-			return visitor.visitExpressionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13560,14 +13158,6 @@ export class UnsetStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitUnsetStatement) {
 			listener.exitUnsetStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitUnsetStatement) {
-			return visitor.visitUnsetStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13649,14 +13239,6 @@ export class ForeachStatementContext extends ParserRuleContext {
 			listener.exitForeachStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitForeachStatement) {
-			return visitor.visitForeachStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13692,14 +13274,6 @@ export class TryCatchFinallyContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitTryCatchFinally) {
 			listener.exitTryCatchFinally(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTryCatchFinally) {
-			return visitor.visitTryCatchFinally(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13748,14 +13322,6 @@ export class CatchClauseContext extends ParserRuleContext {
 			listener.exitCatchClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitCatchClause) {
-			return visitor.visitCatchClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13779,14 +13345,6 @@ export class FinallyStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitFinallyStatement) {
 			listener.exitFinallyStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitFinallyStatement) {
-			return visitor.visitFinallyStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13815,14 +13373,6 @@ export class ThrowStatementContext extends ParserRuleContext {
 			listener.exitThrowStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitThrowStatement) {
-			return visitor.visitThrowStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13847,14 +13397,6 @@ export class GotoStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitGotoStatement) {
 			listener.exitGotoStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitGotoStatement) {
-			return visitor.visitGotoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13893,14 +13435,6 @@ export class DeclareStatementContext extends ParserRuleContext {
 			listener.exitDeclareStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitDeclareStatement) {
-			return visitor.visitDeclareStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13931,14 +13465,6 @@ export class InlineHtmlStatementContext extends ParserRuleContext {
 			listener.exitInlineHtmlStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitInlineHtmlStatement) {
-			return visitor.visitInlineHtmlStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13964,14 +13490,6 @@ export class InlineHtmlContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitInlineHtml) {
 			listener.exitInlineHtml(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitInlineHtml) {
-			return visitor.visitInlineHtml(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14013,14 +13531,6 @@ export class DeclareListContext extends ParserRuleContext {
 			listener.exitDeclareList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitDeclareList) {
-			return visitor.visitDeclareList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14060,14 +13570,6 @@ export class FormalParameterListContext extends ParserRuleContext {
 			listener.exitFormalParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitFormalParameterList) {
-			return visitor.visitFormalParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14101,14 +13603,6 @@ export class FormalParameterContext extends ParserRuleContext {
 			listener.exitFormalParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitFormalParameter) {
-			return visitor.visitFormalParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14135,14 +13629,6 @@ export class TypeHintContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitTypeHint) {
 			listener.exitTypeHint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTypeHint) {
-			return visitor.visitTypeHint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14186,14 +13672,6 @@ export class GlobalStatementContext extends ParserRuleContext {
 			listener.exitGlobalStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitGlobalStatement) {
-			return visitor.visitGlobalStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14225,14 +13703,6 @@ export class GlobalVarContext extends ParserRuleContext {
 			listener.exitGlobalVar(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitGlobalVar) {
-			return visitor.visitGlobalVar(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14257,14 +13727,6 @@ export class EchoStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitEchoStatement) {
 			listener.exitEchoStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitEchoStatement) {
-			return visitor.visitEchoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14306,14 +13768,6 @@ export class StaticVariableStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitStaticVariableStatement) {
 			listener.exitStaticVariableStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitStaticVariableStatement) {
-			return visitor.visitStaticVariableStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14404,14 +13858,6 @@ export class ClassStatementContext extends ParserRuleContext {
 			listener.exitClassStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitClassStatement) {
-			return visitor.visitClassStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14445,14 +13891,6 @@ export class TraitAdaptationsContext extends ParserRuleContext {
 			listener.exitTraitAdaptations(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTraitAdaptations) {
-			return visitor.visitTraitAdaptations(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14478,14 +13916,6 @@ export class TraitAdaptationStatementContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitTraitAdaptationStatement) {
 			listener.exitTraitAdaptationStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTraitAdaptationStatement) {
-			return visitor.visitTraitAdaptationStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14521,14 +13951,6 @@ export class TraitPrecedenceContext extends ParserRuleContext {
 			listener.exitTraitPrecedence(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTraitPrecedence) {
-			return visitor.visitTraitPrecedence(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14561,14 +13983,6 @@ export class TraitAliasContext extends ParserRuleContext {
 			listener.exitTraitAlias(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTraitAlias) {
-			return visitor.visitTraitAlias(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14595,14 +14009,6 @@ export class TraitMethodReferenceContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitTraitMethodReference) {
 			listener.exitTraitMethodReference(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTraitMethodReference) {
-			return visitor.visitTraitMethodReference(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14633,14 +14039,6 @@ export class BaseCtorCallContext extends ParserRuleContext {
 			listener.exitBaseCtorCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitBaseCtorCall) {
-			return visitor.visitBaseCtorCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14666,14 +14064,6 @@ export class MethodBodyContext extends ParserRuleContext {
 			listener.exitMethodBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitMethodBody) {
-			return visitor.visitMethodBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14697,14 +14087,6 @@ export class PropertyModifiersContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitPropertyModifiers) {
 			listener.exitPropertyModifiers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitPropertyModifiers) {
-			return visitor.visitPropertyModifiers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14737,14 +14119,6 @@ export class MemberModifiersContext extends ParserRuleContext {
 			listener.exitMemberModifiers(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitMemberModifiers) {
-			return visitor.visitMemberModifiers(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14769,14 +14143,6 @@ export class VariableInitializerContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitVariableInitializer) {
 			listener.exitVariableInitializer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitVariableInitializer) {
-			return visitor.visitVariableInitializer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14805,14 +14171,6 @@ export class IdentifierInititalizerContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitIdentifierInititalizer) {
 			listener.exitIdentifierInititalizer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitIdentifierInititalizer) {
-			return visitor.visitIdentifierInititalizer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14859,14 +14217,6 @@ export class GlobalConstantDeclarationContext extends ParserRuleContext {
 			listener.exitGlobalConstantDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitGlobalConstantDeclaration) {
-			return visitor.visitGlobalConstantDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14906,14 +14256,6 @@ export class ExpressionListContext extends ParserRuleContext {
 			listener.exitExpressionList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitExpressionList) {
-			return visitor.visitExpressionList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14941,14 +14283,6 @@ export class ParenthesesContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitParentheses) {
 			listener.exitParentheses(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitParentheses) {
-			return visitor.visitParentheses(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14985,14 +14319,6 @@ export class CloneExpressionContext extends ExpressionContext {
 			listener.exitCloneExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitCloneExpression) {
-			return visitor.visitCloneExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NewExpressionContext extends ExpressionContext {
 	public newExpr(): NewExprContext {
@@ -15012,14 +14338,6 @@ export class NewExpressionContext extends ExpressionContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitNewExpression) {
 			listener.exitNewExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitNewExpression) {
-			return visitor.visitNewExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15048,14 +14366,6 @@ export class IndexerExpressionContext extends ExpressionContext {
 			listener.exitIndexerExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitIndexerExpression) {
-			return visitor.visitIndexerExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class CastExpressionContext extends ExpressionContext {
 	public OpenRoundBracket(): TerminalNode { return this.getToken(PhpParser.OpenRoundBracket, 0); }
@@ -15080,14 +14390,6 @@ export class CastExpressionContext extends ExpressionContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitCastExpression) {
 			listener.exitCastExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitCastExpression) {
-			return visitor.visitCastExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15116,14 +14418,6 @@ export class UnaryOperatorExpressionContext extends ExpressionContext {
 			listener.exitUnaryOperatorExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitUnaryOperatorExpression) {
-			return visitor.visitUnaryOperatorExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PrefixIncDecExpressionContext extends ExpressionContext {
 	public chain(): ChainContext {
@@ -15145,14 +14439,6 @@ export class PrefixIncDecExpressionContext extends ExpressionContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitPrefixIncDecExpression) {
 			listener.exitPrefixIncDecExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitPrefixIncDecExpression) {
-			return visitor.visitPrefixIncDecExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15178,14 +14464,6 @@ export class PostfixIncDecExpressionContext extends ExpressionContext {
 			listener.exitPostfixIncDecExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitPostfixIncDecExpression) {
-			return visitor.visitPostfixIncDecExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PrintExpressionContext extends ExpressionContext {
 	public Print(): TerminalNode { return this.getToken(PhpParser.Print, 0); }
@@ -15208,14 +14486,6 @@ export class PrintExpressionContext extends ExpressionContext {
 			listener.exitPrintExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitPrintExpression) {
-			return visitor.visitPrintExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ChainExpressionContext extends ExpressionContext {
 	public chain(): ChainContext {
@@ -15235,14 +14505,6 @@ export class ChainExpressionContext extends ExpressionContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitChainExpression) {
 			listener.exitChainExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitChainExpression) {
-			return visitor.visitChainExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15270,14 +14532,6 @@ export class ScalarExpressionContext extends ExpressionContext {
 			listener.exitScalarExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitScalarExpression) {
-			return visitor.visitScalarExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BackQuoteStringExpressionContext extends ExpressionContext {
 	public BackQuoteString(): TerminalNode { return this.getToken(PhpParser.BackQuoteString, 0); }
@@ -15295,14 +14549,6 @@ export class BackQuoteStringExpressionContext extends ExpressionContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitBackQuoteStringExpression) {
 			listener.exitBackQuoteStringExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitBackQuoteStringExpression) {
-			return visitor.visitBackQuoteStringExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15326,14 +14572,6 @@ export class ParenthesisExpressionContext extends ExpressionContext {
 			listener.exitParenthesisExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitParenthesisExpression) {
-			return visitor.visitParenthesisExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ArrayCreationExpressionContext extends ExpressionContext {
 	public arrayCreation(): ArrayCreationContext {
@@ -15353,14 +14591,6 @@ export class ArrayCreationExpressionContext extends ExpressionContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitArrayCreationExpression) {
 			listener.exitArrayCreationExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitArrayCreationExpression) {
-			return visitor.visitArrayCreationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15409,14 +14639,6 @@ export class SpecialWordExpressionContext extends ExpressionContext {
 			listener.exitSpecialWordExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitSpecialWordExpression) {
-			return visitor.visitSpecialWordExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class LambdaFunctionExpressionContext extends ExpressionContext {
 	public lambdaFunctionExpr(): LambdaFunctionExprContext {
@@ -15436,14 +14658,6 @@ export class LambdaFunctionExpressionContext extends ExpressionContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitLambdaFunctionExpression) {
 			listener.exitLambdaFunctionExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitLambdaFunctionExpression) {
-			return visitor.visitLambdaFunctionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15481,14 +14695,6 @@ export class ArithmeticExpressionContext extends ExpressionContext {
 			listener.exitArithmeticExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitArithmeticExpression) {
-			return visitor.visitArithmeticExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class InstanceOfExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext {
@@ -15512,14 +14718,6 @@ export class InstanceOfExpressionContext extends ExpressionContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitInstanceOfExpression) {
 			listener.exitInstanceOfExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitInstanceOfExpression) {
-			return visitor.visitInstanceOfExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15560,14 +14758,6 @@ export class ComparisonExpressionContext extends ExpressionContext {
 			listener.exitComparisonExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitComparisonExpression) {
-			return visitor.visitComparisonExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BitwiseExpressionContext extends ExpressionContext {
 	public _op: Token;
@@ -15601,14 +14791,6 @@ export class BitwiseExpressionContext extends ExpressionContext {
 			listener.exitBitwiseExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitBitwiseExpression) {
-			return visitor.visitBitwiseExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ConditionalExpressionContext extends ExpressionContext {
 	public _op: Token;
@@ -15637,14 +14819,6 @@ export class ConditionalExpressionContext extends ExpressionContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitConditionalExpression) {
 			listener.exitConditionalExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitConditionalExpression) {
-			return visitor.visitConditionalExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15676,14 +14850,6 @@ export class NullCoalescingExpressionContext extends ExpressionContext {
 			listener.exitNullCoalescingExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitNullCoalescingExpression) {
-			return visitor.visitNullCoalescingExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SpaceshipExpressionContext extends ExpressionContext {
 	public _op: Token;
@@ -15711,14 +14877,6 @@ export class SpaceshipExpressionContext extends ExpressionContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitSpaceshipExpression) {
 			listener.exitSpaceshipExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitSpaceshipExpression) {
-			return visitor.visitSpaceshipExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15756,14 +14914,6 @@ export class AssignmentExpressionContext extends ExpressionContext {
 			listener.exitAssignmentExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentExpression) {
-			return visitor.visitAssignmentExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class LogicalExpressionContext extends ExpressionContext {
 	public _op: Token;
@@ -15795,14 +14945,6 @@ export class LogicalExpressionContext extends ExpressionContext {
 			listener.exitLogicalExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitLogicalExpression) {
-			return visitor.visitLogicalExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15828,14 +14970,6 @@ export class AssignableContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitAssignable) {
 			listener.exitAssignable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitAssignable) {
-			return visitor.visitAssignable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15886,14 +15020,6 @@ export class ArrayCreationContext extends ParserRuleContext {
 			listener.exitArrayCreation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitArrayCreation) {
-			return visitor.visitArrayCreation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15938,14 +15064,6 @@ export class LambdaFunctionExprContext extends ParserRuleContext {
 			listener.exitLambdaFunctionExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitLambdaFunctionExpr) {
-			return visitor.visitLambdaFunctionExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15972,14 +15090,6 @@ export class NewExprContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitNewExpr) {
 			listener.exitNewExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitNewExpr) {
-			return visitor.visitNewExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16017,14 +15127,6 @@ export class AssignmentOperatorContext extends ParserRuleContext {
 			listener.exitAssignmentOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentOperator) {
-			return visitor.visitAssignmentOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16056,14 +15158,6 @@ export class YieldExpressionContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitYieldExpression) {
 			listener.exitYieldExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitYieldExpression) {
-			return visitor.visitYieldExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16105,14 +15199,6 @@ export class ArrayItemListContext extends ParserRuleContext {
 			listener.exitArrayItemList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitArrayItemList) {
-			return visitor.visitArrayItemList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16146,14 +15232,6 @@ export class ArrayItemContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitArrayItem) {
 			listener.exitArrayItem(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitArrayItem) {
-			return visitor.visitArrayItem(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16198,14 +15276,6 @@ export class LambdaFunctionUseVarsContext extends ParserRuleContext {
 			listener.exitLambdaFunctionUseVars(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitLambdaFunctionUseVars) {
-			return visitor.visitLambdaFunctionUseVars(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16227,14 +15297,6 @@ export class LambdaFunctionUseVarContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitLambdaFunctionUseVar) {
 			listener.exitLambdaFunctionUseVar(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitLambdaFunctionUseVar) {
-			return visitor.visitLambdaFunctionUseVar(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16263,14 +15325,6 @@ export class QualifiedStaticTypeRefContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitQualifiedStaticTypeRef) {
 			listener.exitQualifiedStaticTypeRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitQualifiedStaticTypeRef) {
-			return visitor.visitQualifiedStaticTypeRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16308,14 +15362,6 @@ export class TypeRefContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitTypeRef) {
 			listener.exitTypeRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitTypeRef) {
-			return visitor.visitTypeRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16376,14 +15422,6 @@ export class AnoymousClassContext extends ParserRuleContext {
 			listener.exitAnoymousClass(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitAnoymousClass) {
-			return visitor.visitAnoymousClass(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16426,14 +15464,6 @@ export class IndirectTypeRefContext extends ParserRuleContext {
 			listener.exitIndirectTypeRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitIndirectTypeRef) {
-			return visitor.visitIndirectTypeRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16458,14 +15488,6 @@ export class QualifiedNamespaceNameContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitQualifiedNamespaceName) {
 			listener.exitQualifiedNamespaceName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitQualifiedNamespaceName) {
-			return visitor.visitQualifiedNamespaceName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16508,14 +15530,6 @@ export class NamespaceNameListContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitNamespaceNameList) {
 			listener.exitNamespaceNameList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitNamespaceNameList) {
-			return visitor.visitNamespaceNameList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16569,14 +15583,6 @@ export class NamespaceNameTailContext extends ParserRuleContext {
 			listener.exitNamespaceNameTail(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitNamespaceNameTail) {
-			return visitor.visitNamespaceNameTail(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16614,14 +15620,6 @@ export class QualifiedNamespaceNameListContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitQualifiedNamespaceNameList) {
 			listener.exitQualifiedNamespaceNameList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitQualifiedNamespaceNameList) {
-			return visitor.visitQualifiedNamespaceNameList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16668,14 +15666,6 @@ export class ArgumentsContext extends ParserRuleContext {
 			listener.exitArguments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitArguments) {
-			return visitor.visitArguments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16703,14 +15693,6 @@ export class ActualArgumentContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitActualArgument) {
 			listener.exitActualArgument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitActualArgument) {
-			return visitor.visitActualArgument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16754,14 +15736,6 @@ export class ConstantInititalizerContext extends ParserRuleContext {
 			listener.exitConstantInititalizer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitConstantInititalizer) {
-			return visitor.visitConstantInititalizer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16801,14 +15775,6 @@ export class ConstantArrayItemListContext extends ParserRuleContext {
 			listener.exitConstantArrayItemList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitConstantArrayItemList) {
-			return visitor.visitConstantArrayItemList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16838,14 +15804,6 @@ export class ConstantArrayItemContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitConstantArrayItem) {
 			listener.exitConstantArrayItem(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitConstantArrayItem) {
-			return visitor.visitConstantArrayItem(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16882,14 +15840,6 @@ export class ConstantContext extends ParserRuleContext {
 			listener.exitConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitConstant) {
-			return visitor.visitConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16919,14 +15869,6 @@ export class LiteralConstantContext extends ParserRuleContext {
 			listener.exitLiteralConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitLiteralConstant) {
-			return visitor.visitLiteralConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16950,14 +15892,6 @@ export class NumericConstantContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitNumericConstant) {
 			listener.exitNumericConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitNumericConstant) {
-			return visitor.visitNumericConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17005,14 +15939,6 @@ export class ClassConstantContext extends ParserRuleContext {
 			listener.exitClassConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitClassConstant) {
-			return visitor.visitClassConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17033,14 +15959,6 @@ export class StringConstantContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitStringConstant) {
 			listener.exitStringConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitStringConstant) {
-			return visitor.visitStringConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17094,14 +16012,6 @@ export class StringContext extends ParserRuleContext {
 			listener.exitString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17126,14 +16036,6 @@ export class InterpolatedStringPartContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitInterpolatedStringPart) {
 			listener.exitInterpolatedStringPart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitInterpolatedStringPart) {
-			return visitor.visitInterpolatedStringPart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17175,14 +16077,6 @@ export class ChainListContext extends ParserRuleContext {
 			listener.exitChainList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitChainList) {
-			return visitor.visitChainList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17214,14 +16108,6 @@ export class ChainContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitChain) {
 			listener.exitChain(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitChain) {
-			return visitor.visitChain(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17256,14 +16142,6 @@ export class ChainOriginContext extends ParserRuleContext {
 			listener.exitChainOrigin(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitChainOrigin) {
-			return visitor.visitChainOrigin(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17292,14 +16170,6 @@ export class MemberAccessContext extends ParserRuleContext {
 			listener.exitMemberAccess(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitMemberAccess) {
-			return visitor.visitMemberAccess(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17325,14 +16195,6 @@ export class FunctionCallContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitFunctionCall) {
 			listener.exitFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitFunctionCall) {
-			return visitor.visitFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17366,14 +16228,6 @@ export class FunctionCallNameContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitFunctionCallName) {
 			listener.exitFunctionCallName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitFunctionCallName) {
-			return visitor.visitFunctionCallName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17412,14 +16266,6 @@ export class ActualArgumentsContext extends ParserRuleContext {
 			listener.exitActualArguments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitActualArguments) {
-			return visitor.visitActualArguments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17454,14 +16300,6 @@ export class ChainBaseContext extends ParserRuleContext {
 			listener.exitChainBase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitChainBase) {
-			return visitor.visitChainBase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17487,14 +16325,6 @@ export class KeyedFieldNameContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitKeyedFieldName) {
 			listener.exitKeyedFieldName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitKeyedFieldName) {
-			return visitor.visitKeyedFieldName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17533,14 +16363,6 @@ export class KeyedSimpleFieldNameContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitKeyedSimpleFieldName) {
 			listener.exitKeyedSimpleFieldName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitKeyedSimpleFieldName) {
-			return visitor.visitKeyedSimpleFieldName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17588,14 +16410,6 @@ export class KeyedVariableContext extends ParserRuleContext {
 			listener.exitKeyedVariable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitKeyedVariable) {
-			return visitor.visitKeyedVariable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17622,14 +16436,6 @@ export class SquareCurlyExpressionContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitSquareCurlyExpression) {
 			listener.exitSquareCurlyExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitSquareCurlyExpression) {
-			return visitor.visitSquareCurlyExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17671,14 +16477,6 @@ export class AssignmentListContext extends ParserRuleContext {
 			listener.exitAssignmentList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentList) {
-			return visitor.visitAssignmentList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17712,14 +16510,6 @@ export class AssignmentListElementContext extends ParserRuleContext {
 			listener.exitAssignmentListElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentListElement) {
-			return visitor.visitAssignmentListElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17741,14 +16531,6 @@ export class ModifierContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitModifier) {
 			listener.exitModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitModifier) {
-			return visitor.visitModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17883,14 +16665,6 @@ export class IdentifierContext extends ParserRuleContext {
 			listener.exitIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17916,14 +16690,6 @@ export class MemberModifierContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitMemberModifier) {
 			listener.exitMemberModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitMemberModifier) {
-			return visitor.visitMemberModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17953,14 +16719,6 @@ export class MagicConstantContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitMagicConstant) {
 			listener.exitMagicConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitMagicConstant) {
-			return visitor.visitMagicConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18000,14 +16758,6 @@ export class MagicMethodContext extends ParserRuleContext {
 			listener.exitMagicMethod(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitMagicMethod) {
-			return visitor.visitMagicMethod(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18035,14 +16785,6 @@ export class PrimitiveTypeContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitPrimitiveType) {
 			listener.exitPrimitiveType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitPrimitiveType) {
-			return visitor.visitPrimitiveType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18080,14 +16822,6 @@ export class CastOperationContext extends ParserRuleContext {
 	public exitRule(listener: PhpParserListener): void {
 		if (listener.exitCastOperation) {
 			listener.exitCastOperation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PhpParserVisitor<Result>): Result {
-		if (visitor.visitCastOperation) {
-			return visitor.visitCastOperation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

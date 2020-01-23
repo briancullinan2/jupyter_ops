@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { apexListener } from "./apexListener";
-import { apexVisitor } from "./apexVisitor";
-
 
 export class apexParser extends Parser {
 	public static readonly T__0 = 1;
@@ -7668,14 +7666,6 @@ export class CompilationUnitContext extends ParserRuleContext {
 			listener.exitCompilationUnit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitCompilationUnit) {
-			return visitor.visitCompilationUnit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7711,14 +7701,6 @@ export class PackageDeclarationContext extends ParserRuleContext {
 			listener.exitPackageDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitPackageDeclaration) {
-			return visitor.visitPackageDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7746,14 +7728,6 @@ export class ImportDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitImportDeclaration) {
 			listener.exitImportDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitImportDeclaration) {
-			return visitor.visitImportDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7799,14 +7773,6 @@ export class TypeDeclarationContext extends ParserRuleContext {
 			listener.exitTypeDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitTypeDeclaration) {
-			return visitor.visitTypeDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7832,14 +7798,6 @@ export class ModifierContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitModifier) {
 			listener.exitModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitModifier) {
-			return visitor.visitModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7879,14 +7837,6 @@ export class ClassOrInterfaceModifierContext extends ParserRuleContext {
 			listener.exitClassOrInterfaceModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitClassOrInterfaceModifier) {
-			return visitor.visitClassOrInterfaceModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7910,14 +7860,6 @@ export class VariableModifierContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitVariableModifier) {
 			listener.exitVariableModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitVariableModifier) {
-			return visitor.visitVariableModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7955,14 +7897,6 @@ export class ClassDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitClassDeclaration) {
 			listener.exitClassDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitClassDeclaration) {
-			return visitor.visitClassDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8006,14 +7940,6 @@ export class TypeParametersContext extends ParserRuleContext {
 			listener.exitTypeParameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitTypeParameters) {
-			return visitor.visitTypeParameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8038,14 +7964,6 @@ export class TypeParameterContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitTypeParameter) {
 			listener.exitTypeParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitTypeParameter) {
-			return visitor.visitTypeParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8087,14 +8005,6 @@ export class TypeBoundContext extends ParserRuleContext {
 			listener.exitTypeBound(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitTypeBound) {
-			return visitor.visitTypeBound(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8129,14 +8039,6 @@ export class EnumDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitEnumDeclaration) {
 			listener.exitEnumDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitEnumDeclaration) {
-			return visitor.visitEnumDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8178,14 +8080,6 @@ export class EnumConstantsContext extends ParserRuleContext {
 			listener.exitEnumConstants(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitEnumConstants) {
-			return visitor.visitEnumConstants(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8223,14 +8117,6 @@ export class EnumConstantContext extends ParserRuleContext {
 			listener.exitEnumConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitEnumConstant) {
-			return visitor.visitEnumConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8260,14 +8146,6 @@ export class EnumBodyDeclarationsContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitEnumBodyDeclarations) {
 			listener.exitEnumBodyDeclarations(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitEnumBodyDeclarations) {
-			return visitor.visitEnumBodyDeclarations(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8301,14 +8179,6 @@ export class InterfaceDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitInterfaceDeclaration) {
 			listener.exitInterfaceDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitInterfaceDeclaration) {
-			return visitor.visitInterfaceDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8350,14 +8220,6 @@ export class TypeListContext extends ParserRuleContext {
 			listener.exitTypeList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitTypeList) {
-			return visitor.visitTypeList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8390,14 +8252,6 @@ export class ClassBodyContext extends ParserRuleContext {
 			listener.exitClassBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitClassBody) {
-			return visitor.visitClassBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8428,14 +8282,6 @@ export class InterfaceBodyContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitInterfaceBody) {
 			listener.exitInterfaceBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitInterfaceBody) {
-			return visitor.visitInterfaceBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8474,14 +8320,6 @@ export class ClassBodyDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitClassBodyDeclaration) {
 			listener.exitClassBodyDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitClassBodyDeclaration) {
-			return visitor.visitClassBodyDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8533,14 +8371,6 @@ export class MemberDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitMemberDeclaration) {
 			listener.exitMemberDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitMemberDeclaration) {
-			return visitor.visitMemberDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8599,14 +8429,6 @@ export class MethodDeclarationContext extends ParserRuleContext {
 			listener.exitMethodDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitMethodDeclaration) {
-			return visitor.visitMethodDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8632,14 +8454,6 @@ export class GenericMethodDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitGenericMethodDeclaration) {
 			listener.exitGenericMethodDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitGenericMethodDeclaration) {
-			return visitor.visitGenericMethodDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8674,14 +8488,6 @@ export class ConstructorDeclarationContext extends ParserRuleContext {
 			listener.exitConstructorDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitConstructorDeclaration) {
-			return visitor.visitConstructorDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8707,14 +8513,6 @@ export class GenericConstructorDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitGenericConstructorDeclaration) {
 			listener.exitGenericConstructorDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitGenericConstructorDeclaration) {
-			return visitor.visitGenericConstructorDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8745,14 +8543,6 @@ export class FieldDeclarationContext extends ParserRuleContext {
 			listener.exitFieldDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitFieldDeclaration) {
-			return visitor.visitFieldDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8781,14 +8571,6 @@ export class PropertyDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitPropertyDeclaration) {
 			listener.exitPropertyDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitPropertyDeclaration) {
-			return visitor.visitPropertyDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8823,14 +8605,6 @@ export class PropertyBodyDeclarationContext extends ParserRuleContext {
 			listener.exitPropertyBodyDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitPropertyBodyDeclaration) {
-			return visitor.visitPropertyBodyDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8863,14 +8637,6 @@ export class InterfaceBodyDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitInterfaceBodyDeclaration) {
 			listener.exitInterfaceBodyDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitInterfaceBodyDeclaration) {
-			return visitor.visitInterfaceBodyDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8913,14 +8679,6 @@ export class InterfaceMemberDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitInterfaceMemberDeclaration) {
 			listener.exitInterfaceMemberDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitInterfaceMemberDeclaration) {
-			return visitor.visitInterfaceMemberDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8966,14 +8724,6 @@ export class ConstDeclarationContext extends ParserRuleContext {
 			listener.exitConstDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitConstDeclaration) {
-			return visitor.visitConstDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9016,14 +8766,6 @@ export class ConstantDeclaratorContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitConstantDeclarator) {
 			listener.exitConstantDeclarator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitConstantDeclarator) {
-			return visitor.visitConstantDeclarator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9078,14 +8820,6 @@ export class InterfaceMethodDeclarationContext extends ParserRuleContext {
 			listener.exitInterfaceMethodDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitInterfaceMethodDeclaration) {
-			return visitor.visitInterfaceMethodDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9111,14 +8845,6 @@ export class GenericInterfaceMethodDeclarationContext extends ParserRuleContext 
 	public exitRule(listener: apexListener): void {
 		if (listener.exitGenericInterfaceMethodDeclaration) {
 			listener.exitGenericInterfaceMethodDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitGenericInterfaceMethodDeclaration) {
-			return visitor.visitGenericInterfaceMethodDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9160,14 +8886,6 @@ export class VariableDeclaratorsContext extends ParserRuleContext {
 			listener.exitVariableDeclarators(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitVariableDeclarators) {
-			return visitor.visitVariableDeclarators(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9194,14 +8912,6 @@ export class VariableDeclaratorContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitVariableDeclarator) {
 			listener.exitVariableDeclarator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitVariableDeclarator) {
-			return visitor.visitVariableDeclarator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9244,14 +8954,6 @@ export class VariableDeclaratorIdContext extends ParserRuleContext {
 			listener.exitVariableDeclaratorId(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitVariableDeclaratorId) {
-			return visitor.visitVariableDeclaratorId(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9277,14 +8979,6 @@ export class VariableInitializerContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitVariableInitializer) {
 			listener.exitVariableInitializer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitVariableInitializer) {
-			return visitor.visitVariableInitializer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9328,14 +9022,6 @@ export class ArrayInitializerContext extends ParserRuleContext {
 			listener.exitArrayInitializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitArrayInitializer) {
-			return visitor.visitArrayInitializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9356,14 +9042,6 @@ export class EnumConstantNameContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitEnumConstantName) {
 			listener.exitEnumConstantName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitEnumConstantName) {
-			return visitor.visitEnumConstantName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9409,14 +9087,6 @@ export class TypeContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitType) {
 			listener.exitType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9468,14 +9138,6 @@ export class ClassOrInterfaceTypeContext extends ParserRuleContext {
 			listener.exitClassOrInterfaceType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitClassOrInterfaceType) {
-			return visitor.visitClassOrInterfaceType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9500,14 +9162,6 @@ export class PrimitiveTypeContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitPrimitiveType) {
 			listener.exitPrimitiveType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitPrimitiveType) {
-			return visitor.visitPrimitiveType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9551,14 +9205,6 @@ export class TypeArgumentsContext extends ParserRuleContext {
 			listener.exitTypeArguments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitTypeArguments) {
-			return visitor.visitTypeArguments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9584,14 +9230,6 @@ export class TypeArgumentContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitTypeArgument) {
 			listener.exitTypeArgument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitTypeArgument) {
-			return visitor.visitTypeArgument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9633,14 +9271,6 @@ export class QualifiedNameListContext extends ParserRuleContext {
 			listener.exitQualifiedNameList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitQualifiedNameList) {
-			return visitor.visitQualifiedNameList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9665,14 +9295,6 @@ export class FormalParametersContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitFormalParameters) {
 			listener.exitFormalParameters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitFormalParameters) {
-			return visitor.visitFormalParameters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9717,14 +9339,6 @@ export class FormalParameterListContext extends ParserRuleContext {
 			listener.exitFormalParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitFormalParameterList) {
-			return visitor.visitFormalParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9759,14 +9373,6 @@ export class FormalParameterContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitFormalParameter) {
 			listener.exitFormalParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitFormalParameter) {
-			return visitor.visitFormalParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9806,14 +9412,6 @@ export class LastFormalParameterContext extends ParserRuleContext {
 			listener.exitLastFormalParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitLastFormalParameter) {
-			return visitor.visitLastFormalParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9838,14 +9436,6 @@ export class MethodBodyContext extends ParserRuleContext {
 			listener.exitMethodBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitMethodBody) {
-			return visitor.visitMethodBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9868,14 +9458,6 @@ export class ConstructorBodyContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitConstructorBody) {
 			listener.exitConstructorBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitConstructorBody) {
-			return visitor.visitConstructorBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9917,14 +9499,6 @@ export class QualifiedNameContext extends ParserRuleContext {
 			listener.exitQualifiedName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitQualifiedName) {
-			return visitor.visitQualifiedName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9950,14 +9524,6 @@ export class LiteralContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitLiteral) {
 			listener.exitLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9993,14 +9559,6 @@ export class AnnotationContext extends ParserRuleContext {
 			listener.exitAnnotation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitAnnotation) {
-			return visitor.visitAnnotation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10023,14 +9581,6 @@ export class AnnotationNameContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitAnnotationName) {
 			listener.exitAnnotationName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitAnnotationName) {
-			return visitor.visitAnnotationName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10072,14 +9622,6 @@ export class ElementValuePairsContext extends ParserRuleContext {
 			listener.exitElementValuePairs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitElementValuePairs) {
-			return visitor.visitElementValuePairs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10104,14 +9646,6 @@ export class ElementValuePairContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitElementValuePair) {
 			listener.exitElementValuePair(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitElementValuePair) {
-			return visitor.visitElementValuePair(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10142,14 +9676,6 @@ export class ElementValueContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitElementValue) {
 			listener.exitElementValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitElementValue) {
-			return visitor.visitElementValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10193,14 +9719,6 @@ export class ElementValueArrayInitializerContext extends ParserRuleContext {
 			listener.exitElementValueArrayInitializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitElementValueArrayInitializer) {
-			return visitor.visitElementValueArrayInitializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10226,14 +9744,6 @@ export class AnnotationTypeDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitAnnotationTypeDeclaration) {
 			listener.exitAnnotationTypeDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitAnnotationTypeDeclaration) {
-			return visitor.visitAnnotationTypeDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10268,14 +9778,6 @@ export class AnnotationTypeBodyContext extends ParserRuleContext {
 			listener.exitAnnotationTypeBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitAnnotationTypeBody) {
-			return visitor.visitAnnotationTypeBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10308,14 +9810,6 @@ export class AnnotationTypeElementDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitAnnotationTypeElementDeclaration) {
 			listener.exitAnnotationTypeElementDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitAnnotationTypeElementDeclaration) {
-			return visitor.visitAnnotationTypeElementDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10358,14 +9852,6 @@ export class AnnotationTypeElementRestContext extends ParserRuleContext {
 			listener.exitAnnotationTypeElementRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitAnnotationTypeElementRest) {
-			return visitor.visitAnnotationTypeElementRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10391,14 +9877,6 @@ export class AnnotationMethodOrConstantRestContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitAnnotationMethodOrConstantRest) {
 			listener.exitAnnotationMethodOrConstantRest(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitAnnotationMethodOrConstantRest) {
-			return visitor.visitAnnotationMethodOrConstantRest(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10428,14 +9906,6 @@ export class AnnotationMethodRestContext extends ParserRuleContext {
 			listener.exitAnnotationMethodRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitAnnotationMethodRest) {
-			return visitor.visitAnnotationMethodRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10458,14 +9928,6 @@ export class AnnotationConstantRestContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitAnnotationConstantRest) {
 			listener.exitAnnotationConstantRest(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitAnnotationConstantRest) {
-			return visitor.visitAnnotationConstantRest(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10491,14 +9953,6 @@ export class DefaultValueContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitDefaultValue) {
 			listener.exitDefaultValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitDefaultValue) {
-			return visitor.visitDefaultValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10533,14 +9987,6 @@ export class BlockContext extends ParserRuleContext {
 			listener.exitBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10571,14 +10017,6 @@ export class BlockStatementContext extends ParserRuleContext {
 			listener.exitBlockStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitBlockStatement) {
-			return visitor.visitBlockStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10602,14 +10040,6 @@ export class LocalVariableDeclarationStatementContext extends ParserRuleContext 
 	public exitRule(listener: apexListener): void {
 		if (listener.exitLocalVariableDeclarationStatement) {
 			listener.exitLocalVariableDeclarationStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitLocalVariableDeclarationStatement) {
-			return visitor.visitLocalVariableDeclarationStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10646,14 +10076,6 @@ export class LocalVariableDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitLocalVariableDeclaration) {
 			listener.exitLocalVariableDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitLocalVariableDeclaration) {
-			return visitor.visitLocalVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10735,14 +10157,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10779,14 +10193,6 @@ export class PropertyBlockContext extends ParserRuleContext {
 			listener.exitPropertyBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitPropertyBlock) {
-			return visitor.visitPropertyBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10813,14 +10219,6 @@ export class GetterContext extends ParserRuleContext {
 			listener.exitGetter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitGetter) {
-			return visitor.visitGetter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10845,14 +10243,6 @@ export class SetterContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitSetter) {
 			listener.exitSetter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitSetter) {
-			return visitor.visitSetter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10895,14 +10285,6 @@ export class CatchClauseContext extends ParserRuleContext {
 			listener.exitCatchClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitCatchClause) {
-			return visitor.visitCatchClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10942,14 +10324,6 @@ export class CatchTypeContext extends ParserRuleContext {
 			listener.exitCatchType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitCatchType) {
-			return visitor.visitCatchType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10973,14 +10347,6 @@ export class FinallyBlockContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitFinallyBlock) {
 			listener.exitFinallyBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitFinallyBlock) {
-			return visitor.visitFinallyBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11008,14 +10374,6 @@ export class ResourceSpecificationContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitResourceSpecification) {
 			listener.exitResourceSpecification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitResourceSpecification) {
-			return visitor.visitResourceSpecification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11057,14 +10415,6 @@ export class ResourcesContext extends ParserRuleContext {
 			listener.exitResources(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitResources) {
-			return visitor.visitResources(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11103,14 +10453,6 @@ export class ResourceContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitResource) {
 			listener.exitResource(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitResource) {
-			return visitor.visitResource(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11155,14 +10497,6 @@ export class ForControlContext extends ParserRuleContext {
 			listener.exitForControl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitForControl) {
-			return visitor.visitForControl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11188,14 +10522,6 @@ export class ForInitContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitForInit) {
 			listener.exitForInit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitForInit) {
-			return visitor.visitForInit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11238,14 +10564,6 @@ export class EnhancedForControlContext extends ParserRuleContext {
 			listener.exitEnhancedForControl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitEnhancedForControl) {
-			return visitor.visitEnhancedForControl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11268,14 +10586,6 @@ export class ForUpdateContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitForUpdate) {
 			listener.exitForUpdate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitForUpdate) {
-			return visitor.visitForUpdate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11302,14 +10612,6 @@ export class ParExpressionContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitParExpression) {
 			listener.exitParExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitParExpression) {
-			return visitor.visitParExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11351,14 +10653,6 @@ export class ExpressionListContext extends ParserRuleContext {
 			listener.exitExpressionList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitExpressionList) {
-			return visitor.visitExpressionList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11383,14 +10677,6 @@ export class StatementExpressionContext extends ParserRuleContext {
 			listener.exitStatementExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitStatementExpression) {
-			return visitor.visitStatementExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11413,14 +10699,6 @@ export class ConstantExpressionContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitConstantExpression) {
 			listener.exitConstantExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitConstantExpression) {
-			return visitor.visitConstantExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11454,14 +10732,6 @@ export class ApexDbUpsertExpressionContext extends ParserRuleContext {
 			listener.exitApexDbUpsertExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitApexDbUpsertExpression) {
-			return visitor.visitApexDbUpsertExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11491,14 +10761,6 @@ export class ApexDbExpressionContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitApexDbExpression) {
 			listener.exitApexDbExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitApexDbExpression) {
-			return visitor.visitApexDbExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11616,14 +10878,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11672,14 +10926,6 @@ export class PrimaryContext extends ParserRuleContext {
 			listener.exitPrimary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitPrimary) {
-			return visitor.visitPrimary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11717,14 +10963,6 @@ export class CreatorContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitCreator) {
 			listener.exitCreator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitCreator) {
-			return visitor.visitCreator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11779,14 +11017,6 @@ export class CreatedNameContext extends ParserRuleContext {
 			listener.exitCreatedName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitCreatedName) {
-			return visitor.visitCreatedName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11813,14 +11043,6 @@ export class InnerCreatorContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitInnerCreator) {
 			listener.exitInnerCreator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitInnerCreator) {
-			return visitor.visitInnerCreator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11872,14 +11094,6 @@ export class ArrayCreatorRestContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitArrayCreatorRest) {
 			listener.exitArrayCreatorRest(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitArrayCreatorRest) {
-			return visitor.visitArrayCreatorRest(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11950,14 +11164,6 @@ export class MapCreatorRestContext extends ParserRuleContext {
 			listener.exitMapCreatorRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitMapCreatorRest) {
-			return visitor.visitMapCreatorRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12008,14 +11214,6 @@ export class SetCreatorRestContext extends ParserRuleContext {
 			listener.exitSetCreatorRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitSetCreatorRest) {
-			return visitor.visitSetCreatorRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12041,14 +11239,6 @@ export class ClassCreatorRestContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitClassCreatorRest) {
 			listener.exitClassCreatorRest(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitClassCreatorRest) {
-			return visitor.visitClassCreatorRest(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12078,14 +11268,6 @@ export class ExplicitGenericInvocationContext extends ParserRuleContext {
 			listener.exitExplicitGenericInvocation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitExplicitGenericInvocation) {
-			return visitor.visitExplicitGenericInvocation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12110,14 +11292,6 @@ export class NonWildcardTypeArgumentsContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitNonWildcardTypeArguments) {
 			listener.exitNonWildcardTypeArguments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitNonWildcardTypeArguments) {
-			return visitor.visitNonWildcardTypeArguments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12146,14 +11320,6 @@ export class TypeArgumentsOrDiamondContext extends ParserRuleContext {
 			listener.exitTypeArgumentsOrDiamond(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitTypeArgumentsOrDiamond) {
-			return visitor.visitTypeArgumentsOrDiamond(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12180,14 +11346,6 @@ export class NonWildcardTypeArgumentsOrDiamondContext extends ParserRuleContext 
 			listener.exitNonWildcardTypeArgumentsOrDiamond(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitNonWildcardTypeArgumentsOrDiamond) {
-			return visitor.visitNonWildcardTypeArgumentsOrDiamond(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12212,14 +11370,6 @@ export class SuperSuffixContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitSuperSuffix) {
 			listener.exitSuperSuffix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitSuperSuffix) {
-			return visitor.visitSuperSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12251,14 +11401,6 @@ export class ExplicitGenericInvocationSuffixContext extends ParserRuleContext {
 			listener.exitExplicitGenericInvocationSuffix(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitExplicitGenericInvocationSuffix) {
-			return visitor.visitExplicitGenericInvocationSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12283,14 +11425,6 @@ export class ArgumentsContext extends ParserRuleContext {
 	public exitRule(listener: apexListener): void {
 		if (listener.exitArguments) {
 			listener.exitArguments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: apexVisitor<Result>): Result {
-		if (visitor.visitArguments) {
-			return visitor.visitArguments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

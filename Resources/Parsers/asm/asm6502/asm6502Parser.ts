@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { asm6502Listener } from "./asm6502Listener";
-import { asm6502Visitor } from "./asm6502Visitor";
-
 
 export class asm6502Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -854,14 +852,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -893,14 +883,6 @@ export class LineContext extends ParserRuleContext {
 	public exitRule(listener: asm6502Listener): void {
 		if (listener.exitLine) {
 			listener.exitLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -936,14 +918,6 @@ export class InstructionContext extends ParserRuleContext {
 			listener.exitInstruction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitInstruction) {
-			return visitor.visitInstruction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -977,14 +951,6 @@ export class AssemblerinstructionContext extends ParserRuleContext {
 			listener.exitAssemblerinstruction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitAssemblerinstruction) {
-			return visitor.visitAssemblerinstruction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1005,14 +971,6 @@ export class AssembleropcodeContext extends ParserRuleContext {
 	public exitRule(listener: asm6502Listener): void {
 		if (listener.exitAssembleropcode) {
 			listener.exitAssembleropcode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitAssembleropcode) {
-			return visitor.visitAssembleropcode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1037,14 +995,6 @@ export class LblContext extends ParserRuleContext {
 	public exitRule(listener: asm6502Listener): void {
 		if (listener.exitLbl) {
 			listener.exitLbl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitLbl) {
-			return visitor.visitLbl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1074,14 +1024,6 @@ export class ArgumentlistContext extends ParserRuleContext {
 			listener.exitArgumentlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitArgumentlist) {
-			return visitor.visitArgumentlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1104,14 +1046,6 @@ export class LabelContext extends ParserRuleContext {
 	public exitRule(listener: asm6502Listener): void {
 		if (listener.exitLabel) {
 			listener.exitLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1156,14 +1090,6 @@ export class ArgumentContext extends ParserRuleContext {
 			listener.exitArgument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1183,14 +1109,6 @@ export class PrefixContext extends ParserRuleContext {
 	public exitRule(listener: asm6502Listener): void {
 		if (listener.exitPrefix) {
 			listener.exitPrefix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitPrefix) {
-			return visitor.visitPrefix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1215,14 +1133,6 @@ export class StringContext extends ParserRuleContext {
 			listener.exitString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1243,14 +1153,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: asm6502Listener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1275,14 +1177,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1303,14 +1197,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: asm6502Listener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1393,14 +1279,6 @@ export class OpcodeContext extends ParserRuleContext {
 	public exitRule(listener: asm6502Listener): void {
 		if (listener.exitOpcode) {
 			listener.exitOpcode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asm6502Visitor<Result>): Result {
-		if (visitor.visitOpcode) {
-			return visitor.visitOpcode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

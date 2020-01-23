@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { mooListener } from "./mooListener";
-import { mooVisitor } from "./mooVisitor";
-
 
 export class mooParser extends Parser {
 	public static readonly T__0 = 1;
@@ -2639,14 +2637,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2710,14 +2700,6 @@ export class DeclarationContext extends ParserRuleContext {
 			listener.exitDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitDeclaration) {
-			return visitor.visitDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2754,14 +2736,6 @@ export class ProgramdeclContext extends ParserRuleContext {
 			listener.exitProgramdecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitProgramdecl) {
-			return visitor.visitProgramdecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2787,14 +2761,6 @@ export class ProgramnameContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitProgramname) {
 			listener.exitProgramname(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitProgramname) {
-			return visitor.visitProgramname(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2833,14 +2799,6 @@ export class VerbdeclContext extends ParserRuleContext {
 			listener.exitVerbdecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitVerbdecl) {
-			return visitor.visitVerbdecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2866,14 +2824,6 @@ export class VerbnameContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitVerbname) {
 			listener.exitVerbname(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitVerbname) {
-			return visitor.visitVerbname(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2907,14 +2857,6 @@ export class PropertydeclContext extends ParserRuleContext {
 			listener.exitPropertydecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitPropertydecl) {
-			return visitor.visitPropertydecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2937,14 +2879,6 @@ export class RmpropertydeclContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitRmpropertydecl) {
 			listener.exitRmpropertydecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitRmpropertydecl) {
-			return visitor.visitRmpropertydecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2974,14 +2908,6 @@ export class SetpropertydeclContext extends ParserRuleContext {
 			listener.exitSetpropertydecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitSetpropertydecl) {
-			return visitor.visitSetpropertydecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3004,14 +2930,6 @@ export class DisplaypropertydeclContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitDisplaypropertydecl) {
 			listener.exitDisplaypropertydecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitDisplaypropertydecl) {
-			return visitor.visitDisplaypropertydecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3038,14 +2956,6 @@ export class KidsdeclContext extends ParserRuleContext {
 			listener.exitKidsdecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitKidsdecl) {
-			return visitor.visitKidsdecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3068,14 +2978,6 @@ export class ParentdeclContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitParentdecl) {
 			listener.exitParentdecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitParentdecl) {
-			return visitor.visitParentdecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3105,14 +3007,6 @@ export class DescribedeclContext extends ParserRuleContext {
 			listener.exitDescribedecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitDescribedecl) {
-			return visitor.visitDescribedecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3137,14 +3031,6 @@ export class ContentsdeclContext extends ParserRuleContext {
 			listener.exitContentsdecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitContentsdecl) {
-			return visitor.visitContentsdecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3167,14 +3053,6 @@ export class NoteditdeclContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitNoteditdecl) {
 			listener.exitNoteditdecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitNoteditdecl) {
-			return visitor.visitNoteditdecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3204,14 +3082,6 @@ export class CreatedeclContext extends ParserRuleContext {
 			listener.exitCreatedecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitCreatedecl) {
-			return visitor.visitCreatedecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3234,14 +3104,6 @@ export class EditdeclContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitEditdecl) {
 			listener.exitEditdecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitEditdecl) {
-			return visitor.visitEditdecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3284,14 +3146,6 @@ export class AddaliasdeclContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitAddaliasdecl) {
 			listener.exitAddaliasdecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitAddaliasdecl) {
-			return visitor.visitAddaliasdecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3337,14 +3191,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3385,14 +3231,6 @@ export class IfblockContext extends ParserRuleContext {
 			listener.exitIfblock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitIfblock) {
-			return visitor.visitIfblock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3426,14 +3264,6 @@ export class WhileblockContext extends ParserRuleContext {
 			listener.exitWhileblock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitWhileblock) {
-			return visitor.visitWhileblock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3465,14 +3295,6 @@ export class DoblockContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitDoblock) {
 			listener.exitDoblock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitDoblock) {
-			return visitor.visitDoblock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3511,14 +3333,6 @@ export class ForblockContext extends ParserRuleContext {
 			listener.exitForblock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitForblock) {
-			return visitor.visitForblock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3552,14 +3366,6 @@ export class TryblockContext extends ParserRuleContext {
 			listener.exitTryblock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitTryblock) {
-			return visitor.visitTryblock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3587,14 +3393,6 @@ export class AssignblockContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitAssignblock) {
 			listener.exitAssignblock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitAssignblock) {
-			return visitor.visitAssignblock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3638,14 +3436,6 @@ export class ConditionContext extends ParserRuleContext {
 			listener.exitCondition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitCondition) {
-			return visitor.visitCondition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3673,14 +3463,6 @@ export class RelopContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitRelop) {
 			listener.exitRelop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitRelop) {
-			return visitor.visitRelop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3720,14 +3502,6 @@ export class ExpressionlistContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitExpressionlist) {
 			listener.exitExpressionlist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitExpressionlist) {
-			return visitor.visitExpressionlist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3776,14 +3550,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3843,14 +3609,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3890,14 +3648,6 @@ export class FactorContext extends ParserRuleContext {
 			listener.exitFactor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitFactor) {
-			return visitor.visitFactor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3925,14 +3675,6 @@ export class SignedAtomContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitSignedAtom) {
 			listener.exitSignedAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitSignedAtom) {
-			return visitor.visitSignedAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3985,14 +3727,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4013,14 +3747,6 @@ export class ObjrefContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitObjref) {
 			listener.exitObjref(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitObjref) {
-			return visitor.visitObjref(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4052,14 +3778,6 @@ export class FunctioninvocationContext extends ParserRuleContext {
 			listener.exitFunctioninvocation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitFunctioninvocation) {
-			return visitor.visitFunctioninvocation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4087,14 +3805,6 @@ export class CommandContext extends ParserRuleContext {
 			listener.exitCommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitCommand) {
-			return visitor.visitCommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4117,14 +3827,6 @@ export class ReturncommandContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitReturncommand) {
 			listener.exitReturncommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitReturncommand) {
-			return visitor.visitReturncommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4154,14 +3856,6 @@ export class VerbinvocationContext extends ParserRuleContext {
 			listener.exitVerbinvocation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitVerbinvocation) {
-			return visitor.visitVerbinvocation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4189,14 +3883,6 @@ export class VerbContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitVerb) {
 			listener.exitVerb(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitVerb) {
-			return visitor.visitVerb(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4241,14 +3927,6 @@ export class PropertyContext extends ParserRuleContext {
 			listener.exitProperty(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitProperty) {
-			return visitor.visitProperty(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4276,14 +3954,6 @@ export class PropertynameContext extends ParserRuleContext {
 			listener.exitPropertyname(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitPropertyname) {
-			return visitor.visitPropertyname(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4308,14 +3978,6 @@ export class ListContext extends ParserRuleContext {
 			listener.exitList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitList) {
-			return visitor.visitList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4336,14 +3998,6 @@ export class StringliteralContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitStringliteral) {
 			listener.exitStringliteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitStringliteral) {
-			return visitor.visitStringliteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4368,14 +4022,6 @@ export class IntegerContext extends ParserRuleContext {
 			listener.exitInteger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitInteger) {
-			return visitor.visitInteger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4396,14 +4042,6 @@ export class RealContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitReal) {
 			listener.exitReal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitReal) {
-			return visitor.visitReal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4433,14 +4071,6 @@ export class NameContext extends ParserRuleContext {
 			listener.exitName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4462,14 +4092,6 @@ export class SysnameContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitSysname) {
 			listener.exitSysname(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitSysname) {
-			return visitor.visitSysname(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4494,14 +4116,6 @@ export class UsernameContext extends ParserRuleContext {
 			listener.exitUsername(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitUsername) {
-			return visitor.visitUsername(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4522,14 +4136,6 @@ export class PermissionsContext extends ParserRuleContext {
 	public exitRule(listener: mooListener): void {
 		if (listener.exitPermissions) {
 			listener.exitPermissions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mooVisitor<Result>): Result {
-		if (visitor.visitPermissions) {
-			return visitor.visitPermissions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

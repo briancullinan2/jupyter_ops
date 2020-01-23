@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { CorundumListener } from "./CorundumListener";
-import { CorundumVisitor } from "./CorundumVisitor";
-
 
 export class CorundumParser extends Parser {
 	public static readonly LITERAL = 1;
@@ -5246,14 +5244,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5282,14 +5272,6 @@ export class Expression_listContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitExpression_list) {
 			listener.exitExpression_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitExpression_list) {
-			return visitor.visitExpression_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5343,14 +5325,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5380,14 +5354,6 @@ export class Global_getContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitGlobal_get) {
 			listener.exitGlobal_get(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitGlobal_get) {
-			return visitor.visitGlobal_get(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5421,14 +5387,6 @@ export class Global_setContext extends ParserRuleContext {
 			listener.exitGlobal_set(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitGlobal_set) {
-			return visitor.visitGlobal_set(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5451,14 +5409,6 @@ export class Global_resultContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitGlobal_result) {
 			listener.exitGlobal_result(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitGlobal_result) {
-			return visitor.visitGlobal_result(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5485,14 +5435,6 @@ export class Function_inline_callContext extends ParserRuleContext {
 			listener.exitFunction_inline_call(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_inline_call) {
-			return visitor.visitFunction_inline_call(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5516,14 +5458,6 @@ export class Require_blockContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitRequire_block) {
 			listener.exitRequire_block(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitRequire_block) {
-			return visitor.visitRequire_block(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5555,14 +5489,6 @@ export class Pir_inlineContext extends ParserRuleContext {
 			listener.exitPir_inline(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitPir_inline) {
-			return visitor.visitPir_inline(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5585,14 +5511,6 @@ export class Pir_expression_listContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitPir_expression_list) {
 			listener.exitPir_expression_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitPir_expression_list) {
-			return visitor.visitPir_expression_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5623,14 +5541,6 @@ export class Function_definitionContext extends ParserRuleContext {
 			listener.exitFunction_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_definition) {
-			return visitor.visitFunction_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5653,14 +5563,6 @@ export class Function_definition_bodyContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitFunction_definition_body) {
 			listener.exitFunction_definition_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_definition_body) {
-			return visitor.visitFunction_definition_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5694,14 +5596,6 @@ export class Function_definition_headerContext extends ParserRuleContext {
 			listener.exitFunction_definition_header(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_definition_header) {
-			return visitor.visitFunction_definition_header(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5729,14 +5623,6 @@ export class Function_nameContext extends ParserRuleContext {
 			listener.exitFunction_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_name) {
-			return visitor.visitFunction_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5761,14 +5647,6 @@ export class Function_definition_paramsContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitFunction_definition_params) {
 			listener.exitFunction_definition_params(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_definition_params) {
-			return visitor.visitFunction_definition_params(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5799,14 +5677,6 @@ export class Function_definition_params_listContext extends ParserRuleContext {
 			listener.exitFunction_definition_params_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_definition_params_list) {
-			return visitor.visitFunction_definition_params_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5829,14 +5699,6 @@ export class Function_definition_param_idContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitFunction_definition_param_id) {
 			listener.exitFunction_definition_param_id(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_definition_param_id) {
-			return visitor.visitFunction_definition_param_id(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5862,14 +5724,6 @@ export class Return_statementContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitReturn_statement) {
 			listener.exitReturn_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitReturn_statement) {
-			return visitor.visitReturn_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5903,14 +5757,6 @@ export class Function_callContext extends ParserRuleContext {
 			listener.exitFunction_call(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_call) {
-			return visitor.visitFunction_call(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5933,14 +5779,6 @@ export class Function_call_param_listContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitFunction_call_param_list) {
 			listener.exitFunction_call_param_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_call_param_list) {
-			return visitor.visitFunction_call_param_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5971,14 +5809,6 @@ export class Function_call_paramsContext extends ParserRuleContext {
 			listener.exitFunction_call_params(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_call_params) {
-			return visitor.visitFunction_call_params(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6004,14 +5834,6 @@ export class Function_paramContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitFunction_param) {
 			listener.exitFunction_param(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_param) {
-			return visitor.visitFunction_param(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6045,14 +5867,6 @@ export class Function_unnamed_paramContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitFunction_unnamed_param) {
 			listener.exitFunction_unnamed_param(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_unnamed_param) {
-			return visitor.visitFunction_unnamed_param(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6093,14 +5907,6 @@ export class Function_named_paramContext extends ParserRuleContext {
 			listener.exitFunction_named_param(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_named_param) {
-			return visitor.visitFunction_named_param(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6123,14 +5929,6 @@ export class Function_call_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitFunction_call_assignment) {
 			listener.exitFunction_call_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFunction_call_assignment) {
-			return visitor.visitFunction_call_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6169,14 +5967,6 @@ export class All_resultContext extends ParserRuleContext {
 			listener.exitAll_result(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitAll_result) {
-			return visitor.visitAll_result(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6199,14 +5989,6 @@ export class Elsif_statementContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitElsif_statement) {
 			listener.exitElsif_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitElsif_statement) {
-			return visitor.visitElsif_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6256,14 +6038,6 @@ export class If_elsif_statementContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitIf_elsif_statement) {
 			listener.exitIf_elsif_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitIf_elsif_statement) {
-			return visitor.visitIf_elsif_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6316,14 +6090,6 @@ export class If_statementContext extends ParserRuleContext {
 			listener.exitIf_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitIf_statement) {
-			return visitor.visitIf_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6374,14 +6140,6 @@ export class Unless_statementContext extends ParserRuleContext {
 			listener.exitUnless_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitUnless_statement) {
-			return visitor.visitUnless_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6412,14 +6170,6 @@ export class While_statementContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitWhile_statement) {
 			listener.exitWhile_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitWhile_statement) {
-			return visitor.visitWhile_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6471,14 +6221,6 @@ export class For_statementContext extends ParserRuleContext {
 			listener.exitFor_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFor_statement) {
-			return visitor.visitFor_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6501,14 +6243,6 @@ export class Init_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitInit_expression) {
 			listener.exitInit_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitInit_expression) {
-			return visitor.visitInit_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6544,14 +6278,6 @@ export class All_assignmentContext extends ParserRuleContext {
 			listener.exitAll_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitAll_assignment) {
-			return visitor.visitAll_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6580,14 +6306,6 @@ export class For_init_listContext extends ParserRuleContext {
 			listener.exitFor_init_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFor_init_list) {
-			return visitor.visitFor_init_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6612,14 +6330,6 @@ export class Cond_expressionContext extends ParserRuleContext {
 			listener.exitCond_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitCond_expression) {
-			return visitor.visitCond_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6642,14 +6352,6 @@ export class Loop_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitLoop_expression) {
 			listener.exitLoop_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitLoop_expression) {
-			return visitor.visitLoop_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6680,14 +6382,6 @@ export class For_loop_listContext extends ParserRuleContext {
 			listener.exitFor_loop_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFor_loop_list) {
-			return visitor.visitFor_loop_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6710,14 +6404,6 @@ export class Statement_bodyContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitStatement_body) {
 			listener.exitStatement_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitStatement_body) {
-			return visitor.visitStatement_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6752,14 +6438,6 @@ export class Statement_expression_listContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitStatement_expression_list) {
 			listener.exitStatement_expression_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitStatement_expression_list) {
-			return visitor.visitStatement_expression_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6798,14 +6476,6 @@ export class AssignmentContext extends ParserRuleContext {
 			listener.exitAssignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitAssignment) {
-			return visitor.visitAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6840,14 +6510,6 @@ export class Dynamic_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitDynamic_assignment) {
 			listener.exitDynamic_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitDynamic_assignment) {
-			return visitor.visitDynamic_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6886,14 +6548,6 @@ export class Int_assignmentContext extends ParserRuleContext {
 			listener.exitInt_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitInt_assignment) {
-			return visitor.visitInt_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6930,14 +6584,6 @@ export class Float_assignmentContext extends ParserRuleContext {
 			listener.exitFloat_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFloat_assignment) {
-			return visitor.visitFloat_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6969,14 +6615,6 @@ export class String_assignmentContext extends ParserRuleContext {
 			listener.exitString_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitString_assignment) {
-			return visitor.visitString_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7004,14 +6642,6 @@ export class Initial_array_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitInitial_array_assignment) {
 			listener.exitInitial_array_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitInitial_array_assignment) {
-			return visitor.visitInitial_array_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7045,14 +6675,6 @@ export class Array_assignmentContext extends ParserRuleContext {
 			listener.exitArray_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitArray_assignment) {
-			return visitor.visitArray_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7077,14 +6699,6 @@ export class Array_definitionContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitArray_definition) {
 			listener.exitArray_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitArray_definition) {
-			return visitor.visitArray_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7116,14 +6730,6 @@ export class Array_definition_elementsContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitArray_definition_elements) {
 			listener.exitArray_definition_elements(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitArray_definition_elements) {
-			return visitor.visitArray_definition_elements(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7159,14 +6765,6 @@ export class Array_selectorContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitArray_selector) {
 			listener.exitArray_selector(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitArray_selector) {
-			return visitor.visitArray_selector(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7219,14 +6817,6 @@ export class Dynamic_resultContext extends ParserRuleContext {
 			listener.exitDynamic_result(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitDynamic_result) {
-			return visitor.visitDynamic_result(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7255,14 +6845,6 @@ export class DynamicContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitDynamic) {
 			listener.exitDynamic(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitDynamic) {
-			return visitor.visitDynamic(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7304,14 +6886,6 @@ export class Int_resultContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitInt_result) {
 			listener.exitInt_result(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitInt_result) {
-			return visitor.visitInt_result(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7358,14 +6932,6 @@ export class Float_resultContext extends ParserRuleContext {
 			listener.exitFloat_result(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFloat_result) {
-			return visitor.visitFloat_result(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7405,14 +6971,6 @@ export class String_resultContext extends ParserRuleContext {
 			listener.exitString_result(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitString_result) {
-			return visitor.visitString_result(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7447,14 +7005,6 @@ export class Comparison_listContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitComparison_list) {
 			listener.exitComparison_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitComparison_list) {
-			return visitor.visitComparison_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7496,14 +7046,6 @@ export class ComparisonContext extends ParserRuleContext {
 			listener.exitComparison(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitComparison) {
-			return visitor.visitComparison(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7534,14 +7076,6 @@ export class Comp_varContext extends ParserRuleContext {
 			listener.exitComp_var(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitComp_var) {
-			return visitor.visitComp_var(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7564,14 +7098,6 @@ export class LvalueContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitLvalue) {
 			listener.exitLvalue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitLvalue) {
-			return visitor.visitLvalue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7684,14 +7210,6 @@ export class RvalueContext extends ParserRuleContext {
 			listener.exitRvalue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitRvalue) {
-			return visitor.visitRvalue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7712,14 +7230,6 @@ export class Break_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitBreak_expression) {
 			listener.exitBreak_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitBreak_expression) {
-			return visitor.visitBreak_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7744,14 +7254,6 @@ export class Literal_tContext extends ParserRuleContext {
 			listener.exitLiteral_t(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitLiteral_t) {
-			return visitor.visitLiteral_t(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7774,14 +7276,6 @@ export class Float_tContext extends ParserRuleContext {
 			listener.exitFloat_t(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitFloat_t) {
-			return visitor.visitFloat_t(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7802,14 +7296,6 @@ export class Int_tContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitInt_t) {
 			listener.exitInt_t(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitInt_t) {
-			return visitor.visitInt_t(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7835,14 +7321,6 @@ export class Bool_tContext extends ParserRuleContext {
 			listener.exitBool_t(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitBool_t) {
-			return visitor.visitBool_t(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7863,14 +7341,6 @@ export class Nil_tContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitNil_t) {
 			listener.exitNil_t(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitNil_t) {
-			return visitor.visitNil_t(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7895,14 +7365,6 @@ export class IdContext extends ParserRuleContext {
 			listener.exitId(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitId) {
-			return visitor.visitId(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7925,14 +7387,6 @@ export class Id_globalContext extends ParserRuleContext {
 			listener.exitId_global(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitId_global) {
-			return visitor.visitId_global(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7953,14 +7407,6 @@ export class Id_functionContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitId_function) {
 			listener.exitId_function(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitId_function) {
-			return visitor.visitId_function(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7991,14 +7437,6 @@ export class TerminatorContext extends ParserRuleContext {
 			listener.exitTerminator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitTerminator) {
-			return visitor.visitTerminator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8021,14 +7459,6 @@ export class Else_tokenContext extends ParserRuleContext {
 			listener.exitElse_token(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitElse_token) {
-			return visitor.visitElse_token(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8049,14 +7479,6 @@ export class CrlfContext extends ParserRuleContext {
 	public exitRule(listener: CorundumListener): void {
 		if (listener.exitCrlf) {
 			listener.exitCrlf(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CorundumVisitor<Result>): Result {
-		if (visitor.visitCrlf) {
-			return visitor.visitCrlf(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

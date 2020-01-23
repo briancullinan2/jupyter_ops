@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { WebIDLListener } from "./WebIDLListener";
-import { WebIDLVisitor } from "./WebIDLVisitor";
-
 
 export class WebIDLParser extends Parser {
 	public static readonly T__0 = 1;
@@ -6177,14 +6175,6 @@ export class WebIDLContext extends ParserRuleContext {
 			listener.exitWebIDL(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitWebIDL) {
-			return visitor.visitWebIDL(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6213,14 +6203,6 @@ export class DefinitionsContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitDefinitions) {
 			listener.exitDefinitions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitDefinitions) {
-			return visitor.visitDefinitions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6262,14 +6244,6 @@ export class DefinitionContext extends ParserRuleContext {
 			listener.exitDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitDefinition) {
-			return visitor.visitDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6300,14 +6274,6 @@ export class CallbackOrInterfaceContext extends ParserRuleContext {
 			listener.exitCallbackOrInterface(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitCallbackOrInterface) {
-			return visitor.visitCallbackOrInterface(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6333,14 +6299,6 @@ export class CallbackRestOrInterfaceContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitCallbackRestOrInterface) {
 			listener.exitCallbackRestOrInterface(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitCallbackRestOrInterface) {
-			return visitor.visitCallbackRestOrInterface(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6371,14 +6329,6 @@ export class Interface_Context extends ParserRuleContext {
 			listener.exitInterface_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitInterface_) {
-			return visitor.visitInterface_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6407,14 +6357,6 @@ export class Class_Context extends ParserRuleContext {
 			listener.exitClass_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitClass_) {
-			return visitor.visitClass_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6437,14 +6379,6 @@ export class PartialContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitPartial) {
 			listener.exitPartial(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitPartial) {
-			return visitor.visitPartial(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6474,14 +6408,6 @@ export class PartialDefinitionContext extends ParserRuleContext {
 			listener.exitPartialDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitPartialDefinition) {
-			return visitor.visitPartialDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6505,14 +6431,6 @@ export class PartialInterfaceContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitPartialInterface) {
 			listener.exitPartialInterface(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitPartialInterface) {
-			return visitor.visitPartialInterface(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6543,14 +6461,6 @@ export class InterfaceMembersContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitInterfaceMembers) {
 			listener.exitInterfaceMembers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitInterfaceMembers) {
-			return visitor.visitInterfaceMembers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6604,14 +6514,6 @@ export class InterfaceMemberContext extends ParserRuleContext {
 			listener.exitInterfaceMember(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitInterfaceMember) {
-			return visitor.visitInterfaceMember(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6638,14 +6540,6 @@ export class DictionaryContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitDictionary) {
 			listener.exitDictionary(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitDictionary) {
-			return visitor.visitDictionary(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6676,14 +6570,6 @@ export class DictionaryMembersContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitDictionaryMembers) {
 			listener.exitDictionaryMembers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitDictionaryMembers) {
-			return visitor.visitDictionaryMembers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6717,14 +6603,6 @@ export class DictionaryMemberContext extends ParserRuleContext {
 			listener.exitDictionaryMember(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitDictionaryMember) {
-			return visitor.visitDictionaryMember(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6744,14 +6622,6 @@ export class RequiredContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitRequired) {
 			listener.exitRequired(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitRequired) {
-			return visitor.visitRequired(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6779,14 +6649,6 @@ export class PartialDictionaryContext extends ParserRuleContext {
 			listener.exitPartialDictionary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitPartialDictionary) {
-			return visitor.visitPartialDictionary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6809,14 +6671,6 @@ export class Default_Context extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitDefault_) {
 			listener.exitDefault_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitDefault_) {
-			return visitor.visitDefault_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6844,14 +6698,6 @@ export class DefaultValueContext extends ParserRuleContext {
 			listener.exitDefaultValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitDefaultValue) {
-			return visitor.visitDefaultValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6874,14 +6720,6 @@ export class InheritanceContext extends ParserRuleContext {
 			listener.exitInheritance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitInheritance) {
-			return visitor.visitInheritance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6902,14 +6740,6 @@ export class ExtensionContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitExtension) {
 			listener.exitExtension(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitExtension) {
-			return visitor.visitExtension(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6937,14 +6767,6 @@ export class Enum_Context extends ParserRuleContext {
 			listener.exitEnum_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitEnum_) {
-			return visitor.visitEnum_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6968,14 +6790,6 @@ export class EnumValueListContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitEnumValueList) {
 			listener.exitEnumValueList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitEnumValueList) {
-			return visitor.visitEnumValueList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7002,14 +6816,6 @@ export class EnumValueListCommaContext extends ParserRuleContext {
 			listener.exitEnumValueListComma(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitEnumValueListComma) {
-			return visitor.visitEnumValueListComma(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7033,14 +6839,6 @@ export class EnumValueListStringContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitEnumValueListString) {
 			listener.exitEnumValueListString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitEnumValueListString) {
-			return visitor.visitEnumValueListString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7071,14 +6869,6 @@ export class CallbackRestContext extends ParserRuleContext {
 			listener.exitCallbackRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitCallbackRest) {
-			return visitor.visitCallbackRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7102,14 +6892,6 @@ export class TypedefContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitTypedef) {
 			listener.exitTypedef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitTypedef) {
-			return visitor.visitTypedef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7142,14 +6924,6 @@ export class ImplementsStatementContext extends ParserRuleContext {
 			listener.exitImplementsStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitImplementsStatement) {
-			return visitor.visitImplementsStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7176,14 +6950,6 @@ export class Const_Context extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitConst_) {
 			listener.exitConst_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitConst_) {
-			return visitor.visitConst_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7214,14 +6980,6 @@ export class ConstValueContext extends ParserRuleContext {
 			listener.exitConstValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitConstValue) {
-			return visitor.visitConstValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7241,14 +6999,6 @@ export class BooleanLiteralContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitBooleanLiteral) {
 			listener.exitBooleanLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitBooleanLiteral) {
-			return visitor.visitBooleanLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7273,14 +7023,6 @@ export class FloatLiteralContext extends ParserRuleContext {
 			listener.exitFloatLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitFloatLiteral) {
-			return visitor.visitFloatLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7303,14 +7045,6 @@ export class SerializerContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitSerializer) {
 			listener.exitSerializer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitSerializer) {
-			return visitor.visitSerializer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7338,14 +7072,6 @@ export class SerializerRestContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitSerializerRest) {
 			listener.exitSerializerRest(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitSerializerRest) {
-			return visitor.visitSerializerRest(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7376,14 +7102,6 @@ export class SerializationPatternContext extends ParserRuleContext {
 			listener.exitSerializationPattern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitSerializationPattern) {
-			return visitor.visitSerializationPattern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7407,14 +7125,6 @@ export class SerializationPatternMapContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitSerializationPatternMap) {
 			listener.exitSerializationPatternMap(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitSerializationPatternMap) {
-			return visitor.visitSerializationPatternMap(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7442,14 +7152,6 @@ export class SerializationPatternListContext extends ParserRuleContext {
 			listener.exitSerializationPatternList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitSerializationPatternList) {
-			return visitor.visitSerializationPatternList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7472,14 +7174,6 @@ export class StringifierContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitStringifier) {
 			listener.exitStringifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitStringifier) {
-			return visitor.visitStringifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7515,14 +7209,6 @@ export class StringifierRestContext extends ParserRuleContext {
 			listener.exitStringifierRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitStringifierRest) {
-			return visitor.visitStringifierRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7545,14 +7231,6 @@ export class StaticMemberContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitStaticMember) {
 			listener.exitStaticMember(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitStaticMember) {
-			return visitor.visitStaticMember(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7588,14 +7266,6 @@ export class StaticMemberRestContext extends ParserRuleContext {
 			listener.exitStaticMemberRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitStaticMemberRest) {
-			return visitor.visitStaticMemberRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7618,14 +7288,6 @@ export class ReadonlyMemberContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitReadonlyMember) {
 			listener.exitReadonlyMember(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitReadonlyMember) {
-			return visitor.visitReadonlyMember(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7658,14 +7320,6 @@ export class ReadonlyMemberRestContext extends ParserRuleContext {
 			listener.exitReadonlyMemberRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitReadonlyMemberRest) {
-			return visitor.visitReadonlyMemberRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7691,14 +7345,6 @@ export class ReadWriteAttributeContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitReadWriteAttribute) {
 			listener.exitReadWriteAttribute(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitReadWriteAttribute) {
-			return visitor.visitReadWriteAttribute(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7728,14 +7374,6 @@ export class AttributeRestContext extends ParserRuleContext {
 			listener.exitAttributeRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitAttributeRest) {
-			return visitor.visitAttributeRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7761,14 +7399,6 @@ export class AttributeNameContext extends ParserRuleContext {
 			listener.exitAttributeName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitAttributeName) {
-			return visitor.visitAttributeName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7788,14 +7418,6 @@ export class AttributeNameKeywordContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitAttributeNameKeyword) {
 			listener.exitAttributeNameKeyword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitAttributeNameKeyword) {
-			return visitor.visitAttributeNameKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7819,14 +7441,6 @@ export class InheritContext extends ParserRuleContext {
 			listener.exitInherit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitInherit) {
-			return visitor.visitInherit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7846,14 +7460,6 @@ export class ReadOnlyContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitReadOnly) {
 			listener.exitReadOnly(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitReadOnly) {
-			return visitor.visitReadOnly(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7884,14 +7490,6 @@ export class OperationContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitOperation) {
 			listener.exitOperation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitOperation) {
-			return visitor.visitOperation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7927,14 +7525,6 @@ export class SpecialOperationContext extends ParserRuleContext {
 			listener.exitSpecialOperation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitSpecialOperation) {
-			return visitor.visitSpecialOperation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7962,14 +7552,6 @@ export class SpecialsContext extends ParserRuleContext {
 			listener.exitSpecials(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitSpecials) {
-			return visitor.visitSpecials(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7989,14 +7571,6 @@ export class SpecialContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitSpecial) {
 			listener.exitSpecial(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitSpecial) {
-			return visitor.visitSpecial(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8026,14 +7600,6 @@ export class OperationRestContext extends ParserRuleContext {
 			listener.exitOperationRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitOperationRest) {
-			return visitor.visitOperationRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8054,14 +7620,6 @@ export class OptionalIdentifierContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitOptionalIdentifier) {
 			listener.exitOptionalIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitOptionalIdentifier) {
-			return visitor.visitOptionalIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8091,14 +7649,6 @@ export class ArgumentListContext extends ParserRuleContext {
 			listener.exitArgumentList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitArgumentList) {
-			return visitor.visitArgumentList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8126,14 +7676,6 @@ export class ArgumentsContext extends ParserRuleContext {
 			listener.exitArguments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitArguments) {
-			return visitor.visitArguments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8159,14 +7701,6 @@ export class ArgumentContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitArgument) {
 			listener.exitArgument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8202,14 +7736,6 @@ export class OptionalOrRequiredArgumentContext extends ParserRuleContext {
 			listener.exitOptionalOrRequiredArgument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitOptionalOrRequiredArgument) {
-			return visitor.visitOptionalOrRequiredArgument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8235,14 +7761,6 @@ export class ArgumentNameContext extends ParserRuleContext {
 			listener.exitArgumentName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitArgumentName) {
-			return visitor.visitArgumentName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8262,14 +7780,6 @@ export class EllipsisContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitEllipsis) {
 			listener.exitEllipsis(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitEllipsis) {
-			return visitor.visitEllipsis(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8299,14 +7809,6 @@ export class IterableContext extends ParserRuleContext {
 			listener.exitIterable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitIterable) {
-			return visitor.visitIterable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8329,14 +7831,6 @@ export class OptionalTypeContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitOptionalType) {
 			listener.exitOptionalType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitOptionalType) {
-			return visitor.visitOptionalType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8363,14 +7857,6 @@ export class ReadWriteMaplikeContext extends ParserRuleContext {
 			listener.exitReadWriteMaplike(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitReadWriteMaplike) {
-			return visitor.visitReadWriteMaplike(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8393,14 +7879,6 @@ export class ReadWriteSetlikeContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitReadWriteSetlike) {
 			listener.exitReadWriteSetlike(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitReadWriteSetlike) {
-			return visitor.visitReadWriteSetlike(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8433,14 +7911,6 @@ export class MaplikeRestContext extends ParserRuleContext {
 			listener.exitMaplikeRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitMaplikeRest) {
-			return visitor.visitMaplikeRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8463,14 +7933,6 @@ export class SetlikeRestContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitSetlikeRest) {
 			listener.exitSetlikeRest(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitSetlikeRest) {
-			return visitor.visitSetlikeRest(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8500,14 +7962,6 @@ export class ExtendedAttributeListContext extends ParserRuleContext {
 			listener.exitExtendedAttributeList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitExtendedAttributeList) {
-			return visitor.visitExtendedAttributeList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8533,14 +7987,6 @@ export class ExtendedAttributesContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitExtendedAttributes) {
 			listener.exitExtendedAttributes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitExtendedAttributes) {
-			return visitor.visitExtendedAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8573,14 +8019,6 @@ export class ExtendedAttributeContext extends ParserRuleContext {
 			listener.exitExtendedAttribute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitExtendedAttribute) {
-			return visitor.visitExtendedAttribute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8603,14 +8041,6 @@ export class ExtendedAttributeRestContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitExtendedAttributeRest) {
 			listener.exitExtendedAttributeRest(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitExtendedAttributeRest) {
-			return visitor.visitExtendedAttributeRest(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8646,14 +8076,6 @@ export class ExtendedAttributeInnerContext extends ParserRuleContext {
 			listener.exitExtendedAttributeInner(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitExtendedAttributeInner) {
-			return visitor.visitExtendedAttributeInner(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8686,14 +8108,6 @@ export class OtherContext extends ParserRuleContext {
 			listener.exitOther(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitOther) {
-			return visitor.visitOther(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8713,14 +8127,6 @@ export class ArgumentNameKeywordContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitArgumentNameKeyword) {
 			listener.exitArgumentNameKeyword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitArgumentNameKeyword) {
-			return visitor.visitArgumentNameKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8745,14 +8151,6 @@ export class OtherOrCommaContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitOtherOrComma) {
 			listener.exitOtherOrComma(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitOtherOrComma) {
-			return visitor.visitOtherOrComma(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8785,14 +8183,6 @@ export class TypeContext extends ParserRuleContext {
 			listener.exitType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8815,14 +8205,6 @@ export class SingleTypeContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitSingleType) {
 			listener.exitSingleType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitSingleType) {
-			return visitor.visitSingleType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8858,14 +8240,6 @@ export class UnionTypeContext extends ParserRuleContext {
 			listener.exitUnionType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitUnionType) {
-			return visitor.visitUnionType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8896,14 +8270,6 @@ export class UnionMemberTypeContext extends ParserRuleContext {
 			listener.exitUnionMemberType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitUnionMemberType) {
-			return visitor.visitUnionMemberType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8929,14 +8295,6 @@ export class UnionMemberTypesContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitUnionMemberTypes) {
 			listener.exitUnionMemberTypes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitUnionMemberTypes) {
-			return visitor.visitUnionMemberTypes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8976,14 +8334,6 @@ export class NonAnyTypeContext extends ParserRuleContext {
 			listener.exitNonAnyType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitNonAnyType) {
-			return visitor.visitNonAnyType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9003,14 +8353,6 @@ export class BufferRelatedTypeContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitBufferRelatedType) {
 			listener.exitBufferRelatedType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitBufferRelatedType) {
-			return visitor.visitBufferRelatedType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9041,14 +8383,6 @@ export class ConstTypeContext extends ParserRuleContext {
 			listener.exitConstType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitConstType) {
-			return visitor.visitConstType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9076,14 +8410,6 @@ export class PrimitiveTypeContext extends ParserRuleContext {
 			listener.exitPrimitiveType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitPrimitiveType) {
-			return visitor.visitPrimitiveType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9108,14 +8434,6 @@ export class UnrestrictedFloatTypeContext extends ParserRuleContext {
 			listener.exitUnrestrictedFloatType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitUnrestrictedFloatType) {
-			return visitor.visitUnrestrictedFloatType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9135,14 +8453,6 @@ export class FloatTypeContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitFloatType) {
 			listener.exitFloatType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitFloatType) {
-			return visitor.visitFloatType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9169,14 +8479,6 @@ export class UnsignedIntegerTypeContext extends ParserRuleContext {
 			listener.exitUnsignedIntegerType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitUnsignedIntegerType) {
-			return visitor.visitUnsignedIntegerType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9201,14 +8503,6 @@ export class IntegerTypeContext extends ParserRuleContext {
 			listener.exitIntegerType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitIntegerType) {
-			return visitor.visitIntegerType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9228,14 +8522,6 @@ export class OptionalLongContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitOptionalLong) {
 			listener.exitOptionalLong(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitOptionalLong) {
-			return visitor.visitOptionalLong(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9262,14 +8548,6 @@ export class PromiseTypeContext extends ParserRuleContext {
 			listener.exitPromiseType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitPromiseType) {
-			return visitor.visitPromiseType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9289,14 +8567,6 @@ export class Null_Context extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitNull_) {
 			listener.exitNull_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitNull_) {
-			return visitor.visitNull_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9321,14 +8591,6 @@ export class ReturnTypeContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitReturnType) {
 			listener.exitReturnType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitReturnType) {
-			return visitor.visitReturnType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9356,14 +8618,6 @@ export class IdentifierListContext extends ParserRuleContext {
 			listener.exitIdentifierList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitIdentifierList) {
-			return visitor.visitIdentifierList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9389,14 +8643,6 @@ export class IdentifiersContext extends ParserRuleContext {
 			listener.exitIdentifiers(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitIdentifiers) {
-			return visitor.visitIdentifiers(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9417,14 +8663,6 @@ export class ExtendedAttributeNoArgsContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitExtendedAttributeNoArgs) {
 			listener.exitExtendedAttributeNoArgs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitExtendedAttributeNoArgs) {
-			return visitor.visitExtendedAttributeNoArgs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9450,14 +8688,6 @@ export class ExtendedAttributeArgListContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitExtendedAttributeArgList) {
 			listener.exitExtendedAttributeArgList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitExtendedAttributeArgList) {
-			return visitor.visitExtendedAttributeArgList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9490,14 +8720,6 @@ export class ExtendedAttributeIdentContext extends ParserRuleContext {
 			listener.exitExtendedAttributeIdent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitExtendedAttributeIdent) {
-			return visitor.visitExtendedAttributeIdent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9521,14 +8743,6 @@ export class ExtendedAttributeIdentListContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitExtendedAttributeIdentList) {
 			listener.exitExtendedAttributeIdentList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitExtendedAttributeIdentList) {
-			return visitor.visitExtendedAttributeIdentList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9562,14 +8776,6 @@ export class ExtendedAttributeNamedArgListContext extends ParserRuleContext {
 	public exitRule(listener: WebIDLListener): void {
 		if (listener.exitExtendedAttributeNamedArgList) {
 			listener.exitExtendedAttributeNamedArgList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WebIDLVisitor<Result>): Result {
-		if (visitor.visitExtendedAttributeNamedArgList) {
-			return visitor.visitExtendedAttributeNamedArgList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

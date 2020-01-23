@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { SolidityListener } from "./SolidityListener";
-import { SolidityVisitor } from "./SolidityVisitor";
-
 
 export class SolidityParser extends Parser {
 	public static readonly T__0 = 1;
@@ -5690,14 +5688,6 @@ export class SourceUnitContext extends ParserRuleContext {
 			listener.exitSourceUnit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitSourceUnit) {
-			return visitor.visitSourceUnit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5725,14 +5715,6 @@ export class PragmaDirectiveContext extends ParserRuleContext {
 			listener.exitPragmaDirective(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitPragmaDirective) {
-			return visitor.visitPragmaDirective(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5755,14 +5737,6 @@ export class PragmaNameContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitPragmaName) {
 			listener.exitPragmaName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitPragmaName) {
-			return visitor.visitPragmaName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5790,14 +5764,6 @@ export class PragmaValueContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitPragmaValue) {
 			listener.exitPragmaValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitPragmaValue) {
-			return visitor.visitPragmaValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5830,14 +5796,6 @@ export class VersionContext extends ParserRuleContext {
 			listener.exitVersion(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitVersion) {
-			return visitor.visitVersion(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5857,14 +5815,6 @@ export class VersionOperatorContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitVersionOperator) {
 			listener.exitVersionOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitVersionOperator) {
-			return visitor.visitVersionOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5890,14 +5840,6 @@ export class VersionConstraintContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitVersionConstraint) {
 			listener.exitVersionConstraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitVersionConstraint) {
-			return visitor.visitVersionConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5928,14 +5870,6 @@ export class ImportDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitImportDeclaration) {
 			listener.exitImportDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitImportDeclaration) {
-			return visitor.visitImportDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5976,14 +5910,6 @@ export class ImportDirectiveContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitImportDirective) {
 			listener.exitImportDirective(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitImportDirective) {
-			return visitor.visitImportDirective(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6028,14 +5954,6 @@ export class ContractDefinitionContext extends ParserRuleContext {
 			listener.exitContractDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitContractDefinition) {
-			return visitor.visitContractDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6067,14 +5985,6 @@ export class InheritanceSpecifierContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitInheritanceSpecifier) {
 			listener.exitInheritanceSpecifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitInheritanceSpecifier) {
-			return visitor.visitInheritanceSpecifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6120,14 +6030,6 @@ export class ContractPartContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitContractPart) {
 			listener.exitContractPart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitContractPart) {
-			return visitor.visitContractPart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6196,14 +6098,6 @@ export class StateVariableDeclarationContext extends ParserRuleContext {
 			listener.exitStateVariableDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitStateVariableDeclaration) {
-			return visitor.visitStateVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6229,14 +6123,6 @@ export class UsingForDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitUsingForDeclaration) {
 			listener.exitUsingForDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitUsingForDeclaration) {
-			return visitor.visitUsingForDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6272,14 +6158,6 @@ export class StructDefinitionContext extends ParserRuleContext {
 			listener.exitStructDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitStructDefinition) {
-			return visitor.visitStructDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6308,14 +6186,6 @@ export class ConstructorDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitConstructorDefinition) {
 			listener.exitConstructorDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitConstructorDefinition) {
-			return visitor.visitConstructorDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6348,14 +6218,6 @@ export class ModifierDefinitionContext extends ParserRuleContext {
 			listener.exitModifierDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitModifierDefinition) {
-			return visitor.visitModifierDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6381,14 +6243,6 @@ export class ModifierInvocationContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitModifierInvocation) {
 			listener.exitModifierInvocation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitModifierInvocation) {
-			return visitor.visitModifierInvocation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6427,14 +6281,6 @@ export class FunctionDefinitionContext extends ParserRuleContext {
 			listener.exitFunctionDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitFunctionDefinition) {
-			return visitor.visitFunctionDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6457,14 +6303,6 @@ export class ReturnParametersContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitReturnParameters) {
 			listener.exitReturnParameters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitReturnParameters) {
-			return visitor.visitReturnParameters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6542,14 +6380,6 @@ export class ModifierListContext extends ParserRuleContext {
 			listener.exitModifierList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitModifierList) {
-			return visitor.visitModifierList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6578,14 +6408,6 @@ export class EventDefinitionContext extends ParserRuleContext {
 			listener.exitEventDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitEventDefinition) {
-			return visitor.visitEventDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6608,14 +6430,6 @@ export class EnumValueContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitEnumValue) {
 			listener.exitEnumValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitEnumValue) {
-			return visitor.visitEnumValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6651,14 +6465,6 @@ export class EnumDefinitionContext extends ParserRuleContext {
 			listener.exitEnumDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitEnumDefinition) {
-			return visitor.visitEnumDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6687,14 +6493,6 @@ export class ParameterListContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitParameterList) {
 			listener.exitParameterList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitParameterList) {
-			return visitor.visitParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6727,14 +6525,6 @@ export class ParameterContext extends ParserRuleContext {
 			listener.exitParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitParameter) {
-			return visitor.visitParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6765,14 +6555,6 @@ export class EventParameterListContext extends ParserRuleContext {
 			listener.exitEventParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitEventParameterList) {
-			return visitor.visitEventParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6799,14 +6581,6 @@ export class EventParameterContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitEventParameter) {
 			listener.exitEventParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitEventParameter) {
-			return visitor.visitEventParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6839,14 +6613,6 @@ export class FunctionTypeParameterListContext extends ParserRuleContext {
 			listener.exitFunctionTypeParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitFunctionTypeParameterList) {
-			return visitor.visitFunctionTypeParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6872,14 +6638,6 @@ export class FunctionTypeParameterContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitFunctionTypeParameter) {
 			listener.exitFunctionTypeParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitFunctionTypeParameter) {
-			return visitor.visitFunctionTypeParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6910,14 +6668,6 @@ export class VariableDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitVariableDeclaration) {
 			listener.exitVariableDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitVariableDeclaration) {
-			return visitor.visitVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6959,14 +6709,6 @@ export class TypeNameContext extends ParserRuleContext {
 			listener.exitTypeName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitTypeName) {
-			return visitor.visitTypeName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6997,14 +6739,6 @@ export class UserDefinedTypeNameContext extends ParserRuleContext {
 			listener.exitUserDefinedTypeName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitUserDefinedTypeName) {
-			return visitor.visitUserDefinedTypeName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7030,14 +6764,6 @@ export class MappingContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitMapping) {
 			listener.exitMapping(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitMapping) {
-			return visitor.visitMapping(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7097,14 +6823,6 @@ export class FunctionTypeNameContext extends ParserRuleContext {
 			listener.exitFunctionTypeName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitFunctionTypeName) {
-			return visitor.visitFunctionTypeName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7124,14 +6842,6 @@ export class StorageLocationContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitStorageLocation) {
 			listener.exitStorageLocation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitStorageLocation) {
-			return visitor.visitStorageLocation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7157,14 +6867,6 @@ export class StateMutabilityContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitStateMutability) {
 			listener.exitStateMutability(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitStateMutability) {
-			return visitor.visitStateMutability(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7195,14 +6897,6 @@ export class BlockContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitBlock) {
 			listener.exitBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7262,14 +6956,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7292,14 +6978,6 @@ export class ExpressionStatementContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitExpressionStatement) {
 			listener.exitExpressionStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitExpressionStatement) {
-			return visitor.visitExpressionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7335,14 +7013,6 @@ export class IfStatementContext extends ParserRuleContext {
 			listener.exitIfStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7370,14 +7040,6 @@ export class WhileStatementContext extends ParserRuleContext {
 			listener.exitWhileStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitWhileStatement) {
-			return visitor.visitWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7403,14 +7065,6 @@ export class SimpleStatementContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitSimpleStatement) {
 			listener.exitSimpleStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitSimpleStatement) {
-			return visitor.visitSimpleStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7449,14 +7103,6 @@ export class ForStatementContext extends ParserRuleContext {
 			listener.exitForStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitForStatement) {
-			return visitor.visitForStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7480,14 +7126,6 @@ export class InlineAssemblyStatementContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitInlineAssemblyStatement) {
 			listener.exitInlineAssemblyStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitInlineAssemblyStatement) {
-			return visitor.visitInlineAssemblyStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7517,14 +7155,6 @@ export class DoWhileStatementContext extends ParserRuleContext {
 			listener.exitDoWhileStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitDoWhileStatement) {
-			return visitor.visitDoWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7547,14 +7177,6 @@ export class ContinueStatementContext extends ParserRuleContext {
 			listener.exitContinueStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitContinueStatement) {
-			return visitor.visitContinueStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7575,14 +7197,6 @@ export class BreakStatementContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitBreakStatement) {
 			listener.exitBreakStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitBreakStatement) {
-			return visitor.visitBreakStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7609,14 +7223,6 @@ export class ReturnStatementContext extends ParserRuleContext {
 			listener.exitReturnStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitReturnStatement) {
-			return visitor.visitReturnStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7636,14 +7242,6 @@ export class ThrowStatementContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitThrowStatement) {
 			listener.exitThrowStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitThrowStatement) {
-			return visitor.visitThrowStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7668,14 +7266,6 @@ export class EmitStatementContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitEmitStatement) {
 			listener.exitEmitStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitEmitStatement) {
-			return visitor.visitEmitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7711,14 +7301,6 @@ export class VariableDeclarationStatementContext extends ParserRuleContext {
 			listener.exitVariableDeclarationStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitVariableDeclarationStatement) {
-			return visitor.visitVariableDeclarationStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7747,14 +7329,6 @@ export class VariableDeclarationListContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitVariableDeclarationList) {
 			listener.exitVariableDeclarationList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitVariableDeclarationList) {
-			return visitor.visitVariableDeclarationList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7787,14 +7361,6 @@ export class IdentifierListContext extends ParserRuleContext {
 			listener.exitIdentifierList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitIdentifierList) {
-			return visitor.visitIdentifierList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7819,14 +7385,6 @@ export class ElementaryTypeNameContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitElementaryTypeName) {
 			listener.exitElementaryTypeName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitElementaryTypeName) {
-			return visitor.visitElementaryTypeName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7871,14 +7429,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7915,14 +7465,6 @@ export class PrimaryExpressionContext extends ParserRuleContext {
 			listener.exitPrimaryExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitPrimaryExpression) {
-			return visitor.visitPrimaryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7951,14 +7493,6 @@ export class ExpressionListContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitExpressionList) {
 			listener.exitExpressionList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitExpressionList) {
-			return visitor.visitExpressionList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7991,14 +7525,6 @@ export class NameValueListContext extends ParserRuleContext {
 			listener.exitNameValueList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitNameValueList) {
-			return visitor.visitNameValueList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8024,14 +7550,6 @@ export class NameValueContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitNameValue) {
 			listener.exitNameValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitNameValue) {
-			return visitor.visitNameValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8061,14 +7579,6 @@ export class FunctionCallArgumentsContext extends ParserRuleContext {
 			listener.exitFunctionCallArguments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitFunctionCallArguments) {
-			return visitor.visitFunctionCallArguments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8094,14 +7604,6 @@ export class FunctionCallContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitFunctionCall) {
 			listener.exitFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitFunctionCall) {
-			return visitor.visitFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8132,14 +7634,6 @@ export class AssemblyBlockContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitAssemblyBlock) {
 			listener.exitAssemblyBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyBlock) {
-			return visitor.visitAssemblyBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8206,14 +7700,6 @@ export class AssemblyItemContext extends ParserRuleContext {
 			listener.exitAssemblyItem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyItem) {
-			return visitor.visitAssemblyItem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8239,14 +7725,6 @@ export class AssemblyExpressionContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitAssemblyExpression) {
 			listener.exitAssemblyExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyExpression) {
-			return visitor.visitAssemblyExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8282,14 +7760,6 @@ export class AssemblyCallContext extends ParserRuleContext {
 			listener.exitAssemblyCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyCall) {
-			return visitor.visitAssemblyCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8315,14 +7785,6 @@ export class AssemblyLocalDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitAssemblyLocalDefinition) {
 			listener.exitAssemblyLocalDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyLocalDefinition) {
-			return visitor.visitAssemblyLocalDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8352,14 +7814,6 @@ export class AssemblyAssignmentContext extends ParserRuleContext {
 			listener.exitAssemblyAssignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyAssignment) {
-			return visitor.visitAssemblyAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8385,14 +7839,6 @@ export class AssemblyIdentifierOrListContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitAssemblyIdentifierOrList) {
 			listener.exitAssemblyIdentifierOrList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyIdentifierOrList) {
-			return visitor.visitAssemblyIdentifierOrList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8425,14 +7871,6 @@ export class AssemblyIdentifierListContext extends ParserRuleContext {
 			listener.exitAssemblyIdentifierList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyIdentifierList) {
-			return visitor.visitAssemblyIdentifierList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8457,14 +7895,6 @@ export class AssemblyStackAssignmentContext extends ParserRuleContext {
 			listener.exitAssemblyStackAssignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyStackAssignment) {
-			return visitor.visitAssemblyStackAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8487,14 +7917,6 @@ export class LabelDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitLabelDefinition) {
 			listener.exitLabelDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitLabelDefinition) {
-			return visitor.visitLabelDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8530,14 +7952,6 @@ export class AssemblySwitchContext extends ParserRuleContext {
 			listener.exitAssemblySwitch(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblySwitch) {
-			return visitor.visitAssemblySwitch(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8563,14 +7977,6 @@ export class AssemblyCaseContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitAssemblyCase) {
 			listener.exitAssemblyCase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyCase) {
-			return visitor.visitAssemblyCase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8606,14 +8012,6 @@ export class AssemblyFunctionDefinitionContext extends ParserRuleContext {
 			listener.exitAssemblyFunctionDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyFunctionDefinition) {
-			return visitor.visitAssemblyFunctionDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8636,14 +8034,6 @@ export class AssemblyFunctionReturnsContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitAssemblyFunctionReturns) {
 			listener.exitAssemblyFunctionReturns(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyFunctionReturns) {
-			return visitor.visitAssemblyFunctionReturns(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8685,14 +8075,6 @@ export class AssemblyForContext extends ParserRuleContext {
 			listener.exitAssemblyFor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyFor) {
-			return visitor.visitAssemblyFor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8720,14 +8102,6 @@ export class AssemblyIfContext extends ParserRuleContext {
 			listener.exitAssemblyIf(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyIf) {
-			return visitor.visitAssemblyIf(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8751,14 +8125,6 @@ export class AssemblyLiteralContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitAssemblyLiteral) {
 			listener.exitAssemblyLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitAssemblyLiteral) {
-			return visitor.visitAssemblyLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8786,14 +8152,6 @@ export class SubAssemblyContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitSubAssembly) {
 			listener.exitSubAssembly(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitSubAssembly) {
-			return visitor.visitSubAssembly(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8826,14 +8184,6 @@ export class TupleExpressionContext extends ParserRuleContext {
 			listener.exitTupleExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitTupleExpression) {
-			return visitor.visitTupleExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8856,14 +8206,6 @@ export class ElementaryTypeNameExpressionContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitElementaryTypeNameExpression) {
 			listener.exitElementaryTypeNameExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitElementaryTypeNameExpression) {
-			return visitor.visitElementaryTypeNameExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8890,14 +8232,6 @@ export class NumberLiteralContext extends ParserRuleContext {
 			listener.exitNumberLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitNumberLiteral) {
-			return visitor.visitNumberLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8918,14 +8252,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: SolidityListener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SolidityVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

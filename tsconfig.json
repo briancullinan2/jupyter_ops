@@ -1,11 +1,12 @@
 {
 "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "declaration": false,
-    "noImplicitAny": false,
-    "removeComments": true,
-    "noLib": false
+  "target": "esnext",
+  "moduleResolution": "node",
+  "allowJs": true,
+  "noEmit": true,
+  "strict": true,
+  "isolatedModules": true,
+  "esModuleInterop": true
 },
 "include": [
     "Resources/Parsers/**/*.ts"

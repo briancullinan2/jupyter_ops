@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { MuParserListener } from "./MuParserListener";
-import { MuParserVisitor } from "./MuParserVisitor";
-
 
 export class MuParserParser extends Parser {
 	public static readonly T__0 = 1;
@@ -700,14 +698,6 @@ export class ProgExprContext extends ProgContext {
 			listener.exitProgExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitProgExpr) {
-			return visitor.visitProgExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -748,14 +738,6 @@ export class PowExprContext extends ExprContext {
 			listener.exitPowExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitPowExpr) {
-			return visitor.visitPowExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UnaryMinusExprContext extends ExprContext {
 	public SUB(): TerminalNode { return this.getToken(MuParserParser.SUB, 0); }
@@ -776,14 +758,6 @@ export class UnaryMinusExprContext extends ExprContext {
 	public exitRule(listener: MuParserListener): void {
 		if (listener.exitUnaryMinusExpr) {
 			listener.exitUnaryMinusExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitUnaryMinusExpr) {
-			return visitor.visitUnaryMinusExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -816,14 +790,6 @@ export class MulDivExprContext extends ExprContext {
 			listener.exitMulDivExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitMulDivExpr) {
-			return visitor.visitMulDivExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AddSubExprContext extends ExprContext {
 	public _op: Token;
@@ -852,14 +818,6 @@ export class AddSubExprContext extends ExprContext {
 	public exitRule(listener: MuParserListener): void {
 		if (listener.exitAddSubExpr) {
 			listener.exitAddSubExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitAddSubExpr) {
-			return visitor.visitAddSubExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -894,14 +852,6 @@ export class RelationalExprContext extends ExprContext {
 			listener.exitRelationalExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitRelationalExpr) {
-			return visitor.visitRelationalExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class EqualityExprContext extends ExprContext {
 	public _op: Token;
@@ -932,14 +882,6 @@ export class EqualityExprContext extends ExprContext {
 			listener.exitEqualityExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitEqualityExpr) {
-			return visitor.visitEqualityExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AndExprContext extends ExprContext {
 	public expr(): ExprContext[];
@@ -968,14 +910,6 @@ export class AndExprContext extends ExprContext {
 			listener.exitAndExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitAndExpr) {
-			return visitor.visitAndExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class OrExprContext extends ExprContext {
 	public expr(): ExprContext[];
@@ -1002,14 +936,6 @@ export class OrExprContext extends ExprContext {
 	public exitRule(listener: MuParserListener): void {
 		if (listener.exitOrExpr) {
 			listener.exitOrExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitOrExpr) {
-			return visitor.visitOrExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1041,14 +967,6 @@ export class IteExprContext extends ExprContext {
 			listener.exitIteExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitIteExpr) {
-			return visitor.visitIteExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class FunctionExprContext extends ExprContext {
 	public _op: Token;
@@ -1072,14 +990,6 @@ export class FunctionExprContext extends ExprContext {
 	public exitRule(listener: MuParserListener): void {
 		if (listener.exitFunctionExpr) {
 			listener.exitFunctionExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitFunctionExpr) {
-			return visitor.visitFunctionExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1113,14 +1023,6 @@ export class FunctionMultiExprContext extends ExprContext {
 			listener.exitFunctionMultiExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitFunctionMultiExpr) {
-			return visitor.visitFunctionMultiExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AtomExprContext extends ExprContext {
 	public atom(): AtomContext {
@@ -1140,14 +1042,6 @@ export class AtomExprContext extends ExprContext {
 	public exitRule(listener: MuParserListener): void {
 		if (listener.exitAtomExpr) {
 			listener.exitAtomExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitAtomExpr) {
-			return visitor.visitAtomExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1176,14 +1070,6 @@ export class AssignExprContext extends ExprContext {
 	public exitRule(listener: MuParserListener): void {
 		if (listener.exitAssignExpr) {
 			listener.exitAssignExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitAssignExpr) {
-			return visitor.visitAssignExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1221,14 +1107,6 @@ export class ParExprContext extends AtomContext {
 			listener.exitParExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitParExpr) {
-			return visitor.visitParExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NumberAtomContext extends AtomContext {
 	public INT(): TerminalNode | undefined { return this.tryGetToken(MuParserParser.INT, 0); }
@@ -1247,14 +1125,6 @@ export class NumberAtomContext extends AtomContext {
 	public exitRule(listener: MuParserListener): void {
 		if (listener.exitNumberAtom) {
 			listener.exitNumberAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitNumberAtom) {
-			return visitor.visitNumberAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1277,14 +1147,6 @@ export class BooleanAtomContext extends AtomContext {
 			listener.exitBooleanAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitBooleanAtom) {
-			return visitor.visitBooleanAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PredefinedConstantAtomContext extends AtomContext {
 	public E(): TerminalNode | undefined { return this.tryGetToken(MuParserParser.E, 0); }
@@ -1305,14 +1167,6 @@ export class PredefinedConstantAtomContext extends AtomContext {
 			listener.exitPredefinedConstantAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitPredefinedConstantAtom) {
-			return visitor.visitPredefinedConstantAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IdAtomContext extends AtomContext {
 	public ID(): TerminalNode { return this.getToken(MuParserParser.ID, 0); }
@@ -1330,14 +1184,6 @@ export class IdAtomContext extends AtomContext {
 	public exitRule(listener: MuParserListener): void {
 		if (listener.exitIdAtom) {
 			listener.exitIdAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MuParserVisitor<Result>): Result {
-		if (visitor.visitIdAtom) {
-			return visitor.visitIdAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

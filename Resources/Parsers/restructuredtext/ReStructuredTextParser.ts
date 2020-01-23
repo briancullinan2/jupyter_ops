@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { ReStructuredTextListener } from "./ReStructuredTextListener";
-import { ReStructuredTextVisitor } from "./ReStructuredTextVisitor";
-
 
 export class ReStructuredTextParser extends Parser {
 	public static readonly T__0 = 1;
@@ -4669,14 +4667,6 @@ export class ParseContext extends ParserRuleContext {
 			listener.exitParse(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitParse) {
-			return visitor.visitParse(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4702,14 +4692,6 @@ export class ElementContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitElement) {
 			listener.exitElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitElement) {
-			return visitor.visitElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4746,14 +4728,6 @@ export class SectionElementContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitSectionElement) {
 			listener.exitSectionElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitSectionElement) {
-			return visitor.visitSectionElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4793,14 +4767,6 @@ export class CommentContext extends ParserRuleContext {
 			listener.exitComment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4827,14 +4793,6 @@ export class CommentParagraphsContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitCommentParagraphs) {
 			listener.exitCommentParagraphs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitCommentParagraphs) {
-			return visitor.visitCommentParagraphs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4876,14 +4834,6 @@ export class CommentRestContext extends ParserRuleContext {
 			listener.exitCommentRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitCommentRest) {
-			return visitor.visitCommentRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4914,14 +4864,6 @@ export class CommentParagraphContext extends ParserRuleContext {
 			listener.exitCommentParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitCommentParagraph) {
-			return visitor.visitCommentParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4944,14 +4886,6 @@ export class CommentLineNoBreakContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitCommentLineNoBreak) {
 			listener.exitCommentLineNoBreak(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitCommentLineNoBreak) {
-			return visitor.visitCommentLineNoBreak(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4988,14 +4922,6 @@ export class CommentLineContext extends ParserRuleContext {
 			listener.exitCommentLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitCommentLine) {
-			return visitor.visitCommentLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5026,14 +4952,6 @@ export class CommentLineAtomsContext extends ParserRuleContext {
 			listener.exitCommentLineAtoms(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitCommentLineAtoms) {
-			return visitor.visitCommentLineAtoms(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5056,14 +4974,6 @@ export class ParagraphContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitParagraph) {
 			listener.exitParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitParagraph) {
-			return visitor.visitParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5118,14 +5028,6 @@ export class SectionContext extends ParserRuleContext {
 			listener.exitSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitSection) {
-			return visitor.visitSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5172,14 +5074,6 @@ export class TitleContext extends ParserRuleContext {
 			listener.exitTitle(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitTitle) {
-			return visitor.visitTitle(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5217,14 +5111,6 @@ export class LineBlockContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitLineBlock) {
 			listener.exitLineBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitLineBlock) {
-			return visitor.visitLineBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5265,14 +5151,6 @@ export class LineBlockLineContext extends ParserRuleContext {
 			listener.exitLineBlockLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitLineBlockLine) {
-			return visitor.visitLineBlockLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5311,14 +5189,6 @@ export class ListItemBulletContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitListItemBullet) {
 			listener.exitListItemBullet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitListItemBullet) {
-			return visitor.visitListItemBullet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5362,14 +5232,6 @@ export class BulletCrossLineContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitBulletCrossLine) {
 			listener.exitBulletCrossLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitBulletCrossLine) {
-			return visitor.visitBulletCrossLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5418,14 +5280,6 @@ export class BulletSimpleContext extends ParserRuleContext {
 			listener.exitBulletSimple(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitBulletSimple) {
-			return visitor.visitBulletSimple(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5448,14 +5302,6 @@ export class BulletContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitBullet) {
 			listener.exitBullet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitBullet) {
-			return visitor.visitBullet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5505,14 +5351,6 @@ export class ListItemEnumeratedContext extends ParserRuleContext {
 			listener.exitListItemEnumerated(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitListItemEnumerated) {
-			return visitor.visitListItemEnumerated(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5544,14 +5382,6 @@ export class ParagraphNoBreakContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitParagraphNoBreak) {
 			listener.exitParagraphNoBreak(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitParagraphNoBreak) {
-			return visitor.visitParagraphNoBreak(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5590,14 +5420,6 @@ export class LineNoBreakContext extends ParserRuleContext {
 			listener.exitLineNoBreak(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitLineNoBreak) {
-			return visitor.visitLineNoBreak(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5623,14 +5445,6 @@ export class LinesContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitLines) {
 			listener.exitLines(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitLines) {
-			return visitor.visitLines(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5661,14 +5475,6 @@ export class LinesNormalContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitLinesNormal) {
 			listener.exitLinesNormal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitLinesNormal) {
-			return visitor.visitLinesNormal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5702,14 +5508,6 @@ export class LinesStarContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitLinesStar) {
 			listener.exitLinesStar(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitLinesStar) {
-			return visitor.visitLinesStar(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5767,14 +5565,6 @@ export class LineNormalContext extends ParserRuleContext {
 			listener.exitLineNormal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitLineNormal) {
-			return visitor.visitLineNormal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5819,14 +5609,6 @@ export class LineStarContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitLineStar) {
 			listener.exitLineStar(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitLineStar) {
-			return visitor.visitLineStar(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5874,14 +5656,6 @@ export class LineSpecialContext extends ParserRuleContext {
 			listener.exitLineSpecial(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitLineSpecial) {
-			return visitor.visitLineSpecial(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5913,14 +5687,6 @@ export class Empty_lineContext extends ParserRuleContext {
 			listener.exitEmpty_line(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitEmpty_line) {
-			return visitor.visitEmpty_line(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5949,14 +5715,6 @@ export class IndentationContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitIndentation) {
 			listener.exitIndentation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitIndentation) {
-			return visitor.visitIndentation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6004,14 +5762,6 @@ export class SpanLineStartNoStarContext extends ParserRuleContext {
 			listener.exitSpanLineStartNoStar(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitSpanLineStartNoStar) {
-			return visitor.visitSpanLineStartNoStar(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6049,14 +5799,6 @@ export class TextLineStartContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitTextLineStart) {
 			listener.exitTextLineStart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitTextLineStart) {
-			return visitor.visitTextLineStart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6111,14 +5853,6 @@ export class LineStart_fragmentContext extends ParserRuleContext {
 			listener.exitLineStart_fragment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitLineStart_fragment) {
-			return visitor.visitLineStart_fragment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6158,14 +5892,6 @@ export class TextContext extends ParserRuleContext {
 			listener.exitText(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitText) {
-			return visitor.visitText(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6201,14 +5927,6 @@ export class TextStartContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitTextStart) {
 			listener.exitTextStart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitTextStart) {
-			return visitor.visitTextStart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6253,14 +5971,6 @@ export class ForcedTextContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitForcedText) {
 			listener.exitForcedText(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitForcedText) {
-			return visitor.visitForcedText(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6308,14 +6018,6 @@ export class SpanNoStarContext extends ParserRuleContext {
 			listener.exitSpanNoStar(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitSpanNoStar) {
-			return visitor.visitSpanNoStar(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6343,14 +6045,6 @@ export class SpanContext extends ParserRuleContext {
 			listener.exitSpan(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitSpan) {
-			return visitor.visitSpan(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6375,14 +6069,6 @@ export class QuotedLiteralContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitQuotedLiteral) {
 			listener.exitQuotedLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitQuotedLiteral) {
-			return visitor.visitQuotedLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6424,14 +6110,6 @@ export class Text_fragment_startContext extends ParserRuleContext {
 			listener.exitText_fragment_start(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitText_fragment_start) {
-			return visitor.visitText_fragment_start(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6462,14 +6140,6 @@ export class Text_fragmentContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitText_fragment) {
 			listener.exitText_fragment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitText_fragment) {
-			return visitor.visitText_fragment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6538,14 +6208,6 @@ export class StarTextContext extends ParserRuleContext {
 			listener.exitStarText(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitStarText) {
-			return visitor.visitStarText(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6585,14 +6247,6 @@ export class StarAtomsContext extends ParserRuleContext {
 			listener.exitStarAtoms(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitStarAtoms) {
-			return visitor.visitStarAtoms(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6618,14 +6272,6 @@ export class StarNoSpaceContext extends ParserRuleContext {
 			listener.exitStarNoSpace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitStarNoSpace) {
-			return visitor.visitStarNoSpace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6647,14 +6293,6 @@ export class StarAtomContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitStarAtom) {
 			listener.exitStarAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitStarAtom) {
-			return visitor.visitStarAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6693,14 +6331,6 @@ export class BackTickTextContext extends ParserRuleContext {
 			listener.exitBackTickText(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitBackTickText) {
-			return visitor.visitBackTickText(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6737,14 +6367,6 @@ export class BodyContext extends ParserRuleContext {
 			listener.exitBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitBody) {
-			return visitor.visitBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6775,14 +6397,6 @@ export class BackTickAtomsContext extends ParserRuleContext {
 			listener.exitBackTickAtoms(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitBackTickAtoms) {
-			return visitor.visitBackTickAtoms(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6805,14 +6419,6 @@ export class BackTickNoSpaceContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitBackTickNoSpace) {
 			listener.exitBackTickNoSpace(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitBackTickNoSpace) {
-			return visitor.visitBackTickNoSpace(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6846,14 +6452,6 @@ export class BackTickAtomContext extends ParserRuleContext {
 			listener.exitBackTickAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitBackTickAtom) {
-			return visitor.visitBackTickAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6883,14 +6481,6 @@ export class ReferenceContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitReference) {
 			listener.exitReference(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitReference) {
-			return visitor.visitReference(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6929,14 +6519,6 @@ export class ReferenceInContext extends ParserRuleContext {
 			listener.exitReferenceIn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitReferenceIn) {
-			return visitor.visitReferenceIn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6966,14 +6548,6 @@ export class HyperlinkTargetContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitHyperlinkTarget) {
 			listener.exitHyperlinkTarget(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitHyperlinkTarget) {
-			return visitor.visitHyperlinkTarget(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7030,14 +6604,6 @@ export class HyperlinkContext extends ParserRuleContext {
 			listener.exitHyperlink(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitHyperlink) {
-			return visitor.visitHyperlink(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7083,14 +6649,6 @@ export class HyperlinkDocContext extends ParserRuleContext {
 			listener.exitHyperlinkDoc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitHyperlinkDoc) {
-			return visitor.visitHyperlinkDoc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7121,14 +6679,6 @@ export class UrlContext extends ParserRuleContext {
 			listener.exitUrl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitUrl) {
-			return visitor.visitUrl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7150,14 +6700,6 @@ export class UrlAtomContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitUrlAtom) {
 			listener.exitUrlAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitUrlAtom) {
-			return visitor.visitUrlAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7186,14 +6728,6 @@ export class HyperlinkAtomContext extends ParserRuleContext {
 			listener.exitHyperlinkAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitHyperlinkAtom) {
-			return visitor.visitHyperlinkAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7217,14 +6751,6 @@ export class SeparatorContext extends ParserRuleContext {
 	public exitRule(listener: ReStructuredTextListener): void {
 		if (listener.exitSeparator) {
 			listener.exitSeparator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ReStructuredTextVisitor<Result>): Result {
-		if (visitor.visitSeparator) {
-			return visitor.visitSeparator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

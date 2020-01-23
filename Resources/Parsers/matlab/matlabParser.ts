@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { matlabListener } from "./matlabListener";
-import { matlabVisitor } from "./matlabVisitor";
-
 
 export class matlabParser extends Parser {
 	public static readonly T__0 = 1;
@@ -2763,14 +2761,6 @@ export class Primary_expressionContext extends ParserRuleContext {
 			listener.exitPrimary_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitPrimary_expression) {
-			return visitor.visitPrimary_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2803,14 +2793,6 @@ export class Postfix_expressionContext extends ParserRuleContext {
 			listener.exitPostfix_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitPostfix_expression) {
-			return visitor.visitPostfix_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2833,14 +2815,6 @@ export class Index_expressionContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitIndex_expression) {
 			listener.exitIndex_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitIndex_expression) {
-			return visitor.visitIndex_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2870,14 +2844,6 @@ export class Index_expression_listContext extends ParserRuleContext {
 			listener.exitIndex_expression_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitIndex_expression_list) {
-			return visitor.visitIndex_expression_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2901,14 +2867,6 @@ export class Array_expressionContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitArray_expression) {
 			listener.exitArray_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitArray_expression) {
-			return visitor.visitArray_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2938,14 +2896,6 @@ export class Unary_expressionContext extends ParserRuleContext {
 			listener.exitUnary_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitUnary_expression) {
-			return visitor.visitUnary_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2965,14 +2915,6 @@ export class Unary_operatorContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitUnary_operator) {
 			listener.exitUnary_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitUnary_operator) {
-			return visitor.visitUnary_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3006,14 +2948,6 @@ export class Multiplicative_expressionContext extends ParserRuleContext {
 			listener.exitMultiplicative_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitMultiplicative_expression) {
-			return visitor.visitMultiplicative_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3039,14 +2973,6 @@ export class Additive_expressionContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitAdditive_expression) {
 			listener.exitAdditive_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitAdditive_expression) {
-			return visitor.visitAdditive_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3078,14 +3004,6 @@ export class Relational_expressionContext extends ParserRuleContext {
 			listener.exitRelational_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitRelational_expression) {
-			return visitor.visitRelational_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3115,14 +3033,6 @@ export class Equality_expressionContext extends ParserRuleContext {
 			listener.exitEquality_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitEquality_expression) {
-			return visitor.visitEquality_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3148,14 +3058,6 @@ export class And_expressionContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitAnd_expression) {
 			listener.exitAnd_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitAnd_expression) {
-			return visitor.visitAnd_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3185,14 +3087,6 @@ export class Or_expressionContext extends ParserRuleContext {
 			listener.exitOr_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitOr_expression) {
-			return visitor.visitOr_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3218,14 +3112,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3255,14 +3141,6 @@ export class Assignment_expressionContext extends ParserRuleContext {
 			listener.exitAssignment_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitAssignment_expression) {
-			return visitor.visitAssignment_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3283,14 +3161,6 @@ export class EostmtContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitEostmt) {
 			listener.exitEostmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitEostmt) {
-			return visitor.visitEostmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3335,14 +3205,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3370,14 +3232,6 @@ export class Statement_listContext extends ParserRuleContext {
 			listener.exitStatement_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitStatement_list) {
-			return visitor.visitStatement_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3401,14 +3255,6 @@ export class Identifier_listContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitIdentifier_list) {
 			listener.exitIdentifier_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitIdentifier_list) {
-			return visitor.visitIdentifier_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3439,14 +3285,6 @@ export class Global_statementContext extends ParserRuleContext {
 			listener.exitGlobal_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitGlobal_statement) {
-			return visitor.visitGlobal_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3473,14 +3311,6 @@ export class Clear_statementContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitClear_statement) {
 			listener.exitClear_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitClear_statement) {
-			return visitor.visitClear_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3510,14 +3340,6 @@ export class Expression_statementContext extends ParserRuleContext {
 			listener.exitExpression_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitExpression_statement) {
-			return visitor.visitExpression_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3543,14 +3365,6 @@ export class Assignment_statementContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitAssignment_statement) {
 			listener.exitAssignment_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitAssignment_statement) {
-			return visitor.visitAssignment_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3580,14 +3394,6 @@ export class Array_elementContext extends ParserRuleContext {
 			listener.exitArray_element(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitArray_element) {
-			return visitor.visitArray_element(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3613,14 +3419,6 @@ export class Array_listContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitArray_list) {
 			listener.exitArray_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitArray_list) {
-			return visitor.visitArray_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3665,14 +3463,6 @@ export class Selection_statementContext extends ParserRuleContext {
 			listener.exitSelection_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitSelection_statement) {
-			return visitor.visitSelection_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3702,14 +3492,6 @@ export class Elseif_clauseContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitElseif_clause) {
 			listener.exitElseif_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitElseif_clause) {
-			return visitor.visitElseif_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3746,14 +3528,6 @@ export class Iteration_statementContext extends ParserRuleContext {
 			listener.exitIteration_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitIteration_statement) {
-			return visitor.visitIteration_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3778,14 +3552,6 @@ export class Jump_statementContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitJump_statement) {
 			listener.exitJump_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitJump_statement) {
-			return visitor.visitJump_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3819,14 +3585,6 @@ export class Translation_unitContext extends ParserRuleContext {
 			listener.exitTranslation_unit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitTranslation_unit) {
-			return visitor.visitTranslation_unit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3850,14 +3608,6 @@ export class Func_ident_listContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitFunc_ident_list) {
 			listener.exitFunc_ident_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitFunc_ident_list) {
-			return visitor.visitFunc_ident_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3885,14 +3635,6 @@ export class Func_return_listContext extends ParserRuleContext {
 			listener.exitFunc_return_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitFunc_return_list) {
-			return visitor.visitFunc_return_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3916,14 +3658,6 @@ export class Function_declare_lhsContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitFunction_declare_lhs) {
 			listener.exitFunction_declare_lhs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitFunction_declare_lhs) {
-			return visitor.visitFunction_declare_lhs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3951,14 +3685,6 @@ export class Function_declareContext extends ParserRuleContext {
 	public exitRule(listener: matlabListener): void {
 		if (listener.exitFunction_declare) {
 			listener.exitFunction_declare(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: matlabVisitor<Result>): Result {
-		if (visitor.visitFunction_declare) {
-			return visitor.visitFunction_declare(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { gtinListener } from "./gtinListener";
-import { gtinVisitor } from "./gtinVisitor";
-
 
 export class gtinParser extends Parser {
 	public static readonly DIGIT_0 = 1;
@@ -1506,14 +1504,6 @@ export class GtinContext extends ParserRuleContext {
 			listener.exitGtin(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitGtin) {
-			return visitor.visitGtin(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1536,14 +1526,6 @@ export class Gtin8Context extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitGtin8) {
 			listener.exitGtin8(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitGtin8) {
-			return visitor.visitGtin8(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1576,14 +1558,6 @@ export class Ean8Context extends ParserRuleContext {
 			listener.exitEan8(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitEan8) {
-			return visitor.visitEan8(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1606,14 +1580,6 @@ export class Gtin12Context extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitGtin12) {
 			listener.exitGtin12(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitGtin12) {
-			return visitor.visitGtin12(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1640,14 +1606,6 @@ export class Gtin13Context extends ParserRuleContext {
 			listener.exitGtin13(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitGtin13) {
-			return visitor.visitGtin13(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1670,14 +1628,6 @@ export class Gtin14Context extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitGtin14) {
 			listener.exitGtin14(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitGtin14) {
-			return visitor.visitGtin14(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1705,14 +1655,6 @@ export class UpcContext extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitUpc) {
 			listener.exitUpc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitUpc) {
-			return visitor.visitUpc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1748,14 +1690,6 @@ export class Upc_aContext extends ParserRuleContext {
 			listener.exitUpc_a(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitUpc_a) {
-			return visitor.visitUpc_a(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1780,14 +1714,6 @@ export class Upc_a_manufacturerContext extends ParserRuleContext {
 			listener.exitUpc_a_manufacturer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitUpc_a_manufacturer) {
-			return visitor.visitUpc_a_manufacturer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1810,14 +1736,6 @@ export class Upc_a_productContext extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitUpc_a_product) {
 			listener.exitUpc_a_product(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitUpc_a_product) {
-			return visitor.visitUpc_a_product(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1850,14 +1768,6 @@ export class Upc_a_5Context extends ParserRuleContext {
 			listener.exitUpc_a_5(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitUpc_a_5) {
-			return visitor.visitUpc_a_5(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1888,14 +1798,6 @@ export class Upc_eContext extends ParserRuleContext {
 			listener.exitUpc_e(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitUpc_e) {
-			return visitor.visitUpc_e(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1920,14 +1822,6 @@ export class Num_systemContext extends ParserRuleContext {
 			listener.exitNum_system(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitNum_system) {
-			return visitor.visitNum_system(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1950,14 +1844,6 @@ export class Check_codeContext extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitCheck_code) {
 			listener.exitCheck_code(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitCheck_code) {
-			return visitor.visitCheck_code(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1985,14 +1871,6 @@ export class Supplemental_codeContext extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitSupplemental_code) {
 			listener.exitSupplemental_code(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitSupplemental_code) {
-			return visitor.visitSupplemental_code(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2025,14 +1903,6 @@ export class Supplemental_code_5Context extends ParserRuleContext {
 			listener.exitSupplemental_code_5(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitSupplemental_code_5) {
-			return visitor.visitSupplemental_code_5(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2061,14 +1931,6 @@ export class Supplemental_code_2Context extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitSupplemental_code_2) {
 			listener.exitSupplemental_code_2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitSupplemental_code_2) {
-			return visitor.visitSupplemental_code_2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2104,14 +1966,6 @@ export class Ean13Context extends ParserRuleContext {
 			listener.exitEan13(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitEan13) {
-			return visitor.visitEan13(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2140,14 +1994,6 @@ export class Ean13_genericContext extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitEan13_generic) {
 			listener.exitEan13_generic(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitEan13_generic) {
-			return visitor.visitEan13_generic(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2183,14 +2029,6 @@ export class Ean13_ismnContext extends ParserRuleContext {
 			listener.exitEan13_ismn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitEan13_ismn) {
-			return visitor.visitEan13_ismn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2223,14 +2061,6 @@ export class Gs1_prefix_ismnContext extends ParserRuleContext {
 			listener.exitGs1_prefix_ismn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitGs1_prefix_ismn) {
-			return visitor.visitGs1_prefix_ismn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2259,14 +2089,6 @@ export class Ismn_publisher_numberContext extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitIsmn_publisher_number) {
 			listener.exitIsmn_publisher_number(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitIsmn_publisher_number) {
-			return visitor.visitIsmn_publisher_number(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2299,14 +2121,6 @@ export class Ismn_item_numberContext extends ParserRuleContext {
 			listener.exitIsmn_item_number(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitIsmn_item_number) {
-			return visitor.visitIsmn_item_number(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2337,14 +2151,6 @@ export class Ean13_booklandContext extends ParserRuleContext {
 			listener.exitEan13_bookland(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitEan13_bookland) {
-			return visitor.visitEan13_bookland(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2373,14 +2179,6 @@ export class Bookland_isbnContext extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitBookland_isbn) {
 			listener.exitBookland_isbn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitBookland_isbn) {
-			return visitor.visitBookland_isbn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2429,14 +2227,6 @@ export class Gs1_prefix_bookland_1Context extends ParserRuleContext {
 			listener.exitGs1_prefix_bookland_1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitGs1_prefix_bookland_1) {
-			return visitor.visitGs1_prefix_bookland_1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2462,14 +2252,6 @@ export class Gs1_prefix_bookland_2Context extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitGs1_prefix_bookland_2) {
 			listener.exitGs1_prefix_bookland_2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitGs1_prefix_bookland_2) {
-			return visitor.visitGs1_prefix_bookland_2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2503,14 +2285,6 @@ export class Gs1_prefix_issnContext extends ParserRuleContext {
 			listener.exitGs1_prefix_issn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitGs1_prefix_issn) {
-			return visitor.visitGs1_prefix_issn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2539,14 +2313,6 @@ export class Ean13_issnContext extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitEan13_issn) {
 			listener.exitEan13_issn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitEan13_issn) {
-			return visitor.visitEan13_issn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2579,14 +2345,6 @@ export class IssnContext extends ParserRuleContext {
 			listener.exitIssn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitIssn) {
-			return visitor.visitIssn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2615,14 +2373,6 @@ export class Ean_13_manprodContext extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitEan_13_manprod) {
 			listener.exitEan_13_manprod(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitEan_13_manprod) {
-			return visitor.visitEan_13_manprod(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2655,14 +2405,6 @@ export class Gs1_prefixContext extends ParserRuleContext {
 			listener.exitGs1_prefix(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitGs1_prefix) {
-			return visitor.visitGs1_prefix(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2691,14 +2433,6 @@ export class Ean14Context extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitEan14) {
 			listener.exitEan14(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitEan14) {
-			return visitor.visitEan14(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2731,14 +2465,6 @@ export class Ean14_appidContext extends ParserRuleContext {
 			listener.exitEan14_appid(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitEan14_appid) {
-			return visitor.visitEan14_appid(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2767,14 +2493,6 @@ export class Ean14_packagingContext extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitEan14_packaging) {
 			listener.exitEan14_packaging(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitEan14_packaging) {
-			return visitor.visitEan14_packaging(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2807,14 +2525,6 @@ export class Ean14_productContext extends ParserRuleContext {
 			listener.exitEan14_product(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitEan14_product) {
-			return visitor.visitEan14_product(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2844,14 +2554,6 @@ export class Any_digitContext extends ParserRuleContext {
 	public exitRule(listener: gtinListener): void {
 		if (listener.exitAny_digit) {
 			listener.exitAny_digit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gtinVisitor<Result>): Result {
-		if (visitor.visitAny_digit) {
-			return visitor.visitAny_digit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

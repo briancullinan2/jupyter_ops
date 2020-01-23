@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { LessParserListener } from "./LessParserListener";
-import { LessParserVisitor } from "./LessParserVisitor";
-
 
 export class LessParser extends Parser {
 	public static readonly NULL = 1;
@@ -2285,14 +2283,6 @@ export class StylesheetContext extends ParserRuleContext {
 			listener.exitStylesheet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitStylesheet) {
-			return visitor.visitStylesheet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2327,14 +2317,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2359,14 +2341,6 @@ export class VariableNameContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitVariableName) {
 			listener.exitVariableName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitVariableName) {
-			return visitor.visitVariableName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2402,14 +2376,6 @@ export class CommandStatementContext extends ParserRuleContext {
 			listener.exitCommandStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitCommandStatement) {
-			return visitor.visitCommandStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2434,14 +2400,6 @@ export class MathCharacterContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitMathCharacter) {
 			listener.exitMathCharacter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitMathCharacter) {
-			return visitor.visitMathCharacter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2469,14 +2427,6 @@ export class MathStatementContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitMathStatement) {
 			listener.exitMathStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitMathStatement) {
-			return visitor.visitMathStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2520,14 +2470,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2553,14 +2495,6 @@ export class FunctionContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitFunction) {
 			listener.exitFunction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitFunction) {
-			return visitor.visitFunction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2611,14 +2545,6 @@ export class ConditionsContext extends ParserRuleContext {
 			listener.exitConditions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitConditions) {
-			return visitor.visitConditions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2644,14 +2570,6 @@ export class ConditionContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitCondition) {
 			listener.exitCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitCondition) {
-			return visitor.visitCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2689,14 +2607,6 @@ export class ConditionStatementContext extends ParserRuleContext {
 			listener.exitConditionStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitConditionStatement) {
-			return visitor.visitConditionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2723,14 +2633,6 @@ export class VariableDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitVariableDeclaration) {
 			listener.exitVariableDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitVariableDeclaration) {
-			return visitor.visitVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2782,14 +2684,6 @@ export class ImportDeclarationContext extends ParserRuleContext {
 			listener.exitImportDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitImportDeclaration) {
-			return visitor.visitImportDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2817,14 +2711,6 @@ export class ImportOptionContext extends ParserRuleContext {
 			listener.exitImportOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitImportOption) {
-			return visitor.visitImportOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2848,14 +2734,6 @@ export class ReferenceUrlContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitReferenceUrl) {
 			listener.exitReferenceUrl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitReferenceUrl) {
-			return visitor.visitReferenceUrl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2897,14 +2775,6 @@ export class MediaTypesContext extends ParserRuleContext {
 			listener.exitMediaTypes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitMediaTypes) {
-			return visitor.visitMediaTypes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2930,14 +2800,6 @@ export class RulesetContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitRuleset) {
 			listener.exitRuleset(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitRuleset) {
-			return visitor.visitRuleset(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2999,14 +2861,6 @@ export class BlockContext extends ParserRuleContext {
 			listener.exitBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3058,14 +2912,6 @@ export class MixinDefinitionContext extends ParserRuleContext {
 			listener.exitMixinDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitMixinDefinition) {
-			return visitor.visitMixinDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3089,14 +2935,6 @@ export class MixinGuardContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitMixinGuard) {
 			listener.exitMixinGuard(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitMixinGuard) {
-			return visitor.visitMixinGuard(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3124,14 +2962,6 @@ export class MixinDefinitionParamContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitMixinDefinitionParam) {
 			listener.exitMixinDefinitionParam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitMixinDefinitionParam) {
-			return visitor.visitMixinDefinitionParam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3163,14 +2993,6 @@ export class MixinReferenceContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitMixinReference) {
 			listener.exitMixinReference(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitMixinReference) {
-			return visitor.visitMixinReference(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3210,14 +3032,6 @@ export class SelectorsContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitSelectors) {
 			listener.exitSelectors(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitSelectors) {
-			return visitor.visitSelectors(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3262,14 +3076,6 @@ export class SelectorContext extends ParserRuleContext {
 			listener.exitSelector(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitSelector) {
-			return visitor.visitSelector(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3306,14 +3112,6 @@ export class AttribContext extends ParserRuleContext {
 			listener.exitAttrib(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitAttrib) {
-			return visitor.visitAttrib(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3344,14 +3142,6 @@ export class NegationContext extends ParserRuleContext {
 			listener.exitNegation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitNegation) {
-			return visitor.visitNegation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3374,14 +3164,6 @@ export class PseudoContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitPseudo) {
 			listener.exitPseudo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitPseudo) {
-			return visitor.visitPseudo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3420,14 +3202,6 @@ export class ElementContext extends ParserRuleContext {
 			listener.exitElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitElement) {
-			return visitor.visitElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3452,14 +3226,6 @@ export class SelectorPrefixContext extends ParserRuleContext {
 			listener.exitSelectorPrefix(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitSelectorPrefix) {
-			return visitor.visitSelectorPrefix(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3482,14 +3248,6 @@ export class AttribRelateContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitAttribRelate) {
 			listener.exitAttribRelate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitAttribRelate) {
-			return visitor.visitAttribRelate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3528,14 +3286,6 @@ export class IdentifierContext extends ParserRuleContext {
 			listener.exitIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3563,14 +3313,6 @@ export class IdentifierPartContext extends ParserRuleContext {
 			listener.exitIdentifierPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitIdentifierPart) {
-			return visitor.visitIdentifierPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3592,14 +3334,6 @@ export class IdentifierVariableNameContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitIdentifierVariableName) {
 			listener.exitIdentifierVariableName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitIdentifierVariableName) {
-			return visitor.visitIdentifierVariableName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3628,14 +3362,6 @@ export class PropertyContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitProperty) {
 			listener.exitProperty(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitProperty) {
-			return visitor.visitProperty(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3677,14 +3403,6 @@ export class ValuesContext extends ParserRuleContext {
 			listener.exitValues(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitValues) {
-			return visitor.visitValues(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3709,14 +3427,6 @@ export class UrlContext extends ParserRuleContext {
 			listener.exitUrl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitUrl) {
-			return visitor.visitUrl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3738,14 +3448,6 @@ export class MeasurementContext extends ParserRuleContext {
 	public exitRule(listener: LessParserListener): void {
 		if (listener.exitMeasurement) {
 			listener.exitMeasurement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LessParserVisitor<Result>): Result {
-		if (visitor.visitMeasurement) {
-			return visitor.visitMeasurement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

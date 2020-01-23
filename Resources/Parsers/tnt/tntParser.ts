@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { tntListener } from "./tntListener";
-import { tntVisitor } from "./tntVisitor";
-
 
 export class tntParser extends Parser {
 	public static readonly T__0 = 1;
@@ -550,14 +548,6 @@ export class EquationContext extends ParserRuleContext {
 			listener.exitEquation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tntVisitor<Result>): Result {
-		if (visitor.visitEquation) {
-			return visitor.visitEquation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -583,14 +573,6 @@ export class AtomContext extends ParserRuleContext {
 	public exitRule(listener: tntListener): void {
 		if (listener.exitAtom) {
 			listener.exitAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tntVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -622,14 +604,6 @@ export class NumberContext extends ParserRuleContext {
 	public exitRule(listener: tntListener): void {
 		if (listener.exitNumber) {
 			listener.exitNumber(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tntVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -676,14 +650,6 @@ export class VariableContext extends ParserRuleContext {
 			listener.exitVariable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tntVisitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -723,14 +689,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tntVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -756,14 +714,6 @@ export class ForeveryContext extends ParserRuleContext {
 			listener.exitForevery(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tntVisitor<Result>): Result {
-		if (visitor.visitForevery) {
-			return visitor.visitForevery(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -787,14 +737,6 @@ export class ExistsContext extends ParserRuleContext {
 	public exitRule(listener: tntListener): void {
 		if (listener.exitExists) {
 			listener.exitExists(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tntVisitor<Result>): Result {
-		if (visitor.visitExists) {
-			return visitor.visitExists(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

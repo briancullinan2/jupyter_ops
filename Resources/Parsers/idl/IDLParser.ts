@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { IDLListener } from "./IDLListener";
-import { IDLVisitor } from "./IDLVisitor";
-
 
 export class IDLParser extends Parser {
 	public static readonly INTEGER_LITERAL = 1;
@@ -6874,14 +6872,6 @@ export class SpecificationContext extends ParserRuleContext {
 			listener.exitSpecification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitSpecification) {
-			return visitor.visitSpecification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6937,14 +6927,6 @@ export class DefinitionContext extends ParserRuleContext {
 			listener.exitDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitDefinition) {
-			return visitor.visitDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6979,14 +6961,6 @@ export class ModuleContext extends ParserRuleContext {
 			listener.exitModule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitModule) {
-			return visitor.visitModule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7012,14 +6986,6 @@ export class Interface_or_forward_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitInterface_or_forward_decl) {
 			listener.exitInterface_or_forward_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitInterface_or_forward_decl) {
-			return visitor.visitInterface_or_forward_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7051,14 +7017,6 @@ export class Interface_declContext extends ParserRuleContext {
 			listener.exitInterface_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitInterface_decl) {
-			return visitor.visitInterface_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7082,14 +7040,6 @@ export class Forward_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitForward_decl) {
 			listener.exitForward_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitForward_decl) {
-			return visitor.visitForward_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7120,14 +7070,6 @@ export class Interface_headerContext extends ParserRuleContext {
 			listener.exitInterface_header(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitInterface_header) {
-			return visitor.visitInterface_header(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7156,14 +7098,6 @@ export class Interface_bodyContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitInterface_body) {
 			listener.exitInterface_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitInterface_body) {
-			return visitor.visitInterface_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7209,14 +7143,6 @@ export class ExportContext extends ParserRuleContext {
 			listener.exitExport(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitExport) {
-			return visitor.visitExport(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7257,14 +7183,6 @@ export class Interface_inheritance_specContext extends ParserRuleContext {
 			listener.exitInterface_inheritance_spec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitInterface_inheritance_spec) {
-			return visitor.visitInterface_inheritance_spec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7287,14 +7205,6 @@ export class Interface_nameContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitInterface_name) {
 			listener.exitInterface_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitInterface_name) {
-			return visitor.visitInterface_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7336,14 +7246,6 @@ export class Scoped_nameContext extends ParserRuleContext {
 			listener.exitScoped_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitScoped_name) {
-			return visitor.visitScoped_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7377,14 +7279,6 @@ export class ValueContext extends ParserRuleContext {
 			listener.exitValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7407,14 +7301,6 @@ export class Value_forward_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitValue_forward_decl) {
 			listener.exitValue_forward_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitValue_forward_decl) {
-			return visitor.visitValue_forward_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7441,14 +7327,6 @@ export class Value_box_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitValue_box_decl) {
 			listener.exitValue_box_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitValue_box_decl) {
-			return visitor.visitValue_box_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7489,14 +7367,6 @@ export class Value_abs_declContext extends ParserRuleContext {
 			listener.exitValue_abs_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitValue_abs_decl) {
-			return visitor.visitValue_abs_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7532,14 +7402,6 @@ export class Value_declContext extends ParserRuleContext {
 			listener.exitValue_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitValue_decl) {
-			return visitor.visitValue_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7565,14 +7427,6 @@ export class Value_headerContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitValue_header) {
 			listener.exitValue_header(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitValue_header) {
-			return visitor.visitValue_header(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7626,14 +7480,6 @@ export class Value_inheritance_specContext extends ParserRuleContext {
 			listener.exitValue_inheritance_spec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitValue_inheritance_spec) {
-			return visitor.visitValue_inheritance_spec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7656,14 +7502,6 @@ export class Value_nameContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitValue_name) {
 			listener.exitValue_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitValue_name) {
-			return visitor.visitValue_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7696,14 +7534,6 @@ export class Value_elementContext extends ParserRuleContext {
 			listener.exitValue_element(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitValue_element) {
-			return visitor.visitValue_element(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7732,14 +7562,6 @@ export class State_memberContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitState_member) {
 			listener.exitState_member(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitState_member) {
-			return visitor.visitState_member(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7772,14 +7594,6 @@ export class Init_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitInit_decl) {
 			listener.exitInit_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitInit_decl) {
-			return visitor.visitInit_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7821,14 +7635,6 @@ export class Init_param_declsContext extends ParserRuleContext {
 			listener.exitInit_param_decls(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitInit_param_decls) {
-			return visitor.visitInit_param_decls(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7859,14 +7665,6 @@ export class Init_param_declContext extends ParserRuleContext {
 			listener.exitInit_param_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitInit_param_decl) {
-			return visitor.visitInit_param_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7887,14 +7685,6 @@ export class Init_param_attributeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitInit_param_attribute) {
 			listener.exitInit_param_attribute(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitInit_param_attribute) {
-			return visitor.visitInit_param_attribute(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7925,14 +7715,6 @@ export class Const_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitConst_decl) {
 			listener.exitConst_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitConst_decl) {
-			return visitor.visitConst_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7986,14 +7768,6 @@ export class Const_typeContext extends ParserRuleContext {
 			listener.exitConst_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitConst_type) {
-			return visitor.visitConst_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8016,14 +7790,6 @@ export class Const_expContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitConst_exp) {
 			listener.exitConst_exp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitConst_exp) {
-			return visitor.visitConst_exp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8065,14 +7831,6 @@ export class Or_exprContext extends ParserRuleContext {
 			listener.exitOr_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitOr_expr) {
-			return visitor.visitOr_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8112,14 +7870,6 @@ export class Xor_exprContext extends ParserRuleContext {
 			listener.exitXor_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitXor_expr) {
-			return visitor.visitXor_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8157,14 +7907,6 @@ export class And_exprContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitAnd_expr) {
 			listener.exitAnd_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitAnd_expr) {
-			return visitor.visitAnd_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8215,14 +7957,6 @@ export class Shift_exprContext extends ParserRuleContext {
 			listener.exitShift_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitShift_expr) {
-			return visitor.visitShift_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8269,14 +8003,6 @@ export class Add_exprContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitAdd_expr) {
 			listener.exitAdd_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitAdd_expr) {
-			return visitor.visitAdd_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8336,14 +8062,6 @@ export class Mult_exprContext extends ParserRuleContext {
 			listener.exitMult_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitMult_expr) {
-			return visitor.visitMult_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8371,14 +8089,6 @@ export class Unary_exprContext extends ParserRuleContext {
 			listener.exitUnary_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitUnary_expr) {
-			return visitor.visitUnary_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8401,14 +8111,6 @@ export class Unary_operatorContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitUnary_operator) {
 			listener.exitUnary_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitUnary_operator) {
-			return visitor.visitUnary_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8443,14 +8145,6 @@ export class Primary_exprContext extends ParserRuleContext {
 			listener.exitPrimary_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitPrimary_expr) {
-			return visitor.visitPrimary_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8481,14 +8175,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8511,14 +8197,6 @@ export class Positive_int_constContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitPositive_int_const) {
 			listener.exitPositive_int_const(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitPositive_int_const) {
-			return visitor.visitPositive_int_const(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8562,14 +8240,6 @@ export class Type_declContext extends ParserRuleContext {
 			listener.exitType_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitType_decl) {
-			return visitor.visitType_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8597,14 +8267,6 @@ export class Type_declaratorContext extends ParserRuleContext {
 			listener.exitType_declarator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitType_declarator) {
-			return visitor.visitType_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8630,14 +8292,6 @@ export class Type_specContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitType_spec) {
 			listener.exitType_spec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitType_spec) {
-			return visitor.visitType_spec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8668,14 +8322,6 @@ export class Simple_type_specContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitSimple_type_spec) {
 			listener.exitSimple_type_spec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitSimple_type_spec) {
-			return visitor.visitSimple_type_spec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8726,14 +8372,6 @@ export class Base_type_specContext extends ParserRuleContext {
 			listener.exitBase_type_spec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitBase_type_spec) {
-			return visitor.visitBase_type_spec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8767,14 +8405,6 @@ export class Template_type_specContext extends ParserRuleContext {
 			listener.exitTemplate_type_spec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitTemplate_type_spec) {
-			return visitor.visitTemplate_type_spec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8803,14 +8433,6 @@ export class Constr_type_specContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitConstr_type_spec) {
 			listener.exitConstr_type_spec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitConstr_type_spec) {
-			return visitor.visitConstr_type_spec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8852,14 +8474,6 @@ export class DeclaratorsContext extends ParserRuleContext {
 			listener.exitDeclarators(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitDeclarators) {
-			return visitor.visitDeclarators(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8887,14 +8501,6 @@ export class DeclaratorContext extends ParserRuleContext {
 			listener.exitDeclarator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitDeclarator) {
-			return visitor.visitDeclarator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8915,14 +8521,6 @@ export class Simple_declaratorContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitSimple_declarator) {
 			listener.exitSimple_declarator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitSimple_declarator) {
-			return visitor.visitSimple_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8949,14 +8547,6 @@ export class Complex_declaratorContext extends ParserRuleContext {
 			listener.exitComplex_declarator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitComplex_declarator) {
-			return visitor.visitComplex_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8979,14 +8569,6 @@ export class Floating_pt_typeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitFloating_pt_type) {
 			listener.exitFloating_pt_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitFloating_pt_type) {
-			return visitor.visitFloating_pt_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9014,14 +8596,6 @@ export class Integer_typeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitInteger_type) {
 			listener.exitInteger_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitInteger_type) {
-			return visitor.visitInteger_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9054,14 +8628,6 @@ export class Signed_intContext extends ParserRuleContext {
 			listener.exitSigned_int(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitSigned_int) {
-			return visitor.visitSigned_int(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9084,14 +8650,6 @@ export class Signed_short_intContext extends ParserRuleContext {
 			listener.exitSigned_short_int(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitSigned_short_int) {
-			return visitor.visitSigned_short_int(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9112,14 +8670,6 @@ export class Signed_long_intContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitSigned_long_int) {
 			listener.exitSigned_long_int(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitSigned_long_int) {
-			return visitor.visitSigned_long_int(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9152,14 +8702,6 @@ export class Signed_longlong_intContext extends ParserRuleContext {
 			listener.exitSigned_longlong_int(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitSigned_longlong_int) {
-			return visitor.visitSigned_longlong_int(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9190,14 +8732,6 @@ export class Unsigned_intContext extends ParserRuleContext {
 			listener.exitUnsigned_int(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitUnsigned_int) {
-			return visitor.visitUnsigned_int(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9221,14 +8755,6 @@ export class Unsigned_short_intContext extends ParserRuleContext {
 			listener.exitUnsigned_short_int(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitUnsigned_short_int) {
-			return visitor.visitUnsigned_short_int(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9250,14 +8776,6 @@ export class Unsigned_long_intContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitUnsigned_long_int) {
 			listener.exitUnsigned_long_int(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitUnsigned_long_int) {
-			return visitor.visitUnsigned_long_int(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9291,14 +8809,6 @@ export class Unsigned_longlong_intContext extends ParserRuleContext {
 			listener.exitUnsigned_longlong_int(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitUnsigned_longlong_int) {
-			return visitor.visitUnsigned_longlong_int(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9319,14 +8829,6 @@ export class Char_typeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitChar_type) {
 			listener.exitChar_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitChar_type) {
-			return visitor.visitChar_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9351,14 +8853,6 @@ export class Wide_char_typeContext extends ParserRuleContext {
 			listener.exitWide_char_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitWide_char_type) {
-			return visitor.visitWide_char_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9379,14 +8873,6 @@ export class Boolean_typeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitBoolean_type) {
 			listener.exitBoolean_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitBoolean_type) {
-			return visitor.visitBoolean_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9411,14 +8897,6 @@ export class Octet_typeContext extends ParserRuleContext {
 			listener.exitOctet_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitOctet_type) {
-			return visitor.visitOctet_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9441,14 +8919,6 @@ export class Any_typeContext extends ParserRuleContext {
 			listener.exitAny_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitAny_type) {
-			return visitor.visitAny_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9469,14 +8939,6 @@ export class Object_typeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitObject_type) {
 			listener.exitObject_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitObject_type) {
-			return visitor.visitObject_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9505,14 +8967,6 @@ export class Struct_typeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitStruct_type) {
 			listener.exitStruct_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitStruct_type) {
-			return visitor.visitStruct_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9545,14 +8999,6 @@ export class Member_listContext extends ParserRuleContext {
 			listener.exitMember_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitMember_list) {
-			return visitor.visitMember_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9579,14 +9025,6 @@ export class MemberContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitMember) {
 			listener.exitMember(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitMember) {
-			return visitor.visitMember(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9621,14 +9059,6 @@ export class Union_typeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitUnion_type) {
 			listener.exitUnion_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitUnion_type) {
-			return visitor.visitUnion_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9667,14 +9097,6 @@ export class Switch_type_specContext extends ParserRuleContext {
 			listener.exitSwitch_type_spec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitSwitch_type_spec) {
-			return visitor.visitSwitch_type_spec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9703,14 +9125,6 @@ export class Switch_bodyContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitSwitch_body) {
 			listener.exitSwitch_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitSwitch_body) {
-			return visitor.visitSwitch_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9747,14 +9161,6 @@ export class Case_stmtContext extends ParserRuleContext {
 			listener.exitCase_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitCase_stmt) {
-			return visitor.visitCase_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9782,14 +9188,6 @@ export class Case_labelContext extends ParserRuleContext {
 			listener.exitCase_label(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitCase_label) {
-			return visitor.visitCase_label(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9815,14 +9213,6 @@ export class Element_specContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitElement_spec) {
 			listener.exitElement_spec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitElement_spec) {
-			return visitor.visitElement_spec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9868,14 +9258,6 @@ export class Enum_typeContext extends ParserRuleContext {
 			listener.exitEnum_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitEnum_type) {
-			return visitor.visitEnum_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9896,14 +9278,6 @@ export class EnumeratorContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitEnumerator) {
 			listener.exitEnumerator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitEnumerator) {
-			return visitor.visitEnumerator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9937,14 +9311,6 @@ export class Sequence_typeContext extends ParserRuleContext {
 			listener.exitSequence_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitSequence_type) {
-			return visitor.visitSequence_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9972,14 +9338,6 @@ export class String_typeContext extends ParserRuleContext {
 			listener.exitString_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitString_type) {
-			return visitor.visitString_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10005,14 +9363,6 @@ export class Wide_string_typeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitWide_string_type) {
 			listener.exitWide_string_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitWide_string_type) {
-			return visitor.visitWide_string_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10046,14 +9396,6 @@ export class Array_declaratorContext extends ParserRuleContext {
 			listener.exitArray_declarator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitArray_declarator) {
-			return visitor.visitArray_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10078,14 +9420,6 @@ export class Fixed_array_sizeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitFixed_array_size) {
 			listener.exitFixed_array_size(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitFixed_array_size) {
-			return visitor.visitFixed_array_size(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10113,14 +9447,6 @@ export class Attr_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitAttr_decl) {
 			listener.exitAttr_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitAttr_decl) {
-			return visitor.visitAttr_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10155,14 +9481,6 @@ export class Except_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitExcept_decl) {
 			listener.exitExcept_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitExcept_decl) {
-			return visitor.visitExcept_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10202,14 +9520,6 @@ export class Op_declContext extends ParserRuleContext {
 			listener.exitOp_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitOp_decl) {
-			return visitor.visitOp_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10230,14 +9540,6 @@ export class Op_attributeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitOp_attribute) {
 			listener.exitOp_attribute(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitOp_attribute) {
-			return visitor.visitOp_attribute(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10263,14 +9565,6 @@ export class Op_type_specContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitOp_type_spec) {
 			listener.exitOp_type_spec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitOp_type_spec) {
-			return visitor.visitOp_type_spec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10314,14 +9608,6 @@ export class Parameter_declsContext extends ParserRuleContext {
 			listener.exitParameter_decls(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitParameter_decls) {
-			return visitor.visitParameter_decls(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10352,14 +9638,6 @@ export class Param_declContext extends ParserRuleContext {
 			listener.exitParam_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitParam_decl) {
-			return visitor.visitParam_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10382,14 +9660,6 @@ export class Param_attributeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitParam_attribute) {
 			listener.exitParam_attribute(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitParam_attribute) {
-			return visitor.visitParam_attribute(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10434,14 +9704,6 @@ export class Raises_exprContext extends ParserRuleContext {
 			listener.exitRaises_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitRaises_expr) {
-			return visitor.visitRaises_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10484,14 +9746,6 @@ export class Context_exprContext extends ParserRuleContext {
 			listener.exitContext_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitContext_expr) {
-			return visitor.visitContext_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10523,14 +9777,6 @@ export class Param_type_specContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitParam_type_spec) {
 			listener.exitParam_type_spec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitParam_type_spec) {
-			return visitor.visitParam_type_spec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10567,14 +9813,6 @@ export class Fixed_pt_typeContext extends ParserRuleContext {
 			listener.exitFixed_pt_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitFixed_pt_type) {
-			return visitor.visitFixed_pt_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10595,14 +9833,6 @@ export class Fixed_pt_const_typeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitFixed_pt_const_type) {
 			listener.exitFixed_pt_const_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitFixed_pt_const_type) {
-			return visitor.visitFixed_pt_const_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10627,14 +9857,6 @@ export class Value_base_typeContext extends ParserRuleContext {
 			listener.exitValue_base_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitValue_base_type) {
-			return visitor.visitValue_base_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10657,14 +9879,6 @@ export class Constr_forward_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitConstr_forward_decl) {
 			listener.exitConstr_forward_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitConstr_forward_decl) {
-			return visitor.visitConstr_forward_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10693,14 +9907,6 @@ export class Import_declContext extends ParserRuleContext {
 			listener.exitImport_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitImport_decl) {
-			return visitor.visitImport_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10724,14 +9930,6 @@ export class Imported_scopeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitImported_scope) {
 			listener.exitImported_scope(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitImported_scope) {
-			return visitor.visitImported_scope(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10760,14 +9958,6 @@ export class Type_id_declContext extends ParserRuleContext {
 			listener.exitType_id_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitType_id_decl) {
-			return visitor.visitType_id_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10792,14 +9982,6 @@ export class Type_prefix_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitType_prefix_decl) {
 			listener.exitType_prefix_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitType_prefix_decl) {
-			return visitor.visitType_prefix_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10829,14 +10011,6 @@ export class Readonly_attr_specContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitReadonly_attr_spec) {
 			listener.exitReadonly_attr_spec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitReadonly_attr_spec) {
-			return visitor.visitReadonly_attr_spec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10881,14 +10055,6 @@ export class Readonly_attr_declaratorContext extends ParserRuleContext {
 			listener.exitReadonly_attr_declarator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitReadonly_attr_declarator) {
-			return visitor.visitReadonly_attr_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10915,14 +10081,6 @@ export class Attr_specContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitAttr_spec) {
 			listener.exitAttr_spec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitAttr_spec) {
-			return visitor.visitAttr_spec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10967,14 +10125,6 @@ export class Attr_declaratorContext extends ParserRuleContext {
 			listener.exitAttr_declarator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitAttr_declarator) {
-			return visitor.visitAttr_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11002,14 +10152,6 @@ export class Attr_raises_exprContext extends ParserRuleContext {
 			listener.exitAttr_raises_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitAttr_raises_expr) {
-			return visitor.visitAttr_raises_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11035,14 +10177,6 @@ export class Get_excep_exprContext extends ParserRuleContext {
 			listener.exitGet_excep_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitGet_excep_expr) {
-			return visitor.visitGet_excep_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11066,14 +10200,6 @@ export class Set_excep_exprContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitSet_excep_expr) {
 			listener.exitSet_excep_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitSet_excep_expr) {
-			return visitor.visitSet_excep_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11117,14 +10243,6 @@ export class Exception_listContext extends ParserRuleContext {
 			listener.exitException_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitException_list) {
-			return visitor.visitException_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11152,14 +10270,6 @@ export class ComponentContext extends ParserRuleContext {
 			listener.exitComponent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitComponent) {
-			return visitor.visitComponent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11181,14 +10291,6 @@ export class Component_forward_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitComponent_forward_decl) {
 			listener.exitComponent_forward_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitComponent_forward_decl) {
-			return visitor.visitComponent_forward_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11220,14 +10322,6 @@ export class Component_declContext extends ParserRuleContext {
 			listener.exitComponent_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitComponent_decl) {
-			return visitor.visitComponent_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11255,14 +10349,6 @@ export class Component_headerContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitComponent_header) {
 			listener.exitComponent_header(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitComponent_header) {
-			return visitor.visitComponent_header(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11305,14 +10391,6 @@ export class Supported_interface_specContext extends ParserRuleContext {
 			listener.exitSupported_interface_spec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitSupported_interface_spec) {
-			return visitor.visitSupported_interface_spec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11336,14 +10414,6 @@ export class Component_inheritance_specContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitComponent_inheritance_spec) {
 			listener.exitComponent_inheritance_spec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitComponent_inheritance_spec) {
-			return visitor.visitComponent_inheritance_spec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11374,14 +10444,6 @@ export class Component_bodyContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitComponent_body) {
 			listener.exitComponent_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitComponent_body) {
-			return visitor.visitComponent_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11424,14 +10486,6 @@ export class Component_exportContext extends ParserRuleContext {
 			listener.exitComponent_export(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitComponent_export) {
-			return visitor.visitComponent_export(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11458,14 +10512,6 @@ export class Provides_declContext extends ParserRuleContext {
 			listener.exitProvides_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitProvides_decl) {
-			return visitor.visitProvides_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11489,14 +10535,6 @@ export class Interface_typeContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitInterface_type) {
 			listener.exitInterface_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitInterface_type) {
-			return visitor.visitInterface_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11526,14 +10564,6 @@ export class Uses_declContext extends ParserRuleContext {
 			listener.exitUses_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitUses_decl) {
-			return visitor.visitUses_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11558,14 +10588,6 @@ export class Emits_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitEmits_decl) {
 			listener.exitEmits_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitEmits_decl) {
-			return visitor.visitEmits_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11594,14 +10616,6 @@ export class Publishes_declContext extends ParserRuleContext {
 			listener.exitPublishes_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitPublishes_decl) {
-			return visitor.visitPublishes_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11626,14 +10640,6 @@ export class Consumes_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitConsumes_decl) {
 			listener.exitConsumes_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitConsumes_decl) {
-			return visitor.visitConsumes_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11661,14 +10667,6 @@ export class Home_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitHome_decl) {
 			listener.exitHome_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitHome_decl) {
-			return visitor.visitHome_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11707,14 +10705,6 @@ export class Home_headerContext extends ParserRuleContext {
 			listener.exitHome_header(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitHome_header) {
-			return visitor.visitHome_header(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11740,14 +10730,6 @@ export class Home_inheritance_specContext extends ParserRuleContext {
 			listener.exitHome_inheritance_spec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitHome_inheritance_spec) {
-			return visitor.visitHome_inheritance_spec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11771,14 +10753,6 @@ export class Primary_key_specContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitPrimary_key_spec) {
 			listener.exitPrimary_key_spec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitPrimary_key_spec) {
-			return visitor.visitPrimary_key_spec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11813,14 +10787,6 @@ export class Home_bodyContext extends ParserRuleContext {
 			listener.exitHome_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitHome_body) {
-			return visitor.visitHome_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11850,14 +10816,6 @@ export class Home_exportContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitHome_export) {
 			listener.exitHome_export(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitHome_export) {
-			return visitor.visitHome_export(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11891,14 +10849,6 @@ export class Factory_declContext extends ParserRuleContext {
 			listener.exitFactory_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitFactory_decl) {
-			return visitor.visitFactory_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11928,14 +10878,6 @@ export class Finder_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitFinder_decl) {
 			listener.exitFinder_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitFinder_decl) {
-			return visitor.visitFinder_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11968,14 +10910,6 @@ export class EventContext extends ParserRuleContext {
 			listener.exitEvent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitEvent) {
-			return visitor.visitEvent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11998,14 +10932,6 @@ export class Event_forward_declContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitEvent_forward_decl) {
 			listener.exitEvent_forward_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitEvent_forward_decl) {
-			return visitor.visitEvent_forward_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12046,14 +10972,6 @@ export class Event_abs_declContext extends ParserRuleContext {
 			listener.exitEvent_abs_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitEvent_abs_decl) {
-			return visitor.visitEvent_abs_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12089,14 +11007,6 @@ export class Event_declContext extends ParserRuleContext {
 			listener.exitEvent_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitEvent_decl) {
-			return visitor.visitEvent_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12122,14 +11032,6 @@ export class Event_headerContext extends ParserRuleContext {
 	public exitRule(listener: IDLListener): void {
 		if (listener.exitEvent_header) {
 			listener.exitEvent_header(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IDLVisitor<Result>): Result {
-		if (visitor.visitEvent_header) {
-			return visitor.visitEvent_header(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { ObjectiveCPreprocessorParserListener } from "./ObjectiveCPreprocessorParserListener";
-import { ObjectiveCPreprocessorParserVisitor } from "./ObjectiveCPreprocessorParserVisitor";
-
 
 export class ObjectiveCPreprocessorParser extends Parser {
 	public static readonly SHARP = 1;
@@ -819,14 +817,6 @@ export class ObjectiveCDocumentContext extends ParserRuleContext {
 			listener.exitObjectiveCDocument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitObjectiveCDocument) {
-			return visitor.visitObjectiveCDocument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -857,14 +847,6 @@ export class TextContext extends ParserRuleContext {
 			listener.exitText(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitText) {
-			return visitor.visitText(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -893,14 +875,6 @@ export class CodeContext extends ParserRuleContext {
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitCode) {
 			listener.exitCode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitCode) {
-			return visitor.visitCode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -938,14 +912,6 @@ export class PreprocessorImportContext extends DirectiveContext {
 			listener.exitPreprocessorImport(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorImport) {
-			return visitor.visitPreprocessorImport(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorConditionalContext extends DirectiveContext {
 	public IF(): TerminalNode | undefined { return this.tryGetToken(ObjectiveCPreprocessorParser.IF, 0); }
@@ -971,14 +937,6 @@ export class PreprocessorConditionalContext extends DirectiveContext {
 			listener.exitPreprocessorConditional(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorConditional) {
-			return visitor.visitPreprocessorConditional(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorDefContext extends DirectiveContext {
 	public IFDEF(): TerminalNode | undefined { return this.tryGetToken(ObjectiveCPreprocessorParser.IFDEF, 0); }
@@ -999,14 +957,6 @@ export class PreprocessorDefContext extends DirectiveContext {
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitPreprocessorDef) {
 			listener.exitPreprocessorDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorDef) {
-			return visitor.visitPreprocessorDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1031,14 +981,6 @@ export class PreprocessorPragmaContext extends DirectiveContext {
 			listener.exitPreprocessorPragma(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorPragma) {
-			return visitor.visitPreprocessorPragma(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorErrorContext extends DirectiveContext {
 	public ERROR(): TerminalNode { return this.getToken(ObjectiveCPreprocessorParser.ERROR, 0); }
@@ -1059,14 +1001,6 @@ export class PreprocessorErrorContext extends DirectiveContext {
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitPreprocessorError) {
 			listener.exitPreprocessorError(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorError) {
-			return visitor.visitPreprocessorError(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1090,14 +1024,6 @@ export class PreprocessorDefineContext extends DirectiveContext {
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitPreprocessorDefine) {
 			listener.exitPreprocessorDefine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorDefine) {
-			return visitor.visitPreprocessorDefine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1128,14 +1054,6 @@ export class Directive_textContext extends ParserRuleContext {
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitDirective_text) {
 			listener.exitDirective_text(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitDirective_text) {
-			return visitor.visitDirective_text(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1172,14 +1090,6 @@ export class PreprocessorConstantContext extends Preprocessor_expressionContext 
 			listener.exitPreprocessorConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorConstant) {
-			return visitor.visitPreprocessorConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorConditionalSymbolContext extends Preprocessor_expressionContext {
 	public CONDITIONAL_SYMBOL(): TerminalNode { return this.getToken(ObjectiveCPreprocessorParser.CONDITIONAL_SYMBOL, 0); }
@@ -1202,14 +1112,6 @@ export class PreprocessorConditionalSymbolContext extends Preprocessor_expressio
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitPreprocessorConditionalSymbol) {
 			listener.exitPreprocessorConditionalSymbol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorConditionalSymbol) {
-			return visitor.visitPreprocessorConditionalSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1235,14 +1137,6 @@ export class PreprocessorParenthesisContext extends Preprocessor_expressionConte
 			listener.exitPreprocessorParenthesis(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorParenthesis) {
-			return visitor.visitPreprocessorParenthesis(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorNotContext extends Preprocessor_expressionContext {
 	public BANG(): TerminalNode { return this.getToken(ObjectiveCPreprocessorParser.BANG, 0); }
@@ -1263,14 +1157,6 @@ export class PreprocessorNotContext extends Preprocessor_expressionContext {
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitPreprocessorNot) {
 			listener.exitPreprocessorNot(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorNot) {
-			return visitor.visitPreprocessorNot(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1309,14 +1195,6 @@ export class PreprocessorBinaryContext extends Preprocessor_expressionContext {
 			listener.exitPreprocessorBinary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorBinary) {
-			return visitor.visitPreprocessorBinary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorDefinedContext extends Preprocessor_expressionContext {
 	public DEFINED(): TerminalNode { return this.getToken(ObjectiveCPreprocessorParser.DEFINED, 0); }
@@ -1337,14 +1215,6 @@ export class PreprocessorDefinedContext extends Preprocessor_expressionContext {
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitPreprocessorDefined) {
 			listener.exitPreprocessorDefined(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorDefined) {
-			return visitor.visitPreprocessorDefined(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

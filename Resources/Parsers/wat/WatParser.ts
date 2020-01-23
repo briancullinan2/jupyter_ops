@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { WatParserListener } from "./WatParserListener";
-import { WatParserVisitor } from "./WatParserVisitor";
-
 
 export class WatParser extends Parser {
 	public static readonly LPAR = 1;
@@ -4884,14 +4882,6 @@ export class ValueContext extends ParserRuleContext {
 			listener.exitValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4912,14 +4902,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4944,14 +4926,6 @@ export class Value_typeContext extends ParserRuleContext {
 			listener.exitValue_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitValue_type) {
-			return visitor.visitValue_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4972,14 +4946,6 @@ export class Elem_typeContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitElem_type) {
 			listener.exitElem_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitElem_type) {
-			return visitor.visitElem_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5009,14 +4975,6 @@ export class Global_typeContext extends ParserRuleContext {
 			listener.exitGlobal_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitGlobal_type) {
-			return visitor.visitGlobal_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5042,14 +5000,6 @@ export class Def_typeContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitDef_type) {
 			listener.exitDef_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitDef_type) {
-			return visitor.visitDef_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5127,14 +5077,6 @@ export class Func_typeContext extends ParserRuleContext {
 			listener.exitFunc_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitFunc_type) {
-			return visitor.visitFunc_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5168,14 +5110,6 @@ export class Table_typeContext extends ParserRuleContext {
 			listener.exitTable_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitTable_type) {
-			return visitor.visitTable_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5206,14 +5140,6 @@ export class Memory_typeContext extends ParserRuleContext {
 			listener.exitMemory_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitMemory_type) {
-			return visitor.visitMemory_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5241,14 +5167,6 @@ export class Type_useContext extends ParserRuleContext {
 			listener.exitType_use(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitType_use) {
-			return visitor.visitType_use(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5271,14 +5189,6 @@ export class LiteralContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitLiteral) {
 			listener.exitLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5304,14 +5214,6 @@ export class VarContext extends ParserRuleContext {
 			listener.exitVar(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitVar) {
-			return visitor.visitVar(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5332,14 +5234,6 @@ export class Bind_varContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitBind_var) {
 			listener.exitBind_var(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitBind_var) {
-			return visitor.visitBind_var(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5373,14 +5267,6 @@ export class InstrContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitInstr) {
 			listener.exitInstr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitInstr) {
-			return visitor.visitInstr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5442,14 +5328,6 @@ export class Plain_instrContext extends ParserRuleContext {
 			listener.exitPlain_instr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitPlain_instr) {
-			return visitor.visitPlain_instr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5476,14 +5354,6 @@ export class Call_instrContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitCall_instr) {
 			listener.exitCall_instr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitCall_instr) {
-			return visitor.visitCall_instr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5552,14 +5422,6 @@ export class Call_instr_paramsContext extends ParserRuleContext {
 			listener.exitCall_instr_params(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitCall_instr_params) {
-			return visitor.visitCall_instr_params(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5586,14 +5448,6 @@ export class Call_instr_instrContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitCall_instr_instr) {
 			listener.exitCall_instr_instr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitCall_instr_instr) {
-			return visitor.visitCall_instr_instr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5656,14 +5510,6 @@ export class Call_instr_params_instrContext extends ParserRuleContext {
 			listener.exitCall_instr_params_instr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitCall_instr_params_instr) {
-			return visitor.visitCall_instr_params_instr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5724,14 +5570,6 @@ export class Call_instr_results_instrContext extends ParserRuleContext {
 			listener.exitCall_instr_results_instr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitCall_instr_results_instr) {
-			return visitor.visitCall_instr_results_instr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5773,14 +5611,6 @@ export class Block_instrContext extends ParserRuleContext {
 			listener.exitBlock_instr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitBlock_instr) {
-			return visitor.visitBlock_instr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5806,14 +5636,6 @@ export class Block_typeContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitBlock_type) {
 			listener.exitBlock_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitBlock_type) {
-			return visitor.visitBlock_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5843,14 +5665,6 @@ export class BlockContext extends ParserRuleContext {
 			listener.exitBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5875,14 +5689,6 @@ export class ExprContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitExpr) {
 			listener.exitExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitExpr) {
-			return visitor.visitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5934,14 +5740,6 @@ export class Expr1Context extends ParserRuleContext {
 			listener.exitExpr1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitExpr1) {
-			return visitor.visitExpr1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5967,14 +5765,6 @@ export class Call_expr_typeContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitCall_expr_type) {
 			listener.exitCall_expr_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitCall_expr_type) {
-			return visitor.visitCall_expr_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6035,14 +5825,6 @@ export class Call_expr_paramsContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitCall_expr_params) {
 			listener.exitCall_expr_params(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitCall_expr_params) {
-			return visitor.visitCall_expr_params(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6111,14 +5893,6 @@ export class Call_expr_resultsContext extends ParserRuleContext {
 			listener.exitCall_expr_results(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitCall_expr_results) {
-			return visitor.visitCall_expr_results(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6184,14 +5958,6 @@ export class If_blockContext extends ParserRuleContext {
 			listener.exitIf_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitIf_block) {
-			return visitor.visitIf_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6225,14 +5991,6 @@ export class Instr_listContext extends ParserRuleContext {
 			listener.exitInstr_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitInstr_list) {
-			return visitor.visitInstr_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6255,14 +6013,6 @@ export class Const_exprContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitConst_expr) {
 			listener.exitConst_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitConst_expr) {
-			return visitor.visitConst_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6293,14 +6043,6 @@ export class FuncContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitFunc) {
 			listener.exitFunc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitFunc) {
-			return visitor.visitFunc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6342,14 +6084,6 @@ export class Func_fieldsContext extends ParserRuleContext {
 			listener.exitFunc_fields(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitFunc_fields) {
-			return visitor.visitFunc_fields(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6387,14 +6121,6 @@ export class Func_fields_importContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitFunc_fields_import) {
 			listener.exitFunc_fields_import(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitFunc_fields_import) {
-			return visitor.visitFunc_fields_import(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6452,14 +6178,6 @@ export class Func_fields_import_resultContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitFunc_fields_import_result) {
 			listener.exitFunc_fields_import_result(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitFunc_fields_import_result) {
-			return visitor.visitFunc_fields_import_result(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6531,14 +6249,6 @@ export class Func_fields_bodyContext extends ParserRuleContext {
 			listener.exitFunc_fields_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitFunc_fields_body) {
-			return visitor.visitFunc_fields_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6597,14 +6307,6 @@ export class Func_result_bodyContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitFunc_result_body) {
 			listener.exitFunc_result_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitFunc_result_body) {
-			return visitor.visitFunc_result_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6676,14 +6378,6 @@ export class Func_bodyContext extends ParserRuleContext {
 			listener.exitFunc_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitFunc_body) {
-			return visitor.visitFunc_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6712,14 +6406,6 @@ export class OffsetContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitOffset) {
 			listener.exitOffset(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitOffset) {
-			return visitor.visitOffset(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6758,14 +6444,6 @@ export class ElemContext extends ParserRuleContext {
 			listener.exitElem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitElem) {
-			return visitor.visitElem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6794,14 +6472,6 @@ export class TableContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitTable) {
 			listener.exitTable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitTable) {
-			return visitor.visitTable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6852,14 +6522,6 @@ export class Table_fieldsContext extends ParserRuleContext {
 			listener.exitTable_fields(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitTable_fields) {
-			return visitor.visitTable_fields(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6899,14 +6561,6 @@ export class DataContext extends ParserRuleContext {
 			listener.exitData(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitData) {
-			return visitor.visitData(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6935,14 +6589,6 @@ export class MemoryContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitMemory) {
 			listener.exitMemory(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitMemory) {
-			return visitor.visitMemory(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6990,14 +6636,6 @@ export class Memory_fieldsContext extends ParserRuleContext {
 			listener.exitMemory_fields(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitMemory_fields) {
-			return visitor.visitMemory_fields(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7026,14 +6664,6 @@ export class SglobalContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitSglobal) {
 			listener.exitSglobal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitSglobal) {
-			return visitor.visitSglobal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7070,14 +6700,6 @@ export class Global_fieldsContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitGlobal_fields) {
 			listener.exitGlobal_fields(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitGlobal_fields) {
-			return visitor.visitGlobal_fields(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7125,14 +6747,6 @@ export class Import_descContext extends ParserRuleContext {
 			listener.exitImport_desc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitImport_desc) {
-			return visitor.visitImport_desc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7169,14 +6783,6 @@ export class SimportContext extends ParserRuleContext {
 			listener.exitSimport(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitSimport) {
-			return visitor.visitSimport(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7210,14 +6816,6 @@ export class Inline_importContext extends ParserRuleContext {
 			listener.exitInline_import(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitInline_import) {
-			return visitor.visitInline_import(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7246,14 +6844,6 @@ export class Export_descContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitExport_desc) {
 			listener.exitExport_desc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitExport_desc) {
-			return visitor.visitExport_desc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7286,14 +6876,6 @@ export class ExportContext extends ParserRuleContext {
 			listener.exitExport(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitExport) {
-			return visitor.visitExport(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7321,14 +6903,6 @@ export class Inline_exportContext extends ParserRuleContext {
 			listener.exitInline_export(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitInline_export) {
-			return visitor.visitInline_export(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7351,14 +6925,6 @@ export class Type_Context extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitType_) {
 			listener.exitType_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitType_) {
-			return visitor.visitType_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7391,14 +6957,6 @@ export class Type_defContext extends ParserRuleContext {
 			listener.exitType_def(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitType_def) {
-			return visitor.visitType_def(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7424,14 +6982,6 @@ export class StartContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitStart) {
 			listener.exitStart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitStart) {
-			return visitor.visitStart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7485,14 +7035,6 @@ export class Module_fieldContext extends ParserRuleContext {
 			listener.exitModule_field(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitModule_field) {
-			return visitor.visitModule_field(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7525,14 +7067,6 @@ export class Module_Context extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitModule_) {
 			listener.exitModule_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitModule_) {
-			return visitor.visitModule_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7574,14 +7108,6 @@ export class Script_moduleContext extends ParserRuleContext {
 			listener.exitScript_module(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitScript_module) {
-			return visitor.visitScript_module(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7612,14 +7138,6 @@ export class ActionContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitAction) {
 			listener.exitAction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitAction) {
-			return visitor.visitAction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7663,14 +7181,6 @@ export class AssertionContext extends ParserRuleContext {
 			listener.exitAssertion(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitAssertion) {
-			return visitor.visitAssertion(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7711,14 +7221,6 @@ export class CmdContext extends ParserRuleContext {
 			listener.exitCmd(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitCmd) {
-			return visitor.visitCmd(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7756,14 +7258,6 @@ export class MetaContext extends ParserRuleContext {
 			listener.exitMeta(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitMeta) {
-			return visitor.visitMeta(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7789,14 +7283,6 @@ export class WconstContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitWconst) {
 			listener.exitWconst(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitWconst) {
-			return visitor.visitWconst(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7827,14 +7313,6 @@ export class Const_listContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitConst_list) {
 			listener.exitConst_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitConst_list) {
-			return visitor.visitConst_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7877,14 +7355,6 @@ export class ScriptContext extends ParserRuleContext {
 			listener.exitScript(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitScript) {
-			return visitor.visitScript(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7917,14 +7387,6 @@ export class ModuleContext extends ParserRuleContext {
 	public exitRule(listener: WatParserListener): void {
 		if (listener.exitModule) {
 			listener.exitModule(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WatParserVisitor<Result>): Result {
-		if (visitor.visitModule) {
-			return visitor.visitModule(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

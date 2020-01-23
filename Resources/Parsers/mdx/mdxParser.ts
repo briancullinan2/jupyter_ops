@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { mdxListener } from "./mdxListener";
-import { mdxVisitor } from "./mdxVisitor";
-
 
 export class mdxParser extends Parser {
 	public static readonly QUOTE = 1;
@@ -2405,14 +2403,6 @@ export class Mdx_statementContext extends ParserRuleContext {
 			listener.exitMdx_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitMdx_statement) {
-			return visitor.visitMdx_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2453,14 +2443,6 @@ export class Select_statementContext extends ParserRuleContext {
 			listener.exitSelect_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitSelect_statement) {
-			return visitor.visitSelect_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2491,14 +2473,6 @@ export class Formula_specificationContext extends ParserRuleContext {
 			listener.exitFormula_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitFormula_specification) {
-			return visitor.visitFormula_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2524,14 +2498,6 @@ export class Single_formula_specificationContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitSingle_formula_specification) {
 			listener.exitSingle_formula_specification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitSingle_formula_specification) {
-			return visitor.visitSingle_formula_specification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2570,14 +2536,6 @@ export class Set_specificationContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitSet_specification) {
 			listener.exitSet_specification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitSet_specification) {
-			return visitor.visitSet_specification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2622,14 +2580,6 @@ export class Member_specificationContext extends ParserRuleContext {
 			listener.exitMember_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitMember_specification) {
-			return visitor.visitMember_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2667,14 +2617,6 @@ export class Axis_specification_listContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitAxis_specification_list) {
 			listener.exitAxis_specification_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitAxis_specification_list) {
-			return visitor.visitAxis_specification_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2716,14 +2658,6 @@ export class Member_property_def_listContext extends ParserRuleContext {
 			listener.exitMember_property_def_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitMember_property_def_list) {
-			return visitor.visitMember_property_def_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2746,14 +2680,6 @@ export class Member_nameContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitMember_name) {
 			listener.exitMember_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitMember_name) {
-			return visitor.visitMember_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2784,14 +2710,6 @@ export class Member_property_definitionContext extends ParserRuleContext {
 			listener.exitMember_property_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitMember_property_definition) {
-			return visitor.visitMember_property_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2814,14 +2732,6 @@ export class Set_nameContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitSet_name) {
 			listener.exitSet_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitSet_name) {
-			return visitor.visitSet_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2863,14 +2773,6 @@ export class Compound_idContext extends ParserRuleContext {
 			listener.exitCompound_id(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitCompound_id) {
-			return visitor.visitCompound_id(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2904,14 +2806,6 @@ export class Axis_specificationContext extends ParserRuleContext {
 			listener.exitAxis_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitAxis_specification) {
-			return visitor.visitAxis_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2934,14 +2828,6 @@ export class Axis_nameContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitAxis_name) {
 			listener.exitAxis_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitAxis_name) {
-			return visitor.visitAxis_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2968,14 +2854,6 @@ export class Dim_propsContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitDim_props) {
 			listener.exitDim_props(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitDim_props) {
-			return visitor.visitDim_props(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3017,14 +2895,6 @@ export class Property_listContext extends ParserRuleContext {
 			listener.exitProperty_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitProperty_list) {
-			return visitor.visitProperty_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3047,14 +2917,6 @@ export class PropertyContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitProperty) {
 			listener.exitProperty(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitProperty) {
-			return visitor.visitProperty(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3081,14 +2943,6 @@ export class Cube_specificationContext extends ParserRuleContext {
 			listener.exitCube_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitCube_specification) {
-			return visitor.visitCube_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3111,14 +2965,6 @@ export class Cube_nameContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitCube_name) {
 			listener.exitCube_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitCube_name) {
-			return visitor.visitCube_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3145,14 +2991,6 @@ export class Slicer_specificationContext extends ParserRuleContext {
 			listener.exitSlicer_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitSlicer_specification) {
-			return visitor.visitSlicer_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3177,14 +3015,6 @@ export class Cell_propsContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitCell_props) {
 			listener.exitCell_props(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitCell_props) {
-			return visitor.visitCell_props(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3218,14 +3048,6 @@ export class Cell_property_listContext extends ParserRuleContext {
 			listener.exitCell_property_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitCell_property_list) {
-			return visitor.visitCell_property_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3253,14 +3075,6 @@ export class Cell_propertyContext extends ParserRuleContext {
 			listener.exitCell_property(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitCell_property) {
-			return visitor.visitCell_property(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3285,14 +3099,6 @@ export class Mandatory_cell_propertyContext extends ParserRuleContext {
 			listener.exitMandatory_cell_property(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitMandatory_cell_property) {
-			return visitor.visitMandatory_cell_property(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3315,14 +3121,6 @@ export class Provider_specific_cell_propertyContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitProvider_specific_cell_property) {
 			listener.exitProvider_specific_cell_property(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitProvider_specific_cell_property) {
-			return visitor.visitProvider_specific_cell_property(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3362,14 +3160,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3414,14 +3204,6 @@ export class Value_expressionContext extends ParserRuleContext {
 			listener.exitValue_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitValue_expression) {
-			return visitor.visitValue_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3447,14 +3229,6 @@ export class Value_xor_expressionContext extends ParserRuleContext {
 			listener.exitValue_xor_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitValue_xor_expression) {
-			return visitor.visitValue_xor_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3478,14 +3252,6 @@ export class Value_or_expressionContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitValue_or_expression) {
 			listener.exitValue_or_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitValue_or_expression) {
-			return visitor.visitValue_or_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3527,14 +3293,6 @@ export class Term5Context extends ParserRuleContext {
 			listener.exitTerm5(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitTerm5) {
-			return visitor.visitTerm5(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3561,14 +3319,6 @@ export class Term4Context extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitTerm4) {
 			listener.exitTerm4(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitTerm4) {
-			return visitor.visitTerm4(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3608,14 +3358,6 @@ export class Term3Context extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitTerm3) {
 			listener.exitTerm3(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitTerm3) {
-			return visitor.visitTerm3(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3675,14 +3417,6 @@ export class Term2Context extends ParserRuleContext {
 			listener.exitTerm2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitTerm2) {
-			return visitor.visitTerm2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3731,14 +3465,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3763,14 +3489,6 @@ export class FactorContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitFactor) {
 			listener.exitFactor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitFactor) {
-			return visitor.visitFactor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3800,14 +3518,6 @@ export class FunctionContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitFunction) {
 			listener.exitFunction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitFunction) {
-			return visitor.visitFunction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3879,14 +3589,6 @@ export class Value_expression_primaryContext extends ParserRuleContext {
 			listener.exitValue_expression_primary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitValue_expression_primary) {
-			return visitor.visitValue_expression_primary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3924,14 +3626,6 @@ export class Value_expression_primary0Context extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitValue_expression_primary0) {
 			listener.exitValue_expression_primary0(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitValue_expression_primary0) {
-			return visitor.visitValue_expression_primary0(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3973,14 +3667,6 @@ export class Exp_listContext extends ParserRuleContext {
 			listener.exitExp_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitExp_list) {
-			return visitor.visitExp_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4017,14 +3703,6 @@ export class Case_expressionContext extends ParserRuleContext {
 			listener.exitCase_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitCase_expression) {
-			return visitor.visitCase_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4053,14 +3731,6 @@ export class When_listContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitWhen_list) {
 			listener.exitWhen_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitWhen_list) {
-			return visitor.visitWhen_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4095,14 +3765,6 @@ export class When_clauseContext extends ParserRuleContext {
 			listener.exitWhen_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitWhen_clause) {
-			return visitor.visitWhen_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4128,14 +3790,6 @@ export class Comp_opContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitComp_op) {
 			listener.exitComp_op(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitComp_op) {
-			return visitor.visitComp_op(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4165,14 +3819,6 @@ export class IdentifierContext extends ParserRuleContext {
 			listener.exitIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4198,14 +3844,6 @@ export class Unquoted_identifierContext extends ParserRuleContext {
 			listener.exitUnquoted_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitUnquoted_identifier) {
-			return visitor.visitUnquoted_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4226,14 +3864,6 @@ export class Amp_quoted_identifierContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitAmp_quoted_identifier) {
 			listener.exitAmp_quoted_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitAmp_quoted_identifier) {
-			return visitor.visitAmp_quoted_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4258,14 +3888,6 @@ export class Quoted_identifierContext extends ParserRuleContext {
 			listener.exitQuoted_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitQuoted_identifier) {
-			return visitor.visitQuoted_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4287,14 +3909,6 @@ export class KeywordContext extends ParserRuleContext {
 	public exitRule(listener: mdxListener): void {
 		if (listener.exitKeyword) {
 			listener.exitKeyword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mdxVisitor<Result>): Result {
-		if (visitor.visitKeyword) {
-			return visitor.visitKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

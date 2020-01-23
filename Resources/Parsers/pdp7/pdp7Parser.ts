@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { pdp7Listener } from "./pdp7Listener";
-import { pdp7Visitor } from "./pdp7Visitor";
-
 
 export class pdp7Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -1465,14 +1463,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1498,14 +1488,6 @@ export class LineContext extends ParserRuleContext {
 	public exitRule(listener: pdp7Listener): void {
 		if (listener.exitLine) {
 			listener.exitLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1536,14 +1518,6 @@ export class DeclarationsContext extends ParserRuleContext {
 	public exitRule(listener: pdp7Listener): void {
 		if (listener.exitDeclarations) {
 			listener.exitDeclarations(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitDeclarations) {
-			return visitor.visitDeclarations(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1585,14 +1559,6 @@ export class DeclarationContext extends ParserRuleContext {
 			listener.exitDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitDeclaration) {
-			return visitor.visitDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1621,14 +1587,6 @@ export class DeclarationRightContext extends ParserRuleContext {
 	public exitRule(listener: pdp7Listener): void {
 		if (listener.exitDeclarationRight) {
 			listener.exitDeclarationRight(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitDeclarationRight) {
-			return visitor.visitDeclarationRight(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1664,14 +1622,6 @@ export class InstructionContext extends ParserRuleContext {
 			listener.exitInstruction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitInstruction) {
-			return visitor.visitInstruction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1694,14 +1644,6 @@ export class ArgumentContext extends ParserRuleContext {
 	public exitRule(listener: pdp7Listener): void {
 		if (listener.exitArgument) {
 			listener.exitArgument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1731,14 +1673,6 @@ export class AssignmentContext extends ParserRuleContext {
 			listener.exitAssignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitAssignment) {
-			return visitor.visitAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1766,14 +1700,6 @@ export class SymbolContext extends ParserRuleContext {
 	public exitRule(listener: pdp7Listener): void {
 		if (listener.exitSymbol) {
 			listener.exitSymbol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitSymbol) {
-			return visitor.visitSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1824,14 +1750,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1880,14 +1798,6 @@ export class MultiplyingExpressionContext extends ParserRuleContext {
 			listener.exitMultiplyingExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitMultiplyingExpression) {
-			return visitor.visitMultiplyingExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1926,14 +1836,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1965,14 +1867,6 @@ export class StringContext extends ParserRuleContext {
 			listener.exitString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1993,14 +1887,6 @@ export class EolContext extends ParserRuleContext {
 	public exitRule(listener: pdp7Listener): void {
 		if (listener.exitEol) {
 			listener.exitEol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitEol) {
-			return visitor.visitEol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2025,14 +1911,6 @@ export class CommentContext extends ParserRuleContext {
 			listener.exitComment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2053,14 +1931,6 @@ export class LabelContext extends ParserRuleContext {
 	public exitRule(listener: pdp7Listener): void {
 		if (listener.exitLabel) {
 			listener.exitLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2085,14 +1955,6 @@ export class VariableContext extends ParserRuleContext {
 			listener.exitVariable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2112,14 +1974,6 @@ export class OpcodeContext extends ParserRuleContext {
 	public exitRule(listener: pdp7Listener): void {
 		if (listener.exitOpcode) {
 			listener.exitOpcode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pdp7Visitor<Result>): Result {
-		if (visitor.visitOpcode) {
-			return visitor.visitOpcode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

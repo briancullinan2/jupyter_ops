@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { redcodeListener } from "./redcodeListener";
-import { redcodeVisitor } from "./redcodeVisitor";
-
 
 export class redcodeParser extends Parser {
 	public static readonly T__0 = 1;
@@ -536,14 +534,6 @@ export class FileContext extends ParserRuleContext {
 			listener.exitFile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: redcodeVisitor<Result>): Result {
-		if (visitor.visitFile) {
-			return visitor.visitFile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -570,14 +560,6 @@ export class LineContext extends ParserRuleContext {
 	public exitRule(listener: redcodeListener): void {
 		if (listener.exitLine) {
 			listener.exitLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: redcodeVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -628,14 +610,6 @@ export class InstructionContext extends ParserRuleContext {
 			listener.exitInstruction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: redcodeVisitor<Result>): Result {
-		if (visitor.visitInstruction) {
-			return visitor.visitInstruction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -673,14 +647,6 @@ export class OpcodeContext extends ParserRuleContext {
 			listener.exitOpcode(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: redcodeVisitor<Result>): Result {
-		if (visitor.visitOpcode) {
-			return visitor.visitOpcode(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -709,14 +675,6 @@ export class ModifierContext extends ParserRuleContext {
 			listener.exitModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: redcodeVisitor<Result>): Result {
-		if (visitor.visitModifier) {
-			return visitor.visitModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -736,14 +694,6 @@ export class MmodeContext extends ParserRuleContext {
 	public exitRule(listener: redcodeListener): void {
 		if (listener.exitMmode) {
 			listener.exitMmode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: redcodeVisitor<Result>): Result {
-		if (visitor.visitMmode) {
-			return visitor.visitMmode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -768,14 +718,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: redcodeVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -796,14 +738,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: redcodeListener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: redcodeVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { ZOperatorParserListener } from "./ZOperatorParserListener";
-import { ZOperatorParserVisitor } from "./ZOperatorParserVisitor";
-
 
 export class ZOperatorParser extends Parser {
 	public static readonly ZED = 1;
@@ -1608,14 +1606,6 @@ export class SpecificationContext extends ParserRuleContext {
 			listener.exitSpecification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitSpecification) {
-			return visitor.visitSpecification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1663,14 +1653,6 @@ export class InheritingSectionContext extends SectionContext {
 			listener.exitInheritingSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitInheritingSection) {
-			return visitor.visitInheritingSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BaseSectionContext extends SectionContext {
 	public ZED(): TerminalNode { return this.getToken(ZOperatorParser.ZED, 0); }
@@ -1700,14 +1682,6 @@ export class BaseSectionContext extends SectionContext {
 	public exitRule(listener: ZOperatorParserListener): void {
 		if (listener.exitBaseSection) {
 			listener.exitBaseSection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitBaseSection) {
-			return visitor.visitBaseSection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1745,14 +1719,6 @@ export class OperatorTemplateParagraphContext extends ParagraphContext {
 			listener.exitOperatorTemplateParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitOperatorTemplateParagraph) {
-			return visitor.visitOperatorTemplateParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AxiomaticDescriptionParagraphContext extends ParagraphContext {
 	public AX(): TerminalNode { return this.getToken(ZOperatorParser.AX, 0); }
@@ -1771,14 +1737,6 @@ export class AxiomaticDescriptionParagraphContext extends ParagraphContext {
 	public exitRule(listener: ZOperatorParserListener): void {
 		if (listener.exitAxiomaticDescriptionParagraph) {
 			listener.exitAxiomaticDescriptionParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitAxiomaticDescriptionParagraph) {
-			return visitor.visitAxiomaticDescriptionParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1801,14 +1759,6 @@ export class SchemaDefinitionParagraphContext extends ParagraphContext {
 			listener.exitSchemaDefinitionParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitSchemaDefinitionParagraph) {
-			return visitor.visitSchemaDefinitionParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NONOperatorTemplateParagraphContext extends ParagraphContext {
 	public ZED(): TerminalNode { return this.getToken(ZOperatorParser.ZED, 0); }
@@ -1827,14 +1777,6 @@ export class NONOperatorTemplateParagraphContext extends ParagraphContext {
 	public exitRule(listener: ZOperatorParserListener): void {
 		if (listener.exitNONOperatorTemplateParagraph) {
 			listener.exitNONOperatorTemplateParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitNONOperatorTemplateParagraph) {
-			return visitor.visitNONOperatorTemplateParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1876,14 +1818,6 @@ export class FormalsContext extends ParserRuleContext {
 			listener.exitFormals(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitFormals) {
-			return visitor.visitFormals(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1918,14 +1852,6 @@ export class RelationOperatorTemplateContext extends OperatorTemplateContext {
 			listener.exitRelationOperatorTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitRelationOperatorTemplate) {
-			return visitor.visitRelationOperatorTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class FunctionOperatorTemplateContext extends OperatorTemplateContext {
 	public FUNCTION(): TerminalNode { return this.getToken(ZOperatorParser.FUNCTION, 0); }
@@ -1948,14 +1874,6 @@ export class FunctionOperatorTemplateContext extends OperatorTemplateContext {
 			listener.exitFunctionOperatorTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitFunctionOperatorTemplate) {
-			return visitor.visitFunctionOperatorTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class GenericOperatorTemplateContext extends OperatorTemplateContext {
 	public GENERIC(): TerminalNode { return this.getToken(ZOperatorParser.GENERIC, 0); }
@@ -1976,14 +1894,6 @@ export class GenericOperatorTemplateContext extends OperatorTemplateContext {
 	public exitRule(listener: ZOperatorParserListener): void {
 		if (listener.exitGenericOperatorTemplate) {
 			listener.exitGenericOperatorTemplate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitGenericOperatorTemplate) {
-			return visitor.visitGenericOperatorTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2025,14 +1935,6 @@ export class CategoryTemplateContext extends ParserRuleContext {
 			listener.exitCategoryTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitCategoryTemplate) {
-			return visitor.visitCategoryTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2053,14 +1955,6 @@ export class PrecContext extends ParserRuleContext {
 	public exitRule(listener: ZOperatorParserListener): void {
 		if (listener.exitPrec) {
 			listener.exitPrec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitPrec) {
-			return visitor.visitPrec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2084,14 +1978,6 @@ export class AssocContext extends ParserRuleContext {
 	public exitRule(listener: ZOperatorParserListener): void {
 		if (listener.exitAssoc) {
 			listener.exitAssoc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitAssoc) {
-			return visitor.visitAssoc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2127,14 +2013,6 @@ export class TemplateContext extends ParserRuleContext {
 			listener.exitTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitTemplate) {
-			return visitor.visitTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2163,14 +2041,6 @@ export class PrefixTemplateContext extends ParserRuleContext {
 			listener.exitPrefixTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitPrefixTemplate) {
-			return visitor.visitPrefixTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2195,14 +2065,6 @@ export class PostfixTemplateContext extends ParserRuleContext {
 	public exitRule(listener: ZOperatorParserListener): void {
 		if (listener.exitPostfixTemplate) {
 			listener.exitPostfixTemplate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitPostfixTemplate) {
-			return visitor.visitPostfixTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2231,14 +2093,6 @@ export class InfixTemplateContext extends ParserRuleContext {
 			listener.exitInfixTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitInfixTemplate) {
-			return visitor.visitInfixTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2265,14 +2119,6 @@ export class NofixTemplateContext extends ParserRuleContext {
 			listener.exitNofixTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitNofixTemplate) {
-			return visitor.visitNofixTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2294,14 +2140,6 @@ export class OptArgNameContext extends ParserRuleContext {
 	public exitRule(listener: ZOperatorParserListener): void {
 		if (listener.exitOptArgName) {
 			listener.exitOptArgName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitOptArgName) {
-			return visitor.visitOptArgName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2327,14 +2165,6 @@ export class OptListNameContext extends ParserRuleContext {
 			listener.exitOptListName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitOptListName) {
-			return visitor.visitOptListName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2358,14 +2188,6 @@ export class ArgNameContext extends ParserRuleContext {
 			listener.exitArgName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitArgName) {
-			return visitor.visitArgName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2387,14 +2209,6 @@ export class ListNameContext extends ParserRuleContext {
 	public exitRule(listener: ZOperatorParserListener): void {
 		if (listener.exitListName) {
 			listener.exitListName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitListName) {
-			return visitor.visitListName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2444,14 +2258,6 @@ export class PrefixNameContext extends ParserRuleContext {
 			listener.exitPrefixName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitPrefixName) {
-			return visitor.visitPrefixName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2497,14 +2303,6 @@ export class PostfixNameContext extends ParserRuleContext {
 	public exitRule(listener: ZOperatorParserListener): void {
 		if (listener.exitPostfixName) {
 			listener.exitPostfixName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitPostfixName) {
-			return visitor.visitPostfixName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2562,14 +2360,6 @@ export class InfixNameContext extends ParserRuleContext {
 			listener.exitInfixName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitInfixName) {
-			return visitor.visitInfixName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2614,14 +2404,6 @@ export class NofixNameContext extends ParserRuleContext {
 	public exitRule(listener: ZOperatorParserListener): void {
 		if (listener.exitNofixName) {
 			listener.exitNofixName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZOperatorParserVisitor<Result>): Result {
-		if (visitor.visitNofixName) {
-			return visitor.visitNofixName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

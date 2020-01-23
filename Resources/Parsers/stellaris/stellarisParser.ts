@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { stellarisListener } from "./stellarisListener";
-import { stellarisVisitor } from "./stellarisVisitor";
-
 
 export class stellarisParser extends Parser {
 	public static readonly T__0 = 1;
@@ -549,14 +547,6 @@ export class ContentContext extends ParserRuleContext {
 			listener.exitContent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: stellarisVisitor<Result>): Result {
-		if (visitor.visitContent) {
-			return visitor.visitContent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -587,14 +577,6 @@ export class ExprContext extends ParserRuleContext {
 			listener.exitExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: stellarisVisitor<Result>): Result {
-		if (visitor.visitExpr) {
-			return visitor.visitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -622,14 +604,6 @@ export class KeyvalContext extends ParserRuleContext {
 			listener.exitKeyval(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: stellarisVisitor<Result>): Result {
-		if (visitor.visitKeyval) {
-			return visitor.visitKeyval(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -655,14 +629,6 @@ export class KeyContext extends ParserRuleContext {
 	public exitRule(listener: stellarisListener): void {
 		if (listener.exitKey) {
 			listener.exitKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: stellarisVisitor<Result>): Result {
-		if (visitor.visitKey) {
-			return visitor.visitKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -693,14 +659,6 @@ export class ValContext extends ParserRuleContext {
 	public exitRule(listener: stellarisListener): void {
 		if (listener.exitVal) {
 			listener.exitVal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: stellarisVisitor<Result>): Result {
-		if (visitor.visitVal) {
-			return visitor.visitVal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -739,14 +697,6 @@ export class AttribContext extends ParserRuleContext {
 			listener.exitAttrib(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: stellarisVisitor<Result>): Result {
-		if (visitor.visitAttrib) {
-			return visitor.visitAttrib(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -766,14 +716,6 @@ export class AccessorContext extends ParserRuleContext {
 	public exitRule(listener: stellarisListener): void {
 		if (listener.exitAccessor) {
 			listener.exitAccessor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: stellarisVisitor<Result>): Result {
-		if (visitor.visitAccessor) {
-			return visitor.visitAccessor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -809,14 +751,6 @@ export class GroupContext extends ParserRuleContext {
 			listener.exitGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: stellarisVisitor<Result>): Result {
-		if (visitor.visitGroup) {
-			return visitor.visitGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -839,14 +773,6 @@ export class IdContext extends ParserRuleContext {
 	public exitRule(listener: stellarisListener): void {
 		if (listener.exitId) {
 			listener.exitId(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: stellarisVisitor<Result>): Result {
-		if (visitor.visitId) {
-			return visitor.visitId(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

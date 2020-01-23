@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { GraphemesListener } from "./GraphemesListener";
-import { GraphemesVisitor } from "./GraphemesVisitor";
-
 
 export class GraphemesParser extends Parser {
 	public static readonly Extend = 1;
@@ -368,14 +366,6 @@ export class Emoji_sequenceContext extends ParserRuleContext {
 			listener.exitEmoji_sequence(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphemesVisitor<Result>): Result {
-		if (visitor.visitEmoji_sequence) {
-			return visitor.visitEmoji_sequence(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -439,14 +429,6 @@ export class Grapheme_clusterContext extends ParserRuleContext {
 			listener.exitGrapheme_cluster(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphemesVisitor<Result>): Result {
-		if (visitor.visitGrapheme_cluster) {
-			return visitor.visitGrapheme_cluster(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -476,14 +458,6 @@ export class GraphemesContext extends ParserRuleContext {
 	public exitRule(listener: GraphemesListener): void {
 		if (listener.exitGraphemes) {
 			listener.exitGraphemes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphemesVisitor<Result>): Result {
-		if (visitor.visitGraphemes) {
-			return visitor.visitGraphemes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

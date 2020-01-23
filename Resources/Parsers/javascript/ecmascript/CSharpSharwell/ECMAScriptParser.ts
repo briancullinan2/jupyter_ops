@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { ECMAScriptListener } from "./ECMAScriptListener";
-import { ECMAScriptVisitor } from "./ECMAScriptVisitor";
-
 
 export class ECMAScriptParser extends Parser {
 	public static readonly RegularExpressionLiteral = 1;
@@ -4059,14 +4057,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4097,14 +4087,6 @@ export class SourceElementsContext extends ParserRuleContext {
 			listener.exitSourceElements(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitSourceElements) {
-			return visitor.visitSourceElements(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4130,14 +4112,6 @@ export class SourceElementContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitSourceElement) {
 			listener.exitSourceElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitSourceElement) {
-			return visitor.visitSourceElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4206,14 +4180,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4238,14 +4204,6 @@ export class BlockContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitBlock) {
 			listener.exitBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4278,14 +4236,6 @@ export class StatementListContext extends ParserRuleContext {
 			listener.exitStatementList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitStatementList) {
-			return visitor.visitStatementList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4312,14 +4262,6 @@ export class VariableStatementContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitVariableStatement) {
 			listener.exitVariableStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitVariableStatement) {
-			return visitor.visitVariableStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4361,14 +4303,6 @@ export class VariableDeclarationListContext extends ParserRuleContext {
 			listener.exitVariableDeclarationList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitVariableDeclarationList) {
-			return visitor.visitVariableDeclarationList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4392,14 +4326,6 @@ export class VariableDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitVariableDeclaration) {
 			listener.exitVariableDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitVariableDeclaration) {
-			return visitor.visitVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4427,14 +4353,6 @@ export class InitialiserContext extends ParserRuleContext {
 			listener.exitInitialiser(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitInitialiser) {
-			return visitor.visitInitialiser(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4455,14 +4373,6 @@ export class EmptyStatementContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitEmptyStatement) {
 			listener.exitEmptyStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitEmptyStatement) {
-			return visitor.visitEmptyStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4490,14 +4400,6 @@ export class ExpressionStatementContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitExpressionStatement) {
 			listener.exitExpressionStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitExpressionStatement) {
-			return visitor.visitExpressionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4535,14 +4437,6 @@ export class IfStatementContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitIfStatement) {
 			listener.exitIfStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4588,14 +4482,6 @@ export class DoStatementContext extends IterationStatementContext {
 			listener.exitDoStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitDoStatement) {
-			return visitor.visitDoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class WhileStatementContext extends IterationStatementContext {
 	public While(): TerminalNode { return this.getToken(ECMAScriptParser.While, 0); }
@@ -4621,14 +4507,6 @@ export class WhileStatementContext extends IterationStatementContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitWhileStatement) {
 			listener.exitWhileStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitWhileStatement) {
-			return visitor.visitWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4671,14 +4549,6 @@ export class ForStatementContext extends IterationStatementContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitForStatement) {
 			listener.exitForStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitForStatement) {
-			return visitor.visitForStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4727,14 +4597,6 @@ export class ForVarStatementContext extends IterationStatementContext {
 			listener.exitForVarStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitForVarStatement) {
-			return visitor.visitForVarStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ForInStatementContext extends IterationStatementContext {
 	public For(): TerminalNode { return this.getToken(ECMAScriptParser.For, 0); }
@@ -4764,14 +4626,6 @@ export class ForInStatementContext extends IterationStatementContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitForInStatement) {
 			listener.exitForInStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitForInStatement) {
-			return visitor.visitForInStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4806,14 +4660,6 @@ export class ForVarInStatementContext extends IterationStatementContext {
 			listener.exitForVarInStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitForVarInStatement) {
-			return visitor.visitForVarInStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4838,14 +4684,6 @@ export class ContinueStatementContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitContinueStatement) {
 			listener.exitContinueStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitContinueStatement) {
-			return visitor.visitContinueStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4874,14 +4712,6 @@ export class BreakStatementContext extends ParserRuleContext {
 			listener.exitBreakStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitBreakStatement) {
-			return visitor.visitBreakStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4908,14 +4738,6 @@ export class ReturnStatementContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitReturnStatement) {
 			listener.exitReturnStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitReturnStatement) {
-			return visitor.visitReturnStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4948,14 +4770,6 @@ export class WithStatementContext extends ParserRuleContext {
 			listener.exitWithStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitWithStatement) {
-			return visitor.visitWithStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4984,14 +4798,6 @@ export class SwitchStatementContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitSwitchStatement) {
 			listener.exitSwitchStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitSwitchStatement) {
-			return visitor.visitSwitchStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5029,14 +4835,6 @@ export class CaseBlockContext extends ParserRuleContext {
 			listener.exitCaseBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitCaseBlock) {
-			return visitor.visitCaseBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5065,14 +4863,6 @@ export class CaseClausesContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitCaseClauses) {
 			listener.exitCaseClauses(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitCaseClauses) {
-			return visitor.visitCaseClauses(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5104,14 +4894,6 @@ export class CaseClauseContext extends ParserRuleContext {
 			listener.exitCaseClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitCaseClause) {
-			return visitor.visitCaseClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5136,14 +4918,6 @@ export class DefaultClauseContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitDefaultClause) {
 			listener.exitDefaultClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitDefaultClause) {
-			return visitor.visitDefaultClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5172,14 +4946,6 @@ export class LabelledStatementContext extends ParserRuleContext {
 			listener.exitLabelledStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitLabelledStatement) {
-			return visitor.visitLabelledStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5206,14 +4972,6 @@ export class ThrowStatementContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitThrowStatement) {
 			listener.exitThrowStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitThrowStatement) {
-			return visitor.visitThrowStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5247,14 +5005,6 @@ export class TryStatementContext extends ParserRuleContext {
 			listener.exitTryStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitTryStatement) {
-			return visitor.visitTryStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5283,14 +5033,6 @@ export class CatchProductionContext extends ParserRuleContext {
 			listener.exitCatchProduction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitCatchProduction) {
-			return visitor.visitCatchProduction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5316,14 +5058,6 @@ export class FinallyProductionContext extends ParserRuleContext {
 			listener.exitFinallyProduction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitFinallyProduction) {
-			return visitor.visitFinallyProduction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5347,14 +5081,6 @@ export class DebuggerStatementContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitDebuggerStatement) {
 			listener.exitDebuggerStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitDebuggerStatement) {
-			return visitor.visitDebuggerStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5388,14 +5114,6 @@ export class FunctionDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitFunctionDeclaration) {
 			listener.exitFunctionDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitFunctionDeclaration) {
-			return visitor.visitFunctionDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5437,14 +5155,6 @@ export class FormalParameterListContext extends ParserRuleContext {
 			listener.exitFormalParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitFormalParameterList) {
-			return visitor.visitFormalParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5467,14 +5177,6 @@ export class FunctionBodyContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitFunctionBody) {
 			listener.exitFunctionBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitFunctionBody) {
-			return visitor.visitFunctionBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5505,14 +5207,6 @@ export class ArrayLiteralContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitArrayLiteral) {
 			listener.exitArrayLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitArrayLiteral) {
-			return visitor.visitArrayLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5563,14 +5257,6 @@ export class ElementListContext extends ParserRuleContext {
 			listener.exitElementList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitElementList) {
-			return visitor.visitElementList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5601,14 +5287,6 @@ export class ElisionContext extends ParserRuleContext {
 			listener.exitElision(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitElision) {
-			return visitor.visitElision(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5634,14 +5312,6 @@ export class ObjectLiteralContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitObjectLiteral) {
 			listener.exitObjectLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitObjectLiteral) {
-			return visitor.visitObjectLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5683,14 +5353,6 @@ export class PropertyNameAndValueListContext extends ParserRuleContext {
 			listener.exitPropertyNameAndValueList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitPropertyNameAndValueList) {
-			return visitor.visitPropertyNameAndValueList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5728,14 +5390,6 @@ export class PropertyExpressionAssignmentContext extends PropertyAssignmentConte
 			listener.exitPropertyExpressionAssignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitPropertyExpressionAssignment) {
-			return visitor.visitPropertyExpressionAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PropertyGetterContext extends PropertyAssignmentContext {
 	public getter(): GetterContext {
@@ -5762,14 +5416,6 @@ export class PropertyGetterContext extends PropertyAssignmentContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitPropertyGetter) {
 			listener.exitPropertyGetter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitPropertyGetter) {
-			return visitor.visitPropertyGetter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5803,14 +5449,6 @@ export class PropertySetterContext extends PropertyAssignmentContext {
 			listener.exitPropertySetter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitPropertySetter) {
-			return visitor.visitPropertySetter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5839,14 +5477,6 @@ export class PropertyNameContext extends ParserRuleContext {
 			listener.exitPropertyName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitPropertyName) {
-			return visitor.visitPropertyName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5867,14 +5497,6 @@ export class PropertySetParameterListContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitPropertySetParameterList) {
 			listener.exitPropertySetParameterList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitPropertySetParameterList) {
-			return visitor.visitPropertySetParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5901,14 +5523,6 @@ export class ArgumentsContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitArguments) {
 			listener.exitArguments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitArguments) {
-			return visitor.visitArguments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5950,14 +5564,6 @@ export class ArgumentListContext extends ParserRuleContext {
 			listener.exitArgumentList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitArgumentList) {
-			return visitor.visitArgumentList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5995,14 +5601,6 @@ export class ExpressionSequenceContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitExpressionSequence) {
 			listener.exitExpressionSequence(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitExpressionSequence) {
-			return visitor.visitExpressionSequence(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6047,14 +5645,6 @@ export class FunctionExpressionContext extends SingleExpressionContext {
 			listener.exitFunctionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitFunctionExpression) {
-			return visitor.visitFunctionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class MemberIndexExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext {
@@ -6079,14 +5669,6 @@ export class MemberIndexExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitMemberIndexExpression) {
 			listener.exitMemberIndexExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitMemberIndexExpression) {
-			return visitor.visitMemberIndexExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6114,14 +5696,6 @@ export class MemberDotExpressionContext extends SingleExpressionContext {
 			listener.exitMemberDotExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitMemberDotExpression) {
-			return visitor.visitMemberDotExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ArgumentsExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext {
@@ -6144,14 +5718,6 @@ export class ArgumentsExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitArgumentsExpression) {
 			listener.exitArgumentsExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitArgumentsExpression) {
-			return visitor.visitArgumentsExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6179,14 +5745,6 @@ export class NewExpressionContext extends SingleExpressionContext {
 			listener.exitNewExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitNewExpression) {
-			return visitor.visitNewExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PostIncrementExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext {
@@ -6207,14 +5765,6 @@ export class PostIncrementExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitPostIncrementExpression) {
 			listener.exitPostIncrementExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitPostIncrementExpression) {
-			return visitor.visitPostIncrementExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6239,14 +5789,6 @@ export class PostDecreaseExpressionContext extends SingleExpressionContext {
 			listener.exitPostDecreaseExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitPostDecreaseExpression) {
-			return visitor.visitPostDecreaseExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DeleteExpressionContext extends SingleExpressionContext {
 	public Delete(): TerminalNode { return this.getToken(ECMAScriptParser.Delete, 0); }
@@ -6267,14 +5809,6 @@ export class DeleteExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitDeleteExpression) {
 			listener.exitDeleteExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitDeleteExpression) {
-			return visitor.visitDeleteExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6299,14 +5833,6 @@ export class VoidExpressionContext extends SingleExpressionContext {
 			listener.exitVoidExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitVoidExpression) {
-			return visitor.visitVoidExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TypeofExpressionContext extends SingleExpressionContext {
 	public Typeof(): TerminalNode { return this.getToken(ECMAScriptParser.Typeof, 0); }
@@ -6327,14 +5853,6 @@ export class TypeofExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitTypeofExpression) {
 			listener.exitTypeofExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitTypeofExpression) {
-			return visitor.visitTypeofExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6359,14 +5877,6 @@ export class PreIncrementExpressionContext extends SingleExpressionContext {
 			listener.exitPreIncrementExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitPreIncrementExpression) {
-			return visitor.visitPreIncrementExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreDecreaseExpressionContext extends SingleExpressionContext {
 	public MinusMinus(): TerminalNode { return this.getToken(ECMAScriptParser.MinusMinus, 0); }
@@ -6387,14 +5897,6 @@ export class PreDecreaseExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitPreDecreaseExpression) {
 			listener.exitPreDecreaseExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitPreDecreaseExpression) {
-			return visitor.visitPreDecreaseExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6419,14 +5921,6 @@ export class UnaryPlusExpressionContext extends SingleExpressionContext {
 			listener.exitUnaryPlusExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitUnaryPlusExpression) {
-			return visitor.visitUnaryPlusExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UnaryMinusExpressionContext extends SingleExpressionContext {
 	public Minus(): TerminalNode { return this.getToken(ECMAScriptParser.Minus, 0); }
@@ -6447,14 +5941,6 @@ export class UnaryMinusExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitUnaryMinusExpression) {
 			listener.exitUnaryMinusExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitUnaryMinusExpression) {
-			return visitor.visitUnaryMinusExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6479,14 +5965,6 @@ export class BitNotExpressionContext extends SingleExpressionContext {
 			listener.exitBitNotExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitBitNotExpression) {
-			return visitor.visitBitNotExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NotExpressionContext extends SingleExpressionContext {
 	public Not(): TerminalNode { return this.getToken(ECMAScriptParser.Not, 0); }
@@ -6507,14 +5985,6 @@ export class NotExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitNotExpression) {
 			listener.exitNotExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitNotExpression) {
-			return visitor.visitNotExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6547,14 +6017,6 @@ export class MultiplicativeExpressionContext extends SingleExpressionContext {
 			listener.exitMultiplicativeExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitMultiplicativeExpression) {
-			return visitor.visitMultiplicativeExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AdditiveExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -6582,14 +6044,6 @@ export class AdditiveExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitAdditiveExpression) {
 			listener.exitAdditiveExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitAdditiveExpression) {
-			return visitor.visitAdditiveExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6620,14 +6074,6 @@ export class BitShiftExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitBitShiftExpression) {
 			listener.exitBitShiftExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitBitShiftExpression) {
-			return visitor.visitBitShiftExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6661,14 +6107,6 @@ export class RelationalExpressionContext extends SingleExpressionContext {
 			listener.exitRelationalExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitRelationalExpression) {
-			return visitor.visitRelationalExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class InstanceofExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -6697,14 +6135,6 @@ export class InstanceofExpressionContext extends SingleExpressionContext {
 			listener.exitInstanceofExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitInstanceofExpression) {
-			return visitor.visitInstanceofExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class InExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -6731,14 +6161,6 @@ export class InExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitInExpression) {
 			listener.exitInExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitInExpression) {
-			return visitor.visitInExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6772,14 +6194,6 @@ export class EqualityExpressionContext extends SingleExpressionContext {
 			listener.exitEqualityExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitEqualityExpression) {
-			return visitor.visitEqualityExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BitAndExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -6806,14 +6220,6 @@ export class BitAndExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitBitAndExpression) {
 			listener.exitBitAndExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitBitAndExpression) {
-			return visitor.visitBitAndExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6844,14 +6250,6 @@ export class BitXOrExpressionContext extends SingleExpressionContext {
 			listener.exitBitXOrExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitBitXOrExpression) {
-			return visitor.visitBitXOrExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BitOrExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -6878,14 +6276,6 @@ export class BitOrExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitBitOrExpression) {
 			listener.exitBitOrExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitBitOrExpression) {
-			return visitor.visitBitOrExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6916,14 +6306,6 @@ export class LogicalAndExpressionContext extends SingleExpressionContext {
 			listener.exitLogicalAndExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitLogicalAndExpression) {
-			return visitor.visitLogicalAndExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class LogicalOrExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -6950,14 +6332,6 @@ export class LogicalOrExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitLogicalOrExpression) {
 			listener.exitLogicalOrExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitLogicalOrExpression) {
-			return visitor.visitLogicalOrExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6989,14 +6363,6 @@ export class TernaryExpressionContext extends SingleExpressionContext {
 			listener.exitTernaryExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitTernaryExpression) {
-			return visitor.visitTernaryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AssignmentExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -7023,14 +6389,6 @@ export class AssignmentExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitAssignmentExpression) {
 			listener.exitAssignmentExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitAssignmentExpression) {
-			return visitor.visitAssignmentExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7063,14 +6421,6 @@ export class AssignmentOperatorExpressionContext extends SingleExpressionContext
 			listener.exitAssignmentOperatorExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitAssignmentOperatorExpression) {
-			return visitor.visitAssignmentOperatorExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ThisExpressionContext extends SingleExpressionContext {
 	public This(): TerminalNode { return this.getToken(ECMAScriptParser.This, 0); }
@@ -7090,14 +6440,6 @@ export class ThisExpressionContext extends SingleExpressionContext {
 			listener.exitThisExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitThisExpression) {
-			return visitor.visitThisExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IdentifierExpressionContext extends SingleExpressionContext {
 	public Identifier(): TerminalNode { return this.getToken(ECMAScriptParser.Identifier, 0); }
@@ -7115,14 +6457,6 @@ export class IdentifierExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitIdentifierExpression) {
 			listener.exitIdentifierExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitIdentifierExpression) {
-			return visitor.visitIdentifierExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7146,14 +6480,6 @@ export class LiteralExpressionContext extends SingleExpressionContext {
 			listener.exitLiteralExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitLiteralExpression) {
-			return visitor.visitLiteralExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ArrayLiteralExpressionContext extends SingleExpressionContext {
 	public arrayLiteral(): ArrayLiteralContext {
@@ -7173,14 +6499,6 @@ export class ArrayLiteralExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitArrayLiteralExpression) {
 			listener.exitArrayLiteralExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitArrayLiteralExpression) {
-			return visitor.visitArrayLiteralExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7204,14 +6522,6 @@ export class ObjectLiteralExpressionContext extends SingleExpressionContext {
 			listener.exitObjectLiteralExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitObjectLiteralExpression) {
-			return visitor.visitObjectLiteralExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ParenthesizedExpressionContext extends SingleExpressionContext {
 	public OpenParen(): TerminalNode { return this.getToken(ECMAScriptParser.OpenParen, 0); }
@@ -7233,14 +6543,6 @@ export class ParenthesizedExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitParenthesizedExpression) {
 			listener.exitParenthesizedExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitParenthesizedExpression) {
-			return visitor.visitParenthesizedExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7275,14 +6577,6 @@ export class AssignmentOperatorContext extends ParserRuleContext {
 			listener.exitAssignmentOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitAssignmentOperator) {
-			return visitor.visitAssignmentOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7311,14 +6605,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7341,14 +6627,6 @@ export class NumericLiteralContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitNumericLiteral) {
 			listener.exitNumericLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitNumericLiteral) {
-			return visitor.visitNumericLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7374,14 +6652,6 @@ export class IdentifierNameContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitIdentifierName) {
 			listener.exitIdentifierName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitIdentifierName) {
-			return visitor.visitIdentifierName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7411,14 +6681,6 @@ export class ReservedWordContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitReservedWord) {
 			listener.exitReservedWord(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitReservedWord) {
-			return visitor.visitReservedWord(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7468,14 +6730,6 @@ export class KeywordContext extends ParserRuleContext {
 			listener.exitKeyword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitKeyword) {
-			return visitor.visitKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7513,14 +6767,6 @@ export class FutureReservedWordContext extends ParserRuleContext {
 			listener.exitFutureReservedWord(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitFutureReservedWord) {
-			return visitor.visitFutureReservedWord(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7544,14 +6790,6 @@ export class GetterContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitGetter) {
 			listener.exitGetter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitGetter) {
-			return visitor.visitGetter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7579,14 +6817,6 @@ export class SetterContext extends ParserRuleContext {
 			listener.exitSetter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitSetter) {
-			return visitor.visitSetter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7610,14 +6840,6 @@ export class EosContext extends ParserRuleContext {
 			listener.exitEos(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitEos) {
-			return visitor.visitEos(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7638,14 +6860,6 @@ export class EofContext extends ParserRuleContext {
 	public exitRule(listener: ECMAScriptListener): void {
 		if (listener.exitEof) {
 			listener.exitEof(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ECMAScriptVisitor<Result>): Result {
-		if (visitor.visitEof) {
-			return visitor.visitEof(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

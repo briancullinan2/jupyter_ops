@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { SMTLIBv2Listener } from "./SMTLIBv2Listener";
-import { SMTLIBv2Visitor } from "./SMTLIBv2Visitor";
-
 
 export class SMTLIBv2Parser extends Parser {
 	public static readonly Comment = 1;
@@ -5912,14 +5910,6 @@ export class StartContext extends ParserRuleContext {
 			listener.exitStart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitStart) {
-			return visitor.visitStart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5943,14 +5933,6 @@ export class ResponseContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitResponse) {
 			listener.exitResponse(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitResponse) {
-			return visitor.visitResponse(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5987,14 +5969,6 @@ export class GeneralReservedWordContext extends ParserRuleContext {
 			listener.exitGeneralReservedWord(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitGeneralReservedWord) {
-			return visitor.visitGeneralReservedWord(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6020,14 +5994,6 @@ export class SimpleSymbolContext extends ParserRuleContext {
 			listener.exitSimpleSymbol(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitSimpleSymbol) {
-			return visitor.visitSimpleSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6048,14 +6014,6 @@ export class QuotedSymbolContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitQuotedSymbol) {
 			listener.exitQuotedSymbol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitQuotedSymbol) {
-			return visitor.visitQuotedSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6093,14 +6051,6 @@ export class PredefSymbolContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitPredefSymbol) {
 			listener.exitPredefSymbol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitPredefSymbol) {
-			return visitor.visitPredefSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6165,14 +6115,6 @@ export class PredefKeywordContext extends ParserRuleContext {
 			listener.exitPredefKeyword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitPredefKeyword) {
-			return visitor.visitPredefKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6200,14 +6142,6 @@ export class SymbolContext extends ParserRuleContext {
 			listener.exitSymbol(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitSymbol) {
-			return visitor.visitSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6228,14 +6162,6 @@ export class NumeralContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitNumeral) {
 			listener.exitNumeral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitNumeral) {
-			return visitor.visitNumeral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6260,14 +6186,6 @@ export class DecimalContext extends ParserRuleContext {
 			listener.exitDecimal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitDecimal) {
-			return visitor.visitDecimal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6288,14 +6206,6 @@ export class HexadecimalContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitHexadecimal) {
 			listener.exitHexadecimal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitHexadecimal) {
-			return visitor.visitHexadecimal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6320,14 +6230,6 @@ export class BinaryContext extends ParserRuleContext {
 			listener.exitBinary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitBinary) {
-			return visitor.visitBinary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6348,14 +6250,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6384,14 +6278,6 @@ export class KeywordContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitKeyword) {
 			listener.exitKeyword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitKeyword) {
-			return visitor.visitKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6428,14 +6314,6 @@ export class Spec_constantContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitSpec_constant) {
 			listener.exitSpec_constant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitSpec_constant) {
-			return visitor.visitSpec_constant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6479,14 +6357,6 @@ export class S_exprContext extends ParserRuleContext {
 			listener.exitS_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitS_expr) {
-			return visitor.visitS_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6512,14 +6382,6 @@ export class IndexContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitIndex) {
 			listener.exitIndex(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitIndex) {
-			return visitor.visitIndex(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6556,14 +6418,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6604,14 +6458,6 @@ export class Attribute_valueContext extends ParserRuleContext {
 			listener.exitAttribute_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitAttribute_value) {
-			return visitor.visitAttribute_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6637,14 +6483,6 @@ export class AttributeContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitAttribute) {
 			listener.exitAttribute(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitAttribute) {
-			return visitor.visitAttribute(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6682,14 +6520,6 @@ export class SortContext extends ParserRuleContext {
 			listener.exitSort(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitSort) {
-			return visitor.visitSort(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6718,14 +6548,6 @@ export class Qual_identiferContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitQual_identifer) {
 			listener.exitQual_identifer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitQual_identifer) {
-			return visitor.visitQual_identifer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6757,14 +6579,6 @@ export class Var_bindingContext extends ParserRuleContext {
 			listener.exitVar_binding(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitVar_binding) {
-			return visitor.visitVar_binding(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6792,14 +6606,6 @@ export class Sorted_varContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitSorted_var) {
 			listener.exitSorted_var(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitSorted_var) {
-			return visitor.visitSorted_var(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6834,14 +6640,6 @@ export class PatternContext extends ParserRuleContext {
 			listener.exitPattern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitPattern) {
-			return visitor.visitPattern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6869,14 +6667,6 @@ export class Match_caseContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitMatch_case) {
 			listener.exitMatch_case(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitMatch_case) {
-			return visitor.visitMatch_case(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6974,14 +6764,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7020,14 +6802,6 @@ export class Sort_symbol_declContext extends ParserRuleContext {
 			listener.exitSort_symbol_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitSort_symbol_decl) {
-			return visitor.visitSort_symbol_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7050,14 +6824,6 @@ export class Meta_spec_constantContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitMeta_spec_constant) {
 			listener.exitMeta_spec_constant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitMeta_spec_constant) {
-			return visitor.visitMeta_spec_constant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7108,14 +6874,6 @@ export class Fun_symbol_declContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitFun_symbol_decl) {
 			listener.exitFun_symbol_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitFun_symbol_decl) {
-			return visitor.visitFun_symbol_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7191,14 +6949,6 @@ export class Par_fun_symbol_declContext extends ParserRuleContext {
 			listener.exitPar_fun_symbol_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitPar_fun_symbol_decl) {
-			return visitor.visitPar_fun_symbol_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7253,14 +7003,6 @@ export class Theory_attributeContext extends ParserRuleContext {
 			listener.exitTheory_attribute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitTheory_attribute) {
-			return visitor.visitTheory_attribute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7295,14 +7037,6 @@ export class Theory_declContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitTheory_decl) {
 			listener.exitTheory_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitTheory_decl) {
-			return visitor.visitTheory_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7348,14 +7082,6 @@ export class Logic_attribueContext extends ParserRuleContext {
 			listener.exitLogic_attribue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitLogic_attribue) {
-			return visitor.visitLogic_attribue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7392,14 +7118,6 @@ export class LogicContext extends ParserRuleContext {
 			listener.exitLogic(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitLogic) {
-			return visitor.visitLogic(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7429,14 +7147,6 @@ export class Sort_decContext extends ParserRuleContext {
 			listener.exitSort_dec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitSort_dec) {
-			return visitor.visitSort_dec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7464,14 +7174,6 @@ export class Selector_decContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitSelector_dec) {
 			listener.exitSelector_dec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitSelector_dec) {
-			return visitor.visitSelector_dec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7507,14 +7209,6 @@ export class Constructor_decContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitConstructor_dec) {
 			listener.exitConstructor_dec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitConstructor_dec) {
-			return visitor.visitConstructor_dec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7575,14 +7269,6 @@ export class Datatype_decContext extends ParserRuleContext {
 			listener.exitDatatype_dec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitDatatype_dec) {
-			return visitor.visitDatatype_dec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7637,14 +7323,6 @@ export class Function_decContext extends ParserRuleContext {
 			listener.exitFunction_dec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitFunction_dec) {
-			return visitor.visitFunction_dec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7686,14 +7364,6 @@ export class Function_defContext extends ParserRuleContext {
 			listener.exitFunction_def(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitFunction_def) {
-			return visitor.visitFunction_def(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7719,14 +7389,6 @@ export class Prop_literalContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitProp_literal) {
 			listener.exitProp_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitProp_literal) {
-			return visitor.visitProp_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7759,14 +7421,6 @@ export class ScriptContext extends ParserRuleContext {
 			listener.exitScript(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitScript) {
-			return visitor.visitScript(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7787,14 +7441,6 @@ export class Cmd_assertContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_assert) {
 			listener.exitCmd_assert(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_assert) {
-			return visitor.visitCmd_assert(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7819,14 +7465,6 @@ export class Cmd_checkSatContext extends ParserRuleContext {
 			listener.exitCmd_checkSat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_checkSat) {
-			return visitor.visitCmd_checkSat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7847,14 +7485,6 @@ export class Cmd_checkSatAssumingContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_checkSatAssuming) {
 			listener.exitCmd_checkSatAssuming(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_checkSatAssuming) {
-			return visitor.visitCmd_checkSatAssuming(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7879,14 +7509,6 @@ export class Cmd_declareConstContext extends ParserRuleContext {
 			listener.exitCmd_declareConst(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_declareConst) {
-			return visitor.visitCmd_declareConst(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7907,14 +7529,6 @@ export class Cmd_declareDatatypeContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_declareDatatype) {
 			listener.exitCmd_declareDatatype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_declareDatatype) {
-			return visitor.visitCmd_declareDatatype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7939,14 +7553,6 @@ export class Cmd_declareDatatypesContext extends ParserRuleContext {
 			listener.exitCmd_declareDatatypes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_declareDatatypes) {
-			return visitor.visitCmd_declareDatatypes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7967,14 +7573,6 @@ export class Cmd_declareFunContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_declareFun) {
 			listener.exitCmd_declareFun(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_declareFun) {
-			return visitor.visitCmd_declareFun(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7999,14 +7597,6 @@ export class Cmd_declareSortContext extends ParserRuleContext {
 			listener.exitCmd_declareSort(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_declareSort) {
-			return visitor.visitCmd_declareSort(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8027,14 +7617,6 @@ export class Cmd_defineFunContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_defineFun) {
 			listener.exitCmd_defineFun(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_defineFun) {
-			return visitor.visitCmd_defineFun(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8059,14 +7641,6 @@ export class Cmd_defineFunRecContext extends ParserRuleContext {
 			listener.exitCmd_defineFunRec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_defineFunRec) {
-			return visitor.visitCmd_defineFunRec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8087,14 +7661,6 @@ export class Cmd_defineFunsRecContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_defineFunsRec) {
 			listener.exitCmd_defineFunsRec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_defineFunsRec) {
-			return visitor.visitCmd_defineFunsRec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8119,14 +7685,6 @@ export class Cmd_defineSortContext extends ParserRuleContext {
 			listener.exitCmd_defineSort(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_defineSort) {
-			return visitor.visitCmd_defineSort(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8147,14 +7705,6 @@ export class Cmd_echoContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_echo) {
 			listener.exitCmd_echo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_echo) {
-			return visitor.visitCmd_echo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8179,14 +7729,6 @@ export class Cmd_exitContext extends ParserRuleContext {
 			listener.exitCmd_exit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_exit) {
-			return visitor.visitCmd_exit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8207,14 +7749,6 @@ export class Cmd_getAssertionsContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_getAssertions) {
 			listener.exitCmd_getAssertions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_getAssertions) {
-			return visitor.visitCmd_getAssertions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8239,14 +7773,6 @@ export class Cmd_getAssignmentContext extends ParserRuleContext {
 			listener.exitCmd_getAssignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_getAssignment) {
-			return visitor.visitCmd_getAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8267,14 +7793,6 @@ export class Cmd_getInfoContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_getInfo) {
 			listener.exitCmd_getInfo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_getInfo) {
-			return visitor.visitCmd_getInfo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8299,14 +7817,6 @@ export class Cmd_getModelContext extends ParserRuleContext {
 			listener.exitCmd_getModel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_getModel) {
-			return visitor.visitCmd_getModel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8327,14 +7837,6 @@ export class Cmd_getOptionContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_getOption) {
 			listener.exitCmd_getOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_getOption) {
-			return visitor.visitCmd_getOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8359,14 +7861,6 @@ export class Cmd_getProofContext extends ParserRuleContext {
 			listener.exitCmd_getProof(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_getProof) {
-			return visitor.visitCmd_getProof(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8387,14 +7881,6 @@ export class Cmd_getUnsatAssumptionsContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_getUnsatAssumptions) {
 			listener.exitCmd_getUnsatAssumptions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_getUnsatAssumptions) {
-			return visitor.visitCmd_getUnsatAssumptions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8419,14 +7905,6 @@ export class Cmd_getUnsatCoreContext extends ParserRuleContext {
 			listener.exitCmd_getUnsatCore(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_getUnsatCore) {
-			return visitor.visitCmd_getUnsatCore(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8447,14 +7925,6 @@ export class Cmd_getValueContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_getValue) {
 			listener.exitCmd_getValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_getValue) {
-			return visitor.visitCmd_getValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8479,14 +7949,6 @@ export class Cmd_popContext extends ParserRuleContext {
 			listener.exitCmd_pop(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_pop) {
-			return visitor.visitCmd_pop(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8507,14 +7969,6 @@ export class Cmd_pushContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_push) {
 			listener.exitCmd_push(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_push) {
-			return visitor.visitCmd_push(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8539,14 +7993,6 @@ export class Cmd_resetContext extends ParserRuleContext {
 			listener.exitCmd_reset(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_reset) {
-			return visitor.visitCmd_reset(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8567,14 +8013,6 @@ export class Cmd_resetAssertionsContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_resetAssertions) {
 			listener.exitCmd_resetAssertions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_resetAssertions) {
-			return visitor.visitCmd_resetAssertions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8599,14 +8037,6 @@ export class Cmd_setInfoContext extends ParserRuleContext {
 			listener.exitCmd_setInfo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_setInfo) {
-			return visitor.visitCmd_setInfo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8629,14 +8059,6 @@ export class Cmd_setLogicContext extends ParserRuleContext {
 			listener.exitCmd_setLogic(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_setLogic) {
-			return visitor.visitCmd_setLogic(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8657,14 +8079,6 @@ export class Cmd_setOptionContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitCmd_setOption) {
 			listener.exitCmd_setOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCmd_setOption) {
-			return visitor.visitCmd_setOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8871,14 +8285,6 @@ export class CommandContext extends ParserRuleContext {
 			listener.exitCommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCommand) {
-			return visitor.visitCommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8900,14 +8306,6 @@ export class B_valueContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitB_value) {
 			listener.exitB_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitB_value) {
-			return visitor.visitB_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8957,14 +8355,6 @@ export class OptionContext extends ParserRuleContext {
 			listener.exitOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitOption) {
-			return visitor.visitOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8996,14 +8386,6 @@ export class Info_flagContext extends ParserRuleContext {
 			listener.exitInfo_flag(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitInfo_flag) {
-			return visitor.visitInfo_flag(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9025,14 +8407,6 @@ export class Error_behaviourContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitError_behaviour) {
 			listener.exitError_behaviour(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitError_behaviour) {
-			return visitor.visitError_behaviour(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9059,14 +8433,6 @@ export class Reason_unknownContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitReason_unknown) {
 			listener.exitReason_unknown(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitReason_unknown) {
-			return visitor.visitReason_unknown(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9132,14 +8498,6 @@ export class Model_responseContext extends ParserRuleContext {
 			listener.exitModel_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitModel_response) {
-			return visitor.visitModel_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9182,14 +8540,6 @@ export class Info_responseContext extends ParserRuleContext {
 			listener.exitInfo_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitInfo_response) {
-			return visitor.visitInfo_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9222,14 +8572,6 @@ export class Valuation_pairContext extends ParserRuleContext {
 			listener.exitValuation_pair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitValuation_pair) {
-			return visitor.visitValuation_pair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9259,14 +8601,6 @@ export class T_valuation_pairContext extends ParserRuleContext {
 			listener.exitT_valuation_pair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitT_valuation_pair) {
-			return visitor.visitT_valuation_pair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9291,14 +8625,6 @@ export class Check_sat_responseContext extends ParserRuleContext {
 			listener.exitCheck_sat_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitCheck_sat_response) {
-			return visitor.visitCheck_sat_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9321,14 +8647,6 @@ export class Echo_responseContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitEcho_response) {
 			listener.exitEcho_response(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitEcho_response) {
-			return visitor.visitEcho_response(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9363,14 +8681,6 @@ export class Get_assertions_responseContext extends ParserRuleContext {
 			listener.exitGet_assertions_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitGet_assertions_response) {
-			return visitor.visitGet_assertions_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9401,14 +8711,6 @@ export class Get_assignment_responseContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitGet_assignment_response) {
 			listener.exitGet_assignment_response(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitGet_assignment_response) {
-			return visitor.visitGet_assignment_response(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9443,14 +8745,6 @@ export class Get_info_responseContext extends ParserRuleContext {
 			listener.exitGet_info_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitGet_info_response) {
-			return visitor.visitGet_info_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9483,14 +8777,6 @@ export class Get_model_responseContext extends ParserRuleContext {
 			listener.exitGet_model_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitGet_model_response) {
-			return visitor.visitGet_model_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9515,14 +8801,6 @@ export class Get_option_responseContext extends ParserRuleContext {
 			listener.exitGet_option_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitGet_option_response) {
-			return visitor.visitGet_option_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9545,14 +8823,6 @@ export class Get_proof_responseContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitGet_proof_response) {
 			listener.exitGet_proof_response(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitGet_proof_response) {
-			return visitor.visitGet_proof_response(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9587,14 +8857,6 @@ export class Get_unsat_assump_responseContext extends ParserRuleContext {
 			listener.exitGet_unsat_assump_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitGet_unsat_assump_response) {
-			return visitor.visitGet_unsat_assump_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9627,14 +8889,6 @@ export class Get_unsat_core_responseContext extends ParserRuleContext {
 			listener.exitGet_unsat_core_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitGet_unsat_core_response) {
-			return visitor.visitGet_unsat_core_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9665,14 +8919,6 @@ export class Get_value_responseContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitGet_value_response) {
 			listener.exitGet_value_response(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitGet_value_response) {
-			return visitor.visitGet_value_response(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9729,14 +8975,6 @@ export class Specific_success_responseContext extends ParserRuleContext {
 			listener.exitSpecific_success_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitSpecific_success_response) {
-			return visitor.visitSpecific_success_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9767,14 +9005,6 @@ export class General_responseContext extends ParserRuleContext {
 	public exitRule(listener: SMTLIBv2Listener): void {
 		if (listener.exitGeneral_response) {
 			listener.exitGeneral_response(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SMTLIBv2Visitor<Result>): Result {
-		if (visitor.visitGeneral_response) {
-			return visitor.visitGeneral_response(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

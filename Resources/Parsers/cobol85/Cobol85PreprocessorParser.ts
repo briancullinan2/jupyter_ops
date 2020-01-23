@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { Cobol85PreprocessorListener } from "./Cobol85PreprocessorListener";
-import { Cobol85PreprocessorVisitor } from "./Cobol85PreprocessorVisitor";
-
 
 export class Cobol85PreprocessorParser extends Parser {
 	public static readonly ADATA = 1;
@@ -7793,14 +7791,6 @@ export class StartRuleContext extends ParserRuleContext {
 			listener.exitStartRule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitStartRule) {
-			return visitor.visitStartRule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7851,14 +7841,6 @@ export class CompilerOptionsContext extends ParserRuleContext {
 			listener.exitCompilerOptions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitCompilerOptions) {
-			return visitor.visitCompilerOptions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7899,14 +7881,6 @@ export class CompilerXOptsContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitCompilerXOpts) {
 			listener.exitCompilerXOpts(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitCompilerXOpts) {
-			return visitor.visitCompilerXOpts(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8248,14 +8222,6 @@ export class CompilerOptionContext extends ParserRuleContext {
 			listener.exitCompilerOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitCompilerOption) {
-			return visitor.visitCompilerOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8282,14 +8248,6 @@ export class ExecCicsStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitExecCicsStatement) {
 			listener.exitExecCicsStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitExecCicsStatement) {
-			return visitor.visitExecCicsStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8320,14 +8278,6 @@ export class ExecSqlStatementContext extends ParserRuleContext {
 			listener.exitExecSqlStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitExecSqlStatement) {
-			return visitor.visitExecSqlStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8354,14 +8304,6 @@ export class ExecSqlImsStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitExecSqlImsStatement) {
 			listener.exitExecSqlImsStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitExecSqlImsStatement) {
-			return visitor.visitExecSqlImsStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8435,14 +8377,6 @@ export class CopyStatementContext extends ParserRuleContext {
 			listener.exitCopyStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitCopyStatement) {
-			return visitor.visitCopyStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8478,14 +8412,6 @@ export class CopySourceContext extends ParserRuleContext {
 			listener.exitCopySource(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitCopySource) {
-			return visitor.visitCopySource(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8511,14 +8437,6 @@ export class CopyLibraryContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitCopyLibrary) {
 			listener.exitCopyLibrary(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitCopyLibrary) {
-			return visitor.visitCopyLibrary(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8559,14 +8477,6 @@ export class ReplacingPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitReplacingPhrase) {
 			listener.exitReplacingPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitReplacingPhrase) {
-			return visitor.visitReplacingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8614,14 +8524,6 @@ export class ReplaceAreaContext extends ParserRuleContext {
 			listener.exitReplaceArea(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitReplaceArea) {
-			return visitor.visitReplaceArea(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8663,14 +8565,6 @@ export class ReplaceByStatementContext extends ParserRuleContext {
 			listener.exitReplaceByStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitReplaceByStatement) {
-			return visitor.visitReplaceByStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8693,14 +8587,6 @@ export class ReplaceOffStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitReplaceOffStatement) {
 			listener.exitReplaceOffStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitReplaceOffStatement) {
-			return visitor.visitReplaceOffStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8746,14 +8632,6 @@ export class ReplaceClauseContext extends ParserRuleContext {
 			listener.exitReplaceClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitReplaceClause) {
-			return visitor.visitReplaceClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8790,14 +8668,6 @@ export class DirectoryPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitDirectoryPhrase) {
 			listener.exitDirectoryPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitDirectoryPhrase) {
-			return visitor.visitDirectoryPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8837,14 +8707,6 @@ export class FamilyPhraseContext extends ParserRuleContext {
 			listener.exitFamilyPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitFamilyPhrase) {
-			return visitor.visitFamilyPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8876,14 +8738,6 @@ export class ReplaceableContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitReplaceable) {
 			listener.exitReplaceable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitReplaceable) {
-			return visitor.visitReplaceable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8919,14 +8773,6 @@ export class ReplacementContext extends ParserRuleContext {
 			listener.exitReplacement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitReplacement) {
-			return visitor.visitReplacement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8948,14 +8794,6 @@ export class EjectStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitEjectStatement) {
 			listener.exitEjectStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitEjectStatement) {
-			return visitor.visitEjectStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8983,14 +8821,6 @@ export class SkipStatementContext extends ParserRuleContext {
 			listener.exitSkipStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitSkipStatement) {
-			return visitor.visitSkipStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9015,14 +8845,6 @@ export class TitleStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitTitleStatement) {
 			listener.exitTitleStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitTitleStatement) {
-			return visitor.visitTitleStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9056,14 +8878,6 @@ export class PseudoTextContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitPseudoText) {
 			listener.exitPseudoText(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitPseudoText) {
-			return visitor.visitPseudoText(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9103,14 +8917,6 @@ export class CharDataContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitCharData) {
 			listener.exitCharData(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitCharData) {
-			return visitor.visitCharData(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9168,14 +8974,6 @@ export class CharDataSqlContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitCharDataSql) {
 			listener.exitCharDataSql(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitCharDataSql) {
-			return visitor.visitCharDataSql(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9262,14 +9060,6 @@ export class CharDataLineContext extends ParserRuleContext {
 			listener.exitCharDataLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitCharDataLine) {
-			return visitor.visitCharDataLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9295,14 +9085,6 @@ export class CobolWordContext extends ParserRuleContext {
 			listener.exitCobolWord(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitCobolWord) {
-			return visitor.visitCobolWord(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9326,14 +9108,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9354,14 +9128,6 @@ export class FilenameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitFilename) {
 			listener.exitFilename(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitFilename) {
-			return visitor.visitFilename(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9647,14 +9413,6 @@ export class CharDataKeywordContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85PreprocessorListener): void {
 		if (listener.exitCharDataKeyword) {
 			listener.exitCharDataKeyword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85PreprocessorVisitor<Result>): Result {
-		if (visitor.visitCharDataKeyword) {
-			return visitor.visitCharDataKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { cookieListener } from "./cookieListener";
-import { cookieVisitor } from "./cookieVisitor";
-
 
 export class cookieParser extends Parser {
 	public static readonly T__0 = 1;
@@ -421,14 +419,6 @@ export class CookieContext extends ParserRuleContext {
 			listener.exitCookie(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: cookieVisitor<Result>): Result {
-		if (visitor.visitCookie) {
-			return visitor.visitCookie(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -451,14 +441,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: cookieListener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: cookieVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -491,14 +473,6 @@ export class Av_pairsContext extends ParserRuleContext {
 			listener.exitAv_pairs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: cookieVisitor<Result>): Result {
-		if (visitor.visitAv_pairs) {
-			return visitor.visitAv_pairs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -526,14 +500,6 @@ export class Av_pairContext extends ParserRuleContext {
 			listener.exitAv_pair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: cookieVisitor<Result>): Result {
-		if (visitor.visitAv_pair) {
-			return visitor.visitAv_pair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -558,14 +524,6 @@ export class AttrContext extends ParserRuleContext {
 			listener.exitAttr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: cookieVisitor<Result>): Result {
-		if (visitor.visitAttr) {
-			return visitor.visitAttr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -588,14 +546,6 @@ export class ValueContext extends ParserRuleContext {
 	public exitRule(listener: cookieListener): void {
 		if (listener.exitValue) {
 			listener.exitValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: cookieVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -625,14 +575,6 @@ export class WordContext extends ParserRuleContext {
 			listener.exitWord(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: cookieVisitor<Result>): Result {
-		if (visitor.visitWord) {
-			return visitor.visitWord(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -655,14 +597,6 @@ export class TokenContext extends ParserRuleContext {
 			listener.exitToken(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: cookieVisitor<Result>): Result {
-		if (visitor.visitToken) {
-			return visitor.visitToken(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -683,14 +617,6 @@ export class Quoted_stringContext extends ParserRuleContext {
 	public exitRule(listener: cookieListener): void {
 		if (listener.exitQuoted_string) {
 			listener.exitQuoted_string(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: cookieVisitor<Result>): Result {
-		if (visitor.visitQuoted_string) {
-			return visitor.visitQuoted_string(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { infListener } from "./infListener";
-import { infVisitor } from "./infVisitor";
-
 
 export class infParser extends Parser {
 	public static readonly T__0 = 1;
@@ -398,14 +396,6 @@ export class InfContext extends ParserRuleContext {
 			listener.exitInf(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: infVisitor<Result>): Result {
-		if (visitor.visitInf) {
-			return visitor.visitInf(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -439,14 +429,6 @@ export class SectionContext extends ParserRuleContext {
 			listener.exitSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: infVisitor<Result>): Result {
-		if (visitor.visitSection) {
-			return visitor.visitSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -472,14 +454,6 @@ export class SectionheaderContext extends ParserRuleContext {
 			listener.exitSectionheader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: infVisitor<Result>): Result {
-		if (visitor.visitSectionheader) {
-			return visitor.visitSectionheader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -501,14 +475,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: infListener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: infVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -542,14 +508,6 @@ export class LineContext extends ParserRuleContext {
 			listener.exitLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: infVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -578,14 +536,6 @@ export class StringlistContext extends ParserRuleContext {
 	public exitRule(listener: infListener): void {
 		if (listener.exitStringlist) {
 			listener.exitStringlist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: infVisitor<Result>): Result {
-		if (visitor.visitStringlist) {
-			return visitor.visitStringlist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

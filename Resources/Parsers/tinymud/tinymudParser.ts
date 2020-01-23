@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { tinymudListener } from "./tinymudListener";
-import { tinymudVisitor } from "./tinymudVisitor";
-
 
 export class tinymudParser extends Parser {
 	public static readonly T__0 = 1;
@@ -2847,14 +2845,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2881,14 +2871,6 @@ export class LineContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitLine) {
 			listener.exitLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2993,14 +2975,6 @@ export class CommandContext extends ParserRuleContext {
 			listener.exitCommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitCommand) {
-			return visitor.visitCommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3023,14 +2997,6 @@ export class BootcommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitBootcommand) {
 			listener.exitBootcommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitBootcommand) {
-			return visitor.visitBootcommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3060,14 +3026,6 @@ export class ChowncommandContext extends ParserRuleContext {
 			listener.exitChowncommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitChowncommand) {
-			return visitor.visitChowncommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3093,14 +3051,6 @@ export class CreatecommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitCreatecommand) {
 			listener.exitCreatecommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitCreatecommand) {
-			return visitor.visitCreatecommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3130,14 +3080,6 @@ export class DescribecommandContext extends ParserRuleContext {
 			listener.exitDescribecommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitDescribecommand) {
-			return visitor.visitDescribecommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3162,14 +3104,6 @@ export class DigcommandContext extends ParserRuleContext {
 			listener.exitDigcommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitDigcommand) {
-			return visitor.visitDigcommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3189,14 +3123,6 @@ export class DumpcommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitDumpcommand) {
 			listener.exitDumpcommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitDumpcommand) {
-			return visitor.visitDumpcommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3226,14 +3152,6 @@ export class FailcommandContext extends ParserRuleContext {
 			listener.exitFailcommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitFailcommand) {
-			return visitor.visitFailcommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3256,14 +3174,6 @@ export class FindcommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitFindcommand) {
 			listener.exitFindcommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitFindcommand) {
-			return visitor.visitFindcommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3291,14 +3201,6 @@ export class ForcecommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitForcecommand) {
 			listener.exitForcecommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitForcecommand) {
-			return visitor.visitForcecommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3334,14 +3236,6 @@ export class LinkcommandContext extends ParserRuleContext {
 			listener.exitLinkcommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitLinkcommand) {
-			return visitor.visitLinkcommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3367,14 +3261,6 @@ export class LockcommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitLockcommand) {
 			listener.exitLockcommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitLockcommand) {
-			return visitor.visitLockcommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3407,14 +3293,6 @@ export class NamecommandContext extends ParserRuleContext {
 			listener.exitNamecommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitNamecommand) {
-			return visitor.visitNamecommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3442,14 +3320,6 @@ export class NewpassswordcommandContext extends ParserRuleContext {
 			listener.exitNewpassswordcommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitNewpassswordcommand) {
-			return visitor.visitNewpassswordcommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3475,14 +3345,6 @@ export class OfailcommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitOfailcommand) {
 			listener.exitOfailcommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitOfailcommand) {
-			return visitor.visitOfailcommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3518,14 +3380,6 @@ export class OpencommandContext extends ParserRuleContext {
 			listener.exitOpencommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitOpencommand) {
-			return visitor.visitOpencommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3551,14 +3405,6 @@ export class OsuccesscommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitOsuccesscommand) {
 			listener.exitOsuccesscommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitOsuccesscommand) {
-			return visitor.visitOsuccesscommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3591,14 +3437,6 @@ export class PasswordcommandContext extends ParserRuleContext {
 			listener.exitPasswordcommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitPasswordcommand) {
-			return visitor.visitPasswordcommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3621,14 +3459,6 @@ export class PcreatecommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitPcreatecommand) {
 			listener.exitPcreatecommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitPcreatecommand) {
-			return visitor.visitPcreatecommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3658,14 +3488,6 @@ export class SetcommandContext extends ParserRuleContext {
 			listener.exitSetcommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitSetcommand) {
-			return visitor.visitSetcommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3685,14 +3507,6 @@ export class ShutdowncommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitShutdowncommand) {
 			listener.exitShutdowncommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitShutdowncommand) {
-			return visitor.visitShutdowncommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3717,14 +3531,6 @@ export class StatscommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitStatscommand) {
 			listener.exitStatscommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitStatscommand) {
-			return visitor.visitStatscommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3754,14 +3560,6 @@ export class SuccesscommandContext extends ParserRuleContext {
 			listener.exitSuccesscommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitSuccesscommand) {
-			return visitor.visitSuccesscommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3789,14 +3587,6 @@ export class TeleportcommandContext extends ParserRuleContext {
 			listener.exitTeleportcommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitTeleportcommand) {
-			return visitor.visitTeleportcommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3819,14 +3609,6 @@ export class ToadcommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitToadcommand) {
 			listener.exitToadcommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitToadcommand) {
-			return visitor.visitToadcommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3853,14 +3635,6 @@ export class UnlinkcommandContext extends ParserRuleContext {
 			listener.exitUnlinkcommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitUnlinkcommand) {
-			return visitor.visitUnlinkcommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3885,14 +3659,6 @@ export class UnlockcommandContext extends ParserRuleContext {
 			listener.exitUnlockcommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitUnlockcommand) {
-			return visitor.visitUnlockcommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3915,14 +3681,6 @@ export class WallcommandContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitWallcommand) {
 			listener.exitWallcommand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitWallcommand) {
-			return visitor.visitWallcommand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4000,14 +3758,6 @@ export class ActionContext extends ParserRuleContext {
 			listener.exitAction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitAction) {
-			return visitor.visitAction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4030,14 +3780,6 @@ export class DropactionContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitDropaction) {
 			listener.exitDropaction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitDropaction) {
-			return visitor.visitDropaction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4064,14 +3806,6 @@ export class ExamineactionContext extends ParserRuleContext {
 			listener.exitExamineaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitExamineaction) {
-			return visitor.visitExamineaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4094,14 +3828,6 @@ export class GetactionContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitGetaction) {
 			listener.exitGetaction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitGetaction) {
-			return visitor.visitGetaction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4131,14 +3857,6 @@ export class GiveactionContext extends ParserRuleContext {
 			listener.exitGiveaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitGiveaction) {
-			return visitor.visitGiveaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4161,14 +3879,6 @@ export class GotoactionContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitGotoaction) {
 			listener.exitGotoaction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitGotoaction) {
-			return visitor.visitGotoaction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4195,14 +3905,6 @@ export class GripeactionContext extends ParserRuleContext {
 			listener.exitGripeaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitGripeaction) {
-			return visitor.visitGripeaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4224,14 +3926,6 @@ export class HelpactionContext extends ParserRuleContext {
 			listener.exitHelpaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitHelpaction) {
-			return visitor.visitHelpaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4251,14 +3945,6 @@ export class InventoryactionContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitInventoryaction) {
 			listener.exitInventoryaction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitInventoryaction) {
-			return visitor.visitInventoryaction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4288,14 +3974,6 @@ export class KillactionContext extends ParserRuleContext {
 			listener.exitKillaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitKillaction) {
-			return visitor.visitKillaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4320,14 +3998,6 @@ export class LookactionContext extends ParserRuleContext {
 			listener.exitLookaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitLookaction) {
-			return visitor.visitLookaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4347,14 +4017,6 @@ export class NewsactionContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitNewsaction) {
 			listener.exitNewsaction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitNewsaction) {
-			return visitor.visitNewsaction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4384,14 +4046,6 @@ export class PageactionContext extends ParserRuleContext {
 			listener.exitPageaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitPageaction) {
-			return visitor.visitPageaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4411,14 +4065,6 @@ export class QuitactionContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitQuitaction) {
 			listener.exitQuitaction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitQuitaction) {
-			return visitor.visitQuitaction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4445,14 +4091,6 @@ export class RobactionContext extends ParserRuleContext {
 			listener.exitRobaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitRobaction) {
-			return visitor.visitRobaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4477,14 +4115,6 @@ export class SayactionContext extends ParserRuleContext {
 			listener.exitSayaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitSayaction) {
-			return visitor.visitSayaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4504,14 +4134,6 @@ export class ScoreactionContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitScoreaction) {
 			listener.exitScoreaction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitScoreaction) {
-			return visitor.visitScoreaction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4541,14 +4163,6 @@ export class WhisperactionContext extends ParserRuleContext {
 			listener.exitWhisperaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitWhisperaction) {
-			return visitor.visitWhisperaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4573,14 +4187,6 @@ export class WhoactionContext extends ParserRuleContext {
 			listener.exitWhoaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitWhoaction) {
-			return visitor.visitWhoaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4601,14 +4207,6 @@ export class ObjectContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitObject) {
 			listener.exitObject(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitObject) {
-			return visitor.visitObject(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4633,14 +4231,6 @@ export class PlayerContext extends ParserRuleContext {
 			listener.exitPlayer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitPlayer) {
-			return visitor.visitPlayer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4661,14 +4251,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4693,14 +4275,6 @@ export class DescriptionContext extends ParserRuleContext {
 			listener.exitDescription(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitDescription) {
-			return visitor.visitDescription(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4721,14 +4295,6 @@ export class CostContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitCost) {
 			listener.exitCost(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitCost) {
-			return visitor.visitCost(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4753,14 +4319,6 @@ export class KeyContext extends ParserRuleContext {
 			listener.exitKey(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitKey) {
-			return visitor.visitKey(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4781,14 +4339,6 @@ export class PasswordContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitPassword) {
 			listener.exitPassword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitPassword) {
-			return visitor.visitPassword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4813,14 +4363,6 @@ export class MessageContext extends ParserRuleContext {
 			listener.exitMessage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitMessage) {
-			return visitor.visitMessage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4841,14 +4383,6 @@ export class DirContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitDir) {
 			listener.exitDir(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitDir) {
-			return visitor.visitDir(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4873,14 +4407,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4901,14 +4427,6 @@ export class RoomContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitRoom) {
 			listener.exitRoom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitRoom) {
-			return visitor.visitRoom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4933,14 +4451,6 @@ export class FlagContext extends ParserRuleContext {
 			listener.exitFlag(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitFlag) {
-			return visitor.visitFlag(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4963,14 +4473,6 @@ export class PenniesContext extends ParserRuleContext {
 			listener.exitPennies(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitPennies) {
-			return visitor.visitPennies(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4991,14 +4493,6 @@ export class DirectionContext extends ParserRuleContext {
 	public exitRule(listener: tinymudListener): void {
 		if (listener.exitDirection) {
 			listener.exitDirection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinymudVisitor<Result>): Result {
-		if (visitor.visitDirection) {
-			return visitor.visitDirection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

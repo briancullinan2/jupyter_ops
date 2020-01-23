@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { bListener } from "./bListener";
-import { bVisitor } from "./bVisitor";
-
 
 export class bParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1651,14 +1649,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1704,14 +1694,6 @@ export class DefinitionContext extends ParserRuleContext {
 			listener.exitDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitDefinition) {
-			return visitor.visitDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1737,14 +1719,6 @@ export class IvalContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitIval) {
 			listener.exitIval(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitIval) {
-			return visitor.visitIval(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1807,14 +1781,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1834,14 +1800,6 @@ export class NullstmtContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitNullstmt) {
 			listener.exitNullstmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitNullstmt) {
-			return visitor.visitNullstmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1866,14 +1824,6 @@ export class ExpressionstmtContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitExpressionstmt) {
 			listener.exitExpressionstmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitExpressionstmt) {
-			return visitor.visitExpressionstmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1906,14 +1856,6 @@ export class BlockstmtContext extends ParserRuleContext {
 			listener.exitBlockstmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitBlockstmt) {
-			return visitor.visitBlockstmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1938,14 +1880,6 @@ export class ReturnstmtContext extends ParserRuleContext {
 			listener.exitReturnstmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitReturnstmt) {
-			return visitor.visitReturnstmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1968,14 +1902,6 @@ export class GotostmtContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitGotostmt) {
 			listener.exitGotostmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitGotostmt) {
-			return visitor.visitGotostmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2005,14 +1931,6 @@ export class SwitchstmtContext extends ParserRuleContext {
 			listener.exitSwitchstmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitSwitchstmt) {
-			return visitor.visitSwitchstmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2038,14 +1956,6 @@ export class WhilestmtContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitWhilestmt) {
 			listener.exitWhilestmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitWhilestmt) {
-			return visitor.visitWhilestmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2081,14 +1991,6 @@ export class IfstmtContext extends ParserRuleContext {
 			listener.exitIfstmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitIfstmt) {
-			return visitor.visitIfstmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2114,14 +2016,6 @@ export class CasestmtContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitCasestmt) {
 			listener.exitCasestmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitCasestmt) {
-			return visitor.visitCasestmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2152,14 +2046,6 @@ export class ExternsmtContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitExternsmt) {
 			listener.exitExternsmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitExternsmt) {
-			return visitor.visitExternsmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2201,14 +2087,6 @@ export class AutosmtContext extends ParserRuleContext {
 			listener.exitAutosmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitAutosmt) {
-			return visitor.visitAutosmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2240,14 +2118,6 @@ export class RvalueContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitRvalue) {
 			listener.exitRvalue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitRvalue) {
-			return visitor.visitRvalue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2283,14 +2153,6 @@ export class TernaryContext extends ParserRuleContext {
 			listener.exitTernary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitTernary) {
-			return visitor.visitTernary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2321,14 +2183,6 @@ export class ComparisonContext extends ParserRuleContext {
 			listener.exitComparison(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitComparison) {
-			return visitor.visitComparison(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2357,14 +2211,6 @@ export class AssignmentContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitAssignment) {
 			listener.exitAssignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitAssignment) {
-			return visitor.visitAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2406,14 +2252,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2439,14 +2277,6 @@ export class FunctioninvocationContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitFunctioninvocation) {
 			listener.exitFunctioninvocation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitFunctioninvocation) {
-			return visitor.visitFunctioninvocation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2479,14 +2309,6 @@ export class FunctionparametersContext extends ParserRuleContext {
 			listener.exitFunctionparameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitFunctionparameters) {
-			return visitor.visitFunctionparameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2511,14 +2333,6 @@ export class AssignContext extends ParserRuleContext {
 			listener.exitAssign(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitAssign) {
-			return visitor.visitAssign(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2538,14 +2352,6 @@ export class IncdecContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitIncdec) {
 			listener.exitIncdec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitIncdec) {
-			return visitor.visitIncdec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2569,14 +2375,6 @@ export class UnaryContext extends ParserRuleContext {
 			listener.exitUnary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitUnary) {
-			return visitor.visitUnary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2596,14 +2394,6 @@ export class BinaryContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitBinary) {
 			listener.exitBinary(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitBinary) {
-			return visitor.visitBinary(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2639,14 +2429,6 @@ export class LvalueContext extends ParserRuleContext {
 			listener.exitLvalue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitLvalue) {
-			return visitor.visitLvalue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2671,14 +2453,6 @@ export class ConstantContext extends ParserRuleContext {
 			listener.exitConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitConstant) {
-			return visitor.visitConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2699,14 +2473,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: bListener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

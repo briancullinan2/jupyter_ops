@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { propcalcListener } from "./propcalcListener";
-import { propcalcVisitor } from "./propcalcVisitor";
-
 
 export class propcalcParser extends Parser {
 	public static readonly T__0 = 1;
@@ -479,14 +477,6 @@ export class PropositionContext extends ParserRuleContext {
 			listener.exitProposition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: propcalcVisitor<Result>): Result {
-		if (visitor.visitProposition) {
-			return visitor.visitProposition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -535,14 +525,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: propcalcVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -573,14 +555,6 @@ export class RelExpressionContext extends ParserRuleContext {
 			listener.exitRelExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: propcalcVisitor<Result>): Result {
-		if (visitor.visitRelExpression) {
-			return visitor.visitRelExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -609,14 +583,6 @@ export class AtomsContext extends ParserRuleContext {
 	public exitRule(listener: propcalcListener): void {
 		if (listener.exitAtoms) {
 			listener.exitAtoms(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: propcalcVisitor<Result>): Result {
-		if (visitor.visitAtoms) {
-			return visitor.visitAtoms(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -652,14 +618,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: propcalcVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -689,14 +647,6 @@ export class EquivContext extends ParserRuleContext {
 	public exitRule(listener: propcalcListener): void {
 		if (listener.exitEquiv) {
 			listener.exitEquiv(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: propcalcVisitor<Result>): Result {
-		if (visitor.visitEquiv) {
-			return visitor.visitEquiv(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -730,14 +680,6 @@ export class ImpliesContext extends ParserRuleContext {
 			listener.exitImplies(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: propcalcVisitor<Result>): Result {
-		if (visitor.visitImplies) {
-			return visitor.visitImplies(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -766,14 +708,6 @@ export class VariableContext extends ParserRuleContext {
 	public exitRule(listener: propcalcListener): void {
 		if (listener.exitVariable) {
 			listener.exitVariable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: propcalcVisitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

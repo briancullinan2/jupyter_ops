@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { EDIF300Listener } from "./EDIF300Listener";
-import { EDIF300Visitor } from "./EDIF300Visitor";
-
 
 export class EDIF300Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -44663,14 +44661,6 @@ export class GoalContext extends ParserRuleContext {
 			listener.exitGoal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGoal) {
-			return visitor.visitGoal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44695,14 +44685,6 @@ export class AbsoluteContext extends ParserRuleContext {
 			listener.exitAbsolute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAbsolute) {
-			return visitor.visitAbsolute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44725,14 +44707,6 @@ export class AcLoadContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitAcLoad) {
 			listener.exitAcLoad(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAcLoad) {
-			return visitor.visitAcLoad(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44765,14 +44739,6 @@ export class AcLoadDisplayContext extends ParserRuleContext {
 			listener.exitAcLoadDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAcLoadDisplay) {
-			return visitor.visitAcLoadDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44797,14 +44763,6 @@ export class AcLoadFactorCapacitanceContext extends ParserRuleContext {
 			listener.exitAcLoadFactorCapacitance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAcLoadFactorCapacitance) {
-			return visitor.visitAcLoadFactorCapacitance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44827,14 +44785,6 @@ export class AcLoadFactorTimeContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitAcLoadFactorTime) {
 			listener.exitAcLoadFactorTime(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAcLoadFactorTime) {
-			return visitor.visitAcLoadFactorTime(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44867,14 +44817,6 @@ export class AddDisplayContext extends ParserRuleContext {
 			listener.exitAddDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAddDisplay) {
-			return visitor.visitAddDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44897,14 +44839,6 @@ export class AmpereContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitAmpere) {
 			listener.exitAmpere(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAmpere) {
-			return visitor.visitAmpere(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44937,14 +44871,6 @@ export class And_Context extends ParserRuleContext {
 			listener.exitAnd_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAnd_) {
-			return visitor.visitAnd_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44967,14 +44893,6 @@ export class AngleValueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitAngleValue) {
 			listener.exitAngleValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAngleValue) {
-			return visitor.visitAngleValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45010,14 +44928,6 @@ export class AnnotateContext extends ParserRuleContext {
 			listener.exitAnnotate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAnnotate) {
-			return visitor.visitAnnotate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45040,14 +44950,6 @@ export class ApprovedDateContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitApprovedDate) {
 			listener.exitApprovedDate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitApprovedDate) {
-			return visitor.visitApprovedDate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45080,14 +44982,6 @@ export class ApprovedDateDisplayContext extends ParserRuleContext {
 			listener.exitApprovedDateDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitApprovedDateDisplay) {
-			return visitor.visitApprovedDateDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45118,14 +45012,6 @@ export class ArcContext extends ParserRuleContext {
 			listener.exitArc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitArc) {
-			return visitor.visitArc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45145,14 +45031,6 @@ export class AsciiContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitAscii) {
 			listener.exitAscii(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAscii) {
-			return visitor.visitAscii(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45185,14 +45063,6 @@ export class AssociatedInterconnectNameDisplayContext extends ParserRuleContext 
 			listener.exitAssociatedInterconnectNameDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAssociatedInterconnectNameDisplay) {
-			return visitor.visitAssociatedInterconnectNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45215,14 +45085,6 @@ export class AttachmentPointContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitAttachmentPoint) {
 			listener.exitAttachmentPoint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAttachmentPoint) {
-			return visitor.visitAttachmentPoint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45249,14 +45111,6 @@ export class AuthorContext extends ParserRuleContext {
 			listener.exitAuthor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitAuthor) {
-			return visitor.visitAuthor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45281,14 +45135,6 @@ export class BackgroundColorContext extends ParserRuleContext {
 			listener.exitBackgroundColor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBackgroundColor) {
-			return visitor.visitBackgroundColor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45308,14 +45154,6 @@ export class BaselineJustifyContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitBaselineJustify) {
 			listener.exitBaselineJustify(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBaselineJustify) {
-			return visitor.visitBaselineJustify(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45346,14 +45184,6 @@ export class BecomesContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitBecomes) {
 			listener.exitBecomes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBecomes) {
-			return visitor.visitBecomes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45407,14 +45237,6 @@ export class BehaviorViewContext extends ParserRuleContext {
 			listener.exitBehaviorView(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBehaviorView) {
-			return visitor.visitBehaviorView(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45434,14 +45256,6 @@ export class BidirectionalContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitBidirectional) {
 			listener.exitBidirectional(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBidirectional) {
-			return visitor.visitBidirectional(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45466,14 +45280,6 @@ export class BidirectionalPortContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitBidirectionalPort) {
 			listener.exitBidirectionalPort(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBidirectionalPort) {
-			return visitor.visitBidirectionalPort(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45533,14 +45339,6 @@ export class BidirectionalPortAttributesContext extends ParserRuleContext {
 			listener.exitBidirectionalPortAttributes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBidirectionalPortAttributes) {
-			return visitor.visitBidirectionalPortAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45568,14 +45366,6 @@ export class BitOrderContext extends ParserRuleContext {
 			listener.exitBitOrder(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBitOrder) {
-			return visitor.visitBitOrder(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45600,14 +45390,6 @@ export class BlueContext extends ParserRuleContext {
 			listener.exitBlue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBlue) {
-			return visitor.visitBlue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45627,14 +45409,6 @@ export class BoldStyleContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitBoldStyle) {
 			listener.exitBoldStyle(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBoldStyle) {
-			return visitor.visitBoldStyle(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45659,14 +45433,6 @@ export class EbooleanContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitEboolean) {
 			listener.exitEboolean(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEboolean) {
-			return visitor.visitEboolean(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45696,14 +45462,6 @@ export class BooleanConstantContext extends ParserRuleContext {
 			listener.exitBooleanConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBooleanConstant) {
-			return visitor.visitBooleanConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45726,14 +45484,6 @@ export class BooleanConstantRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitBooleanConstantRef) {
 			listener.exitBooleanConstantRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBooleanConstantRef) {
-			return visitor.visitBooleanConstantRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45790,14 +45540,6 @@ export class BooleanExpressionContext extends ParserRuleContext {
 			listener.exitBooleanExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBooleanExpression) {
-			return visitor.visitBooleanExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45820,14 +45562,6 @@ export class BooleanMapContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitBooleanMap) {
 			listener.exitBooleanMap(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBooleanMap) {
-			return visitor.visitBooleanMap(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45872,14 +45606,6 @@ export class BooleanParameterContext extends ParserRuleContext {
 			listener.exitBooleanParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBooleanParameter) {
-			return visitor.visitBooleanParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45907,14 +45633,6 @@ export class BooleanParameterAssignContext extends ParserRuleContext {
 			listener.exitBooleanParameterAssign(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBooleanParameterAssign) {
-			return visitor.visitBooleanParameterAssign(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45937,14 +45655,6 @@ export class BooleanParameterRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitBooleanParameterRef) {
 			listener.exitBooleanParameterRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBooleanParameterRef) {
-			return visitor.visitBooleanParameterRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45974,14 +45684,6 @@ export class BooleanTokenContext extends ParserRuleContext {
 			listener.exitBooleanToken(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBooleanToken) {
-			return visitor.visitBooleanToken(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46004,14 +45706,6 @@ export class BooleanValueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitBooleanValue) {
 			listener.exitBooleanValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBooleanValue) {
-			return visitor.visitBooleanValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46038,14 +45732,6 @@ export class BorderPatternContext extends ParserRuleContext {
 			listener.exitBorderPattern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBorderPattern) {
-			return visitor.visitBorderPattern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46068,14 +45754,6 @@ export class BorderPatternVisibleContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitBorderPatternVisible) {
 			listener.exitBorderPatternVisible(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBorderPatternVisible) {
-			return visitor.visitBorderPatternVisible(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46105,14 +45783,6 @@ export class BorderWidthContext extends ParserRuleContext {
 			listener.exitBorderWidth(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBorderWidth) {
-			return visitor.visitBorderWidth(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46134,14 +45804,6 @@ export class BottomJustifyContext extends ParserRuleContext {
 			listener.exitBottomJustify(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitBottomJustify) {
-			return visitor.visitBottomJustify(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46161,14 +45823,6 @@ export class CalculatedContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCalculated) {
 			listener.exitCalculated(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCalculated) {
-			return visitor.visitCalculated(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46195,14 +45849,6 @@ export class CandelaContext extends ParserRuleContext {
 			listener.exitCandela(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCandela) {
-			return visitor.visitCandela(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46227,14 +45873,6 @@ export class CapacitanceValueContext extends ParserRuleContext {
 			listener.exitCapacitanceValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCapacitanceValue) {
-			return visitor.visitCapacitanceValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46254,14 +45892,6 @@ export class CaplineJustifyContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCaplineJustify) {
 			listener.exitCaplineJustify(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCaplineJustify) {
-			return visitor.visitCaplineJustify(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46327,14 +45957,6 @@ export class CellContext extends ParserRuleContext {
 			listener.exitCell(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCell) {
-			return visitor.visitCell(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46392,14 +46014,6 @@ export class CellHeaderContext extends ParserRuleContext {
 			listener.exitCellHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCellHeader) {
-			return visitor.visitCellHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46437,14 +46051,6 @@ export class CellNameDisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCellNameDisplay) {
 			listener.exitCellNameDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCellNameDisplay) {
-			return visitor.visitCellNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46489,14 +46095,6 @@ export class CellPropertyDisplayContext extends ParserRuleContext {
 			listener.exitCellPropertyDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCellPropertyDisplay) {
-			return visitor.visitCellPropertyDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46531,14 +46129,6 @@ export class CellPropertyDisplayOverrideContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCellPropertyDisplayOverride) {
 			listener.exitCellPropertyDisplayOverride(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCellPropertyDisplayOverride) {
-			return visitor.visitCellPropertyDisplayOverride(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46598,14 +46188,6 @@ export class CellPropertyOverrideContext extends ParserRuleContext {
 			listener.exitCellPropertyOverride(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCellPropertyOverride) {
-			return visitor.visitCellPropertyOverride(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46633,14 +46215,6 @@ export class CellRefContext extends ParserRuleContext {
 			listener.exitCellRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCellRef) {
-			return visitor.visitCellRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46665,14 +46239,6 @@ export class CelsiusContext extends ParserRuleContext {
 			listener.exitCelsius(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCelsius) {
-			return visitor.visitCelsius(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46692,14 +46258,6 @@ export class CenterJustifyContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCenterJustify) {
 			listener.exitCenterJustify(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCenterJustify) {
-			return visitor.visitCenterJustify(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46735,14 +46293,6 @@ export class CharacterEncodingContext extends ParserRuleContext {
 			listener.exitCharacterEncoding(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCharacterEncoding) {
-			return visitor.visitCharacterEncoding(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46765,14 +46315,6 @@ export class CheckDateContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCheckDate) {
 			listener.exitCheckDate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCheckDate) {
-			return visitor.visitCheckDate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46805,14 +46347,6 @@ export class CheckDateDisplayContext extends ParserRuleContext {
 			listener.exitCheckDateDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCheckDateDisplay) {
-			return visitor.visitCheckDateDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46838,14 +46372,6 @@ export class CircleContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCircle) {
 			listener.exitCircle(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCircle) {
-			return visitor.visitCircle(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46986,14 +46512,6 @@ export class ClusterContext extends ParserRuleContext {
 			listener.exitCluster(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCluster) {
-			return visitor.visitCluster(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47090,14 +46608,6 @@ export class ClusterConfigurationContext extends ParserRuleContext {
 			listener.exitClusterConfiguration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterConfiguration) {
-			return visitor.visitClusterConfiguration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47120,14 +46630,6 @@ export class ClusterConfigurationNameCaseSensitiveContext extends ParserRuleCont
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitClusterConfigurationNameCaseSensitive) {
 			listener.exitClusterConfigurationNameCaseSensitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterConfigurationNameCaseSensitive) {
-			return visitor.visitClusterConfigurationNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47154,14 +46656,6 @@ export class ClusterConfigurationNameDefContext extends ParserRuleContext {
 			listener.exitClusterConfigurationNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterConfigurationNameDef) {
-			return visitor.visitClusterConfigurationNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47186,14 +46680,6 @@ export class ClusterConfigurationNameRefContext extends ParserRuleContext {
 			listener.exitClusterConfigurationNameRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterConfigurationNameRef) {
-			return visitor.visitClusterConfigurationNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47216,14 +46702,6 @@ export class ClusterConfigurationRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitClusterConfigurationRef) {
 			listener.exitClusterConfigurationRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterConfigurationRef) {
-			return visitor.visitClusterConfigurationRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47283,14 +46761,6 @@ export class ClusterHeaderContext extends ParserRuleContext {
 			listener.exitClusterHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterHeader) {
-			return visitor.visitClusterHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47313,14 +46783,6 @@ export class ClusterNameCaseSensitiveContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitClusterNameCaseSensitive) {
 			listener.exitClusterNameCaseSensitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterNameCaseSensitive) {
-			return visitor.visitClusterNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47347,14 +46809,6 @@ export class ClusterNameDefContext extends ParserRuleContext {
 			listener.exitClusterNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterNameDef) {
-			return visitor.visitClusterNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47377,14 +46831,6 @@ export class ClusterNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitClusterNameRef) {
 			listener.exitClusterNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterNameRef) {
-			return visitor.visitClusterNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47429,14 +46875,6 @@ export class ClusterPropertyDisplayContext extends ParserRuleContext {
 			listener.exitClusterPropertyDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterPropertyDisplay) {
-			return visitor.visitClusterPropertyDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47471,14 +46909,6 @@ export class ClusterPropertyDisplayOverrideContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitClusterPropertyDisplayOverride) {
 			listener.exitClusterPropertyDisplayOverride(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterPropertyDisplayOverride) {
-			return visitor.visitClusterPropertyDisplayOverride(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47538,14 +46968,6 @@ export class ClusterPropertyOverrideContext extends ParserRuleContext {
 			listener.exitClusterPropertyOverride(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterPropertyOverride) {
-			return visitor.visitClusterPropertyOverride(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47571,14 +46993,6 @@ export class ClusterRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitClusterRef) {
 			listener.exitClusterRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitClusterRef) {
-			return visitor.visitClusterRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47611,14 +47025,6 @@ export class ColorContext extends ParserRuleContext {
 			listener.exitColor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitColor) {
-			return visitor.visitColor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47647,14 +47053,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47732,14 +47130,6 @@ export class CommentGraphicsContext extends ParserRuleContext {
 			listener.exitCommentGraphics(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCommentGraphics) {
-			return visitor.visitCommentGraphics(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47762,14 +47152,6 @@ export class CompanyNameContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCompanyName) {
 			listener.exitCompanyName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCompanyName) {
-			return visitor.visitCompanyName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47800,14 +47182,6 @@ export class CompanyNameDisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCompanyNameDisplay) {
 			listener.exitCompanyNameDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCompanyNameDisplay) {
-			return visitor.visitCompanyNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47867,14 +47241,6 @@ export class ComplementedNameContext extends ParserRuleContext {
 			listener.exitComplementedName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitComplementedName) {
-			return visitor.visitComplementedName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47923,14 +47289,6 @@ export class ComplementedNamePartContext extends ParserRuleContext {
 			listener.exitComplementedNamePart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitComplementedNamePart) {
-			return visitor.visitComplementedNamePart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47956,14 +47314,6 @@ export class ComplexGeometryContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitComplexGeometry) {
 			listener.exitComplexGeometry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitComplexGeometry) {
-			return visitor.visitComplexGeometry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48023,14 +47373,6 @@ export class ComplexNameContext extends ParserRuleContext {
 			listener.exitComplexName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitComplexName) {
-			return visitor.visitComplexName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48061,14 +47403,6 @@ export class CompoundContext extends ParserRuleContext {
 			listener.exitCompound(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCompound) {
-			return visitor.visitCompound(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48091,14 +47425,6 @@ export class ConditionContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCondition) {
 			listener.exitCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCondition) {
-			return visitor.visitCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48131,14 +47457,6 @@ export class ConditionDisplayContext extends ParserRuleContext {
 			listener.exitConditionDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConditionDisplay) {
-			return visitor.visitConditionDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48161,14 +47479,6 @@ export class ConnectedSignalIndexGeneratorContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitConnectedSignalIndexGenerator) {
 			listener.exitConnectedSignalIndexGenerator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectedSignalIndexGenerator) {
-			return visitor.visitConnectedSignalIndexGenerator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48199,14 +47509,6 @@ export class ConnectedSignalIndexGeneratorDisplayContext extends ParserRuleConte
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitConnectedSignalIndexGeneratorDisplay) {
 			listener.exitConnectedSignalIndexGeneratorDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectedSignalIndexGeneratorDisplay) {
-			return visitor.visitConnectedSignalIndexGeneratorDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48278,14 +47580,6 @@ export class ConnectivityBusContext extends ParserRuleContext {
 			listener.exitConnectivityBus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityBus) {
-			return visitor.visitConnectivityBus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48317,14 +47611,6 @@ export class ConnectivityBusJoinedContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitConnectivityBusJoined) {
 			listener.exitConnectivityBusJoined(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityBusJoined) {
-			return visitor.visitConnectivityBusJoined(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48394,14 +47680,6 @@ export class ConnectivityBusSliceContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitConnectivityBusSlice) {
 			listener.exitConnectivityBusSlice(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityBusSlice) {
-			return visitor.visitConnectivityBusSlice(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48494,14 +47772,6 @@ export class ConnectivityFrameStructureContext extends ParserRuleContext {
 			listener.exitConnectivityFrameStructure(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityFrameStructure) {
-			return visitor.visitConnectivityFrameStructure(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48524,14 +47794,6 @@ export class ConnectivityFrameStructureNameDefContext extends ParserRuleContext 
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitConnectivityFrameStructureNameDef) {
 			listener.exitConnectivityFrameStructureNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityFrameStructureNameDef) {
-			return visitor.visitConnectivityFrameStructureNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48594,14 +47856,6 @@ export class ConnectivityNetContext extends ParserRuleContext {
 			listener.exitConnectivityNet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityNet) {
-			return visitor.visitConnectivityNet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48638,14 +47892,6 @@ export class ConnectivityNetJoinedContext extends ParserRuleContext {
 			listener.exitConnectivityNetJoined(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityNetJoined) {
-			return visitor.visitConnectivityNetJoined(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48668,14 +47914,6 @@ export class ConnectivityRipperContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitConnectivityRipper) {
 			listener.exitConnectivityRipper(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityRipper) {
-			return visitor.visitConnectivityRipper(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48702,14 +47940,6 @@ export class ConnectivityRipperNameDefContext extends ParserRuleContext {
 			listener.exitConnectivityRipperNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityRipperNameDef) {
-			return visitor.visitConnectivityRipperNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48734,14 +47964,6 @@ export class ConnectivityRipperNameRefContext extends ParserRuleContext {
 			listener.exitConnectivityRipperNameRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityRipperNameRef) {
-			return visitor.visitConnectivityRipperNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48764,14 +47986,6 @@ export class ConnectivityRipperRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitConnectivityRipperRef) {
 			listener.exitConnectivityRipperRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityRipperRef) {
-			return visitor.visitConnectivityRipperRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48867,14 +48081,6 @@ export class ConnectivityStructureContext extends ParserRuleContext {
 			listener.exitConnectivityStructure(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityStructure) {
-			return visitor.visitConnectivityStructure(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48941,14 +48147,6 @@ export class ConnectivitySubBusContext extends ParserRuleContext {
 			listener.exitConnectivitySubBus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivitySubBus) {
-			return visitor.visitConnectivitySubBus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49006,14 +48204,6 @@ export class ConnectivitySubNetContext extends ParserRuleContext {
 			listener.exitConnectivitySubNet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivitySubNet) {
-			return visitor.visitConnectivitySubNet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49036,14 +48226,6 @@ export class ConnectivityTagGeneratorContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitConnectivityTagGenerator) {
 			listener.exitConnectivityTagGenerator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityTagGenerator) {
-			return visitor.visitConnectivityTagGenerator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49076,14 +48258,6 @@ export class ConnectivityTagGeneratorDisplayContext extends ParserRuleContext {
 			listener.exitConnectivityTagGeneratorDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityTagGeneratorDisplay) {
-			return visitor.visitConnectivityTagGeneratorDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49109,14 +48283,6 @@ export class ConnectivityUnitsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitConnectivityUnits) {
 			listener.exitConnectivityUnits(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityUnits) {
-			return visitor.visitConnectivityUnits(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49168,14 +48334,6 @@ export class ConnectivityViewContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitConnectivityView) {
 			listener.exitConnectivityView(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityView) {
-			return visitor.visitConnectivityView(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49256,14 +48414,6 @@ export class ConnectivityViewHeaderContext extends ParserRuleContext {
 			listener.exitConnectivityViewHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConnectivityViewHeader) {
-			return visitor.visitConnectivityViewHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49288,14 +48438,6 @@ export class ConstantNameDefContext extends ParserRuleContext {
 			listener.exitConstantNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConstantNameDef) {
-			return visitor.visitConstantNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49318,14 +48460,6 @@ export class ConstantNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitConstantNameRef) {
 			listener.exitConstantNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConstantNameRef) {
-			return visitor.visitConstantNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49376,14 +48510,6 @@ export class ConstantValuesContext extends ParserRuleContext {
 			listener.exitConstantValues(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitConstantValues) {
-			return visitor.visitConstantValues(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49406,14 +48532,6 @@ export class ContractContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitContract) {
 			listener.exitContract(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitContract) {
-			return visitor.visitContract(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49444,14 +48562,6 @@ export class ContractDisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitContractDisplay) {
 			listener.exitContractDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitContractDisplay) {
-			return visitor.visitContractDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49487,14 +48597,6 @@ export class CopyrightContext extends ParserRuleContext {
 			listener.exitCopyright(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCopyright) {
-			return visitor.visitCopyright(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49523,14 +48625,6 @@ export class CopyrightDisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCopyrightDisplay) {
 			listener.exitCopyrightDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCopyrightDisplay) {
-			return visitor.visitCopyrightDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49563,14 +48657,6 @@ export class CornerTypeContext extends ParserRuleContext {
 			listener.exitCornerType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCornerType) {
-			return visitor.visitCornerType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49595,14 +48681,6 @@ export class CoulombContext extends ParserRuleContext {
 			listener.exitCoulomb(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCoulomb) {
-			return visitor.visitCoulomb(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49625,14 +48703,6 @@ export class CriticalityContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCriticality) {
 			listener.exitCriticality(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCriticality) {
-			return visitor.visitCriticality(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49665,14 +48735,6 @@ export class CriticalityDisplayContext extends ParserRuleContext {
 			listener.exitCriticalityDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCriticalityDisplay) {
-			return visitor.visitCriticalityDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49697,14 +48759,6 @@ export class CurrentMapContext extends ParserRuleContext {
 			listener.exitCurrentMap(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCurrentMap) {
-			return visitor.visitCurrentMap(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49727,14 +48781,6 @@ export class CurrentValueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitCurrentValue) {
 			listener.exitCurrentValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCurrentValue) {
-			return visitor.visitCurrentValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49776,14 +48822,6 @@ export class CurveContext extends ParserRuleContext {
 			listener.exitCurve(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitCurve) {
-			return visitor.visitCurve(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49809,14 +48847,6 @@ export class DataOriginContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDataOrigin) {
 			listener.exitDataOrigin(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDataOrigin) {
-			return visitor.visitDataOrigin(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49849,14 +48879,6 @@ export class DateContext extends ParserRuleContext {
 			listener.exitDate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDate) {
-			return visitor.visitDate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49881,14 +48903,6 @@ export class DayNumberContext extends ParserRuleContext {
 			listener.exitDayNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDayNumber) {
-			return visitor.visitDayNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49911,14 +48925,6 @@ export class DcFanInLoadContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDcFanInLoad) {
 			listener.exitDcFanInLoad(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDcFanInLoad) {
-			return visitor.visitDcFanInLoad(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49951,14 +48957,6 @@ export class DcFanInLoadDisplayContext extends ParserRuleContext {
 			listener.exitDcFanInLoadDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDcFanInLoadDisplay) {
-			return visitor.visitDcFanInLoadDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49981,14 +48979,6 @@ export class DcFanOutLoadContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDcFanOutLoad) {
 			listener.exitDcFanOutLoad(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDcFanOutLoad) {
-			return visitor.visitDcFanOutLoad(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50021,14 +49011,6 @@ export class DcFanOutLoadDisplayContext extends ParserRuleContext {
 			listener.exitDcFanOutLoadDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDcFanOutLoadDisplay) {
-			return visitor.visitDcFanOutLoadDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50051,14 +49033,6 @@ export class DcMaxFanInContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDcMaxFanIn) {
 			listener.exitDcMaxFanIn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDcMaxFanIn) {
-			return visitor.visitDcMaxFanIn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50091,14 +49065,6 @@ export class DcMaxFanInDisplayContext extends ParserRuleContext {
 			listener.exitDcMaxFanInDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDcMaxFanInDisplay) {
-			return visitor.visitDcMaxFanInDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50121,14 +49087,6 @@ export class DcMaxFanOutContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDcMaxFanOut) {
 			listener.exitDcMaxFanOut(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDcMaxFanOut) {
-			return visitor.visitDcMaxFanOut(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50161,14 +49119,6 @@ export class DcMaxFanOutDisplayContext extends ParserRuleContext {
 			listener.exitDcMaxFanOutDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDcMaxFanOutDisplay) {
-			return visitor.visitDcMaxFanOutDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50196,14 +49146,6 @@ export class DecimalToStringContext extends ParserRuleContext {
 			listener.exitDecimalToString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDecimalToString) {
-			return visitor.visitDecimalToString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50226,14 +49168,6 @@ export class DefaultClusterConfigurationContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDefaultClusterConfiguration) {
 			listener.exitDefaultClusterConfiguration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDefaultClusterConfiguration) {
-			return visitor.visitDefaultClusterConfiguration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50260,14 +49194,6 @@ export class DefaultConnectionContext extends ParserRuleContext {
 			listener.exitDefaultConnection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDefaultConnection) {
-			return visitor.visitDefaultConnection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50290,14 +49216,6 @@ export class DegreeContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDegree) {
 			listener.exitDegree(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDegree) {
-			return visitor.visitDegree(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50324,14 +49242,6 @@ export class DelayContext extends ParserRuleContext {
 			listener.exitDelay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDelay) {
-			return visitor.visitDelay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50354,14 +49264,6 @@ export class DenominatorContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDenominator) {
 			listener.exitDenominator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDenominator) {
-			return visitor.visitDenominator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50394,14 +49296,6 @@ export class DerivationContext extends ParserRuleContext {
 			listener.exitDerivation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDerivation) {
-			return visitor.visitDerivation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50427,14 +49321,6 @@ export class DerivedFromContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDerivedFrom) {
 			listener.exitDerivedFrom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDerivedFrom) {
-			return visitor.visitDerivedFrom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50494,14 +49380,6 @@ export class DesignContext extends ParserRuleContext {
 			listener.exitDesign(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDesign) {
-			return visitor.visitDesign(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50524,14 +49402,6 @@ export class DesignatorContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDesignator) {
 			listener.exitDesignator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDesignator) {
-			return visitor.visitDesignator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50562,14 +49432,6 @@ export class DesignatorDisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDesignatorDisplay) {
 			listener.exitDesignatorDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDesignatorDisplay) {
-			return visitor.visitDesignatorDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50632,14 +49494,6 @@ export class DesignHeaderContext extends ParserRuleContext {
 			listener.exitDesignHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDesignHeader) {
-			return visitor.visitDesignHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50674,14 +49528,6 @@ export class DesignHierarchyContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDesignHierarchy) {
 			listener.exitDesignHierarchy(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDesignHierarchy) {
-			return visitor.visitDesignHierarchy(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50759,14 +49605,6 @@ export class DesignHierarchyHeaderContext extends ParserRuleContext {
 			listener.exitDesignHierarchyHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDesignHierarchyHeader) {
-			return visitor.visitDesignHierarchyHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50789,14 +49627,6 @@ export class DesignHierarchyNameCaseSensitiveContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDesignHierarchyNameCaseSensitive) {
 			listener.exitDesignHierarchyNameCaseSensitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDesignHierarchyNameCaseSensitive) {
-			return visitor.visitDesignHierarchyNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50823,14 +49653,6 @@ export class DesignHierarchyNameDefContext extends ParserRuleContext {
 			listener.exitDesignHierarchyNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDesignHierarchyNameDef) {
-			return visitor.visitDesignHierarchyNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50855,14 +49677,6 @@ export class DesignNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitDesignNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDesignNameCaseSensitive) {
-			return visitor.visitDesignNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50885,14 +49699,6 @@ export class DesignNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDesignNameDef) {
 			listener.exitDesignNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDesignNameDef) {
-			return visitor.visitDesignNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50932,14 +49738,6 @@ export class DesignUnitsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDesignUnits) {
 			listener.exitDesignUnits(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDesignUnits) {
-			return visitor.visitDesignUnits(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51002,14 +49800,6 @@ export class DiagramContext extends ParserRuleContext {
 			listener.exitDiagram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDiagram) {
-			return visitor.visitDiagram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51032,14 +49822,6 @@ export class DiagramNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDiagramNameDef) {
 			listener.exitDiagramNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDiagramNameDef) {
-			return visitor.visitDiagramNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51070,14 +49852,6 @@ export class DirectionalPortAttributeOverrideContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDirectionalPortAttributeOverride) {
 			listener.exitDirectionalPortAttributeOverride(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDirectionalPortAttributeOverride) {
-			return visitor.visitDirectionalPortAttributeOverride(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51120,14 +49894,6 @@ export class DisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDisplay) {
 			listener.exitDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDisplay) {
-			return visitor.visitDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51250,14 +50016,6 @@ export class DisplayAttributesContext extends ParserRuleContext {
 			listener.exitDisplayAttributes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDisplayAttributes) {
-			return visitor.visitDisplayAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51280,14 +50038,6 @@ export class DisplayNameContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDisplayName) {
 			listener.exitDisplayName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDisplayName) {
-			return visitor.visitDisplayName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51323,14 +50073,6 @@ export class DisplayNameOverrideContext extends ParserRuleContext {
 			listener.exitDisplayNameOverride(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDisplayNameOverride) {
-			return visitor.visitDisplayNameOverride(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51353,14 +50095,6 @@ export class DistanceValueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDistanceValue) {
 			listener.exitDistanceValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDistanceValue) {
-			return visitor.visitDistanceValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51387,14 +50121,6 @@ export class DividendContext extends ParserRuleContext {
 			listener.exitDividend(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDividend) {
-			return visitor.visitDividend(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51417,14 +50143,6 @@ export class DivisorContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDivisor) {
 			listener.exitDivisor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDivisor) {
-			return visitor.visitDivisor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51461,14 +50179,6 @@ export class DocumentationContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDocumentation) {
 			listener.exitDocumentation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDocumentation) {
-			return visitor.visitDocumentation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51522,14 +50232,6 @@ export class DocumentationHeaderContext extends ParserRuleContext {
 			listener.exitDocumentationHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDocumentationHeader) {
-			return visitor.visitDocumentationHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51554,14 +50256,6 @@ export class DocumentationNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitDocumentationNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDocumentationNameCaseSensitive) {
-			return visitor.visitDocumentationNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51584,14 +50278,6 @@ export class DocumentationNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDocumentationNameDef) {
 			listener.exitDocumentationNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDocumentationNameDef) {
-			return visitor.visitDocumentationNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51633,14 +50319,6 @@ export class DocumentationUnitsContext extends ParserRuleContext {
 			listener.exitDocumentationUnits(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDocumentationUnits) {
-			return visitor.visitDocumentationUnits(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51671,14 +50349,6 @@ export class DominatesContext extends ParserRuleContext {
 			listener.exitDominates(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDominates) {
-			return visitor.visitDominates(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51703,14 +50373,6 @@ export class DotContext extends ParserRuleContext {
 			listener.exitDot(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDot) {
-			return visitor.visitDot(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51733,14 +50395,6 @@ export class DrawingDescriptionContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDrawingDescription) {
 			listener.exitDrawingDescription(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDrawingDescription) {
-			return visitor.visitDrawingDescription(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51773,14 +50427,6 @@ export class DrawingDescriptionDisplayContext extends ParserRuleContext {
 			listener.exitDrawingDescriptionDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDrawingDescriptionDisplay) {
-			return visitor.visitDrawingDescriptionDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51803,14 +50449,6 @@ export class DrawingIdentificationContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDrawingIdentification) {
 			listener.exitDrawingIdentification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDrawingIdentification) {
-			return visitor.visitDrawingIdentification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51843,14 +50481,6 @@ export class DrawingIdentificationDisplayContext extends ParserRuleContext {
 			listener.exitDrawingIdentificationDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDrawingIdentificationDisplay) {
-			return visitor.visitDrawingIdentificationDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51873,14 +50503,6 @@ export class DrawingSizeContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDrawingSize) {
 			listener.exitDrawingSize(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDrawingSize) {
-			return visitor.visitDrawingSize(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51913,14 +50535,6 @@ export class DrawingSizeDisplayContext extends ParserRuleContext {
 			listener.exitDrawingSizeDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDrawingSizeDisplay) {
-			return visitor.visitDrawingSizeDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51943,14 +50557,6 @@ export class DurationContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitDuration) {
 			listener.exitDuration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitDuration) {
-			return visitor.visitDuration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51978,14 +50584,6 @@ export class EContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitE) {
 			listener.exitE(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitE) {
-			return visitor.visitE(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52061,14 +50659,6 @@ export class EdifContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitEdif) {
 			listener.exitEdif(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEdif) {
-			return visitor.visitEdif(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52188,14 +50778,6 @@ export class EdifHeaderContext extends ParserRuleContext {
 			listener.exitEdifHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEdifHeader) {
-			return visitor.visitEdifHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52218,14 +50800,6 @@ export class EdifLevelContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitEdifLevel) {
 			listener.exitEdifLevel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEdifLevel) {
-			return visitor.visitEdifLevel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52252,14 +50826,6 @@ export class EdifLevelValueContext extends ParserRuleContext {
 			listener.exitEdifLevelValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEdifLevelValue) {
-			return visitor.visitEdifLevelValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52282,14 +50848,6 @@ export class EdifNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitEdifNameDef) {
 			listener.exitEdifNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEdifNameDef) {
-			return visitor.visitEdifNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52322,14 +50880,6 @@ export class EdifVersionContext extends ParserRuleContext {
 			listener.exitEdifVersion(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEdifVersion) {
-			return visitor.visitEdifVersion(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52352,14 +50902,6 @@ export class EndPointContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitEndPoint) {
 			listener.exitEndPoint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEndPoint) {
-			return visitor.visitEndPoint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52392,14 +50934,6 @@ export class EndTypeContext extends ParserRuleContext {
 			listener.exitEndType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEndType) {
-			return visitor.visitEndType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52422,14 +50956,6 @@ export class EngineeringDateContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitEngineeringDate) {
 			listener.exitEngineeringDate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEngineeringDate) {
-			return visitor.visitEngineeringDate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52460,14 +50986,6 @@ export class EngineeringDateDisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitEngineeringDateDisplay) {
 			listener.exitEngineeringDateDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEngineeringDateDisplay) {
-			return visitor.visitEngineeringDateDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52524,14 +51042,6 @@ export class EventContext extends ParserRuleContext {
 			listener.exitEvent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEvent) {
-			return visitor.visitEvent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52556,14 +51066,6 @@ export class ExponentContext extends ParserRuleContext {
 			listener.exitExponent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExponent) {
-			return visitor.visitExponent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52583,14 +51085,6 @@ export class ExtendContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitExtend) {
 			listener.exitExtend(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExtend) {
-			return visitor.visitExtend(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52617,14 +51111,6 @@ export class ExtendForFrameMemberDefContext extends ParserRuleContext {
 			listener.exitExtendForFrameMemberDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExtendForFrameMemberDef) {
-			return visitor.visitExtendForFrameMemberDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52647,14 +51133,6 @@ export class ExtendFrameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitExtendFrameDef) {
 			listener.exitExtendFrameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExtendFrameDef) {
-			return visitor.visitExtendFrameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52681,14 +51159,6 @@ export class ExtendInstanceDefContext extends ParserRuleContext {
 			listener.exitExtendInstanceDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExtendInstanceDef) {
-			return visitor.visitExtendInstanceDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52711,14 +51181,6 @@ export class ExtendInstanceMemberDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitExtendInstanceMemberDef) {
 			listener.exitExtendInstanceMemberDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExtendInstanceMemberDef) {
-			return visitor.visitExtendInstanceMemberDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52745,14 +51207,6 @@ export class ExtendInterconnectDefContext extends ParserRuleContext {
 			listener.exitExtendInterconnectDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExtendInterconnectDef) {
-			return visitor.visitExtendInterconnectDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52775,14 +51229,6 @@ export class ExtendPageDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitExtendPageDef) {
 			listener.exitExtendPageDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExtendPageDef) {
-			return visitor.visitExtendPageDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52809,14 +51255,6 @@ export class ExtendPortDefContext extends ParserRuleContext {
 			listener.exitExtendPortDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExtendPortDef) {
-			return visitor.visitExtendPortDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52839,14 +51277,6 @@ export class ExtendPortMemberDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitExtendPortMemberDef) {
 			listener.exitExtendPortMemberDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExtendPortMemberDef) {
-			return visitor.visitExtendPortMemberDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52873,14 +51303,6 @@ export class ExtendSignalDefContext extends ParserRuleContext {
 			listener.exitExtendSignalDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExtendSignalDef) {
-			return visitor.visitExtendSignalDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52905,14 +51327,6 @@ export class ExtendSignalGroupDefContext extends ParserRuleContext {
 			listener.exitExtendSignalGroupDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExtendSignalGroupDef) {
-			return visitor.visitExtendSignalGroupDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52935,14 +51349,6 @@ export class ExtendSignalMemberDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitExtendSignalMemberDef) {
 			listener.exitExtendSignalMemberDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExtendSignalMemberDef) {
-			return visitor.visitExtendSignalMemberDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53143,14 +51549,6 @@ export class ExternalContext extends ParserRuleContext {
 			listener.exitExternal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitExternal) {
-			return visitor.visitExternal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53175,14 +51573,6 @@ export class FahrenheitContext extends ParserRuleContext {
 			listener.exitFahrenheit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFahrenheit) {
-			return visitor.visitFahrenheit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53202,14 +51592,6 @@ export class EfalseContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitEfalse) {
 			listener.exitEfalse(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEfalse) {
-			return visitor.visitEfalse(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53234,14 +51616,6 @@ export class FaradContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFarad) {
 			listener.exitFarad(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFarad) {
-			return visitor.visitFarad(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53361,14 +51735,6 @@ export class FigureContext extends ParserRuleContext {
 			listener.exitFigure(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFigure) {
-			return visitor.visitFigure(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53465,14 +51831,6 @@ export class FigureGroupContext extends ParserRuleContext {
 			listener.exitFigureGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFigureGroup) {
-			return visitor.visitFigureGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53495,14 +51853,6 @@ export class FigureGroupNameCaseSensitiveContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFigureGroupNameCaseSensitive) {
 			listener.exitFigureGroupNameCaseSensitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFigureGroupNameCaseSensitive) {
-			return visitor.visitFigureGroupNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53529,14 +51879,6 @@ export class FigureGroupNameDefContext extends ParserRuleContext {
 			listener.exitFigureGroupNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFigureGroupNameDef) {
-			return visitor.visitFigureGroupNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53559,14 +51901,6 @@ export class FigureGroupNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFigureGroupNameRef) {
 			listener.exitFigureGroupNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFigureGroupNameRef) {
-			return visitor.visitFigureGroupNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53647,14 +51981,6 @@ export class FigureGroupOverrideContext extends ParserRuleContext {
 			listener.exitFigureGroupOverride(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFigureGroupOverride) {
-			return visitor.visitFigureGroupOverride(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53677,14 +52003,6 @@ export class FillPatternContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFillPattern) {
 			listener.exitFillPattern(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFillPattern) {
-			return visitor.visitFillPattern(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53711,14 +52029,6 @@ export class FillPatternVisibleContext extends ParserRuleContext {
 			listener.exitFillPatternVisible(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFillPatternVisible) {
-			return visitor.visitFillPatternVisible(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53741,14 +52051,6 @@ export class FirstIntegerExpressionContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFirstIntegerExpression) {
 			listener.exitFirstIntegerExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFirstIntegerExpression) {
-			return visitor.visitFirstIntegerExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53775,14 +52077,6 @@ export class FirstStringExpressionContext extends ParserRuleContext {
 			listener.exitFirstStringExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFirstStringExpression) {
-			return visitor.visitFirstStringExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53802,14 +52096,6 @@ export class FixedContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFixed) {
 			listener.exitFixed(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFixed) {
-			return visitor.visitFixed(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53887,14 +52173,6 @@ export class FontContext extends ParserRuleContext {
 			listener.exitFont(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFont) {
-			return visitor.visitFont(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53917,14 +52195,6 @@ export class FontCapitalHeightContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFontCapitalHeight) {
 			listener.exitFontCapitalHeight(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFontCapitalHeight) {
-			return visitor.visitFontCapitalHeight(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53951,14 +52221,6 @@ export class FontDefinitionsContext extends ParserRuleContext {
 			listener.exitFontDefinitions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFontDefinitions) {
-			return visitor.visitFontDefinitions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53981,14 +52243,6 @@ export class FontDescentContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFontDescent) {
 			listener.exitFontDescent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFontDescent) {
-			return visitor.visitFontDescent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54015,14 +52269,6 @@ export class FontFamilyContext extends ParserRuleContext {
 			listener.exitFontFamily(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFontFamily) {
-			return visitor.visitFontFamily(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54045,14 +52291,6 @@ export class FontHeightContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFontHeight) {
 			listener.exitFontHeight(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFontHeight) {
-			return visitor.visitFontHeight(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54079,14 +52317,6 @@ export class FontNameDefContext extends ParserRuleContext {
 			listener.exitFontNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFontNameDef) {
-			return visitor.visitFontNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54109,14 +52339,6 @@ export class FontNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFontNameRef) {
 			listener.exitFontNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFontNameRef) {
-			return visitor.visitFontNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54152,14 +52374,6 @@ export class FontProportionsContext extends ParserRuleContext {
 			listener.exitFontProportions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFontProportions) {
-			return visitor.visitFontProportions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54182,14 +52396,6 @@ export class FontRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFontRef) {
 			listener.exitFontRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFontRef) {
-			return visitor.visitFontRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54225,14 +52431,6 @@ export class FontsContext extends ParserRuleContext {
 			listener.exitFonts(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFonts) {
-			return visitor.visitFonts(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54255,14 +52453,6 @@ export class FontWidthContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFontWidth) {
 			listener.exitFontWidth(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFontWidth) {
-			return visitor.visitFontWidth(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54296,14 +52486,6 @@ export class ForbiddenEventContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitForbiddenEvent) {
 			listener.exitForbiddenEvent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitForbiddenEvent) {
-			return visitor.visitForbiddenEvent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54382,14 +52564,6 @@ export class ForFrameContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitForFrame) {
 			listener.exitForFrame(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitForFrame) {
-			return visitor.visitForFrame(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54479,14 +52653,6 @@ export class ForFrameAnnotateContext extends ParserRuleContext {
 			listener.exitForFrameAnnotate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitForFrameAnnotate) {
-			return visitor.visitForFrameAnnotate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54536,14 +52702,6 @@ export class ForFrameIndexContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitForFrameIndex) {
 			listener.exitForFrameIndex(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitForFrameIndex) {
-			return visitor.visitForFrameIndex(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54603,14 +52761,6 @@ export class ForFrameIndexDisplayContext extends ParserRuleContext {
 			listener.exitForFrameIndexDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitForFrameIndexDisplay) {
-			return visitor.visitForFrameIndexDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54635,14 +52785,6 @@ export class ForFrameIndexNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitForFrameIndexNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitForFrameIndexNameCaseSensitive) {
-			return visitor.visitForFrameIndexNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54665,14 +52807,6 @@ export class ForFrameIndexRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitForFrameIndexRef) {
 			listener.exitForFrameIndexRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitForFrameIndexRef) {
-			return visitor.visitForFrameIndexRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54702,14 +52836,6 @@ export class ForFrameMemberRefContext extends ParserRuleContext {
 			listener.exitForFrameMemberRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitForFrameMemberRef) {
-			return visitor.visitForFrameMemberRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54732,14 +52858,6 @@ export class ForFrameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitForFrameRef) {
 			listener.exitForFrameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitForFrameRef) {
-			return visitor.visitForFrameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54784,14 +52902,6 @@ export class FrameConfigurationContext extends ParserRuleContext {
 			listener.exitFrameConfiguration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFrameConfiguration) {
-			return visitor.visitFrameConfiguration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54814,14 +52924,6 @@ export class FrameNameCaseSensitiveContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFrameNameCaseSensitive) {
 			listener.exitFrameNameCaseSensitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFrameNameCaseSensitive) {
-			return visitor.visitFrameNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54848,14 +52950,6 @@ export class FrameNameDefContext extends ParserRuleContext {
 			listener.exitFrameNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFrameNameDef) {
-			return visitor.visitFrameNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54878,14 +52972,6 @@ export class FrameNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFrameNameRef) {
 			listener.exitFrameNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFrameNameRef) {
-			return visitor.visitFrameNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54912,14 +52998,6 @@ export class FrameRefContext extends ParserRuleContext {
 			listener.exitFrameRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFrameRef) {
-			return visitor.visitFrameRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54944,14 +53022,6 @@ export class FrequencyValueContext extends ParserRuleContext {
 			listener.exitFrequencyValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFrequencyValue) {
-			return visitor.visitFrequencyValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54971,14 +53041,6 @@ export class FromBottomContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFromBottom) {
 			listener.exitFromBottom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFromBottom) {
-			return visitor.visitFromBottom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55005,14 +53067,6 @@ export class FromIntegerContext extends ParserRuleContext {
 			listener.exitFromInteger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFromInteger) {
-			return visitor.visitFromInteger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55032,14 +53086,6 @@ export class FromLeftContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitFromLeft) {
 			listener.exitFromLeft(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFromLeft) {
-			return visitor.visitFromLeft(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55063,14 +53109,6 @@ export class FromRightContext extends ParserRuleContext {
 			listener.exitFromRight(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFromRight) {
-			return visitor.visitFromRight(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55092,14 +53130,6 @@ export class FromTopContext extends ParserRuleContext {
 			listener.exitFromTop(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitFromTop) {
-			return visitor.visitFromTop(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55119,14 +53149,6 @@ export class GeneratedContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitGenerated) {
 			listener.exitGenerated(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGenerated) {
-			return visitor.visitGenerated(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55246,14 +53268,6 @@ export class GeometryMacroContext extends ParserRuleContext {
 			listener.exitGeometryMacro(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGeometryMacro) {
-			return visitor.visitGeometryMacro(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55332,14 +53346,6 @@ export class GeometryMacroHeaderContext extends ParserRuleContext {
 			listener.exitGeometryMacroHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGeometryMacroHeader) {
-			return visitor.visitGeometryMacroHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55367,14 +53373,6 @@ export class GeometryMacroRefContext extends ParserRuleContext {
 			listener.exitGeometryMacroRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGeometryMacroRef) {
-			return visitor.visitGeometryMacroRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55397,14 +53395,6 @@ export class GeometryMacroUnitsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitGeometryMacroUnits) {
 			listener.exitGeometryMacroUnits(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGeometryMacroUnits) {
-			return visitor.visitGeometryMacroUnits(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55476,14 +53466,6 @@ export class GlobalPortContext extends ParserRuleContext {
 			listener.exitGlobalPort(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGlobalPort) {
-			return visitor.visitGlobalPort(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55547,14 +53529,6 @@ export class GlobalPortBundleContext extends ParserRuleContext {
 			listener.exitGlobalPortBundle(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGlobalPortBundle) {
-			return visitor.visitGlobalPortBundle(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55594,14 +53568,6 @@ export class GlobalPortDefinitionsContext extends ParserRuleContext {
 			listener.exitGlobalPortDefinitions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGlobalPortDefinitions) {
-			return visitor.visitGlobalPortDefinitions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55632,14 +53598,6 @@ export class GlobalPortListContext extends ParserRuleContext {
 			listener.exitGlobalPortList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGlobalPortList) {
-			return visitor.visitGlobalPortList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55664,14 +53622,6 @@ export class GlobalPortNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitGlobalPortNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGlobalPortNameCaseSensitive) {
-			return visitor.visitGlobalPortNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55694,14 +53644,6 @@ export class GlobalPortNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitGlobalPortNameDef) {
 			listener.exitGlobalPortNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGlobalPortNameDef) {
-			return visitor.visitGlobalPortNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55743,14 +53685,6 @@ export class GlobalPortNameDisplayContext extends ParserRuleContext {
 			listener.exitGlobalPortNameDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGlobalPortNameDisplay) {
-			return visitor.visitGlobalPortNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55773,14 +53707,6 @@ export class GlobalPortNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitGlobalPortNameRef) {
 			listener.exitGlobalPortNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGlobalPortNameRef) {
-			return visitor.visitGlobalPortNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55825,14 +53751,6 @@ export class GlobalPortPropertyDisplayContext extends ParserRuleContext {
 			listener.exitGlobalPortPropertyDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGlobalPortPropertyDisplay) {
-			return visitor.visitGlobalPortPropertyDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55855,14 +53773,6 @@ export class GlobalPortRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitGlobalPortRef) {
 			listener.exitGlobalPortRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGlobalPortRef) {
-			return visitor.visitGlobalPortRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55889,14 +53799,6 @@ export class GlobalPortScopeContext extends ParserRuleContext {
 			listener.exitGlobalPortScope(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGlobalPortScope) {
-			return visitor.visitGlobalPortScope(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55919,14 +53821,6 @@ export class GreenContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitGreen) {
 			listener.exitGreen(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitGreen) {
-			return visitor.visitGreen(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55953,14 +53847,6 @@ export class HenryContext extends ParserRuleContext {
 			listener.exitHenry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitHenry) {
-			return visitor.visitHenry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55983,14 +53869,6 @@ export class HertzContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitHertz) {
 			listener.exitHertz(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitHertz) {
-			return visitor.visitHertz(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56021,14 +53899,6 @@ export class HorizontalJustificationContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitHorizontalJustification) {
 			listener.exitHorizontalJustification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitHorizontalJustification) {
-			return visitor.visitHorizontalJustification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56091,14 +53961,6 @@ export class HotspotContext extends ParserRuleContext {
 			listener.exitHotspot(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitHotspot) {
-			return visitor.visitHotspot(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56156,14 +54018,6 @@ export class HotspotConnectDirectionContext extends ParserRuleContext {
 			listener.exitHotspotConnectDirection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitHotspotConnectDirection) {
-			return visitor.visitHotspotConnectDirection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56186,14 +54040,6 @@ export class HotspotGridContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitHotspotGrid) {
 			listener.exitHotspotGrid(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitHotspotGrid) {
-			return visitor.visitHotspotGrid(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56220,14 +54066,6 @@ export class HotspotNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitHotspotNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitHotspotNameCaseSensitive) {
-			return visitor.visitHotspotNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56250,14 +54088,6 @@ export class HotspotNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitHotspotNameDef) {
 			listener.exitHotspotNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitHotspotNameDef) {
-			return visitor.visitHotspotNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56299,14 +54129,6 @@ export class HotspotNameDisplayContext extends ParserRuleContext {
 			listener.exitHotspotNameDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitHotspotNameDisplay) {
-			return visitor.visitHotspotNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56329,14 +54151,6 @@ export class HotspotNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitHotspotNameRef) {
 			listener.exitHotspotNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitHotspotNameRef) {
-			return visitor.visitHotspotNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56363,14 +54177,6 @@ export class HourNumberContext extends ParserRuleContext {
 			listener.exitHourNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitHourNumber) {
-			return visitor.visitHourNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56393,14 +54199,6 @@ export class IeeeDesignationContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIeeeDesignation) {
 			listener.exitIeeeDesignation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIeeeDesignation) {
-			return visitor.visitIeeeDesignation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56431,14 +54229,6 @@ export class IeeeSectionContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIeeeSection) {
 			listener.exitIeeeSection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIeeeSection) {
-			return visitor.visitIeeeSection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56484,14 +54274,6 @@ export class IeeeStandardContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIeeeStandard) {
 			listener.exitIeeeStandard(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIeeeStandard) {
-			return visitor.visitIeeeStandard(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56567,14 +54349,6 @@ export class IfFrameContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIfFrame) {
 			listener.exitIfFrame(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIfFrame) {
-			return visitor.visitIfFrame(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56673,14 +54447,6 @@ export class IfFrameAnnotateContext extends ParserRuleContext {
 			listener.exitIfFrameAnnotate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIfFrameAnnotate) {
-			return visitor.visitIfFrameAnnotate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56703,14 +54469,6 @@ export class IfFrameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIfFrameRef) {
 			listener.exitIfFrameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIfFrameRef) {
-			return visitor.visitIfFrameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56743,14 +54501,6 @@ export class IfFrameSetContext extends ParserRuleContext {
 			listener.exitIfFrameSet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIfFrameSet) {
-			return visitor.visitIfFrameSet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56770,14 +54520,6 @@ export class IgnoreContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIgnore) {
 			listener.exitIgnore(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIgnore) {
-			return visitor.visitIgnore(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56804,14 +54546,6 @@ export class ImplementationNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitImplementationNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitImplementationNameCaseSensitive) {
-			return visitor.visitImplementationNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56834,14 +54568,6 @@ export class ImplementationNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitImplementationNameDef) {
 			listener.exitImplementationNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitImplementationNameDef) {
-			return visitor.visitImplementationNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56883,14 +54609,6 @@ export class ImplementationNameDisplayContext extends ParserRuleContext {
 			listener.exitImplementationNameDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitImplementationNameDisplay) {
-			return visitor.visitImplementationNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56913,14 +54631,6 @@ export class ImplementationNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitImplementationNameRef) {
 			listener.exitImplementationNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitImplementationNameRef) {
-			return visitor.visitImplementationNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56953,14 +54663,6 @@ export class IndexEndDisplayContext extends ParserRuleContext {
 			listener.exitIndexEndDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIndexEndDisplay) {
-			return visitor.visitIndexEndDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56983,14 +54685,6 @@ export class IndexNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIndexNameDef) {
 			listener.exitIndexNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIndexNameDef) {
-			return visitor.visitIndexNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57023,14 +54717,6 @@ export class IndexNameDisplayContext extends ParserRuleContext {
 			listener.exitIndexNameDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIndexNameDisplay) {
-			return visitor.visitIndexNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57055,14 +54741,6 @@ export class IndexNameRefContext extends ParserRuleContext {
 			listener.exitIndexNameRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIndexNameRef) {
-			return visitor.visitIndexNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57085,14 +54763,6 @@ export class IndexStartContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIndexStart) {
 			listener.exitIndexStart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIndexStart) {
-			return visitor.visitIndexStart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57125,14 +54795,6 @@ export class IndexStartDisplayContext extends ParserRuleContext {
 			listener.exitIndexStartDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIndexStartDisplay) {
-			return visitor.visitIndexStartDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57155,14 +54817,6 @@ export class IndexStepContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIndexStep) {
 			listener.exitIndexStep(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIndexStep) {
-			return visitor.visitIndexStep(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57195,14 +54849,6 @@ export class IndexStepDisplayContext extends ParserRuleContext {
 			listener.exitIndexStepDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIndexStepDisplay) {
-			return visitor.visitIndexStepDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57227,14 +54873,6 @@ export class IndexValueContext extends ParserRuleContext {
 			listener.exitIndexValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIndexValue) {
-			return visitor.visitIndexValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57254,14 +54892,6 @@ export class InputContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInput) {
 			listener.exitInput(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInput) {
-			return visitor.visitInput(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57286,14 +54916,6 @@ export class InputPortContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInputPort) {
 			listener.exitInputPort(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInputPort) {
-			return visitor.visitInputPort(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57333,14 +54955,6 @@ export class InputPortAttributesContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInputPortAttributes) {
 			listener.exitInputPortAttributes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInputPortAttributes) {
-			return visitor.visitInputPortAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57505,14 +55119,6 @@ export class InstanceContext extends ParserRuleContext {
 			listener.exitInstance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstance) {
-			return visitor.visitInstance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57540,14 +55146,6 @@ export class InstanceConfigurationContext extends ParserRuleContext {
 			listener.exitInstanceConfiguration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstanceConfiguration) {
-			return visitor.visitInstanceConfiguration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57567,14 +55165,6 @@ export class InstanceIndexValueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInstanceIndexValue) {
 			listener.exitInstanceIndexValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstanceIndexValue) {
-			return visitor.visitInstanceIndexValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57604,14 +55194,6 @@ export class InstanceMemberRefContext extends ParserRuleContext {
 			listener.exitInstanceMemberRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstanceMemberRef) {
-			return visitor.visitInstanceMemberRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57636,14 +55218,6 @@ export class InstanceNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitInstanceNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstanceNameCaseSensitive) {
-			return visitor.visitInstanceNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57666,14 +55240,6 @@ export class InstanceNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInstanceNameDef) {
 			listener.exitInstanceNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstanceNameDef) {
-			return visitor.visitInstanceNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57715,14 +55281,6 @@ export class InstanceNameDisplayContext extends ParserRuleContext {
 			listener.exitInstanceNameDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstanceNameDisplay) {
-			return visitor.visitInstanceNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57745,14 +55303,6 @@ export class InstanceNameGeneratorContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInstanceNameGenerator) {
 			listener.exitInstanceNameGenerator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstanceNameGenerator) {
-			return visitor.visitInstanceNameGenerator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57785,14 +55335,6 @@ export class InstanceNameGeneratorDisplayContext extends ParserRuleContext {
 			listener.exitInstanceNameGeneratorDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstanceNameGeneratorDisplay) {
-			return visitor.visitInstanceNameGeneratorDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57815,14 +55357,6 @@ export class InstanceNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInstanceNameRef) {
 			listener.exitInstanceNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstanceNameRef) {
-			return visitor.visitInstanceNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57868,14 +55402,6 @@ export class InstancePortAttributeDisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInstancePortAttributeDisplay) {
 			listener.exitInstancePortAttributeDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstancePortAttributeDisplay) {
-			return visitor.visitInstancePortAttributeDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58010,14 +55536,6 @@ export class InstancePortAttributesContext extends ParserRuleContext {
 			listener.exitInstancePortAttributes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstancePortAttributes) {
-			return visitor.visitInstancePortAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58052,14 +55570,6 @@ export class InstancePropertyDisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInstancePropertyDisplay) {
 			listener.exitInstancePropertyDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstancePropertyDisplay) {
-			return visitor.visitInstancePropertyDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58119,14 +55629,6 @@ export class InstancePropertyOverrideContext extends ParserRuleContext {
 			listener.exitInstancePropertyOverride(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstancePropertyOverride) {
-			return visitor.visitInstancePropertyOverride(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58151,14 +55653,6 @@ export class InstanceRefContext extends ParserRuleContext {
 			listener.exitInstanceRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstanceRef) {
-			return visitor.visitInstanceRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58181,14 +55675,6 @@ export class InstanceWidthContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInstanceWidth) {
 			listener.exitInstanceWidth(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstanceWidth) {
-			return visitor.visitInstanceWidth(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58221,14 +55707,6 @@ export class InstanceWidthDisplayContext extends ParserRuleContext {
 			listener.exitInstanceWidthDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInstanceWidthDisplay) {
-			return visitor.visitInstanceWidthDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58251,14 +55729,6 @@ export class IntegerContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInteger) {
 			listener.exitInteger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInteger) {
-			return visitor.visitInteger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58288,14 +55758,6 @@ export class IntegerConstantContext extends ParserRuleContext {
 			listener.exitIntegerConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerConstant) {
-			return visitor.visitIntegerConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58318,14 +55780,6 @@ export class IntegerConstantRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIntegerConstantRef) {
 			listener.exitIntegerConstantRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerConstantRef) {
-			return visitor.visitIntegerConstantRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58353,14 +55807,6 @@ export class IntegerEqualContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIntegerEqual) {
 			listener.exitIntegerEqual(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerEqual) {
-			return visitor.visitIntegerEqual(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58426,14 +55872,6 @@ export class IntegerExpressionContext extends ParserRuleContext {
 			listener.exitIntegerExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerExpression) {
-			return visitor.visitIntegerExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58476,14 +55914,6 @@ export class IntegerParameterContext extends ParserRuleContext {
 			listener.exitIntegerParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerParameter) {
-			return visitor.visitIntegerParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58511,14 +55941,6 @@ export class IntegerParameterAssignContext extends ParserRuleContext {
 			listener.exitIntegerParameterAssign(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerParameterAssign) {
-			return visitor.visitIntegerParameterAssign(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58541,14 +55963,6 @@ export class IntegerParameterRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIntegerParameterRef) {
 			listener.exitIntegerParameterRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerParameterRef) {
-			return visitor.visitIntegerParameterRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58581,14 +55995,6 @@ export class IntegerProductContext extends ParserRuleContext {
 			listener.exitIntegerProduct(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerProduct) {
-			return visitor.visitIntegerProduct(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58614,14 +56020,6 @@ export class IntegerQuotientContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIntegerQuotient) {
 			listener.exitIntegerQuotient(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerQuotient) {
-			return visitor.visitIntegerQuotient(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58651,14 +56049,6 @@ export class IntegerRemainderContext extends ParserRuleContext {
 			listener.exitIntegerRemainder(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerRemainder) {
-			return visitor.visitIntegerRemainder(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58684,14 +56074,6 @@ export class IntegerSubtractContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIntegerSubtract) {
 			listener.exitIntegerSubtract(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerSubtract) {
-			return visitor.visitIntegerSubtract(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58724,14 +56106,6 @@ export class IntegerSumContext extends ParserRuleContext {
 			listener.exitIntegerSum(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerSum) {
-			return visitor.visitIntegerSum(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58754,14 +56128,6 @@ export class IntegerValueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIntegerValue) {
 			listener.exitIntegerValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerValue) {
-			return visitor.visitIntegerValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58842,14 +56208,6 @@ export class InterconnectAnnotateContext extends ParserRuleContext {
 			listener.exitInterconnectAnnotate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectAnnotate) {
-			return visitor.visitInterconnectAnnotate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58928,14 +56286,6 @@ export class InterconnectAttachedTextContext extends ParserRuleContext {
 			listener.exitInterconnectAttachedText(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectAttachedText) {
-			return visitor.visitInterconnectAttachedText(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58984,14 +56334,6 @@ export class InterconnectDelayContext extends ParserRuleContext {
 			listener.exitInterconnectDelay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectDelay) {
-			return visitor.visitInterconnectDelay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59025,14 +56367,6 @@ export class InterconnectDelayDisplayContext extends ParserRuleContext {
 			listener.exitInterconnectDelayDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectDelayDisplay) {
-			return visitor.visitInterconnectDelayDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59057,14 +56391,6 @@ export class InterconnectDelayNameDefContext extends ParserRuleContext {
 			listener.exitInterconnectDelayNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectDelayNameDef) {
-			return visitor.visitInterconnectDelayNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59087,14 +56413,6 @@ export class InterconnectDelayNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInterconnectDelayNameRef) {
 			listener.exitInterconnectDelayNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectDelayNameRef) {
-			return visitor.visitInterconnectDelayNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59163,14 +56481,6 @@ export class InterconnectHeaderContext extends ParserRuleContext {
 			listener.exitInterconnectHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectHeader) {
-			return visitor.visitInterconnectHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59195,14 +56505,6 @@ export class InterconnectNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitInterconnectNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectNameCaseSensitive) {
-			return visitor.visitInterconnectNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59225,14 +56527,6 @@ export class InterconnectNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInterconnectNameDef) {
 			listener.exitInterconnectNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectNameDef) {
-			return visitor.visitInterconnectNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59274,14 +56568,6 @@ export class InterconnectNameDisplayContext extends ParserRuleContext {
 			listener.exitInterconnectNameDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectNameDisplay) {
-			return visitor.visitInterconnectNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59304,14 +56590,6 @@ export class InterconnectNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInterconnectNameRef) {
 			listener.exitInterconnectNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectNameRef) {
-			return visitor.visitInterconnectNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59350,14 +56628,6 @@ export class InterconnectPropertyDisplayContext extends ParserRuleContext {
 			listener.exitInterconnectPropertyDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectPropertyDisplay) {
-			return visitor.visitInterconnectPropertyDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59383,14 +56653,6 @@ export class InterconnectRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInterconnectRef) {
 			listener.exitInterconnectRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectRef) {
-			return visitor.visitInterconnectRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59421,14 +56683,6 @@ export class InterconnectSetContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInterconnectSet) {
 			listener.exitInterconnectSet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterconnectSet) {
-			return visitor.visitInterconnectSet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59563,14 +56817,6 @@ export class EinterfaceContext extends ParserRuleContext {
 			listener.exitEinterface(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEinterface) {
-			return visitor.visitEinterface(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59599,14 +56845,6 @@ export class InterfaceJoinedContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitInterfaceJoined) {
 			listener.exitInterfaceJoined(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterfaceJoined) {
-			return visitor.visitInterfaceJoined(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59648,14 +56886,6 @@ export class InterfaceUnitsContext extends ParserRuleContext {
 			listener.exitInterfaceUnits(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitInterfaceUnits) {
-			return visitor.visitInterfaceUnits(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59678,14 +56908,6 @@ export class Iso8859Context extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIso8859) {
 			listener.exitIso8859(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIso8859) {
-			return visitor.visitIso8859(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59712,14 +56934,6 @@ export class Iso8859PartContext extends ParserRuleContext {
 			listener.exitIso8859Part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIso8859Part) {
-			return visitor.visitIso8859Part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59739,14 +56953,6 @@ export class IsolatedContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitIsolated) {
 			listener.exitIsolated(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIsolated) {
-			return visitor.visitIsolated(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59773,14 +56979,6 @@ export class IssueContext extends ParserRuleContext {
 			listener.exitIssue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIssue) {
-			return visitor.visitIssue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59800,14 +56998,6 @@ export class ItalicStyleContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitItalicStyle) {
 			listener.exitItalicStyle(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitItalicStyle) {
-			return visitor.visitItalicStyle(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59831,14 +57021,6 @@ export class Jisx0201Context extends ParserRuleContext {
 			listener.exitJisx0201(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitJisx0201) {
-			return visitor.visitJisx0201(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59860,14 +57042,6 @@ export class Jisx0208Context extends ParserRuleContext {
 			listener.exitJisx0208(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitJisx0208) {
-			return visitor.visitJisx0208(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59887,14 +57061,6 @@ export class JoinedAsSignalContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitJoinedAsSignal) {
 			listener.exitJoinedAsSignal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitJoinedAsSignal) {
-			return visitor.visitJoinedAsSignal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59921,14 +57087,6 @@ export class JouleContext extends ParserRuleContext {
 			listener.exitJoule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitJoule) {
-			return visitor.visitJoule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59948,14 +57106,6 @@ export class K0KeywordLevelContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitK0KeywordLevel) {
 			listener.exitK0KeywordLevel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK0KeywordLevel) {
-			return visitor.visitK0KeywordLevel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59983,14 +57133,6 @@ export class K1KeywordAliasContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitK1KeywordAlias) {
 			listener.exitK1KeywordAlias(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK1KeywordAlias) {
-			return visitor.visitK1KeywordAlias(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60023,14 +57165,6 @@ export class K1KeywordLevelContext extends ParserRuleContext {
 			listener.exitK1KeywordLevel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK1KeywordLevel) {
-			return visitor.visitK1KeywordLevel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60051,14 +57185,6 @@ export class K1KeywordNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitK1KeywordNameDef) {
 			listener.exitK1KeywordNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK1KeywordNameDef) {
-			return visitor.visitK1KeywordNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60083,14 +57209,6 @@ export class K1KeywordNameRefContext extends ParserRuleContext {
 			listener.exitK1KeywordNameRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK1KeywordNameRef) {
-			return visitor.visitK1KeywordNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60113,14 +57231,6 @@ export class K2ActualContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitK2Actual) {
 			listener.exitK2Actual(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK2Actual) {
-			return visitor.visitK2Actual(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60183,14 +57293,6 @@ export class K2BuildContext extends ParserRuleContext {
 			listener.exitK2Build(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK2Build) {
-			return visitor.visitK2Build(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60221,14 +57323,6 @@ export class K2FormalContext extends ParserRuleContext {
 			listener.exitK2Formal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK2Formal) {
-			return visitor.visitK2Formal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60251,14 +57345,6 @@ export class K2FormalNameDefContext extends ParserRuleContext {
 			listener.exitK2FormalNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK2FormalNameDef) {
-			return visitor.visitK2FormalNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60279,14 +57365,6 @@ export class K2FormalNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitK2FormalNameRef) {
 			listener.exitK2FormalNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK2FormalNameRef) {
-			return visitor.visitK2FormalNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60346,14 +57424,6 @@ export class K2GenerateContext extends ParserRuleContext {
 			listener.exitK2Generate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK2Generate) {
-			return visitor.visitK2Generate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60382,14 +57452,6 @@ export class K2KeywordDefineContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitK2KeywordDefine) {
 			listener.exitK2KeywordDefine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK2KeywordDefine) {
-			return visitor.visitK2KeywordDefine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60431,14 +57493,6 @@ export class K2KeywordLevelContext extends ParserRuleContext {
 			listener.exitK2KeywordLevel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK2KeywordLevel) {
-			return visitor.visitK2KeywordLevel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60467,14 +57521,6 @@ export class K2KeywordParametersContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitK2KeywordParameters) {
 			listener.exitK2KeywordParameters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK2KeywordParameters) {
-			return visitor.visitK2KeywordParameters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60525,14 +57571,6 @@ export class K2LiteralContext extends ParserRuleContext {
 			listener.exitK2Literal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK2Literal) {
-			return visitor.visitK2Literal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60563,14 +57601,6 @@ export class K2OptionalContext extends ParserRuleContext {
 			listener.exitK2Optional(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK2Optional) {
-			return visitor.visitK2Optional(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60590,14 +57620,6 @@ export class K2RequiredContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitK2Required) {
 			listener.exitK2Required(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK2Required) {
-			return visitor.visitK2Required(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60669,14 +57691,6 @@ export class K3BuildContext extends ParserRuleContext {
 			listener.exitK3Build(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK3Build) {
-			return visitor.visitK3Build(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60696,14 +57710,6 @@ export class K3CollectorContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitK3Collector) {
 			listener.exitK3Collector(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK3Collector) {
-			return visitor.visitK3Collector(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60778,14 +57784,6 @@ export class K3ForEachContext extends ParserRuleContext {
 			listener.exitK3ForEach(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK3ForEach) {
-			return visitor.visitK3ForEach(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60819,14 +57817,6 @@ export class K3FormalContext extends ParserRuleContext {
 			listener.exitK3Formal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK3Formal) {
-			return visitor.visitK3Formal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60855,14 +57845,6 @@ export class K3FormalListContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitK3FormalList) {
 			listener.exitK3FormalList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK3FormalList) {
-			return visitor.visitK3FormalList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60931,14 +57913,6 @@ export class K3GenerateContext extends ParserRuleContext {
 			listener.exitK3Generate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK3Generate) {
-			return visitor.visitK3Generate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60967,14 +57941,6 @@ export class K3KeywordDefineContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitK3KeywordDefine) {
 			listener.exitK3KeywordDefine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK3KeywordDefine) {
-			return visitor.visitK3KeywordDefine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61016,14 +57982,6 @@ export class K3KeywordLevelContext extends ParserRuleContext {
 			listener.exitK3KeywordLevel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK3KeywordLevel) {
-			return visitor.visitK3KeywordLevel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61054,14 +58012,6 @@ export class K3KeywordParametersContext extends ParserRuleContext {
 			listener.exitK3KeywordParameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitK3KeywordParameters) {
-			return visitor.visitK3KeywordParameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61084,14 +58034,6 @@ export class KelvinContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitKelvin) {
 			listener.exitKelvin(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitKelvin) {
-			return visitor.visitKelvin(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61136,14 +58078,6 @@ export class KeywordMapContext extends ParserRuleContext {
 			listener.exitKeywordMap(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitKeywordMap) {
-			return visitor.visitKeywordMap(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61168,14 +58102,6 @@ export class KilogramContext extends ParserRuleContext {
 			listener.exitKilogram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitKilogram) {
-			return visitor.visitKilogram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61195,14 +58121,6 @@ export class LeafContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLeaf) {
 			listener.exitLeaf(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLeaf) {
-			return visitor.visitLeaf(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61295,14 +58213,6 @@ export class LeafOccurrenceAnnotateContext extends ParserRuleContext {
 			listener.exitLeafOccurrenceAnnotate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLeafOccurrenceAnnotate) {
-			return visitor.visitLeafOccurrenceAnnotate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61322,14 +58232,6 @@ export class LeftJustifyContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLeftJustify) {
 			listener.exitLeftJustify(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLeftJustify) {
-			return visitor.visitLeftJustify(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61354,14 +58256,6 @@ export class LengthValueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLengthValue) {
 			listener.exitLengthValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLengthValue) {
-			return visitor.visitLengthValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61394,14 +58288,6 @@ export class LessThanContext extends ParserRuleContext {
 			listener.exitLessThan(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLessThan) {
-			return visitor.visitLessThan(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61430,14 +58316,6 @@ export class LessThanOrEqualContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLessThanOrEqual) {
 			listener.exitLessThanOrEqual(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLessThanOrEqual) {
-			return visitor.visitLessThanOrEqual(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61638,14 +58516,6 @@ export class LibraryContext extends ParserRuleContext {
 			listener.exitLibrary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLibrary) {
-			return visitor.visitLibrary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61721,14 +58591,6 @@ export class LibraryHeaderContext extends ParserRuleContext {
 			listener.exitLibraryHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLibraryHeader) {
-			return visitor.visitLibraryHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61751,14 +58613,6 @@ export class LibraryNameCaseSensitiveContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLibraryNameCaseSensitive) {
 			listener.exitLibraryNameCaseSensitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLibraryNameCaseSensitive) {
-			return visitor.visitLibraryNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61785,14 +58639,6 @@ export class LibraryNameDefContext extends ParserRuleContext {
 			listener.exitLibraryNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLibraryNameDef) {
-			return visitor.visitLibraryNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61815,14 +58661,6 @@ export class LibraryNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLibraryNameRef) {
 			listener.exitLibraryNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLibraryNameRef) {
-			return visitor.visitLibraryNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61849,14 +58687,6 @@ export class LibraryObjectNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitLibraryObjectNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLibraryObjectNameCaseSensitive) {
-			return visitor.visitLibraryObjectNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61879,14 +58709,6 @@ export class LibraryObjectNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLibraryObjectNameDef) {
 			listener.exitLibraryObjectNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLibraryObjectNameDef) {
-			return visitor.visitLibraryObjectNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61913,14 +58735,6 @@ export class LibraryObjectNameRefContext extends ParserRuleContext {
 			listener.exitLibraryObjectNameRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLibraryObjectNameRef) {
-			return visitor.visitLibraryObjectNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61943,14 +58757,6 @@ export class LibraryRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLibraryRef) {
 			listener.exitLibraryRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLibraryRef) {
-			return visitor.visitLibraryRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61978,14 +58784,6 @@ export class LoadDelayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLoadDelay) {
 			listener.exitLoadDelay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLoadDelay) {
-			return visitor.visitLoadDelay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62051,14 +58849,6 @@ export class LocalPortGroupContext extends ParserRuleContext {
 			listener.exitLocalPortGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLocalPortGroup) {
-			return visitor.visitLocalPortGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62081,14 +58871,6 @@ export class LocalPortGroupNameCaseSensitiveContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLocalPortGroupNameCaseSensitive) {
 			listener.exitLocalPortGroupNameCaseSensitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLocalPortGroupNameCaseSensitive) {
-			return visitor.visitLocalPortGroupNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62115,14 +58897,6 @@ export class LocalPortGroupNameDefContext extends ParserRuleContext {
 			listener.exitLocalPortGroupNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLocalPortGroupNameDef) {
-			return visitor.visitLocalPortGroupNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62147,14 +58921,6 @@ export class LocalPortGroupNameRefContext extends ParserRuleContext {
 			listener.exitLocalPortGroupNameRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLocalPortGroupNameRef) {
-			return visitor.visitLocalPortGroupNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62177,14 +58943,6 @@ export class LocalPortGroupRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLocalPortGroupRef) {
 			listener.exitLocalPortGroupRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLocalPortGroupRef) {
-			return visitor.visitLocalPortGroupRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62280,14 +59038,6 @@ export class LogicalConnectivityContext extends ParserRuleContext {
 			listener.exitLogicalConnectivity(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLogicalConnectivity) {
-			return visitor.visitLogicalConnectivity(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62331,14 +59081,6 @@ export class LogicDefinitionsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLogicDefinitions) {
 			listener.exitLogicDefinitions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLogicDefinitions) {
-			return visitor.visitLogicDefinitions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62389,14 +59131,6 @@ export class LogicListContext extends ParserRuleContext {
 			listener.exitLogicList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLogicList) {
-			return visitor.visitLogicList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62427,14 +59161,6 @@ export class LogicMapInputContext extends ParserRuleContext {
 			listener.exitLogicMapInput(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLogicMapInput) {
-			return visitor.visitLogicMapInput(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62463,14 +59189,6 @@ export class LogicMapOutputContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLogicMapOutput) {
 			listener.exitLogicMapOutput(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLogicMapOutput) {
-			return visitor.visitLogicMapOutput(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62510,14 +59228,6 @@ export class LogicModelUnitsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLogicModelUnits) {
 			listener.exitLogicModelUnits(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLogicModelUnits) {
-			return visitor.visitLogicModelUnits(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62571,14 +59281,6 @@ export class LogicModelViewContext extends ParserRuleContext {
 			listener.exitLogicModelView(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLogicModelView) {
-			return visitor.visitLogicModelView(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62603,14 +59305,6 @@ export class LogicNameDefContext extends ParserRuleContext {
 			listener.exitLogicNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLogicNameDef) {
-			return visitor.visitLogicNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62633,14 +59327,6 @@ export class LogicNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLogicNameRef) {
 			listener.exitLogicNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLogicNameRef) {
-			return visitor.visitLogicNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62682,14 +59368,6 @@ export class LogicOneOfContext extends ParserRuleContext {
 			listener.exitLogicOneOf(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLogicOneOf) {
-			return visitor.visitLogicOneOf(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62715,14 +59393,6 @@ export class LogicRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLogicRef) {
 			listener.exitLogicRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLogicRef) {
-			return visitor.visitLogicRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62875,14 +59545,6 @@ export class LogicValueContext extends ParserRuleContext {
 			listener.exitLogicValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLogicValue) {
-			return visitor.visitLogicValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62902,14 +59564,6 @@ export class LsbToMsbContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitLsbToMsb) {
 			listener.exitLsbToMsb(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitLsbToMsb) {
-			return visitor.visitLsbToMsb(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62936,14 +59590,6 @@ export class MantissaContext extends ParserRuleContext {
 			listener.exitMantissa(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMantissa) {
-			return visitor.visitMantissa(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62966,14 +59612,6 @@ export class MarkContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitMark) {
 			listener.exitMark(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMark) {
-			return visitor.visitMark(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63033,14 +59671,6 @@ export class MaskLayoutUnitsContext extends ParserRuleContext {
 			listener.exitMaskLayoutUnits(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMaskLayoutUnits) {
-			return visitor.visitMaskLayoutUnits(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63092,14 +59722,6 @@ export class MaskLayoutViewContext extends ParserRuleContext {
 			listener.exitMaskLayoutView(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMaskLayoutView) {
-			return visitor.visitMaskLayoutView(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63119,14 +59741,6 @@ export class MeasuredContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitMeasured) {
 			listener.exitMeasured(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMeasured) {
-			return visitor.visitMeasured(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63153,14 +59767,6 @@ export class MeterContext extends ParserRuleContext {
 			listener.exitMeter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMeter) {
-			return visitor.visitMeter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63182,14 +59788,6 @@ export class MiddleJustifyContext extends ParserRuleContext {
 			listener.exitMiddleJustify(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMiddleJustify) {
-			return visitor.visitMiddleJustify(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63209,14 +59807,6 @@ export class MinimalWidthContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitMinimalWidth) {
 			listener.exitMinimalWidth(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMinimalWidth) {
-			return visitor.visitMinimalWidth(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63243,14 +59833,6 @@ export class MinimumStringLengthContext extends ParserRuleContext {
 			listener.exitMinimumStringLength(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMinimumStringLength) {
-			return visitor.visitMinimumStringLength(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63273,14 +59855,6 @@ export class MiNoMaxContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitMiNoMax) {
 			listener.exitMiNoMax(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMiNoMax) {
-			return visitor.visitMiNoMax(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63310,14 +59884,6 @@ export class MiNoMaxValueContext extends ParserRuleContext {
 			listener.exitMiNoMaxValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMiNoMaxValue) {
-			return visitor.visitMiNoMaxValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63340,14 +59906,6 @@ export class MinuendContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitMinuend) {
 			listener.exitMinuend(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMinuend) {
-			return visitor.visitMinuend(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63374,14 +59932,6 @@ export class MinuteNumberContext extends ParserRuleContext {
 			listener.exitMinuteNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMinuteNumber) {
-			return visitor.visitMinuteNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63401,14 +59951,6 @@ export class MixedDirectionContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitMixedDirection) {
 			listener.exitMixedDirection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMixedDirection) {
-			return visitor.visitMixedDirection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63459,14 +60001,6 @@ export class MnmContext extends ParserRuleContext {
 			listener.exitMnm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMnm) {
-			return visitor.visitMnm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63489,14 +60023,6 @@ export class MoleContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitMole) {
 			listener.exitMole(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMole) {
-			return visitor.visitMole(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63523,14 +60049,6 @@ export class MonthNumberContext extends ParserRuleContext {
 			listener.exitMonthNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMonthNumber) {
-			return visitor.visitMonthNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63550,14 +60068,6 @@ export class MsbToLsbContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitMsbToLsb) {
 			listener.exitMsbToLsb(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMsbToLsb) {
-			return visitor.visitMsbToLsb(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63606,14 +60116,6 @@ export class MustJoinContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitMustJoin) {
 			listener.exitMustJoin(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitMustJoin) {
-			return visitor.visitMustJoin(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63665,14 +60167,6 @@ export class NameAliasContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitNameAlias) {
 			listener.exitNameAlias(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNameAlias) {
-			return visitor.visitNameAlias(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63912,14 +60406,6 @@ export class NameCaseSensitivityContext extends ParserRuleContext {
 			listener.exitNameCaseSensitivity(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNameCaseSensitivity) {
-			return visitor.visitNameCaseSensitivity(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63940,14 +60426,6 @@ export class NameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitNameDef) {
 			listener.exitNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNameDef) {
-			return visitor.visitNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63975,14 +60453,6 @@ export class NameDimensionContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitNameDimension) {
 			listener.exitNameDimension(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNameDimension) {
-			return visitor.visitNameDimension(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64051,14 +60521,6 @@ export class NameDimensionStructureContext extends ParserRuleContext {
 			listener.exitNameDimensionStructure(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNameDimensionStructure) {
-			return visitor.visitNameDimensionStructure(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64092,14 +60554,6 @@ export class NameInformationContext extends ParserRuleContext {
 			listener.exitNameInformation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNameInformation) {
-			return visitor.visitNameInformation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64124,14 +60578,6 @@ export class NamePartSeparatorContext extends ParserRuleContext {
 			listener.exitNamePartSeparator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNamePartSeparator) {
-			return visitor.visitNamePartSeparator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64152,14 +60598,6 @@ export class NameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitNameRef) {
 			listener.exitNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNameRef) {
-			return visitor.visitNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64192,14 +60630,6 @@ export class NameStructureContext extends ParserRuleContext {
 			listener.exitNameStructure(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNameStructure) {
-			return visitor.visitNameStructure(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64219,14 +60649,6 @@ export class NarrowPortContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitNarrowPort) {
 			listener.exitNarrowPort(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNarrowPort) {
-			return visitor.visitNarrowPort(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64250,14 +60672,6 @@ export class NarrowWireContext extends ParserRuleContext {
 			listener.exitNarrowWire(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNarrowWire) {
-			return visitor.visitNarrowWire(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64277,14 +60691,6 @@ export class NoHotspotGridContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitNoHotspotGrid) {
 			listener.exitNoHotspotGrid(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNoHotspotGrid) {
-			return visitor.visitNoHotspotGrid(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64309,14 +60715,6 @@ export class NominalHotspotGridContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitNominalHotspotGrid) {
 			listener.exitNominalHotspotGrid(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNominalHotspotGrid) {
-			return visitor.visitNominalHotspotGrid(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64358,14 +60756,6 @@ export class NonPermutableContext extends ParserRuleContext {
 			listener.exitNonPermutable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNonPermutable) {
-			return visitor.visitNonPermutable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64390,14 +60780,6 @@ export class Not_Context extends ParserRuleContext {
 			listener.exitNot_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNot_) {
-			return visitor.visitNot_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64417,14 +60799,6 @@ export class NotInheritedContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitNotInherited) {
 			listener.exitNotInherited(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNotInherited) {
-			return visitor.visitNotInherited(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64449,14 +60823,6 @@ export class NumberContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitNumber) {
 			listener.exitNumber(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64486,14 +60852,6 @@ export class NumberExpressionContext extends ParserRuleContext {
 			listener.exitNumberExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNumberExpression) {
-			return visitor.visitNumberExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64518,14 +60876,6 @@ export class NumberOfBasicUnitsContext extends ParserRuleContext {
 			listener.exitNumberOfBasicUnits(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNumberOfBasicUnits) {
-			return visitor.visitNumberOfBasicUnits(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64548,14 +60898,6 @@ export class NumberOfNewUnitsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitNumberOfNewUnits) {
 			listener.exitNumberOfNewUnits(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNumberOfNewUnits) {
-			return visitor.visitNumberOfNewUnits(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64600,14 +60942,6 @@ export class NumberParameterContext extends ParserRuleContext {
 			listener.exitNumberParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNumberParameter) {
-			return visitor.visitNumberParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64635,14 +60969,6 @@ export class NumberParameterAssignContext extends ParserRuleContext {
 			listener.exitNumberParameterAssign(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNumberParameterAssign) {
-			return visitor.visitNumberParameterAssign(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64665,14 +60991,6 @@ export class NumberParameterRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitNumberParameterRef) {
 			listener.exitNumberParameterRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNumberParameterRef) {
-			return visitor.visitNumberParameterRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64702,14 +61020,6 @@ export class NumberPointContext extends ParserRuleContext {
 			listener.exitNumberPoint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNumberPoint) {
-			return visitor.visitNumberPoint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64734,14 +61044,6 @@ export class NumberValueContext extends ParserRuleContext {
 			listener.exitNumberValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNumberValue) {
-			return visitor.visitNumberValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64764,14 +61066,6 @@ export class NumeratorContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitNumerator) {
 			listener.exitNumerator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitNumerator) {
-			return visitor.visitNumerator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64963,14 +61257,6 @@ export class OccurrenceAnnotateContext extends ParserRuleContext {
 			listener.exitOccurrenceAnnotate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOccurrenceAnnotate) {
-			return visitor.visitOccurrenceAnnotate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65127,14 +61413,6 @@ export class OccurrenceHierarchyAnnotateContext extends ParserRuleContext {
 			listener.exitOccurrenceHierarchyAnnotate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOccurrenceHierarchyAnnotate) {
-			return visitor.visitOccurrenceHierarchyAnnotate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65162,14 +61440,6 @@ export class OffsetEventContext extends ParserRuleContext {
 			listener.exitOffsetEvent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOffsetEvent) {
-			return visitor.visitOffsetEvent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65194,14 +61464,6 @@ export class OhmContext extends ParserRuleContext {
 			listener.exitOhm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOhm) {
-			return visitor.visitOhm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65224,14 +61486,6 @@ export class OpenShapeContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitOpenShape) {
 			listener.exitOpenShape(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOpenShape) {
-			return visitor.visitOpenShape(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65264,14 +61518,6 @@ export class Or_Context extends ParserRuleContext {
 			listener.exitOr_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOr_) {
-			return visitor.visitOr_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65294,14 +61540,6 @@ export class OriginContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitOrigin) {
 			listener.exitOrigin(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOrigin) {
-			return visitor.visitOrigin(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65328,14 +61566,6 @@ export class OriginalBoundingBoxContext extends ParserRuleContext {
 			listener.exitOriginalBoundingBox(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOriginalBoundingBox) {
-			return visitor.visitOriginalBoundingBox(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65358,14 +61588,6 @@ export class OriginalDrawingDateContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitOriginalDrawingDate) {
 			listener.exitOriginalDrawingDate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOriginalDrawingDate) {
-			return visitor.visitOriginalDrawingDate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65398,14 +61620,6 @@ export class OriginalDrawingDateDisplayContext extends ParserRuleContext {
 			listener.exitOriginalDrawingDateDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOriginalDrawingDateDisplay) {
-			return visitor.visitOriginalDrawingDateDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65428,14 +61642,6 @@ export class OriginalNameContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitOriginalName) {
 			listener.exitOriginalName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOriginalName) {
-			return visitor.visitOriginalName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65511,14 +61717,6 @@ export class OtherwiseFrameContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitOtherwiseFrame) {
 			listener.exitOtherwiseFrame(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOtherwiseFrame) {
-			return visitor.visitOtherwiseFrame(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65617,14 +61815,6 @@ export class OtherwiseFrameAnnotateContext extends ParserRuleContext {
 			listener.exitOtherwiseFrameAnnotate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOtherwiseFrameAnnotate) {
-			return visitor.visitOtherwiseFrameAnnotate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65649,14 +61839,6 @@ export class OtherwiseFrameRefContext extends ParserRuleContext {
 			listener.exitOtherwiseFrameRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOtherwiseFrameRef) {
-			return visitor.visitOtherwiseFrameRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65676,14 +61858,6 @@ export class OutputContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitOutput) {
 			listener.exitOutput(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOutput) {
-			return visitor.visitOutput(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65708,14 +61882,6 @@ export class OutputPortContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitOutputPort) {
 			listener.exitOutputPort(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOutputPort) {
-			return visitor.visitOutputPort(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65757,14 +61923,6 @@ export class OutputPortAttributesContext extends ParserRuleContext {
 			listener.exitOutputPortAttributes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOutputPortAttributes) {
-			return visitor.visitOutputPortAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65787,14 +61945,6 @@ export class OwnerContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitOwner) {
 			listener.exitOwner(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitOwner) {
-			return visitor.visitOwner(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66004,14 +62154,6 @@ export class PageContext extends ParserRuleContext {
 			listener.exitPage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPage) {
-			return visitor.visitPage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66043,14 +62185,6 @@ export class PageAnnotateContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPageAnnotate) {
 			listener.exitPageAnnotate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageAnnotate) {
-			return visitor.visitPageAnnotate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66096,14 +62230,6 @@ export class PageBorderContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPageBorder) {
 			listener.exitPageBorder(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageBorder) {
-			return visitor.visitPageBorder(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66181,14 +62307,6 @@ export class PageBorderTemplateContext extends ParserRuleContext {
 			listener.exitPageBorderTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageBorderTemplate) {
-			return visitor.visitPageBorderTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66214,14 +62332,6 @@ export class PageBorderTemplateRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPageBorderTemplateRef) {
 			listener.exitPageBorderTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageBorderTemplateRef) {
-			return visitor.visitPageBorderTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66288,14 +62398,6 @@ export class PageCommentGraphicsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPageCommentGraphics) {
 			listener.exitPageCommentGraphics(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageCommentGraphics) {
-			return visitor.visitPageCommentGraphics(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66391,14 +62493,6 @@ export class PageHeaderContext extends ParserRuleContext {
 			listener.exitPageHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageHeader) {
-			return visitor.visitPageHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66421,14 +62515,6 @@ export class PageIdentificationContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPageIdentification) {
 			listener.exitPageIdentification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageIdentification) {
-			return visitor.visitPageIdentification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66461,14 +62547,6 @@ export class PageIdentificationDisplayContext extends ParserRuleContext {
 			listener.exitPageIdentificationDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageIdentificationDisplay) {
-			return visitor.visitPageIdentificationDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66491,14 +62569,6 @@ export class PageNameCaseSensitiveContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPageNameCaseSensitive) {
 			listener.exitPageNameCaseSensitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageNameCaseSensitive) {
-			return visitor.visitPageNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66525,14 +62595,6 @@ export class PageNameDefContext extends ParserRuleContext {
 			listener.exitPageNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageNameDef) {
-			return visitor.visitPageNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66555,14 +62617,6 @@ export class PageNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPageNameRef) {
 			listener.exitPageNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageNameRef) {
-			return visitor.visitPageNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66607,14 +62661,6 @@ export class PagePropertyDisplayContext extends ParserRuleContext {
 			listener.exitPagePropertyDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPagePropertyDisplay) {
-			return visitor.visitPagePropertyDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66637,14 +62683,6 @@ export class PageRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPageRef) {
 			listener.exitPageRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageRef) {
-			return visitor.visitPageRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66671,14 +62709,6 @@ export class PageSizeContext extends ParserRuleContext {
 			listener.exitPageSize(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageSize) {
-			return visitor.visitPageSize(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66701,14 +62731,6 @@ export class PageTitleContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPageTitle) {
 			listener.exitPageTitle(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageTitle) {
-			return visitor.visitPageTitle(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66811,14 +62833,6 @@ export class PageTitleBlockContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPageTitleBlock) {
 			listener.exitPageTitleBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageTitleBlock) {
-			return visitor.visitPageTitleBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66968,14 +62982,6 @@ export class PageTitleBlockAttributeDisplayContext extends ParserRuleContext {
 			listener.exitPageTitleBlockAttributeDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageTitleBlockAttributeDisplay) {
-			return visitor.visitPageTitleBlockAttributeDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67105,14 +63111,6 @@ export class PageTitleBlockAttributesContext extends ParserRuleContext {
 			listener.exitPageTitleBlockAttributes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageTitleBlockAttributes) {
-			return visitor.visitPageTitleBlockAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67203,14 +63201,6 @@ export class PageTitleBlockTemplateContext extends ParserRuleContext {
 			listener.exitPageTitleBlockTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageTitleBlockTemplate) {
-			return visitor.visitPageTitleBlockTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67236,14 +63226,6 @@ export class PageTitleBlockTemplateRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPageTitleBlockTemplateRef) {
 			listener.exitPageTitleBlockTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageTitleBlockTemplateRef) {
-			return visitor.visitPageTitleBlockTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67274,14 +63256,6 @@ export class PageTitleDisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPageTitleDisplay) {
 			listener.exitPageTitleDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPageTitleDisplay) {
-			return visitor.visitPageTitleDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67320,14 +63294,6 @@ export class ParameterDisplayContext extends ParserRuleContext {
 			listener.exitParameterDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitParameterDisplay) {
-			return visitor.visitParameterDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67352,14 +63318,6 @@ export class ParameterNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitParameterNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitParameterNameCaseSensitive) {
-			return visitor.visitParameterNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67382,14 +63340,6 @@ export class ParameterNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitParameterNameDef) {
 			listener.exitParameterNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitParameterNameDef) {
-			return visitor.visitParameterNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67422,14 +63372,6 @@ export class ParameterNameDisplayContext extends ParserRuleContext {
 			listener.exitParameterNameDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitParameterNameDisplay) {
-			return visitor.visitParameterNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67454,14 +63396,6 @@ export class ParameterNameRefContext extends ParserRuleContext {
 			listener.exitParameterNameRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitParameterNameRef) {
-			return visitor.visitParameterNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67484,14 +63418,6 @@ export class PathContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPath) {
 			listener.exitPath(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPath) {
-			return visitor.visitPath(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67527,14 +63453,6 @@ export class PathDelayContext extends ParserRuleContext {
 			listener.exitPathDelay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPathDelay) {
-			return visitor.visitPathDelay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67560,14 +63478,6 @@ export class PathWidthContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPathWidth) {
 			listener.exitPathWidth(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPathWidth) {
-			return visitor.visitPathWidth(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67627,14 +63537,6 @@ export class PcbLayoutUnitsContext extends ParserRuleContext {
 			listener.exitPcbLayoutUnits(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPcbLayoutUnits) {
-			return visitor.visitPcbLayoutUnits(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67686,14 +63588,6 @@ export class PcbLayoutViewContext extends ParserRuleContext {
 			listener.exitPcbLayoutView(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPcbLayoutView) {
-			return visitor.visitPcbLayoutView(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67742,14 +63636,6 @@ export class PermutableContext extends ParserRuleContext {
 			listener.exitPermutable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPermutable) {
-			return visitor.visitPermutable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67772,14 +63658,6 @@ export class PhysicalDefaultsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPhysicalDefaults) {
 			listener.exitPhysicalDefaults(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPhysicalDefaults) {
-			return visitor.visitPhysicalDefaults(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67893,14 +63771,6 @@ export class PhysicalScalingContext extends ParserRuleContext {
 			listener.exitPhysicalScaling(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPhysicalScaling) {
-			return visitor.visitPhysicalScaling(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67934,14 +63804,6 @@ export class PixelPatternContext extends ParserRuleContext {
 			listener.exitPixelPattern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPixelPattern) {
-			return visitor.visitPixelPattern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67972,14 +63834,6 @@ export class PixelRowContext extends ParserRuleContext {
 			listener.exitPixelRow(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPixelRow) {
-			return visitor.visitPixelRow(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68002,14 +63856,6 @@ export class PointContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPoint) {
 			listener.exitPoint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPoint) {
-			return visitor.visitPoint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68042,14 +63888,6 @@ export class PointListContext extends ParserRuleContext {
 			listener.exitPointList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPointList) {
-			return visitor.visitPointList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68074,14 +63912,6 @@ export class PointValueContext extends ParserRuleContext {
 			listener.exitPointValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPointValue) {
-			return visitor.visitPointValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68104,14 +63934,6 @@ export class PolygonContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPolygon) {
 			listener.exitPolygon(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPolygon) {
-			return visitor.visitPolygon(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68258,14 +64080,6 @@ export class PortContext extends ParserRuleContext {
 			listener.exitPort(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPort) {
-			return visitor.visitPort(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68381,14 +64195,6 @@ export class PortAnnotateContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortAnnotate) {
 			listener.exitPortAnnotate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortAnnotate) {
-			return visitor.visitPortAnnotate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68520,14 +64326,6 @@ export class PortAttributeDisplayContext extends ParserRuleContext {
 			listener.exitPortAttributeDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortAttributeDisplay) {
-			return visitor.visitPortAttributeDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68600,14 +64398,6 @@ export class PortBundleContext extends ParserRuleContext {
 			listener.exitPortBundle(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortBundle) {
-			return visitor.visitPortBundle(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68656,14 +64446,6 @@ export class PortDelayContext extends ParserRuleContext {
 			listener.exitPortDelay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortDelay) {
-			return visitor.visitPortDelay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68697,14 +64479,6 @@ export class PortDelayDisplayContext extends ParserRuleContext {
 			listener.exitPortDelayDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortDelayDisplay) {
-			return visitor.visitPortDelayDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68729,14 +64503,6 @@ export class PortDelayNameDefContext extends ParserRuleContext {
 			listener.exitPortDelayNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortDelayNameDef) {
-			return visitor.visitPortDelayNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68759,14 +64525,6 @@ export class PortDelayNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortDelayNameRef) {
 			listener.exitPortDelayNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortDelayNameRef) {
-			return visitor.visitPortDelayNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68817,14 +64575,6 @@ export class PortDelayOverrideContext extends ParserRuleContext {
 			listener.exitPortDelayOverride(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortDelayOverride) {
-			return visitor.visitPortDelayOverride(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68856,14 +64606,6 @@ export class PortDirectionContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortDirection) {
 			listener.exitPortDirection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortDirection) {
-			return visitor.visitPortDirection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68905,14 +64647,6 @@ export class PortDirectionIndicatorContext extends ParserRuleContext {
 			listener.exitPortDirectionIndicator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortDirectionIndicator) {
-			return visitor.visitPortDirectionIndicator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68932,14 +64666,6 @@ export class PortIndexValueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortIndexValue) {
 			listener.exitPortIndexValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortIndexValue) {
-			return visitor.visitPortIndexValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68973,14 +64699,6 @@ export class PortInstanceRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortInstanceRef) {
 			listener.exitPortInstanceRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortInstanceRef) {
-			return visitor.visitPortInstanceRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69040,14 +64758,6 @@ export class PortJoinedContext extends ParserRuleContext {
 			listener.exitPortJoined(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortJoined) {
-			return visitor.visitPortJoined(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69076,14 +64786,6 @@ export class PortListContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortList) {
 			listener.exitPortList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortList) {
-			return visitor.visitPortList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69134,14 +64836,6 @@ export class PortLoadDelayContext extends ParserRuleContext {
 			listener.exitPortLoadDelay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortLoadDelay) {
-			return visitor.visitPortLoadDelay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69175,14 +64869,6 @@ export class PortLoadDelayDisplayContext extends ParserRuleContext {
 			listener.exitPortLoadDelayDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortLoadDelayDisplay) {
-			return visitor.visitPortLoadDelayDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69207,14 +64893,6 @@ export class PortLoadDelayNameDefContext extends ParserRuleContext {
 			listener.exitPortLoadDelayNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortLoadDelayNameDef) {
-			return visitor.visitPortLoadDelayNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69237,14 +64915,6 @@ export class PortLoadDelayNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortLoadDelayNameRef) {
 			listener.exitPortLoadDelayNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortLoadDelayNameRef) {
-			return visitor.visitPortLoadDelayNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69295,14 +64965,6 @@ export class PortLoadDelayOverrideContext extends ParserRuleContext {
 			listener.exitPortLoadDelayOverride(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortLoadDelayOverride) {
-			return visitor.visitPortLoadDelayOverride(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69330,14 +64992,6 @@ export class PortMemberRefContext extends ParserRuleContext {
 			listener.exitPortMemberRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortMemberRef) {
-			return visitor.visitPortMemberRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69362,14 +65016,6 @@ export class PortNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitPortNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortNameCaseSensitive) {
-			return visitor.visitPortNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69392,14 +65038,6 @@ export class PortNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortNameDef) {
 			listener.exitPortNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortNameDef) {
-			return visitor.visitPortNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69441,14 +65079,6 @@ export class PortNameDisplayContext extends ParserRuleContext {
 			listener.exitPortNameDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortNameDisplay) {
-			return visitor.visitPortNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69471,14 +65101,6 @@ export class PortNameGeneratorContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortNameGenerator) {
 			listener.exitPortNameGenerator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortNameGenerator) {
-			return visitor.visitPortNameGenerator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69511,14 +65133,6 @@ export class PortNameGeneratorDisplayContext extends ParserRuleContext {
 			listener.exitPortNameGeneratorDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortNameGeneratorDisplay) {
-			return visitor.visitPortNameGeneratorDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69541,14 +65155,6 @@ export class PortNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortNameRef) {
 			listener.exitPortNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortNameRef) {
-			return visitor.visitPortNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69593,14 +65199,6 @@ export class PortPropertyDisplayContext extends ParserRuleContext {
 			listener.exitPortPropertyDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortPropertyDisplay) {
-			return visitor.visitPortPropertyDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69635,14 +65233,6 @@ export class PortPropertyDisplayOverrideContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortPropertyDisplayOverride) {
 			listener.exitPortPropertyDisplayOverride(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortPropertyDisplayOverride) {
-			return visitor.visitPortPropertyDisplayOverride(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69702,14 +65292,6 @@ export class PortPropertyOverrideContext extends ParserRuleContext {
 			listener.exitPortPropertyOverride(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortPropertyOverride) {
-			return visitor.visitPortPropertyOverride(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69732,14 +65314,6 @@ export class PortRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortRef) {
 			listener.exitPortRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortRef) {
-			return visitor.visitPortRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69772,14 +65346,6 @@ export class PortSetContext extends ParserRuleContext {
 			listener.exitPortSet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortSet) {
-			return visitor.visitPortSet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69802,14 +65368,6 @@ export class PortWidthContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPortWidth) {
 			listener.exitPortWidth(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPortWidth) {
-			return visitor.visitPortWidth(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69842,14 +65400,6 @@ export class PresentLogicValueContext extends ParserRuleContext {
 			listener.exitPresentLogicValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPresentLogicValue) {
-			return visitor.visitPresentLogicValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69880,14 +65430,6 @@ export class PreviousLogicValueContext extends ParserRuleContext {
 			listener.exitPreviousLogicValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPreviousLogicValue) {
-			return visitor.visitPreviousLogicValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69913,14 +65455,6 @@ export class PreviousVersionContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPreviousVersion) {
 			listener.exitPreviousVersion(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPreviousVersion) {
-			return visitor.visitPreviousVersion(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69974,14 +65508,6 @@ export class PrimaryNameContext extends ParserRuleContext {
 			listener.exitPrimaryName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPrimaryName) {
-			return visitor.visitPrimaryName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70007,14 +65533,6 @@ export class ProgramContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitProgram) {
 			listener.exitProgram(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70101,14 +65619,6 @@ export class PropertyContext extends ParserRuleContext {
 			listener.exitProperty(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitProperty) {
-			return visitor.visitProperty(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70151,14 +65661,6 @@ export class PropertyDisplayContext extends ParserRuleContext {
 			listener.exitPropertyDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPropertyDisplay) {
-			return visitor.visitPropertyDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70195,14 +65697,6 @@ export class PropertyDisplayOverrideContext extends ParserRuleContext {
 			listener.exitPropertyDisplayOverride(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPropertyDisplayOverride) {
-			return visitor.visitPropertyDisplayOverride(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70230,14 +65724,6 @@ export class PropertyInheritanceControlContext extends ParserRuleContext {
 			listener.exitPropertyInheritanceControl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPropertyInheritanceControl) {
-			return visitor.visitPropertyInheritanceControl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70262,14 +65748,6 @@ export class PropertyNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitPropertyNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPropertyNameCaseSensitive) {
-			return visitor.visitPropertyNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70292,14 +65770,6 @@ export class PropertyNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPropertyNameDef) {
 			listener.exitPropertyNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPropertyNameDef) {
-			return visitor.visitPropertyNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70341,14 +65811,6 @@ export class PropertyNameDisplayContext extends ParserRuleContext {
 			listener.exitPropertyNameDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPropertyNameDisplay) {
-			return visitor.visitPropertyNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70371,14 +65833,6 @@ export class PropertyNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPropertyNameRef) {
 			listener.exitPropertyNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPropertyNameRef) {
-			return visitor.visitPropertyNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70438,14 +65892,6 @@ export class PropertyOverrideContext extends ParserRuleContext {
 			listener.exitPropertyOverride(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPropertyOverride) {
-			return visitor.visitPropertyOverride(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70465,14 +65911,6 @@ export class ProportionalFontContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitProportionalFont) {
 			listener.exitProportionalFont(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitProportionalFont) {
-			return visitor.visitProportionalFont(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70502,14 +65940,6 @@ export class PtContext extends ParserRuleContext {
 			listener.exitPt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPt) {
-			return visitor.visitPt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70532,14 +65962,6 @@ export class Pt1Context extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitPt1) {
 			listener.exitPt1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPt1) {
-			return visitor.visitPt1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70566,14 +65988,6 @@ export class Pt2Context extends ParserRuleContext {
 			listener.exitPt2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitPt2) {
-			return visitor.visitPt2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70598,14 +66012,6 @@ export class RadianContext extends ParserRuleContext {
 			listener.exitRadian(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRadian) {
-			return visitor.visitRadian(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70628,14 +66034,6 @@ export class ReasonContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitReason) {
 			listener.exitReason(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitReason) {
-			return visitor.visitReason(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70665,14 +66063,6 @@ export class RectangleContext extends ParserRuleContext {
 			listener.exitRectangle(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRectangle) {
-			return visitor.visitRectangle(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70697,14 +66087,6 @@ export class RedContext extends ParserRuleContext {
 			listener.exitRed(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRed) {
-			return visitor.visitRed(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70724,14 +66106,6 @@ export class RemoveDisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitRemoveDisplay) {
 			listener.exitRemoveDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRemoveDisplay) {
-			return visitor.visitRemoveDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70756,14 +66130,6 @@ export class RepetitionCountContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitRepetitionCount) {
 			listener.exitRepetitionCount(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRepetitionCount) {
-			return visitor.visitRepetitionCount(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70796,14 +66162,6 @@ export class RepetitionCountDisplayContext extends ParserRuleContext {
 			listener.exitRepetitionCountDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRepetitionCountDisplay) {
-			return visitor.visitRepetitionCountDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70834,14 +66192,6 @@ export class ReplaceDisplayContext extends ParserRuleContext {
 			listener.exitReplaceDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitReplaceDisplay) {
-			return visitor.visitReplaceDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70861,14 +66211,6 @@ export class RequiredContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitRequired) {
 			listener.exitRequired(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRequired) {
-			return visitor.visitRequired(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70901,14 +66243,6 @@ export class ResolvesContext extends ParserRuleContext {
 			listener.exitResolves(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitResolves) {
-			return visitor.visitResolves(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70931,14 +66265,6 @@ export class RevisionContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitRevision) {
 			listener.exitRevision(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRevision) {
-			return visitor.visitRevision(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70971,14 +66297,6 @@ export class RevisionDisplayContext extends ParserRuleContext {
 			listener.exitRevisionDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRevisionDisplay) {
-			return visitor.visitRevisionDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70998,14 +66316,6 @@ export class RightJustifyContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitRightJustify) {
 			listener.exitRightJustify(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRightJustify) {
-			return visitor.visitRightJustify(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71035,14 +66345,6 @@ export class RipperHotspotContext extends ParserRuleContext {
 			listener.exitRipperHotspot(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRipperHotspot) {
-			return visitor.visitRipperHotspot(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71070,14 +66372,6 @@ export class RipperHotspotRefContext extends ParserRuleContext {
 			listener.exitRipperHotspotRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRipperHotspotRef) {
-			return visitor.visitRipperHotspotRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71102,14 +66396,6 @@ export class RotationContext extends ParserRuleContext {
 			listener.exitRotation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRotation) {
-			return visitor.visitRotation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71129,14 +66415,6 @@ export class RoundContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitRound) {
 			listener.exitRound(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRound) {
-			return visitor.visitRound(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71161,14 +66439,6 @@ export class RowSizeContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitRowSize) {
 			listener.exitRowSize(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitRowSize) {
-			return visitor.visitRowSize(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71198,14 +66468,6 @@ export class ScaledIntegerContext extends ParserRuleContext {
 			listener.exitScaledInteger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitScaledInteger) {
-			return visitor.visitScaledInteger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71233,14 +66495,6 @@ export class ScaleXContext extends ParserRuleContext {
 			listener.exitScaleX(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitScaleX) {
-			return visitor.visitScaleX(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71266,14 +66520,6 @@ export class ScaleYContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitScaleY) {
 			listener.exitScaleY(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitScaleY) {
-			return visitor.visitScaleY(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71354,14 +66600,6 @@ export class SchematicBusContext extends ParserRuleContext {
 			listener.exitSchematicBus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicBus) {
-			return visitor.visitSchematicBus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71387,14 +66625,6 @@ export class SchematicBusDetailsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicBusDetails) {
 			listener.exitSchematicBusDetails(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicBusDetails) {
-			return visitor.visitSchematicBusDetails(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71452,14 +66682,6 @@ export class SchematicBusGraphicsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicBusGraphics) {
 			listener.exitSchematicBusGraphics(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicBusGraphics) {
-			return visitor.visitSchematicBusGraphics(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71564,14 +66786,6 @@ export class SchematicBusJoinedContext extends ParserRuleContext {
 			listener.exitSchematicBusJoined(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicBusJoined) {
-			return visitor.visitSchematicBusJoined(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71650,14 +66864,6 @@ export class SchematicBusSliceContext extends ParserRuleContext {
 			listener.exitSchematicBusSlice(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicBusSlice) {
-			return visitor.visitSchematicBusSlice(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71701,14 +66907,6 @@ export class SchematicComplexFigureContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicComplexFigure) {
 			listener.exitSchematicComplexFigure(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicComplexFigure) {
-			return visitor.visitSchematicComplexFigure(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71801,14 +66999,6 @@ export class SchematicFigureMacroContext extends ParserRuleContext {
 			listener.exitSchematicFigureMacro(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicFigureMacro) {
-			return visitor.visitSchematicFigureMacro(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71834,14 +67024,6 @@ export class SchematicFigureMacroRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicFigureMacroRef) {
 			listener.exitSchematicFigureMacroRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicFigureMacroRef) {
-			return visitor.visitSchematicFigureMacroRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71905,14 +67087,6 @@ export class SchematicForFrameBorderContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicForFrameBorder) {
 			listener.exitSchematicForFrameBorder(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicForFrameBorder) {
-			return visitor.visitSchematicForFrameBorder(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -72008,14 +67182,6 @@ export class SchematicForFrameBorderTemplateContext extends ParserRuleContext {
 			listener.exitSchematicForFrameBorderTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicForFrameBorderTemplate) {
-			return visitor.visitSchematicForFrameBorderTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -72041,14 +67207,6 @@ export class SchematicForFrameBorderTemplateRefContext extends ParserRuleContext
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicForFrameBorderTemplateRef) {
 			listener.exitSchematicForFrameBorderTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicForFrameBorderTemplateRef) {
-			return visitor.visitSchematicForFrameBorderTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -72084,14 +67242,6 @@ export class SchematicForFrameImplementationContext extends ParserRuleContext {
 			listener.exitSchematicForFrameImplementation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicForFrameImplementation) {
-			return visitor.visitSchematicForFrameImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -72114,14 +67264,6 @@ export class SchematicForFrameImplementationHeaderContext extends ParserRuleCont
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicForFrameImplementationHeader) {
 			listener.exitSchematicForFrameImplementationHeader(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicForFrameImplementationHeader) {
-			return visitor.visitSchematicForFrameImplementationHeader(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -72307,14 +67449,6 @@ export class SchematicFrameImplementationDetailsContext extends ParserRuleContex
 			listener.exitSchematicFrameImplementationDetails(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicFrameImplementationDetails) {
-			return visitor.visitSchematicFrameImplementationDetails(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -72453,14 +67587,6 @@ export class SchematicGlobalPortAttributesContext extends ParserRuleContext {
 			listener.exitSchematicGlobalPortAttributes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicGlobalPortAttributes) {
-			return visitor.visitSchematicGlobalPortAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -72548,14 +67674,6 @@ export class SchematicGlobalPortImplementationContext extends ParserRuleContext 
 			listener.exitSchematicGlobalPortImplementation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicGlobalPortImplementation) {
-			return visitor.visitSchematicGlobalPortImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -72578,14 +67696,6 @@ export class SchematicGlobalPortImplementationRefContext extends ParserRuleConte
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicGlobalPortImplementationRef) {
 			listener.exitSchematicGlobalPortImplementationRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicGlobalPortImplementationRef) {
-			return visitor.visitSchematicGlobalPortImplementationRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -72696,14 +67806,6 @@ export class SchematicGlobalPortTemplateContext extends ParserRuleContext {
 			listener.exitSchematicGlobalPortTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicGlobalPortTemplate) {
-			return visitor.visitSchematicGlobalPortTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -72729,14 +67831,6 @@ export class SchematicGlobalPortTemplateRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicGlobalPortTemplateRef) {
 			listener.exitSchematicGlobalPortTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicGlobalPortTemplateRef) {
-			return visitor.visitSchematicGlobalPortTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -72791,14 +67885,6 @@ export class SchematicIfFrameBorderContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicIfFrameBorder) {
 			listener.exitSchematicIfFrameBorder(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicIfFrameBorder) {
-			return visitor.visitSchematicIfFrameBorder(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -72885,14 +67971,6 @@ export class SchematicIfFrameBorderTemplateContext extends ParserRuleContext {
 			listener.exitSchematicIfFrameBorderTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicIfFrameBorderTemplate) {
-			return visitor.visitSchematicIfFrameBorderTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -72918,14 +67996,6 @@ export class SchematicIfFrameBorderTemplateRefContext extends ParserRuleContext 
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicIfFrameBorderTemplateRef) {
 			listener.exitSchematicIfFrameBorderTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicIfFrameBorderTemplateRef) {
-			return visitor.visitSchematicIfFrameBorderTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -72961,14 +68031,6 @@ export class SchematicIfFrameImplementationContext extends ParserRuleContext {
 			listener.exitSchematicIfFrameImplementation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicIfFrameImplementation) {
-			return visitor.visitSchematicIfFrameImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -72991,14 +68053,6 @@ export class SchematicIfFrameImplementationHeaderContext extends ParserRuleConte
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicIfFrameImplementationHeader) {
 			listener.exitSchematicIfFrameImplementationHeader(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicIfFrameImplementationHeader) {
-			return visitor.visitSchematicIfFrameImplementationHeader(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -73038,14 +68092,6 @@ export class SchematicImplementationContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicImplementation) {
 			listener.exitSchematicImplementation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicImplementation) {
-			return visitor.visitSchematicImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -73234,14 +68280,6 @@ export class SchematicInstanceImplementationContext extends ParserRuleContext {
 			listener.exitSchematicInstanceImplementation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicInstanceImplementation) {
-			return visitor.visitSchematicInstanceImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -73264,14 +68302,6 @@ export class SchematicInstanceImplementationRefContext extends ParserRuleContext
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicInstanceImplementationRef) {
 			listener.exitSchematicInstanceImplementationRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicInstanceImplementationRef) {
-			return visitor.visitSchematicInstanceImplementationRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -73347,14 +68377,6 @@ export class SchematicInterconnectAttributeDisplayContext extends ParserRuleCont
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicInterconnectAttributeDisplay) {
 			listener.exitSchematicInterconnectAttributeDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicInterconnectAttributeDisplay) {
-			return visitor.visitSchematicInterconnectAttributeDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -73450,14 +68472,6 @@ export class SchematicInterconnectHeaderContext extends ParserRuleContext {
 			listener.exitSchematicInterconnectHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicInterconnectHeader) {
-			return visitor.visitSchematicInterconnectHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -73524,14 +68538,6 @@ export class SchematicInterconnectTerminatorImplementationContext extends Parser
 			listener.exitSchematicInterconnectTerminatorImplementation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicInterconnectTerminatorImplementation) {
-			return visitor.visitSchematicInterconnectTerminatorImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -73554,14 +68560,6 @@ export class SchematicInterconnectTerminatorImplementationRefContext extends Par
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicInterconnectTerminatorImplementationRef) {
 			listener.exitSchematicInterconnectTerminatorImplementationRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicInterconnectTerminatorImplementationRef) {
-			return visitor.visitSchematicInterconnectTerminatorImplementationRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -73639,14 +68637,6 @@ export class SchematicInterconnectTerminatorTemplateContext extends ParserRuleCo
 			listener.exitSchematicInterconnectTerminatorTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicInterconnectTerminatorTemplate) {
-			return visitor.visitSchematicInterconnectTerminatorTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -73672,14 +68662,6 @@ export class SchematicInterconnectTerminatorTemplateRefContext extends ParserRul
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicInterconnectTerminatorTemplateRef) {
 			listener.exitSchematicInterconnectTerminatorTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicInterconnectTerminatorTemplateRef) {
-			return visitor.visitSchematicInterconnectTerminatorTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -73748,14 +68730,6 @@ export class SchematicJunctionImplementationContext extends ParserRuleContext {
 			listener.exitSchematicJunctionImplementation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicJunctionImplementation) {
-			return visitor.visitSchematicJunctionImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -73778,14 +68752,6 @@ export class SchematicJunctionImplementationRefContext extends ParserRuleContext
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicJunctionImplementationRef) {
 			listener.exitSchematicJunctionImplementationRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicJunctionImplementationRef) {
-			return visitor.visitSchematicJunctionImplementationRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -73863,14 +68829,6 @@ export class SchematicJunctionTemplateContext extends ParserRuleContext {
 			listener.exitSchematicJunctionTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicJunctionTemplate) {
-			return visitor.visitSchematicJunctionTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -73896,14 +68854,6 @@ export class SchematicJunctionTemplateRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicJunctionTemplateRef) {
 			listener.exitSchematicJunctionTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicJunctionTemplateRef) {
-			return visitor.visitSchematicJunctionTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -73987,14 +68937,6 @@ export class SchematicMasterPortImplementationContext extends ParserRuleContext 
 			listener.exitSchematicMasterPortImplementation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicMasterPortImplementation) {
-			return visitor.visitSchematicMasterPortImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -74017,14 +68959,6 @@ export class SchematicMasterPortImplementationRefContext extends ParserRuleConte
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicMasterPortImplementationRef) {
 			listener.exitSchematicMasterPortImplementationRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicMasterPortImplementationRef) {
-			return visitor.visitSchematicMasterPortImplementationRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -74132,14 +69066,6 @@ export class SchematicMasterPortTemplateContext extends ParserRuleContext {
 			listener.exitSchematicMasterPortTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicMasterPortTemplate) {
-			return visitor.visitSchematicMasterPortTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -74165,14 +69091,6 @@ export class SchematicMasterPortTemplateRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicMasterPortTemplateRef) {
 			listener.exitSchematicMasterPortTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicMasterPortTemplateRef) {
-			return visitor.visitSchematicMasterPortTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -74206,14 +69124,6 @@ export class SchematicMetricContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicMetric) {
 			listener.exitSchematicMetric(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicMetric) {
-			return visitor.visitSchematicMetric(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -74285,14 +69195,6 @@ export class SchematicNetContext extends ParserRuleContext {
 			listener.exitSchematicNet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicNet) {
-			return visitor.visitSchematicNet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -74318,14 +69220,6 @@ export class SchematicNetDetailsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicNetDetails) {
 			listener.exitSchematicNetDetails(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicNetDetails) {
-			return visitor.visitSchematicNetDetails(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -74383,14 +69277,6 @@ export class SchematicNetGraphicsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicNetGraphics) {
 			listener.exitSchematicNetGraphics(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicNetGraphics) {
-			return visitor.visitSchematicNetGraphics(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -74504,14 +69390,6 @@ export class SchematicNetJoinedContext extends ParserRuleContext {
 			listener.exitSchematicNetJoined(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicNetJoined) {
-			return visitor.visitSchematicNetJoined(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -74605,14 +69483,6 @@ export class SchematicOffPageConnectorImplementationContext extends ParserRuleCo
 			listener.exitSchematicOffPageConnectorImplementation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOffPageConnectorImplementation) {
-			return visitor.visitSchematicOffPageConnectorImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -74635,14 +69505,6 @@ export class SchematicOffPageConnectorImplementationRefContext extends ParserRul
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicOffPageConnectorImplementationRef) {
 			listener.exitSchematicOffPageConnectorImplementationRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOffPageConnectorImplementationRef) {
-			return visitor.visitSchematicOffPageConnectorImplementationRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -74738,14 +69600,6 @@ export class SchematicOffPageConnectorTemplateContext extends ParserRuleContext 
 			listener.exitSchematicOffPageConnectorTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOffPageConnectorTemplate) {
-			return visitor.visitSchematicOffPageConnectorTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -74771,14 +69625,6 @@ export class SchematicOffPageConnectorTemplateRefContext extends ParserRuleConte
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicOffPageConnectorTemplateRef) {
 			listener.exitSchematicOffPageConnectorTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOffPageConnectorTemplateRef) {
-			return visitor.visitSchematicOffPageConnectorTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -74874,14 +69720,6 @@ export class SchematicOnPageConnectorImplementationContext extends ParserRuleCon
 			listener.exitSchematicOnPageConnectorImplementation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOnPageConnectorImplementation) {
-			return visitor.visitSchematicOnPageConnectorImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -74904,14 +69742,6 @@ export class SchematicOnPageConnectorImplementationRefContext extends ParserRule
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicOnPageConnectorImplementationRef) {
 			listener.exitSchematicOnPageConnectorImplementationRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOnPageConnectorImplementationRef) {
-			return visitor.visitSchematicOnPageConnectorImplementationRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -75007,14 +69837,6 @@ export class SchematicOnPageConnectorTemplateContext extends ParserRuleContext {
 			listener.exitSchematicOnPageConnectorTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOnPageConnectorTemplate) {
-			return visitor.visitSchematicOnPageConnectorTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75040,14 +69862,6 @@ export class SchematicOnPageConnectorTemplateRefContext extends ParserRuleContex
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicOnPageConnectorTemplateRef) {
 			listener.exitSchematicOnPageConnectorTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOnPageConnectorTemplateRef) {
-			return visitor.visitSchematicOnPageConnectorTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -75093,14 +69907,6 @@ export class SchematicOtherwiseFrameBorderContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicOtherwiseFrameBorder) {
 			listener.exitSchematicOtherwiseFrameBorder(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOtherwiseFrameBorder) {
-			return visitor.visitSchematicOtherwiseFrameBorder(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -75178,14 +69984,6 @@ export class SchematicOtherwiseFrameBorderTemplateContext extends ParserRuleCont
 			listener.exitSchematicOtherwiseFrameBorderTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOtherwiseFrameBorderTemplate) {
-			return visitor.visitSchematicOtherwiseFrameBorderTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75211,14 +70009,6 @@ export class SchematicOtherwiseFrameBorderTemplateRefContext extends ParserRuleC
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicOtherwiseFrameBorderTemplateRef) {
 			listener.exitSchematicOtherwiseFrameBorderTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOtherwiseFrameBorderTemplateRef) {
-			return visitor.visitSchematicOtherwiseFrameBorderTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -75254,14 +70044,6 @@ export class SchematicOtherwiseFrameImplementationContext extends ParserRuleCont
 			listener.exitSchematicOtherwiseFrameImplementation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOtherwiseFrameImplementation) {
-			return visitor.visitSchematicOtherwiseFrameImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75284,14 +70066,6 @@ export class SchematicOtherwiseFrameImplementationHeaderContext extends ParserRu
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicOtherwiseFrameImplementationHeader) {
 			listener.exitSchematicOtherwiseFrameImplementationHeader(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicOtherwiseFrameImplementationHeader) {
-			return visitor.visitSchematicOtherwiseFrameImplementationHeader(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -75333,14 +70107,6 @@ export class SchematicPortAcPowerContext extends ParserRuleContext {
 			listener.exitSchematicPortAcPower(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortAcPower) {
-			return visitor.visitSchematicPortAcPower(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75363,14 +70129,6 @@ export class SchematicPortAcPowerRecommendedFrequencyContext extends ParserRuleC
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicPortAcPowerRecommendedFrequency) {
 			listener.exitSchematicPortAcPowerRecommendedFrequency(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortAcPowerRecommendedFrequency) {
-			return visitor.visitSchematicPortAcPowerRecommendedFrequency(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -75397,14 +70155,6 @@ export class SchematicPortAcPowerRecommendedVoltageRmsContext extends ParserRule
 			listener.exitSchematicPortAcPowerRecommendedVoltageRms(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortAcPowerRecommendedVoltageRms) {
-			return visitor.visitSchematicPortAcPowerRecommendedVoltageRms(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75424,14 +70174,6 @@ export class SchematicPortAnalogContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicPortAnalog) {
 			listener.exitSchematicPortAnalog(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortAnalog) {
-			return visitor.visitSchematicPortAnalog(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -75572,14 +70314,6 @@ export class SchematicPortAttributesContext extends ParserRuleContext {
 			listener.exitSchematicPortAttributes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortAttributes) {
-			return visitor.visitSchematicPortAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75604,14 +70338,6 @@ export class SchematicPortChassisGroundContext extends ParserRuleContext {
 			listener.exitSchematicPortChassisGround(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortChassisGround) {
-			return visitor.visitSchematicPortChassisGround(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75634,14 +70360,6 @@ export class SchematicPortClockContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicPortClock) {
 			listener.exitSchematicPortClock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortClock) {
-			return visitor.visitSchematicPortClock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -75683,14 +70401,6 @@ export class SchematicPortDcPowerContext extends ParserRuleContext {
 			listener.exitSchematicPortDcPower(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortDcPower) {
-			return visitor.visitSchematicPortDcPower(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75713,14 +70423,6 @@ export class SchematicPortDcPowerRecommendedVoltageContext extends ParserRuleCon
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicPortDcPowerRecommendedVoltage) {
 			listener.exitSchematicPortDcPowerRecommendedVoltage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortDcPowerRecommendedVoltage) {
-			return visitor.visitSchematicPortDcPowerRecommendedVoltage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -75747,14 +70449,6 @@ export class SchematicPortEarthGroundContext extends ParserRuleContext {
 			listener.exitSchematicPortEarthGround(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortEarthGround) {
-			return visitor.visitSchematicPortEarthGround(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75779,14 +70473,6 @@ export class SchematicPortGroundContext extends ParserRuleContext {
 			listener.exitSchematicPortGround(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortGround) {
-			return visitor.visitSchematicPortGround(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75806,14 +70492,6 @@ export class SchematicPortNonLogicalContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicPortNonLogical) {
 			listener.exitSchematicPortNonLogical(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortNonLogical) {
-			return visitor.visitSchematicPortNonLogical(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -75837,14 +70515,6 @@ export class SchematicPortOpenCollectorContext extends ParserRuleContext {
 			listener.exitSchematicPortOpenCollector(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortOpenCollector) {
-			return visitor.visitSchematicPortOpenCollector(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75866,14 +70536,6 @@ export class SchematicPortOpenEmitterContext extends ParserRuleContext {
 			listener.exitSchematicPortOpenEmitter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortOpenEmitter) {
-			return visitor.visitSchematicPortOpenEmitter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75893,14 +70555,6 @@ export class SchematicPortPowerContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicPortPower) {
 			listener.exitSchematicPortPower(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortPower) {
-			return visitor.visitSchematicPortPower(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -75930,14 +70584,6 @@ export class SchematicPortStyleContext extends ParserRuleContext {
 			listener.exitSchematicPortStyle(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortStyle) {
-			return visitor.visitSchematicPortStyle(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -75957,14 +70603,6 @@ export class SchematicPortThreeStateContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicPortThreeState) {
 			listener.exitSchematicPortThreeState(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicPortThreeState) {
-			return visitor.visitSchematicPortThreeState(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -75995,14 +70633,6 @@ export class SchematicRequiredDefaultsContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicRequiredDefaults) {
 			listener.exitSchematicRequiredDefaults(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicRequiredDefaults) {
-			return visitor.visitSchematicRequiredDefaults(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -76089,14 +70719,6 @@ export class SchematicRipperImplementationContext extends ParserRuleContext {
 			listener.exitSchematicRipperImplementation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicRipperImplementation) {
-			return visitor.visitSchematicRipperImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -76119,14 +70741,6 @@ export class SchematicRipperImplementationRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicRipperImplementationRef) {
 			listener.exitSchematicRipperImplementationRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicRipperImplementationRef) {
-			return visitor.visitSchematicRipperImplementationRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -76219,14 +70833,6 @@ export class SchematicRipperTemplateContext extends ParserRuleContext {
 			listener.exitSchematicRipperTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicRipperTemplate) {
-			return visitor.visitSchematicRipperTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -76252,14 +70858,6 @@ export class SchematicRipperTemplateRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicRipperTemplateRef) {
 			listener.exitSchematicRipperTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicRipperTemplateRef) {
-			return visitor.visitSchematicRipperTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -76337,14 +70935,6 @@ export class SchematicSubBusContext extends ParserRuleContext {
 			listener.exitSchematicSubBus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSubBus) {
-			return visitor.visitSchematicSubBus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -76373,14 +70963,6 @@ export class SchematicSubBusSetContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicSubBusSet) {
 			listener.exitSchematicSubBusSet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSubBusSet) {
-			return visitor.visitSchematicSubBusSet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -76449,14 +71031,6 @@ export class SchematicSubInterconnectHeaderContext extends ParserRuleContext {
 			listener.exitSchematicSubInterconnectHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSubInterconnectHeader) {
-			return visitor.visitSchematicSubInterconnectHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -76523,14 +71097,6 @@ export class SchematicSubNetContext extends ParserRuleContext {
 			listener.exitSchematicSubNet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSubNet) {
-			return visitor.visitSchematicSubNet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -76559,14 +71125,6 @@ export class SchematicSubNetSetContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicSubNetSet) {
 			listener.exitSchematicSubNetSet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSubNetSet) {
-			return visitor.visitSchematicSubNetSet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -76758,14 +71316,6 @@ export class SchematicSymbolContext extends ParserRuleContext {
 			listener.exitSchematicSymbol(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSymbol) {
-			return visitor.visitSchematicSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -76809,14 +71359,6 @@ export class SchematicSymbolBorderContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicSymbolBorder) {
 			listener.exitSchematicSymbolBorder(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSymbolBorder) {
-			return visitor.visitSchematicSymbolBorder(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -76894,14 +71436,6 @@ export class SchematicSymbolBorderTemplateContext extends ParserRuleContext {
 			listener.exitSchematicSymbolBorderTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSymbolBorderTemplate) {
-			return visitor.visitSchematicSymbolBorderTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -76927,14 +71461,6 @@ export class SchematicSymbolBorderTemplateRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicSymbolBorderTemplateRef) {
 			listener.exitSchematicSymbolBorderTemplateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSymbolBorderTemplateRef) {
-			return visitor.visitSchematicSymbolBorderTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -77051,14 +71577,6 @@ export class SchematicSymbolHeaderContext extends ParserRuleContext {
 			listener.exitSchematicSymbolHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSymbolHeader) {
-			return visitor.visitSchematicSymbolHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77119,14 +71637,6 @@ export class SchematicSymbolPortImplementationContext extends ParserRuleContext 
 			listener.exitSchematicSymbolPortImplementation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSymbolPortImplementation) {
-			return visitor.visitSchematicSymbolPortImplementation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77152,14 +71662,6 @@ export class SchematicSymbolPortImplementationRefContext extends ParserRuleConte
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicSymbolPortImplementationRef) {
 			listener.exitSchematicSymbolPortImplementationRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSymbolPortImplementationRef) {
-			return visitor.visitSchematicSymbolPortImplementationRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -77276,14 +71778,6 @@ export class SchematicSymbolPortTemplateContext extends ParserRuleContext {
 			listener.exitSchematicSymbolPortTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSymbolPortTemplate) {
-			return visitor.visitSchematicSymbolPortTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77311,14 +71805,6 @@ export class SchematicSymbolPortTemplateRefContext extends ParserRuleContext {
 			listener.exitSchematicSymbolPortTemplateRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSymbolPortTemplateRef) {
-			return visitor.visitSchematicSymbolPortTemplateRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77341,14 +71827,6 @@ export class SchematicSymbolRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicSymbolRef) {
 			listener.exitSchematicSymbolRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicSymbolRef) {
-			return visitor.visitSchematicSymbolRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -77429,14 +71907,6 @@ export class SchematicTemplateHeaderContext extends ParserRuleContext {
 			listener.exitSchematicTemplateHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicTemplateHeader) {
-			return visitor.visitSchematicTemplateHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77512,14 +71982,6 @@ export class SchematicUnitsContext extends ParserRuleContext {
 			listener.exitSchematicUnits(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicUnits) {
-			return visitor.visitSchematicUnits(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77569,14 +72031,6 @@ export class SchematicViewContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSchematicView) {
 			listener.exitSchematicView(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicView) {
-			return visitor.visitSchematicView(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -77657,14 +72111,6 @@ export class SchematicViewHeaderContext extends ParserRuleContext {
 			listener.exitSchematicViewHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicViewHeader) {
-			return visitor.visitSchematicViewHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77695,14 +72141,6 @@ export class SchematicWireAffinityContext extends ParserRuleContext {
 			listener.exitSchematicWireAffinity(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicWireAffinity) {
-			return visitor.visitSchematicWireAffinity(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77730,14 +72168,6 @@ export class SchematicWireStyleContext extends ParserRuleContext {
 			listener.exitSchematicWireStyle(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSchematicWireStyle) {
-			return visitor.visitSchematicWireStyle(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77760,14 +72190,6 @@ export class SecondContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSecond) {
 			listener.exitSecond(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSecond) {
-			return visitor.visitSecond(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -77794,14 +72216,6 @@ export class SecondIntegerExpressionContext extends ParserRuleContext {
 			listener.exitSecondIntegerExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSecondIntegerExpression) {
-			return visitor.visitSecondIntegerExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77826,14 +72240,6 @@ export class SecondNumberContext extends ParserRuleContext {
 			listener.exitSecondNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSecondNumber) {
-			return visitor.visitSecondNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77856,14 +72262,6 @@ export class SecondStringExpressionContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSecondStringExpression) {
 			listener.exitSecondStringExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSecondStringExpression) {
-			return visitor.visitSecondStringExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -77920,14 +72318,6 @@ export class SectionContext extends ParserRuleContext {
 			listener.exitSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSection) {
-			return visitor.visitSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77952,14 +72342,6 @@ export class SectionNameDefContext extends ParserRuleContext {
 			listener.exitSectionNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSectionNameDef) {
-			return visitor.visitSectionNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -77982,14 +72364,6 @@ export class SectionTitleContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSectionTitle) {
 			listener.exitSectionTitle(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSectionTitle) {
-			return visitor.visitSectionTitle(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -78022,14 +72396,6 @@ export class SequenceContext extends ParserRuleContext {
 			listener.exitSequence(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSequence) {
-			return visitor.visitSequence(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78052,14 +72418,6 @@ export class SetAngleContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSetAngle) {
 			listener.exitSetAngle(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSetAngle) {
-			return visitor.visitSetAngle(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -78086,14 +72444,6 @@ export class SetCapacitanceContext extends ParserRuleContext {
 			listener.exitSetCapacitance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSetCapacitance) {
-			return visitor.visitSetCapacitance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78116,14 +72466,6 @@ export class SetCurrentContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSetCurrent) {
 			listener.exitSetCurrent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSetCurrent) {
-			return visitor.visitSetCurrent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -78150,14 +72492,6 @@ export class SetDistanceContext extends ParserRuleContext {
 			listener.exitSetDistance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSetDistance) {
-			return visitor.visitSetDistance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78180,14 +72514,6 @@ export class SetFrequencyContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSetFrequency) {
 			listener.exitSetFrequency(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSetFrequency) {
-			return visitor.visitSetFrequency(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -78214,14 +72540,6 @@ export class SetTimeContext extends ParserRuleContext {
 			listener.exitSetTime(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSetTime) {
-			return visitor.visitSetTime(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78244,14 +72562,6 @@ export class SetVoltageContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSetVoltage) {
 			listener.exitSetVoltage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSetVoltage) {
-			return visitor.visitSetVoltage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -78278,14 +72588,6 @@ export class ShapeContext extends ParserRuleContext {
 			listener.exitShape(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitShape) {
-			return visitor.visitShape(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78308,14 +72610,6 @@ export class SiemensContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSiemens) {
 			listener.exitSiemens(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSiemens) {
-			return visitor.visitSiemens(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -78381,14 +72675,6 @@ export class SignalContext extends ParserRuleContext {
 			listener.exitSignal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignal) {
-			return visitor.visitSignal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78443,14 +72729,6 @@ export class SignalAnnotateContext extends ParserRuleContext {
 			listener.exitSignalAnnotate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalAnnotate) {
-			return visitor.visitSignalAnnotate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78494,14 +72772,6 @@ export class SignalGroupContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSignalGroup) {
 			listener.exitSignalGroup(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalGroup) {
-			return visitor.visitSignalGroup(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -78555,14 +72825,6 @@ export class SignalGroupAnnotateContext extends ParserRuleContext {
 			listener.exitSignalGroupAnnotate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalGroupAnnotate) {
-			return visitor.visitSignalGroupAnnotate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78585,14 +72847,6 @@ export class SignalGroupNameCaseSensitiveContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSignalGroupNameCaseSensitive) {
 			listener.exitSignalGroupNameCaseSensitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalGroupNameCaseSensitive) {
-			return visitor.visitSignalGroupNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -78619,14 +72873,6 @@ export class SignalGroupNameDefContext extends ParserRuleContext {
 			listener.exitSignalGroupNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalGroupNameDef) {
-			return visitor.visitSignalGroupNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78649,14 +72895,6 @@ export class SignalGroupNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSignalGroupNameRef) {
 			listener.exitSignalGroupNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalGroupNameRef) {
-			return visitor.visitSignalGroupNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -78683,14 +72921,6 @@ export class SignalGroupRefContext extends ParserRuleContext {
 			listener.exitSignalGroupRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalGroupRef) {
-			return visitor.visitSignalGroupRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78710,14 +72940,6 @@ export class SignalIndexValueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSignalIndexValue) {
 			listener.exitSignalIndexValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalIndexValue) {
-			return visitor.visitSignalIndexValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -78777,14 +72999,6 @@ export class SignalJoinedContext extends ParserRuleContext {
 			listener.exitSignalJoined(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalJoined) {
-			return visitor.visitSignalJoined(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78824,14 +73038,6 @@ export class SignalListContext extends ParserRuleContext {
 			listener.exitSignalList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalList) {
-			return visitor.visitSignalList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78859,14 +73065,6 @@ export class SignalMemberRefContext extends ParserRuleContext {
 			listener.exitSignalMemberRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalMemberRef) {
-			return visitor.visitSignalMemberRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78889,14 +73087,6 @@ export class SignalNameCaseSensitiveContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSignalNameCaseSensitive) {
 			listener.exitSignalNameCaseSensitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalNameCaseSensitive) {
-			return visitor.visitSignalNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -78923,14 +73113,6 @@ export class SignalNameDefContext extends ParserRuleContext {
 			listener.exitSignalNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalNameDef) {
-			return visitor.visitSignalNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -78953,14 +73135,6 @@ export class SignalNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSignalNameRef) {
 			listener.exitSignalNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalNameRef) {
-			return visitor.visitSignalNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -78987,14 +73161,6 @@ export class SignalRefContext extends ParserRuleContext {
 			listener.exitSignalRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalRef) {
-			return visitor.visitSignalRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79017,14 +73183,6 @@ export class SignalWidthContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSignalWidth) {
 			listener.exitSignalWidth(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSignalWidth) {
-			return visitor.visitSignalWidth(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -79051,14 +73209,6 @@ export class SimpleNameContext extends ParserRuleContext {
 			listener.exitSimpleName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSimpleName) {
-			return visitor.visitSimpleName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79081,14 +73231,6 @@ export class StartPointContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitStartPoint) {
 			listener.exitStartPoint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStartPoint) {
-			return visitor.visitStartPoint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -79148,14 +73290,6 @@ export class StatusContext extends ParserRuleContext {
 			listener.exitStatus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStatus) {
-			return visitor.visitStatus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79180,14 +73314,6 @@ export class StepContext extends ParserRuleContext {
 			listener.exitStep(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStep) {
-			return visitor.visitStep(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79210,14 +73336,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -79250,14 +73368,6 @@ export class StringConcatenateContext extends ParserRuleContext {
 			listener.exitStringConcatenate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringConcatenate) {
-			return visitor.visitStringConcatenate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79285,14 +73395,6 @@ export class StringConstantContext extends ParserRuleContext {
 			listener.exitStringConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringConstant) {
-			return visitor.visitStringConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79315,14 +73417,6 @@ export class StringConstantRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitStringConstantRef) {
 			listener.exitStringConstantRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringConstantRef) {
-			return visitor.visitStringConstantRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -79350,14 +73444,6 @@ export class StringEqualContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitStringEqual) {
 			listener.exitStringEqual(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringEqual) {
-			return visitor.visitStringEqual(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -79405,14 +73491,6 @@ export class StringExpressionContext extends ParserRuleContext {
 			listener.exitStringExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringExpression) {
-			return visitor.visitStringExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79435,14 +73513,6 @@ export class StringLengthContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitStringLength) {
 			listener.exitStringLength(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringLength) {
-			return visitor.visitStringLength(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -79487,14 +73557,6 @@ export class StringParameterContext extends ParserRuleContext {
 			listener.exitStringParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringParameter) {
-			return visitor.visitStringParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79522,14 +73584,6 @@ export class StringParameterAssignContext extends ParserRuleContext {
 			listener.exitStringParameterAssign(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringParameterAssign) {
-			return visitor.visitStringParameterAssign(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79552,14 +73606,6 @@ export class StringParameterRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitStringParameterRef) {
 			listener.exitStringParameterRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringParameterRef) {
-			return visitor.visitStringParameterRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -79589,14 +73635,6 @@ export class StringPrefixContext extends ParserRuleContext {
 			listener.exitStringPrefix(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringPrefix) {
-			return visitor.visitStringPrefix(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79624,14 +73662,6 @@ export class StringSuffixContext extends ParserRuleContext {
 			listener.exitStringSuffix(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringSuffix) {
-			return visitor.visitStringSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79654,14 +73684,6 @@ export class StringValueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitStringValue) {
 			listener.exitStringValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringValue) {
-			return visitor.visitStringValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -79688,14 +73710,6 @@ export class StrongContext extends ParserRuleContext {
 			listener.exitStrong(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStrong) {
-			return visitor.visitStrong(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79718,14 +73732,6 @@ export class SubIssueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSubIssue) {
 			listener.exitSubIssue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSubIssue) {
-			return visitor.visitSubIssue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -79758,14 +73764,6 @@ export class SubstringContext extends ParserRuleContext {
 			listener.exitSubstring(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSubstring) {
-			return visitor.visitSubstring(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79788,14 +73786,6 @@ export class SubstringLengthContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSubstringLength) {
 			listener.exitSubstringLength(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSubstringLength) {
-			return visitor.visitSubstringLength(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -79822,14 +73812,6 @@ export class SubstringOffsetContext extends ParserRuleContext {
 			listener.exitSubstringOffset(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSubstringOffset) {
-			return visitor.visitSubstringOffset(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79852,14 +73834,6 @@ export class SubtrahendContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSubtrahend) {
 			listener.exitSubtrahend(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSubtrahend) {
-			return visitor.visitSubtrahend(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -79919,14 +73893,6 @@ export class SymbolicLayoutUnitsContext extends ParserRuleContext {
 			listener.exitSymbolicLayoutUnits(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSymbolicLayoutUnits) {
-			return visitor.visitSymbolicLayoutUnits(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -79972,14 +73938,6 @@ export class SymbolicLayoutViewContext extends ParserRuleContext {
 			listener.exitSymbolicLayoutView(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSymbolicLayoutView) {
-			return visitor.visitSymbolicLayoutView(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80004,14 +73962,6 @@ export class SymbolPortImplementationNameDefContext extends ParserRuleContext {
 			listener.exitSymbolPortImplementationNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSymbolPortImplementationNameDef) {
-			return visitor.visitSymbolPortImplementationNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80034,14 +73984,6 @@ export class SymbolPortImplementationNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitSymbolPortImplementationNameRef) {
 			listener.exitSymbolPortImplementationNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitSymbolPortImplementationNameRef) {
-			return visitor.visitSymbolPortImplementationNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -80104,14 +74046,6 @@ export class TechnologyContext extends ParserRuleContext {
 			listener.exitTechnology(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTechnology) {
-			return visitor.visitTechnology(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80136,14 +74070,6 @@ export class TextHeightContext extends ParserRuleContext {
 			listener.exitTextHeight(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTextHeight) {
-			return visitor.visitTextHeight(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80166,14 +74092,6 @@ export class ThroughPointContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitThroughPoint) {
 			listener.exitThroughPoint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitThroughPoint) {
-			return visitor.visitThroughPoint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -80206,14 +74124,6 @@ export class TimeContext extends ParserRuleContext {
 			listener.exitTime(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTime) {
-			return visitor.visitTime(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80236,14 +74146,6 @@ export class TimeDelayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitTimeDelay) {
 			listener.exitTimeDelay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTimeDelay) {
-			return visitor.visitTimeDelay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -80288,14 +74190,6 @@ export class TimeIntervalContext extends ParserRuleContext {
 			listener.exitTimeInterval(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTimeInterval) {
-			return visitor.visitTimeInterval(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80323,14 +74217,6 @@ export class TimeStampContext extends ParserRuleContext {
 			listener.exitTimeStamp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTimeStamp) {
-			return visitor.visitTimeStamp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80353,14 +74239,6 @@ export class TimeValueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitTimeValue) {
 			listener.exitTimeValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTimeValue) {
-			return visitor.visitTimeValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -80435,14 +74313,6 @@ export class TimingContext extends ParserRuleContext {
 			listener.exitTiming(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTiming) {
-			return visitor.visitTiming(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80476,14 +74346,6 @@ export class TimingDisplayContext extends ParserRuleContext {
 			listener.exitTimingDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTimingDisplay) {
-			return visitor.visitTimingDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80506,14 +74368,6 @@ export class TimingNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitTimingNameDef) {
 			listener.exitTimingNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTimingNameDef) {
-			return visitor.visitTimingNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -80540,14 +74394,6 @@ export class TimingNameRefContext extends ParserRuleContext {
 			listener.exitTimingNameRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTimingNameRef) {
-			return visitor.visitTimingNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80572,14 +74418,6 @@ export class ToIntegerContext extends ParserRuleContext {
 			listener.exitToInteger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitToInteger) {
-			return visitor.visitToInteger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80599,14 +74437,6 @@ export class TopJustifyContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitTopJustify) {
 			listener.exitTopJustify(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTopJustify) {
-			return visitor.visitTopJustify(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -80631,14 +74461,6 @@ export class TotalPagesContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitTotalPages) {
 			listener.exitTotalPages(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTotalPages) {
-			return visitor.visitTotalPages(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -80669,14 +74491,6 @@ export class TotalPagesDisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitTotalPagesDisplay) {
 			listener.exitTotalPagesDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTotalPagesDisplay) {
-			return visitor.visitTotalPagesDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -80736,14 +74550,6 @@ export class TransformContext extends ParserRuleContext {
 			listener.exitTransform(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTransform) {
-			return visitor.visitTransform(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80771,14 +74577,6 @@ export class TransitionContext extends ParserRuleContext {
 			listener.exitTransition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTransition) {
-			return visitor.visitTransition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80800,14 +74598,6 @@ export class EtrueContext extends ParserRuleContext {
 			listener.exitEtrue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitEtrue) {
-			return visitor.visitEtrue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80827,14 +74617,6 @@ export class TruncateContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitTruncate) {
 			listener.exitTruncate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTruncate) {
-			return visitor.visitTruncate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -80876,14 +74658,6 @@ export class TypedValueContext extends ParserRuleContext {
 			listener.exitTypedValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTypedValue) {
-			return visitor.visitTypedValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80911,14 +74685,6 @@ export class TypefaceContext extends ParserRuleContext {
 			listener.exitTypeface(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTypeface) {
-			return visitor.visitTypeface(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80943,14 +74709,6 @@ export class TypefaceSuffixContext extends ParserRuleContext {
 			listener.exitTypefaceSuffix(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitTypefaceSuffix) {
-			return visitor.visitTypefaceSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -80970,14 +74728,6 @@ export class UnconfiguredContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitUnconfigured) {
 			listener.exitUnconfigured(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUnconfigured) {
-			return visitor.visitUnconfigured(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -81001,14 +74751,6 @@ export class UnconstrainedContext extends ParserRuleContext {
 			listener.exitUnconstrained(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUnconstrained) {
-			return visitor.visitUnconstrained(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -81028,14 +74770,6 @@ export class UndefinedContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitUndefined) {
 			listener.exitUndefined(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUndefined) {
-			return visitor.visitUndefined(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -81257,14 +74991,6 @@ export class UnitContext extends ParserRuleContext {
 			listener.exitUnit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUnit) {
-			return visitor.visitUnit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -81295,14 +75021,6 @@ export class UnitDefinitionsContext extends ParserRuleContext {
 			listener.exitUnitDefinitions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUnitDefinitions) {
-			return visitor.visitUnitDefinitions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -81325,14 +75043,6 @@ export class UnitExponentContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitUnitExponent) {
 			listener.exitUnitExponent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUnitExponent) {
-			return visitor.visitUnitExponent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -81359,14 +75069,6 @@ export class UnitNameDefContext extends ParserRuleContext {
 			listener.exitUnitNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUnitNameDef) {
-			return visitor.visitUnitNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -81389,14 +75091,6 @@ export class UnitNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitUnitNameRef) {
 			listener.exitUnitNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUnitNameRef) {
-			return visitor.visitUnitNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -81423,14 +75117,6 @@ export class UnitRefContext extends ParserRuleContext {
 			listener.exitUnitRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUnitRef) {
-			return visitor.visitUnitRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -81450,14 +75136,6 @@ export class UnrestrictedContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitUnrestricted) {
 			listener.exitUnrestricted(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUnrestricted) {
-			return visitor.visitUnrestricted(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -81481,14 +75159,6 @@ export class UnspecifiedContext extends ParserRuleContext {
 			listener.exitUnspecified(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUnspecified) {
-			return visitor.visitUnspecified(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -81508,14 +75178,6 @@ export class UnspecifiedDirectionPortContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitUnspecifiedDirectionPort) {
 			listener.exitUnspecifiedDirectionPort(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUnspecifiedDirectionPort) {
-			return visitor.visitUnspecifiedDirectionPort(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -81539,14 +75201,6 @@ export class UntypedContext extends ParserRuleContext {
 			listener.exitUntyped(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUntyped) {
-			return visitor.visitUntyped(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -81566,14 +75220,6 @@ export class UnusedContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitUnused) {
 			listener.exitUnused(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUnused) {
-			return visitor.visitUnused(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -81604,14 +75250,6 @@ export class UsableAreaContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitUsableArea) {
 			listener.exitUsableArea(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUsableArea) {
-			return visitor.visitUsableArea(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -81674,14 +75312,6 @@ export class UserDataContext extends ParserRuleContext {
 			listener.exitUserData(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUserData) {
-			return visitor.visitUserData(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -81702,14 +75332,6 @@ export class UserDataTagContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitUserDataTag) {
 			listener.exitUserDataTag(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitUserDataTag) {
-			return visitor.visitUserDataTag(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -81734,14 +75356,6 @@ export class VersionContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitVersion) {
 			listener.exitVersion(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitVersion) {
-			return visitor.visitVersion(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -81778,14 +75392,6 @@ export class VerticalJustificationContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitVerticalJustification) {
 			listener.exitVerticalJustification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitVerticalJustification) {
-			return visitor.visitVerticalJustification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -81851,14 +75457,6 @@ export class ViewGroupContext extends ParserRuleContext {
 			listener.exitViewGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewGroup) {
-			return visitor.visitViewGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -81916,14 +75514,6 @@ export class ViewGroupHeaderContext extends ParserRuleContext {
 			listener.exitViewGroupHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewGroupHeader) {
-			return visitor.visitViewGroupHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -81946,14 +75536,6 @@ export class ViewGroupNameCaseSensitiveContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitViewGroupNameCaseSensitive) {
 			listener.exitViewGroupNameCaseSensitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewGroupNameCaseSensitive) {
-			return visitor.visitViewGroupNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -81980,14 +75562,6 @@ export class ViewGroupNameDefContext extends ParserRuleContext {
 			listener.exitViewGroupNameDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewGroupNameDef) {
-			return visitor.visitViewGroupNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82010,14 +75584,6 @@ export class ViewGroupNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitViewGroupNameRef) {
 			listener.exitViewGroupNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewGroupNameRef) {
-			return visitor.visitViewGroupNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -82044,14 +75610,6 @@ export class ViewGroupRefContext extends ParserRuleContext {
 			listener.exitViewGroupRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewGroupRef) {
-			return visitor.visitViewGroupRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82076,14 +75634,6 @@ export class ViewNameCaseSensitiveContext extends ParserRuleContext {
 			listener.exitViewNameCaseSensitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewNameCaseSensitive) {
-			return visitor.visitViewNameCaseSensitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82106,14 +75656,6 @@ export class ViewNameDefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitViewNameDef) {
 			listener.exitViewNameDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewNameDef) {
-			return visitor.visitViewNameDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -82155,14 +75697,6 @@ export class ViewNameDisplayContext extends ParserRuleContext {
 			listener.exitViewNameDisplay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewNameDisplay) {
-			return visitor.visitViewNameDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82185,14 +75719,6 @@ export class ViewNameRefContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitViewNameRef) {
 			listener.exitViewNameRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewNameRef) {
-			return visitor.visitViewNameRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -82235,14 +75761,6 @@ export class ViewPropertyDisplayContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitViewPropertyDisplay) {
 			listener.exitViewPropertyDisplay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewPropertyDisplay) {
-			return visitor.visitViewPropertyDisplay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -82302,14 +75820,6 @@ export class ViewPropertyOverrideContext extends ParserRuleContext {
 			listener.exitViewPropertyOverride(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewPropertyOverride) {
-			return visitor.visitViewPropertyOverride(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82337,14 +75847,6 @@ export class ViewRefContext extends ParserRuleContext {
 			listener.exitViewRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitViewRef) {
-			return visitor.visitViewRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82367,14 +75869,6 @@ export class VisibleContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitVisible) {
 			listener.exitVisible(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitVisible) {
-			return visitor.visitVisible(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -82401,14 +75895,6 @@ export class VoltContext extends ParserRuleContext {
 			listener.exitVolt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitVolt) {
-			return visitor.visitVolt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82431,14 +75917,6 @@ export class VoltageMapContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitVoltageMap) {
 			listener.exitVoltageMap(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitVoltageMap) {
-			return visitor.visitVoltageMap(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -82465,14 +75943,6 @@ export class VoltageValueContext extends ParserRuleContext {
 			listener.exitVoltageValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitVoltageValue) {
-			return visitor.visitVoltageValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82497,14 +75967,6 @@ export class WattContext extends ParserRuleContext {
 			listener.exitWatt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitWatt) {
-			return visitor.visitWatt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82527,14 +75989,6 @@ export class WeakContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitWeak) {
 			listener.exitWeak(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitWeak) {
-			return visitor.visitWeak(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -82576,14 +76030,6 @@ export class WeakJoinedContext extends ParserRuleContext {
 			listener.exitWeakJoined(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitWeakJoined) {
-			return visitor.visitWeakJoined(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82608,14 +76054,6 @@ export class WeberContext extends ParserRuleContext {
 			listener.exitWeber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitWeber) {
-			return visitor.visitWeber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82637,14 +76075,6 @@ export class WidePortContext extends ParserRuleContext {
 			listener.exitWidePort(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitWidePort) {
-			return visitor.visitWidePort(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82664,14 +76094,6 @@ export class WideWireContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitWideWire) {
 			listener.exitWideWire(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitWideWire) {
-			return visitor.visitWideWire(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -82743,14 +76165,6 @@ export class WrittenContext extends ParserRuleContext {
 			listener.exitWritten(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitWritten) {
-			return visitor.visitWritten(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82775,14 +76189,6 @@ export class XCoordinateContext extends ParserRuleContext {
 			listener.exitXCoordinate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitXCoordinate) {
-			return visitor.visitXCoordinate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82805,14 +76211,6 @@ export class XNumberValueContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitXNumberValue) {
 			listener.exitXNumberValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitXNumberValue) {
-			return visitor.visitXNumberValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -82845,14 +76243,6 @@ export class Xor_Context extends ParserRuleContext {
 			listener.exitXor_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitXor_) {
-			return visitor.visitXor_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82875,14 +76265,6 @@ export class YCoordinateContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitYCoordinate) {
 			listener.exitYCoordinate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitYCoordinate) {
-			return visitor.visitYCoordinate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -82915,14 +76297,6 @@ export class YearContext extends ParserRuleContext {
 			listener.exitYear(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitYear) {
-			return visitor.visitYear(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -82945,14 +76319,6 @@ export class YearNumberContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitYearNumber) {
 			listener.exitYearNumber(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitYearNumber) {
-			return visitor.visitYearNumber(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -82979,14 +76345,6 @@ export class YNumberValueContext extends ParserRuleContext {
 			listener.exitYNumberValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitYNumberValue) {
-			return visitor.visitYNumberValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -83009,14 +76367,6 @@ export class IntegerTokenContext extends ParserRuleContext {
 			listener.exitIntegerToken(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitIntegerToken) {
-			return visitor.visitIntegerToken(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -83037,14 +76387,6 @@ export class StringTokenContext extends ParserRuleContext {
 	public exitRule(listener: EDIF300Listener): void {
 		if (listener.exitStringToken) {
 			listener.exitStringToken(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: EDIF300Visitor<Result>): Result {
-		if (visitor.visitStringToken) {
-			return visitor.visitStringToken(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

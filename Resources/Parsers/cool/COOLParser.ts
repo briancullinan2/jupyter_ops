@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { COOLListener } from "./COOLListener";
-import { COOLVisitor } from "./COOLVisitor";
-
 
 export class COOLParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1113,14 +1111,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1157,14 +1147,6 @@ export class ClassesContext extends ProgramBlocksContext {
 			listener.exitClasses(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitClasses) {
-			return visitor.visitClasses(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class EofContext extends ProgramBlocksContext {
 	public EOF(): TerminalNode { return this.getToken(COOLParser.EOF, 0); }
@@ -1182,14 +1164,6 @@ export class EofContext extends ProgramBlocksContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitEof) {
 			listener.exitEof(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitEof) {
-			return visitor.visitEof(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1231,14 +1205,6 @@ export class ClassDefineContext extends ParserRuleContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitClassDefine) {
 			listener.exitClassDefine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitClassDefine) {
-			return visitor.visitClassDefine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1285,14 +1251,6 @@ export class MethodContext extends FeatureContext {
 			listener.exitMethod(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitMethod) {
-			return visitor.visitMethod(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PropertyContext extends FeatureContext {
 	public OBJECTID(): TerminalNode { return this.getToken(COOLParser.OBJECTID, 0); }
@@ -1317,14 +1275,6 @@ export class PropertyContext extends FeatureContext {
 			listener.exitProperty(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitProperty) {
-			return visitor.visitProperty(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1346,14 +1296,6 @@ export class FormalContext extends ParserRuleContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitFormal) {
 			listener.exitFormal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitFormal) {
-			return visitor.visitFormal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1397,14 +1339,6 @@ export class MethodCallContext extends ExpressionContext {
 			listener.exitMethodCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitMethodCall) {
-			return visitor.visitMethodCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class OwnMethodCallContext extends ExpressionContext {
 	public OBJECTID(): TerminalNode { return this.getToken(COOLParser.OBJECTID, 0); }
@@ -1431,14 +1365,6 @@ export class OwnMethodCallContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitOwnMethodCall) {
 			listener.exitOwnMethodCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitOwnMethodCall) {
-			return visitor.visitOwnMethodCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1472,14 +1398,6 @@ export class IfContext extends ExpressionContext {
 			listener.exitIf(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitIf) {
-			return visitor.visitIf(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class WhileContext extends ExpressionContext {
 	public WHILE(): TerminalNode { return this.getToken(COOLParser.WHILE, 0); }
@@ -1510,14 +1428,6 @@ export class WhileContext extends ExpressionContext {
 			listener.exitWhile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitWhile) {
-			return visitor.visitWhile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BlockContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -1543,14 +1453,6 @@ export class BlockContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitBlock) {
 			listener.exitBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1607,14 +1509,6 @@ export class LetInContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitLetIn) {
 			listener.exitLetIn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitLetIn) {
-			return visitor.visitLetIn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1674,14 +1568,6 @@ export class CaseContext extends ExpressionContext {
 			listener.exitCase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitCase) {
-			return visitor.visitCase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NewContext extends ExpressionContext {
 	public NEW(): TerminalNode { return this.getToken(COOLParser.NEW, 0); }
@@ -1700,14 +1586,6 @@ export class NewContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitNew) {
 			listener.exitNew(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitNew) {
-			return visitor.visitNew(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1732,14 +1610,6 @@ export class NegativeContext extends ExpressionContext {
 			listener.exitNegative(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitNegative) {
-			return visitor.visitNegative(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IsvoidContext extends ExpressionContext {
 	public ISVOID(): TerminalNode { return this.getToken(COOLParser.ISVOID, 0); }
@@ -1760,14 +1630,6 @@ export class IsvoidContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitIsvoid) {
 			listener.exitIsvoid(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitIsvoid) {
-			return visitor.visitIsvoid(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1798,14 +1660,6 @@ export class MultiplyContext extends ExpressionContext {
 			listener.exitMultiply(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitMultiply) {
-			return visitor.visitMultiply(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DivisionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -1832,14 +1686,6 @@ export class DivisionContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitDivision) {
 			listener.exitDivision(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitDivision) {
-			return visitor.visitDivision(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1870,14 +1716,6 @@ export class AddContext extends ExpressionContext {
 			listener.exitAdd(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitAdd) {
-			return visitor.visitAdd(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class MinusContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -1904,14 +1742,6 @@ export class MinusContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitMinus) {
 			listener.exitMinus(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitMinus) {
-			return visitor.visitMinus(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1942,14 +1772,6 @@ export class LessThanContext extends ExpressionContext {
 			listener.exitLessThan(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitLessThan) {
-			return visitor.visitLessThan(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class LessEqualContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -1976,14 +1798,6 @@ export class LessEqualContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitLessEqual) {
 			listener.exitLessEqual(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitLessEqual) {
-			return visitor.visitLessEqual(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2014,14 +1828,6 @@ export class EqualContext extends ExpressionContext {
 			listener.exitEqual(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitEqual) {
-			return visitor.visitEqual(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BoolNotContext extends ExpressionContext {
 	public NOT(): TerminalNode { return this.getToken(COOLParser.NOT, 0); }
@@ -2042,14 +1848,6 @@ export class BoolNotContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitBoolNot) {
 			listener.exitBoolNot(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitBoolNot) {
-			return visitor.visitBoolNot(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2073,14 +1871,6 @@ export class ParenthesesContext extends ExpressionContext {
 			listener.exitParentheses(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitParentheses) {
-			return visitor.visitParentheses(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IdContext extends ExpressionContext {
 	public OBJECTID(): TerminalNode { return this.getToken(COOLParser.OBJECTID, 0); }
@@ -2098,14 +1888,6 @@ export class IdContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitId) {
 			listener.exitId(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitId) {
-			return visitor.visitId(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2127,14 +1909,6 @@ export class IntContext extends ExpressionContext {
 			listener.exitInt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitInt) {
-			return visitor.visitInt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StringContext extends ExpressionContext {
 	public STRING(): TerminalNode { return this.getToken(COOLParser.STRING, 0); }
@@ -2152,14 +1926,6 @@ export class StringContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2181,14 +1947,6 @@ export class TrueContext extends ExpressionContext {
 			listener.exitTrue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitTrue) {
-			return visitor.visitTrue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class FalseContext extends ExpressionContext {
 	public FALSE(): TerminalNode { return this.getToken(COOLParser.FALSE, 0); }
@@ -2206,14 +1964,6 @@ export class FalseContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitFalse) {
 			listener.exitFalse(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitFalse) {
-			return visitor.visitFalse(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2237,14 +1987,6 @@ export class AssignmentContext extends ExpressionContext {
 	public exitRule(listener: COOLListener): void {
 		if (listener.exitAssignment) {
 			listener.exitAssignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: COOLVisitor<Result>): Result {
-		if (visitor.visitAssignment) {
-			return visitor.visitAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

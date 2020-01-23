@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { plyListener } from "./plyListener";
-import { plyVisitor } from "./plyVisitor";
-
 
 export class plyParser extends Parser {
 	public static readonly T__0 = 1;
@@ -757,14 +755,6 @@ export class PlyContext extends ParserRuleContext {
 			listener.exitPly(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitPly) {
-			return visitor.visitPly(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -813,14 +803,6 @@ export class HeaderContext extends ParserRuleContext {
 			listener.exitHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitHeader) {
-			return visitor.visitHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -843,14 +825,6 @@ export class End_headerContext extends ParserRuleContext {
 			listener.exitEnd_header(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitEnd_header) {
-			return visitor.visitEnd_header(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -871,14 +845,6 @@ export class FormatContext extends ParserRuleContext {
 	public exitRule(listener: plyListener): void {
 		if (listener.exitFormat) {
 			listener.exitFormat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitFormat) {
-			return visitor.visitFormat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -909,14 +875,6 @@ export class ElementContext extends ParserRuleContext {
 			listener.exitElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitElement) {
-			return visitor.visitElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -942,14 +900,6 @@ export class PropertyContext extends ParserRuleContext {
 	public exitRule(listener: plyListener): void {
 		if (listener.exitProperty) {
 			listener.exitProperty(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitProperty) {
-			return visitor.visitProperty(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -978,14 +928,6 @@ export class ScalarpropertyContext extends ParserRuleContext {
 	public exitRule(listener: plyListener): void {
 		if (listener.exitScalarproperty) {
 			listener.exitScalarproperty(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitScalarproperty) {
-			return visitor.visitScalarproperty(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1022,14 +964,6 @@ export class ListpropertyContext extends ParserRuleContext {
 			listener.exitListproperty(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitListproperty) {
-			return visitor.visitListproperty(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1049,14 +983,6 @@ export class TypeContext extends ParserRuleContext {
 	public exitRule(listener: plyListener): void {
 		if (listener.exitType) {
 			listener.exitType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1079,14 +1005,6 @@ export class PlydeclarationContext extends ParserRuleContext {
 	public exitRule(listener: plyListener): void {
 		if (listener.exitPlydeclaration) {
 			listener.exitPlydeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitPlydeclaration) {
-			return visitor.visitPlydeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1119,14 +1037,6 @@ export class VerticesContext extends ParserRuleContext {
 			listener.exitVertices(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitVertices) {
-			return visitor.visitVertices(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1155,14 +1065,6 @@ export class FacesContext extends ParserRuleContext {
 	public exitRule(listener: plyListener): void {
 		if (listener.exitFaces) {
 			listener.exitFaces(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitFaces) {
-			return visitor.visitFaces(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1196,14 +1098,6 @@ export class VertexContext extends ParserRuleContext {
 			listener.exitVertex(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitVertex) {
-			return visitor.visitVertex(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1235,14 +1129,6 @@ export class FaceContext extends ParserRuleContext {
 			listener.exitFace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitFace) {
-			return visitor.visitFace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1265,14 +1151,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1293,14 +1171,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: plyListener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: plyVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

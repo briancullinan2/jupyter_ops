@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { RegoParserListener } from "./RegoParserListener";
-import { RegoParserVisitor } from "./RegoParserVisitor";
-
 
 export class RegoParser extends Parser {
 	public static readonly Comment = 1;
@@ -2124,14 +2122,6 @@ export class RootContext extends ParserRuleContext {
 			listener.exitRoot(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRoot) {
-			return visitor.visitRoot(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2165,14 +2155,6 @@ export class StmtContext extends ParserRuleContext {
 			listener.exitStmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitStmt) {
-			return visitor.visitStmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2196,14 +2178,6 @@ export class RegoPackageContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitRegoPackage) {
 			listener.exitRegoPackage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRegoPackage) {
-			return visitor.visitRegoPackage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2238,14 +2212,6 @@ export class ImportDirectiveContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitImportDirective) {
 			listener.exitImportDirective(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitImportDirective) {
-			return visitor.visitImportDirective(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2287,14 +2253,6 @@ export class RegoRulesContext extends ParserRuleContext {
 			listener.exitRegoRules(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRegoRules) {
-			return visitor.visitRegoRules(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2334,14 +2292,6 @@ export class RuleHeadContext extends ParserRuleContext {
 			listener.exitRuleHead(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRuleHead) {
-			return visitor.visitRuleHead(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2371,14 +2321,6 @@ export class RuleBodyContext extends ParserRuleContext {
 			listener.exitRuleBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRuleBody) {
-			return visitor.visitRuleBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2404,14 +2346,6 @@ export class RuleExtContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitRuleExt) {
 			listener.exitRuleExt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRuleExt) {
-			return visitor.visitRuleExt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2443,14 +2377,6 @@ export class RegoElseContext extends ParserRuleContext {
 			listener.exitRegoElse(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRegoElse) {
-			return visitor.visitRegoElse(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2478,14 +2404,6 @@ export class RegoBodyContext extends ParserRuleContext {
 			listener.exitRegoBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRegoBody) {
-			return visitor.visitRegoBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2510,14 +2428,6 @@ export class NonEmptyBraceEnclosedBodyContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitNonEmptyBraceEnclosedBody) {
 			listener.exitNonEmptyBraceEnclosedBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitNonEmptyBraceEnclosedBody) {
-			return visitor.visitNonEmptyBraceEnclosedBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2559,14 +2469,6 @@ export class QueryContext extends ParserRuleContext {
 			listener.exitQuery(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitQuery) {
-			return visitor.visitQuery(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2599,14 +2501,6 @@ export class LiteralContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitLiteral) {
 			listener.exitLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2648,14 +2542,6 @@ export class LiteralExprContext extends ParserRuleContext {
 			listener.exitLiteralExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitLiteralExpr) {
-			return visitor.visitLiteralExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2688,14 +2574,6 @@ export class WithKeywordContext extends ParserRuleContext {
 			listener.exitWithKeyword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitWithKeyword) {
-			return visitor.visitWithKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2723,14 +2601,6 @@ export class FunctionCallContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitFunctionCall) {
 			listener.exitFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitFunctionCall) {
-			return visitor.visitFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2764,14 +2634,6 @@ export class ExprTermPairContext extends ParserRuleContext {
 			listener.exitExprTermPair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitExprTermPair) {
-			return visitor.visitExprTermPair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2801,14 +2663,6 @@ export class TermPairContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitTermPair) {
 			listener.exitTermPair(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitTermPair) {
-			return visitor.visitTermPair(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2850,14 +2704,6 @@ export class ExprTermPairListContext extends ParserRuleContext {
 			listener.exitExprTermPairList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitExprTermPairList) {
-			return visitor.visitExprTermPairList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2895,14 +2741,6 @@ export class ExprTermContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitExprTerm) {
 			listener.exitExprTerm(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitExprTerm) {
-			return visitor.visitExprTerm(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2944,14 +2782,6 @@ export class ExprTermListContext extends ParserRuleContext {
 			listener.exitExprTermList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitExprTermList) {
-			return visitor.visitExprTermList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2989,14 +2819,6 @@ export class RelationExprContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitRelationExpr) {
 			listener.exitRelationExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRelationExpr) {
-			return visitor.visitRelationExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3038,14 +2860,6 @@ export class BitwiseOrExprContext extends ParserRuleContext {
 			listener.exitBitwiseOrExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitBitwiseOrExpr) {
-			return visitor.visitBitwiseOrExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3083,14 +2897,6 @@ export class BitwiseAndExprContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitBitwiseAndExpr) {
 			listener.exitBitwiseAndExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitBitwiseAndExpr) {
-			return visitor.visitBitwiseAndExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3132,14 +2938,6 @@ export class ArithExprContext extends ParserRuleContext {
 			listener.exitArithExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitArithExpr) {
-			return visitor.visitArithExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3167,14 +2965,6 @@ export class FactorExprContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitFactorExpr) {
 			listener.exitFactorExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitFactorExpr) {
-			return visitor.visitFactorExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3227,14 +3017,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3263,14 +3045,6 @@ export class ArrayComprehensionContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitArrayComprehension) {
 			listener.exitArrayComprehension(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitArrayComprehension) {
-			return visitor.visitArrayComprehension(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3303,14 +3077,6 @@ export class SetComprehensionContext extends ParserRuleContext {
 			listener.exitSetComprehension(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitSetComprehension) {
-			return visitor.visitSetComprehension(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3339,14 +3105,6 @@ export class ObjectComprehensionContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitObjectComprehension) {
 			listener.exitObjectComprehension(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitObjectComprehension) {
-			return visitor.visitObjectComprehension(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3390,14 +3148,6 @@ export class ObjectContext extends ParserRuleContext {
 			listener.exitObject(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitObject) {
-			return visitor.visitObject(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3429,14 +3179,6 @@ export class ObjectItemContext extends ParserRuleContext {
 			listener.exitObjectItem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitObjectItem) {
-			return visitor.visitObjectItem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3461,14 +3203,6 @@ export class ArrayContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitArray) {
 			listener.exitArray(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitArray) {
-			return visitor.visitArray(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3498,14 +3232,6 @@ export class SetContext extends ParserRuleContext {
 			listener.exitSet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitSet) {
-			return visitor.visitSet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3527,14 +3253,6 @@ export class EmptySetContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitEmptySet) {
 			listener.exitEmptySet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitEmptySet) {
-			return visitor.visitEmptySet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3561,14 +3279,6 @@ export class NonEmptySetContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitNonEmptySet) {
 			listener.exitNonEmptySet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitNonEmptySet) {
-			return visitor.visitNonEmptySet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3602,14 +3312,6 @@ export class RefContext extends ParserRuleContext {
 			listener.exitRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRef) {
-			return visitor.visitRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3637,14 +3339,6 @@ export class RefOperandContext extends ParserRuleContext {
 			listener.exitRefOperand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRefOperand) {
-			return visitor.visitRefOperand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3666,14 +3360,6 @@ export class RefOperandDotContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitRefOperandDot) {
 			listener.exitRefOperandDot(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRefOperandDot) {
-			return visitor.visitRefOperandDot(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3702,14 +3388,6 @@ export class RefOperandCanonicalContext extends ParserRuleContext {
 			listener.exitRefOperandCanonical(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitRefOperandCanonical) {
-			return visitor.visitRefOperandCanonical(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3733,14 +3411,6 @@ export class ScalarContext extends ParserRuleContext {
 	public exitRule(listener: RegoParserListener): void {
 		if (listener.exitScalar) {
 			listener.exitScalar(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RegoParserVisitor<Result>): Result {
-		if (visitor.visitScalar) {
-			return visitor.visitScalar(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

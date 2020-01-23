@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { moleculeListener } from "./moleculeListener";
-import { moleculeVisitor } from "./moleculeVisitor";
-
 
 export class moleculeParser extends Parser {
 	public static readonly T__0 = 1;
@@ -452,14 +450,6 @@ export class MoleculeContext extends ParserRuleContext {
 			listener.exitMolecule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: moleculeVisitor<Result>): Result {
-		if (visitor.visitMolecule) {
-			return visitor.visitMolecule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -499,14 +489,6 @@ export class PartContext extends ParserRuleContext {
 			listener.exitPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: moleculeVisitor<Result>): Result {
-		if (visitor.visitPart) {
-			return visitor.visitPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -532,14 +514,6 @@ export class StructureContext extends ParserRuleContext {
 	public exitRule(listener: moleculeListener): void {
 		if (listener.exitStructure) {
 			listener.exitStructure(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: moleculeVisitor<Result>): Result {
-		if (visitor.visitStructure) {
-			return visitor.visitStructure(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -572,14 +546,6 @@ export class SymbolContext extends ParserRuleContext {
 			listener.exitSymbol(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: moleculeVisitor<Result>): Result {
-		if (visitor.visitSymbol) {
-			return visitor.visitSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -608,14 +574,6 @@ export class GroupContext extends ParserRuleContext {
 	public exitRule(listener: moleculeListener): void {
 		if (listener.exitGroup) {
 			listener.exitGroup(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: moleculeVisitor<Result>): Result {
-		if (visitor.visitGroup) {
-			return visitor.visitGroup(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -648,14 +606,6 @@ export class IonContext extends ParserRuleContext {
 			listener.exitIon(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: moleculeVisitor<Result>): Result {
-		if (visitor.visitIon) {
-			return visitor.visitIon(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -678,14 +628,6 @@ export class ElementContext extends ParserRuleContext {
 			listener.exitElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: moleculeVisitor<Result>): Result {
-		if (visitor.visitElement) {
-			return visitor.visitElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -706,14 +648,6 @@ export class CountContext extends ParserRuleContext {
 	public exitRule(listener: moleculeListener): void {
 		if (listener.exitCount) {
 			listener.exitCount(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: moleculeVisitor<Result>): Result {
-		if (visitor.visitCount) {
-			return visitor.visitCount(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

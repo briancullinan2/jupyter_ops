@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { istcListener } from "./istcListener";
-import { istcVisitor } from "./istcVisitor";
-
 
 export class istcParser extends Parser {
 	public static readonly T__0 = 1;
@@ -309,14 +307,6 @@ export class IstcContext extends ParserRuleContext {
 			listener.exitIstc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: istcVisitor<Result>): Result {
-		if (visitor.visitIstc) {
-			return visitor.visitIstc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -345,14 +335,6 @@ export class RegistrationContext extends ParserRuleContext {
 	public exitRule(listener: istcListener): void {
 		if (listener.exitRegistration) {
 			listener.exitRegistration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: istcVisitor<Result>): Result {
-		if (visitor.visitRegistration) {
-			return visitor.visitRegistration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -385,14 +367,6 @@ export class YearContext extends ParserRuleContext {
 			listener.exitYear(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: istcVisitor<Result>): Result {
-		if (visitor.visitYear) {
-			return visitor.visitYear(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -423,14 +397,6 @@ export class WorkContext extends ParserRuleContext {
 			listener.exitWork(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: istcVisitor<Result>): Result {
-		if (visitor.visitWork) {
-			return visitor.visitWork(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -451,14 +417,6 @@ export class CheckContext extends ParserRuleContext {
 	public exitRule(listener: istcListener): void {
 		if (listener.exitCheck) {
 			listener.exitCheck(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: istcVisitor<Result>): Result {
-		if (visitor.visitCheck) {
-			return visitor.visitCheck(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

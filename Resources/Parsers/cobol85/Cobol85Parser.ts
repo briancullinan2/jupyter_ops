@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { Cobol85Listener } from "./Cobol85Listener";
-import { Cobol85Visitor } from "./Cobol85Visitor";
-
 
 export class Cobol85Parser extends Parser {
 	public static readonly ABORT = 1;
@@ -41285,14 +41283,6 @@ export class StartRuleContext extends ParserRuleContext {
 			listener.exitStartRule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStartRule) {
-			return visitor.visitStartRule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -41321,14 +41311,6 @@ export class CompilationUnitContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCompilationUnit) {
 			listener.exitCompilationUnit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCompilationUnit) {
-			return visitor.visitCompilationUnit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -41376,14 +41358,6 @@ export class ProgramUnitContext extends ParserRuleContext {
 			listener.exitProgramUnit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProgramUnit) {
-			return visitor.visitProgramUnit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -41409,14 +41383,6 @@ export class EndProgramStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitEndProgramStatement) {
 			listener.exitEndProgramStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEndProgramStatement) {
-			return visitor.visitEndProgramStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -41456,14 +41422,6 @@ export class IdentificationDivisionContext extends ParserRuleContext {
 			listener.exitIdentificationDivision(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitIdentificationDivision) {
-			return visitor.visitIdentificationDivision(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -41501,14 +41459,6 @@ export class IdentificationDivisionBodyContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitIdentificationDivisionBody) {
 			listener.exitIdentificationDivisionBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitIdentificationDivisionBody) {
-			return visitor.visitIdentificationDivisionBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -41555,14 +41505,6 @@ export class ProgramIdParagraphContext extends ParserRuleContext {
 			listener.exitProgramIdParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProgramIdParagraph) {
-			return visitor.visitProgramIdParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -41587,14 +41529,6 @@ export class AuthorParagraphContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAuthorParagraph) {
 			listener.exitAuthorParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAuthorParagraph) {
-			return visitor.visitAuthorParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -41623,14 +41557,6 @@ export class InstallationParagraphContext extends ParserRuleContext {
 			listener.exitInstallationParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInstallationParagraph) {
-			return visitor.visitInstallationParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -41655,14 +41581,6 @@ export class DateWrittenParagraphContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDateWrittenParagraph) {
 			listener.exitDateWrittenParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDateWrittenParagraph) {
-			return visitor.visitDateWrittenParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -41691,14 +41609,6 @@ export class DateCompiledParagraphContext extends ParserRuleContext {
 			listener.exitDateCompiledParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDateCompiledParagraph) {
-			return visitor.visitDateCompiledParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -41725,14 +41635,6 @@ export class SecurityParagraphContext extends ParserRuleContext {
 			listener.exitSecurityParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSecurityParagraph) {
-			return visitor.visitSecurityParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -41757,14 +41659,6 @@ export class RemarksParagraphContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitRemarksParagraph) {
 			listener.exitRemarksParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRemarksParagraph) {
-			return visitor.visitRemarksParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -41800,14 +41694,6 @@ export class EnvironmentDivisionContext extends ParserRuleContext {
 			listener.exitEnvironmentDivision(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEnvironmentDivision) {
-			return visitor.visitEnvironmentDivision(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -41836,14 +41722,6 @@ export class EnvironmentDivisionBodyContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitEnvironmentDivisionBody) {
 			listener.exitEnvironmentDivisionBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEnvironmentDivisionBody) {
-			return visitor.visitEnvironmentDivisionBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -41879,14 +41757,6 @@ export class ConfigurationSectionContext extends ParserRuleContext {
 			listener.exitConfigurationSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitConfigurationSection) {
-			return visitor.visitConfigurationSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -41915,14 +41785,6 @@ export class ConfigurationSectionParagraphContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitConfigurationSectionParagraph) {
 			listener.exitConfigurationSectionParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitConfigurationSectionParagraph) {
-			return visitor.visitConfigurationSectionParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -41960,14 +41822,6 @@ export class SourceComputerParagraphContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSourceComputerParagraph) {
 			listener.exitSourceComputerParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSourceComputerParagraph) {
-			return visitor.visitSourceComputerParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -42013,14 +41867,6 @@ export class ObjectComputerParagraphContext extends ParserRuleContext {
 			listener.exitObjectComputerParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitObjectComputerParagraph) {
-			return visitor.visitObjectComputerParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42057,14 +41903,6 @@ export class ObjectComputerClauseContext extends ParserRuleContext {
 			listener.exitObjectComputerClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitObjectComputerClause) {
-			return visitor.visitObjectComputerClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42097,14 +41935,6 @@ export class MemorySizeClauseContext extends ParserRuleContext {
 			listener.exitMemorySizeClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMemorySizeClause) {
-			return visitor.visitMemorySizeClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42135,14 +41965,6 @@ export class DiskSizeClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDiskSizeClause) {
 			listener.exitDiskSizeClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDiskSizeClause) {
-			return visitor.visitDiskSizeClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -42185,14 +42007,6 @@ export class CollatingSequenceClauseContext extends ParserRuleContext {
 			listener.exitCollatingSequenceClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCollatingSequenceClause) {
-			return visitor.visitCollatingSequenceClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42218,14 +42032,6 @@ export class CollatingSequenceClauseAlphanumericContext extends ParserRuleContex
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCollatingSequenceClauseAlphanumeric) {
 			listener.exitCollatingSequenceClauseAlphanumeric(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCollatingSequenceClauseAlphanumeric) {
-			return visitor.visitCollatingSequenceClauseAlphanumeric(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -42255,14 +42061,6 @@ export class CollatingSequenceClauseNationalContext extends ParserRuleContext {
 			listener.exitCollatingSequenceClauseNational(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCollatingSequenceClauseNational) {
-			return visitor.visitCollatingSequenceClauseNational(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42289,14 +42087,6 @@ export class SegmentLimitClauseContext extends ParserRuleContext {
 			listener.exitSegmentLimitClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSegmentLimitClause) {
-			return visitor.visitSegmentLimitClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42319,14 +42109,6 @@ export class CharacterSetClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCharacterSetClause) {
 			listener.exitCharacterSetClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCharacterSetClause) {
-			return visitor.visitCharacterSetClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -42367,14 +42149,6 @@ export class SpecialNamesParagraphContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSpecialNamesParagraph) {
 			listener.exitSpecialNamesParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSpecialNamesParagraph) {
-			return visitor.visitSpecialNamesParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -42431,14 +42205,6 @@ export class SpecialNameClauseContext extends ParserRuleContext {
 			listener.exitSpecialNameClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSpecialNameClause) {
-			return visitor.visitSpecialNameClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42464,14 +42230,6 @@ export class AlphabetClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAlphabetClause) {
 			listener.exitAlphabetClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAlphabetClause) {
-			return visitor.visitAlphabetClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -42519,14 +42277,6 @@ export class AlphabetClauseFormat1Context extends ParserRuleContext {
 			listener.exitAlphabetClauseFormat1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAlphabetClauseFormat1) {
-			return visitor.visitAlphabetClauseFormat1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42563,14 +42313,6 @@ export class AlphabetLiteralsContext extends ParserRuleContext {
 			listener.exitAlphabetLiterals(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAlphabetLiterals) {
-			return visitor.visitAlphabetLiterals(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42595,14 +42337,6 @@ export class AlphabetThroughContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAlphabetThrough) {
 			listener.exitAlphabetThrough(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAlphabetThrough) {
-			return visitor.visitAlphabetThrough(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -42634,14 +42368,6 @@ export class AlphabetAlsoContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAlphabetAlso) {
 			listener.exitAlphabetAlso(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAlphabetAlso) {
-			return visitor.visitAlphabetAlso(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -42677,14 +42403,6 @@ export class AlphabetClauseFormat2Context extends ParserRuleContext {
 			listener.exitAlphabetClauseFormat2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAlphabetClauseFormat2) {
-			return visitor.visitAlphabetClauseFormat2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42712,14 +42430,6 @@ export class ChannelClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitChannelClause) {
 			listener.exitChannelClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitChannelClause) {
-			return visitor.visitChannelClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -42760,14 +42470,6 @@ export class ClassClauseContext extends ParserRuleContext {
 			listener.exitClassClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitClassClause) {
-			return visitor.visitClassClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42797,14 +42499,6 @@ export class ClassClauseThroughContext extends ParserRuleContext {
 			listener.exitClassClauseThrough(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitClassClauseThrough) {
-			return visitor.visitClassClauseThrough(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42832,14 +42526,6 @@ export class ClassClauseFromContext extends ParserRuleContext {
 			listener.exitClassClauseFrom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitClassClauseFrom) {
-			return visitor.visitClassClauseFrom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42865,14 +42551,6 @@ export class ClassClauseToContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitClassClauseTo) {
 			listener.exitClassClauseTo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitClassClauseTo) {
-			return visitor.visitClassClauseTo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -42911,14 +42589,6 @@ export class CurrencySignClauseContext extends ParserRuleContext {
 			listener.exitCurrencySignClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCurrencySignClause) {
-			return visitor.visitCurrencySignClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -42941,14 +42611,6 @@ export class DecimalPointClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDecimalPointClause) {
 			listener.exitDecimalPointClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDecimalPointClause) {
-			return visitor.visitDecimalPointClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -42981,14 +42643,6 @@ export class DefaultComputationalSignClauseContext extends ParserRuleContext {
 			listener.exitDefaultComputationalSignClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDefaultComputationalSignClause) {
-			return visitor.visitDefaultComputationalSignClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43015,14 +42669,6 @@ export class DefaultDisplaySignClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDefaultDisplaySignClause) {
 			listener.exitDefaultDisplaySignClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDefaultDisplaySignClause) {
-			return visitor.visitDefaultDisplaySignClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -43054,14 +42700,6 @@ export class EnvironmentSwitchNameClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitEnvironmentSwitchNameClause) {
 			listener.exitEnvironmentSwitchNameClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEnvironmentSwitchNameClause) {
-			return visitor.visitEnvironmentSwitchNameClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -43114,14 +42752,6 @@ export class EnvironmentSwitchNameSpecialNamesStatusPhraseContext extends Parser
 			listener.exitEnvironmentSwitchNameSpecialNamesStatusPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEnvironmentSwitchNameSpecialNamesStatusPhrase) {
-			return visitor.visitEnvironmentSwitchNameSpecialNamesStatusPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43146,14 +42776,6 @@ export class OdtClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitOdtClause) {
 			listener.exitOdtClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitOdtClause) {
-			return visitor.visitOdtClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -43181,14 +42803,6 @@ export class ReserveNetworkClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReserveNetworkClause) {
 			listener.exitReserveNetworkClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReserveNetworkClause) {
-			return visitor.visitReserveNetworkClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -43228,14 +42842,6 @@ export class SymbolicCharactersClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSymbolicCharactersClause) {
 			listener.exitSymbolicCharactersClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSymbolicCharactersClause) {
-			return visitor.visitSymbolicCharactersClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -43279,14 +42885,6 @@ export class SymbolicCharactersContext extends ParserRuleContext {
 			listener.exitSymbolicCharacters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSymbolicCharacters) {
-			return visitor.visitSymbolicCharacters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43320,14 +42918,6 @@ export class InputOutputSectionContext extends ParserRuleContext {
 			listener.exitInputOutputSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInputOutputSection) {
-			return visitor.visitInputOutputSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43353,14 +42943,6 @@ export class InputOutputSectionParagraphContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInputOutputSectionParagraph) {
 			listener.exitInputOutputSectionParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInputOutputSectionParagraph) {
-			return visitor.visitInputOutputSectionParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -43403,14 +42985,6 @@ export class FileControlParagraphContext extends ParserRuleContext {
 			listener.exitFileControlParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitFileControlParagraph) {
-			return visitor.visitFileControlParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43444,14 +43018,6 @@ export class FileControlEntryContext extends ParserRuleContext {
 			listener.exitFileControlEntry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitFileControlEntry) {
-			return visitor.visitFileControlEntry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43476,14 +43042,6 @@ export class SelectClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSelectClause) {
 			listener.exitSelectClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSelectClause) {
-			return visitor.visitSelectClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -43540,14 +43098,6 @@ export class FileControlClauseContext extends ParserRuleContext {
 			listener.exitFileControlClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitFileControlClause) {
-			return visitor.visitFileControlClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43586,14 +43136,6 @@ export class AssignClauseContext extends ParserRuleContext {
 			listener.exitAssignClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAssignClause) {
-			return visitor.visitAssignClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43623,14 +43165,6 @@ export class ReserveClauseContext extends ParserRuleContext {
 			listener.exitReserveClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReserveClause) {
-			return visitor.visitReserveClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43658,14 +43192,6 @@ export class OrganizationClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitOrganizationClause) {
 			listener.exitOrganizationClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitOrganizationClause) {
-			return visitor.visitOrganizationClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -43698,14 +43224,6 @@ export class PaddingCharacterClauseContext extends ParserRuleContext {
 			listener.exitPaddingCharacterClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPaddingCharacterClause) {
-			return visitor.visitPaddingCharacterClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43735,14 +43253,6 @@ export class RecordDelimiterClauseContext extends ParserRuleContext {
 			listener.exitRecordDelimiterClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRecordDelimiterClause) {
-			return visitor.visitRecordDelimiterClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43769,14 +43279,6 @@ export class AccessModeClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAccessModeClause) {
 			listener.exitAccessModeClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAccessModeClause) {
-			return visitor.visitAccessModeClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -43809,14 +43311,6 @@ export class RecordKeyClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitRecordKeyClause) {
 			listener.exitRecordKeyClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRecordKeyClause) {
-			return visitor.visitRecordKeyClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -43852,14 +43346,6 @@ export class AlternateRecordKeyClauseContext extends ParserRuleContext {
 			listener.exitAlternateRecordKeyClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAlternateRecordKeyClause) {
-			return visitor.visitAlternateRecordKeyClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43884,14 +43370,6 @@ export class PasswordClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitPasswordClause) {
 			listener.exitPasswordClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPasswordClause) {
-			return visitor.visitPasswordClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -43927,14 +43405,6 @@ export class FileStatusClauseContext extends ParserRuleContext {
 			listener.exitFileStatusClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitFileStatusClause) {
-			return visitor.visitFileStatusClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -43960,14 +43430,6 @@ export class RelativeKeyClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitRelativeKeyClause) {
 			listener.exitRelativeKeyClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRelativeKeyClause) {
-			return visitor.visitRelativeKeyClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44013,14 +43475,6 @@ export class IoControlParagraphContext extends ParserRuleContext {
 			listener.exitIoControlParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitIoControlParagraph) {
-			return visitor.visitIoControlParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44052,14 +43506,6 @@ export class IoControlClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitIoControlClause) {
 			listener.exitIoControlClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitIoControlClause) {
-			return visitor.visitIoControlClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44101,14 +43547,6 @@ export class RerunClauseContext extends ParserRuleContext {
 			listener.exitRerunClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRerunClause) {
-			return visitor.visitRerunClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44132,14 +43570,6 @@ export class RerunEveryRecordsContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitRerunEveryRecords) {
 			listener.exitRerunEveryRecords(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRerunEveryRecords) {
-			return visitor.visitRerunEveryRecords(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44178,14 +43608,6 @@ export class RerunEveryOfContext extends ParserRuleContext {
 			listener.exitRerunEveryOf(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRerunEveryOf) {
-			return visitor.visitRerunEveryOf(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44209,14 +43631,6 @@ export class RerunEveryClockContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitRerunEveryClock) {
 			listener.exitRerunEveryClock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRerunEveryClock) {
-			return visitor.visitRerunEveryClock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44255,14 +43669,6 @@ export class SameClauseContext extends ParserRuleContext {
 			listener.exitSameClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSameClause) {
-			return visitor.visitSameClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44297,14 +43703,6 @@ export class MultipleFileClauseContext extends ParserRuleContext {
 			listener.exitMultipleFileClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMultipleFileClause) {
-			return visitor.visitMultipleFileClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44333,14 +43731,6 @@ export class MultipleFilePositionContext extends ParserRuleContext {
 			listener.exitMultipleFilePosition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMultipleFilePosition) {
-			return visitor.visitMultipleFilePosition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44366,14 +43756,6 @@ export class CommitmentControlClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCommitmentControlClause) {
 			listener.exitCommitmentControlClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCommitmentControlClause) {
-			return visitor.visitCommitmentControlClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44407,14 +43789,6 @@ export class DataDivisionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataDivision) {
 			listener.exitDataDivision(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataDivision) {
-			return visitor.visitDataDivision(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44465,14 +43839,6 @@ export class DataDivisionSectionContext extends ParserRuleContext {
 			listener.exitDataDivisionSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataDivisionSection) {
-			return visitor.visitDataDivisionSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44504,14 +43870,6 @@ export class FileSectionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitFileSection) {
 			listener.exitFileSection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitFileSection) {
-			return visitor.visitFileSection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44565,14 +43923,6 @@ export class FileDescriptionEntryContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitFileDescriptionEntry) {
 			listener.exitFileDescriptionEntry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitFileDescriptionEntry) {
-			return visitor.visitFileDescriptionEntry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44629,14 +43979,6 @@ export class FileDescriptionEntryClauseContext extends ParserRuleContext {
 			listener.exitFileDescriptionEntryClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitFileDescriptionEntryClause) {
-			return visitor.visitFileDescriptionEntryClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44660,14 +44002,6 @@ export class ExternalClauseContext extends ParserRuleContext {
 			listener.exitExternalClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitExternalClause) {
-			return visitor.visitExternalClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44689,14 +44023,6 @@ export class GlobalClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitGlobalClause) {
 			listener.exitGlobalClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitGlobalClause) {
-			return visitor.visitGlobalClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44730,14 +44056,6 @@ export class BlockContainsClauseContext extends ParserRuleContext {
 			listener.exitBlockContainsClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitBlockContainsClause) {
-			return visitor.visitBlockContainsClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44761,14 +44079,6 @@ export class BlockContainsToContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitBlockContainsTo) {
 			listener.exitBlockContainsTo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitBlockContainsTo) {
-			return visitor.visitBlockContainsTo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44802,14 +44112,6 @@ export class RecordContainsClauseContext extends ParserRuleContext {
 			listener.exitRecordContainsClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRecordContainsClause) {
-			return visitor.visitRecordContainsClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44834,14 +44136,6 @@ export class RecordContainsClauseFormat1Context extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitRecordContainsClauseFormat1) {
 			listener.exitRecordContainsClauseFormat1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRecordContainsClauseFormat1) {
-			return visitor.visitRecordContainsClauseFormat1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44882,14 +44176,6 @@ export class RecordContainsClauseFormat2Context extends ParserRuleContext {
 			listener.exitRecordContainsClauseFormat2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRecordContainsClauseFormat2) {
-			return visitor.visitRecordContainsClauseFormat2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44919,14 +44205,6 @@ export class RecordContainsClauseFormat3Context extends ParserRuleContext {
 			listener.exitRecordContainsClauseFormat3(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRecordContainsClauseFormat3) {
-			return visitor.visitRecordContainsClauseFormat3(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -44950,14 +44228,6 @@ export class RecordContainsToContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitRecordContainsTo) {
 			listener.exitRecordContainsTo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRecordContainsTo) {
-			return visitor.visitRecordContainsTo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -44997,14 +44267,6 @@ export class LabelRecordsClauseContext extends ParserRuleContext {
 			listener.exitLabelRecordsClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLabelRecordsClause) {
-			return visitor.visitLabelRecordsClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45037,14 +44299,6 @@ export class ValueOfClauseContext extends ParserRuleContext {
 			listener.exitValueOfClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitValueOfClause) {
-			return visitor.visitValueOfClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45074,14 +44328,6 @@ export class ValuePairContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitValuePair) {
 			listener.exitValuePair(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitValuePair) {
-			return visitor.visitValuePair(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45117,14 +44363,6 @@ export class DataRecordsClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataRecordsClause) {
 			listener.exitDataRecordsClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataRecordsClause) {
-			return visitor.visitDataRecordsClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45166,14 +44404,6 @@ export class LinageClauseContext extends ParserRuleContext {
 			listener.exitLinageClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLinageClause) {
-			return visitor.visitLinageClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45202,14 +44432,6 @@ export class LinageAtContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLinageAt) {
 			listener.exitLinageAt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLinageAt) {
-			return visitor.visitLinageAt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45242,14 +44464,6 @@ export class LinageFootingAtContext extends ParserRuleContext {
 			listener.exitLinageFootingAt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLinageFootingAt) {
-			return visitor.visitLinageFootingAt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45278,14 +44492,6 @@ export class LinageLinesAtTopContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLinageLinesAtTop) {
 			listener.exitLinageLinesAtTop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLinageLinesAtTop) {
-			return visitor.visitLinageLinesAtTop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45318,14 +44524,6 @@ export class LinageLinesAtBottomContext extends ParserRuleContext {
 			listener.exitLinageLinesAtBottom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLinageLinesAtBottom) {
-			return visitor.visitLinageLinesAtBottom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45353,14 +44551,6 @@ export class RecordingModeClauseContext extends ParserRuleContext {
 			listener.exitRecordingModeClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRecordingModeClause) {
-			return visitor.visitRecordingModeClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45383,14 +44573,6 @@ export class ModeStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitModeStatement) {
 			listener.exitModeStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitModeStatement) {
-			return visitor.visitModeStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45417,14 +44599,6 @@ export class CodeSetClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCodeSetClause) {
 			listener.exitCodeSetClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCodeSetClause) {
-			return visitor.visitCodeSetClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45461,14 +44635,6 @@ export class ReportClauseContext extends ParserRuleContext {
 			listener.exitReportClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportClause) {
-			return visitor.visitReportClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45500,14 +44666,6 @@ export class DataBaseSectionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataBaseSection) {
 			listener.exitDataBaseSection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataBaseSection) {
-			return visitor.visitDataBaseSection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45544,14 +44702,6 @@ export class DataBaseSectionEntryContext extends ParserRuleContext {
 			listener.exitDataBaseSectionEntry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataBaseSectionEntry) {
-			return visitor.visitDataBaseSectionEntry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45585,14 +44735,6 @@ export class WorkingStorageSectionContext extends ParserRuleContext {
 			listener.exitWorkingStorageSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitWorkingStorageSection) {
-			return visitor.visitWorkingStorageSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45624,14 +44766,6 @@ export class LinkageSectionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLinkageSection) {
 			listener.exitLinkageSection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLinkageSection) {
-			return visitor.visitLinkageSection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45676,14 +44810,6 @@ export class CommunicationSectionContext extends ParserRuleContext {
 			listener.exitCommunicationSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCommunicationSection) {
-			return visitor.visitCommunicationSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45712,14 +44838,6 @@ export class CommunicationDescriptionEntryContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCommunicationDescriptionEntry) {
 			listener.exitCommunicationDescriptionEntry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCommunicationDescriptionEntry) {
-			return visitor.visitCommunicationDescriptionEntry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -45841,14 +44959,6 @@ export class CommunicationDescriptionEntryFormat1Context extends ParserRuleConte
 			listener.exitCommunicationDescriptionEntryFormat1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCommunicationDescriptionEntryFormat1) {
-			return visitor.visitCommunicationDescriptionEntryFormat1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -45929,14 +45039,6 @@ export class CommunicationDescriptionEntryFormat2Context extends ParserRuleConte
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCommunicationDescriptionEntryFormat2) {
 			listener.exitCommunicationDescriptionEntryFormat2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCommunicationDescriptionEntryFormat2) {
-			return visitor.visitCommunicationDescriptionEntryFormat2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46031,14 +45133,6 @@ export class CommunicationDescriptionEntryFormat3Context extends ParserRuleConte
 			listener.exitCommunicationDescriptionEntryFormat3(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCommunicationDescriptionEntryFormat3) {
-			return visitor.visitCommunicationDescriptionEntryFormat3(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46064,14 +45158,6 @@ export class DestinationCountClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDestinationCountClause) {
 			listener.exitDestinationCountClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDestinationCountClause) {
-			return visitor.visitDestinationCountClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46113,14 +45199,6 @@ export class DestinationTableClauseContext extends ParserRuleContext {
 			listener.exitDestinationTableClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDestinationTableClause) {
-			return visitor.visitDestinationTableClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46146,14 +45224,6 @@ export class EndKeyClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitEndKeyClause) {
 			listener.exitEndKeyClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEndKeyClause) {
-			return visitor.visitEndKeyClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46183,14 +45253,6 @@ export class ErrorKeyClauseContext extends ParserRuleContext {
 			listener.exitErrorKeyClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitErrorKeyClause) {
-			return visitor.visitErrorKeyClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46216,14 +45278,6 @@ export class MessageCountClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMessageCountClause) {
 			listener.exitMessageCountClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMessageCountClause) {
-			return visitor.visitMessageCountClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46253,14 +45307,6 @@ export class MessageDateClauseContext extends ParserRuleContext {
 			listener.exitMessageDateClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMessageDateClause) {
-			return visitor.visitMessageDateClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46286,14 +45332,6 @@ export class MessageTimeClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMessageTimeClause) {
 			listener.exitMessageTimeClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMessageTimeClause) {
-			return visitor.visitMessageTimeClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46323,14 +45361,6 @@ export class StatusKeyClauseContext extends ParserRuleContext {
 			listener.exitStatusKeyClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStatusKeyClause) {
-			return visitor.visitStatusKeyClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46356,14 +45386,6 @@ export class SymbolicDestinationClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSymbolicDestinationClause) {
 			listener.exitSymbolicDestinationClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSymbolicDestinationClause) {
-			return visitor.visitSymbolicDestinationClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46393,14 +45415,6 @@ export class SymbolicQueueClauseContext extends ParserRuleContext {
 			listener.exitSymbolicQueueClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSymbolicQueueClause) {
-			return visitor.visitSymbolicQueueClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46428,14 +45442,6 @@ export class SymbolicSourceClauseContext extends ParserRuleContext {
 			listener.exitSymbolicSourceClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSymbolicSourceClause) {
-			return visitor.visitSymbolicSourceClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46461,14 +45467,6 @@ export class SymbolicTerminalClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSymbolicTerminalClause) {
 			listener.exitSymbolicTerminalClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSymbolicTerminalClause) {
-			return visitor.visitSymbolicTerminalClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46500,14 +45498,6 @@ export class SymbolicSubQueueClauseContext extends ParserRuleContext {
 			listener.exitSymbolicSubQueueClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSymbolicSubQueueClause) {
-			return visitor.visitSymbolicSubQueueClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46533,14 +45523,6 @@ export class TextLengthClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitTextLengthClause) {
 			listener.exitTextLengthClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitTextLengthClause) {
-			return visitor.visitTextLengthClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46588,14 +45570,6 @@ export class LocalStorageSectionContext extends ParserRuleContext {
 			listener.exitLocalStorageSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLocalStorageSection) {
-			return visitor.visitLocalStorageSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46627,14 +45601,6 @@ export class ScreenSectionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenSection) {
 			listener.exitScreenSection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenSection) {
-			return visitor.visitScreenSection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46916,14 +45882,6 @@ export class ScreenDescriptionEntryContext extends ParserRuleContext {
 			listener.exitScreenDescriptionEntry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionEntry) {
-			return visitor.visitScreenDescriptionEntry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -46946,14 +45904,6 @@ export class ScreenDescriptionBlankClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionBlankClause) {
 			listener.exitScreenDescriptionBlankClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionBlankClause) {
-			return visitor.visitScreenDescriptionBlankClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -46979,14 +45929,6 @@ export class ScreenDescriptionBellClauseContext extends ParserRuleContext {
 			listener.exitScreenDescriptionBellClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionBellClause) {
-			return visitor.visitScreenDescriptionBellClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47007,14 +45949,6 @@ export class ScreenDescriptionBlinkClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionBlinkClause) {
 			listener.exitScreenDescriptionBlinkClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionBlinkClause) {
-			return visitor.visitScreenDescriptionBlinkClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47041,14 +45975,6 @@ export class ScreenDescriptionEraseClauseContext extends ParserRuleContext {
 			listener.exitScreenDescriptionEraseClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionEraseClause) {
-			return visitor.visitScreenDescriptionEraseClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47070,14 +45996,6 @@ export class ScreenDescriptionLightClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionLightClause) {
 			listener.exitScreenDescriptionLightClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionLightClause) {
-			return visitor.visitScreenDescriptionLightClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47104,14 +46022,6 @@ export class ScreenDescriptionGridClauseContext extends ParserRuleContext {
 			listener.exitScreenDescriptionGridClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionGridClause) {
-			return visitor.visitScreenDescriptionGridClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47134,14 +46044,6 @@ export class ScreenDescriptionReverseVideoClauseContext extends ParserRuleContex
 			listener.exitScreenDescriptionReverseVideoClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionReverseVideoClause) {
-			return visitor.visitScreenDescriptionReverseVideoClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47162,14 +46064,6 @@ export class ScreenDescriptionUnderlineClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionUnderlineClause) {
 			listener.exitScreenDescriptionUnderlineClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionUnderlineClause) {
-			return visitor.visitScreenDescriptionUnderlineClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47199,14 +46093,6 @@ export class ScreenDescriptionSizeClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionSizeClause) {
 			listener.exitScreenDescriptionSizeClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionSizeClause) {
-			return visitor.visitScreenDescriptionSizeClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47240,14 +46126,6 @@ export class ScreenDescriptionLineClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionLineClause) {
 			listener.exitScreenDescriptionLineClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionLineClause) {
-			return visitor.visitScreenDescriptionLineClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47284,14 +46162,6 @@ export class ScreenDescriptionColumnClauseContext extends ParserRuleContext {
 			listener.exitScreenDescriptionColumnClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionColumnClause) {
-			return visitor.visitScreenDescriptionColumnClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47320,14 +46190,6 @@ export class ScreenDescriptionForegroundColorClauseContext extends ParserRuleCon
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionForegroundColorClause) {
 			listener.exitScreenDescriptionForegroundColorClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionForegroundColorClause) {
-			return visitor.visitScreenDescriptionForegroundColorClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47360,14 +46222,6 @@ export class ScreenDescriptionBackgroundColorClauseContext extends ParserRuleCon
 			listener.exitScreenDescriptionBackgroundColorClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionBackgroundColorClause) {
-			return visitor.visitScreenDescriptionBackgroundColorClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47392,14 +46246,6 @@ export class ScreenDescriptionControlClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionControlClause) {
 			listener.exitScreenDescriptionControlClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionControlClause) {
-			return visitor.visitScreenDescriptionControlClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47428,14 +46274,6 @@ export class ScreenDescriptionValueClauseContext extends ParserRuleContext {
 			listener.exitScreenDescriptionValueClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionValueClause) {
-			return visitor.visitScreenDescriptionValueClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47461,14 +46299,6 @@ export class ScreenDescriptionPictureClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionPictureClause) {
 			listener.exitScreenDescriptionPictureClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionPictureClause) {
-			return visitor.visitScreenDescriptionPictureClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47502,14 +46332,6 @@ export class ScreenDescriptionFromClauseContext extends ParserRuleContext {
 			listener.exitScreenDescriptionFromClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionFromClause) {
-			return visitor.visitScreenDescriptionFromClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47533,14 +46355,6 @@ export class ScreenDescriptionToClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionToClause) {
 			listener.exitScreenDescriptionToClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionToClause) {
-			return visitor.visitScreenDescriptionToClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47568,14 +46382,6 @@ export class ScreenDescriptionUsingClauseContext extends ParserRuleContext {
 			listener.exitScreenDescriptionUsingClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionUsingClause) {
-			return visitor.visitScreenDescriptionUsingClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47599,14 +46405,6 @@ export class ScreenDescriptionUsageClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionUsageClause) {
 			listener.exitScreenDescriptionUsageClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionUsageClause) {
-			return visitor.visitScreenDescriptionUsageClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47633,14 +46431,6 @@ export class ScreenDescriptionBlankWhenZeroClauseContext extends ParserRuleConte
 			listener.exitScreenDescriptionBlankWhenZeroClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionBlankWhenZeroClause) {
-			return visitor.visitScreenDescriptionBlankWhenZeroClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47663,14 +46453,6 @@ export class ScreenDescriptionJustifiedClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionJustifiedClause) {
 			listener.exitScreenDescriptionJustifiedClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionJustifiedClause) {
-			return visitor.visitScreenDescriptionJustifiedClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47700,14 +46482,6 @@ export class ScreenDescriptionSignClauseContext extends ParserRuleContext {
 			listener.exitScreenDescriptionSignClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionSignClause) {
-			return visitor.visitScreenDescriptionSignClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47729,14 +46503,6 @@ export class ScreenDescriptionAutoClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionAutoClause) {
 			listener.exitScreenDescriptionAutoClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionAutoClause) {
-			return visitor.visitScreenDescriptionAutoClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47762,14 +46528,6 @@ export class ScreenDescriptionSecureClauseContext extends ParserRuleContext {
 			listener.exitScreenDescriptionSecureClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionSecureClause) {
-			return visitor.visitScreenDescriptionSecureClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47791,14 +46549,6 @@ export class ScreenDescriptionRequiredClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionRequiredClause) {
 			listener.exitScreenDescriptionRequiredClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionRequiredClause) {
-			return visitor.visitScreenDescriptionRequiredClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47834,14 +46584,6 @@ export class ScreenDescriptionPromptClauseContext extends ParserRuleContext {
 			listener.exitScreenDescriptionPromptClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionPromptClause) {
-			return visitor.visitScreenDescriptionPromptClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47868,14 +46610,6 @@ export class ScreenDescriptionPromptOccursClauseContext extends ParserRuleContex
 			listener.exitScreenDescriptionPromptOccursClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionPromptOccursClause) {
-			return visitor.visitScreenDescriptionPromptOccursClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47899,14 +46633,6 @@ export class ScreenDescriptionFullClauseContext extends ParserRuleContext {
 			listener.exitScreenDescriptionFullClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionFullClause) {
-			return visitor.visitScreenDescriptionFullClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -47927,14 +46653,6 @@ export class ScreenDescriptionZeroFillClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenDescriptionZeroFillClause) {
 			listener.exitScreenDescriptionZeroFillClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenDescriptionZeroFillClause) {
-			return visitor.visitScreenDescriptionZeroFillClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -47970,14 +46688,6 @@ export class ReportSectionContext extends ParserRuleContext {
 			listener.exitReportSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportSection) {
-			return visitor.visitReportSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48009,14 +46719,6 @@ export class ReportDescriptionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportDescription) {
 			listener.exitReportDescription(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportDescription) {
-			return visitor.visitReportDescription(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48063,14 +46765,6 @@ export class ReportDescriptionEntryContext extends ParserRuleContext {
 			listener.exitReportDescriptionEntry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportDescriptionEntry) {
-			return visitor.visitReportDescriptionEntry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48092,14 +46786,6 @@ export class ReportDescriptionGlobalClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportDescriptionGlobalClause) {
 			listener.exitReportDescriptionGlobalClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportDescriptionGlobalClause) {
-			return visitor.visitReportDescriptionGlobalClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48133,14 +46819,6 @@ export class ReportDescriptionPageLimitClauseContext extends ParserRuleContext {
 			listener.exitReportDescriptionPageLimitClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportDescriptionPageLimitClause) {
-			return visitor.visitReportDescriptionPageLimitClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48164,14 +46842,6 @@ export class ReportDescriptionHeadingClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportDescriptionHeadingClause) {
 			listener.exitReportDescriptionHeadingClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportDescriptionHeadingClause) {
-			return visitor.visitReportDescriptionHeadingClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48200,14 +46870,6 @@ export class ReportDescriptionFirstDetailClauseContext extends ParserRuleContext
 			listener.exitReportDescriptionFirstDetailClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportDescriptionFirstDetailClause) {
-			return visitor.visitReportDescriptionFirstDetailClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48234,14 +46896,6 @@ export class ReportDescriptionLastDetailClauseContext extends ParserRuleContext 
 			listener.exitReportDescriptionLastDetailClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportDescriptionLastDetailClause) {
-			return visitor.visitReportDescriptionLastDetailClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48265,14 +46919,6 @@ export class ReportDescriptionFootingClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportDescriptionFootingClause) {
 			listener.exitReportDescriptionFootingClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportDescriptionFootingClause) {
-			return visitor.visitReportDescriptionFootingClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48303,14 +46949,6 @@ export class ReportGroupDescriptionEntryContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupDescriptionEntry) {
 			listener.exitReportGroupDescriptionEntry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupDescriptionEntry) {
-			return visitor.visitReportGroupDescriptionEntry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48353,14 +46991,6 @@ export class ReportGroupDescriptionEntryFormat1Context extends ParserRuleContext
 			listener.exitReportGroupDescriptionEntryFormat1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupDescriptionEntryFormat1) {
-			return visitor.visitReportGroupDescriptionEntryFormat1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48393,14 +47023,6 @@ export class ReportGroupDescriptionEntryFormat2Context extends ParserRuleContext
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupDescriptionEntryFormat2) {
 			listener.exitReportGroupDescriptionEntryFormat2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupDescriptionEntryFormat2) {
-			return visitor.visitReportGroupDescriptionEntryFormat2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48539,14 +47161,6 @@ export class ReportGroupDescriptionEntryFormat3Context extends ParserRuleContext
 			listener.exitReportGroupDescriptionEntryFormat3(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupDescriptionEntryFormat3) {
-			return visitor.visitReportGroupDescriptionEntryFormat3(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48569,14 +47183,6 @@ export class ReportGroupBlankWhenZeroClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupBlankWhenZeroClause) {
 			listener.exitReportGroupBlankWhenZeroClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupBlankWhenZeroClause) {
-			return visitor.visitReportGroupBlankWhenZeroClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48606,14 +47212,6 @@ export class ReportGroupColumnNumberClauseContext extends ParserRuleContext {
 			listener.exitReportGroupColumnNumberClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupColumnNumberClause) {
-			return visitor.visitReportGroupColumnNumberClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48635,14 +47233,6 @@ export class ReportGroupIndicateClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupIndicateClause) {
 			listener.exitReportGroupIndicateClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupIndicateClause) {
-			return visitor.visitReportGroupIndicateClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48667,14 +47257,6 @@ export class ReportGroupJustifiedClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupJustifiedClause) {
 			listener.exitReportGroupJustifiedClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupJustifiedClause) {
-			return visitor.visitReportGroupJustifiedClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48707,14 +47289,6 @@ export class ReportGroupLineNumberClauseContext extends ParserRuleContext {
 			listener.exitReportGroupLineNumberClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupLineNumberClause) {
-			return visitor.visitReportGroupLineNumberClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48742,14 +47316,6 @@ export class ReportGroupLineNumberNextPageContext extends ParserRuleContext {
 			listener.exitReportGroupLineNumberNextPage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupLineNumberNextPage) {
-			return visitor.visitReportGroupLineNumberNextPage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48773,14 +47339,6 @@ export class ReportGroupLineNumberPlusContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupLineNumberPlus) {
 			listener.exitReportGroupLineNumberPlus(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupLineNumberPlus) {
-			return visitor.visitReportGroupLineNumberPlus(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48816,14 +47374,6 @@ export class ReportGroupNextGroupClauseContext extends ParserRuleContext {
 			listener.exitReportGroupNextGroupClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupNextGroupClause) {
-			return visitor.visitReportGroupNextGroupClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48849,14 +47399,6 @@ export class ReportGroupNextGroupPlusContext extends ParserRuleContext {
 			listener.exitReportGroupNextGroupPlus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupNextGroupPlus) {
-			return visitor.visitReportGroupNextGroupPlus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48878,14 +47420,6 @@ export class ReportGroupNextGroupNextPageContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupNextGroupNextPage) {
 			listener.exitReportGroupNextGroupNextPage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupNextGroupNextPage) {
-			return visitor.visitReportGroupNextGroupNextPage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48915,14 +47449,6 @@ export class ReportGroupPictureClauseContext extends ParserRuleContext {
 			listener.exitReportGroupPictureClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupPictureClause) {
-			return visitor.visitReportGroupPictureClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48948,14 +47474,6 @@ export class ReportGroupResetClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupResetClause) {
 			listener.exitReportGroupResetClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupResetClause) {
-			return visitor.visitReportGroupResetClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48985,14 +47503,6 @@ export class ReportGroupSignClauseContext extends ParserRuleContext {
 			listener.exitReportGroupSignClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupSignClause) {
-			return visitor.visitReportGroupSignClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49017,14 +47527,6 @@ export class ReportGroupSourceClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupSourceClause) {
 			listener.exitReportGroupSourceClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupSourceClause) {
-			return visitor.visitReportGroupSourceClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49077,14 +47579,6 @@ export class ReportGroupSumClauseContext extends ParserRuleContext {
 			listener.exitReportGroupSumClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupSumClause) {
-			return visitor.visitReportGroupSumClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49129,14 +47623,6 @@ export class ReportGroupTypeClauseContext extends ParserRuleContext {
 			listener.exitReportGroupTypeClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupTypeClause) {
-			return visitor.visitReportGroupTypeClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49161,14 +47647,6 @@ export class ReportGroupTypeReportHeadingContext extends ParserRuleContext {
 			listener.exitReportGroupTypeReportHeading(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupTypeReportHeading) {
-			return visitor.visitReportGroupTypeReportHeading(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49191,14 +47669,6 @@ export class ReportGroupTypePageHeadingContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupTypePageHeading) {
 			listener.exitReportGroupTypePageHeading(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupTypePageHeading) {
-			return visitor.visitReportGroupTypePageHeading(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49229,14 +47699,6 @@ export class ReportGroupTypeControlHeadingContext extends ParserRuleContext {
 			listener.exitReportGroupTypeControlHeading(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupTypeControlHeading) {
-			return visitor.visitReportGroupTypeControlHeading(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49258,14 +47720,6 @@ export class ReportGroupTypeDetailContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupTypeDetail) {
 			listener.exitReportGroupTypeDetail(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupTypeDetail) {
-			return visitor.visitReportGroupTypeDetail(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49296,14 +47750,6 @@ export class ReportGroupTypeControlFootingContext extends ParserRuleContext {
 			listener.exitReportGroupTypeControlFooting(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupTypeControlFooting) {
-			return visitor.visitReportGroupTypeControlFooting(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49327,14 +47773,6 @@ export class ReportGroupUsageClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupUsageClause) {
 			listener.exitReportGroupUsageClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupUsageClause) {
-			return visitor.visitReportGroupUsageClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49361,14 +47799,6 @@ export class ReportGroupTypePageFootingContext extends ParserRuleContext {
 			listener.exitReportGroupTypePageFooting(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupTypePageFooting) {
-			return visitor.visitReportGroupTypePageFooting(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49391,14 +47821,6 @@ export class ReportGroupTypeReportFootingContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupTypeReportFooting) {
 			listener.exitReportGroupTypeReportFooting(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupTypeReportFooting) {
-			return visitor.visitReportGroupTypeReportFooting(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49425,14 +47847,6 @@ export class ReportGroupValueClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportGroupValueClause) {
 			listener.exitReportGroupValueClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportGroupValueClause) {
-			return visitor.visitReportGroupValueClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49468,14 +47882,6 @@ export class ProgramLibrarySectionContext extends ParserRuleContext {
 			listener.exitProgramLibrarySection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProgramLibrarySection) {
-			return visitor.visitProgramLibrarySection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49501,14 +47907,6 @@ export class LibraryDescriptionEntryContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLibraryDescriptionEntry) {
 			listener.exitLibraryDescriptionEntry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryDescriptionEntry) {
-			return visitor.visitLibraryDescriptionEntry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49541,14 +47939,6 @@ export class LibraryDescriptionEntryFormat1Context extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLibraryDescriptionEntryFormat1) {
 			listener.exitLibraryDescriptionEntryFormat1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryDescriptionEntryFormat1) {
-			return visitor.visitLibraryDescriptionEntryFormat1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49601,14 +47991,6 @@ export class LibraryDescriptionEntryFormat2Context extends ParserRuleContext {
 			listener.exitLibraryDescriptionEntryFormat2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryDescriptionEntryFormat2) {
-			return visitor.visitLibraryDescriptionEntryFormat2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49635,14 +48017,6 @@ export class LibraryAttributeClauseFormat1Context extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLibraryAttributeClauseFormat1) {
 			listener.exitLibraryAttributeClauseFormat1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryAttributeClauseFormat1) {
-			return visitor.visitLibraryAttributeClauseFormat1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49680,14 +48054,6 @@ export class LibraryAttributeClauseFormat2Context extends ParserRuleContext {
 			listener.exitLibraryAttributeClauseFormat2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryAttributeClauseFormat2) {
-			return visitor.visitLibraryAttributeClauseFormat2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49712,14 +48078,6 @@ export class LibraryAttributeFunctionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLibraryAttributeFunction) {
 			listener.exitLibraryAttributeFunction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryAttributeFunction) {
-			return visitor.visitLibraryAttributeFunction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49748,14 +48106,6 @@ export class LibraryAttributeParameterContext extends ParserRuleContext {
 			listener.exitLibraryAttributeParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryAttributeParameter) {
-			return visitor.visitLibraryAttributeParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49780,14 +48130,6 @@ export class LibraryAttributeTitleContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLibraryAttributeTitle) {
 			listener.exitLibraryAttributeTitle(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryAttributeTitle) {
-			return visitor.visitLibraryAttributeTitle(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49816,14 +48158,6 @@ export class LibraryEntryProcedureClauseFormat1Context extends ParserRuleContext
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLibraryEntryProcedureClauseFormat1) {
 			listener.exitLibraryEntryProcedureClauseFormat1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryEntryProcedureClauseFormat1) {
-			return visitor.visitLibraryEntryProcedureClauseFormat1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49863,14 +48197,6 @@ export class LibraryEntryProcedureClauseFormat2Context extends ParserRuleContext
 			listener.exitLibraryEntryProcedureClauseFormat2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryEntryProcedureClauseFormat2) {
-			return visitor.visitLibraryEntryProcedureClauseFormat2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49896,14 +48222,6 @@ export class LibraryEntryProcedureForClauseContext extends ParserRuleContext {
 			listener.exitLibraryEntryProcedureForClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryEntryProcedureForClause) {
-			return visitor.visitLibraryEntryProcedureForClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49927,14 +48245,6 @@ export class LibraryEntryProcedureGivingClauseContext extends ParserRuleContext 
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLibraryEntryProcedureGivingClause) {
 			listener.exitLibraryEntryProcedureGivingClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryEntryProcedureGivingClause) {
-			return visitor.visitLibraryEntryProcedureGivingClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49968,14 +48278,6 @@ export class LibraryEntryProcedureUsingClauseContext extends ParserRuleContext {
 			listener.exitLibraryEntryProcedureUsingClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryEntryProcedureUsingClause) {
-			return visitor.visitLibraryEntryProcedureUsingClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50001,14 +48303,6 @@ export class LibraryEntryProcedureUsingNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLibraryEntryProcedureUsingName) {
 			listener.exitLibraryEntryProcedureUsingName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryEntryProcedureUsingName) {
-			return visitor.visitLibraryEntryProcedureUsingName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50042,14 +48336,6 @@ export class LibraryEntryProcedureWithClauseContext extends ParserRuleContext {
 			listener.exitLibraryEntryProcedureWithClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryEntryProcedureWithClause) {
-			return visitor.visitLibraryEntryProcedureWithClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50077,14 +48363,6 @@ export class LibraryEntryProcedureWithNameContext extends ParserRuleContext {
 			listener.exitLibraryEntryProcedureWithName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryEntryProcedureWithName) {
-			return visitor.visitLibraryEntryProcedureWithName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50108,14 +48386,6 @@ export class LibraryIsCommonClauseContext extends ParserRuleContext {
 			listener.exitLibraryIsCommonClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryIsCommonClause) {
-			return visitor.visitLibraryIsCommonClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50137,14 +48407,6 @@ export class LibraryIsGlobalClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLibraryIsGlobalClause) {
 			listener.exitLibraryIsGlobalClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryIsGlobalClause) {
-			return visitor.visitLibraryIsGlobalClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50178,14 +48440,6 @@ export class DataDescriptionEntryContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataDescriptionEntry) {
 			listener.exitDataDescriptionEntry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataDescriptionEntry) {
-			return visitor.visitDataDescriptionEntry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50405,14 +48659,6 @@ export class DataDescriptionEntryFormat1Context extends ParserRuleContext {
 			listener.exitDataDescriptionEntryFormat1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataDescriptionEntryFormat1) {
-			return visitor.visitDataDescriptionEntryFormat1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50442,14 +48688,6 @@ export class DataDescriptionEntryFormat2Context extends ParserRuleContext {
 			listener.exitDataDescriptionEntryFormat2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataDescriptionEntryFormat2) {
-			return visitor.visitDataDescriptionEntryFormat2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50477,14 +48715,6 @@ export class DataDescriptionEntryFormat3Context extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataDescriptionEntryFormat3) {
 			listener.exitDataDescriptionEntryFormat3(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataDescriptionEntryFormat3) {
-			return visitor.visitDataDescriptionEntryFormat3(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50518,14 +48748,6 @@ export class DataDescriptionEntryExecSqlContext extends ParserRuleContext {
 			listener.exitDataDescriptionEntryExecSql(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataDescriptionEntryExecSql) {
-			return visitor.visitDataDescriptionEntryExecSql(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50546,14 +48768,6 @@ export class DataAlignedClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataAlignedClause) {
 			listener.exitDataAlignedClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataAlignedClause) {
-			return visitor.visitDataAlignedClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50582,14 +48796,6 @@ export class DataBlankWhenZeroClauseContext extends ParserRuleContext {
 			listener.exitDataBlankWhenZeroClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataBlankWhenZeroClause) {
-			return visitor.visitDataBlankWhenZeroClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50612,14 +48818,6 @@ export class DataCommonOwnLocalClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataCommonOwnLocalClause) {
 			listener.exitDataCommonOwnLocalClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataCommonOwnLocalClause) {
-			return visitor.visitDataCommonOwnLocalClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50649,14 +48847,6 @@ export class DataExternalClauseContext extends ParserRuleContext {
 			listener.exitDataExternalClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataExternalClause) {
-			return visitor.visitDataExternalClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50678,14 +48868,6 @@ export class DataGlobalClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataGlobalClause) {
 			listener.exitDataGlobalClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataGlobalClause) {
-			return visitor.visitDataGlobalClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50711,14 +48893,6 @@ export class DataIntegerStringClauseContext extends ParserRuleContext {
 			listener.exitDataIntegerStringClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataIntegerStringClause) {
-			return visitor.visitDataIntegerStringClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50741,14 +48915,6 @@ export class DataJustifiedClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataJustifiedClause) {
 			listener.exitDataJustifiedClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataJustifiedClause) {
-			return visitor.visitDataJustifiedClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50806,14 +48972,6 @@ export class DataOccursClauseContext extends ParserRuleContext {
 			listener.exitDataOccursClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataOccursClause) {
-			return visitor.visitDataOccursClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50837,14 +48995,6 @@ export class DataOccursToContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataOccursTo) {
 			listener.exitDataOccursTo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataOccursTo) {
-			return visitor.visitDataOccursTo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50881,14 +49031,6 @@ export class DataOccursSortContext extends ParserRuleContext {
 			listener.exitDataOccursSort(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataOccursSort) {
-			return visitor.visitDataOccursSort(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50914,14 +49056,6 @@ export class DataPictureClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataPictureClause) {
 			listener.exitDataPictureClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataPictureClause) {
-			return visitor.visitDataPictureClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50963,14 +49097,6 @@ export class PictureStringContext extends ParserRuleContext {
 			listener.exitPictureString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPictureString) {
-			return visitor.visitPictureString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51010,14 +49136,6 @@ export class PictureCharsContext extends ParserRuleContext {
 			listener.exitPictureChars(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPictureChars) {
-			return visitor.visitPictureChars(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51042,14 +49160,6 @@ export class PictureCardinalityContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitPictureCardinality) {
 			listener.exitPictureCardinality(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPictureCardinality) {
-			return visitor.visitPictureCardinality(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51078,14 +49188,6 @@ export class DataReceivedByClauseContext extends ParserRuleContext {
 			listener.exitDataReceivedByClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataReceivedByClause) {
-			return visitor.visitDataReceivedByClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51107,14 +49209,6 @@ export class DataRecordAreaClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataRecordAreaClause) {
 			listener.exitDataRecordAreaClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataRecordAreaClause) {
-			return visitor.visitDataRecordAreaClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51140,14 +49234,6 @@ export class DataRedefinesClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataRedefinesClause) {
 			listener.exitDataRedefinesClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataRedefinesClause) {
-			return visitor.visitDataRedefinesClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51183,14 +49269,6 @@ export class DataRenamesClauseContext extends ParserRuleContext {
 			listener.exitDataRenamesClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataRenamesClause) {
-			return visitor.visitDataRenamesClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51218,14 +49296,6 @@ export class DataSignClauseContext extends ParserRuleContext {
 			listener.exitDataSignClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataSignClause) {
-			return visitor.visitDataSignClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51251,14 +49321,6 @@ export class DataSynchronizedClauseContext extends ParserRuleContext {
 			listener.exitDataSynchronizedClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataSynchronizedClause) {
-			return visitor.visitDataSynchronizedClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51280,14 +49342,6 @@ export class DataThreadLocalClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataThreadLocalClause) {
 			listener.exitDataThreadLocalClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataThreadLocalClause) {
-			return visitor.visitDataThreadLocalClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51318,14 +49372,6 @@ export class DataTypeClauseContext extends ParserRuleContext {
 			listener.exitDataTypeClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataTypeClause) {
-			return visitor.visitDataTypeClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51347,14 +49393,6 @@ export class DataTypeDefClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataTypeDefClause) {
 			listener.exitDataTypeDefClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataTypeDefClause) {
-			return visitor.visitDataTypeDefClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51412,14 +49450,6 @@ export class DataUsageClauseContext extends ParserRuleContext {
 			listener.exitDataUsageClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataUsageClause) {
-			return visitor.visitDataUsageClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51449,14 +49479,6 @@ export class DataUsingClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataUsingClause) {
 			listener.exitDataUsingClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataUsingClause) {
-			return visitor.visitDataUsingClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51502,14 +49524,6 @@ export class DataValueClauseContext extends ParserRuleContext {
 			listener.exitDataValueClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataValueClause) {
-			return visitor.visitDataValueClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51535,14 +49549,6 @@ export class DataValueIntervalContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataValueInterval) {
 			listener.exitDataValueInterval(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataValueInterval) {
-			return visitor.visitDataValueInterval(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51572,14 +49578,6 @@ export class DataValueIntervalFromContext extends ParserRuleContext {
 			listener.exitDataValueIntervalFrom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataValueIntervalFrom) {
-			return visitor.visitDataValueIntervalFrom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51606,14 +49604,6 @@ export class DataValueIntervalToContext extends ParserRuleContext {
 			listener.exitDataValueIntervalTo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataValueIntervalTo) {
-			return visitor.visitDataValueIntervalTo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51636,14 +49626,6 @@ export class DataWithLowerBoundsClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataWithLowerBoundsClause) {
 			listener.exitDataWithLowerBoundsClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataWithLowerBoundsClause) {
-			return visitor.visitDataWithLowerBoundsClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51682,14 +49664,6 @@ export class ProcedureDivisionContext extends ParserRuleContext {
 			listener.exitProcedureDivision(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureDivision) {
-			return visitor.visitProcedureDivision(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51722,14 +49696,6 @@ export class ProcedureDivisionUsingClauseContext extends ParserRuleContext {
 			listener.exitProcedureDivisionUsingClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureDivisionUsingClause) {
-			return visitor.visitProcedureDivisionUsingClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51754,14 +49720,6 @@ export class ProcedureDivisionGivingClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitProcedureDivisionGivingClause) {
 			listener.exitProcedureDivisionGivingClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureDivisionGivingClause) {
-			return visitor.visitProcedureDivisionGivingClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51789,14 +49747,6 @@ export class ProcedureDivisionUsingParameterContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitProcedureDivisionUsingParameter) {
 			listener.exitProcedureDivisionUsingParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureDivisionUsingParameter) {
-			return visitor.visitProcedureDivisionUsingParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51831,14 +49781,6 @@ export class ProcedureDivisionByReferencePhraseContext extends ParserRuleContext
 			listener.exitProcedureDivisionByReferencePhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureDivisionByReferencePhrase) {
-			return visitor.visitProcedureDivisionByReferencePhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51866,14 +49808,6 @@ export class ProcedureDivisionByReferenceContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitProcedureDivisionByReference) {
 			listener.exitProcedureDivisionByReference(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureDivisionByReference) {
-			return visitor.visitProcedureDivisionByReference(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51908,14 +49842,6 @@ export class ProcedureDivisionByValuePhraseContext extends ParserRuleContext {
 			listener.exitProcedureDivisionByValuePhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureDivisionByValuePhrase) {
-			return visitor.visitProcedureDivisionByValuePhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51942,14 +49868,6 @@ export class ProcedureDivisionByValueContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitProcedureDivisionByValue) {
 			listener.exitProcedureDivisionByValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureDivisionByValue) {
-			return visitor.visitProcedureDivisionByValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52001,14 +49919,6 @@ export class ProcedureDeclarativesContext extends ParserRuleContext {
 			listener.exitProcedureDeclaratives(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureDeclaratives) {
-			return visitor.visitProcedureDeclaratives(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52048,14 +49958,6 @@ export class ProcedureDeclarativeContext extends ParserRuleContext {
 			listener.exitProcedureDeclarative(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureDeclarative) {
-			return visitor.visitProcedureDeclarative(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52082,14 +49984,6 @@ export class ProcedureSectionHeaderContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitProcedureSectionHeader) {
 			listener.exitProcedureSectionHeader(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureSectionHeader) {
-			return visitor.visitProcedureSectionHeader(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52125,14 +50019,6 @@ export class ProcedureDivisionBodyContext extends ParserRuleContext {
 			listener.exitProcedureDivisionBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureDivisionBody) {
-			return visitor.visitProcedureDivisionBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52159,14 +50045,6 @@ export class ProcedureSectionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitProcedureSection) {
 			listener.exitProcedureSection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureSection) {
-			return visitor.visitProcedureSection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52208,14 +50086,6 @@ export class ParagraphsContext extends ParserRuleContext {
 			listener.exitParagraphs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitParagraphs) {
-			return visitor.visitParagraphs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52253,14 +50123,6 @@ export class ParagraphContext extends ParserRuleContext {
 			listener.exitParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitParagraph) {
-			return visitor.visitParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52290,14 +50152,6 @@ export class SentenceContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSentence) {
 			listener.exitSentence(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSentence) {
-			return visitor.visitSentence(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52468,14 +50322,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52520,14 +50366,6 @@ export class AcceptStatementContext extends ParserRuleContext {
 			listener.exitAcceptStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAcceptStatement) {
-			return visitor.visitAcceptStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52561,14 +50399,6 @@ export class AcceptFromDateStatementContext extends ParserRuleContext {
 			listener.exitAcceptFromDateStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAcceptFromDateStatement) {
-			return visitor.visitAcceptFromDateStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52592,14 +50422,6 @@ export class AcceptFromMnemonicStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAcceptFromMnemonicStatement) {
 			listener.exitAcceptFromMnemonicStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAcceptFromMnemonicStatement) {
-			return visitor.visitAcceptFromMnemonicStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52626,14 +50448,6 @@ export class AcceptFromEscapeKeyStatementContext extends ParserRuleContext {
 			listener.exitAcceptFromEscapeKeyStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAcceptFromEscapeKeyStatement) {
-			return visitor.visitAcceptFromEscapeKeyStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52655,14 +50469,6 @@ export class AcceptMessageCountStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAcceptMessageCountStatement) {
 			listener.exitAcceptMessageCountStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAcceptMessageCountStatement) {
-			return visitor.visitAcceptMessageCountStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52703,14 +50509,6 @@ export class AddStatementContext extends ParserRuleContext {
 			listener.exitAddStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAddStatement) {
-			return visitor.visitAddStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52749,14 +50547,6 @@ export class AddToStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAddToStatement) {
 			listener.exitAddToStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAddToStatement) {
-			return visitor.visitAddToStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52809,14 +50599,6 @@ export class AddToGivingStatementContext extends ParserRuleContext {
 			listener.exitAddToGivingStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAddToGivingStatement) {
-			return visitor.visitAddToGivingStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52847,14 +50629,6 @@ export class AddCorrespondingStatementContext extends ParserRuleContext {
 			listener.exitAddCorrespondingStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAddCorrespondingStatement) {
-			return visitor.visitAddCorrespondingStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52882,14 +50656,6 @@ export class AddFromContext extends ParserRuleContext {
 			listener.exitAddFrom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAddFrom) {
-			return visitor.visitAddFrom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52913,14 +50679,6 @@ export class AddToContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAddTo) {
 			listener.exitAddTo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAddTo) {
-			return visitor.visitAddTo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52950,14 +50708,6 @@ export class AddToGivingContext extends ParserRuleContext {
 			listener.exitAddToGiving(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAddToGiving) {
-			return visitor.visitAddToGiving(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52983,14 +50733,6 @@ export class AddGivingContext extends ParserRuleContext {
 			listener.exitAddGiving(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAddGiving) {
-			return visitor.visitAddGiving(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53013,14 +50755,6 @@ export class AlteredGoToContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAlteredGoTo) {
 			listener.exitAlteredGoTo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAlteredGoTo) {
-			return visitor.visitAlteredGoTo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53052,14 +50786,6 @@ export class AlterStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAlterStatement) {
 			listener.exitAlterStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAlterStatement) {
-			return visitor.visitAlterStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53100,14 +50826,6 @@ export class AlterProceedToContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAlterProceedTo) {
 			listener.exitAlterProceedTo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAlterProceedTo) {
-			return visitor.visitAlterProceedTo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53154,14 +50872,6 @@ export class CallStatementContext extends ParserRuleContext {
 			listener.exitCallStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCallStatement) {
-			return visitor.visitCallStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53191,14 +50901,6 @@ export class CallUsingPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCallUsingPhrase) {
 			listener.exitCallUsingPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCallUsingPhrase) {
-			return visitor.visitCallUsingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53231,14 +50933,6 @@ export class CallUsingParameterContext extends ParserRuleContext {
 			listener.exitCallUsingParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCallUsingParameter) {
-			return visitor.visitCallUsingParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53269,14 +50963,6 @@ export class CallByReferencePhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCallByReferencePhrase) {
 			listener.exitCallByReferencePhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCallByReferencePhrase) {
-			return visitor.visitCallByReferencePhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53314,14 +51000,6 @@ export class CallByReferenceContext extends ParserRuleContext {
 			listener.exitCallByReference(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCallByReference) {
-			return visitor.visitCallByReference(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53354,14 +51032,6 @@ export class CallByValuePhraseContext extends ParserRuleContext {
 			listener.exitCallByValuePhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCallByValuePhrase) {
-			return visitor.visitCallByValuePhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53390,14 +51060,6 @@ export class CallByValueContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCallByValue) {
 			listener.exitCallByValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCallByValue) {
-			return visitor.visitCallByValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53432,14 +51094,6 @@ export class CallByContentPhraseContext extends ParserRuleContext {
 			listener.exitCallByContentPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCallByContentPhrase) {
-			return visitor.visitCallByContentPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53471,14 +51125,6 @@ export class CallByContentContext extends ParserRuleContext {
 			listener.exitCallByContent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCallByContent) {
-			return visitor.visitCallByContent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53503,14 +51149,6 @@ export class CallGivingPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCallGivingPhrase) {
 			listener.exitCallGivingPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCallGivingPhrase) {
-			return visitor.visitCallGivingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53542,14 +51180,6 @@ export class CancelStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCancelStatement) {
 			listener.exitCancelStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCancelStatement) {
-			return visitor.visitCancelStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53584,14 +51214,6 @@ export class CancelCallContext extends ParserRuleContext {
 			listener.exitCancelCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCancelCall) {
-			return visitor.visitCancelCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53621,14 +51243,6 @@ export class CloseStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCloseStatement) {
 			listener.exitCloseStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCloseStatement) {
-			return visitor.visitCloseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53664,14 +51278,6 @@ export class CloseFileContext extends ParserRuleContext {
 			listener.exitCloseFile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCloseFile) {
-			return visitor.visitCloseFile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53701,14 +51307,6 @@ export class CloseReelUnitStatementContext extends ParserRuleContext {
 			listener.exitCloseReelUnitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCloseReelUnitStatement) {
-			return visitor.visitCloseReelUnitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53732,14 +51330,6 @@ export class CloseRelativeStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCloseRelativeStatement) {
 			listener.exitCloseRelativeStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCloseRelativeStatement) {
-			return visitor.visitCloseRelativeStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53776,14 +51366,6 @@ export class ClosePortFileIOStatementContext extends ParserRuleContext {
 			listener.exitClosePortFileIOStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitClosePortFileIOStatement) {
-			return visitor.visitClosePortFileIOStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53814,14 +51396,6 @@ export class ClosePortFileIOUsingContext extends ParserRuleContext {
 			listener.exitClosePortFileIOUsing(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitClosePortFileIOUsing) {
-			return visitor.visitClosePortFileIOUsing(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53845,14 +51419,6 @@ export class ClosePortFileIOUsingCloseDispositionContext extends ParserRuleConte
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitClosePortFileIOUsingCloseDisposition) {
 			listener.exitClosePortFileIOUsingCloseDisposition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitClosePortFileIOUsingCloseDisposition) {
-			return visitor.visitClosePortFileIOUsingCloseDisposition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53883,14 +51449,6 @@ export class ClosePortFileIOUsingAssociatedDataContext extends ParserRuleContext
 			listener.exitClosePortFileIOUsingAssociatedData(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitClosePortFileIOUsingAssociatedData) {
-			return visitor.visitClosePortFileIOUsingAssociatedData(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53918,14 +51476,6 @@ export class ClosePortFileIOUsingAssociatedDataLengthContext extends ParserRuleC
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitClosePortFileIOUsingAssociatedDataLength) {
 			listener.exitClosePortFileIOUsingAssociatedDataLength(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitClosePortFileIOUsingAssociatedDataLength) {
-			return visitor.visitClosePortFileIOUsingAssociatedDataLength(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53971,14 +51521,6 @@ export class ComputeStatementContext extends ParserRuleContext {
 			listener.exitComputeStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitComputeStatement) {
-			return visitor.visitComputeStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54004,14 +51546,6 @@ export class ComputeStoreContext extends ParserRuleContext {
 			listener.exitComputeStore(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitComputeStore) {
-			return visitor.visitComputeStore(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54032,14 +51566,6 @@ export class ContinueStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitContinueStatement) {
 			listener.exitContinueStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitContinueStatement) {
-			return visitor.visitContinueStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54073,14 +51599,6 @@ export class DeleteStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDeleteStatement) {
 			listener.exitDeleteStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDeleteStatement) {
-			return visitor.visitDeleteStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54118,14 +51636,6 @@ export class DisableStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDisableStatement) {
 			listener.exitDisableStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDisableStatement) {
-			return visitor.visitDisableStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54168,14 +51678,6 @@ export class DisplayStatementContext extends ParserRuleContext {
 			listener.exitDisplayStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDisplayStatement) {
-			return visitor.visitDisplayStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54201,14 +51703,6 @@ export class DisplayOperandContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDisplayOperand) {
 			listener.exitDisplayOperand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDisplayOperand) {
-			return visitor.visitDisplayOperand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54239,14 +51733,6 @@ export class DisplayAtContext extends ParserRuleContext {
 			listener.exitDisplayAt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDisplayAt) {
-			return visitor.visitDisplayAt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54275,14 +51761,6 @@ export class DisplayUponContext extends ParserRuleContext {
 			listener.exitDisplayUpon(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDisplayUpon) {
-			return visitor.visitDisplayUpon(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54305,14 +51783,6 @@ export class DisplayWithContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDisplayWith) {
 			listener.exitDisplayWith(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDisplayWith) {
-			return visitor.visitDisplayWith(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54362,14 +51832,6 @@ export class DivideStatementContext extends ParserRuleContext {
 			listener.exitDivideStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDivideStatement) {
-			return visitor.visitDivideStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54399,14 +51861,6 @@ export class DivideIntoStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDivideIntoStatement) {
 			listener.exitDivideIntoStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDivideIntoStatement) {
-			return visitor.visitDivideIntoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54440,14 +51894,6 @@ export class DivideIntoGivingStatementContext extends ParserRuleContext {
 			listener.exitDivideIntoGivingStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDivideIntoGivingStatement) {
-			return visitor.visitDivideIntoGivingStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54477,14 +51923,6 @@ export class DivideByGivingStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDivideByGivingStatement) {
 			listener.exitDivideByGivingStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDivideByGivingStatement) {
-			return visitor.visitDivideByGivingStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54518,14 +51956,6 @@ export class DivideGivingPhraseContext extends ParserRuleContext {
 			listener.exitDivideGivingPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDivideGivingPhrase) {
-			return visitor.visitDivideGivingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54549,14 +51979,6 @@ export class DivideIntoContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDivideInto) {
 			listener.exitDivideInto(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDivideInto) {
-			return visitor.visitDivideInto(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54584,14 +52006,6 @@ export class DivideGivingContext extends ParserRuleContext {
 			listener.exitDivideGiving(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDivideGiving) {
-			return visitor.visitDivideGiving(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54615,14 +52029,6 @@ export class DivideRemainderContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDivideRemainder) {
 			listener.exitDivideRemainder(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDivideRemainder) {
-			return visitor.visitDivideRemainder(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54662,14 +52068,6 @@ export class EnableStatementContext extends ParserRuleContext {
 			listener.exitEnableStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEnableStatement) {
-			return visitor.visitEnableStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54703,14 +52101,6 @@ export class EntryStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitEntryStatement) {
 			listener.exitEntryStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEntryStatement) {
-			return visitor.visitEntryStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54760,14 +52150,6 @@ export class EvaluateStatementContext extends ParserRuleContext {
 			listener.exitEvaluateStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEvaluateStatement) {
-			return visitor.visitEvaluateStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54801,14 +52183,6 @@ export class EvaluateSelectContext extends ParserRuleContext {
 			listener.exitEvaluateSelect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEvaluateSelect) {
-			return visitor.visitEvaluateSelect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54832,14 +52206,6 @@ export class EvaluateAlsoSelectContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitEvaluateAlsoSelect) {
 			listener.exitEvaluateAlsoSelect(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEvaluateAlsoSelect) {
-			return visitor.visitEvaluateAlsoSelect(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54881,14 +52247,6 @@ export class EvaluateWhenPhraseContext extends ParserRuleContext {
 			listener.exitEvaluateWhenPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEvaluateWhenPhrase) {
-			return visitor.visitEvaluateWhenPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54921,14 +52279,6 @@ export class EvaluateWhenContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitEvaluateWhen) {
 			listener.exitEvaluateWhen(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEvaluateWhen) {
-			return visitor.visitEvaluateWhen(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54966,14 +52316,6 @@ export class EvaluateConditionContext extends ParserRuleContext {
 			listener.exitEvaluateCondition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEvaluateCondition) {
-			return visitor.visitEvaluateCondition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55000,14 +52342,6 @@ export class EvaluateThroughContext extends ParserRuleContext {
 			listener.exitEvaluateThrough(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEvaluateThrough) {
-			return visitor.visitEvaluateThrough(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55031,14 +52365,6 @@ export class EvaluateAlsoConditionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitEvaluateAlsoCondition) {
 			listener.exitEvaluateAlsoCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEvaluateAlsoCondition) {
-			return visitor.visitEvaluateAlsoCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55073,14 +52399,6 @@ export class EvaluateWhenOtherContext extends ParserRuleContext {
 			listener.exitEvaluateWhenOther(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEvaluateWhenOther) {
-			return visitor.visitEvaluateWhenOther(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55109,14 +52427,6 @@ export class EvaluateValueContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitEvaluateValue) {
 			listener.exitEvaluateValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEvaluateValue) {
-			return visitor.visitEvaluateValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55149,14 +52459,6 @@ export class ExecCicsStatementContext extends ParserRuleContext {
 			listener.exitExecCicsStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitExecCicsStatement) {
-			return visitor.visitExecCicsStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55187,14 +52489,6 @@ export class ExecSqlStatementContext extends ParserRuleContext {
 			listener.exitExecSqlStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitExecSqlStatement) {
-			return visitor.visitExecSqlStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55223,14 +52517,6 @@ export class ExecSqlImsStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitExecSqlImsStatement) {
 			listener.exitExecSqlImsStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitExecSqlImsStatement) {
-			return visitor.visitExecSqlImsStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55266,14 +52552,6 @@ export class ExhibitStatementContext extends ParserRuleContext {
 			listener.exitExhibitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitExhibitStatement) {
-			return visitor.visitExhibitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55301,14 +52579,6 @@ export class ExhibitOperandContext extends ParserRuleContext {
 			listener.exitExhibitOperand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitExhibitOperand) {
-			return visitor.visitExhibitOperand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55330,14 +52600,6 @@ export class ExitStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitExitStatement) {
 			listener.exitExitStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitExitStatement) {
-			return visitor.visitExitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55365,14 +52627,6 @@ export class GenerateStatementContext extends ParserRuleContext {
 			listener.exitGenerateStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitGenerateStatement) {
-			return visitor.visitGenerateStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55393,14 +52647,6 @@ export class GobackStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitGobackStatement) {
 			listener.exitGobackStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitGobackStatement) {
-			return visitor.visitGobackStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55432,14 +52678,6 @@ export class GoToStatementContext extends ParserRuleContext {
 			listener.exitGoToStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitGoToStatement) {
-			return visitor.visitGoToStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55462,14 +52700,6 @@ export class GoToStatementSimpleContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitGoToStatementSimple) {
 			listener.exitGoToStatementSimple(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitGoToStatementSimple) {
-			return visitor.visitGoToStatementSimple(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55508,14 +52738,6 @@ export class GoToDependingOnStatementContext extends ParserRuleContext {
 			listener.exitGoToDependingOnStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitGoToDependingOnStatement) {
-			return visitor.visitGoToDependingOnStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55546,14 +52768,6 @@ export class IfStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitIfStatement) {
 			listener.exitIfStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55589,14 +52803,6 @@ export class IfThenContext extends ParserRuleContext {
 			listener.exitIfThen(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitIfThen) {
-			return visitor.visitIfThen(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55628,14 +52834,6 @@ export class IfElseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitIfElse) {
 			listener.exitIfElse(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitIfElse) {
-			return visitor.visitIfElse(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55672,14 +52870,6 @@ export class InitializeStatementContext extends ParserRuleContext {
 			listener.exitInitializeStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInitializeStatement) {
-			return visitor.visitInitializeStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55709,14 +52899,6 @@ export class InitializeReplacingPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInitializeReplacingPhrase) {
 			listener.exitInitializeReplacingPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInitializeReplacingPhrase) {
-			return visitor.visitInitializeReplacingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55757,14 +52939,6 @@ export class InitializeReplacingByContext extends ParserRuleContext {
 			listener.exitInitializeReplacingBy(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInitializeReplacingBy) {
-			return visitor.visitInitializeReplacingBy(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55794,14 +52968,6 @@ export class InitiateStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInitiateStatement) {
 			listener.exitInitiateStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInitiateStatement) {
-			return visitor.visitInitiateStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55841,14 +53007,6 @@ export class InspectStatementContext extends ParserRuleContext {
 			listener.exitInspectStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectStatement) {
-			return visitor.visitInspectStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55878,14 +53036,6 @@ export class InspectTallyingPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInspectTallyingPhrase) {
 			listener.exitInspectTallyingPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectTallyingPhrase) {
-			return visitor.visitInspectTallyingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55928,14 +53078,6 @@ export class InspectReplacingPhraseContext extends ParserRuleContext {
 			listener.exitInspectReplacingPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectReplacingPhrase) {
-			return visitor.visitInspectReplacingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -55976,14 +53118,6 @@ export class InspectTallyingReplacingPhraseContext extends ParserRuleContext {
 			listener.exitInspectTallyingReplacingPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectTallyingReplacingPhrase) {
-			return visitor.visitInspectTallyingReplacingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56022,14 +53156,6 @@ export class InspectConvertingPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInspectConvertingPhrase) {
 			listener.exitInspectConvertingPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectConvertingPhrase) {
-			return visitor.visitInspectConvertingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56075,14 +53201,6 @@ export class InspectForContext extends ParserRuleContext {
 			listener.exitInspectFor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectFor) {
-			return visitor.visitInspectFor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56112,14 +53230,6 @@ export class InspectCharactersContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInspectCharacters) {
 			listener.exitInspectCharacters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectCharacters) {
-			return visitor.visitInspectCharacters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56156,14 +53266,6 @@ export class InspectReplacingCharactersContext extends ParserRuleContext {
 			listener.exitInspectReplacingCharacters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectReplacingCharacters) {
-			return visitor.visitInspectReplacingCharacters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56194,14 +53296,6 @@ export class InspectAllLeadingsContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInspectAllLeadings) {
 			listener.exitInspectAllLeadings(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectAllLeadings) {
-			return visitor.visitInspectAllLeadings(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56235,14 +53329,6 @@ export class InspectReplacingAllLeadingsContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInspectReplacingAllLeadings) {
 			listener.exitInspectReplacingAllLeadings(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectReplacingAllLeadings) {
-			return visitor.visitInspectReplacingAllLeadings(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56279,14 +53365,6 @@ export class InspectAllLeadingContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInspectAllLeading) {
 			listener.exitInspectAllLeading(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectAllLeading) {
-			return visitor.visitInspectAllLeading(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56328,14 +53406,6 @@ export class InspectReplacingAllLeadingContext extends ParserRuleContext {
 			listener.exitInspectReplacingAllLeading(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectReplacingAllLeading) {
-			return visitor.visitInspectReplacingAllLeading(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56362,14 +53432,6 @@ export class InspectByContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInspectBy) {
 			listener.exitInspectBy(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectBy) {
-			return visitor.visitInspectBy(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56400,14 +53462,6 @@ export class InspectToContext extends ParserRuleContext {
 			listener.exitInspectTo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectTo) {
-			return visitor.visitInspectTo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56436,14 +53490,6 @@ export class InspectBeforeAfterContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInspectBeforeAfter) {
 			listener.exitInspectBeforeAfter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInspectBeforeAfter) {
-			return visitor.visitInspectBeforeAfter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56504,14 +53550,6 @@ export class MergeStatementContext extends ParserRuleContext {
 			listener.exitMergeStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMergeStatement) {
-			return visitor.visitMergeStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56544,14 +53582,6 @@ export class MergeOnKeyClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMergeOnKeyClause) {
 			listener.exitMergeOnKeyClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMergeOnKeyClause) {
-			return visitor.visitMergeOnKeyClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56593,14 +53623,6 @@ export class MergeCollatingSequencePhraseContext extends ParserRuleContext {
 			listener.exitMergeCollatingSequencePhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMergeCollatingSequencePhrase) {
-			return visitor.visitMergeCollatingSequencePhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56628,14 +53650,6 @@ export class MergeCollatingAlphanumericContext extends ParserRuleContext {
 			listener.exitMergeCollatingAlphanumeric(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMergeCollatingAlphanumeric) {
-			return visitor.visitMergeCollatingAlphanumeric(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56661,14 +53675,6 @@ export class MergeCollatingNationalContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMergeCollatingNational) {
 			listener.exitMergeCollatingNational(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMergeCollatingNational) {
-			return visitor.visitMergeCollatingNational(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56702,14 +53708,6 @@ export class MergeUsingContext extends ParserRuleContext {
 			listener.exitMergeUsing(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMergeUsing) {
-			return visitor.visitMergeUsing(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56740,14 +53738,6 @@ export class MergeOutputProcedurePhraseContext extends ParserRuleContext {
 			listener.exitMergeOutputProcedurePhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMergeOutputProcedurePhrase) {
-			return visitor.visitMergeOutputProcedurePhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56772,14 +53762,6 @@ export class MergeOutputThroughContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMergeOutputThrough) {
 			listener.exitMergeOutputThrough(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMergeOutputThrough) {
-			return visitor.visitMergeOutputThrough(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56811,14 +53793,6 @@ export class MergeGivingPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMergeGivingPhrase) {
 			listener.exitMergeGivingPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMergeGivingPhrase) {
-			return visitor.visitMergeGivingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56853,14 +53827,6 @@ export class MergeGivingContext extends ParserRuleContext {
 			listener.exitMergeGiving(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMergeGiving) {
-			return visitor.visitMergeGiving(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56888,14 +53854,6 @@ export class MoveStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMoveStatement) {
 			listener.exitMoveStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMoveStatement) {
-			return visitor.visitMoveStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56932,14 +53890,6 @@ export class MoveToStatementContext extends ParserRuleContext {
 			listener.exitMoveToStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMoveToStatement) {
-			return visitor.visitMoveToStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56965,14 +53915,6 @@ export class MoveToSendingAreaContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMoveToSendingArea) {
 			listener.exitMoveToSendingArea(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMoveToSendingArea) {
-			return visitor.visitMoveToSendingArea(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57011,14 +53953,6 @@ export class MoveCorrespondingToStatementContext extends ParserRuleContext {
 			listener.exitMoveCorrespondingToStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMoveCorrespondingToStatement) {
-			return visitor.visitMoveCorrespondingToStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57041,14 +53975,6 @@ export class MoveCorrespondingToSendingAreaContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMoveCorrespondingToSendingArea) {
 			listener.exitMoveCorrespondingToSendingArea(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMoveCorrespondingToSendingArea) {
-			return visitor.visitMoveCorrespondingToSendingArea(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57093,14 +54019,6 @@ export class MultiplyStatementContext extends ParserRuleContext {
 			listener.exitMultiplyStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMultiplyStatement) {
-			return visitor.visitMultiplyStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57131,14 +54049,6 @@ export class MultiplyRegularContext extends ParserRuleContext {
 			listener.exitMultiplyRegular(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMultiplyRegular) {
-			return visitor.visitMultiplyRegular(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57162,14 +54072,6 @@ export class MultiplyRegularOperandContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMultiplyRegularOperand) {
 			listener.exitMultiplyRegularOperand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMultiplyRegularOperand) {
-			return visitor.visitMultiplyRegularOperand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57206,14 +54108,6 @@ export class MultiplyGivingContext extends ParserRuleContext {
 			listener.exitMultiplyGiving(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMultiplyGiving) {
-			return visitor.visitMultiplyGiving(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57241,14 +54135,6 @@ export class MultiplyGivingOperandContext extends ParserRuleContext {
 			listener.exitMultiplyGivingOperand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMultiplyGivingOperand) {
-			return visitor.visitMultiplyGivingOperand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57272,14 +54158,6 @@ export class MultiplyGivingResultContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMultiplyGivingResult) {
 			listener.exitMultiplyGivingResult(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMultiplyGivingResult) {
-			return visitor.visitMultiplyGivingResult(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57340,14 +54218,6 @@ export class OpenStatementContext extends ParserRuleContext {
 			listener.exitOpenStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitOpenStatement) {
-			return visitor.visitOpenStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57379,14 +54249,6 @@ export class OpenInputStatementContext extends ParserRuleContext {
 			listener.exitOpenInputStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitOpenInputStatement) {
-			return visitor.visitOpenInputStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57413,14 +54275,6 @@ export class OpenInputContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitOpenInput) {
 			listener.exitOpenInput(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitOpenInput) {
-			return visitor.visitOpenInput(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57454,14 +54308,6 @@ export class OpenOutputStatementContext extends ParserRuleContext {
 			listener.exitOpenOutputStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitOpenOutputStatement) {
-			return visitor.visitOpenOutputStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57487,14 +54333,6 @@ export class OpenOutputContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitOpenOutput) {
 			listener.exitOpenOutput(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitOpenOutput) {
-			return visitor.visitOpenOutput(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57528,14 +54366,6 @@ export class OpenIOStatementContext extends ParserRuleContext {
 			listener.exitOpenIOStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitOpenIOStatement) {
-			return visitor.visitOpenIOStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57567,14 +54397,6 @@ export class OpenExtendStatementContext extends ParserRuleContext {
 			listener.exitOpenExtendStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitOpenExtendStatement) {
-			return visitor.visitOpenExtendStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57601,14 +54423,6 @@ export class PerformStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitPerformStatement) {
 			listener.exitPerformStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformStatement) {
-			return visitor.visitPerformStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57643,14 +54457,6 @@ export class PerformInlineStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitPerformInlineStatement) {
 			listener.exitPerformInlineStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformInlineStatement) {
-			return visitor.visitPerformInlineStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57688,14 +54494,6 @@ export class PerformProcedureStatementContext extends ParserRuleContext {
 			listener.exitPerformProcedureStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformProcedureStatement) {
-			return visitor.visitPerformProcedureStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57726,14 +54524,6 @@ export class PerformTypeContext extends ParserRuleContext {
 			listener.exitPerformType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformType) {
-			return visitor.visitPerformType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57760,14 +54550,6 @@ export class PerformTimesContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitPerformTimes) {
 			listener.exitPerformTimes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformTimes) {
-			return visitor.visitPerformTimes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57798,14 +54580,6 @@ export class PerformUntilContext extends ParserRuleContext {
 			listener.exitPerformUntil(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformUntil) {
-			return visitor.visitPerformUntil(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57831,14 +54605,6 @@ export class PerformVaryingContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitPerformVarying) {
 			listener.exitPerformVarying(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformVarying) {
-			return visitor.visitPerformVarying(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57873,14 +54639,6 @@ export class PerformVaryingClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitPerformVaryingClause) {
 			listener.exitPerformVaryingClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformVaryingClause) {
-			return visitor.visitPerformVaryingClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57919,14 +54677,6 @@ export class PerformVaryingPhraseContext extends ParserRuleContext {
 			listener.exitPerformVaryingPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformVaryingPhrase) {
-			return visitor.visitPerformVaryingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57950,14 +54700,6 @@ export class PerformAfterContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitPerformAfter) {
 			listener.exitPerformAfter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformAfter) {
-			return visitor.visitPerformAfter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57991,14 +54733,6 @@ export class PerformFromContext extends ParserRuleContext {
 			listener.exitPerformFrom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformFrom) {
-			return visitor.visitPerformFrom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58030,14 +54764,6 @@ export class PerformByContext extends ParserRuleContext {
 			listener.exitPerformBy(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformBy) {
-			return visitor.visitPerformBy(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58061,14 +54787,6 @@ export class PerformTestClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitPerformTestClause) {
 			listener.exitPerformTestClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPerformTestClause) {
-			return visitor.visitPerformTestClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58100,14 +54818,6 @@ export class PurgeStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitPurgeStatement) {
 			listener.exitPurgeStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPurgeStatement) {
-			return visitor.visitPurgeStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58159,14 +54869,6 @@ export class ReadStatementContext extends ParserRuleContext {
 			listener.exitReadStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReadStatement) {
-			return visitor.visitReadStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58190,14 +54892,6 @@ export class ReadIntoContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReadInto) {
 			listener.exitReadInto(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReadInto) {
-			return visitor.visitReadInto(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58226,14 +54920,6 @@ export class ReadWithContext extends ParserRuleContext {
 			listener.exitReadWith(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReadWith) {
-			return visitor.visitReadWith(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58258,14 +54944,6 @@ export class ReadKeyContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReadKey) {
 			listener.exitReadKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReadKey) {
-			return visitor.visitReadKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58301,14 +54979,6 @@ export class ReceiveStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReceiveStatement) {
 			listener.exitReceiveStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReceiveStatement) {
-			return visitor.visitReceiveStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58384,14 +55054,6 @@ export class ReceiveFromStatementContext extends ParserRuleContext {
 			listener.exitReceiveFromStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReceiveFromStatement) {
-			return visitor.visitReceiveFromStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58417,14 +55079,6 @@ export class ReceiveFromContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReceiveFrom) {
 			listener.exitReceiveFrom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReceiveFrom) {
-			return visitor.visitReceiveFrom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58463,14 +55117,6 @@ export class ReceiveIntoStatementContext extends ParserRuleContext {
 			listener.exitReceiveIntoStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReceiveIntoStatement) {
-			return visitor.visitReceiveIntoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58501,14 +55147,6 @@ export class ReceiveNoDataContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReceiveNoData) {
 			listener.exitReceiveNoData(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReceiveNoData) {
-			return visitor.visitReceiveNoData(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58543,14 +55181,6 @@ export class ReceiveWithDataContext extends ParserRuleContext {
 			listener.exitReceiveWithData(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReceiveWithData) {
-			return visitor.visitReceiveWithData(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58580,14 +55210,6 @@ export class ReceiveBeforeContext extends ParserRuleContext {
 			listener.exitReceiveBefore(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReceiveBefore) {
-			return visitor.visitReceiveBefore(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58610,14 +55232,6 @@ export class ReceiveWithContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReceiveWith) {
 			listener.exitReceiveWith(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReceiveWith) {
-			return visitor.visitReceiveWith(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58644,14 +55258,6 @@ export class ReceiveThreadContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReceiveThread) {
 			listener.exitReceiveThread(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReceiveThread) {
-			return visitor.visitReceiveThread(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58683,14 +55289,6 @@ export class ReceiveSizeContext extends ParserRuleContext {
 			listener.exitReceiveSize(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReceiveSize) {
-			return visitor.visitReceiveSize(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58715,14 +55313,6 @@ export class ReceiveStatusContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReceiveStatus) {
 			listener.exitReceiveStatus(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReceiveStatus) {
-			return visitor.visitReceiveStatus(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58752,14 +55342,6 @@ export class ReleaseStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReleaseStatement) {
 			listener.exitReleaseStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReleaseStatement) {
-			return visitor.visitReleaseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58798,14 +55380,6 @@ export class ReturnStatementContext extends ParserRuleContext {
 			listener.exitReturnStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReturnStatement) {
-			return visitor.visitReturnStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58829,14 +55403,6 @@ export class ReturnIntoContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReturnInto) {
 			listener.exitReturnInto(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReturnInto) {
-			return visitor.visitReturnInto(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58874,14 +55440,6 @@ export class RewriteStatementContext extends ParserRuleContext {
 			listener.exitRewriteStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRewriteStatement) {
-			return visitor.visitRewriteStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58905,14 +55463,6 @@ export class RewriteFromContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitRewriteFrom) {
 			listener.exitRewriteFrom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRewriteFrom) {
-			return visitor.visitRewriteFrom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58957,14 +55507,6 @@ export class SearchStatementContext extends ParserRuleContext {
 			listener.exitSearchStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSearchStatement) {
-			return visitor.visitSearchStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58988,14 +55530,6 @@ export class SearchVaryingContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSearchVarying) {
 			listener.exitSearchVarying(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSearchVarying) {
-			return visitor.visitSearchVarying(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59034,14 +55568,6 @@ export class SearchWhenContext extends ParserRuleContext {
 			listener.exitSearchWhen(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSearchWhen) {
-			return visitor.visitSearchWhen(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59074,14 +55600,6 @@ export class SendStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSendStatement) {
 			listener.exitSendStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSendStatement) {
-			return visitor.visitSendStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59123,14 +55641,6 @@ export class SendStatementSyncContext extends ParserRuleContext {
 			listener.exitSendStatementSync(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSendStatementSync) {
-			return visitor.visitSendStatementSync(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59158,14 +55668,6 @@ export class SendStatementAsyncContext extends ParserRuleContext {
 			listener.exitSendStatementAsync(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSendStatementAsync) {
-			return visitor.visitSendStatementAsync(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59189,14 +55691,6 @@ export class SendFromPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSendFromPhrase) {
 			listener.exitSendFromPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSendFromPhrase) {
-			return visitor.visitSendFromPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59227,14 +55721,6 @@ export class SendWithPhraseContext extends ParserRuleContext {
 			listener.exitSendWithPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSendWithPhrase) {
-			return visitor.visitSendWithPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59256,14 +55742,6 @@ export class SendReplacingPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSendReplacingPhrase) {
 			listener.exitSendReplacingPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSendReplacingPhrase) {
-			return visitor.visitSendReplacingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59299,14 +55777,6 @@ export class SendAdvancingPhraseContext extends ParserRuleContext {
 			listener.exitSendAdvancingPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSendAdvancingPhrase) {
-			return visitor.visitSendAdvancingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59327,14 +55797,6 @@ export class SendAdvancingPageContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSendAdvancingPage) {
 			listener.exitSendAdvancingPage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSendAdvancingPage) {
-			return visitor.visitSendAdvancingPage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59366,14 +55828,6 @@ export class SendAdvancingLinesContext extends ParserRuleContext {
 			listener.exitSendAdvancingLines(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSendAdvancingLines) {
-			return visitor.visitSendAdvancingLines(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59396,14 +55850,6 @@ export class SendAdvancingMnemonicContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSendAdvancingMnemonic) {
 			listener.exitSendAdvancingMnemonic(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSendAdvancingMnemonic) {
-			return visitor.visitSendAdvancingMnemonic(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59438,14 +55884,6 @@ export class SetStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSetStatement) {
 			listener.exitSetStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSetStatement) {
-			return visitor.visitSetStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59488,14 +55926,6 @@ export class SetToStatementContext extends ParserRuleContext {
 			listener.exitSetToStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSetToStatement) {
-			return visitor.visitSetToStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59532,14 +55962,6 @@ export class SetUpDownByStatementContext extends ParserRuleContext {
 			listener.exitSetUpDownByStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSetUpDownByStatement) {
-			return visitor.visitSetUpDownByStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59562,14 +55984,6 @@ export class SetToContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSetTo) {
 			listener.exitSetTo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSetTo) {
-			return visitor.visitSetTo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59602,14 +56016,6 @@ export class SetToValueContext extends ParserRuleContext {
 			listener.exitSetToValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSetToValue) {
-			return visitor.visitSetToValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59635,14 +56041,6 @@ export class SetByValueContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSetByValue) {
 			listener.exitSetByValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSetByValue) {
-			return visitor.visitSetByValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59709,14 +56107,6 @@ export class SortStatementContext extends ParserRuleContext {
 			listener.exitSortStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortStatement) {
-			return visitor.visitSortStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59751,14 +56141,6 @@ export class SortOnKeyClauseContext extends ParserRuleContext {
 			listener.exitSortOnKeyClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortOnKeyClause) {
-			return visitor.visitSortOnKeyClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59782,14 +56164,6 @@ export class SortDuplicatesPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSortDuplicatesPhrase) {
 			listener.exitSortDuplicatesPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortDuplicatesPhrase) {
-			return visitor.visitSortDuplicatesPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59831,14 +56205,6 @@ export class SortCollatingSequencePhraseContext extends ParserRuleContext {
 			listener.exitSortCollatingSequencePhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortCollatingSequencePhrase) {
-			return visitor.visitSortCollatingSequencePhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59866,14 +56232,6 @@ export class SortCollatingAlphanumericContext extends ParserRuleContext {
 			listener.exitSortCollatingAlphanumeric(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortCollatingAlphanumeric) {
-			return visitor.visitSortCollatingAlphanumeric(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59899,14 +56257,6 @@ export class SortCollatingNationalContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSortCollatingNational) {
 			listener.exitSortCollatingNational(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortCollatingNational) {
-			return visitor.visitSortCollatingNational(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59939,14 +56289,6 @@ export class SortInputProcedurePhraseContext extends ParserRuleContext {
 			listener.exitSortInputProcedurePhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortInputProcedurePhrase) {
-			return visitor.visitSortInputProcedurePhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59971,14 +56313,6 @@ export class SortInputThroughContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSortInputThrough) {
 			listener.exitSortInputThrough(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortInputThrough) {
-			return visitor.visitSortInputThrough(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60012,14 +56346,6 @@ export class SortUsingContext extends ParserRuleContext {
 			listener.exitSortUsing(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortUsing) {
-			return visitor.visitSortUsing(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60050,14 +56376,6 @@ export class SortOutputProcedurePhraseContext extends ParserRuleContext {
 			listener.exitSortOutputProcedurePhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortOutputProcedurePhrase) {
-			return visitor.visitSortOutputProcedurePhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60082,14 +56400,6 @@ export class SortOutputThroughContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSortOutputThrough) {
 			listener.exitSortOutputThrough(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortOutputThrough) {
-			return visitor.visitSortOutputThrough(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60123,14 +56433,6 @@ export class SortGivingPhraseContext extends ParserRuleContext {
 			listener.exitSortGivingPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortGivingPhrase) {
-			return visitor.visitSortGivingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60161,14 +56463,6 @@ export class SortGivingContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSortGiving) {
 			listener.exitSortGiving(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSortGiving) {
-			return visitor.visitSortGiving(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60204,14 +56498,6 @@ export class StartStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitStartStatement) {
 			listener.exitStartStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStartStatement) {
-			return visitor.visitStartStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60251,14 +56537,6 @@ export class StartKeyContext extends ParserRuleContext {
 			listener.exitStartKey(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStartKey) {
-			return visitor.visitStartKey(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60283,14 +56561,6 @@ export class StopStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitStopStatement) {
 			listener.exitStopStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStopStatement) {
-			return visitor.visitStopStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60337,14 +56607,6 @@ export class StringStatementContext extends ParserRuleContext {
 			listener.exitStringStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStringStatement) {
-			return visitor.visitStringStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60381,14 +56643,6 @@ export class StringSendingPhraseContext extends ParserRuleContext {
 			listener.exitStringSendingPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStringSendingPhrase) {
-			return visitor.visitStringSendingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60414,14 +56668,6 @@ export class StringSendingContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitStringSending) {
 			listener.exitStringSending(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStringSending) {
-			return visitor.visitStringSending(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60454,14 +56700,6 @@ export class StringDelimitedByPhraseContext extends ParserRuleContext {
 			listener.exitStringDelimitedByPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStringDelimitedByPhrase) {
-			return visitor.visitStringDelimitedByPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60490,14 +56728,6 @@ export class StringForPhraseContext extends ParserRuleContext {
 			listener.exitStringForPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStringForPhrase) {
-			return visitor.visitStringForPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60521,14 +56751,6 @@ export class StringIntoPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitStringIntoPhrase) {
 			listener.exitStringIntoPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStringIntoPhrase) {
-			return visitor.visitStringIntoPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60555,14 +56777,6 @@ export class StringWithPointerPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitStringWithPointerPhrase) {
 			listener.exitStringWithPointerPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitStringWithPointerPhrase) {
-			return visitor.visitStringWithPointerPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60603,14 +56817,6 @@ export class SubtractStatementContext extends ParserRuleContext {
 			listener.exitSubtractStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSubtractStatement) {
-			return visitor.visitSubtractStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60649,14 +56855,6 @@ export class SubtractFromStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSubtractFromStatement) {
 			listener.exitSubtractFromStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSubtractFromStatement) {
-			return visitor.visitSubtractFromStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60703,14 +56901,6 @@ export class SubtractFromGivingStatementContext extends ParserRuleContext {
 			listener.exitSubtractFromGivingStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSubtractFromGivingStatement) {
-			return visitor.visitSubtractFromGivingStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60741,14 +56931,6 @@ export class SubtractCorrespondingStatementContext extends ParserRuleContext {
 			listener.exitSubtractCorrespondingStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSubtractCorrespondingStatement) {
-			return visitor.visitSubtractCorrespondingStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60776,14 +56958,6 @@ export class SubtractSubtrahendContext extends ParserRuleContext {
 			listener.exitSubtractSubtrahend(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSubtractSubtrahend) {
-			return visitor.visitSubtractSubtrahend(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60807,14 +56981,6 @@ export class SubtractMinuendContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSubtractMinuend) {
 			listener.exitSubtractMinuend(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSubtractMinuend) {
-			return visitor.visitSubtractMinuend(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60844,14 +57010,6 @@ export class SubtractMinuendGivingContext extends ParserRuleContext {
 			listener.exitSubtractMinuendGiving(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSubtractMinuendGiving) {
-			return visitor.visitSubtractMinuendGiving(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60875,14 +57033,6 @@ export class SubtractGivingContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSubtractGiving) {
 			listener.exitSubtractGiving(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSubtractGiving) {
-			return visitor.visitSubtractGiving(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60910,14 +57060,6 @@ export class SubtractMinuendCorrespondingContext extends ParserRuleContext {
 			listener.exitSubtractMinuendCorresponding(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSubtractMinuendCorresponding) {
-			return visitor.visitSubtractMinuendCorresponding(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60941,14 +57083,6 @@ export class TerminateStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitTerminateStatement) {
 			listener.exitTerminateStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitTerminateStatement) {
-			return visitor.visitTerminateStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60992,14 +57126,6 @@ export class UnstringStatementContext extends ParserRuleContext {
 			listener.exitUnstringStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUnstringStatement) {
-			return visitor.visitUnstringStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61036,14 +57162,6 @@ export class UnstringSendingPhraseContext extends ParserRuleContext {
 			listener.exitUnstringSendingPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUnstringSendingPhrase) {
-			return visitor.visitUnstringSendingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61074,14 +57192,6 @@ export class UnstringDelimitedByPhraseContext extends ParserRuleContext {
 			listener.exitUnstringDelimitedByPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUnstringDelimitedByPhrase) {
-			return visitor.visitUnstringDelimitedByPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61109,14 +57219,6 @@ export class UnstringOrAllPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitUnstringOrAllPhrase) {
 			listener.exitUnstringOrAllPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUnstringOrAllPhrase) {
-			return visitor.visitUnstringOrAllPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61150,14 +57252,6 @@ export class UnstringIntoPhraseContext extends ParserRuleContext {
 			listener.exitUnstringIntoPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUnstringIntoPhrase) {
-			return visitor.visitUnstringIntoPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61188,14 +57282,6 @@ export class UnstringIntoContext extends ParserRuleContext {
 			listener.exitUnstringInto(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUnstringInto) {
-			return visitor.visitUnstringInto(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61220,14 +57306,6 @@ export class UnstringDelimiterInContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitUnstringDelimiterIn) {
 			listener.exitUnstringDelimiterIn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUnstringDelimiterIn) {
-			return visitor.visitUnstringDelimiterIn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61256,14 +57334,6 @@ export class UnstringCountInContext extends ParserRuleContext {
 			listener.exitUnstringCountIn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUnstringCountIn) {
-			return visitor.visitUnstringCountIn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61288,14 +57358,6 @@ export class UnstringWithPointerPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitUnstringWithPointerPhrase) {
 			listener.exitUnstringWithPointerPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUnstringWithPointerPhrase) {
-			return visitor.visitUnstringWithPointerPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61324,14 +57386,6 @@ export class UnstringTallyingPhraseContext extends ParserRuleContext {
 			listener.exitUnstringTallyingPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUnstringTallyingPhrase) {
-			return visitor.visitUnstringTallyingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61358,14 +57412,6 @@ export class UseStatementContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitUseStatement) {
 			listener.exitUseStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUseStatement) {
-			return visitor.visitUseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61397,14 +57443,6 @@ export class UseAfterClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitUseAfterClause) {
 			listener.exitUseAfterClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUseAfterClause) {
-			return visitor.visitUseAfterClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61441,14 +57479,6 @@ export class UseAfterOnContext extends ParserRuleContext {
 			listener.exitUseAfterOn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUseAfterOn) {
-			return visitor.visitUseAfterOn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61480,14 +57510,6 @@ export class UseDebugClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitUseDebugClause) {
 			listener.exitUseDebugClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUseDebugClause) {
-			return visitor.visitUseDebugClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61522,14 +57544,6 @@ export class UseDebugOnContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitUseDebugOn) {
 			listener.exitUseDebugOn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitUseDebugOn) {
-			return visitor.visitUseDebugOn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61576,14 +57590,6 @@ export class WriteStatementContext extends ParserRuleContext {
 			listener.exitWriteStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitWriteStatement) {
-			return visitor.visitWriteStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61610,14 +57616,6 @@ export class WriteFromPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitWriteFromPhrase) {
 			listener.exitWriteFromPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitWriteFromPhrase) {
-			return visitor.visitWriteFromPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61653,14 +57651,6 @@ export class WriteAdvancingPhraseContext extends ParserRuleContext {
 			listener.exitWriteAdvancingPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitWriteAdvancingPhrase) {
-			return visitor.visitWriteAdvancingPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61681,14 +57671,6 @@ export class WriteAdvancingPageContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitWriteAdvancingPage) {
 			listener.exitWriteAdvancingPage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitWriteAdvancingPage) {
-			return visitor.visitWriteAdvancingPage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61720,14 +57702,6 @@ export class WriteAdvancingLinesContext extends ParserRuleContext {
 			listener.exitWriteAdvancingLines(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitWriteAdvancingLines) {
-			return visitor.visitWriteAdvancingLines(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61750,14 +57724,6 @@ export class WriteAdvancingMnemonicContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitWriteAdvancingMnemonic) {
 			listener.exitWriteAdvancingMnemonic(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitWriteAdvancingMnemonic) {
-			return visitor.visitWriteAdvancingMnemonic(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61791,14 +57757,6 @@ export class WriteAtEndOfPagePhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitWriteAtEndOfPagePhrase) {
 			listener.exitWriteAtEndOfPagePhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitWriteAtEndOfPagePhrase) {
-			return visitor.visitWriteAtEndOfPagePhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61835,14 +57793,6 @@ export class WriteNotAtEndOfPagePhraseContext extends ParserRuleContext {
 			listener.exitWriteNotAtEndOfPagePhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitWriteNotAtEndOfPagePhrase) {
-			return visitor.visitWriteNotAtEndOfPagePhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61873,14 +57823,6 @@ export class AtEndPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAtEndPhrase) {
 			listener.exitAtEndPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAtEndPhrase) {
-			return visitor.visitAtEndPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61916,14 +57858,6 @@ export class NotAtEndPhraseContext extends ParserRuleContext {
 			listener.exitNotAtEndPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitNotAtEndPhrase) {
-			return visitor.visitNotAtEndPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61954,14 +57888,6 @@ export class InvalidKeyPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInvalidKeyPhrase) {
 			listener.exitInvalidKeyPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInvalidKeyPhrase) {
-			return visitor.visitInvalidKeyPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61997,14 +57923,6 @@ export class NotInvalidKeyPhraseContext extends ParserRuleContext {
 			listener.exitNotInvalidKeyPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitNotInvalidKeyPhrase) {
-			return visitor.visitNotInvalidKeyPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62035,14 +57953,6 @@ export class OnOverflowPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitOnOverflowPhrase) {
 			listener.exitOnOverflowPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitOnOverflowPhrase) {
-			return visitor.visitOnOverflowPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62078,14 +57988,6 @@ export class NotOnOverflowPhraseContext extends ParserRuleContext {
 			listener.exitNotOnOverflowPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitNotOnOverflowPhrase) {
-			return visitor.visitNotOnOverflowPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62117,14 +58019,6 @@ export class OnSizeErrorPhraseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitOnSizeErrorPhrase) {
 			listener.exitOnSizeErrorPhrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitOnSizeErrorPhrase) {
-			return visitor.visitOnSizeErrorPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62161,14 +58055,6 @@ export class NotOnSizeErrorPhraseContext extends ParserRuleContext {
 			listener.exitNotOnSizeErrorPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitNotOnSizeErrorPhrase) {
-			return visitor.visitNotOnSizeErrorPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62199,14 +58085,6 @@ export class OnExceptionClauseContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitOnExceptionClause) {
 			listener.exitOnExceptionClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitOnExceptionClause) {
-			return visitor.visitOnExceptionClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62242,14 +58120,6 @@ export class NotOnExceptionClauseContext extends ParserRuleContext {
 			listener.exitNotOnExceptionClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitNotOnExceptionClause) {
-			return visitor.visitNotOnExceptionClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62283,14 +58153,6 @@ export class ArithmeticExpressionContext extends ParserRuleContext {
 			listener.exitArithmeticExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitArithmeticExpression) {
-			return visitor.visitArithmeticExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62315,14 +58177,6 @@ export class PlusMinusContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitPlusMinus) {
 			listener.exitPlusMinus(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPlusMinus) {
-			return visitor.visitPlusMinus(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62358,14 +58212,6 @@ export class MultDivsContext extends ParserRuleContext {
 			listener.exitMultDivs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMultDivs) {
-			return visitor.visitMultDivs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62390,14 +58236,6 @@ export class MultDivContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMultDiv) {
 			listener.exitMultDiv(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMultDiv) {
-			return visitor.visitMultDiv(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62435,14 +58273,6 @@ export class PowersContext extends ParserRuleContext {
 			listener.exitPowers(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPowers) {
-			return visitor.visitPowers(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62466,14 +58296,6 @@ export class PowerContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitPower) {
 			listener.exitPower(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitPower) {
-			return visitor.visitPower(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62508,14 +58330,6 @@ export class BasisContext extends ParserRuleContext {
 			listener.exitBasis(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitBasis) {
-			return visitor.visitBasis(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62547,14 +58361,6 @@ export class ConditionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCondition) {
 			listener.exitCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCondition) {
-			return visitor.visitCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62592,14 +58398,6 @@ export class AndOrConditionContext extends ParserRuleContext {
 			listener.exitAndOrCondition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAndOrCondition) {
-			return visitor.visitAndOrCondition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62623,14 +58421,6 @@ export class CombinableConditionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCombinableCondition) {
 			listener.exitCombinableCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCombinableCondition) {
-			return visitor.visitCombinableCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62668,14 +58458,6 @@ export class SimpleConditionContext extends ParserRuleContext {
 			listener.exitSimpleCondition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSimpleCondition) {
-			return visitor.visitSimpleCondition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62709,14 +58491,6 @@ export class ClassConditionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitClassCondition) {
 			listener.exitClassCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitClassCondition) {
-			return visitor.visitClassCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62773,14 +58547,6 @@ export class ConditionNameReferenceContext extends ParserRuleContext {
 			listener.exitConditionNameReference(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitConditionNameReference) {
-			return visitor.visitConditionNameReference(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62822,14 +58588,6 @@ export class ConditionNameSubscriptReferenceContext extends ParserRuleContext {
 			listener.exitConditionNameSubscriptReference(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitConditionNameSubscriptReference) {
-			return visitor.visitConditionNameSubscriptReference(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62860,14 +58618,6 @@ export class RelationConditionContext extends ParserRuleContext {
 			listener.exitRelationCondition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRelationCondition) {
-			return visitor.visitRelationCondition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62895,14 +58645,6 @@ export class RelationSignConditionContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitRelationSignCondition) {
 			listener.exitRelationSignCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRelationSignCondition) {
-			return visitor.visitRelationSignCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62938,14 +58680,6 @@ export class RelationArithmeticComparisonContext extends ParserRuleContext {
 			listener.exitRelationArithmeticComparison(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRelationArithmeticComparison) {
-			return visitor.visitRelationArithmeticComparison(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62976,14 +58710,6 @@ export class RelationCombinedComparisonContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitRelationCombinedComparison) {
 			listener.exitRelationCombinedComparison(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRelationCombinedComparison) {
-			return visitor.visitRelationCombinedComparison(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63034,14 +58760,6 @@ export class RelationCombinedConditionContext extends ParserRuleContext {
 			listener.exitRelationCombinedCondition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRelationCombinedCondition) {
-			return visitor.visitRelationCombinedCondition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63078,14 +58796,6 @@ export class RelationalOperatorContext extends ParserRuleContext {
 			listener.exitRelationalOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRelationalOperator) {
-			return visitor.visitRelationalOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63119,14 +58829,6 @@ export class AbbreviationContext extends ParserRuleContext {
 			listener.exitAbbreviation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAbbreviation) {
-			return visitor.visitAbbreviation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63158,14 +58860,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63229,14 +58923,6 @@ export class TableCallContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitTableCall) {
 			listener.exitTableCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitTableCall) {
-			return visitor.visitTableCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63303,14 +58989,6 @@ export class FunctionCallContext extends ParserRuleContext {
 			listener.exitFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitFunctionCall) {
-			return visitor.visitFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63341,14 +59019,6 @@ export class ReferenceModifierContext extends ParserRuleContext {
 			listener.exitReferenceModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReferenceModifier) {
-			return visitor.visitReferenceModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63373,14 +59043,6 @@ export class CharacterPositionContext extends ParserRuleContext {
 			listener.exitCharacterPosition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCharacterPosition) {
-			return visitor.visitCharacterPosition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63403,14 +59065,6 @@ export class LengthContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLength) {
 			listener.exitLength(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLength) {
-			return visitor.visitLength(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63445,14 +59099,6 @@ export class SubscriptContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSubscript) {
 			listener.exitSubscript(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSubscript) {
-			return visitor.visitSubscript(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63494,14 +59140,6 @@ export class ArgumentContext extends ParserRuleContext {
 			listener.exitArgument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63533,14 +59171,6 @@ export class QualifiedDataNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitQualifiedDataName) {
 			listener.exitQualifiedDataName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitQualifiedDataName) {
-			return visitor.visitQualifiedDataName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63582,14 +59212,6 @@ export class QualifiedDataNameFormat1Context extends ParserRuleContext {
 			listener.exitQualifiedDataNameFormat1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitQualifiedDataNameFormat1) {
-			return visitor.visitQualifiedDataNameFormat1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63615,14 +59237,6 @@ export class QualifiedDataNameFormat2Context extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitQualifiedDataNameFormat2) {
 			listener.exitQualifiedDataNameFormat2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitQualifiedDataNameFormat2) {
-			return visitor.visitQualifiedDataNameFormat2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63652,14 +59266,6 @@ export class QualifiedDataNameFormat3Context extends ParserRuleContext {
 			listener.exitQualifiedDataNameFormat3(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitQualifiedDataNameFormat3) {
-			return visitor.visitQualifiedDataNameFormat3(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63683,14 +59289,6 @@ export class QualifiedDataNameFormat4Context extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitQualifiedDataNameFormat4) {
 			listener.exitQualifiedDataNameFormat4(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitQualifiedDataNameFormat4) {
-			return visitor.visitQualifiedDataNameFormat4(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63720,14 +59318,6 @@ export class QualifiedInDataContext extends ParserRuleContext {
 			listener.exitQualifiedInData(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitQualifiedInData) {
-			return visitor.visitQualifiedInData(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63752,14 +59342,6 @@ export class InDataContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInData) {
 			listener.exitInData(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInData) {
-			return visitor.visitInData(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63788,14 +59370,6 @@ export class InFileContext extends ParserRuleContext {
 			listener.exitInFile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInFile) {
-			return visitor.visitInFile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63820,14 +59394,6 @@ export class InMnemonicContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInMnemonic) {
 			listener.exitInMnemonic(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInMnemonic) {
-			return visitor.visitInMnemonic(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63856,14 +59422,6 @@ export class InSectionContext extends ParserRuleContext {
 			listener.exitInSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInSection) {
-			return visitor.visitInSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63888,14 +59446,6 @@ export class InLibraryContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitInLibrary) {
 			listener.exitInLibrary(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInLibrary) {
-			return visitor.visitInLibrary(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63924,14 +59474,6 @@ export class InTableContext extends ParserRuleContext {
 			listener.exitInTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitInTable) {
-			return visitor.visitInTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63954,14 +59496,6 @@ export class AlphabetNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitAlphabetName) {
 			listener.exitAlphabetName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAlphabetName) {
-			return visitor.visitAlphabetName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63988,14 +59522,6 @@ export class AssignmentNameContext extends ParserRuleContext {
 			listener.exitAssignmentName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitAssignmentName) {
-			return visitor.visitAssignmentName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64018,14 +59544,6 @@ export class BasisNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitBasisName) {
 			listener.exitBasisName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitBasisName) {
-			return visitor.visitBasisName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64052,14 +59570,6 @@ export class CdNameContext extends ParserRuleContext {
 			listener.exitCdName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCdName) {
-			return visitor.visitCdName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64082,14 +59592,6 @@ export class ClassNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitClassName) {
 			listener.exitClassName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitClassName) {
-			return visitor.visitClassName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64116,14 +59618,6 @@ export class ComputerNameContext extends ParserRuleContext {
 			listener.exitComputerName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitComputerName) {
-			return visitor.visitComputerName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64148,14 +59642,6 @@ export class ConditionNameContext extends ParserRuleContext {
 			listener.exitConditionName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitConditionName) {
-			return visitor.visitConditionName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64178,14 +59664,6 @@ export class DataNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitDataName) {
 			listener.exitDataName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataName) {
-			return visitor.visitDataName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64214,14 +59692,6 @@ export class DataDescNameContext extends ParserRuleContext {
 			listener.exitDataDescName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitDataDescName) {
-			return visitor.visitDataDescName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64246,14 +59716,6 @@ export class EnvironmentNameContext extends ParserRuleContext {
 			listener.exitEnvironmentName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitEnvironmentName) {
-			return visitor.visitEnvironmentName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64276,14 +59738,6 @@ export class FileNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitFileName) {
 			listener.exitFileName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitFileName) {
-			return visitor.visitFileName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64315,14 +59769,6 @@ export class FunctionNameContext extends ParserRuleContext {
 			listener.exitFunctionName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitFunctionName) {
-			return visitor.visitFunctionName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64345,14 +59791,6 @@ export class IndexNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitIndexName) {
 			listener.exitIndexName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitIndexName) {
-			return visitor.visitIndexName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64379,14 +59817,6 @@ export class LanguageNameContext extends ParserRuleContext {
 			listener.exitLanguageName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLanguageName) {
-			return visitor.visitLanguageName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64409,14 +59839,6 @@ export class LibraryNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitLibraryName) {
 			listener.exitLibraryName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLibraryName) {
-			return visitor.visitLibraryName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64443,14 +59865,6 @@ export class LocalNameContext extends ParserRuleContext {
 			listener.exitLocalName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLocalName) {
-			return visitor.visitLocalName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64473,14 +59887,6 @@ export class MnemonicNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitMnemonicName) {
 			listener.exitMnemonicName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitMnemonicName) {
-			return visitor.visitMnemonicName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64508,14 +59914,6 @@ export class ParagraphNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitParagraphName) {
 			listener.exitParagraphName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitParagraphName) {
-			return visitor.visitParagraphName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64548,14 +59946,6 @@ export class ProcedureNameContext extends ParserRuleContext {
 			listener.exitProcedureName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProcedureName) {
-			return visitor.visitProcedureName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64579,14 +59969,6 @@ export class ProgramNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitProgramName) {
 			listener.exitProgramName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitProgramName) {
-			return visitor.visitProgramName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64613,14 +59995,6 @@ export class RecordNameContext extends ParserRuleContext {
 			listener.exitRecordName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRecordName) {
-			return visitor.visitRecordName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64643,14 +60017,6 @@ export class ReportNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitReportName) {
 			listener.exitReportName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitReportName) {
-			return visitor.visitReportName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64677,14 +60043,6 @@ export class RoutineNameContext extends ParserRuleContext {
 			listener.exitRoutineName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitRoutineName) {
-			return visitor.visitRoutineName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64707,14 +60065,6 @@ export class ScreenNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitScreenName) {
 			listener.exitScreenName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitScreenName) {
-			return visitor.visitScreenName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64744,14 +60094,6 @@ export class SectionNameContext extends ParserRuleContext {
 			listener.exitSectionName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSectionName) {
-			return visitor.visitSectionName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64774,14 +60116,6 @@ export class SystemNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitSystemName) {
 			listener.exitSystemName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSystemName) {
-			return visitor.visitSystemName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64808,14 +60142,6 @@ export class SymbolicCharacterContext extends ParserRuleContext {
 			listener.exitSymbolicCharacter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSymbolicCharacter) {
-			return visitor.visitSymbolicCharacter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64838,14 +60164,6 @@ export class TextNameContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitTextName) {
 			listener.exitTextName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitTextName) {
-			return visitor.visitTextName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64994,14 +60312,6 @@ export class CobolWordContext extends ParserRuleContext {
 			listener.exitCobolWord(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCobolWord) {
-			return visitor.visitCobolWord(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65039,14 +60349,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65068,14 +60370,6 @@ export class BooleanLiteralContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitBooleanLiteral) {
 			listener.exitBooleanLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitBooleanLiteral) {
-			return visitor.visitBooleanLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65104,14 +60398,6 @@ export class NumericLiteralContext extends ParserRuleContext {
 			listener.exitNumericLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitNumericLiteral) {
-			return visitor.visitNumericLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65135,14 +60421,6 @@ export class IntegerLiteralContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitIntegerLiteral) {
 			listener.exitIntegerLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitIntegerLiteral) {
-			return visitor.visitIntegerLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65175,14 +60453,6 @@ export class CicsDfhRespLiteralContext extends ParserRuleContext {
 			listener.exitCicsDfhRespLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCicsDfhRespLiteral) {
-			return visitor.visitCicsDfhRespLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65211,14 +60481,6 @@ export class CicsDfhValueLiteralContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCicsDfhValueLiteral) {
 			listener.exitCicsDfhValueLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCicsDfhValueLiteral) {
-			return visitor.visitCicsDfhValueLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65257,14 +60519,6 @@ export class FigurativeConstantContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitFigurativeConstant) {
 			listener.exitFigurativeConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitFigurativeConstant) {
-			return visitor.visitFigurativeConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65319,14 +60573,6 @@ export class SpecialRegisterContext extends ParserRuleContext {
 			listener.exitSpecialRegister(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitSpecialRegister) {
-			return visitor.visitSpecialRegister(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65355,14 +60601,6 @@ export class CommentEntryContext extends ParserRuleContext {
 	public exitRule(listener: Cobol85Listener): void {
 		if (listener.exitCommentEntry) {
 			listener.exitCommentEntry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Cobol85Visitor<Result>): Result {
-		if (visitor.visitCommentEntry) {
-			return visitor.visitCommentEntry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

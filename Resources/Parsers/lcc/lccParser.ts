@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { lccListener } from "./lccListener";
-import { lccVisitor } from "./lccVisitor";
-
 
 export class lccParser extends Parser {
 	public static readonly T__0 = 1;
@@ -496,14 +494,6 @@ export class LccContext extends ParserRuleContext {
 			listener.exitLcc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lccVisitor<Result>): Result {
-		if (visitor.visitLcc) {
-			return visitor.visitLcc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -526,14 +516,6 @@ export class TopicContext extends ParserRuleContext {
 			listener.exitTopic(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lccVisitor<Result>): Result {
-		if (visitor.visitTopic) {
-			return visitor.visitTopic(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -554,14 +536,6 @@ export class SubtopicContext extends ParserRuleContext {
 	public exitRule(listener: lccListener): void {
 		if (listener.exitSubtopic) {
 			listener.exitSubtopic(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lccVisitor<Result>): Result {
-		if (visitor.visitSubtopic) {
-			return visitor.visitSubtopic(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -594,14 +568,6 @@ export class SubclassesContext extends ParserRuleContext {
 			listener.exitSubclasses(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lccVisitor<Result>): Result {
-		if (visitor.visitSubclasses) {
-			return visitor.visitSubclasses(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -632,14 +598,6 @@ export class SubclassContext extends ParserRuleContext {
 			listener.exitSubclass(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lccVisitor<Result>): Result {
-		if (visitor.visitSubclass) {
-			return visitor.visitSubclass(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -668,14 +626,6 @@ export class CuttersContext extends ParserRuleContext {
 	public exitRule(listener: lccListener): void {
 		if (listener.exitCutters) {
 			listener.exitCutters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lccVisitor<Result>): Result {
-		if (visitor.visitCutters) {
-			return visitor.visitCutters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -709,14 +659,6 @@ export class CutterContext extends ParserRuleContext {
 			listener.exitCutter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lccVisitor<Result>): Result {
-		if (visitor.visitCutter) {
-			return visitor.visitCutter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -745,14 +687,6 @@ export class DateContext extends ParserRuleContext {
 	public exitRule(listener: lccListener): void {
 		if (listener.exitDate) {
 			listener.exitDate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lccVisitor<Result>): Result {
-		if (visitor.visitDate) {
-			return visitor.visitDate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

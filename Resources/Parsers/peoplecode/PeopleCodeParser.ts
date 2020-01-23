@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { PeopleCodeListener } from "./PeopleCodeListener";
-import { PeopleCodeVisitor } from "./PeopleCodeVisitor";
-
 
 export class PeopleCodeParser extends Parser {
 	public static readonly T__0 = 1;
@@ -2817,14 +2815,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2853,14 +2843,6 @@ export class StmtListContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitStmtList) {
 			listener.exitStmtList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtList) {
-			return visitor.visitStmtList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2896,14 +2878,6 @@ export class StmtAppClassImportContext extends StmtContext {
 			listener.exitStmtAppClassImport(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtAppClassImport) {
-			return visitor.visitStmtAppClassImport(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StmtExternalFuncImportContext extends StmtContext {
 	public extFuncImport(): ExtFuncImportContext {
@@ -2923,14 +2897,6 @@ export class StmtExternalFuncImportContext extends StmtContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitStmtExternalFuncImport) {
 			listener.exitStmtExternalFuncImport(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtExternalFuncImport) {
-			return visitor.visitStmtExternalFuncImport(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2954,14 +2920,6 @@ export class StmtClassDeclarationContext extends StmtContext {
 			listener.exitStmtClassDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtClassDeclaration) {
-			return visitor.visitStmtClassDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StmtMethodImplContext extends StmtContext {
 	public methodImpl(): MethodImplContext {
@@ -2981,14 +2939,6 @@ export class StmtMethodImplContext extends StmtContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitStmtMethodImpl) {
 			listener.exitStmtMethodImpl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtMethodImpl) {
-			return visitor.visitStmtMethodImpl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3012,14 +2962,6 @@ export class StmtGetImplContext extends StmtContext {
 			listener.exitStmtGetImpl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtGetImpl) {
-			return visitor.visitStmtGetImpl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StmtSetImplContext extends StmtContext {
 	public setImpl(): SetImplContext {
@@ -3039,14 +2981,6 @@ export class StmtSetImplContext extends StmtContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitStmtSetImpl) {
 			listener.exitStmtSetImpl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtSetImpl) {
-			return visitor.visitStmtSetImpl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3070,14 +3004,6 @@ export class StmtFuncImplContext extends StmtContext {
 			listener.exitStmtFuncImpl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtFuncImpl) {
-			return visitor.visitStmtFuncImpl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StmtVarDeclarationContext extends StmtContext {
 	public varDeclaration(): VarDeclarationContext {
@@ -3097,14 +3023,6 @@ export class StmtVarDeclarationContext extends StmtContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitStmtVarDeclaration) {
 			listener.exitStmtVarDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtVarDeclaration) {
-			return visitor.visitStmtVarDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3128,14 +3046,6 @@ export class StmtIfContext extends StmtContext {
 			listener.exitStmtIf(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtIf) {
-			return visitor.visitStmtIf(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StmtForContext extends StmtContext {
 	public forStmt(): ForStmtContext {
@@ -3155,14 +3065,6 @@ export class StmtForContext extends StmtContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitStmtFor) {
 			listener.exitStmtFor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtFor) {
-			return visitor.visitStmtFor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3186,14 +3088,6 @@ export class StmtWhileContext extends StmtContext {
 			listener.exitStmtWhile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtWhile) {
-			return visitor.visitStmtWhile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StmtEvaluateContext extends StmtContext {
 	public evaluateStmt(): EvaluateStmtContext {
@@ -3213,14 +3107,6 @@ export class StmtEvaluateContext extends StmtContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitStmtEvaluate) {
 			listener.exitStmtEvaluate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtEvaluate) {
-			return visitor.visitStmtEvaluate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3244,14 +3130,6 @@ export class StmtTryCatchContext extends StmtContext {
 			listener.exitStmtTryCatch(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtTryCatch) {
-			return visitor.visitStmtTryCatch(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StmtExitContext extends StmtContext {
 	constructor(ctx: StmtContext) {
@@ -3270,14 +3148,6 @@ export class StmtExitContext extends StmtContext {
 			listener.exitStmtExit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtExit) {
-			return visitor.visitStmtExit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StmtBreakContext extends StmtContext {
 	constructor(ctx: StmtContext) {
@@ -3294,14 +3164,6 @@ export class StmtBreakContext extends StmtContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitStmtBreak) {
 			listener.exitStmtBreak(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtBreak) {
-			return visitor.visitStmtBreak(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3325,14 +3187,6 @@ export class StmtErrorContext extends StmtContext {
 			listener.exitStmtError(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtError) {
-			return visitor.visitStmtError(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StmtWarningContext extends StmtContext {
 	public expr(): ExprContext {
@@ -3352,14 +3206,6 @@ export class StmtWarningContext extends StmtContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitStmtWarning) {
 			listener.exitStmtWarning(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtWarning) {
-			return visitor.visitStmtWarning(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3383,14 +3229,6 @@ export class StmtReturnContext extends StmtContext {
 			listener.exitStmtReturn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtReturn) {
-			return visitor.visitStmtReturn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StmtThrowContext extends StmtContext {
 	public expr(): ExprContext {
@@ -3410,14 +3248,6 @@ export class StmtThrowContext extends StmtContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitStmtThrow) {
 			listener.exitStmtThrow(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtThrow) {
-			return visitor.visitStmtThrow(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3447,14 +3277,6 @@ export class StmtAssignContext extends StmtContext {
 			listener.exitStmtAssign(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtAssign) {
-			return visitor.visitStmtAssign(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StmtExprContext extends StmtContext {
 	public expr(): ExprContext {
@@ -3474,14 +3296,6 @@ export class StmtExprContext extends StmtContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitStmtExpr) {
 			listener.exitStmtExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitStmtExpr) {
-			return visitor.visitStmtExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3517,14 +3331,6 @@ export class ExprParenthesizedContext extends ExprContext {
 			listener.exitExprParenthesized(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprParenthesized) {
-			return visitor.visitExprParenthesized(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExprDynamicReferenceContext extends ExprContext {
 	public expr(): ExprContext {
@@ -3544,14 +3350,6 @@ export class ExprDynamicReferenceContext extends ExprContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitExprDynamicReference) {
 			listener.exitExprDynamicReference(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprDynamicReference) {
-			return visitor.visitExprDynamicReference(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3575,14 +3373,6 @@ export class ExprLiteralContext extends ExprContext {
 			listener.exitExprLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprLiteral) {
-			return visitor.visitExprLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExprIdContext extends ExprContext {
 	public id(): IdContext {
@@ -3604,14 +3394,6 @@ export class ExprIdContext extends ExprContext {
 			listener.exitExprId(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprId) {
-			return visitor.visitExprId(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExprCreateContext extends ExprContext {
 	public createInvocation(): CreateInvocationContext {
@@ -3631,14 +3413,6 @@ export class ExprCreateContext extends ExprContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitExprCreate) {
 			listener.exitExprCreate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprCreate) {
-			return visitor.visitExprCreate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3665,14 +3439,6 @@ export class ExprDotAccessContext extends ExprContext {
 			listener.exitExprDotAccess(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprDotAccess) {
-			return visitor.visitExprDotAccess(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExprArrayIndexContext extends ExprContext {
 	public expr(): ExprContext {
@@ -3695,14 +3461,6 @@ export class ExprArrayIndexContext extends ExprContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitExprArrayIndex) {
 			listener.exitExprArrayIndex(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprArrayIndex) {
-			return visitor.visitExprArrayIndex(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3729,14 +3487,6 @@ export class ExprFnOrIdxCallContext extends ExprContext {
 			listener.exitExprFnOrIdxCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprFnOrIdxCall) {
-			return visitor.visitExprFnOrIdxCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExprNegateContext extends ExprContext {
 	public expr(): ExprContext {
@@ -3758,14 +3508,6 @@ export class ExprNegateContext extends ExprContext {
 			listener.exitExprNegate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprNegate) {
-			return visitor.visitExprNegate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExprNotContext extends ExprContext {
 	public expr(): ExprContext {
@@ -3785,14 +3527,6 @@ export class ExprNotContext extends ExprContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitExprNot) {
 			listener.exitExprNot(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprNot) {
-			return visitor.visitExprNot(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3824,14 +3558,6 @@ export class ExprMulDivContext extends ExprContext {
 			listener.exitExprMulDiv(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprMulDiv) {
-			return visitor.visitExprMulDiv(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExprAddSubContext extends ExprContext {
 	public _a: Token;
@@ -3859,14 +3585,6 @@ export class ExprAddSubContext extends ExprContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitExprAddSub) {
 			listener.exitExprAddSub(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprAddSub) {
-			return visitor.visitExprAddSub(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3900,14 +3618,6 @@ export class ExprComparisonContext extends ExprContext {
 			listener.exitExprComparison(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprComparison) {
-			return visitor.visitExprComparison(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExprEqualityContext extends ExprContext {
 	public _e: Token;
@@ -3935,14 +3645,6 @@ export class ExprEqualityContext extends ExprContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitExprEquality) {
 			listener.exitExprEquality(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprEquality) {
-			return visitor.visitExprEquality(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3973,14 +3675,6 @@ export class ExprBooleanContext extends ExprContext {
 			listener.exitExprBoolean(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprBoolean) {
-			return visitor.visitExprBoolean(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExprConcatContext extends ExprContext {
 	public expr(): ExprContext[];
@@ -4006,14 +3700,6 @@ export class ExprConcatContext extends ExprContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitExprConcat) {
 			listener.exitExprConcat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprConcat) {
-			return visitor.visitExprConcat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4044,14 +3730,6 @@ export class ExprListContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitExprList) {
 			listener.exitExprList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExprList) {
-			return visitor.visitExprList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4089,14 +3767,6 @@ export class VarDeclarationContext extends ParserRuleContext {
 			listener.exitVarDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitVarDeclaration) {
-			return visitor.visitVarDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4120,14 +3790,6 @@ export class VarDeclaratorContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitVarDeclarator) {
 			listener.exitVarDeclarator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitVarDeclarator) {
-			return visitor.visitVarDeclarator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4158,14 +3820,6 @@ export class VarTypeContext extends ParserRuleContext {
 			listener.exitVarType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitVarType) {
-			return visitor.visitVarType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4191,14 +3845,6 @@ export class AppClassImportContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitAppClassImport) {
 			listener.exitAppClassImport(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitAppClassImport) {
-			return visitor.visitAppClassImport(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4231,14 +3877,6 @@ export class AppPkgPathContext extends ParserRuleContext {
 			listener.exitAppPkgPath(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitAppPkgPath) {
-			return visitor.visitAppPkgPath(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4269,14 +3907,6 @@ export class AppClassPathContext extends ParserRuleContext {
 			listener.exitAppClassPath(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitAppClassPath) {
-			return visitor.visitAppClassPath(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4303,14 +3933,6 @@ export class ExtFuncImportContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitExtFuncImport) {
 			listener.exitExtFuncImport(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitExtFuncImport) {
-			return visitor.visitExtFuncImport(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4343,14 +3965,6 @@ export class RecDefnPathContext extends ParserRuleContext {
 			listener.exitRecDefnPath(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitRecDefnPath) {
-			return visitor.visitRecDefnPath(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4370,14 +3984,6 @@ export class EventContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitEvent) {
 			listener.exitEvent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitEvent) {
-			return visitor.visitEvent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4411,14 +4017,6 @@ export class ClassDeclarationContext extends ParserRuleContext {
 			listener.exitClassDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitClassDeclaration) {
-			return visitor.visitClassDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4448,14 +4046,6 @@ export class ClassBlockContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitClassBlock) {
 			listener.exitClassBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitClassBlock) {
-			return visitor.visitClassBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4491,14 +4081,6 @@ export class ClassBlockStmtContext extends ParserRuleContext {
 			listener.exitClassBlockStmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitClassBlockStmt) {
-			return visitor.visitClassBlockStmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4527,14 +4109,6 @@ export class MethodContext extends ParserRuleContext {
 			listener.exitMethod(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitMethod) {
-			return visitor.visitMethod(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4558,14 +4132,6 @@ export class ConstantContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitConstant) {
 			listener.exitConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitConstant) {
-			return visitor.visitConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4594,14 +4160,6 @@ export class PropertyContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitProperty) {
 			listener.exitProperty(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitProperty) {
-			return visitor.visitProperty(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4637,14 +4195,6 @@ export class InstanceContext extends ParserRuleContext {
 			listener.exitInstance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitInstance) {
-			return visitor.visitInstance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4669,14 +4219,6 @@ export class MethodImplContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitMethodImpl) {
 			listener.exitMethodImpl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitMethodImpl) {
-			return visitor.visitMethodImpl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4705,14 +4247,6 @@ export class GetImplContext extends ParserRuleContext {
 			listener.exitGetImpl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitGetImpl) {
-			return visitor.visitGetImpl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4737,14 +4271,6 @@ export class SetImplContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitSetImpl) {
 			listener.exitSetImpl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitSetImpl) {
-			return visitor.visitSetImpl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4775,14 +4301,6 @@ export class FuncImplContext extends ParserRuleContext {
 			listener.exitFuncImpl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitFuncImpl) {
-			return visitor.visitFuncImpl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4809,14 +4327,6 @@ export class FuncSignatureContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitFuncSignature) {
 			listener.exitFuncSignature(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitFuncSignature) {
-			return visitor.visitFuncSignature(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4849,14 +4359,6 @@ export class FormalParamListContext extends ParserRuleContext {
 			listener.exitFormalParamList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitFormalParamList) {
-			return visitor.visitFormalParamList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4882,14 +4384,6 @@ export class ParamContext extends ParserRuleContext {
 			listener.exitParam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitParam) {
-			return visitor.visitParam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4912,14 +4406,6 @@ export class ReturnTypeContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitReturnType) {
 			listener.exitReturnType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitReturnType) {
-			return visitor.visitReturnType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4957,14 +4443,6 @@ export class IfStmtContext extends ParserRuleContext {
 			listener.exitIfStmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitIfStmt) {
-			return visitor.visitIfStmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5000,14 +4478,6 @@ export class ForStmtContext extends ParserRuleContext {
 			listener.exitForStmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitForStmt) {
-			return visitor.visitForStmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5033,14 +4503,6 @@ export class WhileStmtContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitWhileStmt) {
 			listener.exitWhileStmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitWhileStmt) {
-			return visitor.visitWhileStmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5080,14 +4542,6 @@ export class EvaluateStmtContext extends ParserRuleContext {
 			listener.exitEvaluateStmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitEvaluateStmt) {
-			return visitor.visitEvaluateStmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5116,14 +4570,6 @@ export class WhenBranchContext extends ParserRuleContext {
 			listener.exitWhenBranch(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitWhenBranch) {
-			return visitor.visitWhenBranch(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5146,14 +4592,6 @@ export class WhenOtherBranchContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitWhenOtherBranch) {
 			listener.exitWhenOtherBranch(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitWhenOtherBranch) {
-			return visitor.visitWhenOtherBranch(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5191,14 +4629,6 @@ export class TryCatchStmtContext extends ParserRuleContext {
 			listener.exitTryCatchStmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitTryCatchStmt) {
-			return visitor.visitTryCatchStmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5220,14 +4650,6 @@ export class CatchSignatureContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitCatchSignature) {
 			listener.exitCatchSignature(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitCatchSignature) {
-			return visitor.visitCatchSignature(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5258,14 +4680,6 @@ export class CreateInvocationContext extends ParserRuleContext {
 			listener.exitCreateInvocation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitCreateInvocation) {
-			return visitor.visitCreateInvocation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5291,14 +4705,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5321,14 +4727,6 @@ export class IdContext extends ParserRuleContext {
 	public exitRule(listener: PeopleCodeListener): void {
 		if (listener.exitId) {
 			listener.exitId(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PeopleCodeVisitor<Result>): Result {
-		if (visitor.visitId) {
-			return visitor.visitId(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

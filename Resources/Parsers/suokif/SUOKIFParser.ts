@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { SUOKIFListener } from "./SUOKIFListener";
-import { SUOKIFVisitor } from "./SUOKIFVisitor";
-
 
 export class SUOKIFParser extends Parser {
 	public static readonly NOT = 1;
@@ -754,14 +752,6 @@ export class Top_levelContext extends ParserRuleContext {
 			listener.exitTop_level(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SUOKIFVisitor<Result>): Result {
-		if (visitor.visitTop_level) {
-			return visitor.visitTop_level(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -793,14 +783,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SUOKIFVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -826,14 +808,6 @@ export class ArgumentContext extends ParserRuleContext {
 	public exitRule(listener: SUOKIFListener): void {
 		if (listener.exitArgument) {
 			listener.exitArgument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SUOKIFVisitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -867,14 +841,6 @@ export class FuntermContext extends ParserRuleContext {
 	public exitRule(listener: SUOKIFListener): void {
 		if (listener.exitFunterm) {
 			listener.exitFunterm(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SUOKIFVisitor<Result>): Result {
-		if (visitor.visitFunterm) {
-			return visitor.visitFunterm(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -912,14 +878,6 @@ export class SentenceContext extends ParserRuleContext {
 			listener.exitSentence(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SUOKIFVisitor<Result>): Result {
-		if (visitor.visitSentence) {
-			return visitor.visitSentence(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -951,14 +909,6 @@ export class EquationContext extends ParserRuleContext {
 	public exitRule(listener: SUOKIFListener): void {
 		if (listener.exitEquation) {
 			listener.exitEquation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SUOKIFVisitor<Result>): Result {
-		if (visitor.visitEquation) {
-			return visitor.visitEquation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -993,14 +943,6 @@ export class RelsentContext extends ParserRuleContext {
 	public exitRule(listener: SUOKIFListener): void {
 		if (listener.exitRelsent) {
 			listener.exitRelsent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SUOKIFVisitor<Result>): Result {
-		if (visitor.visitRelsent) {
-			return visitor.visitRelsent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1039,14 +981,6 @@ export class LogsentContext extends ParserRuleContext {
 	public exitRule(listener: SUOKIFListener): void {
 		if (listener.exitLogsent) {
 			listener.exitLogsent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SUOKIFVisitor<Result>): Result {
-		if (visitor.visitLogsent) {
-			return visitor.visitLogsent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1100,14 +1034,6 @@ export class QuantsentContext extends ParserRuleContext {
 	public exitRule(listener: SUOKIFListener): void {
 		if (listener.exitQuantsent) {
 			listener.exitQuantsent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SUOKIFVisitor<Result>): Result {
-		if (visitor.visitQuantsent) {
-			return visitor.visitQuantsent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { pListener } from "./pListener";
-import { pVisitor } from "./pVisitor";
-
 
 export class pParser extends Parser {
 	public static readonly T__0 = 1;
@@ -281,14 +279,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -314,14 +304,6 @@ export class SymbolContext extends ParserRuleContext {
 	public exitRule(listener: pListener): void {
 		if (listener.exitSymbol) {
 			listener.exitSymbol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pVisitor<Result>): Result {
-		if (visitor.visitSymbol) {
-			return visitor.visitSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -354,14 +336,6 @@ export class IterateContext extends ParserRuleContext {
 			listener.exitIterate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pVisitor<Result>): Result {
-		if (visitor.visitIterate) {
-			return visitor.visitIterate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -383,14 +357,6 @@ export class AtomContext extends ParserRuleContext {
 	public exitRule(listener: pListener): void {
 		if (listener.exitAtom) {
 			listener.exitAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

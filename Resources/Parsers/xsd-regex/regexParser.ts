@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { regexParserListener } from "./regexParserListener";
-import { regexParserVisitor } from "./regexParserVisitor";
-
 
 export class regexParser extends Parser {
 	public static readonly LPAREN = 1;
@@ -1131,14 +1129,6 @@ export class RootContext extends ParserRuleContext {
 			listener.exitRoot(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitRoot) {
-			return visitor.visitRoot(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1178,14 +1168,6 @@ export class RegExpContext extends ParserRuleContext {
 			listener.exitRegExp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitRegExp) {
-			return visitor.visitRegExp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1216,14 +1198,6 @@ export class BranchContext extends ParserRuleContext {
 			listener.exitBranch(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitBranch) {
-			return visitor.visitBranch(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1249,14 +1223,6 @@ export class PieceContext extends ParserRuleContext {
 	public exitRule(listener: regexParserListener): void {
 		if (listener.exitPiece) {
 			listener.exitPiece(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitPiece) {
-			return visitor.visitPiece(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1288,14 +1254,6 @@ export class QuantifierContext extends ParserRuleContext {
 			listener.exitQuantifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitQuantifier) {
-			return visitor.visitQuantifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1322,14 +1280,6 @@ export class QuantityContext extends ParserRuleContext {
 	public exitRule(listener: regexParserListener): void {
 		if (listener.exitQuantity) {
 			listener.exitQuantity(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitQuantity) {
-			return visitor.visitQuantity(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1363,14 +1313,6 @@ export class QuantRangeContext extends ParserRuleContext {
 			listener.exitQuantRange(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitQuantRange) {
-			return visitor.visitQuantRange(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1392,14 +1334,6 @@ export class QuantMinContext extends ParserRuleContext {
 	public exitRule(listener: regexParserListener): void {
 		if (listener.exitQuantMin) {
 			listener.exitQuantMin(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitQuantMin) {
-			return visitor.visitQuantMin(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1432,14 +1366,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1466,14 +1392,6 @@ export class CharClassContext extends ParserRuleContext {
 	public exitRule(listener: regexParserListener): void {
 		if (listener.exitCharClass) {
 			listener.exitCharClass(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitCharClass) {
-			return visitor.visitCharClass(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1503,14 +1421,6 @@ export class CharClassExprContext extends ParserRuleContext {
 	public exitRule(listener: regexParserListener): void {
 		if (listener.exitCharClassExpr) {
 			listener.exitCharClassExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitCharClassExpr) {
-			return visitor.visitCharClassExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1547,14 +1457,6 @@ export class CharGroupContext extends ParserRuleContext {
 	public exitRule(listener: regexParserListener): void {
 		if (listener.exitCharGroup) {
 			listener.exitCharGroup(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitCharGroup) {
-			return visitor.visitCharGroup(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1597,14 +1499,6 @@ export class PosCharGroupContext extends ParserRuleContext {
 			listener.exitPosCharGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitPosCharGroup) {
-			return visitor.visitPosCharGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1628,14 +1522,6 @@ export class CharRangeContext extends ParserRuleContext {
 	public exitRule(listener: regexParserListener): void {
 		if (listener.exitCharRange) {
 			listener.exitCharRange(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitCharRange) {
-			return visitor.visitCharRange(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1669,14 +1555,6 @@ export class SeRangeContext extends ParserRuleContext {
 			listener.exitSeRange(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitSeRange) {
-			return visitor.visitSeRange(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1698,14 +1576,6 @@ export class CharOrEscContext extends ParserRuleContext {
 	public exitRule(listener: regexParserListener): void {
 		if (listener.exitCharOrEsc) {
 			listener.exitCharOrEsc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitCharOrEsc) {
-			return visitor.visitCharOrEsc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1739,14 +1609,6 @@ export class CharClassEscContext extends ParserRuleContext {
 			listener.exitCharClassEsc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitCharClassEsc) {
-			return visitor.visitCharClassEsc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1772,14 +1634,6 @@ export class CatEscContext extends ParserRuleContext {
 	public exitRule(listener: regexParserListener): void {
 		if (listener.exitCatEsc) {
 			listener.exitCatEsc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitCatEsc) {
-			return visitor.visitCatEsc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1809,14 +1663,6 @@ export class ComplEscContext extends ParserRuleContext {
 			listener.exitComplEsc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitComplEsc) {
-			return visitor.visitComplEsc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1838,14 +1684,6 @@ export class CharPropContext extends ParserRuleContext {
 	public exitRule(listener: regexParserListener): void {
 		if (listener.exitCharProp) {
 			listener.exitCharProp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: regexParserVisitor<Result>): Result {
-		if (visitor.visitCharProp) {
-			return visitor.visitCharProp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

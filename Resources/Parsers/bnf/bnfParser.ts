@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { bnfListener } from "./bnfListener";
-import { bnfVisitor } from "./bnfVisitor";
-
 
 export class bnfParser extends Parser {
 	public static readonly ASSIGN = 1;
@@ -590,14 +588,6 @@ export class RulelistContext extends ParserRuleContext {
 			listener.exitRulelist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitRulelist) {
-			return visitor.visitRulelist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -626,14 +616,6 @@ export class Rule_Context extends ParserRuleContext {
 			listener.exitRule_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitRule_) {
-			return visitor.visitRule_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -658,14 +640,6 @@ export class LhsContext extends ParserRuleContext {
 			listener.exitLhs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitLhs) {
-			return visitor.visitLhs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -688,14 +662,6 @@ export class RhsContext extends ParserRuleContext {
 	public exitRule(listener: bnfListener): void {
 		if (listener.exitRhs) {
 			listener.exitRhs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitRhs) {
-			return visitor.visitRhs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -737,14 +703,6 @@ export class AlternativesContext extends ParserRuleContext {
 			listener.exitAlternatives(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitAlternatives) {
-			return visitor.visitAlternatives(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -773,14 +731,6 @@ export class AlternativeContext extends ParserRuleContext {
 	public exitRule(listener: bnfListener): void {
 		if (listener.exitAlternative) {
 			listener.exitAlternative(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitAlternative) {
-			return visitor.visitAlternative(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -819,14 +769,6 @@ export class ElementContext extends ParserRuleContext {
 			listener.exitElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitElement) {
-			return visitor.visitElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -851,14 +793,6 @@ export class OptionalContext extends ParserRuleContext {
 	public exitRule(listener: bnfListener): void {
 		if (listener.exitOptional) {
 			listener.exitOptional(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitOptional) {
-			return visitor.visitOptional(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -887,14 +821,6 @@ export class ZeroormoreContext extends ParserRuleContext {
 			listener.exitZeroormore(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitZeroormore) {
-			return visitor.visitZeroormore(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -921,14 +847,6 @@ export class OneormoreContext extends ParserRuleContext {
 			listener.exitOneormore(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitOneormore) {
-			return visitor.visitOneormore(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -949,14 +867,6 @@ export class TextContext extends ParserRuleContext {
 	public exitRule(listener: bnfListener): void {
 		if (listener.exitText) {
 			listener.exitText(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitText) {
-			return visitor.visitText(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -985,14 +895,6 @@ export class IdContext extends ParserRuleContext {
 			listener.exitId(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitId) {
-			return visitor.visitId(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1013,14 +915,6 @@ export class RuleidContext extends ParserRuleContext {
 	public exitRule(listener: bnfListener): void {
 		if (listener.exitRuleid) {
 			listener.exitRuleid(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: bnfVisitor<Result>): Result {
-		if (visitor.visitRuleid) {
-			return visitor.visitRuleid(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

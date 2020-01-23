@@ -27,8 +27,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { JsonQueryListener } from "./JsonQueryListener";
-import { JsonQueryVisitor } from "./JsonQueryVisitor";
-
 
 export class JsonQueryParser extends Parser {
 	public static readonly T__0 = 1;
@@ -485,14 +483,6 @@ export class ParenExpContext extends QueryContext {
 			listener.exitParenExp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JsonQueryVisitor<Result>): Result {
-		if (visitor.visitParenExp) {
-			return visitor.visitParenExp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class LogicalExpContext extends QueryContext {
 	public query(): QueryContext[];
@@ -530,14 +520,6 @@ export class LogicalExpContext extends QueryContext {
 			listener.exitLogicalExp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JsonQueryVisitor<Result>): Result {
-		if (visitor.visitLogicalExp) {
-			return visitor.visitLogicalExp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PresentExpContext extends QueryContext {
 	public attrPath(): AttrPathContext {
@@ -558,14 +540,6 @@ export class PresentExpContext extends QueryContext {
 	public exitRule(listener: JsonQueryListener): void {
 		if (listener.exitPresentExp) {
 			listener.exitPresentExp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JsonQueryVisitor<Result>): Result {
-		if (visitor.visitPresentExp) {
-			return visitor.visitPresentExp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -611,14 +585,6 @@ export class CompareExpContext extends QueryContext {
 			listener.exitCompareExp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JsonQueryVisitor<Result>): Result {
-		if (visitor.visitCompareExp) {
-			return visitor.visitCompareExp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -644,14 +610,6 @@ export class AttrPathContext extends ParserRuleContext {
 			listener.exitAttrPath(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JsonQueryVisitor<Result>): Result {
-		if (visitor.visitAttrPath) {
-			return visitor.visitAttrPath(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -674,14 +632,6 @@ export class SubAttrContext extends ParserRuleContext {
 	public exitRule(listener: JsonQueryListener): void {
 		if (listener.exitSubAttr) {
 			listener.exitSubAttr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JsonQueryVisitor<Result>): Result {
-		if (visitor.visitSubAttr) {
-			return visitor.visitSubAttr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -715,14 +665,6 @@ export class BooleanContext extends ValueContext {
 			listener.exitBoolean(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JsonQueryVisitor<Result>): Result {
-		if (visitor.visitBoolean) {
-			return visitor.visitBoolean(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NullContext extends ValueContext {
 	public NULL(): TerminalNode { return this.getToken(JsonQueryParser.NULL, 0); }
@@ -740,14 +682,6 @@ export class NullContext extends ValueContext {
 	public exitRule(listener: JsonQueryListener): void {
 		if (listener.exitNull) {
 			listener.exitNull(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JsonQueryVisitor<Result>): Result {
-		if (visitor.visitNull) {
-			return visitor.visitNull(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -769,14 +703,6 @@ export class StringContext extends ValueContext {
 			listener.exitString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JsonQueryVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DoubleContext extends ValueContext {
 	public DOUBLE(): TerminalNode { return this.getToken(JsonQueryParser.DOUBLE, 0); }
@@ -794,14 +720,6 @@ export class DoubleContext extends ValueContext {
 	public exitRule(listener: JsonQueryListener): void {
 		if (listener.exitDouble) {
 			listener.exitDouble(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JsonQueryVisitor<Result>): Result {
-		if (visitor.visitDouble) {
-			return visitor.visitDouble(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -822,14 +740,6 @@ export class LongContext extends ValueContext {
 	public exitRule(listener: JsonQueryListener): void {
 		if (listener.exitLong) {
 			listener.exitLong(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JsonQueryVisitor<Result>): Result {
-		if (visitor.visitLong) {
-			return visitor.visitLong(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { HelloListener } from "./HelloListener";
-import { HelloVisitor } from "./HelloVisitor";
-
 
 export class HelloParser extends Parser {
 	public static readonly T__0 = 1;
@@ -126,14 +124,6 @@ export class RContext extends ParserRuleContext {
 	public exitRule(listener: HelloListener): void {
 		if (listener.exitR) {
 			listener.exitR(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HelloVisitor<Result>): Result {
-		if (visitor.visitR) {
-			return visitor.visitR(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

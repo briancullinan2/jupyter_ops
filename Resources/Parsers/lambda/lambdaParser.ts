@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { lambdaListener } from "./lambdaListener";
-import { lambdaVisitor } from "./lambdaVisitor";
-
 
 export class lambdaParser extends Parser {
 	public static readonly T__0 = 1;
@@ -256,14 +254,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lambdaVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -287,14 +277,6 @@ export class FunctionContext extends ParserRuleContext {
 	public exitRule(listener: lambdaListener): void {
 		if (listener.exitFunction) {
 			listener.exitFunction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lambdaVisitor<Result>): Result {
-		if (visitor.visitFunction) {
-			return visitor.visitFunction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -327,14 +309,6 @@ export class ApplicationContext extends ParserRuleContext {
 			listener.exitApplication(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lambdaVisitor<Result>): Result {
-		if (visitor.visitApplication) {
-			return visitor.visitApplication(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -357,14 +331,6 @@ export class ScopeContext extends ParserRuleContext {
 	public exitRule(listener: lambdaListener): void {
 		if (listener.exitScope) {
 			listener.exitScope(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lambdaVisitor<Result>): Result {
-		if (visitor.visitScope) {
-			return visitor.visitScope(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

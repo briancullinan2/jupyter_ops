@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { classifyListener } from "./classifyListener";
-import { classifyVisitor } from "./classifyVisitor";
-
 
 export class classifyParser extends Parser {
 	public static readonly CLASSIFY___ = 1;
@@ -217,14 +215,6 @@ export class CodepointContext extends ParserRuleContext {
 	public exitRule(listener: classifyListener): void {
 		if (listener.exitCodepoint) {
 			listener.exitCodepoint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: classifyVisitor<Result>): Result {
-		if (visitor.visitCodepoint) {
-			return visitor.visitCodepoint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

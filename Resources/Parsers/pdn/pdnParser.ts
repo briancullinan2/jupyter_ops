@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { pdnListener } from "./pdnListener";
-import { pdnVisitor } from "./pdnVisitor";
-
 
 export class pdnParser extends Parser {
 	public static readonly T__0 = 1;
@@ -537,14 +535,6 @@ export class GameContext extends ParserRuleContext {
 			listener.exitGame(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdnVisitor<Result>): Result {
-		if (visitor.visitGame) {
-			return visitor.visitGame(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -575,14 +565,6 @@ export class TagsContext extends ParserRuleContext {
 			listener.exitTags(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdnVisitor<Result>): Result {
-		if (visitor.visitTags) {
-			return visitor.visitTags(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -608,14 +590,6 @@ export class TagContext extends ParserRuleContext {
 	public exitRule(listener: pdnListener): void {
 		if (listener.exitTag) {
 			listener.exitTag(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pdnVisitor<Result>): Result {
-		if (visitor.visitTag) {
-			return visitor.visitTag(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -651,14 +625,6 @@ export class MovesContext extends ParserRuleContext {
 			listener.exitMoves(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdnVisitor<Result>): Result {
-		if (visitor.visitMoves) {
-			return visitor.visitMoves(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -692,14 +658,6 @@ export class MoveContext extends ParserRuleContext {
 			listener.exitMove(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdnVisitor<Result>): Result {
-		if (visitor.visitMove) {
-			return visitor.visitMove(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -726,14 +684,6 @@ export class MovespecContext extends ParserRuleContext {
 			listener.exitMovespec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdnVisitor<Result>): Result {
-		if (visitor.visitMovespec) {
-			return visitor.visitMovespec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -758,14 +708,6 @@ export class MovenumContext extends ParserRuleContext {
 			listener.exitMovenum(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdnVisitor<Result>): Result {
-		if (visitor.visitMovenum) {
-			return visitor.visitMovenum(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -785,14 +727,6 @@ export class ResultContext extends ParserRuleContext {
 	public exitRule(listener: pdnListener): void {
 		if (listener.exitResult) {
 			listener.exitResult(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pdnVisitor<Result>): Result {
-		if (visitor.visitResult) {
-			return visitor.visitResult(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -817,14 +751,6 @@ export class TextContext extends ParserRuleContext {
 			listener.exitText(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdnVisitor<Result>): Result {
-		if (visitor.visitText) {
-			return visitor.visitText(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -847,14 +773,6 @@ export class StringContext extends ParserRuleContext {
 			listener.exitString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pdnVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -875,14 +793,6 @@ export class NumberContext extends ParserRuleContext {
 	public exitRule(listener: pdnListener): void {
 		if (listener.exitNumber) {
 			listener.exitNumber(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pdnVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

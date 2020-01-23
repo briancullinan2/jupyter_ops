@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { metricListener } from "./metricListener";
-import { metricVisitor } from "./metricVisitor";
-
 
 export class metricParser extends Parser {
 	public static readonly T__0 = 1;
@@ -488,14 +486,6 @@ export class UomContext extends ParserRuleContext {
 			listener.exitUom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: metricVisitor<Result>): Result {
-		if (visitor.visitUom) {
-			return visitor.visitUom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -526,14 +516,6 @@ export class MeasureContext extends ParserRuleContext {
 			listener.exitMeasure(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: metricVisitor<Result>): Result {
-		if (visitor.visitMeasure) {
-			return visitor.visitMeasure(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -556,14 +538,6 @@ export class ExponentContext extends ParserRuleContext {
 			listener.exitExponent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: metricVisitor<Result>): Result {
-		if (visitor.visitExponent) {
-			return visitor.visitExponent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -583,14 +557,6 @@ export class PrefixContext extends ParserRuleContext {
 	public exitRule(listener: metricListener): void {
 		if (listener.exitPrefix) {
 			listener.exitPrefix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: metricVisitor<Result>): Result {
-		if (visitor.visitPrefix) {
-			return visitor.visitPrefix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -620,14 +586,6 @@ export class UnitContext extends ParserRuleContext {
 			listener.exitUnit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: metricVisitor<Result>): Result {
-		if (visitor.visitUnit) {
-			return visitor.visitUnit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -649,14 +607,6 @@ export class BaseunitContext extends ParserRuleContext {
 			listener.exitBaseunit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: metricVisitor<Result>): Result {
-		if (visitor.visitBaseunit) {
-			return visitor.visitBaseunit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -676,14 +626,6 @@ export class DerivedunitContext extends ParserRuleContext {
 	public exitRule(listener: metricListener): void {
 		if (listener.exitDerivedunit) {
 			listener.exitDerivedunit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: metricVisitor<Result>): Result {
-		if (visitor.visitDerivedunit) {
-			return visitor.visitDerivedunit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

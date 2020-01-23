@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { telephoneListener } from "./telephoneListener";
-import { telephoneVisitor } from "./telephoneVisitor";
-
 
 export class telephoneParser extends Parser {
 	public static readonly T__0 = 1;
@@ -366,14 +364,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: telephoneVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -399,14 +389,6 @@ export class VariationContext extends ParserRuleContext {
 	public exitRule(listener: telephoneListener): void {
 		if (listener.exitVariation) {
 			listener.exitVariation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: telephoneVisitor<Result>): Result {
-		if (visitor.visitVariation) {
-			return visitor.visitVariation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -439,14 +421,6 @@ export class NanpContext extends ParserRuleContext {
 			listener.exitNanp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: telephoneVisitor<Result>): Result {
-		if (visitor.visitNanp) {
-			return visitor.visitNanp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -475,14 +449,6 @@ export class AreacodeContext extends ParserRuleContext {
 	public exitRule(listener: telephoneListener): void {
 		if (listener.exitAreacode) {
 			listener.exitAreacode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: telephoneVisitor<Result>): Result {
-		if (visitor.visitAreacode) {
-			return visitor.visitAreacode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -515,14 +481,6 @@ export class ExchangeContext extends ParserRuleContext {
 			listener.exitExchange(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: telephoneVisitor<Result>): Result {
-		if (visitor.visitExchange) {
-			return visitor.visitExchange(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -553,14 +511,6 @@ export class SubscriberContext extends ParserRuleContext {
 			listener.exitSubscriber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: telephoneVisitor<Result>): Result {
-		if (visitor.visitSubscriber) {
-			return visitor.visitSubscriber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -589,14 +539,6 @@ export class JapanContext extends ParserRuleContext {
 	public exitRule(listener: telephoneListener): void {
 		if (listener.exitJapan) {
 			listener.exitJapan(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: telephoneVisitor<Result>): Result {
-		if (visitor.visitJapan) {
-			return visitor.visitJapan(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { algol60Listener } from "./algol60Listener";
-import { algol60Visitor } from "./algol60Visitor";
-
 
 export class algol60Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -4511,14 +4509,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4547,14 +4537,6 @@ export class BlockContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitBlock) {
 			listener.exitBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4587,14 +4569,6 @@ export class Block_headContext extends ParserRuleContext {
 			listener.exitBlock_head(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitBlock_head) {
-			return visitor.visitBlock_head(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4620,14 +4594,6 @@ export class Compound_statementContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitCompound_statement) {
 			listener.exitCompound_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitCompound_statement) {
-			return visitor.visitCompound_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4658,14 +4624,6 @@ export class Compound_tailContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitCompound_tail) {
 			listener.exitCompound_tail(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitCompound_tail) {
-			return visitor.visitCompound_tail(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4701,14 +4659,6 @@ export class DeclarationContext extends ParserRuleContext {
 			listener.exitDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitDeclaration) {
-			return visitor.visitDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4736,14 +4686,6 @@ export class Type_declarationContext extends ParserRuleContext {
 			listener.exitType_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitType_declaration) {
-			return visitor.visitType_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4768,14 +4710,6 @@ export class Local_or_own_typeContext extends ParserRuleContext {
 			listener.exitLocal_or_own_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitLocal_or_own_type) {
-			return visitor.visitLocal_or_own_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4795,14 +4729,6 @@ export class TypeContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitType) {
 			listener.exitType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4835,14 +4761,6 @@ export class Type_listContext extends ParserRuleContext {
 			listener.exitType_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitType_list) {
-			return visitor.visitType_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4868,14 +4786,6 @@ export class Array_declarationContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitArray_declaration) {
 			listener.exitArray_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitArray_declaration) {
-			return visitor.visitArray_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4906,14 +4816,6 @@ export class Array_listContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitArray_list) {
 			listener.exitArray_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitArray_list) {
-			return visitor.visitArray_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4949,14 +4851,6 @@ export class Array_segmentContext extends ParserRuleContext {
 			listener.exitArray_segment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitArray_segment) {
-			return visitor.visitArray_segment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4979,14 +4873,6 @@ export class Array_identifierContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitArray_identifier) {
 			listener.exitArray_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitArray_identifier) {
-			return visitor.visitArray_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5019,14 +4905,6 @@ export class Bound_pair_listContext extends ParserRuleContext {
 			listener.exitBound_pair_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitBound_pair_list) {
-			return visitor.visitBound_pair_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5054,14 +4932,6 @@ export class Bound_pairContext extends ParserRuleContext {
 			listener.exitBound_pair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitBound_pair) {
-			return visitor.visitBound_pair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5086,14 +4956,6 @@ export class Upper_boundContext extends ParserRuleContext {
 			listener.exitUpper_bound(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitUpper_bound) {
-			return visitor.visitUpper_bound(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5116,14 +4978,6 @@ export class Lower_boundContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitLower_bound) {
 			listener.exitLower_bound(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitLower_bound) {
-			return visitor.visitLower_bound(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5153,14 +5007,6 @@ export class Switch_declarationContext extends ParserRuleContext {
 			listener.exitSwitch_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitSwitch_declaration) {
-			return visitor.visitSwitch_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5183,14 +5029,6 @@ export class Switch_identifierContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitSwitch_identifier) {
 			listener.exitSwitch_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitSwitch_identifier) {
-			return visitor.visitSwitch_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5223,14 +5061,6 @@ export class Switch_listContext extends ParserRuleContext {
 			listener.exitSwitch_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitSwitch_list) {
-			return visitor.visitSwitch_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5259,14 +5089,6 @@ export class Procedure_declarationContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitProcedure_declaration) {
 			listener.exitProcedure_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitProcedure_declaration) {
-			return visitor.visitProcedure_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5302,14 +5124,6 @@ export class Procedure_headingContext extends ParserRuleContext {
 			listener.exitProcedure_heading(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitProcedure_heading) {
-			return visitor.visitProcedure_heading(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5334,14 +5148,6 @@ export class Procedure_identifierContext extends ParserRuleContext {
 			listener.exitProcedure_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitProcedure_identifier) {
-			return visitor.visitProcedure_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5364,14 +5170,6 @@ export class Formal_parameter_partContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitFormal_parameter_part) {
 			listener.exitFormal_parameter_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitFormal_parameter_part) {
-			return visitor.visitFormal_parameter_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5413,14 +5211,6 @@ export class Formal_parameter_listContext extends ParserRuleContext {
 			listener.exitFormal_parameter_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitFormal_parameter_list) {
-			return visitor.visitFormal_parameter_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5445,14 +5235,6 @@ export class Formal_parameterContext extends ParserRuleContext {
 			listener.exitFormal_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitFormal_parameter) {
-			return visitor.visitFormal_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5475,14 +5257,6 @@ export class Value_partContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitValue_part) {
 			listener.exitValue_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitValue_part) {
-			return visitor.visitValue_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5524,14 +5298,6 @@ export class Specification_partContext extends ParserRuleContext {
 			listener.exitSpecification_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitSpecification_part) {
-			return visitor.visitSpecification_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5555,14 +5321,6 @@ export class SpecifierContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitSpecifier) {
 			listener.exitSpecifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitSpecifier) {
-			return visitor.visitSpecifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5595,14 +5353,6 @@ export class Identifier_listContext extends ParserRuleContext {
 			listener.exitIdentifier_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitIdentifier_list) {
-			return visitor.visitIdentifier_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5625,14 +5375,6 @@ export class Procedure_bodyContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitProcedure_body) {
 			listener.exitProcedure_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitProcedure_body) {
-			return visitor.visitProcedure_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5665,14 +5407,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5701,14 +5435,6 @@ export class Unconditional_statementContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitUnconditional_statement) {
 			listener.exitUnconditional_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitUnconditional_statement) {
-			return visitor.visitUnconditional_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5744,14 +5470,6 @@ export class Basic_statementContext extends ParserRuleContext {
 			listener.exitBasic_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitBasic_statement) {
-			return visitor.visitBasic_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5777,14 +5495,6 @@ export class LabelContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitLabel) {
 			listener.exitLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5817,14 +5527,6 @@ export class Unlabelled_basic_statementContext extends ParserRuleContext {
 			listener.exitUnlabelled_basic_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitUnlabelled_basic_statement) {
-			return visitor.visitUnlabelled_basic_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5853,14 +5555,6 @@ export class Assignment_statementContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitAssignment_statement) {
 			listener.exitAssignment_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitAssignment_statement) {
-			return visitor.visitAssignment_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5893,14 +5587,6 @@ export class Left_part_listContext extends ParserRuleContext {
 			listener.exitLeft_part_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitLeft_part_list) {
-			return visitor.visitLeft_part_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5928,14 +5614,6 @@ export class Left_partContext extends ParserRuleContext {
 			listener.exitLeft_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitLeft_part) {
-			return visitor.visitLeft_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5958,14 +5636,6 @@ export class Go_to_statementContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitGo_to_statement) {
 			listener.exitGo_to_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitGo_to_statement) {
-			return visitor.visitGo_to_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6007,14 +5677,6 @@ export class Designational_expressionContext extends ParserRuleContext {
 			listener.exitDesignational_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitDesignational_expression) {
-			return visitor.visitDesignational_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6040,14 +5702,6 @@ export class Switch_designatorContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitSwitch_designator) {
 			listener.exitSwitch_designator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitSwitch_designator) {
-			return visitor.visitSwitch_designator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6077,14 +5731,6 @@ export class Procedure_statementContext extends ParserRuleContext {
 			listener.exitProcedure_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitProcedure_statement) {
-			return visitor.visitProcedure_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6107,14 +5753,6 @@ export class Actual_parameter_partContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitActual_parameter_part) {
 			listener.exitActual_parameter_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitActual_parameter_part) {
-			return visitor.visitActual_parameter_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6156,14 +5794,6 @@ export class Actual_parameter_listContext extends ParserRuleContext {
 			listener.exitActual_parameter_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitActual_parameter_list) {
-			return visitor.visitActual_parameter_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6186,14 +5816,6 @@ export class Parameter_delimiterContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitParameter_delimiter) {
 			listener.exitParameter_delimiter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitParameter_delimiter) {
-			return visitor.visitParameter_delimiter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6228,14 +5850,6 @@ export class Actual_parameterContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitActual_parameter) {
 			listener.exitActual_parameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitActual_parameter) {
-			return visitor.visitActual_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6280,14 +5894,6 @@ export class Conditional_statementContext extends ParserRuleContext {
 			listener.exitConditional_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitConditional_statement) {
-			return visitor.visitConditional_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6315,14 +5921,6 @@ export class If_statementContext extends ParserRuleContext {
 			listener.exitIf_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitIf_statement) {
-			return visitor.visitIf_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6345,14 +5943,6 @@ export class If_clauseContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitIf_clause) {
 			listener.exitIf_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitIf_clause) {
-			return visitor.visitIf_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6391,14 +5981,6 @@ export class For_statementContext extends ParserRuleContext {
 			listener.exitFor_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitFor_statement) {
-			return visitor.visitFor_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6424,14 +6006,6 @@ export class For_clauseContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitFor_clause) {
 			listener.exitFor_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitFor_clause) {
-			return visitor.visitFor_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6464,14 +6038,6 @@ export class For_listContext extends ParserRuleContext {
 			listener.exitFor_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitFor_list) {
-			return visitor.visitFor_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6494,14 +6060,6 @@ export class For_list_elementContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitFor_list_element) {
 			listener.exitFor_list_element(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitFor_list_element) {
-			return visitor.visitFor_list_element(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6537,14 +6095,6 @@ export class Arithmetic_expressionContext extends ParserRuleContext {
 			listener.exitArithmetic_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitArithmetic_expression) {
-			return visitor.visitArithmetic_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6575,14 +6125,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6611,14 +6153,6 @@ export class Arithmetic_expression2Context extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitArithmetic_expression2) {
 			listener.exitArithmetic_expression2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitArithmetic_expression2) {
-			return visitor.visitArithmetic_expression2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6660,14 +6194,6 @@ export class Simple_arithmetic_expressionContext extends ParserRuleContext {
 			listener.exitSimple_arithmetic_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitSimple_arithmetic_expression) {
-			return visitor.visitSimple_arithmetic_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6687,14 +6213,6 @@ export class Adding_operatorContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitAdding_operator) {
 			listener.exitAdding_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitAdding_operator) {
-			return visitor.visitAdding_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6736,14 +6254,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6763,14 +6273,6 @@ export class Multiplying_operatorContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitMultiplying_operator) {
 			listener.exitMultiplying_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitMultiplying_operator) {
-			return visitor.visitMultiplying_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6801,14 +6303,6 @@ export class FactorContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitFactor) {
 			listener.exitFactor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitFactor) {
-			return visitor.visitFactor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6844,14 +6338,6 @@ export class PrimaryContext extends ParserRuleContext {
 			listener.exitPrimary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitPrimary) {
-			return visitor.visitPrimary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6879,14 +6365,6 @@ export class Unsigned_numberContext extends ParserRuleContext {
 			listener.exitUnsigned_number(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitUnsigned_number) {
-			return visitor.visitUnsigned_number(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6912,14 +6390,6 @@ export class Decimal_numberContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitDecimal_number) {
 			listener.exitDecimal_number(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitDecimal_number) {
-			return visitor.visitDecimal_number(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6952,14 +6422,6 @@ export class Unsigned_integerContext extends ParserRuleContext {
 			listener.exitUnsigned_integer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitUnsigned_integer) {
-			return visitor.visitUnsigned_integer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6982,14 +6444,6 @@ export class Decimal_fractionContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitDecimal_fraction) {
 			listener.exitDecimal_fraction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitDecimal_fraction) {
-			return visitor.visitDecimal_fraction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7016,14 +6470,6 @@ export class Exponential_partContext extends ParserRuleContext {
 			listener.exitExponential_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitExponential_part) {
-			return visitor.visitExponential_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7046,14 +6492,6 @@ export class IntegerContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitInteger) {
 			listener.exitInteger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitInteger) {
-			return visitor.visitInteger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7101,14 +6539,6 @@ export class Boolean_expressionContext extends ParserRuleContext {
 			listener.exitBoolean_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitBoolean_expression) {
-			return visitor.visitBoolean_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7142,14 +6572,6 @@ export class RelationContext extends ParserRuleContext {
 			listener.exitRelation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitRelation) {
-			return visitor.visitRelation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7169,14 +6591,6 @@ export class Relational_operatorContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitRelational_operator) {
 			listener.exitRelational_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitRelational_operator) {
-			return visitor.visitRelational_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7206,14 +6620,6 @@ export class Function_designatorContext extends ParserRuleContext {
 			listener.exitFunction_designator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitFunction_designator) {
-			return visitor.visitFunction_designator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7241,14 +6647,6 @@ export class VariableContext extends ParserRuleContext {
 			listener.exitVariable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7273,14 +6671,6 @@ export class Simple_variableContext extends ParserRuleContext {
 			listener.exitSimple_variable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitSimple_variable) {
-			return visitor.visitSimple_variable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7303,14 +6693,6 @@ export class Variable_identifierContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitVariable_identifier) {
 			listener.exitVariable_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitVariable_identifier) {
-			return visitor.visitVariable_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7338,14 +6720,6 @@ export class Subscripted_variableContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitSubscripted_variable) {
 			listener.exitSubscripted_variable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitSubscripted_variable) {
-			return visitor.visitSubscripted_variable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7378,14 +6752,6 @@ export class Subscript_listContext extends ParserRuleContext {
 			listener.exitSubscript_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitSubscript_list) {
-			return visitor.visitSubscript_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7408,14 +6774,6 @@ export class Subscript_expressionContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitSubscript_expression) {
 			listener.exitSubscript_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitSubscript_expression) {
-			return visitor.visitSubscript_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7457,14 +6815,6 @@ export class Open_stringContext extends ParserRuleContext {
 			listener.exitOpen_string(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitOpen_string) {
-			return visitor.visitOpen_string(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7485,14 +6835,6 @@ export class Proper_stringContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitProper_string) {
 			listener.exitProper_string(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitProper_string) {
-			return visitor.visitProper_string(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7523,14 +6865,6 @@ export class Letter_stringContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitLetter_string) {
 			listener.exitLetter_string(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitLetter_string) {
-			return visitor.visitLetter_string(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7572,14 +6906,6 @@ export class IdentifierContext extends ParserRuleContext {
 			listener.exitIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7609,14 +6935,6 @@ export class Basic_symbolContext extends ParserRuleContext {
 			listener.exitBasic_symbol(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitBasic_symbol) {
-			return visitor.visitBasic_symbol(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7636,14 +6954,6 @@ export class Logical_valueContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitLogical_value) {
 			listener.exitLogical_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitLogical_value) {
-			return visitor.visitLogical_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7678,14 +6988,6 @@ export class DelimiterContext extends ParserRuleContext {
 			listener.exitDelimiter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitDelimiter) {
-			return visitor.visitDelimiter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7711,14 +7013,6 @@ export class OperatorContext extends ParserRuleContext {
 			listener.exitOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitOperator) {
-			return visitor.visitOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7740,14 +7034,6 @@ export class BracketContext extends ParserRuleContext {
 			listener.exitBracket(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitBracket) {
-			return visitor.visitBracket(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7767,14 +7053,6 @@ export class SpecificatorContext extends ParserRuleContext {
 	public exitRule(listener: algol60Listener): void {
 		if (listener.exitSpecificator) {
 			listener.exitSpecificator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: algol60Visitor<Result>): Result {
-		if (visitor.visitSpecificator) {
-			return visitor.visitSpecificator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

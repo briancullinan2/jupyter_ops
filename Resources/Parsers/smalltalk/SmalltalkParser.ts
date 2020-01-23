@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { SmalltalkListener } from "./SmalltalkListener";
-import { SmalltalkVisitor } from "./SmalltalkVisitor";
-
 
 export class SmalltalkParser extends Parser {
 	public static readonly SEPARATOR = 1;
@@ -2838,14 +2836,6 @@ export class ScriptContext extends ParserRuleContext {
 			listener.exitScript(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitScript) {
-			return visitor.visitScript(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2874,14 +2864,6 @@ export class SequenceContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitSequence) {
 			listener.exitSequence(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitSequence) {
-			return visitor.visitSequence(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2921,14 +2903,6 @@ export class WsContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitWs) {
 			listener.exitWs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitWs) {
-			return visitor.visitWs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2979,14 +2953,6 @@ export class TempsContext extends ParserRuleContext {
 			listener.exitTemps(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitTemps) {
-			return visitor.visitTemps(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3023,14 +2989,6 @@ export class StatementAnswerContext extends StatementsContext {
 			listener.exitStatementAnswer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitStatementAnswer) {
-			return visitor.visitStatementAnswer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StatementExpressionsAnswerContext extends StatementsContext {
 	public expressions(): ExpressionsContext {
@@ -3065,14 +3023,6 @@ export class StatementExpressionsAnswerContext extends StatementsContext {
 			listener.exitStatementExpressionsAnswer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitStatementExpressionsAnswer) {
-			return visitor.visitStatementExpressionsAnswer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StatementExpressionsContext extends StatementsContext {
 	public expressions(): ExpressionsContext {
@@ -3096,14 +3046,6 @@ export class StatementExpressionsContext extends StatementsContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitStatementExpressions) {
 			listener.exitStatementExpressions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitStatementExpressions) {
-			return visitor.visitStatementExpressions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3139,14 +3081,6 @@ export class AnswerContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitAnswer) {
 			listener.exitAnswer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitAnswer) {
-			return visitor.visitAnswer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3185,14 +3119,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3226,14 +3152,6 @@ export class ExpressionsContext extends ParserRuleContext {
 			listener.exitExpressions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitExpressions) {
-			return visitor.visitExpressions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3260,14 +3178,6 @@ export class ExpressionListContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitExpressionList) {
 			listener.exitExpressionList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitExpressionList) {
-			return visitor.visitExpressionList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3324,14 +3234,6 @@ export class CascadeContext extends ParserRuleContext {
 			listener.exitCascade(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitCascade) {
-			return visitor.visitCascade(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3360,14 +3262,6 @@ export class MessageContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitMessage) {
 			listener.exitMessage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitMessage) {
-			return visitor.visitMessage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3407,14 +3301,6 @@ export class AssignmentContext extends ParserRuleContext {
 			listener.exitAssignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitAssignment) {
-			return visitor.visitAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3435,14 +3321,6 @@ export class VariableContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitVariable) {
 			listener.exitVariable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3470,14 +3348,6 @@ export class BinarySendContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitBinarySend) {
 			listener.exitBinarySend(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitBinarySend) {
-			return visitor.visitBinarySend(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3510,14 +3380,6 @@ export class UnarySendContext extends ParserRuleContext {
 			listener.exitUnarySend(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitUnarySend) {
-			return visitor.visitUnarySend(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3543,14 +3405,6 @@ export class KeywordSendContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitKeywordSend) {
 			listener.exitKeywordSend(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitKeywordSend) {
-			return visitor.visitKeywordSend(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3592,14 +3446,6 @@ export class KeywordMessageContext extends ParserRuleContext {
 			listener.exitKeywordMessage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitKeywordMessage) {
-			return visitor.visitKeywordMessage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3634,14 +3480,6 @@ export class KeywordPairContext extends ParserRuleContext {
 			listener.exitKeywordPair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitKeywordPair) {
-			return visitor.visitKeywordPair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3670,14 +3508,6 @@ export class OperandContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitOperand) {
 			listener.exitOperand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitOperand) {
-			return visitor.visitOperand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3715,14 +3545,6 @@ export class SubexpressionContext extends ParserRuleContext {
 			listener.exitSubexpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitSubexpression) {
-			return visitor.visitSubexpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3748,14 +3570,6 @@ export class LiteralContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitLiteral) {
 			listener.exitLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3788,14 +3602,6 @@ export class RuntimeLiteralContext extends ParserRuleContext {
 			listener.exitRuntimeLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitRuntimeLiteral) {
-			return visitor.visitRuntimeLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3826,14 +3632,6 @@ export class BlockContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitBlock) {
 			listener.exitBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3875,14 +3673,6 @@ export class BlockParamListContext extends ParserRuleContext {
 			listener.exitBlockParamList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitBlockParamList) {
-			return visitor.visitBlockParamList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3918,14 +3708,6 @@ export class DynamicDictionaryContext extends ParserRuleContext {
 			listener.exitDynamicDictionary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitDynamicDictionary) {
-			return visitor.visitDynamicDictionary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3959,14 +3741,6 @@ export class DynamicArrayContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitDynamicArray) {
 			listener.exitDynamicArray(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitDynamicArray) {
-			return visitor.visitDynamicArray(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4008,14 +3782,6 @@ export class ParsetimeLiteralContext extends ParserRuleContext {
 			listener.exitParsetimeLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitParsetimeLiteral) {
-			return visitor.visitParsetimeLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4047,14 +3813,6 @@ export class NumberContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitNumber) {
 			listener.exitNumber(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4091,14 +3849,6 @@ export class NumberExpContext extends ParserRuleContext {
 			listener.exitNumberExp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitNumberExp) {
-			return visitor.visitNumberExp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4119,14 +3869,6 @@ export class CharConstantContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitCharConstant) {
 			listener.exitCharConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitCharConstant) {
-			return visitor.visitCharConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4161,14 +3903,6 @@ export class HexContext extends ParserRuleContext {
 			listener.exitHex(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitHex) {
-			return visitor.visitHex(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4198,14 +3932,6 @@ export class StIntegerContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitStInteger) {
 			listener.exitStInteger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitStInteger) {
-			return visitor.visitStInteger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4240,14 +3966,6 @@ export class StFloatContext extends ParserRuleContext {
 			listener.exitStFloat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitStFloat) {
-			return visitor.visitStFloat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4270,14 +3988,6 @@ export class PseudoVariableContext extends ParserRuleContext {
 			listener.exitPseudoVariable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitPseudoVariable) {
-			return visitor.visitPseudoVariable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4298,14 +4008,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4331,14 +4033,6 @@ export class SymbolContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitSymbol) {
 			listener.exitSymbol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitSymbol) {
-			return visitor.visitSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4383,14 +4077,6 @@ export class PrimitiveContext extends ParserRuleContext {
 			listener.exitPrimitive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitPrimitive) {
-			return visitor.visitPrimitive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4426,14 +4112,6 @@ export class BareSymbolContext extends ParserRuleContext {
 			listener.exitBareSymbol(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitBareSymbol) {
-			return visitor.visitBareSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4457,14 +4135,6 @@ export class LiteralArrayContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitLiteralArray) {
 			listener.exitLiteralArray(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitLiteralArray) {
-			return visitor.visitLiteralArray(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4525,14 +4195,6 @@ export class LiteralArrayRestContext extends ParserRuleContext {
 			listener.exitLiteralArrayRest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitLiteralArrayRest) {
-			return visitor.visitLiteralArrayRest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4556,14 +4218,6 @@ export class BareLiteralArrayContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitBareLiteralArray) {
 			listener.exitBareLiteralArray(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitBareLiteralArray) {
-			return visitor.visitBareLiteralArray(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4602,14 +4256,6 @@ export class UnaryTailContext extends ParserRuleContext {
 			listener.exitUnaryTail(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitUnaryTail) {
-			return visitor.visitUnaryTail(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4637,14 +4283,6 @@ export class UnaryMessageContext extends ParserRuleContext {
 			listener.exitUnaryMessage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitUnaryMessage) {
-			return visitor.visitUnaryMessage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4665,14 +4303,6 @@ export class UnarySelectorContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitUnarySelector) {
 			listener.exitUnarySelector(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitUnarySelector) {
-			return visitor.visitUnarySelector(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4705,14 +4335,6 @@ export class KeywordsContext extends ParserRuleContext {
 			listener.exitKeywords(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitKeywords) {
-			return visitor.visitKeywords(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4735,14 +4357,6 @@ export class ReferenceContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitReference) {
 			listener.exitReference(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitReference) {
-			return visitor.visitReference(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4770,14 +4384,6 @@ export class BinaryTailContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitBinaryTail) {
 			listener.exitBinaryTail(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitBinaryTail) {
-			return visitor.visitBinaryTail(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4815,14 +4421,6 @@ export class BinaryMessageContext extends ParserRuleContext {
 	public exitRule(listener: SmalltalkListener): void {
 		if (listener.exitBinaryMessage) {
 			listener.exitBinaryMessage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SmalltalkVisitor<Result>): Result {
-		if (visitor.visitBinaryMessage) {
-			return visitor.visitBinaryMessage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

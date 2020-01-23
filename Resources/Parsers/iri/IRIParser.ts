@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { IRIListener } from "./IRIListener";
-import { IRIVisitor } from "./IRIVisitor";
-
 
 export class IRIParser extends Parser {
 	public static readonly UCSCHAR = 1;
@@ -3701,14 +3699,6 @@ export class ParseContext extends ParserRuleContext {
 			listener.exitParse(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitParse) {
-			return visitor.visitParse(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3743,14 +3733,6 @@ export class IriContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIri) {
 			listener.exitIri(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIri) {
-			return visitor.visitIri(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3790,14 +3772,6 @@ export class Ihier_partContext extends ParserRuleContext {
 			listener.exitIhier_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIhier_part) {
-			return visitor.visitIhier_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3823,14 +3797,6 @@ export class Iri_referenceContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIri_reference) {
 			listener.exitIri_reference(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIri_reference) {
-			return visitor.visitIri_reference(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3865,14 +3831,6 @@ export class Absolute_iriContext extends ParserRuleContext {
 			listener.exitAbsolute_iri(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitAbsolute_iri) {
-			return visitor.visitAbsolute_iri(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3903,14 +3861,6 @@ export class Irelative_refContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIrelative_ref) {
 			listener.exitIrelative_ref(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIrelative_ref) {
-			return visitor.visitIrelative_ref(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3950,14 +3900,6 @@ export class Irelative_partContext extends ParserRuleContext {
 			listener.exitIrelative_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIrelative_part) {
-			return visitor.visitIrelative_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3988,14 +3930,6 @@ export class IauthorityContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIauthority) {
 			listener.exitIauthority(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIauthority) {
-			return visitor.visitIauthority(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4055,14 +3989,6 @@ export class IuserinfoContext extends ParserRuleContext {
 			listener.exitIuserinfo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIuserinfo) {
-			return visitor.visitIuserinfo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4091,14 +4017,6 @@ export class IhostContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIhost) {
 			listener.exitIhost(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIhost) {
-			return visitor.visitIhost(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4149,14 +4067,6 @@ export class Ireg_nameContext extends ParserRuleContext {
 			listener.exitIreg_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIreg_name) {
-			return visitor.visitIreg_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4191,14 +4101,6 @@ export class IpathContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIpath) {
 			listener.exitIpath(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIpath) {
-			return visitor.visitIpath(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4238,14 +4140,6 @@ export class Ipath_abemptyContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIpath_abempty) {
 			listener.exitIpath_abempty(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIpath_abempty) {
-			return visitor.visitIpath_abempty(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4290,14 +4184,6 @@ export class Ipath_absoluteContext extends ParserRuleContext {
 			listener.exitIpath_absolute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIpath_absolute) {
-			return visitor.visitIpath_absolute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4338,14 +4224,6 @@ export class Ipath_noschemeContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIpath_noscheme) {
 			listener.exitIpath_noscheme(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIpath_noscheme) {
-			return visitor.visitIpath_noscheme(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4390,14 +4268,6 @@ export class Ipath_rootlessContext extends ParserRuleContext {
 			listener.exitIpath_rootless(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIpath_rootless) {
-			return visitor.visitIpath_rootless(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4417,14 +4287,6 @@ export class Ipath_emptyContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIpath_empty) {
 			listener.exitIpath_empty(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIpath_empty) {
-			return visitor.visitIpath_empty(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4457,14 +4319,6 @@ export class IsegmentContext extends ParserRuleContext {
 			listener.exitIsegment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIsegment) {
-			return visitor.visitIsegment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4493,14 +4347,6 @@ export class Isegment_nzContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIsegment_nz) {
 			listener.exitIsegment_nz(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIsegment_nz) {
-			return visitor.visitIsegment_nz(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4560,14 +4406,6 @@ export class Isegment_nz_ncContext extends ParserRuleContext {
 			listener.exitIsegment_nz_nc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIsegment_nz_nc) {
-			return visitor.visitIsegment_nz_nc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4598,14 +4436,6 @@ export class IpcharContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIpchar) {
 			listener.exitIpchar(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIpchar) {
-			return visitor.visitIpchar(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4665,14 +4495,6 @@ export class IqueryContext extends ParserRuleContext {
 			listener.exitIquery(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIquery) {
-			return visitor.visitIquery(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4721,14 +4543,6 @@ export class IfragmentContext extends ParserRuleContext {
 			listener.exitIfragment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIfragment) {
-			return visitor.visitIfragment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4759,14 +4573,6 @@ export class IunreservedContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIunreserved) {
 			listener.exitIunreserved(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIunreserved) {
-			return visitor.visitIunreserved(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4835,14 +4641,6 @@ export class SchemeContext extends ParserRuleContext {
 			listener.exitScheme(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitScheme) {
-			return visitor.visitScheme(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4873,14 +4671,6 @@ export class PortContext extends ParserRuleContext {
 			listener.exitPort(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitPort) {
-			return visitor.visitPort(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4908,14 +4698,6 @@ export class Ip_literalContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIp_literal) {
 			listener.exitIp_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIp_literal) {
-			return visitor.visitIp_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4977,14 +4759,6 @@ export class Ip_v_futureContext extends ParserRuleContext {
 			listener.exitIp_v_future(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIp_v_future) {
-			return visitor.visitIp_v_future(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5028,14 +4802,6 @@ export class Ip_v6_addressContext extends ParserRuleContext {
 			listener.exitIp_v6_address(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIp_v6_address) {
-			return visitor.visitIp_v6_address(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5064,14 +4830,6 @@ export class H16Context extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitH16) {
 			listener.exitH16(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitH16) {
-			return visitor.visitH16(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5106,14 +4864,6 @@ export class Ls32Context extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitLs32) {
 			listener.exitLs32(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitLs32) {
-			return visitor.visitLs32(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5153,14 +4903,6 @@ export class Ip_v4_addressContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitIp_v4_address) {
 			listener.exitIp_v4_address(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitIp_v4_address) {
-			return visitor.visitIp_v4_address(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5218,14 +4960,6 @@ export class Dec_octetContext extends ParserRuleContext {
 			listener.exitDec_octet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitDec_octet) {
-			return visitor.visitDec_octet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5255,14 +4989,6 @@ export class Pct_encodedContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitPct_encoded) {
 			listener.exitPct_encoded(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitPct_encoded) {
-			return visitor.visitPct_encoded(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5296,14 +5022,6 @@ export class UnreservedContext extends ParserRuleContext {
 			listener.exitUnreserved(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitUnreserved) {
-			return visitor.visitUnreserved(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5329,14 +5047,6 @@ export class ReservedContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitReserved) {
 			listener.exitReserved(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitReserved) {
-			return visitor.visitReserved(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5365,14 +5075,6 @@ export class Gen_delimsContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitGen_delims) {
 			listener.exitGen_delims(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitGen_delims) {
-			return visitor.visitGen_delims(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5405,14 +5107,6 @@ export class Sub_delimsContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitSub_delims) {
 			listener.exitSub_delims(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitSub_delims) {
-			return visitor.visitSub_delims(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5462,14 +5156,6 @@ export class AlphaContext extends ParserRuleContext {
 			listener.exitAlpha(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitAlpha) {
-			return visitor.visitAlpha(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5500,14 +5186,6 @@ export class HexdigContext extends ParserRuleContext {
 			listener.exitHexdig(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitHexdig) {
-			return visitor.visitHexdig(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5531,14 +5209,6 @@ export class DigitContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitDigit) {
 			listener.exitDigit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitDigit) {
-			return visitor.visitDigit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5569,14 +5239,6 @@ export class Non_zero_digitContext extends ParserRuleContext {
 	public exitRule(listener: IRIListener): void {
 		if (listener.exitNon_zero_digit) {
 			listener.exitNon_zero_digit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: IRIVisitor<Result>): Result {
-		if (visitor.visitNon_zero_digit) {
-			return visitor.visitNon_zero_digit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { tinycListener } from "./tinycListener";
-import { tinycVisitor } from "./tinycVisitor";
-
 
 export class tinycParser extends Parser {
 	public static readonly T__0 = 1;
@@ -650,14 +648,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinycVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -694,14 +684,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinycVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -724,14 +706,6 @@ export class Paren_exprContext extends ParserRuleContext {
 	public exitRule(listener: tinycListener): void {
 		if (listener.exitParen_expr) {
 			listener.exitParen_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinycVisitor<Result>): Result {
-		if (visitor.visitParen_expr) {
-			return visitor.visitParen_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -764,14 +738,6 @@ export class ExprContext extends ParserRuleContext {
 			listener.exitExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinycVisitor<Result>): Result {
-		if (visitor.visitExpr) {
-			return visitor.visitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -802,14 +768,6 @@ export class TestContext extends ParserRuleContext {
 			listener.exitTest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinycVisitor<Result>): Result {
-		if (visitor.visitTest) {
-			return visitor.visitTest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -835,14 +793,6 @@ export class SumContext extends ParserRuleContext {
 	public exitRule(listener: tinycListener): void {
 		if (listener.exitSum) {
 			listener.exitSum(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinycVisitor<Result>): Result {
-		if (visitor.visitSum) {
-			return visitor.visitSum(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -875,14 +825,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinycVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -905,14 +847,6 @@ export class IdContext extends ParserRuleContext {
 			listener.exitId(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinycVisitor<Result>): Result {
-		if (visitor.visitId) {
-			return visitor.visitId(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -933,14 +867,6 @@ export class IntegerContext extends ParserRuleContext {
 	public exitRule(listener: tinycListener): void {
 		if (listener.exitInteger) {
 			listener.exitInteger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinycVisitor<Result>): Result {
-		if (visitor.visitInteger) {
-			return visitor.visitInteger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

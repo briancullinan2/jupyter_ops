@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { StackTraceListener } from "./StackTraceListener";
-import { StackTraceVisitor } from "./StackTraceVisitor";
-
 
 export class StackTraceParser extends Parser {
 	public static readonly T__0 = 1;
@@ -821,14 +819,6 @@ export class StartRuleContext extends ParserRuleContext {
 			listener.exitStartRule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitStartRule) {
-			return visitor.visitStartRule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -871,14 +861,6 @@ export class StackTraceContext extends ParserRuleContext {
 			listener.exitStackTrace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitStackTrace) {
-			return visitor.visitStackTrace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -904,14 +886,6 @@ export class StackTraceLineContext extends ParserRuleContext {
 	public exitRule(listener: StackTraceListener): void {
 		if (listener.exitStackTraceLine) {
 			listener.exitStackTraceLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitStackTraceLine) {
-			return visitor.visitStackTraceLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -944,14 +918,6 @@ export class AtLineContext extends ParserRuleContext {
 			listener.exitAtLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitAtLine) {
-			return visitor.visitAtLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -977,14 +943,6 @@ export class CausedByLineContext extends ParserRuleContext {
 			listener.exitCausedByLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitCausedByLine) {
-			return visitor.visitCausedByLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1007,14 +965,6 @@ export class EllipsisLineContext extends ParserRuleContext {
 	public exitRule(listener: StackTraceListener): void {
 		if (listener.exitEllipsisLine) {
 			listener.exitEllipsisLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitEllipsisLine) {
-			return visitor.visitEllipsisLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1042,14 +992,6 @@ export class MessageLineContext extends ParserRuleContext {
 	public exitRule(listener: StackTraceListener): void {
 		if (listener.exitMessageLine) {
 			listener.exitMessageLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitMessageLine) {
-			return visitor.visitMessageLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1088,14 +1030,6 @@ export class QualifiedClassContext extends ParserRuleContext {
 			listener.exitQualifiedClass(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitQualifiedClass) {
-			return visitor.visitQualifiedClass(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1118,14 +1052,6 @@ export class InnerClassNameContext extends ParserRuleContext {
 	public exitRule(listener: StackTraceListener): void {
 		if (listener.exitInnerClassName) {
 			listener.exitInnerClassName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitInnerClassName) {
-			return visitor.visitInnerClassName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1152,14 +1078,6 @@ export class ClassFileContext extends ParserRuleContext {
 	public exitRule(listener: StackTraceListener): void {
 		if (listener.exitClassFile) {
 			listener.exitClassFile(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitClassFile) {
-			return visitor.visitClassFile(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1193,14 +1111,6 @@ export class QualifiedMethodContext extends ParserRuleContext {
 			listener.exitQualifiedMethod(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitQualifiedMethod) {
-			return visitor.visitQualifiedMethod(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1221,14 +1131,6 @@ export class ConstructorContext extends ParserRuleContext {
 	public exitRule(listener: StackTraceListener): void {
 		if (listener.exitConstructor) {
 			listener.exitConstructor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitConstructor) {
-			return visitor.visitConstructor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1253,14 +1155,6 @@ export class MethodNameContext extends ParserRuleContext {
 	public exitRule(listener: StackTraceListener): void {
 		if (listener.exitMethodName) {
 			listener.exitMethodName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitMethodName) {
-			return visitor.visitMethodName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1302,14 +1196,6 @@ export class PackagePathContext extends ParserRuleContext {
 			listener.exitPackagePath(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitPackagePath) {
-			return visitor.visitPackagePath(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1330,14 +1216,6 @@ export class ClassNameContext extends ParserRuleContext {
 	public exitRule(listener: StackTraceListener): void {
 		if (listener.exitClassName) {
 			listener.exitClassName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitClassName) {
-			return visitor.visitClassName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1362,14 +1240,6 @@ export class IdentifierContext extends ParserRuleContext {
 			listener.exitIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1390,14 +1260,6 @@ export class MessageContext extends ParserRuleContext {
 	public exitRule(listener: StackTraceListener): void {
 		if (listener.exitMessage) {
 			listener.exitMessage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: StackTraceVisitor<Result>): Result {
-		if (visitor.visitMessage) {
-			return visitor.visitMessage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

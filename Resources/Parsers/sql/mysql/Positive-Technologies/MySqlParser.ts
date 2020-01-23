@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { MySqlParserListener } from "./MySqlParserListener";
-import { MySqlParserVisitor } from "./MySqlParserVisitor";
-
 
 export class MySqlParser extends Parser {
 	public static readonly SPACE = 1;
@@ -48699,14 +48697,6 @@ export class RootContext extends ParserRuleContext {
 			listener.exitRoot(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRoot) {
-			return visitor.visitRoot(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48764,14 +48754,6 @@ export class SqlStatementsContext extends ParserRuleContext {
 			listener.exitSqlStatements(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSqlStatements) {
-			return visitor.visitSqlStatements(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48814,14 +48796,6 @@ export class SqlStatementContext extends ParserRuleContext {
 			listener.exitSqlStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSqlStatement) {
-			return visitor.visitSqlStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -48842,14 +48816,6 @@ export class EmptyStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitEmptyStatement) {
 			listener.exitEmptyStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitEmptyStatement) {
-			return visitor.visitEmptyStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -48978,14 +48944,6 @@ export class DdlStatementContext extends ParserRuleContext {
 			listener.exitDdlStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDdlStatement) {
-			return visitor.visitDdlStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49037,14 +48995,6 @@ export class DmlStatementContext extends ParserRuleContext {
 			listener.exitDmlStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDmlStatement) {
-			return visitor.visitDmlStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49091,14 +49041,6 @@ export class TransactionStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTransactionStatement) {
 			listener.exitTransactionStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTransactionStatement) {
-			return visitor.visitTransactionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49167,14 +49109,6 @@ export class ReplicationStatementContext extends ParserRuleContext {
 			listener.exitReplicationStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitReplicationStatement) {
-			return visitor.visitReplicationStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49203,14 +49137,6 @@ export class PreparedStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPreparedStatement) {
 			listener.exitPreparedStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPreparedStatement) {
-			return visitor.visitPreparedStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49262,14 +49188,6 @@ export class CompoundStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCompoundStatement) {
 			listener.exitCompoundStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCompoundStatement) {
-			return visitor.visitCompoundStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49368,14 +49286,6 @@ export class AdministrationStatementContext extends ParserRuleContext {
 			listener.exitAdministrationStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAdministrationStatement) {
-			return visitor.visitAdministrationStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49410,14 +49320,6 @@ export class UtilityStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitUtilityStatement) {
 			listener.exitUtilityStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUtilityStatement) {
-			return visitor.visitUtilityStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49458,14 +49360,6 @@ export class CreateDatabaseContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCreateDatabase) {
 			listener.exitCreateDatabase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateDatabase) {
-			return visitor.visitCreateDatabase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49523,14 +49417,6 @@ export class CreateEventContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCreateEvent) {
 			listener.exitCreateEvent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateEvent) {
-			return visitor.visitCreateEvent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49668,14 +49554,6 @@ export class CreateIndexContext extends ParserRuleContext {
 			listener.exitCreateIndex(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateIndex) {
-			return visitor.visitCreateIndex(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49753,14 +49631,6 @@ export class CreateLogfileGroupContext extends ParserRuleContext {
 			listener.exitCreateLogfileGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateLogfileGroup) {
-			return visitor.visitCreateLogfileGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49820,14 +49690,6 @@ export class CreateProcedureContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCreateProcedure) {
 			listener.exitCreateProcedure(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateProcedure) {
-			return visitor.visitCreateProcedure(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -49898,14 +49760,6 @@ export class CreateFunctionContext extends ParserRuleContext {
 			listener.exitCreateFunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateFunction) {
-			return visitor.visitCreateFunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -49959,14 +49813,6 @@ export class CreateServerContext extends ParserRuleContext {
 			listener.exitCreateServer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateServer) {
-			return visitor.visitCreateServer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50014,14 +49860,6 @@ export class CopyCreateTableContext extends CreateTableContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCopyCreateTable) {
 			listener.exitCopyCreateTable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCopyCreateTable) {
-			return visitor.visitCopyCreateTable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50082,14 +49920,6 @@ export class QueryCreateTableContext extends CreateTableContext {
 			listener.exitQueryCreateTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitQueryCreateTable) {
-			return visitor.visitQueryCreateTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ColumnCreateTableContext extends CreateTableContext {
 	public CREATE(): TerminalNode { return this.getToken(MySqlParser.CREATE, 0); }
@@ -50141,14 +49971,6 @@ export class ColumnCreateTableContext extends CreateTableContext {
 			listener.exitColumnCreateTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitColumnCreateTable) {
-			return visitor.visitColumnCreateTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50195,14 +50017,6 @@ export class CreateTablespaceInnodbContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCreateTablespaceInnodb) {
 			listener.exitCreateTablespaceInnodb(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateTablespaceInnodb) {
-			return visitor.visitCreateTablespaceInnodb(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50286,14 +50100,6 @@ export class CreateTablespaceNdbContext extends ParserRuleContext {
 			listener.exitCreateTablespaceNdb(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateTablespaceNdb) {
-			return visitor.visitCreateTablespaceNdb(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50349,14 +50155,6 @@ export class CreateTriggerContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCreateTrigger) {
 			listener.exitCreateTrigger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateTrigger) {
-			return visitor.visitCreateTrigger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50416,14 +50214,6 @@ export class CreateViewContext extends ParserRuleContext {
 			listener.exitCreateView(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateView) {
-			return visitor.visitCreateView(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50465,14 +50255,6 @@ export class CreateDatabaseOptionContext extends ParserRuleContext {
 			listener.exitCreateDatabaseOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateDatabaseOption) {
-			return visitor.visitCreateDatabaseOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50500,14 +50282,6 @@ export class OwnerStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitOwnerStatement) {
 			listener.exitOwnerStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitOwnerStatement) {
-			return visitor.visitOwnerStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50551,14 +50325,6 @@ export class PreciseScheduleContext extends ScheduleExpressionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPreciseSchedule) {
 			listener.exitPreciseSchedule(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPreciseSchedule) {
-			return visitor.visitPreciseSchedule(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50614,14 +50380,6 @@ export class IntervalScheduleContext extends ScheduleExpressionContext {
 			listener.exitIntervalSchedule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIntervalSchedule) {
-			return visitor.visitIntervalSchedule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50651,14 +50409,6 @@ export class TimestampValueContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTimestampValue) {
 			listener.exitTimestampValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTimestampValue) {
-			return visitor.visitTimestampValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50691,14 +50441,6 @@ export class IntervalExprContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitIntervalExpr) {
 			listener.exitIntervalExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIntervalExpr) {
-			return visitor.visitIntervalExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50737,14 +50479,6 @@ export class IntervalTypeContext extends ParserRuleContext {
 			listener.exitIntervalType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIntervalType) {
-			return visitor.visitIntervalType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50770,14 +50504,6 @@ export class EnableTypeContext extends ParserRuleContext {
 			listener.exitEnableType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitEnableType) {
-			return visitor.visitEnableType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50800,14 +50526,6 @@ export class IndexTypeContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitIndexType) {
 			listener.exitIndexType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIndexType) {
-			return visitor.visitIndexType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50848,14 +50566,6 @@ export class IndexOptionContext extends ParserRuleContext {
 			listener.exitIndexOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIndexOption) {
-			return visitor.visitIndexOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50887,14 +50597,6 @@ export class ProcedureParameterContext extends ParserRuleContext {
 			listener.exitProcedureParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitProcedureParameter) {
-			return visitor.visitProcedureParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -50920,14 +50622,6 @@ export class FunctionParameterContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitFunctionParameter) {
 			listener.exitFunctionParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFunctionParameter) {
-			return visitor.visitFunctionParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -50962,14 +50656,6 @@ export class RoutineCommentContext extends RoutineOptionContext {
 			listener.exitRoutineComment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRoutineComment) {
-			return visitor.visitRoutineComment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class RoutineLanguageContext extends RoutineOptionContext {
 	public LANGUAGE(): TerminalNode { return this.getToken(MySqlParser.LANGUAGE, 0); }
@@ -50990,14 +50676,6 @@ export class RoutineLanguageContext extends RoutineOptionContext {
 			listener.exitRoutineLanguage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRoutineLanguage) {
-			return visitor.visitRoutineLanguage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class RoutineBehaviorContext extends RoutineOptionContext {
 	public DETERMINISTIC(): TerminalNode { return this.getToken(MySqlParser.DETERMINISTIC, 0); }
@@ -51016,14 +50694,6 @@ export class RoutineBehaviorContext extends RoutineOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitRoutineBehavior) {
 			listener.exitRoutineBehavior(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRoutineBehavior) {
-			return visitor.visitRoutineBehavior(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51050,14 +50720,6 @@ export class RoutineDataContext extends RoutineOptionContext {
 			listener.exitRoutineData(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRoutineData) {
-			return visitor.visitRoutineData(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class RoutineSecurityContext extends RoutineOptionContext {
 	public _context: Token;
@@ -51079,14 +50741,6 @@ export class RoutineSecurityContext extends RoutineOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitRoutineSecurity) {
 			listener.exitRoutineSecurity(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRoutineSecurity) {
-			return visitor.visitRoutineSecurity(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51119,14 +50773,6 @@ export class ServerOptionContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitServerOption) {
 			listener.exitServerOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitServerOption) {
-			return visitor.visitServerOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51170,14 +50816,6 @@ export class CreateDefinitionsContext extends ParserRuleContext {
 			listener.exitCreateDefinitions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateDefinitions) {
-			return visitor.visitCreateDefinitions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51214,14 +50852,6 @@ export class ColumnDeclarationContext extends CreateDefinitionContext {
 			listener.exitColumnDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitColumnDeclaration) {
-			return visitor.visitColumnDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ConstraintDeclarationContext extends CreateDefinitionContext {
 	public tableConstraint(): TableConstraintContext {
@@ -51243,14 +50873,6 @@ export class ConstraintDeclarationContext extends CreateDefinitionContext {
 			listener.exitConstraintDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitConstraintDeclaration) {
-			return visitor.visitConstraintDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IndexDeclarationContext extends CreateDefinitionContext {
 	public indexColumnDefinition(): IndexColumnDefinitionContext {
@@ -51270,14 +50892,6 @@ export class IndexDeclarationContext extends CreateDefinitionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitIndexDeclaration) {
 			listener.exitIndexDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIndexDeclaration) {
-			return visitor.visitIndexDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51313,14 +50927,6 @@ export class ColumnDefinitionContext extends ParserRuleContext {
 			listener.exitColumnDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitColumnDefinition) {
-			return visitor.visitColumnDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -51354,14 +50960,6 @@ export class NullColumnConstraintContext extends ColumnConstraintContext {
 			listener.exitNullColumnConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitNullColumnConstraint) {
-			return visitor.visitNullColumnConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DefaultColumnConstraintContext extends ColumnConstraintContext {
 	public DEFAULT(): TerminalNode { return this.getToken(MySqlParser.DEFAULT, 0); }
@@ -51382,14 +50980,6 @@ export class DefaultColumnConstraintContext extends ColumnConstraintContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDefaultColumnConstraint) {
 			listener.exitDefaultColumnConstraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDefaultColumnConstraint) {
-			return visitor.visitDefaultColumnConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51416,14 +51006,6 @@ export class AutoIncrementColumnConstraintContext extends ColumnConstraintContex
 			listener.exitAutoIncrementColumnConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAutoIncrementColumnConstraint) {
-			return visitor.visitAutoIncrementColumnConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PrimaryKeyColumnConstraintContext extends ColumnConstraintContext {
 	public KEY(): TerminalNode { return this.getToken(MySqlParser.KEY, 0); }
@@ -51442,14 +51024,6 @@ export class PrimaryKeyColumnConstraintContext extends ColumnConstraintContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPrimaryKeyColumnConstraint) {
 			listener.exitPrimaryKeyColumnConstraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPrimaryKeyColumnConstraint) {
-			return visitor.visitPrimaryKeyColumnConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51472,14 +51046,6 @@ export class UniqueKeyColumnConstraintContext extends ColumnConstraintContext {
 			listener.exitUniqueKeyColumnConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUniqueKeyColumnConstraint) {
-			return visitor.visitUniqueKeyColumnConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class CommentColumnConstraintContext extends ColumnConstraintContext {
 	public COMMENT(): TerminalNode { return this.getToken(MySqlParser.COMMENT, 0); }
@@ -51498,14 +51064,6 @@ export class CommentColumnConstraintContext extends ColumnConstraintContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCommentColumnConstraint) {
 			listener.exitCommentColumnConstraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCommentColumnConstraint) {
-			return visitor.visitCommentColumnConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51531,14 +51089,6 @@ export class FormatColumnConstraintContext extends ColumnConstraintContext {
 			listener.exitFormatColumnConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFormatColumnConstraint) {
-			return visitor.visitFormatColumnConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StorageColumnConstraintContext extends ColumnConstraintContext {
 	public _storageval: Token;
@@ -51562,14 +51112,6 @@ export class StorageColumnConstraintContext extends ColumnConstraintContext {
 			listener.exitStorageColumnConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitStorageColumnConstraint) {
-			return visitor.visitStorageColumnConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ReferenceColumnConstraintContext extends ColumnConstraintContext {
 	public referenceDefinition(): ReferenceDefinitionContext {
@@ -51589,14 +51131,6 @@ export class ReferenceColumnConstraintContext extends ColumnConstraintContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitReferenceColumnConstraint) {
 			listener.exitReferenceColumnConstraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitReferenceColumnConstraint) {
-			return visitor.visitReferenceColumnConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51619,14 +51153,6 @@ export class CollateColumnConstraintContext extends ColumnConstraintContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCollateColumnConstraint) {
 			listener.exitCollateColumnConstraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCollateColumnConstraint) {
-			return visitor.visitCollateColumnConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51657,14 +51183,6 @@ export class GeneratedColumnConstraintContext extends ColumnConstraintContext {
 			listener.exitGeneratedColumnConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitGeneratedColumnConstraint) {
-			return visitor.visitGeneratedColumnConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SerialDefaultColumnConstraintContext extends ColumnConstraintContext {
 	public SERIAL(): TerminalNode { return this.getToken(MySqlParser.SERIAL, 0); }
@@ -51684,14 +51202,6 @@ export class SerialDefaultColumnConstraintContext extends ColumnConstraintContex
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSerialDefaultColumnConstraint) {
 			listener.exitSerialDefaultColumnConstraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSerialDefaultColumnConstraint) {
-			return visitor.visitSerialDefaultColumnConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51753,14 +51263,6 @@ export class PrimaryKeyTableConstraintContext extends TableConstraintContext {
 			listener.exitPrimaryKeyTableConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPrimaryKeyTableConstraint) {
-			return visitor.visitPrimaryKeyTableConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UniqueKeyTableConstraintContext extends TableConstraintContext {
 	public _name: UidContext;
@@ -51810,14 +51312,6 @@ export class UniqueKeyTableConstraintContext extends TableConstraintContext {
 			listener.exitUniqueKeyTableConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUniqueKeyTableConstraint) {
-			return visitor.visitUniqueKeyTableConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ForeignKeyTableConstraintContext extends TableConstraintContext {
 	public _name: UidContext;
@@ -51856,14 +51350,6 @@ export class ForeignKeyTableConstraintContext extends TableConstraintContext {
 			listener.exitForeignKeyTableConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitForeignKeyTableConstraint) {
-			return visitor.visitForeignKeyTableConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class CheckTableConstraintContext extends TableConstraintContext {
 	public _name: UidContext;
@@ -51891,14 +51377,6 @@ export class CheckTableConstraintContext extends TableConstraintContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCheckTableConstraint) {
 			listener.exitCheckTableConstraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCheckTableConstraint) {
-			return visitor.visitCheckTableConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51935,14 +51413,6 @@ export class ReferenceDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitReferenceDefinition) {
 			listener.exitReferenceDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitReferenceDefinition) {
-			return visitor.visitReferenceDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -51988,14 +51458,6 @@ export class ReferenceActionContext extends ParserRuleContext {
 			listener.exitReferenceAction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitReferenceAction) {
-			return visitor.visitReferenceAction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52021,14 +51483,6 @@ export class ReferenceControlTypeContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitReferenceControlType) {
 			listener.exitReferenceControlType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitReferenceControlType) {
-			return visitor.visitReferenceControlType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52082,14 +51536,6 @@ export class SimpleIndexDeclarationContext extends IndexColumnDefinitionContext 
 			listener.exitSimpleIndexDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSimpleIndexDeclaration) {
-			return visitor.visitSimpleIndexDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SpecialIndexDeclarationContext extends IndexColumnDefinitionContext {
 	public _indexFormat: Token;
@@ -52128,14 +51574,6 @@ export class SpecialIndexDeclarationContext extends IndexColumnDefinitionContext
 			listener.exitSpecialIndexDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSpecialIndexDeclaration) {
-			return visitor.visitSpecialIndexDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52171,14 +51609,6 @@ export class TableOptionEngineContext extends TableOptionContext {
 			listener.exitTableOptionEngine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionEngine) {
-			return visitor.visitTableOptionEngine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableOptionAutoIncrementContext extends TableOptionContext {
 	public AUTO_INCREMENT(): TerminalNode { return this.getToken(MySqlParser.AUTO_INCREMENT, 0); }
@@ -52202,14 +51632,6 @@ export class TableOptionAutoIncrementContext extends TableOptionContext {
 			listener.exitTableOptionAutoIncrement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionAutoIncrement) {
-			return visitor.visitTableOptionAutoIncrement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableOptionAverageContext extends TableOptionContext {
 	public AVG_ROW_LENGTH(): TerminalNode { return this.getToken(MySqlParser.AVG_ROW_LENGTH, 0); }
@@ -52231,14 +51653,6 @@ export class TableOptionAverageContext extends TableOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableOptionAverage) {
 			listener.exitTableOptionAverage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionAverage) {
-			return visitor.visitTableOptionAverage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52275,14 +51689,6 @@ export class TableOptionCharsetContext extends TableOptionContext {
 			listener.exitTableOptionCharset(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionCharset) {
-			return visitor.visitTableOptionCharset(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableOptionChecksumContext extends TableOptionContext {
 	public _boolValue: Token;
@@ -52305,14 +51711,6 @@ export class TableOptionChecksumContext extends TableOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableOptionChecksum) {
 			listener.exitTableOptionChecksum(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionChecksum) {
-			return visitor.visitTableOptionChecksum(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52339,14 +51737,6 @@ export class TableOptionCollateContext extends TableOptionContext {
 			listener.exitTableOptionCollate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionCollate) {
-			return visitor.visitTableOptionCollate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableOptionCommentContext extends TableOptionContext {
 	public COMMENT(): TerminalNode { return this.getToken(MySqlParser.COMMENT, 0); }
@@ -52366,14 +51756,6 @@ export class TableOptionCommentContext extends TableOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableOptionComment) {
 			listener.exitTableOptionComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionComment) {
-			return visitor.visitTableOptionComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52398,14 +51780,6 @@ export class TableOptionCompressionContext extends TableOptionContext {
 			listener.exitTableOptionCompression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionCompression) {
-			return visitor.visitTableOptionCompression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableOptionConnectionContext extends TableOptionContext {
 	public CONNECTION(): TerminalNode { return this.getToken(MySqlParser.CONNECTION, 0); }
@@ -52425,14 +51799,6 @@ export class TableOptionConnectionContext extends TableOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableOptionConnection) {
 			listener.exitTableOptionConnection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionConnection) {
-			return visitor.visitTableOptionConnection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52455,14 +51821,6 @@ export class TableOptionDataDirectoryContext extends TableOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableOptionDataDirectory) {
 			listener.exitTableOptionDataDirectory(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionDataDirectory) {
-			return visitor.visitTableOptionDataDirectory(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52488,14 +51846,6 @@ export class TableOptionDelayContext extends TableOptionContext {
 			listener.exitTableOptionDelay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionDelay) {
-			return visitor.visitTableOptionDelay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableOptionEncryptionContext extends TableOptionContext {
 	public ENCRYPTION(): TerminalNode { return this.getToken(MySqlParser.ENCRYPTION, 0); }
@@ -52515,14 +51865,6 @@ export class TableOptionEncryptionContext extends TableOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableOptionEncryption) {
 			listener.exitTableOptionEncryption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionEncryption) {
-			return visitor.visitTableOptionEncryption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52545,14 +51887,6 @@ export class TableOptionIndexDirectoryContext extends TableOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableOptionIndexDirectory) {
 			listener.exitTableOptionIndexDirectory(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionIndexDirectory) {
-			return visitor.visitTableOptionIndexDirectory(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52579,14 +51913,6 @@ export class TableOptionInsertMethodContext extends TableOptionContext {
 			listener.exitTableOptionInsertMethod(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionInsertMethod) {
-			return visitor.visitTableOptionInsertMethod(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableOptionKeyBlockSizeContext extends TableOptionContext {
 	public KEY_BLOCK_SIZE(): TerminalNode { return this.getToken(MySqlParser.KEY_BLOCK_SIZE, 0); }
@@ -52608,14 +51934,6 @@ export class TableOptionKeyBlockSizeContext extends TableOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableOptionKeyBlockSize) {
 			listener.exitTableOptionKeyBlockSize(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionKeyBlockSize) {
-			return visitor.visitTableOptionKeyBlockSize(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52641,14 +51959,6 @@ export class TableOptionMaxRowsContext extends TableOptionContext {
 			listener.exitTableOptionMaxRows(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionMaxRows) {
-			return visitor.visitTableOptionMaxRows(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableOptionMinRowsContext extends TableOptionContext {
 	public MIN_ROWS(): TerminalNode { return this.getToken(MySqlParser.MIN_ROWS, 0); }
@@ -52670,14 +51980,6 @@ export class TableOptionMinRowsContext extends TableOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableOptionMinRows) {
 			listener.exitTableOptionMinRows(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionMinRows) {
-			return visitor.visitTableOptionMinRows(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52704,14 +52006,6 @@ export class TableOptionPackKeysContext extends TableOptionContext {
 			listener.exitTableOptionPackKeys(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionPackKeys) {
-			return visitor.visitTableOptionPackKeys(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableOptionPasswordContext extends TableOptionContext {
 	public PASSWORD(): TerminalNode { return this.getToken(MySqlParser.PASSWORD, 0); }
@@ -52731,14 +52025,6 @@ export class TableOptionPasswordContext extends TableOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableOptionPassword) {
 			listener.exitTableOptionPassword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionPassword) {
-			return visitor.visitTableOptionPassword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52768,14 +52054,6 @@ export class TableOptionRowFormatContext extends TableOptionContext {
 			listener.exitTableOptionRowFormat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionRowFormat) {
-			return visitor.visitTableOptionRowFormat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableOptionRecalculationContext extends TableOptionContext {
 	public _extBoolValue: Token;
@@ -52798,14 +52076,6 @@ export class TableOptionRecalculationContext extends TableOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableOptionRecalculation) {
 			listener.exitTableOptionRecalculation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionRecalculation) {
-			return visitor.visitTableOptionRecalculation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52832,14 +52102,6 @@ export class TableOptionPersistentContext extends TableOptionContext {
 			listener.exitTableOptionPersistent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionPersistent) {
-			return visitor.visitTableOptionPersistent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableOptionSamplePageContext extends TableOptionContext {
 	public STATS_SAMPLE_PAGES(): TerminalNode { return this.getToken(MySqlParser.STATS_SAMPLE_PAGES, 0); }
@@ -52861,14 +52123,6 @@ export class TableOptionSamplePageContext extends TableOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableOptionSamplePage) {
 			listener.exitTableOptionSamplePage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionSamplePage) {
-			return visitor.visitTableOptionSamplePage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -52896,14 +52150,6 @@ export class TableOptionTablespaceContext extends TableOptionContext {
 			listener.exitTableOptionTablespace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionTablespace) {
-			return visitor.visitTableOptionTablespace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableOptionUnionContext extends TableOptionContext {
 	public UNION(): TerminalNode { return this.getToken(MySqlParser.UNION, 0); }
@@ -52929,14 +52175,6 @@ export class TableOptionUnionContext extends TableOptionContext {
 			listener.exitTableOptionUnion(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionUnion) {
-			return visitor.visitTableOptionUnion(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -52960,14 +52198,6 @@ export class TablespaceStorageContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTablespaceStorage) {
 			listener.exitTablespaceStorage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTablespaceStorage) {
-			return visitor.visitTablespaceStorage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53041,14 +52271,6 @@ export class PartitionDefinitionsContext extends ParserRuleContext {
 			listener.exitPartitionDefinitions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionDefinitions) {
-			return visitor.visitPartitionDefinitions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53086,14 +52308,6 @@ export class PartitionFunctionHashContext extends PartitionFunctionDefinitionCon
 			listener.exitPartitionFunctionHash(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionFunctionHash) {
-			return visitor.visitPartitionFunctionHash(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PartitionFunctionKeyContext extends PartitionFunctionDefinitionContext {
 	public _algType: Token;
@@ -53124,14 +52338,6 @@ export class PartitionFunctionKeyContext extends PartitionFunctionDefinitionCont
 			listener.exitPartitionFunctionKey(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionFunctionKey) {
-			return visitor.visitPartitionFunctionKey(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PartitionFunctionRangeContext extends PartitionFunctionDefinitionContext {
 	public RANGE(): TerminalNode { return this.getToken(MySqlParser.RANGE, 0); }
@@ -53160,14 +52366,6 @@ export class PartitionFunctionRangeContext extends PartitionFunctionDefinitionCo
 			listener.exitPartitionFunctionRange(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionFunctionRange) {
-			return visitor.visitPartitionFunctionRange(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PartitionFunctionListContext extends PartitionFunctionDefinitionContext {
 	public LIST(): TerminalNode { return this.getToken(MySqlParser.LIST, 0); }
@@ -53194,14 +52392,6 @@ export class PartitionFunctionListContext extends PartitionFunctionDefinitionCon
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPartitionFunctionList) {
 			listener.exitPartitionFunctionList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionFunctionList) {
-			return visitor.visitPartitionFunctionList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53241,14 +52431,6 @@ export class SubPartitionFunctionHashContext extends SubpartitionFunctionDefinit
 			listener.exitSubPartitionFunctionHash(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSubPartitionFunctionHash) {
-			return visitor.visitSubPartitionFunctionHash(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SubPartitionFunctionKeyContext extends SubpartitionFunctionDefinitionContext {
 	public _algType: Token;
@@ -53277,14 +52459,6 @@ export class SubPartitionFunctionKeyContext extends SubpartitionFunctionDefiniti
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSubPartitionFunctionKey) {
 			listener.exitSubPartitionFunctionKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSubPartitionFunctionKey) {
-			return visitor.visitSubPartitionFunctionKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53362,14 +52536,6 @@ export class PartitionComparisionContext extends PartitionDefinitionContext {
 			listener.exitPartitionComparision(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionComparision) {
-			return visitor.visitPartitionComparision(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PartitionListAtomContext extends PartitionDefinitionContext {
 	public PARTITION(): TerminalNode { return this.getToken(MySqlParser.PARTITION, 0); }
@@ -53430,14 +52596,6 @@ export class PartitionListAtomContext extends PartitionDefinitionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPartitionListAtom) {
 			listener.exitPartitionListAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionListAtom) {
-			return visitor.visitPartitionListAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53502,14 +52660,6 @@ export class PartitionListVectorContext extends PartitionDefinitionContext {
 			listener.exitPartitionListVector(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionListVector) {
-			return visitor.visitPartitionListVector(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PartitionSimpleContext extends PartitionDefinitionContext {
 	public PARTITION(): TerminalNode { return this.getToken(MySqlParser.PARTITION, 0); }
@@ -53559,14 +52709,6 @@ export class PartitionSimpleContext extends PartitionDefinitionContext {
 			listener.exitPartitionSimple(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionSimple) {
-			return visitor.visitPartitionSimple(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53593,14 +52735,6 @@ export class PartitionDefinerAtomContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPartitionDefinerAtom) {
 			listener.exitPartitionDefinerAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionDefinerAtom) {
-			return visitor.visitPartitionDefinerAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53644,14 +52778,6 @@ export class PartitionDefinerVectorContext extends ParserRuleContext {
 			listener.exitPartitionDefinerVector(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionDefinerVector) {
-			return visitor.visitPartitionDefinerVector(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -53684,14 +52810,6 @@ export class SubpartitionDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSubpartitionDefinition) {
 			listener.exitSubpartitionDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSubpartitionDefinition) {
-			return visitor.visitSubpartitionDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53730,14 +52848,6 @@ export class PartitionOptionEngineContext extends PartitionOptionContext {
 			listener.exitPartitionOptionEngine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionOptionEngine) {
-			return visitor.visitPartitionOptionEngine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PartitionOptionCommentContext extends PartitionOptionContext {
 	public _comment: Token;
@@ -53758,14 +52868,6 @@ export class PartitionOptionCommentContext extends PartitionOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPartitionOptionComment) {
 			listener.exitPartitionOptionComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionOptionComment) {
-			return visitor.visitPartitionOptionComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53791,14 +52893,6 @@ export class PartitionOptionDataDirectoryContext extends PartitionOptionContext 
 			listener.exitPartitionOptionDataDirectory(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionOptionDataDirectory) {
-			return visitor.visitPartitionOptionDataDirectory(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PartitionOptionIndexDirectoryContext extends PartitionOptionContext {
 	public _indexDirectory: Token;
@@ -53820,14 +52914,6 @@ export class PartitionOptionIndexDirectoryContext extends PartitionOptionContext
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPartitionOptionIndexDirectory) {
 			listener.exitPartitionOptionIndexDirectory(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionOptionIndexDirectory) {
-			return visitor.visitPartitionOptionIndexDirectory(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53854,14 +52940,6 @@ export class PartitionOptionMaxRowsContext extends PartitionOptionContext {
 			listener.exitPartitionOptionMaxRows(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionOptionMaxRows) {
-			return visitor.visitPartitionOptionMaxRows(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PartitionOptionMinRowsContext extends PartitionOptionContext {
 	public _minRows: DecimalLiteralContext;
@@ -53884,14 +52962,6 @@ export class PartitionOptionMinRowsContext extends PartitionOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPartitionOptionMinRows) {
 			listener.exitPartitionOptionMinRows(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionOptionMinRows) {
-			return visitor.visitPartitionOptionMinRows(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -53918,14 +52988,6 @@ export class PartitionOptionTablespaceContext extends PartitionOptionContext {
 			listener.exitPartitionOptionTablespace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionOptionTablespace) {
-			return visitor.visitPartitionOptionTablespace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PartitionOptionNodeGroupContext extends PartitionOptionContext {
 	public _nodegroup: UidContext;
@@ -53948,14 +53010,6 @@ export class PartitionOptionNodeGroupContext extends PartitionOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPartitionOptionNodeGroup) {
 			listener.exitPartitionOptionNodeGroup(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionOptionNodeGroup) {
-			return visitor.visitPartitionOptionNodeGroup(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54004,14 +53058,6 @@ export class AlterSimpleDatabaseContext extends AlterDatabaseContext {
 			listener.exitAlterSimpleDatabase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterSimpleDatabase) {
-			return visitor.visitAlterSimpleDatabase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterUpgradeNameContext extends AlterDatabaseContext {
 	public _dbFormat: Token;
@@ -54039,14 +53085,6 @@ export class AlterUpgradeNameContext extends AlterDatabaseContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterUpgradeName) {
 			listener.exitAlterUpgradeName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterUpgradeName) {
-			return visitor.visitAlterUpgradeName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54111,14 +53149,6 @@ export class AlterEventContext extends ParserRuleContext {
 			listener.exitAlterEvent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterEvent) {
-			return visitor.visitAlterEvent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54154,14 +53184,6 @@ export class AlterFunctionContext extends ParserRuleContext {
 			listener.exitAlterFunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterFunction) {
-			return visitor.visitAlterFunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54187,14 +53209,6 @@ export class AlterInstanceContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterInstance) {
 			listener.exitAlterInstance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterInstance) {
-			return visitor.visitAlterInstance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54245,14 +53259,6 @@ export class AlterLogfileGroupContext extends ParserRuleContext {
 			listener.exitAlterLogfileGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterLogfileGroup) {
-			return visitor.visitAlterLogfileGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54286,14 +53292,6 @@ export class AlterProcedureContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterProcedure) {
 			listener.exitAlterProcedure(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterProcedure) {
-			return visitor.visitAlterProcedure(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54341,14 +53339,6 @@ export class AlterServerContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterServer) {
 			listener.exitAlterServer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterServer) {
-			return visitor.visitAlterServer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54402,14 +53392,6 @@ export class AlterTableContext extends ParserRuleContext {
 			listener.exitAlterTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTable) {
-			return visitor.visitAlterTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54457,14 +53439,6 @@ export class AlterTablespaceContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterTablespace) {
 			listener.exitAlterTablespace(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTablespace) {
-			return visitor.visitAlterTablespace(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54522,14 +53496,6 @@ export class AlterViewContext extends ParserRuleContext {
 			listener.exitAlterView(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterView) {
-			return visitor.visitAlterView(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -54578,14 +53544,6 @@ export class AlterByTableOptionContext extends AlterSpecificationContext {
 			listener.exitAlterByTableOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByTableOption) {
-			return visitor.visitAlterByTableOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByAddColumnContext extends AlterSpecificationContext {
 	public ADD(): TerminalNode { return this.getToken(MySqlParser.ADD, 0); }
@@ -54618,14 +53576,6 @@ export class AlterByAddColumnContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByAddColumn) {
 			listener.exitAlterByAddColumn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByAddColumn) {
-			return visitor.visitAlterByAddColumn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54677,14 +53627,6 @@ export class AlterByAddColumnsContext extends AlterSpecificationContext {
 			listener.exitAlterByAddColumns(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByAddColumns) {
-			return visitor.visitAlterByAddColumns(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByAddIndexContext extends AlterSpecificationContext {
 	public _indexFormat: Token;
@@ -54723,14 +53665,6 @@ export class AlterByAddIndexContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByAddIndex) {
 			listener.exitAlterByAddIndex(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByAddIndex) {
-			return visitor.visitAlterByAddIndex(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54772,14 +53706,6 @@ export class AlterByAddPrimaryKeyContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByAddPrimaryKey) {
 			listener.exitAlterByAddPrimaryKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByAddPrimaryKey) {
-			return visitor.visitAlterByAddPrimaryKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54832,14 +53758,6 @@ export class AlterByAddUniqueKeyContext extends AlterSpecificationContext {
 			listener.exitAlterByAddUniqueKey(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByAddUniqueKey) {
-			return visitor.visitAlterByAddUniqueKey(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByAddSpecialIndexContext extends AlterSpecificationContext {
 	public _keyType: Token;
@@ -54878,14 +53796,6 @@ export class AlterByAddSpecialIndexContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByAddSpecialIndex) {
 			listener.exitAlterByAddSpecialIndex(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByAddSpecialIndex) {
-			return visitor.visitAlterByAddSpecialIndex(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -54927,14 +53837,6 @@ export class AlterByAddForeignKeyContext extends AlterSpecificationContext {
 			listener.exitAlterByAddForeignKey(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByAddForeignKey) {
-			return visitor.visitAlterByAddForeignKey(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByAddCheckTableConstraintContext extends AlterSpecificationContext {
 	public _name: UidContext;
@@ -54965,14 +53867,6 @@ export class AlterByAddCheckTableConstraintContext extends AlterSpecificationCon
 			listener.exitAlterByAddCheckTableConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByAddCheckTableConstraint) {
-			return visitor.visitAlterByAddCheckTableConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterBySetAlgorithmContext extends AlterSpecificationContext {
 	public _algType: Token;
@@ -54995,14 +53889,6 @@ export class AlterBySetAlgorithmContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterBySetAlgorithm) {
 			listener.exitAlterBySetAlgorithm(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterBySetAlgorithm) {
-			return visitor.visitAlterBySetAlgorithm(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55032,14 +53918,6 @@ export class AlterByChangeDefaultContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByChangeDefault) {
 			listener.exitAlterByChangeDefault(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByChangeDefault) {
-			return visitor.visitAlterByChangeDefault(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55079,14 +53957,6 @@ export class AlterByChangeColumnContext extends AlterSpecificationContext {
 			listener.exitAlterByChangeColumn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByChangeColumn) {
-			return visitor.visitAlterByChangeColumn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByRenameColumnContext extends AlterSpecificationContext {
 	public _oldColumn: UidContext;
@@ -55119,14 +53989,6 @@ export class AlterByRenameColumnContext extends AlterSpecificationContext {
 			listener.exitAlterByRenameColumn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByRenameColumn) {
-			return visitor.visitAlterByRenameColumn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByLockContext extends AlterSpecificationContext {
 	public _lockType: Token;
@@ -55150,14 +54012,6 @@ export class AlterByLockContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByLock) {
 			listener.exitAlterByLock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByLock) {
-			return visitor.visitAlterByLock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55194,14 +54048,6 @@ export class AlterByModifyColumnContext extends AlterSpecificationContext {
 			listener.exitAlterByModifyColumn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByModifyColumn) {
-			return visitor.visitAlterByModifyColumn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByDropColumnContext extends AlterSpecificationContext {
 	public DROP(): TerminalNode { return this.getToken(MySqlParser.DROP, 0); }
@@ -55226,14 +54072,6 @@ export class AlterByDropColumnContext extends AlterSpecificationContext {
 			listener.exitAlterByDropColumn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByDropColumn) {
-			return visitor.visitAlterByDropColumn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByDropPrimaryKeyContext extends AlterSpecificationContext {
 	public DROP(): TerminalNode { return this.getToken(MySqlParser.DROP, 0); }
@@ -55253,14 +54091,6 @@ export class AlterByDropPrimaryKeyContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByDropPrimaryKey) {
 			listener.exitAlterByDropPrimaryKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByDropPrimaryKey) {
-			return visitor.visitAlterByDropPrimaryKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55295,14 +54125,6 @@ export class AlterByRenameIndexContext extends AlterSpecificationContext {
 			listener.exitAlterByRenameIndex(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByRenameIndex) {
-			return visitor.visitAlterByRenameIndex(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByDropIndexContext extends AlterSpecificationContext {
 	public _indexFormat: Token;
@@ -55326,14 +54148,6 @@ export class AlterByDropIndexContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByDropIndex) {
 			listener.exitAlterByDropIndex(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByDropIndex) {
-			return visitor.visitAlterByDropIndex(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55360,14 +54174,6 @@ export class AlterByDropForeignKeyContext extends AlterSpecificationContext {
 			listener.exitAlterByDropForeignKey(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByDropForeignKey) {
-			return visitor.visitAlterByDropForeignKey(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByDisableKeysContext extends AlterSpecificationContext {
 	public DISABLE(): TerminalNode { return this.getToken(MySqlParser.DISABLE, 0); }
@@ -55388,14 +54194,6 @@ export class AlterByDisableKeysContext extends AlterSpecificationContext {
 			listener.exitAlterByDisableKeys(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByDisableKeys) {
-			return visitor.visitAlterByDisableKeys(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByEnableKeysContext extends AlterSpecificationContext {
 	public ENABLE(): TerminalNode { return this.getToken(MySqlParser.ENABLE, 0); }
@@ -55414,14 +54212,6 @@ export class AlterByEnableKeysContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByEnableKeys) {
 			listener.exitAlterByEnableKeys(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByEnableKeys) {
-			return visitor.visitAlterByEnableKeys(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55452,14 +54242,6 @@ export class AlterByRenameContext extends AlterSpecificationContext {
 			listener.exitAlterByRename(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByRename) {
-			return visitor.visitAlterByRename(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByOrderContext extends AlterSpecificationContext {
 	public ORDER(): TerminalNode { return this.getToken(MySqlParser.ORDER, 0); }
@@ -55481,14 +54263,6 @@ export class AlterByOrderContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByOrder) {
 			listener.exitAlterByOrder(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByOrder) {
-			return visitor.visitAlterByOrder(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55518,14 +54292,6 @@ export class AlterByConvertCharsetContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByConvertCharset) {
 			listener.exitAlterByConvertCharset(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByConvertCharset) {
-			return visitor.visitAlterByConvertCharset(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55565,14 +54331,6 @@ export class AlterByDefaultCharsetContext extends AlterSpecificationContext {
 			listener.exitAlterByDefaultCharset(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByDefaultCharset) {
-			return visitor.visitAlterByDefaultCharset(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByDiscardTablespaceContext extends AlterSpecificationContext {
 	public DISCARD(): TerminalNode { return this.getToken(MySqlParser.DISCARD, 0); }
@@ -55591,14 +54349,6 @@ export class AlterByDiscardTablespaceContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByDiscardTablespace) {
 			listener.exitAlterByDiscardTablespace(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByDiscardTablespace) {
-			return visitor.visitAlterByDiscardTablespace(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55621,14 +54371,6 @@ export class AlterByImportTablespaceContext extends AlterSpecificationContext {
 			listener.exitAlterByImportTablespace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByImportTablespace) {
-			return visitor.visitAlterByImportTablespace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByForceContext extends AlterSpecificationContext {
 	public FORCE(): TerminalNode { return this.getToken(MySqlParser.FORCE, 0); }
@@ -55646,14 +54388,6 @@ export class AlterByForceContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByForce) {
 			listener.exitAlterByForce(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByForce) {
-			return visitor.visitAlterByForce(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55676,14 +54410,6 @@ export class AlterByValidateContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByValidate) {
 			listener.exitAlterByValidate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByValidate) {
-			return visitor.visitAlterByValidate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55726,14 +54452,6 @@ export class AlterByAddPartitionContext extends AlterSpecificationContext {
 			listener.exitAlterByAddPartition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByAddPartition) {
-			return visitor.visitAlterByAddPartition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByDropPartitionContext extends AlterSpecificationContext {
 	public DROP(): TerminalNode { return this.getToken(MySqlParser.DROP, 0); }
@@ -55755,14 +54473,6 @@ export class AlterByDropPartitionContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByDropPartition) {
 			listener.exitAlterByDropPartition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByDropPartition) {
-			return visitor.visitAlterByDropPartition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55790,14 +54500,6 @@ export class AlterByDiscardPartitionContext extends AlterSpecificationContext {
 			listener.exitAlterByDiscardPartition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByDiscardPartition) {
-			return visitor.visitAlterByDiscardPartition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByImportPartitionContext extends AlterSpecificationContext {
 	public IMPORT(): TerminalNode { return this.getToken(MySqlParser.IMPORT, 0); }
@@ -55821,14 +54523,6 @@ export class AlterByImportPartitionContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByImportPartition) {
 			listener.exitAlterByImportPartition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByImportPartition) {
-			return visitor.visitAlterByImportPartition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55855,14 +54549,6 @@ export class AlterByTruncatePartitionContext extends AlterSpecificationContext {
 			listener.exitAlterByTruncatePartition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByTruncatePartition) {
-			return visitor.visitAlterByTruncatePartition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByCoalescePartitionContext extends AlterSpecificationContext {
 	public COALESCE(): TerminalNode { return this.getToken(MySqlParser.COALESCE, 0); }
@@ -55884,14 +54570,6 @@ export class AlterByCoalescePartitionContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByCoalescePartition) {
 			listener.exitAlterByCoalescePartition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByCoalescePartition) {
-			return visitor.visitAlterByCoalescePartition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -55938,14 +54616,6 @@ export class AlterByReorganizePartitionContext extends AlterSpecificationContext
 			listener.exitAlterByReorganizePartition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByReorganizePartition) {
-			return visitor.visitAlterByReorganizePartition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByExchangePartitionContext extends AlterSpecificationContext {
 	public _validationFormat: Token;
@@ -55985,14 +54655,6 @@ export class AlterByExchangePartitionContext extends AlterSpecificationContext {
 			listener.exitAlterByExchangePartition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByExchangePartition) {
-			return visitor.visitAlterByExchangePartition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByAnalyzePartitionContext extends AlterSpecificationContext {
 	public ANALYZE(): TerminalNode { return this.getToken(MySqlParser.ANALYZE, 0); }
@@ -56015,14 +54677,6 @@ export class AlterByAnalyzePartitionContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByAnalyzePartition) {
 			listener.exitAlterByAnalyzePartition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByAnalyzePartition) {
-			return visitor.visitAlterByAnalyzePartition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56049,14 +54703,6 @@ export class AlterByCheckPartitionContext extends AlterSpecificationContext {
 			listener.exitAlterByCheckPartition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByCheckPartition) {
-			return visitor.visitAlterByCheckPartition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByOptimizePartitionContext extends AlterSpecificationContext {
 	public OPTIMIZE(): TerminalNode { return this.getToken(MySqlParser.OPTIMIZE, 0); }
@@ -56079,14 +54725,6 @@ export class AlterByOptimizePartitionContext extends AlterSpecificationContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByOptimizePartition) {
 			listener.exitAlterByOptimizePartition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByOptimizePartition) {
-			return visitor.visitAlterByOptimizePartition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56113,14 +54751,6 @@ export class AlterByRebuildPartitionContext extends AlterSpecificationContext {
 			listener.exitAlterByRebuildPartition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByRebuildPartition) {
-			return visitor.visitAlterByRebuildPartition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByRepairPartitionContext extends AlterSpecificationContext {
 	public REPAIR(): TerminalNode { return this.getToken(MySqlParser.REPAIR, 0); }
@@ -56145,14 +54775,6 @@ export class AlterByRepairPartitionContext extends AlterSpecificationContext {
 			listener.exitAlterByRepairPartition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByRepairPartition) {
-			return visitor.visitAlterByRepairPartition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByRemovePartitioningContext extends AlterSpecificationContext {
 	public REMOVE(): TerminalNode { return this.getToken(MySqlParser.REMOVE, 0); }
@@ -56173,14 +54795,6 @@ export class AlterByRemovePartitioningContext extends AlterSpecificationContext 
 			listener.exitAlterByRemovePartitioning(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByRemovePartitioning) {
-			return visitor.visitAlterByRemovePartitioning(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AlterByUpgradePartitioningContext extends AlterSpecificationContext {
 	public UPGRADE(): TerminalNode { return this.getToken(MySqlParser.UPGRADE, 0); }
@@ -56199,14 +54813,6 @@ export class AlterByUpgradePartitioningContext extends AlterSpecificationContext
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterByUpgradePartitioning) {
 			listener.exitAlterByUpgradePartitioning(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterByUpgradePartitioning) {
-			return visitor.visitAlterByUpgradePartitioning(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56240,14 +54846,6 @@ export class DropDatabaseContext extends ParserRuleContext {
 			listener.exitDropDatabase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDropDatabase) {
-			return visitor.visitDropDatabase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56275,14 +54873,6 @@ export class DropEventContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDropEvent) {
 			listener.exitDropEvent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDropEvent) {
-			return visitor.visitDropEvent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56401,14 +54991,6 @@ export class DropIndexContext extends ParserRuleContext {
 			listener.exitDropIndex(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDropIndex) {
-			return visitor.visitDropIndex(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56441,14 +55023,6 @@ export class DropLogfileGroupContext extends ParserRuleContext {
 			listener.exitDropLogfileGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDropLogfileGroup) {
-			return visitor.visitDropLogfileGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56476,14 +55050,6 @@ export class DropProcedureContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDropProcedure) {
 			listener.exitDropProcedure(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDropProcedure) {
-			return visitor.visitDropProcedure(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56515,14 +55081,6 @@ export class DropFunctionContext extends ParserRuleContext {
 			listener.exitDropFunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDropFunction) {
-			return visitor.visitDropFunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56550,14 +55108,6 @@ export class DropServerContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDropServer) {
 			listener.exitDropServer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDropServer) {
-			return visitor.visitDropServer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56593,14 +55143,6 @@ export class DropTableContext extends ParserRuleContext {
 			listener.exitDropTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDropTable) {
-			return visitor.visitDropTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56632,14 +55174,6 @@ export class DropTablespaceContext extends ParserRuleContext {
 			listener.exitDropTablespace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDropTablespace) {
-			return visitor.visitDropTablespace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56667,14 +55201,6 @@ export class DropTriggerContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDropTrigger) {
 			listener.exitDropTrigger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDropTrigger) {
-			return visitor.visitDropTrigger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56724,14 +55250,6 @@ export class DropViewContext extends ParserRuleContext {
 			listener.exitDropView(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDropView) {
-			return visitor.visitDropView(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56773,14 +55291,6 @@ export class RenameTableContext extends ParserRuleContext {
 			listener.exitRenameTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRenameTable) {
-			return visitor.visitRenameTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56812,14 +55322,6 @@ export class RenameTableClauseContext extends ParserRuleContext {
 			listener.exitRenameTableClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRenameTableClause) {
-			return visitor.visitRenameTableClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56844,14 +55346,6 @@ export class TruncateTableContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTruncateTable) {
 			listener.exitTruncateTable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTruncateTable) {
-			return visitor.visitTruncateTable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56887,14 +55381,6 @@ export class CallStatementContext extends ParserRuleContext {
 			listener.exitCallStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCallStatement) {
-			return visitor.visitCallStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56922,14 +55408,6 @@ export class DeleteStatementContext extends ParserRuleContext {
 			listener.exitDeleteStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDeleteStatement) {
-			return visitor.visitDeleteStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -56953,14 +55431,6 @@ export class DoStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDoStatement) {
 			listener.exitDoStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDoStatement) {
-			return visitor.visitDoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -56994,14 +55464,6 @@ export class HandlerStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitHandlerStatement) {
 			listener.exitHandlerStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHandlerStatement) {
-			return visitor.visitHandlerStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57094,14 +55556,6 @@ export class InsertStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitInsertStatement) {
 			listener.exitInsertStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitInsertStatement) {
-			return visitor.visitInsertStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57248,14 +55702,6 @@ export class LoadDataStatementContext extends ParserRuleContext {
 			listener.exitLoadDataStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLoadDataStatement) {
-			return visitor.visitLoadDataStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57372,14 +55818,6 @@ export class LoadXmlStatementContext extends ParserRuleContext {
 			listener.exitLoadXmlStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLoadXmlStatement) {
-			return visitor.visitLoadXmlStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57464,14 +55902,6 @@ export class ReplaceStatementContext extends ParserRuleContext {
 			listener.exitReplaceStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitReplaceStatement) {
-			return visitor.visitReplaceStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57508,14 +55938,6 @@ export class SimpleSelectContext extends SelectStatementContext {
 			listener.exitSimpleSelect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSimpleSelect) {
-			return visitor.visitSimpleSelect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ParenthesisSelectContext extends SelectStatementContext {
 	public queryExpression(): QueryExpressionContext {
@@ -57538,14 +55960,6 @@ export class ParenthesisSelectContext extends SelectStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitParenthesisSelect) {
 			listener.exitParenthesisSelect(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitParenthesisSelect) {
-			return visitor.visitParenthesisSelect(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57597,14 +56011,6 @@ export class UnionSelectContext extends SelectStatementContext {
 			listener.exitUnionSelect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUnionSelect) {
-			return visitor.visitUnionSelect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UnionParenthesisSelectContext extends SelectStatementContext {
 	public _unionType: Token;
@@ -57651,14 +56057,6 @@ export class UnionParenthesisSelectContext extends SelectStatementContext {
 			listener.exitUnionParenthesisSelect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUnionParenthesisSelect) {
-			return visitor.visitUnionParenthesisSelect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57684,14 +56082,6 @@ export class UpdateStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitUpdateStatement) {
 			listener.exitUpdateStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUpdateStatement) {
-			return visitor.visitUpdateStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57757,14 +56147,6 @@ export class InsertStatementValueContext extends ParserRuleContext {
 			listener.exitInsertStatementValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitInsertStatementValue) {
-			return visitor.visitInsertStatementValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57794,14 +56176,6 @@ export class UpdatedElementContext extends ParserRuleContext {
 			listener.exitUpdatedElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUpdatedElement) {
-			return visitor.visitUpdatedElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -57825,14 +56199,6 @@ export class AssignmentFieldContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAssignmentField) {
 			listener.exitAssignmentField(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentField) {
-			return visitor.visitAssignmentField(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57860,14 +56226,6 @@ export class LockClauseContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitLockClause) {
 			listener.exitLockClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLockClause) {
-			return visitor.visitLockClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57915,14 +56273,6 @@ export class SingleDeleteStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSingleDeleteStatement) {
 			listener.exitSingleDeleteStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSingleDeleteStatement) {
-			return visitor.visitSingleDeleteStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -57996,14 +56346,6 @@ export class MultipleDeleteStatementContext extends ParserRuleContext {
 			listener.exitMultipleDeleteStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitMultipleDeleteStatement) {
-			return visitor.visitMultipleDeleteStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58032,14 +56374,6 @@ export class HandlerOpenStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitHandlerOpenStatement) {
 			listener.exitHandlerOpenStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHandlerOpenStatement) {
-			return visitor.visitHandlerOpenStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58093,14 +56427,6 @@ export class HandlerReadIndexStatementContext extends ParserRuleContext {
 			listener.exitHandlerReadIndexStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHandlerReadIndexStatement) {
-			return visitor.visitHandlerReadIndexStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58138,14 +56464,6 @@ export class HandlerReadStatementContext extends ParserRuleContext {
 			listener.exitHandlerReadStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHandlerReadStatement) {
-			return visitor.visitHandlerReadStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58170,14 +56488,6 @@ export class HandlerCloseStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitHandlerCloseStatement) {
 			listener.exitHandlerCloseStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHandlerCloseStatement) {
-			return visitor.visitHandlerCloseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58241,14 +56551,6 @@ export class SingleUpdateStatementContext extends ParserRuleContext {
 			listener.exitSingleUpdateStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSingleUpdateStatement) {
-			return visitor.visitSingleUpdateStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58300,14 +56602,6 @@ export class MultipleUpdateStatementContext extends ParserRuleContext {
 			listener.exitMultipleUpdateStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitMultipleUpdateStatement) {
-			return visitor.visitMultipleUpdateStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58349,14 +56643,6 @@ export class OrderByClauseContext extends ParserRuleContext {
 			listener.exitOrderByClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitOrderByClause) {
-			return visitor.visitOrderByClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58382,14 +56668,6 @@ export class OrderByExpressionContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitOrderByExpression) {
 			listener.exitOrderByExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitOrderByExpression) {
-			return visitor.visitOrderByExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58429,14 +56707,6 @@ export class TableSourcesContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableSources) {
 			listener.exitTableSources(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableSources) {
-			return visitor.visitTableSources(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58481,14 +56751,6 @@ export class TableSourceBaseContext extends TableSourceContext {
 			listener.exitTableSourceBase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableSourceBase) {
-			return visitor.visitTableSourceBase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableSourceNestedContext extends TableSourceContext {
 	public LR_BRACKET(): TerminalNode { return this.getToken(MySqlParser.LR_BRACKET, 0); }
@@ -58519,14 +56781,6 @@ export class TableSourceNestedContext extends TableSourceContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableSourceNested) {
 			listener.exitTableSourceNested(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableSourceNested) {
-			return visitor.visitTableSourceNested(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58591,14 +56845,6 @@ export class AtomTableItemContext extends TableSourceItemContext {
 			listener.exitAtomTableItem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAtomTableItem) {
-			return visitor.visitAtomTableItem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SubqueryTableItemContext extends TableSourceItemContext {
 	public _parenthesisSubquery: SelectStatementContext;
@@ -58628,14 +56874,6 @@ export class SubqueryTableItemContext extends TableSourceItemContext {
 			listener.exitSubqueryTableItem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSubqueryTableItem) {
-			return visitor.visitSubqueryTableItem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TableSourcesItemContext extends TableSourceItemContext {
 	public LR_BRACKET(): TerminalNode { return this.getToken(MySqlParser.LR_BRACKET, 0); }
@@ -58657,14 +56895,6 @@ export class TableSourcesItemContext extends TableSourceItemContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableSourcesItem) {
 			listener.exitTableSourcesItem(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableSourcesItem) {
-			return visitor.visitTableSourcesItem(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58704,14 +56934,6 @@ export class IndexHintContext extends ParserRuleContext {
 			listener.exitIndexHint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIndexHint) {
-			return visitor.visitIndexHint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58735,14 +56957,6 @@ export class IndexHintTypeContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitIndexHintType) {
 			listener.exitIndexHintType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIndexHintType) {
-			return visitor.visitIndexHintType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58791,14 +57005,6 @@ export class InnerJoinContext extends JoinPartContext {
 			listener.exitInnerJoin(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitInnerJoin) {
-			return visitor.visitInnerJoin(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StraightJoinContext extends JoinPartContext {
 	public STRAIGHT_JOIN(): TerminalNode { return this.getToken(MySqlParser.STRAIGHT_JOIN, 0); }
@@ -58823,14 +57029,6 @@ export class StraightJoinContext extends JoinPartContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitStraightJoin) {
 			listener.exitStraightJoin(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitStraightJoin) {
-			return visitor.visitStraightJoin(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58868,14 +57066,6 @@ export class OuterJoinContext extends JoinPartContext {
 			listener.exitOuterJoin(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitOuterJoin) {
-			return visitor.visitOuterJoin(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NaturalJoinContext extends JoinPartContext {
 	public NATURAL(): TerminalNode { return this.getToken(MySqlParser.NATURAL, 0); }
@@ -58900,14 +57090,6 @@ export class NaturalJoinContext extends JoinPartContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitNaturalJoin) {
 			listener.exitNaturalJoin(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitNaturalJoin) {
-			return visitor.visitNaturalJoin(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -58939,14 +57121,6 @@ export class QueryExpressionContext extends ParserRuleContext {
 			listener.exitQueryExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitQueryExpression) {
-			return visitor.visitQueryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -58974,14 +57148,6 @@ export class QueryExpressionNointoContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitQueryExpressionNointo) {
 			listener.exitQueryExpressionNointo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitQueryExpressionNointo) {
-			return visitor.visitQueryExpressionNointo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59030,14 +57196,6 @@ export class QuerySpecificationContext extends ParserRuleContext {
 			listener.exitQuerySpecification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitQuerySpecification) {
-			return visitor.visitQuerySpecification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59081,14 +57239,6 @@ export class QuerySpecificationNointoContext extends ParserRuleContext {
 			listener.exitQuerySpecificationNointo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitQuerySpecificationNointo) {
-			return visitor.visitQuerySpecificationNointo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59115,14 +57265,6 @@ export class UnionParenthesisContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitUnionParenthesis) {
 			listener.exitUnionParenthesis(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUnionParenthesis) {
-			return visitor.visitUnionParenthesis(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59156,14 +57298,6 @@ export class UnionStatementContext extends ParserRuleContext {
 			listener.exitUnionStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUnionStatement) {
-			return visitor.visitUnionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59194,14 +57328,6 @@ export class SelectSpecContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSelectSpec) {
 			listener.exitSelectSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectSpec) {
-			return visitor.visitSelectSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59245,14 +57371,6 @@ export class SelectElementsContext extends ParserRuleContext {
 			listener.exitSelectElements(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectElements) {
-			return visitor.visitSelectElements(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59288,14 +57406,6 @@ export class SelectStarElementContext extends SelectElementContext {
 			listener.exitSelectStarElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectStarElement) {
-			return visitor.visitSelectStarElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SelectColumnElementContext extends SelectElementContext {
 	public fullColumnName(): FullColumnNameContext {
@@ -59319,14 +57429,6 @@ export class SelectColumnElementContext extends SelectElementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSelectColumnElement) {
 			listener.exitSelectColumnElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectColumnElement) {
-			return visitor.visitSelectColumnElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59354,14 +57456,6 @@ export class SelectFunctionElementContext extends SelectElementContext {
 			listener.exitSelectFunctionElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectFunctionElement) {
-			return visitor.visitSelectFunctionElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SelectExpressionElementContext extends SelectElementContext {
 	public expression(): ExpressionContext {
@@ -59387,14 +57481,6 @@ export class SelectExpressionElementContext extends SelectElementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSelectExpressionElement) {
 			listener.exitSelectExpressionElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectExpressionElement) {
-			return visitor.visitSelectExpressionElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59446,14 +57532,6 @@ export class SelectIntoVariablesContext extends SelectIntoExpressionContext {
 			listener.exitSelectIntoVariables(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectIntoVariables) {
-			return visitor.visitSelectIntoVariables(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SelectIntoDumpFileContext extends SelectIntoExpressionContext {
 	public INTO(): TerminalNode { return this.getToken(MySqlParser.INTO, 0); }
@@ -59473,14 +57551,6 @@ export class SelectIntoDumpFileContext extends SelectIntoExpressionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSelectIntoDumpFile) {
 			listener.exitSelectIntoDumpFile(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectIntoDumpFile) {
-			return visitor.visitSelectIntoDumpFile(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59533,14 +57603,6 @@ export class SelectIntoTextFileContext extends SelectIntoExpressionContext {
 			listener.exitSelectIntoTextFile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectIntoTextFile) {
-			return visitor.visitSelectIntoTextFile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59571,14 +57633,6 @@ export class SelectFieldsIntoContext extends ParserRuleContext {
 			listener.exitSelectFieldsInto(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectFieldsInto) {
-			return visitor.visitSelectFieldsInto(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59604,14 +57658,6 @@ export class SelectLinesIntoContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSelectLinesInto) {
 			listener.exitSelectLinesInto(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectLinesInto) {
-			return visitor.visitSelectLinesInto(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59674,14 +57720,6 @@ export class FromClauseContext extends ParserRuleContext {
 			listener.exitFromClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFromClause) {
-			return visitor.visitFromClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59707,14 +57745,6 @@ export class GroupByItemContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitGroupByItem) {
 			listener.exitGroupByItem(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitGroupByItem) {
-			return visitor.visitGroupByItem(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59752,14 +57782,6 @@ export class LimitClauseContext extends ParserRuleContext {
 			listener.exitLimitClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLimitClause) {
-			return visitor.visitLimitClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59785,14 +57807,6 @@ export class LimitClauseAtomContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitLimitClauseAtom) {
 			listener.exitLimitClauseAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLimitClauseAtom) {
-			return visitor.visitLimitClauseAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59836,14 +57850,6 @@ export class StartTransactionContext extends ParserRuleContext {
 			listener.exitStartTransaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitStartTransaction) {
-			return visitor.visitStartTransaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59865,14 +57871,6 @@ export class BeginWorkContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitBeginWork) {
 			listener.exitBeginWork(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitBeginWork) {
-			return visitor.visitBeginWork(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -59912,14 +57910,6 @@ export class CommitWorkContext extends ParserRuleContext {
 			listener.exitCommitWork(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCommitWork) {
-			return visitor.visitCommitWork(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59957,14 +57947,6 @@ export class RollbackWorkContext extends ParserRuleContext {
 			listener.exitRollbackWork(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRollbackWork) {
-			return visitor.visitRollbackWork(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -59988,14 +57970,6 @@ export class SavepointStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSavepointStatement) {
 			listener.exitSavepointStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSavepointStatement) {
-			return visitor.visitSavepointStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60026,14 +58000,6 @@ export class RollbackStatementContext extends ParserRuleContext {
 			listener.exitRollbackStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRollbackStatement) {
-			return visitor.visitRollbackStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60058,14 +58024,6 @@ export class ReleaseStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitReleaseStatement) {
 			listener.exitReleaseStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitReleaseStatement) {
-			return visitor.visitReleaseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60109,14 +58067,6 @@ export class LockTablesContext extends ParserRuleContext {
 			listener.exitLockTables(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLockTables) {
-			return visitor.visitLockTables(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60138,14 +58088,6 @@ export class UnlockTablesContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitUnlockTables) {
 			listener.exitUnlockTables(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUnlockTables) {
-			return visitor.visitUnlockTables(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60173,14 +58115,6 @@ export class SetAutocommitStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSetAutocommitStatement) {
 			listener.exitSetAutocommitStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSetAutocommitStatement) {
-			return visitor.visitSetAutocommitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60227,14 +58161,6 @@ export class SetTransactionStatementContext extends ParserRuleContext {
 			listener.exitSetTransactionStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSetTransactionStatement) {
-			return visitor.visitSetTransactionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60260,14 +58186,6 @@ export class TransactionModeContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTransactionMode) {
 			listener.exitTransactionMode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTransactionMode) {
-			return visitor.visitTransactionMode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60301,14 +58219,6 @@ export class LockTableElementContext extends ParserRuleContext {
 			listener.exitLockTableElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLockTableElement) {
-			return visitor.visitLockTableElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60332,14 +58242,6 @@ export class LockActionContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitLockAction) {
 			listener.exitLockAction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLockAction) {
-			return visitor.visitLockAction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60371,14 +58273,6 @@ export class TransactionOptionContext extends ParserRuleContext {
 			listener.exitTransactionOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTransactionOption) {
-			return visitor.visitTransactionOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60403,14 +58297,6 @@ export class TransactionLevelContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTransactionLevel) {
 			listener.exitTransactionLevel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTransactionLevel) {
-			return visitor.visitTransactionLevel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60458,14 +58344,6 @@ export class ChangeMasterContext extends ParserRuleContext {
 			listener.exitChangeMaster(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitChangeMaster) {
-			return visitor.visitChangeMaster(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60508,14 +58386,6 @@ export class ChangeReplicationFilterContext extends ParserRuleContext {
 			listener.exitChangeReplicationFilter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitChangeReplicationFilter) {
-			return visitor.visitChangeReplicationFilter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60547,14 +58417,6 @@ export class PurgeBinaryLogsContext extends ParserRuleContext {
 			listener.exitPurgeBinaryLogs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPurgeBinaryLogs) {
-			return visitor.visitPurgeBinaryLogs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60576,14 +58438,6 @@ export class ResetMasterContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitResetMaster) {
 			listener.exitResetMaster(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitResetMaster) {
-			return visitor.visitResetMaster(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60611,14 +58465,6 @@ export class ResetSlaveContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitResetSlave) {
 			listener.exitResetSlave(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitResetSlave) {
-			return visitor.visitResetSlave(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60678,14 +58524,6 @@ export class StartSlaveContext extends ParserRuleContext {
 			listener.exitStartSlave(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitStartSlave) {
-			return visitor.visitStartSlave(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60727,14 +58565,6 @@ export class StopSlaveContext extends ParserRuleContext {
 			listener.exitStopSlave(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitStopSlave) {
-			return visitor.visitStopSlave(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60758,14 +58588,6 @@ export class StartGroupReplicationContext extends ParserRuleContext {
 			listener.exitStartGroupReplication(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitStartGroupReplication) {
-			return visitor.visitStartGroupReplication(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -60787,14 +58609,6 @@ export class StopGroupReplicationContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitStopGroupReplication) {
 			listener.exitStopGroupReplication(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitStopGroupReplication) {
-			return visitor.visitStopGroupReplication(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60832,14 +58646,6 @@ export class MasterStringOptionContext extends MasterOptionContext {
 			listener.exitMasterStringOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitMasterStringOption) {
-			return visitor.visitMasterStringOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class MasterDecimalOptionContext extends MasterOptionContext {
 	public decimalMasterOption(): DecimalMasterOptionContext {
@@ -60863,14 +58669,6 @@ export class MasterDecimalOptionContext extends MasterOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitMasterDecimalOption) {
 			listener.exitMasterDecimalOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitMasterDecimalOption) {
-			return visitor.visitMasterDecimalOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60898,14 +58696,6 @@ export class MasterBoolOptionContext extends MasterOptionContext {
 			listener.exitMasterBoolOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitMasterBoolOption) {
-			return visitor.visitMasterBoolOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class MasterRealOptionContext extends MasterOptionContext {
 	public MASTER_HEARTBEAT_PERIOD(): TerminalNode { return this.getToken(MySqlParser.MASTER_HEARTBEAT_PERIOD, 0); }
@@ -60925,14 +58715,6 @@ export class MasterRealOptionContext extends MasterOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitMasterRealOption) {
 			listener.exitMasterRealOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitMasterRealOption) {
-			return visitor.visitMasterRealOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -60975,14 +58757,6 @@ export class MasterUidListOptionContext extends MasterOptionContext {
 			listener.exitMasterUidListOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitMasterUidListOption) {
-			return visitor.visitMasterUidListOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61018,14 +58792,6 @@ export class StringMasterOptionContext extends ParserRuleContext {
 			listener.exitStringMasterOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitStringMasterOption) {
-			return visitor.visitStringMasterOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61053,14 +58819,6 @@ export class DecimalMasterOptionContext extends ParserRuleContext {
 			listener.exitDecimalMasterOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDecimalMasterOption) {
-			return visitor.visitDecimalMasterOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61085,14 +58843,6 @@ export class BoolMasterOptionContext extends ParserRuleContext {
 			listener.exitBoolMasterOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitBoolMasterOption) {
-			return visitor.visitBoolMasterOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61115,14 +58865,6 @@ export class ChannelOptionContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitChannelOption) {
 			listener.exitChannelOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitChannelOption) {
-			return visitor.visitChannelOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61162,14 +58904,6 @@ export class DoDbReplicationContext extends ReplicationFilterContext {
 			listener.exitDoDbReplication(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDoDbReplication) {
-			return visitor.visitDoDbReplication(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IgnoreDbReplicationContext extends ReplicationFilterContext {
 	public REPLICATE_IGNORE_DB(): TerminalNode { return this.getToken(MySqlParser.REPLICATE_IGNORE_DB, 0); }
@@ -61193,14 +58927,6 @@ export class IgnoreDbReplicationContext extends ReplicationFilterContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitIgnoreDbReplication) {
 			listener.exitIgnoreDbReplication(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIgnoreDbReplication) {
-			return visitor.visitIgnoreDbReplication(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61228,14 +58954,6 @@ export class DoTableReplicationContext extends ReplicationFilterContext {
 			listener.exitDoTableReplication(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDoTableReplication) {
-			return visitor.visitDoTableReplication(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IgnoreTableReplicationContext extends ReplicationFilterContext {
 	public REPLICATE_IGNORE_TABLE(): TerminalNode { return this.getToken(MySqlParser.REPLICATE_IGNORE_TABLE, 0); }
@@ -61259,14 +58977,6 @@ export class IgnoreTableReplicationContext extends ReplicationFilterContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitIgnoreTableReplication) {
 			listener.exitIgnoreTableReplication(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIgnoreTableReplication) {
-			return visitor.visitIgnoreTableReplication(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61294,14 +59004,6 @@ export class WildDoTableReplicationContext extends ReplicationFilterContext {
 			listener.exitWildDoTableReplication(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitWildDoTableReplication) {
-			return visitor.visitWildDoTableReplication(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class WildIgnoreTableReplicationContext extends ReplicationFilterContext {
 	public REPLICATE_WILD_IGNORE_TABLE(): TerminalNode { return this.getToken(MySqlParser.REPLICATE_WILD_IGNORE_TABLE, 0); }
@@ -61325,14 +59027,6 @@ export class WildIgnoreTableReplicationContext extends ReplicationFilterContext 
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitWildIgnoreTableReplication) {
 			listener.exitWildIgnoreTableReplication(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitWildIgnoreTableReplication) {
-			return visitor.visitWildIgnoreTableReplication(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61375,14 +59069,6 @@ export class RewriteDbReplicationContext extends ReplicationFilterContext {
 			listener.exitRewriteDbReplication(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRewriteDbReplication) {
-			return visitor.visitRewriteDbReplication(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61418,14 +59104,6 @@ export class TablePairContext extends ParserRuleContext {
 			listener.exitTablePair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTablePair) {
-			return visitor.visitTablePair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61447,14 +59125,6 @@ export class ThreadTypeContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitThreadType) {
 			listener.exitThreadType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitThreadType) {
-			return visitor.visitThreadType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61494,14 +59164,6 @@ export class GtidsUntilOptionContext extends UntilOptionContext {
 			listener.exitGtidsUntilOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitGtidsUntilOption) {
-			return visitor.visitGtidsUntilOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class MasterLogUntilOptionContext extends UntilOptionContext {
 	public MASTER_LOG_FILE(): TerminalNode { return this.getToken(MySqlParser.MASTER_LOG_FILE, 0); }
@@ -61534,14 +59196,6 @@ export class MasterLogUntilOptionContext extends UntilOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitMasterLogUntilOption) {
 			listener.exitMasterLogUntilOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitMasterLogUntilOption) {
-			return visitor.visitMasterLogUntilOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61578,14 +59232,6 @@ export class RelayLogUntilOptionContext extends UntilOptionContext {
 			listener.exitRelayLogUntilOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRelayLogUntilOption) {
-			return visitor.visitRelayLogUntilOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SqlGapsUntilOptionContext extends UntilOptionContext {
 	public SQL_AFTER_MTS_GAPS(): TerminalNode { return this.getToken(MySqlParser.SQL_AFTER_MTS_GAPS, 0); }
@@ -61603,14 +59249,6 @@ export class SqlGapsUntilOptionContext extends UntilOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSqlGapsUntilOption) {
 			listener.exitSqlGapsUntilOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSqlGapsUntilOption) {
-			return visitor.visitSqlGapsUntilOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61647,14 +59285,6 @@ export class UserConnectionOptionContext extends ConnectionOptionContext {
 			listener.exitUserConnectionOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUserConnectionOption) {
-			return visitor.visitUserConnectionOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PasswordConnectionOptionContext extends ConnectionOptionContext {
 	public _conOptPassword: Token;
@@ -61675,14 +59305,6 @@ export class PasswordConnectionOptionContext extends ConnectionOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPasswordConnectionOption) {
 			listener.exitPasswordConnectionOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPasswordConnectionOption) {
-			return visitor.visitPasswordConnectionOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61707,14 +59329,6 @@ export class DefaultAuthConnectionOptionContext extends ConnectionOptionContext 
 			listener.exitDefaultAuthConnectionOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDefaultAuthConnectionOption) {
-			return visitor.visitDefaultAuthConnectionOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PluginDirConnectionOptionContext extends ConnectionOptionContext {
 	public _conOptPluginDir: Token;
@@ -61735,14 +59349,6 @@ export class PluginDirConnectionOptionContext extends ConnectionOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPluginDirConnectionOption) {
 			listener.exitPluginDirConnectionOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPluginDirConnectionOption) {
-			return visitor.visitPluginDirConnectionOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61785,14 +59391,6 @@ export class GtuidSetContext extends ParserRuleContext {
 			listener.exitGtuidSet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitGtuidSet) {
-			return visitor.visitGtuidSet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61824,14 +59422,6 @@ export class XaStartTransactionContext extends ParserRuleContext {
 			listener.exitXaStartTransaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitXaStartTransaction) {
-			return visitor.visitXaStartTransaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61861,14 +59451,6 @@ export class XaEndTransactionContext extends ParserRuleContext {
 			listener.exitXaEndTransaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitXaEndTransaction) {
-			return visitor.visitXaEndTransaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61893,14 +59475,6 @@ export class XaPrepareStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitXaPrepareStatement) {
 			listener.exitXaPrepareStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitXaPrepareStatement) {
-			return visitor.visitXaPrepareStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61931,14 +59505,6 @@ export class XaCommitWorkContext extends ParserRuleContext {
 			listener.exitXaCommitWork(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitXaCommitWork) {
-			return visitor.visitXaCommitWork(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -61963,14 +59529,6 @@ export class XaRollbackWorkContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitXaRollbackWork) {
 			listener.exitXaRollbackWork(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitXaRollbackWork) {
-			return visitor.visitXaRollbackWork(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -61998,14 +59556,6 @@ export class XaRecoverWorkContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitXaRecoverWork) {
 			listener.exitXaRecoverWork(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitXaRecoverWork) {
-			return visitor.visitXaRecoverWork(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62038,14 +59588,6 @@ export class PrepareStatementContext extends ParserRuleContext {
 			listener.exitPrepareStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPrepareStatement) {
-			return visitor.visitPrepareStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62073,14 +59615,6 @@ export class ExecuteStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitExecuteStatement) {
 			listener.exitExecuteStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitExecuteStatement) {
-			return visitor.visitExecuteStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62111,14 +59645,6 @@ export class DeallocatePrepareContext extends ParserRuleContext {
 			listener.exitDeallocatePrepare(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDeallocatePrepare) {
-			return visitor.visitDeallocatePrepare(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62144,14 +59670,6 @@ export class RoutineBodyContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitRoutineBody) {
 			listener.exitRoutineBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRoutineBody) {
-			return visitor.visitRoutineBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62241,14 +59759,6 @@ export class BlockStatementContext extends ParserRuleContext {
 			listener.exitBlockStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitBlockStatement) {
-			return visitor.visitBlockStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62303,14 +59813,6 @@ export class CaseStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCaseStatement) {
 			listener.exitCaseStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCaseStatement) {
-			return visitor.visitCaseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62370,14 +59872,6 @@ export class IfStatementContext extends ParserRuleContext {
 			listener.exitIfStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62403,14 +59897,6 @@ export class IterateStatementContext extends ParserRuleContext {
 			listener.exitIterateStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIterateStatement) {
-			return visitor.visitIterateStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62434,14 +59920,6 @@ export class LeaveStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitLeaveStatement) {
 			listener.exitLeaveStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLeaveStatement) {
-			return visitor.visitLeaveStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62492,14 +59970,6 @@ export class LoopStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitLoopStatement) {
 			listener.exitLoopStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLoopStatement) {
-			return visitor.visitLoopStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62556,14 +60026,6 @@ export class RepeatStatementContext extends ParserRuleContext {
 			listener.exitRepeatStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRepeatStatement) {
-			return visitor.visitRepeatStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62587,14 +60049,6 @@ export class ReturnStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitReturnStatement) {
 			listener.exitReturnStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitReturnStatement) {
-			return visitor.visitReturnStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62651,14 +60105,6 @@ export class WhileStatementContext extends ParserRuleContext {
 			listener.exitWhileStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitWhileStatement) {
-			return visitor.visitWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62693,14 +60139,6 @@ export class CloseCursorContext extends CursorStatementContext {
 			listener.exitCloseCursor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCloseCursor) {
-			return visitor.visitCloseCursor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class FetchCursorContext extends CursorStatementContext {
 	public FETCH(): TerminalNode { return this.getToken(MySqlParser.FETCH, 0); }
@@ -62729,14 +60167,6 @@ export class FetchCursorContext extends CursorStatementContext {
 			listener.exitFetchCursor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFetchCursor) {
-			return visitor.visitFetchCursor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class OpenCursorContext extends CursorStatementContext {
 	public OPEN(): TerminalNode { return this.getToken(MySqlParser.OPEN, 0); }
@@ -62757,14 +60187,6 @@ export class OpenCursorContext extends CursorStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitOpenCursor) {
 			listener.exitOpenCursor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitOpenCursor) {
-			return visitor.visitOpenCursor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62797,14 +60219,6 @@ export class DeclareVariableContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDeclareVariable) {
 			listener.exitDeclareVariable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDeclareVariable) {
-			return visitor.visitDeclareVariable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62840,14 +60254,6 @@ export class DeclareConditionContext extends ParserRuleContext {
 			listener.exitDeclareCondition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDeclareCondition) {
-			return visitor.visitDeclareCondition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62876,14 +60282,6 @@ export class DeclareCursorContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDeclareCursor) {
 			listener.exitDeclareCursor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDeclareCursor) {
-			return visitor.visitDeclareCursor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -62935,14 +60333,6 @@ export class DeclareHandlerContext extends ParserRuleContext {
 			listener.exitDeclareHandler(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDeclareHandler) {
-			return visitor.visitDeclareHandler(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -62976,14 +60366,6 @@ export class HandlerConditionCodeContext extends HandlerConditionValueContext {
 			listener.exitHandlerConditionCode(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHandlerConditionCode) {
-			return visitor.visitHandlerConditionCode(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class HandlerConditionStateContext extends HandlerConditionValueContext {
 	public SQLSTATE(): TerminalNode { return this.getToken(MySqlParser.SQLSTATE, 0); }
@@ -63003,14 +60385,6 @@ export class HandlerConditionStateContext extends HandlerConditionValueContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitHandlerConditionState) {
 			listener.exitHandlerConditionState(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHandlerConditionState) {
-			return visitor.visitHandlerConditionState(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63034,14 +60408,6 @@ export class HandlerConditionNameContext extends HandlerConditionValueContext {
 			listener.exitHandlerConditionName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHandlerConditionName) {
-			return visitor.visitHandlerConditionName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class HandlerConditionWarningContext extends HandlerConditionValueContext {
 	public SQLWARNING(): TerminalNode { return this.getToken(MySqlParser.SQLWARNING, 0); }
@@ -63059,14 +60425,6 @@ export class HandlerConditionWarningContext extends HandlerConditionValueContext
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitHandlerConditionWarning) {
 			listener.exitHandlerConditionWarning(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHandlerConditionWarning) {
-			return visitor.visitHandlerConditionWarning(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63089,14 +60447,6 @@ export class HandlerConditionNotfoundContext extends HandlerConditionValueContex
 			listener.exitHandlerConditionNotfound(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHandlerConditionNotfound) {
-			return visitor.visitHandlerConditionNotfound(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class HandlerConditionExceptionContext extends HandlerConditionValueContext {
 	public SQLEXCEPTION(): TerminalNode { return this.getToken(MySqlParser.SQLEXCEPTION, 0); }
@@ -63114,14 +60464,6 @@ export class HandlerConditionExceptionContext extends HandlerConditionValueConte
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitHandlerConditionException) {
 			listener.exitHandlerConditionException(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHandlerConditionException) {
-			return visitor.visitHandlerConditionException(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63150,14 +60492,6 @@ export class ProcedureSqlStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitProcedureSqlStatement) {
 			listener.exitProcedureSqlStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitProcedureSqlStatement) {
-			return visitor.visitProcedureSqlStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63198,14 +60532,6 @@ export class CaseAlternativeContext extends ParserRuleContext {
 			listener.exitCaseAlternative(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCaseAlternative) {
-			return visitor.visitCaseAlternative(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63239,14 +60565,6 @@ export class ElifAlternativeContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitElifAlternative) {
 			listener.exitElifAlternative(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitElifAlternative) {
-			return visitor.visitElifAlternative(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63297,14 +60615,6 @@ export class AlterUserMysqlV56Context extends AlterUserContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAlterUserMysqlV56) {
 			listener.exitAlterUserMysqlV56(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterUserMysqlV56) {
-			return visitor.visitAlterUserMysqlV56(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63397,14 +60707,6 @@ export class AlterUserMysqlV57Context extends AlterUserContext {
 			listener.exitAlterUserMysqlV57(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterUserMysqlV57) {
-			return visitor.visitAlterUserMysqlV57(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63453,14 +60755,6 @@ export class CreateUserMysqlV56Context extends CreateUserContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCreateUserMysqlV56) {
 			listener.exitCreateUserMysqlV56(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateUserMysqlV56) {
-			return visitor.visitCreateUserMysqlV56(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63553,14 +60847,6 @@ export class CreateUserMysqlV57Context extends CreateUserContext {
 			listener.exitCreateUserMysqlV57(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateUserMysqlV57) {
-			return visitor.visitCreateUserMysqlV57(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63603,14 +60889,6 @@ export class DropUserContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDropUser) {
 			listener.exitDropUser(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDropUser) {
-			return visitor.visitDropUser(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63719,14 +60997,6 @@ export class GrantStatementContext extends ParserRuleContext {
 			listener.exitGrantStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitGrantStatement) {
-			return visitor.visitGrantStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63784,14 +61054,6 @@ export class GrantProxyContext extends ParserRuleContext {
 			listener.exitGrantProxy(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitGrantProxy) {
-			return visitor.visitGrantProxy(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -63831,14 +61093,6 @@ export class RenameUserContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitRenameUser) {
 			listener.exitRenameUser(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRenameUser) {
-			return visitor.visitRenameUser(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -63908,14 +61162,6 @@ export class DetailRevokeContext extends RevokeStatementContext {
 			listener.exitDetailRevoke(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDetailRevoke) {
-			return visitor.visitDetailRevoke(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ShortRevokeContext extends RevokeStatementContext {
 	public REVOKE(): TerminalNode { return this.getToken(MySqlParser.REVOKE, 0); }
@@ -63956,14 +61202,6 @@ export class ShortRevokeContext extends RevokeStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShortRevoke) {
 			listener.exitShortRevoke(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShortRevoke) {
-			return visitor.visitShortRevoke(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64013,14 +61251,6 @@ export class RevokeProxyContext extends ParserRuleContext {
 			listener.exitRevokeProxy(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRevokeProxy) {
-			return visitor.visitRevokeProxy(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64053,14 +61283,6 @@ export class SetPasswordStatementContext extends ParserRuleContext {
 			listener.exitSetPasswordStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSetPasswordStatement) {
-			return visitor.visitSetPasswordStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64086,14 +61308,6 @@ export class UserSpecificationContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitUserSpecification) {
 			listener.exitUserSpecification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUserSpecification) {
-			return visitor.visitUserSpecification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64134,14 +61348,6 @@ export class PasswordAuthOptionContext extends UserAuthOptionContext {
 			listener.exitPasswordAuthOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPasswordAuthOption) {
-			return visitor.visitPasswordAuthOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StringAuthOptionContext extends UserAuthOptionContext {
 	public userName(): UserNameContext {
@@ -64168,14 +61374,6 @@ export class StringAuthOptionContext extends UserAuthOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitStringAuthOption) {
 			listener.exitStringAuthOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitStringAuthOption) {
-			return visitor.visitStringAuthOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64206,14 +61404,6 @@ export class HashAuthOptionContext extends UserAuthOptionContext {
 			listener.exitHashAuthOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHashAuthOption) {
-			return visitor.visitHashAuthOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SimpleAuthOptionContext extends UserAuthOptionContext {
 	public userName(): UserNameContext {
@@ -64233,14 +61423,6 @@ export class SimpleAuthOptionContext extends UserAuthOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSimpleAuthOption) {
 			listener.exitSimpleAuthOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSimpleAuthOption) {
-			return visitor.visitSimpleAuthOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64270,14 +61452,6 @@ export class TlsOptionContext extends ParserRuleContext {
 			listener.exitTlsOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTlsOption) {
-			return visitor.visitTlsOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64304,14 +61478,6 @@ export class UserResourceOptionContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitUserResourceOption) {
 			listener.exitUserResourceOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUserResourceOption) {
-			return visitor.visitUserResourceOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64345,14 +61511,6 @@ export class UserPasswordOptionContext extends ParserRuleContext {
 			listener.exitUserPasswordOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUserPasswordOption) {
-			return visitor.visitUserPasswordOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64376,14 +61534,6 @@ export class UserLockOptionContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitUserLockOption) {
 			listener.exitUserLockOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUserLockOption) {
-			return visitor.visitUserLockOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64413,14 +61563,6 @@ export class PrivelegeClauseContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPrivelegeClause) {
 			listener.exitPrivelegeClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPrivelegeClause) {
-			return visitor.visitPrivelegeClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64480,14 +61622,6 @@ export class PrivilegeContext extends ParserRuleContext {
 			listener.exitPrivilege(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPrivilege) {
-			return visitor.visitPrivilege(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64519,14 +61653,6 @@ export class CurrentSchemaPriviLevelContext extends PrivilegeLevelContext {
 			listener.exitCurrentSchemaPriviLevel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCurrentSchemaPriviLevel) {
-			return visitor.visitCurrentSchemaPriviLevel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class GlobalPrivLevelContext extends PrivilegeLevelContext {
 	public STAR(): TerminalNode[];
@@ -64555,14 +61681,6 @@ export class GlobalPrivLevelContext extends PrivilegeLevelContext {
 			listener.exitGlobalPrivLevel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitGlobalPrivLevel) {
-			return visitor.visitGlobalPrivLevel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DefiniteSchemaPrivLevelContext extends PrivilegeLevelContext {
 	public uid(): UidContext {
@@ -64584,14 +61702,6 @@ export class DefiniteSchemaPrivLevelContext extends PrivilegeLevelContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDefiniteSchemaPrivLevel) {
 			listener.exitDefiniteSchemaPrivLevel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDefiniteSchemaPrivLevel) {
-			return visitor.visitDefiniteSchemaPrivLevel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64622,14 +61732,6 @@ export class DefiniteFullTablePrivLevelContext extends PrivilegeLevelContext {
 			listener.exitDefiniteFullTablePrivLevel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDefiniteFullTablePrivLevel) {
-			return visitor.visitDefiniteFullTablePrivLevel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DefiniteFullTablePrivLevel2Context extends PrivilegeLevelContext {
 	public uid(): UidContext {
@@ -64654,14 +61756,6 @@ export class DefiniteFullTablePrivLevel2Context extends PrivilegeLevelContext {
 			listener.exitDefiniteFullTablePrivLevel2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDefiniteFullTablePrivLevel2) {
-			return visitor.visitDefiniteFullTablePrivLevel2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DefiniteTablePrivLevelContext extends PrivilegeLevelContext {
 	public uid(): UidContext {
@@ -64681,14 +61775,6 @@ export class DefiniteTablePrivLevelContext extends PrivilegeLevelContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDefiniteTablePrivLevel) {
 			listener.exitDefiniteTablePrivLevel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDefiniteTablePrivLevel) {
-			return visitor.visitDefiniteTablePrivLevel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64724,14 +61810,6 @@ export class RenameUserClauseContext extends ParserRuleContext {
 			listener.exitRenameUserClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRenameUserClause) {
-			return visitor.visitRenameUserClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64759,14 +61837,6 @@ export class AnalyzeTableContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAnalyzeTable) {
 			listener.exitAnalyzeTable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAnalyzeTable) {
-			return visitor.visitAnalyzeTable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64804,14 +61874,6 @@ export class CheckTableContext extends ParserRuleContext {
 			listener.exitCheckTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCheckTable) {
-			return visitor.visitCheckTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64841,14 +61903,6 @@ export class ChecksumTableContext extends ParserRuleContext {
 			listener.exitChecksumTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitChecksumTable) {
-			return visitor.visitChecksumTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64876,14 +61930,6 @@ export class OptimizeTableContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitOptimizeTable) {
 			listener.exitOptimizeTable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitOptimizeTable) {
-			return visitor.visitOptimizeTable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64918,14 +61964,6 @@ export class RepairTableContext extends ParserRuleContext {
 			listener.exitRepairTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRepairTable) {
-			return visitor.visitRepairTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -64952,14 +61990,6 @@ export class CheckTableOptionContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCheckTableOption) {
 			listener.exitCheckTableOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCheckTableOption) {
-			return visitor.visitCheckTableOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -64997,14 +62027,6 @@ export class CreateUdfunctionContext extends ParserRuleContext {
 			listener.exitCreateUdfunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateUdfunction) {
-			return visitor.visitCreateUdfunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65033,14 +62055,6 @@ export class InstallPluginContext extends ParserRuleContext {
 			listener.exitInstallPlugin(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitInstallPlugin) {
-			return visitor.visitInstallPlugin(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -65065,14 +62079,6 @@ export class UninstallPluginContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitUninstallPlugin) {
 			listener.exitUninstallPlugin(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUninstallPlugin) {
-			return visitor.visitUninstallPlugin(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65151,14 +62157,6 @@ export class SetVariableContext extends SetStatementContext {
 			listener.exitSetVariable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSetVariable) {
-			return visitor.visitSetVariable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SetCharsetContext extends SetStatementContext {
 	public SET(): TerminalNode[];
@@ -65192,14 +62190,6 @@ export class SetCharsetContext extends SetStatementContext {
 			listener.exitSetCharset(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSetCharset) {
-			return visitor.visitSetCharset(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SetNamesContext extends SetStatementContext {
 	public SET(): TerminalNode { return this.getToken(MySqlParser.SET, 0); }
@@ -65228,14 +62218,6 @@ export class SetNamesContext extends SetStatementContext {
 			listener.exitSetNames(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSetNames) {
-			return visitor.visitSetNames(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SetPasswordContext extends SetStatementContext {
 	public setPasswordStatement(): SetPasswordStatementContext {
@@ -65255,14 +62237,6 @@ export class SetPasswordContext extends SetStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSetPassword) {
 			listener.exitSetPassword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSetPassword) {
-			return visitor.visitSetPassword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65286,14 +62260,6 @@ export class SetTransactionContext extends SetStatementContext {
 			listener.exitSetTransaction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSetTransaction) {
-			return visitor.visitSetTransaction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SetAutocommitContext extends SetStatementContext {
 	public setAutocommitStatement(): SetAutocommitStatementContext {
@@ -65313,14 +62279,6 @@ export class SetAutocommitContext extends SetStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSetAutocommit) {
 			listener.exitSetAutocommit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSetAutocommit) {
-			return visitor.visitSetAutocommit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65348,14 +62306,6 @@ export class SetNewValueInsideTriggerContext extends SetStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSetNewValueInsideTrigger) {
 			listener.exitSetNewValueInsideTrigger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSetNewValueInsideTrigger) {
-			return visitor.visitSetNewValueInsideTrigger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65391,14 +62341,6 @@ export class ShowMasterLogsContext extends ShowStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShowMasterLogs) {
 			listener.exitShowMasterLogs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowMasterLogs) {
-			return visitor.visitShowMasterLogs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65442,14 +62384,6 @@ export class ShowLogEventsContext extends ShowStatementContext {
 			listener.exitShowLogEvents(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowLogEvents) {
-			return visitor.visitShowLogEvents(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ShowObjectFilterContext extends ShowStatementContext {
 	public SHOW(): TerminalNode { return this.getToken(MySqlParser.SHOW, 0); }
@@ -65473,14 +62407,6 @@ export class ShowObjectFilterContext extends ShowStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShowObjectFilter) {
 			listener.exitShowObjectFilter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowObjectFilter) {
-			return visitor.visitShowObjectFilter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65535,14 +62461,6 @@ export class ShowColumnsContext extends ShowStatementContext {
 			listener.exitShowColumns(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowColumns) {
-			return visitor.visitShowColumns(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ShowCreateDbContext extends ShowStatementContext {
 	public _schemaFormat: Token;
@@ -65570,14 +62488,6 @@ export class ShowCreateDbContext extends ShowStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShowCreateDb) {
 			listener.exitShowCreateDb(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowCreateDb) {
-			return visitor.visitShowCreateDb(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65610,14 +62520,6 @@ export class ShowCreateFullIdObjectContext extends ShowStatementContext {
 			listener.exitShowCreateFullIdObject(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowCreateFullIdObject) {
-			return visitor.visitShowCreateFullIdObject(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ShowCreateUserContext extends ShowStatementContext {
 	public SHOW(): TerminalNode { return this.getToken(MySqlParser.SHOW, 0); }
@@ -65640,14 +62542,6 @@ export class ShowCreateUserContext extends ShowStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShowCreateUser) {
 			listener.exitShowCreateUser(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowCreateUser) {
-			return visitor.visitShowCreateUser(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65676,14 +62570,6 @@ export class ShowEngineContext extends ShowStatementContext {
 			listener.exitShowEngine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowEngine) {
-			return visitor.visitShowEngine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ShowGlobalInfoContext extends ShowStatementContext {
 	public SHOW(): TerminalNode { return this.getToken(MySqlParser.SHOW, 0); }
@@ -65704,14 +62590,6 @@ export class ShowGlobalInfoContext extends ShowStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShowGlobalInfo) {
 			listener.exitShowGlobalInfo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowGlobalInfo) {
-			return visitor.visitShowGlobalInfo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65749,14 +62627,6 @@ export class ShowErrorsContext extends ShowStatementContext {
 			listener.exitShowErrors(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowErrors) {
-			return visitor.visitShowErrors(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ShowCountErrorsContext extends ShowStatementContext {
 	public _errorFormat: Token;
@@ -65781,14 +62651,6 @@ export class ShowCountErrorsContext extends ShowStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShowCountErrors) {
 			listener.exitShowCountErrors(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowCountErrors) {
-			return visitor.visitShowCountErrors(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65822,14 +62684,6 @@ export class ShowSchemaFilterContext extends ShowStatementContext {
 			listener.exitShowSchemaFilter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowSchemaFilter) {
-			return visitor.visitShowSchemaFilter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ShowRoutineContext extends ShowStatementContext {
 	public _routine: Token;
@@ -65856,14 +62710,6 @@ export class ShowRoutineContext extends ShowStatementContext {
 			listener.exitShowRoutine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowRoutine) {
-			return visitor.visitShowRoutine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ShowGrantsContext extends ShowStatementContext {
 	public SHOW(): TerminalNode { return this.getToken(MySqlParser.SHOW, 0); }
@@ -65886,14 +62732,6 @@ export class ShowGrantsContext extends ShowStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShowGrants) {
 			listener.exitShowGrants(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowGrants) {
-			return visitor.visitShowGrants(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -65949,14 +62787,6 @@ export class ShowIndexesContext extends ShowStatementContext {
 			listener.exitShowIndexes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowIndexes) {
-			return visitor.visitShowIndexes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ShowOpenTablesContext extends ShowStatementContext {
 	public _schemaFormat: Token;
@@ -65985,14 +62815,6 @@ export class ShowOpenTablesContext extends ShowStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShowOpenTables) {
 			listener.exitShowOpenTables(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowOpenTables) {
-			return visitor.visitShowOpenTables(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66048,14 +62870,6 @@ export class ShowProfileContext extends ShowStatementContext {
 			listener.exitShowProfile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowProfile) {
-			return visitor.visitShowProfile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ShowSlaveStatusContext extends ShowStatementContext {
 	public SHOW(): TerminalNode { return this.getToken(MySqlParser.SHOW, 0); }
@@ -66078,14 +62892,6 @@ export class ShowSlaveStatusContext extends ShowStatementContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShowSlaveStatus) {
 			listener.exitShowSlaveStatus(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowSlaveStatus) {
-			return visitor.visitShowSlaveStatus(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66126,14 +62932,6 @@ export class VariableClauseContext extends ParserRuleContext {
 			listener.exitVariableClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitVariableClause) {
-			return visitor.visitVariableClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66166,14 +62964,6 @@ export class ShowCommonEntityContext extends ParserRuleContext {
 			listener.exitShowCommonEntity(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowCommonEntity) {
-			return visitor.visitShowCommonEntity(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66199,14 +62989,6 @@ export class ShowFilterContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShowFilter) {
 			listener.exitShowFilter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowFilter) {
-			return visitor.visitShowFilter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66243,14 +63025,6 @@ export class ShowGlobalInfoClauseContext extends ParserRuleContext {
 			listener.exitShowGlobalInfoClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowGlobalInfoClause) {
-			return visitor.visitShowGlobalInfoClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66276,14 +63050,6 @@ export class ShowSchemaEntityContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShowSchemaEntity) {
 			listener.exitShowSchemaEntity(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowSchemaEntity) {
-			return visitor.visitShowSchemaEntity(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66319,14 +63085,6 @@ export class ShowProfileTypeContext extends ParserRuleContext {
 			listener.exitShowProfileType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShowProfileType) {
-			return visitor.visitShowProfileType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66348,14 +63106,6 @@ export class BinlogStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitBinlogStatement) {
 			listener.exitBinlogStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitBinlogStatement) {
-			return visitor.visitBinlogStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66411,14 +63161,6 @@ export class CacheIndexStatementContext extends ParserRuleContext {
 			listener.exitCacheIndexStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCacheIndexStatement) {
-			return visitor.visitCacheIndexStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66462,14 +63204,6 @@ export class FlushStatementContext extends ParserRuleContext {
 			listener.exitFlushStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFlushStatement) {
-			return visitor.visitFlushStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66502,14 +63236,6 @@ export class KillStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitKillStatement) {
 			listener.exitKillStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitKillStatement) {
-			return visitor.visitKillStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66555,14 +63281,6 @@ export class LoadIndexIntoCacheContext extends ParserRuleContext {
 			listener.exitLoadIndexIntoCache(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLoadIndexIntoCache) {
-			return visitor.visitLoadIndexIntoCache(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66587,14 +63305,6 @@ export class ResetStatementContext extends ParserRuleContext {
 			listener.exitResetStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitResetStatement) {
-			return visitor.visitResetStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66615,14 +63325,6 @@ export class ShutdownStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitShutdownStatement) {
 			listener.exitShutdownStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitShutdownStatement) {
-			return visitor.visitShutdownStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66655,14 +63357,6 @@ export class TableIndexesContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableIndexes) {
 			listener.exitTableIndexes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableIndexes) {
-			return visitor.visitTableIndexes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66714,14 +63408,6 @@ export class SimpleFlushOptionContext extends FlushOptionContext {
 			listener.exitSimpleFlushOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSimpleFlushOption) {
-			return visitor.visitSimpleFlushOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ChannelFlushOptionContext extends FlushOptionContext {
 	public RELAY(): TerminalNode { return this.getToken(MySqlParser.RELAY, 0); }
@@ -66743,14 +63429,6 @@ export class ChannelFlushOptionContext extends FlushOptionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitChannelFlushOption) {
 			listener.exitChannelFlushOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitChannelFlushOption) {
-			return visitor.visitChannelFlushOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66778,14 +63456,6 @@ export class TableFlushOptionContext extends FlushOptionContext {
 			listener.exitTableFlushOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableFlushOption) {
-			return visitor.visitTableFlushOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66810,14 +63480,6 @@ export class FlushTableOptionContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitFlushTableOption) {
 			listener.exitFlushTableOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFlushTableOption) {
-			return visitor.visitFlushTableOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66880,14 +63542,6 @@ export class LoadedTableIndexesContext extends ParserRuleContext {
 			listener.exitLoadedTableIndexes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLoadedTableIndexes) {
-			return visitor.visitLoadedTableIndexes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66920,14 +63574,6 @@ export class SimpleDescribeStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSimpleDescribeStatement) {
 			listener.exitSimpleDescribeStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSimpleDescribeStatement) {
-			return visitor.visitSimpleDescribeStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -66966,14 +63612,6 @@ export class FullDescribeStatementContext extends ParserRuleContext {
 			listener.exitFullDescribeStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFullDescribeStatement) {
-			return visitor.visitFullDescribeStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -66995,14 +63633,6 @@ export class HelpStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitHelpStatement) {
 			listener.exitHelpStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHelpStatement) {
-			return visitor.visitHelpStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67028,14 +63658,6 @@ export class UseStatementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitUseStatement) {
 			listener.exitUseStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUseStatement) {
-			return visitor.visitUseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67086,14 +63708,6 @@ export class SignalStatementContext extends ParserRuleContext {
 			listener.exitSignalStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSignalStatement) {
-			return visitor.visitSignalStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67129,14 +63743,6 @@ export class SignalConditionInformationContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSignalConditionInformation) {
 			listener.exitSignalConditionInformation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSignalConditionInformation) {
-			return visitor.visitSignalConditionInformation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67184,14 +63790,6 @@ export class DescribeStatementsContext extends DescribeObjectClauseContext {
 			listener.exitDescribeStatements(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDescribeStatements) {
-			return visitor.visitDescribeStatements(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DescribeConnectionContext extends DescribeObjectClauseContext {
 	public FOR(): TerminalNode { return this.getToken(MySqlParser.FOR, 0); }
@@ -67213,14 +63811,6 @@ export class DescribeConnectionContext extends DescribeObjectClauseContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDescribeConnection) {
 			listener.exitDescribeConnection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDescribeConnection) {
-			return visitor.visitDescribeConnection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67255,14 +63845,6 @@ export class FullIdContext extends ParserRuleContext {
 			listener.exitFullId(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFullId) {
-			return visitor.visitFullId(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67285,14 +63867,6 @@ export class TableNameContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTableName) {
 			listener.exitTableName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTableName) {
-			return visitor.visitTableName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67328,14 +63902,6 @@ export class FullColumnNameContext extends ParserRuleContext {
 			listener.exitFullColumnName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFullColumnName) {
-			return visitor.visitFullColumnName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67369,14 +63935,6 @@ export class IndexColumnNameContext extends ParserRuleContext {
 			listener.exitIndexColumnName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIndexColumnName) {
-			return visitor.visitIndexColumnName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67401,14 +63959,6 @@ export class UserNameContext extends ParserRuleContext {
 			listener.exitUserName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUserName) {
-			return visitor.visitUserName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67430,14 +63980,6 @@ export class MysqlVariableContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitMysqlVariable) {
 			listener.exitMysqlVariable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitMysqlVariable) {
-			return visitor.visitMysqlVariable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67467,14 +64009,6 @@ export class CharsetNameContext extends ParserRuleContext {
 			listener.exitCharsetName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCharsetName) {
-			return visitor.visitCharsetName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67498,14 +64032,6 @@ export class CollationNameContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCollationName) {
 			listener.exitCollationName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCollationName) {
-			return visitor.visitCollationName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67542,14 +64068,6 @@ export class EngineNameContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitEngineName) {
 			listener.exitEngineName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitEngineName) {
-			return visitor.visitEngineName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67600,14 +64118,6 @@ export class UuidSetContext extends ParserRuleContext {
 			listener.exitUuidSet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUuidSet) {
-			return visitor.visitUuidSet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67653,14 +64163,6 @@ export class XidContext extends ParserRuleContext {
 			listener.exitXid(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitXid) {
-			return visitor.visitXid(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67693,14 +64195,6 @@ export class XuidStringIdContext extends ParserRuleContext {
 			listener.exitXuidStringId(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitXuidStringId) {
-			return visitor.visitXuidStringId(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67724,14 +64218,6 @@ export class AuthPluginContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAuthPlugin) {
 			listener.exitAuthPlugin(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAuthPlugin) {
-			return visitor.visitAuthPlugin(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67758,14 +64244,6 @@ export class UidContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitUid) {
 			listener.exitUid(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUid) {
-			return visitor.visitUid(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67814,14 +64292,6 @@ export class SimpleIdContext extends ParserRuleContext {
 			listener.exitSimpleId(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSimpleId) {
-			return visitor.visitSimpleId(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67846,14 +64316,6 @@ export class DottedIdContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDottedId) {
 			listener.exitDottedId(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDottedId) {
-			return visitor.visitDottedId(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67881,14 +64343,6 @@ export class DecimalLiteralContext extends ParserRuleContext {
 			listener.exitDecimalLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDecimalLiteral) {
-			return visitor.visitDecimalLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67912,14 +64366,6 @@ export class FileSizeLiteralContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitFileSizeLiteral) {
 			listener.exitFileSizeLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFileSizeLiteral) {
-			return visitor.visitFileSizeLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -67958,14 +64404,6 @@ export class StringLiteralContext extends ParserRuleContext {
 			listener.exitStringLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitStringLiteral) {
-			return visitor.visitStringLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -67987,14 +64425,6 @@ export class BooleanLiteralContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitBooleanLiteral) {
 			listener.exitBooleanLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitBooleanLiteral) {
-			return visitor.visitBooleanLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68020,14 +64450,6 @@ export class HexadecimalLiteralContext extends ParserRuleContext {
 			listener.exitHexadecimalLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitHexadecimalLiteral) {
-			return visitor.visitHexadecimalLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68050,14 +64472,6 @@ export class NullNotnullContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitNullNotnull) {
 			listener.exitNullNotnull(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitNullNotnull) {
-			return visitor.visitNullNotnull(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68098,14 +64512,6 @@ export class ConstantContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitConstant) {
 			listener.exitConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitConstant) {
-			return visitor.visitConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68161,14 +64567,6 @@ export class StringDataTypeContext extends DataTypeContext {
 			listener.exitStringDataType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitStringDataType) {
-			return visitor.visitStringDataType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NationalStringDataTypeContext extends DataTypeContext {
 	public _typeName: Token;
@@ -68196,14 +64594,6 @@ export class NationalStringDataTypeContext extends DataTypeContext {
 			listener.exitNationalStringDataType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitNationalStringDataType) {
-			return visitor.visitNationalStringDataType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NationalVaryingStringDataTypeContext extends DataTypeContext {
 	public _typeName: Token;
@@ -68229,14 +64619,6 @@ export class NationalVaryingStringDataTypeContext extends DataTypeContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitNationalVaryingStringDataType) {
 			listener.exitNationalVaryingStringDataType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitNationalVaryingStringDataType) {
-			return visitor.visitNationalVaryingStringDataType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68291,14 +64673,6 @@ export class DimensionDataTypeContext extends DataTypeContext {
 			listener.exitDimensionDataType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDimensionDataType) {
-			return visitor.visitDimensionDataType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SimpleDataTypeContext extends DataTypeContext {
 	public _typeName: Token;
@@ -68324,14 +64698,6 @@ export class SimpleDataTypeContext extends DataTypeContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSimpleDataType) {
 			listener.exitSimpleDataType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSimpleDataType) {
-			return visitor.visitSimpleDataType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68372,14 +64738,6 @@ export class CollectionDataTypeContext extends DataTypeContext {
 			listener.exitCollectionDataType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCollectionDataType) {
-			return visitor.visitCollectionDataType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SpatialDataTypeContext extends DataTypeContext {
 	public _typeName: Token;
@@ -68407,14 +64765,6 @@ export class SpatialDataTypeContext extends DataTypeContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSpatialDataType) {
 			listener.exitSpatialDataType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSpatialDataType) {
-			return visitor.visitSpatialDataType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68456,14 +64806,6 @@ export class CollectionOptionsContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCollectionOptions) {
 			listener.exitCollectionOptions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCollectionOptions) {
-			return visitor.visitCollectionOptions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68511,14 +64853,6 @@ export class ConvertedDataTypeContext extends ParserRuleContext {
 			listener.exitConvertedDataType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitConvertedDataType) {
-			return visitor.visitConvertedDataType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68543,14 +64877,6 @@ export class LengthOneDimensionContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitLengthOneDimension) {
 			listener.exitLengthOneDimension(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLengthOneDimension) {
-			return visitor.visitLengthOneDimension(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68586,14 +64912,6 @@ export class LengthTwoDimensionContext extends ParserRuleContext {
 			listener.exitLengthTwoDimension(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLengthTwoDimension) {
-			return visitor.visitLengthTwoDimension(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68625,14 +64943,6 @@ export class LengthTwoOptionalDimensionContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitLengthTwoOptionalDimension) {
 			listener.exitLengthTwoOptionalDimension(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLengthTwoOptionalDimension) {
-			return visitor.visitLengthTwoOptionalDimension(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68674,14 +64984,6 @@ export class UidListContext extends ParserRuleContext {
 			listener.exitUidList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUidList) {
-			return visitor.visitUidList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68719,14 +65021,6 @@ export class TablesContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTables) {
 			listener.exitTables(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTables) {
-			return visitor.visitTables(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68770,14 +65064,6 @@ export class IndexColumnNamesContext extends ParserRuleContext {
 			listener.exitIndexColumnNames(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIndexColumnNames) {
-			return visitor.visitIndexColumnNames(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68815,14 +65101,6 @@ export class ExpressionsContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitExpressions) {
 			listener.exitExpressions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitExpressions) {
-			return visitor.visitExpressions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68864,14 +65142,6 @@ export class ExpressionsWithDefaultsContext extends ParserRuleContext {
 			listener.exitExpressionsWithDefaults(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitExpressionsWithDefaults) {
-			return visitor.visitExpressionsWithDefaults(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -68909,14 +65179,6 @@ export class ConstantsContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitConstants) {
 			listener.exitConstants(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitConstants) {
-			return visitor.visitConstants(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -68958,14 +65220,6 @@ export class SimpleStringsContext extends ParserRuleContext {
 			listener.exitSimpleStrings(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSimpleStrings) {
-			return visitor.visitSimpleStrings(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69003,14 +65257,6 @@ export class UserVariablesContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitUserVariables) {
 			listener.exitUserVariables(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUserVariables) {
-			return visitor.visitUserVariables(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69052,14 +65298,6 @@ export class DefaultValueContext extends ParserRuleContext {
 			listener.exitDefaultValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDefaultValue) {
-			return visitor.visitDefaultValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69090,14 +65328,6 @@ export class CurrentTimestampContext extends ParserRuleContext {
 			listener.exitCurrentTimestamp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCurrentTimestamp) {
-			return visitor.visitCurrentTimestamp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69123,14 +65353,6 @@ export class ExpressionOrDefaultContext extends ParserRuleContext {
 			listener.exitExpressionOrDefault(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitExpressionOrDefault) {
-			return visitor.visitExpressionOrDefault(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -69152,14 +65374,6 @@ export class IfExistsContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitIfExists) {
 			listener.exitIfExists(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIfExists) {
-			return visitor.visitIfExists(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69184,14 +65398,6 @@ export class IfNotExistsContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitIfNotExists) {
 			listener.exitIfNotExists(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIfNotExists) {
-			return visitor.visitIfNotExists(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69227,14 +65433,6 @@ export class SpecificFunctionCallContext extends FunctionCallContext {
 			listener.exitSpecificFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSpecificFunctionCall) {
-			return visitor.visitSpecificFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AggregateFunctionCallContext extends FunctionCallContext {
 	public aggregateWindowedFunction(): AggregateWindowedFunctionContext {
@@ -69254,14 +65452,6 @@ export class AggregateFunctionCallContext extends FunctionCallContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitAggregateFunctionCall) {
 			listener.exitAggregateFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAggregateFunctionCall) {
-			return visitor.visitAggregateFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69290,14 +65480,6 @@ export class ScalarFunctionCallContext extends FunctionCallContext {
 			listener.exitScalarFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitScalarFunctionCall) {
-			return visitor.visitScalarFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UdfFunctionCallContext extends FunctionCallContext {
 	public fullId(): FullIdContext {
@@ -69324,14 +65506,6 @@ export class UdfFunctionCallContext extends FunctionCallContext {
 			listener.exitUdfFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUdfFunctionCall) {
-			return visitor.visitUdfFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PasswordFunctionCallContext extends FunctionCallContext {
 	public passwordFunctionClause(): PasswordFunctionClauseContext {
@@ -69351,14 +65525,6 @@ export class PasswordFunctionCallContext extends FunctionCallContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPasswordFunctionCall) {
 			listener.exitPasswordFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPasswordFunctionCall) {
-			return visitor.visitPasswordFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69396,14 +65562,6 @@ export class SimpleFunctionCallContext extends SpecificFunctionContext {
 			listener.exitSimpleFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSimpleFunctionCall) {
-			return visitor.visitSimpleFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DataTypeFunctionCallContext extends SpecificFunctionContext {
 	public _separator: Token;
@@ -69439,14 +65597,6 @@ export class DataTypeFunctionCallContext extends SpecificFunctionContext {
 			listener.exitDataTypeFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDataTypeFunctionCall) {
-			return visitor.visitDataTypeFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ValuesFunctionCallContext extends SpecificFunctionContext {
 	public VALUES(): TerminalNode { return this.getToken(MySqlParser.VALUES, 0); }
@@ -69469,14 +65619,6 @@ export class ValuesFunctionCallContext extends SpecificFunctionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitValuesFunctionCall) {
 			listener.exitValuesFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitValuesFunctionCall) {
-			return visitor.visitValuesFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69516,14 +65658,6 @@ export class CaseFunctionCallContext extends SpecificFunctionContext {
 			listener.exitCaseFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCaseFunctionCall) {
-			return visitor.visitCaseFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class CharFunctionCallContext extends SpecificFunctionContext {
 	public CHAR(): TerminalNode { return this.getToken(MySqlParser.CHAR, 0); }
@@ -69550,14 +65684,6 @@ export class CharFunctionCallContext extends SpecificFunctionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCharFunctionCall) {
 			listener.exitCharFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCharFunctionCall) {
-			return visitor.visitCharFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69602,14 +65728,6 @@ export class PositionFunctionCallContext extends SpecificFunctionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPositionFunctionCall) {
 			listener.exitPositionFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPositionFunctionCall) {
-			return visitor.visitPositionFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69663,14 +65781,6 @@ export class SubstrFunctionCallContext extends SpecificFunctionContext {
 			listener.exitSubstrFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSubstrFunctionCall) {
-			return visitor.visitSubstrFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TrimFunctionCallContext extends SpecificFunctionContext {
 	public _positioinForm: Token;
@@ -69717,14 +65827,6 @@ export class TrimFunctionCallContext extends SpecificFunctionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTrimFunctionCall) {
 			listener.exitTrimFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTrimFunctionCall) {
-			return visitor.visitTrimFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69780,14 +65882,6 @@ export class WeightFunctionCallContext extends SpecificFunctionContext {
 			listener.exitWeightFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitWeightFunctionCall) {
-			return visitor.visitWeightFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExtractFunctionCallContext extends SpecificFunctionContext {
 	public _sourceString: StringLiteralContext;
@@ -69821,14 +65915,6 @@ export class ExtractFunctionCallContext extends SpecificFunctionContext {
 			listener.exitExtractFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitExtractFunctionCall) {
-			return visitor.visitExtractFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class GetFormatFunctionCallContext extends SpecificFunctionContext {
 	public _datetimeFormat: Token;
@@ -69856,14 +65942,6 @@ export class GetFormatFunctionCallContext extends SpecificFunctionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitGetFormatFunctionCall) {
 			listener.exitGetFormatFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitGetFormatFunctionCall) {
-			return visitor.visitGetFormatFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69898,14 +65976,6 @@ export class CaseFuncAlternativeContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitCaseFuncAlternative) {
 			listener.exitCaseFuncAlternative(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCaseFuncAlternative) {
-			return visitor.visitCaseFuncAlternative(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -69957,14 +66027,6 @@ export class LevelWeightListContext extends LevelsInWeightStringContext {
 			listener.exitLevelWeightList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLevelWeightList) {
-			return visitor.visitLevelWeightList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class LevelWeightRangeContext extends LevelsInWeightStringContext {
 	public _firstLevel: DecimalLiteralContext;
@@ -69996,14 +66058,6 @@ export class LevelWeightRangeContext extends LevelsInWeightStringContext {
 			listener.exitLevelWeightRange(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLevelWeightRange) {
-			return visitor.visitLevelWeightRange(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70030,14 +66084,6 @@ export class LevelInWeightListElementContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitLevelInWeightListElement) {
 			listener.exitLevelInWeightListElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLevelInWeightListElement) {
-			return visitor.visitLevelInWeightListElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70113,14 +66159,6 @@ export class AggregateWindowedFunctionContext extends ParserRuleContext {
 			listener.exitAggregateWindowedFunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitAggregateWindowedFunction) {
-			return visitor.visitAggregateWindowedFunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70167,14 +66205,6 @@ export class ScalarFunctionNameContext extends ParserRuleContext {
 			listener.exitScalarFunctionName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitScalarFunctionName) {
-			return visitor.visitScalarFunctionName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70202,14 +66232,6 @@ export class PasswordFunctionClauseContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPasswordFunctionClause) {
 			listener.exitPasswordFunctionClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPasswordFunctionClause) {
-			return visitor.visitPasswordFunctionClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70278,14 +66300,6 @@ export class FunctionArgsContext extends ParserRuleContext {
 			listener.exitFunctionArgs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFunctionArgs) {
-			return visitor.visitFunctionArgs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -70317,14 +66331,6 @@ export class FunctionArgContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitFunctionArg) {
 			listener.exitFunctionArg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFunctionArg) {
-			return visitor.visitFunctionArg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70363,14 +66369,6 @@ export class NotExpressionContext extends ExpressionContext {
 			listener.exitNotExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitNotExpression) {
-			return visitor.visitNotExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class LogicalExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -70401,14 +66399,6 @@ export class LogicalExpressionContext extends ExpressionContext {
 			listener.exitLogicalExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLogicalExpression) {
-			return visitor.visitLogicalExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IsExpressionContext extends ExpressionContext {
 	public _testValue: Token;
@@ -70436,14 +66426,6 @@ export class IsExpressionContext extends ExpressionContext {
 			listener.exitIsExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIsExpression) {
-			return visitor.visitIsExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PredicateExpressionContext extends ExpressionContext {
 	public predicate(): PredicateContext {
@@ -70463,14 +66445,6 @@ export class PredicateExpressionContext extends ExpressionContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitPredicateExpression) {
 			listener.exitPredicateExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPredicateExpression) {
-			return visitor.visitPredicateExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70516,14 +66490,6 @@ export class InPredicateContext extends PredicateContext {
 			listener.exitInPredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitInPredicate) {
-			return visitor.visitInPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IsNullPredicateContext extends PredicateContext {
 	public predicate(): PredicateContext {
@@ -70547,14 +66513,6 @@ export class IsNullPredicateContext extends PredicateContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitIsNullPredicate) {
 			listener.exitIsNullPredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIsNullPredicate) {
-			return visitor.visitIsNullPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70587,14 +66545,6 @@ export class BinaryComparasionPredicateContext extends PredicateContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitBinaryComparasionPredicate) {
 			listener.exitBinaryComparasionPredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitBinaryComparasionPredicate) {
-			return visitor.visitBinaryComparasionPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70630,14 +66580,6 @@ export class SubqueryComparasionPredicateContext extends PredicateContext {
 			listener.exitSubqueryComparasionPredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSubqueryComparasionPredicate) {
-			return visitor.visitSubqueryComparasionPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BetweenPredicateContext extends PredicateContext {
 	public predicate(): PredicateContext[];
@@ -70668,14 +66610,6 @@ export class BetweenPredicateContext extends PredicateContext {
 			listener.exitBetweenPredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitBetweenPredicate) {
-			return visitor.visitBetweenPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SoundsLikePredicateContext extends PredicateContext {
 	public predicate(): PredicateContext[];
@@ -70703,14 +66637,6 @@ export class SoundsLikePredicateContext extends PredicateContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitSoundsLikePredicate) {
 			listener.exitSoundsLikePredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSoundsLikePredicate) {
-			return visitor.visitSoundsLikePredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70744,14 +66670,6 @@ export class LikePredicateContext extends PredicateContext {
 			listener.exitLikePredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLikePredicate) {
-			return visitor.visitLikePredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class RegexpPredicateContext extends PredicateContext {
 	public _regex: Token;
@@ -70783,14 +66701,6 @@ export class RegexpPredicateContext extends PredicateContext {
 			listener.exitRegexpPredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitRegexpPredicate) {
-			return visitor.visitRegexpPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExpressionAtomPredicateContext extends PredicateContext {
 	public expressionAtom(): ExpressionAtomContext {
@@ -70812,14 +66722,6 @@ export class ExpressionAtomPredicateContext extends PredicateContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitExpressionAtomPredicate) {
 			listener.exitExpressionAtomPredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitExpressionAtomPredicate) {
-			return visitor.visitExpressionAtomPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70855,14 +66757,6 @@ export class ConstantExpressionAtomContext extends ExpressionAtomContext {
 			listener.exitConstantExpressionAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitConstantExpressionAtom) {
-			return visitor.visitConstantExpressionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class FullColumnNameExpressionAtomContext extends ExpressionAtomContext {
 	public fullColumnName(): FullColumnNameContext {
@@ -70884,14 +66778,6 @@ export class FullColumnNameExpressionAtomContext extends ExpressionAtomContext {
 			listener.exitFullColumnNameExpressionAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFullColumnNameExpressionAtom) {
-			return visitor.visitFullColumnNameExpressionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class FunctionCallExpressionAtomContext extends ExpressionAtomContext {
 	public functionCall(): FunctionCallContext {
@@ -70911,14 +66797,6 @@ export class FunctionCallExpressionAtomContext extends ExpressionAtomContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitFunctionCallExpressionAtom) {
 			listener.exitFunctionCallExpressionAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFunctionCallExpressionAtom) {
-			return visitor.visitFunctionCallExpressionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -70946,14 +66824,6 @@ export class CollateExpressionAtomContext extends ExpressionAtomContext {
 			listener.exitCollateExpressionAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCollateExpressionAtom) {
-			return visitor.visitCollateExpressionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class MysqlVariableExpressionAtomContext extends ExpressionAtomContext {
 	public mysqlVariable(): MysqlVariableContext {
@@ -70973,14 +66843,6 @@ export class MysqlVariableExpressionAtomContext extends ExpressionAtomContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitMysqlVariableExpressionAtom) {
 			listener.exitMysqlVariableExpressionAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitMysqlVariableExpressionAtom) {
-			return visitor.visitMysqlVariableExpressionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71007,14 +66869,6 @@ export class UnaryExpressionAtomContext extends ExpressionAtomContext {
 			listener.exitUnaryExpressionAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUnaryExpressionAtom) {
-			return visitor.visitUnaryExpressionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BinaryExpressionAtomContext extends ExpressionAtomContext {
 	public BINARY(): TerminalNode { return this.getToken(MySqlParser.BINARY, 0); }
@@ -71035,14 +66889,6 @@ export class BinaryExpressionAtomContext extends ExpressionAtomContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitBinaryExpressionAtom) {
 			listener.exitBinaryExpressionAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitBinaryExpressionAtom) {
-			return visitor.visitBinaryExpressionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71081,14 +66927,6 @@ export class NestedExpressionAtomContext extends ExpressionAtomContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitNestedExpressionAtom) {
 			listener.exitNestedExpressionAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitNestedExpressionAtom) {
-			return visitor.visitNestedExpressionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71130,14 +66968,6 @@ export class NestedRowExpressionAtomContext extends ExpressionAtomContext {
 			listener.exitNestedRowExpressionAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitNestedRowExpressionAtom) {
-			return visitor.visitNestedRowExpressionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExistsExpessionAtomContext extends ExpressionAtomContext {
 	public EXISTS(): TerminalNode { return this.getToken(MySqlParser.EXISTS, 0); }
@@ -71160,14 +66990,6 @@ export class ExistsExpessionAtomContext extends ExpressionAtomContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitExistsExpessionAtom) {
 			listener.exitExistsExpessionAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitExistsExpessionAtom) {
-			return visitor.visitExistsExpessionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71193,14 +67015,6 @@ export class SubqueryExpessionAtomContext extends ExpressionAtomContext {
 			listener.exitSubqueryExpessionAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitSubqueryExpessionAtom) {
-			return visitor.visitSubqueryExpessionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IntervalExpressionAtomContext extends ExpressionAtomContext {
 	public INTERVAL(): TerminalNode { return this.getToken(MySqlParser.INTERVAL, 0); }
@@ -71224,14 +67038,6 @@ export class IntervalExpressionAtomContext extends ExpressionAtomContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitIntervalExpressionAtom) {
 			listener.exitIntervalExpressionAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIntervalExpressionAtom) {
-			return visitor.visitIntervalExpressionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71266,14 +67072,6 @@ export class BitExpressionAtomContext extends ExpressionAtomContext {
 			listener.exitBitExpressionAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitBitExpressionAtom) {
-			return visitor.visitBitExpressionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class MathExpressionAtomContext extends ExpressionAtomContext {
 	public _left: ExpressionAtomContext;
@@ -71306,14 +67104,6 @@ export class MathExpressionAtomContext extends ExpressionAtomContext {
 			listener.exitMathExpressionAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitMathExpressionAtom) {
-			return visitor.visitMathExpressionAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71340,14 +67130,6 @@ export class UnaryOperatorContext extends ParserRuleContext {
 			listener.exitUnaryOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitUnaryOperator) {
-			return visitor.visitUnaryOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71371,14 +67153,6 @@ export class ComparisonOperatorContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitComparisonOperator) {
 			listener.exitComparisonOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitComparisonOperator) {
-			return visitor.visitComparisonOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71423,14 +67197,6 @@ export class LogicalOperatorContext extends ParserRuleContext {
 			listener.exitLogicalOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitLogicalOperator) {
-			return visitor.visitLogicalOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71473,14 +67239,6 @@ export class BitOperatorContext extends ParserRuleContext {
 			listener.exitBitOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitBitOperator) {
-			return visitor.visitBitOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71508,14 +67266,6 @@ export class MathOperatorContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitMathOperator) {
 			listener.exitMathOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitMathOperator) {
-			return visitor.visitMathOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71579,14 +67329,6 @@ export class CharsetNameBaseContext extends ParserRuleContext {
 			listener.exitCharsetNameBase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitCharsetNameBase) {
-			return visitor.visitCharsetNameBase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71610,14 +67352,6 @@ export class TransactionLevelBaseContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitTransactionLevelBase) {
 			listener.exitTransactionLevelBase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitTransactionLevelBase) {
-			return visitor.visitTransactionLevelBase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -71650,14 +67384,6 @@ export class PrivilegesBaseContext extends ParserRuleContext {
 			listener.exitPrivilegesBase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitPrivilegesBase) {
-			return visitor.visitPrivilegesBase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71687,14 +67413,6 @@ export class IntervalTypeBaseContext extends ParserRuleContext {
 			listener.exitIntervalTypeBase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitIntervalTypeBase) {
-			return visitor.visitIntervalTypeBase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -71721,14 +67439,6 @@ export class DataTypeBaseContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitDataTypeBase) {
 			listener.exitDataTypeBase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitDataTypeBase) {
-			return visitor.visitDataTypeBase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -72068,14 +67778,6 @@ export class KeywordsCanBeIdContext extends ParserRuleContext {
 			listener.exitKeywordsCanBeId(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitKeywordsCanBeId) {
-			return visitor.visitKeywordsCanBeId(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -72412,14 +68114,6 @@ export class FunctionNameBaseContext extends ParserRuleContext {
 	public exitRule(listener: MySqlParserListener): void {
 		if (listener.exitFunctionNameBase) {
 			listener.exitFunctionNameBase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: MySqlParserVisitor<Result>): Result {
-		if (visitor.visitFunctionNameBase) {
-			return visitor.visitFunctionNameBase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { brainfuckListener } from "./brainfuckListener";
-import { brainfuckVisitor } from "./brainfuckVisitor";
-
 
 export class brainfuckParser extends Parser {
 	public static readonly GT = 1;
@@ -263,14 +261,6 @@ export class FileContext extends ParserRuleContext {
 			listener.exitFile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: brainfuckVisitor<Result>): Result {
-		if (visitor.visitFile) {
-			return visitor.visitFile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -306,14 +296,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: brainfuckVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -339,14 +321,6 @@ export class OpcodeContext extends ParserRuleContext {
 	public exitRule(listener: brainfuckListener): void {
 		if (listener.exitOpcode) {
 			listener.exitOpcode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: brainfuckVisitor<Result>): Result {
-		if (visitor.visitOpcode) {
-			return visitor.visitOpcode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

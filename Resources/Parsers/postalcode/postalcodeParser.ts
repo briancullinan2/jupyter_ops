@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { postalcodeListener } from "./postalcodeListener";
-import { postalcodeVisitor } from "./postalcodeVisitor";
-
 
 export class postalcodeParser extends Parser {
 	public static readonly DIGIT = 1;
@@ -152,14 +150,6 @@ export class PostalcodeContext extends ParserRuleContext {
 	public exitRule(listener: postalcodeListener): void {
 		if (listener.exitPostalcode) {
 			listener.exitPostalcode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: postalcodeVisitor<Result>): Result {
-		if (visitor.visitPostalcode) {
-			return visitor.visitPostalcode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { PddlListener } from "./PddlListener";
-import { PddlVisitor } from "./PddlVisitor";
-
 
 export class PddlParser extends Parser {
 	public static readonly T__0 = 1;
@@ -4597,14 +4595,6 @@ export class PddlDocContext extends ParserRuleContext {
 			listener.exitPddlDoc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitPddlDoc) {
-			return visitor.visitPddlDoc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4656,14 +4646,6 @@ export class DomainContext extends ParserRuleContext {
 			listener.exitDomain(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitDomain) {
-			return visitor.visitDomain(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4684,14 +4666,6 @@ export class DomainNameContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitDomainName) {
 			listener.exitDomainName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitDomainName) {
-			return visitor.visitDomainName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4724,14 +4698,6 @@ export class RequireDefContext extends ParserRuleContext {
 			listener.exitRequireDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitRequireDef) {
-			return visitor.visitRequireDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4754,14 +4720,6 @@ export class TypesDefContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitTypesDef) {
 			listener.exitTypesDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitTypesDef) {
-			return visitor.visitTypesDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4803,14 +4761,6 @@ export class TypedNameListContext extends ParserRuleContext {
 			listener.exitTypedNameList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitTypedNameList) {
-			return visitor.visitTypedNameList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4845,14 +4795,6 @@ export class SingleTypeNameListContext extends ParserRuleContext {
 			listener.exitSingleTypeNameList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitSingleTypeNameList) {
-			return visitor.visitSingleTypeNameList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4883,14 +4825,6 @@ export class TypeContext extends ParserRuleContext {
 			listener.exitType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4911,14 +4845,6 @@ export class PrimTypeContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitPrimType) {
 			listener.exitPrimType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitPrimType) {
-			return visitor.visitPrimType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4943,14 +4869,6 @@ export class FunctionsDefContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitFunctionsDef) {
 			listener.exitFunctionsDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitFunctionsDef) {
-			return visitor.visitFunctionsDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4992,14 +4910,6 @@ export class FunctionListContext extends ParserRuleContext {
 			listener.exitFunctionList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitFunctionList) {
-			return visitor.visitFunctionList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5027,14 +4937,6 @@ export class AtomicFunctionSkeletonContext extends ParserRuleContext {
 			listener.exitAtomicFunctionSkeleton(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitAtomicFunctionSkeleton) {
-			return visitor.visitAtomicFunctionSkeleton(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5057,14 +4959,6 @@ export class FunctionSymbolContext extends ParserRuleContext {
 			listener.exitFunctionSymbol(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitFunctionSymbol) {
-			return visitor.visitFunctionSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5084,14 +4978,6 @@ export class FunctionTypeContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitFunctionType) {
 			listener.exitFunctionType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitFunctionType) {
-			return visitor.visitFunctionType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5116,14 +5002,6 @@ export class ConstantsDefContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitConstantsDef) {
 			listener.exitConstantsDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitConstantsDef) {
-			return visitor.visitConstantsDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5156,14 +5034,6 @@ export class PredicatesDefContext extends ParserRuleContext {
 			listener.exitPredicatesDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitPredicatesDef) {
-			return visitor.visitPredicatesDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5191,14 +5061,6 @@ export class AtomicFormulaSkeletonContext extends ParserRuleContext {
 			listener.exitAtomicFormulaSkeleton(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitAtomicFormulaSkeleton) {
-			return visitor.visitAtomicFormulaSkeleton(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5219,14 +5081,6 @@ export class PredicateContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitPredicate) {
 			listener.exitPredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitPredicate) {
-			return visitor.visitPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5268,14 +5122,6 @@ export class TypedVariableListContext extends ParserRuleContext {
 			listener.exitTypedVariableList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitTypedVariableList) {
-			return visitor.visitTypedVariableList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5310,14 +5156,6 @@ export class SingleTypeVarListContext extends ParserRuleContext {
 			listener.exitSingleTypeVarList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitSingleTypeVarList) {
-			return visitor.visitSingleTypeVarList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5340,14 +5178,6 @@ export class ConstraintsContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitConstraints) {
 			listener.exitConstraints(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitConstraints) {
-			return visitor.visitConstraints(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5380,14 +5210,6 @@ export class StructureDefContext extends ParserRuleContext {
 			listener.exitStructureDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitStructureDef) {
-			return visitor.visitStructureDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5418,14 +5240,6 @@ export class ActionDefContext extends ParserRuleContext {
 			listener.exitActionDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitActionDef) {
-			return visitor.visitActionDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5446,14 +5260,6 @@ export class ActionSymbolContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitActionSymbol) {
 			listener.exitActionSymbol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitActionSymbol) {
-			return visitor.visitActionSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5481,14 +5287,6 @@ export class ActionDefBodyContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitActionDefBody) {
 			listener.exitActionDefBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitActionDefBody) {
-			return visitor.visitActionDefBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5530,14 +5328,6 @@ export class GoalDescContext extends ParserRuleContext {
 			listener.exitGoalDesc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitGoalDesc) {
-			return visitor.visitGoalDesc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5569,14 +5359,6 @@ export class FCompContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitFComp) {
 			listener.exitFComp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitFComp) {
-			return visitor.visitFComp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5612,14 +5394,6 @@ export class AtomicTermFormulaContext extends ParserRuleContext {
 			listener.exitAtomicTermFormula(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitAtomicTermFormula) {
-			return visitor.visitAtomicTermFormula(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5641,14 +5415,6 @@ export class TermContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitTerm) {
 			listener.exitTerm(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5681,14 +5447,6 @@ export class DurativeActionDefContext extends ParserRuleContext {
 			listener.exitDurativeActionDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitDurativeActionDef) {
-			return visitor.visitDurativeActionDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5717,14 +5475,6 @@ export class DaDefBodyContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitDaDefBody) {
 			listener.exitDaDefBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitDaDefBody) {
-			return visitor.visitDaDefBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5763,14 +5513,6 @@ export class DaGDContext extends ParserRuleContext {
 			listener.exitDaGD(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitDaGD) {
-			return visitor.visitDaGD(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5794,14 +5536,6 @@ export class PrefTimedGDContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitPrefTimedGD) {
 			listener.exitPrefTimedGD(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitPrefTimedGD) {
-			return visitor.visitPrefTimedGD(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5834,14 +5568,6 @@ export class TimedGDContext extends ParserRuleContext {
 			listener.exitTimedGD(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitTimedGD) {
-			return visitor.visitTimedGD(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5863,14 +5589,6 @@ export class TimeSpecifierContext extends ParserRuleContext {
 			listener.exitTimeSpecifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitTimeSpecifier) {
-			return visitor.visitTimeSpecifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5890,14 +5608,6 @@ export class IntervalContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitInterval) {
 			listener.exitInterval(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitInterval) {
-			return visitor.visitInterval(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5925,14 +5635,6 @@ export class DerivedDefContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitDerivedDef) {
 			listener.exitDerivedDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitDerivedDef) {
-			return visitor.visitDerivedDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5969,14 +5671,6 @@ export class FExpContext extends ParserRuleContext {
 			listener.exitFExp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitFExp) {
-			return visitor.visitFExp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5999,14 +5693,6 @@ export class FExp2Context extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitFExp2) {
 			listener.exitFExp2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitFExp2) {
-			return visitor.visitFExp2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6042,14 +5728,6 @@ export class FHeadContext extends ParserRuleContext {
 			listener.exitFHead(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitFHead) {
-			return visitor.visitFHead(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6078,14 +5756,6 @@ export class EffectContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitEffect) {
 			listener.exitEffect(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitEffect) {
-			return visitor.visitEffect(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6124,14 +5794,6 @@ export class CEffectContext extends ParserRuleContext {
 			listener.exitCEffect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitCEffect) {
-			return visitor.visitCEffect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6165,14 +5827,6 @@ export class PEffectContext extends ParserRuleContext {
 			listener.exitPEffect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitPEffect) {
-			return visitor.visitPEffect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6203,14 +5857,6 @@ export class CondEffectContext extends ParserRuleContext {
 			listener.exitCondEffect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitCondEffect) {
-			return visitor.visitCondEffect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6230,14 +5876,6 @@ export class BinaryOpContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitBinaryOp) {
 			listener.exitBinaryOp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitBinaryOp) {
-			return visitor.visitBinaryOp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6261,14 +5899,6 @@ export class BinaryCompContext extends ParserRuleContext {
 			listener.exitBinaryComp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitBinaryComp) {
-			return visitor.visitBinaryComp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6288,14 +5918,6 @@ export class AssignOpContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitAssignOp) {
 			listener.exitAssignOp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitAssignOp) {
-			return visitor.visitAssignOp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6326,14 +5948,6 @@ export class DurationConstraintContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitDurationConstraint) {
 			listener.exitDurationConstraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitDurationConstraint) {
-			return visitor.visitDurationConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6369,14 +5983,6 @@ export class SimpleDurationConstraintContext extends ParserRuleContext {
 			listener.exitSimpleDurationConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitSimpleDurationConstraint) {
-			return visitor.visitSimpleDurationConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6396,14 +6002,6 @@ export class DurOpContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitDurOp) {
 			listener.exitDurOp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitDurOp) {
-			return visitor.visitDurOp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6429,14 +6027,6 @@ export class DurValueContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitDurValue) {
 			listener.exitDurValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitDurValue) {
-			return visitor.visitDurValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6487,14 +6077,6 @@ export class DaEffectContext extends ParserRuleContext {
 			listener.exitDaEffect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitDaEffect) {
-			return visitor.visitDaEffect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6534,14 +6116,6 @@ export class TimedEffectContext extends ParserRuleContext {
 			listener.exitTimedEffect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitTimedEffect) {
-			return visitor.visitTimedEffect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6570,14 +6144,6 @@ export class FAssignDAContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitFAssignDA) {
 			listener.exitFAssignDA(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitFAssignDA) {
-			return visitor.visitFAssignDA(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6614,14 +6180,6 @@ export class FExpDAContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitFExpDA) {
 			listener.exitFExpDA(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitFExpDA) {
-			return visitor.visitFExpDA(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6669,14 +6227,6 @@ export class ProblemContext extends ParserRuleContext {
 			listener.exitProblem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitProblem) {
-			return visitor.visitProblem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6697,14 +6247,6 @@ export class ProblemDeclContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitProblemDecl) {
 			listener.exitProblemDecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitProblemDecl) {
-			return visitor.visitProblemDecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6729,14 +6271,6 @@ export class ProblemDomainContext extends ParserRuleContext {
 			listener.exitProblemDomain(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitProblemDomain) {
-			return visitor.visitProblemDomain(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6759,14 +6293,6 @@ export class ObjectDeclContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitObjectDecl) {
 			listener.exitObjectDecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitObjectDecl) {
-			return visitor.visitObjectDecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6799,14 +6325,6 @@ export class InitContext extends ParserRuleContext {
 			listener.exitInit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitInit) {
-			return visitor.visitInit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6835,14 +6353,6 @@ export class InitElContext extends ParserRuleContext {
 			listener.exitInitEl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitInitEl) {
-			return visitor.visitInitEl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6865,14 +6375,6 @@ export class NameLiteralContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitNameLiteral) {
 			listener.exitNameLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitNameLiteral) {
-			return visitor.visitNameLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6908,14 +6410,6 @@ export class AtomicNameFormulaContext extends ParserRuleContext {
 			listener.exitAtomicNameFormula(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitAtomicNameFormula) {
-			return visitor.visitAtomicNameFormula(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6940,14 +6434,6 @@ export class GoalContext extends ParserRuleContext {
 			listener.exitGoal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitGoal) {
-			return visitor.visitGoal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6970,14 +6456,6 @@ export class ProbConstraintsContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitProbConstraints) {
 			listener.exitProbConstraints(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitProbConstraints) {
-			return visitor.visitProbConstraints(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7017,14 +6495,6 @@ export class PrefConGDContext extends ParserRuleContext {
 			listener.exitPrefConGD(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitPrefConGD) {
-			return visitor.visitPrefConGD(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7052,14 +6522,6 @@ export class MetricSpecContext extends ParserRuleContext {
 			listener.exitMetricSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitMetricSpec) {
-			return visitor.visitMetricSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7079,14 +6541,6 @@ export class OptimizationContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitOptimization) {
 			listener.exitOptimization(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitOptimization) {
-			return visitor.visitOptimization(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7133,14 +6587,6 @@ export class MetricFExpContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitMetricFExp) {
 			listener.exitMetricFExp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitMetricFExp) {
-			return visitor.visitMetricFExp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7192,14 +6638,6 @@ export class ConGDContext extends ParserRuleContext {
 	public exitRule(listener: PddlListener): void {
 		if (listener.exitConGD) {
 			listener.exitConGD(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PddlVisitor<Result>): Result {
-		if (visitor.visitConGD) {
-			return visitor.visitConGD(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { prologListener } from "./prologListener";
-import { prologVisitor } from "./prologVisitor";
-
 
 export class prologParser extends Parser {
 	public static readonly T__0 = 1;
@@ -797,14 +795,6 @@ export class P_textContext extends ParserRuleContext {
 			listener.exitP_text(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitP_text) {
-			return visitor.visitP_text(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -829,14 +819,6 @@ export class DirectiveContext extends ParserRuleContext {
 			listener.exitDirective(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitDirective) {
-			return visitor.visitDirective(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -859,14 +841,6 @@ export class ClauseContext extends ParserRuleContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitClause) {
 			listener.exitClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitClause) {
-			return visitor.visitClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -897,14 +871,6 @@ export class TermlistContext extends ParserRuleContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitTermlist) {
 			listener.exitTermlist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitTermlist) {
-			return visitor.visitTermlist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -938,14 +904,6 @@ export class VariableContext extends TermContext {
 			listener.exitVariable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Braced_termContext extends TermContext {
 	public term(): TermContext {
@@ -965,14 +923,6 @@ export class Braced_termContext extends TermContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitBraced_term) {
 			listener.exitBraced_term(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitBraced_term) {
-			return visitor.visitBraced_term(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -996,14 +946,6 @@ export class Integer_termContext extends TermContext {
 			listener.exitInteger_term(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitInteger_term) {
-			return visitor.visitInteger_term(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class FloatContext extends TermContext {
 	public FLOAT(): TerminalNode { return this.getToken(prologParser.FLOAT, 0); }
@@ -1021,14 +963,6 @@ export class FloatContext extends TermContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitFloat) {
 			listener.exitFloat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitFloat) {
-			return visitor.visitFloat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1053,14 +987,6 @@ export class Compound_termContext extends TermContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitCompound_term) {
 			listener.exitCompound_term(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitCompound_term) {
-			return visitor.visitCompound_term(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1093,14 +1019,6 @@ export class Binary_operatorContext extends TermContext {
 			listener.exitBinary_operator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitBinary_operator) {
-			return visitor.visitBinary_operator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Unary_operatorContext extends TermContext {
 	public operator(): OperatorContext {
@@ -1123,14 +1041,6 @@ export class Unary_operatorContext extends TermContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitUnary_operator) {
 			listener.exitUnary_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitUnary_operator) {
-			return visitor.visitUnary_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1157,14 +1067,6 @@ export class List_termContext extends TermContext {
 			listener.exitList_term(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitList_term) {
-			return visitor.visitList_term(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Curly_bracketed_termContext extends TermContext {
 	public termlist(): TermlistContext {
@@ -1184,14 +1086,6 @@ export class Curly_bracketed_termContext extends TermContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitCurly_bracketed_term) {
 			listener.exitCurly_bracketed_term(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitCurly_bracketed_term) {
-			return visitor.visitCurly_bracketed_term(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1215,14 +1109,6 @@ export class Atom_termContext extends TermContext {
 			listener.exitAtom_term(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitAtom_term) {
-			return visitor.visitAtom_term(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1242,14 +1128,6 @@ export class OperatorContext extends ParserRuleContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitOperator) {
 			listener.exitOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitOperator) {
-			return visitor.visitOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1282,14 +1160,6 @@ export class Empty_listContext extends AtomContext {
 			listener.exitEmpty_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitEmpty_list) {
-			return visitor.visitEmpty_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Empty_bracesContext extends AtomContext {
 	constructor(ctx: AtomContext) {
@@ -1306,14 +1176,6 @@ export class Empty_bracesContext extends AtomContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitEmpty_braces) {
 			listener.exitEmpty_braces(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitEmpty_braces) {
-			return visitor.visitEmpty_braces(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1335,14 +1197,6 @@ export class NameContext extends AtomContext {
 			listener.exitName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class GraphicContext extends AtomContext {
 	public GRAPHIC_TOKEN(): TerminalNode { return this.getToken(prologParser.GRAPHIC_TOKEN, 0); }
@@ -1360,14 +1214,6 @@ export class GraphicContext extends AtomContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitGraphic) {
 			listener.exitGraphic(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitGraphic) {
-			return visitor.visitGraphic(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1389,14 +1235,6 @@ export class Quoted_stringContext extends AtomContext {
 			listener.exitQuoted_string(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitQuoted_string) {
-			return visitor.visitQuoted_string(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Dq_stringContext extends AtomContext {
 	public DOUBLE_QUOTED_LIST(): TerminalNode { return this.getToken(prologParser.DOUBLE_QUOTED_LIST, 0); }
@@ -1414,14 +1252,6 @@ export class Dq_stringContext extends AtomContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitDq_string) {
 			listener.exitDq_string(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitDq_string) {
-			return visitor.visitDq_string(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1443,14 +1273,6 @@ export class Backq_stringContext extends AtomContext {
 			listener.exitBackq_string(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitBackq_string) {
-			return visitor.visitBackq_string(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SemicolonContext extends AtomContext {
 	constructor(ctx: AtomContext) {
@@ -1469,14 +1291,6 @@ export class SemicolonContext extends AtomContext {
 			listener.exitSemicolon(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitSemicolon) {
-			return visitor.visitSemicolon(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class CutContext extends AtomContext {
 	constructor(ctx: AtomContext) {
@@ -1493,14 +1307,6 @@ export class CutContext extends AtomContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitCut) {
 			listener.exitCut(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitCut) {
-			return visitor.visitCut(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1527,14 +1333,6 @@ export class IntegerContext extends ParserRuleContext {
 	public exitRule(listener: prologListener): void {
 		if (listener.exitInteger) {
 			listener.exitInteger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: prologVisitor<Result>): Result {
-		if (visitor.visitInteger) {
-			return visitor.visitInteger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

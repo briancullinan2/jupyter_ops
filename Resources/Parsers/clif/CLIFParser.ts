@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { CLIFListener } from "./CLIFListener";
-import { CLIFVisitor } from "./CLIFVisitor";
-
 
 export class CLIFParser extends Parser {
 	public static readonly OPEN = 1;
@@ -1282,14 +1280,6 @@ export class TermseqContext extends ParserRuleContext {
 			listener.exitTermseq(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitTermseq) {
-			return visitor.visitTermseq(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1313,14 +1303,6 @@ export class InterpretednameContext extends ParserRuleContext {
 			listener.exitInterpretedname(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitInterpretedname) {
-			return visitor.visitInterpretedname(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1342,14 +1324,6 @@ export class InterpretablenameContext extends ParserRuleContext {
 	public exitRule(listener: CLIFListener): void {
 		if (listener.exitInterpretablename) {
 			listener.exitInterpretablename(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitInterpretablename) {
-			return visitor.visitInterpretablename(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1377,14 +1351,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: CLIFListener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1424,14 +1390,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1454,14 +1412,6 @@ export class OperatorContext extends ParserRuleContext {
 	public exitRule(listener: CLIFListener): void {
 		if (listener.exitOperator) {
 			listener.exitOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitOperator) {
-			return visitor.visitOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1497,14 +1447,6 @@ export class EquationContext extends ParserRuleContext {
 			listener.exitEquation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitEquation) {
-			return visitor.visitEquation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1538,14 +1480,6 @@ export class SentenceContext extends ParserRuleContext {
 			listener.exitSentence(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitSentence) {
-			return visitor.visitSentence(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1571,14 +1505,6 @@ export class AtomsentContext extends ParserRuleContext {
 	public exitRule(listener: CLIFListener): void {
 		if (listener.exitAtomsent) {
 			listener.exitAtomsent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitAtomsent) {
-			return visitor.visitAtomsent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1639,14 +1565,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1669,14 +1587,6 @@ export class PredicateContext extends ParserRuleContext {
 	public exitRule(listener: CLIFListener): void {
 		if (listener.exitPredicate) {
 			listener.exitPredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitPredicate) {
-			return visitor.visitPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1716,14 +1626,6 @@ export class BoolsentContext extends ParserRuleContext {
 			listener.exitBoolsent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitBoolsent) {
-			return visitor.visitBoolsent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1756,14 +1658,6 @@ export class QuantsentContext extends ParserRuleContext {
 	public exitRule(listener: CLIFListener): void {
 		if (listener.exitQuantsent) {
 			listener.exitQuantsent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitQuantsent) {
-			return visitor.visitQuantsent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1832,14 +1726,6 @@ export class BoundlistContext extends ParserRuleContext {
 			listener.exitBoundlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitBoundlist) {
-			return visitor.visitBoundlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1866,14 +1752,6 @@ export class CommentsentContext extends ParserRuleContext {
 	public exitRule(listener: CLIFListener): void {
 		if (listener.exitCommentsent) {
 			listener.exitCommentsent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitCommentsent) {
-			return visitor.visitCommentsent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1932,14 +1810,6 @@ export class ModuleContext extends ParserRuleContext {
 			listener.exitModule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitModule) {
-			return visitor.visitModule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1978,14 +1848,6 @@ export class PhraseContext extends ParserRuleContext {
 			listener.exitPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitPhrase) {
-			return visitor.visitPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2014,14 +1876,6 @@ export class TextContext extends ParserRuleContext {
 	public exitRule(listener: CLIFListener): void {
 		if (listener.exitText) {
 			listener.exitText(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitText) {
-			return visitor.visitText(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2054,14 +1908,6 @@ export class CltextContext extends ParserRuleContext {
 			listener.exitCltext(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitCltext) {
-			return visitor.visitCltext(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2090,14 +1936,6 @@ export class NamedtextContext extends ParserRuleContext {
 	public exitRule(listener: CLIFListener): void {
 		if (listener.exitNamedtext) {
 			listener.exitNamedtext(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CLIFVisitor<Result>): Result {
-		if (visitor.visitNamedtext) {
-			return visitor.visitNamedtext(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

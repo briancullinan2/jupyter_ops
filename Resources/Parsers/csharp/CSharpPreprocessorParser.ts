@@ -26,8 +26,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { CSharpPreprocessorParserListener } from "./CSharpPreprocessorParserListener";
-import { CSharpPreprocessorParserVisitor } from "./CSharpPreprocessorParserVisitor";
-
 
 export class CSharpPreprocessorParser extends Parser {
 	public static readonly BYTE_ORDER_MARK = 1;
@@ -890,14 +888,6 @@ export class PreprocessorDeclarationContext extends Preprocessor_directiveContex
 			listener.exitPreprocessorDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorDeclaration) {
-			return visitor.visitPreprocessorDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorConditionalContext extends Preprocessor_directiveContext {
 	public _expr: Preprocessor_expressionContext;
@@ -927,14 +917,6 @@ export class PreprocessorConditionalContext extends Preprocessor_directiveContex
 			listener.exitPreprocessorConditional(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorConditional) {
-			return visitor.visitPreprocessorConditional(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorLineContext extends Preprocessor_directiveContext {
 	public LINE(): TerminalNode { return this.getToken(CSharpPreprocessorParser.LINE, 0); }
@@ -961,14 +943,6 @@ export class PreprocessorLineContext extends Preprocessor_directiveContext {
 			listener.exitPreprocessorLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorLine) {
-			return visitor.visitPreprocessorLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorDiagnosticContext extends Preprocessor_directiveContext {
 	public ERROR(): TerminalNode | undefined { return this.tryGetToken(CSharpPreprocessorParser.ERROR, 0); }
@@ -991,14 +965,6 @@ export class PreprocessorDiagnosticContext extends Preprocessor_directiveContext
 	public exitRule(listener: CSharpPreprocessorParserListener): void {
 		if (listener.exitPreprocessorDiagnostic) {
 			listener.exitPreprocessorDiagnostic(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorDiagnostic) {
-			return visitor.visitPreprocessorDiagnostic(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1025,14 +991,6 @@ export class PreprocessorRegionContext extends Preprocessor_directiveContext {
 			listener.exitPreprocessorRegion(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorRegion) {
-			return visitor.visitPreprocessorRegion(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorPragmaContext extends Preprocessor_directiveContext {
 	public PRAGMA(): TerminalNode { return this.getToken(CSharpPreprocessorParser.PRAGMA, 0); }
@@ -1056,14 +1014,6 @@ export class PreprocessorPragmaContext extends Preprocessor_directiveContext {
 			listener.exitPreprocessorPragma(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorPragma) {
-			return visitor.visitPreprocessorPragma(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1085,14 +1035,6 @@ export class Directive_new_line_or_sharpContext extends ParserRuleContext {
 	public exitRule(listener: CSharpPreprocessorParserListener): void {
 		if (listener.exitDirective_new_line_or_sharp) {
 			listener.exitDirective_new_line_or_sharp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitDirective_new_line_or_sharp) {
-			return visitor.visitDirective_new_line_or_sharp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1138,14 +1080,6 @@ export class Preprocessor_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpPreprocessorParserListener): void {
 		if (listener.exitPreprocessor_expression) {
 			listener.exitPreprocessor_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessor_expression) {
-			return visitor.visitPreprocessor_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { tomlListener } from "./tomlListener";
-import { tomlVisitor } from "./tomlVisitor";
-
 
 export class tomlParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1193,14 +1191,6 @@ export class DocumentContext extends ParserRuleContext {
 			listener.exitDocument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitDocument) {
-			return visitor.visitDocument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1231,14 +1221,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1259,14 +1241,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: tomlListener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1296,14 +1270,6 @@ export class Key_valueContext extends ParserRuleContext {
 			listener.exitKey_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitKey_value) {
-			return visitor.visitKey_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1329,14 +1295,6 @@ export class KeyContext extends ParserRuleContext {
 	public exitRule(listener: tomlListener): void {
 		if (listener.exitKey) {
 			listener.exitKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitKey) {
-			return visitor.visitKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1366,14 +1324,6 @@ export class Simple_keyContext extends ParserRuleContext {
 			listener.exitSimple_key(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitSimple_key) {
-			return visitor.visitSimple_key(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1394,14 +1344,6 @@ export class Unquoted_keyContext extends ParserRuleContext {
 	public exitRule(listener: tomlListener): void {
 		if (listener.exitUnquoted_key) {
 			listener.exitUnquoted_key(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitUnquoted_key) {
-			return visitor.visitUnquoted_key(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1425,14 +1367,6 @@ export class Quoted_keyContext extends ParserRuleContext {
 	public exitRule(listener: tomlListener): void {
 		if (listener.exitQuoted_key) {
 			listener.exitQuoted_key(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitQuoted_key) {
-			return visitor.visitQuoted_key(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1463,14 +1397,6 @@ export class Dotted_keyContext extends ParserRuleContext {
 	public exitRule(listener: tomlListener): void {
 		if (listener.exitDotted_key) {
 			listener.exitDotted_key(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitDotted_key) {
-			return visitor.visitDotted_key(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1515,14 +1441,6 @@ export class ValueContext extends ParserRuleContext {
 			listener.exitValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1546,14 +1464,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: tomlListener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1581,14 +1491,6 @@ export class IntegerContext extends ParserRuleContext {
 			listener.exitInteger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitInteger) {
-			return visitor.visitInteger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1613,14 +1515,6 @@ export class Floating_pointContext extends ParserRuleContext {
 			listener.exitFloating_point(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitFloating_point) {
-			return visitor.visitFloating_point(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1641,14 +1535,6 @@ export class BoolContext extends ParserRuleContext {
 	public exitRule(listener: tomlListener): void {
 		if (listener.exitBool) {
 			listener.exitBool(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitBool) {
-			return visitor.visitBool(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1676,14 +1562,6 @@ export class Date_timeContext extends ParserRuleContext {
 			listener.exitDate_time(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitDate_time) {
-			return visitor.visitDate_time(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1709,14 +1587,6 @@ export class ArrayContext extends ParserRuleContext {
 	public exitRule(listener: tomlListener): void {
 		if (listener.exitArray) {
 			listener.exitArray(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitArray) {
-			return visitor.visitArray(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1753,14 +1623,6 @@ export class Array_valuesContext extends ParserRuleContext {
 	public exitRule(listener: tomlListener): void {
 		if (listener.exitArray_values) {
 			listener.exitArray_values(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitArray_values) {
-			return visitor.visitArray_values(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1802,14 +1664,6 @@ export class Comment_or_nlContext extends ParserRuleContext {
 			listener.exitComment_or_nl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitComment_or_nl) {
-			return visitor.visitComment_or_nl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1837,14 +1691,6 @@ export class TableContext extends ParserRuleContext {
 			listener.exitTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitTable) {
-			return visitor.visitTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1867,14 +1713,6 @@ export class Standard_tableContext extends ParserRuleContext {
 	public exitRule(listener: tomlListener): void {
 		if (listener.exitStandard_table) {
 			listener.exitStandard_table(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitStandard_table) {
-			return visitor.visitStandard_table(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1901,14 +1739,6 @@ export class Inline_tableContext extends ParserRuleContext {
 			listener.exitInline_table(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitInline_table) {
-			return visitor.visitInline_table(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1931,14 +1761,6 @@ export class Inline_table_keyvalsContext extends ParserRuleContext {
 	public exitRule(listener: tomlListener): void {
 		if (listener.exitInline_table_keyvals) {
 			listener.exitInline_table_keyvals(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitInline_table_keyvals) {
-			return visitor.visitInline_table_keyvals(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1971,14 +1793,6 @@ export class Inline_table_keyvals_non_emptyContext extends ParserRuleContext {
 			listener.exitInline_table_keyvals_non_empty(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitInline_table_keyvals_non_empty) {
-			return visitor.visitInline_table_keyvals_non_empty(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2001,14 +1815,6 @@ export class Array_tableContext extends ParserRuleContext {
 	public exitRule(listener: tomlListener): void {
 		if (listener.exitArray_table) {
 			listener.exitArray_table(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tomlVisitor<Result>): Result {
-		if (visitor.visitArray_table) {
-			return visitor.visitArray_table(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

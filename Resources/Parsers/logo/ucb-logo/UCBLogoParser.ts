@@ -28,8 +28,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { UCBLogoListener } from "./UCBLogoListener";
-import { UCBLogoVisitor } from "./UCBLogoVisitor";
-
 
 export class UCBLogoParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1783,14 +1781,6 @@ export class ParseContext extends ParserRuleContext {
 			listener.exitParse(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitParse) {
-			return visitor.visitParse(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1824,14 +1814,6 @@ export class ProcedureDefInstructionContext extends InstructionContext {
 			listener.exitProcedureDefInstruction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitProcedureDefInstruction) {
-			return visitor.visitProcedureDefInstruction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class MacroDefInstructionContext extends InstructionContext {
 	public macro_def(): Macro_defContext {
@@ -1851,14 +1833,6 @@ export class MacroDefInstructionContext extends InstructionContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitMacroDefInstruction) {
 			listener.exitMacroDefInstruction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitMacroDefInstruction) {
-			return visitor.visitMacroDefInstruction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1882,14 +1856,6 @@ export class ProcedureCallExtraInputInstructionContext extends InstructionContex
 			listener.exitProcedureCallExtraInputInstruction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitProcedureCallExtraInputInstruction) {
-			return visitor.visitProcedureCallExtraInputInstruction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ProcedureCallInstructionContext extends InstructionContext {
 	public procedure_call(): Procedure_callContext {
@@ -1909,14 +1875,6 @@ export class ProcedureCallInstructionContext extends InstructionContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitProcedureCallInstruction) {
 			listener.exitProcedureCallInstruction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitProcedureCallInstruction) {
-			return visitor.visitProcedureCallInstruction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1950,14 +1908,6 @@ export class Procedure_defContext extends ParserRuleContext {
 			listener.exitProcedure_def(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitProcedure_def) {
-			return visitor.visitProcedure_def(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1989,14 +1939,6 @@ export class Macro_defContext extends ParserRuleContext {
 			listener.exitMacro_def(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitMacro_def) {
-			return visitor.visitMacro_def(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2026,14 +1968,6 @@ export class VariablesContext extends ParserRuleContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitVariables) {
 			listener.exitVariables(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitVariables) {
-			return visitor.visitVariables(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2075,14 +2009,6 @@ export class Body_defContext extends ParserRuleContext {
 			listener.exitBody_def(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitBody_def) {
-			return visitor.visitBody_def(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2108,14 +2034,6 @@ export class Body_instructionContext extends ParserRuleContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitBody_instruction) {
 			listener.exitBody_instruction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitBody_instruction) {
-			return visitor.visitBody_instruction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2149,14 +2067,6 @@ export class Procedure_call_extra_inputContext extends ParserRuleContext {
 			listener.exitProcedure_call_extra_input(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitProcedure_call_extra_input) {
-			return visitor.visitProcedure_call_extra_input(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2181,14 +2091,6 @@ export class Procedure_callContext extends ParserRuleContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitProcedure_call) {
 			listener.exitProcedure_call(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitProcedure_call) {
-			return visitor.visitProcedure_call(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2226,14 +2128,6 @@ export class ExpressionsContext extends ParserRuleContext {
 			listener.exitExpressions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitExpressions) {
-			return visitor.visitExpressions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2268,14 +2162,6 @@ export class UnaryMinusExpressionContext extends ExpressionContext {
 			listener.exitUnaryMinusExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitUnaryMinusExpression) {
-			return visitor.visitUnaryMinusExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ProcedureCallExtraInputContext extends ExpressionContext {
 	public procedure_call_extra_input(): Procedure_call_extra_inputContext {
@@ -2295,14 +2181,6 @@ export class ProcedureCallExtraInputContext extends ExpressionContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitProcedureCallExtraInput) {
 			listener.exitProcedureCallExtraInput(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitProcedureCallExtraInput) {
-			return visitor.visitProcedureCallExtraInput(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2326,14 +2204,6 @@ export class ProcedureCallExpressionContext extends ExpressionContext {
 			listener.exitProcedureCallExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitProcedureCallExpression) {
-			return visitor.visitProcedureCallExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ParensExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext {
@@ -2353,14 +2223,6 @@ export class ParensExpressionContext extends ExpressionContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitParensExpression) {
 			listener.exitParensExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitParensExpression) {
-			return visitor.visitParensExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2384,14 +2246,6 @@ export class ArrayExpressionContext extends ExpressionContext {
 			listener.exitArrayExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitArrayExpression) {
-			return visitor.visitArrayExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ListExpressionContext extends ExpressionContext {
 	public list(): ListContext {
@@ -2413,14 +2267,6 @@ export class ListExpressionContext extends ExpressionContext {
 			listener.exitListExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitListExpression) {
-			return visitor.visitListExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class WordExpressionContext extends ExpressionContext {
 	public WORD(): TerminalNode { return this.getToken(UCBLogoParser.WORD, 0); }
@@ -2438,14 +2284,6 @@ export class WordExpressionContext extends ExpressionContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitWordExpression) {
 			listener.exitWordExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitWordExpression) {
-			return visitor.visitWordExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2467,14 +2305,6 @@ export class QuotedWordExpressionContext extends ExpressionContext {
 			listener.exitQuotedWordExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitQuotedWordExpression) {
-			return visitor.visitQuotedWordExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NumberExpressionContext extends ExpressionContext {
 	public NUMBER(): TerminalNode { return this.getToken(UCBLogoParser.NUMBER, 0); }
@@ -2492,14 +2322,6 @@ export class NumberExpressionContext extends ExpressionContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitNumberExpression) {
 			listener.exitNumberExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitNumberExpression) {
-			return visitor.visitNumberExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2521,14 +2343,6 @@ export class VariableExpressionContext extends ExpressionContext {
 			listener.exitVariableExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitVariableExpression) {
-			return visitor.visitVariableExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NameExpressionContext extends ExpressionContext {
 	public NAME(): TerminalNode { return this.getToken(UCBLogoParser.NAME, 0); }
@@ -2546,14 +2360,6 @@ export class NameExpressionContext extends ExpressionContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitNameExpression) {
 			listener.exitNameExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitNameExpression) {
-			return visitor.visitNameExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2584,14 +2390,6 @@ export class MultiplyExpressionContext extends ExpressionContext {
 			listener.exitMultiplyExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitMultiplyExpression) {
-			return visitor.visitMultiplyExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DivideExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -2618,14 +2416,6 @@ export class DivideExpressionContext extends ExpressionContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitDivideExpression) {
 			listener.exitDivideExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitDivideExpression) {
-			return visitor.visitDivideExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2656,14 +2446,6 @@ export class AdditionExpressionContext extends ExpressionContext {
 			listener.exitAdditionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitAdditionExpression) {
-			return visitor.visitAdditionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SubtractionExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -2690,14 +2472,6 @@ export class SubtractionExpressionContext extends ExpressionContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitSubtractionExpression) {
 			listener.exitSubtractionExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitSubtractionExpression) {
-			return visitor.visitSubtractionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2728,14 +2502,6 @@ export class LessThanExpressionContext extends ExpressionContext {
 			listener.exitLessThanExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitLessThanExpression) {
-			return visitor.visitLessThanExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class GreaterThanExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -2762,14 +2528,6 @@ export class GreaterThanExpressionContext extends ExpressionContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitGreaterThanExpression) {
 			listener.exitGreaterThanExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitGreaterThanExpression) {
-			return visitor.visitGreaterThanExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2800,14 +2558,6 @@ export class LessThanEqualsExpressionContext extends ExpressionContext {
 			listener.exitLessThanEqualsExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitLessThanEqualsExpression) {
-			return visitor.visitLessThanEqualsExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class GreaterThanEqualsExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -2834,14 +2584,6 @@ export class GreaterThanEqualsExpressionContext extends ExpressionContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitGreaterThanEqualsExpression) {
 			listener.exitGreaterThanEqualsExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitGreaterThanEqualsExpression) {
-			return visitor.visitGreaterThanEqualsExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2872,14 +2614,6 @@ export class EqualsExpressionContext extends ExpressionContext {
 			listener.exitEqualsExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitEqualsExpression) {
-			return visitor.visitEqualsExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NotEqualsExpressionExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -2906,14 +2640,6 @@ export class NotEqualsExpressionExpressionContext extends ExpressionContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitNotEqualsExpressionExpression) {
 			listener.exitNotEqualsExpressionExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitNotEqualsExpressionExpression) {
-			return visitor.visitNotEqualsExpressionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2964,14 +2690,6 @@ export class ArrayContext extends ParserRuleContext {
 			listener.exitArray(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitArray) {
-			return visitor.visitArray(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3018,14 +2736,6 @@ export class ListContext extends ParserRuleContext {
 	public exitRule(listener: UCBLogoListener): void {
 		if (listener.exitList) {
 			listener.exitList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UCBLogoVisitor<Result>): Result {
-		if (visitor.visitList) {
-			return visitor.visitList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

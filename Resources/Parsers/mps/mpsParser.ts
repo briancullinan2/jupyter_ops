@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { mpsListener } from "./mpsListener";
-import { mpsVisitor } from "./mpsVisitor";
-
 
 export class mpsParser extends Parser {
 	public static readonly NAMEINDICATORCARD = 1;
@@ -985,14 +983,6 @@ export class ModellContext extends ParserRuleContext {
 			listener.exitModell(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitModell) {
-			return visitor.visitModell(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1015,14 +1005,6 @@ export class FirstrowContext extends ParserRuleContext {
 	public exitRule(listener: mpsListener): void {
 		if (listener.exitFirstrow) {
 			listener.exitFirstrow(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitFirstrow) {
-			return visitor.visitFirstrow(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1056,14 +1038,6 @@ export class RowsContext extends ParserRuleContext {
 			listener.exitRows(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitRows) {
-			return visitor.visitRows(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1087,14 +1061,6 @@ export class ColumnsContext extends ParserRuleContext {
 	public exitRule(listener: mpsListener): void {
 		if (listener.exitColumns) {
 			listener.exitColumns(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitColumns) {
-			return visitor.visitColumns(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1122,14 +1088,6 @@ export class RhsContext extends ParserRuleContext {
 			listener.exitRhs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitRhs) {
-			return visitor.visitRhs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1153,14 +1111,6 @@ export class RangesContext extends ParserRuleContext {
 	public exitRule(listener: mpsListener): void {
 		if (listener.exitRanges) {
 			listener.exitRanges(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitRanges) {
-			return visitor.visitRanges(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1188,14 +1138,6 @@ export class BoundsContext extends ParserRuleContext {
 			listener.exitBounds(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitBounds) {
-			return visitor.visitBounds(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1216,14 +1158,6 @@ export class EndataContext extends ParserRuleContext {
 	public exitRule(listener: mpsListener): void {
 		if (listener.exitEndata) {
 			listener.exitEndata(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitEndata) {
-			return visitor.visitEndata(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1247,14 +1181,6 @@ export class RowdatacardContext extends ParserRuleContext {
 	public exitRule(listener: mpsListener): void {
 		if (listener.exitRowdatacard) {
 			listener.exitRowdatacard(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitRowdatacard) {
-			return visitor.visitRowdatacard(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1296,14 +1222,6 @@ export class ColumndatacardsContext extends ParserRuleContext {
 			listener.exitColumndatacards(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitColumndatacards) {
-			return visitor.visitColumndatacards(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1332,14 +1250,6 @@ export class RhsdatacardsContext extends ParserRuleContext {
 	public exitRule(listener: mpsListener): void {
 		if (listener.exitRhsdatacards) {
 			listener.exitRhsdatacards(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitRhsdatacards) {
-			return visitor.visitRhsdatacards(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1372,14 +1282,6 @@ export class RangesdatacardsContext extends ParserRuleContext {
 			listener.exitRangesdatacards(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitRangesdatacards) {
-			return visitor.visitRangesdatacards(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1408,14 +1310,6 @@ export class BoundsdatacardsContext extends ParserRuleContext {
 	public exitRule(listener: mpsListener): void {
 		if (listener.exitBoundsdatacards) {
 			listener.exitBoundsdatacards(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitBoundsdatacards) {
-			return visitor.visitBoundsdatacards(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1455,14 +1349,6 @@ export class ColumndatacardContext extends ParserRuleContext {
 	public exitRule(listener: mpsListener): void {
 		if (listener.exitColumndatacard) {
 			listener.exitColumndatacard(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitColumndatacard) {
-			return visitor.visitColumndatacard(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1505,14 +1391,6 @@ export class RhsdatacardContext extends ParserRuleContext {
 			listener.exitRhsdatacard(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitRhsdatacard) {
-			return visitor.visitRhsdatacard(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1553,14 +1431,6 @@ export class RangesdatacardContext extends ParserRuleContext {
 			listener.exitRangesdatacard(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitRangesdatacard) {
-			return visitor.visitRangesdatacard(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1592,14 +1462,6 @@ export class BoundsdatacardContext extends ParserRuleContext {
 	public exitRule(listener: mpsListener): void {
 		if (listener.exitBoundsdatacard) {
 			listener.exitBoundsdatacard(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitBoundsdatacard) {
-			return visitor.visitBoundsdatacard(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1638,14 +1500,6 @@ export class IntblockContext extends ParserRuleContext {
 			listener.exitIntblock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitIntblock) {
-			return visitor.visitIntblock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1670,14 +1524,6 @@ export class StartmarkerContext extends ParserRuleContext {
 			listener.exitStartmarker(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitStartmarker) {
-			return visitor.visitStartmarker(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1700,14 +1546,6 @@ export class EndmarkerContext extends ParserRuleContext {
 	public exitRule(listener: mpsListener): void {
 		if (listener.exitEndmarker) {
 			listener.exitEndmarker(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mpsVisitor<Result>): Result {
-		if (visitor.visitEndmarker) {
-			return visitor.visitEndmarker(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

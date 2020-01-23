@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { arithmeticListener } from "./arithmeticListener";
-import { arithmeticVisitor } from "./arithmeticVisitor";
-
 
 export class arithmeticParser extends Parser {
 	public static readonly VARIABLE = 1;
@@ -539,14 +537,6 @@ export class FileContext extends ParserRuleContext {
 			listener.exitFile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: arithmeticVisitor<Result>): Result {
-		if (visitor.visitFile) {
-			return visitor.visitFile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -578,14 +568,6 @@ export class EquationContext extends ParserRuleContext {
 	public exitRule(listener: arithmeticListener): void {
 		if (listener.exitEquation) {
 			listener.exitEquation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: arithmeticVisitor<Result>): Result {
-		if (visitor.visitEquation) {
-			return visitor.visitEquation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -644,14 +626,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: arithmeticVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -679,14 +653,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: arithmeticVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -707,14 +673,6 @@ export class ScientificContext extends ParserRuleContext {
 	public exitRule(listener: arithmeticListener): void {
 		if (listener.exitScientific) {
 			listener.exitScientific(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: arithmeticVisitor<Result>): Result {
-		if (visitor.visitScientific) {
-			return visitor.visitScientific(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -739,14 +697,6 @@ export class VariableContext extends ParserRuleContext {
 			listener.exitVariable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: arithmeticVisitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -769,14 +719,6 @@ export class RelopContext extends ParserRuleContext {
 	public exitRule(listener: arithmeticListener): void {
 		if (listener.exitRelop) {
 			listener.exitRelop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: arithmeticVisitor<Result>): Result {
-		if (visitor.visitRelop) {
-			return visitor.visitRelop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

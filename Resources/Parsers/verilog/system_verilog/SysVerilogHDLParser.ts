@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { SysVerilogHDLListener } from "./SysVerilogHDLListener";
-import { SysVerilogHDLVisitor } from "./SysVerilogHDLVisitor";
-
 
 export class SysVerilogHDLParser extends Parser {
 	public static readonly T__0 = 1;
@@ -20097,14 +20095,6 @@ export class Module_keywordContext extends ParserRuleContext {
 			listener.exitModule_keyword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitModule_keyword) {
-			return visitor.visitModule_keyword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20126,14 +20116,6 @@ export class Struct_keywordContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitStruct_keyword) {
 			listener.exitStruct_keyword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitStruct_keyword) {
-			return visitor.visitStruct_keyword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20158,14 +20140,6 @@ export class Any_case_keywordContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitAny_case_keyword) {
 			listener.exitAny_case_keyword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAny_case_keyword) {
-			return visitor.visitAny_case_keyword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20198,14 +20172,6 @@ export class SemicolonContext extends ParserRuleContext {
 			listener.exitSemicolon(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSemicolon) {
-			return visitor.visitSemicolon(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20226,14 +20192,6 @@ export class Unary_operatorContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitUnary_operator) {
 			listener.exitUnary_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitUnary_operator) {
-			return visitor.visitUnary_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20260,14 +20218,6 @@ export class Binary_operatorContext extends ParserRuleContext {
 			listener.exitBinary_operator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBinary_operator) {
-			return visitor.visitBinary_operator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20289,14 +20239,6 @@ export class Unary_assign_operatorContext extends ParserRuleContext {
 			listener.exitUnary_assign_operator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitUnary_assign_operator) {
-			return visitor.visitUnary_assign_operator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20316,14 +20258,6 @@ export class Binary_assign_operatorContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitBinary_assign_operator) {
 			listener.exitBinary_assign_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBinary_assign_operator) {
-			return visitor.visitBinary_assign_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20349,14 +20283,6 @@ export class Source_textContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitSource_text) {
 			listener.exitSource_text(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSource_text) {
-			return visitor.visitSource_text(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20389,14 +20315,6 @@ export class Description_starContext extends ParserRuleContext {
 			listener.exitDescription_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDescription_star) {
-			return visitor.visitDescription_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20427,14 +20345,6 @@ export class Header_textContext extends ParserRuleContext {
 			listener.exitHeader_text(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitHeader_text) {
-			return visitor.visitHeader_text(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20457,14 +20367,6 @@ export class Design_attributeContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitDesign_attribute) {
 			listener.exitDesign_attribute(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDesign_attribute) {
-			return visitor.visitDesign_attribute(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20492,14 +20394,6 @@ export class Compiler_directiveContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitCompiler_directive) {
 			listener.exitCompiler_directive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCompiler_directive) {
-			return visitor.visitCompiler_directive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20542,14 +20436,6 @@ export class DescriptionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitDescription) {
 			listener.exitDescription(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDescription) {
-			return visitor.visitDescription(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20595,14 +20481,6 @@ export class Module_declarationContext extends ParserRuleContext {
 			listener.exitModule_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitModule_declaration) {
-			return visitor.visitModule_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20625,14 +20503,6 @@ export class Module_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitModule_identifier) {
 			listener.exitModule_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitModule_identifier) {
-			return visitor.visitModule_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20662,14 +20532,6 @@ export class Module_interfaceContext extends ParserRuleContext {
 			listener.exitModule_interface(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitModule_interface) {
-			return visitor.visitModule_interface(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20697,14 +20559,6 @@ export class Module_parameter_interfaceContext extends ParserRuleContext {
 			listener.exitModule_parameter_interface(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitModule_parameter_interface) {
-			return visitor.visitModule_parameter_interface(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20729,14 +20583,6 @@ export class Module_port_interfaceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitModule_port_interface) {
 			listener.exitModule_port_interface(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitModule_port_interface) {
-			return visitor.visitModule_port_interface(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20767,14 +20613,6 @@ export class Module_item_starContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitModule_item_star) {
 			listener.exitModule_item_star(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitModule_item_star) {
-			return visitor.visitModule_item_star(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20828,14 +20666,6 @@ export class Module_itemContext extends ParserRuleContext {
 			listener.exitModule_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitModule_item) {
-			return visitor.visitModule_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20859,14 +20689,6 @@ export class Colon_module_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitColon_module_identifier) {
 			listener.exitColon_module_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitColon_module_identifier) {
-			return visitor.visitColon_module_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20907,14 +20729,6 @@ export class Package_declarationContext extends ParserRuleContext {
 			listener.exitPackage_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPackage_declaration) {
-			return visitor.visitPackage_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20937,14 +20751,6 @@ export class Package_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPackage_identifier) {
 			listener.exitPackage_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPackage_identifier) {
-			return visitor.visitPackage_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20970,14 +20776,6 @@ export class Colon_package_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitColon_package_identifier) {
 			listener.exitColon_package_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitColon_package_identifier) {
-			return visitor.visitColon_package_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21008,14 +20806,6 @@ export class Package_item_starContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPackage_item_star) {
 			listener.exitPackage_item_star(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPackage_item_star) {
-			return visitor.visitPackage_item_star(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21060,14 +20850,6 @@ export class Package_itemContext extends ParserRuleContext {
 			listener.exitPackage_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPackage_item) {
-			return visitor.visitPackage_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21101,14 +20883,6 @@ export class Import_packageContext extends ParserRuleContext {
 			listener.exitImport_package(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitImport_package) {
-			return visitor.visitImport_package(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21131,14 +20905,6 @@ export class Package_item_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPackage_item_identifier) {
 			listener.exitPackage_item_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPackage_item_identifier) {
-			return visitor.visitPackage_item_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21166,14 +20932,6 @@ export class Parameter_item_semicolonContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitParameter_item_semicolon) {
 			listener.exitParameter_item_semicolon(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitParameter_item_semicolon) {
-			return visitor.visitParameter_item_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21206,14 +20964,6 @@ export class Parameter_itemContext extends ParserRuleContext {
 			listener.exitParameter_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitParameter_item) {
-			return visitor.visitParameter_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21244,14 +20994,6 @@ export class Attr_port_item_semicolonContext extends ParserRuleContext {
 			listener.exitAttr_port_item_semicolon(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_port_item_semicolon) {
-			return visitor.visitAttr_port_item_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21280,14 +21022,6 @@ export class Attr_variable_item_semicolonContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitAttr_variable_item_semicolon) {
 			listener.exitAttr_variable_item_semicolon(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_variable_item_semicolon) {
-			return visitor.visitAttr_variable_item_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21356,14 +21090,6 @@ export class Variable_itemContext extends ParserRuleContext {
 			listener.exitVariable_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitVariable_item) {
-			return visitor.visitVariable_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21389,14 +21115,6 @@ export class Subroutine_item_semicolonContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitSubroutine_item_semicolon) {
 			listener.exitSubroutine_item_semicolon(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSubroutine_item_semicolon) {
-			return visitor.visitSubroutine_item_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21426,14 +21144,6 @@ export class Subroutine_itemContext extends ParserRuleContext {
 			listener.exitSubroutine_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSubroutine_item) {
-			return visitor.visitSubroutine_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21459,14 +21169,6 @@ export class Attr_construct_itemContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitAttr_construct_item) {
 			listener.exitAttr_construct_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_construct_item) {
-			return visitor.visitAttr_construct_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21502,14 +21204,6 @@ export class Construct_itemContext extends ParserRuleContext {
 			listener.exitConstruct_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitConstruct_item) {
-			return visitor.visitConstruct_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21537,14 +21231,6 @@ export class Attr_component_itemContext extends ParserRuleContext {
 			listener.exitAttr_component_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_component_item) {
-			return visitor.visitAttr_component_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21570,14 +21256,6 @@ export class Component_itemContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComponent_item) {
 			listener.exitComponent_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComponent_item) {
-			return visitor.visitComponent_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21613,14 +21291,6 @@ export class Compiler_itemContext extends ParserRuleContext {
 			listener.exitCompiler_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCompiler_item) {
-			return visitor.visitCompiler_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21651,14 +21321,6 @@ export class Type_itemContext extends ParserRuleContext {
 			listener.exitType_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitType_item) {
-			return visitor.visitType_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21681,14 +21343,6 @@ export class Null_itemContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitNull_item) {
 			listener.exitNull_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitNull_item) {
-			return visitor.visitNull_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21718,14 +21372,6 @@ export class List_of_interface_parametersContext extends ParserRuleContext {
 			listener.exitList_of_interface_parameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_interface_parameters) {
-			return visitor.visitList_of_interface_parameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21751,14 +21397,6 @@ export class List_of_parameter_declarationsContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_parameter_declarations) {
 			listener.exitList_of_parameter_declarations(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_parameter_declarations) {
-			return visitor.visitList_of_parameter_declarations(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21791,14 +21429,6 @@ export class Comma_parameter_declaration_starContext extends ParserRuleContext {
 			listener.exitComma_parameter_declaration_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_parameter_declaration_star) {
-			return visitor.visitComma_parameter_declaration_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21824,14 +21454,6 @@ export class Comma_parameter_declarationContext extends ParserRuleContext {
 			listener.exitComma_parameter_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_parameter_declaration) {
-			return visitor.visitComma_parameter_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21854,14 +21476,6 @@ export class List_of_parameter_descriptionsContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_parameter_descriptions) {
 			listener.exitList_of_parameter_descriptions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_parameter_descriptions) {
-			return visitor.visitList_of_parameter_descriptions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21891,14 +21505,6 @@ export class Param_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitParam_declaration) {
 			listener.exitParam_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitParam_declaration) {
-			return visitor.visitParam_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21949,14 +21555,6 @@ export class Param_descriptionContext extends ParserRuleContext {
 			listener.exitParam_description(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitParam_description) {
-			return visitor.visitParam_description(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21980,14 +21578,6 @@ export class Parameter_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitParameter_declaration) {
 			listener.exitParameter_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitParameter_declaration) {
-			return visitor.visitParameter_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22015,14 +21605,6 @@ export class Local_parameter_declarationContext extends ParserRuleContext {
 			listener.exitLocal_parameter_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitLocal_parameter_declaration) {
-			return visitor.visitLocal_parameter_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22046,14 +21628,6 @@ export class Parameter_overrideContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitParameter_override) {
 			listener.exitParameter_override(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitParameter_override) {
-			return visitor.visitParameter_override(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22083,14 +21657,6 @@ export class List_of_tf_interface_portsContext extends ParserRuleContext {
 			listener.exitList_of_tf_interface_ports(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_tf_interface_ports) {
-			return visitor.visitList_of_tf_interface_ports(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22118,14 +21684,6 @@ export class List_of_tf_port_declarationsContext extends ParserRuleContext {
 			listener.exitList_of_tf_port_declarations(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_tf_port_declarations) {
-			return visitor.visitList_of_tf_port_declarations(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22151,14 +21709,6 @@ export class List_of_tf_port_declarations_commaContext extends ParserRuleContext
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_tf_port_declarations_comma) {
 			listener.exitList_of_tf_port_declarations_comma(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_tf_port_declarations_comma) {
-			return visitor.visitList_of_tf_port_declarations_comma(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22191,14 +21741,6 @@ export class Comma_attr_tf_port_declaration_starContext extends ParserRuleContex
 			listener.exitComma_attr_tf_port_declaration_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_attr_tf_port_declaration_star) {
-			return visitor.visitComma_attr_tf_port_declaration_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22224,14 +21766,6 @@ export class Comma_attr_tf_port_declarationContext extends ParserRuleContext {
 			listener.exitComma_attr_tf_port_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_attr_tf_port_declaration) {
-			return visitor.visitComma_attr_tf_port_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22254,14 +21788,6 @@ export class List_of_tf_port_declarations_semicolonContext extends ParserRuleCon
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_tf_port_declarations_semicolon) {
 			listener.exitList_of_tf_port_declarations_semicolon(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_tf_port_declarations_semicolon) {
-			return visitor.visitList_of_tf_port_declarations_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22294,14 +21820,6 @@ export class Attr_tf_port_declaration_semicolon_plusContext extends ParserRuleCo
 			listener.exitAttr_tf_port_declaration_semicolon_plus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_tf_port_declaration_semicolon_plus) {
-			return visitor.visitAttr_tf_port_declaration_semicolon_plus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22332,14 +21850,6 @@ export class Attr_tf_port_declaration_semicolon_starContext extends ParserRuleCo
 			listener.exitAttr_tf_port_declaration_semicolon_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_tf_port_declaration_semicolon_star) {
-			return visitor.visitAttr_tf_port_declaration_semicolon_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22367,14 +21877,6 @@ export class Attr_tf_port_declaration_semicolonContext extends ParserRuleContext
 			listener.exitAttr_tf_port_declaration_semicolon(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_tf_port_declaration_semicolon) {
-			return visitor.visitAttr_tf_port_declaration_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22400,14 +21902,6 @@ export class Attr_tf_port_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitAttr_tf_port_declaration) {
 			listener.exitAttr_tf_port_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_tf_port_declaration) {
-			return visitor.visitAttr_tf_port_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22446,14 +21940,6 @@ export class Tf_port_declarationContext extends ParserRuleContext {
 			listener.exitTf_port_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTf_port_declaration) {
-			return visitor.visitTf_port_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22479,14 +21965,6 @@ export class List_of_interface_portsContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_interface_ports) {
 			listener.exitList_of_interface_ports(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_interface_ports) {
-			return visitor.visitList_of_interface_ports(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22515,14 +21993,6 @@ export class List_of_port_identifiersContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_port_identifiers) {
 			listener.exitList_of_port_identifiers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_port_identifiers) {
-			return visitor.visitList_of_port_identifiers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22555,14 +22025,6 @@ export class Comma_port_identifier_starContext extends ParserRuleContext {
 			listener.exitComma_port_identifier_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_port_identifier_star) {
-			return visitor.visitComma_port_identifier_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22588,14 +22050,6 @@ export class Comma_port_identifierContext extends ParserRuleContext {
 			listener.exitComma_port_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_port_identifier) {
-			return visitor.visitComma_port_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22618,14 +22072,6 @@ export class Port_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPort_identifier) {
 			listener.exitPort_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPort_identifier) {
-			return visitor.visitPort_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22655,14 +22101,6 @@ export class List_of_port_declarationsContext extends ParserRuleContext {
 			listener.exitList_of_port_declarations(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_port_declarations) {
-			return visitor.visitList_of_port_declarations(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22688,14 +22126,6 @@ export class List_of_port_declarations_commaContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_port_declarations_comma) {
 			listener.exitList_of_port_declarations_comma(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_port_declarations_comma) {
-			return visitor.visitList_of_port_declarations_comma(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22728,14 +22158,6 @@ export class Comma_attr_port_declaration_starContext extends ParserRuleContext {
 			listener.exitComma_attr_port_declaration_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_attr_port_declaration_star) {
-			return visitor.visitComma_attr_port_declaration_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22761,14 +22183,6 @@ export class Comma_attr_port_declarationContext extends ParserRuleContext {
 			listener.exitComma_attr_port_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_attr_port_declaration) {
-			return visitor.visitComma_attr_port_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22791,14 +22205,6 @@ export class List_of_port_declarations_semicolonContext extends ParserRuleContex
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_port_declarations_semicolon) {
 			listener.exitList_of_port_declarations_semicolon(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_port_declarations_semicolon) {
-			return visitor.visitList_of_port_declarations_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22831,14 +22237,6 @@ export class Attr_port_declaration_semicolon_plusContext extends ParserRuleConte
 			listener.exitAttr_port_declaration_semicolon_plus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_port_declaration_semicolon_plus) {
-			return visitor.visitAttr_port_declaration_semicolon_plus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22869,14 +22267,6 @@ export class Attr_port_declaration_semicolon_starContext extends ParserRuleConte
 			listener.exitAttr_port_declaration_semicolon_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_port_declaration_semicolon_star) {
-			return visitor.visitAttr_port_declaration_semicolon_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22904,14 +22294,6 @@ export class Attr_port_declaration_semicolonContext extends ParserRuleContext {
 			listener.exitAttr_port_declaration_semicolon(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_port_declaration_semicolon) {
-			return visitor.visitAttr_port_declaration_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22937,14 +22319,6 @@ export class Attr_port_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitAttr_port_declaration) {
 			listener.exitAttr_port_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_port_declaration) {
-			return visitor.visitAttr_port_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22980,14 +22354,6 @@ export class Port_declarationContext extends ParserRuleContext {
 			listener.exitPort_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPort_declaration) {
-			return visitor.visitPort_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23017,14 +22383,6 @@ export class Port_descriptionContext extends ParserRuleContext {
 			listener.exitPort_description(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPort_description) {
-			return visitor.visitPort_description(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23050,14 +22408,6 @@ export class Inout_descriptionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitInout_description) {
 			listener.exitInout_description(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitInout_description) {
-			return visitor.visitInout_description(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23114,14 +22464,6 @@ export class Input_descriptionContext extends ParserRuleContext {
 			listener.exitInput_description(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitInput_description) {
-			return visitor.visitInput_description(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23167,14 +22509,6 @@ export class Output_descriptionContext extends ParserRuleContext {
 			listener.exitOutput_description(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitOutput_description) {
-			return visitor.visitOutput_description(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23218,14 +22552,6 @@ export class Ref_descriptionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitRef_description) {
 			listener.exitRef_description(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitRef_description) {
-			return visitor.visitRef_description(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23282,14 +22608,6 @@ export class Tf_declarationContext extends ParserRuleContext {
 			listener.exitTf_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTf_declaration) {
-			return visitor.visitTf_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23313,14 +22631,6 @@ export class Inout_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitInout_declaration) {
 			listener.exitInout_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitInout_declaration) {
-			return visitor.visitInout_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23348,14 +22658,6 @@ export class Input_declarationContext extends ParserRuleContext {
 			listener.exitInput_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitInput_declaration) {
-			return visitor.visitInput_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23379,14 +22681,6 @@ export class Output_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitOutput_declaration) {
 			listener.exitOutput_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitOutput_declaration) {
-			return visitor.visitOutput_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23414,14 +22708,6 @@ export class Ref_declarationContext extends ParserRuleContext {
 			listener.exitRef_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitRef_declaration) {
-			return visitor.visitRef_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23446,14 +22732,6 @@ export class User_typeContext extends ParserRuleContext {
 			listener.exitUser_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitUser_type) {
-			return visitor.visitUser_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23476,14 +22754,6 @@ export class User_type_identiferContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitUser_type_identifer) {
 			listener.exitUser_type_identifer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitUser_type_identifer) {
-			return visitor.visitUser_type_identifer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23516,14 +22786,6 @@ export class Dimension_plusContext extends ParserRuleContext {
 			listener.exitDimension_plus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDimension_plus) {
-			return visitor.visitDimension_plus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23554,14 +22816,6 @@ export class Dimension_starContext extends ParserRuleContext {
 			listener.exitDimension_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDimension_star) {
-			return visitor.visitDimension_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23586,14 +22840,6 @@ export class DimensionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitDimension) {
 			listener.exitDimension(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDimension) {
-			return visitor.visitDimension(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23629,14 +22875,6 @@ export class Range_expressionContext extends ParserRuleContext {
 			listener.exitRange_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitRange_expression) {
-			return visitor.visitRange_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23661,14 +22899,6 @@ export class Index_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitIndex_expression) {
 			listener.exitIndex_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitIndex_expression) {
-			return visitor.visitIndex_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23699,14 +22929,6 @@ export class Sb_rangeContext extends ParserRuleContext {
 			listener.exitSb_range(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSb_range) {
-			return visitor.visitSb_range(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23733,14 +22955,6 @@ export class Base_increment_rangeContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitBase_increment_range) {
 			listener.exitBase_increment_range(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBase_increment_range) {
-			return visitor.visitBase_increment_range(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23771,14 +22985,6 @@ export class Base_decrement_rangeContext extends ParserRuleContext {
 			listener.exitBase_decrement_range(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBase_decrement_range) {
-			return visitor.visitBase_decrement_range(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23801,14 +23007,6 @@ export class Base_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitBase_expression) {
 			listener.exitBase_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBase_expression) {
-			return visitor.visitBase_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23845,14 +23043,6 @@ export class Net_typeContext extends ParserRuleContext {
 			listener.exitNet_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitNet_type) {
-			return visitor.visitNet_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23881,14 +23071,6 @@ export class Drive_strengthContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitDrive_strength) {
 			listener.exitDrive_strength(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDrive_strength) {
-			return visitor.visitDrive_strength(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23924,14 +23106,6 @@ export class Drive_strength_value_0Context extends ParserRuleContext {
 			listener.exitDrive_strength_value_0(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDrive_strength_value_0) {
-			return visitor.visitDrive_strength_value_0(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23965,14 +23139,6 @@ export class Drive_strength_value_1Context extends ParserRuleContext {
 			listener.exitDrive_strength_value_1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDrive_strength_value_1) {
-			return visitor.visitDrive_strength_value_1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23996,14 +23162,6 @@ export class Strength0Context extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitStrength0) {
 			listener.exitStrength0(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitStrength0) {
-			return visitor.visitStrength0(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24031,14 +23189,6 @@ export class Strength1Context extends ParserRuleContext {
 			listener.exitStrength1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitStrength1) {
-			return visitor.visitStrength1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24061,14 +23211,6 @@ export class Highz0Context extends ParserRuleContext {
 			listener.exitHighz0(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitHighz0) {
-			return visitor.visitHighz0(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24089,14 +23231,6 @@ export class Highz1Context extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitHighz1) {
 			listener.exitHighz1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitHighz1) {
-			return visitor.visitHighz1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24125,14 +23259,6 @@ export class Charge_strengthContext extends ParserRuleContext {
 			listener.exitCharge_strength(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCharge_strength) {
-			return visitor.visitCharge_strength(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24155,14 +23281,6 @@ export class Charge_sizeContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitCharge_size) {
 			listener.exitCharge_size(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCharge_size) {
-			return visitor.visitCharge_size(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24190,14 +23308,6 @@ export class List_of_variable_descriptionsContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_variable_descriptions) {
 			listener.exitList_of_variable_descriptions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_variable_descriptions) {
-			return visitor.visitList_of_variable_descriptions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24230,14 +23340,6 @@ export class Comma_variable_description_starContext extends ParserRuleContext {
 			listener.exitComma_variable_description_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_variable_description_star) {
-			return visitor.visitComma_variable_description_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24261,14 +23363,6 @@ export class Comma_variable_descriptionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_variable_description) {
 			listener.exitComma_variable_description(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_variable_description) {
-			return visitor.visitComma_variable_description(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24302,14 +23396,6 @@ export class Variable_descriptionContext extends ParserRuleContext {
 			listener.exitVariable_description(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitVariable_description) {
-			return visitor.visitVariable_description(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24332,14 +23418,6 @@ export class Variable_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitVariable_identifier) {
 			listener.exitVariable_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitVariable_identifier) {
-			return visitor.visitVariable_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24367,14 +23445,6 @@ export class List_of_hierarchical_variable_descriptionsContext extends ParserRul
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_hierarchical_variable_descriptions) {
 			listener.exitList_of_hierarchical_variable_descriptions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_hierarchical_variable_descriptions) {
-			return visitor.visitList_of_hierarchical_variable_descriptions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24407,14 +23477,6 @@ export class Comma_hierarchical_variable_description_starContext extends ParserR
 			listener.exitComma_hierarchical_variable_description_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_hierarchical_variable_description_star) {
-			return visitor.visitComma_hierarchical_variable_description_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24438,14 +23500,6 @@ export class Comma_hierarchical_variable_descriptionContext extends ParserRuleCo
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_hierarchical_variable_description) {
 			listener.exitComma_hierarchical_variable_description(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_hierarchical_variable_description) {
-			return visitor.visitComma_hierarchical_variable_description(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24479,14 +23533,6 @@ export class Hierarchical_variable_descriptionContext extends ParserRuleContext 
 			listener.exitHierarchical_variable_description(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitHierarchical_variable_description) {
-			return visitor.visitHierarchical_variable_description(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24509,14 +23555,6 @@ export class Hierarchical_variable_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitHierarchical_variable_identifier) {
 			listener.exitHierarchical_variable_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitHierarchical_variable_identifier) {
-			return visitor.visitHierarchical_variable_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24565,14 +23603,6 @@ export class Net_declarationContext extends ParserRuleContext {
 			listener.exitNet_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitNet_declaration) {
-			return visitor.visitNet_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24601,14 +23631,6 @@ export class Reg_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitReg_declaration) {
 			listener.exitReg_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitReg_declaration) {
-			return visitor.visitReg_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24641,14 +23663,6 @@ export class Logic_declarationContext extends ParserRuleContext {
 			listener.exitLogic_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitLogic_declaration) {
-			return visitor.visitLogic_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24670,14 +23684,6 @@ export class Bits_typeContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitBits_type) {
 			listener.exitBits_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBits_type) {
-			return visitor.visitBits_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24712,14 +23718,6 @@ export class Bits_declarationContext extends ParserRuleContext {
 			listener.exitBits_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBits_declaration) {
-			return visitor.visitBits_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24746,14 +23744,6 @@ export class Integer_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitInteger_declaration) {
 			listener.exitInteger_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitInteger_declaration) {
-			return visitor.visitInteger_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24786,14 +23776,6 @@ export class Int_declarationContext extends ParserRuleContext {
 			listener.exitInt_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitInt_declaration) {
-			return visitor.visitInt_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24817,14 +23799,6 @@ export class Real_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitReal_declaration) {
 			listener.exitReal_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitReal_declaration) {
-			return visitor.visitReal_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24852,14 +23826,6 @@ export class Time_declarationContext extends ParserRuleContext {
 			listener.exitTime_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTime_declaration) {
-			return visitor.visitTime_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24883,14 +23849,6 @@ export class Realtime_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitRealtime_declaration) {
 			listener.exitRealtime_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitRealtime_declaration) {
-			return visitor.visitRealtime_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24918,14 +23876,6 @@ export class Event_declarationContext extends ParserRuleContext {
 			listener.exitEvent_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEvent_declaration) {
-			return visitor.visitEvent_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24949,14 +23899,6 @@ export class Genvar_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitGenvar_declaration) {
 			listener.exitGenvar_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenvar_declaration) {
-			return visitor.visitGenvar_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24990,14 +23932,6 @@ export class Usertype_variable_declarationContext extends ParserRuleContext {
 			listener.exitUsertype_variable_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitUsertype_variable_declaration) {
-			return visitor.visitUsertype_variable_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25021,14 +23955,6 @@ export class String_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitString_declaration) {
 			listener.exitString_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitString_declaration) {
-			return visitor.visitString_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25058,14 +23984,6 @@ export class Struct_declarationContext extends ParserRuleContext {
 			listener.exitStruct_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitStruct_declaration) {
-			return visitor.visitStruct_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25091,14 +24009,6 @@ export class Enum_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitEnum_declaration) {
 			listener.exitEnum_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEnum_declaration) {
-			return visitor.visitEnum_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25151,14 +24061,6 @@ export class Function_declarationContext extends ParserRuleContext {
 			listener.exitFunction_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFunction_declaration) {
-			return visitor.visitFunction_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25194,14 +24096,6 @@ export class Function_typeContext extends ParserRuleContext {
 			listener.exitFunction_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFunction_type) {
-			return visitor.visitFunction_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25224,14 +24118,6 @@ export class Function_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitFunction_identifier) {
 			listener.exitFunction_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFunction_identifier) {
-			return visitor.visitFunction_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25258,14 +24144,6 @@ export class Function_interfaceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitFunction_interface) {
 			listener.exitFunction_interface(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFunction_interface) {
-			return visitor.visitFunction_interface(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25298,14 +24176,6 @@ export class Function_item_declaration_starContext extends ParserRuleContext {
 			listener.exitFunction_item_declaration_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFunction_item_declaration_star) {
-			return visitor.visitFunction_item_declaration_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25331,14 +24201,6 @@ export class Function_item_declaration_semicolonContext extends ParserRuleContex
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitFunction_item_declaration_semicolon) {
 			listener.exitFunction_item_declaration_semicolon(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFunction_item_declaration_semicolon) {
-			return visitor.visitFunction_item_declaration_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25368,14 +24230,6 @@ export class Function_item_declarationContext extends ParserRuleContext {
 			listener.exitFunction_item_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFunction_item_declaration) {
-			return visitor.visitFunction_item_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25398,14 +24252,6 @@ export class Function_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitFunction_statement) {
 			listener.exitFunction_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFunction_statement) {
-			return visitor.visitFunction_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25431,14 +24277,6 @@ export class Colon_function_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitColon_function_identifier) {
 			listener.exitColon_function_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitColon_function_identifier) {
-			return visitor.visitColon_function_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25480,14 +24318,6 @@ export class Task_declarationContext extends ParserRuleContext {
 			listener.exitTask_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTask_declaration) {
-			return visitor.visitTask_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25510,14 +24340,6 @@ export class Task_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitTask_identifier) {
 			listener.exitTask_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTask_identifier) {
-			return visitor.visitTask_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25544,14 +24366,6 @@ export class Task_interfaceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitTask_interface) {
 			listener.exitTask_interface(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTask_interface) {
-			return visitor.visitTask_interface(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25581,14 +24395,6 @@ export class Task_item_declaration_semicolonContext extends ParserRuleContext {
 			listener.exitTask_item_declaration_semicolon(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTask_item_declaration_semicolon) {
-			return visitor.visitTask_item_declaration_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25614,14 +24420,6 @@ export class Task_item_declarationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitTask_item_declaration) {
 			listener.exitTask_item_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTask_item_declaration) {
-			return visitor.visitTask_item_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25654,14 +24452,6 @@ export class Task_item_declaration_starContext extends ParserRuleContext {
 			listener.exitTask_item_declaration_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTask_item_declaration_star) {
-			return visitor.visitTask_item_declaration_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25684,14 +24474,6 @@ export class Task_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitTask_statement) {
 			listener.exitTask_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTask_statement) {
-			return visitor.visitTask_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25719,14 +24501,6 @@ export class Struct_item_semicolonContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitStruct_item_semicolon) {
 			listener.exitStruct_item_semicolon(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitStruct_item_semicolon) {
-			return visitor.visitStruct_item_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25757,14 +24531,6 @@ export class Struct_item_starContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitStruct_item_star) {
 			listener.exitStruct_item_star(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitStruct_item_star) {
-			return visitor.visitStruct_item_star(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25806,14 +24572,6 @@ export class Struct_itemContext extends ParserRuleContext {
 			listener.exitStruct_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitStruct_item) {
-			return visitor.visitStruct_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25844,14 +24602,6 @@ export class Struct_typeContext extends ParserRuleContext {
 			listener.exitStruct_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitStruct_type) {
-			return visitor.visitStruct_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25879,14 +24629,6 @@ export class Enum_typeContext extends ParserRuleContext {
 			listener.exitEnum_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEnum_type) {
-			return visitor.visitEnum_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25912,14 +24654,6 @@ export class List_of_enum_itemsContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_enum_items) {
 			listener.exitList_of_enum_items(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_enum_items) {
-			return visitor.visitList_of_enum_items(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25950,14 +24684,6 @@ export class Enum_itemContext extends ParserRuleContext {
 			listener.exitEnum_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEnum_item) {
-			return visitor.visitEnum_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25980,14 +24706,6 @@ export class Enum_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitEnum_identifier) {
 			listener.exitEnum_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEnum_identifier) {
-			return visitor.visitEnum_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26020,14 +24738,6 @@ export class Comma_enum_item_starContext extends ParserRuleContext {
 			listener.exitComma_enum_item_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_enum_item_star) {
-			return visitor.visitComma_enum_item_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26051,14 +24761,6 @@ export class Comma_enum_itemContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_enum_item) {
 			listener.exitComma_enum_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_enum_item) {
-			return visitor.visitComma_enum_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26096,14 +24798,6 @@ export class Enumerated_typeContext extends ParserRuleContext {
 			listener.exitEnumerated_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEnumerated_type) {
-			return visitor.visitEnumerated_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26137,14 +24831,6 @@ export class Module_instantiationContext extends ParserRuleContext {
 			listener.exitModule_instantiation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitModule_instantiation) {
-			return visitor.visitModule_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26170,14 +24856,6 @@ export class Parameter_interface_assignmentsContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitParameter_interface_assignments) {
 			listener.exitParameter_interface_assignments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitParameter_interface_assignments) {
-			return visitor.visitParameter_interface_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26207,14 +24885,6 @@ export class List_of_interface_assignmentsContext extends ParserRuleContext {
 			listener.exitList_of_interface_assignments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_interface_assignments) {
-			return visitor.visitList_of_interface_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26240,14 +24910,6 @@ export class List_of_ordered_interface_assignmentsContext extends ParserRuleCont
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_ordered_interface_assignments) {
 			listener.exitList_of_ordered_interface_assignments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_ordered_interface_assignments) {
-			return visitor.visitList_of_ordered_interface_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26280,14 +24942,6 @@ export class Comma_ordered_interface_assignment_starContext extends ParserRuleCo
 			listener.exitComma_ordered_interface_assignment_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_ordered_interface_assignment_star) {
-			return visitor.visitComma_ordered_interface_assignment_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26313,14 +24967,6 @@ export class Comma_ordered_interface_assignmentContext extends ParserRuleContext
 			listener.exitComma_ordered_interface_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_ordered_interface_assignment) {
-			return visitor.visitComma_ordered_interface_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26343,14 +24989,6 @@ export class Ordered_interface_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitOrdered_interface_assignment) {
 			listener.exitOrdered_interface_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitOrdered_interface_assignment) {
-			return visitor.visitOrdered_interface_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26378,14 +25016,6 @@ export class List_of_named_interface_assignmentsContext extends ParserRuleContex
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_named_interface_assignments) {
 			listener.exitList_of_named_interface_assignments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_named_interface_assignments) {
-			return visitor.visitList_of_named_interface_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26418,14 +25048,6 @@ export class Comma_named_interface_assignment_starContext extends ParserRuleCont
 			listener.exitComma_named_interface_assignment_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_named_interface_assignment_star) {
-			return visitor.visitComma_named_interface_assignment_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26449,14 +25071,6 @@ export class Comma_named_interface_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_named_interface_assignment) {
 			listener.exitComma_named_interface_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_named_interface_assignment) {
-			return visitor.visitComma_named_interface_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26490,14 +25104,6 @@ export class Named_interface_assignmentContext extends ParserRuleContext {
 			listener.exitNamed_interface_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitNamed_interface_assignment) {
-			return visitor.visitNamed_interface_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26523,14 +25129,6 @@ export class List_of_module_instancesContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_module_instances) {
 			listener.exitList_of_module_instances(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_module_instances) {
-			return visitor.visitList_of_module_instances(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26563,14 +25161,6 @@ export class Comma_module_instance_starContext extends ParserRuleContext {
 			listener.exitComma_module_instance_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_module_instance_star) {
-			return visitor.visitComma_module_instance_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26594,14 +25184,6 @@ export class Comma_module_instanceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_module_instance) {
 			listener.exitComma_module_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_module_instance) {
-			return visitor.visitComma_module_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26631,14 +25213,6 @@ export class Module_instanceContext extends ParserRuleContext {
 			listener.exitModule_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitModule_instance) {
-			return visitor.visitModule_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26661,14 +25235,6 @@ export class Module_instance_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitModule_instance_identifier) {
 			listener.exitModule_instance_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitModule_instance_identifier) {
-			return visitor.visitModule_instance_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26698,14 +25264,6 @@ export class Arrayed_identifierContext extends ParserRuleContext {
 			listener.exitArrayed_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitArrayed_identifier) {
-			return visitor.visitArrayed_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26729,14 +25287,6 @@ export class Simple_arrayed_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitSimple_arrayed_identifier) {
 			listener.exitSimple_arrayed_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSimple_arrayed_identifier) {
-			return visitor.visitSimple_arrayed_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26764,14 +25314,6 @@ export class Escaped_arrayed_identifierContext extends ParserRuleContext {
 			listener.exitEscaped_arrayed_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEscaped_arrayed_identifier) {
-			return visitor.visitEscaped_arrayed_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26796,14 +25338,6 @@ export class Port_interface_assignmentsContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPort_interface_assignments) {
 			listener.exitPort_interface_assignments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPort_interface_assignments) {
-			return visitor.visitPort_interface_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26836,14 +25370,6 @@ export class DelayContext extends ParserRuleContext {
 			listener.exitDelay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDelay) {
-			return visitor.visitDelay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26869,14 +25395,6 @@ export class List_of_delay_valuesContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_delay_values) {
 			listener.exitList_of_delay_values(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_delay_values) {
-			return visitor.visitList_of_delay_values(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26909,14 +25427,6 @@ export class Comma_delay_value_starContext extends ParserRuleContext {
 			listener.exitComma_delay_value_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_delay_value_star) {
-			return visitor.visitComma_delay_value_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26942,14 +25452,6 @@ export class Comma_delay_valueContext extends ParserRuleContext {
 			listener.exitComma_delay_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_delay_value) {
-			return visitor.visitComma_delay_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26972,14 +25474,6 @@ export class Delay_valueContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitDelay_value) {
 			listener.exitDelay_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDelay_value) {
-			return visitor.visitDelay_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27012,14 +25506,6 @@ export class Pulldown_strengthContext extends ParserRuleContext {
 			listener.exitPulldown_strength(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPulldown_strength) {
-			return visitor.visitPulldown_strength(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27050,14 +25536,6 @@ export class Pullup_strengthContext extends ParserRuleContext {
 			listener.exitPullup_strength(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPullup_strength) {
-			return visitor.visitPullup_strength(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27080,14 +25558,6 @@ export class Gate_instance_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitGate_instance_identifier) {
 			listener.exitGate_instance_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGate_instance_identifier) {
-			return visitor.visitGate_instance_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27138,14 +25608,6 @@ export class Gate_instantiationContext extends ParserRuleContext {
 			listener.exitGate_instantiation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGate_instantiation) {
-			return visitor.visitGate_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27169,14 +25631,6 @@ export class Enable_gatetypeContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitEnable_gatetype) {
 			listener.exitEnable_gatetype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEnable_gatetype) {
-			return visitor.visitEnable_gatetype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27204,14 +25658,6 @@ export class Mos_switchtypeContext extends ParserRuleContext {
 			listener.exitMos_switchtype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitMos_switchtype) {
-			return visitor.visitMos_switchtype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27235,14 +25681,6 @@ export class Cmos_switchtypeContext extends ParserRuleContext {
 			listener.exitCmos_switchtype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCmos_switchtype) {
-			return visitor.visitCmos_switchtype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27264,14 +25702,6 @@ export class N_output_gatetypeContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitN_output_gatetype) {
 			listener.exitN_output_gatetype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitN_output_gatetype) {
-			return visitor.visitN_output_gatetype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27301,14 +25731,6 @@ export class N_input_gatetypeContext extends ParserRuleContext {
 			listener.exitN_input_gatetype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitN_input_gatetype) {
-			return visitor.visitN_input_gatetype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27330,14 +25752,6 @@ export class Pass_switchtypeContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPass_switchtype) {
 			listener.exitPass_switchtype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPass_switchtype) {
-			return visitor.visitPass_switchtype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27363,14 +25777,6 @@ export class Pass_enable_switchtypeContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPass_enable_switchtype) {
 			listener.exitPass_enable_switchtype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPass_enable_switchtype) {
-			return visitor.visitPass_enable_switchtype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27404,14 +25810,6 @@ export class Pulldown_instantiationContext extends ParserRuleContext {
 			listener.exitPulldown_instantiation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPulldown_instantiation) {
-			return visitor.visitPulldown_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27441,14 +25839,6 @@ export class Pullup_instantiationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPullup_instantiation) {
 			listener.exitPullup_instantiation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPullup_instantiation) {
-			return visitor.visitPullup_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27487,14 +25877,6 @@ export class Enable_instantiationContext extends ParserRuleContext {
 			listener.exitEnable_instantiation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEnable_instantiation) {
-			return visitor.visitEnable_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27528,14 +25910,6 @@ export class Mos_instantiationContext extends ParserRuleContext {
 			listener.exitMos_instantiation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitMos_instantiation) {
-			return visitor.visitMos_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27567,14 +25941,6 @@ export class Cmos_instantiationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitCmos_instantiation) {
 			listener.exitCmos_instantiation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCmos_instantiation) {
-			return visitor.visitCmos_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27613,14 +25979,6 @@ export class N_output_instantiationContext extends ParserRuleContext {
 			listener.exitN_output_instantiation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitN_output_instantiation) {
-			return visitor.visitN_output_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27657,14 +26015,6 @@ export class N_input_instantiationContext extends ParserRuleContext {
 			listener.exitN_input_instantiation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitN_input_instantiation) {
-			return visitor.visitN_input_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27693,14 +26043,6 @@ export class Pass_instantiationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPass_instantiation) {
 			listener.exitPass_instantiation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPass_instantiation) {
-			return visitor.visitPass_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27736,14 +26078,6 @@ export class Pass_enable_instantiationContext extends ParserRuleContext {
 			listener.exitPass_enable_instantiation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPass_enable_instantiation) {
-			return visitor.visitPass_enable_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27769,14 +26103,6 @@ export class List_of_pull_gate_instanceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_pull_gate_instance) {
 			listener.exitList_of_pull_gate_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_pull_gate_instance) {
-			return visitor.visitList_of_pull_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27806,14 +26132,6 @@ export class List_of_enable_gate_instanceContext extends ParserRuleContext {
 			listener.exitList_of_enable_gate_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_enable_gate_instance) {
-			return visitor.visitList_of_enable_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27839,14 +26157,6 @@ export class List_of_mos_switch_instanceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_mos_switch_instance) {
 			listener.exitList_of_mos_switch_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_mos_switch_instance) {
-			return visitor.visitList_of_mos_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27876,14 +26186,6 @@ export class List_of_cmos_switch_instanceContext extends ParserRuleContext {
 			listener.exitList_of_cmos_switch_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_cmos_switch_instance) {
-			return visitor.visitList_of_cmos_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27909,14 +26211,6 @@ export class List_of_n_input_gate_instanceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_n_input_gate_instance) {
 			listener.exitList_of_n_input_gate_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_n_input_gate_instance) {
-			return visitor.visitList_of_n_input_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27946,14 +26240,6 @@ export class List_of_n_output_gate_instanceContext extends ParserRuleContext {
 			listener.exitList_of_n_output_gate_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_n_output_gate_instance) {
-			return visitor.visitList_of_n_output_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27981,14 +26267,6 @@ export class List_of_pass_switch_instanceContext extends ParserRuleContext {
 			listener.exitList_of_pass_switch_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_pass_switch_instance) {
-			return visitor.visitList_of_pass_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28014,14 +26292,6 @@ export class List_of_pass_enable_switch_instanceContext extends ParserRuleContex
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_pass_enable_switch_instance) {
 			listener.exitList_of_pass_enable_switch_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_pass_enable_switch_instance) {
-			return visitor.visitList_of_pass_enable_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28054,14 +26324,6 @@ export class Comma_pull_gate_instance_starContext extends ParserRuleContext {
 			listener.exitComma_pull_gate_instance_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_pull_gate_instance_star) {
-			return visitor.visitComma_pull_gate_instance_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28090,14 +26352,6 @@ export class Comma_enable_gate_instance_starContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_enable_gate_instance_star) {
 			listener.exitComma_enable_gate_instance_star(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_enable_gate_instance_star) {
-			return visitor.visitComma_enable_gate_instance_star(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28130,14 +26384,6 @@ export class Comma_mos_switch_instance_starContext extends ParserRuleContext {
 			listener.exitComma_mos_switch_instance_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_mos_switch_instance_star) {
-			return visitor.visitComma_mos_switch_instance_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28166,14 +26412,6 @@ export class Comma_cmos_switch_instance_starContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_cmos_switch_instance_star) {
 			listener.exitComma_cmos_switch_instance_star(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_cmos_switch_instance_star) {
-			return visitor.visitComma_cmos_switch_instance_star(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28206,14 +26444,6 @@ export class Comma_n_input_gate_instance_starContext extends ParserRuleContext {
 			listener.exitComma_n_input_gate_instance_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_n_input_gate_instance_star) {
-			return visitor.visitComma_n_input_gate_instance_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28242,14 +26472,6 @@ export class Comma_n_output_gate_instance_starContext extends ParserRuleContext 
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_n_output_gate_instance_star) {
 			listener.exitComma_n_output_gate_instance_star(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_n_output_gate_instance_star) {
-			return visitor.visitComma_n_output_gate_instance_star(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28282,14 +26504,6 @@ export class Comma_pass_switch_instance_starContext extends ParserRuleContext {
 			listener.exitComma_pass_switch_instance_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_pass_switch_instance_star) {
-			return visitor.visitComma_pass_switch_instance_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28320,14 +26534,6 @@ export class Comma_pass_enable_switch_instance_starContext extends ParserRuleCon
 			listener.exitComma_pass_enable_switch_instance_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_pass_enable_switch_instance_star) {
-			return visitor.visitComma_pass_enable_switch_instance_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28351,14 +26557,6 @@ export class Comma_pull_gate_instanceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_pull_gate_instance) {
 			listener.exitComma_pull_gate_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_pull_gate_instance) {
-			return visitor.visitComma_pull_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28386,14 +26584,6 @@ export class Comma_enable_gate_instanceContext extends ParserRuleContext {
 			listener.exitComma_enable_gate_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_enable_gate_instance) {
-			return visitor.visitComma_enable_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28417,14 +26607,6 @@ export class Comma_mos_switch_instanceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_mos_switch_instance) {
 			listener.exitComma_mos_switch_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_mos_switch_instance) {
-			return visitor.visitComma_mos_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28452,14 +26634,6 @@ export class Comma_cmos_switch_instanceContext extends ParserRuleContext {
 			listener.exitComma_cmos_switch_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_cmos_switch_instance) {
-			return visitor.visitComma_cmos_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28483,14 +26657,6 @@ export class Comma_n_input_gate_instanceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_n_input_gate_instance) {
 			listener.exitComma_n_input_gate_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_n_input_gate_instance) {
-			return visitor.visitComma_n_input_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28518,14 +26684,6 @@ export class Comma_n_output_gate_instanceContext extends ParserRuleContext {
 			listener.exitComma_n_output_gate_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_n_output_gate_instance) {
-			return visitor.visitComma_n_output_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28551,14 +26709,6 @@ export class Comma_pass_switch_instanceContext extends ParserRuleContext {
 			listener.exitComma_pass_switch_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_pass_switch_instance) {
-			return visitor.visitComma_pass_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28582,14 +26732,6 @@ export class Comma_pass_enable_switch_instanceContext extends ParserRuleContext 
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_pass_enable_switch_instance) {
 			listener.exitComma_pass_enable_switch_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_pass_enable_switch_instance) {
-			return visitor.visitComma_pass_enable_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28619,14 +26761,6 @@ export class Pull_gate_instanceContext extends ParserRuleContext {
 			listener.exitPull_gate_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPull_gate_instance) {
-			return visitor.visitPull_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28652,14 +26786,6 @@ export class Enable_gate_instanceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitEnable_gate_instance) {
 			listener.exitEnable_gate_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEnable_gate_instance) {
-			return visitor.visitEnable_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28689,14 +26815,6 @@ export class Mos_switch_instanceContext extends ParserRuleContext {
 			listener.exitMos_switch_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitMos_switch_instance) {
-			return visitor.visitMos_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28722,14 +26840,6 @@ export class Cmos_switch_instanceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitCmos_switch_instance) {
 			listener.exitCmos_switch_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCmos_switch_instance) {
-			return visitor.visitCmos_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28759,14 +26869,6 @@ export class N_input_gate_instanceContext extends ParserRuleContext {
 			listener.exitN_input_gate_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitN_input_gate_instance) {
-			return visitor.visitN_input_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28792,14 +26894,6 @@ export class N_output_gate_instanceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitN_output_gate_instance) {
 			listener.exitN_output_gate_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitN_output_gate_instance) {
-			return visitor.visitN_output_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28829,14 +26923,6 @@ export class Pass_switch_instanceContext extends ParserRuleContext {
 			listener.exitPass_switch_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPass_switch_instance) {
-			return visitor.visitPass_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28864,14 +26950,6 @@ export class Pass_enable_switch_instanceContext extends ParserRuleContext {
 			listener.exitPass_enable_switch_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPass_enable_switch_instance) {
-			return visitor.visitPass_enable_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28896,14 +26974,6 @@ export class Pull_gate_interfaceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPull_gate_interface) {
 			listener.exitPull_gate_interface(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPull_gate_interface) {
-			return visitor.visitPull_gate_interface(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28947,14 +27017,6 @@ export class Enable_gate_interfaceContext extends ParserRuleContext {
 			listener.exitEnable_gate_interface(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEnable_gate_interface) {
-			return visitor.visitEnable_gate_interface(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28994,14 +27056,6 @@ export class Mos_switch_interfaceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitMos_switch_interface) {
 			listener.exitMos_switch_interface(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitMos_switch_interface) {
-			return visitor.visitMos_switch_interface(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29048,14 +27102,6 @@ export class Cmos_switch_interfaceContext extends ParserRuleContext {
 			listener.exitCmos_switch_interface(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCmos_switch_interface) {
-			return visitor.visitCmos_switch_interface(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29086,14 +27132,6 @@ export class N_input_gate_interfaceContext extends ParserRuleContext {
 			listener.exitN_input_gate_interface(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitN_input_gate_interface) {
-			return visitor.visitN_input_gate_interface(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29122,14 +27160,6 @@ export class N_output_gate_interfaceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitN_output_gate_interface) {
 			listener.exitN_output_gate_interface(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitN_output_gate_interface) {
-			return visitor.visitN_output_gate_interface(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29163,14 +27193,6 @@ export class Pass_switch_interfaceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPass_switch_interface) {
 			listener.exitPass_switch_interface(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPass_switch_interface) {
-			return visitor.visitPass_switch_interface(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29217,14 +27239,6 @@ export class Pass_enable_switch_interfaceContext extends ParserRuleContext {
 			listener.exitPass_enable_switch_interface(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPass_enable_switch_interface) {
-			return visitor.visitPass_enable_switch_interface(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29252,14 +27266,6 @@ export class List_of_input_terminalsContext extends ParserRuleContext {
 			listener.exitList_of_input_terminals(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_input_terminals) {
-			return visitor.visitList_of_input_terminals(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29285,14 +27291,6 @@ export class List_of_output_terminalsContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_output_terminals) {
 			listener.exitList_of_output_terminals(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_output_terminals) {
-			return visitor.visitList_of_output_terminals(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29325,14 +27323,6 @@ export class Comma_input_terminal_starContext extends ParserRuleContext {
 			listener.exitComma_input_terminal_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_input_terminal_star) {
-			return visitor.visitComma_input_terminal_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29363,14 +27353,6 @@ export class Comma_output_terminal_starContext extends ParserRuleContext {
 			listener.exitComma_output_terminal_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_output_terminal_star) {
-			return visitor.visitComma_output_terminal_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29394,14 +27376,6 @@ export class Comma_input_terminalContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_input_terminal) {
 			listener.exitComma_input_terminal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_input_terminal) {
-			return visitor.visitComma_input_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29429,14 +27403,6 @@ export class Comma_output_terminalContext extends ParserRuleContext {
 			listener.exitComma_output_terminal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_output_terminal) {
-			return visitor.visitComma_output_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29459,14 +27425,6 @@ export class Enable_terminalContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitEnable_terminal) {
 			listener.exitEnable_terminal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEnable_terminal) {
-			return visitor.visitEnable_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29493,14 +27451,6 @@ export class Input_terminalContext extends ParserRuleContext {
 			listener.exitInput_terminal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitInput_terminal) {
-			return visitor.visitInput_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29523,14 +27473,6 @@ export class Inout_terminalContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitInout_terminal) {
 			listener.exitInout_terminal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitInout_terminal) {
-			return visitor.visitInout_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29557,14 +27499,6 @@ export class Ncontrol_terminalContext extends ParserRuleContext {
 			listener.exitNcontrol_terminal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitNcontrol_terminal) {
-			return visitor.visitNcontrol_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29589,14 +27523,6 @@ export class Output_terminalContext extends ParserRuleContext {
 			listener.exitOutput_terminal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitOutput_terminal) {
-			return visitor.visitOutput_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29619,14 +27545,6 @@ export class Pcontrol_terminalContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPcontrol_terminal) {
 			listener.exitPcontrol_terminal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPcontrol_terminal) {
-			return visitor.visitPcontrol_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29657,14 +27575,6 @@ export class Statement_starContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitStatement_star) {
 			listener.exitStatement_star(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitStatement_star) {
-			return visitor.visitStatement_star(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29698,14 +27608,6 @@ export class Statement_semicolonContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitStatement_semicolon) {
 			listener.exitStatement_semicolon(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitStatement_semicolon) {
-			return visitor.visitStatement_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29753,14 +27655,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29800,14 +27694,6 @@ export class Assignment_statementContext extends ParserRuleContext {
 			listener.exitAssignment_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAssignment_statement) {
-			return visitor.visitAssignment_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29838,14 +27724,6 @@ export class Flow_control_statementContext extends ParserRuleContext {
 			listener.exitFlow_control_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFlow_control_statement) {
-			return visitor.visitFlow_control_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29871,14 +27749,6 @@ export class Block_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitBlock_statement) {
 			listener.exitBlock_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBlock_statement) {
-			return visitor.visitBlock_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29911,14 +27781,6 @@ export class Task_call_statementContext extends ParserRuleContext {
 			listener.exitTask_call_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTask_call_statement) {
-			return visitor.visitTask_call_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29944,14 +27806,6 @@ export class Event_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitEvent_statement) {
 			listener.exitEvent_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEvent_statement) {
-			return visitor.visitEvent_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29987,14 +27841,6 @@ export class Procedural_statementContext extends ParserRuleContext {
 			listener.exitProcedural_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitProcedural_statement) {
-			return visitor.visitProcedural_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30019,14 +27865,6 @@ export class Expression_statementContext extends ParserRuleContext {
 			listener.exitExpression_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitExpression_statement) {
-			return visitor.visitExpression_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30049,14 +27887,6 @@ export class Subroutine_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitSubroutine_statement) {
 			listener.exitSubroutine_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSubroutine_statement) {
-			return visitor.visitSubroutine_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30084,14 +27914,6 @@ export class Return_statementContext extends ParserRuleContext {
 			listener.exitReturn_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitReturn_statement) {
-			return visitor.visitReturn_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30114,14 +27936,6 @@ export class Null_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitNull_statement) {
 			listener.exitNull_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitNull_statement) {
-			return visitor.visitNull_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30157,14 +27971,6 @@ export class Procedural_continuous_assignmentsContext extends ParserRuleContext 
 			listener.exitProcedural_continuous_assignments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitProcedural_continuous_assignments) {
-			return visitor.visitProcedural_continuous_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30188,14 +27994,6 @@ export class Assign_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitAssign_statement) {
 			listener.exitAssign_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAssign_statement) {
-			return visitor.visitAssign_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30223,14 +28021,6 @@ export class Deassign_statementContext extends ParserRuleContext {
 			listener.exitDeassign_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDeassign_statement) {
-			return visitor.visitDeassign_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30256,14 +28046,6 @@ export class Force_statementContext extends ParserRuleContext {
 			listener.exitForce_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitForce_statement) {
-			return visitor.visitForce_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30287,14 +28069,6 @@ export class Release_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitRelease_statement) {
 			listener.exitRelease_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitRelease_statement) {
-			return visitor.visitRelease_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30324,14 +28098,6 @@ export class Procedural_timing_control_statementContext extends ParserRuleContex
 			listener.exitProcedural_timing_control_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitProcedural_timing_control_statement) {
-			return visitor.visitProcedural_timing_control_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30354,14 +28120,6 @@ export class Property_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitProperty_statement) {
 			listener.exitProperty_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitProperty_statement) {
-			return visitor.visitProperty_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30395,14 +28153,6 @@ export class Disable_condition_statementContext extends ParserRuleContext {
 			listener.exitDisable_condition_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDisable_condition_statement) {
-			return visitor.visitDisable_condition_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30425,14 +28175,6 @@ export class Property_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitProperty_expression) {
 			listener.exitProperty_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitProperty_expression) {
-			return visitor.visitProperty_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30462,14 +28204,6 @@ export class Procedural_assertion_statementContext extends ParserRuleContext {
 			listener.exitProcedural_assertion_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitProcedural_assertion_statement) {
-			return visitor.visitProcedural_assertion_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30493,14 +28227,6 @@ export class Assert_else_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitAssert_else_statement) {
 			listener.exitAssert_else_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAssert_else_statement) {
-			return visitor.visitAssert_else_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30534,14 +28260,6 @@ export class Assert_statementContext extends ParserRuleContext {
 			listener.exitAssert_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAssert_statement) {
-			return visitor.visitAssert_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30569,14 +28287,6 @@ export class System_task_enableContext extends ParserRuleContext {
 			listener.exitSystem_task_enable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSystem_task_enable) {
-			return visitor.visitSystem_task_enable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30597,14 +28307,6 @@ export class System_task_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitSystem_task_identifier) {
 			listener.exitSystem_task_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSystem_task_identifier) {
-			return visitor.visitSystem_task_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30631,14 +28333,6 @@ export class Task_interface_assignmentsContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitTask_interface_assignments) {
 			listener.exitTask_interface_assignments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTask_interface_assignments) {
-			return visitor.visitTask_interface_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30668,14 +28362,6 @@ export class Task_enableContext extends ParserRuleContext {
 			listener.exitTask_enable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTask_enable) {
-			return visitor.visitTask_enable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30698,14 +28384,6 @@ export class Hierarchical_task_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitHierarchical_task_identifier) {
 			listener.exitHierarchical_task_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitHierarchical_task_identifier) {
-			return visitor.visitHierarchical_task_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30736,14 +28414,6 @@ export class Disable_statementContext extends ParserRuleContext {
 			listener.exitDisable_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDisable_statement) {
-			return visitor.visitDisable_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30766,14 +28436,6 @@ export class Hierarchical_block_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitHierarchical_block_identifier) {
 			listener.exitHierarchical_block_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitHierarchical_block_identifier) {
-			return visitor.visitHierarchical_block_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30803,14 +28465,6 @@ export class Variable_lvalueContext extends ParserRuleContext {
 			listener.exitVariable_lvalue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitVariable_lvalue) {
-			return visitor.visitVariable_lvalue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30833,14 +28487,6 @@ export class Hierarchical_variable_lvalueContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitHierarchical_variable_lvalue) {
 			listener.exitHierarchical_variable_lvalue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitHierarchical_variable_lvalue) {
-			return visitor.visitHierarchical_variable_lvalue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30872,14 +28518,6 @@ export class Variable_concatenationContext extends ParserRuleContext {
 			listener.exitVariable_concatenation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitVariable_concatenation) {
-			return visitor.visitVariable_concatenation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30905,14 +28543,6 @@ export class Variable_concatenation_valueContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitVariable_concatenation_value) {
 			listener.exitVariable_concatenation_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitVariable_concatenation_value) {
-			return visitor.visitVariable_concatenation_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30954,14 +28584,6 @@ export class Comma_vcv_starContext extends ParserRuleContext {
 			listener.exitComma_vcv_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_vcv_star) {
-			return visitor.visitComma_vcv_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30991,14 +28613,6 @@ export class Blocking_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitBlocking_assignment) {
 			listener.exitBlocking_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBlocking_assignment) {
-			return visitor.visitBlocking_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31032,14 +28646,6 @@ export class Nonblocking_assignmentContext extends ParserRuleContext {
 			listener.exitNonblocking_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitNonblocking_assignment) {
-			return visitor.visitNonblocking_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31067,14 +28673,6 @@ export class Prefix_assignmentContext extends ParserRuleContext {
 			listener.exitPrefix_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPrefix_assignment) {
-			return visitor.visitPrefix_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31100,14 +28698,6 @@ export class Postfix_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPostfix_assignment) {
 			listener.exitPostfix_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPostfix_assignment) {
-			return visitor.visitPostfix_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31138,14 +28728,6 @@ export class Operator_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitOperator_assignment) {
 			listener.exitOperator_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitOperator_assignment) {
-			return visitor.visitOperator_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31187,14 +28769,6 @@ export class Declarative_assignmentContext extends ParserRuleContext {
 			listener.exitDeclarative_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDeclarative_assignment) {
-			return visitor.visitDeclarative_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31223,14 +28797,6 @@ export class Delay_or_event_controlContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitDelay_or_event_control) {
 			listener.exitDelay_or_event_control(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDelay_or_event_control) {
-			return visitor.visitDelay_or_event_control(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31263,14 +28829,6 @@ export class Delay_controlContext extends ParserRuleContext {
 			listener.exitDelay_control(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDelay_control) {
-			return visitor.visitDelay_control(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31301,14 +28859,6 @@ export class Event_controlContext extends ParserRuleContext {
 			listener.exitEvent_control(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEvent_control) {
-			return visitor.visitEvent_control(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31332,14 +28882,6 @@ export class Event_control_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitEvent_control_identifier) {
 			listener.exitEvent_control_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEvent_control_identifier) {
-			return visitor.visitEvent_control_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31369,14 +28911,6 @@ export class Event_control_expressionContext extends ParserRuleContext {
 			listener.exitEvent_control_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEvent_control_expression) {
-			return visitor.visitEvent_control_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31402,14 +28936,6 @@ export class Event_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitEvent_expression) {
 			listener.exitEvent_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEvent_expression) {
-			return visitor.visitEvent_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31442,14 +28968,6 @@ export class Single_event_expressionContext extends ParserRuleContext {
 			listener.exitSingle_event_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSingle_event_expression) {
-			return visitor.visitSingle_event_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31471,14 +28989,6 @@ export class Event_expression_edgespecContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitEvent_expression_edgespec) {
 			listener.exitEvent_expression_edgespec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEvent_expression_edgespec) {
-			return visitor.visitEvent_expression_edgespec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31508,14 +29018,6 @@ export class Event_expression_orContext extends ParserRuleContext {
 			listener.exitEvent_expression_or(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEvent_expression_or) {
-			return visitor.visitEvent_expression_or(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31541,14 +29043,6 @@ export class List_of_event_expression_commaContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_event_expression_comma) {
 			listener.exitList_of_event_expression_comma(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_event_expression_comma) {
-			return visitor.visitList_of_event_expression_comma(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31581,14 +29075,6 @@ export class Comma_event_expression_starContext extends ParserRuleContext {
 			listener.exitComma_event_expression_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_event_expression_star) {
-			return visitor.visitComma_event_expression_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31612,14 +29098,6 @@ export class Comma_event_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_event_expression) {
 			listener.exitComma_event_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_event_expression) {
-			return visitor.visitComma_event_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31647,14 +29125,6 @@ export class List_of_event_expression_orContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_event_expression_or) {
 			listener.exitList_of_event_expression_or(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_event_expression_or) {
-			return visitor.visitList_of_event_expression_or(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31687,14 +29157,6 @@ export class Or_event_expression_starContext extends ParserRuleContext {
 			listener.exitOr_event_expression_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitOr_event_expression_star) {
-			return visitor.visitOr_event_expression_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31720,14 +29182,6 @@ export class Or_event_expressionContext extends ParserRuleContext {
 			listener.exitOr_event_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitOr_event_expression) {
-			return visitor.visitOr_event_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31751,14 +29205,6 @@ export class Event_control_wildcardContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitEvent_control_wildcard) {
 			listener.exitEvent_control_wildcard(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEvent_control_wildcard) {
-			return visitor.visitEvent_control_wildcard(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31791,14 +29237,6 @@ export class Repeat_event_controlContext extends ParserRuleContext {
 			listener.exitRepeat_event_control(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitRepeat_event_control) {
-			return visitor.visitRepeat_event_control(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31822,14 +29260,6 @@ export class Event_triggerContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitEvent_trigger) {
 			listener.exitEvent_trigger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEvent_trigger) {
-			return visitor.visitEvent_trigger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31856,14 +29286,6 @@ export class Hierarchical_event_identifierContext extends ParserRuleContext {
 			listener.exitHierarchical_event_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitHierarchical_event_identifier) {
-			return visitor.visitHierarchical_event_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31886,14 +29308,6 @@ export class Event_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitEvent_identifier) {
 			listener.exitEvent_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitEvent_identifier) {
-			return visitor.visitEvent_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31926,14 +29340,6 @@ export class Wait_statementContext extends ParserRuleContext {
 			listener.exitWait_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitWait_statement) {
-			return visitor.visitWait_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31959,14 +29365,6 @@ export class Attr_generated_instantiationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitAttr_generated_instantiation) {
 			listener.exitAttr_generated_instantiation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_generated_instantiation) {
-			return visitor.visitAttr_generated_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31998,14 +29396,6 @@ export class Generated_instantiationContext extends ParserRuleContext {
 			listener.exitGenerated_instantiation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerated_instantiation) {
-			return visitor.visitGenerated_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32034,14 +29424,6 @@ export class Generate_item_starContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitGenerate_item_star) {
 			listener.exitGenerate_item_star(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_item_star) {
-			return visitor.visitGenerate_item_star(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32095,14 +29477,6 @@ export class Generate_itemContext extends ParserRuleContext {
 			listener.exitGenerate_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_item) {
-			return visitor.visitGenerate_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32138,14 +29512,6 @@ export class Generate_blockContext extends ParserRuleContext {
 			listener.exitGenerate_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_block) {
-			return visitor.visitGenerate_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32170,14 +29536,6 @@ export class Generate_colon_block_identifier0Context extends ParserRuleContext {
 			listener.exitGenerate_colon_block_identifier0(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_colon_block_identifier0) {
-			return visitor.visitGenerate_colon_block_identifier0(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32200,14 +29558,6 @@ export class Generate_colon_block_identifier1Context extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitGenerate_colon_block_identifier1) {
 			listener.exitGenerate_colon_block_identifier1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_colon_block_identifier1) {
-			return visitor.visitGenerate_colon_block_identifier1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32235,14 +29585,6 @@ export class Generate_colon_block_identifierContext extends ParserRuleContext {
 			listener.exitGenerate_colon_block_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_colon_block_identifier) {
-			return visitor.visitGenerate_colon_block_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32265,14 +29607,6 @@ export class Generate_block_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitGenerate_block_identifier) {
 			listener.exitGenerate_block_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_block_identifier) {
-			return visitor.visitGenerate_block_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32300,14 +29634,6 @@ export class Generate_conditional_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitGenerate_conditional_statement) {
 			listener.exitGenerate_conditional_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_conditional_statement) {
-			return visitor.visitGenerate_conditional_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32340,14 +29666,6 @@ export class Generate_if_statementContext extends ParserRuleContext {
 			listener.exitGenerate_if_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_if_statement) {
-			return visitor.visitGenerate_if_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32371,14 +29689,6 @@ export class Generate_else_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitGenerate_else_statement) {
 			listener.exitGenerate_else_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_else_statement) {
-			return visitor.visitGenerate_else_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32417,14 +29727,6 @@ export class Generate_loop_statementContext extends ParserRuleContext {
 			listener.exitGenerate_loop_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_loop_statement) {
-			return visitor.visitGenerate_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32448,14 +29750,6 @@ export class Generate_forever_loop_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitGenerate_forever_loop_statement) {
 			listener.exitGenerate_forever_loop_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_forever_loop_statement) {
-			return visitor.visitGenerate_forever_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32488,14 +29782,6 @@ export class Generate_repeat_loop_statementContext extends ParserRuleContext {
 			listener.exitGenerate_repeat_loop_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_repeat_loop_statement) {
-			return visitor.visitGenerate_repeat_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32524,14 +29810,6 @@ export class Generate_while_loop_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitGenerate_while_loop_statement) {
 			listener.exitGenerate_while_loop_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_while_loop_statement) {
-			return visitor.visitGenerate_while_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32566,14 +29844,6 @@ export class Generate_do_loop_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitGenerate_do_loop_statement) {
 			listener.exitGenerate_do_loop_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_do_loop_statement) {
-			return visitor.visitGenerate_do_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32621,14 +29891,6 @@ export class Generate_for_loop_statementContext extends ParserRuleContext {
 			listener.exitGenerate_for_loop_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_for_loop_statement) {
-			return visitor.visitGenerate_for_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32662,14 +29924,6 @@ export class Generate_case_statementContext extends ParserRuleContext {
 			listener.exitGenerate_case_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_case_statement) {
-			return visitor.visitGenerate_case_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32698,14 +29952,6 @@ export class Generate_case_item_starContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitGenerate_case_item_star) {
 			listener.exitGenerate_case_item_star(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_case_item_star) {
-			return visitor.visitGenerate_case_item_star(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32737,14 +29983,6 @@ export class Generate_case_itemContext extends ParserRuleContext {
 			listener.exitGenerate_case_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitGenerate_case_item) {
-			return visitor.visitGenerate_case_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32770,14 +30008,6 @@ export class Conditional_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitConditional_statement) {
 			listener.exitConditional_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitConditional_statement) {
-			return visitor.visitConditional_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32810,14 +30040,6 @@ export class If_statementContext extends ParserRuleContext {
 			listener.exitIf_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitIf_statement) {
-			return visitor.visitIf_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32843,14 +30065,6 @@ export class Else_statementContext extends ParserRuleContext {
 			listener.exitElse_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitElse_statement) {
-			return visitor.visitElse_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32873,14 +30087,6 @@ export class Conditional_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitConditional_expression) {
 			listener.exitConditional_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitConditional_expression) {
-			return visitor.visitConditional_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32919,14 +30125,6 @@ export class Loop_statementContext extends ParserRuleContext {
 			listener.exitLoop_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitLoop_statement) {
-			return visitor.visitLoop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32950,14 +30148,6 @@ export class Forever_loop_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitForever_loop_statement) {
 			listener.exitForever_loop_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitForever_loop_statement) {
-			return visitor.visitForever_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32990,14 +30180,6 @@ export class Repeat_loop_statementContext extends ParserRuleContext {
 			listener.exitRepeat_loop_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitRepeat_loop_statement) {
-			return visitor.visitRepeat_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33026,14 +30208,6 @@ export class While_loop_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitWhile_loop_statement) {
 			listener.exitWhile_loop_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitWhile_loop_statement) {
-			return visitor.visitWhile_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33068,14 +30242,6 @@ export class Do_loop_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitDo_loop_statement) {
 			listener.exitDo_loop_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDo_loop_statement) {
-			return visitor.visitDo_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33123,14 +30289,6 @@ export class For_loop_statementContext extends ParserRuleContext {
 			listener.exitFor_loop_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFor_loop_statement) {
-			return visitor.visitFor_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33158,14 +30316,6 @@ export class Loop_init_assignmentContext extends ParserRuleContext {
 			listener.exitLoop_init_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitLoop_init_assignment) {
-			return visitor.visitLoop_init_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33188,14 +30338,6 @@ export class Loop_terminate_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitLoop_terminate_expression) {
 			listener.exitLoop_terminate_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitLoop_terminate_expression) {
-			return visitor.visitLoop_terminate_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33231,14 +30373,6 @@ export class Loop_step_assignmentContext extends ParserRuleContext {
 			listener.exitLoop_step_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitLoop_step_assignment) {
-			return visitor.visitLoop_step_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33272,14 +30406,6 @@ export class Case_statementContext extends ParserRuleContext {
 			listener.exitCase_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCase_statement) {
-			return visitor.visitCase_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33308,14 +30434,6 @@ export class Case_item_starContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitCase_item_star) {
 			listener.exitCase_item_star(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCase_item_star) {
-			return visitor.visitCase_item_star(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33347,14 +30465,6 @@ export class Case_itemContext extends ParserRuleContext {
 			listener.exitCase_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCase_item) {
-			return visitor.visitCase_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33377,14 +30487,6 @@ export class Case_switchContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitCase_switch) {
 			listener.exitCase_switch(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCase_switch) {
-			return visitor.visitCase_switch(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33414,14 +30516,6 @@ export class Case_item_keyContext extends ParserRuleContext {
 			listener.exitCase_item_key(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCase_item_key) {
-			return visitor.visitCase_item_key(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33444,14 +30538,6 @@ export class Case_item_key_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitCase_item_key_expression) {
 			listener.exitCase_item_key_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitCase_item_key_expression) {
-			return visitor.visitCase_item_key_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33477,14 +30563,6 @@ export class Comma_case_item_key_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_case_item_key_expression) {
 			listener.exitComma_case_item_key_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_case_item_key_expression) {
-			return visitor.visitComma_case_item_key_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33515,14 +30593,6 @@ export class Comma_case_item_key_expression_starContext extends ParserRuleContex
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_case_item_key_expression_star) {
 			listener.exitComma_case_item_key_expression_star(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_case_item_key_expression_star) {
-			return visitor.visitComma_case_item_key_expression_star(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33567,14 +30637,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33606,14 +30668,6 @@ export class Single_expressionContext extends ParserRuleContext {
 			listener.exitSingle_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSingle_expression) {
-			return visitor.visitSingle_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33639,14 +30693,6 @@ export class Primary_rangeContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPrimary_range) {
 			listener.exitPrimary_range(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPrimary_range) {
-			return visitor.visitPrimary_range(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33703,14 +30749,6 @@ export class PrimaryContext extends ParserRuleContext {
 			listener.exitPrimary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPrimary) {
-			return visitor.visitPrimary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33736,14 +30774,6 @@ export class Unary_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitUnary_expression) {
 			listener.exitUnary_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitUnary_expression) {
-			return visitor.visitUnary_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33773,14 +30803,6 @@ export class Unary_post_assign_expressionContext extends ParserRuleContext {
 			listener.exitUnary_post_assign_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitUnary_post_assign_expression) {
-			return visitor.visitUnary_post_assign_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33806,14 +30828,6 @@ export class Unary_pre_assign_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitUnary_pre_assign_expression) {
 			listener.exitUnary_pre_assign_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitUnary_pre_assign_expression) {
-			return visitor.visitUnary_pre_assign_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33844,14 +30858,6 @@ export class Binary_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitBinary_expression) {
 			listener.exitBinary_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBinary_expression) {
-			return visitor.visitBinary_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33887,14 +30893,6 @@ export class Ternary_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitTernary_expression) {
 			listener.exitTernary_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTernary_expression) {
-			return visitor.visitTernary_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33939,14 +30937,6 @@ export class Mintypmax_expressionContext extends ParserRuleContext {
 			listener.exitMintypmax_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitMintypmax_expression) {
-			return visitor.visitMintypmax_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33989,14 +30979,6 @@ export class Structured_valueContext extends ParserRuleContext {
 			listener.exitStructured_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitStructured_value) {
-			return visitor.visitStructured_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34022,14 +31004,6 @@ export class Arrayed_structured_valueContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitArrayed_structured_value) {
 			listener.exitArrayed_structured_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitArrayed_structured_value) {
-			return visitor.visitArrayed_structured_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34061,14 +31035,6 @@ export class Arrayed_structure_itemContext extends ParserRuleContext {
 			listener.exitArrayed_structure_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitArrayed_structure_item) {
-			return visitor.visitArrayed_structure_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34092,14 +31058,6 @@ export class Comma_arrayed_structure_itemContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_arrayed_structure_item) {
 			listener.exitComma_arrayed_structure_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_arrayed_structure_item) {
-			return visitor.visitComma_arrayed_structure_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34132,14 +31090,6 @@ export class Comma_arrayed_structure_item_starContext extends ParserRuleContext 
 			listener.exitComma_arrayed_structure_item_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_arrayed_structure_item_star) {
-			return visitor.visitComma_arrayed_structure_item_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34165,14 +31115,6 @@ export class Arrayed_structure_item_plusContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitArrayed_structure_item_plus) {
 			listener.exitArrayed_structure_item_plus(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitArrayed_structure_item_plus) {
-			return visitor.visitArrayed_structure_item_plus(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34203,14 +31145,6 @@ export class Variable_type_castContext extends ParserRuleContext {
 			listener.exitVariable_type_cast(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitVariable_type_cast) {
-			return visitor.visitVariable_type_cast(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34237,14 +31171,6 @@ export class Width_type_castContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitWidth_type_cast) {
 			listener.exitWidth_type_cast(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitWidth_type_cast) {
-			return visitor.visitWidth_type_cast(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34274,14 +31200,6 @@ export class Sign_type_castContext extends ParserRuleContext {
 			listener.exitSign_type_cast(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSign_type_cast) {
-			return visitor.visitSign_type_cast(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34305,14 +31223,6 @@ export class Null_type_castContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitNull_type_cast) {
 			listener.exitNull_type_cast(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitNull_type_cast) {
-			return visitor.visitNull_type_cast(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34340,14 +31250,6 @@ export class Variable_typeContext extends ParserRuleContext {
 			listener.exitVariable_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitVariable_type) {
-			return visitor.visitVariable_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34370,14 +31272,6 @@ export class Type_cast_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitType_cast_identifier) {
 			listener.exitType_cast_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitType_cast_identifier) {
-			return visitor.visitType_cast_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34413,14 +31307,6 @@ export class Type_cast_expressionContext extends ParserRuleContext {
 			listener.exitType_cast_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitType_cast_expression) {
-			return visitor.visitType_cast_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34451,14 +31337,6 @@ export class Function_callContext extends ParserRuleContext {
 			listener.exitFunction_call(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFunction_call) {
-			return visitor.visitFunction_call(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34481,14 +31359,6 @@ export class Hierarchical_function_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitHierarchical_function_identifier) {
 			listener.exitHierarchical_function_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitHierarchical_function_identifier) {
-			return visitor.visitHierarchical_function_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34515,14 +31385,6 @@ export class Function_interface_assignmentsContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitFunction_interface_assignments) {
 			listener.exitFunction_interface_assignments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFunction_interface_assignments) {
-			return visitor.visitFunction_interface_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34552,14 +31414,6 @@ export class System_function_callContext extends ParserRuleContext {
 			listener.exitSystem_function_call(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSystem_function_call) {
-			return visitor.visitSystem_function_call(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34580,14 +31434,6 @@ export class System_function_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitSystem_function_identifier) {
 			listener.exitSystem_function_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSystem_function_identifier) {
-			return visitor.visitSystem_function_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34612,14 +31458,6 @@ export class Constant_function_callContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitConstant_function_call) {
 			listener.exitConstant_function_call(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitConstant_function_call) {
-			return visitor.visitConstant_function_call(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34652,14 +31490,6 @@ export class Imported_function_callContext extends ParserRuleContext {
 			listener.exitImported_function_call(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitImported_function_call) {
-			return visitor.visitImported_function_call(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34682,14 +31512,6 @@ export class Imported_function_hierarchical_identifierContext extends ParserRule
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitImported_function_hierarchical_identifier) {
 			listener.exitImported_function_hierarchical_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitImported_function_hierarchical_identifier) {
-			return visitor.visitImported_function_hierarchical_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34719,14 +31541,6 @@ export class Primary_hierarchical_identifierContext extends ParserRuleContext {
 			listener.exitPrimary_hierarchical_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPrimary_hierarchical_identifier) {
-			return visitor.visitPrimary_hierarchical_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34752,14 +31566,6 @@ export class Primary_imported_hierarchical_identifierContext extends ParserRuleC
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitPrimary_imported_hierarchical_identifier) {
 			listener.exitPrimary_imported_hierarchical_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPrimary_imported_hierarchical_identifier) {
-			return visitor.visitPrimary_imported_hierarchical_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34790,14 +31596,6 @@ export class Imported_hierarchical_identifierContext extends ParserRuleContext {
 			listener.exitImported_hierarchical_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitImported_hierarchical_identifier) {
-			return visitor.visitImported_hierarchical_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34822,14 +31620,6 @@ export class Parenthesis_expressionContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitParenthesis_expression) {
 			listener.exitParenthesis_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitParenthesis_expression) {
-			return visitor.visitParenthesis_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34861,14 +31651,6 @@ export class ConcatenationContext extends ParserRuleContext {
 			listener.exitConcatenation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitConcatenation) {
-			return visitor.visitConcatenation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34896,14 +31678,6 @@ export class Multiple_concatenationContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitMultiple_concatenation) {
 			listener.exitMultiple_concatenation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitMultiple_concatenation) {
-			return visitor.visitMultiple_concatenation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34945,14 +31719,6 @@ export class Comma_expression_plusContext extends ParserRuleContext {
 			listener.exitComma_expression_plus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_expression_plus) {
-			return visitor.visitComma_expression_plus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34992,14 +31758,6 @@ export class Comma_expression_starContext extends ParserRuleContext {
 			listener.exitComma_expression_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_expression_star) {
-			return visitor.visitComma_expression_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35028,14 +31786,6 @@ export class Typedef_declarationContext extends ParserRuleContext {
 			listener.exitTypedef_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTypedef_declaration) {
-			return visitor.visitTypedef_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35058,14 +31808,6 @@ export class Typedef_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitTypedef_identifier) {
 			listener.exitTypedef_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTypedef_identifier) {
-			return visitor.visitTypedef_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35098,14 +31840,6 @@ export class Typedef_definitionContext extends ParserRuleContext {
 			listener.exitTypedef_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTypedef_definition) {
-			return visitor.visitTypedef_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35131,14 +31865,6 @@ export class Typedef_definition_typeContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitTypedef_definition_type) {
 			listener.exitTypedef_definition_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTypedef_definition_type) {
-			return visitor.visitTypedef_definition_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35168,14 +31894,6 @@ export class Complex_typeContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComplex_type) {
 			listener.exitComplex_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComplex_type) {
-			return visitor.visitComplex_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35208,14 +31926,6 @@ export class Typedef_typeContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitTypedef_type) {
 			listener.exitTypedef_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTypedef_type) {
-			return visitor.visitTypedef_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35256,14 +31966,6 @@ export class Par_blockContext extends ParserRuleContext {
 			listener.exitPar_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitPar_block) {
-			return visitor.visitPar_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35300,14 +32002,6 @@ export class Seq_blockContext extends ParserRuleContext {
 			listener.exitSeq_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitSeq_block) {
-			return visitor.visitSeq_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35330,14 +32024,6 @@ export class Block_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitBlock_identifier) {
 			listener.exitBlock_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBlock_identifier) {
-			return visitor.visitBlock_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35363,14 +32049,6 @@ export class Colon_block_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitColon_block_identifier) {
 			listener.exitColon_block_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitColon_block_identifier) {
-			return visitor.visitColon_block_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35403,14 +32081,6 @@ export class Block_item_declaration_starContext extends ParserRuleContext {
 			listener.exitBlock_item_declaration_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBlock_item_declaration_star) {
-			return visitor.visitBlock_item_declaration_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35436,14 +32106,6 @@ export class Block_item_declaration_semicolonContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitBlock_item_declaration_semicolon) {
 			listener.exitBlock_item_declaration_semicolon(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBlock_item_declaration_semicolon) {
-			return visitor.visitBlock_item_declaration_semicolon(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35506,14 +32168,6 @@ export class Block_item_declarationContext extends ParserRuleContext {
 			listener.exitBlock_item_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitBlock_item_declaration) {
-			return visitor.visitBlock_item_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35536,14 +32190,6 @@ export class Join_keywordContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitJoin_keyword) {
 			listener.exitJoin_keyword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitJoin_keyword) {
-			return visitor.visitJoin_keyword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35580,14 +32226,6 @@ export class Continuous_assignContext extends ParserRuleContext {
 			listener.exitContinuous_assign(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitContinuous_assign) {
-			return visitor.visitContinuous_assign(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35613,14 +32251,6 @@ export class List_of_variable_assignmentsContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitList_of_variable_assignments) {
 			listener.exitList_of_variable_assignments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitList_of_variable_assignments) {
-			return visitor.visitList_of_variable_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35653,14 +32283,6 @@ export class Comma_variable_assignment_starContext extends ParserRuleContext {
 			listener.exitComma_variable_assignment_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_variable_assignment_star) {
-			return visitor.visitComma_variable_assignment_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35684,14 +32306,6 @@ export class Comma_variable_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitComma_variable_assignment) {
 			listener.exitComma_variable_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitComma_variable_assignment) {
-			return visitor.visitComma_variable_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35722,14 +32336,6 @@ export class Variable_assignmentContext extends ParserRuleContext {
 			listener.exitVariable_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitVariable_assignment) {
-			return visitor.visitVariable_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35753,14 +32359,6 @@ export class Initial_constructContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitInitial_construct) {
 			listener.exitInitial_construct(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitInitial_construct) {
-			return visitor.visitInitial_construct(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35788,14 +32386,6 @@ export class Final_constructContext extends ParserRuleContext {
 			listener.exitFinal_construct(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitFinal_construct) {
-			return visitor.visitFinal_construct(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35818,14 +32408,6 @@ export class Always_keywordContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitAlways_keyword) {
 			listener.exitAlways_keyword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAlways_keyword) {
-			return visitor.visitAlways_keyword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35853,14 +32435,6 @@ export class Always_constructContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitAlways_construct) {
 			listener.exitAlways_construct(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAlways_construct) {
-			return visitor.visitAlways_construct(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35891,14 +32465,6 @@ export class Attribute_instance_starContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitAttribute_instance_star) {
 			listener.exitAttribute_instance_star(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttribute_instance_star) {
-			return visitor.visitAttribute_instance_star(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35937,14 +32503,6 @@ export class Attribute_instanceContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitAttribute_instance) {
 			listener.exitAttribute_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttribute_instance) {
-			return visitor.visitAttribute_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35986,14 +32544,6 @@ export class Attr_spec_starContext extends ParserRuleContext {
 			listener.exitAttr_spec_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_spec_star) {
-			return visitor.visitAttr_spec_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36022,14 +32572,6 @@ export class Attr_specContext extends ParserRuleContext {
 			listener.exitAttr_spec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_spec) {
-			return visitor.visitAttr_spec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36054,14 +32596,6 @@ export class Attr_nameContext extends ParserRuleContext {
 			listener.exitAttr_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitAttr_name) {
-			return visitor.visitAttr_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36083,14 +32617,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36118,14 +32644,6 @@ export class Hierarchical_identifierContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitHierarchical_identifier) {
 			listener.exitHierarchical_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitHierarchical_identifier) {
-			return visitor.visitHierarchical_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36158,14 +32676,6 @@ export class Dot_hierarchical_identifier_branch_item_starContext extends ParserR
 			listener.exitDot_hierarchical_identifier_branch_item_star(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDot_hierarchical_identifier_branch_item_star) {
-			return visitor.visitDot_hierarchical_identifier_branch_item_star(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36189,14 +32699,6 @@ export class Dot_hierarchical_identifier_branch_itemContext extends ParserRuleCo
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitDot_hierarchical_identifier_branch_item) {
 			listener.exitDot_hierarchical_identifier_branch_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDot_hierarchical_identifier_branch_item) {
-			return visitor.visitDot_hierarchical_identifier_branch_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36224,14 +32726,6 @@ export class Hierarchical_identifier_branch_itemContext extends ParserRuleContex
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitHierarchical_identifier_branch_item) {
 			listener.exitHierarchical_identifier_branch_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitHierarchical_identifier_branch_item) {
-			return visitor.visitHierarchical_identifier_branch_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36266,14 +32760,6 @@ export class Timescale_compiler_directiveContext extends ParserRuleContext {
 			listener.exitTimescale_compiler_directive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTimescale_compiler_directive) {
-			return visitor.visitTimescale_compiler_directive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36295,14 +32781,6 @@ export class Timeunit_directiveContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitTimeunit_directive) {
 			listener.exitTimeunit_directive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTimeunit_directive) {
-			return visitor.visitTimeunit_directive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36328,14 +32806,6 @@ export class Timeprecision_directiveContext extends ParserRuleContext {
 			listener.exitTimeprecision_directive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitTimeprecision_directive) {
-			return visitor.visitTimeprecision_directive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36359,14 +32829,6 @@ export class Default_nettype_statementContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitDefault_nettype_statement) {
 			listener.exitDefault_nettype_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitDefault_nettype_statement) {
-			return visitor.visitDefault_nettype_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36396,14 +32858,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36429,14 +32883,6 @@ export class Integral_numberContext extends ParserRuleContext {
 			listener.exitIntegral_number(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitIntegral_number) {
-			return visitor.visitIntegral_number(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36458,14 +32904,6 @@ export class Real_numberContext extends ParserRuleContext {
 	public exitRule(listener: SysVerilogHDLListener): void {
 		if (listener.exitReal_number) {
 			listener.exitReal_number(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SysVerilogHDLVisitor<Result>): Result {
-		if (visitor.visitReal_number) {
-			return visitor.visitReal_number(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

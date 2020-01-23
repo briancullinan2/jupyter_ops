@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { Protobuf3Listener } from "./Protobuf3Listener";
-import { Protobuf3Visitor } from "./Protobuf3Visitor";
-
 
 export class Protobuf3Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -2590,14 +2588,6 @@ export class ProtoContext extends ParserRuleContext {
 			listener.exitProto(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitProto) {
-			return visitor.visitProto(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2622,14 +2612,6 @@ export class SyntaxContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitSyntax) {
 			listener.exitSyntax(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitSyntax) {
-			return visitor.visitSyntax(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2658,14 +2640,6 @@ export class ImportStatementContext extends ParserRuleContext {
 			listener.exitImportStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitImportStatement) {
-			return visitor.visitImportStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2690,14 +2664,6 @@ export class PackageStatementContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitPackageStatement) {
 			listener.exitPackageStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitPackageStatement) {
-			return visitor.visitPackageStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2731,14 +2697,6 @@ export class OptionContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitOption) {
 			listener.exitOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitOption) {
-			return visitor.visitOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2794,14 +2752,6 @@ export class OptionNameContext extends ParserRuleContext {
 			listener.exitOptionName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitOptionName) {
-			return visitor.visitOptionName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2834,14 +2784,6 @@ export class OptionBodyContext extends ParserRuleContext {
 			listener.exitOptionBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitOptionBody) {
-			return visitor.visitOptionBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2867,14 +2809,6 @@ export class OptionBodyVariableContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitOptionBodyVariable) {
 			listener.exitOptionBodyVariable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitOptionBodyVariable) {
-			return visitor.visitOptionBodyVariable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2907,14 +2841,6 @@ export class TopLevelDefContext extends ParserRuleContext {
 			listener.exitTopLevelDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitTopLevelDef) {
-			return visitor.visitTopLevelDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2941,14 +2867,6 @@ export class MessageContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitMessage) {
 			listener.exitMessage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitMessage) {
-			return visitor.visitMessage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3046,14 +2964,6 @@ export class MessageBodyContext extends ParserRuleContext {
 			listener.exitMessageBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitMessageBody) {
-			return visitor.visitMessageBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3080,14 +2990,6 @@ export class EnumDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitEnumDefinition) {
 			listener.exitEnumDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitEnumDefinition) {
-			return visitor.visitEnumDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3140,14 +3042,6 @@ export class EnumBodyContext extends ParserRuleContext {
 			listener.exitEnumBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitEnumBody) {
-			return visitor.visitEnumBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3194,14 +3088,6 @@ export class EnumFieldContext extends ParserRuleContext {
 			listener.exitEnumField(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitEnumField) {
-			return visitor.visitEnumField(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3228,14 +3114,6 @@ export class EnumValueOptionContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitEnumValueOption) {
 			listener.exitEnumValueOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitEnumValueOption) {
-			return visitor.visitEnumValueOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3290,14 +3168,6 @@ export class ServiceContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitService) {
 			listener.exitService(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitService) {
-			return visitor.visitService(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3383,14 +3253,6 @@ export class RpcContext extends ParserRuleContext {
 			listener.exitRpc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitRpc) {
-			return visitor.visitRpc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3418,14 +3280,6 @@ export class ReservedContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitReserved) {
 			listener.exitReserved(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitReserved) {
-			return visitor.visitReserved(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3467,14 +3321,6 @@ export class RangesContext extends ParserRuleContext {
 			listener.exitRanges(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitRanges) {
-			return visitor.visitRanges(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3504,14 +3350,6 @@ export class RangeContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitRange) {
 			listener.exitRange(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitRange) {
-			return visitor.visitRange(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3553,14 +3391,6 @@ export class FieldNamesContext extends ParserRuleContext {
 			listener.exitFieldNames(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitFieldNames) {
-			return visitor.visitFieldNames(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3600,14 +3430,6 @@ export class TypeContext extends ParserRuleContext {
 			listener.exitType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3628,14 +3450,6 @@ export class FieldNumberContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitFieldNumber) {
 			listener.exitFieldNumber(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitFieldNumber) {
-			return visitor.visitFieldNumber(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3674,14 +3488,6 @@ export class FieldContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitField) {
 			listener.exitField(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitField) {
-			return visitor.visitField(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3723,14 +3529,6 @@ export class FieldOptionsContext extends ParserRuleContext {
 			listener.exitFieldOptions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitFieldOptions) {
-			return visitor.visitFieldOptions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3757,14 +3555,6 @@ export class FieldOptionContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitFieldOption) {
 			listener.exitFieldOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitFieldOption) {
-			return visitor.visitFieldOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3812,14 +3602,6 @@ export class OneofContext extends ParserRuleContext {
 			listener.exitOneof(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitOneof) {
-			return visitor.visitOneof(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3855,14 +3637,6 @@ export class OneofFieldContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitOneofField) {
 			listener.exitOneofField(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitOneofField) {
-			return visitor.visitOneofField(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3909,14 +3683,6 @@ export class MapFieldContext extends ParserRuleContext {
 			listener.exitMapField(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitMapField) {
-			return visitor.visitMapField(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3950,14 +3716,6 @@ export class KeyTypeContext extends ParserRuleContext {
 			listener.exitKeyType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitKeyType) {
-			return visitor.visitKeyType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3986,14 +3744,6 @@ export class ReservedWordContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitReservedWord) {
 			listener.exitReservedWord(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitReservedWord) {
-			return visitor.visitReservedWord(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4035,14 +3785,6 @@ export class FullIdentContext extends ParserRuleContext {
 			listener.exitFullIdent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitFullIdent) {
-			return visitor.visitFullIdent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4063,14 +3805,6 @@ export class MessageNameContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitMessageName) {
 			listener.exitMessageName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitMessageName) {
-			return visitor.visitMessageName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4095,14 +3829,6 @@ export class EnumNameContext extends ParserRuleContext {
 			listener.exitEnumName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitEnumName) {
-			return visitor.visitEnumName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4123,14 +3849,6 @@ export class MessageOrEnumNameContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitMessageOrEnumName) {
 			listener.exitMessageOrEnumName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitMessageOrEnumName) {
-			return visitor.visitMessageOrEnumName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4158,14 +3876,6 @@ export class FieldNameContext extends ParserRuleContext {
 			listener.exitFieldName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitFieldName) {
-			return visitor.visitFieldName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4186,14 +3896,6 @@ export class OneofNameContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitOneofName) {
 			listener.exitOneofName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitOneofName) {
-			return visitor.visitOneofName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4218,14 +3920,6 @@ export class MapNameContext extends ParserRuleContext {
 			listener.exitMapName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitMapName) {
-			return visitor.visitMapName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4248,14 +3942,6 @@ export class ServiceNameContext extends ParserRuleContext {
 			listener.exitServiceName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitServiceName) {
-			return visitor.visitServiceName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4276,14 +3962,6 @@ export class RpcNameContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitRpcName) {
 			listener.exitRpcName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitRpcName) {
-			return visitor.visitRpcName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4326,14 +4004,6 @@ export class MessageTypeContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitMessageType) {
 			listener.exitMessageType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitMessageType) {
-			return visitor.visitMessageType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4387,14 +4057,6 @@ export class MessageOrEnumTypeContext extends ParserRuleContext {
 			listener.exitMessageOrEnumType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitMessageOrEnumType) {
-			return visitor.visitMessageOrEnumType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4415,14 +4077,6 @@ export class EmptyStatementContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitEmptyStatement) {
 			listener.exitEmptyStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitEmptyStatement) {
-			return visitor.visitEmptyStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4453,14 +4107,6 @@ export class ConstantContext extends ParserRuleContext {
 	public exitRule(listener: Protobuf3Listener): void {
 		if (listener.exitConstant) {
 			listener.exitConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Protobuf3Visitor<Result>): Result {
-		if (visitor.visitConstant) {
-			return visitor.visitConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

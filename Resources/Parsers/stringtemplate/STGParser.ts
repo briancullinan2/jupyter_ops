@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { STGParserListener } from "./STGParserListener";
-import { STGParserVisitor } from "./STGParserVisitor";
-
 
 export class STGParser extends Parser {
 	public static readonly DOC_COMMENT = 1;
@@ -844,14 +842,6 @@ export class GroupContext extends ParserRuleContext {
 			listener.exitGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: STGParserVisitor<Result>): Result {
-		if (visitor.visitGroup) {
-			return visitor.visitGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -882,14 +872,6 @@ export class DelimitersContext extends ParserRuleContext {
 	public exitRule(listener: STGParserListener): void {
 		if (listener.exitDelimiters) {
 			listener.exitDelimiters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: STGParserVisitor<Result>): Result {
-		if (visitor.visitDelimiters) {
-			return visitor.visitDelimiters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -929,14 +911,6 @@ export class ImportsContext extends ParserRuleContext {
 	public exitRule(listener: STGParserListener): void {
 		if (listener.exitImports) {
 			listener.exitImports(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: STGParserVisitor<Result>): Result {
-		if (visitor.visitImports) {
-			return visitor.visitImports(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -980,14 +954,6 @@ export class TemplateContext extends ParserRuleContext {
 			listener.exitTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: STGParserVisitor<Result>): Result {
-		if (visitor.visitTemplate) {
-			return visitor.visitTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1027,14 +993,6 @@ export class FormalArgsContext extends ParserRuleContext {
 			listener.exitFormalArgs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: STGParserVisitor<Result>): Result {
-		if (visitor.visitFormalArgs) {
-			return visitor.visitFormalArgs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1064,14 +1022,6 @@ export class FormalArgContext extends ParserRuleContext {
 			listener.exitFormalArg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: STGParserVisitor<Result>): Result {
-		if (visitor.visitFormalArg) {
-			return visitor.visitFormalArg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1098,14 +1048,6 @@ export class DictContext extends ParserRuleContext {
 	public exitRule(listener: STGParserListener): void {
 		if (listener.exitDict) {
 			listener.exitDict(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: STGParserVisitor<Result>): Result {
-		if (visitor.visitDict) {
-			return visitor.visitDict(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1150,14 +1092,6 @@ export class DictPairsContext extends ParserRuleContext {
 			listener.exitDictPairs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: STGParserVisitor<Result>): Result {
-		if (visitor.visitDictPairs) {
-			return visitor.visitDictPairs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1184,14 +1118,6 @@ export class KeyValuePairContext extends ParserRuleContext {
 			listener.exitKeyValuePair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: STGParserVisitor<Result>): Result {
-		if (visitor.visitKeyValuePair) {
-			return visitor.visitKeyValuePair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1216,14 +1142,6 @@ export class DefaultValuePairContext extends ParserRuleContext {
 	public exitRule(listener: STGParserListener): void {
 		if (listener.exitDefaultValuePair) {
 			listener.exitDefaultValuePair(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: STGParserVisitor<Result>): Result {
-		if (visitor.visitDefaultValuePair) {
-			return visitor.visitDefaultValuePair(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1254,14 +1172,6 @@ export class KeyValueContext extends ParserRuleContext {
 	public exitRule(listener: STGParserListener): void {
 		if (listener.exitKeyValue) {
 			listener.exitKeyValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: STGParserVisitor<Result>): Result {
-		if (visitor.visitKeyValue) {
-			return visitor.visitKeyValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

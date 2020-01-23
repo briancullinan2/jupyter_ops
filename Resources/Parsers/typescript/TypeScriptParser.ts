@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { TypeScriptParserListener } from "./TypeScriptParserListener";
-import { TypeScriptParserVisitor } from "./TypeScriptParserVisitor";
-
 
 export class TypeScriptParser extends TypeScriptBaseParser {
 	public static readonly MultiLineComment = 1;
@@ -9799,14 +9797,6 @@ export class InitializerContext extends ParserRuleContext {
 			listener.exitInitializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitInitializer) {
-			return visitor.visitInitializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9834,14 +9824,6 @@ export class BindingPatternContext extends ParserRuleContext {
 			listener.exitBindingPattern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitBindingPattern) {
-			return visitor.visitBindingPattern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9866,14 +9848,6 @@ export class TypeParametersContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitTypeParameters) {
 			listener.exitTypeParameters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeParameters) {
-			return visitor.visitTypeParameters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9915,14 +9889,6 @@ export class TypeParameterListContext extends ParserRuleContext {
 			listener.exitTypeParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeParameterList) {
-			return visitor.visitTypeParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9951,14 +9917,6 @@ export class TypeParameterContext extends ParserRuleContext {
 			listener.exitTypeParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeParameter) {
-			return visitor.visitTypeParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9982,14 +9940,6 @@ export class ConstraintContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitConstraint) {
 			listener.exitConstraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitConstraint) {
-			return visitor.visitConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10016,14 +9966,6 @@ export class TypeArgumentsContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitTypeArguments) {
 			listener.exitTypeArguments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeArguments) {
-			return visitor.visitTypeArguments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10065,14 +10007,6 @@ export class TypeArgumentListContext extends ParserRuleContext {
 			listener.exitTypeArgumentList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeArgumentList) {
-			return visitor.visitTypeArgumentList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10095,14 +10029,6 @@ export class TypeArgumentContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitTypeArgument) {
 			listener.exitTypeArgument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeArgument) {
-			return visitor.visitTypeArgument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10137,14 +10063,6 @@ export class Type_Context extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitType_) {
 			listener.exitType_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitType_) {
-			return visitor.visitType_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10187,14 +10105,6 @@ export class UnionContext extends UnionOrIntersectionOrPrimaryTypeContext {
 			listener.exitUnion(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitUnion) {
-			return visitor.visitUnion(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IntersectionContext extends UnionOrIntersectionOrPrimaryTypeContext {
 	public unionOrIntersectionOrPrimaryType(): UnionOrIntersectionOrPrimaryTypeContext[];
@@ -10223,14 +10133,6 @@ export class IntersectionContext extends UnionOrIntersectionOrPrimaryTypeContext
 			listener.exitIntersection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitIntersection) {
-			return visitor.visitIntersection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PrimaryContext extends UnionOrIntersectionOrPrimaryTypeContext {
 	public primaryType(): PrimaryTypeContext {
@@ -10250,14 +10152,6 @@ export class PrimaryContext extends UnionOrIntersectionOrPrimaryTypeContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitPrimary) {
 			listener.exitPrimary(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPrimary) {
-			return visitor.visitPrimary(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10295,14 +10189,6 @@ export class ParenthesizedPrimTypeContext extends PrimaryTypeContext {
 			listener.exitParenthesizedPrimType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitParenthesizedPrimType) {
-			return visitor.visitParenthesizedPrimType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PredefinedPrimTypeContext extends PrimaryTypeContext {
 	public predefinedType(): PredefinedTypeContext {
@@ -10322,14 +10208,6 @@ export class PredefinedPrimTypeContext extends PrimaryTypeContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitPredefinedPrimType) {
 			listener.exitPredefinedPrimType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPredefinedPrimType) {
-			return visitor.visitPredefinedPrimType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10353,14 +10231,6 @@ export class ReferencePrimTypeContext extends PrimaryTypeContext {
 			listener.exitReferencePrimType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitReferencePrimType) {
-			return visitor.visitReferencePrimType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ObjectPrimTypeContext extends PrimaryTypeContext {
 	public objectType(): ObjectTypeContext {
@@ -10380,14 +10250,6 @@ export class ObjectPrimTypeContext extends PrimaryTypeContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitObjectPrimType) {
 			listener.exitObjectPrimType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitObjectPrimType) {
-			return visitor.visitObjectPrimType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10413,14 +10275,6 @@ export class ArrayPrimTypeContext extends PrimaryTypeContext {
 			listener.exitArrayPrimType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitArrayPrimType) {
-			return visitor.visitArrayPrimType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TuplePrimTypeContext extends PrimaryTypeContext {
 	public OpenBracket(): TerminalNode { return this.getToken(TypeScriptParser.OpenBracket, 0); }
@@ -10444,14 +10298,6 @@ export class TuplePrimTypeContext extends PrimaryTypeContext {
 			listener.exitTuplePrimType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTuplePrimType) {
-			return visitor.visitTuplePrimType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class QueryPrimTypeContext extends PrimaryTypeContext {
 	public typeQuery(): TypeQueryContext {
@@ -10473,14 +10319,6 @@ export class QueryPrimTypeContext extends PrimaryTypeContext {
 			listener.exitQueryPrimType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitQueryPrimType) {
-			return visitor.visitQueryPrimType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ThisPrimTypeContext extends PrimaryTypeContext {
 	public This(): TerminalNode { return this.getToken(TypeScriptParser.This, 0); }
@@ -10498,14 +10336,6 @@ export class ThisPrimTypeContext extends PrimaryTypeContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitThisPrimType) {
 			listener.exitThisPrimType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitThisPrimType) {
-			return visitor.visitThisPrimType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10533,14 +10363,6 @@ export class RedefinitionOfTypeContext extends PrimaryTypeContext {
 			listener.exitRedefinitionOfType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitRedefinitionOfType) {
-			return visitor.visitRedefinitionOfType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10566,14 +10388,6 @@ export class PredefinedTypeContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitPredefinedType) {
 			listener.exitPredefinedType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPredefinedType) {
-			return visitor.visitPredefinedType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10606,14 +10420,6 @@ export class TypeReferenceContext extends ParserRuleContext {
 			listener.exitTypeReference(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeReference) {
-			return visitor.visitTypeReference(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10638,14 +10444,6 @@ export class TypeGenericContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitTypeGeneric) {
 			listener.exitTypeGeneric(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeGeneric) {
-			return visitor.visitTypeGeneric(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10700,14 +10498,6 @@ export class TypeIncludeGenericContext extends ParserRuleContext {
 			listener.exitTypeIncludeGeneric(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeIncludeGeneric) {
-			return visitor.visitTypeIncludeGeneric(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10731,14 +10521,6 @@ export class TypeNameContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitTypeName) {
 			listener.exitTypeName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeName) {
-			return visitor.visitTypeName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10767,14 +10549,6 @@ export class ObjectTypeContext extends ParserRuleContext {
 			listener.exitObjectType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitObjectType) {
-			return visitor.visitObjectType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10799,14 +10573,6 @@ export class TypeBodyContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitTypeBody) {
 			listener.exitTypeBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeBody) {
-			return visitor.visitTypeBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10857,14 +10623,6 @@ export class TypeMemberListContext extends ParserRuleContext {
 			listener.exitTypeMemberList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeMemberList) {
-			return visitor.visitTypeMemberList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10905,14 +10663,6 @@ export class TypeMemberContext extends ParserRuleContext {
 			listener.exitTypeMember(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeMember) {
-			return visitor.visitTypeMember(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10939,14 +10689,6 @@ export class ArrayTypeContext extends ParserRuleContext {
 			listener.exitArrayType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitArrayType) {
-			return visitor.visitArrayType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10971,14 +10713,6 @@ export class TupleTypeContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitTupleType) {
 			listener.exitTupleType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTupleType) {
-			return visitor.visitTupleType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11020,14 +10754,6 @@ export class TupleElementTypesContext extends ParserRuleContext {
 			listener.exitTupleElementTypes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTupleElementTypes) {
-			return visitor.visitTupleElementTypes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11059,14 +10785,6 @@ export class FunctionTypeContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitFunctionType) {
 			listener.exitFunctionType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitFunctionType) {
-			return visitor.visitFunctionType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11103,14 +10821,6 @@ export class ConstructorTypeContext extends ParserRuleContext {
 			listener.exitConstructorType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitConstructorType) {
-			return visitor.visitConstructorType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11134,14 +10844,6 @@ export class TypeQueryContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitTypeQuery) {
 			listener.exitTypeQuery(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeQuery) {
-			return visitor.visitTypeQuery(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11184,14 +10886,6 @@ export class TypeQueryExpressionContext extends ParserRuleContext {
 			listener.exitTypeQueryExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeQueryExpression) {
-			return visitor.visitTypeQueryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11225,14 +10919,6 @@ export class PropertySignaturContext extends ParserRuleContext {
 			listener.exitPropertySignatur(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPropertySignatur) {
-			return visitor.visitPropertySignatur(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11256,14 +10942,6 @@ export class TypeAnnotationContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitTypeAnnotation) {
 			listener.exitTypeAnnotation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeAnnotation) {
-			return visitor.visitTypeAnnotation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11296,14 +10974,6 @@ export class CallSignatureContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitCallSignature) {
 			listener.exitCallSignature(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitCallSignature) {
-			return visitor.visitCallSignature(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11354,14 +11024,6 @@ export class ParameterListContext extends ParserRuleContext {
 			listener.exitParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitParameterList) {
-			return visitor.visitParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11401,14 +11063,6 @@ export class RequiredParameterListContext extends ParserRuleContext {
 			listener.exitRequiredParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitRequiredParameterList) {
-			return visitor.visitRequiredParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11442,14 +11096,6 @@ export class RequiredParameterContext extends ParserRuleContext {
 			listener.exitRequiredParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitRequiredParameter) {
-			return visitor.visitRequiredParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11472,14 +11118,6 @@ export class AccessibilityModifierContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitAccessibilityModifier) {
 			listener.exitAccessibilityModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitAccessibilityModifier) {
-			return visitor.visitAccessibilityModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11507,14 +11145,6 @@ export class IdentifierOrPatternContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitIdentifierOrPattern) {
 			listener.exitIdentifierOrPattern(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitIdentifierOrPattern) {
-			return visitor.visitIdentifierOrPattern(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11556,14 +11186,6 @@ export class OptionalParameterListContext extends ParserRuleContext {
 			listener.exitOptionalParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitOptionalParameterList) {
-			return visitor.visitOptionalParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11601,14 +11223,6 @@ export class OptionalParameterContext extends ParserRuleContext {
 			listener.exitOptionalParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitOptionalParameter) {
-			return visitor.visitOptionalParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11632,14 +11246,6 @@ export class RestParameterContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitRestParameter) {
 			listener.exitRestParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitRestParameter) {
-			return visitor.visitRestParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11675,14 +11281,6 @@ export class ConstructSignatureContext extends ParserRuleContext {
 			listener.exitConstructSignature(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitConstructSignature) {
-			return visitor.visitConstructSignature(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11713,14 +11311,6 @@ export class IndexSignatureContext extends ParserRuleContext {
 			listener.exitIndexSignature(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitIndexSignature) {
-			return visitor.visitIndexSignature(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11747,14 +11337,6 @@ export class MethodSignatureContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitMethodSignature) {
 			listener.exitMethodSignature(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitMethodSignature) {
-			return visitor.visitMethodSignature(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11786,14 +11368,6 @@ export class TypeAliasDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitTypeAliasDeclaration) {
 			listener.exitTypeAliasDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeAliasDeclaration) {
-			return visitor.visitTypeAliasDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11832,14 +11406,6 @@ export class ConstructorDeclarationContext extends ParserRuleContext {
 			listener.exitConstructorDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitConstructorDeclaration) {
-			return visitor.visitConstructorDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11874,14 +11440,6 @@ export class InterfaceDeclarationContext extends ParserRuleContext {
 			listener.exitInterfaceDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitInterfaceDeclaration) {
-			return visitor.visitInterfaceDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11905,14 +11463,6 @@ export class InterfaceExtendsClauseContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitInterfaceExtendsClause) {
 			listener.exitInterfaceExtendsClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitInterfaceExtendsClause) {
-			return visitor.visitInterfaceExtendsClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11954,14 +11504,6 @@ export class ClassOrInterfaceTypeListContext extends ParserRuleContext {
 			listener.exitClassOrInterfaceTypeList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitClassOrInterfaceTypeList) {
-			return visitor.visitClassOrInterfaceTypeList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11991,14 +11533,6 @@ export class EnumDeclarationContext extends ParserRuleContext {
 			listener.exitEnumDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitEnumDeclaration) {
-			return visitor.visitEnumDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12022,14 +11556,6 @@ export class EnumBodyContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitEnumBody) {
 			listener.exitEnumBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitEnumBody) {
-			return visitor.visitEnumBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12071,14 +11597,6 @@ export class EnumMemberListContext extends ParserRuleContext {
 			listener.exitEnumMemberList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitEnumMemberList) {
-			return visitor.visitEnumMemberList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12105,14 +11623,6 @@ export class EnumMemberContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitEnumMember) {
 			listener.exitEnumMember(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitEnumMember) {
-			return visitor.visitEnumMember(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12143,14 +11653,6 @@ export class NamespaceDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitNamespaceDeclaration) {
 			listener.exitNamespaceDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitNamespaceDeclaration) {
-			return visitor.visitNamespaceDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12192,14 +11694,6 @@ export class NamespaceNameContext extends ParserRuleContext {
 			listener.exitNamespaceName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitNamespaceName) {
-			return visitor.visitNamespaceName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12225,14 +11719,6 @@ export class ImportAliasDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitImportAliasDeclaration) {
 			listener.exitImportAliasDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitImportAliasDeclaration) {
-			return visitor.visitImportAliasDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12265,14 +11751,6 @@ export class DecoratorListContext extends ParserRuleContext {
 			listener.exitDecoratorList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitDecoratorList) {
-			return visitor.visitDecoratorList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12299,14 +11777,6 @@ export class DecoratorContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitDecorator) {
 			listener.exitDecorator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitDecorator) {
-			return visitor.visitDecorator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12343,14 +11813,6 @@ export class DecoratorMemberExpressionContext extends ParserRuleContext {
 			listener.exitDecoratorMemberExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitDecoratorMemberExpression) {
-			return visitor.visitDecoratorMemberExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12378,14 +11840,6 @@ export class DecoratorCallExpressionContext extends ParserRuleContext {
 			listener.exitDecoratorCallExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitDecoratorCallExpression) {
-			return visitor.visitDecoratorCallExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12411,14 +11865,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12442,14 +11888,6 @@ export class SourceElementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitSourceElement) {
 			listener.exitSourceElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitSourceElement) {
-			return visitor.visitSourceElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12558,14 +11996,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12590,14 +12020,6 @@ export class BlockContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitBlock) {
 			listener.exitBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12628,14 +12050,6 @@ export class StatementListContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitStatementList) {
 			listener.exitStatementList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitStatementList) {
-			return visitor.visitStatementList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12670,14 +12084,6 @@ export class AbstractDeclarationContext extends ParserRuleContext {
 			listener.exitAbstractDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitAbstractDeclaration) {
-			return visitor.visitAbstractDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12704,14 +12110,6 @@ export class ImportStatementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitImportStatement) {
 			listener.exitImportStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitImportStatement) {
-			return visitor.visitImportStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12746,14 +12144,6 @@ export class FromBlockContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitFromBlock) {
 			listener.exitFromBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitFromBlock) {
-			return visitor.visitFromBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12797,14 +12187,6 @@ export class MultipleImportStatementContext extends ParserRuleContext {
 			listener.exitMultipleImportStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitMultipleImportStatement) {
-			return visitor.visitMultipleImportStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12832,14 +12214,6 @@ export class ExportStatementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitExportStatement) {
 			listener.exitExportStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitExportStatement) {
-			return visitor.visitExportStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12883,14 +12257,6 @@ export class VariableStatementContext extends ParserRuleContext {
 			listener.exitVariableStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitVariableStatement) {
-			return visitor.visitVariableStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12928,14 +12294,6 @@ export class VariableDeclarationListContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitVariableDeclarationList) {
 			listener.exitVariableDeclarationList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitVariableDeclarationList) {
-			return visitor.visitVariableDeclarationList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12982,14 +12340,6 @@ export class VariableDeclarationContext extends ParserRuleContext {
 			listener.exitVariableDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitVariableDeclaration) {
-			return visitor.visitVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13010,14 +12360,6 @@ export class EmptyStatementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitEmptyStatement) {
 			listener.exitEmptyStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitEmptyStatement) {
-			return visitor.visitEmptyStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13043,14 +12385,6 @@ export class ExpressionStatementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitExpressionStatement) {
 			listener.exitExpressionStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitExpressionStatement) {
-			return visitor.visitExpressionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13088,14 +12422,6 @@ export class IfStatementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitIfStatement) {
 			listener.exitIfStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13141,14 +12467,6 @@ export class DoStatementContext extends IterationStatementContext {
 			listener.exitDoStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitDoStatement) {
-			return visitor.visitDoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class WhileStatementContext extends IterationStatementContext {
 	public While(): TerminalNode { return this.getToken(TypeScriptParser.While, 0); }
@@ -13174,14 +12492,6 @@ export class WhileStatementContext extends IterationStatementContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitWhileStatement) {
 			listener.exitWhileStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitWhileStatement) {
-			return visitor.visitWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13224,14 +12534,6 @@ export class ForStatementContext extends IterationStatementContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitForStatement) {
 			listener.exitForStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitForStatement) {
-			return visitor.visitForStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13282,14 +12584,6 @@ export class ForVarStatementContext extends IterationStatementContext {
 			listener.exitForVarStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitForVarStatement) {
-			return visitor.visitForVarStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ForInStatementContext extends IterationStatementContext {
 	public For(): TerminalNode { return this.getToken(TypeScriptParser.For, 0); }
@@ -13320,14 +12614,6 @@ export class ForInStatementContext extends IterationStatementContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitForInStatement) {
 			listener.exitForInStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitForInStatement) {
-			return visitor.visitForInStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13365,14 +12651,6 @@ export class ForVarInStatementContext extends IterationStatementContext {
 			listener.exitForVarInStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitForVarInStatement) {
-			return visitor.visitForVarInStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13395,14 +12673,6 @@ export class VarModifierContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitVarModifier) {
 			listener.exitVarModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitVarModifier) {
-			return visitor.visitVarModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13431,14 +12701,6 @@ export class ContinueStatementContext extends ParserRuleContext {
 			listener.exitContinueStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitContinueStatement) {
-			return visitor.visitContinueStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13463,14 +12725,6 @@ export class BreakStatementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitBreakStatement) {
 			listener.exitBreakStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitBreakStatement) {
-			return visitor.visitBreakStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13501,14 +12755,6 @@ export class ReturnStatementContext extends ParserRuleContext {
 			listener.exitReturnStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitReturnStatement) {
-			return visitor.visitReturnStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13535,14 +12781,6 @@ export class YieldStatementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitYieldStatement) {
 			listener.exitYieldStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitYieldStatement) {
-			return visitor.visitYieldStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13575,14 +12813,6 @@ export class WithStatementContext extends ParserRuleContext {
 			listener.exitWithStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitWithStatement) {
-			return visitor.visitWithStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13611,14 +12841,6 @@ export class SwitchStatementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitSwitchStatement) {
 			listener.exitSwitchStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitSwitchStatement) {
-			return visitor.visitSwitchStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13656,14 +12878,6 @@ export class CaseBlockContext extends ParserRuleContext {
 			listener.exitCaseBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitCaseBlock) {
-			return visitor.visitCaseBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13692,14 +12906,6 @@ export class CaseClausesContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitCaseClauses) {
 			listener.exitCaseClauses(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitCaseClauses) {
-			return visitor.visitCaseClauses(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13731,14 +12937,6 @@ export class CaseClauseContext extends ParserRuleContext {
 			listener.exitCaseClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitCaseClause) {
-			return visitor.visitCaseClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13763,14 +12961,6 @@ export class DefaultClauseContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitDefaultClause) {
 			listener.exitDefaultClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitDefaultClause) {
-			return visitor.visitDefaultClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13799,14 +12989,6 @@ export class LabelledStatementContext extends ParserRuleContext {
 			listener.exitLabelledStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitLabelledStatement) {
-			return visitor.visitLabelledStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13833,14 +13015,6 @@ export class ThrowStatementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitThrowStatement) {
 			listener.exitThrowStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitThrowStatement) {
-			return visitor.visitThrowStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13874,14 +13048,6 @@ export class TryStatementContext extends ParserRuleContext {
 			listener.exitTryStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTryStatement) {
-			return visitor.visitTryStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13910,14 +13076,6 @@ export class CatchProductionContext extends ParserRuleContext {
 			listener.exitCatchProduction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitCatchProduction) {
-			return visitor.visitCatchProduction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13943,14 +13101,6 @@ export class FinallyProductionContext extends ParserRuleContext {
 			listener.exitFinallyProduction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitFinallyProduction) {
-			return visitor.visitFinallyProduction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13974,14 +13124,6 @@ export class DebuggerStatementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitDebuggerStatement) {
 			listener.exitDebuggerStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitDebuggerStatement) {
-			return visitor.visitDebuggerStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14014,14 +13156,6 @@ export class FunctionDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitFunctionDeclaration) {
 			listener.exitFunctionDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitFunctionDeclaration) {
-			return visitor.visitFunctionDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14057,14 +13191,6 @@ export class ClassDeclarationContext extends ParserRuleContext {
 			listener.exitClassDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitClassDeclaration) {
-			return visitor.visitClassDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14090,14 +13216,6 @@ export class ClassHeritageContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitClassHeritage) {
 			listener.exitClassHeritage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitClassHeritage) {
-			return visitor.visitClassHeritage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14132,14 +13250,6 @@ export class ClassTailContext extends ParserRuleContext {
 			listener.exitClassTail(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitClassTail) {
-			return visitor.visitClassTail(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14165,14 +13275,6 @@ export class ClassExtendsClauseContext extends ParserRuleContext {
 			listener.exitClassExtendsClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitClassExtendsClause) {
-			return visitor.visitClassExtendsClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14196,14 +13298,6 @@ export class ImplementsClauseContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitImplementsClause) {
 			listener.exitImplementsClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitImplementsClause) {
-			return visitor.visitImplementsClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14237,14 +13331,6 @@ export class ClassElementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitClassElement) {
 			listener.exitClassElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitClassElement) {
-			return visitor.visitClassElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14298,14 +13384,6 @@ export class PropertyMemberDeclarationContext extends ParserRuleContext {
 			listener.exitPropertyMemberDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPropertyMemberDeclaration) {
-			return visitor.visitPropertyMemberDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14333,14 +13411,6 @@ export class PropertyMemberBaseContext extends ParserRuleContext {
 			listener.exitPropertyMemberBase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPropertyMemberBase) {
-			return visitor.visitPropertyMemberBase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14364,14 +13434,6 @@ export class IndexMemberDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitIndexMemberDeclaration) {
 			listener.exitIndexMemberDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitIndexMemberDeclaration) {
-			return visitor.visitIndexMemberDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14407,14 +13469,6 @@ export class GeneratorMethodContext extends ParserRuleContext {
 			listener.exitGeneratorMethod(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitGeneratorMethod) {
-			return visitor.visitGeneratorMethod(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14447,14 +13501,6 @@ export class GeneratorFunctionDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitGeneratorFunctionDeclaration) {
 			listener.exitGeneratorFunctionDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitGeneratorFunctionDeclaration) {
-			return visitor.visitGeneratorFunctionDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14498,14 +13544,6 @@ export class GeneratorBlockContext extends ParserRuleContext {
 			listener.exitGeneratorBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitGeneratorBlock) {
-			return visitor.visitGeneratorBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14529,14 +13567,6 @@ export class GeneratorDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitGeneratorDefinition) {
 			listener.exitGeneratorDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitGeneratorDefinition) {
-			return visitor.visitGeneratorDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14580,14 +13610,6 @@ export class IteratorBlockContext extends ParserRuleContext {
 			listener.exitIteratorBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitIteratorBlock) {
-			return visitor.visitIteratorBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14622,14 +13644,6 @@ export class IteratorDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitIteratorDefinition) {
 			listener.exitIteratorDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitIteratorDefinition) {
-			return visitor.visitIteratorDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14684,14 +13698,6 @@ export class FormalParameterListContext extends ParserRuleContext {
 			listener.exitFormalParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitFormalParameterList) {
-			return visitor.visitFormalParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14724,14 +13730,6 @@ export class FormalParameterArgContext extends ParserRuleContext {
 			listener.exitFormalParameterArg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitFormalParameterArg) {
-			return visitor.visitFormalParameterArg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14753,14 +13751,6 @@ export class LastFormalParameterArgContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitLastFormalParameterArg) {
 			listener.exitLastFormalParameterArg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitLastFormalParameterArg) {
-			return visitor.visitLastFormalParameterArg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14785,14 +13775,6 @@ export class FunctionBodyContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitFunctionBody) {
 			listener.exitFunctionBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitFunctionBody) {
-			return visitor.visitFunctionBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14825,14 +13807,6 @@ export class SourceElementsContext extends ParserRuleContext {
 			listener.exitSourceElements(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitSourceElements) {
-			return visitor.visitSourceElements(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14857,14 +13831,6 @@ export class ArrayLiteralContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitArrayLiteral) {
 			listener.exitArrayLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitArrayLiteral) {
-			return visitor.visitArrayLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14909,14 +13875,6 @@ export class ElementListContext extends ParserRuleContext {
 			listener.exitElementList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitElementList) {
-			return visitor.visitElementList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14941,14 +13899,6 @@ export class LastElementContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitLastElement) {
 			listener.exitLastElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitLastElement) {
-			return visitor.visitLastElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14992,14 +13942,6 @@ export class ObjectLiteralContext extends ParserRuleContext {
 			listener.exitObjectLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitObjectLiteral) {
-			return visitor.visitObjectLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15038,14 +13980,6 @@ export class PropertyExpressionAssignmentContext extends PropertyAssignmentConte
 			listener.exitPropertyExpressionAssignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPropertyExpressionAssignment) {
-			return visitor.visitPropertyExpressionAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ComputedPropertyExpressionAssignmentContext extends PropertyAssignmentContext {
 	public OpenBracket(): TerminalNode { return this.getToken(TypeScriptParser.OpenBracket, 0); }
@@ -15076,14 +14010,6 @@ export class ComputedPropertyExpressionAssignmentContext extends PropertyAssignm
 			listener.exitComputedPropertyExpressionAssignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitComputedPropertyExpressionAssignment) {
-			return visitor.visitComputedPropertyExpressionAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PropertyGetterContext extends PropertyAssignmentContext {
 	public getAccessor(): GetAccessorContext {
@@ -15103,14 +14029,6 @@ export class PropertyGetterContext extends PropertyAssignmentContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitPropertyGetter) {
 			listener.exitPropertyGetter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPropertyGetter) {
-			return visitor.visitPropertyGetter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15134,14 +14052,6 @@ export class PropertySetterContext extends PropertyAssignmentContext {
 			listener.exitPropertySetter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPropertySetter) {
-			return visitor.visitPropertySetter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class MethodPropertyContext extends PropertyAssignmentContext {
 	public generatorMethod(): GeneratorMethodContext {
@@ -15163,14 +14073,6 @@ export class MethodPropertyContext extends PropertyAssignmentContext {
 			listener.exitMethodProperty(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitMethodProperty) {
-			return visitor.visitMethodProperty(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PropertyShorthandContext extends PropertyAssignmentContext {
 	public Identifier(): TerminalNode { return this.getToken(TypeScriptParser.Identifier, 0); }
@@ -15188,14 +14090,6 @@ export class PropertyShorthandContext extends PropertyAssignmentContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitPropertyShorthand) {
 			listener.exitPropertyShorthand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPropertyShorthand) {
-			return visitor.visitPropertyShorthand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15217,14 +14111,6 @@ export class RestParameterInObjectContext extends PropertyAssignmentContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitRestParameterInObject) {
 			listener.exitRestParameterInObject(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitRestParameterInObject) {
-			return visitor.visitRestParameterInObject(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15259,14 +14145,6 @@ export class GetAccessorContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitGetAccessor) {
 			listener.exitGetAccessor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitGetAccessor) {
-			return visitor.visitGetAccessor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15307,14 +14185,6 @@ export class SetAccessorContext extends ParserRuleContext {
 			listener.exitSetAccessor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitSetAccessor) {
-			return visitor.visitSetAccessor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15341,14 +14211,6 @@ export class PropertyNameContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitPropertyName) {
 			listener.exitPropertyName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPropertyName) {
-			return visitor.visitPropertyName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15395,14 +14257,6 @@ export class ArgumentsContext extends ParserRuleContext {
 			listener.exitArguments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitArguments) {
-			return visitor.visitArguments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15424,14 +14278,6 @@ export class LastArgumentContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitLastArgument) {
 			listener.exitLastArgument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitLastArgument) {
-			return visitor.visitLastArgument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15473,14 +14319,6 @@ export class ExpressionSequenceContext extends ParserRuleContext {
 			listener.exitExpressionSequence(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitExpressionSequence) {
-			return visitor.visitExpressionSequence(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15517,14 +14355,6 @@ export class FunctionExpressionDeclarationContext extends ParserRuleContext {
 			listener.exitFunctionExpressionDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitFunctionExpressionDeclaration) {
-			return visitor.visitFunctionExpressionDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15558,14 +14388,6 @@ export class FunctionExpressionContext extends SingleExpressionContext {
 			listener.exitFunctionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitFunctionExpression) {
-			return visitor.visitFunctionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ArrowFunctionExpressionContext extends SingleExpressionContext {
 	public arrowFunctionDeclaration(): ArrowFunctionDeclarationContext {
@@ -15585,14 +14407,6 @@ export class ArrowFunctionExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitArrowFunctionExpression) {
 			listener.exitArrowFunctionExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitArrowFunctionExpression) {
-			return visitor.visitArrowFunctionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15616,14 +14430,6 @@ export class ClassExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitClassExpression) {
 			listener.exitClassExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitClassExpression) {
-			return visitor.visitClassExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15652,14 +14458,6 @@ export class MemberIndexExpressionContext extends SingleExpressionContext {
 			listener.exitMemberIndexExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitMemberIndexExpression) {
-			return visitor.visitMemberIndexExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class MemberDotExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext {
@@ -15685,14 +14483,6 @@ export class MemberDotExpressionContext extends SingleExpressionContext {
 			listener.exitMemberDotExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitMemberDotExpression) {
-			return visitor.visitMemberDotExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ArgumentsExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext {
@@ -15715,14 +14505,6 @@ export class ArgumentsExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitArgumentsExpression) {
 			listener.exitArgumentsExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitArgumentsExpression) {
-			return visitor.visitArgumentsExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15753,14 +14535,6 @@ export class NewExpressionContext extends SingleExpressionContext {
 			listener.exitNewExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitNewExpression) {
-			return visitor.visitNewExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PostIncrementExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext {
@@ -15781,14 +14555,6 @@ export class PostIncrementExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitPostIncrementExpression) {
 			listener.exitPostIncrementExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPostIncrementExpression) {
-			return visitor.visitPostIncrementExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15813,14 +14579,6 @@ export class PostDecreaseExpressionContext extends SingleExpressionContext {
 			listener.exitPostDecreaseExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPostDecreaseExpression) {
-			return visitor.visitPostDecreaseExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DeleteExpressionContext extends SingleExpressionContext {
 	public Delete(): TerminalNode { return this.getToken(TypeScriptParser.Delete, 0); }
@@ -15841,14 +14599,6 @@ export class DeleteExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitDeleteExpression) {
 			listener.exitDeleteExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitDeleteExpression) {
-			return visitor.visitDeleteExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15873,14 +14623,6 @@ export class VoidExpressionContext extends SingleExpressionContext {
 			listener.exitVoidExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitVoidExpression) {
-			return visitor.visitVoidExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TypeofExpressionContext extends SingleExpressionContext {
 	public Typeof(): TerminalNode { return this.getToken(TypeScriptParser.Typeof, 0); }
@@ -15901,14 +14643,6 @@ export class TypeofExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitTypeofExpression) {
 			listener.exitTypeofExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTypeofExpression) {
-			return visitor.visitTypeofExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15933,14 +14667,6 @@ export class PreIncrementExpressionContext extends SingleExpressionContext {
 			listener.exitPreIncrementExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPreIncrementExpression) {
-			return visitor.visitPreIncrementExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreDecreaseExpressionContext extends SingleExpressionContext {
 	public MinusMinus(): TerminalNode { return this.getToken(TypeScriptParser.MinusMinus, 0); }
@@ -15961,14 +14687,6 @@ export class PreDecreaseExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitPreDecreaseExpression) {
 			listener.exitPreDecreaseExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitPreDecreaseExpression) {
-			return visitor.visitPreDecreaseExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15993,14 +14711,6 @@ export class UnaryPlusExpressionContext extends SingleExpressionContext {
 			listener.exitUnaryPlusExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitUnaryPlusExpression) {
-			return visitor.visitUnaryPlusExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UnaryMinusExpressionContext extends SingleExpressionContext {
 	public Minus(): TerminalNode { return this.getToken(TypeScriptParser.Minus, 0); }
@@ -16021,14 +14731,6 @@ export class UnaryMinusExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitUnaryMinusExpression) {
 			listener.exitUnaryMinusExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitUnaryMinusExpression) {
-			return visitor.visitUnaryMinusExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16053,14 +14755,6 @@ export class BitNotExpressionContext extends SingleExpressionContext {
 			listener.exitBitNotExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitBitNotExpression) {
-			return visitor.visitBitNotExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NotExpressionContext extends SingleExpressionContext {
 	public Not(): TerminalNode { return this.getToken(TypeScriptParser.Not, 0); }
@@ -16081,14 +14775,6 @@ export class NotExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitNotExpression) {
 			listener.exitNotExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitNotExpression) {
-			return visitor.visitNotExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16121,14 +14807,6 @@ export class MultiplicativeExpressionContext extends SingleExpressionContext {
 			listener.exitMultiplicativeExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitMultiplicativeExpression) {
-			return visitor.visitMultiplicativeExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AdditiveExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -16156,14 +14834,6 @@ export class AdditiveExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitAdditiveExpression) {
 			listener.exitAdditiveExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitAdditiveExpression) {
-			return visitor.visitAdditiveExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16194,14 +14864,6 @@ export class BitShiftExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitBitShiftExpression) {
 			listener.exitBitShiftExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitBitShiftExpression) {
-			return visitor.visitBitShiftExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16235,14 +14897,6 @@ export class RelationalExpressionContext extends SingleExpressionContext {
 			listener.exitRelationalExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitRelationalExpression) {
-			return visitor.visitRelationalExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class InstanceofExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -16271,14 +14925,6 @@ export class InstanceofExpressionContext extends SingleExpressionContext {
 			listener.exitInstanceofExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitInstanceofExpression) {
-			return visitor.visitInstanceofExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class InExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -16305,14 +14951,6 @@ export class InExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitInExpression) {
 			listener.exitInExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitInExpression) {
-			return visitor.visitInExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16346,14 +14984,6 @@ export class EqualityExpressionContext extends SingleExpressionContext {
 			listener.exitEqualityExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitEqualityExpression) {
-			return visitor.visitEqualityExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BitAndExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -16380,14 +15010,6 @@ export class BitAndExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitBitAndExpression) {
 			listener.exitBitAndExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitBitAndExpression) {
-			return visitor.visitBitAndExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16418,14 +15040,6 @@ export class BitXOrExpressionContext extends SingleExpressionContext {
 			listener.exitBitXOrExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitBitXOrExpression) {
-			return visitor.visitBitXOrExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BitOrExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -16452,14 +15066,6 @@ export class BitOrExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitBitOrExpression) {
 			listener.exitBitOrExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitBitOrExpression) {
-			return visitor.visitBitOrExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16490,14 +15096,6 @@ export class LogicalAndExpressionContext extends SingleExpressionContext {
 			listener.exitLogicalAndExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitLogicalAndExpression) {
-			return visitor.visitLogicalAndExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class LogicalOrExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -16524,14 +15122,6 @@ export class LogicalOrExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitLogicalOrExpression) {
 			listener.exitLogicalOrExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitLogicalOrExpression) {
-			return visitor.visitLogicalOrExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16563,14 +15153,6 @@ export class TernaryExpressionContext extends SingleExpressionContext {
 			listener.exitTernaryExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTernaryExpression) {
-			return visitor.visitTernaryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AssignmentExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext[];
@@ -16597,14 +15179,6 @@ export class AssignmentExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitAssignmentExpression) {
 			listener.exitAssignmentExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentExpression) {
-			return visitor.visitAssignmentExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16637,14 +15211,6 @@ export class AssignmentOperatorExpressionContext extends SingleExpressionContext
 			listener.exitAssignmentOperatorExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentOperatorExpression) {
-			return visitor.visitAssignmentOperatorExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TemplateStringExpressionContext extends SingleExpressionContext {
 	public singleExpression(): SingleExpressionContext {
@@ -16665,14 +15231,6 @@ export class TemplateStringExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitTemplateStringExpression) {
 			listener.exitTemplateStringExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitTemplateStringExpression) {
-			return visitor.visitTemplateStringExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16696,14 +15254,6 @@ export class IteratorsExpressionContext extends SingleExpressionContext {
 			listener.exitIteratorsExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitIteratorsExpression) {
-			return visitor.visitIteratorsExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class GeneratorsExpressionContext extends SingleExpressionContext {
 	public generatorBlock(): GeneratorBlockContext {
@@ -16723,14 +15273,6 @@ export class GeneratorsExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitGeneratorsExpression) {
 			listener.exitGeneratorsExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitGeneratorsExpression) {
-			return visitor.visitGeneratorsExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16754,14 +15296,6 @@ export class GeneratorsFunctionExpressionContext extends SingleExpressionContext
 			listener.exitGeneratorsFunctionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitGeneratorsFunctionExpression) {
-			return visitor.visitGeneratorsFunctionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class YieldExpressionContext extends SingleExpressionContext {
 	public yieldStatement(): YieldStatementContext {
@@ -16783,14 +15317,6 @@ export class YieldExpressionContext extends SingleExpressionContext {
 			listener.exitYieldExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitYieldExpression) {
-			return visitor.visitYieldExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ThisExpressionContext extends SingleExpressionContext {
 	public This(): TerminalNode { return this.getToken(TypeScriptParser.This, 0); }
@@ -16808,14 +15334,6 @@ export class ThisExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitThisExpression) {
 			listener.exitThisExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitThisExpression) {
-			return visitor.visitThisExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16842,14 +15360,6 @@ export class IdentifierExpressionContext extends SingleExpressionContext {
 			listener.exitIdentifierExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitIdentifierExpression) {
-			return visitor.visitIdentifierExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SuperExpressionContext extends SingleExpressionContext {
 	public Super(): TerminalNode { return this.getToken(TypeScriptParser.Super, 0); }
@@ -16867,14 +15377,6 @@ export class SuperExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitSuperExpression) {
 			listener.exitSuperExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitSuperExpression) {
-			return visitor.visitSuperExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16898,14 +15400,6 @@ export class LiteralExpressionContext extends SingleExpressionContext {
 			listener.exitLiteralExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitLiteralExpression) {
-			return visitor.visitLiteralExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ArrayLiteralExpressionContext extends SingleExpressionContext {
 	public arrayLiteral(): ArrayLiteralContext {
@@ -16927,14 +15421,6 @@ export class ArrayLiteralExpressionContext extends SingleExpressionContext {
 			listener.exitArrayLiteralExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitArrayLiteralExpression) {
-			return visitor.visitArrayLiteralExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ObjectLiteralExpressionContext extends SingleExpressionContext {
 	public objectLiteral(): ObjectLiteralContext {
@@ -16954,14 +15440,6 @@ export class ObjectLiteralExpressionContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitObjectLiteralExpression) {
 			listener.exitObjectLiteralExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitObjectLiteralExpression) {
-			return visitor.visitObjectLiteralExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16987,14 +15465,6 @@ export class ParenthesizedExpressionContext extends SingleExpressionContext {
 			listener.exitParenthesizedExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitParenthesizedExpression) {
-			return visitor.visitParenthesizedExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class GenericTypesContext extends SingleExpressionContext {
 	public typeArguments(): TypeArgumentsContext {
@@ -17017,14 +15487,6 @@ export class GenericTypesContext extends SingleExpressionContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitGenericTypes) {
 			listener.exitGenericTypes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitGenericTypes) {
-			return visitor.visitGenericTypes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17059,14 +15521,6 @@ export class ArrowFunctionDeclarationContext extends ParserRuleContext {
 			listener.exitArrowFunctionDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitArrowFunctionDeclaration) {
-			return visitor.visitArrowFunctionDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17092,14 +15546,6 @@ export class ArrowFunctionParametersContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitArrowFunctionParameters) {
 			listener.exitArrowFunctionParameters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitArrowFunctionParameters) {
-			return visitor.visitArrowFunctionParameters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17129,14 +15575,6 @@ export class ArrowFunctionBodyContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitArrowFunctionBody) {
 			listener.exitArrowFunctionBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitArrowFunctionBody) {
-			return visitor.visitArrowFunctionBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17171,14 +15609,6 @@ export class AssignmentOperatorContext extends ParserRuleContext {
 			listener.exitAssignmentOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentOperator) {
-			return visitor.visitAssignmentOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17208,14 +15638,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17240,14 +15662,6 @@ export class NumericLiteralContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitNumericLiteral) {
 			listener.exitNumericLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitNumericLiteral) {
-			return visitor.visitNumericLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17275,14 +15689,6 @@ export class IdentifierNameContext extends ParserRuleContext {
 			listener.exitIdentifierName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitIdentifierName) {
-			return visitor.visitIdentifierName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17307,14 +15713,6 @@ export class ReservedWordContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitReservedWord) {
 			listener.exitReservedWord(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitReservedWord) {
-			return visitor.visitReservedWord(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17383,14 +15781,6 @@ export class KeywordContext extends ParserRuleContext {
 			listener.exitKeyword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitKeyword) {
-			return visitor.visitKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17414,14 +15804,6 @@ export class GetterContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitGetter) {
 			listener.exitGetter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitGetter) {
-			return visitor.visitGetter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17449,14 +15831,6 @@ export class SetterContext extends ParserRuleContext {
 			listener.exitSetter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitSetter) {
-			return visitor.visitSetter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17478,14 +15852,6 @@ export class EosContext extends ParserRuleContext {
 	public exitRule(listener: TypeScriptParserListener): void {
 		if (listener.exitEos) {
 			listener.exitEos(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: TypeScriptParserVisitor<Result>): Result {
-		if (visitor.visitEos) {
-			return visitor.visitEos(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

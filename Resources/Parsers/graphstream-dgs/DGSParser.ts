@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { DGSParserListener } from "./DGSParserListener";
-import { DGSParserVisitor } from "./DGSParserVisitor";
-
 
 export class DGSParser extends Parser {
 	public static readonly MAGIC = 1;
@@ -1188,14 +1186,6 @@ export class DgsContext extends ParserRuleContext {
 			listener.exitDgs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitDgs) {
-			return visitor.visitDgs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1237,14 +1227,6 @@ export class HeaderContext extends ParserRuleContext {
 	public exitRule(listener: DGSParserListener): void {
 		if (listener.exitHeader) {
 			listener.exitHeader(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitHeader) {
-			return visitor.visitHeader(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1297,14 +1279,6 @@ export class EventContext extends ParserRuleContext {
 			listener.exitEvent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitEvent) {
-			return visitor.visitEvent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1331,14 +1305,6 @@ export class AnContext extends ParserRuleContext {
 	public exitRule(listener: DGSParserListener): void {
 		if (listener.exitAn) {
 			listener.exitAn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitAn) {
-			return visitor.visitAn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1369,14 +1335,6 @@ export class CnContext extends ParserRuleContext {
 			listener.exitCn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitCn) {
-			return visitor.visitCn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1400,14 +1358,6 @@ export class DnContext extends ParserRuleContext {
 	public exitRule(listener: DGSParserListener): void {
 		if (listener.exitDn) {
 			listener.exitDn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitDn) {
-			return visitor.visitDn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1447,14 +1397,6 @@ export class AeContext extends ParserRuleContext {
 			listener.exitAe(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitAe) {
-			return visitor.visitAe(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1483,14 +1425,6 @@ export class CeContext extends ParserRuleContext {
 			listener.exitCe(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitCe) {
-			return visitor.visitCe(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1514,14 +1448,6 @@ export class DeContext extends ParserRuleContext {
 	public exitRule(listener: DGSParserListener): void {
 		if (listener.exitDe) {
 			listener.exitDe(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitDe) {
-			return visitor.visitDe(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1549,14 +1475,6 @@ export class CgContext extends ParserRuleContext {
 			listener.exitCg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitCg) {
-			return visitor.visitCg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1580,14 +1498,6 @@ export class StContext extends ParserRuleContext {
 			listener.exitSt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitSt) {
-			return visitor.visitSt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1608,14 +1518,6 @@ export class ClContext extends ParserRuleContext {
 	public exitRule(listener: DGSParserListener): void {
 		if (listener.exitCl) {
 			listener.exitCl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitCl) {
-			return visitor.visitCl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1646,14 +1548,6 @@ export class AttributesContext extends ParserRuleContext {
 	public exitRule(listener: DGSParserListener): void {
 		if (listener.exitAttributes) {
 			listener.exitAttributes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitAttributes) {
-			return visitor.visitAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1703,14 +1597,6 @@ export class AttributeContext extends ParserRuleContext {
 			listener.exitAttribute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitAttribute) {
-			return visitor.visitAttribute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1743,14 +1629,6 @@ export class ValueContext extends ParserRuleContext {
 	public exitRule(listener: DGSParserListener): void {
 		if (listener.exitValue) {
 			listener.exitValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1794,14 +1672,6 @@ export class ArrayContext extends ParserRuleContext {
 			listener.exitArray(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitArray) {
-			return visitor.visitArray(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1843,14 +1713,6 @@ export class A_mapContext extends ParserRuleContext {
 			listener.exitA_map(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitA_map) {
-			return visitor.visitA_map(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1881,14 +1743,6 @@ export class MappingContext extends ParserRuleContext {
 			listener.exitMapping(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitMapping) {
-			return visitor.visitMapping(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1912,14 +1766,6 @@ export class DirectionContext extends ParserRuleContext {
 			listener.exitDirection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitDirection) {
-			return visitor.visitDirection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1941,14 +1787,6 @@ export class AssignContext extends ParserRuleContext {
 	public exitRule(listener: DGSParserListener): void {
 		if (listener.exitAssign) {
 			listener.exitAssign(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitAssign) {
-			return visitor.visitAssign(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1990,14 +1828,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: DGSParserListener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DGSParserVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

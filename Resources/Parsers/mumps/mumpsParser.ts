@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { mumpsListener } from "./mumpsListener";
-import { mumpsVisitor } from "./mumpsVisitor";
-
 
 export class mumpsParser extends Parser {
 	public static readonly BREAK = 1;
@@ -2637,14 +2635,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2676,14 +2666,6 @@ export class EofContext extends ParserRuleContext {
 			listener.exitEof(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitEof) {
-			return visitor.visitEof(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2710,14 +2692,6 @@ export class LineContext extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitLine) {
 			listener.exitLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2778,14 +2752,6 @@ export class CodeContext extends ParserRuleContext {
 			listener.exitCode(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitCode) {
-			return visitor.visitCode(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2817,14 +2783,6 @@ export class LabelContext extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitLabel) {
 			listener.exitLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2867,14 +2825,6 @@ export class RoutinedeclContext extends ParserRuleContext {
 			listener.exitRoutinedecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitRoutinedecl) {
-			return visitor.visitRoutinedecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2914,14 +2864,6 @@ export class ParamlistContext extends ParserRuleContext {
 			listener.exitParamlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitParamlist) {
-			return visitor.visitParamlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2944,14 +2886,6 @@ export class ParamContext extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitParam) {
 			listener.exitParam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitParam) {
-			return visitor.visitParam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2999,14 +2933,6 @@ export class SubprocContext extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitSubproc) {
 			listener.exitSubproc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitSubproc) {
-			return visitor.visitSubproc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3083,14 +3009,6 @@ export class CommandContext extends ParserRuleContext {
 			listener.exitCommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitCommand) {
-			return visitor.visitCommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3114,14 +3032,6 @@ export class PostconditionContext extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitPostcondition) {
 			listener.exitPostcondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitPostcondition) {
-			return visitor.visitPostcondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3229,14 +3139,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3268,14 +3170,6 @@ export class TermContext extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitTerm) {
 			listener.exitTerm(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3313,14 +3207,6 @@ export class ConditionContext extends ParserRuleContext {
 			listener.exitCondition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitCondition) {
-			return visitor.visitCondition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3341,14 +3227,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3393,14 +3271,6 @@ export class VariableContext extends ParserRuleContext {
 			listener.exitVariable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3431,14 +3301,6 @@ export class FunctionContext extends ParserRuleContext {
 			listener.exitFunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitFunction) {
-			return visitor.visitFunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3462,14 +3324,6 @@ export class Break_Context extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitBreak_) {
 			listener.exitBreak_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitBreak_) {
-			return visitor.visitBreak_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3512,14 +3366,6 @@ export class Do_Context extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitDo_) {
 			listener.exitDo_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitDo_) {
-			return visitor.visitDo_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3584,14 +3430,6 @@ export class For_Context extends ParserRuleContext {
 			listener.exitFor_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitFor_) {
-			return visitor.visitFor_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3615,14 +3453,6 @@ export class Halt_Context extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitHalt_) {
 			listener.exitHalt_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitHalt_) {
-			return visitor.visitHalt_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3662,14 +3492,6 @@ export class Hang_Context extends ParserRuleContext {
 			listener.exitHang_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitHang_) {
-			return visitor.visitHang_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3707,14 +3529,6 @@ export class If_Context extends ParserRuleContext {
 			listener.exitIf_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitIf_) {
-			return visitor.visitIf_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3750,14 +3564,6 @@ export class Kill_Context extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitKill_) {
 			listener.exitKill_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitKill_) {
-			return visitor.visitKill_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3821,14 +3627,6 @@ export class Merge_Context extends ParserRuleContext {
 			listener.exitMerge_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitMerge_) {
-			return visitor.visitMerge_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3864,14 +3662,6 @@ export class New_Context extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitNew_) {
 			listener.exitNew_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitNew_) {
-			return visitor.visitNew_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3911,14 +3701,6 @@ export class Quit_Context extends ParserRuleContext {
 			listener.exitQuit_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitQuit_) {
-			return visitor.visitQuit_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3954,14 +3736,6 @@ export class Read_Context extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitRead_) {
 			listener.exitRead_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitRead_) {
-			return visitor.visitRead_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4016,14 +3790,6 @@ export class Set_Context extends ParserRuleContext {
 			listener.exitSet_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitSet_) {
-			return visitor.visitSet_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4057,14 +3823,6 @@ export class View_Context extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitView_) {
 			listener.exitView_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitView_) {
-			return visitor.visitView_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4104,14 +3862,6 @@ export class Write_Context extends ParserRuleContext {
 			listener.exitWrite_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitWrite_) {
-			return visitor.visitWrite_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4145,14 +3895,6 @@ export class Xecute_Context extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitXecute_) {
 			listener.exitXecute_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitXecute_) {
-			return visitor.visitXecute_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4192,14 +3934,6 @@ export class AssignContext extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitAssign) {
 			listener.exitAssign(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitAssign) {
-			return visitor.visitAssign(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4250,14 +3984,6 @@ export class ArglistContext extends ParserRuleContext {
 			listener.exitArglist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitArglist) {
-			return visitor.visitArglist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4282,14 +4008,6 @@ export class ArgContext extends ParserRuleContext {
 	public exitRule(listener: mumpsListener): void {
 		if (listener.exitArg) {
 			listener.exitArg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumpsVisitor<Result>): Result {
-		if (visitor.visitArg) {
-			return visitor.visitArg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

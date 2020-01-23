@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { tinybasicListener } from "./tinybasicListener";
-import { tinybasicVisitor } from "./tinybasicVisitor";
-
 
 export class tinybasicParser extends Parser {
 	public static readonly T__0 = 1;
@@ -887,14 +885,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinybasicVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -921,14 +911,6 @@ export class LineContext extends ParserRuleContext {
 	public exitRule(listener: tinybasicListener): void {
 		if (listener.exitLine) {
 			listener.exitLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinybasicVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -979,14 +961,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinybasicVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1026,14 +1000,6 @@ export class ExprlistContext extends ParserRuleContext {
 			listener.exitExprlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinybasicVisitor<Result>): Result {
-		if (visitor.visitExprlist) {
-			return visitor.visitExprlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1062,14 +1028,6 @@ export class VarlistContext extends ParserRuleContext {
 	public exitRule(listener: tinybasicListener): void {
 		if (listener.exitVarlist) {
 			listener.exitVarlist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinybasicVisitor<Result>): Result {
-		if (visitor.visitVarlist) {
-			return visitor.visitVarlist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1102,14 +1060,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinybasicVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1140,14 +1090,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinybasicVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1175,14 +1117,6 @@ export class FactorContext extends ParserRuleContext {
 			listener.exitFactor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinybasicVisitor<Result>): Result {
-		if (visitor.visitFactor) {
-			return visitor.visitFactor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1204,14 +1138,6 @@ export class VaraContext extends ParserRuleContext {
 	public exitRule(listener: tinybasicListener): void {
 		if (listener.exitVara) {
 			listener.exitVara(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinybasicVisitor<Result>): Result {
-		if (visitor.visitVara) {
-			return visitor.visitVara(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1244,14 +1170,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tinybasicVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1271,14 +1189,6 @@ export class RelopContext extends ParserRuleContext {
 	public exitRule(listener: tinybasicListener): void {
 		if (listener.exitRelop) {
 			listener.exitRelop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tinybasicVisitor<Result>): Result {
-		if (visitor.visitRelop) {
-			return visitor.visitRelop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

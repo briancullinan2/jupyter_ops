@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { pascalListener } from "./pascalListener";
-import { pascalVisitor } from "./pascalVisitor";
-
 
 export class pascalParser extends Parser {
 	public static readonly AND = 1;
@@ -4730,14 +4728,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4770,14 +4760,6 @@ export class ProgramHeadingContext extends ParserRuleContext {
 			listener.exitProgramHeading(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitProgramHeading) {
-			return visitor.visitProgramHeading(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4798,14 +4780,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4895,14 +4869,6 @@ export class BlockContext extends ParserRuleContext {
 			listener.exitBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4927,14 +4893,6 @@ export class UsesUnitsPartContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitUsesUnitsPart) {
 			listener.exitUsesUnitsPart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitUsesUnitsPart) {
-			return visitor.visitUsesUnitsPart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4978,14 +4936,6 @@ export class LabelDeclarationPartContext extends ParserRuleContext {
 			listener.exitLabelDeclarationPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitLabelDeclarationPart) {
-			return visitor.visitLabelDeclarationPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5008,14 +4958,6 @@ export class LabelContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitLabel) {
 			listener.exitLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5058,14 +5000,6 @@ export class ConstantDefinitionPartContext extends ParserRuleContext {
 			listener.exitConstantDefinitionPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitConstantDefinitionPart) {
-			return visitor.visitConstantDefinitionPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5094,14 +5028,6 @@ export class ConstantDefinitionContext extends ParserRuleContext {
 			listener.exitConstantDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitConstantDefinition) {
-			return visitor.visitConstantDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5127,14 +5053,6 @@ export class ConstantChrContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitConstantChr) {
 			listener.exitConstantChr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitConstantChr) {
-			return visitor.visitConstantChr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5173,14 +5091,6 @@ export class ConstantContext extends ParserRuleContext {
 			listener.exitConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitConstant) {
-			return visitor.visitConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5208,14 +5118,6 @@ export class UnsignedNumberContext extends ParserRuleContext {
 			listener.exitUnsignedNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitUnsignedNumber) {
-			return visitor.visitUnsignedNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5238,14 +5140,6 @@ export class UnsignedIntegerContext extends ParserRuleContext {
 			listener.exitUnsignedInteger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitUnsignedInteger) {
-			return visitor.visitUnsignedInteger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5266,14 +5160,6 @@ export class UnsignedRealContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitUnsignedReal) {
 			listener.exitUnsignedReal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitUnsignedReal) {
-			return visitor.visitUnsignedReal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5299,14 +5185,6 @@ export class SignContext extends ParserRuleContext {
 			listener.exitSign(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitSign) {
-			return visitor.visitSign(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5330,14 +5208,6 @@ export class BoolContext extends ParserRuleContext {
 			listener.exitBool(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitBool) {
-			return visitor.visitBool(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5358,14 +5228,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5408,14 +5270,6 @@ export class TypeDefinitionPartContext extends ParserRuleContext {
 			listener.exitTypeDefinitionPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitTypeDefinitionPart) {
-			return visitor.visitTypeDefinitionPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5450,14 +5304,6 @@ export class TypeDefinitionContext extends ParserRuleContext {
 			listener.exitTypeDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitTypeDefinition) {
-			return visitor.visitTypeDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5487,14 +5333,6 @@ export class FunctionTypeContext extends ParserRuleContext {
 			listener.exitFunctionType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitFunctionType) {
-			return visitor.visitFunctionType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5518,14 +5356,6 @@ export class ProcedureTypeContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitProcedureType) {
 			listener.exitProcedureType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitProcedureType) {
-			return visitor.visitProcedureType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5556,14 +5386,6 @@ export class TypeContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitType) {
 			listener.exitType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5599,14 +5421,6 @@ export class SimpleTypeContext extends ParserRuleContext {
 			listener.exitSimpleType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitSimpleType) {
-			return visitor.visitSimpleType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5631,14 +5445,6 @@ export class ScalarTypeContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitScalarType) {
 			listener.exitScalarType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitScalarType) {
-			return visitor.visitScalarType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5672,14 +5478,6 @@ export class SubrangeTypeContext extends ParserRuleContext {
 			listener.exitSubrangeType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitSubrangeType) {
-			return visitor.visitSubrangeType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5709,14 +5507,6 @@ export class TypeIdentifierContext extends ParserRuleContext {
 			listener.exitTypeIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitTypeIdentifier) {
-			return visitor.visitTypeIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5740,14 +5530,6 @@ export class StructuredTypeContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitStructuredType) {
 			listener.exitStructuredType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitStructuredType) {
-			return visitor.visitStructuredType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5783,14 +5565,6 @@ export class UnpackedStructuredTypeContext extends ParserRuleContext {
 			listener.exitUnpackedStructuredType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitUnpackedStructuredType) {
-			return visitor.visitUnpackedStructuredType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5819,14 +5593,6 @@ export class StringtypeContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitStringtype) {
 			listener.exitStringtype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitStringtype) {
-			return visitor.visitStringtype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5860,14 +5626,6 @@ export class ArrayTypeContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitArrayType) {
 			listener.exitArrayType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitArrayType) {
-			return visitor.visitArrayType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5909,14 +5667,6 @@ export class TypeListContext extends ParserRuleContext {
 			listener.exitTypeList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitTypeList) {
-			return visitor.visitTypeList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5941,14 +5691,6 @@ export class IndexTypeContext extends ParserRuleContext {
 			listener.exitIndexType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitIndexType) {
-			return visitor.visitIndexType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5971,14 +5713,6 @@ export class ComponentTypeContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitComponentType) {
 			listener.exitComponentType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitComponentType) {
-			return visitor.visitComponentType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6007,14 +5741,6 @@ export class RecordTypeContext extends ParserRuleContext {
 			listener.exitRecordType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitRecordType) {
-			return visitor.visitRecordType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6041,14 +5767,6 @@ export class FieldListContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitFieldList) {
 			listener.exitFieldList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitFieldList) {
-			return visitor.visitFieldList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6090,14 +5808,6 @@ export class FixedPartContext extends ParserRuleContext {
 			listener.exitFixedPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitFixedPart) {
-			return visitor.visitFixedPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6124,14 +5834,6 @@ export class RecordSectionContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitRecordSection) {
 			listener.exitRecordSection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitRecordSection) {
-			return visitor.visitRecordSection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6178,14 +5880,6 @@ export class VariantPartContext extends ParserRuleContext {
 			listener.exitVariantPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitVariantPart) {
-			return visitor.visitVariantPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6212,14 +5906,6 @@ export class TagContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitTag) {
 			listener.exitTag(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitTag) {
-			return visitor.visitTag(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6252,14 +5938,6 @@ export class VariantContext extends ParserRuleContext {
 			listener.exitVariant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitVariant) {
-			return visitor.visitVariant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6286,14 +5964,6 @@ export class SetTypeContext extends ParserRuleContext {
 			listener.exitSetType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitSetType) {
-			return visitor.visitSetType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6316,14 +5986,6 @@ export class BaseTypeContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitBaseType) {
 			listener.exitBaseType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitBaseType) {
-			return visitor.visitBaseType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6352,14 +6014,6 @@ export class FileTypeContext extends ParserRuleContext {
 			listener.exitFileType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitFileType) {
-			return visitor.visitFileType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6383,14 +6037,6 @@ export class PointerTypeContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitPointerType) {
 			listener.exitPointerType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitPointerType) {
-			return visitor.visitPointerType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6433,14 +6079,6 @@ export class VariableDeclarationPartContext extends ParserRuleContext {
 			listener.exitVariableDeclarationPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitVariableDeclarationPart) {
-			return visitor.visitVariableDeclarationPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6469,14 +6107,6 @@ export class VariableDeclarationContext extends ParserRuleContext {
 			listener.exitVariableDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitVariableDeclaration) {
-			return visitor.visitVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6500,14 +6130,6 @@ export class ProcedureAndFunctionDeclarationPartContext extends ParserRuleContex
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitProcedureAndFunctionDeclarationPart) {
 			listener.exitProcedureAndFunctionDeclarationPart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitProcedureAndFunctionDeclarationPart) {
-			return visitor.visitProcedureAndFunctionDeclarationPart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6535,14 +6157,6 @@ export class ProcedureOrFunctionDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitProcedureOrFunctionDeclaration) {
 			listener.exitProcedureOrFunctionDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitProcedureOrFunctionDeclaration) {
-			return visitor.visitProcedureOrFunctionDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6575,14 +6189,6 @@ export class ProcedureDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitProcedureDeclaration) {
 			listener.exitProcedureDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitProcedureDeclaration) {
-			return visitor.visitProcedureDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6626,14 +6232,6 @@ export class FormalParameterListContext extends ParserRuleContext {
 			listener.exitFormalParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitFormalParameterList) {
-			return visitor.visitFormalParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6659,14 +6257,6 @@ export class FormalParameterSectionContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitFormalParameterSection) {
 			listener.exitFormalParameterSection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitFormalParameterSection) {
-			return visitor.visitFormalParameterSection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6695,14 +6285,6 @@ export class ParameterGroupContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitParameterGroup) {
 			listener.exitParameterGroup(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitParameterGroup) {
-			return visitor.visitParameterGroup(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6744,14 +6326,6 @@ export class IdentifierListContext extends ParserRuleContext {
 			listener.exitIdentifierList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitIdentifierList) {
-			return visitor.visitIdentifierList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6791,14 +6365,6 @@ export class ConstListContext extends ParserRuleContext {
 			listener.exitConstList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitConstList) {
-			return visitor.visitConstList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6835,14 +6401,6 @@ export class FunctionDeclarationContext extends ParserRuleContext {
 			listener.exitFunctionDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitFunctionDeclaration) {
-			return visitor.visitFunctionDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6865,14 +6423,6 @@ export class ResultTypeContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitResultType) {
 			listener.exitResultType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitResultType) {
-			return visitor.visitResultType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6903,14 +6453,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6936,14 +6478,6 @@ export class UnlabelledStatementContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitUnlabelledStatement) {
 			listener.exitUnlabelledStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitUnlabelledStatement) {
-			return visitor.visitUnlabelledStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6979,14 +6513,6 @@ export class SimpleStatementContext extends ParserRuleContext {
 			listener.exitSimpleStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitSimpleStatement) {
-			return visitor.visitSimpleStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7013,14 +6539,6 @@ export class AssignmentStatementContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitAssignmentStatement) {
 			listener.exitAssignmentStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitAssignmentStatement) {
-			return visitor.visitAssignmentStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7126,14 +6644,6 @@ export class VariableContext extends ParserRuleContext {
 			listener.exitVariable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7164,14 +6674,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7198,14 +6700,6 @@ export class RelationaloperatorContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitRelationaloperator) {
 			listener.exitRelationaloperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitRelationaloperator) {
-			return visitor.visitRelationaloperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7238,14 +6732,6 @@ export class SimpleExpressionContext extends ParserRuleContext {
 			listener.exitSimpleExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitSimpleExpression) {
-			return visitor.visitSimpleExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7268,14 +6754,6 @@ export class AdditiveoperatorContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitAdditiveoperator) {
 			listener.exitAdditiveoperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitAdditiveoperator) {
-			return visitor.visitAdditiveoperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7308,14 +6786,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7342,14 +6812,6 @@ export class MultiplicativeoperatorContext extends ParserRuleContext {
 			listener.exitMultiplicativeoperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitMultiplicativeoperator) {
-			return visitor.visitMultiplicativeoperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7374,14 +6836,6 @@ export class SignedFactorContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitSignedFactor) {
 			listener.exitSignedFactor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitSignedFactor) {
-			return visitor.visitSignedFactor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7429,14 +6883,6 @@ export class FactorContext extends ParserRuleContext {
 			listener.exitFactor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitFactor) {
-			return visitor.visitFactor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7468,14 +6914,6 @@ export class UnsignedConstantContext extends ParserRuleContext {
 			listener.exitUnsignedConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitUnsignedConstant) {
-			return visitor.visitUnsignedConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7503,14 +6941,6 @@ export class FunctionDesignatorContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitFunctionDesignator) {
 			listener.exitFunctionDesignator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitFunctionDesignator) {
-			return visitor.visitFunctionDesignator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7552,14 +6982,6 @@ export class ParameterListContext extends ParserRuleContext {
 			listener.exitParameterList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitParameterList) {
-			return visitor.visitParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7586,14 +7008,6 @@ export class SetContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitSet) {
 			listener.exitSet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitSet) {
-			return visitor.visitSet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7635,14 +7049,6 @@ export class ElementListContext extends ParserRuleContext {
 			listener.exitElementList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitElementList) {
-			return visitor.visitElementList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7674,14 +7080,6 @@ export class ElementContext extends ParserRuleContext {
 			listener.exitElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitElement) {
-			return visitor.visitElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7709,14 +7107,6 @@ export class ProcedureStatementContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitProcedureStatement) {
 			listener.exitProcedureStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitProcedureStatement) {
-			return visitor.visitProcedureStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7752,14 +7142,6 @@ export class ActualParameterContext extends ParserRuleContext {
 			listener.exitActualParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitActualParameter) {
-			return visitor.visitActualParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7783,14 +7165,6 @@ export class ParameterwidthContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitParameterwidth) {
 			listener.exitParameterwidth(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitParameterwidth) {
-			return visitor.visitParameterwidth(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7818,14 +7192,6 @@ export class GotoStatementContext extends ParserRuleContext {
 			listener.exitGotoStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitGotoStatement) {
-			return visitor.visitGotoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7847,14 +7213,6 @@ export class EmptyStatementContext extends ParserRuleContext {
 			listener.exitEmptyStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitEmptyStatement) {
-			return visitor.visitEmptyStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7874,14 +7232,6 @@ export class EmptyContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitEmpty) {
 			listener.exitEmpty(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitEmpty) {
-			return visitor.visitEmpty(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7917,14 +7267,6 @@ export class StructuredStatementContext extends ParserRuleContext {
 			listener.exitStructuredStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitStructuredStatement) {
-			return visitor.visitStructuredStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7949,14 +7291,6 @@ export class CompoundStatementContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitCompoundStatement) {
 			listener.exitCompoundStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitCompoundStatement) {
-			return visitor.visitCompoundStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7998,14 +7332,6 @@ export class StatementsContext extends ParserRuleContext {
 			listener.exitStatements(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitStatements) {
-			return visitor.visitStatements(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8031,14 +7357,6 @@ export class ConditionalStatementContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitConditionalStatement) {
 			listener.exitConditionalStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitConditionalStatement) {
-			return visitor.visitConditionalStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8075,14 +7393,6 @@ export class IfStatementContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitIfStatement) {
 			listener.exitIfStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8134,14 +7444,6 @@ export class CaseStatementContext extends ParserRuleContext {
 			listener.exitCaseStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitCaseStatement) {
-			return visitor.visitCaseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8168,14 +7470,6 @@ export class CaseListElementContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitCaseListElement) {
 			listener.exitCaseListElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitCaseListElement) {
-			return visitor.visitCaseListElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8208,14 +7502,6 @@ export class RepetetiveStatementContext extends ParserRuleContext {
 			listener.exitRepetetiveStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitRepetetiveStatement) {
-			return visitor.visitRepetetiveStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8245,14 +7531,6 @@ export class WhileStatementContext extends ParserRuleContext {
 			listener.exitWhileStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitWhileStatement) {
-			return visitor.visitWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8280,14 +7558,6 @@ export class RepeatStatementContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitRepeatStatement) {
 			listener.exitRepeatStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitRepeatStatement) {
-			return visitor.visitRepeatStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8323,14 +7593,6 @@ export class ForStatementContext extends ParserRuleContext {
 			listener.exitForStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitForStatement) {
-			return visitor.visitForStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8360,14 +7622,6 @@ export class ForListContext extends ParserRuleContext {
 			listener.exitForList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitForList) {
-			return visitor.visitForList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8392,14 +7646,6 @@ export class InitialValueContext extends ParserRuleContext {
 			listener.exitInitialValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitInitialValue) {
-			return visitor.visitInitialValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8422,14 +7668,6 @@ export class FinalValueContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitFinalValue) {
 			listener.exitFinalValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitFinalValue) {
-			return visitor.visitFinalValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8459,14 +7697,6 @@ export class WithStatementContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitWithStatement) {
 			listener.exitWithStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitWithStatement) {
-			return visitor.visitWithStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8506,14 +7736,6 @@ export class RecordVariableListContext extends ParserRuleContext {
 	public exitRule(listener: pascalListener): void {
 		if (listener.exitRecordVariableList) {
 			listener.exitRecordVariableList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: pascalVisitor<Result>): Result {
-		if (visitor.visitRecordVariableList) {
-			return visitor.visitRecordVariableList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

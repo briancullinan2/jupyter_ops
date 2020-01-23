@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { asmMASMListener } from "./asmMASMListener";
-import { asmMASMVisitor } from "./asmMASMVisitor";
-
 
 export class asmMASMParser extends Parser {
 	public static readonly T__0 = 1;
@@ -2078,14 +2076,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2122,14 +2112,6 @@ export class LineContext extends ParserRuleContext {
 			listener.exitLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2160,14 +2142,6 @@ export class InstructionContext extends ParserRuleContext {
 			listener.exitInstruction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitInstruction) {
-			return visitor.visitInstruction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2190,14 +2164,6 @@ export class LblContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitLbl) {
 			listener.exitLbl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitLbl) {
-			return visitor.visitLbl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2281,14 +2247,6 @@ export class AssemblerdirectiveContext extends ParserRuleContext {
 			listener.exitAssemblerdirective(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitAssemblerdirective) {
-			return visitor.visitAssemblerdirective(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2319,14 +2277,6 @@ export class MasmdirectivesContext extends ParserRuleContext {
 			listener.exitMasmdirectives(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitMasmdirectives) {
-			return visitor.visitMasmdirectives(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2350,14 +2300,6 @@ export class MasmdirectiveContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitMasmdirective) {
 			listener.exitMasmdirective(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitMasmdirective) {
-			return visitor.visitMasmdirective(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2400,14 +2342,6 @@ export class AssumeContext extends ParserRuleContext {
 			listener.exitAssume(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitAssume) {
-			return visitor.visitAssume(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2436,14 +2370,6 @@ export class Label_Context extends ParserRuleContext {
 			listener.exitLabel_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitLabel_) {
-			return visitor.visitLabel_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2467,14 +2393,6 @@ export class TypeContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitType) {
 			listener.exitType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2508,14 +2426,6 @@ export class GroupContext extends ParserRuleContext {
 			listener.exitGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitGroup) {
-			return visitor.visitGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2544,14 +2454,6 @@ export class SegmentContext extends ParserRuleContext {
 			listener.exitSegment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitSegment) {
-			return visitor.visitSegment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2575,14 +2477,6 @@ export class EndsegmentContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitEndsegment) {
 			listener.exitEndsegment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitEndsegment) {
-			return visitor.visitEndsegment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2615,14 +2509,6 @@ export class AlignContext extends ParserRuleContext {
 			listener.exitAlign(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitAlign) {
-			return visitor.visitAlign(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2651,14 +2537,6 @@ export class AssignContext extends ParserRuleContext {
 			listener.exitAssign(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitAssign) {
-			return visitor.visitAssign(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2682,14 +2560,6 @@ export class PutContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitPut) {
 			listener.exitPut(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitPut) {
-			return visitor.visitPut(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2717,14 +2587,6 @@ export class DsContext extends ParserRuleContext {
 			listener.exitDs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitDs) {
-			return visitor.visitDs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2748,14 +2610,6 @@ export class DwContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitDw) {
 			listener.exitDw(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitDw) {
-			return visitor.visitDw(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2783,14 +2637,6 @@ export class DbContext extends ParserRuleContext {
 			listener.exitDb(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitDb) {
-			return visitor.visitDb(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2814,14 +2660,6 @@ export class DmContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitDm) {
 			listener.exitDm(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitDm) {
-			return visitor.visitDm(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2852,14 +2690,6 @@ export class DupContext extends ParserRuleContext {
 			listener.exitDup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitDup) {
-			return visitor.visitDup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2883,14 +2713,6 @@ export class EquContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitEqu) {
 			listener.exitEqu(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitEqu) {
-			return visitor.visitEqu(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2918,14 +2740,6 @@ export class ExternContext extends ParserRuleContext {
 			listener.exitExtern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitExtern) {
-			return visitor.visitExtern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2951,14 +2765,6 @@ export class If_Context extends ParserRuleContext {
 			listener.exitIf_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitIf_) {
-			return visitor.visitIf_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2979,14 +2785,6 @@ export class EndifContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitEndif) {
 			listener.exitEndif(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitEndif) {
-			return visitor.visitEndif(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3012,14 +2810,6 @@ export class OrgContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitOrg) {
 			listener.exitOrg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitOrg) {
-			return visitor.visitOrg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3052,14 +2842,6 @@ export class ExpressionlistContext extends ParserRuleContext {
 			listener.exitExpressionlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitExpressionlist) {
-			return visitor.visitExpressionlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3085,14 +2867,6 @@ export class LabelContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitLabel) {
 			listener.exitLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3134,14 +2908,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3170,14 +2936,6 @@ export class MultiplyingExpressionContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitMultiplyingExpression) {
 			listener.exitMultiplyingExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitMultiplyingExpression) {
-			return visitor.visitMultiplyingExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3236,14 +2994,6 @@ export class ArgumentContext extends ParserRuleContext {
 			listener.exitArgument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3269,14 +3019,6 @@ export class GrossContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitGross) {
 			listener.exitGross(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitGross) {
-			return visitor.visitGross(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3305,14 +3047,6 @@ export class GrossrawassemblerdirectiveContext extends ParserRuleContext {
 			listener.exitGrossrawassemblerdirective(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitGrossrawassemblerdirective) {
-			return visitor.visitGrossrawassemblerdirective(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3333,14 +3067,6 @@ export class DollarContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitDollar) {
 			listener.exitDollar(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitDollar) {
-			return visitor.visitDollar(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3365,14 +3091,6 @@ export class QuesContext extends ParserRuleContext {
 			listener.exitQues(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitQues) {
-			return visitor.visitQues(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3393,14 +3111,6 @@ export class Register_Context extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitRegister_) {
 			listener.exitRegister_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitRegister_) {
-			return visitor.visitRegister_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3426,14 +3136,6 @@ export class StringContext extends ParserRuleContext {
 			listener.exitString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3454,14 +3156,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3487,14 +3181,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3515,14 +3201,6 @@ export class OpcodeContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitOpcode) {
 			listener.exitOpcode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitOpcode) {
-			return visitor.visitOpcode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3547,14 +3225,6 @@ export class RepContext extends ParserRuleContext {
 			listener.exitRep(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitRep) {
-			return visitor.visitRep(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3575,14 +3245,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: asmMASMListener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: asmMASMVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { WavefrontOBJListener } from "./WavefrontOBJListener";
-import { WavefrontOBJVisitor } from "./WavefrontOBJVisitor";
-
 
 export class WavefrontOBJParser extends Parser {
 	public static readonly T__0 = 1;
@@ -543,14 +541,6 @@ export class StartContext extends ParserRuleContext {
 			listener.exitStart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WavefrontOBJVisitor<Result>): Result {
-		if (visitor.visitStart) {
-			return visitor.visitStart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -590,14 +580,6 @@ export class LineContext extends ParserRuleContext {
 			listener.exitLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WavefrontOBJVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -627,14 +609,6 @@ export class FaceContext extends ParserRuleContext {
 	public exitRule(listener: WavefrontOBJListener): void {
 		if (listener.exitFace) {
 			listener.exitFace(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WavefrontOBJVisitor<Result>): Result {
-		if (visitor.visitFace) {
-			return visitor.visitFace(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -671,14 +645,6 @@ export class VertexContext extends ParserRuleContext {
 			listener.exitVertex(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WavefrontOBJVisitor<Result>): Result {
-		if (visitor.visitVertex) {
-			return visitor.visitVertex(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -701,14 +667,6 @@ export class MtllibContext extends ParserRuleContext {
 	public exitRule(listener: WavefrontOBJListener): void {
 		if (listener.exitMtllib) {
 			listener.exitMtllib(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WavefrontOBJVisitor<Result>): Result {
-		if (visitor.visitMtllib) {
-			return visitor.visitMtllib(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -734,14 +692,6 @@ export class ObjectContext extends ParserRuleContext {
 			listener.exitObject(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WavefrontOBJVisitor<Result>): Result {
-		if (visitor.visitObject) {
-			return visitor.visitObject(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -765,14 +715,6 @@ export class Use_materialContext extends ParserRuleContext {
 			listener.exitUse_material(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WavefrontOBJVisitor<Result>): Result {
-		if (visitor.visitUse_material) {
-			return visitor.visitUse_material(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -793,14 +735,6 @@ export class GroupContext extends ParserRuleContext {
 	public exitRule(listener: WavefrontOBJListener): void {
 		if (listener.exitGroup) {
 			listener.exitGroup(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WavefrontOBJVisitor<Result>): Result {
-		if (visitor.visitGroup) {
-			return visitor.visitGroup(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

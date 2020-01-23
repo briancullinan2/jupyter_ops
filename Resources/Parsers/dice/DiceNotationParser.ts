@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { DiceNotationListener } from "./DiceNotationListener";
-import { DiceNotationVisitor } from "./DiceNotationVisitor";
-
 
 export class DiceNotationParser extends Parser {
 	public static readonly DSEPARATOR = 1;
@@ -407,14 +405,6 @@ export class NotationContext extends ParserRuleContext {
 			listener.exitNotation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DiceNotationVisitor<Result>): Result {
-		if (visitor.visitNotation) {
-			return visitor.visitNotation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -452,14 +442,6 @@ export class AddOpContext extends ParserRuleContext {
 	public exitRule(listener: DiceNotationListener): void {
 		if (listener.exitAddOp) {
 			listener.exitAddOp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DiceNotationVisitor<Result>): Result {
-		if (visitor.visitAddOp) {
-			return visitor.visitAddOp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -501,14 +483,6 @@ export class MultOpContext extends ParserRuleContext {
 			listener.exitMultOp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DiceNotationVisitor<Result>): Result {
-		if (visitor.visitMultOp) {
-			return visitor.visitMultOp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -539,14 +513,6 @@ export class OperandContext extends ParserRuleContext {
 	public exitRule(listener: DiceNotationListener): void {
 		if (listener.exitOperand) {
 			listener.exitOperand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DiceNotationVisitor<Result>): Result {
-		if (visitor.visitOperand) {
-			return visitor.visitOperand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -581,14 +547,6 @@ export class DiceContext extends ParserRuleContext {
 			listener.exitDice(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DiceNotationVisitor<Result>): Result {
-		if (visitor.visitDice) {
-			return visitor.visitDice(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -610,14 +568,6 @@ export class NumberContext extends ParserRuleContext {
 	public exitRule(listener: DiceNotationListener): void {
 		if (listener.exitNumber) {
 			listener.exitNumber(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DiceNotationVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { JPAListener } from "./JPAListener";
-import { JPAVisitor } from "./JPAVisitor";
-
 
 export class JPAParser extends Parser {
 	public static readonly T__0 = 1;
@@ -5291,14 +5289,6 @@ export class Ql_statementContext extends ParserRuleContext {
 			listener.exitQl_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitQl_statement) {
-			return visitor.visitQl_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5338,14 +5328,6 @@ export class Select_statementContext extends ParserRuleContext {
 			listener.exitSelect_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSelect_statement) {
-			return visitor.visitSelect_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5373,14 +5355,6 @@ export class Update_statementContext extends ParserRuleContext {
 			listener.exitUpdate_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitUpdate_statement) {
-			return visitor.visitUpdate_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5406,14 +5380,6 @@ export class Delete_statementContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitDelete_statement) {
 			listener.exitDelete_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitDelete_statement) {
-			return visitor.visitDelete_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5453,14 +5419,6 @@ export class From_clauseContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitFrom_clause) {
 			listener.exitFrom_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitFrom_clause) {
-			return visitor.visitFrom_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5505,14 +5463,6 @@ export class Identification_variable_declarationContext extends ParserRuleContex
 			listener.exitIdentification_variable_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitIdentification_variable_declaration) {
-			return visitor.visitIdentification_variable_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5536,14 +5486,6 @@ export class Range_variable_declarationContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitRange_variable_declaration) {
 			listener.exitRange_variable_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitRange_variable_declaration) {
-			return visitor.visitRange_variable_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5574,14 +5516,6 @@ export class JoinContext extends ParserRuleContext {
 			listener.exitJoin(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitJoin) {
-			return visitor.visitJoin(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5609,14 +5543,6 @@ export class Fetch_joinContext extends ParserRuleContext {
 			listener.exitFetch_join(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitFetch_join) {
-			return visitor.visitFetch_join(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5636,14 +5562,6 @@ export class Join_specContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitJoin_spec) {
 			listener.exitJoin_spec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitJoin_spec) {
-			return visitor.visitJoin_spec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5673,14 +5591,6 @@ export class Join_association_path_expressionContext extends ParserRuleContext {
 			listener.exitJoin_association_path_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitJoin_association_path_expression) {
-			return visitor.visitJoin_association_path_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5704,14 +5614,6 @@ export class Join_collection_valued_path_expressionContext extends ParserRuleCon
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitJoin_collection_valued_path_expression) {
 			listener.exitJoin_collection_valued_path_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitJoin_collection_valued_path_expression) {
-			return visitor.visitJoin_collection_valued_path_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5739,14 +5641,6 @@ export class Join_single_valued_association_path_expressionContext extends Parse
 			listener.exitJoin_single_valued_association_path_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitJoin_single_valued_association_path_expression) {
-			return visitor.visitJoin_single_valued_association_path_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5770,14 +5664,6 @@ export class Collection_member_declarationContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitCollection_member_declaration) {
 			listener.exitCollection_member_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitCollection_member_declaration) {
-			return visitor.visitCollection_member_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5807,14 +5693,6 @@ export class Single_valued_path_expressionContext extends ParserRuleContext {
 			listener.exitSingle_valued_path_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSingle_valued_path_expression) {
-			return visitor.visitSingle_valued_path_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5841,14 +5719,6 @@ export class State_field_path_expressionContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitState_field_path_expression) {
 			listener.exitState_field_path_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitState_field_path_expression) {
-			return visitor.visitState_field_path_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5880,14 +5750,6 @@ export class Single_valued_association_path_expressionContext extends ParserRule
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitSingle_valued_association_path_expression) {
 			listener.exitSingle_valued_association_path_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSingle_valued_association_path_expression) {
-			return visitor.visitSingle_valued_association_path_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5924,14 +5786,6 @@ export class Collection_valued_path_expressionContext extends ParserRuleContext 
 			listener.exitCollection_valued_path_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitCollection_valued_path_expression) {
-			return visitor.visitCollection_valued_path_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5963,14 +5817,6 @@ export class State_fieldContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitState_field) {
 			listener.exitState_field(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitState_field) {
-			return visitor.visitState_field(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6007,14 +5853,6 @@ export class Update_clauseContext extends ParserRuleContext {
 			listener.exitUpdate_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitUpdate_clause) {
-			return visitor.visitUpdate_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6044,14 +5882,6 @@ export class Update_itemContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitUpdate_item) {
 			listener.exitUpdate_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitUpdate_item) {
-			return visitor.visitUpdate_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6093,14 +5923,6 @@ export class New_valueContext extends ParserRuleContext {
 			listener.exitNew_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitNew_value) {
-			return visitor.visitNew_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6124,14 +5946,6 @@ export class Delete_clauseContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitDelete_clause) {
 			listener.exitDelete_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitDelete_clause) {
-			return visitor.visitDelete_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6164,14 +5978,6 @@ export class Select_clauseContext extends ParserRuleContext {
 			listener.exitSelect_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSelect_clause) {
-			return visitor.visitSelect_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6201,14 +6007,6 @@ export class Select_expressionContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitSelect_expression) {
 			listener.exitSelect_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSelect_expression) {
-			return visitor.visitSelect_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6244,14 +6042,6 @@ export class Constructor_expressionContext extends ParserRuleContext {
 			listener.exitConstructor_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitConstructor_expression) {
-			return visitor.visitConstructor_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6277,14 +6067,6 @@ export class Constructor_itemContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitConstructor_item) {
 			listener.exitConstructor_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitConstructor_item) {
-			return visitor.visitConstructor_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6315,14 +6097,6 @@ export class Aggregate_expressionContext extends ParserRuleContext {
 			listener.exitAggregate_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitAggregate_expression) {
-			return visitor.visitAggregate_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6345,14 +6119,6 @@ export class Where_clauseContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitWhere_clause) {
 			listener.exitWhere_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitWhere_clause) {
-			return visitor.visitWhere_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6385,14 +6151,6 @@ export class Groupby_clauseContext extends ParserRuleContext {
 			listener.exitGroupby_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitGroupby_clause) {
-			return visitor.visitGroupby_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6418,14 +6176,6 @@ export class Groupby_itemContext extends ParserRuleContext {
 			listener.exitGroupby_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitGroupby_item) {
-			return visitor.visitGroupby_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6448,14 +6198,6 @@ export class Having_clauseContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitHaving_clause) {
 			listener.exitHaving_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitHaving_clause) {
-			return visitor.visitHaving_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6488,14 +6230,6 @@ export class Orderby_clauseContext extends ParserRuleContext {
 			listener.exitOrderby_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitOrderby_clause) {
-			return visitor.visitOrderby_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6518,14 +6252,6 @@ export class Orderby_itemContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitOrderby_item) {
 			listener.exitOrderby_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitOrderby_item) {
-			return visitor.visitOrderby_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6564,14 +6290,6 @@ export class SubqueryContext extends ParserRuleContext {
 			listener.exitSubquery(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSubquery) {
-			return visitor.visitSubquery(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6600,14 +6318,6 @@ export class Subquery_from_clauseContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitSubquery_from_clause) {
 			listener.exitSubquery_from_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSubquery_from_clause) {
-			return visitor.visitSubquery_from_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6641,14 +6351,6 @@ export class Subselect_identification_variable_declarationContext extends Parser
 			listener.exitSubselect_identification_variable_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSubselect_identification_variable_declaration) {
-			return visitor.visitSubselect_identification_variable_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6676,14 +6378,6 @@ export class Association_path_expressionContext extends ParserRuleContext {
 			listener.exitAssociation_path_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitAssociation_path_expression) {
-			return visitor.visitAssociation_path_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6706,14 +6400,6 @@ export class Simple_select_clauseContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitSimple_select_clause) {
 			listener.exitSimple_select_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSimple_select_clause) {
-			return visitor.visitSimple_select_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6742,14 +6428,6 @@ export class Simple_select_expressionContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitSimple_select_expression) {
 			listener.exitSimple_select_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSimple_select_expression) {
-			return visitor.visitSimple_select_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6782,14 +6460,6 @@ export class Conditional_expressionContext extends ParserRuleContext {
 			listener.exitConditional_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitConditional_expression) {
-			return visitor.visitConditional_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6820,14 +6490,6 @@ export class Conditional_termContext extends ParserRuleContext {
 			listener.exitConditional_term(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitConditional_term) {
-			return visitor.visitConditional_term(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6850,14 +6512,6 @@ export class Conditional_factorContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitConditional_factor) {
 			listener.exitConditional_factor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitConditional_factor) {
-			return visitor.visitConditional_factor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6885,14 +6539,6 @@ export class Conditional_primaryContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitConditional_primary) {
 			listener.exitConditional_primary(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitConditional_primary) {
-			return visitor.visitConditional_primary(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6938,14 +6584,6 @@ export class Simple_cond_expressionContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitSimple_cond_expression) {
 			listener.exitSimple_cond_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSimple_cond_expression) {
-			return visitor.visitSimple_cond_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6996,14 +6634,6 @@ export class Between_expressionContext extends ParserRuleContext {
 			listener.exitBetween_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitBetween_expression) {
-			return visitor.visitBetween_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7040,14 +6670,6 @@ export class In_expressionContext extends ParserRuleContext {
 			listener.exitIn_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitIn_expression) {
-			return visitor.visitIn_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7073,14 +6695,6 @@ export class In_itemContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitIn_item) {
 			listener.exitIn_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitIn_item) {
-			return visitor.visitIn_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7111,14 +6725,6 @@ export class Like_expressionContext extends ParserRuleContext {
 			listener.exitLike_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitLike_expression) {
-			return visitor.visitLike_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7146,14 +6752,6 @@ export class Null_comparison_expressionContext extends ParserRuleContext {
 			listener.exitNull_comparison_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitNull_comparison_expression) {
-			return visitor.visitNull_comparison_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7176,14 +6774,6 @@ export class Empty_collection_comparison_expressionContext extends ParserRuleCon
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitEmpty_collection_comparison_expression) {
 			listener.exitEmpty_collection_comparison_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitEmpty_collection_comparison_expression) {
-			return visitor.visitEmpty_collection_comparison_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7213,14 +6803,6 @@ export class Collection_member_expressionContext extends ParserRuleContext {
 			listener.exitCollection_member_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitCollection_member_expression) {
-			return visitor.visitCollection_member_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7245,14 +6827,6 @@ export class Exists_expressionContext extends ParserRuleContext {
 			listener.exitExists_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitExists_expression) {
-			return visitor.visitExists_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7275,14 +6849,6 @@ export class All_or_any_expressionContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitAll_or_any_expression) {
 			listener.exitAll_or_any_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitAll_or_any_expression) {
-			return visitor.visitAll_or_any_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7366,14 +6932,6 @@ export class Comparison_expressionContext extends ParserRuleContext {
 			listener.exitComparison_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitComparison_expression) {
-			return visitor.visitComparison_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7393,14 +6951,6 @@ export class Comparison_operatorContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitComparison_operator) {
 			listener.exitComparison_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitComparison_operator) {
-			return visitor.visitComparison_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7428,14 +6978,6 @@ export class Arithmetic_expressionContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitArithmetic_expression) {
 			listener.exitArithmetic_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitArithmetic_expression) {
-			return visitor.visitArithmetic_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7468,14 +7010,6 @@ export class Simple_arithmetic_expressionContext extends ParserRuleContext {
 			listener.exitSimple_arithmetic_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSimple_arithmetic_expression) {
-			return visitor.visitSimple_arithmetic_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7506,14 +7040,6 @@ export class Arithmetic_termContext extends ParserRuleContext {
 			listener.exitArithmetic_term(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitArithmetic_term) {
-			return visitor.visitArithmetic_term(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7536,14 +7062,6 @@ export class Arithmetic_factorContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitArithmetic_factor) {
 			listener.exitArithmetic_factor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitArithmetic_factor) {
-			return visitor.visitArithmetic_factor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7585,14 +7103,6 @@ export class Arithmetic_primaryContext extends ParserRuleContext {
 			listener.exitArithmetic_primary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitArithmetic_primary) {
-			return visitor.visitArithmetic_primary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7618,14 +7128,6 @@ export class String_expressionContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitString_expression) {
 			listener.exitString_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitString_expression) {
-			return visitor.visitString_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7662,14 +7164,6 @@ export class String_primaryContext extends ParserRuleContext {
 			listener.exitString_primary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitString_primary) {
-			return visitor.visitString_primary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7695,14 +7189,6 @@ export class Datetime_expressionContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitDatetime_expression) {
 			listener.exitDatetime_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitDatetime_expression) {
-			return visitor.visitDatetime_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7738,14 +7224,6 @@ export class Datetime_primaryContext extends ParserRuleContext {
 			listener.exitDatetime_primary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitDatetime_primary) {
-			return visitor.visitDatetime_primary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7771,14 +7249,6 @@ export class Boolean_expressionContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitBoolean_expression) {
 			listener.exitBoolean_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitBoolean_expression) {
-			return visitor.visitBoolean_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7811,14 +7281,6 @@ export class Boolean_primaryContext extends ParserRuleContext {
 			listener.exitBoolean_primary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitBoolean_primary) {
-			return visitor.visitBoolean_primary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7844,14 +7306,6 @@ export class Enum_expressionContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitEnum_expression) {
 			listener.exitEnum_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitEnum_expression) {
-			return visitor.visitEnum_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7884,14 +7338,6 @@ export class Enum_primaryContext extends ParserRuleContext {
 			listener.exitEnum_primary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitEnum_primary) {
-			return visitor.visitEnum_primary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7919,14 +7365,6 @@ export class Entity_expressionContext extends ParserRuleContext {
 			listener.exitEntity_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitEntity_expression) {
-			return visitor.visitEntity_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7950,14 +7388,6 @@ export class Simple_entity_expressionContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitSimple_entity_expression) {
 			listener.exitSimple_entity_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSimple_entity_expression) {
-			return visitor.visitSimple_entity_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8002,14 +7432,6 @@ export class Functions_returning_numericsContext extends ParserRuleContext {
 			listener.exitFunctions_returning_numerics(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitFunctions_returning_numerics) {
-			return visitor.visitFunctions_returning_numerics(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8029,14 +7451,6 @@ export class Functions_returning_datetimeContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitFunctions_returning_datetime) {
 			listener.exitFunctions_returning_datetime(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitFunctions_returning_datetime) {
-			return visitor.visitFunctions_returning_datetime(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8082,14 +7496,6 @@ export class Functions_returning_stringsContext extends ParserRuleContext {
 			listener.exitFunctions_returning_strings(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitFunctions_returning_strings) {
-			return visitor.visitFunctions_returning_strings(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8109,14 +7515,6 @@ export class Trim_specificationContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitTrim_specification) {
 			listener.exitTrim_specification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitTrim_specification) {
-			return visitor.visitTrim_specification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8140,14 +7538,6 @@ export class Numeric_literalContext extends ParserRuleContext {
 			listener.exitNumeric_literal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitNumeric_literal) {
-			return visitor.visitNumeric_literal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8167,14 +7557,6 @@ export class Pattern_valueContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitPattern_value) {
 			listener.exitPattern_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitPattern_value) {
-			return visitor.visitPattern_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8200,14 +7582,6 @@ export class Input_parameterContext extends ParserRuleContext {
 			listener.exitInput_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitInput_parameter) {
-			return visitor.visitInput_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8227,14 +7601,6 @@ export class LiteralContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitLiteral) {
 			listener.exitLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8258,14 +7624,6 @@ export class Constructor_nameContext extends ParserRuleContext {
 			listener.exitConstructor_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitConstructor_name) {
-			return visitor.visitConstructor_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8285,14 +7643,6 @@ export class Enum_literalContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitEnum_literal) {
 			listener.exitEnum_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitEnum_literal) {
-			return visitor.visitEnum_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8316,14 +7666,6 @@ export class Boolean_literalContext extends ParserRuleContext {
 			listener.exitBoolean_literal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitBoolean_literal) {
-			return visitor.visitBoolean_literal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8343,14 +7685,6 @@ export class Simple_state_fieldContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitSimple_state_field) {
 			listener.exitSimple_state_field(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSimple_state_field) {
-			return visitor.visitSimple_state_field(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8374,14 +7708,6 @@ export class Embedded_class_state_fieldContext extends ParserRuleContext {
 			listener.exitEmbedded_class_state_field(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitEmbedded_class_state_field) {
-			return visitor.visitEmbedded_class_state_field(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8401,14 +7727,6 @@ export class Single_valued_association_fieldContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitSingle_valued_association_field) {
 			listener.exitSingle_valued_association_field(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitSingle_valued_association_field) {
-			return visitor.visitSingle_valued_association_field(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8432,14 +7750,6 @@ export class Collection_valued_association_fieldContext extends ParserRuleContex
 			listener.exitCollection_valued_association_field(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitCollection_valued_association_field) {
-			return visitor.visitCollection_valued_association_field(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8459,14 +7769,6 @@ export class Abstract_schema_nameContext extends ParserRuleContext {
 	public exitRule(listener: JPAListener): void {
 		if (listener.exitAbstract_schema_name) {
 			listener.exitAbstract_schema_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JPAVisitor<Result>): Result {
-		if (visitor.visitAbstract_schema_name) {
-			return visitor.visitAbstract_schema_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

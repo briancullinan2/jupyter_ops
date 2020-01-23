@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { ObjectiveCPreprocessorParserListener } from "./ObjectiveCPreprocessorParserListener";
-import { ObjectiveCPreprocessorParserVisitor } from "./ObjectiveCPreprocessorParserVisitor";
-
 
 export class ObjectiveCPreprocessorParser extends Parser {
 	public static readonly AUTO = 1;
@@ -971,14 +969,6 @@ export class PreprocessorImportContext extends DirectiveContext {
 			listener.exitPreprocessorImport(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorImport) {
-			return visitor.visitPreprocessorImport(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorConditionalContext extends DirectiveContext {
 	public SHARP(): TerminalNode { return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0); }
@@ -1005,14 +995,6 @@ export class PreprocessorConditionalContext extends DirectiveContext {
 			listener.exitPreprocessorConditional(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorConditional) {
-			return visitor.visitPreprocessorConditional(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorDefContext extends DirectiveContext {
 	public SHARP(): TerminalNode { return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0); }
@@ -1034,14 +1016,6 @@ export class PreprocessorDefContext extends DirectiveContext {
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitPreprocessorDef) {
 			listener.exitPreprocessorDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorDef) {
-			return visitor.visitPreprocessorDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1067,14 +1041,6 @@ export class PreprocessorPragmaContext extends DirectiveContext {
 			listener.exitPreprocessorPragma(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorPragma) {
-			return visitor.visitPreprocessorPragma(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorErrorContext extends DirectiveContext {
 	public SHARP(): TerminalNode { return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0); }
@@ -1096,14 +1062,6 @@ export class PreprocessorErrorContext extends DirectiveContext {
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitPreprocessorError) {
 			listener.exitPreprocessorError(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorError) {
-			return visitor.visitPreprocessorError(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1129,14 +1087,6 @@ export class PreprocessorWarningContext extends DirectiveContext {
 			listener.exitPreprocessorWarning(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorWarning) {
-			return visitor.visitPreprocessorWarning(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorDefineContext extends DirectiveContext {
 	public SHARP(): TerminalNode { return this.getToken(ObjectiveCPreprocessorParser.SHARP, 0); }
@@ -1159,14 +1109,6 @@ export class PreprocessorDefineContext extends DirectiveContext {
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitPreprocessorDefine) {
 			listener.exitPreprocessorDefine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorDefine) {
-			return visitor.visitPreprocessorDefine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1208,14 +1150,6 @@ export class DirectiveTextContext extends ParserRuleContext {
 			listener.exitDirectiveText(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitDirectiveText) {
-			return visitor.visitDirectiveText(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1250,14 +1184,6 @@ export class PreprocessorConstantContext extends PreprocessorExpressionContext {
 			listener.exitPreprocessorConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorConstant) {
-			return visitor.visitPreprocessorConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorConditionalSymbolContext extends PreprocessorExpressionContext {
 	public DIRECTIVE_ID(): TerminalNode { return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_ID, 0); }
@@ -1280,14 +1206,6 @@ export class PreprocessorConditionalSymbolContext extends PreprocessorExpression
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitPreprocessorConditionalSymbol) {
 			listener.exitPreprocessorConditionalSymbol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorConditionalSymbol) {
-			return visitor.visitPreprocessorConditionalSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1313,14 +1231,6 @@ export class PreprocessorParenthesisContext extends PreprocessorExpressionContex
 			listener.exitPreprocessorParenthesis(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorParenthesis) {
-			return visitor.visitPreprocessorParenthesis(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorNotContext extends PreprocessorExpressionContext {
 	public DIRECTIVE_BANG(): TerminalNode { return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_BANG, 0); }
@@ -1341,14 +1251,6 @@ export class PreprocessorNotContext extends PreprocessorExpressionContext {
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitPreprocessorNot) {
 			listener.exitPreprocessorNot(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorNot) {
-			return visitor.visitPreprocessorNot(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1387,14 +1289,6 @@ export class PreprocessorBinaryContext extends PreprocessorExpressionContext {
 			listener.exitPreprocessorBinary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorBinary) {
-			return visitor.visitPreprocessorBinary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PreprocessorDefinedContext extends PreprocessorExpressionContext {
 	public DIRECTIVE_DEFINED(): TerminalNode { return this.getToken(ObjectiveCPreprocessorParser.DIRECTIVE_DEFINED, 0); }
@@ -1415,14 +1309,6 @@ export class PreprocessorDefinedContext extends PreprocessorExpressionContext {
 	public exitRule(listener: ObjectiveCPreprocessorParserListener): void {
 		if (listener.exitPreprocessorDefined) {
 			listener.exitPreprocessorDefined(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ObjectiveCPreprocessorParserVisitor<Result>): Result {
-		if (visitor.visitPreprocessorDefined) {
-			return visitor.visitPreprocessorDefined(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

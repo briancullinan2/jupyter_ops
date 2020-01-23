@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { gmlListener } from "./gmlListener";
-import { gmlVisitor } from "./gmlVisitor";
-
 
 export class gmlParser extends Parser {
 	public static readonly T__0 = 1;
@@ -462,14 +460,6 @@ export class GraphContext extends ParserRuleContext {
 			listener.exitGraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gmlVisitor<Result>): Result {
-		if (visitor.visitGraph) {
-			return visitor.visitGraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -500,14 +490,6 @@ export class ListContext extends ParserRuleContext {
 			listener.exitList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gmlVisitor<Result>): Result {
-		if (visitor.visitList) {
-			return visitor.visitList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -533,14 +515,6 @@ export class KvContext extends ParserRuleContext {
 	public exitRule(listener: gmlListener): void {
 		if (listener.exitKv) {
 			listener.exitKv(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gmlVisitor<Result>): Result {
-		if (visitor.visitKv) {
-			return visitor.visitKv(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -579,14 +553,6 @@ export class ValueContext extends ParserRuleContext {
 			listener.exitValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gmlVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -607,14 +573,6 @@ export class KeyContext extends ParserRuleContext {
 	public exitRule(listener: gmlListener): void {
 		if (listener.exitKey) {
 			listener.exitKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gmlVisitor<Result>): Result {
-		if (visitor.visitKey) {
-			return visitor.visitKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -648,14 +606,6 @@ export class IntegerContext extends ParserRuleContext {
 			listener.exitInteger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gmlVisitor<Result>): Result {
-		if (visitor.visitInteger) {
-			return visitor.visitInteger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -676,14 +626,6 @@ export class RealnumContext extends ParserRuleContext {
 	public exitRule(listener: gmlListener): void {
 		if (listener.exitRealnum) {
 			listener.exitRealnum(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gmlVisitor<Result>): Result {
-		if (visitor.visitRealnum) {
-			return visitor.visitRealnum(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -708,14 +650,6 @@ export class StrContext extends ParserRuleContext {
 			listener.exitStr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: gmlVisitor<Result>): Result {
-		if (visitor.visitStr) {
-			return visitor.visitStr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -736,14 +670,6 @@ export class StringliteralContext extends ParserRuleContext {
 	public exitRule(listener: gmlListener): void {
 		if (listener.exitStringliteral) {
 			listener.exitStringliteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: gmlVisitor<Result>): Result {
-		if (visitor.visitStringliteral) {
-			return visitor.visitStringliteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

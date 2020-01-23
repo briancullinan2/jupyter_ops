@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { sickbayListener } from "./sickbayListener";
-import { sickbayVisitor } from "./sickbayVisitor";
-
 
 export class sickbayParser extends Parser {
 	public static readonly T__0 = 1;
@@ -522,14 +520,6 @@ export class SickbayContext extends ParserRuleContext {
 			listener.exitSickbay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sickbayVisitor<Result>): Result {
-		if (visitor.visitSickbay) {
-			return visitor.visitSickbay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -564,14 +554,6 @@ export class LineContext extends ParserRuleContext {
 			listener.exitLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sickbayVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -599,14 +581,6 @@ export class StmtContext extends ParserRuleContext {
 	public exitRule(listener: sickbayListener): void {
 		if (listener.exitStmt) {
 			listener.exitStmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: sickbayVisitor<Result>): Result {
-		if (visitor.visitStmt) {
-			return visitor.visitStmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -644,14 +618,6 @@ export class IntExprContext extends ParserRuleContext {
 			listener.exitIntExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sickbayVisitor<Result>): Result {
-		if (visitor.visitIntExpr) {
-			return visitor.visitIntExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -675,14 +641,6 @@ export class IntVarContext extends ParserRuleContext {
 	public exitRule(listener: sickbayListener): void {
 		if (listener.exitIntVar) {
 			listener.exitIntVar(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: sickbayVisitor<Result>): Result {
-		if (visitor.visitIntVar) {
-			return visitor.visitIntVar(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

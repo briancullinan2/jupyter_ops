@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { css3Listener } from "./css3Listener";
-import { css3Visitor } from "./css3Visitor";
-
 
 export class css3Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -5900,14 +5898,6 @@ export class StylesheetContext extends ParserRuleContext {
 			listener.exitStylesheet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitStylesheet) {
-			return visitor.visitStylesheet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5949,14 +5939,6 @@ export class GoodCharsetContext extends CharsetContext {
 			listener.exitGoodCharset(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitGoodCharset) {
-			return visitor.visitGoodCharset(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BadCharsetContext extends CharsetContext {
 	public Charset(): TerminalNode { return this.getToken(css3Parser.Charset, 0); }
@@ -5984,14 +5966,6 @@ export class BadCharsetContext extends CharsetContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitBadCharset) {
 			listener.exitBadCharset(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitBadCharset) {
-			return visitor.visitBadCharset(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6039,14 +6013,6 @@ export class GoodImportContext extends ImportsContext {
 			listener.exitGoodImport(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitGoodImport) {
-			return visitor.visitGoodImport(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BadImportContext extends ImportsContext {
 	public Import(): TerminalNode { return this.getToken(css3Parser.Import, 0); }
@@ -6078,14 +6044,6 @@ export class BadImportContext extends ImportsContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitBadImport) {
 			listener.exitBadImport(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitBadImport) {
-			return visitor.visitBadImport(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6133,14 +6091,6 @@ export class GoodNamespaceContext extends NamespaceContext {
 			listener.exitGoodNamespace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitGoodNamespace) {
-			return visitor.visitGoodNamespace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BadNamespaceContext extends NamespaceContext {
 	public Namespace(): TerminalNode { return this.getToken(css3Parser.Namespace, 0); }
@@ -6174,14 +6124,6 @@ export class BadNamespaceContext extends NamespaceContext {
 			listener.exitBadNamespace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitBadNamespace) {
-			return visitor.visitBadNamespace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6204,14 +6146,6 @@ export class NamespacePrefixContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitNamespacePrefix) {
 			listener.exitNamespacePrefix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitNamespacePrefix) {
-			return visitor.visitNamespacePrefix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6249,14 +6183,6 @@ export class MediaContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitMedia) {
 			listener.exitMedia(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitMedia) {
-			return visitor.visitMedia(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6305,14 +6231,6 @@ export class MediaQueryListContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitMediaQueryList) {
 			listener.exitMediaQueryList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitMediaQueryList) {
-			return visitor.visitMediaQueryList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6368,14 +6286,6 @@ export class MediaQueryContext extends ParserRuleContext {
 			listener.exitMediaQuery(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitMediaQuery) {
-			return visitor.visitMediaQuery(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6398,14 +6308,6 @@ export class MediaTypeContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitMediaType) {
 			listener.exitMediaType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitMediaType) {
-			return visitor.visitMediaType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6444,14 +6346,6 @@ export class MediaExpressionContext extends ParserRuleContext {
 			listener.exitMediaExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitMediaExpression) {
-			return visitor.visitMediaExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6477,14 +6371,6 @@ export class MediaFeatureContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitMediaFeature) {
 			listener.exitMediaFeature(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitMediaFeature) {
-			return visitor.visitMediaFeature(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6530,14 +6416,6 @@ export class PageContext extends ParserRuleContext {
 			listener.exitPage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitPage) {
-			return visitor.visitPage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6563,14 +6441,6 @@ export class PseudoPageContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitPseudoPage) {
 			listener.exitPseudoPage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitPseudoPage) {
-			return visitor.visitPseudoPage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6621,14 +6491,6 @@ export class SelectorGroupContext extends ParserRuleContext {
 			listener.exitSelectorGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitSelectorGroup) {
-			return visitor.visitSelectorGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6677,14 +6539,6 @@ export class SelectorContext extends ParserRuleContext {
 			listener.exitSelector(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitSelector) {
-			return visitor.visitSelector(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6711,14 +6565,6 @@ export class CombinatorContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitCombinator) {
 			listener.exitCombinator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitCombinator) {
-			return visitor.visitCombinator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6793,14 +6639,6 @@ export class SimpleSelectorSequenceContext extends ParserRuleContext {
 			listener.exitSimpleSelectorSequence(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitSimpleSelectorSequence) {
-			return visitor.visitSimpleSelectorSequence(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6828,14 +6666,6 @@ export class TypeSelectorContext extends ParserRuleContext {
 			listener.exitTypeSelector(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitTypeSelector) {
-			return visitor.visitTypeSelector(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6858,14 +6688,6 @@ export class TypeNamespacePrefixContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitTypeNamespacePrefix) {
 			listener.exitTypeNamespacePrefix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitTypeNamespacePrefix) {
-			return visitor.visitTypeNamespacePrefix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6892,14 +6714,6 @@ export class ElementNameContext extends ParserRuleContext {
 			listener.exitElementName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitElementName) {
-			return visitor.visitElementName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6924,14 +6738,6 @@ export class UniversalContext extends ParserRuleContext {
 			listener.exitUniversal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitUniversal) {
-			return visitor.visitUniversal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6954,14 +6760,6 @@ export class ClassNameContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitClassName) {
 			listener.exitClassName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitClassName) {
-			return visitor.visitClassName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7012,14 +6810,6 @@ export class AttribContext extends ParserRuleContext {
 			listener.exitAttrib(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitAttrib) {
-			return visitor.visitAttrib(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7045,14 +6835,6 @@ export class PseudoContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitPseudo) {
 			listener.exitPseudo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitPseudo) {
-			return visitor.visitPseudo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7081,14 +6863,6 @@ export class FunctionalPseudoContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitFunctionalPseudo) {
 			listener.exitFunctionalPseudo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitFunctionalPseudo) {
-			return visitor.visitFunctionalPseudo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7184,14 +6958,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7224,14 +6990,6 @@ export class NegationContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitNegation) {
 			listener.exitNegation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitNegation) {
-			return visitor.visitNegation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7271,14 +7029,6 @@ export class NegationArgContext extends ParserRuleContext {
 			listener.exitNegationArg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitNegationArg) {
-			return visitor.visitNegationArg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7314,14 +7064,6 @@ export class GoodOperatorContext extends OperatorContext {
 			listener.exitGoodOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitGoodOperator) {
-			return visitor.visitGoodOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BadOperatorContext extends OperatorContext {
 	public ws(): WsContext {
@@ -7341,14 +7083,6 @@ export class BadOperatorContext extends OperatorContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitBadOperator) {
 			listener.exitBadOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitBadOperator) {
-			return visitor.visitBadOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7388,14 +7122,6 @@ export class GoodPropertyContext extends PropertyContext {
 			listener.exitGoodProperty(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitGoodProperty) {
-			return visitor.visitGoodProperty(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BadPropertyContext extends PropertyContext {
 	public ident(): IdentContext {
@@ -7415,14 +7141,6 @@ export class BadPropertyContext extends PropertyContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitBadProperty) {
 			listener.exitBadProperty(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitBadProperty) {
-			return visitor.visitBadProperty(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7470,14 +7188,6 @@ export class KnownRulesetContext extends RulesetContext {
 			listener.exitKnownRuleset(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitKnownRuleset) {
-			return visitor.visitKnownRuleset(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UnknownRulesetContext extends RulesetContext {
 	public ws(): WsContext[];
@@ -7517,14 +7227,6 @@ export class UnknownRulesetContext extends RulesetContext {
 			listener.exitUnknownRuleset(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitUnknownRuleset) {
-			return visitor.visitUnknownRuleset(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7562,14 +7264,6 @@ export class DeclarationListContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitDeclarationList) {
 			listener.exitDeclarationList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitDeclarationList) {
-			return visitor.visitDeclarationList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7614,14 +7308,6 @@ export class KnownDeclarationContext extends DeclarationContext {
 			listener.exitKnownDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitKnownDeclaration) {
-			return visitor.visitKnownDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UnknownDeclarationContext extends DeclarationContext {
 	public property(): PropertyContext {
@@ -7649,14 +7335,6 @@ export class UnknownDeclarationContext extends DeclarationContext {
 			listener.exitUnknownDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitUnknownDeclaration) {
-			return visitor.visitUnknownDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7680,14 +7358,6 @@ export class PrioContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitPrio) {
 			listener.exitPrio(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitPrio) {
-			return visitor.visitPrio(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7747,14 +7417,6 @@ export class ValueContext extends ParserRuleContext {
 			listener.exitValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7792,14 +7454,6 @@ export class ExprContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitExpr) {
 			listener.exitExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitExpr) {
-			return visitor.visitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7862,14 +7516,6 @@ export class KnownTermContext extends TermContext {
 			listener.exitKnownTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitKnownTerm) {
-			return visitor.visitKnownTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UnknownTermContext extends TermContext {
 	public unknownDimension(): UnknownDimensionContext {
@@ -7894,14 +7540,6 @@ export class UnknownTermContext extends TermContext {
 			listener.exitUnknownTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitUnknownTerm) {
-			return visitor.visitUnknownTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BadTermContext extends TermContext {
 	public dxImageTransform(): DxImageTransformContext {
@@ -7921,14 +7559,6 @@ export class BadTermContext extends TermContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitBadTerm) {
 			listener.exitBadTerm(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitBadTerm) {
-			return visitor.visitBadTerm(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7965,14 +7595,6 @@ export class FunctionContext extends ParserRuleContext {
 			listener.exitFunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitFunction) {
-			return visitor.visitFunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8007,14 +7629,6 @@ export class DxImageTransformContext extends ParserRuleContext {
 			listener.exitDxImageTransform(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitDxImageTransform) {
-			return visitor.visitDxImageTransform(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8038,14 +7652,6 @@ export class HexcolorContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitHexcolor) {
 			listener.exitHexcolor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitHexcolor) {
-			return visitor.visitHexcolor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8072,14 +7678,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8102,14 +7700,6 @@ export class PercentageContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitPercentage) {
 			listener.exitPercentage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitPercentage) {
-			return visitor.visitPercentage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8136,14 +7726,6 @@ export class DimensionContext extends ParserRuleContext {
 			listener.exitDimension(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitDimension) {
-			return visitor.visitDimension(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8166,14 +7748,6 @@ export class UnknownDimensionContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitUnknownDimension) {
 			listener.exitUnknownDimension(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitUnknownDimension) {
-			return visitor.visitUnknownDimension(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8246,14 +7820,6 @@ export class AnyContext extends ParserRuleContext {
 			listener.exitAny(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitAny) {
-			return visitor.visitAny(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8308,14 +7874,6 @@ export class UnknownAtRuleContext extends AtRuleContext {
 			listener.exitUnknownAtRule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitUnknownAtRule) {
-			return visitor.visitUnknownAtRule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8338,14 +7896,6 @@ export class AtKeywordContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitAtKeyword) {
 			listener.exitAtKeyword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitAtKeyword) {
-			return visitor.visitAtKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8378,14 +7928,6 @@ export class UnusedContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitUnused) {
 			listener.exitUnused(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitUnused) {
-			return visitor.visitUnused(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8463,14 +8005,6 @@ export class BlockContext extends ParserRuleContext {
 			listener.exitBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8522,14 +8056,6 @@ export class NestedStatementContext extends ParserRuleContext {
 			listener.exitNestedStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitNestedStatement) {
-			return visitor.visitNestedStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8569,14 +8095,6 @@ export class GroupRuleBodyContext extends ParserRuleContext {
 			listener.exitGroupRuleBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitGroupRuleBody) {
-			return visitor.visitGroupRuleBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8614,14 +8132,6 @@ export class SupportsRuleContext extends ParserRuleContext {
 			listener.exitSupportsRule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitSupportsRule) {
-			return visitor.visitSupportsRule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8653,14 +8163,6 @@ export class SupportsConditionContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitSupportsCondition) {
 			listener.exitSupportsCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitSupportsCondition) {
-			return visitor.visitSupportsCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8702,14 +8204,6 @@ export class SupportsConditionInParensContext extends ParserRuleContext {
 			listener.exitSupportsConditionInParens(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitSupportsConditionInParens) {
-			return visitor.visitSupportsConditionInParens(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8743,14 +8237,6 @@ export class SupportsNegationContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitSupportsNegation) {
 			listener.exitSupportsNegation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitSupportsNegation) {
-			return visitor.visitSupportsNegation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8810,14 +8296,6 @@ export class SupportsConjunctionContext extends ParserRuleContext {
 			listener.exitSupportsConjunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitSupportsConjunction) {
-			return visitor.visitSupportsConjunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8875,14 +8353,6 @@ export class SupportsDisjunctionContext extends ParserRuleContext {
 			listener.exitSupportsDisjunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitSupportsDisjunction) {
-			return visitor.visitSupportsDisjunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8908,14 +8378,6 @@ export class SupportsDeclarationConditionContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitSupportsDeclarationCondition) {
 			listener.exitSupportsDeclarationCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitSupportsDeclarationCondition) {
-			return visitor.visitSupportsDeclarationCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8958,14 +8420,6 @@ export class GeneralEnclosedContext extends ParserRuleContext {
 			listener.exitGeneralEnclosed(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitGeneralEnclosed) {
-			return visitor.visitGeneralEnclosed(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8996,14 +8450,6 @@ export class VarContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitVar) {
 			listener.exitVar(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitVar) {
-			return visitor.visitVar(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9038,14 +8484,6 @@ export class CalcContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitCalc) {
 			listener.exitCalc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitCalc) {
-			return visitor.visitCalc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9114,14 +8552,6 @@ export class CalcSumContext extends ParserRuleContext {
 			listener.exitCalcSum(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitCalcSum) {
-			return visitor.visitCalcSum(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9170,14 +8600,6 @@ export class CalcProductContext extends ParserRuleContext {
 			listener.exitCalcProduct(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitCalcProduct) {
-			return visitor.visitCalcProduct(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9223,14 +8645,6 @@ export class CalcValueContext extends ParserRuleContext {
 			listener.exitCalcValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitCalcValue) {
-			return visitor.visitCalcValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9269,14 +8683,6 @@ export class FontFaceRuleContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitFontFaceRule) {
 			listener.exitFontFaceRule(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitFontFaceRule) {
-			return visitor.visitFontFaceRule(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9318,14 +8724,6 @@ export class KnownFontFaceDeclarationContext extends FontFaceDeclarationContext 
 			listener.exitKnownFontFaceDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitKnownFontFaceDeclaration) {
-			return visitor.visitKnownFontFaceDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UnknownFontFaceDeclarationContext extends FontFaceDeclarationContext {
 	public property(): PropertyContext {
@@ -9351,14 +8749,6 @@ export class UnknownFontFaceDeclarationContext extends FontFaceDeclarationContex
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitUnknownFontFaceDeclaration) {
 			listener.exitUnknownFontFaceDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitUnknownFontFaceDeclaration) {
-			return visitor.visitUnknownFontFaceDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9397,14 +8787,6 @@ export class KeyframesRuleContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitKeyframesRule) {
 			listener.exitKeyframesRule(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitKeyframesRule) {
-			return visitor.visitKeyframesRule(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9453,14 +8835,6 @@ export class KeyframesBlocksContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitKeyframesBlocks) {
 			listener.exitKeyframesBlocks(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitKeyframesBlocks) {
-			return visitor.visitKeyframesBlocks(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9529,14 +8903,6 @@ export class KeyframeSelectorContext extends ParserRuleContext {
 			listener.exitKeyframeSelector(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitKeyframeSelector) {
-			return visitor.visitKeyframeSelector(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9569,14 +8935,6 @@ export class ViewportContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitViewport) {
 			listener.exitViewport(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitViewport) {
-			return visitor.visitViewport(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9614,14 +8972,6 @@ export class CounterStyleContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitCounterStyle) {
 			listener.exitCounterStyle(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitCounterStyle) {
-			return visitor.visitCounterStyle(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9665,14 +9015,6 @@ export class FontFeatureValuesRuleContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitFontFeatureValuesRule) {
 			listener.exitFontFeatureValuesRule(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitFontFeatureValuesRule) {
-			return visitor.visitFontFeatureValuesRule(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9723,14 +9065,6 @@ export class FontFamilyNameListContext extends ParserRuleContext {
 			listener.exitFontFamilyNameList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitFontFamilyNameList) {
-			return visitor.visitFontFamilyNameList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9769,14 +9103,6 @@ export class FontFamilyNameContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitFontFamilyName) {
 			listener.exitFontFamilyName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitFontFamilyName) {
-			return visitor.visitFontFamilyName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9821,14 +9147,6 @@ export class FeatureValueBlockContext extends ParserRuleContext {
 			listener.exitFeatureValueBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitFeatureValueBlock) {
-			return visitor.visitFeatureValueBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9851,14 +9169,6 @@ export class FeatureTypeContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitFeatureType) {
 			listener.exitFeatureType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitFeatureType) {
-			return visitor.visitFeatureType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9903,14 +9213,6 @@ export class FeatureValueDefinitionContext extends ParserRuleContext {
 			listener.exitFeatureValueDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitFeatureValueDefinition) {
-			return visitor.visitFeatureValueDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9937,14 +9239,6 @@ export class IdentContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitIdent) {
 			listener.exitIdent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitIdent) {
-			return visitor.visitIdent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9984,14 +9278,6 @@ export class WsContext extends ParserRuleContext {
 	public exitRule(listener: css3Listener): void {
 		if (listener.exitWs) {
 			listener.exitWs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: css3Visitor<Result>): Result {
-		if (visitor.visitWs) {
-			return visitor.visitWs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

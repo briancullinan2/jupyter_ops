@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { RFilterListener } from "./RFilterListener";
-import { RFilterVisitor } from "./RFilterVisitor";
-
 
 export class RFilter extends Parser {
 	public static readonly T__0 = 1;
@@ -1449,14 +1447,6 @@ export class StreamContext extends ParserRuleContext {
 			listener.exitStream(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RFilterVisitor<Result>): Result {
-		if (visitor.visitStream) {
-			return visitor.visitStream(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1486,14 +1476,6 @@ export class EatContext extends ParserRuleContext {
 	public exitRule(listener: RFilterListener): void {
 		if (listener.exitEat) {
 			listener.exitEat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RFilterVisitor<Result>): Result {
-		if (visitor.visitEat) {
-			return visitor.visitEat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1550,14 +1532,6 @@ export class ElemContext extends ParserRuleContext {
 			listener.exitElem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RFilterVisitor<Result>): Result {
-		if (visitor.visitElem) {
-			return visitor.visitElem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1585,14 +1559,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RFilterVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1613,14 +1579,6 @@ export class OpContext extends ParserRuleContext {
 	public exitRule(listener: RFilterListener): void {
 		if (listener.exitOp) {
 			listener.exitOp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RFilterVisitor<Result>): Result {
-		if (visitor.visitOp) {
-			return visitor.visitOp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

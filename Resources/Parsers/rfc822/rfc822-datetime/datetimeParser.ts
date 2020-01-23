@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { datetimeListener } from "./datetimeListener";
-import { datetimeVisitor } from "./datetimeVisitor";
-
 
 export class datetimeParser extends Parser {
 	public static readonly T__0 = 1;
@@ -632,14 +630,6 @@ export class Date_timeContext extends ParserRuleContext {
 			listener.exitDate_time(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: datetimeVisitor<Result>): Result {
-		if (visitor.visitDate_time) {
-			return visitor.visitDate_time(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -659,14 +649,6 @@ export class DayContext extends ParserRuleContext {
 	public exitRule(listener: datetimeListener): void {
 		if (listener.exitDay) {
 			listener.exitDay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: datetimeVisitor<Result>): Result {
-		if (visitor.visitDay) {
-			return visitor.visitDay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -702,14 +684,6 @@ export class DateContext extends ParserRuleContext {
 			listener.exitDate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: datetimeVisitor<Result>): Result {
-		if (visitor.visitDate) {
-			return visitor.visitDate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -729,14 +703,6 @@ export class MonthContext extends ParserRuleContext {
 	public exitRule(listener: datetimeListener): void {
 		if (listener.exitMonth) {
 			listener.exitMonth(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: datetimeVisitor<Result>): Result {
-		if (visitor.visitMonth) {
-			return visitor.visitMonth(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -764,14 +730,6 @@ export class TimeContext extends ParserRuleContext {
 	public exitRule(listener: datetimeListener): void {
 		if (listener.exitTime) {
 			listener.exitTime(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: datetimeVisitor<Result>): Result {
-		if (visitor.visitTime) {
-			return visitor.visitTime(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -804,14 +762,6 @@ export class HourContext extends ParserRuleContext {
 			listener.exitHour(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: datetimeVisitor<Result>): Result {
-		if (visitor.visitHour) {
-			return visitor.visitHour(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -835,14 +785,6 @@ export class ZoneContext extends ParserRuleContext {
 	public exitRule(listener: datetimeListener): void {
 		if (listener.exitZone) {
 			listener.exitZone(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: datetimeVisitor<Result>): Result {
-		if (visitor.visitZone) {
-			return visitor.visitZone(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -875,14 +817,6 @@ export class Two_digitContext extends ParserRuleContext {
 			listener.exitTwo_digit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: datetimeVisitor<Result>): Result {
-		if (visitor.visitTwo_digit) {
-			return visitor.visitTwo_digit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -913,14 +847,6 @@ export class Four_digitContext extends ParserRuleContext {
 			listener.exitFour_digit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: datetimeVisitor<Result>): Result {
-		if (visitor.visitFour_digit) {
-			return visitor.visitFour_digit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -942,14 +868,6 @@ export class AlphanumericContext extends ParserRuleContext {
 	public exitRule(listener: datetimeListener): void {
 		if (listener.exitAlphanumeric) {
 			listener.exitAlphanumeric(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: datetimeVisitor<Result>): Result {
-		if (visitor.visitAlphanumeric) {
-			return visitor.visitAlphanumeric(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

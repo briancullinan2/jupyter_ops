@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { rpnListener } from "./rpnListener";
-import { rpnVisitor } from "./rpnVisitor";
-
 
 export class rpnParser extends Parser {
 	public static readonly SCIENTIFIC_NUMBER = 1;
@@ -371,14 +369,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: rpnVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -404,14 +394,6 @@ export class TermContext extends ParserRuleContext {
 	public exitRule(listener: rpnListener): void {
 		if (listener.exitTerm) {
 			listener.exitTerm(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: rpnVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -448,14 +430,6 @@ export class OperContext extends ParserRuleContext {
 			listener.exitOper(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: rpnVisitor<Result>): Result {
-		if (visitor.visitOper) {
-			return visitor.visitOper(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -488,14 +462,6 @@ export class SignedAtomContext extends ParserRuleContext {
 			listener.exitSignedAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: rpnVisitor<Result>): Result {
-		if (visitor.visitSignedAtom) {
-			return visitor.visitSignedAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -518,14 +484,6 @@ export class VariableContext extends ParserRuleContext {
 			listener.exitVariable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: rpnVisitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -546,14 +504,6 @@ export class ScientificContext extends ParserRuleContext {
 	public exitRule(listener: rpnListener): void {
 		if (listener.exitScientific) {
 			listener.exitScientific(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: rpnVisitor<Result>): Result {
-		if (visitor.visitScientific) {
-			return visitor.visitScientific(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

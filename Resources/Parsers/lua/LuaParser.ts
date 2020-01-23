@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { LuaListener } from "./LuaListener";
-import { LuaVisitor } from "./LuaVisitor";
-
 
 export class LuaParser extends Parser {
 	public static readonly T__0 = 1;
@@ -2323,14 +2321,6 @@ export class ChunkContext extends ParserRuleContext {
 			listener.exitChunk(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitChunk) {
-			return visitor.visitChunk(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2362,14 +2352,6 @@ export class BlockContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitBlock) {
 			listener.exitBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2433,14 +2415,6 @@ export class StatContext extends ParserRuleContext {
 			listener.exitStat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitStat) {
-			return visitor.visitStat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2465,14 +2439,6 @@ export class RetstatContext extends ParserRuleContext {
 			listener.exitRetstat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitRetstat) {
-			return visitor.visitRetstat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2493,14 +2459,6 @@ export class LabelContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitLabel) {
 			listener.exitLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2533,14 +2491,6 @@ export class FuncnameContext extends ParserRuleContext {
 			listener.exitFuncname(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitFuncname) {
-			return visitor.visitFuncname(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2569,14 +2519,6 @@ export class VarlistContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitVarlist) {
 			listener.exitVarlist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitVarlist) {
-			return visitor.visitVarlist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2609,14 +2551,6 @@ export class NamelistContext extends ParserRuleContext {
 			listener.exitNamelist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitNamelist) {
-			return visitor.visitNamelist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2645,14 +2579,6 @@ export class ExplistContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitExplist) {
 			listener.exitExplist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitExplist) {
-			return visitor.visitExplist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2727,14 +2653,6 @@ export class ExpContext extends ParserRuleContext {
 			listener.exitExp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitExp) {
-			return visitor.visitExp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2766,14 +2684,6 @@ export class PrefixexpContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitPrefixexp) {
 			listener.exitPrefixexp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitPrefixexp) {
-			return visitor.visitPrefixexp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2809,14 +2719,6 @@ export class FunctioncallContext extends ParserRuleContext {
 			listener.exitFunctioncall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitFunctioncall) {
-			return visitor.visitFunctioncall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2842,14 +2744,6 @@ export class VarOrExpContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitVarOrExp) {
 			listener.exitVarOrExp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitVarOrExp) {
-			return visitor.visitVarOrExp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2886,14 +2780,6 @@ export class VarContext extends ParserRuleContext {
 			listener.exitVar(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitVar) {
-			return visitor.visitVar(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2928,14 +2814,6 @@ export class VarSuffixContext extends ParserRuleContext {
 			listener.exitVarSuffix(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitVarSuffix) {
-			return visitor.visitVarSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2959,14 +2837,6 @@ export class NameAndArgsContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitNameAndArgs) {
 			listener.exitNameAndArgs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitNameAndArgs) {
-			return visitor.visitNameAndArgs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2999,14 +2869,6 @@ export class ArgsContext extends ParserRuleContext {
 			listener.exitArgs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitArgs) {
-			return visitor.visitArgs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3029,14 +2891,6 @@ export class FunctiondefContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitFunctiondef) {
 			listener.exitFunctiondef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitFunctiondef) {
-			return visitor.visitFunctiondef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3066,14 +2920,6 @@ export class FuncbodyContext extends ParserRuleContext {
 			listener.exitFuncbody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitFuncbody) {
-			return visitor.visitFuncbody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3098,14 +2944,6 @@ export class ParlistContext extends ParserRuleContext {
 			listener.exitParlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitParlist) {
-			return visitor.visitParlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3128,14 +2966,6 @@ export class TableconstructorContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitTableconstructor) {
 			listener.exitTableconstructor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitTableconstructor) {
-			return visitor.visitTableconstructor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3177,14 +3007,6 @@ export class FieldlistContext extends ParserRuleContext {
 			listener.exitFieldlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitFieldlist) {
-			return visitor.visitFieldlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3216,14 +3038,6 @@ export class FieldContext extends ParserRuleContext {
 			listener.exitField(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitField) {
-			return visitor.visitField(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3243,14 +3057,6 @@ export class FieldsepContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitFieldsep) {
 			listener.exitFieldsep(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitFieldsep) {
-			return visitor.visitFieldsep(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3274,14 +3080,6 @@ export class OperatorOrContext extends ParserRuleContext {
 			listener.exitOperatorOr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitOperatorOr) {
-			return visitor.visitOperatorOr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3301,14 +3099,6 @@ export class OperatorAndContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitOperatorAnd) {
 			listener.exitOperatorAnd(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitOperatorAnd) {
-			return visitor.visitOperatorAnd(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3332,14 +3122,6 @@ export class OperatorComparisonContext extends ParserRuleContext {
 			listener.exitOperatorComparison(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitOperatorComparison) {
-			return visitor.visitOperatorComparison(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3359,14 +3141,6 @@ export class OperatorStrcatContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitOperatorStrcat) {
 			listener.exitOperatorStrcat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitOperatorStrcat) {
-			return visitor.visitOperatorStrcat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3390,14 +3164,6 @@ export class OperatorAddSubContext extends ParserRuleContext {
 			listener.exitOperatorAddSub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitOperatorAddSub) {
-			return visitor.visitOperatorAddSub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3417,14 +3183,6 @@ export class OperatorMulDivModContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitOperatorMulDivMod) {
 			listener.exitOperatorMulDivMod(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitOperatorMulDivMod) {
-			return visitor.visitOperatorMulDivMod(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3448,14 +3206,6 @@ export class OperatorBitwiseContext extends ParserRuleContext {
 			listener.exitOperatorBitwise(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitOperatorBitwise) {
-			return visitor.visitOperatorBitwise(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3477,14 +3227,6 @@ export class OperatorUnaryContext extends ParserRuleContext {
 			listener.exitOperatorUnary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitOperatorUnary) {
-			return visitor.visitOperatorUnary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3504,14 +3246,6 @@ export class OperatorPowerContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitOperatorPower) {
 			listener.exitOperatorPower(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitOperatorPower) {
-			return visitor.visitOperatorPower(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3539,14 +3273,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3569,14 +3295,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: LuaListener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: LuaVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

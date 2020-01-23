@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { KotlinParserListener } from "./KotlinParserListener";
-import { KotlinParserVisitor } from "./KotlinParserVisitor";
-
 
 export class KotlinParser extends Parser {
 	public static readonly ShebangLine = 1;
@@ -15366,14 +15364,6 @@ export class KotlinFileContext extends ParserRuleContext {
 			listener.exitKotlinFile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitKotlinFile) {
-			return visitor.visitKotlinFile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15441,14 +15431,6 @@ export class ScriptContext extends ParserRuleContext {
 			listener.exitScript(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitScript) {
-			return visitor.visitScript(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15492,14 +15474,6 @@ export class FileAnnotationContext extends ParserRuleContext {
 			listener.exitFileAnnotation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitFileAnnotation) {
-			return visitor.visitFileAnnotation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15526,14 +15500,6 @@ export class PackageHeaderContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitPackageHeader) {
 			listener.exitPackageHeader(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitPackageHeader) {
-			return visitor.visitPackageHeader(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15564,14 +15530,6 @@ export class ImportListContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitImportList) {
 			listener.exitImportList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitImportList) {
-			return visitor.visitImportList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15607,14 +15565,6 @@ export class ImportHeaderContext extends ParserRuleContext {
 			listener.exitImportHeader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitImportHeader) {
-			return visitor.visitImportHeader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15638,14 +15588,6 @@ export class ImportAliasContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitImportAlias) {
 			listener.exitImportAlias(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitImportAlias) {
-			return visitor.visitImportAlias(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15673,14 +15615,6 @@ export class TopLevelObjectContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitTopLevelObject) {
 			listener.exitTopLevelObject(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTopLevelObject) {
-			return visitor.visitTopLevelObject(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15740,14 +15674,6 @@ export class ClassDeclarationContext extends ParserRuleContext {
 			listener.exitClassDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitClassDeclaration) {
-			return visitor.visitClassDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15783,14 +15709,6 @@ export class PrimaryConstructorContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitPrimaryConstructor) {
 			listener.exitPrimaryConstructor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitPrimaryConstructor) {
-			return visitor.visitPrimaryConstructor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15843,14 +15761,6 @@ export class ClassParametersContext extends ParserRuleContext {
 			listener.exitClassParameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitClassParameters) {
-			return visitor.visitClassParameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15895,14 +15805,6 @@ export class ClassParameterContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitClassParameter) {
 			listener.exitClassParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitClassParameter) {
-			return visitor.visitClassParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15953,14 +15855,6 @@ export class DelegationSpecifiersContext extends ParserRuleContext {
 			listener.exitDelegationSpecifiers(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitDelegationSpecifiers) {
-			return visitor.visitDelegationSpecifiers(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16003,14 +15897,6 @@ export class AnnotatedDelegationSpecifierContext extends ParserRuleContext {
 			listener.exitAnnotatedDelegationSpecifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAnnotatedDelegationSpecifier) {
-			return visitor.visitAnnotatedDelegationSpecifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16044,14 +15930,6 @@ export class DelegationSpecifierContext extends ParserRuleContext {
 			listener.exitDelegationSpecifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitDelegationSpecifier) {
-			return visitor.visitDelegationSpecifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16077,14 +15955,6 @@ export class ConstructorInvocationContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitConstructorInvocation) {
 			listener.exitConstructorInvocation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitConstructorInvocation) {
-			return visitor.visitConstructorInvocation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16127,14 +15997,6 @@ export class ExplicitDelegationContext extends ParserRuleContext {
 			listener.exitExplicitDelegation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitExplicitDelegation) {
-			return visitor.visitExplicitDelegation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16168,14 +16030,6 @@ export class ClassBodyContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitClassBody) {
 			listener.exitClassBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitClassBody) {
-			return visitor.visitClassBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16217,14 +16071,6 @@ export class ClassMemberDeclarationsContext extends ParserRuleContext {
 			listener.exitClassMemberDeclarations(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitClassMemberDeclarations) {
-			return visitor.visitClassMemberDeclarations(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16256,14 +16102,6 @@ export class ClassMemberDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitClassMemberDeclaration) {
 			listener.exitClassMemberDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitClassMemberDeclaration) {
-			return visitor.visitClassMemberDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16298,14 +16136,6 @@ export class AnonymousInitializerContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitAnonymousInitializer) {
 			listener.exitAnonymousInitializer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAnonymousInitializer) {
-			return visitor.visitAnonymousInitializer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16352,14 +16182,6 @@ export class SecondaryConstructorContext extends ParserRuleContext {
 			listener.exitSecondaryConstructor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitSecondaryConstructor) {
-			return visitor.visitSecondaryConstructor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16393,14 +16215,6 @@ export class ConstructorDelegationCallContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitConstructorDelegationCall) {
 			listener.exitConstructorDelegationCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitConstructorDelegationCall) {
-			return visitor.visitConstructorDelegationCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16440,14 +16254,6 @@ export class EnumClassBodyContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitEnumClassBody) {
 			listener.exitEnumClassBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitEnumClassBody) {
-			return visitor.visitEnumClassBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16498,14 +16304,6 @@ export class EnumEntriesContext extends ParserRuleContext {
 			listener.exitEnumEntries(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitEnumEntries) {
-			return visitor.visitEnumEntries(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16546,14 +16344,6 @@ export class EnumEntryContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitEnumEntry) {
 			listener.exitEnumEntry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitEnumEntry) {
-			return visitor.visitEnumEntry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16613,14 +16403,6 @@ export class FunctionDeclarationContext extends ParserRuleContext {
 			listener.exitFunctionDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitFunctionDeclaration) {
-			return visitor.visitFunctionDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16671,14 +16453,6 @@ export class FunctionValueParametersContext extends ParserRuleContext {
 			listener.exitFunctionValueParameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitFunctionValueParameters) {
-			return visitor.visitFunctionValueParameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16719,14 +16493,6 @@ export class FunctionValueParameterContext extends ParserRuleContext {
 			listener.exitFunctionValueParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitFunctionValueParameter) {
-			return visitor.visitFunctionValueParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16762,14 +16528,6 @@ export class ParameterContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitParameter) {
 			listener.exitParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitParameter) {
-			return visitor.visitParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16809,14 +16567,6 @@ export class SetterParameterContext extends ParserRuleContext {
 			listener.exitSetterParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitSetterParameter) {
-			return visitor.visitSetterParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16852,14 +16602,6 @@ export class FunctionBodyContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitFunctionBody) {
 			listener.exitFunctionBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitFunctionBody) {
-			return visitor.visitFunctionBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16906,14 +16648,6 @@ export class ObjectDeclarationContext extends ParserRuleContext {
 			listener.exitObjectDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitObjectDeclaration) {
-			return visitor.visitObjectDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16957,14 +16691,6 @@ export class CompanionObjectContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitCompanionObject) {
 			listener.exitCompanionObject(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitCompanionObject) {
-			return visitor.visitCompanionObject(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17035,14 +16761,6 @@ export class PropertyDeclarationContext extends ParserRuleContext {
 			listener.exitPropertyDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitPropertyDeclaration) {
-			return visitor.visitPropertyDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17093,14 +16811,6 @@ export class MultiVariableDeclarationContext extends ParserRuleContext {
 			listener.exitMultiVariableDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitMultiVariableDeclaration) {
-			return visitor.visitMultiVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17147,14 +16857,6 @@ export class VariableDeclarationContext extends ParserRuleContext {
 			listener.exitVariableDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitVariableDeclaration) {
-			return visitor.visitVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17187,14 +16889,6 @@ export class PropertyDelegateContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitPropertyDelegate) {
 			listener.exitPropertyDelegate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitPropertyDelegate) {
-			return visitor.visitPropertyDelegate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17238,14 +16932,6 @@ export class GetterContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitGetter) {
 			listener.exitGetter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitGetter) {
-			return visitor.visitGetter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17312,14 +16998,6 @@ export class SetterContext extends ParserRuleContext {
 			listener.exitSetter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitSetter) {
-			return visitor.visitSetter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17362,14 +17040,6 @@ export class TypeAliasContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitTypeAlias) {
 			listener.exitTypeAlias(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeAlias) {
-			return visitor.visitTypeAlias(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17422,14 +17092,6 @@ export class TypeParametersContext extends ParserRuleContext {
 			listener.exitTypeParameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeParameters) {
-			return visitor.visitTypeParameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17470,14 +17132,6 @@ export class TypeParameterContext extends ParserRuleContext {
 			listener.exitTypeParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeParameter) {
-			return visitor.visitTypeParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17506,14 +17160,6 @@ export class TypeParameterModifiersContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitTypeParameterModifiers) {
 			listener.exitTypeParameterModifiers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeParameterModifiers) {
-			return visitor.visitTypeParameterModifiers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17555,14 +17201,6 @@ export class TypeParameterModifierContext extends ParserRuleContext {
 			listener.exitTypeParameterModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeParameterModifier) {
-			return visitor.visitTypeParameterModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17599,14 +17237,6 @@ export class TypeContext extends ParserRuleContext {
 			listener.exitType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17635,14 +17265,6 @@ export class TypeModifiersContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitTypeModifiers) {
 			listener.exitTypeModifiers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeModifiers) {
-			return visitor.visitTypeModifiers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17679,14 +17301,6 @@ export class TypeModifierContext extends ParserRuleContext {
 			listener.exitTypeModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeModifier) {
-			return visitor.visitTypeModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17720,14 +17334,6 @@ export class ParenthesizedTypeContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitParenthesizedType) {
 			listener.exitParenthesizedType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitParenthesizedType) {
-			return visitor.visitParenthesizedType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17775,14 +17381,6 @@ export class NullableTypeContext extends ParserRuleContext {
 			listener.exitNullableType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitNullableType) {
-			return visitor.visitNullableType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17806,14 +17404,6 @@ export class TypeReferenceContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitTypeReference) {
 			listener.exitTypeReference(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeReference) {
-			return visitor.visitTypeReference(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17857,14 +17447,6 @@ export class FunctionTypeContext extends ParserRuleContext {
 			listener.exitFunctionType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitFunctionType) {
-			return visitor.visitFunctionType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17896,14 +17478,6 @@ export class ReceiverTypeContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitReceiverType) {
 			listener.exitReceiverType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitReceiverType) {
-			return visitor.visitReceiverType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17954,14 +17528,6 @@ export class UserTypeContext extends ParserRuleContext {
 			listener.exitUserType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitUserType) {
-			return visitor.visitUserType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18000,14 +17566,6 @@ export class ParenthesizedUserTypeContext extends ParserRuleContext {
 			listener.exitParenthesizedUserType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitParenthesizedUserType) {
-			return visitor.visitParenthesizedUserType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18042,14 +17600,6 @@ export class SimpleUserTypeContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitSimpleUserType) {
 			listener.exitSimpleUserType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitSimpleUserType) {
-			return visitor.visitSimpleUserType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18111,14 +17661,6 @@ export class FunctionTypeParametersContext extends ParserRuleContext {
 			listener.exitFunctionTypeParameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitFunctionTypeParameters) {
-			return visitor.visitFunctionTypeParameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18168,14 +17710,6 @@ export class TypeConstraintsContext extends ParserRuleContext {
 			listener.exitTypeConstraints(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeConstraints) {
-			return visitor.visitTypeConstraints(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18222,14 +17756,6 @@ export class TypeConstraintContext extends ParserRuleContext {
 			listener.exitTypeConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeConstraint) {
-			return visitor.visitTypeConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18263,14 +17789,6 @@ export class BlockContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitBlock) {
 			listener.exitBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18310,14 +17828,6 @@ export class StatementsContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitStatements) {
 			listener.exitStatements(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitStatements) {
-			return visitor.visitStatements(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18371,14 +17881,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18413,14 +17915,6 @@ export class DeclarationContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitDeclaration) {
 			listener.exitDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitDeclaration) {
-			return visitor.visitDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18466,14 +17960,6 @@ export class AssignmentContext extends ParserRuleContext {
 			listener.exitAssignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAssignment) {
-			return visitor.visitAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18496,14 +17982,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18554,14 +18032,6 @@ export class DisjunctionContext extends ParserRuleContext {
 			listener.exitDisjunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitDisjunction) {
-			return visitor.visitDisjunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18608,14 +18078,6 @@ export class ConjunctionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitConjunction) {
 			listener.exitConjunction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitConjunction) {
-			return visitor.visitConjunction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18666,14 +18128,6 @@ export class EqualityContext extends ParserRuleContext {
 			listener.exitEquality(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitEquality) {
-			return visitor.visitEquality(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18714,14 +18168,6 @@ export class ComparisonContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitComparison) {
 			listener.exitComparison(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitComparison) {
-			return visitor.visitComparison(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18790,14 +18236,6 @@ export class InfixOperationContext extends ParserRuleContext {
 			listener.exitInfixOperation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitInfixOperation) {
-			return visitor.visitInfixOperation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18844,14 +18282,6 @@ export class ElvisExpressionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitElvisExpression) {
 			listener.exitElvisExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitElvisExpression) {
-			return visitor.visitElvisExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18902,14 +18332,6 @@ export class InfixFunctionCallContext extends ParserRuleContext {
 			listener.exitInfixFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitInfixFunctionCall) {
-			return visitor.visitInfixFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18956,14 +18378,6 @@ export class RangeExpressionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitRangeExpression) {
 			listener.exitRangeExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitRangeExpression) {
-			return visitor.visitRangeExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19014,14 +18428,6 @@ export class AdditiveExpressionContext extends ParserRuleContext {
 			listener.exitAdditiveExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAdditiveExpression) {
-			return visitor.visitAdditiveExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19070,14 +18476,6 @@ export class MultiplicativeExpressionContext extends ParserRuleContext {
 			listener.exitMultiplicativeExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitMultiplicativeExpression) {
-			return visitor.visitMultiplicativeExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19117,14 +18515,6 @@ export class AsExpressionContext extends ParserRuleContext {
 			listener.exitAsExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAsExpression) {
-			return visitor.visitAsExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19156,14 +18546,6 @@ export class PrefixUnaryExpressionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitPrefixUnaryExpression) {
 			listener.exitPrefixUnaryExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitPrefixUnaryExpression) {
-			return visitor.visitPrefixUnaryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19205,14 +18587,6 @@ export class UnaryPrefixContext extends ParserRuleContext {
 			listener.exitUnaryPrefix(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitUnaryPrefix) {
-			return visitor.visitUnaryPrefix(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19244,14 +18618,6 @@ export class PostfixUnaryExpressionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitPostfixUnaryExpression) {
 			listener.exitPostfixUnaryExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitPostfixUnaryExpression) {
-			return visitor.visitPostfixUnaryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19290,14 +18656,6 @@ export class PostfixUnarySuffixContext extends ParserRuleContext {
 			listener.exitPostfixUnarySuffix(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitPostfixUnarySuffix) {
-			return visitor.visitPostfixUnarySuffix(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19328,14 +18686,6 @@ export class DirectlyAssignableExpressionContext extends ParserRuleContext {
 			listener.exitDirectlyAssignableExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitDirectlyAssignableExpression) {
-			return visitor.visitDirectlyAssignableExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19358,14 +18708,6 @@ export class AssignableExpressionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitAssignableExpression) {
 			listener.exitAssignableExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAssignableExpression) {
-			return visitor.visitAssignableExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19396,14 +18738,6 @@ export class AssignableSuffixContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitAssignableSuffix) {
 			listener.exitAssignableSuffix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAssignableSuffix) {
-			return visitor.visitAssignableSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19456,14 +18790,6 @@ export class IndexingSuffixContext extends ParserRuleContext {
 			listener.exitIndexingSuffix(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitIndexingSuffix) {
-			return visitor.visitIndexingSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19504,14 +18830,6 @@ export class NavigationSuffixContext extends ParserRuleContext {
 			listener.exitNavigationSuffix(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitNavigationSuffix) {
-			return visitor.visitNavigationSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19540,14 +18858,6 @@ export class CallSuffixContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitCallSuffix) {
 			listener.exitCallSuffix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitCallSuffix) {
-			return visitor.visitCallSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19593,14 +18903,6 @@ export class AnnotatedLambdaContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitAnnotatedLambda) {
 			listener.exitAnnotatedLambda(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAnnotatedLambda) {
-			return visitor.visitAnnotatedLambda(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19653,14 +18955,6 @@ export class ValueArgumentsContext extends ParserRuleContext {
 			listener.exitValueArguments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitValueArguments) {
-			return visitor.visitValueArguments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19711,14 +19005,6 @@ export class TypeArgumentsContext extends ParserRuleContext {
 			listener.exitTypeArguments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeArguments) {
-			return visitor.visitTypeArguments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19745,14 +19031,6 @@ export class TypeProjectionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitTypeProjection) {
 			listener.exitTypeProjection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeProjection) {
-			return visitor.visitTypeProjection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19783,14 +19061,6 @@ export class TypeProjectionModifiersContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitTypeProjectionModifiers) {
 			listener.exitTypeProjectionModifiers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeProjectionModifiers) {
-			return visitor.visitTypeProjectionModifiers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19827,14 +19097,6 @@ export class TypeProjectionModifierContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitTypeProjectionModifier) {
 			listener.exitTypeProjectionModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeProjectionModifier) {
-			return visitor.visitTypeProjectionModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19876,14 +19138,6 @@ export class ValueArgumentContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitValueArgument) {
 			listener.exitValueArgument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitValueArgument) {
-			return visitor.visitValueArgument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19949,14 +19203,6 @@ export class PrimaryExpressionContext extends ParserRuleContext {
 			listener.exitPrimaryExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitPrimaryExpression) {
-			return visitor.visitPrimaryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19990,14 +19236,6 @@ export class ParenthesizedExpressionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitParenthesizedExpression) {
 			listener.exitParenthesizedExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitParenthesizedExpression) {
-			return visitor.visitParenthesizedExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20050,14 +19288,6 @@ export class CollectionLiteralContext extends ParserRuleContext {
 			listener.exitCollectionLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitCollectionLiteral) {
-			return visitor.visitCollectionLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20087,14 +19317,6 @@ export class LiteralConstantContext extends ParserRuleContext {
 			listener.exitLiteralConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitLiteralConstant) {
-			return visitor.visitLiteralConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20120,14 +19342,6 @@ export class StringLiteralContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitStringLiteral) {
 			listener.exitStringLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitStringLiteral) {
-			return visitor.visitStringLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20169,14 +19383,6 @@ export class LineStringLiteralContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitLineStringLiteral) {
 			listener.exitLineStringLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitLineStringLiteral) {
-			return visitor.visitLineStringLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20229,14 +19435,6 @@ export class MultiLineStringLiteralContext extends ParserRuleContext {
 			listener.exitMultiLineStringLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitMultiLineStringLiteral) {
-			return visitor.visitMultiLineStringLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20259,14 +19457,6 @@ export class LineStringContentContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitLineStringContent) {
 			listener.exitLineStringContent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitLineStringContent) {
-			return visitor.visitLineStringContent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20295,14 +19485,6 @@ export class LineStringExpressionContext extends ParserRuleContext {
 			listener.exitLineStringExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitLineStringExpression) {
-			return visitor.visitLineStringExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20325,14 +19507,6 @@ export class MultiLineStringContentContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitMultiLineStringContent) {
 			listener.exitMultiLineStringContent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitMultiLineStringContent) {
-			return visitor.visitMultiLineStringContent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20368,14 +19542,6 @@ export class MultiLineStringExpressionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitMultiLineStringExpression) {
 			listener.exitMultiLineStringExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitMultiLineStringExpression) {
-			return visitor.visitMultiLineStringExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20415,14 +19581,6 @@ export class LambdaLiteralContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitLambdaLiteral) {
 			listener.exitLambdaLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitLambdaLiteral) {
-			return visitor.visitLambdaLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20473,14 +19631,6 @@ export class LambdaParametersContext extends ParserRuleContext {
 			listener.exitLambdaParameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitLambdaParameters) {
-			return visitor.visitLambdaParameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20519,14 +19669,6 @@ export class LambdaParameterContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitLambdaParameter) {
 			listener.exitLambdaParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitLambdaParameter) {
-			return visitor.visitLambdaParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20580,14 +19722,6 @@ export class AnonymousFunctionContext extends ParserRuleContext {
 			listener.exitAnonymousFunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAnonymousFunction) {
-			return visitor.visitAnonymousFunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20613,14 +19747,6 @@ export class FunctionLiteralContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitFunctionLiteral) {
 			listener.exitFunctionLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitFunctionLiteral) {
-			return visitor.visitFunctionLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20661,14 +19787,6 @@ export class ObjectLiteralContext extends ParserRuleContext {
 			listener.exitObjectLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitObjectLiteral) {
-			return visitor.visitObjectLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20690,14 +19808,6 @@ export class ThisExpressionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitThisExpression) {
 			listener.exitThisExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitThisExpression) {
-			return visitor.visitThisExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20741,14 +19851,6 @@ export class SuperExpressionContext extends ParserRuleContext {
 			listener.exitSuperExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitSuperExpression) {
-			return visitor.visitSuperExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20774,14 +19876,6 @@ export class ControlStructureBodyContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitControlStructureBody) {
 			listener.exitControlStructureBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitControlStructureBody) {
-			return visitor.visitControlStructureBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20831,14 +19925,6 @@ export class IfExpressionContext extends ParserRuleContext {
 			listener.exitIfExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitIfExpression) {
-			return visitor.visitIfExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20884,14 +19970,6 @@ export class WhenExpressionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitWhenExpression) {
 			listener.exitWhenExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitWhenExpression) {
-			return visitor.visitWhenExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20950,14 +20028,6 @@ export class WhenEntryContext extends ParserRuleContext {
 			listener.exitWhenEntry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitWhenEntry) {
-			return visitor.visitWhenEntry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20986,14 +20056,6 @@ export class WhenConditionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitWhenCondition) {
 			listener.exitWhenCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitWhenCondition) {
-			return visitor.visitWhenCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21032,14 +20094,6 @@ export class RangeTestContext extends ParserRuleContext {
 			listener.exitRangeTest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitRangeTest) {
-			return visitor.visitRangeTest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21074,14 +20128,6 @@ export class TypeTestContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitTypeTest) {
 			listener.exitTypeTest(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTypeTest) {
-			return visitor.visitTypeTest(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21128,14 +20174,6 @@ export class TryExpressionContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitTryExpression) {
 			listener.exitTryExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitTryExpression) {
-			return visitor.visitTryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21190,14 +20228,6 @@ export class CatchBlockContext extends ParserRuleContext {
 			listener.exitCatchBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitCatchBlock) {
-			return visitor.visitCatchBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21232,14 +20262,6 @@ export class FinallyBlockContext extends ParserRuleContext {
 			listener.exitFinallyBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitFinallyBlock) {
-			return visitor.visitFinallyBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21268,14 +20290,6 @@ export class LoopStatementContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitLoopStatement) {
 			listener.exitLoopStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitLoopStatement) {
-			return visitor.visitLoopStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21333,14 +20347,6 @@ export class ForStatementContext extends ParserRuleContext {
 			listener.exitForStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitForStatement) {
-			return visitor.visitForStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21379,14 +20385,6 @@ export class WhileStatementContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitWhileStatement) {
 			listener.exitWhileStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitWhileStatement) {
-			return visitor.visitWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21429,14 +20427,6 @@ export class DoWhileStatementContext extends ParserRuleContext {
 			listener.exitDoWhileStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitDoWhileStatement) {
-			return visitor.visitDoWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21477,14 +20467,6 @@ export class JumpExpressionContext extends ParserRuleContext {
 			listener.exitJumpExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitJumpExpression) {
-			return visitor.visitJumpExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21523,14 +20505,6 @@ export class CallableReferenceContext extends ParserRuleContext {
 			listener.exitCallableReference(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitCallableReference) {
-			return visitor.visitCallableReference(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21555,14 +20529,6 @@ export class AssignmentAndOperatorContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitAssignmentAndOperator) {
 			listener.exitAssignmentAndOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentAndOperator) {
-			return visitor.visitAssignmentAndOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21590,14 +20556,6 @@ export class EqualityOperatorContext extends ParserRuleContext {
 			listener.exitEqualityOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitEqualityOperator) {
-			return visitor.visitEqualityOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21623,14 +20581,6 @@ export class ComparisonOperatorContext extends ParserRuleContext {
 			listener.exitComparisonOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitComparisonOperator) {
-			return visitor.visitComparisonOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21652,14 +20602,6 @@ export class InOperatorContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitInOperator) {
 			listener.exitInOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitInOperator) {
-			return visitor.visitInOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21685,14 +20627,6 @@ export class IsOperatorContext extends ParserRuleContext {
 			listener.exitIsOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitIsOperator) {
-			return visitor.visitIsOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21714,14 +20648,6 @@ export class AdditiveOperatorContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitAdditiveOperator) {
 			listener.exitAdditiveOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAdditiveOperator) {
-			return visitor.visitAdditiveOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21748,14 +20674,6 @@ export class MultiplicativeOperatorContext extends ParserRuleContext {
 			listener.exitMultiplicativeOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitMultiplicativeOperator) {
-			return visitor.visitMultiplicativeOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21777,14 +20695,6 @@ export class AsOperatorContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitAsOperator) {
 			listener.exitAsOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAsOperator) {
-			return visitor.visitAsOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21815,14 +20725,6 @@ export class PrefixUnaryOperatorContext extends ParserRuleContext {
 			listener.exitPrefixUnaryOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitPrefixUnaryOperator) {
-			return visitor.visitPrefixUnaryOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21850,14 +20752,6 @@ export class PostfixUnaryOperatorContext extends ParserRuleContext {
 			listener.exitPostfixUnaryOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitPostfixUnaryOperator) {
-			return visitor.visitPostfixUnaryOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21882,14 +20776,6 @@ export class MemberAccessOperatorContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitMemberAccessOperator) {
 			listener.exitMemberAccessOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitMemberAccessOperator) {
-			return visitor.visitMemberAccessOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21929,14 +20815,6 @@ export class ModifiersContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitModifiers) {
 			listener.exitModifiers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitModifiers) {
-			return visitor.visitModifiers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21993,14 +20871,6 @@ export class ModifierContext extends ParserRuleContext {
 			listener.exitModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitModifier) {
-			return visitor.visitModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22027,14 +20897,6 @@ export class ClassModifierContext extends ParserRuleContext {
 			listener.exitClassModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitClassModifier) {
-			return visitor.visitClassModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22056,14 +20918,6 @@ export class MemberModifierContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitMemberModifier) {
 			listener.exitMemberModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitMemberModifier) {
-			return visitor.visitMemberModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22091,14 +20945,6 @@ export class VisibilityModifierContext extends ParserRuleContext {
 			listener.exitVisibilityModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitVisibilityModifier) {
-			return visitor.visitVisibilityModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22120,14 +20966,6 @@ export class VarianceModifierContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitVarianceModifier) {
 			listener.exitVarianceModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitVarianceModifier) {
-			return visitor.visitVarianceModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22157,14 +20995,6 @@ export class FunctionModifierContext extends ParserRuleContext {
 			listener.exitFunctionModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitFunctionModifier) {
-			return visitor.visitFunctionModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22185,14 +21015,6 @@ export class PropertyModifierContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitPropertyModifier) {
 			listener.exitPropertyModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitPropertyModifier) {
-			return visitor.visitPropertyModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22219,14 +21041,6 @@ export class InheritanceModifierContext extends ParserRuleContext {
 			listener.exitInheritanceModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitInheritanceModifier) {
-			return visitor.visitInheritanceModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22251,14 +21065,6 @@ export class ParameterModifierContext extends ParserRuleContext {
 			listener.exitParameterModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitParameterModifier) {
-			return visitor.visitParameterModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22279,14 +21085,6 @@ export class ReificationModifierContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitReificationModifier) {
 			listener.exitReificationModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitReificationModifier) {
-			return visitor.visitReificationModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22310,14 +21108,6 @@ export class PlatformModifierContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitPlatformModifier) {
 			listener.exitPlatformModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitPlatformModifier) {
-			return visitor.visitPlatformModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22349,14 +21139,6 @@ export class LabelContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitLabel) {
 			listener.exitLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22395,14 +21177,6 @@ export class AnnotationContext extends ParserRuleContext {
 			listener.exitAnnotation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAnnotation) {
-			return visitor.visitAnnotation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22439,14 +21213,6 @@ export class SingleAnnotationContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitSingleAnnotation) {
 			listener.exitSingleAnnotation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitSingleAnnotation) {
-			return visitor.visitSingleAnnotation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22495,14 +21261,6 @@ export class MultiAnnotationContext extends ParserRuleContext {
 			listener.exitMultiAnnotation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitMultiAnnotation) {
-			return visitor.visitMultiAnnotation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22532,14 +21290,6 @@ export class AnnotationUseSiteTargetContext extends ParserRuleContext {
 			listener.exitAnnotationUseSiteTarget(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitAnnotationUseSiteTarget) {
-			return visitor.visitAnnotationUseSiteTarget(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22565,14 +21315,6 @@ export class UnescapedAnnotationContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitUnescapedAnnotation) {
 			listener.exitUnescapedAnnotation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitUnescapedAnnotation) {
-			return visitor.visitUnescapedAnnotation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22636,14 +21378,6 @@ export class SimpleIdentifierContext extends ParserRuleContext {
 			listener.exitSimpleIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitSimpleIdentifier) {
-			return visitor.visitSimpleIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22692,14 +21426,6 @@ export class IdentifierContext extends ParserRuleContext {
 			listener.exitIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22731,14 +21457,6 @@ export class ShebangLineContext extends ParserRuleContext {
 			listener.exitShebangLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitShebangLine) {
-			return visitor.visitShebangLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22760,14 +21478,6 @@ export class QuestContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitQuest) {
 			listener.exitQuest(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitQuest) {
-			return visitor.visitQuest(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22793,14 +21503,6 @@ export class ElvisContext extends ParserRuleContext {
 			listener.exitElvis(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitElvis) {
-			return visitor.visitElvis(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22824,14 +21526,6 @@ export class SafeNavContext extends ParserRuleContext {
 			listener.exitSafeNav(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitSafeNav) {
-			return visitor.visitSafeNav(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22853,14 +21547,6 @@ export class ExclContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitExcl) {
 			listener.exitExcl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitExcl) {
-			return visitor.visitExcl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22893,14 +21579,6 @@ export class SemiContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitSemi) {
 			listener.exitSemi(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitSemi) {
-			return visitor.visitSemi(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22941,14 +21619,6 @@ export class SemisContext extends ParserRuleContext {
 	public exitRule(listener: KotlinParserListener): void {
 		if (listener.exitSemis) {
 			listener.exitSemis(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: KotlinParserVisitor<Result>): Result {
-		if (visitor.visitSemis) {
-			return visitor.visitSemis(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

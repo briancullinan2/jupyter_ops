@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { guidoListener } from "./guidoListener";
-import { guidoVisitor } from "./guidoVisitor";
-
 
 export class guidoParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1445,14 +1443,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1483,14 +1473,6 @@ export class SegmentContext extends ParserRuleContext {
 			listener.exitSegment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitSegment) {
-			return visitor.visitSegment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1519,14 +1501,6 @@ export class SequencelistContext extends ParserRuleContext {
 	public exitRule(listener: guidoListener): void {
 		if (listener.exitSequencelist) {
 			listener.exitSequencelist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitSequencelist) {
-			return visitor.visitSequencelist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1577,14 +1551,6 @@ export class SequenceContext extends ParserRuleContext {
 			listener.exitSequence(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitSequence) {
-			return visitor.visitSequence(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1614,14 +1580,6 @@ export class TagContext extends ParserRuleContext {
 	public exitRule(listener: guidoListener): void {
 		if (listener.exitTag) {
 			listener.exitTag(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitTag) {
-			return visitor.visitTag(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1675,14 +1633,6 @@ export class TagnameContext extends ParserRuleContext {
 			listener.exitTagname(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitTagname) {
-			return visitor.visitTagname(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1713,14 +1663,6 @@ export class ParametersContext extends ParserRuleContext {
 			listener.exitParameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitParameters) {
-			return visitor.visitParameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1747,14 +1689,6 @@ export class ParameterContext extends ParserRuleContext {
 	public exitRule(listener: guidoListener): void {
 		if (listener.exitParameter) {
 			listener.exitParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitParameter) {
-			return visitor.visitParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1796,14 +1730,6 @@ export class KvpairContext extends ParserRuleContext {
 			listener.exitKvpair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitKvpair) {
-			return visitor.visitKvpair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1843,14 +1769,6 @@ export class NotesContext extends ParserRuleContext {
 			listener.exitNotes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitNotes) {
-			return visitor.visitNotes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1887,14 +1805,6 @@ export class NoteContext extends ParserRuleContext {
 			listener.exitNote(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitNote) {
-			return visitor.visitNote(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1925,14 +1835,6 @@ export class ChordContext extends ParserRuleContext {
 			listener.exitChord(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitChord) {
-			return visitor.visitChord(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1956,14 +1858,6 @@ export class NotenameContext extends ParserRuleContext {
 			listener.exitNotename(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitNotename) {
-			return visitor.visitNotename(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1983,14 +1877,6 @@ export class AccidentalContext extends ParserRuleContext {
 	public exitRule(listener: guidoListener): void {
 		if (listener.exitAccidental) {
 			listener.exitAccidental(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitAccidental) {
-			return visitor.visitAccidental(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2015,14 +1901,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2045,14 +1923,6 @@ export class OctaveContext extends ParserRuleContext {
 	public exitRule(listener: guidoListener): void {
 		if (listener.exitOctave) {
 			listener.exitOctave(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitOctave) {
-			return visitor.visitOctave(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2085,14 +1955,6 @@ export class FractionContext extends ParserRuleContext {
 			listener.exitFraction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitFraction) {
-			return visitor.visitFraction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2117,14 +1979,6 @@ export class DurationContext extends ParserRuleContext {
 			listener.exitDuration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitDuration) {
-			return visitor.visitDuration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2144,14 +1998,6 @@ export class DottingContext extends ParserRuleContext {
 	public exitRule(listener: guidoListener): void {
 		if (listener.exitDotting) {
 			listener.exitDotting(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitDotting) {
-			return visitor.visitDotting(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2175,14 +2021,6 @@ export class TitleContext extends ParserRuleContext {
 			listener.exitTitle(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitTitle) {
-			return visitor.visitTitle(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2202,14 +2040,6 @@ export class TempoContext extends ParserRuleContext {
 	public exitRule(listener: guidoListener): void {
 		if (listener.exitTempo) {
 			listener.exitTempo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitTempo) {
-			return visitor.visitTempo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2233,14 +2063,6 @@ export class ClefContext extends ParserRuleContext {
 			listener.exitClef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitClef) {
-			return visitor.visitClef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2260,14 +2082,6 @@ export class MeterContext extends ParserRuleContext {
 	public exitRule(listener: guidoListener): void {
 		if (listener.exitMeter) {
 			listener.exitMeter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitMeter) {
-			return visitor.visitMeter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2291,14 +2105,6 @@ export class SlurContext extends ParserRuleContext {
 			listener.exitSlur(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitSlur) {
-			return visitor.visitSlur(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2318,14 +2124,6 @@ export class KeyContext extends ParserRuleContext {
 	public exitRule(listener: guidoListener): void {
 		if (listener.exitKey) {
 			listener.exitKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitKey) {
-			return visitor.visitKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2349,14 +2147,6 @@ export class BarformatContext extends ParserRuleContext {
 			listener.exitBarformat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitBarformat) {
-			return visitor.visitBarformat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2376,14 +2166,6 @@ export class StaffContext extends ParserRuleContext {
 	public exitRule(listener: guidoListener): void {
 		if (listener.exitStaff) {
 			listener.exitStaff(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitStaff) {
-			return visitor.visitStaff(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2407,14 +2189,6 @@ export class RepeatEndContext extends ParserRuleContext {
 			listener.exitRepeatEnd(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitRepeatEnd) {
-			return visitor.visitRepeatEnd(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2434,14 +2208,6 @@ export class TContext extends ParserRuleContext {
 	public exitRule(listener: guidoListener): void {
 		if (listener.exitT) {
 			listener.exitT(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: guidoVisitor<Result>): Result {
-		if (visitor.visitT) {
-			return visitor.visitT(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

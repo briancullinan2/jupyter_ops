@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { SwiftFinParserListener } from "./SwiftFinParserListener";
-import { SwiftFinParserVisitor } from "./SwiftFinParserVisitor";
-
 
 export class SwiftFinParser extends Parser {
 	public static readonly BLOCK1 = 1;
@@ -985,14 +983,6 @@ export class MessagesContext extends ParserRuleContext {
 			listener.exitMessages(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitMessages) {
-			return visitor.visitMessages(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1029,14 +1019,6 @@ export class MessageContext extends ParserRuleContext {
 			listener.exitMessage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitMessage) {
-			return visitor.visitMessage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1061,14 +1043,6 @@ export class Block1Context extends ParserRuleContext {
 	public exitRule(listener: SwiftFinParserListener): void {
 		if (listener.exitBlock1) {
 			listener.exitBlock1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitBlock1) {
-			return visitor.visitBlock1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1097,14 +1071,6 @@ export class Block2Context extends ParserRuleContext {
 			listener.exitBlock2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitBlock2) {
-			return visitor.visitBlock2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1129,14 +1095,6 @@ export class Block3Context extends ParserRuleContext {
 	public exitRule(listener: SwiftFinParserListener): void {
 		if (listener.exitBlock3) {
 			listener.exitBlock3(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitBlock3) {
-			return visitor.visitBlock3(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1174,14 +1132,6 @@ export class Block4Context extends ParserRuleContext {
 	public exitRule(listener: SwiftFinParserListener): void {
 		if (listener.exitBlock4) {
 			listener.exitBlock4(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitBlock4) {
-			return visitor.visitBlock4(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1226,14 +1176,6 @@ export class Block4ItemContext extends ParserRuleContext {
 			listener.exitBlock4Item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitBlock4Item) {
-			return visitor.visitBlock4Item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1262,14 +1204,6 @@ export class Block4FieldContext extends ParserRuleContext {
 	public exitRule(listener: SwiftFinParserListener): void {
 		if (listener.exitBlock4Field) {
 			listener.exitBlock4Field(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitBlock4Field) {
-			return visitor.visitBlock4Field(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1312,14 +1246,6 @@ export class Block4LineContext extends ParserRuleContext {
 			listener.exitBlock4Line(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitBlock4Line) {
-			return visitor.visitBlock4Line(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1344,14 +1270,6 @@ export class Block5Context extends ParserRuleContext {
 	public exitRule(listener: SwiftFinParserListener): void {
 		if (listener.exitBlock5) {
 			listener.exitBlock5(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitBlock5) {
-			return visitor.visitBlock5(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1384,14 +1302,6 @@ export class ValueContext extends ParserRuleContext {
 			listener.exitValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1420,14 +1330,6 @@ export class MapContext extends ParserRuleContext {
 	public exitRule(listener: SwiftFinParserListener): void {
 		if (listener.exitMap) {
 			listener.exitMap(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitMap) {
-			return visitor.visitMap(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1460,14 +1362,6 @@ export class KeyValueContext extends ParserRuleContext {
 			listener.exitKeyValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitKeyValue) {
-			return visitor.visitKeyValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1496,14 +1390,6 @@ export class MKeyContext extends ParserRuleContext {
 	public exitRule(listener: SwiftFinParserListener): void {
 		if (listener.exitMKey) {
 			listener.exitMKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitMKey) {
-			return visitor.visitMKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1543,14 +1429,6 @@ export class MValueContext extends ParserRuleContext {
 	public exitRule(listener: SwiftFinParserListener): void {
 		if (listener.exitMValue) {
 			listener.exitMValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SwiftFinParserVisitor<Result>): Result {
-		if (visitor.visitMValue) {
-			return visitor.visitMValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

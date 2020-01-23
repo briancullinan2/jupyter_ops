@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { sgfListener } from "./sgfListener";
-import { sgfVisitor } from "./sgfVisitor";
-
 
 export class sgfParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1940,14 +1938,6 @@ export class CollectionContext extends ParserRuleContext {
 			listener.exitCollection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitCollection) {
-			return visitor.visitCollection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1981,14 +1971,6 @@ export class GameTreeContext extends ParserRuleContext {
 			listener.exitGameTree(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitGameTree) {
-			return visitor.visitGameTree(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2019,14 +2001,6 @@ export class SequenceContext extends ParserRuleContext {
 			listener.exitSequence(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitSequence) {
-			return visitor.visitSequence(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2055,14 +2029,6 @@ export class NodeContext extends ParserRuleContext {
 	public exitRule(listener: sgfListener): void {
 		if (listener.exitNode) {
 			listener.exitNode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitNode) {
-			return visitor.visitNode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2122,14 +2088,6 @@ export class PropertyContext extends ParserRuleContext {
 			listener.exitProperty(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitProperty) {
-			return visitor.visitProperty(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2152,14 +2110,6 @@ export class MoveContext extends ParserRuleContext {
 	public exitRule(listener: sgfListener): void {
 		if (listener.exitMove) {
 			listener.exitMove(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitMove) {
-			return visitor.visitMove(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2192,14 +2142,6 @@ export class SetupContext extends ParserRuleContext {
 			listener.exitSetup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitSetup) {
-			return visitor.visitSetup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2220,14 +2162,6 @@ export class NodeAnnotationContext extends ParserRuleContext {
 	public exitRule(listener: sgfListener): void {
 		if (listener.exitNodeAnnotation) {
 			listener.exitNodeAnnotation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitNodeAnnotation) {
-			return visitor.visitNodeAnnotation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2251,14 +2185,6 @@ export class MoveAnnotationContext extends ParserRuleContext {
 	public exitRule(listener: sgfListener): void {
 		if (listener.exitMoveAnnotation) {
 			listener.exitMoveAnnotation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitMoveAnnotation) {
-			return visitor.visitMoveAnnotation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2292,14 +2218,6 @@ export class MarkupContext extends ParserRuleContext {
 			listener.exitMarkup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitMarkup) {
-			return visitor.visitMarkup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2320,14 +2238,6 @@ export class RootContext extends ParserRuleContext {
 	public exitRule(listener: sgfListener): void {
 		if (listener.exitRoot) {
 			listener.exitRoot(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitRoot) {
-			return visitor.visitRoot(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2352,14 +2262,6 @@ export class GameInfoContext extends ParserRuleContext {
 			listener.exitGameInfo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitGameInfo) {
-			return visitor.visitGameInfo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2380,14 +2282,6 @@ export class TimingContext extends ParserRuleContext {
 	public exitRule(listener: sgfListener): void {
 		if (listener.exitTiming) {
 			listener.exitTiming(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitTiming) {
-			return visitor.visitTiming(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2421,14 +2315,6 @@ export class MiscContext extends ParserRuleContext {
 			listener.exitMisc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitMisc) {
-			return visitor.visitMisc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2449,14 +2335,6 @@ export class LoaContext extends ParserRuleContext {
 	public exitRule(listener: sgfListener): void {
 		if (listener.exitLoa) {
 			listener.exitLoa(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitLoa) {
-			return visitor.visitLoa(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2490,14 +2368,6 @@ export class GoContext extends ParserRuleContext {
 			listener.exitGo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitGo) {
-			return visitor.visitGo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2528,14 +2398,6 @@ export class PrivatePropContext extends ParserRuleContext {
 	public exitRule(listener: sgfListener): void {
 		if (listener.exitPrivateProp) {
 			listener.exitPrivateProp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: sgfVisitor<Result>): Result {
-		if (visitor.visitPrivateProp) {
-			return visitor.visitPrivateProp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

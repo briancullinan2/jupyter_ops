@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { creoleListener } from "./creoleListener";
-import { creoleVisitor } from "./creoleVisitor";
-
 
 export class creoleParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1073,14 +1071,6 @@ export class DocumentContext extends ParserRuleContext {
 			listener.exitDocument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitDocument) {
-			return visitor.visitDocument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1109,14 +1099,6 @@ export class LineContext extends ParserRuleContext {
 	public exitRule(listener: creoleListener): void {
 		if (listener.exitLine) {
 			listener.exitLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1173,14 +1155,6 @@ export class MarkupContext extends ParserRuleContext {
 			listener.exitMarkup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitMarkup) {
-			return visitor.visitMarkup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1229,14 +1203,6 @@ export class TextContext extends ParserRuleContext {
 			listener.exitText(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitText) {
-			return visitor.visitText(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1265,14 +1231,6 @@ export class BoldContext extends ParserRuleContext {
 	public exitRule(listener: creoleListener): void {
 		if (listener.exitBold) {
 			listener.exitBold(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitBold) {
-			return visitor.visitBold(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1314,14 +1272,6 @@ export class ItalicsContext extends ParserRuleContext {
 			listener.exitItalics(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitItalics) {
-			return visitor.visitItalics(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1359,14 +1309,6 @@ export class HrefContext extends ParserRuleContext {
 			listener.exitHref(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitHref) {
-			return visitor.visitHref(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1393,14 +1335,6 @@ export class ImageContext extends ParserRuleContext {
 			listener.exitImage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitImage) {
-			return visitor.visitImage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1420,14 +1354,6 @@ export class HlineContext extends ParserRuleContext {
 	public exitRule(listener: creoleListener): void {
 		if (listener.exitHline) {
 			listener.exitHline(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitHline) {
-			return visitor.visitHline(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1461,14 +1387,6 @@ export class ListitemContext extends ParserRuleContext {
 	public exitRule(listener: creoleListener): void {
 		if (listener.exitListitem) {
 			listener.exitListitem(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitListitem) {
-			return visitor.visitListitem(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1510,14 +1428,6 @@ export class TableheaderContext extends ParserRuleContext {
 			listener.exitTableheader(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitTableheader) {
-			return visitor.visitTableheader(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1557,14 +1467,6 @@ export class TablerowContext extends ParserRuleContext {
 			listener.exitTablerow(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitTablerow) {
-			return visitor.visitTablerow(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1589,14 +1491,6 @@ export class TitleContext extends ParserRuleContext {
 			listener.exitTitle(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitTitle) {
-			return visitor.visitTitle(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1617,14 +1511,6 @@ export class NowikiContext extends ParserRuleContext {
 	public exitRule(listener: creoleListener): void {
 		if (listener.exitNowiki) {
 			listener.exitNowiki(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: creoleVisitor<Result>): Result {
-		if (visitor.visitNowiki) {
-			return visitor.visitNowiki(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

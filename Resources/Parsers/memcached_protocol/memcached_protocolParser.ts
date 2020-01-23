@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { memcached_protocolListener } from "./memcached_protocolListener";
-import { memcached_protocolVisitor } from "./memcached_protocolVisitor";
-
 
 export class memcached_protocolParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1856,14 +1854,6 @@ export class Command_lineContext extends ParserRuleContext {
 			listener.exitCommand_line(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitCommand_line) {
-			return visitor.visitCommand_line(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1906,14 +1896,6 @@ export class Storage_commandContext extends ParserRuleContext {
 			listener.exitStorage_command(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitStorage_command) {
-			return visitor.visitStorage_command(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1933,14 +1915,6 @@ export class Storage_command_nameContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitStorage_command_name) {
 			listener.exitStorage_command_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitStorage_command_name) {
-			return visitor.visitStorage_command_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1973,14 +1947,6 @@ export class Retrieval_commandContext extends ParserRuleContext {
 			listener.exitRetrieval_command(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitRetrieval_command) {
-			return visitor.visitRetrieval_command(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2009,14 +1975,6 @@ export class Delete_commandContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitDelete_command) {
 			listener.exitDelete_command(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitDelete_command) {
-			return visitor.visitDelete_command(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2049,14 +2007,6 @@ export class Increment_commandContext extends ParserRuleContext {
 			listener.exitIncrement_command(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitIncrement_command) {
-			return visitor.visitIncrement_command(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2087,14 +2037,6 @@ export class Decrement_commandContext extends ParserRuleContext {
 			listener.exitDecrement_command(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitDecrement_command) {
-			return visitor.visitDecrement_command(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2119,14 +2061,6 @@ export class Statistics_commandContext extends ParserRuleContext {
 			listener.exitStatistics_command(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitStatistics_command) {
-			return visitor.visitStatistics_command(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2146,14 +2080,6 @@ export class Statistics_optionContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitStatistics_option) {
 			listener.exitStatistics_option(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitStatistics_option) {
-			return visitor.visitStatistics_option(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2183,14 +2109,6 @@ export class Flush_commandContext extends ParserRuleContext {
 			listener.exitFlush_command(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitFlush_command) {
-			return visitor.visitFlush_command(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2210,14 +2128,6 @@ export class Version_commandContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitVersion_command) {
 			listener.exitVersion_command(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitVersion_command) {
-			return visitor.visitVersion_command(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2244,14 +2154,6 @@ export class Verbosity_commandContext extends ParserRuleContext {
 			listener.exitVerbosity_command(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitVerbosity_command) {
-			return visitor.visitVerbosity_command(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2271,14 +2173,6 @@ export class Quit_commandContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitQuit_command) {
 			listener.exitQuit_command(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitQuit_command) {
-			return visitor.visitQuit_command(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2303,14 +2197,6 @@ export class Storage_responseContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitStorage_response) {
 			listener.exitStorage_response(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitStorage_response) {
-			return visitor.visitStorage_response(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2352,14 +2238,6 @@ export class Retrieval_responseContext extends ParserRuleContext {
 			listener.exitRetrieval_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitRetrieval_response) {
-			return visitor.visitRetrieval_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2382,14 +2260,6 @@ export class Deletion_responseContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitDeletion_response) {
 			listener.exitDeletion_response(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitDeletion_response) {
-			return visitor.visitDeletion_response(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2415,14 +2285,6 @@ export class Incr_or_decr_responseContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitIncr_or_decr_response) {
 			listener.exitIncr_or_decr_response(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitIncr_or_decr_response) {
-			return visitor.visitIncr_or_decr_response(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2458,14 +2320,6 @@ export class Statistics_responseContext extends ParserRuleContext {
 			listener.exitStatistics_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitStatistics_response) {
-			return visitor.visitStatistics_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2496,14 +2350,6 @@ export class Error_responseContext extends ParserRuleContext {
 			listener.exitError_response(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitError_response) {
-			return visitor.visitError_response(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2529,14 +2375,6 @@ export class General_statisticContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitGeneral_statistic) {
 			listener.exitGeneral_statistic(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitGeneral_statistic) {
-			return visitor.visitGeneral_statistic(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2566,14 +2404,6 @@ export class Size_statisticContext extends ParserRuleContext {
 			listener.exitSize_statistic(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitSize_statistic) {
-			return visitor.visitSize_statistic(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2593,14 +2423,6 @@ export class General_errorContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitGeneral_error) {
 			listener.exitGeneral_error(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitGeneral_error) {
-			return visitor.visitGeneral_error(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2624,14 +2446,6 @@ export class Client_error_messageContext extends ParserRuleContext {
 			listener.exitClient_error_message(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitClient_error_message) {
-			return visitor.visitClient_error_message(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2651,14 +2465,6 @@ export class Server_error_messageContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitServer_error_message) {
 			listener.exitServer_error_message(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitServer_error_message) {
-			return visitor.visitServer_error_message(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2682,14 +2488,6 @@ export class EndContext extends ParserRuleContext {
 			listener.exitEnd(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitEnd) {
-			return visitor.visitEnd(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2711,14 +2509,6 @@ export class NoreplyContext extends ParserRuleContext {
 			listener.exitNoreply(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitNoreply) {
-			return visitor.visitNoreply(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2738,14 +2528,6 @@ export class KeyContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitKey) {
 			listener.exitKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitKey) {
-			return visitor.visitKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2770,14 +2552,6 @@ export class FlagsContext extends ParserRuleContext {
 			listener.exitFlags(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitFlags) {
-			return visitor.visitFlags(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2798,14 +2572,6 @@ export class ExptimeContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitExptime) {
 			listener.exitExptime(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitExptime) {
-			return visitor.visitExptime(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2830,14 +2596,6 @@ export class BytesContext extends ParserRuleContext {
 			listener.exitBytes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitBytes) {
-			return visitor.visitBytes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2858,14 +2616,6 @@ export class Cas_uniqueContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitCas_unique) {
 			listener.exitCas_unique(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitCas_unique) {
-			return visitor.visitCas_unique(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2890,14 +2640,6 @@ export class ValueContext extends ParserRuleContext {
 			listener.exitValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2918,14 +2660,6 @@ export class TimeContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitTime) {
 			listener.exitTime(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitTime) {
-			return visitor.visitTime(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2950,14 +2684,6 @@ export class DelayContext extends ParserRuleContext {
 			listener.exitDelay(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitDelay) {
-			return visitor.visitDelay(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2978,14 +2704,6 @@ export class Verbosity_levelContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitVerbosity_level) {
 			listener.exitVerbosity_level(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitVerbosity_level) {
-			return visitor.visitVerbosity_level(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3010,14 +2728,6 @@ export class Statistic_nameContext extends ParserRuleContext {
 			listener.exitStatistic_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitStatistic_name) {
-			return visitor.visitStatistic_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3037,14 +2747,6 @@ export class Statistic_valueContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitStatistic_value) {
 			listener.exitStatistic_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitStatistic_value) {
-			return visitor.visitStatistic_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3069,14 +2771,6 @@ export class SizeContext extends ParserRuleContext {
 			listener.exitSize(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitSize) {
-			return visitor.visitSize(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3097,14 +2791,6 @@ export class CountContext extends ParserRuleContext {
 	public exitRule(listener: memcached_protocolListener): void {
 		if (listener.exitCount) {
 			listener.exitCount(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: memcached_protocolVisitor<Result>): Result {
-		if (visitor.visitCount) {
-			return visitor.visitCount(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

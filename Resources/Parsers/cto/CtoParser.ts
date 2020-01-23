@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { CtoParserListener } from "./CtoParserListener";
-import { CtoParserVisitor } from "./CtoParserVisitor";
-
 
 export class CtoParser extends Parser {
 	public static readonly ABSTRACT = 1;
@@ -2188,14 +2186,6 @@ export class ModelUnitContext extends ParserRuleContext {
 			listener.exitModelUnit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitModelUnit) {
-			return visitor.visitModelUnit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2219,14 +2209,6 @@ export class NamespaceDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitNamespaceDeclaration) {
 			listener.exitNamespaceDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitNamespaceDeclaration) {
-			return visitor.visitNamespaceDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2254,14 +2236,6 @@ export class ImportDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitImportDeclaration) {
 			listener.exitImportDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitImportDeclaration) {
-			return visitor.visitImportDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2303,14 +2277,6 @@ export class TypeDeclarationContext extends ParserRuleContext {
 			listener.exitTypeDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitTypeDeclaration) {
-			return visitor.visitTypeDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2334,14 +2300,6 @@ export class ClassModifierContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitClassModifier) {
 			listener.exitClassModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitClassModifier) {
-			return visitor.visitClassModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2380,14 +2338,6 @@ export class AssetDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitAssetDeclaration) {
 			listener.exitAssetDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitAssetDeclaration) {
-			return visitor.visitAssetDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2434,14 +2384,6 @@ export class ConceptDeclarationContext extends ParserRuleContext {
 			listener.exitConceptDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitConceptDeclaration) {
-			return visitor.visitConceptDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2476,14 +2418,6 @@ export class EnumDeclarationContext extends ParserRuleContext {
 			listener.exitEnumDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitEnumDeclaration) {
-			return visitor.visitEnumDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2505,14 +2439,6 @@ export class EnumConstantContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitEnumConstant) {
 			listener.exitEnumConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitEnumConstant) {
-			return visitor.visitEnumConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2539,14 +2465,6 @@ export class EventDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitEventDeclaration) {
 			listener.exitEventDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitEventDeclaration) {
-			return visitor.visitEventDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2587,14 +2505,6 @@ export class ParticipantDeclarationContext extends ParserRuleContext {
 			listener.exitParticipantDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitParticipantDeclaration) {
-			return visitor.visitParticipantDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2630,14 +2540,6 @@ export class TransactionDeclarationContext extends ParserRuleContext {
 			listener.exitTransactionDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitTransactionDeclaration) {
-			return visitor.visitTransactionDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2664,14 +2566,6 @@ export class ExtendsOrIdentifiedContext extends ParserRuleContext {
 			listener.exitExtendsOrIdentified(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitExtendsOrIdentified) {
-			return visitor.visitExtendsOrIdentified(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2693,14 +2587,6 @@ export class IdentifiedContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitIdentified) {
 			listener.exitIdentified(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitIdentified) {
-			return visitor.visitIdentified(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2735,14 +2621,6 @@ export class ClassBodyContext extends ParserRuleContext {
 			listener.exitClassBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitClassBody) {
-			return visitor.visitClassBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2766,14 +2644,6 @@ export class ClassBodyDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitClassBodyDeclaration) {
 			listener.exitClassBodyDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitClassBodyDeclaration) {
-			return visitor.visitClassBodyDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2837,14 +2707,6 @@ export class FieldDeclarationContext extends ParserRuleContext {
 			listener.exitFieldDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitFieldDeclaration) {
-			return visitor.visitFieldDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2875,14 +2737,6 @@ export class IdentifierFieldContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitIdentifierField) {
 			listener.exitIdentifierField(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitIdentifierField) {
-			return visitor.visitIdentifierField(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2919,14 +2773,6 @@ export class NumericFieldContext extends ParserRuleContext {
 			listener.exitNumericField(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitNumericField) {
-			return visitor.visitNumericField(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2949,14 +2795,6 @@ export class NumericPrimitiveContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitNumericPrimitive) {
 			listener.exitNumericPrimitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitNumericPrimitive) {
-			return visitor.visitNumericPrimitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2991,14 +2829,6 @@ export class BooleanFieldContext extends ParserRuleContext {
 			listener.exitBooleanField(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitBooleanField) {
-			return visitor.visitBooleanField(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3031,14 +2861,6 @@ export class DateFieldContext extends ParserRuleContext {
 			listener.exitDateField(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitDateField) {
-			return visitor.visitDateField(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3063,14 +2885,6 @@ export class DefaultDateContext extends ParserRuleContext {
 			listener.exitDefaultDate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitDefaultDate) {
-			return visitor.visitDefaultDate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3093,14 +2907,6 @@ export class RegexDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitRegexDeclaration) {
 			listener.exitRegexDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitRegexDeclaration) {
-			return visitor.visitRegexDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3135,14 +2941,6 @@ export class StringFieldContext extends ParserRuleContext {
 			listener.exitStringField(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitStringField) {
-			return visitor.visitStringField(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3173,14 +2971,6 @@ export class ReferenceContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitReference) {
 			listener.exitReference(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitReference) {
-			return visitor.visitReference(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3222,14 +3012,6 @@ export class QualifiedNameContext extends ParserRuleContext {
 			listener.exitQualifiedName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitQualifiedName) {
-			return visitor.visitQualifiedName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3254,14 +3036,6 @@ export class RangeValidationContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitRangeValidation) {
 			listener.exitRangeValidation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitRangeValidation) {
-			return visitor.visitRangeValidation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3297,14 +3071,6 @@ export class RangeDeclarationContext extends ParserRuleContext {
 			listener.exitRangeDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitRangeDeclaration) {
-			return visitor.visitRangeDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3327,14 +3093,6 @@ export class DefaultBooleanContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitDefaultBoolean) {
 			listener.exitDefaultBoolean(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitDefaultBoolean) {
-			return visitor.visitDefaultBoolean(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3363,14 +3121,6 @@ export class DefaultStringContext extends ParserRuleContext {
 			listener.exitDefaultString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitDefaultString) {
-			return visitor.visitDefaultString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3397,14 +3147,6 @@ export class DefaultNumberContext extends ParserRuleContext {
 			listener.exitDefaultNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitDefaultNumber) {
-			return visitor.visitDefaultNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3427,14 +3169,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3465,14 +3199,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3500,14 +3226,6 @@ export class NumberLiteralContext extends ParserRuleContext {
 			listener.exitNumberLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitNumberLiteral) {
-			return visitor.visitNumberLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3529,14 +3247,6 @@ export class StringLiteralContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitStringLiteral) {
 			listener.exitStringLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitStringLiteral) {
-			return visitor.visitStringLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3562,14 +3272,6 @@ export class IntegerLiteralContext extends ParserRuleContext {
 			listener.exitIntegerLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitIntegerLiteral) {
-			return visitor.visitIntegerLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3590,14 +3292,6 @@ export class FloatLiteralContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitFloatLiteral) {
 			listener.exitFloatLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitFloatLiteral) {
-			return visitor.visitFloatLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3628,14 +3322,6 @@ export class DecoratorContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitDecorator) {
 			listener.exitDecorator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitDecorator) {
-			return visitor.visitDecorator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3677,14 +3363,6 @@ export class ElementValuePairContext extends ParserRuleContext {
 			listener.exitElementValuePair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitElementValuePair) {
-			return visitor.visitElementValuePair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3706,14 +3384,6 @@ export class SquareContext extends ParserRuleContext {
 	public exitRule(listener: CtoParserListener): void {
 		if (listener.exitSquare) {
 			listener.exitSquare(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CtoParserVisitor<Result>): Result {
-		if (visitor.visitSquare) {
-			return visitor.visitSquare(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

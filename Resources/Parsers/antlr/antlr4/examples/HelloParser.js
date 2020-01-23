@@ -2,6 +2,8 @@
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 var HelloListener = require('./HelloListener').HelloListener;
+var HelloVisitor = require('./HelloVisitor').HelloVisitor;
+
 var grammarFileName = "Hello.g4";
 
 
@@ -80,6 +82,14 @@ RContext.prototype.exitRule = function(listener) {
     if(listener instanceof HelloListener ) {
         listener.exitR(this);
 	}
+};
+
+RContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof HelloVisitor ) {
+        return visitor.visitR(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
 

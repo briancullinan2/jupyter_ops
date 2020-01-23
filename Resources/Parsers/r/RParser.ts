@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { RListener } from "./RListener";
-import { RVisitor } from "./RVisitor";
-
 
 export class RParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1464,14 +1462,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1518,14 +1508,6 @@ export class ExprContext extends ParserRuleContext {
 			listener.exitExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RVisitor<Result>): Result {
-		if (visitor.visitExpr) {
-			return visitor.visitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1565,14 +1547,6 @@ export class ExprlistContext extends ParserRuleContext {
 			listener.exitExprlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RVisitor<Result>): Result {
-		if (visitor.visitExprlist) {
-			return visitor.visitExprlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1603,14 +1577,6 @@ export class FormlistContext extends ParserRuleContext {
 			listener.exitFormlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RVisitor<Result>): Result {
-		if (visitor.visitFormlist) {
-			return visitor.visitFormlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1634,14 +1600,6 @@ export class FormContext extends ParserRuleContext {
 	public exitRule(listener: RListener): void {
 		if (listener.exitForm) {
 			listener.exitForm(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RVisitor<Result>): Result {
-		if (visitor.visitForm) {
-			return visitor.visitForm(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1674,14 +1632,6 @@ export class SublistContext extends ParserRuleContext {
 			listener.exitSublist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RVisitor<Result>): Result {
-		if (visitor.visitSublist) {
-			return visitor.visitSublist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1706,14 +1656,6 @@ export class SubContext extends ParserRuleContext {
 	public exitRule(listener: RListener): void {
 		if (listener.exitSub) {
 			listener.exitSub(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RVisitor<Result>): Result {
-		if (visitor.visitSub) {
-			return visitor.visitSub(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

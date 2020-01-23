@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { muddbListener } from "./muddbListener";
-import { muddbVisitor } from "./muddbVisitor";
-
 
 export class muddbParser extends Parser {
 	public static readonly END = 1;
@@ -775,14 +773,6 @@ export class DbContext extends ParserRuleContext {
 			listener.exitDb(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitDb) {
-			return visitor.visitDb(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -852,14 +842,6 @@ export class RoomContext extends ParserRuleContext {
 			listener.exitRoom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitRoom) {
-			return visitor.visitRoom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -881,14 +863,6 @@ export class RoomnoContext extends ParserRuleContext {
 	public exitRule(listener: muddbListener): void {
 		if (listener.exitRoomno) {
 			listener.exitRoomno(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitRoomno) {
-			return visitor.visitRoomno(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -915,14 +889,6 @@ export class NameContext extends ParserRuleContext {
 			listener.exitName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -945,14 +911,6 @@ export class DescriptionContext extends ParserRuleContext {
 	public exitRule(listener: muddbListener): void {
 		if (listener.exitDescription) {
 			listener.exitDescription(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitDescription) {
-			return visitor.visitDescription(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -979,14 +937,6 @@ export class LocationContext extends ParserRuleContext {
 			listener.exitLocation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitLocation) {
-			return visitor.visitLocation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1009,14 +959,6 @@ export class ContentsContext extends ParserRuleContext {
 	public exitRule(listener: muddbListener): void {
 		if (listener.exitContents) {
 			listener.exitContents(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitContents) {
-			return visitor.visitContents(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1043,14 +985,6 @@ export class ExitsContext extends ParserRuleContext {
 			listener.exitExits(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitExits) {
-			return visitor.visitExits(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1073,14 +1007,6 @@ export class NextContext extends ParserRuleContext {
 	public exitRule(listener: muddbListener): void {
 		if (listener.exitNext) {
 			listener.exitNext(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitNext) {
-			return visitor.visitNext(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1107,14 +1033,6 @@ export class KeyContext extends ParserRuleContext {
 			listener.exitKey(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitKey) {
-			return visitor.visitKey(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1137,14 +1055,6 @@ export class Fail_messageContext extends ParserRuleContext {
 	public exitRule(listener: muddbListener): void {
 		if (listener.exitFail_message) {
 			listener.exitFail_message(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitFail_message) {
-			return visitor.visitFail_message(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1171,14 +1081,6 @@ export class Succ_messageContext extends ParserRuleContext {
 			listener.exitSucc_message(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitSucc_message) {
-			return visitor.visitSucc_message(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1201,14 +1103,6 @@ export class OfailContext extends ParserRuleContext {
 	public exitRule(listener: muddbListener): void {
 		if (listener.exitOfail) {
 			listener.exitOfail(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitOfail) {
-			return visitor.visitOfail(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1235,14 +1129,6 @@ export class OsuccessContext extends ParserRuleContext {
 			listener.exitOsuccess(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitOsuccess) {
-			return visitor.visitOsuccess(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1265,14 +1151,6 @@ export class OwnerContext extends ParserRuleContext {
 	public exitRule(listener: muddbListener): void {
 		if (listener.exitOwner) {
 			listener.exitOwner(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitOwner) {
-			return visitor.visitOwner(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1299,14 +1177,6 @@ export class PenniesContext extends ParserRuleContext {
 			listener.exitPennies(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitPennies) {
-			return visitor.visitPennies(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1329,14 +1199,6 @@ export class FlagsContext extends ParserRuleContext {
 	public exitRule(listener: muddbListener): void {
 		if (listener.exitFlags) {
 			listener.exitFlags(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitFlags) {
-			return visitor.visitFlags(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1363,14 +1225,6 @@ export class PasswordContext extends ParserRuleContext {
 			listener.exitPassword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitPassword) {
-			return visitor.visitPassword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1392,14 +1246,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: muddbListener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1425,14 +1271,6 @@ export class RefContext extends ParserRuleContext {
 			listener.exitRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitRef) {
-			return visitor.visitRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1454,14 +1292,6 @@ export class BoolContext extends ParserRuleContext {
 	public exitRule(listener: muddbListener): void {
 		if (listener.exitBool) {
 			listener.exitBool(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: muddbVisitor<Result>): Result {
-		if (visitor.visitBool) {
-			return visitor.visitBool(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

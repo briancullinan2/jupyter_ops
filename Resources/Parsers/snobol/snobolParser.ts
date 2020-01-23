@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { snobolListener } from "./snobolListener";
-import { snobolVisitor } from "./snobolVisitor";
-
 
 export class snobolParser extends Parser {
 	public static readonly T__0 = 1;
@@ -2210,14 +2208,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2241,14 +2231,6 @@ export class LinContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitLin) {
 			listener.exitLin(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitLin) {
-			return visitor.visitLin(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2297,14 +2279,6 @@ export class LineContext extends ParserRuleContext {
 			listener.exitLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2325,14 +2299,6 @@ export class LabelContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitLabel) {
 			listener.exitLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2375,14 +2341,6 @@ export class SubjectContext extends ParserRuleContext {
 			listener.exitSubject(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitSubject) {
-			return visitor.visitSubject(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2404,14 +2362,6 @@ export class PatternContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitPattern) {
 			listener.exitPattern(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitPattern) {
-			return visitor.visitPattern(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2462,14 +2412,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2518,14 +2460,6 @@ export class MultiplyingExpressionContext extends ParserRuleContext {
 			listener.exitMultiplyingExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitMultiplyingExpression) {
-			return visitor.visitMultiplyingExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2552,14 +2486,6 @@ export class PowExpressionContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitPowExpression) {
 			listener.exitPowExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitPowExpression) {
-			return visitor.visitPowExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2610,14 +2536,6 @@ export class AtomContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitAtom) {
 			listener.exitAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2722,14 +2640,6 @@ export class CommandContext extends ParserRuleContext {
 			listener.exitCommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitCommand) {
-			return visitor.visitCommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2754,14 +2664,6 @@ export class IdentContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitIdent) {
 			listener.exitIdent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitIdent) {
-			return visitor.visitIdent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2790,14 +2692,6 @@ export class DifferContext extends ParserRuleContext {
 			listener.exitDiffer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitDiffer) {
-			return visitor.visitDiffer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2822,14 +2716,6 @@ export class EqContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitEq) {
 			listener.exitEq(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitEq) {
-			return visitor.visitEq(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2858,14 +2744,6 @@ export class NeContext extends ParserRuleContext {
 			listener.exitNe(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitNe) {
-			return visitor.visitNe(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2890,14 +2768,6 @@ export class GeContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitGe) {
 			listener.exitGe(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitGe) {
-			return visitor.visitGe(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2926,14 +2796,6 @@ export class GtContext extends ParserRuleContext {
 			listener.exitGt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitGt) {
-			return visitor.visitGt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2958,14 +2820,6 @@ export class LeContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitLe) {
 			listener.exitLe(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitLe) {
-			return visitor.visitLe(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2994,14 +2848,6 @@ export class LtContext extends ParserRuleContext {
 			listener.exitLt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitLt) {
-			return visitor.visitLt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3026,14 +2872,6 @@ export class IntegerContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitInteger) {
 			listener.exitInteger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitInteger) {
-			return visitor.visitInteger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3062,14 +2900,6 @@ export class LgtContext extends ParserRuleContext {
 			listener.exitLgt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitLgt) {
-			return visitor.visitLgt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3094,14 +2924,6 @@ export class AtanContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitAtan) {
 			listener.exitAtan(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitAtan) {
-			return visitor.visitAtan(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3130,14 +2952,6 @@ export class ChopContext extends ParserRuleContext {
 			listener.exitChop(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitChop) {
-			return visitor.visitChop(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3162,14 +2976,6 @@ export class CosContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitCos) {
 			listener.exitCos(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitCos) {
-			return visitor.visitCos(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3198,14 +3004,6 @@ export class ExpContext extends ParserRuleContext {
 			listener.exitExp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitExp) {
-			return visitor.visitExp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3230,14 +3028,6 @@ export class LnContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitLn) {
 			listener.exitLn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitLn) {
-			return visitor.visitLn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3266,14 +3056,6 @@ export class RemdrContext extends ParserRuleContext {
 			listener.exitRemdr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitRemdr) {
-			return visitor.visitRemdr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3300,14 +3082,6 @@ export class SinContext extends ParserRuleContext {
 			listener.exitSin(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitSin) {
-			return visitor.visitSin(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3332,14 +3106,6 @@ export class TanContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitTan) {
 			listener.exitTan(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitTan) {
-			return visitor.visitTan(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3375,14 +3141,6 @@ export class DuplContext extends ParserRuleContext {
 			listener.exitDupl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitDupl) {
-			return visitor.visitDupl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3409,14 +3167,6 @@ export class ReverseContext extends ParserRuleContext {
 			listener.exitReverse(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitReverse) {
-			return visitor.visitReverse(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3438,14 +3188,6 @@ export class DateContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitDate) {
 			listener.exitDate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitDate) {
-			return visitor.visitDate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3489,14 +3231,6 @@ export class ReplaceContext extends ParserRuleContext {
 			listener.exitReplace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitReplace) {
-			return visitor.visitReplace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3523,14 +3257,6 @@ export class SizeContext extends ParserRuleContext {
 			listener.exitSize(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitSize) {
-			return visitor.visitSize(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3555,14 +3281,6 @@ export class TrimContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitTrim) {
 			listener.exitTrim(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitTrim) {
-			return visitor.visitTrim(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3598,14 +3316,6 @@ export class ArrayContext extends ParserRuleContext {
 			listener.exitArray(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitArray) {
-			return visitor.visitArray(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3639,14 +3349,6 @@ export class ConvertContext extends ParserRuleContext {
 			listener.exitConvert(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitConvert) {
-			return visitor.visitConvert(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3671,14 +3373,6 @@ export class TableContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitTable) {
 			listener.exitTable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitTable) {
-			return visitor.visitTable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3707,14 +3401,6 @@ export class SortContext extends ParserRuleContext {
 			listener.exitSort(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitSort) {
-			return visitor.visitSort(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3739,14 +3425,6 @@ export class Break_Context extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitBreak_) {
 			listener.exitBreak_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitBreak_) {
-			return visitor.visitBreak_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3779,14 +3457,6 @@ export class TransferContext extends ParserRuleContext {
 			listener.exitTransfer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitTransfer) {
-			return visitor.visitTransfer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3806,14 +3476,6 @@ export class TransferpreContext extends ParserRuleContext {
 	public exitRule(listener: snobolListener): void {
 		if (listener.exitTransferpre) {
 			listener.exitTransferpre(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: snobolVisitor<Result>): Result {
-		if (visitor.visitTransferpre) {
-			return visitor.visitTransferpre(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

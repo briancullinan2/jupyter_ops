@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { scottyListener } from "./scottyListener";
-import { scottyVisitor } from "./scottyVisitor";
-
 
 export class scottyParser extends Parser {
 	public static readonly T__0 = 1;
@@ -598,14 +596,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: scottyVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -639,14 +629,6 @@ export class Program_linesContext extends ParserRuleContext {
 			listener.exitProgram_lines(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: scottyVisitor<Result>): Result {
-		if (visitor.visitProgram_lines) {
-			return visitor.visitProgram_lines(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -672,14 +654,6 @@ export class Var_assignContext extends ParserRuleContext {
 	public exitRule(listener: scottyListener): void {
 		if (listener.exitVar_assign) {
 			listener.exitVar_assign(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: scottyVisitor<Result>): Result {
-		if (visitor.visitVar_assign) {
-			return visitor.visitVar_assign(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -713,14 +687,6 @@ export class Fn_defContext extends ParserRuleContext {
 	public exitRule(listener: scottyListener): void {
 		if (listener.exitFn_def) {
 			listener.exitFn_def(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: scottyVisitor<Result>): Result {
-		if (visitor.visitFn_def) {
-			return visitor.visitFn_def(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -759,14 +725,6 @@ export class Prefix_expContext extends ParserRuleContext {
 			listener.exitPrefix_exp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: scottyVisitor<Result>): Result {
-		if (visitor.visitPrefix_exp) {
-			return visitor.visitPrefix_exp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -790,14 +748,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: scottyListener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: scottyVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -826,14 +776,6 @@ export class Id_tailContext extends ParserRuleContext {
 			listener.exitId_tail(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: scottyVisitor<Result>): Result {
-		if (visitor.visitId_tail) {
-			return visitor.visitId_tail(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -856,14 +798,6 @@ export class NumberContext extends ParserRuleContext {
 	public exitRule(listener: scottyListener): void {
 		if (listener.exitNumber) {
 			listener.exitNumber(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: scottyVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -889,14 +823,6 @@ export class DigitsContext extends ParserRuleContext {
 	public exitRule(listener: scottyListener): void {
 		if (listener.exitDigits) {
 			listener.exitDigits(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: scottyVisitor<Result>): Result {
-		if (visitor.visitDigits) {
-			return visitor.visitDigits(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

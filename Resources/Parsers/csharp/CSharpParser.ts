@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { CSharpParserListener } from "./CSharpParserListener";
-import { CSharpParserVisitor } from "./CSharpParserVisitor";
-
 
 export class CSharpParser extends Parser {
 	public static readonly BYTE_ORDER_MARK = 1;
@@ -14365,14 +14363,6 @@ export class Compilation_unitContext extends ParserRuleContext {
 			listener.exitCompilation_unit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitCompilation_unit) {
-			return visitor.visitCompilation_unit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14422,14 +14412,6 @@ export class Namespace_or_type_nameContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitNamespace_or_type_name) {
 			listener.exitNamespace_or_type_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitNamespace_or_type_name) {
-			return visitor.visitNamespace_or_type_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14483,14 +14465,6 @@ export class Type_Context extends ParserRuleContext {
 			listener.exitType_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitType_) {
-			return visitor.visitType_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14520,14 +14494,6 @@ export class Base_typeContext extends ParserRuleContext {
 			listener.exitBase_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitBase_type) {
-			return visitor.visitBase_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14551,14 +14517,6 @@ export class Simple_typeContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitSimple_type) {
 			listener.exitSimple_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitSimple_type) {
-			return visitor.visitSimple_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14587,14 +14545,6 @@ export class Numeric_typeContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitNumeric_type) {
 			listener.exitNumeric_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitNumeric_type) {
-			return visitor.visitNumeric_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14627,14 +14577,6 @@ export class Integral_typeContext extends ParserRuleContext {
 			listener.exitIntegral_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitIntegral_type) {
-			return visitor.visitIntegral_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14656,14 +14598,6 @@ export class Floating_point_typeContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitFloating_point_type) {
 			listener.exitFloating_point_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFloating_point_type) {
-			return visitor.visitFloating_point_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14691,14 +14625,6 @@ export class Class_typeContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitClass_type) {
 			listener.exitClass_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitClass_type) {
-			return visitor.visitClass_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14742,14 +14668,6 @@ export class Type_argument_listContext extends ParserRuleContext {
 			listener.exitType_argument_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitType_argument_list) {
-			return visitor.visitType_argument_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14789,14 +14707,6 @@ export class Argument_listContext extends ParserRuleContext {
 			listener.exitArgument_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitArgument_list) {
-			return visitor.visitArgument_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14832,14 +14742,6 @@ export class ArgumentContext extends ParserRuleContext {
 			listener.exitArgument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14865,14 +14767,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14905,14 +14799,6 @@ export class Non_assignment_expressionContext extends ParserRuleContext {
 			listener.exitNon_assignment_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitNon_assignment_expression) {
-			return visitor.visitNon_assignment_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14941,14 +14827,6 @@ export class AssignmentContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAssignment) {
 			listener.exitAssignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAssignment) {
-			return visitor.visitAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14983,14 +14861,6 @@ export class Assignment_operatorContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAssignment_operator) {
 			listener.exitAssignment_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAssignment_operator) {
-			return visitor.visitAssignment_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15028,14 +14898,6 @@ export class Conditional_expressionContext extends ParserRuleContext {
 			listener.exitConditional_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitConditional_expression) {
-			return visitor.visitConditional_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15062,14 +14924,6 @@ export class Null_coalescing_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitNull_coalescing_expression) {
 			listener.exitNull_coalescing_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitNull_coalescing_expression) {
-			return visitor.visitNull_coalescing_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15111,14 +14965,6 @@ export class Conditional_or_expressionContext extends ParserRuleContext {
 			listener.exitConditional_or_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitConditional_or_expression) {
-			return visitor.visitConditional_or_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15156,14 +15002,6 @@ export class Conditional_and_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitConditional_and_expression) {
 			listener.exitConditional_and_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitConditional_and_expression) {
-			return visitor.visitConditional_and_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15205,14 +15043,6 @@ export class Inclusive_or_expressionContext extends ParserRuleContext {
 			listener.exitInclusive_or_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInclusive_or_expression) {
-			return visitor.visitInclusive_or_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15252,14 +15082,6 @@ export class Exclusive_or_expressionContext extends ParserRuleContext {
 			listener.exitExclusive_or_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitExclusive_or_expression) {
-			return visitor.visitExclusive_or_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15297,14 +15119,6 @@ export class And_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAnd_expression) {
 			listener.exitAnd_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAnd_expression) {
-			return visitor.visitAnd_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15353,14 +15167,6 @@ export class Equality_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitEquality_expression) {
 			listener.exitEquality_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitEquality_expression) {
-			return visitor.visitEquality_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15465,14 +15271,6 @@ export class Relational_expressionContext extends ParserRuleContext {
 			listener.exitRelational_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitRelational_expression) {
-			return visitor.visitRelational_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15521,14 +15319,6 @@ export class Shift_expressionContext extends ParserRuleContext {
 			listener.exitShift_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitShift_expression) {
-			return visitor.visitShift_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15575,14 +15365,6 @@ export class Additive_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAdditive_expression) {
 			listener.exitAdditive_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAdditive_expression) {
-			return visitor.visitAdditive_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15642,14 +15424,6 @@ export class Multiplicative_expressionContext extends ParserRuleContext {
 			listener.exitMultiplicative_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitMultiplicative_expression) {
-			return visitor.visitMultiplicative_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15689,14 +15463,6 @@ export class Unary_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitUnary_expression) {
 			listener.exitUnary_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitUnary_expression) {
-			return visitor.visitUnary_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15787,14 +15553,6 @@ export class Primary_expressionContext extends ParserRuleContext {
 			listener.exitPrimary_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitPrimary_expression) {
-			return visitor.visitPrimary_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15828,14 +15586,6 @@ export class LiteralExpressionContext extends Primary_expression_startContext {
 			listener.exitLiteralExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLiteralExpression) {
-			return visitor.visitLiteralExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SimpleNameExpressionContext extends Primary_expression_startContext {
 	public identifier(): IdentifierContext {
@@ -15860,14 +15610,6 @@ export class SimpleNameExpressionContext extends Primary_expression_startContext
 			listener.exitSimpleNameExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitSimpleNameExpression) {
-			return visitor.visitSimpleNameExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ParenthesisExpressionsContext extends Primary_expression_startContext {
 	public OPEN_PARENS(): TerminalNode { return this.getToken(CSharpParser.OPEN_PARENS, 0); }
@@ -15889,14 +15631,6 @@ export class ParenthesisExpressionsContext extends Primary_expression_startConte
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitParenthesisExpressions) {
 			listener.exitParenthesisExpressions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitParenthesisExpressions) {
-			return visitor.visitParenthesisExpressions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15923,14 +15657,6 @@ export class MemberAccessExpressionContext extends Primary_expression_startConte
 			listener.exitMemberAccessExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitMemberAccessExpression) {
-			return visitor.visitMemberAccessExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class LiteralAccessExpressionContext extends Primary_expression_startContext {
 	public LITERAL_ACCESS(): TerminalNode { return this.getToken(CSharpParser.LITERAL_ACCESS, 0); }
@@ -15950,14 +15676,6 @@ export class LiteralAccessExpressionContext extends Primary_expression_startCont
 			listener.exitLiteralAccessExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLiteralAccessExpression) {
-			return visitor.visitLiteralAccessExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ThisReferenceExpressionContext extends Primary_expression_startContext {
 	public THIS(): TerminalNode { return this.getToken(CSharpParser.THIS, 0); }
@@ -15975,14 +15693,6 @@ export class ThisReferenceExpressionContext extends Primary_expression_startCont
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitThisReferenceExpression) {
 			listener.exitThisReferenceExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitThisReferenceExpression) {
-			return visitor.visitThisReferenceExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16014,14 +15724,6 @@ export class BaseAccessExpressionContext extends Primary_expression_startContext
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitBaseAccessExpression) {
 			listener.exitBaseAccessExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitBaseAccessExpression) {
-			return visitor.visitBaseAccessExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16072,14 +15774,6 @@ export class ObjectCreationExpressionContext extends Primary_expression_startCon
 			listener.exitObjectCreationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitObjectCreationExpression) {
-			return visitor.visitObjectCreationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TypeofExpressionContext extends Primary_expression_startContext {
 	public TYPEOF(): TerminalNode { return this.getToken(CSharpParser.TYPEOF, 0); }
@@ -16108,14 +15802,6 @@ export class TypeofExpressionContext extends Primary_expression_startContext {
 			listener.exitTypeofExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitTypeofExpression) {
-			return visitor.visitTypeofExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class CheckedExpressionContext extends Primary_expression_startContext {
 	public CHECKED(): TerminalNode { return this.getToken(CSharpParser.CHECKED, 0); }
@@ -16138,14 +15824,6 @@ export class CheckedExpressionContext extends Primary_expression_startContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitCheckedExpression) {
 			listener.exitCheckedExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitCheckedExpression) {
-			return visitor.visitCheckedExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16172,14 +15850,6 @@ export class UncheckedExpressionContext extends Primary_expression_startContext 
 			listener.exitUncheckedExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitUncheckedExpression) {
-			return visitor.visitUncheckedExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DefaultValueExpressionContext extends Primary_expression_startContext {
 	public DEFAULT(): TerminalNode { return this.getToken(CSharpParser.DEFAULT, 0); }
@@ -16202,14 +15872,6 @@ export class DefaultValueExpressionContext extends Primary_expression_startConte
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitDefaultValueExpression) {
 			listener.exitDefaultValueExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitDefaultValueExpression) {
-			return visitor.visitDefaultValueExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16240,14 +15902,6 @@ export class AnonymousMethodExpressionContext extends Primary_expression_startCo
 			listener.exitAnonymousMethodExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAnonymousMethodExpression) {
-			return visitor.visitAnonymousMethodExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SizeofExpressionContext extends Primary_expression_startContext {
 	public SIZEOF(): TerminalNode { return this.getToken(CSharpParser.SIZEOF, 0); }
@@ -16270,14 +15924,6 @@ export class SizeofExpressionContext extends Primary_expression_startContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitSizeofExpression) {
 			listener.exitSizeofExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitSizeofExpression) {
-			return visitor.visitSizeofExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16319,14 +15965,6 @@ export class NameofExpressionContext extends Primary_expression_startContext {
 			listener.exitNameofExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitNameofExpression) {
-			return visitor.visitNameofExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16354,14 +15992,6 @@ export class Member_accessContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitMember_access) {
 			listener.exitMember_access(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitMember_access) {
-			return visitor.visitMember_access(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16406,14 +16036,6 @@ export class Bracket_expressionContext extends ParserRuleContext {
 			listener.exitBracket_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitBracket_expression) {
-			return visitor.visitBracket_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16440,14 +16062,6 @@ export class Indexer_argumentContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitIndexer_argument) {
 			listener.exitIndexer_argument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitIndexer_argument) {
-			return visitor.visitIndexer_argument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16484,14 +16098,6 @@ export class Predefined_typeContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitPredefined_type) {
 			listener.exitPredefined_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitPredefined_type) {
-			return visitor.visitPredefined_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16533,14 +16139,6 @@ export class Expression_listContext extends ParserRuleContext {
 			listener.exitExpression_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitExpression_list) {
-			return visitor.visitExpression_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16568,14 +16166,6 @@ export class Object_or_collection_initializerContext extends ParserRuleContext {
 			listener.exitObject_or_collection_initializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitObject_or_collection_initializer) {
-			return visitor.visitObject_or_collection_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16601,14 +16191,6 @@ export class Object_initializerContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitObject_initializer) {
 			listener.exitObject_initializer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitObject_initializer) {
-			return visitor.visitObject_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16650,14 +16232,6 @@ export class Member_initializer_listContext extends ParserRuleContext {
 			listener.exitMember_initializer_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitMember_initializer_list) {
-			return visitor.visitMember_initializer_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16691,14 +16265,6 @@ export class Member_initializerContext extends ParserRuleContext {
 			listener.exitMember_initializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitMember_initializer) {
-			return visitor.visitMember_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16724,14 +16290,6 @@ export class Initializer_valueContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitInitializer_value) {
 			listener.exitInitializer_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInitializer_value) {
-			return visitor.visitInitializer_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16775,14 +16333,6 @@ export class Collection_initializerContext extends ParserRuleContext {
 			listener.exitCollection_initializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitCollection_initializer) {
-			return visitor.visitCollection_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16812,14 +16362,6 @@ export class Element_initializerContext extends ParserRuleContext {
 			listener.exitElement_initializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitElement_initializer) {
-			return visitor.visitElement_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16845,14 +16387,6 @@ export class Anonymous_object_initializerContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAnonymous_object_initializer) {
 			listener.exitAnonymous_object_initializer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAnonymous_object_initializer) {
-			return visitor.visitAnonymous_object_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16894,14 +16428,6 @@ export class Member_declarator_listContext extends ParserRuleContext {
 			listener.exitMember_declarator_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitMember_declarator_list) {
-			return visitor.visitMember_declarator_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16931,14 +16457,6 @@ export class Member_declaratorContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitMember_declarator) {
 			listener.exitMember_declarator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitMember_declarator) {
-			return visitor.visitMember_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16990,14 +16508,6 @@ export class Unbound_type_nameContext extends ParserRuleContext {
 			listener.exitUnbound_type_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitUnbound_type_name) {
-			return visitor.visitUnbound_type_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17028,14 +16538,6 @@ export class Generic_dimension_specifierContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitGeneric_dimension_specifier) {
 			listener.exitGeneric_dimension_specifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitGeneric_dimension_specifier) {
-			return visitor.visitGeneric_dimension_specifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17081,14 +16583,6 @@ export class IsTypeContext extends ParserRuleContext {
 			listener.exitIsType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitIsType) {
-			return visitor.visitIsType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17118,14 +16612,6 @@ export class Lambda_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitLambda_expression) {
 			listener.exitLambda_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLambda_expression) {
-			return visitor.visitLambda_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17158,14 +16644,6 @@ export class Anonymous_function_signatureContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAnonymous_function_signature) {
 			listener.exitAnonymous_function_signature(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAnonymous_function_signature) {
-			return visitor.visitAnonymous_function_signature(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17207,14 +16685,6 @@ export class Explicit_anonymous_function_parameter_listContext extends ParserRul
 			listener.exitExplicit_anonymous_function_parameter_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitExplicit_anonymous_function_parameter_list) {
-			return visitor.visitExplicit_anonymous_function_parameter_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17243,14 +16713,6 @@ export class Explicit_anonymous_function_parameterContext extends ParserRuleCont
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitExplicit_anonymous_function_parameter) {
 			listener.exitExplicit_anonymous_function_parameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitExplicit_anonymous_function_parameter) {
-			return visitor.visitExplicit_anonymous_function_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17292,14 +16754,6 @@ export class Implicit_anonymous_function_parameter_listContext extends ParserRul
 			listener.exitImplicit_anonymous_function_parameter_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitImplicit_anonymous_function_parameter_list) {
-			return visitor.visitImplicit_anonymous_function_parameter_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17327,14 +16781,6 @@ export class Anonymous_function_bodyContext extends ParserRuleContext {
 			listener.exitAnonymous_function_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAnonymous_function_body) {
-			return visitor.visitAnonymous_function_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17360,14 +16806,6 @@ export class Query_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitQuery_expression) {
 			listener.exitQuery_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitQuery_expression) {
-			return visitor.visitQuery_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17400,14 +16838,6 @@ export class From_clauseContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitFrom_clause) {
 			listener.exitFrom_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFrom_clause) {
-			return visitor.visitFrom_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17446,14 +16876,6 @@ export class Query_bodyContext extends ParserRuleContext {
 			listener.exitQuery_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitQuery_body) {
-			return visitor.visitQuery_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17490,14 +16912,6 @@ export class Query_body_clauseContext extends ParserRuleContext {
 			listener.exitQuery_body_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitQuery_body_clause) {
-			return visitor.visitQuery_body_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17527,14 +16941,6 @@ export class Let_clauseContext extends ParserRuleContext {
 			listener.exitLet_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLet_clause) {
-			return visitor.visitLet_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17558,14 +16964,6 @@ export class Where_clauseContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitWhere_clause) {
 			listener.exitWhere_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitWhere_clause) {
-			return visitor.visitWhere_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17615,14 +17013,6 @@ export class Combined_join_clauseContext extends ParserRuleContext {
 			listener.exitCombined_join_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitCombined_join_clause) {
-			return visitor.visitCombined_join_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17663,14 +17053,6 @@ export class Orderby_clauseContext extends ParserRuleContext {
 			listener.exitOrderby_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitOrderby_clause) {
-			return visitor.visitOrderby_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17696,14 +17078,6 @@ export class OrderingContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitOrdering) {
 			listener.exitOrdering(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitOrdering) {
-			return visitor.visitOrdering(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17739,14 +17113,6 @@ export class Select_or_group_clauseContext extends ParserRuleContext {
 			listener.exitSelect_or_group_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitSelect_or_group_clause) {
-			return visitor.visitSelect_or_group_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17773,14 +17139,6 @@ export class Query_continuationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitQuery_continuation) {
 			listener.exitQuery_continuation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitQuery_continuation) {
-			return visitor.visitQuery_continuation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17816,14 +17174,6 @@ export class LabeledStatementContext extends StatementContext {
 			listener.exitLabeledStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLabeledStatement) {
-			return visitor.visitLabeledStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DeclarationStatementContext extends StatementContext {
 	public SEMICOLON(): TerminalNode { return this.getToken(CSharpParser.SEMICOLON, 0); }
@@ -17849,14 +17199,6 @@ export class DeclarationStatementContext extends StatementContext {
 			listener.exitDeclarationStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitDeclarationStatement) {
-			return visitor.visitDeclarationStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class EmbeddedStatementContext extends StatementContext {
 	public embedded_statement(): Embedded_statementContext {
@@ -17876,14 +17218,6 @@ export class EmbeddedStatementContext extends StatementContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitEmbeddedStatement) {
 			listener.exitEmbeddedStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitEmbeddedStatement) {
-			return visitor.visitEmbeddedStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17914,14 +17248,6 @@ export class Labeled_StatementContext extends ParserRuleContext {
 			listener.exitLabeled_Statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLabeled_Statement) {
-			return visitor.visitLabeled_Statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17947,14 +17273,6 @@ export class Embedded_statementContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitEmbedded_statement) {
 			listener.exitEmbedded_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitEmbedded_statement) {
-			return visitor.visitEmbedded_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17988,14 +17306,6 @@ export class TheEmptyStatementContext extends Simple_embedded_statementContext {
 			listener.exitTheEmptyStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitTheEmptyStatement) {
-			return visitor.visitTheEmptyStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ExpressionStatementContext extends Simple_embedded_statementContext {
 	public expression(): ExpressionContext {
@@ -18016,14 +17326,6 @@ export class ExpressionStatementContext extends Simple_embedded_statementContext
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitExpressionStatement) {
 			listener.exitExpressionStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitExpressionStatement) {
-			return visitor.visitExpressionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18058,14 +17360,6 @@ export class IfStatementContext extends Simple_embedded_statementContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitIfStatement) {
 			listener.exitIfStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18103,14 +17397,6 @@ export class SwitchStatementContext extends Simple_embedded_statementContext {
 			listener.exitSwitchStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitSwitchStatement) {
-			return visitor.visitSwitchStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class WhileStatementContext extends Simple_embedded_statementContext {
 	public WHILE(): TerminalNode { return this.getToken(CSharpParser.WHILE, 0); }
@@ -18136,14 +17422,6 @@ export class WhileStatementContext extends Simple_embedded_statementContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitWhileStatement) {
 			listener.exitWhileStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitWhileStatement) {
-			return visitor.visitWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18173,14 +17451,6 @@ export class DoStatementContext extends Simple_embedded_statementContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitDoStatement) {
 			listener.exitDoStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitDoStatement) {
-			return visitor.visitDoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18225,14 +17495,6 @@ export class ForStatementContext extends Simple_embedded_statementContext {
 			listener.exitForStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitForStatement) {
-			return visitor.visitForStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ForeachStatementContext extends Simple_embedded_statementContext {
 	public FOREACH(): TerminalNode { return this.getToken(CSharpParser.FOREACH, 0); }
@@ -18267,14 +17529,6 @@ export class ForeachStatementContext extends Simple_embedded_statementContext {
 			listener.exitForeachStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitForeachStatement) {
-			return visitor.visitForeachStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BreakStatementContext extends Simple_embedded_statementContext {
 	public BREAK(): TerminalNode { return this.getToken(CSharpParser.BREAK, 0); }
@@ -18295,14 +17549,6 @@ export class BreakStatementContext extends Simple_embedded_statementContext {
 			listener.exitBreakStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitBreakStatement) {
-			return visitor.visitBreakStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ContinueStatementContext extends Simple_embedded_statementContext {
 	public CONTINUE(): TerminalNode { return this.getToken(CSharpParser.CONTINUE, 0); }
@@ -18321,14 +17567,6 @@ export class ContinueStatementContext extends Simple_embedded_statementContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitContinueStatement) {
 			listener.exitContinueStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitContinueStatement) {
-			return visitor.visitContinueStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18359,14 +17597,6 @@ export class GotoStatementContext extends Simple_embedded_statementContext {
 			listener.exitGotoStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitGotoStatement) {
-			return visitor.visitGotoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ReturnStatementContext extends Simple_embedded_statementContext {
 	public RETURN(): TerminalNode { return this.getToken(CSharpParser.RETURN, 0); }
@@ -18390,14 +17620,6 @@ export class ReturnStatementContext extends Simple_embedded_statementContext {
 			listener.exitReturnStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitReturnStatement) {
-			return visitor.visitReturnStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ThrowStatementContext extends Simple_embedded_statementContext {
 	public THROW(): TerminalNode { return this.getToken(CSharpParser.THROW, 0); }
@@ -18419,14 +17641,6 @@ export class ThrowStatementContext extends Simple_embedded_statementContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitThrowStatement) {
 			listener.exitThrowStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitThrowStatement) {
-			return visitor.visitThrowStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18457,14 +17671,6 @@ export class TryStatementContext extends Simple_embedded_statementContext {
 			listener.exitTryStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitTryStatement) {
-			return visitor.visitTryStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class CheckedStatementContext extends Simple_embedded_statementContext {
 	public CHECKED(): TerminalNode { return this.getToken(CSharpParser.CHECKED, 0); }
@@ -18487,14 +17693,6 @@ export class CheckedStatementContext extends Simple_embedded_statementContext {
 			listener.exitCheckedStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitCheckedStatement) {
-			return visitor.visitCheckedStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UncheckedStatementContext extends Simple_embedded_statementContext {
 	public UNCHECKED(): TerminalNode { return this.getToken(CSharpParser.UNCHECKED, 0); }
@@ -18515,14 +17713,6 @@ export class UncheckedStatementContext extends Simple_embedded_statementContext 
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitUncheckedStatement) {
 			listener.exitUncheckedStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitUncheckedStatement) {
-			return visitor.visitUncheckedStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18552,14 +17742,6 @@ export class LockStatementContext extends Simple_embedded_statementContext {
 			listener.exitLockStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLockStatement) {
-			return visitor.visitLockStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UsingStatementContext extends Simple_embedded_statementContext {
 	public USING(): TerminalNode { return this.getToken(CSharpParser.USING, 0); }
@@ -18587,14 +17769,6 @@ export class UsingStatementContext extends Simple_embedded_statementContext {
 			listener.exitUsingStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitUsingStatement) {
-			return visitor.visitUsingStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class YieldStatementContext extends Simple_embedded_statementContext {
 	public YIELD(): TerminalNode { return this.getToken(CSharpParser.YIELD, 0); }
@@ -18620,14 +17794,6 @@ export class YieldStatementContext extends Simple_embedded_statementContext {
 			listener.exitYieldStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitYieldStatement) {
-			return visitor.visitYieldStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UnsafeStatementContext extends Simple_embedded_statementContext {
 	public UNSAFE(): TerminalNode { return this.getToken(CSharpParser.UNSAFE, 0); }
@@ -18648,14 +17814,6 @@ export class UnsafeStatementContext extends Simple_embedded_statementContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitUnsafeStatement) {
 			listener.exitUnsafeStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitUnsafeStatement) {
-			return visitor.visitUnsafeStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18688,14 +17846,6 @@ export class FixedStatementContext extends Simple_embedded_statementContext {
 			listener.exitFixedStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFixedStatement) {
-			return visitor.visitFixedStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18720,14 +17870,6 @@ export class BlockContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitBlock) {
 			listener.exitBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18772,14 +17914,6 @@ export class Local_variable_declarationContext extends ParserRuleContext {
 			listener.exitLocal_variable_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLocal_variable_declaration) {
-			return visitor.visitLocal_variable_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18803,14 +17937,6 @@ export class Local_variable_typeContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitLocal_variable_type) {
 			listener.exitLocal_variable_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLocal_variable_type) {
-			return visitor.visitLocal_variable_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18839,14 +17965,6 @@ export class Local_variable_declaratorContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitLocal_variable_declarator) {
 			listener.exitLocal_variable_declarator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLocal_variable_declarator) {
-			return visitor.visitLocal_variable_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18879,14 +17997,6 @@ export class Local_variable_initializerContext extends ParserRuleContext {
 			listener.exitLocal_variable_initializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLocal_variable_initializer) {
-			return visitor.visitLocal_variable_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18915,14 +18025,6 @@ export class Local_constant_declarationContext extends ParserRuleContext {
 			listener.exitLocal_constant_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLocal_constant_declaration) {
-			return visitor.visitLocal_constant_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18948,14 +18050,6 @@ export class If_bodyContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitIf_body) {
 			listener.exitIf_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitIf_body) {
-			return visitor.visitIf_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18991,14 +18085,6 @@ export class Switch_sectionContext extends ParserRuleContext {
 			listener.exitSwitch_section(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitSwitch_section) {
-			return visitor.visitSwitch_section(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19024,14 +18110,6 @@ export class Switch_labelContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitSwitch_label) {
 			listener.exitSwitch_label(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitSwitch_label) {
-			return visitor.visitSwitch_label(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19062,14 +18140,6 @@ export class Statement_listContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitStatement_list) {
 			listener.exitStatement_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitStatement_list) {
-			return visitor.visitStatement_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19114,14 +18184,6 @@ export class For_initializerContext extends ParserRuleContext {
 			listener.exitFor_initializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFor_initializer) {
-			return visitor.visitFor_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19161,14 +18223,6 @@ export class For_iteratorContext extends ParserRuleContext {
 			listener.exitFor_iterator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFor_iterator) {
-			return visitor.visitFor_iterator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19200,14 +18254,6 @@ export class Catch_clausesContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitCatch_clauses) {
 			listener.exitCatch_clauses(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitCatch_clauses) {
-			return visitor.visitCatch_clauses(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19246,14 +18292,6 @@ export class Specific_catch_clauseContext extends ParserRuleContext {
 			listener.exitSpecific_catch_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitSpecific_catch_clause) {
-			return visitor.visitSpecific_catch_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19280,14 +18318,6 @@ export class General_catch_clauseContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitGeneral_catch_clause) {
 			listener.exitGeneral_catch_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitGeneral_catch_clause) {
-			return visitor.visitGeneral_catch_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19317,14 +18347,6 @@ export class Exception_filterContext extends ParserRuleContext {
 			listener.exitException_filter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitException_filter) {
-			return visitor.visitException_filter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19348,14 +18370,6 @@ export class Finally_clauseContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitFinally_clause) {
 			listener.exitFinally_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFinally_clause) {
-			return visitor.visitFinally_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19383,14 +18397,6 @@ export class Resource_acquisitionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitResource_acquisition) {
 			listener.exitResource_acquisition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitResource_acquisition) {
-			return visitor.visitResource_acquisition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19421,14 +18427,6 @@ export class Namespace_declarationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitNamespace_declaration) {
 			listener.exitNamespace_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitNamespace_declaration) {
-			return visitor.visitNamespace_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19470,14 +18468,6 @@ export class Qualified_identifierContext extends ParserRuleContext {
 			listener.exitQualified_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitQualified_identifier) {
-			return visitor.visitQualified_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19510,14 +18500,6 @@ export class Namespace_bodyContext extends ParserRuleContext {
 			listener.exitNamespace_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitNamespace_body) {
-			return visitor.visitNamespace_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19548,14 +18530,6 @@ export class Extern_alias_directivesContext extends ParserRuleContext {
 			listener.exitExtern_alias_directives(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitExtern_alias_directives) {
-			return visitor.visitExtern_alias_directives(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19581,14 +18555,6 @@ export class Extern_alias_directiveContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitExtern_alias_directive) {
 			listener.exitExtern_alias_directive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitExtern_alias_directive) {
-			return visitor.visitExtern_alias_directive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19619,14 +18585,6 @@ export class Using_directivesContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitUsing_directives) {
 			listener.exitUsing_directives(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitUsing_directives) {
-			return visitor.visitUsing_directives(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19668,14 +18626,6 @@ export class UsingAliasDirectiveContext extends Using_directiveContext {
 			listener.exitUsingAliasDirective(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitUsingAliasDirective) {
-			return visitor.visitUsingAliasDirective(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UsingNamespaceDirectiveContext extends Using_directiveContext {
 	public USING(): TerminalNode { return this.getToken(CSharpParser.USING, 0); }
@@ -19697,14 +18647,6 @@ export class UsingNamespaceDirectiveContext extends Using_directiveContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitUsingNamespaceDirective) {
 			listener.exitUsingNamespaceDirective(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitUsingNamespaceDirective) {
-			return visitor.visitUsingNamespaceDirective(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19729,14 +18671,6 @@ export class UsingStaticDirectiveContext extends Using_directiveContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitUsingStaticDirective) {
 			listener.exitUsingStaticDirective(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitUsingStaticDirective) {
-			return visitor.visitUsingStaticDirective(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19769,14 +18703,6 @@ export class Namespace_member_declarationsContext extends ParserRuleContext {
 			listener.exitNamespace_member_declarations(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitNamespace_member_declarations) {
-			return visitor.visitNamespace_member_declarations(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19802,14 +18728,6 @@ export class Namespace_member_declarationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitNamespace_member_declaration) {
 			listener.exitNamespace_member_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitNamespace_member_declaration) {
-			return visitor.visitNamespace_member_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19854,14 +18772,6 @@ export class Type_declarationContext extends ParserRuleContext {
 			listener.exitType_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitType_declaration) {
-			return visitor.visitType_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19894,14 +18804,6 @@ export class Qualified_alias_memberContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitQualified_alias_member) {
 			listener.exitQualified_alias_member(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitQualified_alias_member) {
-			return visitor.visitQualified_alias_member(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19945,14 +18847,6 @@ export class Type_parameter_listContext extends ParserRuleContext {
 			listener.exitType_parameter_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitType_parameter_list) {
-			return visitor.visitType_parameter_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19978,14 +18872,6 @@ export class Type_parameterContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitType_parameter) {
 			listener.exitType_parameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitType_parameter) {
-			return visitor.visitType_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20031,14 +18917,6 @@ export class Class_baseContext extends ParserRuleContext {
 			listener.exitClass_base(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitClass_base) {
-			return visitor.visitClass_base(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20078,14 +18956,6 @@ export class Interface_type_listContext extends ParserRuleContext {
 			listener.exitInterface_type_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInterface_type_list) {
-			return visitor.visitInterface_type_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20116,14 +18986,6 @@ export class Type_parameter_constraints_clausesContext extends ParserRuleContext
 			listener.exitType_parameter_constraints_clauses(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitType_parameter_constraints_clauses) {
-			return visitor.visitType_parameter_constraints_clauses(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20151,14 +19013,6 @@ export class Type_parameter_constraints_clauseContext extends ParserRuleContext 
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitType_parameter_constraints_clause) {
 			listener.exitType_parameter_constraints_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitType_parameter_constraints_clause) {
-			return visitor.visitType_parameter_constraints_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20200,14 +19054,6 @@ export class Type_parameter_constraintsContext extends ParserRuleContext {
 			listener.exitType_parameter_constraints(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitType_parameter_constraints) {
-			return visitor.visitType_parameter_constraints(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20232,14 +19078,6 @@ export class Primary_constraintContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitPrimary_constraint) {
 			listener.exitPrimary_constraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitPrimary_constraint) {
-			return visitor.visitPrimary_constraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20281,14 +19119,6 @@ export class Secondary_constraintsContext extends ParserRuleContext {
 			listener.exitSecondary_constraints(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitSecondary_constraints) {
-			return visitor.visitSecondary_constraints(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20311,14 +19141,6 @@ export class Constructor_constraintContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitConstructor_constraint) {
 			listener.exitConstructor_constraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitConstructor_constraint) {
-			return visitor.visitConstructor_constraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20345,14 +19167,6 @@ export class Class_bodyContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitClass_body) {
 			listener.exitClass_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitClass_body) {
-			return visitor.visitClass_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20383,14 +19197,6 @@ export class Class_member_declarationsContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitClass_member_declarations) {
 			listener.exitClass_member_declarations(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitClass_member_declarations) {
-			return visitor.visitClass_member_declarations(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20426,14 +19232,6 @@ export class Class_member_declarationContext extends ParserRuleContext {
 			listener.exitClass_member_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitClass_member_declaration) {
-			return visitor.visitClass_member_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20462,14 +19260,6 @@ export class All_member_modifiersContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAll_member_modifiers) {
 			listener.exitAll_member_modifiers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAll_member_modifiers) {
-			return visitor.visitAll_member_modifiers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20507,14 +19297,6 @@ export class All_member_modifierContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAll_member_modifier) {
 			listener.exitAll_member_modifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAll_member_modifier) {
-			return visitor.visitAll_member_modifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20582,14 +19364,6 @@ export class Common_member_declarationContext extends ParserRuleContext {
 			listener.exitCommon_member_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitCommon_member_declaration) {
-			return visitor.visitCommon_member_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20633,14 +19407,6 @@ export class Typed_member_declarationContext extends ParserRuleContext {
 			listener.exitTyped_member_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitTyped_member_declaration) {
-			return visitor.visitTyped_member_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20680,14 +19446,6 @@ export class Constant_declaratorsContext extends ParserRuleContext {
 			listener.exitConstant_declarators(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitConstant_declarators) {
-			return visitor.visitConstant_declarators(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20714,14 +19472,6 @@ export class Constant_declaratorContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitConstant_declarator) {
 			listener.exitConstant_declarator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitConstant_declarator) {
-			return visitor.visitConstant_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20763,14 +19513,6 @@ export class Variable_declaratorsContext extends ParserRuleContext {
 			listener.exitVariable_declarators(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitVariable_declarators) {
-			return visitor.visitVariable_declarators(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20797,14 +19539,6 @@ export class Variable_declaratorContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitVariable_declarator) {
 			listener.exitVariable_declarator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitVariable_declarator) {
-			return visitor.visitVariable_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20834,14 +19568,6 @@ export class Variable_initializerContext extends ParserRuleContext {
 			listener.exitVariable_initializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitVariable_initializer) {
-			return visitor.visitVariable_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20865,14 +19591,6 @@ export class Return_typeContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitReturn_type) {
 			listener.exitReturn_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitReturn_type) {
-			return visitor.visitReturn_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20899,14 +19617,6 @@ export class Member_nameContext extends ParserRuleContext {
 			listener.exitMember_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitMember_name) {
-			return visitor.visitMember_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20930,14 +19640,6 @@ export class Method_bodyContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitMethod_body) {
 			listener.exitMethod_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitMethod_body) {
-			return visitor.visitMethod_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20966,14 +19668,6 @@ export class Formal_parameter_listContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitFormal_parameter_list) {
 			listener.exitFormal_parameter_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFormal_parameter_list) {
-			return visitor.visitFormal_parameter_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21015,14 +19709,6 @@ export class Fixed_parametersContext extends ParserRuleContext {
 			listener.exitFixed_parameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFixed_parameters) {
-			return visitor.visitFixed_parameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21054,14 +19740,6 @@ export class Fixed_parameterContext extends ParserRuleContext {
 			listener.exitFixed_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFixed_parameter) {
-			return visitor.visitFixed_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21084,14 +19762,6 @@ export class Parameter_modifierContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitParameter_modifier) {
 			listener.exitParameter_modifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitParameter_modifier) {
-			return visitor.visitParameter_modifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21123,14 +19793,6 @@ export class Parameter_arrayContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitParameter_array) {
 			listener.exitParameter_array(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitParameter_array) {
-			return visitor.visitParameter_array(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21173,14 +19835,6 @@ export class Accessor_declarationsContext extends ParserRuleContext {
 			listener.exitAccessor_declarations(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAccessor_declarations) {
-			return visitor.visitAccessor_declarations(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21210,14 +19864,6 @@ export class Get_accessor_declarationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitGet_accessor_declaration) {
 			listener.exitGet_accessor_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitGet_accessor_declaration) {
-			return visitor.visitGet_accessor_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21251,14 +19897,6 @@ export class Set_accessor_declarationContext extends ParserRuleContext {
 			listener.exitSet_accessor_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitSet_accessor_declaration) {
-			return visitor.visitSet_accessor_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21281,14 +19919,6 @@ export class Accessor_modifierContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAccessor_modifier) {
 			listener.exitAccessor_modifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAccessor_modifier) {
-			return visitor.visitAccessor_modifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21314,14 +19944,6 @@ export class Accessor_bodyContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAccessor_body) {
 			listener.exitAccessor_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAccessor_body) {
-			return visitor.visitAccessor_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21359,14 +19981,6 @@ export class Event_accessor_declarationsContext extends ParserRuleContext {
 			listener.exitEvent_accessor_declarations(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitEvent_accessor_declarations) {
-			return visitor.visitEvent_accessor_declarations(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21395,14 +20009,6 @@ export class Add_accessor_declarationContext extends ParserRuleContext {
 			listener.exitAdd_accessor_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAdd_accessor_declaration) {
-			return visitor.visitAdd_accessor_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21429,14 +20035,6 @@ export class Remove_accessor_declarationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitRemove_accessor_declaration) {
 			listener.exitRemove_accessor_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitRemove_accessor_declaration) {
-			return visitor.visitRemove_accessor_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21484,14 +20082,6 @@ export class Overloadable_operatorContext extends ParserRuleContext {
 			listener.exitOverloadable_operator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitOverloadable_operator) {
-			return visitor.visitOverloadable_operator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21524,14 +20114,6 @@ export class Conversion_operator_declaratorContext extends ParserRuleContext {
 			listener.exitConversion_operator_declarator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitConversion_operator_declarator) {
-			return visitor.visitConversion_operator_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21561,14 +20143,6 @@ export class Constructor_initializerContext extends ParserRuleContext {
 			listener.exitConstructor_initializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitConstructor_initializer) {
-			return visitor.visitConstructor_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21594,14 +20168,6 @@ export class BodyContext extends ParserRuleContext {
 			listener.exitBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitBody) {
-			return visitor.visitBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21625,14 +20191,6 @@ export class Struct_interfacesContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitStruct_interfaces) {
 			listener.exitStruct_interfaces(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitStruct_interfaces) {
-			return visitor.visitStruct_interfaces(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21665,14 +20223,6 @@ export class Struct_bodyContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitStruct_body) {
 			listener.exitStruct_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitStruct_body) {
-			return visitor.visitStruct_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21717,14 +20267,6 @@ export class Struct_member_declarationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitStruct_member_declaration) {
 			listener.exitStruct_member_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitStruct_member_declaration) {
-			return visitor.visitStruct_member_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21778,14 +20320,6 @@ export class Array_typeContext extends ParserRuleContext {
 			listener.exitArray_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitArray_type) {
-			return visitor.visitArray_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21816,14 +20350,6 @@ export class Rank_specifierContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitRank_specifier) {
 			listener.exitRank_specifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitRank_specifier) {
-			return visitor.visitRank_specifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21867,14 +20393,6 @@ export class Array_initializerContext extends ParserRuleContext {
 			listener.exitArray_initializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitArray_initializer) {
-			return visitor.visitArray_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21916,14 +20434,6 @@ export class Variant_type_parameter_listContext extends ParserRuleContext {
 			listener.exitVariant_type_parameter_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitVariant_type_parameter_list) {
-			return visitor.visitVariant_type_parameter_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21954,14 +20464,6 @@ export class Variant_type_parameterContext extends ParserRuleContext {
 			listener.exitVariant_type_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitVariant_type_parameter) {
-			return visitor.visitVariant_type_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21983,14 +20485,6 @@ export class Variance_annotationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitVariance_annotation) {
 			listener.exitVariance_annotation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitVariance_annotation) {
-			return visitor.visitVariance_annotation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22016,14 +20510,6 @@ export class Interface_baseContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitInterface_base) {
 			listener.exitInterface_base(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInterface_base) {
-			return visitor.visitInterface_base(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22056,14 +20542,6 @@ export class Interface_bodyContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitInterface_body) {
 			listener.exitInterface_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInterface_body) {
-			return visitor.visitInterface_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22120,14 +20598,6 @@ export class Interface_member_declarationContext extends ParserRuleContext {
 			listener.exitInterface_member_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInterface_member_declaration) {
-			return visitor.visitInterface_member_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22169,14 +20639,6 @@ export class Interface_accessorsContext extends ParserRuleContext {
 			listener.exitInterface_accessors(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInterface_accessors) {
-			return visitor.visitInterface_accessors(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22200,14 +20662,6 @@ export class Enum_baseContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitEnum_base) {
 			listener.exitEnum_base(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitEnum_base) {
-			return visitor.visitEnum_base(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22251,14 +20705,6 @@ export class Enum_bodyContext extends ParserRuleContext {
 			listener.exitEnum_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitEnum_body) {
-			return visitor.visitEnum_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22288,14 +20734,6 @@ export class Enum_member_declarationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitEnum_member_declaration) {
 			listener.exitEnum_member_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitEnum_member_declaration) {
-			return visitor.visitEnum_member_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22329,14 +20767,6 @@ export class Global_attribute_sectionContext extends ParserRuleContext {
 			listener.exitGlobal_attribute_section(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitGlobal_attribute_section) {
-			return visitor.visitGlobal_attribute_section(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22362,14 +20792,6 @@ export class Global_attribute_targetContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitGlobal_attribute_target) {
 			listener.exitGlobal_attribute_target(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitGlobal_attribute_target) {
-			return visitor.visitGlobal_attribute_target(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22400,14 +20822,6 @@ export class AttributesContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAttributes) {
 			listener.exitAttributes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAttributes) {
-			return visitor.visitAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22441,14 +20855,6 @@ export class Attribute_sectionContext extends ParserRuleContext {
 			listener.exitAttribute_section(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAttribute_section) {
-			return visitor.visitAttribute_section(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22474,14 +20880,6 @@ export class Attribute_targetContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAttribute_target) {
 			listener.exitAttribute_target(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAttribute_target) {
-			return visitor.visitAttribute_target(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22521,14 +20919,6 @@ export class Attribute_listContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAttribute_list) {
 			listener.exitAttribute_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAttribute_list) {
-			return visitor.visitAttribute_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22575,14 +20965,6 @@ export class AttributeContext extends ParserRuleContext {
 			listener.exitAttribute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAttribute) {
-			return visitor.visitAttribute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22609,14 +20991,6 @@ export class Attribute_argumentContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitAttribute_argument) {
 			listener.exitAttribute_argument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitAttribute_argument) {
-			return visitor.visitAttribute_argument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22666,14 +21040,6 @@ export class Pointer_typeContext extends ParserRuleContext {
 			listener.exitPointer_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitPointer_type) {
-			return visitor.visitPointer_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22713,14 +21079,6 @@ export class Fixed_pointer_declaratorsContext extends ParserRuleContext {
 			listener.exitFixed_pointer_declarators(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFixed_pointer_declarators) {
-			return visitor.visitFixed_pointer_declarators(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22747,14 +21105,6 @@ export class Fixed_pointer_declaratorContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitFixed_pointer_declarator) {
 			listener.exitFixed_pointer_declarator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFixed_pointer_declarator) {
-			return visitor.visitFixed_pointer_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22785,14 +21135,6 @@ export class Fixed_pointer_initializerContext extends ParserRuleContext {
 			listener.exitFixed_pointer_initializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFixed_pointer_initializer) {
-			return visitor.visitFixed_pointer_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22820,14 +21162,6 @@ export class Fixed_size_buffer_declaratorContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitFixed_size_buffer_declarator) {
 			listener.exitFixed_size_buffer_declarator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitFixed_size_buffer_declarator) {
-			return visitor.visitFixed_size_buffer_declarator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22860,14 +21194,6 @@ export class Local_variable_initializer_unsafeContext extends ParserRuleContext 
 			listener.exitLocal_variable_initializer_unsafe(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLocal_variable_initializer_unsafe) {
-			return visitor.visitLocal_variable_initializer_unsafe(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22891,14 +21217,6 @@ export class Right_arrowContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitRight_arrow) {
 			listener.exitRight_arrow(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitRight_arrow) {
-			return visitor.visitRight_arrow(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22933,14 +21251,6 @@ export class Right_shiftContext extends ParserRuleContext {
 			listener.exitRight_shift(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitRight_shift) {
-			return visitor.visitRight_shift(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22964,14 +21274,6 @@ export class Right_shift_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitRight_shift_assignment) {
 			listener.exitRight_shift_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitRight_shift_assignment) {
-			return visitor.visitRight_shift_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23006,14 +21308,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23035,14 +21329,6 @@ export class Boolean_literalContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitBoolean_literal) {
 			listener.exitBoolean_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitBoolean_literal) {
-			return visitor.visitBoolean_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23072,14 +21358,6 @@ export class String_literalContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitString_literal) {
 			listener.exitString_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitString_literal) {
-			return visitor.visitString_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23114,14 +21392,6 @@ export class Interpolated_regular_stringContext extends ParserRuleContext {
 			listener.exitInterpolated_regular_string(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInterpolated_regular_string) {
-			return visitor.visitInterpolated_regular_string(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23154,14 +21424,6 @@ export class Interpolated_verbatium_stringContext extends ParserRuleContext {
 			listener.exitInterpolated_verbatium_string(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInterpolated_verbatium_string) {
-			return visitor.visitInterpolated_verbatium_string(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23189,14 +21451,6 @@ export class Interpolated_regular_string_partContext extends ParserRuleContext {
 			listener.exitInterpolated_regular_string_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInterpolated_regular_string_part) {
-			return visitor.visitInterpolated_regular_string_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23222,14 +21476,6 @@ export class Interpolated_verbatium_string_partContext extends ParserRuleContext
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitInterpolated_verbatium_string_part) {
 			listener.exitInterpolated_verbatium_string_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInterpolated_verbatium_string_part) {
-			return visitor.visitInterpolated_verbatium_string_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23279,14 +21525,6 @@ export class Interpolated_string_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitInterpolated_string_expression) {
 			listener.exitInterpolated_string_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInterpolated_string_expression) {
-			return visitor.visitInterpolated_string_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23387,14 +21625,6 @@ export class KeywordContext extends ParserRuleContext {
 			listener.exitKeyword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitKeyword) {
-			return visitor.visitKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23431,14 +21661,6 @@ export class Class_definitionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitClass_definition) {
 			listener.exitClass_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitClass_definition) {
-			return visitor.visitClass_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23479,14 +21701,6 @@ export class Struct_definitionContext extends ParserRuleContext {
 			listener.exitStruct_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitStruct_definition) {
-			return visitor.visitStruct_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23525,14 +21739,6 @@ export class Interface_definitionContext extends ParserRuleContext {
 			listener.exitInterface_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitInterface_definition) {
-			return visitor.visitInterface_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23563,14 +21769,6 @@ export class Enum_definitionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitEnum_definition) {
 			listener.exitEnum_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitEnum_definition) {
-			return visitor.visitEnum_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23613,14 +21811,6 @@ export class Delegate_definitionContext extends ParserRuleContext {
 			listener.exitDelegate_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitDelegate_definition) {
-			return visitor.visitDelegate_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23658,14 +21848,6 @@ export class Event_declarationContext extends ParserRuleContext {
 			listener.exitEvent_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitEvent_declaration) {
-			return visitor.visitEvent_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23689,14 +21871,6 @@ export class Field_declarationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitField_declaration) {
 			listener.exitField_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitField_declaration) {
-			return visitor.visitField_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23739,14 +21913,6 @@ export class Property_declarationContext extends ParserRuleContext {
 			listener.exitProperty_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitProperty_declaration) {
-			return visitor.visitProperty_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23774,14 +21940,6 @@ export class Constant_declarationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitConstant_declaration) {
 			listener.exitConstant_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitConstant_declaration) {
-			return visitor.visitConstant_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23823,14 +21981,6 @@ export class Indexer_declarationContext extends ParserRuleContext {
 			listener.exitIndexer_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitIndexer_declaration) {
-			return visitor.visitIndexer_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23859,14 +22009,6 @@ export class Destructor_definitionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitDestructor_definition) {
 			listener.exitDestructor_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitDestructor_definition) {
-			return visitor.visitDestructor_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23902,14 +22044,6 @@ export class Constructor_declarationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitConstructor_declaration) {
 			listener.exitConstructor_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitConstructor_declaration) {
-			return visitor.visitConstructor_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23955,14 +22089,6 @@ export class Method_declarationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitMethod_declaration) {
 			listener.exitMethod_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitMethod_declaration) {
-			return visitor.visitMethod_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24014,14 +22140,6 @@ export class Method_member_nameContext extends ParserRuleContext {
 			listener.exitMethod_member_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitMethod_member_name) {
-			return visitor.visitMethod_member_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24069,14 +22187,6 @@ export class Operator_declarationContext extends ParserRuleContext {
 			listener.exitOperator_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitOperator_declaration) {
-			return visitor.visitOperator_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24108,14 +22218,6 @@ export class Arg_declarationContext extends ParserRuleContext {
 			listener.exitArg_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitArg_declaration) {
-			return visitor.visitArg_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24140,14 +22242,6 @@ export class Method_invocationContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitMethod_invocation) {
 			listener.exitMethod_invocation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitMethod_invocation) {
-			return visitor.visitMethod_invocation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24177,14 +22271,6 @@ export class Object_creation_expressionContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitObject_creation_expression) {
 			listener.exitObject_creation_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitObject_creation_expression) {
-			return visitor.visitObject_creation_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24234,14 +22320,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: CSharpParserListener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CSharpParserVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

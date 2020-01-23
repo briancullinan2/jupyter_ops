@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { propertiesListener } from "./propertiesListener";
-import { propertiesVisitor } from "./propertiesVisitor";
-
 
 export class propertiesParser extends Parser {
 	public static readonly T__0 = 1;
@@ -330,14 +328,6 @@ export class PropertiesFileContext extends ParserRuleContext {
 			listener.exitPropertiesFile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: propertiesVisitor<Result>): Result {
-		if (visitor.visitPropertiesFile) {
-			return visitor.visitPropertiesFile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -363,14 +353,6 @@ export class RowContext extends ParserRuleContext {
 	public exitRule(listener: propertiesListener): void {
 		if (listener.exitRow) {
 			listener.exitRow(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: propertiesVisitor<Result>): Result {
-		if (visitor.visitRow) {
-			return visitor.visitRow(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -400,14 +382,6 @@ export class DeclContext extends ParserRuleContext {
 			listener.exitDecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: propertiesVisitor<Result>): Result {
-		if (visitor.visitDecl) {
-			return visitor.visitDecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -428,14 +402,6 @@ export class KeyContext extends ParserRuleContext {
 	public exitRule(listener: propertiesListener): void {
 		if (listener.exitKey) {
 			listener.exitKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: propertiesVisitor<Result>): Result {
-		if (visitor.visitKey) {
-			return visitor.visitKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -461,14 +427,6 @@ export class ValueContext extends ParserRuleContext {
 			listener.exitValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: propertiesVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -489,14 +447,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: propertiesListener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: propertiesVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

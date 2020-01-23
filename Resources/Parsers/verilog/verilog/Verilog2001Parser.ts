@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { Verilog2001Listener } from "./Verilog2001Listener";
-import { Verilog2001Visitor } from "./Verilog2001Visitor";
-
 
 export class Verilog2001Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -19528,14 +19526,6 @@ export class Config_declarationContext extends ParserRuleContext {
 			listener.exitConfig_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConfig_declaration) {
-			return visitor.visitConfig_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19575,14 +19565,6 @@ export class Design_statementContext extends ParserRuleContext {
 			listener.exitDesign_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDesign_statement) {
-			return visitor.visitDesign_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19619,14 +19601,6 @@ export class Config_rule_statementContext extends ParserRuleContext {
 			listener.exitConfig_rule_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConfig_rule_statement) {
-			return visitor.visitConfig_rule_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19646,14 +19620,6 @@ export class Default_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitDefault_clause) {
 			listener.exitDefault_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDefault_clause) {
-			return visitor.visitDefault_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19678,14 +19644,6 @@ export class Inst_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitInst_clause) {
 			listener.exitInst_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitInst_clause) {
-			return visitor.visitInst_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19721,14 +19679,6 @@ export class Inst_nameContext extends ParserRuleContext {
 			listener.exitInst_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitInst_name) {
-			return visitor.visitInst_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19759,14 +19709,6 @@ export class Liblist_clauseContext extends ParserRuleContext {
 			listener.exitLiblist_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitLiblist_clause) {
-			return visitor.visitLiblist_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19794,14 +19736,6 @@ export class Cell_clauseContext extends ParserRuleContext {
 			listener.exitCell_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitCell_clause) {
-			return visitor.visitCell_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19827,14 +19761,6 @@ export class Use_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitUse_clause) {
 			listener.exitUse_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitUse_clause) {
-			return visitor.visitUse_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19871,14 +19797,6 @@ export class Source_textContext extends ParserRuleContext {
 			listener.exitSource_text(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSource_text) {
-			return visitor.visitSource_text(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19901,14 +19819,6 @@ export class DescriptionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitDescription) {
 			listener.exitDescription(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDescription) {
-			return visitor.visitDescription(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19974,14 +19884,6 @@ export class Module_declarationContext extends ParserRuleContext {
 			listener.exitModule_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_declaration) {
-			return visitor.visitModule_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20001,14 +19903,6 @@ export class Module_keywordContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitModule_keyword) {
 			listener.exitModule_keyword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_keyword) {
-			return visitor.visitModule_keyword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20041,14 +19935,6 @@ export class Module_parameter_port_listContext extends ParserRuleContext {
 			listener.exitModule_parameter_port_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_parameter_port_list) {
-			return visitor.visitModule_parameter_port_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20077,14 +19963,6 @@ export class List_of_portsContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitList_of_ports) {
 			listener.exitList_of_ports(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_ports) {
-			return visitor.visitList_of_ports(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20117,14 +19995,6 @@ export class List_of_port_declarationsContext extends ParserRuleContext {
 			listener.exitList_of_port_declarations(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_port_declarations) {
-			return visitor.visitList_of_port_declarations(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20150,14 +20020,6 @@ export class PortContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitPort) {
 			listener.exitPort(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPort) {
-			return visitor.visitPort(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20190,14 +20052,6 @@ export class Port_expressionContext extends ParserRuleContext {
 			listener.exitPort_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPort_expression) {
-			return visitor.visitPort_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20226,14 +20080,6 @@ export class Port_referenceContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitPort_reference) {
 			listener.exitPort_reference(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPort_reference) {
-			return visitor.visitPort_reference(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20273,14 +20119,6 @@ export class Port_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitPort_declaration) {
 			listener.exitPort_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPort_declaration) {
-			return visitor.visitPort_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20334,14 +20172,6 @@ export class Module_itemContext extends ParserRuleContext {
 			listener.exitModule_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_item) {
-			return visitor.visitModule_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20393,14 +20223,6 @@ export class Module_or_generate_itemContext extends ParserRuleContext {
 			listener.exitModule_or_generate_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_or_generate_item) {
-			return visitor.visitModule_or_generate_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20447,14 +20269,6 @@ export class Non_port_module_itemContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitNon_port_module_item) {
 			listener.exitNon_port_module_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNon_port_module_item) {
-			return visitor.visitNon_port_module_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20508,14 +20322,6 @@ export class Module_or_generate_item_declarationContext extends ParserRuleContex
 			listener.exitModule_or_generate_item_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_or_generate_item_declaration) {
-			return visitor.visitModule_or_generate_item_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20538,14 +20344,6 @@ export class Parameter_overrideContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitParameter_override) {
 			listener.exitParameter_override(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitParameter_override) {
-			return visitor.visitParameter_override(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20575,14 +20373,6 @@ export class Local_parameter_declarationContext extends ParserRuleContext {
 			listener.exitLocal_parameter_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitLocal_parameter_declaration) {
-			return visitor.visitLocal_parameter_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20605,14 +20395,6 @@ export class Parameter_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitParameter_declaration) {
 			listener.exitParameter_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitParameter_declaration) {
-			return visitor.visitParameter_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20642,14 +20424,6 @@ export class Parameter_declaration_Context extends ParserRuleContext {
 			listener.exitParameter_declaration_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitParameter_declaration_) {
-			return visitor.visitParameter_declaration_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20675,14 +20449,6 @@ export class Specparam_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitSpecparam_declaration) {
 			listener.exitSpecparam_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSpecparam_declaration) {
-			return visitor.visitSpecparam_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20715,14 +20481,6 @@ export class Inout_declarationContext extends ParserRuleContext {
 			listener.exitInout_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitInout_declaration) {
-			return visitor.visitInout_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20751,14 +20509,6 @@ export class Input_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitInput_declaration) {
 			listener.exitInput_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitInput_declaration) {
-			return visitor.visitInput_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20797,14 +20547,6 @@ export class Output_declarationContext extends ParserRuleContext {
 			listener.exitOutput_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitOutput_declaration) {
-			return visitor.visitOutput_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20827,14 +20569,6 @@ export class Event_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitEvent_declaration) {
 			listener.exitEvent_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEvent_declaration) {
-			return visitor.visitEvent_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20861,14 +20595,6 @@ export class Genvar_declarationContext extends ParserRuleContext {
 			listener.exitGenvar_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenvar_declaration) {
-			return visitor.visitGenvar_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20891,14 +20617,6 @@ export class Integer_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitInteger_declaration) {
 			listener.exitInteger_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitInteger_declaration) {
-			return visitor.visitInteger_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20925,14 +20643,6 @@ export class Time_declarationContext extends ParserRuleContext {
 			listener.exitTime_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTime_declaration) {
-			return visitor.visitTime_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20957,14 +20667,6 @@ export class Real_declarationContext extends ParserRuleContext {
 			listener.exitReal_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitReal_declaration) {
-			return visitor.visitReal_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20987,14 +20689,6 @@ export class Realtime_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitRealtime_declaration) {
 			listener.exitRealtime_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitRealtime_declaration) {
-			return visitor.visitRealtime_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21022,14 +20716,6 @@ export class Reg_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitReg_declaration) {
 			listener.exitReg_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitReg_declaration) {
-			return visitor.visitReg_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21074,14 +20760,6 @@ export class Net_declarationContext extends ParserRuleContext {
 			listener.exitNet_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNet_declaration) {
-			return visitor.visitNet_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21103,14 +20781,6 @@ export class Net_typeContext extends ParserRuleContext {
 			listener.exitNet_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNet_type) {
-			return visitor.visitNet_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21130,14 +20800,6 @@ export class Output_variable_typeContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitOutput_variable_type) {
 			listener.exitOutput_variable_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitOutput_variable_type) {
-			return visitor.visitOutput_variable_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21176,14 +20838,6 @@ export class Real_typeContext extends ParserRuleContext {
 			listener.exitReal_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitReal_type) {
-			return visitor.visitReal_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21220,14 +20874,6 @@ export class Variable_typeContext extends ParserRuleContext {
 			listener.exitVariable_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitVariable_type) {
-			return visitor.visitVariable_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21255,14 +20901,6 @@ export class Drive_strengthContext extends ParserRuleContext {
 			listener.exitDrive_strength(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDrive_strength) {
-			return visitor.visitDrive_strength(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21282,14 +20920,6 @@ export class Strength0Context extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitStrength0) {
 			listener.exitStrength0(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitStrength0) {
-			return visitor.visitStrength0(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21313,14 +20943,6 @@ export class Strength1Context extends ParserRuleContext {
 			listener.exitStrength1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitStrength1) {
-			return visitor.visitStrength1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21340,14 +20962,6 @@ export class Charge_strengthContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitCharge_strength) {
 			listener.exitCharge_strength(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitCharge_strength) {
-			return visitor.visitCharge_strength(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21380,14 +20994,6 @@ export class Delay3Context extends ParserRuleContext {
 			listener.exitDelay3(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDelay3) {
-			return visitor.visitDelay3(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21416,14 +21022,6 @@ export class Delay2Context extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitDelay2) {
 			listener.exitDelay2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDelay2) {
-			return visitor.visitDelay2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21455,14 +21053,6 @@ export class Delay_valueContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitDelay_value) {
 			listener.exitDelay_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDelay_value) {
-			return visitor.visitDelay_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21504,14 +21094,6 @@ export class List_of_event_identifiersContext extends ParserRuleContext {
 			listener.exitList_of_event_identifiers(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_event_identifiers) {
-			return visitor.visitList_of_event_identifiers(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21551,14 +21133,6 @@ export class List_of_net_identifiersContext extends ParserRuleContext {
 			listener.exitList_of_net_identifiers(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_net_identifiers) {
-			return visitor.visitList_of_net_identifiers(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21587,14 +21161,6 @@ export class List_of_genvar_identifiersContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitList_of_genvar_identifiers) {
 			listener.exitList_of_genvar_identifiers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_genvar_identifiers) {
-			return visitor.visitList_of_genvar_identifiers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21627,14 +21193,6 @@ export class List_of_port_identifiersContext extends ParserRuleContext {
 			listener.exitList_of_port_identifiers(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_port_identifiers) {
-			return visitor.visitList_of_port_identifiers(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21663,14 +21221,6 @@ export class List_of_net_decl_assignmentsContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitList_of_net_decl_assignments) {
 			listener.exitList_of_net_decl_assignments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_net_decl_assignments) {
-			return visitor.visitList_of_net_decl_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21703,14 +21253,6 @@ export class List_of_param_assignmentsContext extends ParserRuleContext {
 			listener.exitList_of_param_assignments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_param_assignments) {
-			return visitor.visitList_of_param_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21739,14 +21281,6 @@ export class List_of_specparam_assignmentsContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitList_of_specparam_assignments) {
 			listener.exitList_of_specparam_assignments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_specparam_assignments) {
-			return visitor.visitList_of_specparam_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21779,14 +21313,6 @@ export class List_of_real_identifiersContext extends ParserRuleContext {
 			listener.exitList_of_real_identifiers(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_real_identifiers) {
-			return visitor.visitList_of_real_identifiers(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21815,14 +21341,6 @@ export class List_of_variable_identifiersContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitList_of_variable_identifiers) {
 			listener.exitList_of_variable_identifiers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_variable_identifiers) {
-			return visitor.visitList_of_variable_identifiers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21864,14 +21382,6 @@ export class List_of_variable_port_identifiersContext extends ParserRuleContext 
 			listener.exitList_of_variable_port_identifiers(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_variable_port_identifiers) {
-			return visitor.visitList_of_variable_port_identifiers(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21899,14 +21409,6 @@ export class Net_decl_assignmentContext extends ParserRuleContext {
 			listener.exitNet_decl_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNet_decl_assignment) {
-			return visitor.visitNet_decl_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21932,14 +21434,6 @@ export class Param_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitParam_assignment) {
 			listener.exitParam_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitParam_assignment) {
-			return visitor.visitParam_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21970,14 +21464,6 @@ export class Specparam_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitSpecparam_assignment) {
 			listener.exitSpecparam_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSpecparam_assignment) {
-			return visitor.visitSpecparam_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22013,14 +21499,6 @@ export class Pulse_control_specparamContext extends ParserRuleContext {
 			listener.exitPulse_control_specparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPulse_control_specparam) {
-			return visitor.visitPulse_control_specparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22043,14 +21521,6 @@ export class Error_limit_valueContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitError_limit_value) {
 			listener.exitError_limit_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitError_limit_value) {
-			return visitor.visitError_limit_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22077,14 +21547,6 @@ export class Reject_limit_valueContext extends ParserRuleContext {
 			listener.exitReject_limit_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitReject_limit_value) {
-			return visitor.visitReject_limit_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22107,14 +21569,6 @@ export class Limit_valueContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitLimit_value) {
 			listener.exitLimit_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitLimit_value) {
-			return visitor.visitLimit_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22147,14 +21601,6 @@ export class DimensionContext extends ParserRuleContext {
 			listener.exitDimension(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDimension) {
-			return visitor.visitDimension(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22180,14 +21626,6 @@ export class Range_Context extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitRange_) {
 			listener.exitRange_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitRange_) {
-			return visitor.visitRange_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22241,14 +21679,6 @@ export class Function_declarationContext extends ParserRuleContext {
 			listener.exitFunction_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_declaration) {
-			return visitor.visitFunction_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22274,14 +21704,6 @@ export class Function_item_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitFunction_item_declaration) {
 			listener.exitFunction_item_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_item_declaration) {
-			return visitor.visitFunction_item_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22312,14 +21734,6 @@ export class Function_port_listContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitFunction_port_list) {
 			listener.exitFunction_port_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_port_list) {
-			return visitor.visitFunction_port_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22355,14 +21769,6 @@ export class Function_portContext extends ParserRuleContext {
 			listener.exitFunction_port(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_port) {
-			return visitor.visitFunction_port(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22385,14 +21791,6 @@ export class Range_or_typeContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitRange_or_type) {
 			listener.exitRange_or_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitRange_or_type) {
-			return visitor.visitRange_or_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22443,14 +21841,6 @@ export class Task_declarationContext extends ParserRuleContext {
 			listener.exitTask_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTask_declaration) {
-			return visitor.visitTask_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22487,14 +21877,6 @@ export class Task_item_declarationContext extends ParserRuleContext {
 			listener.exitTask_item_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTask_item_declaration) {
-			return visitor.visitTask_item_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22523,14 +21905,6 @@ export class Task_port_listContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitTask_port_list) {
 			listener.exitTask_port_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTask_port_list) {
-			return visitor.visitTask_port_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22566,14 +21940,6 @@ export class Task_port_itemContext extends ParserRuleContext {
 			listener.exitTask_port_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTask_port_item) {
-			return visitor.visitTask_port_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22604,14 +21970,6 @@ export class Tf_decl_headerContext extends ParserRuleContext {
 			listener.exitTf_decl_header(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTf_decl_header) {
-			return visitor.visitTf_decl_header(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22639,14 +21997,6 @@ export class Tf_declarationContext extends ParserRuleContext {
 			listener.exitTf_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTf_declaration) {
-			return visitor.visitTf_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22666,14 +22016,6 @@ export class Task_port_typeContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitTask_port_type) {
 			listener.exitTask_port_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTask_port_type) {
-			return visitor.visitTask_port_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22730,14 +22072,6 @@ export class Block_item_declarationContext extends ParserRuleContext {
 			listener.exitBlock_item_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitBlock_item_declaration) {
-			return visitor.visitBlock_item_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22763,14 +22097,6 @@ export class Block_reg_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitBlock_reg_declaration) {
 			listener.exitBlock_reg_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitBlock_reg_declaration) {
-			return visitor.visitBlock_reg_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22801,14 +22127,6 @@ export class List_of_block_variable_identifiersContext extends ParserRuleContext
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitList_of_block_variable_identifiers) {
 			listener.exitList_of_block_variable_identifiers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_block_variable_identifiers) {
-			return visitor.visitList_of_block_variable_identifiers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22842,14 +22160,6 @@ export class Block_variable_typeContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitBlock_variable_type) {
 			listener.exitBlock_variable_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitBlock_variable_type) {
-			return visitor.visitBlock_variable_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22981,14 +22291,6 @@ export class Gate_instantiationContext extends ParserRuleContext {
 			listener.exitGate_instantiation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGate_instantiation) {
-			return visitor.visitGate_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23025,14 +22327,6 @@ export class Cmos_switch_instanceContext extends ParserRuleContext {
 			listener.exitCmos_switch_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitCmos_switch_instance) {
-			return visitor.visitCmos_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23066,14 +22360,6 @@ export class Enable_gate_instanceContext extends ParserRuleContext {
 			listener.exitEnable_gate_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEnable_gate_instance) {
-			return visitor.visitEnable_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23105,14 +22391,6 @@ export class Mos_switch_instanceContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitMos_switch_instance) {
 			listener.exitMos_switch_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitMos_switch_instance) {
-			return visitor.visitMos_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23151,14 +22429,6 @@ export class N_input_gate_instanceContext extends ParserRuleContext {
 			listener.exitN_input_gate_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitN_input_gate_instance) {
-			return visitor.visitN_input_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23195,14 +22465,6 @@ export class N_output_gate_instanceContext extends ParserRuleContext {
 			listener.exitN_output_gate_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitN_output_gate_instance) {
-			return visitor.visitN_output_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23234,14 +22496,6 @@ export class Pass_switch_instanceContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitPass_switch_instance) {
 			listener.exitPass_switch_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPass_switch_instance) {
-			return visitor.visitPass_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23280,14 +22534,6 @@ export class Pass_enable_switch_instanceContext extends ParserRuleContext {
 			listener.exitPass_enable_switch_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPass_enable_switch_instance) {
-			return visitor.visitPass_enable_switch_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23313,14 +22559,6 @@ export class Pull_gate_instanceContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitPull_gate_instance) {
 			listener.exitPull_gate_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPull_gate_instance) {
-			return visitor.visitPull_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23350,14 +22588,6 @@ export class Name_of_gate_instanceContext extends ParserRuleContext {
 			listener.exitName_of_gate_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitName_of_gate_instance) {
-			return visitor.visitName_of_gate_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23383,14 +22613,6 @@ export class Pulldown_strengthContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitPulldown_strength) {
 			listener.exitPulldown_strength(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPulldown_strength) {
-			return visitor.visitPulldown_strength(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23420,14 +22642,6 @@ export class Pullup_strengthContext extends ParserRuleContext {
 			listener.exitPullup_strength(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPullup_strength) {
-			return visitor.visitPullup_strength(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23450,14 +22664,6 @@ export class Enable_terminalContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitEnable_terminal) {
 			listener.exitEnable_terminal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEnable_terminal) {
-			return visitor.visitEnable_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23484,14 +22690,6 @@ export class Ncontrol_terminalContext extends ParserRuleContext {
 			listener.exitNcontrol_terminal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNcontrol_terminal) {
-			return visitor.visitNcontrol_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23514,14 +22712,6 @@ export class Pcontrol_terminalContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitPcontrol_terminal) {
 			listener.exitPcontrol_terminal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPcontrol_terminal) {
-			return visitor.visitPcontrol_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23548,14 +22738,6 @@ export class Input_terminalContext extends ParserRuleContext {
 			listener.exitInput_terminal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitInput_terminal) {
-			return visitor.visitInput_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23578,14 +22760,6 @@ export class Inout_terminalContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitInout_terminal) {
 			listener.exitInout_terminal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitInout_terminal) {
-			return visitor.visitInout_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23612,14 +22786,6 @@ export class Output_terminalContext extends ParserRuleContext {
 			listener.exitOutput_terminal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitOutput_terminal) {
-			return visitor.visitOutput_terminal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23639,14 +22805,6 @@ export class Cmos_switchtypeContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitCmos_switchtype) {
 			listener.exitCmos_switchtype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitCmos_switchtype) {
-			return visitor.visitCmos_switchtype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23670,14 +22828,6 @@ export class Enable_gatetypeContext extends ParserRuleContext {
 			listener.exitEnable_gatetype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEnable_gatetype) {
-			return visitor.visitEnable_gatetype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23697,14 +22847,6 @@ export class Mos_switchtypeContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitMos_switchtype) {
 			listener.exitMos_switchtype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitMos_switchtype) {
-			return visitor.visitMos_switchtype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23728,14 +22870,6 @@ export class N_input_gatetypeContext extends ParserRuleContext {
 			listener.exitN_input_gatetype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitN_input_gatetype) {
-			return visitor.visitN_input_gatetype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23755,14 +22889,6 @@ export class N_output_gatetypeContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitN_output_gatetype) {
 			listener.exitN_output_gatetype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitN_output_gatetype) {
-			return visitor.visitN_output_gatetype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23786,14 +22912,6 @@ export class Pass_en_switchtypeContext extends ParserRuleContext {
 			listener.exitPass_en_switchtype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPass_en_switchtype) {
-			return visitor.visitPass_en_switchtype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23813,14 +22931,6 @@ export class Pass_switchtypeContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitPass_switchtype) {
 			listener.exitPass_switchtype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPass_switchtype) {
-			return visitor.visitPass_switchtype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23859,14 +22969,6 @@ export class Module_instantiationContext extends ParserRuleContext {
 			listener.exitModule_instantiation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_instantiation) {
-			return visitor.visitModule_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23889,14 +22991,6 @@ export class Parameter_value_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitParameter_value_assignment) {
 			listener.exitParameter_value_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitParameter_value_assignment) {
-			return visitor.visitParameter_value_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23938,14 +23032,6 @@ export class List_of_parameter_assignmentsContext extends ParserRuleContext {
 			listener.exitList_of_parameter_assignments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_parameter_assignments) {
-			return visitor.visitList_of_parameter_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23968,14 +23054,6 @@ export class Ordered_parameter_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitOrdered_parameter_assignment) {
 			listener.exitOrdered_parameter_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitOrdered_parameter_assignment) {
-			return visitor.visitOrdered_parameter_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24005,14 +23083,6 @@ export class Named_parameter_assignmentContext extends ParserRuleContext {
 			listener.exitNamed_parameter_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNamed_parameter_assignment) {
-			return visitor.visitNamed_parameter_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24040,14 +23110,6 @@ export class Module_instanceContext extends ParserRuleContext {
 			listener.exitModule_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_instance) {
-			return visitor.visitModule_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24073,14 +23135,6 @@ export class Name_of_instanceContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitName_of_instance) {
 			listener.exitName_of_instance(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitName_of_instance) {
-			return visitor.visitName_of_instance(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24122,14 +23176,6 @@ export class List_of_port_connectionsContext extends ParserRuleContext {
 			listener.exitList_of_port_connections(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_port_connections) {
-			return visitor.visitList_of_port_connections(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24161,14 +23207,6 @@ export class Ordered_port_connectionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitOrdered_port_connection) {
 			listener.exitOrdered_port_connection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitOrdered_port_connection) {
-			return visitor.visitOrdered_port_connection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24207,14 +23245,6 @@ export class Named_port_connectionContext extends ParserRuleContext {
 			listener.exitNamed_port_connection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNamed_port_connection) {
-			return visitor.visitNamed_port_connection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24245,14 +23275,6 @@ export class Generated_instantiationContext extends ParserRuleContext {
 			listener.exitGenerated_instantiation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenerated_instantiation) {
-			return visitor.visitGenerated_instantiation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24275,14 +23297,6 @@ export class Generate_item_or_nullContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitGenerate_item_or_null) {
 			listener.exitGenerate_item_or_null(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenerate_item_or_null) {
-			return visitor.visitGenerate_item_or_null(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24321,14 +23335,6 @@ export class Generate_itemContext extends ParserRuleContext {
 			listener.exitGenerate_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenerate_item) {
-			return visitor.visitGenerate_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24360,14 +23366,6 @@ export class Generate_conditional_statementContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitGenerate_conditional_statement) {
 			listener.exitGenerate_conditional_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenerate_conditional_statement) {
-			return visitor.visitGenerate_conditional_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24403,14 +23401,6 @@ export class Generate_case_statementContext extends ParserRuleContext {
 			listener.exitGenerate_case_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenerate_case_statement) {
-			return visitor.visitGenerate_case_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24442,14 +23432,6 @@ export class Genvar_case_itemContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitGenvar_case_item) {
 			listener.exitGenvar_case_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenvar_case_item) {
-			return visitor.visitGenvar_case_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24488,14 +23470,6 @@ export class Generate_loop_statementContext extends ParserRuleContext {
 			listener.exitGenerate_loop_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenerate_loop_statement) {
-			return visitor.visitGenerate_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24521,14 +23495,6 @@ export class Genvar_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitGenvar_assignment) {
 			listener.exitGenvar_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenvar_assignment) {
-			return visitor.visitGenvar_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24564,14 +23530,6 @@ export class Generate_blockContext extends ParserRuleContext {
 			listener.exitGenerate_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenerate_block) {
-			return visitor.visitGenerate_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24600,14 +23558,6 @@ export class Continuous_assignContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitContinuous_assign) {
 			listener.exitContinuous_assign(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitContinuous_assign) {
-			return visitor.visitContinuous_assign(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24640,14 +23590,6 @@ export class List_of_net_assignmentsContext extends ParserRuleContext {
 			listener.exitList_of_net_assignments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_net_assignments) {
-			return visitor.visitList_of_net_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24675,14 +23617,6 @@ export class Net_assignmentContext extends ParserRuleContext {
 			listener.exitNet_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNet_assignment) {
-			return visitor.visitNet_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24707,14 +23641,6 @@ export class Initial_constructContext extends ParserRuleContext {
 			listener.exitInitial_construct(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitInitial_construct) {
-			return visitor.visitInitial_construct(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24737,14 +23663,6 @@ export class Always_constructContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitAlways_construct) {
 			listener.exitAlways_construct(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitAlways_construct) {
-			return visitor.visitAlways_construct(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24777,14 +23695,6 @@ export class Blocking_assignmentContext extends ParserRuleContext {
 			listener.exitBlocking_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitBlocking_assignment) {
-			return visitor.visitBlocking_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24813,14 +23723,6 @@ export class Nonblocking_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitNonblocking_assignment) {
 			listener.exitNonblocking_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNonblocking_assignment) {
-			return visitor.visitNonblocking_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24856,14 +23758,6 @@ export class Procedural_continuous_assignmentsContext extends ParserRuleContext 
 			listener.exitProcedural_continuous_assignments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitProcedural_continuous_assignments) {
-			return visitor.visitProcedural_continuous_assignments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24889,14 +23783,6 @@ export class Function_blocking_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitFunction_blocking_assignment) {
 			listener.exitFunction_blocking_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_blocking_assignment) {
-			return visitor.visitFunction_blocking_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24930,14 +23816,6 @@ export class Function_statement_or_nullContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitFunction_statement_or_null) {
 			listener.exitFunction_statement_or_null(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_statement_or_null) {
-			return visitor.visitFunction_statement_or_null(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24982,14 +23860,6 @@ export class Function_seq_blockContext extends ParserRuleContext {
 			listener.exitFunction_seq_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_seq_block) {
-			return visitor.visitFunction_seq_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25015,14 +23885,6 @@ export class Variable_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitVariable_assignment) {
 			listener.exitVariable_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitVariable_assignment) {
-			return visitor.visitVariable_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25067,14 +23929,6 @@ export class Par_blockContext extends ParserRuleContext {
 			listener.exitPar_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPar_block) {
-			return visitor.visitPar_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25115,14 +23969,6 @@ export class Seq_blockContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitSeq_block) {
 			listener.exitSeq_block(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSeq_block) {
-			return visitor.visitSeq_block(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25197,14 +24043,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25236,14 +24074,6 @@ export class Statement_or_nullContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitStatement_or_null) {
 			listener.exitStatement_or_null(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitStatement_or_null) {
-			return visitor.visitStatement_or_null(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25297,14 +24127,6 @@ export class Function_statementContext extends ParserRuleContext {
 			listener.exitFunction_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_statement) {
-			return visitor.visitFunction_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25335,14 +24157,6 @@ export class Delay_or_event_controlContext extends ParserRuleContext {
 			listener.exitDelay_or_event_control(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDelay_or_event_control) {
-			return visitor.visitDelay_or_event_control(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25368,14 +24182,6 @@ export class Delay_controlContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitDelay_control) {
 			listener.exitDelay_control(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDelay_control) {
-			return visitor.visitDelay_control(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25405,14 +24211,6 @@ export class Disable_statementContext extends ParserRuleContext {
 			listener.exitDisable_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDisable_statement) {
-			return visitor.visitDisable_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25440,14 +24238,6 @@ export class Event_controlContext extends ParserRuleContext {
 			listener.exitEvent_control(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEvent_control) {
-			return visitor.visitEvent_control(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25470,14 +24260,6 @@ export class Event_triggerContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitEvent_trigger) {
 			listener.exitEvent_trigger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEvent_trigger) {
-			return visitor.visitEvent_trigger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25510,14 +24292,6 @@ export class Event_expressionContext extends ParserRuleContext {
 			listener.exitEvent_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEvent_expression) {
-			return visitor.visitEvent_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25540,14 +24314,6 @@ export class Event_primaryContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitEvent_primary) {
 			listener.exitEvent_primary(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEvent_primary) {
-			return visitor.visitEvent_primary(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25577,14 +24343,6 @@ export class Procedural_timing_control_statementContext extends ParserRuleContex
 			listener.exitProcedural_timing_control_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitProcedural_timing_control_statement) {
-			return visitor.visitProcedural_timing_control_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25610,14 +24368,6 @@ export class Wait_statementContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitWait_statement) {
 			listener.exitWait_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitWait_statement) {
-			return visitor.visitWait_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25654,14 +24404,6 @@ export class Conditional_statementContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitConditional_statement) {
 			listener.exitConditional_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConditional_statement) {
-			return visitor.visitConditional_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25703,14 +24445,6 @@ export class If_else_if_statementContext extends ParserRuleContext {
 			listener.exitIf_else_if_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitIf_else_if_statement) {
-			return visitor.visitIf_else_if_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25745,14 +24479,6 @@ export class Function_conditional_statementContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitFunction_conditional_statement) {
 			listener.exitFunction_conditional_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_conditional_statement) {
-			return visitor.visitFunction_conditional_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25794,14 +24520,6 @@ export class Function_if_else_if_statementContext extends ParserRuleContext {
 			listener.exitFunction_if_else_if_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_if_else_if_statement) {
-			return visitor.visitFunction_if_else_if_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25833,14 +24551,6 @@ export class Case_statementContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitCase_statement) {
 			listener.exitCase_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitCase_statement) {
-			return visitor.visitCase_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25876,14 +24586,6 @@ export class Case_itemContext extends ParserRuleContext {
 			listener.exitCase_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitCase_item) {
-			return visitor.visitCase_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25917,14 +24619,6 @@ export class Function_case_statementContext extends ParserRuleContext {
 			listener.exitFunction_case_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_case_statement) {
-			return visitor.visitFunction_case_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25956,14 +24650,6 @@ export class Function_case_itemContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitFunction_case_item) {
 			listener.exitFunction_case_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_case_item) {
-			return visitor.visitFunction_case_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26002,14 +24688,6 @@ export class Function_loop_statementContext extends ParserRuleContext {
 			listener.exitFunction_loop_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_loop_statement) {
-			return visitor.visitFunction_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26046,14 +24724,6 @@ export class Loop_statementContext extends ParserRuleContext {
 			listener.exitLoop_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitLoop_statement) {
-			return visitor.visitLoop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26085,14 +24755,6 @@ export class System_task_enableContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitSystem_task_enable) {
 			listener.exitSystem_task_enable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSystem_task_enable) {
-			return visitor.visitSystem_task_enable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26128,14 +24790,6 @@ export class Task_enableContext extends ParserRuleContext {
 			listener.exitTask_enable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTask_enable) {
-			return visitor.visitTask_enable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26164,14 +24818,6 @@ export class Specify_blockContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitSpecify_block) {
 			listener.exitSpecify_block(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSpecify_block) {
-			return visitor.visitSpecify_block(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26207,14 +24853,6 @@ export class Specify_itemContext extends ParserRuleContext {
 			listener.exitSpecify_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSpecify_item) {
-			return visitor.visitSpecify_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26239,14 +24877,6 @@ export class Pulsestyle_declarationContext extends ParserRuleContext {
 			listener.exitPulsestyle_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPulsestyle_declaration) {
-			return visitor.visitPulsestyle_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26269,14 +24899,6 @@ export class Showcancelled_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitShowcancelled_declaration) {
 			listener.exitShowcancelled_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitShowcancelled_declaration) {
-			return visitor.visitShowcancelled_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26309,14 +24931,6 @@ export class Path_declarationContext extends ParserRuleContext {
 			listener.exitPath_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPath_declaration) {
-			return visitor.visitPath_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26345,14 +24959,6 @@ export class Simple_path_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitSimple_path_declaration) {
 			listener.exitSimple_path_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSimple_path_declaration) {
-			return visitor.visitSimple_path_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26385,14 +24991,6 @@ export class Parallel_path_descriptionContext extends ParserRuleContext {
 			listener.exitParallel_path_description(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitParallel_path_description) {
-			return visitor.visitParallel_path_description(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26421,14 +25019,6 @@ export class Full_path_descriptionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitFull_path_description) {
 			listener.exitFull_path_description(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFull_path_description) {
-			return visitor.visitFull_path_description(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26461,14 +25051,6 @@ export class List_of_path_inputsContext extends ParserRuleContext {
 			listener.exitList_of_path_inputs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_path_inputs) {
-			return visitor.visitList_of_path_inputs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26497,14 +25079,6 @@ export class List_of_path_outputsContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitList_of_path_outputs) {
 			listener.exitList_of_path_outputs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_path_outputs) {
-			return visitor.visitList_of_path_outputs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26537,14 +25111,6 @@ export class Specify_input_terminal_descriptorContext extends ParserRuleContext 
 			listener.exitSpecify_input_terminal_descriptor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSpecify_input_terminal_descriptor) {
-			return visitor.visitSpecify_input_terminal_descriptor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26575,14 +25141,6 @@ export class Specify_output_terminal_descriptorContext extends ParserRuleContext
 			listener.exitSpecify_output_terminal_descriptor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSpecify_output_terminal_descriptor) {
-			return visitor.visitSpecify_output_terminal_descriptor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26608,14 +25166,6 @@ export class Input_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitInput_identifier) {
 			listener.exitInput_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitInput_identifier) {
-			return visitor.visitInput_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26645,14 +25195,6 @@ export class Output_identifierContext extends ParserRuleContext {
 			listener.exitOutput_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitOutput_identifier) {
-			return visitor.visitOutput_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26675,14 +25217,6 @@ export class Path_delay_valueContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitPath_delay_value) {
 			listener.exitPath_delay_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPath_delay_value) {
-			return visitor.visitPath_delay_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26754,14 +25288,6 @@ export class List_of_path_delay_expressionsContext extends ParserRuleContext {
 			listener.exitList_of_path_delay_expressions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitList_of_path_delay_expressions) {
-			return visitor.visitList_of_path_delay_expressions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26784,14 +25310,6 @@ export class T_path_delay_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitT_path_delay_expression) {
 			listener.exitT_path_delay_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitT_path_delay_expression) {
-			return visitor.visitT_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26818,14 +25336,6 @@ export class Trise_path_delay_expressionContext extends ParserRuleContext {
 			listener.exitTrise_path_delay_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTrise_path_delay_expression) {
-			return visitor.visitTrise_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26848,14 +25358,6 @@ export class Tfall_path_delay_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitTfall_path_delay_expression) {
 			listener.exitTfall_path_delay_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTfall_path_delay_expression) {
-			return visitor.visitTfall_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26882,14 +25384,6 @@ export class Tz_path_delay_expressionContext extends ParserRuleContext {
 			listener.exitTz_path_delay_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTz_path_delay_expression) {
-			return visitor.visitTz_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26912,14 +25406,6 @@ export class T01_path_delay_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitT01_path_delay_expression) {
 			listener.exitT01_path_delay_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitT01_path_delay_expression) {
-			return visitor.visitT01_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26946,14 +25432,6 @@ export class T10_path_delay_expressionContext extends ParserRuleContext {
 			listener.exitT10_path_delay_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitT10_path_delay_expression) {
-			return visitor.visitT10_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26976,14 +25454,6 @@ export class T0z_path_delay_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitT0z_path_delay_expression) {
 			listener.exitT0z_path_delay_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitT0z_path_delay_expression) {
-			return visitor.visitT0z_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27010,14 +25480,6 @@ export class Tz1_path_delay_expressionContext extends ParserRuleContext {
 			listener.exitTz1_path_delay_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTz1_path_delay_expression) {
-			return visitor.visitTz1_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27040,14 +25502,6 @@ export class T1z_path_delay_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitT1z_path_delay_expression) {
 			listener.exitT1z_path_delay_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitT1z_path_delay_expression) {
-			return visitor.visitT1z_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27074,14 +25528,6 @@ export class Tz0_path_delay_expressionContext extends ParserRuleContext {
 			listener.exitTz0_path_delay_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTz0_path_delay_expression) {
-			return visitor.visitTz0_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27104,14 +25550,6 @@ export class T0x_path_delay_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitT0x_path_delay_expression) {
 			listener.exitT0x_path_delay_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitT0x_path_delay_expression) {
-			return visitor.visitT0x_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27138,14 +25576,6 @@ export class Tx1_path_delay_expressionContext extends ParserRuleContext {
 			listener.exitTx1_path_delay_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTx1_path_delay_expression) {
-			return visitor.visitTx1_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27168,14 +25598,6 @@ export class T1x_path_delay_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitT1x_path_delay_expression) {
 			listener.exitT1x_path_delay_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitT1x_path_delay_expression) {
-			return visitor.visitT1x_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27202,14 +25624,6 @@ export class Tx0_path_delay_expressionContext extends ParserRuleContext {
 			listener.exitTx0_path_delay_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTx0_path_delay_expression) {
-			return visitor.visitTx0_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27232,14 +25646,6 @@ export class Txz_path_delay_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitTxz_path_delay_expression) {
 			listener.exitTxz_path_delay_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTxz_path_delay_expression) {
-			return visitor.visitTxz_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27266,14 +25672,6 @@ export class Tzx_path_delay_expressionContext extends ParserRuleContext {
 			listener.exitTzx_path_delay_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTzx_path_delay_expression) {
-			return visitor.visitTzx_path_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27296,14 +25694,6 @@ export class Path_delay_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitPath_delay_expression) {
 			listener.exitPath_delay_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPath_delay_expression) {
-			return visitor.visitPath_delay_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27334,14 +25724,6 @@ export class Edge_sensitive_path_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitEdge_sensitive_path_declaration) {
 			listener.exitEdge_sensitive_path_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEdge_sensitive_path_declaration) {
-			return visitor.visitEdge_sensitive_path_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27380,14 +25762,6 @@ export class Parallel_edge_sensitive_path_descriptionContext extends ParserRuleC
 			listener.exitParallel_edge_sensitive_path_description(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitParallel_edge_sensitive_path_description) {
-			return visitor.visitParallel_edge_sensitive_path_description(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27424,14 +25798,6 @@ export class Full_edge_sensitive_path_descriptionContext extends ParserRuleConte
 			listener.exitFull_edge_sensitive_path_description(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFull_edge_sensitive_path_description) {
-			return visitor.visitFull_edge_sensitive_path_description(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27456,14 +25822,6 @@ export class Data_source_expressionContext extends ParserRuleContext {
 			listener.exitData_source_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitData_source_expression) {
-			return visitor.visitData_source_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27483,14 +25841,6 @@ export class Edge_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitEdge_identifier) {
 			listener.exitEdge_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEdge_identifier) {
-			return visitor.visitEdge_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27523,14 +25873,6 @@ export class State_dependent_path_declarationContext extends ParserRuleContext {
 			listener.exitState_dependent_path_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitState_dependent_path_declaration) {
-			return visitor.visitState_dependent_path_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27550,14 +25892,6 @@ export class Polarity_operatorContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitPolarity_operator) {
 			listener.exitPolarity_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPolarity_operator) {
-			return visitor.visitPolarity_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27582,14 +25916,6 @@ export class Checktime_conditionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitChecktime_condition) {
 			listener.exitChecktime_condition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitChecktime_condition) {
-			return visitor.visitChecktime_condition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27619,14 +25945,6 @@ export class Delayed_dataContext extends ParserRuleContext {
 			listener.exitDelayed_data(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDelayed_data) {
-			return visitor.visitDelayed_data(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27654,14 +25972,6 @@ export class Delayed_referenceContext extends ParserRuleContext {
 			listener.exitDelayed_reference(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDelayed_reference) {
-			return visitor.visitDelayed_reference(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27684,14 +25994,6 @@ export class End_edge_offsetContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitEnd_edge_offset) {
 			listener.exitEnd_edge_offset(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEnd_edge_offset) {
-			return visitor.visitEnd_edge_offset(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27718,14 +26020,6 @@ export class Event_based_flagContext extends ParserRuleContext {
 			listener.exitEvent_based_flag(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEvent_based_flag) {
-			return visitor.visitEvent_based_flag(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27748,14 +26042,6 @@ export class Notify_regContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitNotify_reg) {
 			listener.exitNotify_reg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNotify_reg) {
-			return visitor.visitNotify_reg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27782,14 +26068,6 @@ export class Remain_active_flagContext extends ParserRuleContext {
 			listener.exitRemain_active_flag(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitRemain_active_flag) {
-			return visitor.visitRemain_active_flag(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27812,14 +26090,6 @@ export class Stamptime_conditionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitStamptime_condition) {
 			listener.exitStamptime_condition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitStamptime_condition) {
-			return visitor.visitStamptime_condition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27846,14 +26116,6 @@ export class Start_edge_offsetContext extends ParserRuleContext {
 			listener.exitStart_edge_offset(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitStart_edge_offset) {
-			return visitor.visitStart_edge_offset(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27878,14 +26140,6 @@ export class ThresholdContext extends ParserRuleContext {
 			listener.exitThreshold(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitThreshold) {
-			return visitor.visitThreshold(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27908,14 +26162,6 @@ export class Timing_check_limitContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitTiming_check_limit) {
 			listener.exitTiming_check_limit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTiming_check_limit) {
-			return visitor.visitTiming_check_limit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27948,14 +26194,6 @@ export class ConcatenationContext extends ParserRuleContext {
 			listener.exitConcatenation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConcatenation) {
-			return visitor.visitConcatenation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27986,14 +26224,6 @@ export class Constant_concatenationContext extends ParserRuleContext {
 			listener.exitConstant_concatenation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConstant_concatenation) {
-			return visitor.visitConstant_concatenation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28019,14 +26249,6 @@ export class Constant_multiple_concatenationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitConstant_multiple_concatenation) {
 			listener.exitConstant_multiple_concatenation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConstant_multiple_concatenation) {
-			return visitor.visitConstant_multiple_concatenation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28059,14 +26281,6 @@ export class Module_path_concatenationContext extends ParserRuleContext {
 			listener.exitModule_path_concatenation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_path_concatenation) {
-			return visitor.visitModule_path_concatenation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28094,14 +26308,6 @@ export class Module_path_multiple_concatenationContext extends ParserRuleContext
 			listener.exitModule_path_multiple_concatenation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_path_multiple_concatenation) {
-			return visitor.visitModule_path_multiple_concatenation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28127,14 +26333,6 @@ export class Multiple_concatenationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitMultiple_concatenation) {
 			listener.exitMultiple_concatenation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitMultiple_concatenation) {
-			return visitor.visitMultiple_concatenation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28165,14 +26363,6 @@ export class Net_concatenationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitNet_concatenation) {
 			listener.exitNet_concatenation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNet_concatenation) {
-			return visitor.visitNet_concatenation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28214,14 +26404,6 @@ export class Net_concatenation_valueContext extends ParserRuleContext {
 			listener.exitNet_concatenation_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNet_concatenation_value) {
-			return visitor.visitNet_concatenation_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28250,14 +26432,6 @@ export class Variable_concatenationContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitVariable_concatenation) {
 			listener.exitVariable_concatenation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitVariable_concatenation) {
-			return visitor.visitVariable_concatenation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28297,14 +26471,6 @@ export class Variable_concatenation_valueContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitVariable_concatenation_value) {
 			listener.exitVariable_concatenation_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitVariable_concatenation_value) {
-			return visitor.visitVariable_concatenation_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28349,14 +26515,6 @@ export class Constant_function_callContext extends ParserRuleContext {
 			listener.exitConstant_function_call(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConstant_function_call) {
-			return visitor.visitConstant_function_call(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28399,14 +26557,6 @@ export class Function_callContext extends ParserRuleContext {
 			listener.exitFunction_call(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_call) {
-			return visitor.visitFunction_call(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28438,14 +26588,6 @@ export class System_function_callContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitSystem_function_call) {
 			listener.exitSystem_function_call(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSystem_function_call) {
-			return visitor.visitSystem_function_call(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28490,14 +26632,6 @@ export class Genvar_function_callContext extends ParserRuleContext {
 			listener.exitGenvar_function_call(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenvar_function_call) {
-			return visitor.visitGenvar_function_call(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28520,14 +26654,6 @@ export class Base_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitBase_expression) {
 			listener.exitBase_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitBase_expression) {
-			return visitor.visitBase_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28554,14 +26680,6 @@ export class Constant_base_expressionContext extends ParserRuleContext {
 			listener.exitConstant_base_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConstant_base_expression) {
-			return visitor.visitConstant_base_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28584,14 +26702,6 @@ export class Constant_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitConstant_expression) {
 			listener.exitConstant_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConstant_expression) {
-			return visitor.visitConstant_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28622,14 +26732,6 @@ export class Constant_mintypmax_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitConstant_mintypmax_expression) {
 			listener.exitConstant_mintypmax_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConstant_mintypmax_expression) {
-			return visitor.visitConstant_mintypmax_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28668,14 +26770,6 @@ export class Constant_range_expressionContext extends ParserRuleContext {
 			listener.exitConstant_range_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConstant_range_expression) {
-			return visitor.visitConstant_range_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28698,14 +26792,6 @@ export class Dimension_constant_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitDimension_constant_expression) {
 			listener.exitDimension_constant_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitDimension_constant_expression) {
-			return visitor.visitDimension_constant_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28765,14 +26851,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28810,14 +26888,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28840,14 +26910,6 @@ export class Lsb_constant_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitLsb_constant_expression) {
 			listener.exitLsb_constant_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitLsb_constant_expression) {
-			return visitor.visitLsb_constant_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28878,14 +26940,6 @@ export class Mintypmax_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitMintypmax_expression) {
 			listener.exitMintypmax_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitMintypmax_expression) {
-			return visitor.visitMintypmax_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28925,14 +26979,6 @@ export class Module_path_conditional_expressionContext extends ParserRuleContext
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitModule_path_conditional_expression) {
 			listener.exitModule_path_conditional_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_path_conditional_expression) {
-			return visitor.visitModule_path_conditional_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28989,14 +27035,6 @@ export class Module_path_expressionContext extends ParserRuleContext {
 			listener.exitModule_path_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_path_expression) {
-			return visitor.visitModule_path_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29027,14 +27065,6 @@ export class Module_path_mintypmax_expressionContext extends ParserRuleContext {
 			listener.exitModule_path_mintypmax_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_path_mintypmax_expression) {
-			return visitor.visitModule_path_mintypmax_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29057,14 +27087,6 @@ export class Msb_constant_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitMsb_constant_expression) {
 			listener.exitMsb_constant_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitMsb_constant_expression) {
-			return visitor.visitMsb_constant_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29103,14 +27125,6 @@ export class Range_expressionContext extends ParserRuleContext {
 			listener.exitRange_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitRange_expression) {
-			return visitor.visitRange_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29133,14 +27147,6 @@ export class Width_constant_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitWidth_constant_expression) {
 			listener.exitWidth_constant_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitWidth_constant_expression) {
-			return visitor.visitWidth_constant_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29188,14 +27194,6 @@ export class Constant_primaryContext extends ParserRuleContext {
 			listener.exitConstant_primary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConstant_primary) {
-			return visitor.visitConstant_primary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29239,14 +27237,6 @@ export class Module_path_primaryContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitModule_path_primary) {
 			listener.exitModule_path_primary(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_path_primary) {
-			return visitor.visitModule_path_primary(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29306,14 +27296,6 @@ export class PrimaryContext extends ParserRuleContext {
 			listener.exitPrimary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPrimary) {
-			return visitor.visitPrimary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29351,14 +27333,6 @@ export class Net_lvalueContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitNet_lvalue) {
 			listener.exitNet_lvalue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNet_lvalue) {
-			return visitor.visitNet_lvalue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29400,14 +27374,6 @@ export class Variable_lvalueContext extends ParserRuleContext {
 			listener.exitVariable_lvalue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitVariable_lvalue) {
-			return visitor.visitVariable_lvalue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29427,14 +27393,6 @@ export class Unary_operatorContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitUnary_operator) {
 			listener.exitUnary_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitUnary_operator) {
-			return visitor.visitUnary_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29458,14 +27416,6 @@ export class Binary_operatorContext extends ParserRuleContext {
 			listener.exitBinary_operator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitBinary_operator) {
-			return visitor.visitBinary_operator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29487,14 +27437,6 @@ export class Unary_module_path_operatorContext extends ParserRuleContext {
 			listener.exitUnary_module_path_operator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitUnary_module_path_operator) {
-			return visitor.visitUnary_module_path_operator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29514,14 +27456,6 @@ export class Binary_module_path_operatorContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitBinary_module_path_operator) {
 			listener.exitBinary_module_path_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitBinary_module_path_operator) {
-			return visitor.visitBinary_module_path_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29548,14 +27482,6 @@ export class NumberContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitNumber) {
 			listener.exitNumber(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29588,14 +27514,6 @@ export class Timing_specContext extends ParserRuleContext {
 			listener.exitTiming_spec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTiming_spec) {
-			return visitor.visitTiming_spec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29626,14 +27544,6 @@ export class Attribute_instanceContext extends ParserRuleContext {
 			listener.exitAttribute_instance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitAttribute_instance) {
-			return visitor.visitAttribute_instance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29661,14 +27571,6 @@ export class Attr_specContext extends ParserRuleContext {
 			listener.exitAttr_spec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitAttr_spec) {
-			return visitor.visitAttr_spec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29691,14 +27593,6 @@ export class Attr_nameContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitAttr_name) {
 			listener.exitAttr_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitAttr_name) {
-			return visitor.visitAttr_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29728,14 +27622,6 @@ export class Arrayed_identifierContext extends ParserRuleContext {
 			listener.exitArrayed_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitArrayed_identifier) {
-			return visitor.visitArrayed_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29758,14 +27644,6 @@ export class Block_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitBlock_identifier) {
 			listener.exitBlock_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitBlock_identifier) {
-			return visitor.visitBlock_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29792,14 +27670,6 @@ export class Cell_identifierContext extends ParserRuleContext {
 			listener.exitCell_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitCell_identifier) {
-			return visitor.visitCell_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29822,14 +27692,6 @@ export class Config_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitConfig_identifier) {
 			listener.exitConfig_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitConfig_identifier) {
-			return visitor.visitConfig_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29855,14 +27717,6 @@ export class Escaped_arrayed_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitEscaped_arrayed_identifier) {
 			listener.exitEscaped_arrayed_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEscaped_arrayed_identifier) {
-			return visitor.visitEscaped_arrayed_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29904,14 +27758,6 @@ export class Escaped_hierarchical_identifierContext extends ParserRuleContext {
 			listener.exitEscaped_hierarchical_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEscaped_hierarchical_identifier) {
-			return visitor.visitEscaped_hierarchical_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29934,14 +27780,6 @@ export class Event_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitEvent_identifier) {
 			listener.exitEvent_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEvent_identifier) {
-			return visitor.visitEvent_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29968,14 +27806,6 @@ export class Function_identifierContext extends ParserRuleContext {
 			listener.exitFunction_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitFunction_identifier) {
-			return visitor.visitFunction_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29998,14 +27828,6 @@ export class Gate_instance_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitGate_instance_identifier) {
 			listener.exitGate_instance_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGate_instance_identifier) {
-			return visitor.visitGate_instance_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30032,14 +27854,6 @@ export class Generate_block_identifierContext extends ParserRuleContext {
 			listener.exitGenerate_block_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenerate_block_identifier) {
-			return visitor.visitGenerate_block_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30062,14 +27876,6 @@ export class Genvar_function_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitGenvar_function_identifier) {
 			listener.exitGenvar_function_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenvar_function_identifier) {
-			return visitor.visitGenvar_function_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30096,14 +27902,6 @@ export class Genvar_identifierContext extends ParserRuleContext {
 			listener.exitGenvar_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitGenvar_identifier) {
-			return visitor.visitGenvar_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30126,14 +27924,6 @@ export class Hierarchical_block_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitHierarchical_block_identifier) {
 			listener.exitHierarchical_block_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitHierarchical_block_identifier) {
-			return visitor.visitHierarchical_block_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30160,14 +27950,6 @@ export class Hierarchical_event_identifierContext extends ParserRuleContext {
 			listener.exitHierarchical_event_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitHierarchical_event_identifier) {
-			return visitor.visitHierarchical_event_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30190,14 +27972,6 @@ export class Hierarchical_function_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitHierarchical_function_identifier) {
 			listener.exitHierarchical_function_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitHierarchical_function_identifier) {
-			return visitor.visitHierarchical_function_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30227,14 +28001,6 @@ export class Hierarchical_identifierContext extends ParserRuleContext {
 			listener.exitHierarchical_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitHierarchical_identifier) {
-			return visitor.visitHierarchical_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30257,14 +28023,6 @@ export class Hierarchical_net_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitHierarchical_net_identifier) {
 			listener.exitHierarchical_net_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitHierarchical_net_identifier) {
-			return visitor.visitHierarchical_net_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30291,14 +28049,6 @@ export class Hierarchical_variable_identifierContext extends ParserRuleContext {
 			listener.exitHierarchical_variable_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitHierarchical_variable_identifier) {
-			return visitor.visitHierarchical_variable_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30323,14 +28073,6 @@ export class Hierarchical_task_identifierContext extends ParserRuleContext {
 			listener.exitHierarchical_task_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitHierarchical_task_identifier) {
-			return visitor.visitHierarchical_task_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30352,14 +28094,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30386,14 +28120,6 @@ export class Inout_port_identifierContext extends ParserRuleContext {
 			listener.exitInout_port_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitInout_port_identifier) {
-			return visitor.visitInout_port_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30416,14 +28142,6 @@ export class Input_port_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitInput_port_identifier) {
 			listener.exitInput_port_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitInput_port_identifier) {
-			return visitor.visitInput_port_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30450,14 +28168,6 @@ export class Instance_identifierContext extends ParserRuleContext {
 			listener.exitInstance_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitInstance_identifier) {
-			return visitor.visitInstance_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30480,14 +28190,6 @@ export class Library_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitLibrary_identifier) {
 			listener.exitLibrary_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitLibrary_identifier) {
-			return visitor.visitLibrary_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30514,14 +28216,6 @@ export class Memory_identifierContext extends ParserRuleContext {
 			listener.exitMemory_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitMemory_identifier) {
-			return visitor.visitMemory_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30544,14 +28238,6 @@ export class Module_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitModule_identifier) {
 			listener.exitModule_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_identifier) {
-			return visitor.visitModule_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30578,14 +28264,6 @@ export class Module_instance_identifierContext extends ParserRuleContext {
 			listener.exitModule_instance_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitModule_instance_identifier) {
-			return visitor.visitModule_instance_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30608,14 +28286,6 @@ export class Net_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitNet_identifier) {
 			listener.exitNet_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitNet_identifier) {
-			return visitor.visitNet_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30642,14 +28312,6 @@ export class Output_port_identifierContext extends ParserRuleContext {
 			listener.exitOutput_port_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitOutput_port_identifier) {
-			return visitor.visitOutput_port_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30672,14 +28334,6 @@ export class Parameter_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitParameter_identifier) {
 			listener.exitParameter_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitParameter_identifier) {
-			return visitor.visitParameter_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30706,14 +28360,6 @@ export class Port_identifierContext extends ParserRuleContext {
 			listener.exitPort_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitPort_identifier) {
-			return visitor.visitPort_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30736,14 +28382,6 @@ export class Real_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitReal_identifier) {
 			listener.exitReal_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitReal_identifier) {
-			return visitor.visitReal_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30771,14 +28409,6 @@ export class Simple_arrayed_identifierContext extends ParserRuleContext {
 			listener.exitSimple_arrayed_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSimple_arrayed_identifier) {
-			return visitor.visitSimple_arrayed_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30802,14 +28432,6 @@ export class Simple_hierarchical_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitSimple_hierarchical_identifier) {
 			listener.exitSimple_hierarchical_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSimple_hierarchical_identifier) {
-			return visitor.visitSimple_hierarchical_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30836,14 +28458,6 @@ export class Specparam_identifierContext extends ParserRuleContext {
 			listener.exitSpecparam_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSpecparam_identifier) {
-			return visitor.visitSpecparam_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30866,14 +28480,6 @@ export class System_function_identifierContext extends ParserRuleContext {
 			listener.exitSystem_function_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSystem_function_identifier) {
-			return visitor.visitSystem_function_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30894,14 +28500,6 @@ export class System_task_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitSystem_task_identifier) {
 			listener.exitSystem_task_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSystem_task_identifier) {
-			return visitor.visitSystem_task_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30928,14 +28526,6 @@ export class Task_identifierContext extends ParserRuleContext {
 			listener.exitTask_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTask_identifier) {
-			return visitor.visitTask_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30960,14 +28550,6 @@ export class Terminal_identifierContext extends ParserRuleContext {
 			listener.exitTerminal_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTerminal_identifier) {
-			return visitor.visitTerminal_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30988,14 +28570,6 @@ export class Text_macro_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitText_macro_identifier) {
 			listener.exitText_macro_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitText_macro_identifier) {
-			return visitor.visitText_macro_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31022,14 +28596,6 @@ export class Topmodule_identifierContext extends ParserRuleContext {
 			listener.exitTopmodule_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitTopmodule_identifier) {
-			return visitor.visitTopmodule_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31052,14 +28618,6 @@ export class Udp_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitUdp_identifier) {
 			listener.exitUdp_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitUdp_identifier) {
-			return visitor.visitUdp_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31086,14 +28644,6 @@ export class Udp_instance_identifierContext extends ParserRuleContext {
 			listener.exitUdp_instance_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitUdp_instance_identifier) {
-			return visitor.visitUdp_instance_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31116,14 +28666,6 @@ export class Variable_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitVariable_identifier) {
 			listener.exitVariable_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitVariable_identifier) {
-			return visitor.visitVariable_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31165,14 +28707,6 @@ export class Simple_hierarchical_branchContext extends ParserRuleContext {
 			listener.exitSimple_hierarchical_branch(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitSimple_hierarchical_branch) {
-			return visitor.visitSimple_hierarchical_branch(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31210,14 +28744,6 @@ export class Escaped_hierarchical_branchContext extends ParserRuleContext {
 	public exitRule(listener: Verilog2001Listener): void {
 		if (listener.exitEscaped_hierarchical_branch) {
 			listener.exitEscaped_hierarchical_branch(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Verilog2001Visitor<Result>): Result {
-		if (visitor.visitEscaped_hierarchical_branch) {
-			return visitor.visitEscaped_hierarchical_branch(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { ICalendarListener } from "./ICalendarListener";
-import { ICalendarVisitor } from "./ICalendarVisitor";
-
 
 export class ICalendarParser extends Parser {
 	public static readonly LINE_FOLD = 1;
@@ -20811,14 +20809,6 @@ export class ParseContext extends ParserRuleContext {
 			listener.exitParse(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitParse) {
-			return visitor.visitParse(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20856,14 +20846,6 @@ export class IcalstreamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitIcalstream) {
 			listener.exitIcalstream(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitIcalstream) {
-			return visitor.visitIcalstream(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20930,14 +20912,6 @@ export class IcalobjectContext extends ParserRuleContext {
 			listener.exitIcalobject(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitIcalobject) {
-			return visitor.visitIcalobject(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20975,14 +20949,6 @@ export class CalpropContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitCalprop) {
 			listener.exitCalprop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitCalprop) {
-			return visitor.visitCalprop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21032,14 +20998,6 @@ export class CalscaleContext extends ParserRuleContext {
 			listener.exitCalscale(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitCalscale) {
-			return visitor.visitCalscale(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21085,14 +21043,6 @@ export class MethodContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitMethod) {
 			listener.exitMethod(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitMethod) {
-			return visitor.visitMethod(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21142,14 +21092,6 @@ export class ProdidContext extends ParserRuleContext {
 			listener.exitProdid(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitProdid) {
-			return visitor.visitProdid(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21197,14 +21139,6 @@ export class VersionContext extends ParserRuleContext {
 			listener.exitVersion(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitVersion) {
-			return visitor.visitVersion(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21234,14 +21168,6 @@ export class VervalueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitVervalue) {
 			listener.exitVervalue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitVervalue) {
-			return visitor.visitVervalue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21284,14 +21210,6 @@ export class ComponentContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitComponent) {
 			listener.exitComponent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitComponent) {
-			return visitor.visitComponent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21357,14 +21275,6 @@ export class Iana_compContext extends ParserRuleContext {
 			listener.exitIana_comp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitIana_comp) {
-			return visitor.visitIana_comp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21428,14 +21338,6 @@ export class X_compContext extends ParserRuleContext {
 			listener.exitX_comp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitX_comp) {
-			return visitor.visitX_comp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21483,14 +21385,6 @@ export class ContentlineContext extends ParserRuleContext {
 			listener.exitContentline(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitContentline) {
-			return visitor.visitContentline(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21516,14 +21410,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21554,14 +21440,6 @@ export class ValueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitValue) {
 			listener.exitValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21636,14 +21514,6 @@ export class EventcContext extends ParserRuleContext {
 			listener.exitEventc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitEventc) {
-			return visitor.visitEventc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21716,14 +21586,6 @@ export class TodocContext extends ParserRuleContext {
 			listener.exitTodoc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTodoc) {
-			return visitor.visitTodoc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21785,14 +21647,6 @@ export class JournalcContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitJournalc) {
 			listener.exitJournalc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitJournalc) {
-			return visitor.visitJournalc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21858,14 +21712,6 @@ export class FreebusycContext extends ParserRuleContext {
 			listener.exitFreebusyc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitFreebusyc) {
-			return visitor.visitFreebusyc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21929,14 +21775,6 @@ export class TimezonecContext extends ParserRuleContext {
 			listener.exitTimezonec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTimezonec) {
-			return visitor.visitTimezonec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21998,14 +21836,6 @@ export class AlarmcContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitAlarmc) {
 			listener.exitAlarmc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitAlarmc) {
-			return visitor.visitAlarmc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22123,14 +21953,6 @@ export class EventpropContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitEventprop) {
 			listener.exitEventprop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitEventprop) {
-			return visitor.visitEventprop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22253,14 +22075,6 @@ export class TodopropContext extends ParserRuleContext {
 			listener.exitTodoprop(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTodoprop) {
-			return visitor.visitTodoprop(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22357,14 +22171,6 @@ export class JourpropContext extends ParserRuleContext {
 			listener.exitJourprop(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitJourprop) {
-			return visitor.visitJourprop(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22425,14 +22231,6 @@ export class FbpropContext extends ParserRuleContext {
 			listener.exitFbprop(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitFbprop) {
-			return visitor.visitFbprop(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22473,14 +22271,6 @@ export class TimezonepropContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitTimezoneprop) {
 			listener.exitTimezoneprop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTimezoneprop) {
-			return visitor.visitTimezoneprop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22529,14 +22319,6 @@ export class TzpropContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitTzprop) {
 			listener.exitTzprop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTzprop) {
-			return visitor.visitTzprop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22588,14 +22370,6 @@ export class AlarmpropContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitAlarmprop) {
 			listener.exitAlarmprop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitAlarmprop) {
-			return visitor.visitAlarmprop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22661,14 +22435,6 @@ export class StandardcContext extends ParserRuleContext {
 			listener.exitStandardc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitStandardc) {
-			return visitor.visitStandardc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22730,14 +22496,6 @@ export class DaylightcContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDaylightc) {
 			listener.exitDaylightc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDaylightc) {
-			return visitor.visitDaylightc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22813,14 +22571,6 @@ export class AttachContext extends ParserRuleContext {
 			listener.exitAttach(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitAttach) {
-			return visitor.visitAttach(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22847,14 +22597,6 @@ export class AttachparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitAttachparam) {
 			listener.exitAttachparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitAttachparam) {
-			return visitor.visitAttachparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22910,14 +22652,6 @@ export class CategoriesContext extends ParserRuleContext {
 			listener.exitCategories(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitCategories) {
-			return visitor.visitCategories(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22944,14 +22678,6 @@ export class CatparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitCatparam) {
 			listener.exitCatparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitCatparam) {
-			return visitor.visitCatparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23001,14 +22727,6 @@ export class ClazzContext extends ParserRuleContext {
 			listener.exitClazz(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitClazz) {
-			return visitor.visitClazz(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23043,14 +22761,6 @@ export class ClassvalueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitClassvalue) {
 			listener.exitClassvalue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitClassvalue) {
-			return visitor.visitClassvalue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23091,14 +22801,6 @@ export class CommentContext extends ParserRuleContext {
 			listener.exitComment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23128,14 +22830,6 @@ export class CommparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitCommparam) {
 			listener.exitCommparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitCommparam) {
-			return visitor.visitCommparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23176,14 +22870,6 @@ export class DescriptionContext extends ParserRuleContext {
 			listener.exitDescription(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDescription) {
-			return visitor.visitDescription(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23213,14 +22899,6 @@ export class DescparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDescparam) {
 			listener.exitDescparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDescparam) {
-			return visitor.visitDescparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23270,14 +22948,6 @@ export class GeoContext extends ParserRuleContext {
 			listener.exitGeo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitGeo) {
-			return visitor.visitGeo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23307,14 +22977,6 @@ export class GeovalueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitGeovalue) {
 			listener.exitGeovalue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitGeovalue) {
-			return visitor.visitGeovalue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23355,14 +23017,6 @@ export class LocationContext extends ParserRuleContext {
 			listener.exitLocation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitLocation) {
-			return visitor.visitLocation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23392,14 +23046,6 @@ export class LocparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitLocparam) {
 			listener.exitLocparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitLocparam) {
-			return visitor.visitLocparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23449,14 +23095,6 @@ export class PercentContext extends ParserRuleContext {
 			listener.exitPercent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitPercent) {
-			return visitor.visitPercent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23504,14 +23142,6 @@ export class PriorityContext extends ParserRuleContext {
 			listener.exitPriority(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitPriority) {
-			return visitor.visitPriority(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23534,14 +23164,6 @@ export class PriovalueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitPriovalue) {
 			listener.exitPriovalue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitPriovalue) {
-			return visitor.visitPriovalue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23597,14 +23219,6 @@ export class ResourcesContext extends ParserRuleContext {
 			listener.exitResources(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitResources) {
-			return visitor.visitResources(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23634,14 +23248,6 @@ export class ResrcparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitResrcparam) {
 			listener.exitResrcparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitResrcparam) {
-			return visitor.visitResrcparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23691,14 +23297,6 @@ export class StatusContext extends ParserRuleContext {
 			listener.exitStatus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitStatus) {
-			return visitor.visitStatus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23729,14 +23327,6 @@ export class StatvalueContext extends ParserRuleContext {
 			listener.exitStatvalue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitStatvalue) {
-			return visitor.visitStatvalue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23765,14 +23355,6 @@ export class Statvalue_eventContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitStatvalue_event) {
 			listener.exitStatvalue_event(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitStatvalue_event) {
-			return visitor.visitStatvalue_event(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23808,14 +23390,6 @@ export class Statvalue_todoContext extends ParserRuleContext {
 			listener.exitStatvalue_todo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitStatvalue_todo) {
-			return visitor.visitStatvalue_todo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23844,14 +23418,6 @@ export class Statvalue_jourContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitStatvalue_jour) {
 			listener.exitStatvalue_jour(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitStatvalue_jour) {
-			return visitor.visitStatvalue_jour(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23892,14 +23458,6 @@ export class SummaryContext extends ParserRuleContext {
 			listener.exitSummary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitSummary) {
-			return visitor.visitSummary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23929,14 +23487,6 @@ export class SummparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitSummparam) {
 			listener.exitSummparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitSummparam) {
-			return visitor.visitSummparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23986,14 +23536,6 @@ export class CompletedContext extends ParserRuleContext {
 			listener.exitCompleted(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitCompleted) {
-			return visitor.visitCompleted(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24030,14 +23572,6 @@ export class DtendContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDtend) {
 			listener.exitDtend(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDtend) {
-			return visitor.visitDtend(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24078,14 +23612,6 @@ export class DtendparamContext extends ParserRuleContext {
 			listener.exitDtendparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDtendparam) {
-			return visitor.visitDtendparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24122,14 +23648,6 @@ export class DueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDue) {
 			listener.exitDue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDue) {
-			return visitor.visitDue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24170,14 +23688,6 @@ export class DueparamContext extends ParserRuleContext {
 			listener.exitDueparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDueparam) {
-			return visitor.visitDueparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24216,14 +23726,6 @@ export class DtstartContext extends ParserRuleContext {
 			listener.exitDtstart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDtstart) {
-			return visitor.visitDtstart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24260,14 +23762,6 @@ export class DtstparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDtstparam) {
 			listener.exitDtstparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDtstparam) {
-			return visitor.visitDtstparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24317,14 +23811,6 @@ export class DurationContext extends ParserRuleContext {
 			listener.exitDuration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDuration) {
-			return visitor.visitDuration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24363,14 +23849,6 @@ export class FreebusyContext extends ParserRuleContext {
 			listener.exitFreebusy(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitFreebusy) {
-			return visitor.visitFreebusy(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24397,14 +23875,6 @@ export class FbparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitFbparam) {
 			listener.exitFbparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitFbparam) {
-			return visitor.visitFbparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24444,14 +23914,6 @@ export class FbvalueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitFbvalue) {
 			listener.exitFbvalue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitFbvalue) {
-			return visitor.visitFbvalue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24501,14 +23963,6 @@ export class TranspContext extends ParserRuleContext {
 			listener.exitTransp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTransp) {
-			return visitor.visitTransp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24534,14 +23988,6 @@ export class TransvalueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitTransvalue) {
 			listener.exitTransvalue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTransvalue) {
-			return visitor.visitTransvalue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24592,14 +24038,6 @@ export class TzidContext extends ParserRuleContext {
 			listener.exitTzid(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTzid) {
-			return visitor.visitTzid(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24638,14 +24076,6 @@ export class TznameContext extends ParserRuleContext {
 			listener.exitTzname(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTzname) {
-			return visitor.visitTzname(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24672,14 +24102,6 @@ export class TznparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitTznparam) {
 			listener.exitTznparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTznparam) {
-			return visitor.visitTznparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24729,14 +24151,6 @@ export class TzoffsetfromContext extends ParserRuleContext {
 			listener.exitTzoffsetfrom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTzoffsetfrom) {
-			return visitor.visitTzoffsetfrom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24782,14 +24196,6 @@ export class TzoffsettoContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitTzoffsetto) {
 			listener.exitTzoffsetto(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTzoffsetto) {
-			return visitor.visitTzoffsetto(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24839,14 +24245,6 @@ export class TzurlContext extends ParserRuleContext {
 			listener.exitTzurl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTzurl) {
-			return visitor.visitTzurl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24883,14 +24281,6 @@ export class AttendeeContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitAttendee) {
 			listener.exitAttendee(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitAttendee) {
-			return visitor.visitAttendee(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24951,14 +24341,6 @@ export class AttparamContext extends ParserRuleContext {
 			listener.exitAttparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitAttparam) {
-			return visitor.visitAttparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24997,14 +24379,6 @@ export class ContactContext extends ParserRuleContext {
 			listener.exitContact(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitContact) {
-			return visitor.visitContact(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25034,14 +24408,6 @@ export class ContparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitContparam) {
 			listener.exitContparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitContparam) {
-			return visitor.visitContparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25082,14 +24448,6 @@ export class OrganizerContext extends ParserRuleContext {
 			listener.exitOrganizer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitOrganizer) {
-			return visitor.visitOrganizer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25125,14 +24483,6 @@ export class OrgparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitOrgparam) {
 			listener.exitOrgparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitOrgparam) {
-			return visitor.visitOrgparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25171,14 +24521,6 @@ export class RecuridContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitRecurid) {
 			listener.exitRecurid(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRecurid) {
-			return visitor.visitRecurid(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25222,14 +24564,6 @@ export class RidparamContext extends ParserRuleContext {
 			listener.exitRidparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRidparam) {
-			return visitor.visitRidparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25268,14 +24602,6 @@ export class RelatedContext extends ParserRuleContext {
 			listener.exitRelated(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRelated) {
-			return visitor.visitRelated(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25302,14 +24628,6 @@ export class RelparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitRelparam) {
 			listener.exitRelparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRelparam) {
-			return visitor.visitRelparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25359,14 +24677,6 @@ export class UrlContext extends ParserRuleContext {
 			listener.exitUrl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitUrl) {
-			return visitor.visitUrl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25412,14 +24722,6 @@ export class UidContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitUid) {
 			listener.exitUid(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitUid) {
-			return visitor.visitUid(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25475,14 +24777,6 @@ export class ExdateContext extends ParserRuleContext {
 			listener.exitExdate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitExdate) {
-			return visitor.visitExdate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25519,14 +24813,6 @@ export class ExdtparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitExdtparam) {
 			listener.exitExdtparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitExdtparam) {
-			return visitor.visitExdtparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25582,14 +24868,6 @@ export class RdateContext extends ParserRuleContext {
 			listener.exitRdate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRdate) {
-			return visitor.visitRdate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25631,14 +24909,6 @@ export class RdtparamContext extends ParserRuleContext {
 			listener.exitRdtparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRdtparam) {
-			return visitor.visitRdtparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25669,14 +24939,6 @@ export class RdtvalContext extends ParserRuleContext {
 			listener.exitRdtval(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRdtval) {
-			return visitor.visitRdtval(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25702,14 +24964,6 @@ export class Date_time_dateContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDate_time_date) {
 			listener.exitDate_time_date(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDate_time_date) {
-			return visitor.visitDate_time_date(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25759,14 +25013,6 @@ export class RruleContext extends ParserRuleContext {
 			listener.exitRrule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRrule) {
-			return visitor.visitRrule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25814,14 +25060,6 @@ export class ActionContext extends ParserRuleContext {
 			listener.exitAction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitAction) {
-			return visitor.visitAction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25856,14 +25094,6 @@ export class ActionvalueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitActionvalue) {
 			listener.exitActionvalue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitActionvalue) {
-			return visitor.visitActionvalue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25911,14 +25141,6 @@ export class RepeatContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitRepeat) {
 			listener.exitRepeat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRepeat) {
-			return visitor.visitRepeat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25971,14 +25193,6 @@ export class TriggerContext extends ParserRuleContext {
 			listener.exitTrigger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTrigger) {
-			return visitor.visitTrigger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26014,14 +25228,6 @@ export class TrigrelContext extends ParserRuleContext {
 			listener.exitTrigrel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTrigrel) {
-			return visitor.visitTrigrel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26052,14 +25258,6 @@ export class TrigabsContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitTrigabs) {
 			listener.exitTrigabs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTrigabs) {
-			return visitor.visitTrigabs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26109,14 +25307,6 @@ export class CreatedContext extends ParserRuleContext {
 			listener.exitCreated(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitCreated) {
-			return visitor.visitCreated(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26162,14 +25352,6 @@ export class DtstampContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDtstamp) {
 			listener.exitDtstamp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDtstamp) {
-			return visitor.visitDtstamp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26219,14 +25401,6 @@ export class Last_modContext extends ParserRuleContext {
 			listener.exitLast_mod(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitLast_mod) {
-			return visitor.visitLast_mod(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26272,14 +25446,6 @@ export class SeqContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitSeq) {
 			listener.exitSeq(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitSeq) {
-			return visitor.visitSeq(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26329,14 +25495,6 @@ export class Iana_propContext extends ParserRuleContext {
 			listener.exitIana_prop(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitIana_prop) {
-			return visitor.visitIana_prop(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26382,14 +25540,6 @@ export class X_propContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitX_prop) {
 			listener.exitX_prop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitX_prop) {
-			return visitor.visitX_prop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26447,14 +25597,6 @@ export class RstatusContext extends ParserRuleContext {
 			listener.exitRstatus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRstatus) {
-			return visitor.visitRstatus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26481,14 +25623,6 @@ export class RstatparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitRstatparam) {
 			listener.exitRstatparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRstatparam) {
-			return visitor.visitRstatparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26530,14 +25664,6 @@ export class StatcodeContext extends ParserRuleContext {
 			listener.exitStatcode(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitStatcode) {
-			return visitor.visitStatcode(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26565,14 +25691,6 @@ export class Param_nameContext extends ParserRuleContext {
 			listener.exitParam_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitParam_name) {
-			return visitor.visitParam_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26598,14 +25716,6 @@ export class Param_valueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitParam_value) {
 			listener.exitParam_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitParam_value) {
-			return visitor.visitParam_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26636,14 +25746,6 @@ export class ParamtextContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitParamtext) {
 			listener.exitParamtext(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitParamtext) {
-			return visitor.visitParamtext(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26685,14 +25787,6 @@ export class Quoted_stringContext extends ParserRuleContext {
 			listener.exitQuoted_string(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitQuoted_string) {
-			return visitor.visitQuoted_string(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26730,14 +25824,6 @@ export class Iana_tokenContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitIana_token) {
 			listener.exitIana_token(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitIana_token) {
-			return visitor.visitIana_token(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26824,14 +25910,6 @@ export class IcalparameterContext extends ParserRuleContext {
 			listener.exitIcalparameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitIcalparameter) {
-			return visitor.visitIcalparameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26869,14 +25947,6 @@ export class AltrepparamContext extends ParserRuleContext {
 			listener.exitAltrepparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitAltrepparam) {
-			return visitor.visitAltrepparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26903,14 +25973,6 @@ export class CnparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitCnparam) {
 			listener.exitCnparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitCnparam) {
-			return visitor.visitCnparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26957,14 +26019,6 @@ export class CutypeparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitCutypeparam) {
 			listener.exitCutypeparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitCutypeparam) {
-			return visitor.visitCutypeparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27019,14 +26073,6 @@ export class DelfromparamContext extends ParserRuleContext {
 			listener.exitDelfromparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDelfromparam) {
-			return visitor.visitDelfromparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27079,14 +26125,6 @@ export class DeltoparamContext extends ParserRuleContext {
 			listener.exitDeltoparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDeltoparam) {
-			return visitor.visitDeltoparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27124,14 +26162,6 @@ export class DirparamContext extends ParserRuleContext {
 			listener.exitDirparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDirparam) {
-			return visitor.visitDirparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27166,14 +26196,6 @@ export class EncodingparamContext extends ParserRuleContext {
 			listener.exitEncodingparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitEncodingparam) {
-			return visitor.visitEncodingparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27204,14 +26226,6 @@ export class FmttypeparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitFmttypeparam) {
 			listener.exitFmttypeparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitFmttypeparam) {
-			return visitor.visitFmttypeparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27257,14 +26271,6 @@ export class FbtypeparamContext extends ParserRuleContext {
 			listener.exitFbtypeparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitFbtypeparam) {
-			return visitor.visitFbtypeparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27291,14 +26297,6 @@ export class LanguageparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitLanguageparam) {
 			listener.exitLanguageparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitLanguageparam) {
-			return visitor.visitLanguageparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27353,14 +26351,6 @@ export class MemberparamContext extends ParserRuleContext {
 			listener.exitMemberparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitMemberparam) {
-			return visitor.visitMemberparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27395,14 +26385,6 @@ export class PartstatparamContext extends ParserRuleContext {
 			listener.exitPartstatparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitPartstatparam) {
-			return visitor.visitPartstatparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27429,14 +26411,6 @@ export class RangeparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitRangeparam) {
 			listener.exitRangeparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRangeparam) {
-			return visitor.visitRangeparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27468,14 +26442,6 @@ export class TrigrelparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitTrigrelparam) {
 			listener.exitTrigrelparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTrigrelparam) {
-			return visitor.visitTrigrelparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27516,14 +26482,6 @@ export class ReltypeparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitReltypeparam) {
 			listener.exitReltypeparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitReltypeparam) {
-			return visitor.visitReltypeparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27569,14 +26527,6 @@ export class RoleparamContext extends ParserRuleContext {
 			listener.exitRoleparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRoleparam) {
-			return visitor.visitRoleparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27606,14 +26556,6 @@ export class RsvpparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitRsvpparam) {
 			listener.exitRsvpparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRsvpparam) {
-			return visitor.visitRsvpparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27653,14 +26595,6 @@ export class SentbyparamContext extends ParserRuleContext {
 			listener.exitSentbyparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitSentbyparam) {
-			return visitor.visitSentbyparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27690,14 +26624,6 @@ export class TzidparamContext extends ParserRuleContext {
 			listener.exitTzidparam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTzidparam) {
-			return visitor.visitTzidparam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27724,14 +26650,6 @@ export class ValuetypeparamContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitValuetypeparam) {
 			listener.exitValuetypeparam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitValuetypeparam) {
-			return visitor.visitValuetypeparam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27803,14 +26721,6 @@ export class ValuetypeContext extends ParserRuleContext {
 			listener.exitValuetype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitValuetype) {
-			return visitor.visitValuetype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27836,14 +26746,6 @@ export class BinaryContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitBinary) {
 			listener.exitBinary(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitBinary) {
-			return visitor.visitBinary(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27876,14 +26778,6 @@ export class B_charsContext extends ParserRuleContext {
 			listener.exitB_chars(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitB_chars) {
-			return visitor.visitB_chars(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27914,14 +26808,6 @@ export class B_endContext extends ParserRuleContext {
 			listener.exitB_end(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitB_end) {
-			return visitor.visitB_end(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27949,14 +26835,6 @@ export class BoolContext extends ParserRuleContext {
 			listener.exitBool(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitBool) {
-			return visitor.visitBool(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27981,14 +26859,6 @@ export class Cal_addressContext extends ParserRuleContext {
 			listener.exitCal_address(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitCal_address) {
-			return visitor.visitCal_address(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28011,14 +26881,6 @@ export class DateContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDate) {
 			listener.exitDate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDate) {
-			return visitor.visitDate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28047,14 +26909,6 @@ export class Date_timeContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDate_time) {
 			listener.exitDate_time(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDate_time) {
-			return visitor.visitDate_time(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28090,14 +26944,6 @@ export class Dur_valueContext extends ParserRuleContext {
 			listener.exitDur_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDur_value) {
-			return visitor.visitDur_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28131,14 +26977,6 @@ export class Float_numContext extends ParserRuleContext {
 			listener.exitFloat_num(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitFloat_num) {
-			return visitor.visitFloat_num(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28169,14 +27007,6 @@ export class DigitsContext extends ParserRuleContext {
 			listener.exitDigits(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDigits) {
-			return visitor.visitDigits(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28201,14 +27031,6 @@ export class IntegerContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitInteger) {
 			listener.exitInteger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitInteger) {
-			return visitor.visitInteger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28236,14 +27058,6 @@ export class PeriodContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitPeriod) {
 			listener.exitPeriod(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitPeriod) {
-			return visitor.visitPeriod(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28283,14 +27097,6 @@ export class RecurContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitRecur) {
 			listener.exitRecur(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRecur) {
-			return visitor.visitRecur(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28350,14 +27156,6 @@ export class TextContext extends ParserRuleContext {
 			listener.exitText(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitText) {
-			return visitor.visitText(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28387,14 +27185,6 @@ export class TimeContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitTime) {
 			listener.exitTime(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTime) {
-			return visitor.visitTime(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28427,14 +27217,6 @@ export class UriContext extends ParserRuleContext {
 			listener.exitUri(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitUri) {
-			return visitor.visitUri(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28457,14 +27239,6 @@ export class Utc_offsetContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitUtc_offset) {
 			listener.exitUtc_offset(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitUtc_offset) {
-			return visitor.visitUtc_offset(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28492,14 +27266,6 @@ export class Other_paramContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitOther_param) {
 			listener.exitOther_param(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitOther_param) {
-			return visitor.visitOther_param(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28545,14 +27311,6 @@ export class Iana_paramContext extends ParserRuleContext {
 			listener.exitIana_param(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitIana_param) {
-			return visitor.visitIana_param(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28596,14 +27354,6 @@ export class X_paramContext extends ParserRuleContext {
 			listener.exitX_param(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitX_param) {
-			return visitor.visitX_param(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28628,14 +27378,6 @@ export class Type_nameContext extends ParserRuleContext {
 			listener.exitType_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitType_name) {
-			return visitor.visitType_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28658,14 +27400,6 @@ export class Subtype_nameContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitSubtype_name) {
 			listener.exitSubtype_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitSubtype_name) {
-			return visitor.visitSubtype_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28698,14 +27432,6 @@ export class Reg_nameContext extends ParserRuleContext {
 			listener.exitReg_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitReg_name) {
-			return visitor.visitReg_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28734,14 +27460,6 @@ export class LanguageContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitLanguage) {
 			listener.exitLanguage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitLanguage) {
-			return visitor.visitLanguage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28784,14 +27502,6 @@ export class Partstat_eventContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitPartstat_event) {
 			listener.exitPartstat_event(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitPartstat_event) {
-			return visitor.visitPartstat_event(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28842,14 +27552,6 @@ export class Partstat_todoContext extends ParserRuleContext {
 			listener.exitPartstat_todo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitPartstat_todo) {
-			return visitor.visitPartstat_todo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28886,14 +27588,6 @@ export class Partstat_jourContext extends ParserRuleContext {
 			listener.exitPartstat_jour(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitPartstat_jour) {
-			return visitor.visitPartstat_jour(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28921,14 +27615,6 @@ export class B_charContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitB_char) {
 			listener.exitB_char(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitB_char) {
-			return visitor.visitB_char(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -28961,14 +27647,6 @@ export class Date_valueContext extends ParserRuleContext {
 			listener.exitDate_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDate_value) {
-			return visitor.visitDate_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -28999,14 +27677,6 @@ export class Date_fullyearContext extends ParserRuleContext {
 			listener.exitDate_fullyear(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDate_fullyear) {
-			return visitor.visitDate_fullyear(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29029,14 +27699,6 @@ export class Date_monthContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDate_month) {
 			listener.exitDate_month(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDate_month) {
-			return visitor.visitDate_month(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29063,14 +27725,6 @@ export class Date_mdayContext extends ParserRuleContext {
 			listener.exitDate_mday(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDate_mday) {
-			return visitor.visitDate_mday(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29093,14 +27747,6 @@ export class Time_hourContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitTime_hour) {
 			listener.exitTime_hour(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTime_hour) {
-			return visitor.visitTime_hour(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29127,14 +27773,6 @@ export class Time_minuteContext extends ParserRuleContext {
 			listener.exitTime_minute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTime_minute) {
-			return visitor.visitTime_minute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29157,14 +27795,6 @@ export class Time_secondContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitTime_second) {
 			listener.exitTime_second(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTime_second) {
-			return visitor.visitTime_second(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29192,14 +27822,6 @@ export class Dur_dateContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDur_date) {
 			listener.exitDur_date(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDur_date) {
-			return visitor.visitDur_date(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29233,14 +27855,6 @@ export class Dur_dayContext extends ParserRuleContext {
 			listener.exitDur_day(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDur_day) {
-			return visitor.visitDur_day(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29272,14 +27886,6 @@ export class Dur_timeContext extends ParserRuleContext {
 			listener.exitDur_time(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDur_time) {
-			return visitor.visitDur_time(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29309,14 +27915,6 @@ export class Dur_weekContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDur_week) {
 			listener.exitDur_week(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDur_week) {
-			return visitor.visitDur_week(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29353,14 +27951,6 @@ export class Dur_hourContext extends ParserRuleContext {
 			listener.exitDur_hour(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDur_hour) {
-			return visitor.visitDur_hour(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29395,14 +27985,6 @@ export class Dur_minuteContext extends ParserRuleContext {
 			listener.exitDur_minute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDur_minute) {
-			return visitor.visitDur_minute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29432,14 +28014,6 @@ export class Dur_secondContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDur_second) {
 			listener.exitDur_second(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDur_second) {
-			return visitor.visitDur_second(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29473,14 +28047,6 @@ export class Period_explicitContext extends ParserRuleContext {
 			listener.exitPeriod_explicit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitPeriod_explicit) {
-			return visitor.visitPeriod_explicit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29507,14 +28073,6 @@ export class Period_startContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitPeriod_start) {
 			listener.exitPeriod_start(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitPeriod_start) {
-			return visitor.visitPeriod_start(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29623,14 +28181,6 @@ export class Recur_rule_partContext extends ParserRuleContext {
 			listener.exitRecur_rule_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitRecur_rule_part) {
-			return visitor.visitRecur_rule_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29673,14 +28223,6 @@ export class FreqContext extends ParserRuleContext {
 			listener.exitFreq(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitFreq) {
-			return visitor.visitFreq(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29708,14 +28250,6 @@ export class EnddateContext extends ParserRuleContext {
 			listener.exitEnddate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitEnddate) {
-			return visitor.visitEnddate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29740,14 +28274,6 @@ export class CountContext extends ParserRuleContext {
 			listener.exitCount(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitCount) {
-			return visitor.visitCount(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29770,14 +28296,6 @@ export class IntervalContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitInterval) {
 			listener.exitInterval(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitInterval) {
-			return visitor.visitInterval(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29819,14 +28337,6 @@ export class ByseclistContext extends ParserRuleContext {
 			listener.exitByseclist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitByseclist) {
-			return visitor.visitByseclist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29864,14 +28374,6 @@ export class ByminlistContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitByminlist) {
 			listener.exitByminlist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitByminlist) {
-			return visitor.visitByminlist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -29913,14 +28415,6 @@ export class ByhrlistContext extends ParserRuleContext {
 			listener.exitByhrlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitByhrlist) {
-			return visitor.visitByhrlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29960,14 +28454,6 @@ export class BywdaylistContext extends ParserRuleContext {
 			listener.exitBywdaylist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitBywdaylist) {
-			return visitor.visitBywdaylist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -29995,14 +28481,6 @@ export class WeekdaynumContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitWeekdaynum) {
 			listener.exitWeekdaynum(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitWeekdaynum) {
-			return visitor.visitWeekdaynum(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30035,14 +28513,6 @@ export class WeekdayContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitWeekday) {
 			listener.exitWeekday(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitWeekday) {
-			return visitor.visitWeekday(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30084,14 +28554,6 @@ export class BymodaylistContext extends ParserRuleContext {
 			listener.exitBymodaylist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitBymodaylist) {
-			return visitor.visitBymodaylist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30116,14 +28578,6 @@ export class MonthdaynumContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitMonthdaynum) {
 			listener.exitMonthdaynum(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitMonthdaynum) {
-			return visitor.visitMonthdaynum(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30165,14 +28619,6 @@ export class ByyrdaylistContext extends ParserRuleContext {
 			listener.exitByyrdaylist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitByyrdaylist) {
-			return visitor.visitByyrdaylist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30197,14 +28643,6 @@ export class YeardaynumContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitYeardaynum) {
 			listener.exitYeardaynum(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitYeardaynum) {
-			return visitor.visitYeardaynum(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30235,14 +28673,6 @@ export class OrdyrdayContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitOrdyrday) {
 			listener.exitOrdyrday(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitOrdyrday) {
-			return visitor.visitOrdyrday(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30284,14 +28714,6 @@ export class BywknolistContext extends ParserRuleContext {
 			listener.exitBywknolist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitBywknolist) {
-			return visitor.visitBywknolist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30316,14 +28738,6 @@ export class WeeknumContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitWeeknum) {
 			listener.exitWeeknum(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitWeeknum) {
-			return visitor.visitWeeknum(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30365,14 +28779,6 @@ export class BymolistContext extends ParserRuleContext {
 			listener.exitBymolist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitBymolist) {
-			return visitor.visitBymolist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30412,14 +28818,6 @@ export class BysplistContext extends ParserRuleContext {
 			listener.exitBysplist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitBysplist) {
-			return visitor.visitBysplist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30448,14 +28846,6 @@ export class Digits_2Context extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDigits_2) {
 			listener.exitDigits_2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDigits_2) {
-			return visitor.visitDigits_2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30488,14 +28878,6 @@ export class Digits_1_2Context extends ParserRuleContext {
 			listener.exitDigits_1_2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDigits_1_2) {
-			return visitor.visitDigits_1_2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30523,14 +28905,6 @@ export class Safe_charContext extends ParserRuleContext {
 			listener.exitSafe_char(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitSafe_char) {
-			return visitor.visitSafe_char(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30555,14 +28929,6 @@ export class Value_charContext extends ParserRuleContext {
 			listener.exitValue_char(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitValue_char) {
-			return visitor.visitValue_char(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30585,14 +28951,6 @@ export class Qsafe_charContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitQsafe_char) {
 			listener.exitQsafe_char(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitQsafe_char) {
-			return visitor.visitQsafe_char(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30621,14 +28979,6 @@ export class Tsafe_charContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitTsafe_char) {
 			listener.exitTsafe_char(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTsafe_char) {
-			return visitor.visitTsafe_char(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30661,14 +29011,6 @@ export class Time_numzoneContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitTime_numzone) {
 			listener.exitTime_numzone(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitTime_numzone) {
-			return visitor.visitTime_numzone(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30707,14 +29049,6 @@ export class Reg_name_charContext extends ParserRuleContext {
 			listener.exitReg_name_char(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitReg_name_char) {
-			return visitor.visitReg_name_char(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30743,14 +29077,6 @@ export class Language_charContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitLanguage_char) {
 			listener.exitLanguage_char(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitLanguage_char) {
-			return visitor.visitLanguage_char(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30793,14 +29119,6 @@ export class X_nameContext extends ParserRuleContext {
 			listener.exitX_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitX_name) {
-			return visitor.visitX_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30826,14 +29144,6 @@ export class Alpha_numContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitAlpha_num) {
 			listener.exitAlpha_num(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitAlpha_num) {
-			return visitor.visitAlpha_num(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30865,14 +29175,6 @@ export class DigitContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitDigit) {
 			listener.exitDigit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitDigit) {
-			return visitor.visitDigit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -30922,14 +29224,6 @@ export class AlphaContext extends ParserRuleContext {
 			listener.exitAlpha(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitAlpha) {
-			return visitor.visitAlpha(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -30973,14 +29267,6 @@ export class K_acceptedContext extends ParserRuleContext {
 			listener.exitK_accepted(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_accepted) {
-			return visitor.visitK_accepted(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31006,14 +29292,6 @@ export class K_actionContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_action) {
 			listener.exitK_action(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_action) {
-			return visitor.visitK_action(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31058,14 +29336,6 @@ export class K_addressContext extends ParserRuleContext {
 			listener.exitK_address(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_address) {
-			return visitor.visitK_address(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31091,14 +29361,6 @@ export class K_altrepContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_altrep) {
 			listener.exitK_altrep(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_altrep) {
-			return visitor.visitK_altrep(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31140,14 +29402,6 @@ export class K_attachContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_attach) {
 			listener.exitK_attach(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_attach) {
-			return visitor.visitK_attach(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31192,14 +29446,6 @@ export class K_attendeeContext extends ParserRuleContext {
 			listener.exitK_attendee(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_attendee) {
-			return visitor.visitK_attendee(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31224,14 +29470,6 @@ export class K_audioContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_audio) {
 			listener.exitK_audio(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_audio) {
-			return visitor.visitK_audio(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31259,14 +29497,6 @@ export class K_baseContext extends ParserRuleContext {
 			listener.exitK_base(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_base) {
-			return visitor.visitK_base(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31291,14 +29521,6 @@ export class K_beginContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_begin) {
 			listener.exitK_begin(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_begin) {
-			return visitor.visitK_begin(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31328,14 +29550,6 @@ export class K_binaryContext extends ParserRuleContext {
 			listener.exitK_binary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_binary) {
-			return visitor.visitK_binary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31358,14 +29572,6 @@ export class K_bitContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_bit) {
 			listener.exitK_bit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_bit) {
-			return visitor.visitK_bit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31403,14 +29609,6 @@ export class K_booleanContext extends ParserRuleContext {
 			listener.exitK_boolean(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_boolean) {
-			return visitor.visitK_boolean(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31434,14 +29632,6 @@ export class K_busyContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_busy) {
 			listener.exitK_busy(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_busy) {
-			return visitor.visitK_busy(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31508,14 +29698,6 @@ export class K_busy_unavailableContext extends ParserRuleContext {
 			listener.exitK_busy_unavailable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_busy_unavailable) {
-			return visitor.visitK_busy_unavailable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31564,14 +29746,6 @@ export class K_busy_tentativeContext extends ParserRuleContext {
 			listener.exitK_busy_tentative(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_busy_tentative) {
-			return visitor.visitK_busy_tentative(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31605,14 +29779,6 @@ export class K_bydayContext extends ParserRuleContext {
 			listener.exitK_byday(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_byday) {
-			return visitor.visitK_byday(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31638,14 +29804,6 @@ export class K_byhourContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_byhour) {
 			listener.exitK_byhour(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_byhour) {
-			return visitor.visitK_byhour(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31677,14 +29835,6 @@ export class K_byminuteContext extends ParserRuleContext {
 			listener.exitK_byminute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_byminute) {
-			return visitor.visitK_byminute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31711,14 +29861,6 @@ export class K_bymonthContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_bymonth) {
 			listener.exitK_bymonth(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_bymonth) {
-			return visitor.visitK_bymonth(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31759,14 +29901,6 @@ export class K_bymonthdayContext extends ParserRuleContext {
 			listener.exitK_bymonthday(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_bymonthday) {
-			return visitor.visitK_bymonthday(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31794,14 +29928,6 @@ export class K_bysecondContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_bysecond) {
 			listener.exitK_bysecond(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_bysecond) {
-			return visitor.visitK_bysecond(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31840,14 +29966,6 @@ export class K_bysetposContext extends ParserRuleContext {
 			listener.exitK_bysetpos(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_bysetpos) {
-			return visitor.visitK_bysetpos(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -31882,14 +30000,6 @@ export class K_byweeknoContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_byweekno) {
 			listener.exitK_byweekno(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_byweekno) {
-			return visitor.visitK_byweekno(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31933,14 +30043,6 @@ export class K_byyeardayContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_byyearday) {
 			listener.exitK_byyearday(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_byyearday) {
-			return visitor.visitK_byyearday(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -31996,14 +30098,6 @@ export class K_cal_addressContext extends ParserRuleContext {
 			listener.exitK_cal_address(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_cal_address) {
-			return visitor.visitK_cal_address(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32052,14 +30146,6 @@ export class K_calscaleContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_calscale) {
 			listener.exitK_calscale(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_calscale) {
-			return visitor.visitK_calscale(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32113,14 +30199,6 @@ export class K_cancelledContext extends ParserRuleContext {
 			listener.exitK_cancelled(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_cancelled) {
-			return visitor.visitK_cancelled(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32159,14 +30237,6 @@ export class K_categoriesContext extends ParserRuleContext {
 			listener.exitK_categories(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_categories) {
-			return visitor.visitK_categories(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32193,14 +30263,6 @@ export class K_chairContext extends ParserRuleContext {
 			listener.exitK_chair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_chair) {
-			return visitor.visitK_chair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32225,14 +30287,6 @@ export class K_childContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_child) {
 			listener.exitK_child(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_child) {
-			return visitor.visitK_child(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32268,14 +30322,6 @@ export class K_classContext extends ParserRuleContext {
 			listener.exitK_class(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_class) {
-			return visitor.visitK_class(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32297,14 +30343,6 @@ export class K_cnContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_cn) {
 			listener.exitK_cn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_cn) {
-			return visitor.visitK_cn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32342,14 +30380,6 @@ export class K_commentContext extends ParserRuleContext {
 			listener.exitK_comment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_comment) {
-			return visitor.visitK_comment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32385,14 +30415,6 @@ export class K_completedContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_completed) {
 			listener.exitK_completed(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_completed) {
-			return visitor.visitK_completed(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32442,14 +30464,6 @@ export class K_confidentialContext extends ParserRuleContext {
 			listener.exitK_confidential(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_confidential) {
-			return visitor.visitK_confidential(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32478,14 +30492,6 @@ export class K_confirmedContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_confirmed) {
 			listener.exitK_confirmed(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_confirmed) {
-			return visitor.visitK_confirmed(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32530,14 +30536,6 @@ export class K_contactContext extends ParserRuleContext {
 			listener.exitK_contact(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_contact) {
-			return visitor.visitK_contact(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32562,14 +30560,6 @@ export class K_countContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_count) {
 			listener.exitK_count(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_count) {
-			return visitor.visitK_count(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32607,14 +30597,6 @@ export class K_createdContext extends ParserRuleContext {
 			listener.exitK_created(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_created) {
-			return visitor.visitK_created(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32640,14 +30622,6 @@ export class K_cutypeContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_cutype) {
 			listener.exitK_cutype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_cutype) {
-			return visitor.visitK_cutype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32676,14 +30650,6 @@ export class K_dailyContext extends ParserRuleContext {
 			listener.exitK_daily(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_daily) {
-			return visitor.visitK_daily(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32707,14 +30673,6 @@ export class K_dateContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_date) {
 			listener.exitK_date(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_date) {
-			return visitor.visitK_date(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32761,14 +30719,6 @@ export class K_date_timeContext extends ParserRuleContext {
 			listener.exitK_date_time(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_date_time) {
-			return visitor.visitK_date_time(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32796,14 +30746,6 @@ export class K_daylightContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_daylight) {
 			listener.exitK_daylight(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_daylight) {
-			return visitor.visitK_daylight(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32849,14 +30791,6 @@ export class K_declinedContext extends ParserRuleContext {
 			listener.exitK_declined(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_declined) {
-			return visitor.visitK_declined(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -32898,14 +30832,6 @@ export class K_delegatedContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_delegated) {
 			listener.exitK_delegated(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_delegated) {
-			return visitor.visitK_delegated(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -32954,14 +30880,6 @@ export class K_delegated_fromContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_delegated_from) {
 			listener.exitK_delegated_from(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_delegated_from) {
-			return visitor.visitK_delegated_from(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33017,14 +30935,6 @@ export class K_delegated_toContext extends ParserRuleContext {
 			listener.exitK_delegated_to(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_delegated_to) {
-			return visitor.visitK_delegated_to(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33064,14 +30974,6 @@ export class K_descriptionContext extends ParserRuleContext {
 			listener.exitK_description(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_description) {
-			return visitor.visitK_description(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33094,14 +30996,6 @@ export class K_dirContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_dir) {
 			listener.exitK_dir(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_dir) {
-			return visitor.visitK_dir(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33132,14 +31026,6 @@ export class K_displayContext extends ParserRuleContext {
 			listener.exitK_display(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_display) {
-			return visitor.visitK_display(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33164,14 +31050,6 @@ export class K_draftContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_draft) {
 			listener.exitK_draft(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_draft) {
-			return visitor.visitK_draft(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33205,14 +31083,6 @@ export class K_dtendContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_dtend) {
 			listener.exitK_dtend(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_dtend) {
-			return visitor.visitK_dtend(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33250,14 +31120,6 @@ export class K_dtstampContext extends ParserRuleContext {
 			listener.exitK_dtstamp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_dtstamp) {
-			return visitor.visitK_dtstamp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33292,14 +31154,6 @@ export class K_dtstartContext extends ParserRuleContext {
 			listener.exitK_dtstart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_dtstart) {
-			return visitor.visitK_dtstart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33322,14 +31176,6 @@ export class K_dueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_due) {
 			listener.exitK_due(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_due) {
-			return visitor.visitK_due(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33361,14 +31207,6 @@ export class K_durationContext extends ParserRuleContext {
 			listener.exitK_duration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_duration) {
-			return visitor.visitK_duration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33393,14 +31231,6 @@ export class K_emailContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_email) {
 			listener.exitK_email(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_email) {
-			return visitor.visitK_email(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33439,14 +31269,6 @@ export class K_encodingContext extends ParserRuleContext {
 			listener.exitK_encoding(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_encoding) {
-			return visitor.visitK_encoding(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33469,14 +31291,6 @@ export class K_endContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_end) {
 			listener.exitK_end(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_end) {
-			return visitor.visitK_end(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33513,14 +31327,6 @@ export class K_exdateContext extends ParserRuleContext {
 			listener.exitK_exdate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_exdate) {
-			return visitor.visitK_exdate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33545,14 +31351,6 @@ export class K_falseContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_false) {
 			listener.exitK_false(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_false) {
-			return visitor.visitK_false(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33582,14 +31380,6 @@ export class K_fbtypeContext extends ParserRuleContext {
 			listener.exitK_fbtype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_fbtype) {
-			return visitor.visitK_fbtype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33616,14 +31406,6 @@ export class K_finalContext extends ParserRuleContext {
 			listener.exitK_final(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_final) {
-			return visitor.visitK_final(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33648,14 +31430,6 @@ export class K_floatContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_float) {
 			listener.exitK_float(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_float) {
-			return visitor.visitK_float(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33693,14 +31467,6 @@ export class K_fmttypeContext extends ParserRuleContext {
 			listener.exitK_fmttype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_fmttype) {
-			return visitor.visitK_fmttype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33722,14 +31488,6 @@ export class K_frContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_fr) {
 			listener.exitK_fr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_fr) {
-			return visitor.visitK_fr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33762,14 +31520,6 @@ export class K_freeContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_free) {
 			listener.exitK_free(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_free) {
-			return visitor.visitK_free(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33808,14 +31558,6 @@ export class K_freebusyContext extends ParserRuleContext {
 			listener.exitK_freebusy(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_freebusy) {
-			return visitor.visitK_freebusy(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33841,14 +31583,6 @@ export class K_freqContext extends ParserRuleContext {
 			listener.exitK_freq(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_freq) {
-			return visitor.visitK_freq(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33871,14 +31605,6 @@ export class K_geoContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_geo) {
 			listener.exitK_geo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_geo) {
-			return visitor.visitK_geo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33925,14 +31651,6 @@ export class K_gregorianContext extends ParserRuleContext {
 			listener.exitK_gregorian(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_gregorian) {
-			return visitor.visitK_gregorian(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -33957,14 +31675,6 @@ export class K_groupContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_group) {
 			listener.exitK_group(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_group) {
-			return visitor.visitK_group(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -33992,14 +31702,6 @@ export class K_hourlyContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_hourly) {
 			listener.exitK_hourly(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_hourly) {
-			return visitor.visitK_hourly(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34038,14 +31740,6 @@ export class K_in_processContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_in_process) {
 			listener.exitK_in_process(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_in_process) {
-			return visitor.visitK_in_process(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34092,14 +31786,6 @@ export class K_individualContext extends ParserRuleContext {
 			listener.exitK_individual(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_individual) {
-			return visitor.visitK_individual(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34135,14 +31821,6 @@ export class K_integerContext extends ParserRuleContext {
 			listener.exitK_integer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_integer) {
-			return visitor.visitK_integer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34170,14 +31848,6 @@ export class K_intervalContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_interval) {
 			listener.exitK_interval(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_interval) {
-			return visitor.visitK_interval(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34221,14 +31891,6 @@ export class K_languageContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_language) {
 			listener.exitK_language(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_language) {
-			return visitor.visitK_language(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34279,14 +31941,6 @@ export class K_last_modifiedContext extends ParserRuleContext {
 			listener.exitK_last_modified(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_last_modified) {
-			return visitor.visitK_last_modified(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34321,14 +31975,6 @@ export class K_locationContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_location) {
 			listener.exitK_location(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_location) {
-			return visitor.visitK_location(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34372,14 +32018,6 @@ export class K_memberContext extends ParserRuleContext {
 			listener.exitK_member(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_member) {
-			return visitor.visitK_member(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34405,14 +32043,6 @@ export class K_methodContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_method) {
 			listener.exitK_method(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_method) {
-			return visitor.visitK_method(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34444,14 +32074,6 @@ export class K_minutelyContext extends ParserRuleContext {
 			listener.exitK_minutely(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_minutely) {
-			return visitor.visitK_minutely(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34473,14 +32095,6 @@ export class K_moContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_mo) {
 			listener.exitK_mo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_mo) {
-			return visitor.visitK_mo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34509,14 +32123,6 @@ export class K_monthlyContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_monthly) {
 			listener.exitK_monthly(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_monthly) {
-			return visitor.visitK_monthly(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34564,14 +32170,6 @@ export class K_needs_actionContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_needs_action) {
 			listener.exitK_needs_action(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_needs_action) {
-			return visitor.visitK_needs_action(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34644,14 +32242,6 @@ export class K_non_participantContext extends ParserRuleContext {
 			listener.exitK_non_participant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_non_participant) {
-			return visitor.visitK_non_participant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34677,14 +32267,6 @@ export class K_opaqueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_opaque) {
 			listener.exitK_opaque(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_opaque) {
-			return visitor.visitK_opaque(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34749,14 +32331,6 @@ export class K_opt_participantContext extends ParserRuleContext {
 			listener.exitK_opt_participant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_opt_participant) {
-			return visitor.visitK_opt_participant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34794,14 +32368,6 @@ export class K_organizerContext extends ParserRuleContext {
 			listener.exitK_organizer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_organizer) {
-			return visitor.visitK_organizer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34827,14 +32393,6 @@ export class K_parentContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_parent) {
 			listener.exitK_parent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_parent) {
-			return visitor.visitK_parent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -34897,14 +32455,6 @@ export class K_participantContext extends ParserRuleContext {
 			listener.exitK_participant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_participant) {
-			return visitor.visitK_participant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -34945,14 +32495,6 @@ export class K_partstatContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_partstat) {
 			listener.exitK_partstat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_partstat) {
-			return visitor.visitK_partstat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35018,14 +32560,6 @@ export class K_percent_completeContext extends ParserRuleContext {
 			listener.exitK_percent_complete(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_percent_complete) {
-			return visitor.visitK_percent_complete(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35051,14 +32585,6 @@ export class K_periodContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_period) {
 			listener.exitK_period(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_period) {
-			return visitor.visitK_period(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35104,14 +32630,6 @@ export class K_priorityContext extends ParserRuleContext {
 			listener.exitK_priority(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_priority) {
-			return visitor.visitK_priority(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35138,14 +32656,6 @@ export class K_privateContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_private) {
 			listener.exitK_private(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_private) {
-			return visitor.visitK_private(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35183,14 +32693,6 @@ export class K_processContext extends ParserRuleContext {
 			listener.exitK_process(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_process) {
-			return visitor.visitK_process(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35225,14 +32727,6 @@ export class K_prodidContext extends ParserRuleContext {
 			listener.exitK_prodid(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_prodid) {
-			return visitor.visitK_prodid(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35258,14 +32752,6 @@ export class K_publicContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_public) {
 			listener.exitK_public(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_public) {
-			return visitor.visitK_public(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35294,14 +32780,6 @@ export class K_rangeContext extends ParserRuleContext {
 			listener.exitK_range(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_range) {
-			return visitor.visitK_range(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35326,14 +32804,6 @@ export class K_rdateContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_rdate) {
 			listener.exitK_rdate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_rdate) {
-			return visitor.visitK_rdate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35367,14 +32837,6 @@ export class K_recurContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_recur) {
 			listener.exitK_recur(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_recur) {
-			return visitor.visitK_recur(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35430,14 +32892,6 @@ export class K_recurrence_idContext extends ParserRuleContext {
 			listener.exitK_recurrence_id(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_recurrence_id) {
-			return visitor.visitK_recurrence_id(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35462,14 +32916,6 @@ export class K_relatContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_relat) {
 			listener.exitK_relat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_relat) {
-			return visitor.visitK_relat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35505,14 +32951,6 @@ export class K_relatedContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_related) {
 			listener.exitK_related(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_related) {
-			return visitor.visitK_related(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35560,14 +32998,6 @@ export class K_related_toContext extends ParserRuleContext {
 			listener.exitK_related_to(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_related_to) {
-			return visitor.visitK_related_to(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35603,14 +33033,6 @@ export class K_reltypeContext extends ParserRuleContext {
 			listener.exitK_reltype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_reltype) {
-			return visitor.visitK_reltype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35643,14 +33065,6 @@ export class K_repeatContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_repeat) {
 			listener.exitK_repeat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_repeat) {
-			return visitor.visitK_repeat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35724,14 +33138,6 @@ export class K_req_participantContext extends ParserRuleContext {
 			listener.exitK_req_participant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_req_participant) {
-			return visitor.visitK_req_participant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35793,14 +33199,6 @@ export class K_request_statusContext extends ParserRuleContext {
 			listener.exitK_request_status(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_request_status) {
-			return visitor.visitK_request_status(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35842,14 +33240,6 @@ export class K_resourceContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_resource) {
 			listener.exitK_resource(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_resource) {
-			return visitor.visitK_resource(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35903,14 +33293,6 @@ export class K_resourcesContext extends ParserRuleContext {
 			listener.exitK_resources(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_resources) {
-			return visitor.visitK_resources(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -35934,14 +33316,6 @@ export class K_roleContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_role) {
 			listener.exitK_role(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_role) {
-			return visitor.visitK_role(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -35974,14 +33348,6 @@ export class K_roomContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_room) {
 			listener.exitK_room(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_room) {
-			return visitor.visitK_room(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36017,14 +33383,6 @@ export class K_rruleContext extends ParserRuleContext {
 			listener.exitK_rrule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_rrule) {
-			return visitor.visitK_rrule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36050,14 +33408,6 @@ export class K_rsvpContext extends ParserRuleContext {
 			listener.exitK_rsvp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_rsvp) {
-			return visitor.visitK_rsvp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36079,14 +33429,6 @@ export class K_saContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_sa) {
 			listener.exitK_sa(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_sa) {
-			return visitor.visitK_sa(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36118,14 +33460,6 @@ export class K_secondlyContext extends ParserRuleContext {
 			listener.exitK_secondly(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_secondly) {
-			return visitor.visitK_secondly(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36152,14 +33486,6 @@ export class K_sent_byContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_sent_by) {
 			listener.exitK_sent_by(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_sent_by) {
-			return visitor.visitK_sent_by(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36197,14 +33523,6 @@ export class K_sequenceContext extends ParserRuleContext {
 			listener.exitK_sequence(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_sequence) {
-			return visitor.visitK_sequence(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36238,14 +33556,6 @@ export class K_siblingContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_sibling) {
 			listener.exitK_sibling(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_sibling) {
-			return visitor.visitK_sibling(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36291,14 +33601,6 @@ export class K_standardContext extends ParserRuleContext {
 			listener.exitK_standard(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_standard) {
-			return visitor.visitK_standard(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36330,14 +33632,6 @@ export class K_startContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_start) {
 			listener.exitK_start(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_start) {
-			return visitor.visitK_start(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36381,14 +33675,6 @@ export class K_statusContext extends ParserRuleContext {
 			listener.exitK_status(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_status) {
-			return visitor.visitK_status(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36410,14 +33696,6 @@ export class K_suContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_su) {
 			listener.exitK_su(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_su) {
-			return visitor.visitK_su(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36453,14 +33731,6 @@ export class K_summaryContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_summary) {
 			listener.exitK_summary(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_summary) {
-			return visitor.visitK_summary(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36506,14 +33776,6 @@ export class K_tentativeContext extends ParserRuleContext {
 			listener.exitK_tentative(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_tentative) {
-			return visitor.visitK_tentative(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36546,14 +33808,6 @@ export class K_textContext extends ParserRuleContext {
 			listener.exitK_text(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_text) {
-			return visitor.visitK_text(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36575,14 +33829,6 @@ export class K_thContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_th) {
 			listener.exitK_th(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_th) {
-			return visitor.visitK_th(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36633,14 +33879,6 @@ export class K_thisandfutureContext extends ParserRuleContext {
 			listener.exitK_thisandfuture(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_thisandfuture) {
-			return visitor.visitK_thisandfuture(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36664,14 +33902,6 @@ export class K_timeContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_time) {
 			listener.exitK_time(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_time) {
-			return visitor.visitK_time(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36699,14 +33929,6 @@ export class K_transpContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_transp) {
 			listener.exitK_transp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_transp) {
-			return visitor.visitK_transp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36769,14 +33991,6 @@ export class K_transparentContext extends ParserRuleContext {
 			listener.exitK_transparent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_transparent) {
-			return visitor.visitK_transparent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36819,14 +34033,6 @@ export class K_triggerContext extends ParserRuleContext {
 			listener.exitK_trigger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_trigger) {
-			return visitor.visitK_trigger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36852,14 +34058,6 @@ export class K_trueContext extends ParserRuleContext {
 			listener.exitK_true(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_true) {
-			return visitor.visitK_true(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36881,14 +34079,6 @@ export class K_tuContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_tu) {
 			listener.exitK_tu(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_tu) {
-			return visitor.visitK_tu(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -36916,14 +34106,6 @@ export class K_tzidContext extends ParserRuleContext {
 			listener.exitK_tzid(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_tzid) {
-			return visitor.visitK_tzid(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -36949,14 +34131,6 @@ export class K_tznameContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_tzname) {
 			listener.exitK_tzname(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_tzname) {
-			return visitor.visitK_tzname(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -37012,14 +34186,6 @@ export class K_tzoffsetfromContext extends ParserRuleContext {
 			listener.exitK_tzoffsetfrom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_tzoffsetfrom) {
-			return visitor.visitK_tzoffsetfrom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37071,14 +34237,6 @@ export class K_tzoffsettoContext extends ParserRuleContext {
 			listener.exitK_tzoffsetto(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_tzoffsetto) {
-			return visitor.visitK_tzoffsetto(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37105,14 +34263,6 @@ export class K_tzurlContext extends ParserRuleContext {
 			listener.exitK_tzurl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_tzurl) {
-			return visitor.visitK_tzurl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37135,14 +34285,6 @@ export class K_uidContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_uid) {
 			listener.exitK_uid(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_uid) {
-			return visitor.visitK_uid(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -37179,14 +34321,6 @@ export class K_unknownContext extends ParserRuleContext {
 			listener.exitK_unknown(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_unknown) {
-			return visitor.visitK_unknown(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37213,14 +34347,6 @@ export class K_untilContext extends ParserRuleContext {
 			listener.exitK_until(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_until) {
-			return visitor.visitK_until(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37245,14 +34371,6 @@ export class K_uriContext extends ParserRuleContext {
 			listener.exitK_uri(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_uri) {
-			return visitor.visitK_uri(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37275,14 +34393,6 @@ export class K_urlContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_url) {
 			listener.exitK_url(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_url) {
-			return visitor.visitK_url(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -37330,14 +34440,6 @@ export class K_utc_offsetContext extends ParserRuleContext {
 			listener.exitK_utc_offset(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_utc_offset) {
-			return visitor.visitK_utc_offset(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37372,14 +34474,6 @@ export class K_valarmContext extends ParserRuleContext {
 			listener.exitK_valarm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_valarm) {
-			return visitor.visitK_valarm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37404,14 +34498,6 @@ export class K_valueContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_value) {
 			listener.exitK_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_value) {
-			return visitor.visitK_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -37451,14 +34537,6 @@ export class K_vcalendarContext extends ParserRuleContext {
 			listener.exitK_vcalendar(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_vcalendar) {
-			return visitor.visitK_vcalendar(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37485,14 +34563,6 @@ export class K_versionContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_version) {
 			listener.exitK_version(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_version) {
-			return visitor.visitK_version(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -37536,14 +34606,6 @@ export class K_veventContext extends ParserRuleContext {
 			listener.exitK_vevent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_vevent) {
-			return visitor.visitK_vevent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37581,14 +34643,6 @@ export class K_vfreebusyContext extends ParserRuleContext {
 			listener.exitK_vfreebusy(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_vfreebusy) {
-			return visitor.visitK_vfreebusy(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37616,14 +34670,6 @@ export class K_vjournalContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_vjournal) {
 			listener.exitK_vjournal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_vjournal) {
-			return visitor.visitK_vjournal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -37663,14 +34709,6 @@ export class K_vtimezoneContext extends ParserRuleContext {
 			listener.exitK_vtimezone(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_vtimezone) {
-			return visitor.visitK_vtimezone(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37704,14 +34742,6 @@ export class K_vtodoContext extends ParserRuleContext {
 			listener.exitK_vtodo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_vtodo) {
-			return visitor.visitK_vtodo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37733,14 +34763,6 @@ export class K_weContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_we) {
 			listener.exitK_we(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_we) {
-			return visitor.visitK_we(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -37777,14 +34799,6 @@ export class K_weeklyContext extends ParserRuleContext {
 			listener.exitK_weekly(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_weekly) {
-			return visitor.visitK_weekly(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -37808,14 +34822,6 @@ export class K_wkstContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_wkst) {
 			listener.exitK_wkst(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_wkst) {
-			return visitor.visitK_wkst(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -37850,14 +34856,6 @@ export class K_yearlyContext extends ParserRuleContext {
 	public exitRule(listener: ICalendarListener): void {
 		if (listener.exitK_yearly) {
 			listener.exitK_yearly(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ICalendarVisitor<Result>): Result {
-		if (visitor.visitK_yearly) {
-			return visitor.visitK_yearly(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

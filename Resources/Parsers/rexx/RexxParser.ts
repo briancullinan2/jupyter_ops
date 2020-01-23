@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { RexxParserListener } from "./RexxParserListener";
-import { RexxParserVisitor } from "./RexxParserVisitor";
-
 
 export class RexxParser extends Parser {
 	public static readonly STMT_INCLUDE = 1;
@@ -5253,14 +5251,6 @@ export class FileContext extends ParserRuleContext {
 			listener.exitFile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitFile) {
-			return visitor.visitFile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5286,14 +5276,6 @@ export class Program_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitProgram_) {
 			listener.exitProgram_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitProgram_) {
-			return visitor.visitProgram_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5324,14 +5306,6 @@ export class NclContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitNcl) {
 			listener.exitNcl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitNcl) {
-			return visitor.visitNcl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5370,14 +5344,6 @@ export class Null_clauseContext extends ParserRuleContext {
 			listener.exitNull_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitNull_clause) {
-			return visitor.visitNull_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5399,14 +5365,6 @@ export class DelimContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitDelim) {
 			listener.exitDelim(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitDelim) {
-			return visitor.visitDelim(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5457,14 +5415,6 @@ export class Label_listContext extends ParserRuleContext {
 			listener.exitLabel_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitLabel_list) {
-			return visitor.visitLabel_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5489,14 +5439,6 @@ export class LabelContext extends ParserRuleContext {
 			listener.exitLabel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5517,14 +5459,6 @@ export class Include_statementContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitInclude_statement) {
 			listener.exitInclude_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitInclude_statement) {
-			return visitor.visitInclude_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5557,14 +5491,6 @@ export class Instruction_listContext extends ParserRuleContext {
 			listener.exitInstruction_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitInstruction_list) {
-			return visitor.visitInstruction_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5593,14 +5519,6 @@ export class InstructionContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitInstruction) {
 			listener.exitInstruction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitInstruction) {
-			return visitor.visitInstruction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5633,14 +5551,6 @@ export class Single_instructionContext extends ParserRuleContext {
 			listener.exitSingle_instruction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitSingle_instruction) {
-			return visitor.visitSingle_instruction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5667,14 +5577,6 @@ export class AssignmentContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitAssignment) {
 			listener.exitAssignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitAssignment) {
-			return visitor.visitAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5761,14 +5663,6 @@ export class Keyword_instructionContext extends ParserRuleContext {
 			listener.exitKeyword_instruction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitKeyword_instruction) {
-			return visitor.visitKeyword_instruction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5791,14 +5685,6 @@ export class Command_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitCommand_) {
 			listener.exitCommand_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitCommand_) {
-			return visitor.visitCommand_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5829,14 +5715,6 @@ export class Group_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitGroup_) {
 			listener.exitGroup_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitGroup_) {
-			return visitor.visitGroup_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5883,14 +5761,6 @@ export class Do_Context extends ParserRuleContext {
 			listener.exitDo_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitDo_) {
-			return visitor.visitDo_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5920,14 +5790,6 @@ export class Do_repContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitDo_rep) {
 			listener.exitDo_rep(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitDo_rep) {
-			return visitor.visitDo_rep(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5960,14 +5822,6 @@ export class Do_cntContext extends ParserRuleContext {
 			listener.exitDo_cnt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitDo_cnt) {
-			return visitor.visitDo_cnt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5991,14 +5845,6 @@ export class DotContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitDot) {
 			listener.exitDot(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitDot) {
-			return visitor.visitDot(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6026,14 +5872,6 @@ export class DobContext extends ParserRuleContext {
 			listener.exitDob(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitDob) {
-			return visitor.visitDob(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6057,14 +5895,6 @@ export class DofContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitDof) {
 			listener.exitDof(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitDof) {
-			return visitor.visitDof(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6091,14 +5921,6 @@ export class Do_condContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitDo_cond) {
 			listener.exitDo_cond(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitDo_cond) {
-			return visitor.visitDo_cond(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6141,14 +5963,6 @@ export class If_Context extends ParserRuleContext {
 			listener.exitIf_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitIf_) {
-			return visitor.visitIf_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6177,14 +5991,6 @@ export class Then_Context extends ParserRuleContext {
 			listener.exitThen_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitThen_) {
-			return visitor.visitThen_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6211,14 +6017,6 @@ export class Else_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitElse_) {
 			listener.exitElse_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitElse_) {
-			return visitor.visitElse_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6259,14 +6057,6 @@ export class Select_Context extends ParserRuleContext {
 			listener.exitSelect_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitSelect_) {
-			return visitor.visitSelect_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6298,14 +6088,6 @@ export class Select_bodyContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitSelect_body) {
 			listener.exitSelect_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitSelect_body) {
-			return visitor.visitSelect_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6345,14 +6127,6 @@ export class When_Context extends ParserRuleContext {
 			listener.exitWhen_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitWhen_) {
-			return visitor.visitWhen_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6387,14 +6161,6 @@ export class Otherwise_Context extends ParserRuleContext {
 			listener.exitOtherwise_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitOtherwise_) {
-			return visitor.visitOtherwise_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6426,14 +6192,6 @@ export class Address_Context extends ParserRuleContext {
 			listener.exitAddress_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitAddress_) {
-			return visitor.visitAddress_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6457,14 +6215,6 @@ export class Taken_constantContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitTaken_constant) {
 			listener.exitTaken_constant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitTaken_constant) {
-			return visitor.visitTaken_constant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6492,14 +6242,6 @@ export class ValueexpContext extends ParserRuleContext {
 			listener.exitValueexp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitValueexp) {
-			return visitor.visitValueexp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6523,14 +6265,6 @@ export class Arg_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitArg_) {
 			listener.exitArg_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitArg_) {
-			return visitor.visitArg_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6564,14 +6298,6 @@ export class Call_Context extends ParserRuleContext {
 			listener.exitCall_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitCall_) {
-			return visitor.visitCall_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6602,14 +6328,6 @@ export class Callon_specContext extends ParserRuleContext {
 			listener.exitCallon_spec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitCallon_spec) {
-			return visitor.visitCallon_spec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6632,14 +6350,6 @@ export class Callable_conditionContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitCallable_condition) {
 			listener.exitCallable_condition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitCallable_condition) {
-			return visitor.visitCallable_condition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6666,14 +6376,6 @@ export class Call_parmsContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitCall_parms) {
 			listener.exitCall_parms(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitCall_parms) {
-			return visitor.visitCall_parms(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6715,14 +6417,6 @@ export class Expression_listContext extends ParserRuleContext {
 			listener.exitExpression_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitExpression_list) {
-			return visitor.visitExpression_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6746,14 +6440,6 @@ export class Drop_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitDrop_) {
 			listener.exitDrop_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitDrop_) {
-			return visitor.visitDrop_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6795,14 +6481,6 @@ export class Variable_listContext extends ParserRuleContext {
 			listener.exitVariable_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitVariable_list) {
-			return visitor.visitVariable_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6829,14 +6507,6 @@ export class VrefContext extends ParserRuleContext {
 			listener.exitVref(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitVref) {
-			return visitor.visitVref(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6858,14 +6528,6 @@ export class Var_symbolContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitVar_symbol) {
 			listener.exitVar_symbol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitVar_symbol) {
-			return visitor.visitVar_symbol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6893,14 +6555,6 @@ export class Exit_Context extends ParserRuleContext {
 			listener.exitExit_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitExit_) {
-			return visitor.visitExit_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6924,14 +6578,6 @@ export class Interpret_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitInterpret_) {
 			listener.exitInterpret_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitInterpret_) {
-			return visitor.visitInterpret_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6959,14 +6605,6 @@ export class Iterate_Context extends ParserRuleContext {
 			listener.exitIterate_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitIterate_) {
-			return visitor.visitIterate_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6992,14 +6630,6 @@ export class Leave_Context extends ParserRuleContext {
 			listener.exitLeave_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitLeave_) {
-			return visitor.visitLeave_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7020,14 +6650,6 @@ export class Nop_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitNop_) {
 			listener.exitNop_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitNop_) {
-			return visitor.visitNop_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7061,14 +6683,6 @@ export class Numeric_Context extends ParserRuleContext {
 			listener.exitNumeric_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitNumeric_) {
-			return visitor.visitNumeric_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7092,14 +6706,6 @@ export class Numeric_digitsContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitNumeric_digits) {
 			listener.exitNumeric_digits(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitNumeric_digits) {
-			return visitor.visitNumeric_digits(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7132,14 +6738,6 @@ export class Numeric_formContext extends ParserRuleContext {
 			listener.exitNumeric_form(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitNumeric_form) {
-			return visitor.visitNumeric_form(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7165,14 +6763,6 @@ export class Numeric_fuzzContext extends ParserRuleContext {
 			listener.exitNumeric_fuzz(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitNumeric_fuzz) {
-			return visitor.visitNumeric_fuzz(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7196,14 +6786,6 @@ export class Options_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitOptions_) {
 			listener.exitOptions_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitOptions_) {
-			return visitor.visitOptions_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7233,14 +6815,6 @@ export class Parse_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitParse_) {
 			listener.exitParse_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitParse_) {
-			return visitor.visitParse_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7273,14 +6847,6 @@ export class Parse_typeContext extends ParserRuleContext {
 			listener.exitParse_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitParse_type) {
-			return visitor.visitParse_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7306,14 +6872,6 @@ export class Parse_keyContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitParse_key) {
 			listener.exitParse_key(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitParse_key) {
-			return visitor.visitParse_key(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7342,14 +6900,6 @@ export class Parse_valueContext extends ParserRuleContext {
 			listener.exitParse_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitParse_value) {
-			return visitor.visitParse_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7373,14 +6923,6 @@ export class Parse_varContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitParse_var) {
 			listener.exitParse_var(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitParse_var) {
-			return visitor.visitParse_var(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7409,14 +6951,6 @@ export class Procedure_Context extends ParserRuleContext {
 			listener.exitProcedure_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitProcedure_) {
-			return visitor.visitProcedure_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7440,14 +6974,6 @@ export class Pull_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitPull_) {
 			listener.exitPull_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitPull_) {
-			return visitor.visitPull_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7475,14 +7001,6 @@ export class Push_Context extends ParserRuleContext {
 			listener.exitPush_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitPush_) {
-			return visitor.visitPush_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7506,14 +7024,6 @@ export class Queue_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitQueue_) {
 			listener.exitQueue_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitQueue_) {
-			return visitor.visitQueue_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7541,14 +7051,6 @@ export class Return_Context extends ParserRuleContext {
 			listener.exitReturn_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitReturn_) {
-			return visitor.visitReturn_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7572,14 +7074,6 @@ export class Say_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitSay_) {
 			listener.exitSay_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitSay_) {
-			return visitor.visitSay_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7613,14 +7107,6 @@ export class Signal_Context extends ParserRuleContext {
 			listener.exitSignal_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitSignal_) {
-			return visitor.visitSignal_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7651,14 +7137,6 @@ export class Signal_specContext extends ParserRuleContext {
 			listener.exitSignal_spec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitSignal_spec) {
-			return visitor.visitSignal_spec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7683,14 +7161,6 @@ export class ConditionContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitCondition) {
 			listener.exitCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitCondition) {
-			return visitor.visitCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7727,14 +7197,6 @@ export class Trace_Context extends ParserRuleContext {
 			listener.exitTrace_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitTrace_) {
-			return visitor.visitTrace_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7764,14 +7226,6 @@ export class Upper_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitUpper_) {
 			listener.exitUpper_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitUpper_) {
-			return visitor.visitUpper_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7813,14 +7267,6 @@ export class Template_listContext extends ParserRuleContext {
 			listener.exitTemplate_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitTemplate_list) {
-			return visitor.visitTemplate_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7860,14 +7306,6 @@ export class Template_Context extends ParserRuleContext {
 			listener.exitTemplate_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitTemplate_) {
-			return visitor.visitTemplate_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7890,14 +7328,6 @@ export class Target_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitTarget_) {
 			listener.exitTarget_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitTarget_) {
-			return visitor.visitTarget_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7927,14 +7357,6 @@ export class Trigger_Context extends ParserRuleContext {
 			listener.exitTrigger_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitTrigger_) {
-			return visitor.visitTrigger_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7958,14 +7380,6 @@ export class Pattern_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitPattern_) {
 			listener.exitPattern_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitPattern_) {
-			return visitor.visitPattern_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7995,14 +7409,6 @@ export class Positional_Context extends ParserRuleContext {
 			listener.exitPositional_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitPositional_) {
-			return visitor.visitPositional_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8029,14 +7435,6 @@ export class Absolute_positionalContext extends ParserRuleContext {
 			listener.exitAbsolute_positional(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitAbsolute_positional) {
-			return visitor.visitAbsolute_positional(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8060,14 +7458,6 @@ export class Position_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitPosition_) {
 			listener.exitPosition_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitPosition_) {
-			return visitor.visitPosition_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8096,14 +7486,6 @@ export class Relative_positionalContext extends ParserRuleContext {
 			listener.exitRelative_positional(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitRelative_positional) {
-			return visitor.visitRelative_positional(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8128,14 +7510,6 @@ export class SymbolContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitSymbol) {
 			listener.exitSymbol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitSymbol) {
-			return visitor.visitSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8177,14 +7551,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8206,14 +7572,6 @@ export class Or_operatorContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitOr_operator) {
 			listener.exitOr_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitOr_operator) {
-			return visitor.visitOr_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8255,14 +7613,6 @@ export class And_expressionContext extends ParserRuleContext {
 			listener.exitAnd_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitAnd_expression) {
-			return visitor.visitAnd_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8302,14 +7652,6 @@ export class ComparisonContext extends ParserRuleContext {
 			listener.exitComparison(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitComparison) {
-			return visitor.visitComparison(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8335,14 +7677,6 @@ export class Comparison_operatorContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitComparison_operator) {
 			listener.exitComparison_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitComparison_operator) {
-			return visitor.visitComparison_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8376,14 +7710,6 @@ export class Normal_compareContext extends ParserRuleContext {
 			listener.exitNormal_compare(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitNormal_compare) {
-			return visitor.visitNormal_compare(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8411,14 +7737,6 @@ export class Strict_compareContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitStrict_compare) {
 			listener.exitStrict_compare(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitStrict_compare) {
-			return visitor.visitStrict_compare(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8460,14 +7778,6 @@ export class ConcatenationContext extends ParserRuleContext {
 			listener.exitConcatenation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitConcatenation) {
-			return visitor.visitConcatenation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8507,14 +7817,6 @@ export class AdditionContext extends ParserRuleContext {
 			listener.exitAddition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitAddition) {
-			return visitor.visitAddition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8536,14 +7838,6 @@ export class Additive_operatorContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitAdditive_operator) {
 			listener.exitAdditive_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitAdditive_operator) {
-			return visitor.visitAdditive_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8585,14 +7879,6 @@ export class MultiplicationContext extends ParserRuleContext {
 			listener.exitMultiplication(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitMultiplication) {
-			return visitor.visitMultiplication(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8616,14 +7902,6 @@ export class Multiplicative_operatorContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitMultiplicative_operator) {
 			listener.exitMultiplicative_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitMultiplicative_operator) {
-			return visitor.visitMultiplicative_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8663,14 +7941,6 @@ export class Power_expressionContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitPower_expression) {
 			listener.exitPower_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitPower_expression) {
-			return visitor.visitPower_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8724,14 +7994,6 @@ export class Prefix_expressionContext extends ParserRuleContext {
 			listener.exitPrefix_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitPrefix_expression) {
-			return visitor.visitPrefix_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8765,14 +8027,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8798,14 +8052,6 @@ export class Function_Context extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitFunction_) {
 			listener.exitFunction_(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitFunction_) {
-			return visitor.visitFunction_(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8839,14 +8085,6 @@ export class Function_nameContext extends ParserRuleContext {
 			listener.exitFunction_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitFunction_name) {
-			return visitor.visitFunction_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8871,14 +8109,6 @@ export class Function_parametersContext extends ParserRuleContext {
 	public exitRule(listener: RexxParserListener): void {
 		if (listener.exitFunction_parameters) {
 			listener.exitFunction_parameters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RexxParserVisitor<Result>): Result {
-		if (visitor.visitFunction_parameters) {
-			return visitor.visitFunction_parameters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

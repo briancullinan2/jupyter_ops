@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { PowerBuilderParserListener } from "./PowerBuilderParserListener";
-import { PowerBuilderParserVisitor } from "./PowerBuilderParserVisitor";
-
 
 export class PowerBuilderParser extends Parser {
 	public static readonly ANY = 1;
@@ -6874,14 +6872,6 @@ export class Start_ruleContext extends ParserRuleContext {
 			listener.exitStart_rule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitStart_rule) {
-			return visitor.visitStart_rule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6922,14 +6912,6 @@ export class Header_ruleContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitHeader_rule) {
 			listener.exitHeader_rule(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitHeader_rule) {
-			return visitor.visitHeader_rule(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6989,14 +6971,6 @@ export class Body_ruleContext extends ParserRuleContext {
 			listener.exitBody_rule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitBody_rule) {
-			return visitor.visitBody_rule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7033,14 +7007,6 @@ export class Window_propertyContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitWindow_property) {
 			listener.exitWindow_property(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitWindow_property) {
-			return visitor.visitWindow_property(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7092,14 +7058,6 @@ export class Window_property_attribute_subContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitWindow_property_attribute_sub) {
 			listener.exitWindow_property_attribute_sub(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitWindow_property_attribute_sub) {
-			return visitor.visitWindow_property_attribute_sub(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7177,14 +7135,6 @@ export class Attribute_nameContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitAttribute_name) {
 			listener.exitAttribute_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAttribute_name) {
-			return visitor.visitAttribute_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7278,14 +7228,6 @@ export class Attribute_valueContext extends ParserRuleContext {
 			listener.exitAttribute_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAttribute_value) {
-			return visitor.visitAttribute_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7333,14 +7275,6 @@ export class Forward_declContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitForward_decl) {
 			listener.exitForward_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitForward_decl) {
-			return visitor.visitForward_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7422,14 +7356,6 @@ export class Datatype_declContext extends ParserRuleContext {
 			listener.exitDatatype_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitDatatype_decl) {
-			return visitor.visitDatatype_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7489,14 +7415,6 @@ export class Type_variables_declContext extends ParserRuleContext {
 			listener.exitType_variables_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitType_variables_decl) {
-			return visitor.visitType_variables_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7548,14 +7466,6 @@ export class Global_variables_declContext extends ParserRuleContext {
 			listener.exitGlobal_variables_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitGlobal_variables_decl) {
-			return visitor.visitGlobal_variables_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7579,14 +7489,6 @@ export class Variable_declContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitVariable_decl) {
 			listener.exitVariable_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitVariable_decl) {
-			return visitor.visitVariable_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7617,14 +7519,6 @@ export class Variable_decl_subContext extends ParserRuleContext {
 			listener.exitVariable_decl_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitVariable_decl_sub) {
-			return visitor.visitVariable_decl_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7647,14 +7541,6 @@ export class Decimal_decl_subContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitDecimal_decl_sub) {
 			listener.exitDecimal_decl_sub(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitDecimal_decl_sub) {
-			return visitor.visitDecimal_decl_sub(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7726,14 +7612,6 @@ export class Array_decl_subContext extends ParserRuleContext {
 			listener.exitArray_decl_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitArray_decl_sub) {
-			return visitor.visitArray_decl_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7753,14 +7631,6 @@ export class Constant_decl_subContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitConstant_decl_sub) {
 			listener.exitConstant_decl_sub(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitConstant_decl_sub) {
-			return visitor.visitConstant_decl_sub(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7786,14 +7656,6 @@ export class Constant_declContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitConstant_decl) {
 			listener.exitConstant_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitConstant_decl) {
-			return visitor.visitConstant_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7881,14 +7743,6 @@ export class Function_forward_declContext extends ParserRuleContext {
 			listener.exitFunction_forward_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitFunction_forward_decl) {
-			return visitor.visitFunction_forward_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7922,14 +7776,6 @@ export class Parameter_subContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitParameter_sub) {
 			listener.exitParameter_sub(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitParameter_sub) {
-			return visitor.visitParameter_sub(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7972,14 +7818,6 @@ export class Parameters_list_subContext extends ParserRuleContext {
 			listener.exitParameters_list_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitParameters_list_sub) {
-			return visitor.visitParameters_list_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8020,14 +7858,6 @@ export class Functions_forward_declContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitFunctions_forward_decl) {
 			listener.exitFunctions_forward_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitFunctions_forward_decl) {
-			return visitor.visitFunctions_forward_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8112,14 +7942,6 @@ export class Function_bodyContext extends ParserRuleContext {
 			listener.exitFunction_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitFunction_body) {
-			return visitor.visitFunction_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8145,14 +7967,6 @@ export class On_bodyContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitOn_body) {
 			listener.exitOn_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitOn_body) {
-			return visitor.visitOn_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8195,14 +8009,6 @@ export class Event_forward_declContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitEvent_forward_decl) {
 			listener.exitEvent_forward_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitEvent_forward_decl) {
-			return visitor.visitEvent_forward_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8275,14 +8081,6 @@ export class Event_bodyContext extends ParserRuleContext {
 			listener.exitEvent_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitEvent_body) {
-			return visitor.visitEvent_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8305,14 +8103,6 @@ export class Access_typeContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitAccess_type) {
 			listener.exitAccess_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAccess_type) {
-			return visitor.visitAccess_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8338,14 +8128,6 @@ export class Access_modifContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitAccess_modif) {
 			listener.exitAccess_modif(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAccess_modif) {
-			return visitor.visitAccess_modif(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8376,14 +8158,6 @@ export class Access_modif_partContext extends ParserRuleContext {
 			listener.exitAccess_modif_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAccess_modif_part) {
-			return visitor.visitAccess_modif_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8405,14 +8179,6 @@ export class Scope_modifContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitScope_modif) {
 			listener.exitScope_modif(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitScope_modif) {
-			return visitor.visitScope_modif(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8438,14 +8204,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8496,14 +8254,6 @@ export class Expression_listContext extends ParserRuleContext {
 			listener.exitExpression_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitExpression_list) {
-			return visitor.visitExpression_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8526,14 +8276,6 @@ export class Boolean_expressionContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitBoolean_expression) {
 			listener.exitBoolean_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitBoolean_expression) {
-			return visitor.visitBoolean_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8575,14 +8317,6 @@ export class Condition_orContext extends ParserRuleContext {
 			listener.exitCondition_or(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitCondition_or) {
-			return visitor.visitCondition_or(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8622,14 +8356,6 @@ export class Condition_andContext extends ParserRuleContext {
 			listener.exitCondition_and(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitCondition_and) {
-			return visitor.visitCondition_and(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8653,14 +8379,6 @@ export class Condition_notContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitCondition_not) {
 			listener.exitCondition_not(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitCondition_not) {
-			return visitor.visitCondition_not(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8697,14 +8415,6 @@ export class Condition_comparisonContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitCondition_comparison) {
 			listener.exitCondition_comparison(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitCondition_comparison) {
-			return visitor.visitCondition_comparison(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8753,14 +8463,6 @@ export class Add_exprContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitAdd_expr) {
 			listener.exitAdd_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAdd_expr) {
-			return visitor.visitAdd_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8820,14 +8522,6 @@ export class Mul_exprContext extends ParserRuleContext {
 			listener.exitMul_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitMul_expr) {
-			return visitor.visitMul_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8857,14 +8551,6 @@ export class Unary_sign_exprContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitUnary_sign_expr) {
 			listener.exitUnary_sign_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitUnary_sign_expr) {
-			return visitor.visitUnary_sign_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8966,14 +8652,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9031,14 +8709,6 @@ export class Statement_subContext extends ParserRuleContext {
 			listener.exitStatement_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitStatement_sub) {
-			return visitor.visitStatement_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9076,14 +8746,6 @@ export class Assignment_subContext extends ParserRuleContext {
 			listener.exitAssignment_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAssignment_sub) {
-			return visitor.visitAssignment_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9107,14 +8769,6 @@ export class Assignment_statementContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitAssignment_statement) {
 			listener.exitAssignment_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAssignment_statement) {
-			return visitor.visitAssignment_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9157,14 +8811,6 @@ export class Lvalue_subContext extends ParserRuleContext {
 			listener.exitLvalue_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitLvalue_sub) {
-			return visitor.visitLvalue_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9188,14 +8834,6 @@ export class Return_statementContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitReturn_statement) {
 			listener.exitReturn_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitReturn_statement) {
-			return visitor.visitReturn_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9229,14 +8867,6 @@ export class Function_call_expression_subContext extends ParserRuleContext {
 			listener.exitFunction_call_expression_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitFunction_call_expression_sub) {
-			return visitor.visitFunction_call_expression_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9267,14 +8897,6 @@ export class Function_virtual_call_expression_subContext extends ParserRuleConte
 			listener.exitFunction_virtual_call_expression_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitFunction_virtual_call_expression_sub) {
-			return visitor.visitFunction_virtual_call_expression_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9300,14 +8922,6 @@ export class Open_call_subContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitOpen_call_sub) {
 			listener.exitOpen_call_sub(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitOpen_call_sub) {
-			return visitor.visitOpen_call_sub(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9336,14 +8950,6 @@ export class Close_call_subContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitClose_call_sub) {
 			listener.exitClose_call_sub(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitClose_call_sub) {
-			return visitor.visitClose_call_sub(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9379,14 +8985,6 @@ export class Function_call_statementContext extends ParserRuleContext {
 			listener.exitFunction_call_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitFunction_call_statement) {
-			return visitor.visitFunction_call_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9417,14 +9015,6 @@ export class Super_call_statementContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitSuper_call_statement) {
 			listener.exitSuper_call_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitSuper_call_statement) {
-			return visitor.visitSuper_call_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9472,14 +9062,6 @@ export class Event_call_statement_subContext extends ParserRuleContext {
 			listener.exitEvent_call_statement_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitEvent_call_statement_sub) {
-			return visitor.visitEvent_call_statement_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9502,14 +9084,6 @@ export class Event_call_statementContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitEvent_call_statement) {
 			listener.exitEvent_call_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitEvent_call_statement) {
-			return visitor.visitEvent_call_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9547,14 +9121,6 @@ export class Create_call_subContext extends ParserRuleContext {
 			listener.exitCreate_call_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitCreate_call_sub) {
-			return visitor.visitCreate_call_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9577,14 +9143,6 @@ export class Create_call_statementContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitCreate_call_statement) {
 			listener.exitCreate_call_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitCreate_call_statement) {
-			return visitor.visitCreate_call_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9612,14 +9170,6 @@ export class Destroy_call_subContext extends ParserRuleContext {
 			listener.exitDestroy_call_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitDestroy_call_sub) {
-			return visitor.visitDestroy_call_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9642,14 +9192,6 @@ export class Destroy_call_statementContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitDestroy_call_statement) {
 			listener.exitDestroy_call_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitDestroy_call_statement) {
-			return visitor.visitDestroy_call_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9693,14 +9235,6 @@ export class For_loop_statementContext extends ParserRuleContext {
 			listener.exitFor_loop_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitFor_loop_statement) {
-			return visitor.visitFor_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9738,14 +9272,6 @@ export class Do_while_loop_statementContext extends ParserRuleContext {
 			listener.exitDo_while_loop_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitDo_while_loop_statement) {
-			return visitor.visitDo_while_loop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9781,14 +9307,6 @@ export class Do_loop_while_statementContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitDo_loop_while_statement) {
 			listener.exitDo_loop_while_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitDo_loop_while_statement) {
-			return visitor.visitDo_loop_while_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9860,14 +9378,6 @@ export class If_statementContext extends ParserRuleContext {
 			listener.exitIf_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitIf_statement) {
-			return visitor.visitIf_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9897,14 +9407,6 @@ export class If_simple_statementContext extends ParserRuleContext {
 			listener.exitIf_simple_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitIf_simple_statement) {
-			return visitor.visitIf_simple_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9927,14 +9429,6 @@ export class Continue_statementContext extends ParserRuleContext {
 			listener.exitContinue_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitContinue_statement) {
-			return visitor.visitContinue_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9955,14 +9449,6 @@ export class Continue_subContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitContinue_sub) {
 			listener.exitContinue_sub(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitContinue_sub) {
-			return visitor.visitContinue_sub(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10001,14 +9487,6 @@ export class Post_eventContext extends ParserRuleContext {
 			listener.exitPost_event(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitPost_event) {
-			return visitor.visitPost_event(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10029,14 +9507,6 @@ export class Exit_statementContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitExit_statement) {
 			listener.exitExit_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitExit_statement) {
-			return visitor.visitExit_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10110,14 +9580,6 @@ export class Choose_statementContext extends ParserRuleContext {
 			listener.exitChoose_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitChoose_statement) {
-			return visitor.visitChoose_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10167,14 +9629,6 @@ export class Choose_case_value_subContext extends ParserRuleContext {
 			listener.exitChoose_case_value_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitChoose_case_value_sub) {
-			return visitor.visitChoose_case_value_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10214,14 +9668,6 @@ export class Choose_case_cond_subContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitChoose_case_cond_sub) {
 			listener.exitChoose_case_cond_sub(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitChoose_case_cond_sub) {
-			return visitor.visitChoose_case_cond_sub(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10265,14 +9711,6 @@ export class Choose_case_range_subContext extends ParserRuleContext {
 			listener.exitChoose_case_range_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitChoose_case_range_sub) {
-			return visitor.visitChoose_case_range_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10305,14 +9743,6 @@ export class Choose_case_else_subContext extends ParserRuleContext {
 			listener.exitChoose_case_else_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitChoose_case_else_sub) {
-			return visitor.visitChoose_case_else_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10338,14 +9768,6 @@ export class Goto_statContext extends ParserRuleContext {
 			listener.exitGoto_stat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitGoto_stat) {
-			return visitor.visitGoto_stat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10369,14 +9791,6 @@ export class Label_statContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitLabel_stat) {
 			listener.exitLabel_stat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitLabel_stat) {
-			return visitor.visitLabel_stat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10456,14 +9870,6 @@ export class Try_catch_blockContext extends ParserRuleContext {
 			listener.exitTry_catch_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitTry_catch_block) {
-			return visitor.visitTry_catch_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10487,14 +9893,6 @@ export class Throw_statContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitThrow_stat) {
 			listener.exitThrow_stat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitThrow_stat) {
-			return visitor.visitThrow_stat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10527,14 +9925,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10572,14 +9962,6 @@ export class Identifier_name_exContext extends ParserRuleContext {
 			listener.exitIdentifier_name_ex(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitIdentifier_name_ex) {
-			return visitor.visitIdentifier_name_ex(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10600,14 +9982,6 @@ export class Identifier_nameContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitIdentifier_name) {
 			listener.exitIdentifier_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitIdentifier_name) {
-			return visitor.visitIdentifier_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10642,14 +10016,6 @@ export class Atom_subContext extends ParserRuleContext {
 			listener.exitAtom_sub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAtom_sub) {
-			return visitor.visitAtom_sub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10678,14 +10044,6 @@ export class Atom_sub_call1Context extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitAtom_sub_call1) {
 			listener.exitAtom_sub_call1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAtom_sub_call1) {
-			return visitor.visitAtom_sub_call1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10717,14 +10075,6 @@ export class Atom_sub_array1Context extends ParserRuleContext {
 			listener.exitAtom_sub_array1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAtom_sub_array1) {
-			return visitor.visitAtom_sub_array1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10750,14 +10100,6 @@ export class Atom_sub_ref1Context extends ParserRuleContext {
 			listener.exitAtom_sub_ref1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAtom_sub_ref1) {
-			return visitor.visitAtom_sub_ref1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10780,14 +10122,6 @@ export class Atom_sub_member1Context extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitAtom_sub_member1) {
 			listener.exitAtom_sub_member1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAtom_sub_member1) {
-			return visitor.visitAtom_sub_member1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10847,14 +10181,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10884,14 +10210,6 @@ export class Array_access_atomContext extends ParserRuleContext {
 			listener.exitArray_access_atom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitArray_access_atom) {
-			return visitor.visitArray_access_atom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10912,14 +10230,6 @@ export class Numeric_atomContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitNumeric_atom) {
 			listener.exitNumeric_atom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitNumeric_atom) {
-			return visitor.visitNumeric_atom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10943,14 +10253,6 @@ export class Boolean_atomContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitBoolean_atom) {
 			listener.exitBoolean_atom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitBoolean_atom) {
-			return visitor.visitBoolean_atom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10997,14 +10299,6 @@ export class Cast_expressionContext extends ParserRuleContext {
 			listener.exitCast_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitCast_expression) {
-			return visitor.visitCast_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11030,14 +10324,6 @@ export class Data_type_nameContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitData_type_name) {
 			listener.exitData_type_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitData_type_name) {
-			return visitor.visitData_type_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11082,14 +10368,6 @@ export class DataTypeSubContext extends ParserRuleContext {
 	public exitRule(listener: PowerBuilderParserListener): void {
 		if (listener.exitDataTypeSub) {
 			listener.exitDataTypeSub(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PowerBuilderParserVisitor<Result>): Result {
-		if (visitor.visitDataTypeSub) {
-			return visitor.visitDataTypeSub(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

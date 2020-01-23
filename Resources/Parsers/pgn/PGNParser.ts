@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { PGNListener } from "./PGNListener";
-import { PGNVisitor } from "./PGNVisitor";
-
 
 export class PGNParser extends Parser {
 	public static readonly WHITE_WINS = 1;
@@ -636,14 +634,6 @@ export class ParseContext extends ParserRuleContext {
 			listener.exitParse(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitParse) {
-			return visitor.visitParse(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -674,14 +664,6 @@ export class Pgn_databaseContext extends ParserRuleContext {
 			listener.exitPgn_database(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitPgn_database) {
-			return visitor.visitPgn_database(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -707,14 +689,6 @@ export class Pgn_gameContext extends ParserRuleContext {
 	public exitRule(listener: PGNListener): void {
 		if (listener.exitPgn_game) {
 			listener.exitPgn_game(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitPgn_game) {
-			return visitor.visitPgn_game(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -747,14 +721,6 @@ export class Tag_sectionContext extends ParserRuleContext {
 			listener.exitTag_section(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitTag_section) {
-			return visitor.visitTag_section(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -784,14 +750,6 @@ export class Tag_pairContext extends ParserRuleContext {
 			listener.exitTag_pair(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitTag_pair) {
-			return visitor.visitTag_pair(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -814,14 +772,6 @@ export class Tag_nameContext extends ParserRuleContext {
 			listener.exitTag_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitTag_name) {
-			return visitor.visitTag_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -842,14 +792,6 @@ export class Tag_valueContext extends ParserRuleContext {
 	public exitRule(listener: PGNListener): void {
 		if (listener.exitTag_value) {
 			listener.exitTag_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitTag_value) {
-			return visitor.visitTag_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -877,14 +819,6 @@ export class Movetext_sectionContext extends ParserRuleContext {
 	public exitRule(listener: PGNListener): void {
 		if (listener.exitMovetext_section) {
 			listener.exitMovetext_section(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitMovetext_section) {
-			return visitor.visitMovetext_section(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -926,14 +860,6 @@ export class Element_sequenceContext extends ParserRuleContext {
 			listener.exitElement_sequence(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitElement_sequence) {
-			return visitor.visitElement_sequence(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -962,14 +888,6 @@ export class ElementContext extends ParserRuleContext {
 			listener.exitElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitElement) {
-			return visitor.visitElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -993,14 +911,6 @@ export class Move_number_indicationContext extends ParserRuleContext {
 			listener.exitMove_number_indication(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitMove_number_indication) {
-			return visitor.visitMove_number_indication(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1021,14 +931,6 @@ export class San_moveContext extends ParserRuleContext {
 	public exitRule(listener: PGNListener): void {
 		if (listener.exitSan_move) {
 			listener.exitSan_move(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitSan_move) {
-			return visitor.visitSan_move(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1057,14 +959,6 @@ export class Recursive_variationContext extends ParserRuleContext {
 			listener.exitRecursive_variation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitRecursive_variation) {
-			return visitor.visitRecursive_variation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1088,14 +982,6 @@ export class Game_terminationContext extends ParserRuleContext {
 	public exitRule(listener: PGNListener): void {
 		if (listener.exitGame_termination) {
 			listener.exitGame_termination(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PGNVisitor<Result>): Result {
-		if (visitor.visitGame_termination) {
-			return visitor.visitGame_termination(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

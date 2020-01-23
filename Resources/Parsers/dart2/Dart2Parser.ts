@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { Dart2Listener } from "./Dart2Listener";
-import { Dart2Visitor } from "./Dart2Visitor";
-
 
 export class Dart2Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -9897,14 +9895,6 @@ export class CompilationUnitContext extends ParserRuleContext {
 			listener.exitCompilationUnit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitCompilationUnit) {
-			return visitor.visitCompilationUnit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9938,14 +9928,6 @@ export class VariableDeclarationContext extends ParserRuleContext {
 			listener.exitVariableDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitVariableDeclaration) {
-			return visitor.visitVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9976,14 +9958,6 @@ export class DeclaredIdentifierContext extends ParserRuleContext {
 			listener.exitDeclaredIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitDeclaredIdentifier) {
-			return visitor.visitDeclaredIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10011,14 +9985,6 @@ export class FinalConstVarOrTypeContext extends ParserRuleContext {
 			listener.exitFinalConstVarOrType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFinalConstVarOrType) {
-			return visitor.visitFinalConstVarOrType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10041,14 +10007,6 @@ export class VarOrTypeContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitVarOrType) {
 			listener.exitVarOrType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitVarOrType) {
-			return visitor.visitVarOrType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10087,14 +10045,6 @@ export class InitializedVariableDeclarationContext extends ParserRuleContext {
 			listener.exitInitializedVariableDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitInitializedVariableDeclaration) {
-			return visitor.visitInitializedVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10120,14 +10070,6 @@ export class InitializedIdentifierContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitInitializedIdentifier) {
 			listener.exitInitializedIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitInitializedIdentifier) {
-			return visitor.visitInitializedIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10158,14 +10100,6 @@ export class InitializedIdentifierListContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitInitializedIdentifierList) {
 			listener.exitInitializedIdentifierList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitInitializedIdentifierList) {
-			return visitor.visitInitializedIdentifierList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10201,14 +10135,6 @@ export class FunctionSignatureContext extends ParserRuleContext {
 			listener.exitFunctionSignature(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFunctionSignature) {
-			return visitor.visitFunctionSignature(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10236,14 +10162,6 @@ export class FormalParameterPartContext extends ParserRuleContext {
 			listener.exitFormalParameterPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFormalParameterPart) {
-			return visitor.visitFormalParameterPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10266,14 +10184,6 @@ export class ReturnTypeContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitReturnType) {
 			listener.exitReturnType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitReturnType) {
-			return visitor.visitReturnType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10303,14 +10213,6 @@ export class FunctionBodyContext extends ParserRuleContext {
 			listener.exitFunctionBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFunctionBody) {
-			return visitor.visitFunctionBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10333,14 +10235,6 @@ export class BlockContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitBlock) {
 			listener.exitBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10368,14 +10262,6 @@ export class FormalParameterListContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitFormalParameterList) {
 			listener.exitFormalParameterList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFormalParameterList) {
-			return visitor.visitFormalParameterList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10408,14 +10294,6 @@ export class NormalFormalParametersContext extends ParserRuleContext {
 			listener.exitNormalFormalParameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitNormalFormalParameters) {
-			return visitor.visitNormalFormalParameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10441,14 +10319,6 @@ export class OptionalFormalParametersContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitOptionalFormalParameters) {
 			listener.exitOptionalFormalParameters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitOptionalFormalParameters) {
-			return visitor.visitOptionalFormalParameters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10481,14 +10351,6 @@ export class OptionalPositionalFormalParametersContext extends ParserRuleContext
 			listener.exitOptionalPositionalFormalParameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitOptionalPositionalFormalParameters) {
-			return visitor.visitOptionalPositionalFormalParameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10519,14 +10381,6 @@ export class NamedFormalParametersContext extends ParserRuleContext {
 			listener.exitNamedFormalParameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitNamedFormalParameters) {
-			return visitor.visitNamedFormalParameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10555,14 +10409,6 @@ export class NormalFormalParameterContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitNormalFormalParameter) {
 			listener.exitNormalFormalParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitNormalFormalParameter) {
-			return visitor.visitNormalFormalParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10598,14 +10444,6 @@ export class FunctionFormalParameterContext extends ParserRuleContext {
 			listener.exitFunctionFormalParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFunctionFormalParameter) {
-			return visitor.visitFunctionFormalParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10634,14 +10472,6 @@ export class SimpleFormalParameterContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitSimpleFormalParameter) {
 			listener.exitSimpleFormalParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitSimpleFormalParameter) {
-			return visitor.visitSimpleFormalParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10677,14 +10507,6 @@ export class FieldFormalParameterContext extends ParserRuleContext {
 			listener.exitFieldFormalParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFieldFormalParameter) {
-			return visitor.visitFieldFormalParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10712,14 +10534,6 @@ export class DefaultFormalParameterContext extends ParserRuleContext {
 			listener.exitDefaultFormalParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitDefaultFormalParameter) {
-			return visitor.visitDefaultFormalParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10745,14 +10559,6 @@ export class DefaultNamedParameterContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitDefaultNamedParameter) {
 			listener.exitDefaultNamedParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitDefaultNamedParameter) {
-			return visitor.visitDefaultNamedParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10812,14 +10618,6 @@ export class ClassDefinitionContext extends ParserRuleContext {
 			listener.exitClassDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitClassDefinition) {
-			return visitor.visitClassDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10842,14 +10640,6 @@ export class MixinsContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitMixins) {
 			listener.exitMixins(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitMixins) {
-			return visitor.visitMixins(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10880,14 +10670,6 @@ export class ClassMemberDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitClassMemberDefinition) {
 			listener.exitClassMemberDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitClassMemberDefinition) {
-			return visitor.visitClassMemberDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10930,14 +10712,6 @@ export class MethodSignatureContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitMethodSignature) {
 			listener.exitMethodSignature(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitMethodSignature) {
-			return visitor.visitMethodSignature(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10994,14 +10768,6 @@ export class DeclarationContext extends ParserRuleContext {
 			listener.exitDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitDeclaration) {
-			return visitor.visitDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11032,14 +10798,6 @@ export class StaticFinalDeclarationListContext extends ParserRuleContext {
 			listener.exitStaticFinalDeclarationList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitStaticFinalDeclarationList) {
-			return visitor.visitStaticFinalDeclarationList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11065,14 +10823,6 @@ export class StaticFinalDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitStaticFinalDeclaration) {
 			listener.exitStaticFinalDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitStaticFinalDeclaration) {
-			return visitor.visitStaticFinalDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11105,14 +10855,6 @@ export class OperatorSignatureContext extends ParserRuleContext {
 			listener.exitOperatorSignature(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitOperatorSignature) {
-			return visitor.visitOperatorSignature(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11135,14 +10877,6 @@ export class OperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitOperator) {
 			listener.exitOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitOperator) {
-			return visitor.visitOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11181,14 +10915,6 @@ export class BinaryOperatorContext extends ParserRuleContext {
 			listener.exitBinaryOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitBinaryOperator) {
-			return visitor.visitBinaryOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11214,14 +10940,6 @@ export class GetterSignatureContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitGetterSignature) {
 			listener.exitGetterSignature(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitGetterSignature) {
-			return visitor.visitGetterSignature(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11252,14 +10970,6 @@ export class SetterSignatureContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitSetterSignature) {
 			listener.exitSetterSignature(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitSetterSignature) {
-			return visitor.visitSetterSignature(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11295,14 +11005,6 @@ export class ConstructorSignatureContext extends ParserRuleContext {
 			listener.exitConstructorSignature(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitConstructorSignature) {
-			return visitor.visitConstructorSignature(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11328,14 +11030,6 @@ export class RedirectionContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitRedirection) {
 			listener.exitRedirection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitRedirection) {
-			return visitor.visitRedirection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11366,14 +11060,6 @@ export class InitializersContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitInitializers) {
 			listener.exitInitializers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitInitializers) {
-			return visitor.visitInitializers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11407,14 +11093,6 @@ export class InitializerListEntryContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitInitializerListEntry) {
 			listener.exitInitializerListEntry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitInitializerListEntry) {
-			return visitor.visitInitializerListEntry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11453,14 +11131,6 @@ export class FieldInitializerContext extends ParserRuleContext {
 			listener.exitFieldInitializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFieldInitializer) {
-			return visitor.visitFieldInitializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11492,14 +11162,6 @@ export class FactoryConstructorSignatureContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitFactoryConstructorSignature) {
 			listener.exitFactoryConstructorSignature(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFactoryConstructorSignature) {
-			return visitor.visitFactoryConstructorSignature(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11538,14 +11200,6 @@ export class RedirectingFactoryConstructorSignatureContext extends ParserRuleCon
 			listener.exitRedirectingFactoryConstructorSignature(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitRedirectingFactoryConstructorSignature) {
-			return visitor.visitRedirectingFactoryConstructorSignature(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11573,14 +11227,6 @@ export class ConstantConstructorSignatureContext extends ParserRuleContext {
 			listener.exitConstantConstructorSignature(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitConstantConstructorSignature) {
-			return visitor.visitConstantConstructorSignature(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11605,14 +11251,6 @@ export class SuperclassContext extends ParserRuleContext {
 			listener.exitSuperclass(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitSuperclass) {
-			return visitor.visitSuperclass(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11635,14 +11273,6 @@ export class InterfacesContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitInterfaces) {
 			listener.exitInterfaces(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitInterfaces) {
-			return visitor.visitInterfaces(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11675,14 +11305,6 @@ export class MixinApplicationClassContext extends ParserRuleContext {
 			listener.exitMixinApplicationClass(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitMixinApplicationClass) {
-			return visitor.visitMixinApplicationClass(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11711,14 +11333,6 @@ export class MixinApplicationContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitMixinApplication) {
 			listener.exitMixinApplication(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitMixinApplication) {
-			return visitor.visitMixinApplication(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11757,14 +11371,6 @@ export class EnumTypeContext extends ParserRuleContext {
 			listener.exitEnumType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitEnumType) {
-			return visitor.visitEnumType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11790,14 +11396,6 @@ export class EnumEntryContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitEnumEntry) {
 			listener.exitEnumEntry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitEnumEntry) {
-			return visitor.visitEnumEntry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11830,14 +11428,6 @@ export class TypeParameterContext extends ParserRuleContext {
 			listener.exitTypeParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitTypeParameter) {
-			return visitor.visitTypeParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11866,14 +11456,6 @@ export class TypeParametersContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitTypeParameters) {
 			listener.exitTypeParameters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitTypeParameters) {
-			return visitor.visitTypeParameters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11924,14 +11506,6 @@ export class MetadataContext extends ParserRuleContext {
 			listener.exitMetadata(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitMetadata) {
-			return visitor.visitMetadata(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11977,14 +11551,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12021,14 +11587,6 @@ export class ExpressionWithoutCascadeContext extends ParserRuleContext {
 			listener.exitExpressionWithoutCascade(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitExpressionWithoutCascade) {
-			return visitor.visitExpressionWithoutCascade(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12057,14 +11615,6 @@ export class ExpressionListContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitExpressionList) {
 			listener.exitExpressionList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitExpressionList) {
-			return visitor.visitExpressionList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12112,14 +11662,6 @@ export class PrimaryContext extends ParserRuleContext {
 			listener.exitPrimary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitPrimary) {
-			return visitor.visitPrimary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12162,14 +11704,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12189,14 +11723,6 @@ export class NullLiteralContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitNullLiteral) {
 			listener.exitNullLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitNullLiteral) {
-			return visitor.visitNullLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12222,14 +11748,6 @@ export class NumericLiteralContext extends ParserRuleContext {
 			listener.exitNumericLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitNumericLiteral) {
-			return visitor.visitNumericLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12249,14 +11767,6 @@ export class BooleanLiteralContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitBooleanLiteral) {
 			listener.exitBooleanLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitBooleanLiteral) {
-			return visitor.visitBooleanLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12298,14 +11808,6 @@ export class StringLiteralContext extends ParserRuleContext {
 			listener.exitStringLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitStringLiteral) {
-			return visitor.visitStringLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12331,14 +11833,6 @@ export class StringInterpolationContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitStringInterpolation) {
 			listener.exitStringInterpolation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitStringInterpolation) {
-			return visitor.visitStringInterpolation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12374,14 +11868,6 @@ export class SymbolLiteralContext extends ParserRuleContext {
 			listener.exitSymbolLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitSymbolLiteral) {
-			return visitor.visitSymbolLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12407,14 +11893,6 @@ export class ListLiteralContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitListLiteral) {
 			listener.exitListLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitListLiteral) {
-			return visitor.visitListLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12450,14 +11928,6 @@ export class MapLiteralContext extends ParserRuleContext {
 			listener.exitMapLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitMapLiteral) {
-			return visitor.visitMapLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12488,14 +11958,6 @@ export class MapLiteralEntryContext extends ParserRuleContext {
 			listener.exitMapLiteralEntry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitMapLiteralEntry) {
-			return visitor.visitMapLiteralEntry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12520,14 +11982,6 @@ export class ThrowExpressionContext extends ParserRuleContext {
 			listener.exitThrowExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitThrowExpression) {
-			return visitor.visitThrowExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12550,14 +12004,6 @@ export class ThrowExpressionWithoutCascadeContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitThrowExpressionWithoutCascade) {
 			listener.exitThrowExpressionWithoutCascade(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitThrowExpressionWithoutCascade) {
-			return visitor.visitThrowExpressionWithoutCascade(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12587,14 +12033,6 @@ export class FunctionExpressionContext extends ParserRuleContext {
 			listener.exitFunctionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFunctionExpression) {
-			return visitor.visitFunctionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12614,14 +12052,6 @@ export class ThisExpressionContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitThisExpression) {
 			listener.exitThisExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitThisExpression) {
-			return visitor.visitThisExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12654,14 +12084,6 @@ export class NayaExpressionContext extends ParserRuleContext {
 			listener.exitNayaExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitNayaExpression) {
-			return visitor.visitNayaExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12692,14 +12114,6 @@ export class ConstObjectExpressionContext extends ParserRuleContext {
 			listener.exitConstObjectExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitConstObjectExpression) {
-			return visitor.visitConstObjectExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12722,14 +12136,6 @@ export class ArgumentsContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitArguments) {
 			listener.exitArguments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitArguments) {
-			return visitor.visitArguments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12765,14 +12171,6 @@ export class ArgumentListContext extends ParserRuleContext {
 			listener.exitArgumentList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitArgumentList) {
-			return visitor.visitArgumentList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12798,14 +12196,6 @@ export class NamedArgumentContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitNamedArgument) {
 			listener.exitNamedArgument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitNamedArgument) {
-			return visitor.visitNamedArgument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12856,14 +12246,6 @@ export class CascadeSectionContext extends ParserRuleContext {
 			listener.exitCascadeSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitCascadeSection) {
-			return visitor.visitCascadeSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12889,14 +12271,6 @@ export class CascadeSelectorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitCascadeSelector) {
 			listener.exitCascadeSelector(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitCascadeSelector) {
-			return visitor.visitCascadeSelector(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12926,14 +12300,6 @@ export class ArgumentPartContext extends ParserRuleContext {
 			listener.exitArgumentPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitArgumentPart) {
-			return visitor.visitArgumentPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12958,14 +12324,6 @@ export class AssignmentOperatorContext extends ParserRuleContext {
 			listener.exitAssignmentOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitAssignmentOperator) {
-			return visitor.visitAssignmentOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12985,14 +12343,6 @@ export class CompoundAssignmentOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitCompoundAssignmentOperator) {
 			listener.exitCompoundAssignmentOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitCompoundAssignmentOperator) {
-			return visitor.visitCompoundAssignmentOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13028,14 +12378,6 @@ export class ConditionalExpressionContext extends ParserRuleContext {
 			listener.exitConditionalExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitConditionalExpression) {
-			return visitor.visitConditionalExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13064,14 +12406,6 @@ export class IfNullExpressionContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitIfNullExpression) {
 			listener.exitIfNullExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitIfNullExpression) {
-			return visitor.visitIfNullExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13104,14 +12438,6 @@ export class LogicalOrExpressionContext extends ParserRuleContext {
 			listener.exitLogicalOrExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitLogicalOrExpression) {
-			return visitor.visitLogicalOrExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13140,14 +12466,6 @@ export class LogicalAndExpressionContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitLogicalAndExpression) {
 			listener.exitLogicalAndExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitLogicalAndExpression) {
-			return visitor.visitLogicalAndExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13183,14 +12501,6 @@ export class EqualityExpressionContext extends ParserRuleContext {
 			listener.exitEqualityExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitEqualityExpression) {
-			return visitor.visitEqualityExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13210,14 +12520,6 @@ export class EqualityOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitEqualityOperator) {
 			listener.exitEqualityOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitEqualityOperator) {
-			return visitor.visitEqualityOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13259,14 +12561,6 @@ export class RelationalExpressionContext extends ParserRuleContext {
 			listener.exitRelationalExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitRelationalExpression) {
-			return visitor.visitRelationalExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13286,14 +12580,6 @@ export class RelationalOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitRelationalOperator) {
 			listener.exitRelationalOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitRelationalOperator) {
-			return visitor.visitRelationalOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13335,14 +12621,6 @@ export class BitwiseOrExpressionContext extends ParserRuleContext {
 			listener.exitBitwiseOrExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitBitwiseOrExpression) {
-			return visitor.visitBitwiseOrExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13371,14 +12649,6 @@ export class BitwiseXorExpressionContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitBitwiseXorExpression) {
 			listener.exitBitwiseXorExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitBitwiseXorExpression) {
-			return visitor.visitBitwiseXorExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13411,14 +12681,6 @@ export class BitwiseAndExpressionContext extends ParserRuleContext {
 			listener.exitBitwiseAndExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitBitwiseAndExpression) {
-			return visitor.visitBitwiseAndExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13438,14 +12700,6 @@ export class BitwiseOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitBitwiseOperator) {
 			listener.exitBitwiseOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitBitwiseOperator) {
-			return visitor.visitBitwiseOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13487,14 +12741,6 @@ export class ShiftExpressionContext extends ParserRuleContext {
 			listener.exitShiftExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitShiftExpression) {
-			return visitor.visitShiftExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13514,14 +12760,6 @@ export class ShiftOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitShiftOperator) {
 			listener.exitShiftOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitShiftOperator) {
-			return visitor.visitShiftOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13563,14 +12801,6 @@ export class AdditiveExpressionContext extends ParserRuleContext {
 			listener.exitAdditiveExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitAdditiveExpression) {
-			return visitor.visitAdditiveExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13590,14 +12820,6 @@ export class AdditiveOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitAdditiveOperator) {
 			listener.exitAdditiveOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitAdditiveOperator) {
-			return visitor.visitAdditiveOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13639,14 +12861,6 @@ export class MultiplicativeExpressionContext extends ParserRuleContext {
 			listener.exitMultiplicativeExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitMultiplicativeExpression) {
-			return visitor.visitMultiplicativeExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13666,14 +12880,6 @@ export class MultiplicativeOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitMultiplicativeOperator) {
 			listener.exitMultiplicativeOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitMultiplicativeOperator) {
-			return visitor.visitMultiplicativeOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13721,14 +12927,6 @@ export class UnaryExpressionContext extends ParserRuleContext {
 			listener.exitUnaryExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitUnaryExpression) {
-			return visitor.visitUnaryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13759,14 +12957,6 @@ export class PrefixOperatorContext extends ParserRuleContext {
 			listener.exitPrefixOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitPrefixOperator) {
-			return visitor.visitPrefixOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13786,14 +12976,6 @@ export class MinusOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitMinusOperator) {
 			listener.exitMinusOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitMinusOperator) {
-			return visitor.visitMinusOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13817,14 +12999,6 @@ export class NegationOperatorContext extends ParserRuleContext {
 			listener.exitNegationOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitNegationOperator) {
-			return visitor.visitNegationOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13844,14 +13018,6 @@ export class TildeOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitTildeOperator) {
 			listener.exitTildeOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitTildeOperator) {
-			return visitor.visitTildeOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13876,14 +13042,6 @@ export class AwaitExpressionContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitAwaitExpression) {
 			listener.exitAwaitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitAwaitExpression) {
-			return visitor.visitAwaitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13925,14 +13083,6 @@ export class PostfixExpressionContext extends ParserRuleContext {
 			listener.exitPostfixExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitPostfixExpression) {
-			return visitor.visitPostfixExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13955,14 +13105,6 @@ export class PostfixOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitPostfixOperator) {
 			listener.exitPostfixOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitPostfixOperator) {
-			return visitor.visitPostfixOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13992,14 +13134,6 @@ export class SelectorContext extends ParserRuleContext {
 			listener.exitSelector(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitSelector) {
-			return visitor.visitSelector(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14019,14 +13153,6 @@ export class IncrementOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitIncrementOperator) {
 			listener.exitIncrementOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitIncrementOperator) {
-			return visitor.visitIncrementOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14071,14 +13197,6 @@ export class AssignableExpressionContext extends ParserRuleContext {
 			listener.exitAssignableExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitAssignableExpression) {
-			return visitor.visitAssignableExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14104,14 +13222,6 @@ export class UnconditionalAssignableSelectorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitUnconditionalAssignableSelector) {
 			listener.exitUnconditionalAssignableSelector(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitUnconditionalAssignableSelector) {
-			return visitor.visitUnconditionalAssignableSelector(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14141,14 +13251,6 @@ export class AssignableSelectorContext extends ParserRuleContext {
 			listener.exitAssignableSelector(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitAssignableSelector) {
-			return visitor.visitAssignableSelector(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14169,14 +13271,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14209,14 +13303,6 @@ export class QualifiedContext extends ParserRuleContext {
 			listener.exitQualified(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitQualified) {
-			return visitor.visitQualified(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14244,14 +13330,6 @@ export class TypeTestContext extends ParserRuleContext {
 			listener.exitTypeTest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitTypeTest) {
-			return visitor.visitTypeTest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14271,14 +13349,6 @@ export class IsOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitIsOperator) {
 			listener.exitIsOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitIsOperator) {
-			return visitor.visitIsOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14308,14 +13378,6 @@ export class TypeCastContext extends ParserRuleContext {
 			listener.exitTypeCast(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitTypeCast) {
-			return visitor.visitTypeCast(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14335,14 +13397,6 @@ export class AsOperatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitAsOperator) {
 			listener.exitAsOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitAsOperator) {
-			return visitor.visitAsOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14373,14 +13427,6 @@ export class StatementsContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitStatements) {
 			listener.exitStatements(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitStatements) {
-			return visitor.visitStatements(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14414,14 +13460,6 @@ export class StatementContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitStatement) {
 			listener.exitStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14496,14 +13534,6 @@ export class NonLabledStatmentContext extends ParserRuleContext {
 			listener.exitNonLabledStatment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitNonLabledStatment) {
-			return visitor.visitNonLabledStatment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14528,14 +13558,6 @@ export class ExpressionStatementContext extends ParserRuleContext {
 			listener.exitExpressionStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitExpressionStatement) {
-			return visitor.visitExpressionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14558,14 +13580,6 @@ export class LocalVariableDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitLocalVariableDeclaration) {
 			listener.exitLocalVariableDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitLocalVariableDeclaration) {
-			return visitor.visitLocalVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14593,14 +13607,6 @@ export class LocalFunctionDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitLocalFunctionDeclaration) {
 			listener.exitLocalFunctionDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitLocalFunctionDeclaration) {
-			return visitor.visitLocalFunctionDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14636,14 +13642,6 @@ export class IfStatementContext extends ParserRuleContext {
 			listener.exitIfStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14669,14 +13667,6 @@ export class ForStatementContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitForStatement) {
 			listener.exitForStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitForStatement) {
-			return visitor.visitForStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14715,14 +13705,6 @@ export class ForLoopPartsContext extends ParserRuleContext {
 			listener.exitForLoopParts(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitForLoopParts) {
-			return visitor.visitForLoopParts(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14748,14 +13730,6 @@ export class ForInitializerStatementContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitForInitializerStatement) {
 			listener.exitForInitializerStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitForInitializerStatement) {
-			return visitor.visitForInitializerStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14785,14 +13759,6 @@ export class WhileStatementContext extends ParserRuleContext {
 			listener.exitWhileStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitWhileStatement) {
-			return visitor.visitWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14818,14 +13784,6 @@ export class DoStatementContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitDoStatement) {
 			listener.exitDoStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitDoStatement) {
-			return visitor.visitDoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14864,14 +13822,6 @@ export class SwitchStatementContext extends ParserRuleContext {
 			listener.exitSwitchStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitSwitchStatement) {
-			return visitor.visitSwitchStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14908,14 +13858,6 @@ export class SwitchCaseContext extends ParserRuleContext {
 			listener.exitSwitchCase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitSwitchCase) {
-			return visitor.visitSwitchCase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14949,14 +13891,6 @@ export class DefaultCaseContext extends ParserRuleContext {
 			listener.exitDefaultCase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitDefaultCase) {
-			return visitor.visitDefaultCase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14976,14 +13910,6 @@ export class RethrowStatmentContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitRethrowStatment) {
 			listener.exitRethrowStatment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitRethrowStatment) {
-			return visitor.visitRethrowStatment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15022,14 +13948,6 @@ export class TryStatementContext extends ParserRuleContext {
 			listener.exitTryStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitTryStatement) {
-			return visitor.visitTryStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15058,14 +13976,6 @@ export class OnPartContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitOnPart) {
 			listener.exitOnPart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitOnPart) {
-			return visitor.visitOnPart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15098,14 +14008,6 @@ export class CatchPartContext extends ParserRuleContext {
 			listener.exitCatchPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitCatchPart) {
-			return visitor.visitCatchPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15128,14 +14030,6 @@ export class FinallyPartContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitFinallyPart) {
 			listener.exitFinallyPart(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFinallyPart) {
-			return visitor.visitFinallyPart(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15162,14 +14056,6 @@ export class ReturnStatementContext extends ParserRuleContext {
 			listener.exitReturnStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitReturnStatement) {
-			return visitor.visitReturnStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15192,14 +14078,6 @@ export class LabelContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitLabel) {
 			listener.exitLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15226,14 +14104,6 @@ export class BreakStatementContext extends ParserRuleContext {
 			listener.exitBreakStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitBreakStatement) {
-			return visitor.visitBreakStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15256,14 +14126,6 @@ export class ContinueStatementContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitContinueStatement) {
 			listener.exitContinueStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitContinueStatement) {
-			return visitor.visitContinueStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15290,14 +14152,6 @@ export class YieldStatementContext extends ParserRuleContext {
 			listener.exitYieldStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitYieldStatement) {
-			return visitor.visitYieldStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15322,14 +14176,6 @@ export class YieldEachStatementContext extends ParserRuleContext {
 			listener.exitYieldEachStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitYieldEachStatement) {
-			return visitor.visitYieldEachStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15352,14 +14198,6 @@ export class AssertStatementContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitAssertStatement) {
 			listener.exitAssertStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitAssertStatement) {
-			return visitor.visitAssertStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15390,14 +14228,6 @@ export class AssertionContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitAssertion) {
 			listener.exitAssertion(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitAssertion) {
-			return visitor.visitAssertion(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15460,14 +14290,6 @@ export class TopLevelDefinitionContext extends ParserRuleContext {
 			listener.exitTopLevelDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitTopLevelDefinition) {
-			return visitor.visitTopLevelDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15487,14 +14309,6 @@ export class GetOrSetContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitGetOrSet) {
 			listener.exitGetOrSet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitGetOrSet) {
-			return visitor.visitGetOrSet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15551,14 +14365,6 @@ export class LibraryDefinitionContext extends ParserRuleContext {
 			listener.exitLibraryDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitLibraryDefinition) {
-			return visitor.visitLibraryDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15589,14 +14395,6 @@ export class ScriptTagContext extends ParserRuleContext {
 			listener.exitScriptTag(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitScriptTag) {
-			return visitor.visitScriptTag(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15624,14 +14422,6 @@ export class LibraryNameContext extends ParserRuleContext {
 			listener.exitLibraryName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitLibraryName) {
-			return visitor.visitLibraryName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15657,14 +14447,6 @@ export class ImportOrExportContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitImportOrExport) {
 			listener.exitImportOrExport(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitImportOrExport) {
-			return visitor.visitImportOrExport(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15697,14 +14479,6 @@ export class DottedIdentifierListContext extends ParserRuleContext {
 			listener.exitDottedIdentifierList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitDottedIdentifierList) {
-			return visitor.visitDottedIdentifierList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15730,14 +14504,6 @@ export class LibraryimportContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitLibraryimport) {
 			listener.exitLibraryimport(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitLibraryimport) {
-			return visitor.visitLibraryimport(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15776,14 +14542,6 @@ export class ImportSpecificationContext extends ParserRuleContext {
 			listener.exitImportSpecification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitImportSpecification) {
-			return visitor.visitImportSpecification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15806,14 +14564,6 @@ export class CombinatorContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitCombinator) {
 			listener.exitCombinator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitCombinator) {
-			return visitor.visitCombinator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15844,14 +14594,6 @@ export class IdentifierListContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitIdentifierList) {
 			listener.exitIdentifierList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitIdentifierList) {
-			return visitor.visitIdentifierList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15890,14 +14632,6 @@ export class LibraryExportContext extends ParserRuleContext {
 			listener.exitLibraryExport(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitLibraryExport) {
-			return visitor.visitLibraryExport(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15923,14 +14657,6 @@ export class PartDirectiveContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitPartDirective) {
 			listener.exitPartDirective(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitPartDirective) {
-			return visitor.visitPartDirective(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15964,14 +14690,6 @@ export class PartHeaderContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitPartHeader) {
 			listener.exitPartHeader(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitPartHeader) {
-			return visitor.visitPartHeader(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16008,14 +14726,6 @@ export class PartDeclarationContext extends ParserRuleContext {
 			listener.exitPartDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitPartDeclaration) {
-			return visitor.visitPartDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16038,14 +14748,6 @@ export class UriContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitUri) {
 			listener.exitUri(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitUri) {
-			return visitor.visitUri(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16081,14 +14783,6 @@ export class ConfigurableUriContext extends ParserRuleContext {
 			listener.exitConfigurableUri(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitConfigurableUri) {
-			return visitor.visitConfigurableUri(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16114,14 +14808,6 @@ export class ConfigurationUriContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitConfigurationUri) {
 			listener.exitConfigurationUri(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitConfigurationUri) {
-			return visitor.visitConfigurationUri(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16151,14 +14837,6 @@ export class UriTestContext extends ParserRuleContext {
 			listener.exitUriTest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitUriTest) {
-			return visitor.visitUriTest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16186,14 +14864,6 @@ export class DtypeContext extends ParserRuleContext {
 			listener.exitDtype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitDtype) {
-			return visitor.visitDtype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16218,14 +14888,6 @@ export class TypeNameContext extends ParserRuleContext {
 			listener.exitTypeName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitTypeName) {
-			return visitor.visitTypeName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16248,14 +14910,6 @@ export class TypeArgumentsContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitTypeArguments) {
 			listener.exitTypeArguments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitTypeArguments) {
-			return visitor.visitTypeArguments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16288,14 +14942,6 @@ export class TypeListContext extends ParserRuleContext {
 			listener.exitTypeList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitTypeList) {
-			return visitor.visitTypeList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16323,14 +14969,6 @@ export class TypeAliasContext extends ParserRuleContext {
 			listener.exitTypeAlias(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitTypeAlias) {
-			return visitor.visitTypeAlias(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16353,14 +14991,6 @@ export class TypeAliasBodyContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitTypeAliasBody) {
 			listener.exitTypeAliasBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitTypeAliasBody) {
-			return visitor.visitTypeAliasBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16393,14 +15023,6 @@ export class FunctionTypeAliasContext extends ParserRuleContext {
 			listener.exitFunctionTypeAlias(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFunctionTypeAlias) {
-			return visitor.visitFunctionTypeAlias(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16426,14 +15048,6 @@ export class FunctionPrefixContext extends ParserRuleContext {
 	public exitRule(listener: Dart2Listener): void {
 		if (listener.exitFunctionPrefix) {
 			listener.exitFunctionPrefix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Dart2Visitor<Result>): Result {
-		if (visitor.visitFunctionPrefix) {
-			return visitor.visitFunctionPrefix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

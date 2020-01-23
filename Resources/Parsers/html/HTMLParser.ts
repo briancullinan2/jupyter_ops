@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { HTMLParserListener } from "./HTMLParserListener";
-import { HTMLParserVisitor } from "./HTMLParserVisitor";
-
 
 export class HTMLParser extends Parser {
 	public static readonly HTML_COMMENT = 1;
@@ -1083,14 +1081,6 @@ export class HtmlDocumentContext extends ParserRuleContext {
 			listener.exitHtmlDocument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitHtmlDocument) {
-			return visitor.visitHtmlDocument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1122,14 +1112,6 @@ export class HtmlElementsContext extends ParserRuleContext {
 	public exitRule(listener: HTMLParserListener): void {
 		if (listener.exitHtmlElements) {
 			listener.exitHtmlElements(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitHtmlElements) {
-			return visitor.visitHtmlElements(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1203,14 +1185,6 @@ export class HtmlElementContext extends ParserRuleContext {
 			listener.exitHtmlElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitHtmlElement) {
-			return visitor.visitHtmlElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1268,14 +1242,6 @@ export class HtmlContentContext extends ParserRuleContext {
 			listener.exitHtmlContent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitHtmlContent) {
-			return visitor.visitHtmlContent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1304,14 +1270,6 @@ export class HtmlAttributeContext extends ParserRuleContext {
 			listener.exitHtmlAttribute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitHtmlAttribute) {
-			return visitor.visitHtmlAttribute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1332,14 +1290,6 @@ export class HtmlAttributeNameContext extends ParserRuleContext {
 	public exitRule(listener: HTMLParserListener): void {
 		if (listener.exitHtmlAttributeName) {
 			listener.exitHtmlAttributeName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitHtmlAttributeName) {
-			return visitor.visitHtmlAttributeName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1364,14 +1314,6 @@ export class HtmlAttributeValueContext extends ParserRuleContext {
 			listener.exitHtmlAttributeValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitHtmlAttributeValue) {
-			return visitor.visitHtmlAttributeValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1392,14 +1334,6 @@ export class HtmlTagNameContext extends ParserRuleContext {
 	public exitRule(listener: HTMLParserListener): void {
 		if (listener.exitHtmlTagName) {
 			listener.exitHtmlTagName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitHtmlTagName) {
-			return visitor.visitHtmlTagName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1423,14 +1357,6 @@ export class HtmlChardataContext extends ParserRuleContext {
 	public exitRule(listener: HTMLParserListener): void {
 		if (listener.exitHtmlChardata) {
 			listener.exitHtmlChardata(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitHtmlChardata) {
-			return visitor.visitHtmlChardata(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1458,14 +1384,6 @@ export class HtmlMiscContext extends ParserRuleContext {
 			listener.exitHtmlMisc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitHtmlMisc) {
-			return visitor.visitHtmlMisc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1487,14 +1405,6 @@ export class HtmlCommentContext extends ParserRuleContext {
 	public exitRule(listener: HTMLParserListener): void {
 		if (listener.exitHtmlComment) {
 			listener.exitHtmlComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitHtmlComment) {
-			return visitor.visitHtmlComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1519,14 +1429,6 @@ export class XhtmlCDATAContext extends ParserRuleContext {
 			listener.exitXhtmlCDATA(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitXhtmlCDATA) {
-			return visitor.visitXhtmlCDATA(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1547,14 +1449,6 @@ export class DtdContext extends ParserRuleContext {
 	public exitRule(listener: HTMLParserListener): void {
 		if (listener.exitDtd) {
 			listener.exitDtd(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitDtd) {
-			return visitor.visitDtd(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1579,14 +1473,6 @@ export class XmlContext extends ParserRuleContext {
 			listener.exitXml(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitXml) {
-			return visitor.visitXml(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1607,14 +1493,6 @@ export class ScriptletContext extends ParserRuleContext {
 	public exitRule(listener: HTMLParserListener): void {
 		if (listener.exitScriptlet) {
 			listener.exitScriptlet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitScriptlet) {
-			return visitor.visitScriptlet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1641,14 +1519,6 @@ export class ScriptContext extends ParserRuleContext {
 			listener.exitScript(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitScript) {
-			return visitor.visitScript(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1671,14 +1541,6 @@ export class StyleContext extends ParserRuleContext {
 	public exitRule(listener: HTMLParserListener): void {
 		if (listener.exitStyle) {
 			listener.exitStyle(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: HTMLParserVisitor<Result>): Result {
-		if (visitor.visitStyle) {
-			return visitor.visitStyle(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { PythonParserListener } from "./PythonParserListener";
-import { PythonParserVisitor } from "./PythonParserVisitor";
-
 
 export class PythonParser extends PythonParserBase {
 	public static readonly INDENT = 1;
@@ -5660,14 +5658,6 @@ export class RootContext extends ParserRuleContext {
 			listener.exitRoot(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitRoot) {
-			return visitor.visitRoot(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5694,14 +5684,6 @@ export class Single_inputContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitSingle_input) {
 			listener.exitSingle_input(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitSingle_input) {
-			return visitor.visitSingle_input(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5743,14 +5725,6 @@ export class File_inputContext extends ParserRuleContext {
 			listener.exitFile_input(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitFile_input) {
-			return visitor.visitFile_input(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5784,14 +5758,6 @@ export class Eval_inputContext extends ParserRuleContext {
 			listener.exitEval_input(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitEval_input) {
-			return visitor.visitEval_input(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5817,14 +5783,6 @@ export class StmtContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitStmt) {
 			listener.exitStmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitStmt) {
-			return visitor.visitStmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5878,14 +5836,6 @@ export class If_stmtContext extends Compound_stmtContext {
 			listener.exitIf_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitIf_stmt) {
-			return visitor.visitIf_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class While_stmtContext extends Compound_stmtContext {
 	public WHILE(): TerminalNode { return this.getToken(PythonParser.WHILE, 0); }
@@ -5913,14 +5863,6 @@ export class While_stmtContext extends Compound_stmtContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitWhile_stmt) {
 			listener.exitWhile_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitWhile_stmt) {
-			return visitor.visitWhile_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5955,14 +5897,6 @@ export class For_stmtContext extends Compound_stmtContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitFor_stmt) {
 			listener.exitFor_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitFor_stmt) {
-			return visitor.visitFor_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6001,14 +5935,6 @@ export class Try_stmtContext extends Compound_stmtContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitTry_stmt) {
 			listener.exitTry_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitTry_stmt) {
-			return visitor.visitTry_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6053,14 +5979,6 @@ export class With_stmtContext extends Compound_stmtContext {
 			listener.exitWith_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitWith_stmt) {
-			return visitor.visitWith_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Class_or_func_def_stmtContext extends Compound_stmtContext {
 	public classdef(): ClassdefContext | undefined {
@@ -6092,14 +6010,6 @@ export class Class_or_func_def_stmtContext extends Compound_stmtContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitClass_or_func_def_stmt) {
 			listener.exitClass_or_func_def_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitClass_or_func_def_stmt) {
-			return visitor.visitClass_or_func_def_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6138,14 +6048,6 @@ export class SuiteContext extends ParserRuleContext {
 			listener.exitSuite(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitSuite) {
-			return visitor.visitSuite(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6177,14 +6079,6 @@ export class DecoratorContext extends ParserRuleContext {
 			listener.exitDecorator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitDecorator) {
-			return visitor.visitDecorator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6214,14 +6108,6 @@ export class Elif_clauseContext extends ParserRuleContext {
 			listener.exitElif_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitElif_clause) {
-			return visitor.visitElif_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6246,14 +6132,6 @@ export class Else_clauseContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitElse_clause) {
 			listener.exitElse_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitElse_clause) {
-			return visitor.visitElse_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6282,14 +6160,6 @@ export class Finally_clauseContext extends ParserRuleContext {
 			listener.exitFinally_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitFinally_clause) {
-			return visitor.visitFinally_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6316,14 +6186,6 @@ export class With_itemContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitWith_item) {
 			listener.exitWith_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitWith_item) {
-			return visitor.visitWith_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6360,14 +6222,6 @@ export class Except_clauseContext extends ParserRuleContext {
 			listener.exitExcept_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitExcept_clause) {
-			return visitor.visitExcept_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6400,14 +6254,6 @@ export class ClassdefContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitClassdef) {
 			listener.exitClassdef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitClassdef) {
-			return visitor.visitClassdef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6447,14 +6293,6 @@ export class FuncdefContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitFuncdef) {
 			listener.exitFuncdef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitFuncdef) {
-			return visitor.visitFuncdef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6502,14 +6340,6 @@ export class TypedargslistContext extends ParserRuleContext {
 			listener.exitTypedargslist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitTypedargslist) {
-			return visitor.visitTypedargslist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6535,14 +6365,6 @@ export class ArgsContext extends ParserRuleContext {
 			listener.exitArgs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitArgs) {
-			return visitor.visitArgs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6566,14 +6388,6 @@ export class KwargsContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitKwargs) {
 			listener.exitKwargs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitKwargs) {
-			return visitor.visitKwargs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6615,14 +6429,6 @@ export class Def_parametersContext extends ParserRuleContext {
 			listener.exitDef_parameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitDef_parameters) {
-			return visitor.visitDef_parameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6652,14 +6458,6 @@ export class Def_parameterContext extends ParserRuleContext {
 			listener.exitDef_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitDef_parameter) {
-			return visitor.visitDef_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6686,14 +6484,6 @@ export class Named_parameterContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitNamed_parameter) {
 			listener.exitNamed_parameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitNamed_parameter) {
-			return visitor.visitNamed_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6737,14 +6527,6 @@ export class Simple_stmtContext extends ParserRuleContext {
 			listener.exitSimple_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitSimple_stmt) {
-			return visitor.visitSimple_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6779,14 +6561,6 @@ export class Expr_stmtContext extends Small_stmtContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitExpr_stmt) {
 			listener.exitExpr_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitExpr_stmt) {
-			return visitor.visitExpr_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6827,14 +6601,6 @@ export class Print_stmtContext extends Small_stmtContext {
 			listener.exitPrint_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitPrint_stmt) {
-			return visitor.visitPrint_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Del_stmtContext extends Small_stmtContext {
 	public DEL(): TerminalNode { return this.getToken(PythonParser.DEL, 0); }
@@ -6857,14 +6623,6 @@ export class Del_stmtContext extends Small_stmtContext {
 			listener.exitDel_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitDel_stmt) {
-			return visitor.visitDel_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Pass_stmtContext extends Small_stmtContext {
 	public PASS(): TerminalNode { return this.getToken(PythonParser.PASS, 0); }
@@ -6882,14 +6640,6 @@ export class Pass_stmtContext extends Small_stmtContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitPass_stmt) {
 			listener.exitPass_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitPass_stmt) {
-			return visitor.visitPass_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6911,14 +6661,6 @@ export class Break_stmtContext extends Small_stmtContext {
 			listener.exitBreak_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitBreak_stmt) {
-			return visitor.visitBreak_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Continue_stmtContext extends Small_stmtContext {
 	public CONTINUE(): TerminalNode { return this.getToken(PythonParser.CONTINUE, 0); }
@@ -6936,14 +6678,6 @@ export class Continue_stmtContext extends Small_stmtContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitContinue_stmt) {
 			listener.exitContinue_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitContinue_stmt) {
-			return visitor.visitContinue_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6966,14 +6700,6 @@ export class Return_stmtContext extends Small_stmtContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitReturn_stmt) {
 			listener.exitReturn_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitReturn_stmt) {
-			return visitor.visitReturn_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7014,14 +6740,6 @@ export class Raise_stmtContext extends Small_stmtContext {
 			listener.exitRaise_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitRaise_stmt) {
-			return visitor.visitRaise_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Yield_stmtContext extends Small_stmtContext {
 	public yield_expr(): Yield_exprContext {
@@ -7041,14 +6759,6 @@ export class Yield_stmtContext extends Small_stmtContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitYield_stmt) {
 			listener.exitYield_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitYield_stmt) {
-			return visitor.visitYield_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7071,14 +6781,6 @@ export class Import_stmtContext extends Small_stmtContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitImport_stmt) {
 			listener.exitImport_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitImport_stmt) {
-			return visitor.visitImport_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7128,14 +6830,6 @@ export class From_stmtContext extends Small_stmtContext {
 			listener.exitFrom_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitFrom_stmt) {
-			return visitor.visitFrom_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Global_stmtContext extends Small_stmtContext {
 	public GLOBAL(): TerminalNode { return this.getToken(PythonParser.GLOBAL, 0); }
@@ -7173,14 +6867,6 @@ export class Global_stmtContext extends Small_stmtContext {
 			listener.exitGlobal_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitGlobal_stmt) {
-			return visitor.visitGlobal_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Exec_stmtContext extends Small_stmtContext {
 	public EXEC(): TerminalNode { return this.getToken(PythonParser.EXEC, 0); }
@@ -7214,14 +6900,6 @@ export class Exec_stmtContext extends Small_stmtContext {
 			listener.exitExec_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitExec_stmt) {
-			return visitor.visitExec_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Assert_stmtContext extends Small_stmtContext {
 	public ASSERT(): TerminalNode { return this.getToken(PythonParser.ASSERT, 0); }
@@ -7249,14 +6927,6 @@ export class Assert_stmtContext extends Small_stmtContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitAssert_stmt) {
 			listener.exitAssert_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitAssert_stmt) {
-			return visitor.visitAssert_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7294,14 +6964,6 @@ export class Nonlocal_stmtContext extends Small_stmtContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitNonlocal_stmt) {
 			listener.exitNonlocal_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitNonlocal_stmt) {
-			return visitor.visitNonlocal_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7355,14 +7017,6 @@ export class Testlist_star_exprContext extends ParserRuleContext {
 			listener.exitTestlist_star_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitTestlist_star_expr) {
-			return visitor.visitTestlist_star_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7386,14 +7040,6 @@ export class Star_exprContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitStar_expr) {
 			listener.exitStar_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitStar_expr) {
-			return visitor.visitStar_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7459,14 +7105,6 @@ export class Assign_partContext extends ParserRuleContext {
 			listener.exitAssign_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitAssign_part) {
-			return visitor.visitAssign_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7504,14 +7142,6 @@ export class ExprlistContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitExprlist) {
 			listener.exitExprlist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitExprlist) {
-			return visitor.visitExprlist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7553,14 +7183,6 @@ export class Import_as_namesContext extends ParserRuleContext {
 			listener.exitImport_as_names(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitImport_as_names) {
-			return visitor.visitImport_as_names(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7590,14 +7212,6 @@ export class Import_as_nameContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitImport_as_name) {
 			listener.exitImport_as_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitImport_as_name) {
-			return visitor.visitImport_as_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7639,14 +7253,6 @@ export class Dotted_as_namesContext extends ParserRuleContext {
 			listener.exitDotted_as_names(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitDotted_as_names) {
-			return visitor.visitDotted_as_names(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7673,14 +7279,6 @@ export class Dotted_as_nameContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitDotted_as_name) {
 			listener.exitDotted_as_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitDotted_as_name) {
-			return visitor.visitDotted_as_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7721,14 +7319,6 @@ export class TestContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitTest) {
 			listener.exitTest(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitTest) {
-			return visitor.visitTest(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7776,14 +7366,6 @@ export class VarargslistContext extends ParserRuleContext {
 			listener.exitVarargslist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitVarargslist) {
-			return visitor.visitVarargslist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7823,14 +7405,6 @@ export class Vardef_parametersContext extends ParserRuleContext {
 			listener.exitVardef_parameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitVardef_parameters) {
-			return visitor.visitVardef_parameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7860,14 +7434,6 @@ export class Vardef_parameterContext extends ParserRuleContext {
 			listener.exitVardef_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitVardef_parameter) {
-			return visitor.visitVardef_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7893,14 +7459,6 @@ export class VarargsContext extends ParserRuleContext {
 			listener.exitVarargs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitVarargs) {
-			return visitor.visitVarargs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7924,14 +7482,6 @@ export class VarkwargsContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitVarkwargs) {
 			listener.exitVarkwargs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitVarkwargs) {
-			return visitor.visitVarkwargs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7969,14 +7519,6 @@ export class Logical_testContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitLogical_test) {
 			listener.exitLogical_test(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitLogical_test) {
-			return visitor.visitLogical_test(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8021,14 +7563,6 @@ export class ComparisonContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitComparison) {
 			listener.exitComparison(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitComparison) {
-			return visitor.visitComparison(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8087,14 +7621,6 @@ export class ExprContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitExpr) {
 			listener.exitExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitExpr) {
-			return visitor.visitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8164,14 +7690,6 @@ export class AtomContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitAtom) {
 			listener.exitAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8246,14 +7764,6 @@ export class DictorsetmakerContext extends ParserRuleContext {
 			listener.exitDictorsetmaker(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitDictorsetmaker) {
-			return visitor.visitDictorsetmaker(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8305,14 +7815,6 @@ export class Testlist_compContext extends ParserRuleContext {
 			listener.exitTestlist_comp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitTestlist_comp) {
-			return visitor.visitTestlist_comp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8352,14 +7854,6 @@ export class TestlistContext extends ParserRuleContext {
 			listener.exitTestlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitTestlist) {
-			return visitor.visitTestlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8388,14 +7882,6 @@ export class Dotted_nameContext extends ParserRuleContext {
 			listener.exitDotted_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitDotted_name) {
-			return visitor.visitDotted_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8418,14 +7904,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8454,14 +7932,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8487,14 +7957,6 @@ export class IntegerContext extends ParserRuleContext {
 			listener.exitInteger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitInteger) {
-			return visitor.visitInteger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8518,14 +7980,6 @@ export class Yield_exprContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitYield_expr) {
 			listener.exitYield_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitYield_expr) {
-			return visitor.visitYield_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8556,14 +8010,6 @@ export class Yield_argContext extends ParserRuleContext {
 			listener.exitYield_arg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitYield_arg) {
-			return visitor.visitYield_arg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8590,14 +8036,6 @@ export class TrailerContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitTrailer) {
 			listener.exitTrailer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitTrailer) {
-			return visitor.visitTrailer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8629,14 +8067,6 @@ export class ArgumentsContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitArguments) {
 			listener.exitArguments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitArguments) {
-			return visitor.visitArguments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8678,14 +8108,6 @@ export class ArglistContext extends ParserRuleContext {
 			listener.exitArglist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitArglist) {
-			return visitor.visitArglist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8720,14 +8142,6 @@ export class ArgumentContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitArgument) {
 			listener.exitArgument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8769,14 +8183,6 @@ export class SubscriptlistContext extends ParserRuleContext {
 			listener.exitSubscriptlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitSubscriptlist) {
-			return visitor.visitSubscriptlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8812,14 +8218,6 @@ export class SubscriptContext extends ParserRuleContext {
 			listener.exitSubscript(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitSubscript) {
-			return visitor.visitSubscript(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8843,14 +8241,6 @@ export class SliceopContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitSliceop) {
 			listener.exitSliceop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitSliceop) {
-			return visitor.visitSliceop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8885,14 +8275,6 @@ export class Comp_forContext extends ParserRuleContext {
 			listener.exitComp_for(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitComp_for) {
-			return visitor.visitComp_for(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8922,14 +8304,6 @@ export class Comp_iterContext extends ParserRuleContext {
 	public exitRule(listener: PythonParserListener): void {
 		if (listener.exitComp_iter) {
 			listener.exitComp_iter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: PythonParserVisitor<Result>): Result {
-		if (visitor.visitComp_iter) {
-			return visitor.visitComp_iter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

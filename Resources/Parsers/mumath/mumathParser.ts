@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { mumathListener } from "./mumathListener";
-import { mumathVisitor } from "./mumathVisitor";
-
 
 export class mumathParser extends Parser {
 	public static readonly BLOCK = 1;
@@ -1278,14 +1276,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1326,14 +1316,6 @@ export class AssignmentContext extends ParserRuleContext {
 	public exitRule(listener: mumathListener): void {
 		if (listener.exitAssignment) {
 			listener.exitAssignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitAssignment) {
-			return visitor.visitAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1377,14 +1359,6 @@ export class ListContext extends ParserRuleContext {
 			listener.exitList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitList) {
-			return visitor.visitList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1424,14 +1398,6 @@ export class FunctionDefinitionContext extends ParserRuleContext {
 			listener.exitFunctionDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitFunctionDefinition) {
-			return visitor.visitFunctionDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1457,14 +1423,6 @@ export class ActualParameterContext extends ParserRuleContext {
 	public exitRule(listener: mumathListener): void {
 		if (listener.exitActualParameter) {
 			listener.exitActualParameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitActualParameter) {
-			return visitor.visitActualParameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1524,14 +1482,6 @@ export class StatmentsContext extends ParserRuleContext {
 			listener.exitStatments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitStatments) {
-			return visitor.visitStatments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1559,14 +1509,6 @@ export class BlockContext extends ParserRuleContext {
 			listener.exitBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1592,14 +1534,6 @@ export class LoopContext extends ParserRuleContext {
 	public exitRule(listener: mumathListener): void {
 		if (listener.exitLoop) {
 			listener.exitLoop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitLoop) {
-			return visitor.visitLoop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1648,14 +1582,6 @@ export class WhenContext extends ParserRuleContext {
 			listener.exitWhen(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitWhen) {
-			return visitor.visitWhen(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1695,14 +1621,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1731,14 +1649,6 @@ export class RelationalOperatorContext extends ParserRuleContext {
 	public exitRule(listener: mumathListener): void {
 		if (listener.exitRelationalOperator) {
 			listener.exitRelationalOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitRelationalOperator) {
-			return visitor.visitRelationalOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1781,14 +1691,6 @@ export class SimpleExpressionContext extends ParserRuleContext {
 			listener.exitSimpleExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitSimpleExpression) {
-			return visitor.visitSimpleExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1811,14 +1713,6 @@ export class AddingOperatorContext extends ParserRuleContext {
 	public exitRule(listener: mumathListener): void {
 		if (listener.exitAddingOperator) {
 			listener.exitAddingOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitAddingOperator) {
-			return visitor.visitAddingOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1860,14 +1754,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1892,14 +1778,6 @@ export class MultiplyingOperatorContext extends ParserRuleContext {
 	public exitRule(listener: mumathListener): void {
 		if (listener.exitMultiplyingOperator) {
 			listener.exitMultiplyingOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitMultiplyingOperator) {
-			return visitor.visitMultiplyingOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1939,14 +1817,6 @@ export class FactorContext extends ParserRuleContext {
 			listener.exitFactor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitFactor) {
-			return visitor.visitFactor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1970,14 +1840,6 @@ export class ConstantContext extends ParserRuleContext {
 	public exitRule(listener: mumathListener): void {
 		if (listener.exitConstant) {
 			listener.exitConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitConstant) {
-			return visitor.visitConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2022,14 +1884,6 @@ export class FunctionDesignatorContext extends ParserRuleContext {
 			listener.exitFunctionDesignator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitFunctionDesignator) {
-			return visitor.visitFunctionDesignator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2051,14 +1905,6 @@ export class EqualContext extends ParserRuleContext {
 	public exitRule(listener: mumathListener): void {
 		if (listener.exitEqual) {
 			listener.exitEqual(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: mumathVisitor<Result>): Result {
-		if (visitor.visitEqual) {
-			return visitor.visitEqual(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

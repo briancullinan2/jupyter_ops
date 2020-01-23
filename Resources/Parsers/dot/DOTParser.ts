@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { DOTListener } from "./DOTListener";
-import { DOTVisitor } from "./DOTVisitor";
-
 
 export class DOTParser extends Parser {
 	public static readonly T__0 = 1;
@@ -873,14 +871,6 @@ export class GraphContext extends ParserRuleContext {
 			listener.exitGraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitGraph) {
-			return visitor.visitGraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -909,14 +899,6 @@ export class Stmt_listContext extends ParserRuleContext {
 	public exitRule(listener: DOTListener): void {
 		if (listener.exitStmt_list) {
 			listener.exitStmt_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitStmt_list) {
-			return visitor.visitStmt_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -961,14 +943,6 @@ export class StmtContext extends ParserRuleContext {
 			listener.exitStmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitStmt) {
-			return visitor.visitStmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -994,14 +968,6 @@ export class Attr_stmtContext extends ParserRuleContext {
 	public exitRule(listener: DOTListener): void {
 		if (listener.exitAttr_stmt) {
 			listener.exitAttr_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitAttr_stmt) {
-			return visitor.visitAttr_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1034,14 +1000,6 @@ export class Attr_listContext extends ParserRuleContext {
 			listener.exitAttr_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitAttr_list) {
-			return visitor.visitAttr_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1070,14 +1028,6 @@ export class A_listContext extends ParserRuleContext {
 	public exitRule(listener: DOTListener): void {
 		if (listener.exitA_list) {
 			listener.exitA_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitA_list) {
-			return visitor.visitA_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1111,14 +1061,6 @@ export class Edge_stmtContext extends ParserRuleContext {
 	public exitRule(listener: DOTListener): void {
 		if (listener.exitEdge_stmt) {
 			listener.exitEdge_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitEdge_stmt) {
-			return visitor.visitEdge_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1169,14 +1111,6 @@ export class EdgeRHSContext extends ParserRuleContext {
 			listener.exitEdgeRHS(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitEdgeRHS) {
-			return visitor.visitEdgeRHS(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1196,14 +1130,6 @@ export class EdgeopContext extends ParserRuleContext {
 	public exitRule(listener: DOTListener): void {
 		if (listener.exitEdgeop) {
 			listener.exitEdgeop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitEdgeop) {
-			return visitor.visitEdgeop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1233,14 +1159,6 @@ export class Node_stmtContext extends ParserRuleContext {
 			listener.exitNode_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitNode_stmt) {
-			return visitor.visitNode_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1266,14 +1184,6 @@ export class Node_idContext extends ParserRuleContext {
 	public exitRule(listener: DOTListener): void {
 		if (listener.exitNode_id) {
 			listener.exitNode_id(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitNode_id) {
-			return visitor.visitNode_id(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1306,14 +1216,6 @@ export class PortContext extends ParserRuleContext {
 			listener.exitPort(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitPort) {
-			return visitor.visitPort(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1342,14 +1244,6 @@ export class SubgraphContext extends ParserRuleContext {
 			listener.exitSubgraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitSubgraph) {
-			return visitor.visitSubgraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1373,14 +1267,6 @@ export class IdContext extends ParserRuleContext {
 	public exitRule(listener: DOTListener): void {
 		if (listener.exitId) {
 			listener.exitId(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DOTVisitor<Result>): Result {
-		if (visitor.visitId) {
-			return visitor.visitId(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

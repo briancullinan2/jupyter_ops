@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { xdrListener } from "./xdrListener";
-import { xdrVisitor } from "./xdrVisitor";
-
 
 export class xdrParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1111,14 +1109,6 @@ export class DeclarationContext extends ParserRuleContext {
 			listener.exitDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitDeclaration) {
-			return visitor.visitDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1144,14 +1134,6 @@ export class ValueContext extends ParserRuleContext {
 			listener.exitValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1174,14 +1156,6 @@ export class ConstantContext extends ParserRuleContext {
 	public exitRule(listener: xdrListener): void {
 		if (listener.exitConstant) {
 			listener.exitConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitConstant) {
-			return visitor.visitConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1215,14 +1189,6 @@ export class TypeSpecifierContext extends ParserRuleContext {
 			listener.exitTypeSpecifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitTypeSpecifier) {
-			return visitor.visitTypeSpecifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1245,14 +1211,6 @@ export class EnumTypeSpecContext extends ParserRuleContext {
 	public exitRule(listener: xdrListener): void {
 		if (listener.exitEnumTypeSpec) {
 			listener.exitEnumTypeSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitEnumTypeSpec) {
-			return visitor.visitEnumTypeSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1294,14 +1252,6 @@ export class EnumBodyContext extends ParserRuleContext {
 			listener.exitEnumBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitEnumBody) {
-			return visitor.visitEnumBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1324,14 +1274,6 @@ export class StructTypeSpecContext extends ParserRuleContext {
 	public exitRule(listener: xdrListener): void {
 		if (listener.exitStructTypeSpec) {
 			listener.exitStructTypeSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitStructTypeSpec) {
-			return visitor.visitStructTypeSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1364,14 +1306,6 @@ export class StructBodyContext extends ParserRuleContext {
 			listener.exitStructBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitStructBody) {
-			return visitor.visitStructBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1394,14 +1328,6 @@ export class UnionTypeSpecContext extends ParserRuleContext {
 	public exitRule(listener: xdrListener): void {
 		if (listener.exitUnionTypeSpec) {
 			listener.exitUnionTypeSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitUnionTypeSpec) {
-			return visitor.visitUnionTypeSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1443,14 +1369,6 @@ export class UnionBodyContext extends ParserRuleContext {
 			listener.exitUnionBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitUnionBody) {
-			return visitor.visitUnionBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1484,14 +1402,6 @@ export class CaseSpecContext extends ParserRuleContext {
 			listener.exitCaseSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitCaseSpec) {
-			return visitor.visitCaseSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1515,14 +1425,6 @@ export class ConstantDefContext extends ParserRuleContext {
 	public exitRule(listener: xdrListener): void {
 		if (listener.exitConstantDef) {
 			listener.exitConstantDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitConstantDef) {
-			return visitor.visitConstantDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1559,14 +1461,6 @@ export class TypeDefContext extends ParserRuleContext {
 			listener.exitTypeDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitTypeDef) {
-			return visitor.visitTypeDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1592,14 +1486,6 @@ export class DefinitionContext extends ParserRuleContext {
 	public exitRule(listener: xdrListener): void {
 		if (listener.exitDefinition) {
 			listener.exitDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitDefinition) {
-			return visitor.visitDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1630,14 +1516,6 @@ export class XdrSpecificationContext extends ParserRuleContext {
 	public exitRule(listener: xdrListener): void {
 		if (listener.exitXdrSpecification) {
 			listener.exitXdrSpecification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xdrVisitor<Result>): Result {
-		if (visitor.visitXdrSpecification) {
-			return visitor.visitXdrSpecification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

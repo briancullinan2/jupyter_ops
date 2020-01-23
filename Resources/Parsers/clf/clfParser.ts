@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { clfListener } from "./clfListener";
-import { clfVisitor } from "./clfVisitor";
-
 
 export class clfParser extends Parser {
 	public static readonly T__0 = 1;
@@ -522,14 +520,6 @@ export class LogContext extends ParserRuleContext {
 			listener.exitLog(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: clfVisitor<Result>): Result {
-		if (visitor.visitLog) {
-			return visitor.visitLog(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -578,14 +568,6 @@ export class LineContext extends ParserRuleContext {
 			listener.exitLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: clfVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -607,14 +589,6 @@ export class HostContext extends ParserRuleContext {
 	public exitRule(listener: clfListener): void {
 		if (listener.exitHost) {
 			listener.exitHost(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: clfVisitor<Result>): Result {
-		if (visitor.visitHost) {
-			return visitor.visitHost(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -639,14 +613,6 @@ export class LognameContext extends ParserRuleContext {
 			listener.exitLogname(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: clfVisitor<Result>): Result {
-		if (visitor.visitLogname) {
-			return visitor.visitLogname(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -667,14 +633,6 @@ export class UsernameContext extends ParserRuleContext {
 	public exitRule(listener: clfListener): void {
 		if (listener.exitUsername) {
 			listener.exitUsername(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: clfVisitor<Result>): Result {
-		if (visitor.visitUsername) {
-			return visitor.visitUsername(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -701,14 +659,6 @@ export class DatetimetzContext extends ParserRuleContext {
 			listener.exitDatetimetz(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: clfVisitor<Result>): Result {
-		if (visitor.visitDatetimetz) {
-			return visitor.visitDatetimetz(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -729,14 +679,6 @@ export class RefererContext extends ParserRuleContext {
 	public exitRule(listener: clfListener): void {
 		if (listener.exitReferer) {
 			listener.exitReferer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: clfVisitor<Result>): Result {
-		if (visitor.visitReferer) {
-			return visitor.visitReferer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -761,14 +703,6 @@ export class RequestContext extends ParserRuleContext {
 			listener.exitRequest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: clfVisitor<Result>): Result {
-		if (visitor.visitRequest) {
-			return visitor.visitRequest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -789,14 +723,6 @@ export class UseragentContext extends ParserRuleContext {
 	public exitRule(listener: clfListener): void {
 		if (listener.exitUseragent) {
 			listener.exitUseragent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: clfVisitor<Result>): Result {
-		if (visitor.visitUseragent) {
-			return visitor.visitUseragent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -821,14 +747,6 @@ export class StatuscodeContext extends ParserRuleContext {
 			listener.exitStatuscode(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: clfVisitor<Result>): Result {
-		if (visitor.visitStatuscode) {
-			return visitor.visitStatuscode(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -849,14 +767,6 @@ export class BytesContext extends ParserRuleContext {
 	public exitRule(listener: clfListener): void {
 		if (listener.exitBytes) {
 			listener.exitBytes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: clfVisitor<Result>): Result {
-		if (visitor.visitBytes) {
-			return visitor.visitBytes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { ClojureListener } from "./ClojureListener";
-import { ClojureVisitor } from "./ClojureVisitor";
-
 
 export class ClojureParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1734,14 +1732,6 @@ export class FileContext extends ParserRuleContext {
 			listener.exitFile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitFile) {
-			return visitor.visitFile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1778,14 +1768,6 @@ export class FormContext extends ParserRuleContext {
 			listener.exitForm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitForm) {
-			return visitor.visitForm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1816,14 +1798,6 @@ export class FormsContext extends ParserRuleContext {
 			listener.exitForms(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitForms) {
-			return visitor.visitForms(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1848,14 +1822,6 @@ export class ListContext extends ParserRuleContext {
 			listener.exitList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitList) {
-			return visitor.visitList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1878,14 +1844,6 @@ export class VectorContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitVector) {
 			listener.exitVector(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitVector) {
-			return visitor.visitVector(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1918,14 +1876,6 @@ export class MapContext extends ParserRuleContext {
 			listener.exitMap(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitMap) {
-			return visitor.visitMap(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1948,14 +1898,6 @@ export class SetContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitSet) {
 			listener.exitSet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitSet) {
-			return visitor.visitSet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2024,14 +1966,6 @@ export class Reader_macroContext extends ParserRuleContext {
 			listener.exitReader_macro(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitReader_macro) {
-			return visitor.visitReader_macro(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2054,14 +1988,6 @@ export class QuoteContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitQuote) {
 			listener.exitQuote(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitQuote) {
-			return visitor.visitQuote(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2088,14 +2014,6 @@ export class BacktickContext extends ParserRuleContext {
 			listener.exitBacktick(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitBacktick) {
-			return visitor.visitBacktick(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2120,14 +2038,6 @@ export class UnquoteContext extends ParserRuleContext {
 			listener.exitUnquote(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitUnquote) {
-			return visitor.visitUnquote(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2150,14 +2060,6 @@ export class Unquote_splicingContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitUnquote_splicing) {
 			listener.exitUnquote_splicing(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitUnquote_splicing) {
-			return visitor.visitUnquote_splicing(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2190,14 +2092,6 @@ export class TagContext extends ParserRuleContext {
 			listener.exitTag(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitTag) {
-			return visitor.visitTag(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2222,14 +2116,6 @@ export class DerefContext extends ParserRuleContext {
 			listener.exitDeref(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitDeref) {
-			return visitor.visitDeref(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2250,14 +2136,6 @@ export class GensymContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitGensym) {
 			listener.exitGensym(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitGensym) {
-			return visitor.visitGensym(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2290,14 +2168,6 @@ export class LambdaContext extends ParserRuleContext {
 			listener.exitLambda(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitLambda) {
-			return visitor.visitLambda(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2325,14 +2195,6 @@ export class Meta_dataContext extends ParserRuleContext {
 			listener.exitMeta_data(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitMeta_data) {
-			return visitor.visitMeta_data(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2355,14 +2217,6 @@ export class Var_quoteContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitVar_quote) {
 			listener.exitVar_quote(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitVar_quote) {
-			return visitor.visitVar_quote(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2395,14 +2249,6 @@ export class Host_exprContext extends ParserRuleContext {
 			listener.exitHost_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitHost_expr) {
-			return visitor.visitHost_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2425,14 +2271,6 @@ export class DiscardContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitDiscard) {
 			listener.exitDiscard(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitDiscard) {
-			return visitor.visitDiscard(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2462,14 +2300,6 @@ export class DispatchContext extends ParserRuleContext {
 			listener.exitDispatch(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitDispatch) {
-			return visitor.visitDispatch(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2492,14 +2322,6 @@ export class RegexContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitRegex) {
 			listener.exitRegex(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitRegex) {
-			return visitor.visitRegex(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2545,14 +2367,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2573,14 +2387,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2605,14 +2411,6 @@ export class HexContext extends ParserRuleContext {
 			listener.exitHex(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitHex) {
-			return visitor.visitHex(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2635,14 +2433,6 @@ export class BinContext extends ParserRuleContext {
 			listener.exitBin(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitBin) {
-			return visitor.visitBin(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2663,14 +2453,6 @@ export class BignContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitBign) {
 			listener.exitBign(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitBign) {
-			return visitor.visitBign(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2705,14 +2487,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2743,14 +2517,6 @@ export class CharacterContext extends ParserRuleContext {
 			listener.exitCharacter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitCharacter) {
-			return visitor.visitCharacter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2771,14 +2537,6 @@ export class Named_charContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitNamed_char) {
 			listener.exitNamed_char(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitNamed_char) {
-			return visitor.visitNamed_char(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2803,14 +2561,6 @@ export class Any_charContext extends ParserRuleContext {
 			listener.exitAny_char(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitAny_char) {
-			return visitor.visitAny_char(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2833,14 +2583,6 @@ export class U_hex_quadContext extends ParserRuleContext {
 			listener.exitU_hex_quad(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitU_hex_quad) {
-			return visitor.visitU_hex_quad(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2861,14 +2603,6 @@ export class NilContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitNil) {
 			listener.exitNil(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitNil) {
-			return visitor.visitNil(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2898,14 +2632,6 @@ export class KeywordContext extends ParserRuleContext {
 			listener.exitKeyword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitKeyword) {
-			return visitor.visitKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2930,14 +2656,6 @@ export class Simple_keywordContext extends ParserRuleContext {
 			listener.exitSimple_keyword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitSimple_keyword) {
-			return visitor.visitSimple_keyword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2960,14 +2678,6 @@ export class Macro_keywordContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitMacro_keyword) {
 			listener.exitMacro_keyword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitMacro_keyword) {
-			return visitor.visitMacro_keyword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2997,14 +2707,6 @@ export class SymbolContext extends ParserRuleContext {
 			listener.exitSymbol(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitSymbol) {
-			return visitor.visitSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3025,14 +2727,6 @@ export class Simple_symContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitSimple_sym) {
 			listener.exitSimple_sym(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitSimple_sym) {
-			return visitor.visitSimple_sym(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3057,14 +2751,6 @@ export class Ns_symbolContext extends ParserRuleContext {
 			listener.exitNs_symbol(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitNs_symbol) {
-			return visitor.visitNs_symbol(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3085,14 +2771,6 @@ export class Param_nameContext extends ParserRuleContext {
 	public exitRule(listener: ClojureListener): void {
 		if (listener.exitParam_name) {
 			listener.exitParam_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ClojureVisitor<Result>): Result {
-		if (visitor.visitParam_name) {
-			return visitor.visitParam_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

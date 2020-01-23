@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { folListener } from "./folListener";
-import { folVisitor } from "./folVisitor";
-
 
 export class folParser extends Parser {
 	public static readonly T__0 = 1;
@@ -727,14 +725,6 @@ export class ConditionContext extends ParserRuleContext {
 			listener.exitCondition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: folVisitor<Result>): Result {
-		if (visitor.visitCondition) {
-			return visitor.visitCondition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -798,14 +788,6 @@ export class FormulaContext extends ParserRuleContext {
 			listener.exitFormula(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: folVisitor<Result>): Result {
-		if (visitor.visitFormula) {
-			return visitor.visitFormula(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -856,14 +838,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: folVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -887,14 +861,6 @@ export class Bin_connectiveContext extends ParserRuleContext {
 	public exitRule(listener: folListener): void {
 		if (listener.exitBin_connective) {
 			listener.exitBin_connective(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: folVisitor<Result>): Result {
-		if (visitor.visitBin_connective) {
-			return visitor.visitBin_connective(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -927,14 +893,6 @@ export class VariableContext extends ParserRuleContext {
 			listener.exitVariable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: folVisitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -963,14 +921,6 @@ export class Pred_constantContext extends ParserRuleContext {
 	public exitRule(listener: folListener): void {
 		if (listener.exitPred_constant) {
 			listener.exitPred_constant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: folVisitor<Result>): Result {
-		if (visitor.visitPred_constant) {
-			return visitor.visitPred_constant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1003,14 +953,6 @@ export class Ind_constantContext extends ParserRuleContext {
 			listener.exitInd_constant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: folVisitor<Result>): Result {
-		if (visitor.visitInd_constant) {
-			return visitor.visitInd_constant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1041,14 +983,6 @@ export class Func_constantContext extends ParserRuleContext {
 			listener.exitFunc_constant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: folVisitor<Result>): Result {
-		if (visitor.visitFunc_constant) {
-			return visitor.visitFunc_constant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1068,14 +1002,6 @@ export class SeparatorContext extends ParserRuleContext {
 	public exitRule(listener: folListener): void {
 		if (listener.exitSeparator) {
 			listener.exitSeparator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: folVisitor<Result>): Result {
-		if (visitor.visitSeparator) {
-			return visitor.visitSeparator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

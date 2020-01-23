@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { ANTLRv4ParserListener } from "./ANTLRv4ParserListener";
-import { ANTLRv4ParserVisitor } from "./ANTLRv4ParserVisitor";
-
 
 export class ANTLRv4Parser extends Parser {
 	public static readonly TOKEN_REF = 1;
@@ -3704,14 +3702,6 @@ export class GrammarSpecContext extends ParserRuleContext {
 			listener.exitGrammarSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitGrammarSpec) {
-			return visitor.visitGrammarSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3740,14 +3730,6 @@ export class GrammarDeclContext extends ParserRuleContext {
 			listener.exitGrammarDecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitGrammarDecl) {
-			return visitor.visitGrammarDecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3770,14 +3752,6 @@ export class GrammarTypeContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitGrammarType) {
 			listener.exitGrammarType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitGrammarType) {
-			return visitor.visitGrammarType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3814,14 +3788,6 @@ export class PrequelConstructContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitPrequelConstruct) {
 			listener.exitPrequelConstruct(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitPrequelConstruct) {
-			return visitor.visitPrequelConstruct(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3866,14 +3832,6 @@ export class OptionsSpecContext extends ParserRuleContext {
 			listener.exitOptionsSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitOptionsSpec) {
-			return visitor.visitOptionsSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3900,14 +3858,6 @@ export class OptionContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitOption) {
 			listener.exitOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitOption) {
-			return visitor.visitOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3954,14 +3904,6 @@ export class OptionValueContext extends ParserRuleContext {
 			listener.exitOptionValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitOptionValue) {
-			return visitor.visitOptionValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4003,14 +3945,6 @@ export class DelegateGrammarsContext extends ParserRuleContext {
 			listener.exitDelegateGrammars(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitDelegateGrammars) {
-			return visitor.visitDelegateGrammars(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4042,14 +3976,6 @@ export class DelegateGrammarContext extends ParserRuleContext {
 			listener.exitDelegateGrammar(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitDelegateGrammar) {
-			return visitor.visitDelegateGrammar(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4077,14 +4003,6 @@ export class TokensSpecContext extends ParserRuleContext {
 			listener.exitTokensSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitTokensSpec) {
-			return visitor.visitTokensSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4110,14 +4028,6 @@ export class ChannelsSpecContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitChannelsSpec) {
 			listener.exitChannelsSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitChannelsSpec) {
-			return visitor.visitChannelsSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4159,14 +4069,6 @@ export class IdListContext extends ParserRuleContext {
 			listener.exitIdList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitIdList) {
-			return visitor.visitIdList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4199,14 +4101,6 @@ export class Action_Context extends ParserRuleContext {
 			listener.exitAction_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitAction_) {
-			return visitor.visitAction_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4231,14 +4125,6 @@ export class ActionScopeNameContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitActionScopeName) {
 			listener.exitActionScopeName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitActionScopeName) {
-			return visitor.visitActionScopeName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4273,14 +4159,6 @@ export class ActionBlockContext extends ParserRuleContext {
 			listener.exitActionBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitActionBlock) {
-			return visitor.visitActionBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4311,14 +4189,6 @@ export class ArgActionBlockContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitArgActionBlock) {
 			listener.exitArgActionBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitArgActionBlock) {
-			return visitor.visitArgActionBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4356,14 +4226,6 @@ export class ModeSpecContext extends ParserRuleContext {
 			listener.exitModeSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitModeSpec) {
-			return visitor.visitModeSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4394,14 +4256,6 @@ export class RulesContext extends ParserRuleContext {
 			listener.exitRules(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitRules) {
-			return visitor.visitRules(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4427,14 +4281,6 @@ export class RuleSpecContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitRuleSpec) {
 			listener.exitRuleSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitRuleSpec) {
-			return visitor.visitRuleSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4500,14 +4346,6 @@ export class ParserRuleSpecContext extends ParserRuleContext {
 			listener.exitParserRuleSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitParserRuleSpec) {
-			return visitor.visitParserRuleSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4541,14 +4379,6 @@ export class ExceptionGroupContext extends ParserRuleContext {
 			listener.exitExceptionGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitExceptionGroup) {
-			return visitor.visitExceptionGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4577,14 +4407,6 @@ export class ExceptionHandlerContext extends ParserRuleContext {
 			listener.exitExceptionHandler(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitExceptionHandler) {
-			return visitor.visitExceptionHandler(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4608,14 +4430,6 @@ export class FinallyClauseContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitFinallyClause) {
 			listener.exitFinallyClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitFinallyClause) {
-			return visitor.visitFinallyClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4645,14 +4459,6 @@ export class RulePrequelContext extends ParserRuleContext {
 			listener.exitRulePrequel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitRulePrequel) {
-			return visitor.visitRulePrequel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4676,14 +4482,6 @@ export class RuleReturnsContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitRuleReturns) {
 			listener.exitRuleReturns(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitRuleReturns) {
-			return visitor.visitRuleReturns(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4726,14 +4524,6 @@ export class ThrowsSpecContext extends ParserRuleContext {
 			listener.exitThrowsSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitThrowsSpec) {
-			return visitor.visitThrowsSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4757,14 +4547,6 @@ export class LocalsSpecContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitLocalsSpec) {
 			listener.exitLocalsSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLocalsSpec) {
-			return visitor.visitLocalsSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4793,14 +4575,6 @@ export class RuleActionContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitRuleAction) {
 			listener.exitRuleAction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitRuleAction) {
-			return visitor.visitRuleAction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4833,14 +4607,6 @@ export class RuleModifiersContext extends ParserRuleContext {
 			listener.exitRuleModifiers(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitRuleModifiers) {
-			return visitor.visitRuleModifiers(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4866,14 +4632,6 @@ export class RuleModifierContext extends ParserRuleContext {
 			listener.exitRuleModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitRuleModifier) {
-			return visitor.visitRuleModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4896,14 +4654,6 @@ export class RuleBlockContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitRuleBlock) {
 			listener.exitRuleBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitRuleBlock) {
-			return visitor.visitRuleBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4945,14 +4695,6 @@ export class RuleAltListContext extends ParserRuleContext {
 			listener.exitRuleAltList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitRuleAltList) {
-			return visitor.visitRuleAltList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4979,14 +4721,6 @@ export class LabeledAltContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitLabeledAlt) {
 			listener.exitLabeledAlt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLabeledAlt) {
-			return visitor.visitLabeledAlt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5026,14 +4760,6 @@ export class LexerRuleSpecContext extends ParserRuleContext {
 			listener.exitLexerRuleSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLexerRuleSpec) {
-			return visitor.visitLexerRuleSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5056,14 +4782,6 @@ export class LexerRuleBlockContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitLexerRuleBlock) {
 			listener.exitLexerRuleBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLexerRuleBlock) {
-			return visitor.visitLexerRuleBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5105,14 +4823,6 @@ export class LexerAltListContext extends ParserRuleContext {
 			listener.exitLexerAltList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLexerAltList) {
-			return visitor.visitLexerAltList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5138,14 +4848,6 @@ export class LexerAltContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitLexerAlt) {
 			listener.exitLexerAlt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLexerAlt) {
-			return visitor.visitLexerAlt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5176,14 +4878,6 @@ export class LexerElementsContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitLexerElements) {
 			listener.exitLexerElements(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLexerElements) {
-			return visitor.visitLexerElements(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5223,14 +4917,6 @@ export class LexerElementContext extends ParserRuleContext {
 			listener.exitLexerElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLexerElement) {
-			return visitor.visitLexerElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5263,14 +4949,6 @@ export class LabeledLexerElementContext extends ParserRuleContext {
 			listener.exitLabeledLexerElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLabeledLexerElement) {
-			return visitor.visitLabeledLexerElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5295,14 +4973,6 @@ export class LexerBlockContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitLexerBlock) {
 			listener.exitLexerBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLexerBlock) {
-			return visitor.visitLexerBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5345,14 +5015,6 @@ export class LexerCommandsContext extends ParserRuleContext {
 			listener.exitLexerCommands(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLexerCommands) {
-			return visitor.visitLexerCommands(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5382,14 +5044,6 @@ export class LexerCommandContext extends ParserRuleContext {
 			listener.exitLexerCommand(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLexerCommand) {
-			return visitor.visitLexerCommand(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5415,14 +5069,6 @@ export class LexerCommandNameContext extends ParserRuleContext {
 			listener.exitLexerCommandName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLexerCommandName) {
-			return visitor.visitLexerCommandName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5446,14 +5092,6 @@ export class LexerCommandExprContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitLexerCommandExpr) {
 			listener.exitLexerCommandExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLexerCommandExpr) {
-			return visitor.visitLexerCommandExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5495,14 +5133,6 @@ export class AltListContext extends ParserRuleContext {
 			listener.exitAltList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitAltList) {
-			return visitor.visitAltList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5534,14 +5164,6 @@ export class AlternativeContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitAlternative) {
 			listener.exitAlternative(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitAlternative) {
-			return visitor.visitAlternative(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5581,14 +5203,6 @@ export class ElementContext extends ParserRuleContext {
 			listener.exitElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitElement) {
-			return visitor.visitElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5621,14 +5235,6 @@ export class LabeledElementContext extends ParserRuleContext {
 			listener.exitLabeledElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLabeledElement) {
-			return visitor.visitLabeledElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5656,14 +5262,6 @@ export class EbnfContext extends ParserRuleContext {
 			listener.exitEbnf(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitEbnf) {
-			return visitor.visitEbnf(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5686,14 +5284,6 @@ export class BlockSuffixContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitBlockSuffix) {
 			listener.exitBlockSuffix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitBlockSuffix) {
-			return visitor.visitBlockSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5726,14 +5316,6 @@ export class EbnfSuffixContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitEbnfSuffix) {
 			listener.exitEbnfSuffix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitEbnfSuffix) {
-			return visitor.visitEbnfSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5771,14 +5353,6 @@ export class LexerAtomContext extends ParserRuleContext {
 			listener.exitLexerAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitLexerAtom) {
-			return visitor.visitLexerAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5813,14 +5387,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5847,14 +5413,6 @@ export class NotSetContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitNotSet) {
 			listener.exitNotSet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitNotSet) {
-			return visitor.visitNotSet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5898,14 +5456,6 @@ export class BlockSetContext extends ParserRuleContext {
 			listener.exitBlockSet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitBlockSet) {
-			return visitor.visitBlockSet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5934,14 +5484,6 @@ export class SetElementContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitSetElement) {
 			listener.exitSetElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitSetElement) {
-			return visitor.visitSetElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5983,14 +5525,6 @@ export class BlockContext extends ParserRuleContext {
 			listener.exitBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6017,14 +5551,6 @@ export class RulerefContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitRuleref) {
 			listener.exitRuleref(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitRuleref) {
-			return visitor.visitRuleref(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6058,14 +5584,6 @@ export class CharacterRangeContext extends ParserRuleContext {
 			listener.exitCharacterRange(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitCharacterRange) {
-			return visitor.visitCharacterRange(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6090,14 +5608,6 @@ export class TerminalContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitTerminal) {
 			listener.exitTerminal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitTerminal) {
-			return visitor.visitTerminal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6141,14 +5651,6 @@ export class ElementOptionsContext extends ParserRuleContext {
 			listener.exitElementOptions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitElementOptions) {
-			return visitor.visitElementOptions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6181,14 +5683,6 @@ export class ElementOptionContext extends ParserRuleContext {
 			listener.exitElementOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitElementOption) {
-			return visitor.visitElementOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6210,14 +5704,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv4ParserListener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv4ParserVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

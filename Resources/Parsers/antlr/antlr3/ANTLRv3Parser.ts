@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { ANTLRv3Listener } from "./ANTLRv3Listener";
-import { ANTLRv3Visitor } from "./ANTLRv3Visitor";
-
 
 export class ANTLRv3Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -2789,14 +2787,6 @@ export class GrammarDefContext extends ParserRuleContext {
 			listener.exitGrammarDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitGrammarDef) {
-			return visitor.visitGrammarDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2828,14 +2818,6 @@ export class TokensSpecContext extends ParserRuleContext {
 			listener.exitTokensSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitTokensSpec) {
-			return visitor.visitTokensSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2858,14 +2840,6 @@ export class TokenSpecContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitTokenSpec) {
 			listener.exitTokenSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitTokenSpec) {
-			return visitor.visitTokenSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2892,14 +2866,6 @@ export class AttrScopeContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitAttrScope) {
 			listener.exitAttrScope(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitAttrScope) {
-			return visitor.visitAttrScope(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2930,14 +2896,6 @@ export class ActionContext extends ParserRuleContext {
 			listener.exitAction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitAction) {
-			return visitor.visitAction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2960,14 +2918,6 @@ export class ActionScopeNameContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitActionScopeName) {
 			listener.exitActionScopeName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitActionScopeName) {
-			return visitor.visitActionScopeName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3001,14 +2951,6 @@ export class OptionsSpecContext extends ParserRuleContext {
 			listener.exitOptionsSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitOptionsSpec) {
-			return visitor.visitOptionsSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3036,14 +2978,6 @@ export class OptionContext extends ParserRuleContext {
 			listener.exitOption(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitOption) {
-			return visitor.visitOption(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3069,14 +3003,6 @@ export class OptionValueContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitOptionValue) {
 			listener.exitOptionValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitOptionValue) {
-			return visitor.visitOptionValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3139,14 +3065,6 @@ export class Rule_Context extends ParserRuleContext {
 			listener.exitRule_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRule_) {
-			return visitor.visitRule_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3170,14 +3088,6 @@ export class RuleActionContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitRuleAction) {
 			listener.exitRuleAction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRuleAction) {
-			return visitor.visitRuleAction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3208,14 +3118,6 @@ export class ThrowsSpecContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitThrowsSpec) {
 			listener.exitThrowsSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitThrowsSpec) {
-			return visitor.visitThrowsSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3256,14 +3158,6 @@ export class RuleScopeSpecContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitRuleScopeSpec) {
 			listener.exitRuleScopeSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRuleScopeSpec) {
-			return visitor.visitRuleScopeSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3308,14 +3202,6 @@ export class BlockContext extends ParserRuleContext {
 			listener.exitBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3355,14 +3241,6 @@ export class AltListContext extends ParserRuleContext {
 			listener.exitAltList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitAltList) {
-			return visitor.visitAltList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3391,14 +3269,6 @@ export class AlternativeContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitAlternative) {
 			listener.exitAlternative(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitAlternative) {
-			return visitor.visitAlternative(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3434,14 +3304,6 @@ export class ExceptionGroupContext extends ParserRuleContext {
 			listener.exitExceptionGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitExceptionGroup) {
-			return visitor.visitExceptionGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3463,14 +3325,6 @@ export class ExceptionHandlerContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitExceptionHandler) {
 			listener.exitExceptionHandler(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitExceptionHandler) {
-			return visitor.visitExceptionHandler(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3495,14 +3349,6 @@ export class FinallyClauseContext extends ParserRuleContext {
 			listener.exitFinallyClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitFinallyClause) {
-			return visitor.visitFinallyClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3525,14 +3371,6 @@ export class ElementContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitElement) {
 			listener.exitElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitElement) {
-			return visitor.visitElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3576,14 +3414,6 @@ export class ElementNoOptionSpecContext extends ParserRuleContext {
 			listener.exitElementNoOptionSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitElementNoOptionSpec) {
-			return visitor.visitElementNoOptionSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3616,14 +3446,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3649,14 +3471,6 @@ export class NotSetContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitNotSet) {
 			listener.exitNotSet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitNotSet) {
-			return visitor.visitNotSet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3690,14 +3504,6 @@ export class TreeSpecContext extends ParserRuleContext {
 			listener.exitTreeSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitTreeSpec) {
-			return visitor.visitTreeSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3720,14 +3526,6 @@ export class EbnfContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitEbnf) {
 			listener.exitEbnf(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitEbnf) {
-			return visitor.visitEbnf(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3761,14 +3559,6 @@ export class RangeContext extends ParserRuleContext {
 			listener.exitRange(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRange) {
-			return visitor.visitRange(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3796,14 +3586,6 @@ export class Terminal_Context extends ParserRuleContext {
 			listener.exitTerminal_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitTerminal_) {
-			return visitor.visitTerminal_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3828,14 +3610,6 @@ export class NotTerminalContext extends ParserRuleContext {
 			listener.exitNotTerminal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitNotTerminal) {
-			return visitor.visitNotTerminal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3855,14 +3629,6 @@ export class EbnfSuffixContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitEbnfSuffix) {
 			listener.exitEbnfSuffix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitEbnfSuffix) {
-			return visitor.visitEbnfSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3913,14 +3679,6 @@ export class RewriteContext extends ParserRuleContext {
 			listener.exitRewrite(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite) {
-			return visitor.visitRewrite(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3948,14 +3706,6 @@ export class Rewrite_alternativeContext extends ParserRuleContext {
 			listener.exitRewrite_alternative(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite_alternative) {
-			return visitor.visitRewrite_alternative(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3978,14 +3728,6 @@ export class Rewrite_tree_blockContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitRewrite_tree_block) {
 			listener.exitRewrite_tree_block(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite_tree_block) {
-			return visitor.visitRewrite_tree_block(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4016,14 +3758,6 @@ export class Rewrite_tree_alternativeContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitRewrite_tree_alternative) {
 			listener.exitRewrite_tree_alternative(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite_tree_alternative) {
-			return visitor.visitRewrite_tree_alternative(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4059,14 +3793,6 @@ export class Rewrite_tree_elementContext extends ParserRuleContext {
 			listener.exitRewrite_tree_element(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite_tree_element) {
-			return visitor.visitRewrite_tree_element(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4097,14 +3823,6 @@ export class Rewrite_tree_atomContext extends ParserRuleContext {
 			listener.exitRewrite_tree_atom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite_tree_atom) {
-			return visitor.visitRewrite_tree_atom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4130,14 +3848,6 @@ export class Rewrite_tree_ebnfContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitRewrite_tree_ebnf) {
 			listener.exitRewrite_tree_ebnf(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite_tree_ebnf) {
-			return visitor.visitRewrite_tree_ebnf(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4174,14 +3884,6 @@ export class Rewrite_treeContext extends ParserRuleContext {
 			listener.exitRewrite_tree(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite_tree) {
-			return visitor.visitRewrite_tree(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4201,14 +3903,6 @@ export class Rewrite_templateContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitRewrite_template) {
 			listener.exitRewrite_template(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite_template) {
-			return visitor.visitRewrite_template(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4238,14 +3932,6 @@ export class Rewrite_template_refContext extends ParserRuleContext {
 			listener.exitRewrite_template_ref(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite_template_ref) {
-			return visitor.visitRewrite_template_ref(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4269,14 +3955,6 @@ export class Rewrite_indirect_template_headContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitRewrite_indirect_template_head) {
 			listener.exitRewrite_indirect_template_head(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite_indirect_template_head) {
-			return visitor.visitRewrite_indirect_template_head(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4309,14 +3987,6 @@ export class Rewrite_template_argsContext extends ParserRuleContext {
 			listener.exitRewrite_template_args(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite_template_args) {
-			return visitor.visitRewrite_template_args(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4342,14 +4012,6 @@ export class Rewrite_template_argContext extends ParserRuleContext {
 			listener.exitRewrite_template_arg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitRewrite_template_arg) {
-			return visitor.visitRewrite_template_arg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4371,14 +4033,6 @@ export class IdContext extends ParserRuleContext {
 	public exitRule(listener: ANTLRv3Listener): void {
 		if (listener.exitId) {
 			listener.exitId(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ANTLRv3Visitor<Result>): Result {
-		if (visitor.visitId) {
-			return visitor.visitId(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

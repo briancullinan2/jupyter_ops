@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { Python2Listener } from "./Python2Listener";
-import { Python2Visitor } from "./Python2Visitor";
-
 
 export class Python2Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -5639,14 +5637,6 @@ export class Single_inputContext extends ParserRuleContext {
 			listener.exitSingle_input(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitSingle_input) {
-			return visitor.visitSingle_input(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5687,14 +5677,6 @@ export class File_inputContext extends ParserRuleContext {
 			listener.exitFile_input(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitFile_input) {
-			return visitor.visitFile_input(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5729,14 +5711,6 @@ export class Eval_inputContext extends ParserRuleContext {
 			listener.exitEval_input(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitEval_input) {
-			return visitor.visitEval_input(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5765,14 +5739,6 @@ export class DecoratorContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitDecorator) {
 			listener.exitDecorator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitDecorator) {
-			return visitor.visitDecorator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5805,14 +5771,6 @@ export class DecoratorsContext extends ParserRuleContext {
 			listener.exitDecorators(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitDecorators) {
-			return visitor.visitDecorators(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5843,14 +5801,6 @@ export class DecoratedContext extends ParserRuleContext {
 			listener.exitDecorated(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitDecorated) {
-			return visitor.visitDecorated(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5879,14 +5829,6 @@ export class FuncdefContext extends ParserRuleContext {
 			listener.exitFuncdef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitFuncdef) {
-			return visitor.visitFuncdef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5911,14 +5853,6 @@ export class ParametersContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitParameters) {
 			listener.exitParameters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitParameters) {
-			return visitor.visitParameters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5969,14 +5903,6 @@ export class VarargslistContext extends ParserRuleContext {
 			listener.exitVarargslist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitVarargslist) {
-			return visitor.visitVarargslist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6002,14 +5928,6 @@ export class FpdefContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitFpdef) {
 			listener.exitFpdef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitFpdef) {
-			return visitor.visitFpdef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6042,14 +5960,6 @@ export class FplistContext extends ParserRuleContext {
 			listener.exitFplist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitFplist) {
-			return visitor.visitFplist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6075,14 +5985,6 @@ export class StmtContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitStmt) {
 			listener.exitStmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitStmt) {
-			return visitor.visitStmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6114,14 +6016,6 @@ export class Simple_stmtContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitSimple_stmt) {
 			listener.exitSimple_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitSimple_stmt) {
-			return visitor.visitSimple_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6172,14 +6066,6 @@ export class Small_stmtContext extends ParserRuleContext {
 			listener.exitSmall_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitSmall_stmt) {
-			return visitor.visitSmall_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6222,14 +6108,6 @@ export class Expr_stmtContext extends ParserRuleContext {
 			listener.exitExpr_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitExpr_stmt) {
-			return visitor.visitExpr_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6249,14 +6127,6 @@ export class AugassignContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitAugassign) {
 			listener.exitAugassign(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitAugassign) {
-			return visitor.visitAugassign(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6290,14 +6160,6 @@ export class Print_stmtContext extends ParserRuleContext {
 			listener.exitPrint_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitPrint_stmt) {
-			return visitor.visitPrint_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6322,14 +6184,6 @@ export class Del_stmtContext extends ParserRuleContext {
 			listener.exitDel_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitDel_stmt) {
-			return visitor.visitDel_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6349,14 +6203,6 @@ export class Pass_stmtContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitPass_stmt) {
 			listener.exitPass_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitPass_stmt) {
-			return visitor.visitPass_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6395,14 +6241,6 @@ export class Flow_stmtContext extends ParserRuleContext {
 			listener.exitFlow_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitFlow_stmt) {
-			return visitor.visitFlow_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6424,14 +6262,6 @@ export class Break_stmtContext extends ParserRuleContext {
 			listener.exitBreak_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitBreak_stmt) {
-			return visitor.visitBreak_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6451,14 +6281,6 @@ export class Continue_stmtContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitContinue_stmt) {
 			listener.exitContinue_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitContinue_stmt) {
-			return visitor.visitContinue_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6485,14 +6307,6 @@ export class Return_stmtContext extends ParserRuleContext {
 			listener.exitReturn_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitReturn_stmt) {
-			return visitor.visitReturn_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6515,14 +6329,6 @@ export class Yield_stmtContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitYield_stmt) {
 			listener.exitYield_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitYield_stmt) {
-			return visitor.visitYield_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6555,14 +6361,6 @@ export class Raise_stmtContext extends ParserRuleContext {
 			listener.exitRaise_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitRaise_stmt) {
-			return visitor.visitRaise_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6590,14 +6388,6 @@ export class Import_stmtContext extends ParserRuleContext {
 			listener.exitImport_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitImport_stmt) {
-			return visitor.visitImport_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6620,14 +6410,6 @@ export class Import_nameContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitImport_name) {
 			listener.exitImport_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitImport_name) {
-			return visitor.visitImport_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6657,14 +6439,6 @@ export class Import_fromContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitImport_from) {
 			listener.exitImport_from(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitImport_from) {
-			return visitor.visitImport_from(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6697,14 +6471,6 @@ export class Import_as_nameContext extends ParserRuleContext {
 			listener.exitImport_as_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitImport_as_name) {
-			return visitor.visitImport_as_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6728,14 +6494,6 @@ export class Dotted_as_nameContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitDotted_as_name) {
 			listener.exitDotted_as_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitDotted_as_name) {
-			return visitor.visitDotted_as_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6768,14 +6526,6 @@ export class Import_as_namesContext extends ParserRuleContext {
 			listener.exitImport_as_names(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitImport_as_names) {
-			return visitor.visitImport_as_names(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6804,14 +6554,6 @@ export class Dotted_as_namesContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitDotted_as_names) {
 			listener.exitDotted_as_names(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitDotted_as_names) {
-			return visitor.visitDotted_as_names(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6844,14 +6586,6 @@ export class Dotted_nameContext extends ParserRuleContext {
 			listener.exitDotted_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitDotted_name) {
-			return visitor.visitDotted_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6880,14 +6614,6 @@ export class Global_stmtContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitGlobal_stmt) {
 			listener.exitGlobal_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitGlobal_stmt) {
-			return visitor.visitGlobal_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6923,14 +6649,6 @@ export class Exec_stmtContext extends ParserRuleContext {
 			listener.exitExec_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitExec_stmt) {
-			return visitor.visitExec_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6959,14 +6677,6 @@ export class Assert_stmtContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitAssert_stmt) {
 			listener.exitAssert_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitAssert_stmt) {
-			return visitor.visitAssert_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7014,14 +6724,6 @@ export class Compound_stmtContext extends ParserRuleContext {
 			listener.exitCompound_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitCompound_stmt) {
-			return visitor.visitCompound_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7061,14 +6763,6 @@ export class If_stmtContext extends ParserRuleContext {
 			listener.exitIf_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitIf_stmt) {
-			return visitor.visitIf_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7100,14 +6794,6 @@ export class While_stmtContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitWhile_stmt) {
 			listener.exitWhile_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitWhile_stmt) {
-			return visitor.visitWhile_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7144,14 +6830,6 @@ export class For_stmtContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitFor_stmt) {
 			listener.exitFor_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitFor_stmt) {
-			return visitor.visitFor_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7193,14 +6871,6 @@ export class Try_stmtContext extends ParserRuleContext {
 			listener.exitTry_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitTry_stmt) {
-			return visitor.visitTry_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7234,14 +6904,6 @@ export class With_stmtContext extends ParserRuleContext {
 			listener.exitWith_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitWith_stmt) {
-			return visitor.visitWith_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7267,14 +6929,6 @@ export class With_itemContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitWith_item) {
 			listener.exitWith_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitWith_item) {
-			return visitor.visitWith_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7305,14 +6959,6 @@ export class Except_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitExcept_clause) {
 			listener.exitExcept_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitExcept_clause) {
-			return visitor.visitExcept_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7351,14 +6997,6 @@ export class SuiteContext extends ParserRuleContext {
 			listener.exitSuite(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitSuite) {
-			return visitor.visitSuite(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7389,14 +7027,6 @@ export class Testlist_safeContext extends ParserRuleContext {
 			listener.exitTestlist_safe(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitTestlist_safe) {
-			return visitor.visitTestlist_safe(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7424,14 +7054,6 @@ export class Old_testContext extends ParserRuleContext {
 			listener.exitOld_test(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitOld_test) {
-			return visitor.visitOld_test(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7457,14 +7079,6 @@ export class Old_lambdefContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitOld_lambdef) {
 			listener.exitOld_lambdef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitOld_lambdef) {
-			return visitor.visitOld_lambdef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7503,14 +7117,6 @@ export class TestContext extends ParserRuleContext {
 			listener.exitTest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitTest) {
-			return visitor.visitTest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7539,14 +7145,6 @@ export class Or_testContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitOr_test) {
 			listener.exitOr_test(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitOr_test) {
-			return visitor.visitOr_test(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7579,14 +7177,6 @@ export class And_testContext extends ParserRuleContext {
 			listener.exitAnd_test(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitAnd_test) {
-			return visitor.visitAnd_test(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7612,14 +7202,6 @@ export class Not_testContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitNot_test) {
 			listener.exitNot_test(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitNot_test) {
-			return visitor.visitNot_test(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7661,14 +7243,6 @@ export class ComparisonContext extends ParserRuleContext {
 			listener.exitComparison(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitComparison) {
-			return visitor.visitComparison(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7688,14 +7262,6 @@ export class Comp_opContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitComp_op) {
 			listener.exitComp_op(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitComp_op) {
-			return visitor.visitComp_op(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7728,14 +7294,6 @@ export class ExprContext extends ParserRuleContext {
 			listener.exitExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitExpr) {
-			return visitor.visitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7764,14 +7322,6 @@ export class Xor_exprContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitXor_expr) {
 			listener.exitXor_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitXor_expr) {
-			return visitor.visitXor_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7804,14 +7354,6 @@ export class And_exprContext extends ParserRuleContext {
 			listener.exitAnd_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitAnd_expr) {
-			return visitor.visitAnd_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7840,14 +7382,6 @@ export class Shift_exprContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitShift_expr) {
 			listener.exitShift_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitShift_expr) {
-			return visitor.visitShift_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7880,14 +7414,6 @@ export class Arith_exprContext extends ParserRuleContext {
 			listener.exitArith_expr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitArith_expr) {
-			return visitor.visitArith_expr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7918,14 +7444,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7951,14 +7469,6 @@ export class FactorContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitFactor) {
 			listener.exitFactor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitFactor) {
-			return visitor.visitFactor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7995,14 +7505,6 @@ export class PowerContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitPower) {
 			listener.exitPower(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitPower) {
-			return visitor.visitPower(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8058,14 +7560,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8097,14 +7591,6 @@ export class ListmakerContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitListmaker) {
 			listener.exitListmaker(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitListmaker) {
-			return visitor.visitListmaker(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8140,14 +7626,6 @@ export class Testlist_compContext extends ParserRuleContext {
 			listener.exitTestlist_comp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitTestlist_comp) {
-			return visitor.visitTestlist_comp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8173,14 +7651,6 @@ export class LambdefContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitLambdef) {
 			listener.exitLambdef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitLambdef) {
-			return visitor.visitLambdef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8215,14 +7685,6 @@ export class TrailerContext extends ParserRuleContext {
 			listener.exitTrailer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitTrailer) {
-			return visitor.visitTrailer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8251,14 +7713,6 @@ export class SubscriptlistContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitSubscriptlist) {
 			listener.exitSubscriptlist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitSubscriptlist) {
-			return visitor.visitSubscriptlist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8294,14 +7748,6 @@ export class SubscriptContext extends ParserRuleContext {
 			listener.exitSubscript(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitSubscript) {
-			return visitor.visitSubscript(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8324,14 +7770,6 @@ export class SliceopContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitSliceop) {
 			listener.exitSliceop(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitSliceop) {
-			return visitor.visitSliceop(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8364,14 +7802,6 @@ export class ExprlistContext extends ParserRuleContext {
 			listener.exitExprlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitExprlist) {
-			return visitor.visitExprlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8400,14 +7830,6 @@ export class TestlistContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitTestlist) {
 			listener.exitTestlist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitTestlist) {
-			return visitor.visitTestlist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8443,14 +7865,6 @@ export class DictorsetmakerContext extends ParserRuleContext {
 			listener.exitDictorsetmaker(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitDictorsetmaker) {
-			return visitor.visitDictorsetmaker(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8479,14 +7893,6 @@ export class ClassdefContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitClassdef) {
 			listener.exitClassdef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitClassdef) {
-			return visitor.visitClassdef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8528,14 +7934,6 @@ export class ArglistContext extends ParserRuleContext {
 			listener.exitArglist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitArglist) {
-			return visitor.visitArglist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8569,14 +7967,6 @@ export class ArgumentContext extends ParserRuleContext {
 			listener.exitArgument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8602,14 +7992,6 @@ export class List_iterContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitList_iter) {
 			listener.exitList_iter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitList_iter) {
-			return visitor.visitList_iter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8642,14 +8024,6 @@ export class List_forContext extends ParserRuleContext {
 			listener.exitList_for(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitList_for) {
-			return visitor.visitList_for(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8677,14 +8051,6 @@ export class List_ifContext extends ParserRuleContext {
 			listener.exitList_if(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitList_if) {
-			return visitor.visitList_if(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8710,14 +8076,6 @@ export class Comp_iterContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitComp_iter) {
 			listener.exitComp_iter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitComp_iter) {
-			return visitor.visitComp_iter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8750,14 +8108,6 @@ export class Comp_forContext extends ParserRuleContext {
 			listener.exitComp_for(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitComp_for) {
-			return visitor.visitComp_for(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8783,14 +8133,6 @@ export class Comp_ifContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitComp_if) {
 			listener.exitComp_if(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitComp_if) {
-			return visitor.visitComp_if(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8823,14 +8165,6 @@ export class Testlist1Context extends ParserRuleContext {
 			listener.exitTestlist1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitTestlist1) {
-			return visitor.visitTestlist1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8851,14 +8185,6 @@ export class Encoding_declContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitEncoding_decl) {
 			listener.exitEncoding_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitEncoding_decl) {
-			return visitor.visitEncoding_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8883,14 +8209,6 @@ export class Yield_exprContext extends ParserRuleContext {
 	public exitRule(listener: Python2Listener): void {
 		if (listener.exitYield_expr) {
 			listener.exitYield_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Python2Visitor<Result>): Result {
-		if (visitor.visitYield_expr) {
-			return visitor.visitYield_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

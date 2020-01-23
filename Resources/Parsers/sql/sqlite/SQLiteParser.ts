@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { SQLiteListener } from "./SQLiteListener";
-import { SQLiteVisitor } from "./SQLiteVisitor";
-
 
 export class SQLiteParser extends Parser {
 	public static readonly SCOL = 1;
@@ -8684,14 +8682,6 @@ export class ParseContext extends ParserRuleContext {
 			listener.exitParse(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitParse) {
-			return visitor.visitParse(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8713,14 +8703,6 @@ export class ErrorContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitError) {
 			listener.exitError(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitError) {
-			return visitor.visitError(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8760,14 +8742,6 @@ export class Sql_stmt_listContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitSql_stmt_list) {
 			listener.exitSql_stmt_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitSql_stmt_list) {
-			return visitor.visitSql_stmt_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8884,14 +8858,6 @@ export class Sql_stmtContext extends ParserRuleContext {
 			listener.exitSql_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitSql_stmt) {
-			return visitor.visitSql_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8932,14 +8898,6 @@ export class Alter_table_stmtContext extends ParserRuleContext {
 			listener.exitAlter_table_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitAlter_table_stmt) {
-			return visitor.visitAlter_table_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8967,14 +8925,6 @@ export class Analyze_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitAnalyze_stmt) {
 			listener.exitAnalyze_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitAnalyze_stmt) {
-			return visitor.visitAnalyze_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9007,14 +8957,6 @@ export class Attach_stmtContext extends ParserRuleContext {
 			listener.exitAttach_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitAttach_stmt) {
-			return visitor.visitAttach_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9044,14 +8986,6 @@ export class Begin_stmtContext extends ParserRuleContext {
 			listener.exitBegin_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitBegin_stmt) {
-			return visitor.visitBegin_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9077,14 +9011,6 @@ export class Commit_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitCommit_stmt) {
 			listener.exitCommit_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitCommit_stmt) {
-			return visitor.visitCommit_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9195,14 +9121,6 @@ export class Compound_select_stmtContext extends ParserRuleContext {
 			listener.exitCompound_select_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitCompound_select_stmt) {
-			return visitor.visitCompound_select_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9263,14 +9181,6 @@ export class Create_index_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitCreate_index_stmt) {
 			listener.exitCreate_index_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitCreate_index_stmt) {
-			return visitor.visitCreate_index_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9341,14 +9251,6 @@ export class Create_table_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitCreate_table_stmt) {
 			listener.exitCreate_table_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitCreate_table_stmt) {
-			return visitor.visitCreate_table_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9491,14 +9393,6 @@ export class Create_trigger_stmtContext extends ParserRuleContext {
 			listener.exitCreate_trigger_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitCreate_trigger_stmt) {
-			return visitor.visitCreate_trigger_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9536,14 +9430,6 @@ export class Create_view_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitCreate_view_stmt) {
 			listener.exitCreate_view_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitCreate_view_stmt) {
-			return visitor.visitCreate_view_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9604,14 +9490,6 @@ export class Create_virtual_table_stmtContext extends ParserRuleContext {
 			listener.exitCreate_virtual_table_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitCreate_virtual_table_stmt) {
-			return visitor.visitCreate_virtual_table_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9643,14 +9521,6 @@ export class Delete_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitDelete_stmt) {
 			listener.exitDelete_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitDelete_stmt) {
-			return visitor.visitDelete_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9714,14 +9584,6 @@ export class Delete_stmt_limitedContext extends ParserRuleContext {
 			listener.exitDelete_stmt_limited(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitDelete_stmt_limited) {
-			return visitor.visitDelete_stmt_limited(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9746,14 +9608,6 @@ export class Detach_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitDetach_stmt) {
 			listener.exitDetach_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitDetach_stmt) {
-			return visitor.visitDetach_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9788,14 +9642,6 @@ export class Drop_index_stmtContext extends ParserRuleContext {
 			listener.exitDrop_index_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitDrop_index_stmt) {
-			return visitor.visitDrop_index_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9826,14 +9672,6 @@ export class Drop_table_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitDrop_table_stmt) {
 			listener.exitDrop_table_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitDrop_table_stmt) {
-			return visitor.visitDrop_table_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9868,14 +9706,6 @@ export class Drop_trigger_stmtContext extends ParserRuleContext {
 			listener.exitDrop_trigger_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitDrop_trigger_stmt) {
-			return visitor.visitDrop_trigger_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9906,14 +9736,6 @@ export class Drop_view_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitDrop_view_stmt) {
 			listener.exitDrop_view_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitDrop_view_stmt) {
-			return visitor.visitDrop_view_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9995,14 +9817,6 @@ export class Factored_select_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitFactored_select_stmt) {
 			listener.exitFactored_select_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitFactored_select_stmt) {
-			return visitor.visitFactored_select_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10094,14 +9908,6 @@ export class Insert_stmtContext extends ParserRuleContext {
 			listener.exitInsert_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitInsert_stmt) {
-			return visitor.visitInsert_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10135,14 +9941,6 @@ export class Pragma_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitPragma_stmt) {
 			listener.exitPragma_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitPragma_stmt) {
-			return visitor.visitPragma_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10180,14 +9978,6 @@ export class Reindex_stmtContext extends ParserRuleContext {
 			listener.exitReindex_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitReindex_stmt) {
-			return visitor.visitReindex_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10212,14 +10002,6 @@ export class Release_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitRelease_stmt) {
 			listener.exitRelease_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitRelease_stmt) {
-			return visitor.visitRelease_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10253,14 +10035,6 @@ export class Rollback_stmtContext extends ParserRuleContext {
 			listener.exitRollback_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitRollback_stmt) {
-			return visitor.visitRollback_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10284,14 +10058,6 @@ export class Savepoint_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitSavepoint_stmt) {
 			listener.exitSavepoint_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitSavepoint_stmt) {
-			return visitor.visitSavepoint_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10358,14 +10124,6 @@ export class Simple_select_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitSimple_select_stmt) {
 			listener.exitSimple_select_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitSimple_select_stmt) {
-			return visitor.visitSimple_select_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10447,14 +10205,6 @@ export class Select_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitSelect_stmt) {
 			listener.exitSelect_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitSelect_stmt) {
-			return visitor.visitSelect_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10544,14 +10294,6 @@ export class Select_or_valuesContext extends ParserRuleContext {
 			listener.exitSelect_or_values(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitSelect_or_values) {
-			return visitor.visitSelect_or_values(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10622,14 +10364,6 @@ export class Update_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitUpdate_stmt) {
 			listener.exitUpdate_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitUpdate_stmt) {
-			return visitor.visitUpdate_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10717,14 +10451,6 @@ export class Update_stmt_limitedContext extends ParserRuleContext {
 			listener.exitUpdate_stmt_limited(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitUpdate_stmt_limited) {
-			return visitor.visitUpdate_stmt_limited(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10745,14 +10471,6 @@ export class Vacuum_stmtContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitVacuum_stmt) {
 			listener.exitVacuum_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitVacuum_stmt) {
-			return visitor.visitVacuum_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10789,14 +10507,6 @@ export class Column_defContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitColumn_def) {
 			listener.exitColumn_def(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitColumn_def) {
-			return visitor.visitColumn_def(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10839,14 +10549,6 @@ export class Type_nameContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitType_name) {
 			listener.exitType_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitType_name) {
-			return visitor.visitType_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10905,14 +10607,6 @@ export class Column_constraintContext extends ParserRuleContext {
 			listener.exitColumn_constraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitColumn_constraint) {
-			return visitor.visitColumn_constraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10939,14 +10633,6 @@ export class Conflict_clauseContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitConflict_clause) {
 			listener.exitConflict_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitConflict_clause) {
-			return visitor.visitConflict_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11086,14 +10772,6 @@ export class ExprContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitExpr) {
 			listener.exitExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitExpr) {
-			return visitor.visitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11254,14 +10932,6 @@ export class Foreign_key_clauseContext extends ParserRuleContext {
 			listener.exitForeign_key_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitForeign_key_clause) {
-			return visitor.visitForeign_key_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11294,14 +10964,6 @@ export class Raise_functionContext extends ParserRuleContext {
 			listener.exitRaise_function(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitRaise_function) {
-			return visitor.visitRaise_function(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11330,14 +10992,6 @@ export class Indexed_columnContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitIndexed_column) {
 			listener.exitIndexed_column(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitIndexed_column) {
-			return visitor.visitIndexed_column(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11406,14 +11060,6 @@ export class Table_constraintContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitTable_constraint) {
 			listener.exitTable_constraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitTable_constraint) {
-			return visitor.visitTable_constraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11493,14 +11139,6 @@ export class With_clauseContext extends ParserRuleContext {
 			listener.exitWith_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitWith_clause) {
-			return visitor.visitWith_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11535,14 +11173,6 @@ export class Qualified_table_nameContext extends ParserRuleContext {
 			listener.exitQualified_table_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitQualified_table_name) {
-			return visitor.visitQualified_table_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11573,14 +11203,6 @@ export class Ordering_termContext extends ParserRuleContext {
 			listener.exitOrdering_term(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitOrdering_term) {
-			return visitor.visitOrdering_term(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11607,14 +11229,6 @@ export class Pragma_valueContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitPragma_value) {
 			listener.exitPragma_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitPragma_value) {
-			return visitor.visitPragma_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11681,14 +11295,6 @@ export class Common_table_expressionContext extends ParserRuleContext {
 			listener.exitCommon_table_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitCommon_table_expression) {
-			return visitor.visitCommon_table_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11720,14 +11326,6 @@ export class Result_columnContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitResult_column) {
 			listener.exitResult_column(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitResult_column) {
-			return visitor.visitResult_column(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11794,14 +11392,6 @@ export class Table_or_subqueryContext extends ParserRuleContext {
 			listener.exitTable_or_subquery(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitTable_or_subquery) {
-			return visitor.visitTable_or_subquery(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11850,14 +11440,6 @@ export class Join_clauseContext extends ParserRuleContext {
 			listener.exitJoin_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitJoin_clause) {
-			return visitor.visitJoin_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11884,14 +11466,6 @@ export class Join_operatorContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitJoin_operator) {
 			listener.exitJoin_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitJoin_operator) {
-			return visitor.visitJoin_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11938,14 +11512,6 @@ export class Join_constraintContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitJoin_constraint) {
 			listener.exitJoin_constraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitJoin_constraint) {
-			return visitor.visitJoin_constraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12035,14 +11601,6 @@ export class Select_coreContext extends ParserRuleContext {
 			listener.exitSelect_core(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitSelect_core) {
-			return visitor.visitSelect_core(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12066,14 +11624,6 @@ export class Compound_operatorContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitCompound_operator) {
 			listener.exitCompound_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitCompound_operator) {
-			return visitor.visitCompound_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12120,14 +11670,6 @@ export class Cte_table_nameContext extends ParserRuleContext {
 			listener.exitCte_table_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitCte_table_name) {
-			return visitor.visitCte_table_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12150,14 +11692,6 @@ export class Signed_numberContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitSigned_number) {
 			listener.exitSigned_number(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitSigned_number) {
-			return visitor.visitSigned_number(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12188,14 +11722,6 @@ export class Literal_valueContext extends ParserRuleContext {
 			listener.exitLiteral_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitLiteral_value) {
-			return visitor.visitLiteral_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12221,14 +11747,6 @@ export class Unary_operatorContext extends ParserRuleContext {
 			listener.exitUnary_operator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitUnary_operator) {
-			return visitor.visitUnary_operator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12249,14 +11767,6 @@ export class Error_messageContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitError_message) {
 			listener.exitError_message(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitError_message) {
-			return visitor.visitError_message(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12286,14 +11796,6 @@ export class Module_argumentContext extends ParserRuleContext {
 			listener.exitModule_argument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitModule_argument) {
-			return visitor.visitModule_argument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12315,14 +11817,6 @@ export class Column_aliasContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitColumn_alias) {
 			listener.exitColumn_alias(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitColumn_alias) {
-			return visitor.visitColumn_alias(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12470,14 +11964,6 @@ export class KeywordContext extends ParserRuleContext {
 			listener.exitKeyword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitKeyword) {
-			return visitor.visitKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12500,14 +11986,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12534,14 +12012,6 @@ export class Function_nameContext extends ParserRuleContext {
 			listener.exitFunction_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitFunction_name) {
-			return visitor.visitFunction_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12564,14 +12034,6 @@ export class Database_nameContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitDatabase_name) {
 			listener.exitDatabase_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitDatabase_name) {
-			return visitor.visitDatabase_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12598,14 +12060,6 @@ export class Table_nameContext extends ParserRuleContext {
 			listener.exitTable_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitTable_name) {
-			return visitor.visitTable_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12628,14 +12082,6 @@ export class Table_or_index_nameContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitTable_or_index_name) {
 			listener.exitTable_or_index_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitTable_or_index_name) {
-			return visitor.visitTable_or_index_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12662,14 +12108,6 @@ export class New_table_nameContext extends ParserRuleContext {
 			listener.exitNew_table_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitNew_table_name) {
-			return visitor.visitNew_table_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12692,14 +12130,6 @@ export class Column_nameContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitColumn_name) {
 			listener.exitColumn_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitColumn_name) {
-			return visitor.visitColumn_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12726,14 +12156,6 @@ export class Collation_nameContext extends ParserRuleContext {
 			listener.exitCollation_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitCollation_name) {
-			return visitor.visitCollation_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12756,14 +12178,6 @@ export class Foreign_tableContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitForeign_table) {
 			listener.exitForeign_table(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitForeign_table) {
-			return visitor.visitForeign_table(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12790,14 +12204,6 @@ export class Index_nameContext extends ParserRuleContext {
 			listener.exitIndex_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitIndex_name) {
-			return visitor.visitIndex_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12820,14 +12226,6 @@ export class Trigger_nameContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitTrigger_name) {
 			listener.exitTrigger_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitTrigger_name) {
-			return visitor.visitTrigger_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12854,14 +12252,6 @@ export class View_nameContext extends ParserRuleContext {
 			listener.exitView_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitView_name) {
-			return visitor.visitView_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12884,14 +12274,6 @@ export class Module_nameContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitModule_name) {
 			listener.exitModule_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitModule_name) {
-			return visitor.visitModule_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12918,14 +12300,6 @@ export class Pragma_nameContext extends ParserRuleContext {
 			listener.exitPragma_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitPragma_name) {
-			return visitor.visitPragma_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12948,14 +12322,6 @@ export class Savepoint_nameContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitSavepoint_name) {
 			listener.exitSavepoint_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitSavepoint_name) {
-			return visitor.visitSavepoint_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12982,14 +12348,6 @@ export class Table_aliasContext extends ParserRuleContext {
 			listener.exitTable_alias(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitTable_alias) {
-			return visitor.visitTable_alias(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13012,14 +12370,6 @@ export class Transaction_nameContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitTransaction_name) {
 			listener.exitTransaction_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitTransaction_name) {
-			return visitor.visitTransaction_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13051,14 +12401,6 @@ export class Any_nameContext extends ParserRuleContext {
 	public exitRule(listener: SQLiteListener): void {
 		if (listener.exitAny_name) {
 			listener.exitAny_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SQLiteVisitor<Result>): Result {
-		if (visitor.visitAny_name) {
-			return visitor.visitAny_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

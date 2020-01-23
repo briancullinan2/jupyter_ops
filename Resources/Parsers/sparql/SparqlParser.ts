@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { SparqlListener } from "./SparqlListener";
-import { SparqlVisitor } from "./SparqlVisitor";
-
 
 export class SparqlParser extends Parser {
 	public static readonly T__0 = 1;
@@ -3982,14 +3980,6 @@ export class QueryContext extends ParserRuleContext {
 			listener.exitQuery(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitQuery) {
-			return visitor.visitQuery(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4023,14 +4013,6 @@ export class PrologueContext extends ParserRuleContext {
 			listener.exitPrologue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitPrologue) {
-			return visitor.visitPrologue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4051,14 +4033,6 @@ export class BaseDeclContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitBaseDecl) {
 			listener.exitBaseDecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitBaseDecl) {
-			return visitor.visitBaseDecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4082,14 +4056,6 @@ export class PrefixDeclContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitPrefixDecl) {
 			listener.exitPrefixDecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitPrefixDecl) {
-			return visitor.visitPrefixDecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4137,14 +4103,6 @@ export class SelectQueryContext extends ParserRuleContext {
 			listener.exitSelectQuery(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitSelectQuery) {
-			return visitor.visitSelectQuery(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4182,14 +4140,6 @@ export class ConstructQueryContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitConstructQuery) {
 			listener.exitConstructQuery(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitConstructQuery) {
-			return visitor.visitConstructQuery(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4237,14 +4187,6 @@ export class DescribeQueryContext extends ParserRuleContext {
 			listener.exitDescribeQuery(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitDescribeQuery) {
-			return visitor.visitDescribeQuery(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4278,14 +4220,6 @@ export class AskQueryContext extends ParserRuleContext {
 			listener.exitAskQuery(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitAskQuery) {
-			return visitor.visitAskQuery(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4313,14 +4247,6 @@ export class DatasetClauseContext extends ParserRuleContext {
 			listener.exitDatasetClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitDatasetClause) {
-			return visitor.visitDatasetClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4343,14 +4269,6 @@ export class DefaultGraphClauseContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitDefaultGraphClause) {
 			listener.exitDefaultGraphClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitDefaultGraphClause) {
-			return visitor.visitDefaultGraphClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4377,14 +4295,6 @@ export class NamedGraphClauseContext extends ParserRuleContext {
 			listener.exitNamedGraphClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitNamedGraphClause) {
-			return visitor.visitNamedGraphClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4409,14 +4319,6 @@ export class SourceSelectorContext extends ParserRuleContext {
 			listener.exitSourceSelector(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitSourceSelector) {
-			return visitor.visitSourceSelector(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4439,14 +4341,6 @@ export class WhereClauseContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitWhereClause) {
 			listener.exitWhereClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitWhereClause) {
-			return visitor.visitWhereClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4476,14 +4370,6 @@ export class SolutionModifierContext extends ParserRuleContext {
 			listener.exitSolutionModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitSolutionModifier) {
-			return visitor.visitSolutionModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4509,14 +4395,6 @@ export class LimitOffsetClausesContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitLimitOffsetClauses) {
 			listener.exitLimitOffsetClauses(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitLimitOffsetClauses) {
-			return visitor.visitLimitOffsetClauses(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4549,14 +4427,6 @@ export class OrderClauseContext extends ParserRuleContext {
 			listener.exitOrderClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitOrderClause) {
-			return visitor.visitOrderClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4587,14 +4457,6 @@ export class OrderConditionContext extends ParserRuleContext {
 			listener.exitOrderCondition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitOrderCondition) {
-			return visitor.visitOrderCondition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4617,14 +4479,6 @@ export class LimitClauseContext extends ParserRuleContext {
 			listener.exitLimitClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitLimitClause) {
-			return visitor.visitLimitClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4645,14 +4499,6 @@ export class OffsetClauseContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitOffsetClause) {
 			listener.exitOffsetClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitOffsetClause) {
-			return visitor.visitOffsetClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4703,14 +4549,6 @@ export class GroupGraphPatternContext extends ParserRuleContext {
 			listener.exitGroupGraphPattern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitGroupGraphPattern) {
-			return visitor.visitGroupGraphPattern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4736,14 +4574,6 @@ export class TriplesBlockContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitTriplesBlock) {
 			listener.exitTriplesBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitTriplesBlock) {
-			return visitor.visitTriplesBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4776,14 +4606,6 @@ export class GraphPatternNotTriplesContext extends ParserRuleContext {
 			listener.exitGraphPatternNotTriples(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitGraphPatternNotTriples) {
-			return visitor.visitGraphPatternNotTriples(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4806,14 +4628,6 @@ export class OptionalGraphPatternContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitOptionalGraphPattern) {
 			listener.exitOptionalGraphPattern(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitOptionalGraphPattern) {
-			return visitor.visitOptionalGraphPattern(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4841,14 +4655,6 @@ export class GraphGraphPatternContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitGraphGraphPattern) {
 			listener.exitGraphGraphPattern(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitGraphGraphPattern) {
-			return visitor.visitGraphGraphPattern(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4881,14 +4687,6 @@ export class GroupOrUnionGraphPatternContext extends ParserRuleContext {
 			listener.exitGroupOrUnionGraphPattern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitGroupOrUnionGraphPattern) {
-			return visitor.visitGroupOrUnionGraphPattern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4911,14 +4709,6 @@ export class FilterContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitFilter) {
 			listener.exitFilter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitFilter) {
-			return visitor.visitFilter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4951,14 +4741,6 @@ export class ConstraintContext extends ParserRuleContext {
 			listener.exitConstraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitConstraint) {
-			return visitor.visitConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4984,14 +4766,6 @@ export class FunctionCallContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitFunctionCall) {
 			listener.exitFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitFunctionCall) {
-			return visitor.visitFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5025,14 +4799,6 @@ export class ArgListContext extends ParserRuleContext {
 			listener.exitArgList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitArgList) {
-			return visitor.visitArgList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5055,14 +4821,6 @@ export class ConstructTemplateContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitConstructTemplate) {
 			listener.exitConstructTemplate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitConstructTemplate) {
-			return visitor.visitConstructTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5090,14 +4848,6 @@ export class ConstructTriplesContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitConstructTriples) {
 			listener.exitConstructTriples(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitConstructTriples) {
-			return visitor.visitConstructTriples(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5131,14 +4881,6 @@ export class TriplesSameSubjectContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitTriplesSameSubject) {
 			listener.exitTriplesSameSubject(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitTriplesSameSubject) {
-			return visitor.visitTriplesSameSubject(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5180,14 +4922,6 @@ export class PropertyListNotEmptyContext extends ParserRuleContext {
 			listener.exitPropertyListNotEmpty(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitPropertyListNotEmpty) {
-			return visitor.visitPropertyListNotEmpty(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5210,14 +4944,6 @@ export class PropertyListContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitPropertyList) {
 			listener.exitPropertyList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitPropertyList) {
-			return visitor.visitPropertyList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5250,14 +4976,6 @@ export class ObjectListContext extends ParserRuleContext {
 			listener.exitObjectList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitObjectList) {
-			return visitor.visitObjectList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5282,14 +5000,6 @@ export class ObjectContext extends ParserRuleContext {
 			listener.exitObject(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitObject) {
-			return visitor.visitObject(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5312,14 +5022,6 @@ export class VerbContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitVerb) {
 			listener.exitVerb(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitVerb) {
-			return visitor.visitVerb(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5349,14 +5051,6 @@ export class TriplesNodeContext extends ParserRuleContext {
 			listener.exitTriplesNode(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitTriplesNode) {
-			return visitor.visitTriplesNode(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5379,14 +5073,6 @@ export class BlankNodePropertyListContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitBlankNodePropertyList) {
 			listener.exitBlankNodePropertyList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitBlankNodePropertyList) {
-			return visitor.visitBlankNodePropertyList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5419,14 +5105,6 @@ export class CollectionContext extends ParserRuleContext {
 			listener.exitCollection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitCollection) {
-			return visitor.visitCollection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5452,14 +5130,6 @@ export class GraphNodeContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitGraphNode) {
 			listener.exitGraphNode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitGraphNode) {
-			return visitor.visitGraphNode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5489,14 +5159,6 @@ export class VarOrTermContext extends ParserRuleContext {
 			listener.exitVarOrTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitVarOrTerm) {
-			return visitor.visitVarOrTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5524,14 +5186,6 @@ export class VarOrIRIrefContext extends ParserRuleContext {
 			listener.exitVarOrIRIref(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitVarOrIRIref) {
-			return visitor.visitVarOrIRIref(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5553,14 +5207,6 @@ export class VarContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitVar) {
 			listener.exitVar(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitVar) {
-			return visitor.visitVar(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5600,14 +5246,6 @@ export class GraphTermContext extends ParserRuleContext {
 			listener.exitGraphTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitGraphTerm) {
-			return visitor.visitGraphTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5630,14 +5268,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5670,14 +5300,6 @@ export class ConditionalOrExpressionContext extends ParserRuleContext {
 			listener.exitConditionalOrExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitConditionalOrExpression) {
-			return visitor.visitConditionalOrExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5708,14 +5330,6 @@ export class ConditionalAndExpressionContext extends ParserRuleContext {
 			listener.exitConditionalAndExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitConditionalAndExpression) {
-			return visitor.visitConditionalAndExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5738,14 +5352,6 @@ export class ValueLogicalContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitValueLogical) {
 			listener.exitValueLogical(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitValueLogical) {
-			return visitor.visitValueLogical(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5778,14 +5384,6 @@ export class RelationalExpressionContext extends ParserRuleContext {
 			listener.exitRelationalExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitRelationalExpression) {
-			return visitor.visitRelationalExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5808,14 +5406,6 @@ export class NumericExpressionContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitNumericExpression) {
 			listener.exitNumericExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitNumericExpression) {
-			return visitor.visitNumericExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5866,14 +5456,6 @@ export class AdditiveExpressionContext extends ParserRuleContext {
 			listener.exitAdditiveExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitAdditiveExpression) {
-			return visitor.visitAdditiveExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5904,14 +5486,6 @@ export class MultiplicativeExpressionContext extends ParserRuleContext {
 			listener.exitMultiplicativeExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitMultiplicativeExpression) {
-			return visitor.visitMultiplicativeExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5934,14 +5508,6 @@ export class UnaryExpressionContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitUnaryExpression) {
 			listener.exitUnaryExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitUnaryExpression) {
-			return visitor.visitUnaryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5986,14 +5552,6 @@ export class PrimaryExpressionContext extends ParserRuleContext {
 			listener.exitPrimaryExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitPrimaryExpression) {
-			return visitor.visitPrimaryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6016,14 +5574,6 @@ export class BrackettedExpressionContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitBrackettedExpression) {
 			listener.exitBrackettedExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitBrackettedExpression) {
-			return visitor.visitBrackettedExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6062,14 +5612,6 @@ export class BuiltInCallContext extends ParserRuleContext {
 			listener.exitBuiltInCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitBuiltInCall) {
-			return visitor.visitBuiltInCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6100,14 +5642,6 @@ export class RegexExpressionContext extends ParserRuleContext {
 			listener.exitRegexExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitRegexExpression) {
-			return visitor.visitRegexExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6133,14 +5667,6 @@ export class IriRefOrFunctionContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitIriRefOrFunction) {
 			listener.exitIriRefOrFunction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitIriRefOrFunction) {
-			return visitor.visitIriRefOrFunction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6169,14 +5695,6 @@ export class RdfLiteralContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitRdfLiteral) {
 			listener.exitRdfLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitRdfLiteral) {
-			return visitor.visitRdfLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6209,14 +5727,6 @@ export class NumericLiteralContext extends ParserRuleContext {
 			listener.exitNumericLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitNumericLiteral) {
-			return visitor.visitNumericLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6239,14 +5749,6 @@ export class NumericLiteralUnsignedContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitNumericLiteralUnsigned) {
 			listener.exitNumericLiteralUnsigned(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitNumericLiteralUnsigned) {
-			return visitor.visitNumericLiteralUnsigned(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6273,14 +5775,6 @@ export class NumericLiteralPositiveContext extends ParserRuleContext {
 			listener.exitNumericLiteralPositive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitNumericLiteralPositive) {
-			return visitor.visitNumericLiteralPositive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6305,14 +5799,6 @@ export class NumericLiteralNegativeContext extends ParserRuleContext {
 			listener.exitNumericLiteralNegative(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitNumericLiteralNegative) {
-			return visitor.visitNumericLiteralNegative(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6332,14 +5818,6 @@ export class BooleanLiteralContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitBooleanLiteral) {
 			listener.exitBooleanLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitBooleanLiteral) {
-			return visitor.visitBooleanLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6363,14 +5841,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6398,14 +5868,6 @@ export class IriRefContext extends ParserRuleContext {
 			listener.exitIriRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitIriRef) {
-			return visitor.visitIriRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6429,14 +5891,6 @@ export class PrefixedNameContext extends ParserRuleContext {
 			listener.exitPrefixedName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitPrefixedName) {
-			return visitor.visitPrefixedName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6458,14 +5912,6 @@ export class BlankNodeContext extends ParserRuleContext {
 	public exitRule(listener: SparqlListener): void {
 		if (listener.exitBlankNode) {
 			listener.exitBlankNode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SparqlVisitor<Result>): Result {
-		if (visitor.visitBlankNode) {
-			return visitor.visitBlankNode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

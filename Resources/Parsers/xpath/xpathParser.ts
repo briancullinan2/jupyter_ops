@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { xpathListener } from "./xpathListener";
-import { xpathVisitor } from "./xpathVisitor";
-
 
 export class xpathParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1556,14 +1554,6 @@ export class MainContext extends ParserRuleContext {
 			listener.exitMain(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitMain) {
-			return visitor.visitMain(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1591,14 +1581,6 @@ export class LocationPathContext extends ParserRuleContext {
 			listener.exitLocationPath(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitLocationPath) {
-			return visitor.visitLocationPath(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1623,14 +1605,6 @@ export class AbsoluteLocationPathNorootContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitAbsoluteLocationPathNoroot) {
 			listener.exitAbsoluteLocationPathNoroot(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitAbsoluteLocationPathNoroot) {
-			return visitor.visitAbsoluteLocationPathNoroot(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1681,14 +1655,6 @@ export class RelativeLocationPathContext extends ParserRuleContext {
 			listener.exitRelativeLocationPath(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitRelativeLocationPath) {
-			return visitor.visitRelativeLocationPath(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1728,14 +1694,6 @@ export class StepContext extends ParserRuleContext {
 			listener.exitStep(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitStep) {
-			return visitor.visitStep(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1758,14 +1716,6 @@ export class AxisSpecifierContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitAxisSpecifier) {
 			listener.exitAxisSpecifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitAxisSpecifier) {
-			return visitor.visitAxisSpecifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1796,14 +1746,6 @@ export class NodeTestContext extends ParserRuleContext {
 			listener.exitNodeTest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitNodeTest) {
-			return visitor.visitNodeTest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1830,14 +1772,6 @@ export class PredicateContext extends ParserRuleContext {
 			listener.exitPredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitPredicate) {
-			return visitor.visitPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1859,14 +1793,6 @@ export class AbbreviatedStepContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitAbbreviatedStep) {
 			listener.exitAbbreviatedStep(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitAbbreviatedStep) {
-			return visitor.visitAbbreviatedStep(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1891,14 +1817,6 @@ export class ExprContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitExpr) {
 			listener.exitExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitExpr) {
-			return visitor.visitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1933,14 +1851,6 @@ export class PrimaryExprContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitPrimaryExpr) {
 			listener.exitPrimaryExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitPrimaryExpr) {
-			return visitor.visitPrimaryExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1987,14 +1897,6 @@ export class FunctionCallContext extends ParserRuleContext {
 			listener.exitFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitFunctionCall) {
-			return visitor.visitFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2022,14 +1924,6 @@ export class UnionExprNoRootContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitUnionExprNoRoot) {
 			listener.exitUnionExprNoRoot(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitUnionExprNoRoot) {
-			return visitor.visitUnionExprNoRoot(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2062,14 +1956,6 @@ export class PathExprNoRootContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitPathExprNoRoot) {
 			listener.exitPathExprNoRoot(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitPathExprNoRoot) {
-			return visitor.visitPathExprNoRoot(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2105,14 +1991,6 @@ export class FilterExprContext extends ParserRuleContext {
 			listener.exitFilterExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitFilterExpr) {
-			return visitor.visitFilterExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2141,14 +2019,6 @@ export class OrExprContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitOrExpr) {
 			listener.exitOrExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitOrExpr) {
-			return visitor.visitOrExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2181,14 +2051,6 @@ export class AndExprContext extends ParserRuleContext {
 			listener.exitAndExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitAndExpr) {
-			return visitor.visitAndExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2217,14 +2079,6 @@ export class EqualityExprContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitEqualityExpr) {
 			listener.exitEqualityExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitEqualityExpr) {
-			return visitor.visitEqualityExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2293,14 +2147,6 @@ export class RelationalExprContext extends ParserRuleContext {
 			listener.exitRelationalExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitRelationalExpr) {
-			return visitor.visitRelationalExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2349,14 +2195,6 @@ export class AdditiveExprContext extends ParserRuleContext {
 			listener.exitAdditiveExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitAdditiveExpr) {
-			return visitor.visitAdditiveExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2384,14 +2222,6 @@ export class MultiplicativeExprContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitMultiplicativeExpr) {
 			listener.exitMultiplicativeExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitMultiplicativeExpr) {
-			return visitor.visitMultiplicativeExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2427,14 +2257,6 @@ export class UnaryExprNoRootContext extends ParserRuleContext {
 			listener.exitUnaryExprNoRoot(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitUnaryExprNoRoot) {
-			return visitor.visitUnaryExprNoRoot(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2464,14 +2286,6 @@ export class QNameContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitQName) {
 			listener.exitQName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitQName) {
-			return visitor.visitQName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2507,14 +2321,6 @@ export class FunctionNameContext extends ParserRuleContext {
 			listener.exitFunctionName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitFunctionName) {
-			return visitor.visitFunctionName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2537,14 +2343,6 @@ export class VariableReferenceContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitVariableReference) {
 			listener.exitVariableReference(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitVariableReference) {
-			return visitor.visitVariableReference(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2576,14 +2374,6 @@ export class NameTestContext extends ParserRuleContext {
 			listener.exitNameTest(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitNameTest) {
-			return visitor.visitNameTest(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2606,14 +2396,6 @@ export class NCNameContext extends ParserRuleContext {
 	public exitRule(listener: xpathListener): void {
 		if (listener.exitNCName) {
 			listener.exitNCName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: xpathVisitor<Result>): Result {
-		if (visitor.visitNCName) {
-			return visitor.visitNCName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

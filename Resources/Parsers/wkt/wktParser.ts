@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { wktListener } from "./wktListener";
-import { wktVisitor } from "./wktVisitor";
-
 
 export class wktParser extends Parser {
 	public static readonly DECIMAL = 1;
@@ -863,14 +861,6 @@ export class GeometryContext extends ParserRuleContext {
 			listener.exitGeometry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitGeometry) {
-			return visitor.visitGeometry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -902,14 +892,6 @@ export class PointGeometryContext extends ParserRuleContext {
 			listener.exitPointGeometry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitPointGeometry) {
-			return visitor.visitPointGeometry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -935,14 +917,6 @@ export class LineStringGeometryContext extends ParserRuleContext {
 			listener.exitLineStringGeometry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitLineStringGeometry) {
-			return visitor.visitLineStringGeometry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -966,14 +940,6 @@ export class PolygonGeometryContext extends ParserRuleContext {
 	public exitRule(listener: wktListener): void {
 		if (listener.exitPolygonGeometry) {
 			listener.exitPolygonGeometry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitPolygonGeometry) {
-			return visitor.visitPolygonGeometry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1018,14 +984,6 @@ export class MultiPointGeometryContext extends ParserRuleContext {
 			listener.exitMultiPointGeometry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitMultiPointGeometry) {
-			return visitor.visitMultiPointGeometry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1066,14 +1024,6 @@ export class MultiLineStringGeometryContext extends ParserRuleContext {
 	public exitRule(listener: wktListener): void {
 		if (listener.exitMultiLineStringGeometry) {
 			listener.exitMultiLineStringGeometry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitMultiLineStringGeometry) {
-			return visitor.visitMultiLineStringGeometry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1119,14 +1069,6 @@ export class MultiPolygonGeometryContext extends ParserRuleContext {
 			listener.exitMultiPolygonGeometry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitMultiPolygonGeometry) {
-			return visitor.visitMultiPolygonGeometry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1169,14 +1111,6 @@ export class CircularStringGeometryContext extends ParserRuleContext {
 			listener.exitCircularStringGeometry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitCircularStringGeometry) {
-			return visitor.visitCircularStringGeometry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1201,14 +1135,6 @@ export class PointOrClosedPointContext extends ParserRuleContext {
 	public exitRule(listener: wktListener): void {
 		if (listener.exitPointOrClosedPoint) {
 			listener.exitPointOrClosedPoint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitPointOrClosedPoint) {
-			return visitor.visitPointOrClosedPoint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1252,14 +1178,6 @@ export class PolygonContext extends ParserRuleContext {
 			listener.exitPolygon(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitPolygon) {
-			return visitor.visitPolygon(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1301,14 +1219,6 @@ export class LineStringContext extends ParserRuleContext {
 			listener.exitLineString(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitLineString) {
-			return visitor.visitLineString(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1339,14 +1249,6 @@ export class PointContext extends ParserRuleContext {
 			listener.exitPoint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitPoint) {
-			return visitor.visitPoint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1367,14 +1269,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: wktListener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: wktVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

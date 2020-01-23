@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { lolcodeListener } from "./lolcodeListener";
-import { lolcodeVisitor } from "./lolcodeVisitor";
-
 
 export class lolcodeParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1584,14 +1582,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1620,14 +1610,6 @@ export class Code_blockContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitCode_block) {
 			listener.exitCode_block(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitCode_block) {
-			return visitor.visitCode_block(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1678,14 +1660,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1722,14 +1696,6 @@ export class LoopContext extends ParserRuleContext {
 			listener.exitLoop(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitLoop) {
-			return visitor.visitLoop(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1752,14 +1718,6 @@ export class DeclarationContext extends ParserRuleContext {
 			listener.exitDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitDeclaration) {
-			return visitor.visitDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1780,14 +1738,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1820,14 +1770,6 @@ export class Print_blockContext extends ParserRuleContext {
 			listener.exitPrint_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitPrint_block) {
-			return visitor.visitPrint_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1853,14 +1795,6 @@ export class If_blockContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitIf_block) {
 			listener.exitIf_block(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitIf_block) {
-			return visitor.visitIf_block(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1893,14 +1827,6 @@ export class Else_if_blockContext extends ParserRuleContext {
 			listener.exitElse_if_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitElse_if_block) {
-			return visitor.visitElse_if_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1921,14 +1847,6 @@ export class Input_blockContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitInput_block) {
 			listener.exitInput_block(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitInput_block) {
-			return visitor.visitInput_block(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1964,14 +1882,6 @@ export class Func_declContext extends ParserRuleContext {
 			listener.exitFunc_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitFunc_decl) {
-			return visitor.visitFunc_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1995,14 +1905,6 @@ export class AssignmentContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitAssignment) {
 			listener.exitAssignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitAssignment) {
-			return visitor.visitAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2076,14 +1978,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2112,14 +2006,6 @@ export class EqualsContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitEquals) {
 			listener.exitEquals(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitEquals) {
-			return visitor.visitEquals(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2152,14 +2038,6 @@ export class Not_equalsContext extends ParserRuleContext {
 			listener.exitNot_equals(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitNot_equals) {
-			return visitor.visitNot_equals(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2188,14 +2066,6 @@ export class BothContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitBoth) {
 			listener.exitBoth(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitBoth) {
-			return visitor.visitBoth(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2228,14 +2098,6 @@ export class EitherContext extends ParserRuleContext {
 			listener.exitEither(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitEither) {
-			return visitor.visitEither(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2264,14 +2126,6 @@ export class GreaterContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitGreater) {
 			listener.exitGreater(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitGreater) {
-			return visitor.visitGreater(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2304,14 +2158,6 @@ export class LessContext extends ParserRuleContext {
 			listener.exitLess(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitLess) {
-			return visitor.visitLess(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2340,14 +2186,6 @@ export class AddContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitAdd) {
 			listener.exitAdd(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitAdd) {
-			return visitor.visitAdd(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2380,14 +2218,6 @@ export class SubContext extends ParserRuleContext {
 			listener.exitSub(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitSub) {
-			return visitor.visitSub(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2416,14 +2246,6 @@ export class MulContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitMul) {
 			listener.exitMul(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitMul) {
-			return visitor.visitMul(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2456,14 +2278,6 @@ export class DivContext extends ParserRuleContext {
 			listener.exitDiv(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitDiv) {
-			return visitor.visitDiv(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2494,14 +2308,6 @@ export class ModContext extends ParserRuleContext {
 			listener.exitMod(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitMod) {
-			return visitor.visitMod(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2524,14 +2330,6 @@ export class CastContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitCast) {
 			listener.exitCast(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitCast) {
-			return visitor.visitCast(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2564,14 +2362,6 @@ export class AllContext extends ParserRuleContext {
 			listener.exitAll(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitAll) {
-			return visitor.visitAll(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2602,14 +2392,6 @@ export class AnyContext extends ParserRuleContext {
 			listener.exitAny(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitAny) {
-			return visitor.visitAny(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2632,14 +2414,6 @@ export class NotContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitNot) {
 			listener.exitNot(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitNot) {
-			return visitor.visitNot(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2671,14 +2445,6 @@ export class FuncContext extends ParserRuleContext {
 	public exitRule(listener: lolcodeListener): void {
 		if (listener.exitFunc) {
 			listener.exitFunc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: lolcodeVisitor<Result>): Result {
-		if (visitor.visitFunc) {
-			return visitor.visitFunc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

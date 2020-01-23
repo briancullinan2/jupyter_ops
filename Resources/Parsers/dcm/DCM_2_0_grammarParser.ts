@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { DCM_2_0_grammarListener } from "./DCM_2_0_grammarListener";
-import { DCM_2_0_grammarVisitor } from "./DCM_2_0_grammarVisitor";
-
 
 export class DCM_2_0_grammarParser extends Parser {
 	public static readonly T__0 = 1;
@@ -2874,14 +2872,6 @@ export class KonservierungContext extends ParserRuleContext {
 			listener.exitKonservierung(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKonservierung) {
-			return visitor.visitKonservierung(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2912,14 +2902,6 @@ export class Kons_kopfContext extends ParserRuleContext {
 			listener.exitKons_kopf(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKons_kopf) {
-			return visitor.visitKons_kopf(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2948,14 +2930,6 @@ export class Modulkopf_infoContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitModulkopf_info) {
 			listener.exitModulkopf_info(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitModulkopf_info) {
-			return visitor.visitModulkopf_info(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2991,14 +2965,6 @@ export class Mod_zeileContext extends ParserRuleContext {
 			listener.exitMod_zeile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitMod_zeile) {
-			return visitor.visitMod_zeile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3026,14 +2992,6 @@ export class Mod_anf_zeileContext extends ParserRuleContext {
 			listener.exitMod_anf_zeile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitMod_anf_zeile) {
-			return visitor.visitMod_anf_zeile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3058,14 +3016,6 @@ export class Mod_fort_zeileContext extends ParserRuleContext {
 			listener.exitMod_fort_zeile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitMod_fort_zeile) {
-			return visitor.visitMod_fort_zeile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3088,14 +3038,6 @@ export class Mod_ele_nameContext extends ParserRuleContext {
 			listener.exitMod_ele_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitMod_ele_name) {
-			return visitor.visitMod_ele_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3116,14 +3058,6 @@ export class Mod_ele_wertContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitMod_ele_wert) {
 			listener.exitMod_ele_wert(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitMod_ele_wert) {
-			return visitor.visitMod_ele_wert(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3156,14 +3090,6 @@ export class FunktionsdefContext extends ParserRuleContext {
 			listener.exitFunktionsdef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitFunktionsdef) {
-			return visitor.visitFunktionsdef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3192,14 +3118,6 @@ export class FunktionszeileContext extends ParserRuleContext {
 			listener.exitFunktionszeile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitFunktionszeile) {
-			return visitor.visitFunktionszeile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3222,14 +3140,6 @@ export class Fkt_versionContext extends ParserRuleContext {
 			listener.exitFkt_version(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitFkt_version) {
-			return visitor.visitFkt_version(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3250,14 +3160,6 @@ export class Fkt_langnameContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitFkt_langname) {
 			listener.exitFkt_langname(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitFkt_langname) {
-			return visitor.visitFkt_langname(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3288,14 +3190,6 @@ export class VariantendefContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitVariantendef) {
 			listener.exitVariantendef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitVariantendef) {
-			return visitor.visitVariantendef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3331,14 +3225,6 @@ export class VariantenkritContext extends ParserRuleContext {
 			listener.exitVariantenkrit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitVariantenkrit) {
-			return visitor.visitVariantenkrit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3361,14 +3247,6 @@ export class Krit_nameContext extends ParserRuleContext {
 			listener.exitKrit_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKrit_name) {
-			return visitor.visitKrit_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3389,14 +3267,6 @@ export class Krit_wertContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitKrit_wert) {
 			listener.exitKrit_wert(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKrit_wert) {
-			return visitor.visitKrit_wert(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3427,14 +3297,6 @@ export class Kons_rumpfContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitKons_rumpf) {
 			listener.exitKons_rumpf(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKons_rumpf) {
-			return visitor.visitKons_rumpf(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3476,14 +3338,6 @@ export class KenngroesseContext extends ParserRuleContext {
 			listener.exitKenngroesse(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKenngroesse) {
-			return visitor.visitKenngroesse(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3514,14 +3368,6 @@ export class KennwertContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitKennwert) {
 			listener.exitKennwert(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKennwert) {
-			return visitor.visitKennwert(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3562,14 +3408,6 @@ export class KennwerteblockContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitKennwerteblock) {
 			listener.exitKennwerteblock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKennwerteblock) {
-			return visitor.visitKennwerteblock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3624,14 +3462,6 @@ export class KennlinieContext extends ParserRuleContext {
 			listener.exitKennlinie(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKennlinie) {
-			return visitor.visitKennlinie(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3684,14 +3514,6 @@ export class KennfeldContext extends ParserRuleContext {
 			listener.exitKennfeld(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKennfeld) {
-			return visitor.visitKennfeld(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3732,14 +3554,6 @@ export class GruppenstuetzstellenContext extends ParserRuleContext {
 			listener.exitGruppenstuetzstellen(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitGruppenstuetzstellen) {
-			return visitor.visitGruppenstuetzstellen(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3764,14 +3578,6 @@ export class KenntextContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitKenntext) {
 			listener.exitKenntext(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKenntext) {
-			return visitor.visitKenntext(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3807,14 +3613,6 @@ export class Kgr_infoContext extends ParserRuleContext {
 			listener.exitKgr_info(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKgr_info) {
-			return visitor.visitKgr_info(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3835,14 +3633,6 @@ export class Einheit_xContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitEinheit_x) {
 			listener.exitEinheit_x(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitEinheit_x) {
-			return visitor.visitEinheit_x(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3867,14 +3657,6 @@ export class Einheit_yContext extends ParserRuleContext {
 			listener.exitEinheit_y(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitEinheit_y) {
-			return visitor.visitEinheit_y(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3895,14 +3677,6 @@ export class Einheit_wContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitEinheit_w) {
 			listener.exitEinheit_w(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitEinheit_w) {
-			return visitor.visitEinheit_w(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3927,14 +3701,6 @@ export class LangnameContext extends ParserRuleContext {
 			listener.exitLangname(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitLangname) {
-			return visitor.visitLangname(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3956,14 +3722,6 @@ export class DisplaynameContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitDisplayname) {
 			listener.exitDisplayname(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitDisplayname) {
-			return visitor.visitDisplayname(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3996,14 +3754,6 @@ export class Var_abhangigkeitenContext extends ParserRuleContext {
 			listener.exitVar_abhangigkeiten(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitVar_abhangigkeiten) {
-			return visitor.visitVar_abhangigkeiten(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4032,14 +3782,6 @@ export class Var_abhContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitVar_abh) {
 			listener.exitVar_abh(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitVar_abh) {
-			return visitor.visitVar_abh(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4072,14 +3814,6 @@ export class FunktionszugehorigkeitContext extends ParserRuleContext {
 			listener.exitFunktionszugehorigkeit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitFunktionszugehorigkeit) {
-			return visitor.visitFunktionszugehorigkeit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4102,14 +3836,6 @@ export class Anzahl_xContext extends ParserRuleContext {
 			listener.exitAnzahl_x(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitAnzahl_x) {
-			return visitor.visitAnzahl_x(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4130,14 +3856,6 @@ export class Anzahl_yContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitAnzahl_y) {
 			listener.exitAnzahl_y(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitAnzahl_y) {
-			return visitor.visitAnzahl_y(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4168,14 +3886,6 @@ export class WertelisteContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitWerteliste) {
 			listener.exitWerteliste(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitWerteliste) {
-			return visitor.visitWerteliste(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4217,14 +3927,6 @@ export class Werteliste_kwbContext extends ParserRuleContext {
 			listener.exitWerteliste_kwb(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitWerteliste_kwb) {
-			return visitor.visitWerteliste_kwb(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4262,14 +3964,6 @@ export class Sst_liste_xContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitSst_liste_x) {
 			listener.exitSst_liste_x(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitSst_liste_x) {
-			return visitor.visitSst_liste_x(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4311,14 +4005,6 @@ export class Kf_zeile_listeContext extends ParserRuleContext {
 			listener.exitKf_zeile_liste(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKf_zeile_liste) {
-			return visitor.visitKf_zeile_liste(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4352,14 +4038,6 @@ export class Kf_zeile_liste_rContext extends ParserRuleContext {
 			listener.exitKf_zeile_liste_r(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKf_zeile_liste_r) {
-			return visitor.visitKf_zeile_liste_r(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4391,14 +4069,6 @@ export class Kf_zeile_liste_txContext extends ParserRuleContext {
 			listener.exitKf_zeile_liste_tx(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitKf_zeile_liste_tx) {
-			return visitor.visitKf_zeile_liste_tx(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4420,14 +4090,6 @@ export class RealzahlContext extends ParserRuleContext {
 	public exitRule(listener: DCM_2_0_grammarListener): void {
 		if (listener.exitRealzahl) {
 			listener.exitRealzahl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: DCM_2_0_grammarVisitor<Result>): Result {
-		if (visitor.visitRealzahl) {
-			return visitor.visitRealzahl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

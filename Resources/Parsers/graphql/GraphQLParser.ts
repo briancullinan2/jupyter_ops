@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { GraphQLListener } from "./GraphQLListener";
-import { GraphQLVisitor } from "./GraphQLVisitor";
-
 
 export class GraphQLParser extends Parser {
 	public static readonly T__0 = 1;
@@ -3304,14 +3302,6 @@ export class DocumentContext extends ParserRuleContext {
 			listener.exitDocument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitDocument) {
-			return visitor.visitDocument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3340,14 +3330,6 @@ export class DefinitionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitDefinition) {
 			listener.exitDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitDefinition) {
-			return visitor.visitDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3380,14 +3362,6 @@ export class TypeSystemDefinitionContext extends ParserRuleContext {
 			listener.exitTypeSystemDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitTypeSystemDefinition) {
-			return visitor.visitTypeSystemDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3413,14 +3387,6 @@ export class SchemaDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitSchemaDefinition) {
 			listener.exitSchemaDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitSchemaDefinition) {
-			return visitor.visitSchemaDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3453,14 +3419,6 @@ export class RootOperationTypeDefinitionListContext extends ParserRuleContext {
 			listener.exitRootOperationTypeDefinitionList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitRootOperationTypeDefinitionList) {
-			return visitor.visitRootOperationTypeDefinitionList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3488,14 +3446,6 @@ export class RootOperationTypeDefinitionContext extends ParserRuleContext {
 			listener.exitRootOperationTypeDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitRootOperationTypeDefinition) {
-			return visitor.visitRootOperationTypeDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3516,14 +3466,6 @@ export class NamedTypeContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitNamedType) {
 			listener.exitNamedType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitNamedType) {
-			return visitor.visitNamedType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3565,14 +3507,6 @@ export class TypeDefinitionContext extends ParserRuleContext {
 			listener.exitTypeDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitTypeDefinition) {
-			return visitor.visitTypeDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3601,14 +3535,6 @@ export class ScalarTypeDefinitionContext extends ParserRuleContext {
 			listener.exitScalarTypeDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitScalarTypeDefinition) {
-			return visitor.visitScalarTypeDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3629,14 +3555,6 @@ export class DescriptionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitDescription) {
 			listener.exitDescription(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitDescription) {
-			return visitor.visitDescription(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3673,14 +3591,6 @@ export class ObjectTypeDefinitionContext extends ParserRuleContext {
 			listener.exitObjectTypeDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitObjectTypeDefinition) {
-			return visitor.visitObjectTypeDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3706,14 +3616,6 @@ export class ImplementsInterfacesContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitImplementsInterfaces) {
 			listener.exitImplementsInterfaces(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitImplementsInterfaces) {
-			return visitor.visitImplementsInterfaces(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3744,14 +3646,6 @@ export class FieldsDefinitionsContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitFieldsDefinitions) {
 			listener.exitFieldsDefinitions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitFieldsDefinitions) {
-			return visitor.visitFieldsDefinitions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3788,14 +3682,6 @@ export class FieldsDefinitionContext extends ParserRuleContext {
 			listener.exitFieldsDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitFieldsDefinition) {
-			return visitor.visitFieldsDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3824,14 +3710,6 @@ export class ArgumentsDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitArgumentsDefinition) {
 			listener.exitArgumentsDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitArgumentsDefinition) {
-			return visitor.visitArgumentsDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3868,14 +3746,6 @@ export class InputValueDefinitionContext extends ParserRuleContext {
 			listener.exitInputValueDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitInputValueDefinition) {
-			return visitor.visitInputValueDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3905,14 +3775,6 @@ export class InterfaceTypeDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitInterfaceTypeDefinition) {
 			listener.exitInterfaceTypeDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitInterfaceTypeDefinition) {
-			return visitor.visitInterfaceTypeDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3946,14 +3808,6 @@ export class UnionTypeDefinitionContext extends ParserRuleContext {
 			listener.exitUnionTypeDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitUnionTypeDefinition) {
-			return visitor.visitUnionTypeDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3984,14 +3838,6 @@ export class UnionMemberTypesContext extends ParserRuleContext {
 			listener.exitUnionMemberTypes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitUnionMemberTypes) {
-			return visitor.visitUnionMemberTypes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4014,14 +3860,6 @@ export class UnionTypeExtensionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitUnionTypeExtension) {
 			listener.exitUnionTypeExtension(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitUnionTypeExtension) {
-			return visitor.visitUnionTypeExtension(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4053,14 +3891,6 @@ export class EnumTypeDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitEnumTypeDefinition) {
 			listener.exitEnumTypeDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitEnumTypeDefinition) {
-			return visitor.visitEnumTypeDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4111,14 +3941,6 @@ export class EnumValuesDefinitionsContext extends ParserRuleContext {
 			listener.exitEnumValuesDefinitions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitEnumValuesDefinitions) {
-			return visitor.visitEnumValuesDefinitions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4139,14 +3961,6 @@ export class EnumValueContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitEnumValue) {
 			listener.exitEnumValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitEnumValue) {
-			return visitor.visitEnumValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4171,14 +3985,6 @@ export class EnumTypeExtensionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitEnumTypeExtension) {
 			listener.exitEnumTypeExtension(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitEnumTypeExtension) {
-			return visitor.visitEnumTypeExtension(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4212,14 +4018,6 @@ export class InputObjectTypeDefinitionContext extends ParserRuleContext {
 			listener.exitInputObjectTypeDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitInputObjectTypeDefinition) {
-			return visitor.visitInputObjectTypeDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4248,14 +4046,6 @@ export class InputFieldsDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitInputFieldsDefinition) {
 			listener.exitInputFieldsDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitInputFieldsDefinition) {
-			return visitor.visitInputFieldsDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4287,14 +4077,6 @@ export class DirectiveDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitDirectiveDefinition) {
 			listener.exitDirectiveDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitDirectiveDefinition) {
-			return visitor.visitDirectiveDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4330,14 +4112,6 @@ export class DirectiveLocationsContext extends ParserRuleContext {
 			listener.exitDirectiveLocations(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitDirectiveLocations) {
-			return visitor.visitDirectiveLocations(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4365,14 +4139,6 @@ export class DirectiveLocationContext extends ParserRuleContext {
 			listener.exitDirectiveLocation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitDirectiveLocation) {
-			return visitor.visitDirectiveLocation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4394,14 +4160,6 @@ export class ExecutableDirectiveLocationContext extends ParserRuleContext {
 			listener.exitExecutableDirectiveLocation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitExecutableDirectiveLocation) {
-			return visitor.visitExecutableDirectiveLocation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4421,14 +4179,6 @@ export class TypeSystemDirectiveLocationContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitTypeSystemDirectiveLocation) {
 			listener.exitTypeSystemDirectiveLocation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitTypeSystemDirectiveLocation) {
-			return visitor.visitTypeSystemDirectiveLocation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4458,14 +4208,6 @@ export class TypeSystemExtensionContext extends ParserRuleContext {
 			listener.exitTypeSystemExtension(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitTypeSystemExtension) {
-			return visitor.visitTypeSystemExtension(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4490,14 +4232,6 @@ export class SchemaExtensionContext extends ParserRuleContext {
 			listener.exitSchemaExtension(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitSchemaExtension) {
-			return visitor.visitSchemaExtension(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4520,14 +4254,6 @@ export class TypeExtensionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitTypeExtension) {
 			listener.exitTypeExtension(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitTypeExtension) {
-			return visitor.visitTypeExtension(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4555,14 +4281,6 @@ export class ExecDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitExecDefinition) {
 			listener.exitExecDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitExecDefinition) {
-			return visitor.visitExecDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4599,14 +4317,6 @@ export class OperationDefinitionContext extends ParserRuleContext {
 			listener.exitOperationDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitOperationDefinition) {
-			return visitor.visitOperationDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4637,14 +4347,6 @@ export class SelectionSetContext extends ParserRuleContext {
 			listener.exitSelectionSet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitSelectionSet) {
-			return visitor.visitSelectionSet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4664,14 +4366,6 @@ export class OperationTypeContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitOperationType) {
 			listener.exitOperationType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitOperationType) {
-			return visitor.visitOperationType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4702,14 +4396,6 @@ export class SelectionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitSelection) {
 			listener.exitSelection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitSelection) {
-			return visitor.visitSelection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4745,14 +4431,6 @@ export class FieldContext extends ParserRuleContext {
 			listener.exitField(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitField) {
-			return visitor.visitField(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4776,14 +4454,6 @@ export class FieldNameContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitFieldName) {
 			listener.exitFieldName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitFieldName) {
-			return visitor.visitFieldName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4816,14 +4486,6 @@ export class AliasContext extends ParserRuleContext {
 			listener.exitAlias(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitAlias) {
-			return visitor.visitAlias(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4854,14 +4516,6 @@ export class ArgumentsContext extends ParserRuleContext {
 			listener.exitArguments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitArguments) {
-			return visitor.visitArguments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4885,14 +4539,6 @@ export class ArgumentContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitArgument) {
 			listener.exitArgument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4920,14 +4566,6 @@ export class FragmentSpreadContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitFragmentSpread) {
 			listener.exitFragmentSpread(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitFragmentSpread) {
-			return visitor.visitFragmentSpread(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4958,14 +4596,6 @@ export class InlineFragmentContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitInlineFragment) {
 			listener.exitInlineFragment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitInlineFragment) {
-			return visitor.visitInlineFragment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5001,14 +4631,6 @@ export class FragmentDefinitionContext extends ParserRuleContext {
 			listener.exitFragmentDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitFragmentDefinition) {
-			return visitor.visitFragmentDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5029,14 +4651,6 @@ export class FragmentNameContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitFragmentName) {
 			listener.exitFragmentName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitFragmentName) {
-			return visitor.visitFragmentName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5069,14 +4683,6 @@ export class DirectivesContext extends ParserRuleContext {
 			listener.exitDirectives(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitDirectives) {
-			return visitor.visitDirectives(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5105,14 +4711,6 @@ export class DirectiveContext extends ParserRuleContext {
 			listener.exitDirective(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitDirective) {
-			return visitor.visitDirective(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5135,14 +4733,6 @@ export class TypeConditionContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitTypeCondition) {
 			listener.exitTypeCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitTypeCondition) {
-			return visitor.visitTypeCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5175,14 +4765,6 @@ export class VariableDefinitionsContext extends ParserRuleContext {
 			listener.exitVariableDefinitions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitVariableDefinitions) {
-			return visitor.visitVariableDefinitions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5213,14 +4795,6 @@ export class VariableDefinitionContext extends ParserRuleContext {
 			listener.exitVariableDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitVariableDefinition) {
-			return visitor.visitVariableDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5241,14 +4815,6 @@ export class VariableContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitVariable) {
 			listener.exitVariable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5273,14 +4839,6 @@ export class DefaultValueContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitDefaultValue) {
 			listener.exitDefaultValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitDefaultValue) {
-			return visitor.visitDefaultValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5308,14 +4866,6 @@ export class ValueOrVariableContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitValueOrVariable) {
 			listener.exitValueOrVariable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitValueOrVariable) {
-			return visitor.visitValueOrVariable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5349,14 +4899,6 @@ export class StringValueContext extends ValueContext {
 			listener.exitStringValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitStringValue) {
-			return visitor.visitStringValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NumberValueContext extends ValueContext {
 	public NUMBER(): TerminalNode { return this.getToken(GraphQLParser.NUMBER, 0); }
@@ -5376,14 +4918,6 @@ export class NumberValueContext extends ValueContext {
 			listener.exitNumberValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitNumberValue) {
-			return visitor.visitNumberValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BooleanValueContext extends ValueContext {
 	public BooleanLiteral(): TerminalNode { return this.getToken(GraphQLParser.BooleanLiteral, 0); }
@@ -5401,14 +4935,6 @@ export class BooleanValueContext extends ValueContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitBooleanValue) {
 			listener.exitBooleanValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitBooleanValue) {
-			return visitor.visitBooleanValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5432,14 +4958,6 @@ export class ArrayValueContext extends ValueContext {
 			listener.exitArrayValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitArrayValue) {
-			return visitor.visitArrayValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IdValueContext extends ValueContext {
 	public ID(): TerminalNode { return this.getToken(GraphQLParser.ID, 0); }
@@ -5459,14 +4977,6 @@ export class IdValueContext extends ValueContext {
 			listener.exitIdValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitIdValue) {
-			return visitor.visitIdValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NullValueContext extends ValueContext {
 	constructor(ctx: ValueContext) {
@@ -5483,14 +4993,6 @@ export class NullValueContext extends ValueContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitNullValue) {
 			listener.exitNullValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitNullValue) {
-			return visitor.visitNullValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5523,14 +5025,6 @@ export class Type_Context extends ParserRuleContext {
 			listener.exitType_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitType_) {
-			return visitor.visitType_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5551,14 +5045,6 @@ export class TypeNameContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitTypeName) {
 			listener.exitTypeName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitTypeName) {
-			return visitor.visitTypeName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5585,14 +5071,6 @@ export class ListTypeContext extends ParserRuleContext {
 			listener.exitListType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitListType) {
-			return visitor.visitListType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5612,14 +5090,6 @@ export class NonNullTypeContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitNonNullType) {
 			listener.exitNonNullType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitNonNullType) {
-			return visitor.visitNonNullType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5650,14 +5120,6 @@ export class ArrayContext extends ParserRuleContext {
 	public exitRule(listener: GraphQLListener): void {
 		if (listener.exitArray) {
 			listener.exitArray(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: GraphQLVisitor<Result>): Result {
-		if (visitor.visitArray) {
-			return visitor.visitArray(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

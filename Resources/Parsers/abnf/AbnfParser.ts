@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { AbnfListener } from "./AbnfListener";
-import { AbnfVisitor } from "./AbnfVisitor";
-
 
 export class AbnfParser extends Parser {
 	public static readonly T__0 = 1;
@@ -577,14 +575,6 @@ export class RulelistContext extends ParserRuleContext {
 			listener.exitRulelist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: AbnfVisitor<Result>): Result {
-		if (visitor.visitRulelist) {
-			return visitor.visitRulelist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -610,14 +600,6 @@ export class Rule_Context extends ParserRuleContext {
 			listener.exitRule_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: AbnfVisitor<Result>): Result {
-		if (visitor.visitRule_) {
-			return visitor.visitRule_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -640,14 +622,6 @@ export class ElementsContext extends ParserRuleContext {
 	public exitRule(listener: AbnfListener): void {
 		if (listener.exitElements) {
 			listener.exitElements(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: AbnfVisitor<Result>): Result {
-		if (visitor.visitElements) {
-			return visitor.visitElements(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -680,14 +654,6 @@ export class AlternationContext extends ParserRuleContext {
 			listener.exitAlternation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: AbnfVisitor<Result>): Result {
-		if (visitor.visitAlternation) {
-			return visitor.visitAlternation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -718,14 +684,6 @@ export class ConcatenationContext extends ParserRuleContext {
 			listener.exitConcatenation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: AbnfVisitor<Result>): Result {
-		if (visitor.visitConcatenation) {
-			return visitor.visitConcatenation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -751,14 +709,6 @@ export class RepetitionContext extends ParserRuleContext {
 	public exitRule(listener: AbnfListener): void {
 		if (listener.exitRepetition) {
 			listener.exitRepetition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: AbnfVisitor<Result>): Result {
-		if (visitor.visitRepetition) {
-			return visitor.visitRepetition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -789,14 +739,6 @@ export class RepeatContext extends ParserRuleContext {
 	public exitRule(listener: AbnfListener): void {
 		if (listener.exitRepeat) {
 			listener.exitRepeat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: AbnfVisitor<Result>): Result {
-		if (visitor.visitRepeat) {
-			return visitor.visitRepeat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -830,14 +772,6 @@ export class ElementContext extends ParserRuleContext {
 			listener.exitElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: AbnfVisitor<Result>): Result {
-		if (visitor.visitElement) {
-			return visitor.visitElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -862,14 +796,6 @@ export class GroupContext extends ParserRuleContext {
 			listener.exitGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: AbnfVisitor<Result>): Result {
-		if (visitor.visitGroup) {
-			return visitor.visitGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -892,14 +818,6 @@ export class OptionContext extends ParserRuleContext {
 	public exitRule(listener: AbnfListener): void {
 		if (listener.exitOption) {
 			listener.exitOption(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: AbnfVisitor<Result>): Result {
-		if (visitor.visitOption) {
-			return visitor.visitOption(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

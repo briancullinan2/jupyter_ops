@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { romannumeralsListener } from "./romannumeralsListener";
-import { romannumeralsVisitor } from "./romannumeralsVisitor";
-
 
 export class romannumeralsParser extends Parser {
 	public static readonly M = 1;
@@ -723,14 +721,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: romannumeralsVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -758,14 +748,6 @@ export class ThousandsContext extends ParserRuleContext {
 			listener.exitThousands(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: romannumeralsVisitor<Result>): Result {
-		if (visitor.visitThousands) {
-			return visitor.visitThousands(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -789,14 +771,6 @@ export class Thous_partContext extends ParserRuleContext {
 	public exitRule(listener: romannumeralsListener): void {
 		if (listener.exitThous_part) {
 			listener.exitThous_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: romannumeralsVisitor<Result>): Result {
-		if (visitor.visitThous_part) {
-			return visitor.visitThous_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -826,14 +800,6 @@ export class HundredsContext extends ParserRuleContext {
 			listener.exitHundreds(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: romannumeralsVisitor<Result>): Result {
-		if (visitor.visitHundreds) {
-			return visitor.visitHundreds(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -861,14 +827,6 @@ export class Hun_partContext extends ParserRuleContext {
 			listener.exitHun_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: romannumeralsVisitor<Result>): Result {
-		if (visitor.visitHun_part) {
-			return visitor.visitHun_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -891,14 +849,6 @@ export class Hun_repContext extends ParserRuleContext {
 	public exitRule(listener: romannumeralsListener): void {
 		if (listener.exitHun_rep) {
 			listener.exitHun_rep(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: romannumeralsVisitor<Result>): Result {
-		if (visitor.visitHun_rep) {
-			return visitor.visitHun_rep(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -928,14 +878,6 @@ export class TensContext extends ParserRuleContext {
 			listener.exitTens(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: romannumeralsVisitor<Result>): Result {
-		if (visitor.visitTens) {
-			return visitor.visitTens(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -963,14 +905,6 @@ export class Tens_partContext extends ParserRuleContext {
 			listener.exitTens_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: romannumeralsVisitor<Result>): Result {
-		if (visitor.visitTens_part) {
-			return visitor.visitTens_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -993,14 +927,6 @@ export class Tens_repContext extends ParserRuleContext {
 	public exitRule(listener: romannumeralsListener): void {
 		if (listener.exitTens_rep) {
 			listener.exitTens_rep(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: romannumeralsVisitor<Result>): Result {
-		if (visitor.visitTens_rep) {
-			return visitor.visitTens_rep(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1030,14 +956,6 @@ export class OnesContext extends ParserRuleContext {
 			listener.exitOnes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: romannumeralsVisitor<Result>): Result {
-		if (visitor.visitOnes) {
-			return visitor.visitOnes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1060,14 +978,6 @@ export class Ones_repContext extends ParserRuleContext {
 	public exitRule(listener: romannumeralsListener): void {
 		if (listener.exitOnes_rep) {
 			listener.exitOnes_rep(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: romannumeralsVisitor<Result>): Result {
-		if (visitor.visitOnes_rep) {
-			return visitor.visitOnes_rep(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { CqlParserListener } from "./CqlParserListener";
-import { CqlParserVisitor } from "./CqlParserVisitor";
-
 
 export class CqlParser extends Parser {
 	public static readonly LR_BRACKET = 1;
@@ -12565,14 +12563,6 @@ export class RootContext extends ParserRuleContext {
 			listener.exitRoot(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitRoot) {
-			return visitor.visitRoot(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12630,14 +12620,6 @@ export class CqlsContext extends ParserRuleContext {
 			listener.exitCqls(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCqls) {
-			return visitor.visitCqls(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12658,14 +12640,6 @@ export class StatementSeparatorContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitStatementSeparator) {
 			listener.exitStatementSeparator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitStatementSeparator) {
-			return visitor.visitStatementSeparator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12690,14 +12664,6 @@ export class EmptyContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitEmpty) {
 			listener.exitEmpty(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitEmpty) {
-			return visitor.visitEmpty(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12832,14 +12798,6 @@ export class CqlContext extends ParserRuleContext {
 			listener.exitCql(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCql) {
-			return visitor.visitCql(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12879,14 +12837,6 @@ export class RevokeContext extends ParserRuleContext {
 			listener.exitRevoke(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitRevoke) {
-			return visitor.visitRevoke(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12912,14 +12862,6 @@ export class ListUsersContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitListUsers) {
 			listener.exitListUsers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitListUsers) {
-			return visitor.visitListUsers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12956,14 +12898,6 @@ export class ListRolesContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitListRoles) {
 			listener.exitListRoles(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitListRoles) {
-			return visitor.visitListRoles(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13005,14 +12939,6 @@ export class ListPermissionsContext extends ParserRuleContext {
 			listener.exitListPermissions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitListPermissions) {
-			return visitor.visitListPermissions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13050,14 +12976,6 @@ export class GrantContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitGrant) {
 			listener.exitGrant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitGrant) {
-			return visitor.visitGrant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13109,14 +13027,6 @@ export class PriviledgeContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitPriviledge) {
 			listener.exitPriviledge(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitPriviledge) {
-			return visitor.visitPriviledge(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13180,14 +13090,6 @@ export class ResourceContext extends ParserRuleContext {
 			listener.exitResource(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitResource) {
-			return visitor.visitResource(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13236,14 +13138,6 @@ export class CreateUserContext extends ParserRuleContext {
 			listener.exitCreateUser(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateUser) {
-			return visitor.visitCreateUser(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13278,14 +13172,6 @@ export class CreateRoleContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitCreateRole) {
 			listener.exitCreateRole(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateRole) {
-			return visitor.visitCreateRole(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13332,14 +13218,6 @@ export class CreateTypeContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitCreateType) {
 			listener.exitCreateType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateType) {
-			return visitor.visitCreateType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13390,14 +13268,6 @@ export class TypeMemberColumnListContext extends ParserRuleContext {
 			listener.exitTypeMemberColumnList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitTypeMemberColumnList) {
-			return visitor.visitTypeMemberColumnList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13439,14 +13309,6 @@ export class CreateTriggerContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitCreateTrigger) {
 			listener.exitCreateTrigger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateTrigger) {
-			return visitor.visitCreateTrigger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13545,14 +13407,6 @@ export class CreateMaterializedViewContext extends ParserRuleContext {
 			listener.exitCreateMaterializedView(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateMaterializedView) {
-			return visitor.visitCreateMaterializedView(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13584,14 +13438,6 @@ export class MaterializedViewWhereContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitMaterializedViewWhere) {
 			listener.exitMaterializedViewWhere(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitMaterializedViewWhere) {
-			return visitor.visitMaterializedViewWhere(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13633,14 +13479,6 @@ export class ColumnNotNullListContext extends ParserRuleContext {
 			listener.exitColumnNotNullList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitColumnNotNullList) {
-			return visitor.visitColumnNotNullList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13674,14 +13512,6 @@ export class ColumnNotNullContext extends ParserRuleContext {
 			listener.exitColumnNotNull(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitColumnNotNull) {
-			return visitor.visitColumnNotNull(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13710,14 +13540,6 @@ export class MaterializedViewOptionsContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitMaterializedViewOptions) {
 			listener.exitMaterializedViewOptions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitMaterializedViewOptions) {
-			return visitor.visitMaterializedViewOptions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13773,14 +13595,6 @@ export class CreateKeyspaceContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitCreateKeyspace) {
 			listener.exitCreateKeyspace(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateKeyspace) {
-			return visitor.visitCreateKeyspace(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13853,14 +13667,6 @@ export class CreateFunctionContext extends ParserRuleContext {
 			listener.exitCreateFunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateFunction) {
-			return visitor.visitCreateFunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13881,14 +13687,6 @@ export class CodeBlockContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitCodeBlock) {
 			listener.exitCodeBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCodeBlock) {
-			return visitor.visitCodeBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13928,14 +13726,6 @@ export class ParamListContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitParamList) {
 			listener.exitParamList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitParamList) {
-			return visitor.visitParamList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13978,14 +13768,6 @@ export class ReturnModeContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitReturnMode) {
 			listener.exitReturnMode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitReturnMode) {
-			return visitor.visitReturnMode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14067,14 +13849,6 @@ export class CreateAggregateContext extends ParserRuleContext {
 			listener.exitCreateAggregate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateAggregate) {
-			return visitor.visitCreateAggregate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14106,14 +13880,6 @@ export class InitCondDefinitionContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitInitCondDefinition) {
 			listener.exitInitCondDefinition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitInitCondDefinition) {
-			return visitor.visitInitCondDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14161,14 +13927,6 @@ export class InitCondHashContext extends ParserRuleContext {
 			listener.exitInitCondHash(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitInitCondHash) {
-			return visitor.visitInitCondHash(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14195,14 +13953,6 @@ export class InitCondHashItemContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitInitCondHashItem) {
 			listener.exitInitCondHashItem(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitInitCondHashItem) {
-			return visitor.visitInitCondHashItem(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14259,14 +14009,6 @@ export class InitCondListNestedContext extends ParserRuleContext {
 			listener.exitInitCondListNested(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitInitCondListNested) {
-			return visitor.visitInitCondListNested(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14312,14 +14054,6 @@ export class InitCondListContext extends ParserRuleContext {
 			listener.exitInitCondList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitInitCondList) {
-			return visitor.visitInitCondList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14345,14 +14079,6 @@ export class OrReplaceContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitOrReplace) {
 			listener.exitOrReplace(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitOrReplace) {
-			return visitor.visitOrReplace(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14394,14 +14120,6 @@ export class AlterUserContext extends ParserRuleContext {
 			listener.exitAlterUser(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterUser) {
-			return visitor.visitAlterUser(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14429,14 +14147,6 @@ export class UserPasswordContext extends ParserRuleContext {
 			listener.exitUserPassword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitUserPassword) {
-			return visitor.visitUserPassword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14462,14 +14172,6 @@ export class UserSuperUserContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitUserSuperUser) {
 			listener.exitUserSuperUser(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitUserSuperUser) {
-			return visitor.visitUserSuperUser(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14509,14 +14211,6 @@ export class AlterTypeContext extends ParserRuleContext {
 			listener.exitAlterType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterType) {
-			return visitor.visitAlterType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14547,14 +14241,6 @@ export class AlterTypeOperationContext extends ParserRuleContext {
 			listener.exitAlterTypeOperation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTypeOperation) {
-			return visitor.visitAlterTypeOperation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14580,14 +14266,6 @@ export class AlterTypeRenameContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitAlterTypeRename) {
 			listener.exitAlterTypeRename(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTypeRename) {
-			return visitor.visitAlterTypeRename(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14629,14 +14307,6 @@ export class AlterTypeRenameListContext extends ParserRuleContext {
 			listener.exitAlterTypeRenameList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTypeRenameList) {
-			return visitor.visitAlterTypeRenameList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14668,14 +14338,6 @@ export class AlterTypeRenameItemContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitAlterTypeRenameItem) {
 			listener.exitAlterTypeRenameItem(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTypeRenameItem) {
-			return visitor.visitAlterTypeRenameItem(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14729,14 +14391,6 @@ export class AlterTypeAddContext extends ParserRuleContext {
 			listener.exitAlterTypeAdd(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTypeAdd) {
-			return visitor.visitAlterTypeAdd(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14768,14 +14422,6 @@ export class AlterTypeAlterTypeContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitAlterTypeAlterType) {
 			listener.exitAlterTypeAlterType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTypeAlterType) {
-			return visitor.visitAlterTypeAlterType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14815,14 +14461,6 @@ export class AlterTableContext extends ParserRuleContext {
 			listener.exitAlterTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTable) {
-			return visitor.visitAlterTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14859,14 +14497,6 @@ export class AlterTableOperationContext extends ParserRuleContext {
 			listener.exitAlterTableOperation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTableOperation) {
-			return visitor.visitAlterTableOperation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14892,14 +14522,6 @@ export class AlterTableWithContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitAlterTableWith) {
 			listener.exitAlterTableWith(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTableWith) {
-			return visitor.visitAlterTableWith(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14938,14 +14560,6 @@ export class AlterTableRenameContext extends ParserRuleContext {
 			listener.exitAlterTableRename(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTableRename) {
-			return visitor.visitAlterTableRename(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14976,14 +14590,6 @@ export class AlterTableDropCompactStorageContext extends ParserRuleContext {
 			listener.exitAlterTableDropCompactStorage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTableDropCompactStorage) {
-			return visitor.visitAlterTableDropCompactStorage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15009,14 +14615,6 @@ export class AlterTableDropColumnsContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitAlterTableDropColumns) {
 			listener.exitAlterTableDropColumns(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTableDropColumns) {
-			return visitor.visitAlterTableDropColumns(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15058,14 +14656,6 @@ export class AlterTableDropColumnListContext extends ParserRuleContext {
 			listener.exitAlterTableDropColumnList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTableDropColumnList) {
-			return visitor.visitAlterTableDropColumnList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15091,14 +14681,6 @@ export class AlterTableAddContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitAlterTableAdd) {
 			listener.exitAlterTableAdd(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTableAdd) {
-			return visitor.visitAlterTableAdd(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15149,14 +14731,6 @@ export class AlterTableColumnDefinitionContext extends ParserRuleContext {
 			listener.exitAlterTableColumnDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterTableColumnDefinition) {
-			return visitor.visitAlterTableColumnDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15188,14 +14762,6 @@ export class AlterRoleContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitAlterRole) {
 			listener.exitAlterRole(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterRole) {
-			return visitor.visitAlterRole(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15238,14 +14804,6 @@ export class RoleWithContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitRoleWith) {
 			listener.exitRoleWith(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitRoleWith) {
-			return visitor.visitRoleWith(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15291,14 +14849,6 @@ export class RoleWithOptionsContext extends ParserRuleContext {
 			listener.exitRoleWithOptions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitRoleWithOptions) {
-			return visitor.visitRoleWithOptions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15342,14 +14892,6 @@ export class AlterMaterializedViewContext extends ParserRuleContext {
 			listener.exitAlterMaterializedView(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterMaterializedView) {
-			return visitor.visitAlterMaterializedView(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15381,14 +14923,6 @@ export class DropUserContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitDropUser) {
 			listener.exitDropUser(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDropUser) {
-			return visitor.visitDropUser(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15426,14 +14960,6 @@ export class DropTypeContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitDropType) {
 			listener.exitDropType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDropType) {
-			return visitor.visitDropType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15476,14 +15002,6 @@ export class DropMaterializedViewContext extends ParserRuleContext {
 			listener.exitDropMaterializedView(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDropMaterializedView) {
-			return visitor.visitDropMaterializedView(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15521,14 +15039,6 @@ export class DropAggregateContext extends ParserRuleContext {
 			listener.exitDropAggregate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDropAggregate) {
-			return visitor.visitDropAggregate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15564,14 +15074,6 @@ export class DropFunctionContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitDropFunction) {
 			listener.exitDropFunction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDropFunction) {
-			return visitor.visitDropFunction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15617,14 +15119,6 @@ export class DropTriggerContext extends ParserRuleContext {
 			listener.exitDropTrigger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDropTrigger) {
-			return visitor.visitDropTrigger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15656,14 +15150,6 @@ export class DropRoleContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitDropRole) {
 			listener.exitDropRole(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDropRole) {
-			return visitor.visitDropRole(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15703,14 +15189,6 @@ export class DropTableContext extends ParserRuleContext {
 			listener.exitDropTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDropTable) {
-			return visitor.visitDropTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15742,14 +15220,6 @@ export class DropKeyspaceContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitDropKeyspace) {
 			listener.exitDropKeyspace(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDropKeyspace) {
-			return visitor.visitDropKeyspace(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15787,14 +15257,6 @@ export class DropIndexContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitDropIndex) {
 			listener.exitDropIndex(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDropIndex) {
-			return visitor.visitDropIndex(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15846,14 +15308,6 @@ export class CreateTableContext extends ParserRuleContext {
 			listener.exitCreateTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateTable) {
-			return visitor.visitCreateTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15882,14 +15336,6 @@ export class WithElementContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitWithElement) {
 			listener.exitWithElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitWithElement) {
-			return visitor.visitWithElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15934,14 +15380,6 @@ export class ClusteringOrderContext extends ParserRuleContext {
 			listener.exitClusteringOrder(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitClusteringOrder) {
-			return visitor.visitClusteringOrder(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15981,14 +15419,6 @@ export class TableOptionsContext extends ParserRuleContext {
 			listener.exitTableOptions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptions) {
-			return visitor.visitTableOptions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16020,14 +15450,6 @@ export class TableOptionItemContext extends ParserRuleContext {
 			listener.exitTableOptionItem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionItem) {
-			return visitor.visitTableOptionItem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16048,14 +15470,6 @@ export class TableOptionNameContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitTableOptionName) {
 			listener.exitTableOptionName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionName) {
-			return visitor.visitTableOptionName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16083,14 +15497,6 @@ export class TableOptionValueContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitTableOptionValue) {
 			listener.exitTableOptionValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitTableOptionValue) {
-			return visitor.visitTableOptionValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16138,14 +15544,6 @@ export class OptionHashContext extends ParserRuleContext {
 			listener.exitOptionHash(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitOptionHash) {
-			return visitor.visitOptionHash(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16174,14 +15572,6 @@ export class OptionHashItemContext extends ParserRuleContext {
 			listener.exitOptionHashItem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitOptionHashItem) {
-			return visitor.visitOptionHashItem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16204,14 +15594,6 @@ export class OptionHashKeyContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitOptionHashKey) {
 			listener.exitOptionHashKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitOptionHashKey) {
-			return visitor.visitOptionHashKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16239,14 +15621,6 @@ export class OptionHashValueContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitOptionHashValue) {
 			listener.exitOptionHashValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitOptionHashValue) {
-			return visitor.visitOptionHashValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16291,14 +15665,6 @@ export class ColumnDefinitionListContext extends ParserRuleContext {
 			listener.exitColumnDefinitionList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitColumnDefinitionList) {
-			return visitor.visitColumnDefinitionList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16329,14 +15695,6 @@ export class ColumnDefinitionContext extends ParserRuleContext {
 			listener.exitColumnDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitColumnDefinition) {
-			return visitor.visitColumnDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16362,14 +15720,6 @@ export class PrimaryKeyColumnContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitPrimaryKeyColumn) {
 			listener.exitPrimaryKeyColumn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitPrimaryKeyColumn) {
-			return visitor.visitPrimaryKeyColumn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16408,14 +15758,6 @@ export class PrimaryKeyElementContext extends ParserRuleContext {
 			listener.exitPrimaryKeyElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitPrimaryKeyElement) {
-			return visitor.visitPrimaryKeyElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16446,14 +15788,6 @@ export class PrimaryKeyDefinitionContext extends ParserRuleContext {
 			listener.exitPrimaryKeyDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitPrimaryKeyDefinition) {
-			return visitor.visitPrimaryKeyDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16476,14 +15810,6 @@ export class SinglePrimaryKeyContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitSinglePrimaryKey) {
 			listener.exitSinglePrimaryKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSinglePrimaryKey) {
-			return visitor.visitSinglePrimaryKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16514,14 +15840,6 @@ export class CompoundKeyContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitCompoundKey) {
 			listener.exitCompoundKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCompoundKey) {
-			return visitor.visitCompoundKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16558,14 +15876,6 @@ export class CompositeKeyContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitCompositeKey) {
 			listener.exitCompositeKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCompositeKey) {
-			return visitor.visitCompositeKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16607,14 +15917,6 @@ export class PartitionKeyListContext extends ParserRuleContext {
 			listener.exitPartitionKeyList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionKeyList) {
-			return visitor.visitPartitionKeyList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16654,14 +15956,6 @@ export class ClusteringKeyListContext extends ParserRuleContext {
 			listener.exitClusteringKeyList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitClusteringKeyList) {
-			return visitor.visitClusteringKeyList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16686,14 +15980,6 @@ export class PartitionKeyContext extends ParserRuleContext {
 			listener.exitPartitionKey(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitPartitionKey) {
-			return visitor.visitPartitionKey(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16716,14 +16002,6 @@ export class ClusteringKeyContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitClusteringKey) {
 			listener.exitClusteringKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitClusteringKey) {
-			return visitor.visitClusteringKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16751,14 +16029,6 @@ export class ApplyBatchContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitApplyBatch) {
 			listener.exitApplyBatch(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitApplyBatch) {
-			return visitor.visitApplyBatch(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16794,14 +16064,6 @@ export class BeginBatchContext extends ParserRuleContext {
 			listener.exitBeginBatch(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitBeginBatch) {
-			return visitor.visitBeginBatch(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16827,14 +16089,6 @@ export class BatchTypeContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitBatchType) {
 			listener.exitBatchType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitBatchType) {
-			return visitor.visitBatchType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16889,14 +16143,6 @@ export class AlterKeyspaceContext extends ParserRuleContext {
 			listener.exitAlterKeyspace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAlterKeyspace) {
-			return visitor.visitAlterKeyspace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16936,14 +16182,6 @@ export class ReplicationListContext extends ParserRuleContext {
 			listener.exitReplicationList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitReplicationList) {
-			return visitor.visitReplicationList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16976,14 +16214,6 @@ export class ReplicationListItemContext extends ParserRuleContext {
 			listener.exitReplicationListItem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitReplicationListItem) {
-			return visitor.visitReplicationListItem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17012,14 +16242,6 @@ export class DurableWritesContext extends ParserRuleContext {
 			listener.exitDurableWrites(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDurableWrites) {
-			return visitor.visitDurableWrites(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17045,14 +16267,6 @@ export class UseContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitUse) {
 			listener.exitUse(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitUse) {
-			return visitor.visitUse(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17087,14 +16301,6 @@ export class TruncateContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitTruncate) {
 			listener.exitTruncate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitTruncate) {
-			return visitor.visitTruncate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17149,14 +16355,6 @@ export class CreateIndexContext extends ParserRuleContext {
 			listener.exitCreateIndex(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitCreateIndex) {
-			return visitor.visitCreateIndex(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17180,14 +16378,6 @@ export class IndexNameContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitIndexName) {
 			listener.exitIndexName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitIndexName) {
-			return visitor.visitIndexName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17223,14 +16413,6 @@ export class IndexColumnSpecContext extends ParserRuleContext {
 			listener.exitIndexColumnSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitIndexColumnSpec) {
-			return visitor.visitIndexColumnSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17260,14 +16442,6 @@ export class IndexKeysSpecContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitIndexKeysSpec) {
 			listener.exitIndexKeysSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitIndexKeysSpec) {
-			return visitor.visitIndexKeysSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17301,14 +16475,6 @@ export class IndexEntriesSSpecContext extends ParserRuleContext {
 			listener.exitIndexEntriesSSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitIndexEntriesSSpec) {
-			return visitor.visitIndexEntriesSSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17338,14 +16504,6 @@ export class IndexFullSpecContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitIndexFullSpec) {
 			listener.exitIndexFullSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitIndexFullSpec) {
-			return visitor.visitIndexFullSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17393,14 +16551,6 @@ export class DeleteContext extends ParserRuleContext {
 			listener.exitDelete(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDelete) {
-			return visitor.visitDelete(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17440,14 +16590,6 @@ export class DeleteColumnListContext extends ParserRuleContext {
 			listener.exitDeleteColumnList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDeleteColumnList) {
-			return visitor.visitDeleteColumnList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17476,14 +16618,6 @@ export class DeleteColumnItemContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitDeleteColumnItem) {
 			listener.exitDeleteColumnItem(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDeleteColumnItem) {
-			return visitor.visitDeleteColumnItem(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17538,14 +16672,6 @@ export class UpdateContext extends ParserRuleContext {
 			listener.exitUpdate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitUpdate) {
-			return visitor.visitUpdate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17571,14 +16697,6 @@ export class IfSpecContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitIfSpec) {
 			listener.exitIfSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitIfSpec) {
-			return visitor.visitIfSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17620,14 +16738,6 @@ export class IfConditionListContext extends ParserRuleContext {
 			listener.exitIfConditionList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitIfConditionList) {
-			return visitor.visitIfConditionList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17652,14 +16762,6 @@ export class IfConditionContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitIfCondition) {
 			listener.exitIfCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitIfCondition) {
-			return visitor.visitIfCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17699,14 +16801,6 @@ export class AssignmentsContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitAssignments) {
 			listener.exitAssignments(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAssignments) {
-			return visitor.visitAssignments(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17763,14 +16857,6 @@ export class AssignmentElementContext extends ParserRuleContext {
 			listener.exitAssignmentElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentElement) {
-			return visitor.visitAssignmentElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17814,14 +16900,6 @@ export class AssignmentSetContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitAssignmentSet) {
 			listener.exitAssignmentSet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentSet) {
-			return visitor.visitAssignmentSet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17869,14 +16947,6 @@ export class AssignmentMapContext extends ParserRuleContext {
 			listener.exitAssignmentMap(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentMap) {
-			return visitor.visitAssignmentMap(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17920,14 +16990,6 @@ export class AssignmentListContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitAssignmentList) {
 			listener.exitAssignmentList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentList) {
-			return visitor.visitAssignmentList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17979,14 +17041,6 @@ export class InsertContext extends ParserRuleContext {
 			listener.exitInsert(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitInsert) {
-			return visitor.visitInsert(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18020,14 +17074,6 @@ export class UsingTtlTimestampContext extends ParserRuleContext {
 			listener.exitUsingTtlTimestamp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitUsingTtlTimestamp) {
-			return visitor.visitUsingTtlTimestamp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18053,14 +17099,6 @@ export class TimestampContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitTimestamp) {
 			listener.exitTimestamp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitTimestamp) {
-			return visitor.visitTimestamp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18090,14 +17128,6 @@ export class TtlContext extends ParserRuleContext {
 			listener.exitTtl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitTtl) {
-			return visitor.visitTtl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18123,14 +17153,6 @@ export class UsingTimestampSpecContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitUsingTimestampSpec) {
 			listener.exitUsingTimestampSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitUsingTimestampSpec) {
-			return visitor.visitUsingTimestampSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18163,14 +17185,6 @@ export class IfNotExistContext extends ParserRuleContext {
 			listener.exitIfNotExist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitIfNotExist) {
-			return visitor.visitIfNotExist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18196,14 +17210,6 @@ export class IfExistContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitIfExist) {
 			listener.exitIfExist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitIfExist) {
-			return visitor.visitIfExist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18235,14 +17241,6 @@ export class InsertValuesSpecContext extends ParserRuleContext {
 			listener.exitInsertValuesSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitInsertValuesSpec) {
-			return visitor.visitInsertValuesSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18267,14 +17265,6 @@ export class InsertColumnSpecContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitInsertColumnSpec) {
 			listener.exitInsertColumnSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitInsertColumnSpec) {
-			return visitor.visitInsertColumnSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18314,14 +17304,6 @@ export class ColumnListContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitColumnList) {
 			listener.exitColumnList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitColumnList) {
-			return visitor.visitColumnList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18390,14 +17372,6 @@ export class ExpressionListContext extends ParserRuleContext {
 			listener.exitExpressionList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitExpressionList) {
-			return visitor.visitExpressionList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18443,14 +17417,6 @@ export class SelectContext extends ParserRuleContext {
 			listener.exitSelect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSelect) {
-			return visitor.visitSelect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18476,14 +17442,6 @@ export class AllowFilteringSpecContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitAllowFilteringSpec) {
 			listener.exitAllowFilteringSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAllowFilteringSpec) {
-			return visitor.visitAllowFilteringSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18513,14 +17471,6 @@ export class LimitSpecContext extends ParserRuleContext {
 			listener.exitLimitSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitLimitSpec) {
-			return visitor.visitLimitSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18546,14 +17496,6 @@ export class FromSpecContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitFromSpec) {
 			listener.exitFromSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitFromSpec) {
-			return visitor.visitFromSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18587,14 +17529,6 @@ export class FromSpecElementContext extends ParserRuleContext {
 			listener.exitFromSpecElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitFromSpecElement) {
-			return visitor.visitFromSpecElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18625,14 +17559,6 @@ export class OrderSpecContext extends ParserRuleContext {
 			listener.exitOrderSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitOrderSpec) {
-			return visitor.visitOrderSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18659,14 +17585,6 @@ export class OrderSpecElementContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitOrderSpecElement) {
 			listener.exitOrderSpecElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitOrderSpecElement) {
-			return visitor.visitOrderSpecElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18696,14 +17614,6 @@ export class WhereSpecContext extends ParserRuleContext {
 			listener.exitWhereSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitWhereSpec) {
-			return visitor.visitWhereSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18726,14 +17636,6 @@ export class DistinctSpecContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitDistinctSpec) {
 			listener.exitDistinctSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDistinctSpec) {
-			return visitor.visitDistinctSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18777,14 +17679,6 @@ export class SelectElementsContext extends ParserRuleContext {
 			listener.exitSelectElements(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectElements) {
-			return visitor.visitSelectElements(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18821,14 +17715,6 @@ export class SelectElementContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitSelectElement) {
 			listener.exitSelectElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSelectElement) {
-			return visitor.visitSelectElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18868,14 +17754,6 @@ export class RelationElementsContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitRelationElements) {
 			listener.exitRelationElements(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitRelationElements) {
-			return visitor.visitRelationElements(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18940,14 +17818,6 @@ export class RelationElementContext extends ParserRuleContext {
 			listener.exitRelationElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitRelationElement) {
-			return visitor.visitRelationElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18974,14 +17844,6 @@ export class RelalationContainsContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitRelalationContains) {
 			listener.exitRelalationContains(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitRelalationContains) {
-			return visitor.visitRelalationContains(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19015,14 +17877,6 @@ export class RelalationContainsKeyContext extends ParserRuleContext {
 			listener.exitRelalationContainsKey(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitRelalationContainsKey) {
-			return visitor.visitRelalationContainsKey(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19049,14 +17903,6 @@ export class FunctionCallContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitFunctionCall) {
 			listener.exitFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitFunctionCall) {
-			return visitor.visitFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19116,14 +17962,6 @@ export class FunctionArgsContext extends ParserRuleContext {
 			listener.exitFunctionArgs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitFunctionArgs) {
-			return visitor.visitFunctionArgs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19161,14 +17999,6 @@ export class ConstantContext extends ParserRuleContext {
 			listener.exitConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitConstant) {
-			return visitor.visitConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19189,14 +18019,6 @@ export class DecimalLiteralContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitDecimalLiteral) {
 			listener.exitDecimalLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDecimalLiteral) {
-			return visitor.visitDecimalLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19222,14 +18044,6 @@ export class FloatLiteralContext extends ParserRuleContext {
 			listener.exitFloatLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitFloatLiteral) {
-			return visitor.visitFloatLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19250,14 +18064,6 @@ export class StringLiteralContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitStringLiteral) {
 			listener.exitStringLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitStringLiteral) {
-			return visitor.visitStringLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19283,14 +18089,6 @@ export class BooleanLiteralContext extends ParserRuleContext {
 			listener.exitBooleanLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitBooleanLiteral) {
-			return visitor.visitBooleanLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19311,14 +18109,6 @@ export class HexadecimalLiteralContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitHexadecimalLiteral) {
 			listener.exitHexadecimalLiteral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitHexadecimalLiteral) {
-			return visitor.visitHexadecimalLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19352,14 +18142,6 @@ export class KeyspaceContext extends ParserRuleContext {
 			listener.exitKeyspace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKeyspace) {
-			return visitor.visitKeyspace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19389,14 +18171,6 @@ export class TableContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitTable) {
 			listener.exitTable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitTable) {
-			return visitor.visitTable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19430,14 +18204,6 @@ export class ColumnContext extends ParserRuleContext {
 			listener.exitColumn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitColumn) {
-			return visitor.visitColumn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19463,14 +18229,6 @@ export class DataTypeContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitDataType) {
 			listener.exitDataType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDataType) {
-			return visitor.visitDataType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19520,14 +18278,6 @@ export class DataTypeNameContext extends ParserRuleContext {
 			listener.exitDataTypeName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDataTypeName) {
-			return visitor.visitDataTypeName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19573,14 +18323,6 @@ export class DataTypeDefinitionContext extends ParserRuleContext {
 			listener.exitDataTypeDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitDataTypeDefinition) {
-			return visitor.visitDataTypeDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19608,14 +18350,6 @@ export class OrderDirectionContext extends ParserRuleContext {
 			listener.exitOrderDirection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitOrderDirection) {
-			return visitor.visitOrderDirection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19638,14 +18372,6 @@ export class RoleContext extends ParserRuleContext {
 			listener.exitRole(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitRole) {
-			return visitor.visitRole(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19666,14 +18392,6 @@ export class TriggerContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitTrigger) {
 			listener.exitTrigger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitTrigger) {
-			return visitor.visitTrigger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19700,14 +18418,6 @@ export class TriggerClassContext extends ParserRuleContext {
 			listener.exitTriggerClass(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitTriggerClass) {
-			return visitor.visitTriggerClass(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19728,14 +18438,6 @@ export class MaterializedViewContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitMaterializedView) {
 			listener.exitMaterializedView(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitMaterializedView) {
-			return visitor.visitMaterializedView(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19760,14 +18462,6 @@ export class TypeContext extends ParserRuleContext {
 			listener.exitType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19788,14 +18482,6 @@ export class AggregateContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitAggregate) {
 			listener.exitAggregate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitAggregate) {
-			return visitor.visitAggregate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19820,14 +18506,6 @@ export class FunctionContext extends ParserRuleContext {
 			listener.exitFunction(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitFunction) {
-			return visitor.visitFunction(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19850,14 +18528,6 @@ export class LanguageContext extends ParserRuleContext {
 			listener.exitLanguage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitLanguage) {
-			return visitor.visitLanguage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19878,14 +18548,6 @@ export class UserContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitUser) {
 			listener.exitUser(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitUser) {
-			return visitor.visitUser(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19912,14 +18574,6 @@ export class PasswordContext extends ParserRuleContext {
 			listener.exitPassword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitPassword) {
-			return visitor.visitPassword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19940,14 +18594,6 @@ export class HashKeyContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitHashKey) {
 			listener.exitHashKey(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitHashKey) {
-			return visitor.visitHashKey(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19977,14 +18623,6 @@ export class ParamContext extends ParserRuleContext {
 			listener.exitParam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitParam) {
-			return visitor.visitParam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20005,14 +18643,6 @@ export class ParamNameContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitParamName) {
 			listener.exitParamName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitParamName) {
-			return visitor.visitParamName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20037,14 +18667,6 @@ export class KwAddContext extends ParserRuleContext {
 			listener.exitKwAdd(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwAdd) {
-			return visitor.visitKwAdd(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20067,14 +18689,6 @@ export class KwAggregateContext extends ParserRuleContext {
 			listener.exitKwAggregate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwAggregate) {
-			return visitor.visitKwAggregate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20095,14 +18709,6 @@ export class KwAllContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwAll) {
 			listener.exitKwAll(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwAll) {
-			return visitor.visitKwAll(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20128,14 +18734,6 @@ export class KwAllPermissionsContext extends ParserRuleContext {
 			listener.exitKwAllPermissions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwAllPermissions) {
-			return visitor.visitKwAllPermissions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20156,14 +18754,6 @@ export class KwAllowContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwAllow) {
 			listener.exitKwAllow(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwAllow) {
-			return visitor.visitKwAllow(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20188,14 +18778,6 @@ export class KwAlterContext extends ParserRuleContext {
 			listener.exitKwAlter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwAlter) {
-			return visitor.visitKwAlter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20216,14 +18798,6 @@ export class KwAndContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwAnd) {
 			listener.exitKwAnd(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwAnd) {
-			return visitor.visitKwAnd(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20248,14 +18822,6 @@ export class KwApplyContext extends ParserRuleContext {
 			listener.exitKwApply(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwApply) {
-			return visitor.visitKwApply(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20276,14 +18842,6 @@ export class KwAsContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwAs) {
 			listener.exitKwAs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwAs) {
-			return visitor.visitKwAs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20308,14 +18866,6 @@ export class KwAscContext extends ParserRuleContext {
 			listener.exitKwAsc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwAsc) {
-			return visitor.visitKwAsc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20336,14 +18886,6 @@ export class KwAuthorizeContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwAuthorize) {
 			listener.exitKwAuthorize(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwAuthorize) {
-			return visitor.visitKwAuthorize(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20368,14 +18910,6 @@ export class KwBatchContext extends ParserRuleContext {
 			listener.exitKwBatch(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwBatch) {
-			return visitor.visitKwBatch(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20396,14 +18930,6 @@ export class KwBeginContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwBegin) {
 			listener.exitKwBegin(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwBegin) {
-			return visitor.visitKwBegin(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20428,14 +18954,6 @@ export class KwByContext extends ParserRuleContext {
 			listener.exitKwBy(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwBy) {
-			return visitor.visitKwBy(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20456,14 +18974,6 @@ export class KwCalledContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwCalled) {
 			listener.exitKwCalled(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwCalled) {
-			return visitor.visitKwCalled(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20488,14 +18998,6 @@ export class KwClusteringContext extends ParserRuleContext {
 			listener.exitKwClustering(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwClustering) {
-			return visitor.visitKwClustering(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20516,14 +19018,6 @@ export class KwCompactContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwCompact) {
 			listener.exitKwCompact(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwCompact) {
-			return visitor.visitKwCompact(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20548,14 +19042,6 @@ export class KwContainsContext extends ParserRuleContext {
 			listener.exitKwContains(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwContains) {
-			return visitor.visitKwContains(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20576,14 +19062,6 @@ export class KwCreateContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwCreate) {
 			listener.exitKwCreate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwCreate) {
-			return visitor.visitKwCreate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20608,14 +19086,6 @@ export class KwDeleteContext extends ParserRuleContext {
 			listener.exitKwDelete(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwDelete) {
-			return visitor.visitKwDelete(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20636,14 +19106,6 @@ export class KwDescContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwDesc) {
 			listener.exitKwDesc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwDesc) {
-			return visitor.visitKwDesc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20668,14 +19130,6 @@ export class KwDescibeContext extends ParserRuleContext {
 			listener.exitKwDescibe(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwDescibe) {
-			return visitor.visitKwDescibe(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20696,14 +19150,6 @@ export class KwDistinctContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwDistinct) {
 			listener.exitKwDistinct(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwDistinct) {
-			return visitor.visitKwDistinct(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20728,14 +19174,6 @@ export class KwDropContext extends ParserRuleContext {
 			listener.exitKwDrop(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwDrop) {
-			return visitor.visitKwDrop(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20756,14 +19194,6 @@ export class KwDurableWritesContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwDurableWrites) {
 			listener.exitKwDurableWrites(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwDurableWrites) {
-			return visitor.visitKwDurableWrites(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20788,14 +19218,6 @@ export class KwEntriesContext extends ParserRuleContext {
 			listener.exitKwEntries(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwEntries) {
-			return visitor.visitKwEntries(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20816,14 +19238,6 @@ export class KwExecuteContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwExecute) {
 			listener.exitKwExecute(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwExecute) {
-			return visitor.visitKwExecute(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20848,14 +19262,6 @@ export class KwExistsContext extends ParserRuleContext {
 			listener.exitKwExists(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwExists) {
-			return visitor.visitKwExists(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20876,14 +19282,6 @@ export class KwFilteringContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwFiltering) {
 			listener.exitKwFiltering(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwFiltering) {
-			return visitor.visitKwFiltering(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20908,14 +19306,6 @@ export class KwFinalfuncContext extends ParserRuleContext {
 			listener.exitKwFinalfunc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwFinalfunc) {
-			return visitor.visitKwFinalfunc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20936,14 +19326,6 @@ export class KwFromContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwFrom) {
 			listener.exitKwFrom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwFrom) {
-			return visitor.visitKwFrom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20968,14 +19350,6 @@ export class KwFullContext extends ParserRuleContext {
 			listener.exitKwFull(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwFull) {
-			return visitor.visitKwFull(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20996,14 +19370,6 @@ export class KwFunctionContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwFunction) {
 			listener.exitKwFunction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwFunction) {
-			return visitor.visitKwFunction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21028,14 +19394,6 @@ export class KwFunctionsContext extends ParserRuleContext {
 			listener.exitKwFunctions(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwFunctions) {
-			return visitor.visitKwFunctions(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21056,14 +19414,6 @@ export class KwGrantContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwGrant) {
 			listener.exitKwGrant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwGrant) {
-			return visitor.visitKwGrant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21088,14 +19438,6 @@ export class KwIfContext extends ParserRuleContext {
 			listener.exitKwIf(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwIf) {
-			return visitor.visitKwIf(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21116,14 +19458,6 @@ export class KwInContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwIn) {
 			listener.exitKwIn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwIn) {
-			return visitor.visitKwIn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21148,14 +19482,6 @@ export class KwIndexContext extends ParserRuleContext {
 			listener.exitKwIndex(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwIndex) {
-			return visitor.visitKwIndex(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21176,14 +19502,6 @@ export class KwInitcondContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwInitcond) {
 			listener.exitKwInitcond(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwInitcond) {
-			return visitor.visitKwInitcond(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21208,14 +19526,6 @@ export class KwInputContext extends ParserRuleContext {
 			listener.exitKwInput(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwInput) {
-			return visitor.visitKwInput(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21236,14 +19546,6 @@ export class KwInsertContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwInsert) {
 			listener.exitKwInsert(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwInsert) {
-			return visitor.visitKwInsert(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21268,14 +19570,6 @@ export class KwIntoContext extends ParserRuleContext {
 			listener.exitKwInto(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwInto) {
-			return visitor.visitKwInto(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21296,14 +19590,6 @@ export class KwIsContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwIs) {
 			listener.exitKwIs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwIs) {
-			return visitor.visitKwIs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21328,14 +19614,6 @@ export class KwKeyContext extends ParserRuleContext {
 			listener.exitKwKey(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwKey) {
-			return visitor.visitKwKey(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21356,14 +19634,6 @@ export class KwKeysContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwKeys) {
 			listener.exitKwKeys(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwKeys) {
-			return visitor.visitKwKeys(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21388,14 +19658,6 @@ export class KwKeyspaceContext extends ParserRuleContext {
 			listener.exitKwKeyspace(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwKeyspace) {
-			return visitor.visitKwKeyspace(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21416,14 +19678,6 @@ export class KwKeyspacesContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwKeyspaces) {
 			listener.exitKwKeyspaces(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwKeyspaces) {
-			return visitor.visitKwKeyspaces(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21448,14 +19702,6 @@ export class KwLanguageContext extends ParserRuleContext {
 			listener.exitKwLanguage(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwLanguage) {
-			return visitor.visitKwLanguage(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21476,14 +19722,6 @@ export class KwLimitContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwLimit) {
 			listener.exitKwLimit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwLimit) {
-			return visitor.visitKwLimit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21508,14 +19746,6 @@ export class KwListContext extends ParserRuleContext {
 			listener.exitKwList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwList) {
-			return visitor.visitKwList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21536,14 +19766,6 @@ export class KwLoggedContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwLogged) {
 			listener.exitKwLogged(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwLogged) {
-			return visitor.visitKwLogged(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21568,14 +19790,6 @@ export class KwLoginContext extends ParserRuleContext {
 			listener.exitKwLogin(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwLogin) {
-			return visitor.visitKwLogin(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21596,14 +19810,6 @@ export class KwMaterializedContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwMaterialized) {
 			listener.exitKwMaterialized(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwMaterialized) {
-			return visitor.visitKwMaterialized(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21628,14 +19834,6 @@ export class KwModifyContext extends ParserRuleContext {
 			listener.exitKwModify(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwModify) {
-			return visitor.visitKwModify(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21656,14 +19854,6 @@ export class KwNosuperuserContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwNosuperuser) {
 			listener.exitKwNosuperuser(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwNosuperuser) {
-			return visitor.visitKwNosuperuser(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21688,14 +19878,6 @@ export class KwNorecursiveContext extends ParserRuleContext {
 			listener.exitKwNorecursive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwNorecursive) {
-			return visitor.visitKwNorecursive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21716,14 +19898,6 @@ export class KwNotContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwNot) {
 			listener.exitKwNot(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwNot) {
-			return visitor.visitKwNot(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21748,14 +19922,6 @@ export class KwNullContext extends ParserRuleContext {
 			listener.exitKwNull(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwNull) {
-			return visitor.visitKwNull(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21776,14 +19942,6 @@ export class KwOfContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwOf) {
 			listener.exitKwOf(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwOf) {
-			return visitor.visitKwOf(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21808,14 +19966,6 @@ export class KwOnContext extends ParserRuleContext {
 			listener.exitKwOn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwOn) {
-			return visitor.visitKwOn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21836,14 +19986,6 @@ export class KwOptionsContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwOptions) {
 			listener.exitKwOptions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwOptions) {
-			return visitor.visitKwOptions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21868,14 +20010,6 @@ export class KwOrContext extends ParserRuleContext {
 			listener.exitKwOr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwOr) {
-			return visitor.visitKwOr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21896,14 +20030,6 @@ export class KwOrderContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwOrder) {
 			listener.exitKwOrder(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwOrder) {
-			return visitor.visitKwOrder(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21928,14 +20054,6 @@ export class KwPasswordContext extends ParserRuleContext {
 			listener.exitKwPassword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwPassword) {
-			return visitor.visitKwPassword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21956,14 +20074,6 @@ export class KwPrimaryContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwPrimary) {
 			listener.exitKwPrimary(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwPrimary) {
-			return visitor.visitKwPrimary(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21988,14 +20098,6 @@ export class KwRenameContext extends ParserRuleContext {
 			listener.exitKwRename(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwRename) {
-			return visitor.visitKwRename(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22016,14 +20118,6 @@ export class KwReplaceContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwReplace) {
 			listener.exitKwReplace(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwReplace) {
-			return visitor.visitKwReplace(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22048,14 +20142,6 @@ export class KwReplicationContext extends ParserRuleContext {
 			listener.exitKwReplication(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwReplication) {
-			return visitor.visitKwReplication(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22076,14 +20162,6 @@ export class KwReturnsContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwReturns) {
 			listener.exitKwReturns(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwReturns) {
-			return visitor.visitKwReturns(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22108,14 +20186,6 @@ export class KwRoleContext extends ParserRuleContext {
 			listener.exitKwRole(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwRole) {
-			return visitor.visitKwRole(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22136,14 +20206,6 @@ export class KwRolesContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwRoles) {
 			listener.exitKwRoles(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwRoles) {
-			return visitor.visitKwRoles(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22168,14 +20230,6 @@ export class KwSelectContext extends ParserRuleContext {
 			listener.exitKwSelect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwSelect) {
-			return visitor.visitKwSelect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22196,14 +20250,6 @@ export class KwSetContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwSet) {
 			listener.exitKwSet(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwSet) {
-			return visitor.visitKwSet(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22228,14 +20274,6 @@ export class KwSfuncContext extends ParserRuleContext {
 			listener.exitKwSfunc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwSfunc) {
-			return visitor.visitKwSfunc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22256,14 +20294,6 @@ export class KwStorageContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwStorage) {
 			listener.exitKwStorage(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwStorage) {
-			return visitor.visitKwStorage(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22288,14 +20318,6 @@ export class KwStypeContext extends ParserRuleContext {
 			listener.exitKwStype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwStype) {
-			return visitor.visitKwStype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22316,14 +20338,6 @@ export class KwSuperuserContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwSuperuser) {
 			listener.exitKwSuperuser(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwSuperuser) {
-			return visitor.visitKwSuperuser(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22348,14 +20362,6 @@ export class KwTableContext extends ParserRuleContext {
 			listener.exitKwTable(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwTable) {
-			return visitor.visitKwTable(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22376,14 +20382,6 @@ export class KwTimestampContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwTimestamp) {
 			listener.exitKwTimestamp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwTimestamp) {
-			return visitor.visitKwTimestamp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22408,14 +20406,6 @@ export class KwToContext extends ParserRuleContext {
 			listener.exitKwTo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwTo) {
-			return visitor.visitKwTo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22436,14 +20426,6 @@ export class KwTriggerContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwTrigger) {
 			listener.exitKwTrigger(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwTrigger) {
-			return visitor.visitKwTrigger(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22468,14 +20450,6 @@ export class KwTruncateContext extends ParserRuleContext {
 			listener.exitKwTruncate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwTruncate) {
-			return visitor.visitKwTruncate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22496,14 +20470,6 @@ export class KwTtlContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwTtl) {
 			listener.exitKwTtl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwTtl) {
-			return visitor.visitKwTtl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22528,14 +20494,6 @@ export class KwTypeContext extends ParserRuleContext {
 			listener.exitKwType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwType) {
-			return visitor.visitKwType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22556,14 +20514,6 @@ export class KwUnloggedContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwUnlogged) {
 			listener.exitKwUnlogged(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwUnlogged) {
-			return visitor.visitKwUnlogged(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22588,14 +20538,6 @@ export class KwUpdateContext extends ParserRuleContext {
 			listener.exitKwUpdate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwUpdate) {
-			return visitor.visitKwUpdate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22616,14 +20558,6 @@ export class KwUseContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwUse) {
 			listener.exitKwUse(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwUse) {
-			return visitor.visitKwUse(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22648,14 +20582,6 @@ export class KwUserContext extends ParserRuleContext {
 			listener.exitKwUser(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwUser) {
-			return visitor.visitKwUser(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22676,14 +20602,6 @@ export class KwUsersContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwUsers) {
 			listener.exitKwUsers(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwUsers) {
-			return visitor.visitKwUsers(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22708,14 +20626,6 @@ export class KwUsingContext extends ParserRuleContext {
 			listener.exitKwUsing(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwUsing) {
-			return visitor.visitKwUsing(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22736,14 +20646,6 @@ export class KwValuesContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwValues) {
 			listener.exitKwValues(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwValues) {
-			return visitor.visitKwValues(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22768,14 +20670,6 @@ export class KwViewContext extends ParserRuleContext {
 			listener.exitKwView(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwView) {
-			return visitor.visitKwView(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22796,14 +20690,6 @@ export class KwWhereContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwWhere) {
 			listener.exitKwWhere(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwWhere) {
-			return visitor.visitKwWhere(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22828,14 +20714,6 @@ export class KwWithContext extends ParserRuleContext {
 			listener.exitKwWith(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwWith) {
-			return visitor.visitKwWith(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22856,14 +20734,6 @@ export class KwRevokeContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitKwRevoke) {
 			listener.exitKwRevoke(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitKwRevoke) {
-			return visitor.visitKwRevoke(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22888,14 +20758,6 @@ export class EofContext extends ParserRuleContext {
 			listener.exitEof(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitEof) {
-			return visitor.visitEof(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22916,14 +20778,6 @@ export class SyntaxBracketLrContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitSyntaxBracketLr) {
 			listener.exitSyntaxBracketLr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSyntaxBracketLr) {
-			return visitor.visitSyntaxBracketLr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22948,14 +20802,6 @@ export class SyntaxBracketRrContext extends ParserRuleContext {
 			listener.exitSyntaxBracketRr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSyntaxBracketRr) {
-			return visitor.visitSyntaxBracketRr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22976,14 +20822,6 @@ export class SyntaxBracketLcContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitSyntaxBracketLc) {
 			listener.exitSyntaxBracketLc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSyntaxBracketLc) {
-			return visitor.visitSyntaxBracketLc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23008,14 +20846,6 @@ export class SyntaxBracketRcContext extends ParserRuleContext {
 			listener.exitSyntaxBracketRc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSyntaxBracketRc) {
-			return visitor.visitSyntaxBracketRc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23036,14 +20866,6 @@ export class SyntaxBracketLaContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitSyntaxBracketLa) {
 			listener.exitSyntaxBracketLa(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSyntaxBracketLa) {
-			return visitor.visitSyntaxBracketLa(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23068,14 +20890,6 @@ export class SyntaxBracketRaContext extends ParserRuleContext {
 			listener.exitSyntaxBracketRa(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSyntaxBracketRa) {
-			return visitor.visitSyntaxBracketRa(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23096,14 +20910,6 @@ export class SyntaxBracketLsContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitSyntaxBracketLs) {
 			listener.exitSyntaxBracketLs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSyntaxBracketLs) {
-			return visitor.visitSyntaxBracketLs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23128,14 +20934,6 @@ export class SyntaxBracketRsContext extends ParserRuleContext {
 			listener.exitSyntaxBracketRs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSyntaxBracketRs) {
-			return visitor.visitSyntaxBracketRs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23158,14 +20956,6 @@ export class SyntaxCommaContext extends ParserRuleContext {
 			listener.exitSyntaxComma(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSyntaxComma) {
-			return visitor.visitSyntaxComma(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23186,14 +20976,6 @@ export class SyntaxColonContext extends ParserRuleContext {
 	public exitRule(listener: CqlParserListener): void {
 		if (listener.exitSyntaxColon) {
 			listener.exitSyntaxColon(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CqlParserVisitor<Result>): Result {
-		if (visitor.visitSyntaxColon) {
-			return visitor.visitSyntaxColon(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

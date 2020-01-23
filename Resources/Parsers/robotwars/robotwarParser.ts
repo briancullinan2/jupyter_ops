@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { robotwarListener } from "./robotwarListener";
-import { robotwarVisitor } from "./robotwarVisitor";
-
 
 export class robotwarParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1078,14 +1076,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1117,14 +1107,6 @@ export class LineContext extends ParserRuleContext {
 			listener.exitLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1145,14 +1127,6 @@ export class LabelContext extends ParserRuleContext {
 	public exitRule(listener: robotwarListener): void {
 		if (listener.exitLabel) {
 			listener.exitLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1194,14 +1168,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1224,14 +1190,6 @@ export class AccumstatementContext extends ParserRuleContext {
 	public exitRule(listener: robotwarListener): void {
 		if (listener.exitAccumstatement) {
 			listener.exitAccumstatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitAccumstatement) {
-			return visitor.visitAccumstatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1261,14 +1219,6 @@ export class AccumexpressionContext extends ParserRuleContext {
 			listener.exitAccumexpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitAccumexpression) {
-			return visitor.visitAccumexpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1293,14 +1243,6 @@ export class GosubstatementContext extends ParserRuleContext {
 			listener.exitGosubstatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitGosubstatement) {
-			return visitor.visitGosubstatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1323,14 +1265,6 @@ export class GotostatementContext extends ParserRuleContext {
 	public exitRule(listener: robotwarListener): void {
 		if (listener.exitGotostatement) {
 			listener.exitGotostatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitGotostatement) {
-			return visitor.visitGotostatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1366,14 +1300,6 @@ export class TostatementContext extends ParserRuleContext {
 			listener.exitTostatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitTostatement) {
-			return visitor.visitTostatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1393,14 +1319,6 @@ export class EndsubstatementContext extends ParserRuleContext {
 	public exitRule(listener: robotwarListener): void {
 		if (listener.exitEndsubstatement) {
 			listener.exitEndsubstatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitEndsubstatement) {
-			return visitor.visitEndsubstatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1431,14 +1349,6 @@ export class IfstatementContext extends ParserRuleContext {
 	public exitRule(listener: robotwarListener): void {
 		if (listener.exitIfstatement) {
 			listener.exitIfstatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitIfstatement) {
-			return visitor.visitIfstatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1472,14 +1382,6 @@ export class ConditionContext extends ParserRuleContext {
 	public exitRule(listener: robotwarListener): void {
 		if (listener.exitCondition) {
 			listener.exitCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitCondition) {
-			return visitor.visitCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1521,14 +1423,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1550,14 +1444,6 @@ export class OperationContext extends ParserRuleContext {
 			listener.exitOperation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitOperation) {
-			return visitor.visitOperation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1577,14 +1463,6 @@ export class ComparisonContext extends ParserRuleContext {
 	public exitRule(listener: robotwarListener): void {
 		if (listener.exitComparison) {
 			listener.exitComparison(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitComparison) {
-			return visitor.visitComparison(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1613,14 +1491,6 @@ export class ArgumentContext extends ParserRuleContext {
 	public exitRule(listener: robotwarListener): void {
 		if (listener.exitArgument) {
 			listener.exitArgument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1679,14 +1549,6 @@ export class RegisterContext extends ParserRuleContext {
 			listener.exitRegister(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitRegister) {
-			return visitor.visitRegister(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1709,14 +1571,6 @@ export class NumberContext extends ParserRuleContext {
 			listener.exitNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1737,14 +1591,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: robotwarListener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: robotwarVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

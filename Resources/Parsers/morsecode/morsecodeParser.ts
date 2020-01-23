@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { morsecodeListener } from "./morsecodeListener";
-import { morsecodeVisitor } from "./morsecodeVisitor";
-
 
 export class morsecodeParser extends Parser {
 	public static readonly DOT = 1;
@@ -1722,14 +1720,6 @@ export class MorsecodeContext extends ParserRuleContext {
 			listener.exitMorsecode(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitMorsecode) {
-			return visitor.visitMorsecode(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1859,14 +1849,6 @@ export class LetterContext extends ParserRuleContext {
 			listener.exitLetter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitLetter) {
-			return visitor.visitLetter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1888,14 +1870,6 @@ export class AContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitA) {
 			listener.exitA(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitA) {
-			return visitor.visitA(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1927,14 +1901,6 @@ export class BContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitB) {
 			listener.exitB(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitB) {
-			return visitor.visitB(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1976,14 +1942,6 @@ export class CContext extends ParserRuleContext {
 			listener.exitC(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitC) {
-			return visitor.visitC(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2015,14 +1973,6 @@ export class DContext extends ParserRuleContext {
 			listener.exitD(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitD) {
-			return visitor.visitD(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2043,14 +1993,6 @@ export class EContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitE) {
 			listener.exitE(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitE) {
-			return visitor.visitE(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2084,14 +2026,6 @@ export class FContext extends ParserRuleContext {
 			listener.exitF(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitF) {
-			return visitor.visitF(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2121,14 +2055,6 @@ export class GContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitG) {
 			listener.exitG(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitG) {
-			return visitor.visitG(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2161,14 +2087,6 @@ export class HContext extends ParserRuleContext {
 			listener.exitH(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitH) {
-			return visitor.visitH(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2197,14 +2115,6 @@ export class IContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitI) {
 			listener.exitI(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitI) {
-			return visitor.visitI(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2238,14 +2148,6 @@ export class JContext extends ParserRuleContext {
 			listener.exitJ(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitJ) {
-			return visitor.visitJ(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2275,14 +2177,6 @@ export class KContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitK) {
 			listener.exitK(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitK) {
-			return visitor.visitK(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2316,14 +2210,6 @@ export class LContext extends ParserRuleContext {
 			listener.exitL(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitL) {
-			return visitor.visitL(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2354,14 +2240,6 @@ export class MContext extends ParserRuleContext {
 			listener.exitM(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitM) {
-			return visitor.visitM(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2383,14 +2261,6 @@ export class NContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitN) {
 			listener.exitN(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitN) {
-			return visitor.visitN(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2421,14 +2291,6 @@ export class OContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitO) {
 			listener.exitO(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitO) {
-			return visitor.visitO(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2470,14 +2332,6 @@ export class PContext extends ParserRuleContext {
 			listener.exitP(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitP) {
-			return visitor.visitP(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2507,14 +2361,6 @@ export class QContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitQ) {
 			listener.exitQ(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitQ) {
-			return visitor.visitQ(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2548,14 +2394,6 @@ export class RContext extends ParserRuleContext {
 			listener.exitR(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitR) {
-			return visitor.visitR(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2586,14 +2424,6 @@ export class SContext extends ParserRuleContext {
 			listener.exitS(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitS) {
-			return visitor.visitS(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2614,14 +2444,6 @@ export class TContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitT) {
 			listener.exitT(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitT) {
-			return visitor.visitT(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2655,14 +2477,6 @@ export class UContext extends ParserRuleContext {
 			listener.exitU(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitU) {
-			return visitor.visitU(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2694,14 +2508,6 @@ export class VContext extends ParserRuleContext {
 			listener.exitV(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitV) {
-			return visitor.visitV(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2731,14 +2537,6 @@ export class WContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitW) {
 			listener.exitW(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitW) {
-			return visitor.visitW(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2780,14 +2578,6 @@ export class XContext extends ParserRuleContext {
 			listener.exitX(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitX) {
-			return visitor.visitX(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2817,14 +2607,6 @@ export class YContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitY) {
 			listener.exitY(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitY) {
-			return visitor.visitY(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2866,14 +2648,6 @@ export class ZContext extends ParserRuleContext {
 			listener.exitZ(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitZ) {
-			return visitor.visitZ(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2903,14 +2677,6 @@ export class OneContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitOne) {
 			listener.exitOne(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitOne) {
-			return visitor.visitOne(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2952,14 +2718,6 @@ export class TwoContext extends ParserRuleContext {
 			listener.exitTwo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitTwo) {
-			return visitor.visitTwo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2999,14 +2757,6 @@ export class ThreeContext extends ParserRuleContext {
 			listener.exitThree(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitThree) {
-			return visitor.visitThree(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3036,14 +2786,6 @@ export class FourContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitFour) {
 			listener.exitFour(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitFour) {
-			return visitor.visitFour(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3076,14 +2818,6 @@ export class FiveContext extends ParserRuleContext {
 			listener.exitFive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitFive) {
-			return visitor.visitFive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3113,14 +2847,6 @@ export class SixContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitSix) {
 			listener.exitSix(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitSix) {
-			return visitor.visitSix(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3162,14 +2888,6 @@ export class SevenContext extends ParserRuleContext {
 			listener.exitSeven(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitSeven) {
-			return visitor.visitSeven(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3209,14 +2927,6 @@ export class EightContext extends ParserRuleContext {
 			listener.exitEight(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitEight) {
-			return visitor.visitEight(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3248,14 +2958,6 @@ export class NineContext extends ParserRuleContext {
 			listener.exitNine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitNine) {
-			return visitor.visitNine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3284,14 +2986,6 @@ export class ZeroContext extends ParserRuleContext {
 	public exitRule(listener: morsecodeListener): void {
 		if (listener.exitZero) {
 			listener.exitZero(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: morsecodeVisitor<Result>): Result {
-		if (visitor.visitZero) {
-			return visitor.visitZero(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

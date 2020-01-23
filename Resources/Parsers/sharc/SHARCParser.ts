@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { SHARCParserListener } from "./SHARCParserListener";
-import { SHARCParserVisitor } from "./SHARCParserVisitor";
-
 
 export class SHARCParser extends Parser {
 	public static readonly StringLiteral = 1;
@@ -11006,14 +11004,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11056,14 +11046,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11100,14 +11082,6 @@ export class Stmt_atomContext extends ParserRuleContext {
 			listener.exitStmt_atom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitStmt_atom) {
-			return visitor.visitStmt_atom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11132,14 +11106,6 @@ export class SecContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitSec) {
 			listener.exitSec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitSec) {
-			return visitor.visitSec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11168,14 +11134,6 @@ export class SegContext extends ParserRuleContext {
 			listener.exitSeg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitSeg) {
-			return visitor.visitSeg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11196,14 +11154,6 @@ export class End_segContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitEnd_seg) {
 			listener.exitEnd_seg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitEnd_seg) {
-			return visitor.visitEnd_seg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11236,14 +11186,6 @@ export class Seg_qualifierContext extends ParserRuleContext {
 			listener.exitSeg_qualifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitSeg_qualifier) {
-			return visitor.visitSeg_qualifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11272,14 +11214,6 @@ export class Seg_qualifier1Context extends ParserRuleContext {
 			listener.exitSeg_qualifier1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitSeg_qualifier1) {
-			return visitor.visitSeg_qualifier1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11305,14 +11239,6 @@ export class Seg_qualifier2Context extends ParserRuleContext {
 			listener.exitSeg_qualifier2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitSeg_qualifier2) {
-			return visitor.visitSeg_qualifier2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11336,14 +11262,6 @@ export class Seg_qualifier3Context extends ParserRuleContext {
 			listener.exitSeg_qualifier3(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitSeg_qualifier3) {
-			return visitor.visitSeg_qualifier3(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11365,14 +11283,6 @@ export class Seg_qualifier_1Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitSeg_qualifier_1) {
 			listener.exitSeg_qualifier_1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitSeg_qualifier_1) {
-			return visitor.visitSeg_qualifier_1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11399,14 +11309,6 @@ export class Seg_qualifier_2Context extends ParserRuleContext {
 			listener.exitSeg_qualifier_2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitSeg_qualifier_2) {
-			return visitor.visitSeg_qualifier_2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11429,14 +11331,6 @@ export class Seg_qualifier_3Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitSeg_qualifier_3) {
 			listener.exitSeg_qualifier_3(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitSeg_qualifier_3) {
-			return visitor.visitSeg_qualifier_3(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11481,14 +11375,6 @@ export class StmtContext extends ParserRuleContext {
 			listener.exitStmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitStmt) {
-			return visitor.visitStmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11524,14 +11410,6 @@ export class DeclarationContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitDeclaration) {
 			listener.exitDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitDeclaration) {
-			return visitor.visitDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11571,14 +11449,6 @@ export class Declaration_exp1Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitDeclaration_exp1) {
 			listener.exitDeclaration_exp1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitDeclaration_exp1) {
-			return visitor.visitDeclaration_exp1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11621,14 +11491,6 @@ export class Declaration_exp2Context extends ParserRuleContext {
 			listener.exitDeclaration_exp2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitDeclaration_exp2) {
-			return visitor.visitDeclaration_exp2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11655,14 +11517,6 @@ export class Declaration_exp3Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitDeclaration_exp3) {
 			listener.exitDeclaration_exp3(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitDeclaration_exp3) {
-			return visitor.visitDeclaration_exp3(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11696,14 +11550,6 @@ export class Declaration_exp4Context extends ParserRuleContext {
 			listener.exitDeclaration_exp4(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitDeclaration_exp4) {
-			return visitor.visitDeclaration_exp4(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11728,14 +11574,6 @@ export class Declaration_exp5Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitDeclaration_exp5) {
 			listener.exitDeclaration_exp5(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitDeclaration_exp5) {
-			return visitor.visitDeclaration_exp5(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11778,14 +11616,6 @@ export class Declaration_exp_f1Context extends ParserRuleContext {
 			listener.exitDeclaration_exp_f1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitDeclaration_exp_f1) {
-			return visitor.visitDeclaration_exp_f1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11812,14 +11642,6 @@ export class Declaration_exp_f2Context extends ParserRuleContext {
 			listener.exitDeclaration_exp_f2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitDeclaration_exp_f2) {
-			return visitor.visitDeclaration_exp_f2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11843,14 +11665,6 @@ export class InitExpressionContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitInitExpression) {
 			listener.exitInitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitInitExpression) {
-			return visitor.visitInitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11879,14 +11693,6 @@ export class Var_addrContext extends ParserRuleContext {
 			listener.exitVar_addr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitVar_addr) {
-			return visitor.visitVar_addr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11909,14 +11715,6 @@ export class Value_expContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitValue_exp) {
 			listener.exitValue_exp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitValue_exp) {
-			return visitor.visitValue_exp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12012,14 +11810,6 @@ export class Value_exp2Context extends ParserRuleContext {
 			listener.exitValue_exp2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitValue_exp2) {
-			return visitor.visitValue_exp2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12044,14 +11834,6 @@ export class TermContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitTerm) {
 			listener.exitTerm(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12083,14 +11865,6 @@ export class FactorContext extends ParserRuleContext {
 			listener.exitFactor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFactor) {
-			return visitor.visitFactor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12115,14 +11889,6 @@ export class AtomContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitAtom) {
 			listener.exitAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12161,14 +11927,6 @@ export class ComputeContext extends ParserRuleContext {
 			listener.exitCompute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitCompute) {
-			return visitor.visitCompute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12197,14 +11955,6 @@ export class If_compute_movContext extends ParserRuleContext {
 			listener.exitIf_compute_mov(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitIf_compute_mov) {
-			return visitor.visitIf_compute_mov(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12230,14 +11980,6 @@ export class If_compute_mov_expContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitIf_compute_mov_exp) {
 			listener.exitIf_compute_mov_exp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitIf_compute_mov_exp) {
-			return visitor.visitIf_compute_mov_exp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12298,14 +12040,6 @@ export class Compute_mov_expContext extends ParserRuleContext {
 			listener.exitCompute_mov_exp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitCompute_mov_exp) {
-			return visitor.visitCompute_mov_exp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12332,14 +12066,6 @@ export class Mov_exp_1Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMov_exp_1) {
 			listener.exitMov_exp_1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_1) {
-			return visitor.visitMov_exp_1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12370,14 +12096,6 @@ export class Mov_exp_1_1Context extends ParserRuleContext {
 			listener.exitMov_exp_1_1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_1_1) {
-			return visitor.visitMov_exp_1_1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12404,14 +12122,6 @@ export class Mov_exp_1_2Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMov_exp_1_2) {
 			listener.exitMov_exp_1_2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_1_2) {
-			return visitor.visitMov_exp_1_2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12445,14 +12155,6 @@ export class Mov_exp_3aContext extends ParserRuleContext {
 			listener.exitMov_exp_3a(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_3a) {
-			return visitor.visitMov_exp_3a(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12482,14 +12184,6 @@ export class Mov_exp_3bContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMov_exp_3b) {
 			listener.exitMov_exp_3b(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_3b) {
-			return visitor.visitMov_exp_3b(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12523,14 +12217,6 @@ export class Mov_exp_3cContext extends ParserRuleContext {
 			listener.exitMov_exp_3c(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_3c) {
-			return visitor.visitMov_exp_3c(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12560,14 +12246,6 @@ export class Mov_exp_3dContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMov_exp_3d) {
 			listener.exitMov_exp_3d(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_3d) {
-			return visitor.visitMov_exp_3d(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12601,14 +12279,6 @@ export class Mov_exp_4aContext extends ParserRuleContext {
 			listener.exitMov_exp_4a(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_4a) {
-			return visitor.visitMov_exp_4a(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12631,14 +12301,6 @@ export class Mov_exp_4bContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMov_exp_4b) {
 			listener.exitMov_exp_4b(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_4b) {
-			return visitor.visitMov_exp_4b(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12672,14 +12334,6 @@ export class Mov_exp_4cContext extends ParserRuleContext {
 			listener.exitMov_exp_4c(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_4c) {
-			return visitor.visitMov_exp_4c(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12702,14 +12356,6 @@ export class Mov_exp_4dContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMov_exp_4d) {
 			listener.exitMov_exp_4d(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_4d) {
-			return visitor.visitMov_exp_4d(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12738,14 +12384,6 @@ export class Mov_exp_5Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMov_exp_5) {
 			listener.exitMov_exp_5(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_5) {
-			return visitor.visitMov_exp_5(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12779,14 +12417,6 @@ export class Mov_exp_6aContext extends ParserRuleContext {
 			listener.exitMov_exp_6a(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_6a) {
-			return visitor.visitMov_exp_6a(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12816,14 +12446,6 @@ export class Mov_exp_6bContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMov_exp_6b) {
 			listener.exitMov_exp_6b(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_6b) {
-			return visitor.visitMov_exp_6b(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12863,14 +12485,6 @@ export class Mov_exp_7Context extends ParserRuleContext {
 			listener.exitMov_exp_7(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMov_exp_7) {
-			return visitor.visitMov_exp_7(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12899,14 +12513,6 @@ export class Mem_addr_ia_mbContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMem_addr_ia_mb) {
 			listener.exitMem_addr_ia_mb(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_ia_mb) {
-			return visitor.visitMem_addr_ia_mb(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12939,14 +12545,6 @@ export class Mem_addr_ic_mdContext extends ParserRuleContext {
 			listener.exitMem_addr_ic_md(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_ic_md) {
-			return visitor.visitMem_addr_ic_md(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12975,14 +12573,6 @@ export class Mem_addr_md_icContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMem_addr_md_ic) {
 			listener.exitMem_addr_md_ic(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_md_ic) {
-			return visitor.visitMem_addr_md_ic(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13015,14 +12605,6 @@ export class Mem_addr_mb_iaContext extends ParserRuleContext {
 			listener.exitMem_addr_mb_ia(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_mb_ia) {
-			return visitor.visitMem_addr_mb_ia(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13051,14 +12633,6 @@ export class Mem_addr_ia_intContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMem_addr_ia_int) {
 			listener.exitMem_addr_ia_int(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_ia_int) {
-			return visitor.visitMem_addr_ia_int(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13091,14 +12665,6 @@ export class Mem_addr_ic_intContext extends ParserRuleContext {
 			listener.exitMem_addr_ic_int(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_ic_int) {
-			return visitor.visitMem_addr_ic_int(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13127,14 +12693,6 @@ export class Mem_addr_int_iaContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMem_addr_int_ia) {
 			listener.exitMem_addr_int_ia(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_int_ia) {
-			return visitor.visitMem_addr_int_ia(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13167,14 +12725,6 @@ export class Mem_addr_int_icContext extends ParserRuleContext {
 			listener.exitMem_addr_int_ic(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_int_ic) {
-			return visitor.visitMem_addr_int_ic(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13194,14 +12744,6 @@ export class Mem_addr_intContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMem_addr_int) {
 			listener.exitMem_addr_int(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_int) {
-			return visitor.visitMem_addr_int(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13236,14 +12778,6 @@ export class Mem_addr_int_Context extends ParserRuleContext {
 			listener.exitMem_addr_int_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_int_) {
-			return visitor.visitMem_addr_int_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13267,14 +12801,6 @@ export class Mem_addr_dm_ia_mbContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMem_addr_dm_ia_mb) {
 			listener.exitMem_addr_dm_ia_mb(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_dm_ia_mb) {
-			return visitor.visitMem_addr_dm_ia_mb(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13302,14 +12828,6 @@ export class Mem_addr_pm_ic_mdContext extends ParserRuleContext {
 			listener.exitMem_addr_pm_ic_md(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_pm_ic_md) {
-			return visitor.visitMem_addr_pm_ic_md(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13333,14 +12851,6 @@ export class Mem_addr_dm_mb_iaContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMem_addr_dm_mb_ia) {
 			listener.exitMem_addr_dm_mb_ia(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_dm_mb_ia) {
-			return visitor.visitMem_addr_dm_mb_ia(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13368,14 +12878,6 @@ export class Mem_addr_pm_md_icContext extends ParserRuleContext {
 			listener.exitMem_addr_pm_md_ic(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_pm_md_ic) {
-			return visitor.visitMem_addr_pm_md_ic(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13399,14 +12901,6 @@ export class Mem_addr_dm_ia_intContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMem_addr_dm_ia_int) {
 			listener.exitMem_addr_dm_ia_int(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_dm_ia_int) {
-			return visitor.visitMem_addr_dm_ia_int(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13434,14 +12928,6 @@ export class Mem_addr_pm_ic_intContext extends ParserRuleContext {
 			listener.exitMem_addr_pm_ic_int(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_pm_ic_int) {
-			return visitor.visitMem_addr_pm_ic_int(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13465,14 +12951,6 @@ export class Mem_addr_dm_int_iaContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMem_addr_dm_int_ia) {
 			listener.exitMem_addr_dm_int_ia(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_dm_int_ia) {
-			return visitor.visitMem_addr_dm_int_ia(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13500,14 +12978,6 @@ export class Mem_addr_pm_int_icContext extends ParserRuleContext {
 			listener.exitMem_addr_pm_int_ic(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_pm_int_ic) {
-			return visitor.visitMem_addr_pm_int_ic(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13533,14 +13003,6 @@ export class Mem_addr_dm_intContext extends ParserRuleContext {
 			listener.exitMem_addr_dm_int(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_dm_int) {
-			return visitor.visitMem_addr_dm_int(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13564,14 +13026,6 @@ export class Mem_addr_pm_intContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMem_addr_pm_int) {
 			listener.exitMem_addr_pm_int(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMem_addr_pm_int) {
-			return visitor.visitMem_addr_pm_int(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13610,14 +13064,6 @@ export class Fixpoint_alu_opContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitFixpoint_alu_op) {
 			listener.exitFixpoint_alu_op(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFixpoint_alu_op) {
-			return visitor.visitFixpoint_alu_op(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13686,14 +13132,6 @@ export class R_expContext extends ParserRuleContext {
 			listener.exitR_exp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitR_exp) {
-			return visitor.visitR_exp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13730,14 +13168,6 @@ export class Floating_point_alu_opContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitFloating_point_alu_op) {
 			listener.exitFloating_point_alu_op(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFloating_point_alu_op) {
-			return visitor.visitFloating_point_alu_op(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13799,14 +13229,6 @@ export class F_expContext extends ParserRuleContext {
 			listener.exitF_exp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitF_exp) {
-			return visitor.visitF_exp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13853,14 +13275,6 @@ export class Multi_opContext extends ParserRuleContext {
 			listener.exitMulti_op(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMulti_op) {
-			return visitor.visitMulti_op(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13893,14 +13307,6 @@ export class Multi_rContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMulti_r) {
 			listener.exitMulti_r(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMulti_r) {
-			return visitor.visitMulti_r(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13938,14 +13344,6 @@ export class Multi_exp_rContext extends ParserRuleContext {
 			listener.exitMulti_exp_r(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMulti_exp_r) {
-			return visitor.visitMulti_exp_r(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13977,14 +13375,6 @@ export class Multi_exp_mrfContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMulti_exp_mrf) {
 			listener.exitMulti_exp_mrf(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMulti_exp_mrf) {
-			return visitor.visitMulti_exp_mrf(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14020,14 +13410,6 @@ export class Multi_exp_mrbContext extends ParserRuleContext {
 			listener.exitMulti_exp_mrb(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMulti_exp_mrb) {
-			return visitor.visitMulti_exp_mrb(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14049,14 +13431,6 @@ export class MrContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMr) {
 			listener.exitMr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMr) {
-			return visitor.visitMr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14094,14 +13468,6 @@ export class Shifter_opContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitShifter_op) {
 			listener.exitShifter_op(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitShifter_op) {
-			return visitor.visitShifter_op(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14161,14 +13527,6 @@ export class Shifter_expContext extends ParserRuleContext {
 			listener.exitShifter_exp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitShifter_exp) {
-			return visitor.visitShifter_exp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14197,14 +13555,6 @@ export class Sec_opContext extends ParserRuleContext {
 			listener.exitSec_op(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitSec_op) {
-			return visitor.visitSec_op(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14230,14 +13580,6 @@ export class Sec_op2Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitSec_op2) {
 			listener.exitSec_op2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitSec_op2) {
-			return visitor.visitSec_op2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14271,14 +13613,6 @@ export class Bit_dataContext extends ParserRuleContext {
 			listener.exitBit_data(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitBit_data) {
-			return visitor.visitBit_data(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14300,14 +13634,6 @@ export class Add_or_subContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitAdd_or_sub) {
 			listener.exitAdd_or_sub(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitAdd_or_sub) {
-			return visitor.visitAdd_or_sub(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14335,14 +13661,6 @@ export class Dual_opContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitDual_op) {
 			listener.exitDual_op(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitDual_op) {
-			return visitor.visitDual_op(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14385,14 +13703,6 @@ export class Dual_add_rContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitDual_add_r) {
 			listener.exitDual_add_r(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitDual_add_r) {
-			return visitor.visitDual_add_r(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14444,14 +13754,6 @@ export class Parallel_multiContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitParallel_multi) {
 			listener.exitParallel_multi(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitParallel_multi) {
-			return visitor.visitParallel_multi(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14508,14 +13810,6 @@ export class Flow_control_expContext extends ParserRuleContext {
 			listener.exitFlow_control_exp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_exp) {
-			return visitor.visitFlow_control_exp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14544,14 +13838,6 @@ export class Flow_contorl_8Context extends ParserRuleContext {
 			listener.exitFlow_contorl_8(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_contorl_8) {
-			return visitor.visitFlow_contorl_8(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14577,14 +13863,6 @@ export class Flow_contorl_8_expContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitFlow_contorl_8_exp) {
 			listener.exitFlow_contorl_8_exp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_contorl_8_exp) {
-			return visitor.visitFlow_contorl_8_exp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14620,14 +13898,6 @@ export class Flow_control_9_and_11Context extends ParserRuleContext {
 			listener.exitFlow_control_9_and_11(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_9_and_11) {
-			return visitor.visitFlow_control_9_and_11(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14659,14 +13929,6 @@ export class Flow_control_9_and_11_expContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitFlow_control_9_and_11_exp) {
 			listener.exitFlow_control_9_and_11_exp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_9_and_11_exp) {
-			return visitor.visitFlow_control_9_and_11_exp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14714,14 +13976,6 @@ export class Flow_control_10Context extends ParserRuleContext {
 			listener.exitFlow_control_10(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_10) {
-			return visitor.visitFlow_control_10(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14747,14 +14001,6 @@ export class Flow_control_10_fragContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitFlow_control_10_frag) {
 			listener.exitFlow_control_10_frag(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_10_frag) {
-			return visitor.visitFlow_control_10_frag(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14790,14 +14036,6 @@ export class Flow_control_12Context extends ParserRuleContext {
 			listener.exitFlow_control_12(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_12) {
-			return visitor.visitFlow_control_12(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14823,14 +14061,6 @@ export class Lcntr_vContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitLcntr_v) {
 			listener.exitLcntr_v(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitLcntr_v) {
-			return visitor.visitLcntr_v(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14862,14 +14092,6 @@ export class Flow_control_13Context extends ParserRuleContext {
 			listener.exitFlow_control_13(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_13) {
-			return visitor.visitFlow_control_13(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14898,14 +14120,6 @@ export class Flow_control_8aContext extends ParserRuleContext {
 			listener.exitFlow_control_8a(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_8a) {
-			return visitor.visitFlow_control_8a(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14932,14 +14146,6 @@ export class Flow_control_8bContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitFlow_control_8b) {
 			listener.exitFlow_control_8b(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_8b) {
-			return visitor.visitFlow_control_8b(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14974,14 +14180,6 @@ export class Flow_control_9aContext extends ParserRuleContext {
 			listener.exitFlow_control_9a(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_9a) {
-			return visitor.visitFlow_control_9a(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15014,14 +14212,6 @@ export class Flow_control_9bContext extends ParserRuleContext {
 			listener.exitFlow_control_9b(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_9b) {
-			return visitor.visitFlow_control_9b(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15049,14 +14239,6 @@ export class Flow_control_11aContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitFlow_control_11a) {
 			listener.exitFlow_control_11a(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_11a) {
-			return visitor.visitFlow_control_11a(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15088,14 +14270,6 @@ export class Flow_control_11bContext extends ParserRuleContext {
 			listener.exitFlow_control_11b(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitFlow_control_11b) {
-			return visitor.visitFlow_control_11b(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15123,14 +14297,6 @@ export class Jump_addr_int_or_pcContext extends ParserRuleContext {
 			listener.exitJump_addr_int_or_pc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitJump_addr_int_or_pc) {
-			return visitor.visitJump_addr_int_or_pc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15156,14 +14322,6 @@ export class Jump_addr_md_or_pcContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitJump_addr_md_or_pc) {
 			listener.exitJump_addr_md_or_pc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitJump_addr_md_or_pc) {
-			return visitor.visitJump_addr_md_or_pc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15194,14 +14352,6 @@ export class Jump_addr_pcContext extends ParserRuleContext {
 			listener.exitJump_addr_pc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitJump_addr_pc) {
-			return visitor.visitJump_addr_pc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15226,14 +14376,6 @@ export class Jump_addr_intContext extends ParserRuleContext {
 			listener.exitJump_addr_int(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitJump_addr_int) {
-			return visitor.visitJump_addr_int(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15256,14 +14398,6 @@ export class Jump_modifierContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitJump_modifier) {
 			listener.exitJump_modifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitJump_modifier) {
-			return visitor.visitJump_modifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15294,14 +14428,6 @@ export class Jump_modifier_Context extends ParserRuleContext {
 			listener.exitJump_modifier_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitJump_modifier_) {
-			return visitor.visitJump_modifier_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15325,14 +14451,6 @@ export class Jump_modifier_1Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitJump_modifier_1) {
 			listener.exitJump_modifier_1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitJump_modifier_1) {
-			return visitor.visitJump_modifier_1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15359,14 +14477,6 @@ export class Jump_modifier2Context extends ParserRuleContext {
 			listener.exitJump_modifier2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitJump_modifier2) {
-			return visitor.visitJump_modifier2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15389,14 +14499,6 @@ export class Jump_modifier3Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitJump_modifier3) {
 			listener.exitJump_modifier3(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitJump_modifier3) {
-			return visitor.visitJump_modifier3(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15426,14 +14528,6 @@ export class Jump_modifier3_Context extends ParserRuleContext {
 			listener.exitJump_modifier3_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitJump_modifier3_) {
-			return visitor.visitJump_modifier3_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15456,14 +14550,6 @@ export class Jump_modifier3_1Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitJump_modifier3_1) {
 			listener.exitJump_modifier3_1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitJump_modifier3_1) {
-			return visitor.visitJump_modifier3_1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15499,14 +14585,6 @@ export class Imm_mov_expContext extends ParserRuleContext {
 			listener.exitImm_mov_exp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitImm_mov_exp) {
-			return visitor.visitImm_mov_exp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15536,14 +14614,6 @@ export class Imm_mov_14aContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitImm_mov_14a) {
 			listener.exitImm_mov_14a(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitImm_mov_14a) {
-			return visitor.visitImm_mov_14a(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15577,14 +14647,6 @@ export class Imm_mov_15aContext extends ParserRuleContext {
 			listener.exitImm_mov_15a(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitImm_mov_15a) {
-			return visitor.visitImm_mov_15a(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15614,14 +14676,6 @@ export class Imm_mov_14bContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitImm_mov_14b) {
 			listener.exitImm_mov_14b(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitImm_mov_14b) {
-			return visitor.visitImm_mov_14b(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15655,14 +14709,6 @@ export class Imm_mov_15bContext extends ParserRuleContext {
 			listener.exitImm_mov_15b(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitImm_mov_15b) {
-			return visitor.visitImm_mov_15b(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15694,14 +14740,6 @@ export class Imm_mov_16Context extends ParserRuleContext {
 			listener.exitImm_mov_16(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitImm_mov_16) {
-			return visitor.visitImm_mov_16(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15728,14 +14766,6 @@ export class Imm_mov_17Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitImm_mov_17) {
 			listener.exitImm_mov_17(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitImm_mov_17) {
-			return visitor.visitImm_mov_17(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15778,14 +14808,6 @@ export class U_reg2Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitU_reg2) {
 			listener.exitU_reg2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitU_reg2) {
-			return visitor.visitU_reg2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15868,14 +14890,6 @@ export class Misc_expContext extends ParserRuleContext {
 			listener.exitMisc_exp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMisc_exp) {
-			return visitor.visitMisc_exp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15900,14 +14914,6 @@ export class Misc_20Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMisc_20) {
 			listener.exitMisc_20(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMisc_20) {
-			return visitor.visitMisc_20(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15992,14 +14998,6 @@ export class Directive_expContext extends ParserRuleContext {
 			listener.exitDirective_exp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitDirective_exp) {
-			return visitor.visitDirective_exp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16035,14 +15033,6 @@ export class B_regContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitB_reg) {
 			listener.exitB_reg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitB_reg) {
-			return visitor.visitB_reg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16082,14 +15072,6 @@ export class L_regContext extends ParserRuleContext {
 			listener.exitL_reg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitL_reg) {
-			return visitor.visitL_reg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16125,14 +15107,6 @@ export class R_regContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitR_reg) {
 			listener.exitR_reg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitR_reg) {
-			return visitor.visitR_reg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16172,14 +15146,6 @@ export class F_regContext extends ParserRuleContext {
 			listener.exitF_reg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitF_reg) {
-			return visitor.visitF_reg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16208,14 +15174,6 @@ export class S_regContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitS_reg) {
 			listener.exitS_reg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitS_reg) {
-			return visitor.visitS_reg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16247,14 +15205,6 @@ export class IaContext extends ParserRuleContext {
 			listener.exitIa(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitIa) {
-			return visitor.visitIa(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16282,14 +15232,6 @@ export class MbContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMb) {
 			listener.exitMb(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMb) {
-			return visitor.visitMb(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16321,14 +15263,6 @@ export class IcContext extends ParserRuleContext {
 			listener.exitIc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitIc) {
-			return visitor.visitIc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16358,14 +15292,6 @@ export class MdContext extends ParserRuleContext {
 			listener.exitMd(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMd) {
-			return visitor.visitMd(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16393,14 +15319,6 @@ export class I_regContext extends ParserRuleContext {
 			listener.exitI_reg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitI_reg) {
-			return visitor.visitI_reg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16426,14 +15344,6 @@ export class M_regContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitM_reg) {
 			listener.exitM_reg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitM_reg) {
-			return visitor.visitM_reg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16469,14 +15379,6 @@ export class Dag_regContext extends ParserRuleContext {
 			listener.exitDag_reg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitDag_reg) {
-			return visitor.visitDag_reg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16502,14 +15404,6 @@ export class D_regContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitD_reg) {
 			listener.exitD_reg(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitD_reg) {
-			return visitor.visitD_reg(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16555,14 +15449,6 @@ export class U_regContext extends ParserRuleContext {
 			listener.exitU_reg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitU_reg) {
-			return visitor.visitU_reg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16585,14 +15471,6 @@ export class ConditionContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitCondition) {
 			listener.exitCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitCondition) {
-			return visitor.visitCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16639,14 +15517,6 @@ export class CconditionContext extends ParserRuleContext {
 			listener.exitCcondition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitCcondition) {
-			return visitor.visitCcondition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16669,14 +15539,6 @@ export class Multi_mod1Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMulti_mod1) {
 			listener.exitMulti_mod1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMulti_mod1) {
-			return visitor.visitMulti_mod1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16706,14 +15568,6 @@ export class Multi_mod1_Context extends ParserRuleContext {
 			listener.exitMulti_mod1_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMulti_mod1_) {
-			return visitor.visitMulti_mod1_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16736,14 +15590,6 @@ export class Multi_mod2Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMulti_mod2) {
 			listener.exitMulti_mod2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMulti_mod2) {
-			return visitor.visitMulti_mod2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16781,14 +15627,6 @@ export class Multi_mod2_Context extends ParserRuleContext {
 			listener.exitMulti_mod2_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMulti_mod2_) {
-			return visitor.visitMulti_mod2_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16811,14 +15649,6 @@ export class R3_0Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitR3_0) {
 			listener.exitR3_0(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitR3_0) {
-			return visitor.visitR3_0(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16846,14 +15676,6 @@ export class R7_4Context extends ParserRuleContext {
 			listener.exitR7_4(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitR7_4) {
-			return visitor.visitR7_4(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16877,14 +15699,6 @@ export class R11_8Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitR11_8) {
 			listener.exitR11_8(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitR11_8) {
-			return visitor.visitR11_8(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16912,14 +15726,6 @@ export class R15_12Context extends ParserRuleContext {
 			listener.exitR15_12(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitR15_12) {
-			return visitor.visitR15_12(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16942,14 +15748,6 @@ export class F3_0Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitF3_0) {
 			listener.exitF3_0(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitF3_0) {
-			return visitor.visitF3_0(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16977,14 +15775,6 @@ export class F7_4Context extends ParserRuleContext {
 			listener.exitF7_4(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitF7_4) {
-			return visitor.visitF7_4(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17008,14 +15798,6 @@ export class F11_8Context extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitF11_8) {
 			listener.exitF11_8(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitF11_8) {
-			return visitor.visitF11_8(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17043,14 +15825,6 @@ export class F15_12Context extends ParserRuleContext {
 			listener.exitF15_12(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitF15_12) {
-			return visitor.visitF15_12(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17072,14 +15846,6 @@ export class AddrContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitAddr) {
 			listener.exitAddr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitAddr) {
-			return visitor.visitAddr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17106,14 +15872,6 @@ export class MrfContext extends ParserRuleContext {
 			listener.exitMrf(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMrf) {
-			return visitor.visitMrf(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17136,14 +15894,6 @@ export class MrbContext extends ParserRuleContext {
 	public exitRule(listener: SHARCParserListener): void {
 		if (listener.exitMrb) {
 			listener.exitMrb(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: SHARCParserVisitor<Result>): Result {
-		if (visitor.visitMrb) {
-			return visitor.visitMrb(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

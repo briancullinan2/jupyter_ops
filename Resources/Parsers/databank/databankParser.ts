@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { databankListener } from "./databankListener";
-import { databankVisitor } from "./databankVisitor";
-
 
 export class databankParser extends Parser {
 	public static readonly T__0 = 1;
@@ -426,14 +424,6 @@ export class DatabankContext extends ParserRuleContext {
 			listener.exitDatabank(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: databankVisitor<Result>): Result {
-		if (visitor.visitDatabank) {
-			return visitor.visitDatabank(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -467,14 +457,6 @@ export class DatedseriesContext extends ParserRuleContext {
 			listener.exitDatedseries(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: databankVisitor<Result>): Result {
-		if (visitor.visitDatedseries) {
-			return visitor.visitDatedseries(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -505,14 +487,6 @@ export class UndatedseriesContext extends ParserRuleContext {
 			listener.exitUndatedseries(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: databankVisitor<Result>): Result {
-		if (visitor.visitUndatedseries) {
-			return visitor.visitUndatedseries(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -533,14 +507,6 @@ export class DatatypeContext extends ParserRuleContext {
 	public exitRule(listener: databankListener): void {
 		if (listener.exitDatatype) {
 			listener.exitDatatype(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: databankVisitor<Result>): Result {
-		if (visitor.visitDatatype) {
-			return visitor.visitDatatype(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -568,14 +534,6 @@ export class DatelineContext extends ParserRuleContext {
 			listener.exitDateline(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: databankVisitor<Result>): Result {
-		if (visitor.visitDateline) {
-			return visitor.visitDateline(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -601,14 +559,6 @@ export class SampleContext extends ParserRuleContext {
 			listener.exitSample(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: databankVisitor<Result>): Result {
-		if (visitor.visitSample) {
-			return visitor.visitSample(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -629,14 +579,6 @@ export class NumberContext extends ParserRuleContext {
 	public exitRule(listener: databankListener): void {
 		if (listener.exitNumber) {
 			listener.exitNumber(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: databankVisitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

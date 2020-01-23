@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { JSONListener } from "./JSONListener";
-import { JSONVisitor } from "./JSONVisitor";
-
 
 export class JSONParser extends Parser {
 	public static readonly T__0 = 1;
@@ -393,14 +391,6 @@ export class JsonContext extends ParserRuleContext {
 			listener.exitJson(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JSONVisitor<Result>): Result {
-		if (visitor.visitJson) {
-			return visitor.visitJson(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -431,14 +421,6 @@ export class ObjContext extends ParserRuleContext {
 			listener.exitObj(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JSONVisitor<Result>): Result {
-		if (visitor.visitObj) {
-			return visitor.visitObj(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -462,14 +444,6 @@ export class PairContext extends ParserRuleContext {
 	public exitRule(listener: JSONListener): void {
 		if (listener.exitPair) {
 			listener.exitPair(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JSONVisitor<Result>): Result {
-		if (visitor.visitPair) {
-			return visitor.visitPair(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -502,14 +476,6 @@ export class ArrayContext extends ParserRuleContext {
 			listener.exitArray(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JSONVisitor<Result>): Result {
-		if (visitor.visitArray) {
-			return visitor.visitArray(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -537,14 +503,6 @@ export class ValueContext extends ParserRuleContext {
 	public exitRule(listener: JSONListener): void {
 		if (listener.exitValue) {
 			listener.exitValue(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JSONVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

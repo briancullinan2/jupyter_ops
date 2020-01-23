@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { tnsnamesParserListener } from "./tnsnamesParserListener";
-import { tnsnamesParserVisitor } from "./tnsnamesParserVisitor";
-
 
 export class tnsnamesParser extends Parser {
 	public static readonly L_PAREN = 1;
@@ -4479,14 +4477,6 @@ export class TnsnamesContext extends ParserRuleContext {
 			listener.exitTnsnames(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitTnsnames) {
-			return visitor.visitTnsnames(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4518,14 +4508,6 @@ export class Tns_entryContext extends ParserRuleContext {
 			listener.exitTns_entry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitTns_entry) {
-			return visitor.visitTns_entry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4548,14 +4530,6 @@ export class IfileContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitIfile) {
 			listener.exitIfile(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitIfile) {
-			return visitor.visitIfile(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4598,14 +4572,6 @@ export class Lsnr_entryContext extends ParserRuleContext {
 			listener.exitLsnr_entry(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitLsnr_entry) {
-			return visitor.visitLsnr_entry(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4641,14 +4607,6 @@ export class Lsnr_descriptionContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitLsnr_description) {
 			listener.exitLsnr_description(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitLsnr_description) {
-			return visitor.visitLsnr_description(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4690,14 +4648,6 @@ export class Alias_listContext extends ParserRuleContext {
 			listener.exitAlias_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitAlias_list) {
-			return visitor.visitAlias_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4735,14 +4685,6 @@ export class AliasContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitAlias) {
 			listener.exitAlias(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitAlias) {
-			return visitor.visitAlias(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4788,14 +4730,6 @@ export class Description_listContext extends ParserRuleContext {
 			listener.exitDescription_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitDescription_list) {
-			return visitor.visitDescription_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4826,14 +4760,6 @@ export class Dl_paramsContext extends ParserRuleContext {
 			listener.exitDl_params(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitDl_params) {
-			return visitor.visitDl_params(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4862,14 +4788,6 @@ export class Dl_parameterContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitDl_parameter) {
 			listener.exitDl_parameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitDl_parameter) {
-			return visitor.visitDl_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4921,14 +4839,6 @@ export class DescriptionContext extends ParserRuleContext {
 			listener.exitDescription(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitDescription) {
-			return visitor.visitDescription(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4957,14 +4867,6 @@ export class D_paramsContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitD_params) {
 			listener.exitD_params(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitD_params) {
-			return visitor.visitD_params(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5024,14 +4926,6 @@ export class D_parameterContext extends ParserRuleContext {
 			listener.exitD_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitD_parameter) {
-			return visitor.visitD_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5056,14 +4950,6 @@ export class D_enableContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitD_enable) {
 			listener.exitD_enable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitD_enable) {
-			return visitor.visitD_enable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5092,14 +4978,6 @@ export class D_sduContext extends ParserRuleContext {
 			listener.exitD_sdu(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitD_sdu) {
-			return visitor.visitD_sdu(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5124,14 +5002,6 @@ export class D_recv_bufContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitD_recv_buf) {
 			listener.exitD_recv_buf(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitD_recv_buf) {
-			return visitor.visitD_recv_buf(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5160,14 +5030,6 @@ export class D_send_bufContext extends ParserRuleContext {
 			listener.exitD_send_buf(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitD_send_buf) {
-			return visitor.visitD_send_buf(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5192,14 +5054,6 @@ export class D_service_typeContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitD_service_type) {
 			listener.exitD_service_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitD_service_type) {
-			return visitor.visitD_service_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5230,14 +5084,6 @@ export class D_securityContext extends ParserRuleContext {
 			listener.exitD_security(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitD_security) {
-			return visitor.visitD_security(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5262,14 +5108,6 @@ export class D_conn_timeoutContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitD_conn_timeout) {
 			listener.exitD_conn_timeout(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitD_conn_timeout) {
-			return visitor.visitD_conn_timeout(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5298,14 +5136,6 @@ export class D_retry_countContext extends ParserRuleContext {
 			listener.exitD_retry_count(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitD_retry_count) {
-			return visitor.visitD_retry_count(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5332,14 +5162,6 @@ export class D_tctContext extends ParserRuleContext {
 			listener.exitD_tct(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitD_tct) {
-			return visitor.visitD_tct(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5364,14 +5186,6 @@ export class Ds_parameterContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitDs_parameter) {
 			listener.exitDs_parameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitDs_parameter) {
-			return visitor.visitDs_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5417,14 +5231,6 @@ export class Address_listContext extends ParserRuleContext {
 			listener.exitAddress_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitAddress_list) {
-			return visitor.visitAddress_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5453,14 +5259,6 @@ export class Al_paramsContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitAl_params) {
 			listener.exitAl_params(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitAl_params) {
-			return visitor.visitAl_params(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5493,14 +5291,6 @@ export class Al_parameterContext extends ParserRuleContext {
 			listener.exitAl_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitAl_parameter) {
-			return visitor.visitAl_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5527,14 +5317,6 @@ export class Al_failoverContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitAl_failover) {
 			listener.exitAl_failover(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitAl_failover) {
-			return visitor.visitAl_failover(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5565,14 +5347,6 @@ export class Al_load_balanceContext extends ParserRuleContext {
 			listener.exitAl_load_balance(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitAl_load_balance) {
-			return visitor.visitAl_load_balance(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5598,14 +5372,6 @@ export class Al_source_routeContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitAl_source_route) {
 			listener.exitAl_source_route(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitAl_source_route) {
-			return visitor.visitAl_source_route(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5639,14 +5405,6 @@ export class AddressContext extends ParserRuleContext {
 			listener.exitAddress(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitAddress) {
-			return visitor.visitAddress(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5677,14 +5435,6 @@ export class A_paramsContext extends ParserRuleContext {
 			listener.exitA_params(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitA_params) {
-			return visitor.visitA_params(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5710,14 +5460,6 @@ export class A_parameterContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitA_parameter) {
 			listener.exitA_parameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitA_parameter) {
-			return visitor.visitA_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5756,14 +5498,6 @@ export class Protocol_infoContext extends ParserRuleContext {
 			listener.exitProtocol_info(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitProtocol_info) {
-			return visitor.visitProtocol_info(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5786,14 +5520,6 @@ export class Tcp_protocolContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitTcp_protocol) {
 			listener.exitTcp_protocol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitTcp_protocol) {
-			return visitor.visitTcp_protocol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5826,14 +5552,6 @@ export class Tcp_paramsContext extends ParserRuleContext {
 			listener.exitTcp_params(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitTcp_params) {
-			return visitor.visitTcp_params(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5864,14 +5582,6 @@ export class Tcp_parameterContext extends ParserRuleContext {
 			listener.exitTcp_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitTcp_parameter) {
-			return visitor.visitTcp_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5898,14 +5608,6 @@ export class Tcp_hostContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitTcp_host) {
 			listener.exitTcp_host(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitTcp_host) {
-			return visitor.visitTcp_host(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5936,14 +5638,6 @@ export class Tcp_portContext extends ParserRuleContext {
 			listener.exitTcp_port(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitTcp_port) {
-			return visitor.visitTcp_port(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5968,14 +5662,6 @@ export class Tcp_tcpContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitTcp_tcp) {
 			listener.exitTcp_tcp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitTcp_tcp) {
-			return visitor.visitTcp_tcp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6018,14 +5704,6 @@ export class HostContext extends ParserRuleContext {
 			listener.exitHost(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitHost) {
-			return visitor.visitHost(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6046,14 +5724,6 @@ export class PortContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitPort) {
 			listener.exitPort(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitPort) {
-			return visitor.visitPort(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6078,14 +5748,6 @@ export class Ipc_protocolContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitIpc_protocol) {
 			listener.exitIpc_protocol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitIpc_protocol) {
-			return visitor.visitIpc_protocol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6118,14 +5780,6 @@ export class Ipc_paramsContext extends ParserRuleContext {
 			listener.exitIpc_params(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitIpc_params) {
-			return visitor.visitIpc_params(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6151,14 +5805,6 @@ export class Ipc_parameterContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitIpc_parameter) {
 			listener.exitIpc_parameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitIpc_parameter) {
-			return visitor.visitIpc_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6187,14 +5833,6 @@ export class Ipc_ipcContext extends ParserRuleContext {
 			listener.exitIpc_ipc(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitIpc_ipc) {
-			return visitor.visitIpc_ipc(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6221,14 +5859,6 @@ export class Ipc_keyContext extends ParserRuleContext {
 			listener.exitIpc_key(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitIpc_key) {
-			return visitor.visitIpc_key(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6251,14 +5881,6 @@ export class Spx_protocolContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitSpx_protocol) {
 			listener.exitSpx_protocol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitSpx_protocol) {
-			return visitor.visitSpx_protocol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6291,14 +5913,6 @@ export class Spx_paramsContext extends ParserRuleContext {
 			listener.exitSpx_params(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitSpx_params) {
-			return visitor.visitSpx_params(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6324,14 +5938,6 @@ export class Spx_parameterContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitSpx_parameter) {
 			listener.exitSpx_parameter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitSpx_parameter) {
-			return visitor.visitSpx_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6360,14 +5966,6 @@ export class Spx_spxContext extends ParserRuleContext {
 			listener.exitSpx_spx(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitSpx_spx) {
-			return visitor.visitSpx_spx(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6394,14 +5992,6 @@ export class Spx_serviceContext extends ParserRuleContext {
 			listener.exitSpx_service(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitSpx_service) {
-			return visitor.visitSpx_service(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6424,14 +6014,6 @@ export class Nmp_protocolContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitNmp_protocol) {
 			listener.exitNmp_protocol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitNmp_protocol) {
-			return visitor.visitNmp_protocol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6464,14 +6046,6 @@ export class Nmp_paramsContext extends ParserRuleContext {
 			listener.exitNmp_params(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitNmp_params) {
-			return visitor.visitNmp_params(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6502,14 +6076,6 @@ export class Nmp_parameterContext extends ParserRuleContext {
 			listener.exitNmp_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitNmp_parameter) {
-			return visitor.visitNmp_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6534,14 +6100,6 @@ export class Nmp_nmpContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitNmp_nmp) {
 			listener.exitNmp_nmp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitNmp_nmp) {
-			return visitor.visitNmp_nmp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6570,14 +6128,6 @@ export class Nmp_serverContext extends ParserRuleContext {
 			listener.exitNmp_server(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitNmp_server) {
-			return visitor.visitNmp_server(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6604,14 +6154,6 @@ export class Nmp_pipeContext extends ParserRuleContext {
 			listener.exitNmp_pipe(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitNmp_pipe) {
-			return visitor.visitNmp_pipe(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6634,14 +6176,6 @@ export class Beq_protocolContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitBeq_protocol) {
 			listener.exitBeq_protocol(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBeq_protocol) {
-			return visitor.visitBeq_protocol(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6672,14 +6206,6 @@ export class Beq_paramsContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitBeq_params) {
 			listener.exitBeq_params(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBeq_params) {
-			return visitor.visitBeq_params(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6715,14 +6241,6 @@ export class Beq_parameterContext extends ParserRuleContext {
 			listener.exitBeq_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBeq_parameter) {
-			return visitor.visitBeq_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6747,14 +6265,6 @@ export class Beq_beqContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitBeq_beq) {
 			listener.exitBeq_beq(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBeq_beq) {
-			return visitor.visitBeq_beq(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6783,14 +6293,6 @@ export class Beq_programContext extends ParserRuleContext {
 			listener.exitBeq_program(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBeq_program) {
-			return visitor.visitBeq_program(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6815,14 +6317,6 @@ export class Beq_argv0Context extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitBeq_argv0) {
 			listener.exitBeq_argv0(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBeq_argv0) {
-			return visitor.visitBeq_argv0(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6851,14 +6345,6 @@ export class Beq_argsContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitBeq_args) {
 			listener.exitBeq_args(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBeq_args) {
-			return visitor.visitBeq_args(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6894,14 +6380,6 @@ export class Ba_parameterContext extends ParserRuleContext {
 			listener.exitBa_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBa_parameter) {
-			return visitor.visitBa_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6928,14 +6406,6 @@ export class Ba_descriptionContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitBa_description) {
 			listener.exitBa_description(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBa_description) {
-			return visitor.visitBa_description(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6968,14 +6438,6 @@ export class Bad_paramsContext extends ParserRuleContext {
 			listener.exitBad_params(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBad_params) {
-			return visitor.visitBad_params(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7003,14 +6465,6 @@ export class Bad_parameterContext extends ParserRuleContext {
 			listener.exitBad_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBad_parameter) {
-			return visitor.visitBad_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7035,14 +6489,6 @@ export class Bad_localContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitBad_local) {
 			listener.exitBad_local(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBad_local) {
-			return visitor.visitBad_local(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7073,14 +6519,6 @@ export class Bad_addressContext extends ParserRuleContext {
 			listener.exitBad_address(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitBad_address) {
-			return visitor.visitBad_address(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7107,14 +6545,6 @@ export class Connect_dataContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitConnect_data) {
 			listener.exitConnect_data(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitConnect_data) {
-			return visitor.visitConnect_data(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7145,14 +6575,6 @@ export class Cd_paramsContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitCd_params) {
 			listener.exitCd_params(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitCd_params) {
-			return visitor.visitCd_params(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7203,14 +6625,6 @@ export class Cd_parameterContext extends ParserRuleContext {
 			listener.exitCd_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitCd_parameter) {
-			return visitor.visitCd_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7254,14 +6668,6 @@ export class Cd_service_nameContext extends ParserRuleContext {
 			listener.exitCd_service_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitCd_service_name) {
-			return visitor.visitCd_service_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7286,14 +6692,6 @@ export class Cd_sidContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitCd_sid) {
 			listener.exitCd_sid(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitCd_sid) {
-			return visitor.visitCd_sid(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7339,14 +6737,6 @@ export class Cd_instance_nameContext extends ParserRuleContext {
 			listener.exitCd_instance_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitCd_instance_name) {
-			return visitor.visitCd_instance_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7373,14 +6763,6 @@ export class Cd_failover_modeContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitCd_failover_mode) {
 			listener.exitCd_failover_mode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitCd_failover_mode) {
-			return visitor.visitCd_failover_mode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7426,14 +6808,6 @@ export class Cd_global_nameContext extends ParserRuleContext {
 			listener.exitCd_global_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitCd_global_name) {
-			return visitor.visitCd_global_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7458,14 +6832,6 @@ export class Cd_hsContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitCd_hs) {
 			listener.exitCd_hs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitCd_hs) {
-			return visitor.visitCd_hs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7513,14 +6879,6 @@ export class Cd_rdb_databaseContext extends ParserRuleContext {
 			listener.exitCd_rdb_database(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitCd_rdb_database) {
-			return visitor.visitCd_rdb_database(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7549,14 +6907,6 @@ export class Cd_serverContext extends ParserRuleContext {
 			listener.exitCd_server(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitCd_server) {
-			return visitor.visitCd_server(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7581,14 +6931,6 @@ export class Cd_urContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitCd_ur) {
 			listener.exitCd_ur(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitCd_ur) {
-			return visitor.visitCd_ur(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7619,14 +6961,6 @@ export class Fo_paramsContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitFo_params) {
 			listener.exitFo_params(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitFo_params) {
-			return visitor.visitFo_params(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7665,14 +6999,6 @@ export class Fo_parameterContext extends ParserRuleContext {
 			listener.exitFo_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitFo_parameter) {
-			return visitor.visitFo_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7699,14 +7025,6 @@ export class Fo_typeContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitFo_type) {
 			listener.exitFo_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitFo_type) {
-			return visitor.visitFo_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7752,14 +7070,6 @@ export class Fo_backupContext extends ParserRuleContext {
 			listener.exitFo_backup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitFo_backup) {
-			return visitor.visitFo_backup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7785,14 +7095,6 @@ export class Fo_methodContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitFo_method) {
 			listener.exitFo_method(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitFo_method) {
-			return visitor.visitFo_method(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7821,14 +7123,6 @@ export class Fo_retriesContext extends ParserRuleContext {
 			listener.exitFo_retries(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitFo_retries) {
-			return visitor.visitFo_retries(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7853,14 +7147,6 @@ export class Fo_delayContext extends ParserRuleContext {
 	public exitRule(listener: tnsnamesParserListener): void {
 		if (listener.exitFo_delay) {
 			listener.exitFo_delay(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tnsnamesParserVisitor<Result>): Result {
-		if (visitor.visitFo_delay) {
-			return visitor.visitFo_delay(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

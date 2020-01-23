@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { Fortran77ParserListener } from "./Fortran77ParserListener";
-import { Fortran77ParserVisitor } from "./Fortran77ParserVisitor";
-
 
 export class Fortran77Parser extends Parser {
 	public static readonly PROGRAM = 1;
@@ -9860,14 +9858,6 @@ export class ProgramContext extends ParserRuleContext {
 			listener.exitProgram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitProgram) {
-			return visitor.visitProgram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9901,14 +9891,6 @@ export class ExecutableUnitContext extends ParserRuleContext {
 			listener.exitExecutableUnit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitExecutableUnit) {
-			return visitor.visitExecutableUnit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9934,14 +9916,6 @@ export class MainProgramContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitMainProgram) {
 			listener.exitMainProgram(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitMainProgram) {
-			return visitor.visitMainProgram(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9971,14 +9945,6 @@ export class FunctionSubprogramContext extends ParserRuleContext {
 			listener.exitFunctionSubprogram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitFunctionSubprogram) {
-			return visitor.visitFunctionSubprogram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10006,14 +9972,6 @@ export class SubroutineSubprogramContext extends ParserRuleContext {
 			listener.exitSubroutineSubprogram(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitSubroutineSubprogram) {
-			return visitor.visitSubroutineSubprogram(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10039,14 +9997,6 @@ export class BlockdataSubprogramContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitBlockdataSubprogram) {
 			listener.exitBlockdataSubprogram(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitBlockdataSubprogram) {
-			return visitor.visitBlockdataSubprogram(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10080,14 +10030,6 @@ export class OtherSpecificationStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitOtherSpecificationStatement) {
 			listener.exitOtherSpecificationStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitOtherSpecificationStatement) {
-			return visitor.visitOtherSpecificationStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10165,14 +10107,6 @@ export class ExecutableStatementContext extends ParserRuleContext {
 			listener.exitExecutableStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitExecutableStatement) {
-			return visitor.visitExecutableStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10195,14 +10129,6 @@ export class ProgramStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitProgramStatement) {
 			listener.exitProgramStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitProgramStatement) {
-			return visitor.visitProgramStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10231,14 +10157,6 @@ export class EntryStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitEntryStatement) {
 			listener.exitEntryStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitEntryStatement) {
-			return visitor.visitEntryStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10272,14 +10190,6 @@ export class FunctionStatementContext extends ParserRuleContext {
 			listener.exitFunctionStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitFunctionStatement) {
-			return visitor.visitFunctionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10301,14 +10211,6 @@ export class BlockdataStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitBlockdataStatement) {
 			listener.exitBlockdataStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitBlockdataStatement) {
-			return visitor.visitBlockdataStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10337,14 +10239,6 @@ export class SubroutineStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitSubroutineStatement) {
 			listener.exitSubroutineStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitSubroutineStatement) {
-			return visitor.visitSubroutineStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10384,14 +10278,6 @@ export class NamelistContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitNamelist) {
 			listener.exitNamelist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitNamelist) {
-			return visitor.visitNamelist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10457,14 +10343,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10498,14 +10376,6 @@ export class SubprogramBodyContext extends ParserRuleContext {
 			listener.exitSubprogramBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitSubprogramBody) {
-			return visitor.visitSubprogramBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10532,14 +10402,6 @@ export class WholeStatementContext extends ParserRuleContext {
 			listener.exitWholeStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitWholeStatement) {
-			return visitor.visitWholeStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10561,14 +10423,6 @@ export class EndStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitEndStatement) {
 			listener.exitEndStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitEndStatement) {
-			return visitor.visitEndStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10594,14 +10448,6 @@ export class DimensionStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitDimensionStatement) {
 			listener.exitDimensionStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDimensionStatement) {
-			return visitor.visitDimensionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10630,14 +10476,6 @@ export class ArrayDeclaratorContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitArrayDeclarator) {
 			listener.exitArrayDeclarator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitArrayDeclarator) {
-			return visitor.visitArrayDeclarator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10679,14 +10517,6 @@ export class ArrayDeclaratorsContext extends ParserRuleContext {
 			listener.exitArrayDeclarators(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitArrayDeclarators) {
-			return visitor.visitArrayDeclarators(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10726,14 +10556,6 @@ export class ArrayDeclaratorExtentsContext extends ParserRuleContext {
 			listener.exitArrayDeclaratorExtents(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitArrayDeclaratorExtents) {
-			return visitor.visitArrayDeclaratorExtents(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10764,14 +10586,6 @@ export class ArrayDeclaratorExtentContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitArrayDeclaratorExtent) {
 			listener.exitArrayDeclaratorExtent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitArrayDeclaratorExtent) {
-			return visitor.visitArrayDeclaratorExtent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10812,14 +10626,6 @@ export class EquivalenceStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitEquivalenceStatement) {
 			listener.exitEquivalenceStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitEquivalenceStatement) {
-			return visitor.visitEquivalenceStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10863,14 +10669,6 @@ export class EquivEntityGroupContext extends ParserRuleContext {
 			listener.exitEquivEntityGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitEquivEntityGroup) {
-			return visitor.visitEquivEntityGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10893,14 +10691,6 @@ export class EquivEntityContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitEquivEntity) {
 			listener.exitEquivEntity(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitEquivEntity) {
-			return visitor.visitEquivEntity(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10946,14 +10736,6 @@ export class CommonStatementContext extends ParserRuleContext {
 			listener.exitCommonStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCommonStatement) {
-			return visitor.visitCommonStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10985,14 +10767,6 @@ export class CommonNameContext extends ParserRuleContext {
 			listener.exitCommonName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCommonName) {
-			return visitor.visitCommonName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11016,14 +10790,6 @@ export class CommonItemContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitCommonItem) {
 			listener.exitCommonItem(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCommonItem) {
-			return visitor.visitCommonItem(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11065,14 +10831,6 @@ export class CommonItemsContext extends ParserRuleContext {
 			listener.exitCommonItems(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCommonItems) {
-			return visitor.visitCommonItems(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11100,14 +10858,6 @@ export class CommonBlockContext extends ParserRuleContext {
 			listener.exitCommonBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCommonBlock) {
-			return visitor.visitCommonBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11128,14 +10878,6 @@ export class CommentStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitCommentStatement) {
 			listener.exitCommentStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCommentStatement) {
-			return visitor.visitCommentStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11169,14 +10911,6 @@ export class TypeStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitTypeStatement) {
 			listener.exitTypeStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitTypeStatement) {
-			return visitor.visitTypeStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11218,14 +10952,6 @@ export class TypeStatementNameListContext extends ParserRuleContext {
 			listener.exitTypeStatementNameList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitTypeStatementNameList) {
-			return visitor.visitTypeStatementNameList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11249,14 +10975,6 @@ export class TypeStatementNameContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitTypeStatementName) {
 			listener.exitTypeStatementName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitTypeStatementName) {
-			return visitor.visitTypeStatementName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11298,14 +11016,6 @@ export class TypeStatementNameCharListContext extends ParserRuleContext {
 			listener.exitTypeStatementNameCharList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitTypeStatementNameCharList) {
-			return visitor.visitTypeStatementNameCharList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11333,14 +11043,6 @@ export class TypeStatementNameCharContext extends ParserRuleContext {
 			listener.exitTypeStatementNameChar(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitTypeStatementNameChar) {
-			return visitor.visitTypeStatementNameChar(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11364,14 +11066,6 @@ export class TypeStatementLenSpecContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitTypeStatementLenSpec) {
 			listener.exitTypeStatementLenSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitTypeStatementLenSpec) {
-			return visitor.visitTypeStatementLenSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11403,14 +11097,6 @@ export class TypenameContext extends ParserRuleContext {
 			listener.exitTypename(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitTypename) {
-			return visitor.visitTypename(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11438,14 +11124,6 @@ export class TypeContext extends ParserRuleContext {
 			listener.exitType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11467,14 +11145,6 @@ export class TypenameLenContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitTypenameLen) {
 			listener.exitTypenameLen(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitTypenameLen) {
-			return visitor.visitTypenameLen(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11517,14 +11187,6 @@ export class PointerStatementContext extends ParserRuleContext {
 			listener.exitPointerStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitPointerStatement) {
-			return visitor.visitPointerStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11558,14 +11220,6 @@ export class PointerDeclContext extends ParserRuleContext {
 			listener.exitPointerDecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitPointerDecl) {
-			return visitor.visitPointerDecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11592,14 +11246,6 @@ export class ImplicitStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitImplicitStatement) {
 			listener.exitImplicitStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitImplicitStatement) {
-			return visitor.visitImplicitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11629,14 +11275,6 @@ export class ImplicitSpecContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitImplicitSpec) {
 			listener.exitImplicitSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitImplicitSpec) {
-			return visitor.visitImplicitSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11678,14 +11316,6 @@ export class ImplicitSpecsContext extends ParserRuleContext {
 			listener.exitImplicitSpecs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitImplicitSpecs) {
-			return visitor.visitImplicitSpecs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11708,14 +11338,6 @@ export class ImplicitNoneContext extends ParserRuleContext {
 			listener.exitImplicitNone(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitImplicitNone) {
-			return visitor.visitImplicitNone(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11736,14 +11358,6 @@ export class ImplicitLetterContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitImplicitLetter) {
 			listener.exitImplicitLetter(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitImplicitLetter) {
-			return visitor.visitImplicitLetter(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11775,14 +11389,6 @@ export class ImplicitRangeContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitImplicitRange) {
 			listener.exitImplicitRange(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitImplicitRange) {
-			return visitor.visitImplicitRange(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11822,14 +11428,6 @@ export class ImplicitLettersContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitImplicitLetters) {
 			listener.exitImplicitLetters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitImplicitLetters) {
-			return visitor.visitImplicitLetters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11884,14 +11482,6 @@ export class LenSpecificationContext extends ParserRuleContext {
 			listener.exitLenSpecification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitLenSpecification) {
-			return visitor.visitLenSpecification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11919,14 +11509,6 @@ export class CharacterWithLenContext extends ParserRuleContext {
 			listener.exitCharacterWithLen(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCharacterWithLen) {
-			return visitor.visitCharacterWithLen(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11950,14 +11532,6 @@ export class CwlLenContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitCwlLen) {
 			listener.exitCwlLen(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCwlLen) {
-			return visitor.visitCwlLen(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11985,14 +11559,6 @@ export class ParameterStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitParameterStatement) {
 			listener.exitParameterStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitParameterStatement) {
-			return visitor.visitParameterStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12034,14 +11600,6 @@ export class ParamlistContext extends ParserRuleContext {
 			listener.exitParamlist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitParamlist) {
-			return visitor.visitParamlist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12066,14 +11624,6 @@ export class ParamassignContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitParamassign) {
 			listener.exitParamassign(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitParamassign) {
-			return visitor.visitParamassign(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12101,14 +11651,6 @@ export class ExternalStatementContext extends ParserRuleContext {
 			listener.exitExternalStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitExternalStatement) {
-			return visitor.visitExternalStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12132,14 +11674,6 @@ export class IntrinsicStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitIntrinsicStatement) {
 			listener.exitIntrinsicStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIntrinsicStatement) {
-			return visitor.visitIntrinsicStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12182,14 +11716,6 @@ export class SaveStatementContext extends ParserRuleContext {
 			listener.exitSaveStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitSaveStatement) {
-			return visitor.visitSaveStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12219,14 +11745,6 @@ export class SaveEntityContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitSaveEntity) {
 			listener.exitSaveEntity(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitSaveEntity) {
-			return visitor.visitSaveEntity(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12269,14 +11787,6 @@ export class DataStatementContext extends ParserRuleContext {
 			listener.exitDataStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDataStatement) {
-			return visitor.visitDataStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12302,14 +11812,6 @@ export class DataStatementItemContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitDataStatementItem) {
 			listener.exitDataStatementItem(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDataStatementItem) {
-			return visitor.visitDataStatementItem(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12347,14 +11849,6 @@ export class DataStatementMultipleContext extends ParserRuleContext {
 			listener.exitDataStatementMultiple(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDataStatementMultiple) {
-			return visitor.visitDataStatementMultiple(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12380,14 +11874,6 @@ export class DataStatementEntityContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitDataStatementEntity) {
 			listener.exitDataStatementEntity(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDataStatementEntity) {
-			return visitor.visitDataStatementEntity(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12430,14 +11916,6 @@ export class Dse1Context extends ParserRuleContext {
 			listener.exitDse1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDse1) {
-			return visitor.visitDse1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12478,14 +11956,6 @@ export class Dse2Context extends ParserRuleContext {
 			listener.exitDse2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDse2) {
-			return visitor.visitDse2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12514,14 +11984,6 @@ export class DataImpliedDoContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitDataImpliedDo) {
 			listener.exitDataImpliedDo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDataImpliedDo) {
-			return visitor.visitDataImpliedDo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12565,14 +12027,6 @@ export class DataImpliedDoRangeContext extends ParserRuleContext {
 			listener.exitDataImpliedDoRange(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDataImpliedDoRange) {
-			return visitor.visitDataImpliedDoRange(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12601,14 +12055,6 @@ export class DataImpliedDoListContext extends ParserRuleContext {
 			listener.exitDataImpliedDoList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDataImpliedDoList) {
-			return visitor.visitDataImpliedDoList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12634,14 +12080,6 @@ export class DataImpliedDoListWhatContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitDataImpliedDoListWhat) {
 			listener.exitDataImpliedDoListWhat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDataImpliedDoListWhat) {
-			return visitor.visitDataImpliedDoListWhat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12679,14 +12117,6 @@ export class GotoStatementContext extends ParserRuleContext {
 			listener.exitGotoStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitGotoStatement) {
-			return visitor.visitGotoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12709,14 +12139,6 @@ export class UnconditionalGotoContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitUnconditionalGoto) {
 			listener.exitUnconditionalGoto(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitUnconditionalGoto) {
-			return visitor.visitUnconditionalGoto(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12749,14 +12171,6 @@ export class ComputedGotoContext extends ParserRuleContext {
 			listener.exitComputedGoto(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitComputedGoto) {
-			return visitor.visitComputedGoto(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12777,14 +12191,6 @@ export class LblRefContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitLblRef) {
 			listener.exitLblRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitLblRef) {
-			return visitor.visitLblRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12826,14 +12232,6 @@ export class LabelListContext extends ParserRuleContext {
 			listener.exitLabelList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitLabelList) {
-			return visitor.visitLabelList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12860,14 +12258,6 @@ export class AssignedGotoContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitAssignedGoto) {
 			listener.exitAssignedGoto(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitAssignedGoto) {
-			return visitor.visitAssignedGoto(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12904,14 +12294,6 @@ export class IfStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitIfStatement) {
 			listener.exitIfStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -12953,14 +12335,6 @@ export class ArithmeticIfStatementContext extends ParserRuleContext {
 			listener.exitArithmeticIfStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitArithmeticIfStatement) {
-			return visitor.visitArithmeticIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -12983,14 +12357,6 @@ export class LogicalIfStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitLogicalIfStatement) {
 			listener.exitLogicalIfStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitLogicalIfStatement) {
-			return visitor.visitLogicalIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13032,14 +12398,6 @@ export class BlockIfStatementContext extends ParserRuleContext {
 			listener.exitBlockIfStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitBlockIfStatement) {
-			return visitor.visitBlockIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13069,14 +12427,6 @@ export class FirstIfBlockContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitFirstIfBlock) {
 			listener.exitFirstIfBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitFirstIfBlock) {
-			return visitor.visitFirstIfBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13118,14 +12468,6 @@ export class ElseIfStatementContext extends ParserRuleContext {
 			listener.exitElseIfStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitElseIfStatement) {
-			return visitor.visitElseIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13157,14 +12499,6 @@ export class ElseStatementContext extends ParserRuleContext {
 			listener.exitElseStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitElseStatement) {
-			return visitor.visitElseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13187,14 +12521,6 @@ export class EndIfStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitEndIfStatement) {
 			listener.exitEndIfStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitEndIfStatement) {
-			return visitor.visitEndIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13223,14 +12549,6 @@ export class DoStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitDoStatement) {
 			listener.exitDoStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDoStatement) {
-			return visitor.visitDoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13276,14 +12594,6 @@ export class DoVarArgsContext extends ParserRuleContext {
 			listener.exitDoVarArgs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDoVarArgs) {
-			return visitor.visitDoVarArgs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13310,14 +12620,6 @@ export class DoWithLabelContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitDoWithLabel) {
 			listener.exitDoWithLabel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDoWithLabel) {
-			return visitor.visitDoWithLabel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13350,14 +12652,6 @@ export class DoBodyContext extends ParserRuleContext {
 			listener.exitDoBody(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDoBody) {
-			return visitor.visitDoBody(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13388,14 +12682,6 @@ export class DoWithEndDoContext extends ParserRuleContext {
 			listener.exitDoWithEndDo(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitDoWithEndDo) {
-			return visitor.visitDoWithEndDo(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13420,14 +12706,6 @@ export class EnddoStatementContext extends ParserRuleContext {
 			listener.exitEnddoStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitEnddoStatement) {
-			return visitor.visitEnddoStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13448,14 +12726,6 @@ export class ContinueStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitContinueStatement) {
 			listener.exitContinueStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitContinueStatement) {
-			return visitor.visitContinueStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13482,14 +12752,6 @@ export class StopStatementContext extends ParserRuleContext {
 			listener.exitStopStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitStopStatement) {
-			return visitor.visitStopStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13512,14 +12774,6 @@ export class PauseStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitPauseStatement) {
 			listener.exitPauseStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitPauseStatement) {
-			return visitor.visitPauseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13567,14 +12821,6 @@ export class WriteStatementContext extends ParserRuleContext {
 			listener.exitWriteStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitWriteStatement) {
-			return visitor.visitWriteStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13616,14 +12862,6 @@ export class ReadStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitReadStatement) {
 			listener.exitReadStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitReadStatement) {
-			return visitor.visitReadStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13669,14 +12907,6 @@ export class PrintStatementContext extends ParserRuleContext {
 			listener.exitPrintStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitPrintStatement) {
-			return visitor.visitPrintStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13703,14 +12933,6 @@ export class AssignmentStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitAssignmentStatement) {
 			listener.exitAssignmentStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitAssignmentStatement) {
-			return visitor.visitAssignmentStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13752,14 +12974,6 @@ export class ControlInfoListContext extends ParserRuleContext {
 			listener.exitControlInfoList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlInfoList) {
-			return visitor.visitControlInfoList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13787,14 +13001,6 @@ export class ControlErrSpecContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlErrSpec) {
 			listener.exitControlErrSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlErrSpec) {
-			return visitor.visitControlErrSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -13854,14 +13060,6 @@ export class ControlInfoListItemContext extends ParserRuleContext {
 			listener.exitControlInfoListItem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlInfoListItem) {
-			return visitor.visitControlInfoListItem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13906,14 +13104,6 @@ export class IoListContext extends ParserRuleContext {
 			listener.exitIoList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIoList) {
-			return visitor.visitIoList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -13946,14 +13136,6 @@ export class IoListItemContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitIoListItem) {
 			listener.exitIoListItem(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIoListItem) {
-			return visitor.visitIoListItem(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14002,14 +13184,6 @@ export class IoImpliedDoListContext extends ParserRuleContext {
 			listener.exitIoImpliedDoList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIoImpliedDoList) {
-			return visitor.visitIoImpliedDoList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14050,14 +13224,6 @@ export class OpenStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitOpenStatement) {
 			listener.exitOpenStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitOpenStatement) {
-			return visitor.visitOpenStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14124,14 +13290,6 @@ export class OpenControlContext extends ParserRuleContext {
 			listener.exitOpenControl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitOpenControl) {
-			return visitor.visitOpenControl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14152,14 +13310,6 @@ export class ControlFmtContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlFmt) {
 			listener.exitControlFmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlFmt) {
-			return visitor.visitControlFmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14184,14 +13334,6 @@ export class ControlUnitContext extends ParserRuleContext {
 			listener.exitControlUnit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlUnit) {
-			return visitor.visitControlUnit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14212,14 +13354,6 @@ export class ControlRecContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlRec) {
 			listener.exitControlRec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlRec) {
-			return visitor.visitControlRec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14244,14 +13378,6 @@ export class ControlEndContext extends ParserRuleContext {
 			listener.exitControlEnd(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlEnd) {
-			return visitor.visitControlEnd(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14272,14 +13398,6 @@ export class ControlErrContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlErr) {
 			listener.exitControlErr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlErr) {
-			return visitor.visitControlErr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14304,14 +13422,6 @@ export class ControlIostatContext extends ParserRuleContext {
 			listener.exitControlIostat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlIostat) {
-			return visitor.visitControlIostat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14332,14 +13442,6 @@ export class ControlFileContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlFile) {
 			listener.exitControlFile(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlFile) {
-			return visitor.visitControlFile(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14364,14 +13466,6 @@ export class ControlStatusContext extends ParserRuleContext {
 			listener.exitControlStatus(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlStatus) {
-			return visitor.visitControlStatus(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14392,14 +13486,6 @@ export class ControlAccessContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlAccess) {
 			listener.exitControlAccess(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlAccess) {
-			return visitor.visitControlAccess(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14424,14 +13510,6 @@ export class ControlPositionContext extends ParserRuleContext {
 			listener.exitControlPosition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlPosition) {
-			return visitor.visitControlPosition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14452,14 +13530,6 @@ export class ControlFormContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlForm) {
 			listener.exitControlForm(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlForm) {
-			return visitor.visitControlForm(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14484,14 +13554,6 @@ export class ControlReclContext extends ParserRuleContext {
 			listener.exitControlRecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlRecl) {
-			return visitor.visitControlRecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14512,14 +13574,6 @@ export class ControlBlankContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlBlank) {
 			listener.exitControlBlank(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlBlank) {
-			return visitor.visitControlBlank(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14544,14 +13598,6 @@ export class ControlExistContext extends ParserRuleContext {
 			listener.exitControlExist(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlExist) {
-			return visitor.visitControlExist(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14572,14 +13618,6 @@ export class ControlOpenedContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlOpened) {
 			listener.exitControlOpened(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlOpened) {
-			return visitor.visitControlOpened(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14604,14 +13642,6 @@ export class ControlNumberContext extends ParserRuleContext {
 			listener.exitControlNumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlNumber) {
-			return visitor.visitControlNumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14632,14 +13662,6 @@ export class ControlNamedContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlNamed) {
 			listener.exitControlNamed(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlNamed) {
-			return visitor.visitControlNamed(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14664,14 +13686,6 @@ export class ControlNameContext extends ParserRuleContext {
 			listener.exitControlName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlName) {
-			return visitor.visitControlName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14692,14 +13706,6 @@ export class ControlSequentialContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlSequential) {
 			listener.exitControlSequential(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlSequential) {
-			return visitor.visitControlSequential(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14724,14 +13730,6 @@ export class ControlDirectContext extends ParserRuleContext {
 			listener.exitControlDirect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlDirect) {
-			return visitor.visitControlDirect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14752,14 +13750,6 @@ export class ControlFormattedContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlFormatted) {
 			listener.exitControlFormatted(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlFormatted) {
-			return visitor.visitControlFormatted(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14784,14 +13774,6 @@ export class ControlUnformattedContext extends ParserRuleContext {
 			listener.exitControlUnformatted(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlUnformatted) {
-			return visitor.visitControlUnformatted(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14812,14 +13794,6 @@ export class ControlNextrecContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitControlNextrec) {
 			listener.exitControlNextrec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitControlNextrec) {
-			return visitor.visitControlNextrec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14862,14 +13836,6 @@ export class CloseStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitCloseStatement) {
 			listener.exitCloseStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCloseStatement) {
-			return visitor.visitCloseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14915,14 +13881,6 @@ export class CloseControlContext extends ParserRuleContext {
 			listener.exitCloseControl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCloseControl) {
-			return visitor.visitCloseControl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14963,14 +13921,6 @@ export class InquireStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitInquireStatement) {
 			listener.exitInquireStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitInquireStatement) {
-			return visitor.visitInquireStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15058,14 +14008,6 @@ export class InquireControlContext extends ParserRuleContext {
 			listener.exitInquireControl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitInquireControl) {
-			return visitor.visitInquireControl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15089,14 +14031,6 @@ export class BackspaceStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitBackspaceStatement) {
 			listener.exitBackspaceStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitBackspaceStatement) {
-			return visitor.visitBackspaceStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15124,14 +14058,6 @@ export class EndfileStatementContext extends ParserRuleContext {
 			listener.exitEndfileStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitEndfileStatement) {
-			return visitor.visitEndfileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15155,14 +14081,6 @@ export class RewindStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitRewindStatement) {
 			listener.exitRewindStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitRewindStatement) {
-			return visitor.visitRewindStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15215,14 +14133,6 @@ export class BerFinishContext extends ParserRuleContext {
 			listener.exitBerFinish(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitBerFinish) {
-			return visitor.visitBerFinish(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15260,14 +14170,6 @@ export class BerFinishItemContext extends ParserRuleContext {
 			listener.exitBerFinishItem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitBerFinishItem) {
-			return visitor.visitBerFinishItem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15291,14 +14193,6 @@ export class UnitIdentifierContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitUnitIdentifier) {
 			listener.exitUnitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitUnitIdentifier) {
-			return visitor.visitUnitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15328,14 +14222,6 @@ export class FormatIdentifierContext extends ParserRuleContext {
 			listener.exitFormatIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitFormatIdentifier) {
-			return visitor.visitFormatIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15361,14 +14247,6 @@ export class FormatStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitFormatStatement) {
 			listener.exitFormatStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitFormatStatement) {
-			return visitor.visitFormatStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15419,14 +14297,6 @@ export class FmtSpecContext extends ParserRuleContext {
 			listener.exitFmtSpec(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitFmtSpec) {
-			return visitor.visitFmtSpec(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15449,14 +14319,6 @@ export class FormatsepContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitFormatsep) {
 			listener.exitFormatsep(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitFormatsep) {
-			return visitor.visitFormatsep(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15486,14 +14348,6 @@ export class FormateditContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitFormatedit) {
 			listener.exitFormatedit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitFormatedit) {
-			return visitor.visitFormatedit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15526,14 +14380,6 @@ export class EditElementContext extends ParserRuleContext {
 			listener.exitEditElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitEditElement) {
-			return visitor.visitEditElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15563,14 +14409,6 @@ export class StatementFunctionStatementContext extends ParserRuleContext {
 			listener.exitStatementFunctionStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitStatementFunctionStatement) {
-			return visitor.visitStatementFunctionStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15598,14 +14436,6 @@ export class SfArgsContext extends ParserRuleContext {
 			listener.exitSfArgs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitSfArgs) {
-			return visitor.visitSfArgs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15629,14 +14459,6 @@ export class CallStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitCallStatement) {
 			listener.exitCallStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCallStatement) {
-			return visitor.visitCallStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15664,14 +14486,6 @@ export class SubroutineCallContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitSubroutineCall) {
 			listener.exitSubroutineCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitSubroutineCall) {
-			return visitor.visitSubroutineCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15713,14 +14527,6 @@ export class CallArgumentListContext extends ParserRuleContext {
 			listener.exitCallArgumentList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCallArgumentList) {
-			return visitor.visitCallArgumentList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15749,14 +14555,6 @@ export class CallArgumentContext extends ParserRuleContext {
 			listener.exitCallArgument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCallArgument) {
-			return visitor.visitCallArgument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15780,14 +14578,6 @@ export class ReturnStatementContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitReturnStatement) {
 			listener.exitReturnStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitReturnStatement) {
-			return visitor.visitReturnStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15819,14 +14609,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15866,14 +14648,6 @@ export class NcExprContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitNcExpr) {
 			listener.exitNcExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitNcExpr) {
-			return visitor.visitNcExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15924,14 +14698,6 @@ export class Lexpr0Context extends ParserRuleContext {
 			listener.exitLexpr0(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitLexpr0) {
-			return visitor.visitLexpr0(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15969,14 +14735,6 @@ export class Lexpr1Context extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitLexpr1) {
 			listener.exitLexpr1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitLexpr1) {
-			return visitor.visitLexpr1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16018,14 +14776,6 @@ export class Lexpr2Context extends ParserRuleContext {
 			listener.exitLexpr2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitLexpr2) {
-			return visitor.visitLexpr2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16052,14 +14802,6 @@ export class Lexpr3Context extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitLexpr3) {
 			listener.exitLexpr3(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitLexpr3) {
-			return visitor.visitLexpr3(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16096,14 +14838,6 @@ export class Lexpr4Context extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitLexpr4) {
 			listener.exitLexpr4(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitLexpr4) {
-			return visitor.visitLexpr4(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16154,14 +14888,6 @@ export class Aexpr0Context extends ParserRuleContext {
 			listener.exitAexpr0(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitAexpr0) {
-			return visitor.visitAexpr0(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16210,14 +14936,6 @@ export class Aexpr1Context extends ParserRuleContext {
 			listener.exitAexpr1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitAexpr1) {
-			return visitor.visitAexpr1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16260,14 +14978,6 @@ export class Aexpr2Context extends ParserRuleContext {
 			listener.exitAexpr2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitAexpr2) {
-			return visitor.visitAexpr2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16305,14 +15015,6 @@ export class Aexpr3Context extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitAexpr3) {
 			listener.exitAexpr3(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitAexpr3) {
-			return visitor.visitAexpr3(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16356,14 +15058,6 @@ export class Aexpr4Context extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitAexpr4) {
 			listener.exitAexpr4(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitAexpr4) {
-			return visitor.visitAexpr4(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16414,14 +15108,6 @@ export class IexprContext extends ParserRuleContext {
 			listener.exitIexpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIexpr) {
-			return visitor.visitIexpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16468,14 +15154,6 @@ export class IexprCodeContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitIexprCode) {
 			listener.exitIexprCode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIexprCode) {
-			return visitor.visitIexprCode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16526,14 +15204,6 @@ export class Iexpr1Context extends ParserRuleContext {
 			listener.exitIexpr1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIexpr1) {
-			return visitor.visitIexpr1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16576,14 +15246,6 @@ export class Iexpr2Context extends ParserRuleContext {
 			listener.exitIexpr2(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIexpr2) {
-			return visitor.visitIexpr2(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16610,14 +15272,6 @@ export class Iexpr3Context extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitIexpr3) {
 			listener.exitIexpr3(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIexpr3) {
-			return visitor.visitIexpr3(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16650,14 +15304,6 @@ export class Iexpr4Context extends ParserRuleContext {
 			listener.exitIexpr4(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIexpr4) {
-			return visitor.visitIexpr4(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16680,14 +15326,6 @@ export class ConstantExprContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitConstantExpr) {
 			listener.exitConstantExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitConstantExpr) {
-			return visitor.visitConstantExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16714,14 +15352,6 @@ export class ArithmeticExpressionContext extends ParserRuleContext {
 			listener.exitArithmeticExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitArithmeticExpression) {
-			return visitor.visitArithmeticExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16744,14 +15374,6 @@ export class IntegerExprContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitIntegerExpr) {
 			listener.exitIntegerExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIntegerExpr) {
-			return visitor.visitIntegerExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16778,14 +15400,6 @@ export class IntRealDpExprContext extends ParserRuleContext {
 			listener.exitIntRealDpExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIntRealDpExpr) {
-			return visitor.visitIntRealDpExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16808,14 +15422,6 @@ export class ArithmeticConstExprContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitArithmeticConstExpr) {
 			listener.exitArithmeticConstExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitArithmeticConstExpr) {
-			return visitor.visitArithmeticConstExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16842,14 +15448,6 @@ export class IntConstantExprContext extends ParserRuleContext {
 			listener.exitIntConstantExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIntConstantExpr) {
-			return visitor.visitIntConstantExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16872,14 +15470,6 @@ export class CharacterExpressionContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitCharacterExpression) {
 			listener.exitCharacterExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitCharacterExpression) {
-			return visitor.visitCharacterExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16912,14 +15502,6 @@ export class ConcatOpContext extends ParserRuleContext {
 			listener.exitConcatOp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitConcatOp) {
-			return visitor.visitConcatOp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16944,14 +15526,6 @@ export class LogicalExpressionContext extends ParserRuleContext {
 			listener.exitLogicalExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitLogicalExpression) {
-			return visitor.visitLogicalExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16974,14 +15548,6 @@ export class LogicalConstExprContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitLogicalConstExpr) {
 			listener.exitLogicalConstExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitLogicalConstExpr) {
-			return visitor.visitLogicalConstExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17026,14 +15592,6 @@ export class ArrayElementNameContext extends ParserRuleContext {
 			listener.exitArrayElementName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitArrayElementName) {
-			return visitor.visitArrayElementName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17075,14 +15633,6 @@ export class SubscriptsContext extends ParserRuleContext {
 			listener.exitSubscripts(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitSubscripts) {
-			return visitor.visitSubscripts(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17112,14 +15662,6 @@ export class VarRefContext extends ParserRuleContext {
 			listener.exitVarRef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitVarRef) {
-			return visitor.visitVarRef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17146,14 +15688,6 @@ export class VarRefCodeContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitVarRefCode) {
 			listener.exitVarRefCode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitVarRefCode) {
-			return visitor.visitVarRefCode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17189,14 +15723,6 @@ export class SubstringAppContext extends ParserRuleContext {
 			listener.exitSubstringApp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitSubstringApp) {
-			return visitor.visitSubstringApp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17217,14 +15743,6 @@ export class VariableNameContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitVariableName) {
 			listener.exitVariableName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitVariableName) {
-			return visitor.visitVariableName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17249,14 +15767,6 @@ export class ArrayNameContext extends ParserRuleContext {
 			listener.exitArrayName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitArrayName) {
-			return visitor.visitArrayName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17279,14 +15789,6 @@ export class SubroutineNameContext extends ParserRuleContext {
 			listener.exitSubroutineName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitSubroutineName) {
-			return visitor.visitSubroutineName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17307,14 +15809,6 @@ export class FunctionNameContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitFunctionName) {
 			listener.exitFunctionName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitFunctionName) {
-			return visitor.visitFunctionName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17348,14 +15842,6 @@ export class ConstantContext extends ParserRuleContext {
 			listener.exitConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitConstant) {
-			return visitor.visitConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17380,14 +15866,6 @@ export class UnsignedArithmeticConstantContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitUnsignedArithmeticConstant) {
 			listener.exitUnsignedArithmeticConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitUnsignedArithmeticConstant) {
-			return visitor.visitUnsignedArithmeticConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17450,14 +15928,6 @@ export class ComplexConstantContext extends ParserRuleContext {
 			listener.exitComplexConstant(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitComplexConstant) {
-			return visitor.visitComplexConstant(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17479,14 +15949,6 @@ export class LogicalConstantContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitLogicalConstant) {
 			listener.exitLogicalConstant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitLogicalConstant) {
-			return visitor.visitLogicalConstant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17512,14 +15974,6 @@ export class IdentifierContext extends ParserRuleContext {
 			listener.exitIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17540,14 +15994,6 @@ export class ToContext extends ParserRuleContext {
 	public exitRule(listener: Fortran77ParserListener): void {
 		if (listener.exitTo) {
 			listener.exitTo(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Fortran77ParserVisitor<Result>): Result {
-		if (visitor.visitTo) {
-			return visitor.visitTo(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { fastaListener } from "./fastaListener";
-import { fastaVisitor } from "./fastaVisitor";
-
 
 export class fastaParser extends Parser {
 	public static readonly COMMENTLINE = 1;
@@ -304,14 +302,6 @@ export class SequenceContext extends ParserRuleContext {
 			listener.exitSequence(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: fastaVisitor<Result>): Result {
-		if (visitor.visitSequence) {
-			return visitor.visitSequence(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -340,14 +330,6 @@ export class SectionContext extends ParserRuleContext {
 	public exitRule(listener: fastaListener): void {
 		if (listener.exitSection) {
 			listener.exitSection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: fastaVisitor<Result>): Result {
-		if (visitor.visitSection) {
-			return visitor.visitSection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -380,14 +362,6 @@ export class SequencelinesContext extends ParserRuleContext {
 			listener.exitSequencelines(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: fastaVisitor<Result>): Result {
-		if (visitor.visitSequencelines) {
-			return visitor.visitSequencelines(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -410,14 +384,6 @@ export class DescriptionlineContext extends ParserRuleContext {
 			listener.exitDescriptionline(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: fastaVisitor<Result>): Result {
-		if (visitor.visitDescriptionline) {
-			return visitor.visitDescriptionline(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -438,14 +404,6 @@ export class CommentlineContext extends ParserRuleContext {
 	public exitRule(listener: fastaListener): void {
 		if (listener.exitCommentline) {
 			listener.exitCommentline(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: fastaVisitor<Result>): Result {
-		if (visitor.visitCommentline) {
-			return visitor.visitCommentline(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

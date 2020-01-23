@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { CapnProtoListener } from "./CapnProtoListener";
-import { CapnProtoVisitor } from "./CapnProtoVisitor";
-
 
 export class CapnProtoParser extends Parser {
 	public static readonly T__0 = 1;
@@ -2219,14 +2217,6 @@ export class DocumentContext extends ParserRuleContext {
 			listener.exitDocument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitDocument) {
-			return visitor.visitDocument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2247,14 +2237,6 @@ export class File_identifierContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitFile_identifier) {
 			listener.exitFile_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitFile_identifier) {
-			return visitor.visitFile_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2288,14 +2270,6 @@ export class Using_importContext extends ParserRuleContext {
 			listener.exitUsing_import(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitUsing_import) {
-			return visitor.visitUsing_import(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2317,14 +2291,6 @@ export class NamespaceContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitNamespace) {
 			listener.exitNamespace(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitNamespace) {
-			return visitor.visitNamespace(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2366,14 +2332,6 @@ export class Document_contentContext extends ParserRuleContext {
 			listener.exitDocument_content(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitDocument_content) {
-			return visitor.visitDocument_content(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2408,14 +2366,6 @@ export class Struct_defContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitStruct_def) {
 			listener.exitStruct_def(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitStruct_def) {
-			return visitor.visitStruct_def(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2469,14 +2419,6 @@ export class Struct_contentContext extends ParserRuleContext {
 			listener.exitStruct_content(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitStruct_content) {
-			return visitor.visitStruct_content(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2514,14 +2456,6 @@ export class Interface_defContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitInterface_def) {
 			listener.exitInterface_def(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitInterface_def) {
-			return visitor.visitInterface_def(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2566,14 +2500,6 @@ export class Interface_contentContext extends ParserRuleContext {
 			listener.exitInterface_content(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitInterface_content) {
-			return visitor.visitInterface_content(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2603,14 +2529,6 @@ export class Field_defContext extends ParserRuleContext {
 			listener.exitField_def(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitField_def) {
-			return visitor.visitField_def(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2637,14 +2555,6 @@ export class TypeContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitType) {
 			listener.exitType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2686,14 +2596,6 @@ export class Inner_typeContext extends ParserRuleContext {
 			listener.exitInner_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitInner_type) {
-			return visitor.visitInner_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2728,14 +2630,6 @@ export class Enum_defContext extends ParserRuleContext {
 			listener.exitEnum_def(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitEnum_def) {
-			return visitor.visitEnum_def(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2759,14 +2653,6 @@ export class Annotation_referenceContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitAnnotation_reference) {
 			listener.exitAnnotation_reference(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitAnnotation_reference) {
-			return visitor.visitAnnotation_reference(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2793,14 +2679,6 @@ export class Enum_contentContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitEnum_content) {
 			listener.exitEnum_content(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitEnum_content) {
-			return visitor.visitEnum_content(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2835,14 +2713,6 @@ export class Named_union_defContext extends ParserRuleContext {
 			listener.exitNamed_union_def(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitNamed_union_def) {
-			return visitor.visitNamed_union_def(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2871,14 +2741,6 @@ export class Unnamed_union_defContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitUnnamed_union_def) {
 			listener.exitUnnamed_union_def(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitUnnamed_union_def) {
-			return visitor.visitUnnamed_union_def(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2914,14 +2776,6 @@ export class Union_contentContext extends ParserRuleContext {
 			listener.exitUnion_content(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitUnion_content) {
-			return visitor.visitUnion_content(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2953,14 +2807,6 @@ export class Group_defContext extends ParserRuleContext {
 			listener.exitGroup_def(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitGroup_def) {
-			return visitor.visitGroup_def(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2989,14 +2835,6 @@ export class Group_contentContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitGroup_content) {
 			listener.exitGroup_content(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitGroup_content) {
-			return visitor.visitGroup_content(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3043,14 +2881,6 @@ export class Function_defContext extends ParserRuleContext {
 			listener.exitFunction_def(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitFunction_def) {
-			return visitor.visitFunction_def(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3079,14 +2909,6 @@ export class Generic_type_parametersContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitGeneric_type_parameters) {
 			listener.exitGeneric_type_parameters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitGeneric_type_parameters) {
-			return visitor.visitGeneric_type_parameters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3137,14 +2959,6 @@ export class Function_parametersContext extends ParserRuleContext {
 			listener.exitFunction_parameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitFunction_parameters) {
-			return visitor.visitFunction_parameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3178,14 +2992,6 @@ export class Annotation_defContext extends ParserRuleContext {
 			listener.exitAnnotation_def(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitAnnotation_def) {
-			return visitor.visitAnnotation_def(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3205,14 +3011,6 @@ export class Annotation_parametersContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitAnnotation_parameters) {
 			listener.exitAnnotation_parameters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitAnnotation_parameters) {
-			return visitor.visitAnnotation_parameters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3241,14 +3039,6 @@ export class Const_defContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitConst_def) {
 			listener.exitConst_def(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitConst_def) {
-			return visitor.visitConst_def(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3296,14 +3086,6 @@ export class Const_valueContext extends ParserRuleContext {
 			listener.exitConst_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitConst_value) {
-			return visitor.visitConst_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3343,14 +3125,6 @@ export class Literal_unionContext extends ParserRuleContext {
 			listener.exitLiteral_union(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitLiteral_union) {
-			return visitor.visitLiteral_union(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3381,14 +3155,6 @@ export class Literal_listContext extends ParserRuleContext {
 			listener.exitLiteral_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitLiteral_list) {
-			return visitor.visitLiteral_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3409,14 +3175,6 @@ export class Literal_bytesContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitLiteral_bytes) {
 			listener.exitLiteral_bytes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitLiteral_bytes) {
-			return visitor.visitLiteral_bytes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3442,14 +3200,6 @@ export class Union_mappingContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitUnion_mapping) {
 			listener.exitUnion_mapping(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitUnion_mapping) {
-			return visitor.visitUnion_mapping(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3483,14 +3233,6 @@ export class Inner_usingContext extends ParserRuleContext {
 	public exitRule(listener: CapnProtoListener): void {
 		if (listener.exitInner_using) {
 			listener.exitInner_using(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CapnProtoVisitor<Result>): Result {
-		if (visitor.visitInner_using) {
-			return visitor.visitInner_using(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

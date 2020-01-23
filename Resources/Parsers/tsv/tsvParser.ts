@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { tsvListener } from "./tsvListener";
-import { tsvVisitor } from "./tsvVisitor";
-
 
 export class tsvParser extends Parser {
 	public static readonly TAB = 1;
@@ -272,14 +270,6 @@ export class TsvFileContext extends ParserRuleContext {
 			listener.exitTsvFile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tsvVisitor<Result>): Result {
-		if (visitor.visitTsvFile) {
-			return visitor.visitTsvFile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -302,14 +292,6 @@ export class HdrContext extends ParserRuleContext {
 	public exitRule(listener: tsvListener): void {
 		if (listener.exitHdr) {
 			listener.exitHdr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tsvVisitor<Result>): Result {
-		if (visitor.visitHdr) {
-			return visitor.visitHdr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -352,14 +334,6 @@ export class RowContext extends ParserRuleContext {
 			listener.exitRow(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: tsvVisitor<Result>): Result {
-		if (visitor.visitRow) {
-			return visitor.visitRow(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -381,14 +355,6 @@ export class FieldContext extends ParserRuleContext {
 	public exitRule(listener: tsvListener): void {
 		if (listener.exitField) {
 			listener.exitField(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: tsvVisitor<Result>): Result {
-		if (visitor.visitField) {
-			return visitor.visitField(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

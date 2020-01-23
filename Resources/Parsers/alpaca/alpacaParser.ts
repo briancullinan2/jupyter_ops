@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { alpacaListener } from "./alpacaListener";
-import { alpacaVisitor } from "./alpacaVisitor";
-
 
 export class alpacaParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1231,14 +1229,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1269,14 +1259,6 @@ export class DefnsContext extends ParserRuleContext {
 			listener.exitDefns(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitDefns) {
-			return visitor.visitDefns(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1305,14 +1287,6 @@ export class DefnContext extends ParserRuleContext {
 	public exitRule(listener: alpacaListener): void {
 		if (listener.exitDefn) {
 			listener.exitDefn(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitDefn) {
-			return visitor.visitDefn(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1352,14 +1326,6 @@ export class StateDefnContext extends ParserRuleContext {
 			listener.exitStateDefn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitStateDefn) {
-			return visitor.visitStateDefn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1396,14 +1362,6 @@ export class ClassDefnContext extends ParserRuleContext {
 			listener.exitClassDefn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitClassDefn) {
-			return visitor.visitClassDefn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1431,14 +1389,6 @@ export class NbhdDefnContext extends ParserRuleContext {
 			listener.exitNbhdDefn(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitNbhdDefn) {
-			return visitor.visitNbhdDefn(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1461,14 +1411,6 @@ export class ClassIDContext extends ParserRuleContext {
 	public exitRule(listener: alpacaListener): void {
 		if (listener.exitClassID) {
 			listener.exitClassID(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitClassID) {
-			return visitor.visitClassID(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1495,14 +1437,6 @@ export class StateIDContext extends ParserRuleContext {
 			listener.exitStateID(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitStateID) {
-			return visitor.visitStateID(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1525,14 +1459,6 @@ export class NbhdIDContext extends ParserRuleContext {
 	public exitRule(listener: alpacaListener): void {
 		if (listener.exitNbhdID) {
 			listener.exitNbhdID(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitNbhdID) {
-			return visitor.visitNbhdID(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1559,14 +1485,6 @@ export class MembershipDeclContext extends ParserRuleContext {
 			listener.exitMembershipDecl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitMembershipDecl) {
-			return visitor.visitMembershipDecl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1589,14 +1507,6 @@ export class ClassRefContext extends ParserRuleContext {
 	public exitRule(listener: alpacaListener): void {
 		if (listener.exitClassRef) {
 			listener.exitClassRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitClassRef) {
-			return visitor.visitClassRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1629,14 +1539,6 @@ export class RulesContext extends ParserRuleContext {
 			listener.exitRules(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitRules) {
-			return visitor.visitRules(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1664,14 +1566,6 @@ export class Rule_Context extends ParserRuleContext {
 			listener.exitRule_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitRule_) {
-			return visitor.visitRule_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1697,14 +1591,6 @@ export class StateRefContext extends ParserRuleContext {
 	public exitRule(listener: alpacaListener): void {
 		if (listener.exitStateRef) {
 			listener.exitStateRef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitStateRef) {
-			return visitor.visitStateRef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1735,14 +1621,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: alpacaListener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1781,14 +1659,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1820,14 +1690,6 @@ export class RelationalPredContext extends ParserRuleContext {
 	public exitRule(listener: alpacaListener): void {
 		if (listener.exitRelationalPred) {
 			listener.exitRelationalPred(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitRelationalPred) {
-			return visitor.visitRelationalPred(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1866,14 +1728,6 @@ export class AdjacencyPredContext extends ParserRuleContext {
 			listener.exitAdjacencyPred(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitAdjacencyPred) {
-			return visitor.visitAdjacencyPred(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1893,14 +1747,6 @@ export class BoolPrimitiveContext extends ParserRuleContext {
 	public exitRule(listener: alpacaListener): void {
 		if (listener.exitBoolPrimitive) {
 			listener.exitBoolPrimitive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitBoolPrimitive) {
-			return visitor.visitBoolPrimitive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1931,14 +1777,6 @@ export class NeigbourhoodContext extends ParserRuleContext {
 	public exitRule(listener: alpacaListener): void {
 		if (listener.exitNeigbourhood) {
 			listener.exitNeigbourhood(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitNeigbourhood) {
-			return visitor.visitNeigbourhood(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1980,14 +1818,6 @@ export class IdentifierContext extends ParserRuleContext {
 			listener.exitIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2018,14 +1848,6 @@ export class NaturalnumberContext extends ParserRuleContext {
 			listener.exitNaturalnumber(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitNaturalnumber) {
-			return visitor.visitNaturalnumber(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2054,14 +1876,6 @@ export class ArrowchainContext extends ParserRuleContext {
 	public exitRule(listener: alpacaListener): void {
 		if (listener.exitArrowchain) {
 			listener.exitArrowchain(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: alpacaVisitor<Result>): Result {
-		if (visitor.visitArrowchain) {
-			return visitor.visitArrowchain(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

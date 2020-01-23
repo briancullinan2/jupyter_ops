@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { sexpressionListener } from "./sexpressionListener";
-import { sexpressionVisitor } from "./sexpressionVisitor";
-
 
 export class sexpressionParser extends Parser {
 	public static readonly STRING = 1;
@@ -305,14 +303,6 @@ export class SexprContext extends ParserRuleContext {
 			listener.exitSexpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sexpressionVisitor<Result>): Result {
-		if (visitor.visitSexpr) {
-			return visitor.visitSexpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -352,14 +342,6 @@ export class ItemContext extends ParserRuleContext {
 			listener.exitItem(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sexpressionVisitor<Result>): Result {
-		if (visitor.visitItem) {
-			return visitor.visitItem(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -392,14 +374,6 @@ export class ListContext extends ParserRuleContext {
 			listener.exitList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: sexpressionVisitor<Result>): Result {
-		if (visitor.visitList) {
-			return visitor.visitList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -423,14 +397,6 @@ export class AtomContext extends ParserRuleContext {
 	public exitRule(listener: sexpressionListener): void {
 		if (listener.exitAtom) {
 			listener.exitAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: sexpressionVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

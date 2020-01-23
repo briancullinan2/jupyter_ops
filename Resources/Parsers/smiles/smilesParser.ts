@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { smilesListener } from "./smilesListener";
-import { smilesVisitor } from "./smilesVisitor";
-
 
 export class smilesParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1537,14 +1535,6 @@ export class SmilesContext extends ParserRuleContext {
 			listener.exitSmiles(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitSmiles) {
-			return visitor.visitSmiles(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1575,14 +1565,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1604,14 +1586,6 @@ export class Aliphatic_organicContext extends ParserRuleContext {
 			listener.exitAliphatic_organic(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitAliphatic_organic) {
-			return visitor.visitAliphatic_organic(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1631,14 +1605,6 @@ export class Aromatic_organicContext extends ParserRuleContext {
 	public exitRule(listener: smilesListener): void {
 		if (listener.exitAromatic_organic) {
 			listener.exitAromatic_organic(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitAromatic_organic) {
-			return visitor.visitAromatic_organic(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1680,14 +1646,6 @@ export class Bracket_atomContext extends ParserRuleContext {
 			listener.exitBracket_atom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitBracket_atom) {
-			return visitor.visitBracket_atom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1715,14 +1673,6 @@ export class SymbolContext extends ParserRuleContext {
 			listener.exitSymbol(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitSymbol) {
-			return visitor.visitSymbol(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1743,14 +1693,6 @@ export class IsotopeContext extends ParserRuleContext {
 	public exitRule(listener: smilesListener): void {
 		if (listener.exitIsotope) {
 			listener.exitIsotope(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitIsotope) {
-			return visitor.visitIsotope(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1774,14 +1716,6 @@ export class Element_symbolsContext extends ParserRuleContext {
 			listener.exitElement_symbols(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitElement_symbols) {
-			return visitor.visitElement_symbols(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1803,14 +1737,6 @@ export class Aromatic_symbolsContext extends ParserRuleContext {
 			listener.exitAromatic_symbols(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitAromatic_symbols) {
-			return visitor.visitAromatic_symbols(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1830,14 +1756,6 @@ export class ChiralContext extends ParserRuleContext {
 	public exitRule(listener: smilesListener): void {
 		if (listener.exitChiral) {
 			listener.exitChiral(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitChiral) {
-			return visitor.visitChiral(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1862,14 +1780,6 @@ export class HcountContext extends ParserRuleContext {
 			listener.exitHcount(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitHcount) {
-			return visitor.visitHcount(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1890,14 +1800,6 @@ export class ChargeContext extends ParserRuleContext {
 	public exitRule(listener: smilesListener): void {
 		if (listener.exitCharge) {
 			listener.exitCharge(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitCharge) {
-			return visitor.visitCharge(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1922,14 +1824,6 @@ export class Class_Context extends ParserRuleContext {
 			listener.exitClass_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitClass_) {
-			return visitor.visitClass_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1949,14 +1843,6 @@ export class BondContext extends ParserRuleContext {
 	public exitRule(listener: smilesListener): void {
 		if (listener.exitBond) {
 			listener.exitBond(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitBond) {
-			return visitor.visitBond(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1990,14 +1876,6 @@ export class RingbondContext extends ParserRuleContext {
 	public exitRule(listener: smilesListener): void {
 		if (listener.exitRingbond) {
 			listener.exitRingbond(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitRingbond) {
-			return visitor.visitRingbond(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2042,14 +1920,6 @@ export class Branched_atomContext extends ParserRuleContext {
 			listener.exitBranched_atom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitBranched_atom) {
-			return visitor.visitBranched_atom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2076,14 +1946,6 @@ export class BranchContext extends ParserRuleContext {
 	public exitRule(listener: smilesListener): void {
 		if (listener.exitBranch) {
 			listener.exitBranch(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitBranch) {
-			return visitor.visitBranch(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2117,14 +1979,6 @@ export class ChainContext extends ParserRuleContext {
 			listener.exitChain(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitChain) {
-			return visitor.visitChain(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2148,14 +2002,6 @@ export class TerminatorContext extends ParserRuleContext {
 	public exitRule(listener: smilesListener): void {
 		if (listener.exitTerminator) {
 			listener.exitTerminator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: smilesVisitor<Result>): Result {
-		if (visitor.visitTerminator) {
-			return visitor.visitTerminator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

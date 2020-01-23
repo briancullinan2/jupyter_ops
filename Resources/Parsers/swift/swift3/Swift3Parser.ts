@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { Swift3Listener } from "./Swift3Listener";
-import { Swift3Visitor } from "./Swift3Visitor";
-
 
 export class Swift3Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -16309,14 +16307,6 @@ export class Top_levelContext extends ParserRuleContext {
 			listener.exitTop_level(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTop_level) {
-			return visitor.visitTop_level(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16366,14 +16356,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16396,14 +16378,6 @@ export class StatementsContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitStatements) {
 			listener.exitStatements(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitStatements) {
-			return visitor.visitStatements(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16434,14 +16408,6 @@ export class Statements_implContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitStatements_impl) {
 			listener.exitStatements_impl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitStatements_impl) {
-			return visitor.visitStatements_impl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16475,14 +16441,6 @@ export class Loop_statementContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitLoop_statement) {
 			listener.exitLoop_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitLoop_statement) {
-			return visitor.visitLoop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16532,14 +16490,6 @@ export class For_statementContext extends ParserRuleContext {
 			listener.exitFor_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFor_statement) {
-			return visitor.visitFor_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16565,14 +16515,6 @@ export class For_initContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitFor_init) {
 			listener.exitFor_init(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFor_init) {
-			return visitor.visitFor_init(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16608,14 +16550,6 @@ export class For_in_statementContext extends ParserRuleContext {
 			listener.exitFor_in_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFor_in_statement) {
-			return visitor.visitFor_in_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16641,14 +16575,6 @@ export class While_statementContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitWhile_statement) {
 			listener.exitWhile_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitWhile_statement) {
-			return visitor.visitWhile_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16690,14 +16616,6 @@ export class Condition_listContext extends ParserRuleContext {
 			listener.exitCondition_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCondition_list) {
-			return visitor.visitCondition_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16731,14 +16649,6 @@ export class ConditionContext extends ParserRuleContext {
 			listener.exitCondition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCondition) {
-			return visitor.visitCondition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16769,14 +16679,6 @@ export class Case_conditionContext extends ParserRuleContext {
 			listener.exitCase_condition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCase_condition) {
-			return visitor.visitCase_condition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16804,14 +16706,6 @@ export class Optional_binding_conditionContext extends ParserRuleContext {
 			listener.exitOptional_binding_condition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitOptional_binding_condition) {
-			return visitor.visitOptional_binding_condition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16837,14 +16731,6 @@ export class Repeat_while_statementContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitRepeat_while_statement) {
 			listener.exitRepeat_while_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitRepeat_while_statement) {
-			return visitor.visitRepeat_while_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16877,14 +16763,6 @@ export class Branch_statementContext extends ParserRuleContext {
 			listener.exitBranch_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitBranch_statement) {
-			return visitor.visitBranch_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16915,14 +16793,6 @@ export class If_statementContext extends ParserRuleContext {
 			listener.exitIf_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitIf_statement) {
-			return visitor.visitIf_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16950,14 +16820,6 @@ export class Else_clauseContext extends ParserRuleContext {
 			listener.exitElse_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitElse_clause) {
-			return visitor.visitElse_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16983,14 +16845,6 @@ export class Guard_statementContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitGuard_statement) {
 			listener.exitGuard_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitGuard_statement) {
-			return visitor.visitGuard_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17022,14 +16876,6 @@ export class Switch_statementContext extends ParserRuleContext {
 			listener.exitSwitch_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSwitch_statement) {
-			return visitor.visitSwitch_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17055,14 +16901,6 @@ export class Switch_casesContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitSwitch_cases) {
 			listener.exitSwitch_cases(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSwitch_cases) {
-			return visitor.visitSwitch_cases(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17095,14 +16933,6 @@ export class Switch_caseContext extends ParserRuleContext {
 			listener.exitSwitch_case(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSwitch_case) {
-			return visitor.visitSwitch_case(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17126,14 +16956,6 @@ export class Case_labelContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitCase_label) {
 			listener.exitCase_label(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCase_label) {
-			return visitor.visitCase_label(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17167,14 +16989,6 @@ export class Case_item_listContext extends ParserRuleContext {
 			listener.exitCase_item_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCase_item_list) {
-			return visitor.visitCase_item_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17195,14 +17009,6 @@ export class Default_labelContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDefault_label) {
 			listener.exitDefault_label(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDefault_label) {
-			return visitor.visitDefault_label(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17229,14 +17035,6 @@ export class Where_clauseContext extends ParserRuleContext {
 			listener.exitWhere_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitWhere_clause) {
-			return visitor.visitWhere_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17259,14 +17057,6 @@ export class Where_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitWhere_expression) {
 			listener.exitWhere_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitWhere_expression) {
-			return visitor.visitWhere_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17305,14 +17095,6 @@ export class Labeled_statementContext extends ParserRuleContext {
 			listener.exitLabeled_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitLabeled_statement) {
-			return visitor.visitLabeled_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17338,14 +17120,6 @@ export class Statement_labelContext extends ParserRuleContext {
 			listener.exitStatement_label(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitStatement_label) {
-			return visitor.visitStatement_label(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17368,14 +17142,6 @@ export class Label_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitLabel_name) {
 			listener.exitLabel_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitLabel_name) {
-			return visitor.visitLabel_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17414,14 +17180,6 @@ export class Control_transfer_statementContext extends ParserRuleContext {
 			listener.exitControl_transfer_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitControl_transfer_statement) {
-			return visitor.visitControl_transfer_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17444,14 +17202,6 @@ export class Break_statementContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitBreak_statement) {
 			listener.exitBreak_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitBreak_statement) {
-			return visitor.visitBreak_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17478,14 +17228,6 @@ export class Continue_statementContext extends ParserRuleContext {
 			listener.exitContinue_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitContinue_statement) {
-			return visitor.visitContinue_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17505,14 +17247,6 @@ export class Fallthrough_statementContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitFallthrough_statement) {
 			listener.exitFallthrough_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFallthrough_statement) {
-			return visitor.visitFallthrough_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17539,14 +17273,6 @@ export class Return_statementContext extends ParserRuleContext {
 			listener.exitReturn_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitReturn_statement) {
-			return visitor.visitReturn_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17571,14 +17297,6 @@ export class Throw_statementContext extends ParserRuleContext {
 			listener.exitThrow_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThrow_statement) {
-			return visitor.visitThrow_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17601,14 +17319,6 @@ export class Defer_statementContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDefer_statement) {
 			listener.exitDefer_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDefer_statement) {
-			return visitor.visitDefer_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17638,14 +17348,6 @@ export class Do_statementContext extends ParserRuleContext {
 			listener.exitDo_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDo_statement) {
-			return visitor.visitDo_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17671,14 +17373,6 @@ export class Catch_clausesContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitCatch_clauses) {
 			listener.exitCatch_clauses(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCatch_clauses) {
-			return visitor.visitCatch_clauses(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17711,14 +17405,6 @@ export class Catch_clauseContext extends ParserRuleContext {
 			listener.exitCatch_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCatch_clause) {
-			return visitor.visitCatch_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17744,14 +17430,6 @@ export class Compiler_control_statementContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitCompiler_control_statement) {
 			listener.exitCompiler_control_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCompiler_control_statement) {
-			return visitor.visitCompiler_control_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17787,14 +17465,6 @@ export class Conditional_compilation_blockContext extends ParserRuleContext {
 			listener.exitConditional_compilation_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitConditional_compilation_block) {
-			return visitor.visitConditional_compilation_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17823,14 +17493,6 @@ export class If_directive_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitIf_directive_clause) {
 			listener.exitIf_directive_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitIf_directive_clause) {
-			return visitor.visitIf_directive_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17863,14 +17525,6 @@ export class Elseif_directive_clausesContext extends ParserRuleContext {
 			listener.exitElseif_directive_clauses(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitElseif_directive_clauses) {
-			return visitor.visitElseif_directive_clauses(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17901,14 +17555,6 @@ export class Elseif_directive_clauseContext extends ParserRuleContext {
 			listener.exitElseif_directive_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitElseif_directive_clause) {
-			return visitor.visitElseif_directive_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17936,14 +17582,6 @@ export class Else_directive_clauseContext extends ParserRuleContext {
 			listener.exitElse_directive_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitElse_directive_clause) {
-			return visitor.visitElse_directive_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17963,14 +17601,6 @@ export class If_directiveContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitIf_directive) {
 			listener.exitIf_directive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitIf_directive) {
-			return visitor.visitIf_directive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17994,14 +17624,6 @@ export class Elseif_directiveContext extends ParserRuleContext {
 			listener.exitElseif_directive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitElseif_directive) {
-			return visitor.visitElseif_directive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18023,14 +17645,6 @@ export class Else_directiveContext extends ParserRuleContext {
 			listener.exitElse_directive(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitElse_directive) {
-			return visitor.visitElse_directive(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18050,14 +17664,6 @@ export class Endif_directiveContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitEndif_directive) {
 			listener.exitEndif_directive(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitEndif_directive) {
-			return visitor.visitEndif_directive(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18108,14 +17714,6 @@ export class Compilation_conditionContext extends ParserRuleContext {
 			listener.exitCompilation_condition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCompilation_condition) {
-			return visitor.visitCompilation_condition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18151,14 +17749,6 @@ export class Platform_conditionContext extends ParserRuleContext {
 			listener.exitPlatform_condition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPlatform_condition) {
-			return visitor.visitPlatform_condition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18190,14 +17780,6 @@ export class Swift_versionContext extends ParserRuleContext {
 			listener.exitSwift_version(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSwift_version) {
-			return visitor.visitSwift_version(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18222,14 +17804,6 @@ export class Operating_systemContext extends ParserRuleContext {
 			listener.exitOperating_system(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitOperating_system) {
-			return visitor.visitOperating_system(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18252,14 +17826,6 @@ export class ArchitectureContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitArchitecture) {
 			listener.exitArchitecture(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitArchitecture) {
-			return visitor.visitArchitecture(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18301,14 +17867,6 @@ export class Line_control_statementContext extends ParserRuleContext {
 			listener.exitLine_control_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitLine_control_statement) {
-			return visitor.visitLine_control_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18333,14 +17891,6 @@ export class Line_numberContext extends ParserRuleContext {
 			listener.exitLine_number(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitLine_number) {
-			return visitor.visitLine_number(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18361,14 +17911,6 @@ export class File_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitFile_name) {
 			listener.exitFile_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFile_name) {
-			return visitor.visitFile_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18395,14 +17937,6 @@ export class Availability_conditionContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitAvailability_condition) {
 			listener.exitAvailability_condition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitAvailability_condition) {
-			return visitor.visitAvailability_condition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18444,14 +17978,6 @@ export class Availability_argumentsContext extends ParserRuleContext {
 			listener.exitAvailability_arguments(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitAvailability_arguments) {
-			return visitor.visitAvailability_arguments(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18473,14 +17999,6 @@ export class Availability_argumentContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitAvailability_argument) {
 			listener.exitAvailability_argument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitAvailability_argument) {
-			return visitor.visitAvailability_argument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18507,14 +18025,6 @@ export class Generic_parameter_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitGeneric_parameter_clause) {
 			listener.exitGeneric_parameter_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitGeneric_parameter_clause) {
-			return visitor.visitGeneric_parameter_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18556,14 +18066,6 @@ export class Generic_parameter_listContext extends ParserRuleContext {
 			listener.exitGeneric_parameter_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitGeneric_parameter_list) {
-			return visitor.visitGeneric_parameter_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18595,14 +18097,6 @@ export class Generic_parameterContext extends ParserRuleContext {
 			listener.exitGeneric_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitGeneric_parameter) {
-			return visitor.visitGeneric_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18625,14 +18119,6 @@ export class Generic_where_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitGeneric_where_clause) {
 			listener.exitGeneric_where_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitGeneric_where_clause) {
-			return visitor.visitGeneric_where_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18674,14 +18160,6 @@ export class Requirement_listContext extends ParserRuleContext {
 			listener.exitRequirement_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitRequirement_list) {
-			return visitor.visitRequirement_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18707,14 +18185,6 @@ export class RequirementContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitRequirement) {
 			listener.exitRequirement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitRequirement) {
-			return visitor.visitRequirement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18751,14 +18221,6 @@ export class Conformance_requirementContext extends ParserRuleContext {
 			listener.exitConformance_requirement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitConformance_requirement) {
-			return visitor.visitConformance_requirement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18789,14 +18251,6 @@ export class Same_type_requirementContext extends ParserRuleContext {
 			listener.exitSame_type_requirement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSame_type_requirement) {
-			return visitor.visitSame_type_requirement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18821,14 +18275,6 @@ export class Generic_argument_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitGeneric_argument_clause) {
 			listener.exitGeneric_argument_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitGeneric_argument_clause) {
-			return visitor.visitGeneric_argument_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18870,14 +18316,6 @@ export class Generic_argument_listContext extends ParserRuleContext {
 			listener.exitGeneric_argument_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitGeneric_argument_list) {
-			return visitor.visitGeneric_argument_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18900,14 +18338,6 @@ export class Generic_argumentContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitGeneric_argument) {
 			listener.exitGeneric_argument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitGeneric_argument) {
-			return visitor.visitGeneric_argument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18976,14 +18406,6 @@ export class DeclarationContext extends ParserRuleContext {
 			listener.exitDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDeclaration) {
-			return visitor.visitDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19014,14 +18436,6 @@ export class DeclarationsContext extends ParserRuleContext {
 			listener.exitDeclarations(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDeclarations) {
-			return visitor.visitDeclarations(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19044,14 +18458,6 @@ export class Top_level_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitTop_level_declaration) {
 			listener.exitTop_level_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTop_level_declaration) {
-			return visitor.visitTop_level_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19078,14 +18484,6 @@ export class Code_blockContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitCode_block) {
 			listener.exitCode_block(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCode_block) {
-			return visitor.visitCode_block(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19118,14 +18516,6 @@ export class Import_declarationContext extends ParserRuleContext {
 			listener.exitImport_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitImport_declaration) {
-			return visitor.visitImport_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19145,14 +18535,6 @@ export class Import_kindContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitImport_kind) {
 			listener.exitImport_kind(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitImport_kind) {
-			return visitor.visitImport_kind(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19194,14 +18576,6 @@ export class Import_pathContext extends ParserRuleContext {
 			listener.exitImport_path(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitImport_path) {
-			return visitor.visitImport_path(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19227,14 +18601,6 @@ export class Import_path_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitImport_path_identifier) {
 			listener.exitImport_path_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitImport_path_identifier) {
-			return visitor.visitImport_path_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19265,14 +18631,6 @@ export class Constant_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitConstant_declaration) {
 			listener.exitConstant_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitConstant_declaration) {
-			return visitor.visitConstant_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19314,14 +18672,6 @@ export class Pattern_initializer_listContext extends ParserRuleContext {
 			listener.exitPattern_initializer_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPattern_initializer_list) {
-			return visitor.visitPattern_initializer_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19349,14 +18699,6 @@ export class Pattern_initializerContext extends ParserRuleContext {
 			listener.exitPattern_initializer(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPattern_initializer) {
-			return visitor.visitPattern_initializer(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19382,14 +18724,6 @@ export class InitializerContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitInitializer) {
 			listener.exitInitializer(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitInitializer) {
-			return visitor.visitInitializer(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19446,14 +18780,6 @@ export class Variable_declarationContext extends ParserRuleContext {
 			listener.exitVariable_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitVariable_declaration) {
-			return visitor.visitVariable_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19481,14 +18807,6 @@ export class Variable_declaration_headContext extends ParserRuleContext {
 			listener.exitVariable_declaration_head(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitVariable_declaration_head) {
-			return visitor.visitVariable_declaration_head(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19511,14 +18829,6 @@ export class Variable_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitVariable_name) {
 			listener.exitVariable_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitVariable_name) {
-			return visitor.visitVariable_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19550,14 +18860,6 @@ export class Getter_setter_blockContext extends ParserRuleContext {
 			listener.exitGetter_setter_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitGetter_setter_block) {
-			return visitor.visitGetter_setter_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19586,14 +18888,6 @@ export class Getter_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitGetter_clause) {
 			listener.exitGetter_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitGetter_clause) {
-			return visitor.visitGetter_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19629,14 +18923,6 @@ export class Setter_clauseContext extends ParserRuleContext {
 			listener.exitSetter_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSetter_clause) {
-			return visitor.visitSetter_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19661,14 +18947,6 @@ export class Setter_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitSetter_name) {
 			listener.exitSetter_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSetter_name) {
-			return visitor.visitSetter_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19700,14 +18978,6 @@ export class Getter_setter_keyword_blockContext extends ParserRuleContext {
 			listener.exitGetter_setter_keyword_block(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitGetter_setter_keyword_block) {
-			return visitor.visitGetter_setter_keyword_block(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19733,14 +19003,6 @@ export class Getter_keyword_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitGetter_keyword_clause) {
 			listener.exitGetter_keyword_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitGetter_keyword_clause) {
-			return visitor.visitGetter_keyword_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19770,14 +19032,6 @@ export class Setter_keyword_clauseContext extends ParserRuleContext {
 			listener.exitSetter_keyword_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSetter_keyword_clause) {
-			return visitor.visitSetter_keyword_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19805,14 +19059,6 @@ export class WillSet_didSet_blockContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitWillSet_didSet_block) {
 			listener.exitWillSet_didSet_block(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitWillSet_didSet_block) {
-			return visitor.visitWillSet_didSet_block(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19845,14 +19091,6 @@ export class WillSet_clauseContext extends ParserRuleContext {
 			listener.exitWillSet_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitWillSet_clause) {
-			return visitor.visitWillSet_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19881,14 +19119,6 @@ export class DidSet_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDidSet_clause) {
 			listener.exitDidSet_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDidSet_clause) {
-			return visitor.visitDidSet_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19927,14 +19157,6 @@ export class Typealias_declarationContext extends ParserRuleContext {
 			listener.exitTypealias_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTypealias_declaration) {
-			return visitor.visitTypealias_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19957,14 +19179,6 @@ export class Typealias_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitTypealias_name) {
 			listener.exitTypealias_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTypealias_name) {
-			return visitor.visitTypealias_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19992,14 +19206,6 @@ export class Typealias_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitTypealias_assignment) {
 			listener.exitTypealias_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTypealias_assignment) {
-			return visitor.visitTypealias_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20041,14 +19247,6 @@ export class Function_declarationContext extends ParserRuleContext {
 			listener.exitFunction_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_declaration) {
-			return visitor.visitFunction_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20074,14 +19272,6 @@ export class Function_headContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitFunction_head) {
 			listener.exitFunction_head(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_head) {
-			return visitor.visitFunction_head(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20111,14 +19301,6 @@ export class Function_nameContext extends ParserRuleContext {
 			listener.exitFunction_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_name) {
-			return visitor.visitFunction_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20144,14 +19326,6 @@ export class Function_signatureContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitFunction_signature) {
 			listener.exitFunction_signature(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_signature) {
-			return visitor.visitFunction_signature(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20184,14 +19358,6 @@ export class Function_resultContext extends ParserRuleContext {
 			listener.exitFunction_result(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_result) {
-			return visitor.visitFunction_result(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20214,14 +19380,6 @@ export class Function_bodyContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitFunction_body) {
 			listener.exitFunction_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_body) {
-			return visitor.visitFunction_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20248,14 +19406,6 @@ export class Parameter_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitParameter_clause) {
 			listener.exitParameter_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitParameter_clause) {
-			return visitor.visitParameter_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20297,14 +19447,6 @@ export class Parameter_listContext extends ParserRuleContext {
 			listener.exitParameter_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitParameter_list) {
-			return visitor.visitParameter_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20341,14 +19483,6 @@ export class ParameterContext extends ParserRuleContext {
 			listener.exitParameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitParameter) {
-			return visitor.visitParameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20373,14 +19507,6 @@ export class External_parameter_nameContext extends ParserRuleContext {
 			listener.exitExternal_parameter_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitExternal_parameter_name) {
-			return visitor.visitExternal_parameter_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20403,14 +19529,6 @@ export class Local_parameter_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitLocal_parameter_name) {
 			listener.exitLocal_parameter_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitLocal_parameter_name) {
-			return visitor.visitLocal_parameter_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20438,14 +19556,6 @@ export class Default_argument_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDefault_argument_clause) {
 			listener.exitDefault_argument_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDefault_argument_clause) {
-			return visitor.visitDefault_argument_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20479,14 +19589,6 @@ export class Enum_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitEnum_declaration) {
 			listener.exitEnum_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitEnum_declaration) {
-			return visitor.visitEnum_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20527,14 +19629,6 @@ export class Union_style_enumContext extends ParserRuleContext {
 			listener.exitUnion_style_enum(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitUnion_style_enum) {
-			return visitor.visitUnion_style_enum(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20560,14 +19654,6 @@ export class Union_style_enum_membersContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitUnion_style_enum_members) {
 			listener.exitUnion_style_enum_members(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitUnion_style_enum_members) {
-			return visitor.visitUnion_style_enum_members(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20600,14 +19686,6 @@ export class Union_style_enum_memberContext extends ParserRuleContext {
 			listener.exitUnion_style_enum_member(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitUnion_style_enum_member) {
-			return visitor.visitUnion_style_enum_member(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20633,14 +19711,6 @@ export class Union_style_enum_case_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitUnion_style_enum_case_clause) {
 			listener.exitUnion_style_enum_case_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitUnion_style_enum_case_clause) {
-			return visitor.visitUnion_style_enum_case_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20671,14 +19741,6 @@ export class Union_style_enum_case_listContext extends ParserRuleContext {
 			listener.exitUnion_style_enum_case_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitUnion_style_enum_case_list) {
-			return visitor.visitUnion_style_enum_case_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20706,14 +19768,6 @@ export class Union_style_enum_caseContext extends ParserRuleContext {
 			listener.exitUnion_style_enum_case(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitUnion_style_enum_case) {
-			return visitor.visitUnion_style_enum_case(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20738,14 +19792,6 @@ export class Enum_nameContext extends ParserRuleContext {
 			listener.exitEnum_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitEnum_name) {
-			return visitor.visitEnum_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20768,14 +19814,6 @@ export class Enum_case_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitEnum_case_name) {
 			listener.exitEnum_case_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitEnum_case_name) {
-			return visitor.visitEnum_case_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20816,14 +19854,6 @@ export class Raw_value_style_enumContext extends ParserRuleContext {
 			listener.exitRaw_value_style_enum(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitRaw_value_style_enum) {
-			return visitor.visitRaw_value_style_enum(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20849,14 +19879,6 @@ export class Raw_value_style_enum_membersContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitRaw_value_style_enum_members) {
 			listener.exitRaw_value_style_enum_members(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitRaw_value_style_enum_members) {
-			return visitor.visitRaw_value_style_enum_members(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20889,14 +19911,6 @@ export class Raw_value_style_enum_memberContext extends ParserRuleContext {
 			listener.exitRaw_value_style_enum_member(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitRaw_value_style_enum_member) {
-			return visitor.visitRaw_value_style_enum_member(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20922,14 +19936,6 @@ export class Raw_value_style_enum_case_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitRaw_value_style_enum_case_clause) {
 			listener.exitRaw_value_style_enum_case_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitRaw_value_style_enum_case_clause) {
-			return visitor.visitRaw_value_style_enum_case_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20960,14 +19966,6 @@ export class Raw_value_style_enum_case_listContext extends ParserRuleContext {
 			listener.exitRaw_value_style_enum_case_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitRaw_value_style_enum_case_list) {
-			return visitor.visitRaw_value_style_enum_case_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20993,14 +19991,6 @@ export class Raw_value_style_enum_caseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitRaw_value_style_enum_case) {
 			listener.exitRaw_value_style_enum_case(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitRaw_value_style_enum_case) {
-			return visitor.visitRaw_value_style_enum_case(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21030,14 +20020,6 @@ export class Raw_value_assignmentContext extends ParserRuleContext {
 			listener.exitRaw_value_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitRaw_value_assignment) {
-			return visitor.visitRaw_value_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21064,14 +20046,6 @@ export class Raw_value_literalContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitRaw_value_literal) {
 			listener.exitRaw_value_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitRaw_value_literal) {
-			return visitor.visitRaw_value_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21116,14 +20090,6 @@ export class Struct_declarationContext extends ParserRuleContext {
 			listener.exitStruct_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitStruct_declaration) {
-			return visitor.visitStruct_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21146,14 +20112,6 @@ export class Struct_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitStruct_name) {
 			listener.exitStruct_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitStruct_name) {
-			return visitor.visitStruct_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21188,14 +20146,6 @@ export class Struct_bodyContext extends ParserRuleContext {
 			listener.exitStruct_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitStruct_body) {
-			return visitor.visitStruct_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21221,14 +20171,6 @@ export class Struct_memberContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitStruct_member) {
 			listener.exitStruct_member(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitStruct_member) {
-			return visitor.visitStruct_member(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21279,14 +20221,6 @@ export class Class_declarationContext extends ParserRuleContext {
 			listener.exitClass_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitClass_declaration) {
-			return visitor.visitClass_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21309,14 +20243,6 @@ export class Class_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitClass_name) {
 			listener.exitClass_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitClass_name) {
-			return visitor.visitClass_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21351,14 +20277,6 @@ export class Class_bodyContext extends ParserRuleContext {
 			listener.exitClass_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitClass_body) {
-			return visitor.visitClass_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21384,14 +20302,6 @@ export class Class_memberContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitClass_member) {
 			listener.exitClass_member(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitClass_member) {
-			return visitor.visitClass_member(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21430,14 +20340,6 @@ export class Protocol_declarationContext extends ParserRuleContext {
 			listener.exitProtocol_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitProtocol_declaration) {
-			return visitor.visitProtocol_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21460,14 +20362,6 @@ export class Protocol_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitProtocol_name) {
 			listener.exitProtocol_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitProtocol_name) {
-			return visitor.visitProtocol_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21502,14 +20396,6 @@ export class Protocol_bodyContext extends ParserRuleContext {
 			listener.exitProtocol_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitProtocol_body) {
-			return visitor.visitProtocol_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21535,14 +20421,6 @@ export class Protocol_memberContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitProtocol_member) {
 			listener.exitProtocol_member(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitProtocol_member) {
-			return visitor.visitProtocol_member(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21584,14 +20462,6 @@ export class Protocol_member_declarationContext extends ParserRuleContext {
 			listener.exitProtocol_member_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitProtocol_member_declaration) {
-			return visitor.visitProtocol_member_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21623,14 +20493,6 @@ export class Protocol_property_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitProtocol_property_declaration) {
 			listener.exitProtocol_property_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitProtocol_property_declaration) {
-			return visitor.visitProtocol_property_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21669,14 +20531,6 @@ export class Protocol_method_declarationContext extends ParserRuleContext {
 			listener.exitProtocol_method_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitProtocol_method_declaration) {
-			return visitor.visitProtocol_method_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21710,14 +20564,6 @@ export class Protocol_initializer_declarationContext extends ParserRuleContext {
 			listener.exitProtocol_initializer_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitProtocol_initializer_declaration) {
-			return visitor.visitProtocol_initializer_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21746,14 +20592,6 @@ export class Protocol_subscript_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitProtocol_subscript_declaration) {
 			listener.exitProtocol_subscript_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitProtocol_subscript_declaration) {
-			return visitor.visitProtocol_subscript_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21792,14 +20630,6 @@ export class Protocol_associated_type_declarationContext extends ParserRuleConte
 			listener.exitProtocol_associated_type_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitProtocol_associated_type_declaration) {
-			return visitor.visitProtocol_associated_type_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21836,14 +20666,6 @@ export class Initializer_declarationContext extends ParserRuleContext {
 			listener.exitInitializer_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitInitializer_declaration) {
-			return visitor.visitInitializer_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21873,14 +20695,6 @@ export class Initializer_headContext extends ParserRuleContext {
 			listener.exitInitializer_head(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitInitializer_head) {
-			return visitor.visitInitializer_head(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21903,14 +20717,6 @@ export class Initializer_bodyContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitInitializer_body) {
 			listener.exitInitializer_body(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitInitializer_body) {
-			return visitor.visitInitializer_body(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21938,14 +20744,6 @@ export class Deinitializer_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDeinitializer_declaration) {
 			listener.exitDeinitializer_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDeinitializer_declaration) {
-			return visitor.visitDeinitializer_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21987,14 +20785,6 @@ export class Extension_declarationContext extends ParserRuleContext {
 			listener.exitExtension_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitExtension_declaration) {
-			return visitor.visitExtension_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22027,14 +20817,6 @@ export class Extension_bodyContext extends ParserRuleContext {
 			listener.exitExtension_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitExtension_body) {
-			return visitor.visitExtension_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22060,14 +20842,6 @@ export class Extension_memberContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitExtension_member) {
 			listener.exitExtension_member(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitExtension_member) {
-			return visitor.visitExtension_member(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22106,14 +20880,6 @@ export class Subscript_declarationContext extends ParserRuleContext {
 			listener.exitSubscript_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSubscript_declaration) {
-			return visitor.visitSubscript_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22142,14 +20908,6 @@ export class Subscript_headContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitSubscript_head) {
 			listener.exitSubscript_head(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSubscript_head) {
-			return visitor.visitSubscript_head(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22182,14 +20940,6 @@ export class Subscript_resultContext extends ParserRuleContext {
 			listener.exitSubscript_result(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSubscript_result) {
-			return visitor.visitSubscript_result(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22220,14 +20970,6 @@ export class Operator_declarationContext extends ParserRuleContext {
 			listener.exitOperator_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitOperator_declaration) {
-			return visitor.visitOperator_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22252,14 +20994,6 @@ export class Prefix_operator_declarationContext extends ParserRuleContext {
 			listener.exitPrefix_operator_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPrefix_operator_declaration) {
-			return visitor.visitPrefix_operator_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22282,14 +21016,6 @@ export class Postfix_operator_declarationContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitPostfix_operator_declaration) {
 			listener.exitPostfix_operator_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPostfix_operator_declaration) {
-			return visitor.visitPostfix_operator_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22319,14 +21045,6 @@ export class Infix_operator_declarationContext extends ParserRuleContext {
 			listener.exitInfix_operator_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitInfix_operator_declaration) {
-			return visitor.visitInfix_operator_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22350,14 +21068,6 @@ export class Infix_operator_groupContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitInfix_operator_group) {
 			listener.exitInfix_operator_group(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitInfix_operator_group) {
-			return visitor.visitInfix_operator_group(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22395,14 +21105,6 @@ export class Precedence_group_declarationContext extends ParserRuleContext {
 			listener.exitPrecedence_group_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPrecedence_group_declaration) {
-			return visitor.visitPrecedence_group_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22433,14 +21135,6 @@ export class Precedence_group_attributeContext extends ParserRuleContext {
 			listener.exitPrecedence_group_attribute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPrecedence_group_attribute) {
-			return visitor.visitPrecedence_group_attribute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22464,14 +21158,6 @@ export class Precedence_group_relationContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitPrecedence_group_relation) {
 			listener.exitPrecedence_group_relation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPrecedence_group_relation) {
-			return visitor.visitPrecedence_group_relation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22499,14 +21185,6 @@ export class Precedence_group_assignmentContext extends ParserRuleContext {
 			listener.exitPrecedence_group_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPrecedence_group_assignment) {
-			return visitor.visitPrecedence_group_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22532,14 +21210,6 @@ export class Precedence_group_associativityContext extends ParserRuleContext {
 			listener.exitPrecedence_group_associativity(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPrecedence_group_associativity) {
-			return visitor.visitPrecedence_group_associativity(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22559,14 +21229,6 @@ export class AssociativityContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitAssociativity) {
 			listener.exitAssociativity(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitAssociativity) {
-			return visitor.visitAssociativity(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22608,14 +21270,6 @@ export class Precedence_group_namesContext extends ParserRuleContext {
 			listener.exitPrecedence_group_names(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPrecedence_group_names) {
-			return visitor.visitPrecedence_group_names(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22638,14 +21292,6 @@ export class Precedence_group_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitPrecedence_group_name) {
 			listener.exitPrecedence_group_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPrecedence_group_name) {
-			return visitor.visitPrecedence_group_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22675,14 +21321,6 @@ export class Declaration_modifierContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDeclaration_modifier) {
 			listener.exitDeclaration_modifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDeclaration_modifier) {
-			return visitor.visitDeclaration_modifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22715,14 +21353,6 @@ export class Declaration_modifiersContext extends ParserRuleContext {
 			listener.exitDeclaration_modifiers(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDeclaration_modifiers) {
-			return visitor.visitDeclaration_modifiers(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22746,14 +21376,6 @@ export class Access_level_modifierContext extends ParserRuleContext {
 			listener.exitAccess_level_modifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitAccess_level_modifier) {
-			return visitor.visitAccess_level_modifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22773,14 +21395,6 @@ export class Mutation_modifierContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitMutation_modifier) {
 			listener.exitMutation_modifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitMutation_modifier) {
-			return visitor.visitMutation_modifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22834,14 +21448,6 @@ export class PatternContext extends ParserRuleContext {
 			listener.exitPattern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPattern) {
-			return visitor.visitPattern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22862,14 +21468,6 @@ export class Wildcard_patternContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitWildcard_pattern) {
 			listener.exitWildcard_pattern(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitWildcard_pattern) {
-			return visitor.visitWildcard_pattern(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22896,14 +21494,6 @@ export class Identifier_patternContext extends ParserRuleContext {
 			listener.exitIdentifier_pattern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitIdentifier_pattern) {
-			return visitor.visitIdentifier_pattern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22926,14 +21516,6 @@ export class Value_binding_patternContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitValue_binding_pattern) {
 			listener.exitValue_binding_pattern(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitValue_binding_pattern) {
-			return visitor.visitValue_binding_pattern(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22960,14 +21542,6 @@ export class Tuple_patternContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitTuple_pattern) {
 			listener.exitTuple_pattern(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTuple_pattern) {
-			return visitor.visitTuple_pattern(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23009,14 +21583,6 @@ export class Tuple_pattern_element_listContext extends ParserRuleContext {
 			listener.exitTuple_pattern_element_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTuple_pattern_element_list) {
-			return visitor.visitTuple_pattern_element_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23039,14 +21605,6 @@ export class Tuple_pattern_elementContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitTuple_pattern_element) {
 			listener.exitTuple_pattern_element(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTuple_pattern_element) {
-			return visitor.visitTuple_pattern_element(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23080,14 +21638,6 @@ export class Enum_case_patternContext extends ParserRuleContext {
 			listener.exitEnum_case_pattern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitEnum_case_pattern) {
-			return visitor.visitEnum_case_pattern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23113,14 +21663,6 @@ export class Optional_patternContext extends ParserRuleContext {
 			listener.exitOptional_pattern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitOptional_pattern) {
-			return visitor.visitOptional_pattern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23143,14 +21685,6 @@ export class Expression_patternContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitExpression_pattern) {
 			listener.exitExpression_pattern(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitExpression_pattern) {
-			return visitor.visitExpression_pattern(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23181,14 +21715,6 @@ export class AttributeContext extends ParserRuleContext {
 			listener.exitAttribute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitAttribute) {
-			return visitor.visitAttribute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23211,14 +21737,6 @@ export class Attribute_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitAttribute_name) {
 			listener.exitAttribute_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitAttribute_name) {
-			return visitor.visitAttribute_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23245,14 +21763,6 @@ export class Attribute_argument_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitAttribute_argument_clause) {
 			listener.exitAttribute_argument_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitAttribute_argument_clause) {
-			return visitor.visitAttribute_argument_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23285,14 +21795,6 @@ export class AttributesContext extends ParserRuleContext {
 			listener.exitAttributes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitAttributes) {
-			return visitor.visitAttributes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23321,14 +21823,6 @@ export class Balanced_tokensContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitBalanced_tokens) {
 			listener.exitBalanced_tokens(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitBalanced_tokens) {
-			return visitor.visitBalanced_tokens(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23374,14 +21868,6 @@ export class Balanced_tokenContext extends ParserRuleContext {
 			listener.exitBalanced_token(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitBalanced_token) {
-			return visitor.visitBalanced_token(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23415,14 +21901,6 @@ export class Any_punctuation_for_balanced_tokenContext extends ParserRuleContext
 			listener.exitAny_punctuation_for_balanced_token(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitAny_punctuation_for_balanced_token) {
-			return visitor.visitAny_punctuation_for_balanced_token(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23451,14 +21929,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23500,14 +21970,6 @@ export class Expression_listContext extends ParserRuleContext {
 			listener.exitExpression_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitExpression_list) {
-			return visitor.visitExpression_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23538,14 +22000,6 @@ export class Prefix_expressionContext extends ParserRuleContext {
 			listener.exitPrefix_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPrefix_expression) {
-			return visitor.visitPrefix_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23571,14 +22025,6 @@ export class In_out_expressionContext extends ParserRuleContext {
 			listener.exitIn_out_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitIn_out_expression) {
-			return visitor.visitIn_out_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23600,14 +22046,6 @@ export class Try_operatorContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitTry_operator) {
 			listener.exitTry_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTry_operator) {
-			return visitor.visitTry_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23649,14 +22087,6 @@ export class Binary_expressionContext extends ParserRuleContext {
 			listener.exitBinary_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitBinary_expression) {
-			return visitor.visitBinary_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23685,14 +22115,6 @@ export class Binary_expressionsContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitBinary_expressions) {
 			listener.exitBinary_expressions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitBinary_expressions) {
-			return visitor.visitBinary_expressions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23724,14 +22146,6 @@ export class Conditional_operatorContext extends ParserRuleContext {
 			listener.exitConditional_operator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitConditional_operator) {
-			return visitor.visitConditional_operator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23756,14 +22170,6 @@ export class Type_casting_operatorContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitType_casting_operator) {
 			listener.exitType_casting_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitType_casting_operator) {
-			return visitor.visitType_casting_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23823,14 +22229,6 @@ export class Primary_expressionContext extends ParserRuleContext {
 			listener.exitPrimary_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPrimary_expression) {
-			return visitor.visitPrimary_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23861,14 +22259,6 @@ export class Literal_expressionContext extends ParserRuleContext {
 			listener.exitLiteral_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitLiteral_expression) {
-			return visitor.visitLiteral_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23893,14 +22283,6 @@ export class Array_literalContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitArray_literal) {
 			listener.exitArray_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitArray_literal) {
-			return visitor.visitArray_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23931,14 +22313,6 @@ export class Array_literal_itemsContext extends ParserRuleContext {
 			listener.exitArray_literal_items(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitArray_literal_items) {
-			return visitor.visitArray_literal_items(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23961,14 +22335,6 @@ export class Array_literal_itemContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitArray_literal_item) {
 			listener.exitArray_literal_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitArray_literal_item) {
-			return visitor.visitArray_literal_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23998,14 +22364,6 @@ export class Dictionary_literalContext extends ParserRuleContext {
 			listener.exitDictionary_literal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDictionary_literal) {
-			return visitor.visitDictionary_literal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24032,14 +22390,6 @@ export class Dictionary_literal_itemsContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDictionary_literal_items) {
 			listener.exitDictionary_literal_items(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDictionary_literal_items) {
-			return visitor.visitDictionary_literal_items(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24071,14 +22421,6 @@ export class Dictionary_literal_itemContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDictionary_literal_item) {
 			listener.exitDictionary_literal_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDictionary_literal_item) {
-			return visitor.visitDictionary_literal_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24131,14 +22473,6 @@ export class Playground_literalContext extends ParserRuleContext {
 			listener.exitPlayground_literal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPlayground_literal) {
-			return visitor.visitPlayground_literal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24167,14 +22501,6 @@ export class Self_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitSelf_expression) {
 			listener.exitSelf_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSelf_expression) {
-			return visitor.visitSelf_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24207,14 +22533,6 @@ export class Superclass_expressionContext extends ParserRuleContext {
 			listener.exitSuperclass_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSuperclass_expression) {
-			return visitor.visitSuperclass_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24238,14 +22556,6 @@ export class Superclass_method_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitSuperclass_method_expression) {
 			listener.exitSuperclass_method_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSuperclass_method_expression) {
-			return visitor.visitSuperclass_method_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24274,14 +22584,6 @@ export class Superclass_subscript_expressionContext extends ParserRuleContext {
 			listener.exitSuperclass_subscript_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSuperclass_subscript_expression) {
-			return visitor.visitSuperclass_subscript_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24302,14 +22604,6 @@ export class Superclass_initializer_expressionContext extends ParserRuleContext 
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitSuperclass_initializer_expression) {
 			listener.exitSuperclass_initializer_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSuperclass_initializer_expression) {
-			return visitor.visitSuperclass_initializer_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24339,14 +22633,6 @@ export class Closure_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitClosure_expression) {
 			listener.exitClosure_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitClosure_expression) {
-			return visitor.visitClosure_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24379,14 +22665,6 @@ export class Closure_signatureContext extends ParserRuleContext {
 			listener.exitClosure_signature(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitClosure_signature) {
-			return visitor.visitClosure_signature(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24414,14 +22692,6 @@ export class Closure_parameter_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitClosure_parameter_clause) {
 			listener.exitClosure_parameter_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitClosure_parameter_clause) {
-			return visitor.visitClosure_parameter_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24463,14 +22733,6 @@ export class Closure_parameter_clause_identifier_listContext extends ParserRuleC
 			listener.exitClosure_parameter_clause_identifier_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitClosure_parameter_clause_identifier_list) {
-			return visitor.visitClosure_parameter_clause_identifier_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24510,14 +22772,6 @@ export class Closure_parameter_listContext extends ParserRuleContext {
 			listener.exitClosure_parameter_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitClosure_parameter_list) {
-			return visitor.visitClosure_parameter_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24548,14 +22802,6 @@ export class Closure_parameterContext extends ParserRuleContext {
 			listener.exitClosure_parameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitClosure_parameter) {
-			return visitor.visitClosure_parameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24578,14 +22824,6 @@ export class Closure_parameter_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitClosure_parameter_name) {
 			listener.exitClosure_parameter_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitClosure_parameter_name) {
-			return visitor.visitClosure_parameter_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24612,14 +22850,6 @@ export class Capture_listContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitCapture_list) {
 			listener.exitCapture_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCapture_list) {
-			return visitor.visitCapture_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24661,14 +22891,6 @@ export class Capture_list_itemsContext extends ParserRuleContext {
 			listener.exitCapture_list_items(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCapture_list_items) {
-			return visitor.visitCapture_list_items(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24696,14 +22918,6 @@ export class Capture_list_itemContext extends ParserRuleContext {
 			listener.exitCapture_list_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCapture_list_item) {
-			return visitor.visitCapture_list_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24723,14 +22937,6 @@ export class Capture_specifierContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitCapture_specifier) {
 			listener.exitCapture_specifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCapture_specifier) {
-			return visitor.visitCapture_specifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24758,14 +22964,6 @@ export class Implicit_member_expressionContext extends ParserRuleContext {
 			listener.exitImplicit_member_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitImplicit_member_expression) {
-			return visitor.visitImplicit_member_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24790,14 +22988,6 @@ export class Parenthesized_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitParenthesized_expression) {
 			listener.exitParenthesized_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitParenthesized_expression) {
-			return visitor.visitParenthesized_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24841,14 +23031,6 @@ export class Tuple_expressionContext extends ParserRuleContext {
 			listener.exitTuple_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTuple_expression) {
-			return visitor.visitTuple_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24877,14 +23059,6 @@ export class Tuple_elementContext extends ParserRuleContext {
 			listener.exitTuple_element(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTuple_element) {
-			return visitor.visitTuple_element(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24905,14 +23079,6 @@ export class Wildcard_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitWildcard_expression) {
 			listener.exitWildcard_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitWildcard_expression) {
-			return visitor.visitWildcard_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24941,14 +23107,6 @@ export class Selector_expressionContext extends ParserRuleContext {
 			listener.exitSelector_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSelector_expression) {
-			return visitor.visitSelector_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24973,14 +23131,6 @@ export class Key_path_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitKey_path_expression) {
 			listener.exitKey_path_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitKey_path_expression) {
-			return visitor.visitKey_path_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25016,14 +23166,6 @@ export class PrimaryContext extends Postfix_expressionContext {
 			listener.exitPrimary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPrimary) {
-			return visitor.visitPrimary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Postfix_operationContext extends Postfix_expressionContext {
 	public postfix_expression(): Postfix_expressionContext {
@@ -25048,14 +23190,6 @@ export class Postfix_operationContext extends Postfix_expressionContext {
 			listener.exitPostfix_operation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPostfix_operation) {
-			return visitor.visitPostfix_operation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Function_call_expressionContext extends Postfix_expressionContext {
 	public postfix_expression(): Postfix_expressionContext {
@@ -25078,14 +23212,6 @@ export class Function_call_expressionContext extends Postfix_expressionContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitFunction_call_expression) {
 			listener.exitFunction_call_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_call_expression) {
-			return visitor.visitFunction_call_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25115,14 +23241,6 @@ export class Function_call_expression_with_closureContext extends Postfix_expres
 			listener.exitFunction_call_expression_with_closure(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_call_expression_with_closure) {
-			return visitor.visitFunction_call_expression_with_closure(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Initializer_expressionContext extends Postfix_expressionContext {
 	public postfix_expression(): Postfix_expressionContext {
@@ -25143,14 +23261,6 @@ export class Initializer_expressionContext extends Postfix_expressionContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitInitializer_expression) {
 			listener.exitInitializer_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitInitializer_expression) {
-			return visitor.visitInitializer_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25180,14 +23290,6 @@ export class Initializer_expression_with_argsContext extends Postfix_expressionC
 			listener.exitInitializer_expression_with_args(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitInitializer_expression_with_args) {
-			return visitor.visitInitializer_expression_with_args(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Explicit_member_expression1Context extends Postfix_expressionContext {
 	public postfix_expression(): Postfix_expressionContext {
@@ -25209,14 +23311,6 @@ export class Explicit_member_expression1Context extends Postfix_expressionContex
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitExplicit_member_expression1) {
 			listener.exitExplicit_member_expression1(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitExplicit_member_expression1) {
-			return visitor.visitExplicit_member_expression1(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25245,14 +23339,6 @@ export class Explicit_member_expression2Context extends Postfix_expressionContex
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitExplicit_member_expression2) {
 			listener.exitExplicit_member_expression2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitExplicit_member_expression2) {
-			return visitor.visitExplicit_member_expression2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25285,14 +23371,6 @@ export class Explicit_member_expression3Context extends Postfix_expressionContex
 			listener.exitExplicit_member_expression3(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitExplicit_member_expression3) {
-			return visitor.visitExplicit_member_expression3(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Explicit_member_expression4Context extends Postfix_expressionContext {
 	public postfix_expression(): Postfix_expressionContext {
@@ -25319,14 +23397,6 @@ export class Explicit_member_expression4Context extends Postfix_expressionContex
 			listener.exitExplicit_member_expression4(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitExplicit_member_expression4) {
-			return visitor.visitExplicit_member_expression4(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Postfix_self_expressionContext extends Postfix_expressionContext {
 	public postfix_expression(): Postfix_expressionContext {
@@ -25349,14 +23419,6 @@ export class Postfix_self_expressionContext extends Postfix_expressionContext {
 			listener.exitPostfix_self_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPostfix_self_expression) {
-			return visitor.visitPostfix_self_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class Dynamic_typeContext extends Postfix_expressionContext {
 	public dynamic_type_expression(): Dynamic_type_expressionContext {
@@ -25376,14 +23438,6 @@ export class Dynamic_typeContext extends Postfix_expressionContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDynamic_type) {
 			listener.exitDynamic_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDynamic_type) {
-			return visitor.visitDynamic_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25412,14 +23466,6 @@ export class Subscript_expressionContext extends Postfix_expressionContext {
 			listener.exitSubscript_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSubscript_expression) {
-			return visitor.visitSubscript_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25444,14 +23490,6 @@ export class Function_call_argument_clauseContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitFunction_call_argument_clause) {
 			listener.exitFunction_call_argument_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_call_argument_clause) {
-			return visitor.visitFunction_call_argument_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25493,14 +23531,6 @@ export class Function_call_argument_listContext extends ParserRuleContext {
 			listener.exitFunction_call_argument_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_call_argument_list) {
-			return visitor.visitFunction_call_argument_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25532,14 +23562,6 @@ export class Function_call_argumentContext extends ParserRuleContext {
 			listener.exitFunction_call_argument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_call_argument) {
-			return visitor.visitFunction_call_argument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25562,14 +23584,6 @@ export class Trailing_closureContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitTrailing_closure) {
 			listener.exitTrailing_closure(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTrailing_closure) {
-			return visitor.visitTrailing_closure(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25602,14 +23616,6 @@ export class Argument_namesContext extends ParserRuleContext {
 			listener.exitArgument_names(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitArgument_names) {
-			return visitor.visitArgument_names(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25633,14 +23639,6 @@ export class Argument_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitArgument_name) {
 			listener.exitArgument_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitArgument_name) {
-			return visitor.visitArgument_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25668,14 +23666,6 @@ export class Dynamic_type_expressionContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDynamic_type_expression) {
 			listener.exitDynamic_type_expression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDynamic_type_expression) {
-			return visitor.visitDynamic_type_expression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25711,14 +23701,6 @@ export class The_array_typeContext extends TypeContext {
 			listener.exitThe_array_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThe_array_type) {
-			return visitor.visitThe_array_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class The_dictionary_typeContext extends TypeContext {
 	public dictionary_type(): Dictionary_typeContext {
@@ -25738,14 +23720,6 @@ export class The_dictionary_typeContext extends TypeContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitThe_dictionary_type) {
 			listener.exitThe_dictionary_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThe_dictionary_type) {
-			return visitor.visitThe_dictionary_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25769,14 +23743,6 @@ export class The_function_typeContext extends TypeContext {
 			listener.exitThe_function_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThe_function_type) {
-			return visitor.visitThe_function_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class The_type_identifierContext extends TypeContext {
 	public type_identifier(): Type_identifierContext {
@@ -25798,14 +23764,6 @@ export class The_type_identifierContext extends TypeContext {
 			listener.exitThe_type_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThe_type_identifier) {
-			return visitor.visitThe_type_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class The_tuple_typeContext extends TypeContext {
 	public tuple_type(): Tuple_typeContext {
@@ -25825,14 +23783,6 @@ export class The_tuple_typeContext extends TypeContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitThe_tuple_type) {
 			listener.exitThe_tuple_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThe_tuple_type) {
-			return visitor.visitThe_tuple_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25857,14 +23807,6 @@ export class The_optional_typeContext extends TypeContext {
 			listener.exitThe_optional_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThe_optional_type) {
-			return visitor.visitThe_optional_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class The_implicitly_unwrapped_optional_typeContext extends TypeContext {
 	public type(): TypeContext {
@@ -25887,14 +23829,6 @@ export class The_implicitly_unwrapped_optional_typeContext extends TypeContext {
 			listener.exitThe_implicitly_unwrapped_optional_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThe_implicitly_unwrapped_optional_type) {
-			return visitor.visitThe_implicitly_unwrapped_optional_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class The_protocol_composition_typeContext extends TypeContext {
 	public protocol_composition_type(): Protocol_composition_typeContext {
@@ -25914,14 +23848,6 @@ export class The_protocol_composition_typeContext extends TypeContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitThe_protocol_composition_type) {
 			listener.exitThe_protocol_composition_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThe_protocol_composition_type) {
-			return visitor.visitThe_protocol_composition_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25946,14 +23872,6 @@ export class The_metatype_type_typeContext extends TypeContext {
 			listener.exitThe_metatype_type_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThe_metatype_type_type) {
-			return visitor.visitThe_metatype_type_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class The_metatype_protocol_typeContext extends TypeContext {
 	public type(): TypeContext {
@@ -25976,14 +23894,6 @@ export class The_metatype_protocol_typeContext extends TypeContext {
 			listener.exitThe_metatype_protocol_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThe_metatype_protocol_type) {
-			return visitor.visitThe_metatype_protocol_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class The_any_typeContext extends TypeContext {
 	constructor(ctx: TypeContext) {
@@ -26002,14 +23912,6 @@ export class The_any_typeContext extends TypeContext {
 			listener.exitThe_any_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThe_any_type) {
-			return visitor.visitThe_any_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class The_self_typeContext extends TypeContext {
 	constructor(ctx: TypeContext) {
@@ -26026,14 +23928,6 @@ export class The_self_typeContext extends TypeContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitThe_self_type) {
 			listener.exitThe_self_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitThe_self_type) {
-			return visitor.visitThe_self_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26062,14 +23956,6 @@ export class Type_annotationContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitType_annotation) {
 			listener.exitType_annotation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitType_annotation) {
-			return visitor.visitType_annotation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26103,14 +23989,6 @@ export class Type_identifierContext extends ParserRuleContext {
 			listener.exitType_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitType_identifier) {
-			return visitor.visitType_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26133,14 +24011,6 @@ export class Type_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitType_name) {
 			listener.exitType_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitType_name) {
-			return visitor.visitType_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26169,14 +24039,6 @@ export class Tuple_typeContext extends ParserRuleContext {
 			listener.exitTuple_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTuple_type) {
-			return visitor.visitTuple_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26203,14 +24065,6 @@ export class Tuple_type_element_listContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitTuple_type_element_list) {
 			listener.exitTuple_type_element_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTuple_type_element_list) {
-			return visitor.visitTuple_type_element_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26243,14 +24097,6 @@ export class Tuple_type_elementContext extends ParserRuleContext {
 			listener.exitTuple_type_element(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitTuple_type_element) {
-			return visitor.visitTuple_type_element(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26273,14 +24119,6 @@ export class Element_nameContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitElement_name) {
 			listener.exitElement_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitElement_name) {
-			return visitor.visitElement_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26316,14 +24154,6 @@ export class Function_typeContext extends ParserRuleContext {
 			listener.exitFunction_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_type) {
-			return visitor.visitFunction_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26353,14 +24183,6 @@ export class Function_type_argument_clauseContext extends ParserRuleContext {
 			listener.exitFunction_type_argument_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_type_argument_clause) {
-			return visitor.visitFunction_type_argument_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26387,14 +24209,6 @@ export class Function_type_argument_listContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitFunction_type_argument_list) {
 			listener.exitFunction_type_argument_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_type_argument_list) {
-			return visitor.visitFunction_type_argument_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26430,14 +24244,6 @@ export class Function_type_argumentContext extends ParserRuleContext {
 			listener.exitFunction_type_argument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitFunction_type_argument) {
-			return visitor.visitFunction_type_argument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26460,14 +24266,6 @@ export class Argument_labelContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitArgument_label) {
 			listener.exitArgument_label(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitArgument_label) {
-			return visitor.visitArgument_label(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26494,14 +24292,6 @@ export class Array_typeContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitArray_type) {
 			listener.exitArray_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitArray_type) {
-			return visitor.visitArray_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26535,14 +24325,6 @@ export class Dictionary_typeContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDictionary_type) {
 			listener.exitDictionary_type(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDictionary_type) {
-			return visitor.visitDictionary_type(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26584,14 +24366,6 @@ export class Protocol_composition_typeContext extends ParserRuleContext {
 			listener.exitProtocol_composition_type(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitProtocol_composition_type) {
-			return visitor.visitProtocol_composition_type(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26614,14 +24388,6 @@ export class Protocol_identifierContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitProtocol_identifier) {
 			listener.exitProtocol_identifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitProtocol_identifier) {
-			return visitor.visitProtocol_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26653,14 +24419,6 @@ export class Type_inheritance_clauseContext extends ParserRuleContext {
 			listener.exitType_inheritance_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitType_inheritance_clause) {
-			return visitor.visitType_inheritance_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26689,14 +24447,6 @@ export class Type_inheritance_listContext extends ParserRuleContext {
 			listener.exitType_inheritance_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitType_inheritance_list) {
-			return visitor.visitType_inheritance_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26716,14 +24466,6 @@ export class Class_requirementContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitClass_requirement) {
 			listener.exitClass_requirement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitClass_requirement) {
-			return visitor.visitClass_requirement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26751,14 +24493,6 @@ export class Declaration_identifierContext extends ParserRuleContext {
 			listener.exitDeclaration_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDeclaration_identifier) {
-			return visitor.visitDeclaration_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26784,14 +24518,6 @@ export class Label_identifierContext extends ParserRuleContext {
 			listener.exitLabel_identifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitLabel_identifier) {
-			return visitor.visitLabel_identifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26813,14 +24539,6 @@ export class Keyword_as_identifier_in_declarationsContext extends ParserRuleCont
 			listener.exitKeyword_as_identifier_in_declarations(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitKeyword_as_identifier_in_declarations) {
-			return visitor.visitKeyword_as_identifier_in_declarations(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26840,14 +24558,6 @@ export class Keyword_as_identifier_in_labelsContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitKeyword_as_identifier_in_labels) {
 			listener.exitKeyword_as_identifier_in_labels(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitKeyword_as_identifier_in_labels) {
-			return visitor.visitKeyword_as_identifier_in_labels(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26872,14 +24582,6 @@ export class Assignment_operatorContext extends ParserRuleContext {
 			listener.exitAssignment_operator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitAssignment_operator) {
-			return visitor.visitAssignment_operator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26900,14 +24602,6 @@ export class Negate_prefix_operatorContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitNegate_prefix_operator) {
 			listener.exitNegate_prefix_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitNegate_prefix_operator) {
-			return visitor.visitNegate_prefix_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -26940,14 +24634,6 @@ export class Compilation_condition_ANDContext extends ParserRuleContext {
 			listener.exitCompilation_condition_AND(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCompilation_condition_AND) {
-			return visitor.visitCompilation_condition_AND(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -26978,14 +24664,6 @@ export class Compilation_condition_ORContext extends ParserRuleContext {
 			listener.exitCompilation_condition_OR(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCompilation_condition_OR) {
-			return visitor.visitCompilation_condition_OR(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27009,14 +24687,6 @@ export class Compilation_condition_GEContext extends ParserRuleContext {
 			listener.exitCompilation_condition_GE(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitCompilation_condition_GE) {
-			return visitor.visitCompilation_condition_GE(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27038,14 +24708,6 @@ export class Arrow_operatorContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitArrow_operator) {
 			listener.exitArrow_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitArrow_operator) {
-			return visitor.visitArrow_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27078,14 +24740,6 @@ export class Range_operatorContext extends ParserRuleContext {
 			listener.exitRange_operator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitRange_operator) {
-			return visitor.visitRange_operator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27116,14 +24770,6 @@ export class Same_type_equalsContext extends ParserRuleContext {
 			listener.exitSame_type_equals(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitSame_type_equals) {
-			return visitor.visitSame_type_equals(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27146,14 +24792,6 @@ export class Binary_operatorContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitBinary_operator) {
 			listener.exitBinary_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitBinary_operator) {
-			return visitor.visitBinary_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27180,14 +24818,6 @@ export class Prefix_operatorContext extends ParserRuleContext {
 			listener.exitPrefix_operator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPrefix_operator) {
-			return visitor.visitPrefix_operator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27210,14 +24840,6 @@ export class Postfix_operatorContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitPostfix_operator) {
 			listener.exitPostfix_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitPostfix_operator) {
-			return visitor.visitPostfix_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27265,14 +24887,6 @@ export class OperatorContext extends ParserRuleContext {
 			listener.exitOperator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitOperator) {
-			return visitor.visitOperator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27296,14 +24910,6 @@ export class Operator_characterContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitOperator_character) {
 			listener.exitOperator_character(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitOperator_character) {
-			return visitor.visitOperator_character(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27342,14 +24948,6 @@ export class Operator_headContext extends ParserRuleContext {
 			listener.exitOperator_head(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitOperator_head) {
-			return visitor.visitOperator_head(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27370,14 +24968,6 @@ export class Dot_operator_headContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDot_operator_head) {
 			listener.exitDot_operator_head(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDot_operator_head) {
-			return visitor.visitDot_operator_head(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27403,14 +24993,6 @@ export class Dot_operator_characterContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitDot_operator_character) {
 			listener.exitDot_operator_character(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitDot_operator_character) {
-			return visitor.visitDot_operator_character(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27446,14 +25028,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27482,14 +25056,6 @@ export class Numeric_literalContext extends ParserRuleContext {
 			listener.exitNumeric_literal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitNumeric_literal) {
-			return visitor.visitNumeric_literal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27511,14 +25077,6 @@ export class Boolean_literalContext extends ParserRuleContext {
 			listener.exitBoolean_literal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitBoolean_literal) {
-			return visitor.visitBoolean_literal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27538,14 +25096,6 @@ export class Nil_literalContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitNil_literal) {
 			listener.exitNil_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitNil_literal) {
-			return visitor.visitNil_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -27574,14 +25124,6 @@ export class Integer_literalContext extends ParserRuleContext {
 			listener.exitInteger_literal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitInteger_literal) {
-			return visitor.visitInteger_literal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -27603,14 +25145,6 @@ export class String_literalContext extends ParserRuleContext {
 	public exitRule(listener: Swift3Listener): void {
 		if (listener.exitString_literal) {
 			listener.exitString_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: Swift3Visitor<Result>): Result {
-		if (visitor.visitString_literal) {
-			return visitor.visitString_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

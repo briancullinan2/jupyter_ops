@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { m2pim4Listener } from "./m2pim4Listener";
-import { m2pim4Visitor } from "./m2pim4Visitor";
-
 
 export class m2pim4Parser extends Parser {
 	public static readonly T__0 = 1;
@@ -4273,14 +4271,6 @@ export class IdentContext extends ParserRuleContext {
 			listener.exitIdent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitIdent) {
-			return visitor.visitIdent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4302,14 +4292,6 @@ export class NumberContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitNumber) {
 			listener.exitNumber(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitNumber) {
-			return visitor.visitNumber(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4334,14 +4316,6 @@ export class IntegerContext extends ParserRuleContext {
 			listener.exitInteger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitInteger) {
-			return visitor.visitInteger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4362,14 +4336,6 @@ export class RealContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitReal) {
 			listener.exitReal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitReal) {
-			return visitor.visitReal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4394,14 +4360,6 @@ export class ScaleFactorContext extends ParserRuleContext {
 			listener.exitScaleFactor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitScaleFactor) {
-			return visitor.visitScaleFactor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4422,14 +4380,6 @@ export class HexDigitContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitHexDigit) {
 			listener.exitHexDigit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitHexDigit) {
-			return visitor.visitHexDigit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4454,14 +4404,6 @@ export class DigitContext extends ParserRuleContext {
 			listener.exitDigit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitDigit) {
-			return visitor.visitDigit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4484,14 +4426,6 @@ export class OctalDigitContext extends ParserRuleContext {
 			listener.exitOctalDigit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitOctalDigit) {
-			return visitor.visitOctalDigit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4512,14 +4446,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4552,14 +4478,6 @@ export class QualidentContext extends ParserRuleContext {
 			listener.exitQualident(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitQualident) {
-			return visitor.visitQualident(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4585,14 +4503,6 @@ export class ConstantDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitConstantDeclaration) {
 			listener.exitConstantDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitConstantDeclaration) {
-			return visitor.visitConstantDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4628,14 +4538,6 @@ export class ConstExpressionContext extends ParserRuleContext {
 			listener.exitConstExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitConstExpression) {
-			return visitor.visitConstExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4656,14 +4558,6 @@ export class RelationContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitRelation) {
 			listener.exitRelation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitRelation) {
-			return visitor.visitRelation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4705,14 +4599,6 @@ export class SimpleConstExprContext extends ParserRuleContext {
 			listener.exitSimpleConstExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitSimpleConstExpr) {
-			return visitor.visitSimpleConstExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4733,14 +4619,6 @@ export class AddOperatorContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitAddOperator) {
 			listener.exitAddOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitAddOperator) {
-			return visitor.visitAddOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4782,14 +4660,6 @@ export class ConstTermContext extends ParserRuleContext {
 			listener.exitConstTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitConstTerm) {
-			return visitor.visitConstTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4812,14 +4682,6 @@ export class MulOperatorContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitMulOperator) {
 			listener.exitMulOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitMulOperator) {
-			return visitor.visitMulOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4859,14 +4721,6 @@ export class ConstFactorContext extends ParserRuleContext {
 			listener.exitConstFactor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitConstFactor) {
-			return visitor.visitConstFactor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4892,14 +4746,6 @@ export class SetOrQualidentContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitSetOrQualident) {
 			listener.exitSetOrQualident(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitSetOrQualident) {
-			return visitor.visitSetOrQualident(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4932,14 +4778,6 @@ export class SetContext extends ParserRuleContext {
 			listener.exitSet(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitSet) {
-			return visitor.visitSet(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4970,14 +4808,6 @@ export class ElementContext extends ParserRuleContext {
 			listener.exitElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitElement) {
-			return visitor.visitElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5003,14 +4833,6 @@ export class TypeDeclarationContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitTypeDeclaration) {
 			listener.exitTypeDeclaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitTypeDeclaration) {
-			return visitor.visitTypeDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5052,14 +4874,6 @@ export class TypeContext extends ParserRuleContext {
 			listener.exitType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5090,14 +4904,6 @@ export class SimpleTypeContext extends ParserRuleContext {
 			listener.exitSimpleType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitSimpleType) {
-			return visitor.visitSimpleType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5120,14 +4926,6 @@ export class EnumerationContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitEnumeration) {
 			listener.exitEnumeration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitEnumeration) {
-			return visitor.visitEnumeration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5160,14 +4958,6 @@ export class IdentListContext extends ParserRuleContext {
 			listener.exitIdentList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitIdentList) {
-			return visitor.visitIdentList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5196,14 +4986,6 @@ export class SubrangeTypeContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitSubrangeType) {
 			listener.exitSubrangeType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitSubrangeType) {
-			return visitor.visitSubrangeType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5241,14 +5023,6 @@ export class ArrayTypeContext extends ParserRuleContext {
 			listener.exitArrayType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitArrayType) {
-			return visitor.visitArrayType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5273,14 +5047,6 @@ export class RecordTypeContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitRecordType) {
 			listener.exitRecordType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitRecordType) {
-			return visitor.visitRecordType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5311,14 +5077,6 @@ export class FieldListSequenceContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitFieldListSequence) {
 			listener.exitFieldListSequence(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitFieldListSequence) {
-			return visitor.visitFieldListSequence(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5370,14 +5128,6 @@ export class FieldListContext extends ParserRuleContext {
 			listener.exitFieldList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitFieldList) {
-			return visitor.visitFieldList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5403,14 +5153,6 @@ export class VariantContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitVariant) {
 			listener.exitVariant(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitVariant) {
-			return visitor.visitVariant(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5443,14 +5185,6 @@ export class CaseLabelListContext extends ParserRuleContext {
 			listener.exitCaseLabelList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitCaseLabelList) {
-			return visitor.visitCaseLabelList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5481,14 +5215,6 @@ export class CaseLabelsContext extends ParserRuleContext {
 			listener.exitCaseLabels(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitCaseLabels) {
-			return visitor.visitCaseLabels(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5513,14 +5239,6 @@ export class SetTypeContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitSetType) {
 			listener.exitSetType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitSetType) {
-			return visitor.visitSetType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5549,14 +5267,6 @@ export class PointerTypeContext extends ParserRuleContext {
 			listener.exitPointerType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitPointerType) {
-			return visitor.visitPointerType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5580,14 +5290,6 @@ export class ProcedureTypeContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitProcedureType) {
 			listener.exitProcedureType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitProcedureType) {
-			return visitor.visitProcedureType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5632,14 +5334,6 @@ export class FormalTypeListContext extends ParserRuleContext {
 			listener.exitFormalTypeList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitFormalTypeList) {
-			return visitor.visitFormalTypeList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5667,14 +5361,6 @@ export class VariableDeclarationContext extends ParserRuleContext {
 			listener.exitVariableDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitVariableDeclaration) {
-			return visitor.visitVariableDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5700,14 +5386,6 @@ export class DesignatorContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitDesignator) {
 			listener.exitDesignator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitDesignator) {
-			return visitor.visitDesignator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5749,14 +5427,6 @@ export class DesignatorTailContext extends ParserRuleContext {
 			listener.exitDesignatorTail(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitDesignatorTail) {
-			return visitor.visitDesignatorTail(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5785,14 +5455,6 @@ export class ExpListContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitExpList) {
 			listener.exitExpList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitExpList) {
-			return visitor.visitExpList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5826,14 +5488,6 @@ export class ExpressionContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitExpression) {
 			listener.exitExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5875,14 +5529,6 @@ export class SimpleExpressionContext extends ParserRuleContext {
 			listener.exitSimpleExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitSimpleExpression) {
-			return visitor.visitSimpleExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5922,14 +5568,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5967,14 +5605,6 @@ export class FactorContext extends ParserRuleContext {
 			listener.exitFactor(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitFactor) {
-			return visitor.visitFactor(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6008,14 +5638,6 @@ export class SetOrDesignatorOrProcCallContext extends ParserRuleContext {
 			listener.exitSetOrDesignatorOrProcCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitSetOrDesignatorOrProcCall) {
-			return visitor.visitSetOrDesignatorOrProcCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6038,14 +5660,6 @@ export class ActualParametersContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitActualParameters) {
 			listener.exitActualParameters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitActualParameters) {
-			return visitor.visitActualParameters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6098,14 +5712,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6136,14 +5742,6 @@ export class AssignmentOrProcCallContext extends ParserRuleContext {
 			listener.exitAssignmentOrProcCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitAssignmentOrProcCall) {
-			return visitor.visitAssignmentOrProcCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6172,14 +5770,6 @@ export class StatementSequenceContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitStatementSequence) {
 			listener.exitStatementSequence(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitStatementSequence) {
-			return visitor.visitStatementSequence(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6242,14 +5832,6 @@ export class IfStatementContext extends ParserRuleContext {
 			listener.exitIfStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6290,14 +5872,6 @@ export class CaseStatementContext extends ParserRuleContext {
 			listener.exitCaseStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitCaseStatement) {
-			return visitor.visitCaseStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6323,14 +5897,6 @@ export class CcaseContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitCcase) {
 			listener.exitCcase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitCcase) {
-			return visitor.visitCcase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6363,14 +5929,6 @@ export class WhileStatementContext extends ParserRuleContext {
 			listener.exitWhileStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitWhileStatement) {
-			return visitor.visitWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6398,14 +5956,6 @@ export class RepeatStatementContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitRepeatStatement) {
 			listener.exitRepeatStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitRepeatStatement) {
-			return visitor.visitRepeatStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6452,14 +6002,6 @@ export class ForStatementContext extends ParserRuleContext {
 			listener.exitForStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitForStatement) {
-			return visitor.visitForStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6484,14 +6026,6 @@ export class LoopStatementContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitLoopStatement) {
 			listener.exitLoopStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitLoopStatement) {
-			return visitor.visitLoopStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6524,14 +6058,6 @@ export class WithStatementContext extends ParserRuleContext {
 			listener.exitWithStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitWithStatement) {
-			return visitor.visitWithStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6562,14 +6088,6 @@ export class ProcedureDeclarationContext extends ParserRuleContext {
 			listener.exitProcedureDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitProcedureDeclaration) {
-			return visitor.visitProcedureDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6596,14 +6114,6 @@ export class ProcedureHeadingContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitProcedureHeading) {
 			listener.exitProcedureHeading(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitProcedureHeading) {
-			return visitor.visitProcedureHeading(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6639,14 +6149,6 @@ export class BlockContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitBlock) {
 			listener.exitBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6706,14 +6208,6 @@ export class DeclarationContext extends ParserRuleContext {
 			listener.exitDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitDeclaration) {
-			return visitor.visitDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6747,14 +6241,6 @@ export class FormalParametersContext extends ParserRuleContext {
 			listener.exitFormalParameters(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitFormalParameters) {
-			return visitor.visitFormalParameters(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6783,14 +6269,6 @@ export class FpSectionContext extends ParserRuleContext {
 			listener.exitFpSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitFpSection) {
-			return visitor.visitFpSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6815,14 +6293,6 @@ export class FormalTypeContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitFormalType) {
 			listener.exitFormalType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitFormalType) {
-			return visitor.visitFormalType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6874,14 +6344,6 @@ export class ModuleDeclarationContext extends ParserRuleContext {
 			listener.exitModuleDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitModuleDeclaration) {
-			return visitor.visitModuleDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6904,14 +6366,6 @@ export class PriorityContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitPriority) {
 			listener.exitPriority(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitPriority) {
-			return visitor.visitPriority(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6938,14 +6392,6 @@ export class ExportListContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitExportList) {
 			listener.exitExportList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitExportList) {
-			return visitor.visitExportList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6975,14 +6421,6 @@ export class ImportListContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitImportList) {
 			listener.exitImportList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitImportList) {
-			return visitor.visitImportList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7037,14 +6475,6 @@ export class DefinitionModuleContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitDefinitionModule) {
 			listener.exitDefinitionModule(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitDefinitionModule) {
-			return visitor.visitDefinitionModule(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7110,14 +6540,6 @@ export class DefinitionContext extends ParserRuleContext {
 			listener.exitDefinition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitDefinition) {
-			return visitor.visitDefinition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7164,14 +6586,6 @@ export class ProgramModuleContext extends ParserRuleContext {
 			listener.exitProgramModule(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitProgramModule) {
-			return visitor.visitProgramModule(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7198,14 +6612,6 @@ export class CompilationUnitContext extends ParserRuleContext {
 	public exitRule(listener: m2pim4Listener): void {
 		if (listener.exitCompilationUnit) {
 			listener.exitCompilationUnit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: m2pim4Visitor<Result>): Result {
-		if (visitor.visitCompilationUnit) {
-			return visitor.visitCompilationUnit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { vhdlListener } from "./vhdlListener";
-import { vhdlVisitor } from "./vhdlVisitor";
-
 
 export class vhdlParser extends Parser {
 	public static readonly ABS = 1;
@@ -14450,14 +14448,6 @@ export class Abstract_literalContext extends ParserRuleContext {
 			listener.exitAbstract_literal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAbstract_literal) {
-			return visitor.visitAbstract_literal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14481,14 +14471,6 @@ export class Access_type_definitionContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitAccess_type_definition) {
 			listener.exitAccess_type_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAccess_type_definition) {
-			return visitor.visitAccess_type_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14523,14 +14505,6 @@ export class Across_aspectContext extends ParserRuleContext {
 			listener.exitAcross_aspect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAcross_aspect) {
-			return visitor.visitAcross_aspect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14556,14 +14530,6 @@ export class Actual_designatorContext extends ParserRuleContext {
 			listener.exitActual_designator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitActual_designator) {
-			return visitor.visitActual_designator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14586,14 +14552,6 @@ export class Actual_parameter_partContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitActual_parameter_part) {
 			listener.exitActual_parameter_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitActual_parameter_part) {
-			return visitor.visitActual_parameter_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14625,14 +14583,6 @@ export class Actual_partContext extends ParserRuleContext {
 			listener.exitActual_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitActual_part) {
-			return visitor.visitActual_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14655,14 +14605,6 @@ export class Adding_operatorContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitAdding_operator) {
 			listener.exitAdding_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAdding_operator) {
-			return visitor.visitAdding_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14706,14 +14648,6 @@ export class AggregateContext extends ParserRuleContext {
 			listener.exitAggregate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAggregate) {
-			return visitor.visitAggregate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14751,14 +14685,6 @@ export class Alias_declarationContext extends ParserRuleContext {
 			listener.exitAlias_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAlias_declaration) {
-			return visitor.visitAlias_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14783,14 +14709,6 @@ export class Alias_designatorContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitAlias_designator) {
 			listener.exitAlias_designator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAlias_designator) {
-			return visitor.visitAlias_designator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14820,14 +14738,6 @@ export class Alias_indicationContext extends ParserRuleContext {
 			listener.exitAlias_indication(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAlias_indication) {
-			return visitor.visitAlias_indication(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14854,14 +14764,6 @@ export class AllocatorContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitAllocator) {
 			listener.exitAllocator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAllocator) {
-			return visitor.visitAllocator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -14914,14 +14816,6 @@ export class Architecture_bodyContext extends ParserRuleContext {
 			listener.exitArchitecture_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitArchitecture_body) {
-			return visitor.visitArchitecture_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -14950,14 +14844,6 @@ export class Architecture_declarative_partContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitArchitecture_declarative_part) {
 			listener.exitArchitecture_declarative_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitArchitecture_declarative_part) {
-			return visitor.visitArchitecture_declarative_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15012,14 +14898,6 @@ export class Architecture_statementContext extends ParserRuleContext {
 			listener.exitArchitecture_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitArchitecture_statement) {
-			return visitor.visitArchitecture_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15050,14 +14928,6 @@ export class Architecture_statement_partContext extends ParserRuleContext {
 			listener.exitArchitecture_statement_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitArchitecture_statement_part) {
-			return visitor.visitArchitecture_statement_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15085,14 +14955,6 @@ export class Array_nature_definitionContext extends ParserRuleContext {
 			listener.exitArray_nature_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitArray_nature_definition) {
-			return visitor.visitArray_nature_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15118,14 +14980,6 @@ export class Array_type_definitionContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitArray_type_definition) {
 			listener.exitArray_type_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitArray_type_definition) {
-			return visitor.visitArray_type_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15164,14 +15018,6 @@ export class AssertionContext extends ParserRuleContext {
 			listener.exitAssertion(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAssertion) {
-			return visitor.visitAssertion(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15200,14 +15046,6 @@ export class Assertion_statementContext extends ParserRuleContext {
 			listener.exitAssertion_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAssertion_statement) {
-			return visitor.visitAssertion_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15234,14 +15072,6 @@ export class Association_elementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitAssociation_element) {
 			listener.exitAssociation_element(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAssociation_element) {
-			return visitor.visitAssociation_element(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15283,14 +15113,6 @@ export class Association_listContext extends ParserRuleContext {
 			listener.exitAssociation_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAssociation_list) {
-			return visitor.visitAssociation_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15318,14 +15140,6 @@ export class Attribute_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitAttribute_declaration) {
 			listener.exitAttribute_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAttribute_declaration) {
-			return visitor.visitAttribute_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15356,14 +15170,6 @@ export class Attribute_designatorContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitAttribute_designator) {
 			listener.exitAttribute_designator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAttribute_designator) {
-			return visitor.visitAttribute_designator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15400,14 +15206,6 @@ export class Attribute_specificationContext extends ParserRuleContext {
 			listener.exitAttribute_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAttribute_specification) {
-			return visitor.visitAttribute_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15431,14 +15229,6 @@ export class Base_unit_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitBase_unit_declaration) {
 			listener.exitBase_unit_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBase_unit_declaration) {
-			return visitor.visitBase_unit_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15470,14 +15260,6 @@ export class Binding_indicationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitBinding_indication) {
 			listener.exitBinding_indication(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBinding_indication) {
-			return visitor.visitBinding_indication(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15531,14 +15313,6 @@ export class Block_configurationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitBlock_configuration) {
 			listener.exitBlock_configuration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBlock_configuration) {
-			return visitor.visitBlock_configuration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15628,14 +15402,6 @@ export class Block_declarative_itemContext extends ParserRuleContext {
 			listener.exitBlock_declarative_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBlock_declarative_item) {
-			return visitor.visitBlock_declarative_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15664,14 +15430,6 @@ export class Block_declarative_partContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitBlock_declarative_part) {
 			listener.exitBlock_declarative_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBlock_declarative_part) {
-			return visitor.visitBlock_declarative_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15716,14 +15474,6 @@ export class Block_headerContext extends ParserRuleContext {
 			listener.exitBlock_header(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBlock_header) {
-			return visitor.visitBlock_header(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15754,14 +15504,6 @@ export class Block_specificationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitBlock_specification) {
 			listener.exitBlock_specification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBlock_specification) {
-			return visitor.visitBlock_specification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15818,14 +15560,6 @@ export class Block_statementContext extends ParserRuleContext {
 			listener.exitBlock_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBlock_statement) {
-			return visitor.visitBlock_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15854,14 +15588,6 @@ export class Block_statement_partContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitBlock_statement_part) {
 			listener.exitBlock_statement_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBlock_statement_part) {
-			return visitor.visitBlock_statement_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15896,14 +15622,6 @@ export class Branch_quantity_declarationContext extends ParserRuleContext {
 			listener.exitBranch_quantity_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBranch_quantity_declaration) {
-			return visitor.visitBranch_quantity_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -15933,14 +15651,6 @@ export class Break_elementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitBreak_element) {
 			listener.exitBreak_element(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBreak_element) {
-			return visitor.visitBreak_element(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -15982,14 +15692,6 @@ export class Break_listContext extends ParserRuleContext {
 			listener.exitBreak_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBreak_list) {
-			return visitor.visitBreak_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16014,14 +15716,6 @@ export class Break_selector_clauseContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitBreak_selector_clause) {
 			listener.exitBreak_selector_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBreak_selector_clause) {
-			return visitor.visitBreak_selector_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16055,14 +15749,6 @@ export class Break_statementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitBreak_statement) {
 			listener.exitBreak_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitBreak_statement) {
-			return visitor.visitBreak_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16116,14 +15802,6 @@ export class Case_statementContext extends ParserRuleContext {
 			listener.exitCase_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitCase_statement) {
-			return visitor.visitCase_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16151,14 +15829,6 @@ export class Case_statement_alternativeContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitCase_statement_alternative) {
 			listener.exitCase_statement_alternative(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitCase_statement_alternative) {
-			return visitor.visitCase_statement_alternative(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16190,14 +15860,6 @@ export class ChoiceContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitChoice) {
 			listener.exitChoice(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitChoice) {
-			return visitor.visitChoice(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16237,14 +15899,6 @@ export class ChoicesContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitChoices) {
 			listener.exitChoices(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitChoices) {
-			return visitor.visitChoices(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16296,14 +15950,6 @@ export class Component_configurationContext extends ParserRuleContext {
 			listener.exitComponent_configuration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitComponent_configuration) {
-			return visitor.visitComponent_configuration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16352,14 +15998,6 @@ export class Component_declarationContext extends ParserRuleContext {
 			listener.exitComponent_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitComponent_declaration) {
-			return visitor.visitComponent_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16394,14 +16032,6 @@ export class Component_instantiation_statementContext extends ParserRuleContext 
 			listener.exitComponent_instantiation_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitComponent_instantiation_statement) {
-			return visitor.visitComponent_instantiation_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16428,14 +16058,6 @@ export class Component_specificationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitComponent_specification) {
 			listener.exitComponent_specification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitComponent_specification) {
-			return visitor.visitComponent_specification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16465,14 +16087,6 @@ export class Composite_nature_definitionContext extends ParserRuleContext {
 			listener.exitComposite_nature_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitComposite_nature_definition) {
-			return visitor.visitComposite_nature_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16498,14 +16112,6 @@ export class Composite_type_definitionContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitComposite_type_definition) {
 			listener.exitComposite_type_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitComposite_type_definition) {
-			return visitor.visitComposite_type_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16535,14 +16141,6 @@ export class Concurrent_assertion_statementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitConcurrent_assertion_statement) {
 			listener.exitConcurrent_assertion_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConcurrent_assertion_statement) {
-			return visitor.visitConcurrent_assertion_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16581,14 +16179,6 @@ export class Concurrent_break_statementContext extends ParserRuleContext {
 			listener.exitConcurrent_break_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConcurrent_break_statement) {
-			return visitor.visitConcurrent_break_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16616,14 +16206,6 @@ export class Concurrent_procedure_call_statementContext extends ParserRuleContex
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitConcurrent_procedure_call_statement) {
 			listener.exitConcurrent_procedure_call_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConcurrent_procedure_call_statement) {
-			return visitor.visitConcurrent_procedure_call_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16657,14 +16239,6 @@ export class Concurrent_signal_assignment_statementContext extends ParserRuleCon
 			listener.exitConcurrent_signal_assignment_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConcurrent_signal_assignment_statement) {
-			return visitor.visitConcurrent_signal_assignment_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16687,14 +16261,6 @@ export class ConditionContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitCondition) {
 			listener.exitCondition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitCondition) {
-			return visitor.visitCondition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16720,14 +16286,6 @@ export class Condition_clauseContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitCondition_clause) {
 			listener.exitCondition_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitCondition_clause) {
-			return visitor.visitCondition_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16762,14 +16320,6 @@ export class Conditional_signal_assignmentContext extends ParserRuleContext {
 			listener.exitConditional_signal_assignment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConditional_signal_assignment) {
-			return visitor.visitConditional_signal_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16800,14 +16350,6 @@ export class Conditional_waveformsContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitConditional_waveforms) {
 			listener.exitConditional_waveforms(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConditional_waveforms) {
-			return visitor.visitConditional_waveforms(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16862,14 +16404,6 @@ export class Configuration_declarationContext extends ParserRuleContext {
 			listener.exitConfiguration_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConfiguration_declaration) {
-			return visitor.visitConfiguration_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16898,14 +16432,6 @@ export class Configuration_declarative_itemContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitConfiguration_declarative_item) {
 			listener.exitConfiguration_declarative_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConfiguration_declarative_item) {
-			return visitor.visitConfiguration_declarative_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -16938,14 +16464,6 @@ export class Configuration_declarative_partContext extends ParserRuleContext {
 			listener.exitConfiguration_declarative_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConfiguration_declarative_part) {
-			return visitor.visitConfiguration_declarative_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -16971,14 +16489,6 @@ export class Configuration_itemContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitConfiguration_item) {
 			listener.exitConfiguration_item(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConfiguration_item) {
-			return visitor.visitConfiguration_item(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17008,14 +16518,6 @@ export class Configuration_specificationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitConfiguration_specification) {
 			listener.exitConfiguration_specification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConfiguration_specification) {
-			return visitor.visitConfiguration_specification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17052,14 +16554,6 @@ export class Constant_declarationContext extends ParserRuleContext {
 			listener.exitConstant_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConstant_declaration) {
-			return visitor.visitConstant_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17087,14 +16581,6 @@ export class Constrained_array_definitionContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitConstrained_array_definition) {
 			listener.exitConstrained_array_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConstrained_array_definition) {
-			return visitor.visitConstrained_array_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17126,14 +16612,6 @@ export class Constrained_nature_definitionContext extends ParserRuleContext {
 			listener.exitConstrained_nature_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConstrained_nature_definition) {
-			return visitor.visitConstrained_nature_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17159,14 +16637,6 @@ export class ConstraintContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitConstraint) {
 			listener.exitConstraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitConstraint) {
-			return visitor.visitConstraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17199,14 +16669,6 @@ export class Context_clauseContext extends ParserRuleContext {
 			listener.exitContext_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitContext_clause) {
-			return visitor.visitContext_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17234,14 +16696,6 @@ export class Context_itemContext extends ParserRuleContext {
 			listener.exitContext_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitContext_item) {
-			return visitor.visitContext_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17267,14 +16721,6 @@ export class Delay_mechanismContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitDelay_mechanism) {
 			listener.exitDelay_mechanism(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitDelay_mechanism) {
-			return visitor.visitDelay_mechanism(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17308,14 +16754,6 @@ export class Design_fileContext extends ParserRuleContext {
 			listener.exitDesign_file(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitDesign_file) {
-			return visitor.visitDesign_file(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17343,14 +16781,6 @@ export class Design_unitContext extends ParserRuleContext {
 			listener.exitDesign_unit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitDesign_unit) {
-			return visitor.visitDesign_unit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17376,14 +16806,6 @@ export class DesignatorContext extends ParserRuleContext {
 			listener.exitDesignator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitDesignator) {
-			return visitor.visitDesignator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17405,14 +16827,6 @@ export class DirectionContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitDirection) {
 			listener.exitDirection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitDirection) {
-			return visitor.visitDirection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17445,14 +16859,6 @@ export class Disconnection_specificationContext extends ParserRuleContext {
 			listener.exitDisconnection_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitDisconnection_specification) {
-			return visitor.visitDisconnection_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17478,14 +16884,6 @@ export class Discrete_rangeContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitDiscrete_range) {
 			listener.exitDiscrete_range(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitDiscrete_range) {
-			return visitor.visitDiscrete_range(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17514,14 +16912,6 @@ export class Element_associationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitElement_association) {
 			listener.exitElement_association(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitElement_association) {
-			return visitor.visitElement_association(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17553,14 +16943,6 @@ export class Element_declarationContext extends ParserRuleContext {
 			listener.exitElement_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitElement_declaration) {
-			return visitor.visitElement_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17585,14 +16967,6 @@ export class Element_subnature_definitionContext extends ParserRuleContext {
 			listener.exitElement_subnature_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitElement_subnature_definition) {
-			return visitor.visitElement_subnature_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17615,14 +16989,6 @@ export class Element_subtype_definitionContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitElement_subtype_definition) {
 			listener.exitElement_subtype_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitElement_subtype_definition) {
-			return visitor.visitElement_subtype_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17655,14 +17021,6 @@ export class Entity_aspectContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitEntity_aspect) {
 			listener.exitEntity_aspect(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_aspect) {
-			return visitor.visitEntity_aspect(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17707,14 +17065,6 @@ export class Entity_classContext extends ParserRuleContext {
 			listener.exitEntity_class(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_class) {
-			return visitor.visitEntity_class(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17738,14 +17088,6 @@ export class Entity_class_entryContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitEntity_class_entry) {
 			listener.exitEntity_class_entry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_class_entry) {
-			return visitor.visitEntity_class_entry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17785,14 +17127,6 @@ export class Entity_class_entry_listContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitEntity_class_entry_list) {
 			listener.exitEntity_class_entry_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_class_entry_list) {
-			return visitor.visitEntity_class_entry_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17845,14 +17179,6 @@ export class Entity_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitEntity_declaration) {
 			listener.exitEntity_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_declaration) {
-			return visitor.visitEntity_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -17936,14 +17262,6 @@ export class Entity_declarative_itemContext extends ParserRuleContext {
 			listener.exitEntity_declarative_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_declarative_item) {
-			return visitor.visitEntity_declarative_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -17974,14 +17292,6 @@ export class Entity_declarative_partContext extends ParserRuleContext {
 			listener.exitEntity_declarative_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_declarative_part) {
-			return visitor.visitEntity_declarative_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18009,14 +17319,6 @@ export class Entity_designatorContext extends ParserRuleContext {
 			listener.exitEntity_designator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_designator) {
-			return visitor.visitEntity_designator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18042,14 +17344,6 @@ export class Entity_headerContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitEntity_header) {
 			listener.exitEntity_header(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_header) {
-			return visitor.visitEntity_header(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18093,14 +17387,6 @@ export class Entity_name_listContext extends ParserRuleContext {
 			listener.exitEntity_name_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_name_list) {
-			return visitor.visitEntity_name_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18127,14 +17413,6 @@ export class Entity_specificationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitEntity_specification) {
 			listener.exitEntity_specification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_specification) {
-			return visitor.visitEntity_specification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18167,14 +17445,6 @@ export class Entity_statementContext extends ParserRuleContext {
 			listener.exitEntity_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_statement) {
-			return visitor.visitEntity_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18205,14 +17475,6 @@ export class Entity_statement_partContext extends ParserRuleContext {
 			listener.exitEntity_statement_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_statement_part) {
-			return visitor.visitEntity_statement_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18239,14 +17501,6 @@ export class Entity_tagContext extends ParserRuleContext {
 			listener.exitEntity_tag(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEntity_tag) {
-			return visitor.visitEntity_tag(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18270,14 +17524,6 @@ export class Enumeration_literalContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitEnumeration_literal) {
 			listener.exitEnumeration_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEnumeration_literal) {
-			return visitor.visitEnumeration_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18321,14 +17567,6 @@ export class Enumeration_type_definitionContext extends ParserRuleContext {
 			listener.exitEnumeration_type_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitEnumeration_type_definition) {
-			return visitor.visitEnumeration_type_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18360,14 +17598,6 @@ export class Exit_statementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitExit_statement) {
 			listener.exitExit_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitExit_statement) {
-			return visitor.visitExit_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18409,14 +17639,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18448,14 +17670,6 @@ export class FactorContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitFactor) {
 			listener.exitFactor(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitFactor) {
-			return visitor.visitFactor(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18491,14 +17705,6 @@ export class File_declarationContext extends ParserRuleContext {
 			listener.exitFile_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitFile_declaration) {
-			return visitor.visitFile_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18521,14 +17727,6 @@ export class File_logical_nameContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitFile_logical_name) {
 			listener.exitFile_logical_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitFile_logical_name) {
-			return visitor.visitFile_logical_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18560,14 +17758,6 @@ export class File_open_informationContext extends ParserRuleContext {
 			listener.exitFile_open_information(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitFile_open_information) {
-			return visitor.visitFile_open_information(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18594,14 +17784,6 @@ export class File_type_definitionContext extends ParserRuleContext {
 			listener.exitFile_type_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitFile_type_definition) {
-			return visitor.visitFile_type_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18624,14 +17806,6 @@ export class Formal_parameter_listContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitFormal_parameter_list) {
 			listener.exitFormal_parameter_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitFormal_parameter_list) {
-			return visitor.visitFormal_parameter_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18661,14 +17835,6 @@ export class Formal_partContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitFormal_part) {
 			listener.exitFormal_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitFormal_part) {
-			return visitor.visitFormal_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18703,14 +17869,6 @@ export class Free_quantity_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitFree_quantity_declaration) {
 			listener.exitFree_quantity_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitFree_quantity_declaration) {
-			return visitor.visitFree_quantity_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18773,14 +17931,6 @@ export class Generate_statementContext extends ParserRuleContext {
 			listener.exitGenerate_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitGenerate_statement) {
-			return visitor.visitGenerate_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18810,14 +17960,6 @@ export class Generation_schemeContext extends ParserRuleContext {
 			listener.exitGeneration_scheme(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitGeneration_scheme) {
-			return visitor.visitGeneration_scheme(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18844,14 +17986,6 @@ export class Generic_clauseContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitGeneric_clause) {
 			listener.exitGeneric_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitGeneric_clause) {
-			return visitor.visitGeneric_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -18893,14 +18027,6 @@ export class Generic_listContext extends ParserRuleContext {
 			listener.exitGeneric_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitGeneric_list) {
-			return visitor.visitGeneric_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18929,14 +18055,6 @@ export class Generic_map_aspectContext extends ParserRuleContext {
 			listener.exitGeneric_map_aspect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitGeneric_map_aspect) {
-			return visitor.visitGeneric_map_aspect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -18960,14 +18078,6 @@ export class Group_constituentContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitGroup_constituent) {
 			listener.exitGroup_constituent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitGroup_constituent) {
-			return visitor.visitGroup_constituent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19009,14 +18119,6 @@ export class Group_constituent_listContext extends ParserRuleContext {
 			listener.exitGroup_constituent_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitGroup_constituent_list) {
-			return visitor.visitGroup_constituent_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19051,14 +18153,6 @@ export class Group_declarationContext extends ParserRuleContext {
 			listener.exitGroup_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitGroup_declaration) {
-			return visitor.visitGroup_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19091,14 +18185,6 @@ export class Group_template_declarationContext extends ParserRuleContext {
 			listener.exitGroup_template_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitGroup_template_declaration) {
-			return visitor.visitGroup_template_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19127,14 +18213,6 @@ export class Guarded_signal_specificationContext extends ParserRuleContext {
 			listener.exitGuarded_signal_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitGuarded_signal_specification) {
-			return visitor.visitGuarded_signal_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19156,14 +18234,6 @@ export class IdentifierContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitIdentifier) {
 			listener.exitIdentifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19203,14 +18273,6 @@ export class Identifier_listContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitIdentifier_list) {
 			listener.exitIdentifier_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitIdentifier_list) {
-			return visitor.visitIdentifier_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19288,14 +18350,6 @@ export class If_statementContext extends ParserRuleContext {
 			listener.exitIf_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitIf_statement) {
-			return visitor.visitIf_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19337,14 +18391,6 @@ export class Index_constraintContext extends ParserRuleContext {
 			listener.exitIndex_constraint(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitIndex_constraint) {
-			return visitor.visitIndex_constraint(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19372,14 +18418,6 @@ export class Index_specificationContext extends ParserRuleContext {
 			listener.exitIndex_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitIndex_specification) {
-			return visitor.visitIndex_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19404,14 +18442,6 @@ export class Index_subtype_definitionContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitIndex_subtype_definition) {
 			listener.exitIndex_subtype_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitIndex_subtype_definition) {
-			return visitor.visitIndex_subtype_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19444,14 +18474,6 @@ export class Instantiated_unitContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitInstantiated_unit) {
 			listener.exitInstantiated_unit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInstantiated_unit) {
-			return visitor.visitInstantiated_unit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19495,14 +18517,6 @@ export class Instantiation_listContext extends ParserRuleContext {
 			listener.exitInstantiation_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInstantiation_list) {
-			return visitor.visitInstantiation_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19535,14 +18549,6 @@ export class Interface_constant_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitInterface_constant_declaration) {
 			listener.exitInterface_constant_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInterface_constant_declaration) {
-			return visitor.visitInterface_constant_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19584,14 +18590,6 @@ export class Interface_declarationContext extends ParserRuleContext {
 			listener.exitInterface_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInterface_declaration) {
-			return visitor.visitInterface_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19614,14 +18612,6 @@ export class Interface_elementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitInterface_element) {
 			listener.exitInterface_element(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInterface_element) {
-			return visitor.visitInterface_element(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19651,14 +18641,6 @@ export class Interface_file_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitInterface_file_declaration) {
 			listener.exitInterface_file_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInterface_file_declaration) {
-			return visitor.visitInterface_file_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19700,14 +18682,6 @@ export class Interface_signal_listContext extends ParserRuleContext {
 			listener.exitInterface_signal_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInterface_signal_list) {
-			return visitor.visitInterface_signal_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19745,14 +18719,6 @@ export class Interface_port_listContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitInterface_port_list) {
 			listener.exitInterface_port_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInterface_port_list) {
-			return visitor.visitInterface_port_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19794,14 +18760,6 @@ export class Interface_listContext extends ParserRuleContext {
 			listener.exitInterface_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInterface_list) {
-			return visitor.visitInterface_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19835,14 +18793,6 @@ export class Interface_quantity_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitInterface_quantity_declaration) {
 			listener.exitInterface_quantity_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInterface_quantity_declaration) {
-			return visitor.visitInterface_quantity_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19879,14 +18829,6 @@ export class Interface_port_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitInterface_port_declaration) {
 			listener.exitInterface_port_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInterface_port_declaration) {
-			return visitor.visitInterface_port_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -19926,14 +18868,6 @@ export class Interface_signal_declarationContext extends ParserRuleContext {
 			listener.exitInterface_signal_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInterface_signal_declaration) {
-			return visitor.visitInterface_signal_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -19961,14 +18895,6 @@ export class Interface_terminal_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitInterface_terminal_declaration) {
 			listener.exitInterface_terminal_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInterface_terminal_declaration) {
-			return visitor.visitInterface_terminal_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20007,14 +18933,6 @@ export class Interface_variable_declarationContext extends ParserRuleContext {
 			listener.exitInterface_variable_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitInterface_variable_declaration) {
-			return visitor.visitInterface_variable_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20044,14 +18962,6 @@ export class Iteration_schemeContext extends ParserRuleContext {
 			listener.exitIteration_scheme(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitIteration_scheme) {
-			return visitor.visitIteration_scheme(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20075,14 +18985,6 @@ export class Label_colonContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitLabel_colon) {
 			listener.exitLabel_colon(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitLabel_colon) {
-			return visitor.visitLabel_colon(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20111,14 +19013,6 @@ export class Library_clauseContext extends ParserRuleContext {
 			listener.exitLibrary_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitLibrary_clause) {
-			return visitor.visitLibrary_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20144,14 +19038,6 @@ export class Library_unitContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitLibrary_unit) {
 			listener.exitLibrary_unit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitLibrary_unit) {
-			return visitor.visitLibrary_unit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20184,14 +19070,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20214,14 +19092,6 @@ export class Logical_nameContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitLogical_name) {
 			listener.exitLogical_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitLogical_name) {
-			return visitor.visitLogical_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20263,14 +19133,6 @@ export class Logical_name_listContext extends ParserRuleContext {
 			listener.exitLogical_name_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitLogical_name_list) {
-			return visitor.visitLogical_name_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20296,14 +19158,6 @@ export class Logical_operatorContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitLogical_operator) {
 			listener.exitLogical_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitLogical_operator) {
-			return visitor.visitLogical_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20350,14 +19204,6 @@ export class Loop_statementContext extends ParserRuleContext {
 			listener.exitLoop_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitLoop_statement) {
-			return visitor.visitLoop_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20384,14 +19230,6 @@ export class Signal_modeContext extends ParserRuleContext {
 			listener.exitSignal_mode(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSignal_mode) {
-			return visitor.visitSignal_mode(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20415,14 +19253,6 @@ export class Multiplying_operatorContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitMultiplying_operator) {
 			listener.exitMultiplying_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitMultiplying_operator) {
-			return visitor.visitMultiplying_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20459,14 +19289,6 @@ export class NameContext extends ParserRuleContext {
 			listener.exitName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20498,14 +19320,6 @@ export class Name_partContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitName_part) {
 			listener.exitName_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitName_part) {
-			return visitor.visitName_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20550,14 +19364,6 @@ export class Selected_nameContext extends ParserRuleContext {
 			listener.exitSelected_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSelected_name) {
-			return visitor.visitSelected_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20597,14 +19403,6 @@ export class Selected_name_partContext extends ParserRuleContext {
 			listener.exitSelected_name_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSelected_name_part) {
-			return visitor.visitSelected_name_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20631,14 +19429,6 @@ export class Function_call_or_indexed_name_partContext extends ParserRuleContext
 			listener.exitFunction_call_or_indexed_name_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitFunction_call_or_indexed_name_part) {
-			return visitor.visitFunction_call_or_indexed_name_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20663,14 +19453,6 @@ export class Slice_name_partContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSlice_name_part) {
 			listener.exitSlice_name_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSlice_name_part) {
-			return visitor.visitSlice_name_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20706,14 +19488,6 @@ export class Attribute_name_partContext extends ParserRuleContext {
 			listener.exitAttribute_name_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitAttribute_name_part) {
-			return visitor.visitAttribute_name_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20744,14 +19518,6 @@ export class Nature_declarationContext extends ParserRuleContext {
 			listener.exitNature_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitNature_declaration) {
-			return visitor.visitNature_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20777,14 +19543,6 @@ export class Nature_definitionContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitNature_definition) {
 			listener.exitNature_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitNature_definition) {
-			return visitor.visitNature_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20813,14 +19571,6 @@ export class Nature_element_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitNature_element_declaration) {
 			listener.exitNature_element_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitNature_element_declaration) {
-			return visitor.visitNature_element_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20856,14 +19606,6 @@ export class Next_statementContext extends ParserRuleContext {
 			listener.exitNext_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitNext_statement) {
-			return visitor.visitNext_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20889,14 +19631,6 @@ export class Numeric_literalContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitNumeric_literal) {
 			listener.exitNumeric_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitNumeric_literal) {
-			return visitor.visitNumeric_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -20938,14 +19672,6 @@ export class Object_declarationContext extends ParserRuleContext {
 			listener.exitObject_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitObject_declaration) {
-			return visitor.visitObject_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -20969,14 +19695,6 @@ export class OptsContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitOpts) {
 			listener.exitOpts(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitOpts) {
-			return visitor.visitOpts(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21033,14 +19751,6 @@ export class Package_bodyContext extends ParserRuleContext {
 			listener.exitPackage_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPackage_body) {
-			return visitor.visitPackage_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21095,14 +19805,6 @@ export class Package_body_declarative_itemContext extends ParserRuleContext {
 			listener.exitPackage_body_declarative_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPackage_body_declarative_item) {
-			return visitor.visitPackage_body_declarative_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21131,14 +19833,6 @@ export class Package_body_declarative_partContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitPackage_body_declarative_part) {
 			listener.exitPackage_body_declarative_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPackage_body_declarative_part) {
-			return visitor.visitPackage_body_declarative_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21184,14 +19878,6 @@ export class Package_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitPackage_declaration) {
 			listener.exitPackage_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPackage_declaration) {
-			return visitor.visitPackage_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21272,14 +19958,6 @@ export class Package_declarative_itemContext extends ParserRuleContext {
 			listener.exitPackage_declarative_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPackage_declarative_item) {
-			return visitor.visitPackage_declarative_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21310,14 +19988,6 @@ export class Package_declarative_partContext extends ParserRuleContext {
 			listener.exitPackage_declarative_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPackage_declarative_part) {
-			return visitor.visitPackage_declarative_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21346,14 +20016,6 @@ export class Parameter_specificationContext extends ParserRuleContext {
 			listener.exitParameter_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitParameter_specification) {
-			return visitor.visitParameter_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21379,14 +20041,6 @@ export class Physical_literalContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitPhysical_literal) {
 			listener.exitPhysical_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPhysical_literal) {
-			return visitor.visitPhysical_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21438,14 +20092,6 @@ export class Physical_type_definitionContext extends ParserRuleContext {
 			listener.exitPhysical_type_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPhysical_type_definition) {
-			return visitor.visitPhysical_type_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21474,14 +20120,6 @@ export class Port_clauseContext extends ParserRuleContext {
 			listener.exitPort_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPort_clause) {
-			return visitor.visitPort_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21504,14 +20142,6 @@ export class Port_listContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitPort_list) {
 			listener.exitPort_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPort_list) {
-			return visitor.visitPort_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21540,14 +20170,6 @@ export class Port_map_aspectContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitPort_map_aspect) {
 			listener.exitPort_map_aspect(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPort_map_aspect) {
-			return visitor.visitPort_map_aspect(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21591,14 +20213,6 @@ export class PrimaryContext extends ParserRuleContext {
 			listener.exitPrimary(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPrimary) {
-			return visitor.visitPrimary(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21627,14 +20241,6 @@ export class Primary_unitContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitPrimary_unit) {
 			listener.exitPrimary_unit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitPrimary_unit) {
-			return visitor.visitPrimary_unit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21694,14 +20300,6 @@ export class Procedural_declarative_itemContext extends ParserRuleContext {
 			listener.exitProcedural_declarative_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitProcedural_declarative_item) {
-			return visitor.visitProcedural_declarative_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21730,14 +20328,6 @@ export class Procedural_declarative_partContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitProcedural_declarative_part) {
 			listener.exitProcedural_declarative_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitProcedural_declarative_part) {
-			return visitor.visitProcedural_declarative_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21770,14 +20360,6 @@ export class Procedural_statement_partContext extends ParserRuleContext {
 			listener.exitProcedural_statement_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitProcedural_statement_part) {
-			return visitor.visitProcedural_statement_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21807,14 +20389,6 @@ export class Procedure_callContext extends ParserRuleContext {
 			listener.exitProcedure_call(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitProcedure_call) {
-			return visitor.visitProcedure_call(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21841,14 +20415,6 @@ export class Procedure_call_statementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitProcedure_call_statement) {
 			listener.exitProcedure_call_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitProcedure_call_statement) {
-			return visitor.visitProcedure_call_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -21911,14 +20477,6 @@ export class Process_declarative_itemContext extends ParserRuleContext {
 			listener.exitProcess_declarative_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitProcess_declarative_item) {
-			return visitor.visitProcess_declarative_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -21947,14 +20505,6 @@ export class Process_declarative_partContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitProcess_declarative_part) {
 			listener.exitProcess_declarative_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitProcess_declarative_part) {
-			return visitor.visitProcess_declarative_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22017,14 +20567,6 @@ export class Process_statementContext extends ParserRuleContext {
 			listener.exitProcess_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitProcess_statement) {
-			return visitor.visitProcess_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22053,14 +20595,6 @@ export class Process_statement_partContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitProcess_statement_part) {
 			listener.exitProcess_statement_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitProcess_statement_part) {
-			return visitor.visitProcess_statement_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22096,14 +20630,6 @@ export class Qualified_expressionContext extends ParserRuleContext {
 			listener.exitQualified_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitQualified_expression) {
-			return visitor.visitQualified_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22132,14 +20658,6 @@ export class Quantity_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitQuantity_declaration) {
 			listener.exitQuantity_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitQuantity_declaration) {
-			return visitor.visitQuantity_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22183,14 +20701,6 @@ export class Quantity_listContext extends ParserRuleContext {
 			listener.exitQuantity_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitQuantity_list) {
-			return visitor.visitQuantity_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22219,14 +20729,6 @@ export class Quantity_specificationContext extends ParserRuleContext {
 			listener.exitQuantity_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitQuantity_specification) {
-			return visitor.visitQuantity_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22252,14 +20754,6 @@ export class Range_declContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitRange_decl) {
 			listener.exitRange_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitRange_decl) {
-			return visitor.visitRange_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22295,14 +20789,6 @@ export class Explicit_rangeContext extends ParserRuleContext {
 			listener.exitExplicit_range(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitExplicit_range) {
-			return visitor.visitExplicit_range(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22326,14 +20812,6 @@ export class Range_constraintContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitRange_constraint) {
 			listener.exitRange_constraint(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitRange_constraint) {
-			return visitor.visitRange_constraint(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22379,14 +20857,6 @@ export class Record_nature_definitionContext extends ParserRuleContext {
 			listener.exitRecord_nature_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitRecord_nature_definition) {
-			return visitor.visitRecord_nature_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22430,14 +20900,6 @@ export class Record_type_definitionContext extends ParserRuleContext {
 			listener.exitRecord_type_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitRecord_type_definition) {
-			return visitor.visitRecord_type_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22471,14 +20933,6 @@ export class RelationContext extends ParserRuleContext {
 			listener.exitRelation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitRelation) {
-			return visitor.visitRelation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22504,14 +20958,6 @@ export class Relational_operatorContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitRelational_operator) {
 			listener.exitRelational_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitRelational_operator) {
-			return visitor.visitRelational_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22550,14 +20996,6 @@ export class Report_statementContext extends ParserRuleContext {
 			listener.exitReport_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitReport_statement) {
-			return visitor.visitReport_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22585,14 +21023,6 @@ export class Return_statementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitReturn_statement) {
 			listener.exitReturn_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitReturn_statement) {
-			return visitor.visitReturn_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22628,14 +21058,6 @@ export class Scalar_nature_definitionContext extends ParserRuleContext {
 			listener.exitScalar_nature_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitScalar_nature_definition) {
-			return visitor.visitScalar_nature_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22666,14 +21088,6 @@ export class Scalar_type_definitionContext extends ParserRuleContext {
 			listener.exitScalar_type_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitScalar_type_definition) {
-			return visitor.visitScalar_type_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22699,14 +21113,6 @@ export class Secondary_unitContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSecondary_unit) {
 			listener.exitSecondary_unit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSecondary_unit) {
-			return visitor.visitSecondary_unit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22736,14 +21142,6 @@ export class Secondary_unit_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSecondary_unit_declaration) {
 			listener.exitSecondary_unit_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSecondary_unit_declaration) {
-			return visitor.visitSecondary_unit_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22781,14 +21179,6 @@ export class Selected_signal_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSelected_signal_assignment) {
 			listener.exitSelected_signal_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSelected_signal_assignment) {
-			return visitor.visitSelected_signal_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22848,14 +21238,6 @@ export class Selected_waveformsContext extends ParserRuleContext {
 			listener.exitSelected_waveforms(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSelected_waveforms) {
-			return visitor.visitSelected_waveforms(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22879,14 +21261,6 @@ export class Sensitivity_clauseContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSensitivity_clause) {
 			listener.exitSensitivity_clause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSensitivity_clause) {
-			return visitor.visitSensitivity_clause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -22928,14 +21302,6 @@ export class Sensitivity_listContext extends ParserRuleContext {
 			listener.exitSensitivity_list(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSensitivity_list) {
-			return visitor.visitSensitivity_list(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -22964,14 +21330,6 @@ export class Sequence_of_statementsContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSequence_of_statements) {
 			listener.exitSequence_of_statements(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSequence_of_statements) {
-			return visitor.visitSequence_of_statements(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23039,14 +21397,6 @@ export class Sequential_statementContext extends ParserRuleContext {
 			listener.exitSequential_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSequential_statement) {
-			return visitor.visitSequential_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23080,14 +21430,6 @@ export class Shift_expressionContext extends ParserRuleContext {
 			listener.exitShift_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitShift_expression) {
-			return visitor.visitShift_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23113,14 +21455,6 @@ export class Shift_operatorContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitShift_operator) {
 			listener.exitShift_operator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitShift_operator) {
-			return visitor.visitShift_operator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23156,14 +21490,6 @@ export class Signal_assignment_statementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSignal_assignment_statement) {
 			listener.exitSignal_assignment_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSignal_assignment_statement) {
-			return visitor.visitSignal_assignment_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23203,14 +21529,6 @@ export class Signal_declarationContext extends ParserRuleContext {
 			listener.exitSignal_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSignal_declaration) {
-			return visitor.visitSignal_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23232,14 +21550,6 @@ export class Signal_kindContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSignal_kind) {
 			listener.exitSignal_kind(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSignal_kind) {
-			return visitor.visitSignal_kind(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23281,14 +21591,6 @@ export class Signal_listContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSignal_list) {
 			listener.exitSignal_list(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSignal_list) {
-			return visitor.visitSignal_list(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23333,14 +21635,6 @@ export class SignatureContext extends ParserRuleContext {
 			listener.exitSignature(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSignature) {
-			return visitor.visitSignature(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23382,14 +21676,6 @@ export class Simple_expressionContext extends ParserRuleContext {
 			listener.exitSimple_expression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSimple_expression) {
-			return visitor.visitSimple_expression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23428,14 +21714,6 @@ export class Simple_simultaneous_statementContext extends ParserRuleContext {
 			listener.exitSimple_simultaneous_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSimple_simultaneous_statement) {
-			return visitor.visitSimple_simultaneous_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23463,14 +21741,6 @@ export class Simultaneous_alternativeContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSimultaneous_alternative) {
 			listener.exitSimultaneous_alternative(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSimultaneous_alternative) {
-			return visitor.visitSimultaneous_alternative(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23522,14 +21792,6 @@ export class Simultaneous_case_statementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSimultaneous_case_statement) {
 			listener.exitSimultaneous_case_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSimultaneous_case_statement) {
-			return visitor.visitSimultaneous_case_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23599,14 +21861,6 @@ export class Simultaneous_if_statementContext extends ParserRuleContext {
 			listener.exitSimultaneous_if_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSimultaneous_if_statement) {
-			return visitor.visitSimultaneous_if_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23653,14 +21907,6 @@ export class Simultaneous_procedural_statementContext extends ParserRuleContext 
 			listener.exitSimultaneous_procedural_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSimultaneous_procedural_statement) {
-			return visitor.visitSimultaneous_procedural_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23699,14 +21945,6 @@ export class Simultaneous_statementContext extends ParserRuleContext {
 			listener.exitSimultaneous_statement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSimultaneous_statement) {
-			return visitor.visitSimultaneous_statement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23735,14 +21973,6 @@ export class Simultaneous_statement_partContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSimultaneous_statement_part) {
 			listener.exitSimultaneous_statement_part(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSimultaneous_statement_part) {
-			return visitor.visitSimultaneous_statement_part(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23778,14 +22008,6 @@ export class Source_aspectContext extends ParserRuleContext {
 			listener.exitSource_aspect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSource_aspect) {
-			return visitor.visitSource_aspect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23819,14 +22041,6 @@ export class Source_quantity_declarationContext extends ParserRuleContext {
 			listener.exitSource_quantity_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSource_quantity_declaration) {
-			return visitor.visitSource_quantity_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23857,14 +22071,6 @@ export class Step_limit_specificationContext extends ParserRuleContext {
 			listener.exitStep_limit_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitStep_limit_specification) {
-			return visitor.visitStep_limit_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -23893,14 +22099,6 @@ export class Subnature_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSubnature_declaration) {
 			listener.exitSubnature_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSubnature_declaration) {
-			return visitor.visitSubnature_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23940,14 +22138,6 @@ export class Subnature_indicationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSubnature_indication) {
 			listener.exitSubnature_indication(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSubnature_indication) {
-			return visitor.visitSubnature_indication(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -23990,14 +22180,6 @@ export class Subprogram_bodyContext extends ParserRuleContext {
 			listener.exitSubprogram_body(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSubprogram_body) {
-			return visitor.visitSubprogram_body(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24021,14 +22203,6 @@ export class Subprogram_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSubprogram_declaration) {
 			listener.exitSubprogram_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSubprogram_declaration) {
-			return visitor.visitSubprogram_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24091,14 +22265,6 @@ export class Subprogram_declarative_itemContext extends ParserRuleContext {
 			listener.exitSubprogram_declarative_item(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSubprogram_declarative_item) {
-			return visitor.visitSubprogram_declarative_item(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24129,14 +22295,6 @@ export class Subprogram_declarative_partContext extends ParserRuleContext {
 			listener.exitSubprogram_declarative_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSubprogram_declarative_part) {
-			return visitor.visitSubprogram_declarative_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24158,14 +22316,6 @@ export class Subprogram_kindContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSubprogram_kind) {
 			listener.exitSubprogram_kind(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSubprogram_kind) {
-			return visitor.visitSubprogram_kind(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24193,14 +22343,6 @@ export class Subprogram_specificationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSubprogram_specification) {
 			listener.exitSubprogram_specification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSubprogram_specification) {
-			return visitor.visitSubprogram_specification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24231,14 +22373,6 @@ export class Procedure_specificationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitProcedure_specification) {
 			listener.exitProcedure_specification(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitProcedure_specification) {
-			return visitor.visitProcedure_specification(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24277,14 +22411,6 @@ export class Function_specificationContext extends ParserRuleContext {
 			listener.exitFunction_specification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitFunction_specification) {
-			return visitor.visitFunction_specification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24315,14 +22441,6 @@ export class Subprogram_statement_partContext extends ParserRuleContext {
 			listener.exitSubprogram_statement_part(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSubprogram_statement_part) {
-			return visitor.visitSubprogram_statement_part(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24351,14 +22469,6 @@ export class Subtype_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitSubtype_declaration) {
 			listener.exitSubtype_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSubtype_declaration) {
-			return visitor.visitSubtype_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24397,14 +22507,6 @@ export class Subtype_indicationContext extends ParserRuleContext {
 			listener.exitSubtype_indication(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSubtype_indication) {
-			return visitor.visitSubtype_indication(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24432,14 +22534,6 @@ export class SuffixContext extends ParserRuleContext {
 			listener.exitSuffix(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitSuffix) {
-			return visitor.visitSuffix(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24465,14 +22559,6 @@ export class TargetContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitTarget) {
 			listener.exitTarget(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitTarget) {
-			return visitor.visitTarget(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24514,14 +22600,6 @@ export class TermContext extends ParserRuleContext {
 			listener.exitTerm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitTerm) {
-			return visitor.visitTerm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24553,14 +22631,6 @@ export class Terminal_aspectContext extends ParserRuleContext {
 			listener.exitTerminal_aspect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitTerminal_aspect) {
-			return visitor.visitTerminal_aspect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24589,14 +22659,6 @@ export class Terminal_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitTerminal_declaration) {
 			listener.exitTerminal_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitTerminal_declaration) {
-			return visitor.visitTerminal_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24631,14 +22693,6 @@ export class Through_aspectContext extends ParserRuleContext {
 			listener.exitThrough_aspect(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitThrough_aspect) {
-			return visitor.visitThrough_aspect(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24664,14 +22718,6 @@ export class Timeout_clauseContext extends ParserRuleContext {
 			listener.exitTimeout_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitTimeout_clause) {
-			return visitor.visitTimeout_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24695,14 +22741,6 @@ export class Tolerance_aspectContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitTolerance_aspect) {
 			listener.exitTolerance_aspect(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitTolerance_aspect) {
-			return visitor.visitTolerance_aspect(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24733,14 +22771,6 @@ export class Type_declarationContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitType_declaration) {
 			listener.exitType_declaration(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitType_declaration) {
-			return visitor.visitType_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24774,14 +22804,6 @@ export class Type_definitionContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitType_definition) {
 			listener.exitType_definition(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitType_definition) {
-			return visitor.visitType_definition(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -24830,14 +22852,6 @@ export class Unconstrained_array_definitionContext extends ParserRuleContext {
 			listener.exitUnconstrained_array_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitUnconstrained_array_definition) {
-			return visitor.visitUnconstrained_array_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24884,14 +22898,6 @@ export class Unconstrained_nature_definitionContext extends ParserRuleContext {
 			listener.exitUnconstrained_nature_definition(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitUnconstrained_nature_definition) {
-			return visitor.visitUnconstrained_nature_definition(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24933,14 +22939,6 @@ export class Use_clauseContext extends ParserRuleContext {
 			listener.exitUse_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitUse_clause) {
-			return visitor.visitUse_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -24971,14 +22969,6 @@ export class Variable_assignment_statementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitVariable_assignment_statement) {
 			listener.exitVariable_assignment_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitVariable_assignment_statement) {
-			return visitor.visitVariable_assignment_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25016,14 +23006,6 @@ export class Variable_declarationContext extends ParserRuleContext {
 			listener.exitVariable_declaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitVariable_declaration) {
-			return visitor.visitVariable_declaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25057,14 +23039,6 @@ export class Wait_statementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitWait_statement) {
 			listener.exitWait_statement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitWait_statement) {
-			return visitor.visitWait_statement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -25107,14 +23081,6 @@ export class WaveformContext extends ParserRuleContext {
 			listener.exitWaveform(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitWaveform) {
-			return visitor.visitWaveform(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -25144,14 +23110,6 @@ export class Waveform_elementContext extends ParserRuleContext {
 	public exitRule(listener: vhdlListener): void {
 		if (listener.exitWaveform_element) {
 			listener.exitWaveform_element(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: vhdlVisitor<Result>): Result {
-		if (visitor.visitWaveform_element) {
-			return visitor.visitWaveform_element(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

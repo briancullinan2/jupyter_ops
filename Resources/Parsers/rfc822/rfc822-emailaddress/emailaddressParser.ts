@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { emailaddressListener } from "./emailaddressListener";
-import { emailaddressVisitor } from "./emailaddressVisitor";
-
 
 export class emailaddressParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1052,14 +1050,6 @@ export class EmailaddressContext extends ParserRuleContext {
 			listener.exitEmailaddress(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitEmailaddress) {
-			return visitor.visitEmailaddress(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1093,14 +1083,6 @@ export class GroupContext extends ParserRuleContext {
 			listener.exitGroup(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitGroup) {
-			return visitor.visitGroup(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1129,14 +1111,6 @@ export class MailboxContext extends ParserRuleContext {
 	public exitRule(listener: emailaddressListener): void {
 		if (listener.exitMailbox) {
 			listener.exitMailbox(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitMailbox) {
-			return visitor.visitMailbox(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1172,14 +1146,6 @@ export class RouteaddrContext extends ParserRuleContext {
 			listener.exitRouteaddr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitRouteaddr) {
-			return visitor.visitRouteaddr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1202,14 +1168,6 @@ export class RouteContext extends ParserRuleContext {
 	public exitRule(listener: emailaddressListener): void {
 		if (listener.exitRoute) {
 			listener.exitRoute(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitRoute) {
-			return visitor.visitRoute(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1237,14 +1195,6 @@ export class AddrspecContext extends ParserRuleContext {
 	public exitRule(listener: emailaddressListener): void {
 		if (listener.exitAddrspec) {
 			listener.exitAddrspec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitAddrspec) {
-			return visitor.visitAddrspec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1277,14 +1227,6 @@ export class LocalpartContext extends ParserRuleContext {
 			listener.exitLocalpart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitLocalpart) {
-			return visitor.visitLocalpart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1315,14 +1257,6 @@ export class DomainContext extends ParserRuleContext {
 			listener.exitDomain(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitDomain) {
-			return visitor.visitDomain(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1350,14 +1284,6 @@ export class SubdomainContext extends ParserRuleContext {
 			listener.exitSubdomain(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitSubdomain) {
-			return visitor.visitSubdomain(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1380,14 +1306,6 @@ export class DomainrefContext extends ParserRuleContext {
 	public exitRule(listener: emailaddressListener): void {
 		if (listener.exitDomainref) {
 			listener.exitDomainref(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitDomainref) {
-			return visitor.visitDomainref(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1420,14 +1338,6 @@ export class PhraseContext extends ParserRuleContext {
 			listener.exitPhrase(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitPhrase) {
-			return visitor.visitPhrase(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1455,14 +1365,6 @@ export class WordContext extends ParserRuleContext {
 			listener.exitWord(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitWord) {
-			return visitor.visitWord(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1484,14 +1386,6 @@ export class LwspcharContext extends ParserRuleContext {
 	public exitRule(listener: emailaddressListener): void {
 		if (listener.exitLwspchar) {
 			listener.exitLwspchar(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitLwspchar) {
-			return visitor.visitLwspchar(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1533,14 +1427,6 @@ export class LwspContext extends ParserRuleContext {
 			listener.exitLwsp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitLwsp) {
-			return visitor.visitLwsp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1567,14 +1453,6 @@ export class DelimetersContext extends ParserRuleContext {
 	public exitRule(listener: emailaddressListener): void {
 		if (listener.exitDelimeters) {
 			listener.exitDelimeters(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitDelimeters) {
-			return visitor.visitDelimeters(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1607,14 +1485,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1635,14 +1505,6 @@ export class QuotedpairContext extends ParserRuleContext {
 	public exitRule(listener: emailaddressListener): void {
 		if (listener.exitQuotedpair) {
 			listener.exitQuotedpair(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitQuotedpair) {
-			return visitor.visitQuotedpair(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1684,14 +1546,6 @@ export class DomainliteralContext extends ParserRuleContext {
 			listener.exitDomainliteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitDomainliteral) {
-			return visitor.visitDomainliteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1729,14 +1583,6 @@ export class QuotedstringContext extends ParserRuleContext {
 	public exitRule(listener: emailaddressListener): void {
 		if (listener.exitQuotedstring) {
 			listener.exitQuotedstring(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitQuotedstring) {
-			return visitor.visitQuotedstring(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1785,14 +1631,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: emailaddressListener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: emailaddressVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

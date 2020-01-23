@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { useragentListener } from "./useragentListener";
-import { useragentVisitor } from "./useragentVisitor";
-
 
 export class useragentParser extends Parser {
 	public static readonly T__0 = 1;
@@ -306,14 +304,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: useragentVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -341,14 +331,6 @@ export class ProductContext extends ParserRuleContext {
 			listener.exitProduct(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: useragentVisitor<Result>): Result {
-		if (visitor.visitProduct) {
-			return visitor.visitProduct(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -369,14 +351,6 @@ export class NameContext extends ParserRuleContext {
 	public exitRule(listener: useragentListener): void {
 		if (listener.exitName) {
 			listener.exitName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: useragentVisitor<Result>): Result {
-		if (visitor.visitName) {
-			return visitor.visitName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -409,14 +383,6 @@ export class VersionContext extends ParserRuleContext {
 			listener.exitVersion(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: useragentVisitor<Result>): Result {
-		if (visitor.visitVersion) {
-			return visitor.visitVersion(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -437,14 +403,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: useragentListener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: useragentVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

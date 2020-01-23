@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { FusionTablesSqlListener } from "./FusionTablesSqlListener";
-import { FusionTablesSqlVisitor } from "./FusionTablesSqlVisitor";
-
 
 export class FusionTablesSqlParser extends Parser {
 	public static readonly T__0 = 1;
@@ -2868,14 +2866,6 @@ export class FusionTablesSqlContext extends ParserRuleContext {
 			listener.exitFusionTablesSql(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitFusionTablesSql) {
-			return visitor.visitFusionTablesSql(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2927,14 +2917,6 @@ export class Sql_stmtContext extends ParserRuleContext {
 			listener.exitSql_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitSql_stmt) {
-			return visitor.visitSql_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2959,14 +2941,6 @@ export class Table_name_in_ddlContext extends ParserRuleContext {
 			listener.exitTable_name_in_ddl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitTable_name_in_ddl) {
-			return visitor.visitTable_name_in_ddl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2989,14 +2963,6 @@ export class Table_name_in_dmlContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitTable_name_in_dml) {
 			listener.exitTable_name_in_dml(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitTable_name_in_dml) {
-			return visitor.visitTable_name_in_dml(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3031,14 +2997,6 @@ export class Create_table_as_select_stmtContext extends ParserRuleContext {
 			listener.exitCreate_table_as_select_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitCreate_table_as_select_stmt) {
-			return visitor.visitCreate_table_as_select_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3064,14 +3022,6 @@ export class Describe_stmtContext extends ParserRuleContext {
 			listener.exitDescribe_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitDescribe_stmt) {
-			return visitor.visitDescribe_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3093,14 +3043,6 @@ export class Show_tables_stmtContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitShow_tables_stmt) {
 			listener.exitShow_tables_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitShow_tables_stmt) {
-			return visitor.visitShow_tables_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3132,14 +3074,6 @@ export class Alter_table_stmtContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitAlter_table_stmt) {
 			listener.exitAlter_table_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitAlter_table_stmt) {
-			return visitor.visitAlter_table_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3198,14 +3132,6 @@ export class Create_view_stmtContext extends ParserRuleContext {
 			listener.exitCreate_view_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitCreate_view_stmt) {
-			return visitor.visitCreate_view_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3230,14 +3156,6 @@ export class Drop_table_stmtContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitDrop_table_stmt) {
 			listener.exitDrop_table_stmt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitDrop_table_stmt) {
-			return visitor.visitDrop_table_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3303,14 +3221,6 @@ export class Insert_stmtContext extends ParserRuleContext {
 			listener.exitInsert_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitInsert_stmt) {
-			return visitor.visitInsert_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3350,14 +3260,6 @@ export class Update_stmtContext extends ParserRuleContext {
 			listener.exitUpdate_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitUpdate_stmt) {
-			return visitor.visitUpdate_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3384,14 +3286,6 @@ export class Column_assignmentContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitColumn_assignment) {
 			listener.exitColumn_assignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitColumn_assignment) {
-			return visitor.visitColumn_assignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3428,14 +3322,6 @@ export class Delete_stmtContext extends ParserRuleContext {
 			listener.exitDelete_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitDelete_stmt) {
-			return visitor.visitDelete_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3464,14 +3350,6 @@ export class Eq_comparisonContext extends ParserRuleContext {
 			listener.exitEq_comparison(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitEq_comparison) {
-			return visitor.visitEq_comparison(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3498,14 +3376,6 @@ export class Table_name_with_aliasContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitTable_name_with_alias) {
 			listener.exitTable_name_with_alias(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitTable_name_with_alias) {
-			return visitor.visitTable_name_with_alias(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3596,14 +3466,6 @@ export class Select_stmtContext extends ParserRuleContext {
 			listener.exitSelect_stmt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitSelect_stmt) {
-			return visitor.visitSelect_stmt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3634,14 +3496,6 @@ export class Ordering_termContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitOrdering_term) {
 			listener.exitOrdering_term(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitOrdering_term) {
-			return visitor.visitOrdering_term(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3682,14 +3536,6 @@ export class Join_clauseContext extends ParserRuleContext {
 			listener.exitJoin_clause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitJoin_clause) {
-			return visitor.visitJoin_clause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3720,14 +3566,6 @@ export class Result_columnContext extends ParserRuleContext {
 			listener.exitResult_column(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitResult_column) {
-			return visitor.visitResult_column(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3753,14 +3591,6 @@ export class Qualified_column_nameContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitQualified_column_name) {
 			listener.exitQualified_column_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitQualified_column_name) {
-			return visitor.visitQualified_column_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3792,14 +3622,6 @@ export class Aggregate_expContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitAggregate_exp) {
 			listener.exitAggregate_exp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitAggregate_exp) {
-			return visitor.visitAggregate_exp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3878,14 +3700,6 @@ export class ExprContext extends ParserRuleContext {
 			listener.exitExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitExpr) {
-			return visitor.visitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3908,14 +3722,6 @@ export class Column_name_beginning_exprContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitColumn_name_beginning_expr) {
 			listener.exitColumn_name_beginning_expr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitColumn_name_beginning_expr) {
-			return visitor.visitColumn_name_beginning_expr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3942,14 +3748,6 @@ export class Column_name_in_dmlContext extends ParserRuleContext {
 			listener.exitColumn_name_in_dml(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitColumn_name_in_dml) {
-			return visitor.visitColumn_name_in_dml(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -3971,14 +3769,6 @@ export class And_or_orContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitAnd_or_or) {
 			listener.exitAnd_or_or(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitAnd_or_or) {
-			return visitor.visitAnd_or_or(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4006,14 +3796,6 @@ export class GeometryContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitGeometry) {
 			listener.exitGeometry(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitGeometry) {
-			return visitor.visitGeometry(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4044,14 +3826,6 @@ export class CircleContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitCircle) {
 			listener.exitCircle(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitCircle) {
-			return visitor.visitCircle(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4087,14 +3861,6 @@ export class RectangleContext extends ParserRuleContext {
 			listener.exitRectangle(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitRectangle) {
-			return visitor.visitRectangle(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4126,14 +3892,6 @@ export class CoordinateContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitCoordinate) {
 			listener.exitCoordinate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitCoordinate) {
-			return visitor.visitCoordinate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4214,14 +3972,6 @@ export class KeywordContext extends ParserRuleContext {
 			listener.exitKeyword(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitKeyword) {
-			return visitor.visitKeyword(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4246,14 +3996,6 @@ export class OperatorContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitOperator) {
 			listener.exitOperator(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitOperator) {
-			return visitor.visitOperator(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4283,14 +4025,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4313,14 +4047,6 @@ export class Error_messageContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitError_message) {
 			listener.exitError_message(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitError_message) {
-			return visitor.visitError_message(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4347,14 +4073,6 @@ export class IdentifierContext extends ParserRuleContext {
 			listener.exitIdentifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitIdentifier) {
-			return visitor.visitIdentifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4377,14 +4095,6 @@ export class Column_aliasContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitColumn_alias) {
 			listener.exitColumn_alias(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitColumn_alias) {
-			return visitor.visitColumn_alias(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4411,14 +4121,6 @@ export class Table_nameContext extends ParserRuleContext {
 			listener.exitTable_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitTable_name) {
-			return visitor.visitTable_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4441,14 +4143,6 @@ export class Column_nameContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitColumn_name) {
 			listener.exitColumn_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitColumn_name) {
-			return visitor.visitColumn_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4475,14 +4169,6 @@ export class New_table_nameContext extends ParserRuleContext {
 			listener.exitNew_table_name(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitNew_table_name) {
-			return visitor.visitNew_table_name(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4505,14 +4191,6 @@ export class View_nameContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitView_name) {
 			listener.exitView_name(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitView_name) {
-			return visitor.visitView_name(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -4539,14 +4217,6 @@ export class Table_aliasContext extends ParserRuleContext {
 			listener.exitTable_alias(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitTable_alias) {
-			return visitor.visitTable_alias(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4569,14 +4239,6 @@ export class Numeric_literalContext extends ParserRuleContext {
 			listener.exitNumeric_literal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitNumeric_literal) {
-			return visitor.visitNumeric_literal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -4597,14 +4259,6 @@ export class String_literalContext extends ParserRuleContext {
 	public exitRule(listener: FusionTablesSqlListener): void {
 		if (listener.exitString_literal) {
 			listener.exitString_literal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FusionTablesSqlVisitor<Result>): Result {
-		if (visitor.visitString_literal) {
-			return visitor.visitString_literal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

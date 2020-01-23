@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { ZParserListener } from "./ZParserListener";
-import { ZParserVisitor } from "./ZParserVisitor";
-
 
 export class ZParser extends Parser {
 	public static readonly ZED = 1;
@@ -5774,14 +5772,6 @@ export class SpecificationContext extends ParserRuleContext {
 			listener.exitSpecification(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSpecification) {
-			return visitor.visitSpecification(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5829,14 +5819,6 @@ export class InheritingSectionContext extends SectionContext {
 			listener.exitInheritingSection(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitInheritingSection) {
-			return visitor.visitInheritingSection(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BaseSectionContext extends SectionContext {
 	public ZED(): TerminalNode { return this.getToken(ZParser.ZED, 0); }
@@ -5866,14 +5848,6 @@ export class BaseSectionContext extends SectionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitBaseSection) {
 			listener.exitBaseSection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitBaseSection) {
-			return visitor.visitBaseSection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5914,14 +5888,6 @@ export class GivenTypesParagraphContext extends ParagraphContext {
 			listener.exitGivenTypesParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitGivenTypesParagraph) {
-			return visitor.visitGivenTypesParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AxiomaticDescriptionParagraphContext extends ParagraphContext {
 	public AX(): TerminalNode { return this.getToken(ZParser.AX, 0); }
@@ -5943,14 +5909,6 @@ export class AxiomaticDescriptionParagraphContext extends ParagraphContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitAxiomaticDescriptionParagraph) {
 			listener.exitAxiomaticDescriptionParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitAxiomaticDescriptionParagraph) {
-			return visitor.visitAxiomaticDescriptionParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5976,14 +5934,6 @@ export class SchemaDefinitionParagraphContext extends ParagraphContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitSchemaDefinitionParagraph) {
 			listener.exitSchemaDefinitionParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaDefinitionParagraph) {
-			return visitor.visitSchemaDefinitionParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6014,14 +5964,6 @@ export class GenericAxiomaticDescriptionParagraphContext extends ParagraphContex
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitGenericAxiomaticDescriptionParagraph) {
 			listener.exitGenericAxiomaticDescriptionParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitGenericAxiomaticDescriptionParagraph) {
-			return visitor.visitGenericAxiomaticDescriptionParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6055,14 +5997,6 @@ export class GenericSchemaDefinitionParagraphContext extends ParagraphContext {
 			listener.exitGenericSchemaDefinitionParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitGenericSchemaDefinitionParagraph) {
-			return visitor.visitGenericSchemaDefinitionParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class HorizontalDefinitionParagraphContext extends ParagraphContext {
 	public ZED(): TerminalNode { return this.getToken(ZParser.ZED, 0); }
@@ -6085,14 +6019,6 @@ export class HorizontalDefinitionParagraphContext extends ParagraphContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitHorizontalDefinitionParagraph) {
 			listener.exitHorizontalDefinitionParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitHorizontalDefinitionParagraph) {
-			return visitor.visitHorizontalDefinitionParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6127,14 +6053,6 @@ export class GenericHorizontalDefinitionParagraphContext extends ParagraphContex
 			listener.exitGenericHorizontalDefinitionParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitGenericHorizontalDefinitionParagraph) {
-			return visitor.visitGenericHorizontalDefinitionParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class GenericOperatorDefinitionParagraphContext extends ParagraphContext {
 	public ZED(): TerminalNode { return this.getToken(ZParser.ZED, 0); }
@@ -6160,14 +6078,6 @@ export class GenericOperatorDefinitionParagraphContext extends ParagraphContext 
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitGenericOperatorDefinitionParagraph) {
 			listener.exitGenericOperatorDefinitionParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitGenericOperatorDefinitionParagraph) {
-			return visitor.visitGenericOperatorDefinitionParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6208,14 +6118,6 @@ export class FreeTypesParagraphContext extends ParagraphContext {
 			listener.exitFreeTypesParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitFreeTypesParagraph) {
-			return visitor.visitFreeTypesParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ConjectureParagraphContext extends ParagraphContext {
 	public ZED(): TerminalNode { return this.getToken(ZParser.ZED, 0); }
@@ -6238,14 +6140,6 @@ export class ConjectureParagraphContext extends ParagraphContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitConjectureParagraph) {
 			listener.exitConjectureParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitConjectureParagraph) {
-			return visitor.visitConjectureParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6277,14 +6171,6 @@ export class GenericConjectureParagraphContext extends ParagraphContext {
 			listener.exitGenericConjectureParagraph(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitGenericConjectureParagraph) {
-			return visitor.visitGenericConjectureParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class OperatorTemplateParagraphContext extends ParagraphContext {
 	public ZED(): TerminalNode { return this.getToken(ZParser.ZED, 0); }
@@ -6306,14 +6192,6 @@ export class OperatorTemplateParagraphContext extends ParagraphContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitOperatorTemplateParagraph) {
 			listener.exitOperatorTemplateParagraph(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitOperatorTemplateParagraph) {
-			return visitor.visitOperatorTemplateParagraph(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6357,14 +6235,6 @@ export class FreetypeContext extends ParserRuleContext {
 			listener.exitFreetype(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitFreetype) {
-			return visitor.visitFreetype(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6392,14 +6262,6 @@ export class BranchContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitBranch) {
 			listener.exitBranch(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitBranch) {
-			return visitor.visitBranch(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6439,14 +6301,6 @@ export class FormalsContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitFormals) {
 			listener.exitFormals(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitFormals) {
-			return visitor.visitFormals(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6489,14 +6343,6 @@ export class NewlineConjunctionPredicateContext extends PredicateContext {
 			listener.exitNewlineConjunctionPredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitNewlineConjunctionPredicate) {
-			return visitor.visitNewlineConjunctionPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SemicolonConjunctionPredicateContext extends PredicateContext {
 	public predicate(): PredicateContext[];
@@ -6525,14 +6371,6 @@ export class SemicolonConjunctionPredicateContext extends PredicateContext {
 			listener.exitSemicolonConjunctionPredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSemicolonConjunctionPredicate) {
-			return visitor.visitSemicolonConjunctionPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UniversalQuantificationPredicateContext extends PredicateContext {
 	public FOR_ALL(): TerminalNode { return this.getToken(ZParser.FOR_ALL, 0); }
@@ -6557,14 +6395,6 @@ export class UniversalQuantificationPredicateContext extends PredicateContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitUniversalQuantificationPredicate) {
 			listener.exitUniversalQuantificationPredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitUniversalQuantificationPredicate) {
-			return visitor.visitUniversalQuantificationPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6593,14 +6423,6 @@ export class ExistentialQuantificationPredicateContext extends PredicateContext 
 			listener.exitExistentialQuantificationPredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitExistentialQuantificationPredicate) {
-			return visitor.visitExistentialQuantificationPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class UniqueExistentialQuantificationPredicateContext extends PredicateContext {
 	public UNIQUE_EXISTS(): TerminalNode { return this.getToken(ZParser.UNIQUE_EXISTS, 0); }
@@ -6625,14 +6447,6 @@ export class UniqueExistentialQuantificationPredicateContext extends PredicateCo
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitUniqueExistentialQuantificationPredicate) {
 			listener.exitUniqueExistentialQuantificationPredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitUniqueExistentialQuantificationPredicate) {
-			return visitor.visitUniqueExistentialQuantificationPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6663,14 +6477,6 @@ export class EquivalencePredicateContext extends PredicateContext {
 			listener.exitEquivalencePredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitEquivalencePredicate) {
-			return visitor.visitEquivalencePredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ImplicationPredicateContext extends PredicateContext {
 	public predicate(): PredicateContext[];
@@ -6697,14 +6503,6 @@ export class ImplicationPredicateContext extends PredicateContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitImplicationPredicate) {
 			listener.exitImplicationPredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitImplicationPredicate) {
-			return visitor.visitImplicationPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6735,14 +6533,6 @@ export class DisjunctionPredicateContext extends PredicateContext {
 			listener.exitDisjunctionPredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitDisjunctionPredicate) {
-			return visitor.visitDisjunctionPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ConjunctionPredicateContext extends PredicateContext {
 	public predicate(): PredicateContext[];
@@ -6771,14 +6561,6 @@ export class ConjunctionPredicateContext extends PredicateContext {
 			listener.exitConjunctionPredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitConjunctionPredicate) {
-			return visitor.visitConjunctionPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NegationPredicateContext extends PredicateContext {
 	public NOT_SIGN(): TerminalNode { return this.getToken(ZParser.NOT_SIGN, 0); }
@@ -6799,14 +6581,6 @@ export class NegationPredicateContext extends PredicateContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitNegationPredicate) {
 			listener.exitNegationPredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitNegationPredicate) {
-			return visitor.visitNegationPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6830,14 +6604,6 @@ export class RelationOperatorApplicationPredicateContext extends PredicateContex
 			listener.exitRelationOperatorApplicationPredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitRelationOperatorApplicationPredicate) {
-			return visitor.visitRelationOperatorApplicationPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SchemaPredicatePredicateContext extends PredicateContext {
 	public expression(): ExpressionContext {
@@ -6859,14 +6625,6 @@ export class SchemaPredicatePredicateContext extends PredicateContext {
 			listener.exitSchemaPredicatePredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaPredicatePredicate) {
-			return visitor.visitSchemaPredicatePredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TruthPredicateContext extends PredicateContext {
 	public TRUE(): TerminalNode { return this.getToken(ZParser.TRUE, 0); }
@@ -6886,14 +6644,6 @@ export class TruthPredicateContext extends PredicateContext {
 			listener.exitTruthPredicate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitTruthPredicate) {
-			return visitor.visitTruthPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class FalsityPredicateContext extends PredicateContext {
 	public FALSE(): TerminalNode { return this.getToken(ZParser.FALSE, 0); }
@@ -6911,14 +6661,6 @@ export class FalsityPredicateContext extends PredicateContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitFalsityPredicate) {
 			listener.exitFalsityPredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitFalsityPredicate) {
-			return visitor.visitFalsityPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6942,14 +6684,6 @@ export class ParenthesizedPredicateContext extends PredicateContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitParenthesizedPredicate) {
 			listener.exitParenthesizedPredicate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitParenthesizedPredicate) {
-			return visitor.visitParenthesizedPredicate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6990,14 +6724,6 @@ export class SchemaUniversalQuantificationExpressionContext extends ExpressionCo
 			listener.exitSchemaUniversalQuantificationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaUniversalQuantificationExpression) {
-			return visitor.visitSchemaUniversalQuantificationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SchemaExistentialQuantificationExpressionContext extends ExpressionContext {
 	public THERE_EXISTS(): TerminalNode { return this.getToken(ZParser.THERE_EXISTS, 0); }
@@ -7022,14 +6748,6 @@ export class SchemaExistentialQuantificationExpressionContext extends Expression
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitSchemaExistentialQuantificationExpression) {
 			listener.exitSchemaExistentialQuantificationExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaExistentialQuantificationExpression) {
-			return visitor.visitSchemaExistentialQuantificationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7058,14 +6776,6 @@ export class SchemaUniqueExistentialQuantificationExpressionContext extends Expr
 			listener.exitSchemaUniqueExistentialQuantificationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaUniqueExistentialQuantificationExpression) {
-			return visitor.visitSchemaUniqueExistentialQuantificationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class FunctionConstructionExpressionContext extends ExpressionContext {
 	public GREEK_SMALL_LETTER_LAMBDA(): TerminalNode { return this.getToken(ZParser.GREEK_SMALL_LETTER_LAMBDA, 0); }
@@ -7092,14 +6802,6 @@ export class FunctionConstructionExpressionContext extends ExpressionContext {
 			listener.exitFunctionConstructionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitFunctionConstructionExpression) {
-			return visitor.visitFunctionConstructionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class DefiniteDescriptionExpressionContext extends ExpressionContext {
 	public GREEK_SMALL_LETTER_MU(): TerminalNode { return this.getToken(ZParser.GREEK_SMALL_LETTER_MU, 0); }
@@ -7124,14 +6826,6 @@ export class DefiniteDescriptionExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitDefiniteDescriptionExpression) {
 			listener.exitDefiniteDescriptionExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitDefiniteDescriptionExpression) {
-			return visitor.visitDefiniteDescriptionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7175,14 +6869,6 @@ export class SubstitutionExpressionExpressionContext extends ExpressionContext {
 			listener.exitSubstitutionExpressionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSubstitutionExpressionExpression) {
-			return visitor.visitSubstitutionExpressionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SchemaEquivalenceExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7209,14 +6895,6 @@ export class SchemaEquivalenceExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitSchemaEquivalenceExpression) {
 			listener.exitSchemaEquivalenceExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaEquivalenceExpression) {
-			return visitor.visitSchemaEquivalenceExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7247,14 +6925,6 @@ export class SchemaImplicationExpressionContext extends ExpressionContext {
 			listener.exitSchemaImplicationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaImplicationExpression) {
-			return visitor.visitSchemaImplicationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SchemaDisjunctionExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7281,14 +6951,6 @@ export class SchemaDisjunctionExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitSchemaDisjunctionExpression) {
 			listener.exitSchemaDisjunctionExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaDisjunctionExpression) {
-			return visitor.visitSchemaDisjunctionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7319,14 +6981,6 @@ export class SchemaConjunctionExpressionContext extends ExpressionContext {
 			listener.exitSchemaConjunctionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaConjunctionExpression) {
-			return visitor.visitSchemaConjunctionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SchemaNegationExpressionContext extends ExpressionContext {
 	public NOT_SIGN(): TerminalNode { return this.getToken(ZParser.NOT_SIGN, 0); }
@@ -7347,14 +7001,6 @@ export class SchemaNegationExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitSchemaNegationExpression) {
 			listener.exitSchemaNegationExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaNegationExpression) {
-			return visitor.visitSchemaNegationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7390,14 +7036,6 @@ export class ConditionalExpressionContext extends ExpressionContext {
 			listener.exitConditionalExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitConditionalExpression) {
-			return visitor.visitConditionalExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SchemaCompositionExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7426,14 +7064,6 @@ export class SchemaCompositionExpressionContext extends ExpressionContext {
 			listener.exitSchemaCompositionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaCompositionExpression) {
-			return visitor.visitSchemaCompositionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SchemaPipingExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7460,14 +7090,6 @@ export class SchemaPipingExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitSchemaPipingExpression) {
 			listener.exitSchemaPipingExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaPipingExpression) {
-			return visitor.visitSchemaPipingExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7512,14 +7134,6 @@ export class SchemaHidingExpressionContext extends ExpressionContext {
 			listener.exitSchemaHidingExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaHidingExpression) {
-			return visitor.visitSchemaHidingExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SchemaProjectionExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7548,14 +7162,6 @@ export class SchemaProjectionExpressionContext extends ExpressionContext {
 			listener.exitSchemaProjectionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaProjectionExpression) {
-			return visitor.visitSchemaProjectionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SchemaPreconditionExpressionContext extends ExpressionContext {
 	public PRE_KEY(): TerminalNode { return this.getToken(ZParser.PRE_KEY, 0); }
@@ -7576,14 +7182,6 @@ export class SchemaPreconditionExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitSchemaPreconditionExpression) {
 			listener.exitSchemaPreconditionExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaPreconditionExpression) {
-			return visitor.visitSchemaPreconditionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7622,14 +7220,6 @@ export class CartesianProductExpressionContext extends ExpressionContext {
 			listener.exitCartesianProductExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitCartesianProductExpression) {
-			return visitor.visitCartesianProductExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PowersetExpressionContext extends ExpressionContext {
 	public POWERSET(): TerminalNode { return this.getToken(ZParser.POWERSET, 0); }
@@ -7652,14 +7242,6 @@ export class PowersetExpressionContext extends ExpressionContext {
 			listener.exitPowersetExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPowersetExpression) {
-			return visitor.visitPowersetExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PrefixApplicationExpressionContext extends ExpressionContext {
 	public PRE(): TerminalNode { return this.getToken(ZParser.PRE, 0); }
@@ -7680,14 +7262,6 @@ export class PrefixApplicationExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitPrefixApplicationExpression) {
 			listener.exitPrefixApplicationExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPrefixApplicationExpression) {
-			return visitor.visitPrefixApplicationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7726,14 +7300,6 @@ export class GenericPrefixApplicationExpressionContext extends ExpressionContext
 			listener.exitGenericPrefixApplicationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitGenericPrefixApplicationExpression) {
-			return visitor.visitGenericPrefixApplicationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PostfixApplicationExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext {
@@ -7754,14 +7320,6 @@ export class PostfixApplicationExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitPostfixApplicationExpression) {
 			listener.exitPostfixApplicationExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPostfixApplicationExpression) {
-			return visitor.visitPostfixApplicationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7800,14 +7358,6 @@ export class GenericPostfixApplicationExpressionContext extends ExpressionContex
 			listener.exitGenericPostfixApplicationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitGenericPostfixApplicationExpression) {
-			return visitor.visitGenericPostfixApplicationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class InfixLeftApplicationExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7836,14 +7386,6 @@ export class InfixLeftApplicationExpressionContext extends ExpressionContext {
 			listener.exitInfixLeftApplicationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitInfixLeftApplicationExpression) {
-			return visitor.visitInfixLeftApplicationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class InfixRightApplicationExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7870,14 +7412,6 @@ export class InfixRightApplicationExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitInfixRightApplicationExpression) {
 			listener.exitInfixRightApplicationExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitInfixRightApplicationExpression) {
-			return visitor.visitInfixRightApplicationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7916,14 +7450,6 @@ export class GenericInfixApplicationExpressionContext extends ExpressionContext 
 			listener.exitGenericInfixApplicationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitGenericInfixApplicationExpression) {
-			return visitor.visitGenericInfixApplicationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NofixApplicationExpressionContext extends ExpressionContext {
 	public L(): TerminalNode { return this.getToken(ZParser.L, 0); }
@@ -7954,14 +7480,6 @@ export class NofixApplicationExpressionContext extends ExpressionContext {
 			listener.exitNofixApplicationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitNofixApplicationExpression) {
-			return visitor.visitNofixApplicationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ApplicationExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7989,14 +7507,6 @@ export class ApplicationExpressionContext extends ExpressionContext {
 			listener.exitApplicationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitApplicationExpression) {
-			return visitor.visitApplicationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SchemaDecorationExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext {
@@ -8017,14 +7527,6 @@ export class SchemaDecorationExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitSchemaDecorationExpression) {
 			listener.exitSchemaDecorationExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaDecorationExpression) {
-			return visitor.visitSchemaDecorationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8077,14 +7579,6 @@ export class SchemaRenamingExpressionContext extends ExpressionContext {
 			listener.exitSchemaRenamingExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaRenamingExpression) {
-			return visitor.visitSchemaRenamingExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class BindingSelectionExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext {
@@ -8110,14 +7604,6 @@ export class BindingSelectionExpressionContext extends ExpressionContext {
 			listener.exitBindingSelectionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitBindingSelectionExpression) {
-			return visitor.visitBindingSelectionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TupleSelectionExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext {
@@ -8139,14 +7625,6 @@ export class TupleSelectionExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitTupleSelectionExpression) {
 			listener.exitTupleSelectionExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitTupleSelectionExpression) {
-			return visitor.visitTupleSelectionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8180,14 +7658,6 @@ export class BindingConstructionExpressionContext extends ExpressionContext {
 			listener.exitBindingConstructionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitBindingConstructionExpression) {
-			return visitor.visitBindingConstructionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ReferenceExpressionContext extends ExpressionContext {
 	public refName(): RefNameContext {
@@ -8207,14 +7677,6 @@ export class ReferenceExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitReferenceExpression) {
 			listener.exitReferenceExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitReferenceExpression) {
-			return visitor.visitReferenceExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8243,14 +7705,6 @@ export class GenericInstantiationExpressionContext extends ExpressionContext {
 			listener.exitGenericInstantiationExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitGenericInstantiationExpression) {
-			return visitor.visitGenericInstantiationExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NumberLiteralExpressionContext extends ExpressionContext {
 	public NUMERAL(): TerminalNode { return this.getToken(ZParser.NUMERAL, 0); }
@@ -8268,14 +7722,6 @@ export class NumberLiteralExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitNumberLiteralExpression) {
 			listener.exitNumberLiteralExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitNumberLiteralExpression) {
-			return visitor.visitNumberLiteralExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8299,14 +7745,6 @@ export class SetExtensionExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitSetExtensionExpression) {
 			listener.exitSetExtensionExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSetExtensionExpression) {
-			return visitor.visitSetExtensionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8336,14 +7774,6 @@ export class SetComprehensionExpressionContext extends ExpressionContext {
 			listener.exitSetComprehensionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSetComprehensionExpression) {
-			return visitor.visitSetComprehensionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class CharacteristicSetComprehensionExpressionContext extends ExpressionContext {
 	public LEFT_CURLY_BRACKET(): TerminalNode { return this.getToken(ZParser.LEFT_CURLY_BRACKET, 0); }
@@ -8367,14 +7797,6 @@ export class CharacteristicSetComprehensionExpressionContext extends ExpressionC
 			listener.exitCharacteristicSetComprehensionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitCharacteristicSetComprehensionExpression) {
-			return visitor.visitCharacteristicSetComprehensionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SchemaConstructionExpressionContext extends ExpressionContext {
 	public LEFT_SQUARE_BRACKET(): TerminalNode { return this.getToken(ZParser.LEFT_SQUARE_BRACKET, 0); }
@@ -8396,14 +7818,6 @@ export class SchemaConstructionExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitSchemaConstructionExpression) {
 			listener.exitSchemaConstructionExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaConstructionExpression) {
-			return visitor.visitSchemaConstructionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8444,14 +7858,6 @@ export class BindingExtensionExpressionContext extends ExpressionContext {
 			listener.exitBindingExtensionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitBindingExtensionExpression) {
-			return visitor.visitBindingExtensionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class TupleExtensionExpressionContext extends ExpressionContext {
 	public LEFT_PARENTHESIS(): TerminalNode { return this.getToken(ZParser.LEFT_PARENTHESIS, 0); }
@@ -8490,14 +7896,6 @@ export class TupleExtensionExpressionContext extends ExpressionContext {
 			listener.exitTupleExtensionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitTupleExtensionExpression) {
-			return visitor.visitTupleExtensionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class CharacteristicDefiniteDescriptionExpressionContext extends ExpressionContext {
 	public LEFT_PARENTHESIS(): TerminalNode { return this.getToken(ZParser.LEFT_PARENTHESIS, 0); }
@@ -8522,14 +7920,6 @@ export class CharacteristicDefiniteDescriptionExpressionContext extends Expressi
 			listener.exitCharacteristicDefiniteDescriptionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitCharacteristicDefiniteDescriptionExpression) {
-			return visitor.visitCharacteristicDefiniteDescriptionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ParenthesizedExpressionContext extends ExpressionContext {
 	public LEFT_PARENTHESIS(): TerminalNode { return this.getToken(ZParser.LEFT_PARENTHESIS, 0); }
@@ -8551,14 +7941,6 @@ export class ParenthesizedExpressionContext extends ExpressionContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitParenthesizedExpression) {
 			listener.exitParenthesizedExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitParenthesizedExpression) {
-			return visitor.visitParenthesizedExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8596,14 +7978,6 @@ export class SchemaTextContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitSchemaText) {
 			listener.exitSchemaText(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitSchemaText) {
-			return visitor.visitSchemaText(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8654,14 +8028,6 @@ export class DeclPartContext extends ParserRuleContext {
 			listener.exitDeclPart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitDeclPart) {
-			return visitor.visitDeclPart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8689,14 +8055,6 @@ export class DeclNameExpressionContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitDeclNameExpression) {
 			listener.exitDeclNameExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitDeclNameExpression) {
-			return visitor.visitDeclNameExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8745,14 +8103,6 @@ export class DeclarationContext extends ParserRuleContext {
 			listener.exitDeclaration(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitDeclaration) {
-			return visitor.visitDeclaration(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8781,14 +8131,6 @@ export class OperatorTemplateContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitOperatorTemplate) {
 			listener.exitOperatorTemplate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitOperatorTemplate) {
-			return visitor.visitOperatorTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8830,14 +8172,6 @@ export class CategoryTemplateContext extends ParserRuleContext {
 			listener.exitCategoryTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitCategoryTemplate) {
-			return visitor.visitCategoryTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8858,14 +8192,6 @@ export class PrecContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitPrec) {
 			listener.exitPrec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPrec) {
-			return visitor.visitPrec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8889,14 +8215,6 @@ export class AssocContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitAssoc) {
 			listener.exitAssoc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitAssoc) {
-			return visitor.visitAssoc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8932,14 +8250,6 @@ export class TemplateContext extends ParserRuleContext {
 			listener.exitTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitTemplate) {
-			return visitor.visitTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8968,14 +8278,6 @@ export class PrefixTemplateContext extends ParserRuleContext {
 			listener.exitPrefixTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPrefixTemplate) {
-			return visitor.visitPrefixTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9000,14 +8302,6 @@ export class PostfixTemplateContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitPostfixTemplate) {
 			listener.exitPostfixTemplate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPostfixTemplate) {
-			return visitor.visitPostfixTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9036,14 +8330,6 @@ export class InfixTemplateContext extends ParserRuleContext {
 			listener.exitInfixTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitInfixTemplate) {
-			return visitor.visitInfixTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9068,14 +8354,6 @@ export class NofixTemplateContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitNofixTemplate) {
 			listener.exitNofixTemplate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitNofixTemplate) {
-			return visitor.visitNofixTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9103,14 +8381,6 @@ export class DeclNameContext extends ParserRuleContext {
 			listener.exitDeclName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitDeclName) {
-			return visitor.visitDeclName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9136,14 +8406,6 @@ export class RefNameContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitRefName) {
 			listener.exitRefName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitRefName) {
-			return visitor.visitRefName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9177,14 +8439,6 @@ export class OpNameContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitOpName) {
 			listener.exitOpName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitOpName) {
-			return visitor.visitOpName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9252,14 +8506,6 @@ export class PrefixNameContext extends ParserRuleContext {
 			listener.exitPrefixName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPrefixName) {
-			return visitor.visitPrefixName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9323,14 +8569,6 @@ export class PostfixNameContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitPostfixName) {
 			listener.exitPostfixName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPostfixName) {
-			return visitor.visitPostfixName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9398,14 +8636,6 @@ export class InfixNameContext extends ParserRuleContext {
 			listener.exitInfixName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitInfixName) {
-			return visitor.visitInfixName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9469,14 +8699,6 @@ export class NofixNameContext extends ParserRuleContext {
 			listener.exitNofixName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitNofixName) {
-			return visitor.visitNofixName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9508,14 +8730,6 @@ export class GenNameContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitGenName) {
 			listener.exitGenName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitGenName) {
-			return visitor.visitGenName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9570,14 +8784,6 @@ export class PrefixGenNameContext extends ParserRuleContext {
 			listener.exitPrefixGenName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPrefixGenName) {
-			return visitor.visitPrefixGenName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9628,14 +8834,6 @@ export class PostfixGenNameContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitPostfixGenName) {
 			listener.exitPostfixGenName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPostfixGenName) {
-			return visitor.visitPostfixGenName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9690,14 +8888,6 @@ export class InfixGenNameContext extends ParserRuleContext {
 			listener.exitInfixGenName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitInfixGenName) {
-			return visitor.visitInfixGenName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9749,14 +8939,6 @@ export class NofixGenNameContext extends ParserRuleContext {
 			listener.exitNofixGenName(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitNofixGenName) {
-			return visitor.visitNofixGenName(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9788,14 +8970,6 @@ export class RelationContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitRelation) {
 			listener.exitRelation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitRelation) {
-			return visitor.visitRelation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9838,14 +9012,6 @@ export class PrefixRelContext extends ParserRuleContext {
 			listener.exitPrefixRel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPrefixRel) {
-			return visitor.visitPrefixRel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9884,14 +9050,6 @@ export class PostfixRelContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitPostfixRel) {
 			listener.exitPostfixRel(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPostfixRel) {
-			return visitor.visitPostfixRel(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9960,14 +9118,6 @@ export class InfixRelContext extends ParserRuleContext {
 			listener.exitInfixRel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitInfixRel) {
-			return visitor.visitInfixRel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10001,14 +9151,6 @@ export class NofixRelContext extends ParserRuleContext {
 			listener.exitNofixRel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitNofixRel) {
-			return visitor.visitNofixRel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10040,14 +9182,6 @@ export class ApplicationContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitApplication) {
 			listener.exitApplication(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitApplication) {
-			return visitor.visitApplication(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10090,14 +9224,6 @@ export class PrefixAppContext extends ParserRuleContext {
 			listener.exitPrefixApp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPrefixApp) {
-			return visitor.visitPrefixApp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10136,14 +9262,6 @@ export class PostfixAppContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitPostfixApp) {
 			listener.exitPostfixApp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitPostfixApp) {
-			return visitor.visitPostfixApp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10186,14 +9304,6 @@ export class InfixAppContext extends ParserRuleContext {
 			listener.exitInfixApp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitInfixApp) {
-			return visitor.visitInfixApp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10225,14 +9335,6 @@ export class NofixAppContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitNofixApp) {
 			listener.exitNofixApp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitNofixApp) {
-			return visitor.visitNofixApp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10292,14 +9394,6 @@ export class ExpSepContext extends ParserRuleContext {
 			listener.exitExpSep(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitExpSep) {
-			return visitor.visitExpSep(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10337,14 +9431,6 @@ export class ExpressionListContext extends ParserRuleContext {
 	public exitRule(listener: ZParserListener): void {
 		if (listener.exitExpressionList) {
 			listener.exitExpressionList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ZParserVisitor<Result>): Result {
-		if (visitor.visitExpressionList) {
-			return visitor.visitExpressionList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

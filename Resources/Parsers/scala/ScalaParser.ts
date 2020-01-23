@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { ScalaListener } from "./ScalaListener";
-import { ScalaVisitor } from "./ScalaVisitor";
-
 
 export class ScalaParser extends Parser {
 	public static readonly T__0 = 1;
@@ -7275,14 +7273,6 @@ export class LiteralContext extends ParserRuleContext {
 			listener.exitLiteral(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitLiteral) {
-			return visitor.visitLiteral(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7313,14 +7303,6 @@ export class QualIdContext extends ParserRuleContext {
 			listener.exitQualId(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitQualId) {
-			return visitor.visitQualId(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7349,14 +7331,6 @@ export class IdsContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitIds) {
 			listener.exitIds(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitIds) {
-			return visitor.visitIds(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7392,14 +7366,6 @@ export class StableIdContext extends ParserRuleContext {
 			listener.exitStableId(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitStableId) {
-			return visitor.visitStableId(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7420,14 +7386,6 @@ export class ClassQualifierContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitClassQualifier) {
 			listener.exitClassQualifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitClassQualifier) {
-			return visitor.visitClassQualifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7463,14 +7421,6 @@ export class Type_Context extends ParserRuleContext {
 			listener.exitType_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitType_) {
-			return visitor.visitType_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7502,14 +7452,6 @@ export class FunctionArgTypesContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitFunctionArgTypes) {
 			listener.exitFunctionArgTypes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitFunctionArgTypes) {
-			return visitor.visitFunctionArgTypes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7551,14 +7493,6 @@ export class ExistentialClauseContext extends ParserRuleContext {
 			listener.exitExistentialClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitExistentialClause) {
-			return visitor.visitExistentialClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7584,14 +7518,6 @@ export class ExistentialDclContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitExistentialDcl) {
 			listener.exitExistentialDcl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitExistentialDcl) {
-			return visitor.visitExistentialDcl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7633,14 +7559,6 @@ export class InfixTypeContext extends ParserRuleContext {
 			listener.exitInfixType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitInfixType) {
-			return visitor.visitInfixType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7674,14 +7592,6 @@ export class CompoundTypeContext extends ParserRuleContext {
 			listener.exitCompoundType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitCompoundType) {
-			return visitor.visitCompoundType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7713,14 +7623,6 @@ export class AnnotTypeContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitAnnotType) {
 			listener.exitAnnotType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitAnnotType) {
-			return visitor.visitAnnotType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7757,14 +7659,6 @@ export class SimpleTypeContext extends ParserRuleContext {
 			listener.exitSimpleType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitSimpleType) {
-			return visitor.visitSimpleType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7787,14 +7681,6 @@ export class TypeArgsContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitTypeArgs) {
 			listener.exitTypeArgs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTypeArgs) {
-			return visitor.visitTypeArgs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7825,14 +7711,6 @@ export class TypesContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitTypes) {
 			listener.exitTypes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTypes) {
-			return visitor.visitTypes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7874,14 +7752,6 @@ export class RefinementContext extends ParserRuleContext {
 			listener.exitRefinement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitRefinement) {
-			return visitor.visitRefinement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7909,14 +7779,6 @@ export class RefineStatContext extends ParserRuleContext {
 			listener.exitRefineStat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitRefineStat) {
-			return visitor.visitRefineStat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7939,14 +7801,6 @@ export class TypePatContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitTypePat) {
 			listener.exitTypePat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTypePat) {
-			return visitor.visitTypePat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7982,14 +7836,6 @@ export class AscriptionContext extends ParserRuleContext {
 			listener.exitAscription(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitAscription) {
-			return visitor.visitAscription(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8019,14 +7865,6 @@ export class ExprContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitExpr) {
 			listener.exitExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitExpr) {
-			return visitor.visitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8091,14 +7929,6 @@ export class Expr1Context extends ParserRuleContext {
 			listener.exitExpr1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitExpr1) {
-			return visitor.visitExpr1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8122,14 +7952,6 @@ export class PostfixExprContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitPostfixExpr) {
 			listener.exitPostfixExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitPostfixExpr) {
-			return visitor.visitPostfixExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8166,14 +7988,6 @@ export class InfixExprContext extends ParserRuleContext {
 			listener.exitInfixExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitInfixExpr) {
-			return visitor.visitInfixExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8205,14 +8019,6 @@ export class PrefixExprContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitPrefixExpr) {
 			listener.exitPrefixExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitPrefixExpr) {
-			return visitor.visitPrefixExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8264,14 +8070,6 @@ export class SimpleExpr1Context extends ParserRuleContext {
 			listener.exitSimpleExpr1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitSimpleExpr1) {
-			return visitor.visitSimpleExpr1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8300,14 +8098,6 @@ export class ExprsContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitExprs) {
 			listener.exitExprs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitExprs) {
-			return visitor.visitExprs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8340,14 +8130,6 @@ export class ArgumentExprsContext extends ParserRuleContext {
 			listener.exitArgumentExprs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitArgumentExprs) {
-			return visitor.visitArgumentExprs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8373,14 +8155,6 @@ export class BlockExprContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitBlockExpr) {
 			listener.exitBlockExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitBlockExpr) {
-			return visitor.visitBlockExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8423,14 +8197,6 @@ export class BlockContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitBlock) {
 			listener.exitBlock(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8484,14 +8250,6 @@ export class BlockStatContext extends ParserRuleContext {
 			listener.exitBlockStat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitBlockStat) {
-			return visitor.visitBlockStat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8524,14 +8282,6 @@ export class ResultExprContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitResultExpr) {
 			listener.exitResultExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitResultExpr) {
-			return visitor.visitResultExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8571,14 +8321,6 @@ export class EnumeratorsContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitEnumerators) {
 			listener.exitEnumerators(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitEnumerators) {
-			return visitor.visitEnumerators(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8638,14 +8380,6 @@ export class GeneratorContext extends ParserRuleContext {
 			listener.exitGenerator(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitGenerator) {
-			return visitor.visitGenerator(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8674,14 +8408,6 @@ export class CaseClausesContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitCaseClauses) {
 			listener.exitCaseClauses(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitCaseClauses) {
-			return visitor.visitCaseClauses(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8714,14 +8440,6 @@ export class CaseClauseContext extends ParserRuleContext {
 			listener.exitCaseClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitCaseClause) {
-			return visitor.visitCaseClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8744,14 +8462,6 @@ export class GuardContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitGuard) {
 			listener.exitGuard(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitGuard) {
-			return visitor.visitGuard(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8784,14 +8494,6 @@ export class PatternContext extends ParserRuleContext {
 			listener.exitPattern(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitPattern) {
-			return visitor.visitPattern(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8820,14 +8522,6 @@ export class Pattern1Context extends ParserRuleContext {
 			listener.exitPattern1(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitPattern1) {
-			return visitor.visitPattern1(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8851,14 +8545,6 @@ export class Pattern2Context extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitPattern2) {
 			listener.exitPattern2(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitPattern2) {
-			return visitor.visitPattern2(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8900,14 +8586,6 @@ export class Pattern3Context extends ParserRuleContext {
 			listener.exitPattern3(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitPattern3) {
-			return visitor.visitPattern3(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8937,14 +8615,6 @@ export class SimplePatternContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitSimplePattern) {
 			listener.exitSimplePattern(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitSimplePattern) {
-			return visitor.visitSimplePattern(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8977,14 +8647,6 @@ export class PatternsContext extends ParserRuleContext {
 			listener.exitPatterns(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitPatterns) {
-			return visitor.visitPatterns(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9013,14 +8675,6 @@ export class TypeParamClauseContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitTypeParamClause) {
 			listener.exitTypeParamClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTypeParamClause) {
-			return visitor.visitTypeParamClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9053,14 +8707,6 @@ export class FunTypeParamClauseContext extends ParserRuleContext {
 			listener.exitFunTypeParamClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitFunTypeParamClause) {
-			return visitor.visitFunTypeParamClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9086,14 +8732,6 @@ export class VariantTypeParamContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitVariantTypeParam) {
 			listener.exitVariantTypeParam(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitVariantTypeParam) {
-			return visitor.visitVariantTypeParam(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9130,14 +8768,6 @@ export class TypeParamContext extends ParserRuleContext {
 			listener.exitTypeParam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTypeParam) {
-			return visitor.visitTypeParam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9171,14 +8801,6 @@ export class ParamClausesContext extends ParserRuleContext {
 			listener.exitParamClauses(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitParamClauses) {
-			return visitor.visitParamClauses(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9201,14 +8823,6 @@ export class ParamClauseContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitParamClause) {
 			listener.exitParamClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitParamClause) {
-			return visitor.visitParamClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9239,14 +8853,6 @@ export class ParamsContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitParams) {
 			listener.exitParams(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitParams) {
-			return visitor.visitParams(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9286,14 +8892,6 @@ export class ParamContext extends ParserRuleContext {
 			listener.exitParam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitParam) {
-			return visitor.visitParam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9316,14 +8914,6 @@ export class ParamTypeContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitParamType) {
 			listener.exitParamType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitParamType) {
-			return visitor.visitParamType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9359,14 +8949,6 @@ export class ClassParamClausesContext extends ParserRuleContext {
 			listener.exitClassParamClauses(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitClassParamClauses) {
-			return visitor.visitClassParamClauses(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9389,14 +8971,6 @@ export class ClassParamClauseContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitClassParamClause) {
 			listener.exitClassParamClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitClassParamClause) {
-			return visitor.visitClassParamClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9427,14 +9001,6 @@ export class ClassParamsContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitClassParams) {
 			listener.exitClassParams(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitClassParams) {
-			return visitor.visitClassParams(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9483,14 +9049,6 @@ export class ClassParamContext extends ParserRuleContext {
 			listener.exitClassParam(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitClassParam) {
-			return visitor.visitClassParam(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9521,14 +9079,6 @@ export class BindingsContext extends ParserRuleContext {
 			listener.exitBindings(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitBindings) {
-			return visitor.visitBindings(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9552,14 +9102,6 @@ export class BindingContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitBinding) {
 			listener.exitBinding(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitBinding) {
-			return visitor.visitBinding(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9589,14 +9131,6 @@ export class ModifierContext extends ParserRuleContext {
 			listener.exitModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitModifier) {
-			return visitor.visitModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9616,14 +9150,6 @@ export class LocalModifierContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitLocalModifier) {
 			listener.exitLocalModifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitLocalModifier) {
-			return visitor.visitLocalModifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9650,14 +9176,6 @@ export class AccessModifierContext extends ParserRuleContext {
 			listener.exitAccessModifier(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitAccessModifier) {
-			return visitor.visitAccessModifier(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9678,14 +9196,6 @@ export class AccessQualifierContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitAccessQualifier) {
 			listener.exitAccessQualifier(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitAccessQualifier) {
-			return visitor.visitAccessQualifier(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9721,14 +9231,6 @@ export class AnnotationContext extends ParserRuleContext {
 			listener.exitAnnotation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitAnnotation) {
-			return visitor.visitAnnotation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9754,14 +9256,6 @@ export class ConstrAnnotationContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitConstrAnnotation) {
 			listener.exitConstrAnnotation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitConstrAnnotation) {
-			return visitor.visitConstrAnnotation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9805,14 +9299,6 @@ export class TemplateBodyContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitTemplateBody) {
 			listener.exitTemplateBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTemplateBody) {
-			return visitor.visitTemplateBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9866,14 +9352,6 @@ export class TemplateStatContext extends ParserRuleContext {
 			listener.exitTemplateStat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTemplateStat) {
-			return visitor.visitTemplateStat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9897,14 +9375,6 @@ export class SelfTypeContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitSelfType) {
 			listener.exitSelfType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitSelfType) {
-			return visitor.visitSelfType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9937,14 +9407,6 @@ export class Import_Context extends ParserRuleContext {
 			listener.exitImport_(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitImport_) {
-			return visitor.visitImport_(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9971,14 +9433,6 @@ export class ImportExprContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitImportExpr) {
 			listener.exitImportExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitImportExpr) {
-			return visitor.visitImportExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10011,14 +9465,6 @@ export class ImportSelectorsContext extends ParserRuleContext {
 			listener.exitImportSelectors(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitImportSelectors) {
-			return visitor.visitImportSelectors(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10047,14 +9493,6 @@ export class ImportSelectorContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitImportSelector) {
 			listener.exitImportSelector(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitImportSelector) {
-			return visitor.visitImportSelector(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10090,14 +9528,6 @@ export class DclContext extends ParserRuleContext {
 			listener.exitDcl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitDcl) {
-			return visitor.visitDcl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10123,14 +9553,6 @@ export class ValDclContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitValDcl) {
 			listener.exitValDcl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitValDcl) {
-			return visitor.visitValDcl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10160,14 +9582,6 @@ export class VarDclContext extends ParserRuleContext {
 			listener.exitVarDcl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitVarDcl) {
-			return visitor.visitVarDcl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10193,14 +9607,6 @@ export class FunDclContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitFunDcl) {
 			listener.exitFunDcl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitFunDcl) {
-			return visitor.visitFunDcl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10229,14 +9635,6 @@ export class FunSigContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitFunSig) {
 			listener.exitFunSig(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitFunSig) {
-			return visitor.visitFunSig(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10273,14 +9671,6 @@ export class TypeDclContext extends ParserRuleContext {
 			listener.exitTypeDcl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTypeDcl) {
-			return visitor.visitTypeDcl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10306,14 +9696,6 @@ export class PatVarDefContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitPatVarDef) {
 			listener.exitPatVarDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitPatVarDef) {
-			return visitor.visitPatVarDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10347,14 +9729,6 @@ export class DefContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitDef) {
 			listener.exitDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitDef) {
-			return visitor.visitDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10399,14 +9773,6 @@ export class PatDefContext extends ParserRuleContext {
 			listener.exitPatDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitPatDef) {
-			return visitor.visitPatDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10435,14 +9801,6 @@ export class VarDefContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitVarDef) {
 			listener.exitVarDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitVarDef) {
-			return visitor.visitVarDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10490,14 +9848,6 @@ export class FunDefContext extends ParserRuleContext {
 			listener.exitFunDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitFunDef) {
-			return visitor.visitFunDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10524,14 +9874,6 @@ export class TypeDefContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitTypeDef) {
 			listener.exitTypeDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTypeDef) {
-			return visitor.visitTypeDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10562,14 +9904,6 @@ export class TmplDefContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitTmplDef) {
 			listener.exitTmplDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTmplDef) {
-			return visitor.visitTmplDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10615,14 +9949,6 @@ export class ClassDefContext extends ParserRuleContext {
 			listener.exitClassDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitClassDef) {
-			return visitor.visitClassDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10651,14 +9977,6 @@ export class TraitDefContext extends ParserRuleContext {
 			listener.exitTraitDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTraitDef) {
-			return visitor.visitTraitDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10682,14 +10000,6 @@ export class ObjectDefContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitObjectDef) {
 			listener.exitObjectDef(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitObjectDef) {
-			return visitor.visitObjectDef(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10719,14 +10029,6 @@ export class ClassTemplateOptContext extends ParserRuleContext {
 			listener.exitClassTemplateOpt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitClassTemplateOpt) {
-			return visitor.visitClassTemplateOpt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10752,14 +10054,6 @@ export class TraitTemplateOptContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitTraitTemplateOpt) {
 			listener.exitTraitTemplateOpt(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTraitTemplateOpt) {
-			return visitor.visitTraitTemplateOpt(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10792,14 +10086,6 @@ export class ClassTemplateContext extends ParserRuleContext {
 			listener.exitClassTemplate(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitClassTemplate) {
-			return visitor.visitClassTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10828,14 +10114,6 @@ export class TraitTemplateContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitTraitTemplate) {
 			listener.exitTraitTemplate(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTraitTemplate) {
-			return visitor.visitTraitTemplate(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10871,14 +10149,6 @@ export class ClassParentsContext extends ParserRuleContext {
 			listener.exitClassParents(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitClassParents) {
-			return visitor.visitClassParents(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -10907,14 +10177,6 @@ export class TraitParentsContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitTraitParents) {
 			listener.exitTraitParents(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTraitParents) {
-			return visitor.visitTraitParents(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10948,14 +10210,6 @@ export class ConstrContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitConstr) {
 			listener.exitConstr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitConstr) {
-			return visitor.visitConstr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -10995,14 +10249,6 @@ export class EarlyDefsContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitEarlyDefs) {
 			listener.exitEarlyDefs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitEarlyDefs) {
-			return visitor.visitEarlyDefs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11047,14 +10293,6 @@ export class EarlyDefContext extends ParserRuleContext {
 			listener.exitEarlyDef(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitEarlyDef) {
-			return visitor.visitEarlyDef(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11080,14 +10318,6 @@ export class ConstrExprContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitConstrExpr) {
 			listener.exitConstrExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitConstrExpr) {
-			return visitor.visitConstrExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11132,14 +10362,6 @@ export class ConstrBlockContext extends ParserRuleContext {
 			listener.exitConstrBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitConstrBlock) {
-			return visitor.visitConstrBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11168,14 +10390,6 @@ export class SelfInvocationContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitSelfInvocation) {
 			listener.exitSelfInvocation(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitSelfInvocation) {
-			return visitor.visitSelfInvocation(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11215,14 +10429,6 @@ export class TopStatSeqContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitTopStatSeq) {
 			listener.exitTopStatSeq(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTopStatSeq) {
-			return visitor.visitTopStatSeq(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11276,14 +10482,6 @@ export class TopStatContext extends ParserRuleContext {
 			listener.exitTopStat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitTopStat) {
-			return visitor.visitTopStat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11311,14 +10509,6 @@ export class PackagingContext extends ParserRuleContext {
 			listener.exitPackaging(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitPackaging) {
-			return visitor.visitPackaging(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -11341,14 +10531,6 @@ export class PackageObjectContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitPackageObject) {
 			listener.exitPackageObject(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitPackageObject) {
-			return visitor.visitPackageObject(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -11391,14 +10573,6 @@ export class CompilationUnitContext extends ParserRuleContext {
 	public exitRule(listener: ScalaListener): void {
 		if (listener.exitCompilationUnit) {
 			listener.exitCompilationUnit(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ScalaVisitor<Result>): Result {
-		if (visitor.visitCompilationUnit) {
-			return visitor.visitCompilationUnit(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

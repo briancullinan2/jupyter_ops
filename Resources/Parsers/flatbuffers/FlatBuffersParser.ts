@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { FlatBuffersListener } from "./FlatBuffersListener";
-import { FlatBuffersVisitor } from "./FlatBuffersVisitor";
-
 
 export class FlatBuffersParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1558,14 +1556,6 @@ export class SchemaContext extends ParserRuleContext {
 			listener.exitSchema(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitSchema) {
-			return visitor.visitSchema(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1586,14 +1576,6 @@ export class IncludeContext extends ParserRuleContext {
 	public exitRule(listener: FlatBuffersListener): void {
 		if (listener.exitInclude) {
 			listener.exitInclude(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitInclude) {
-			return visitor.visitInclude(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1626,14 +1608,6 @@ export class Namespace_declContext extends ParserRuleContext {
 			listener.exitNamespace_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitNamespace_decl) {
-			return visitor.visitNamespace_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1654,14 +1628,6 @@ export class Attribute_declContext extends ParserRuleContext {
 	public exitRule(listener: FlatBuffersListener): void {
 		if (listener.exitAttribute_decl) {
 			listener.exitAttribute_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitAttribute_decl) {
-			return visitor.visitAttribute_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1698,14 +1664,6 @@ export class Type_declContext extends ParserRuleContext {
 			listener.exitType_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitType_decl) {
-			return visitor.visitType_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1737,14 +1695,6 @@ export class Enum_declContext extends ParserRuleContext {
 			listener.exitEnum_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitEnum_decl) {
-			return visitor.visitEnum_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1765,14 +1715,6 @@ export class Root_declContext extends ParserRuleContext {
 	public exitRule(listener: FlatBuffersListener): void {
 		if (listener.exitRoot_decl) {
 			listener.exitRoot_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitRoot_decl) {
-			return visitor.visitRoot_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1806,14 +1748,6 @@ export class Field_declContext extends ParserRuleContext {
 			listener.exitField_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitField_decl) {
-			return visitor.visitField_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1843,14 +1777,6 @@ export class Rpc_declContext extends ParserRuleContext {
 	public exitRule(listener: FlatBuffersListener): void {
 		if (listener.exitRpc_decl) {
 			listener.exitRpc_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitRpc_decl) {
-			return visitor.visitRpc_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1886,14 +1812,6 @@ export class Rpc_methodContext extends ParserRuleContext {
 			listener.exitRpc_method(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitRpc_method) {
-			return visitor.visitRpc_method(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1922,14 +1840,6 @@ export class TypeContext extends ParserRuleContext {
 			listener.exitType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1955,14 +1865,6 @@ export class Enumval_declContext extends ParserRuleContext {
 	public exitRule(listener: FlatBuffersListener): void {
 		if (listener.exitEnumval_decl) {
 			listener.exitEnumval_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitEnumval_decl) {
-			return visitor.visitEnumval_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1995,14 +1897,6 @@ export class Commasep_enumval_declContext extends ParserRuleContext {
 			listener.exitCommasep_enumval_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitCommasep_enumval_decl) {
-			return visitor.visitCommasep_enumval_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2026,14 +1920,6 @@ export class Ident_with_opt_single_valueContext extends ParserRuleContext {
 	public exitRule(listener: FlatBuffersListener): void {
 		if (listener.exitIdent_with_opt_single_value) {
 			listener.exitIdent_with_opt_single_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitIdent_with_opt_single_value) {
-			return visitor.visitIdent_with_opt_single_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2066,14 +1952,6 @@ export class Commasep_ident_with_opt_single_valueContext extends ParserRuleConte
 			listener.exitCommasep_ident_with_opt_single_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitCommasep_ident_with_opt_single_value) {
-			return visitor.visitCommasep_ident_with_opt_single_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2096,14 +1974,6 @@ export class MetadataContext extends ParserRuleContext {
 	public exitRule(listener: FlatBuffersListener): void {
 		if (listener.exitMetadata) {
 			listener.exitMetadata(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitMetadata) {
-			return visitor.visitMetadata(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2131,14 +2001,6 @@ export class ScalarContext extends ParserRuleContext {
 			listener.exitScalar(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitScalar) {
-			return visitor.visitScalar(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2161,14 +2023,6 @@ export class ObjectContext extends ParserRuleContext {
 	public exitRule(listener: FlatBuffersListener): void {
 		if (listener.exitObject) {
 			listener.exitObject(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitObject) {
-			return visitor.visitObject(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2194,14 +2048,6 @@ export class Ident_with_valueContext extends ParserRuleContext {
 	public exitRule(listener: FlatBuffersListener): void {
 		if (listener.exitIdent_with_value) {
 			listener.exitIdent_with_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitIdent_with_value) {
-			return visitor.visitIdent_with_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2234,14 +2080,6 @@ export class Commasep_ident_with_valueContext extends ParserRuleContext {
 			listener.exitCommasep_ident_with_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitCommasep_ident_with_value) {
-			return visitor.visitCommasep_ident_with_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2265,14 +2103,6 @@ export class Single_valueContext extends ParserRuleContext {
 	public exitRule(listener: FlatBuffersListener): void {
 		if (listener.exitSingle_value) {
 			listener.exitSingle_value(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitSingle_value) {
-			return visitor.visitSingle_value(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2305,14 +2135,6 @@ export class ValueContext extends ParserRuleContext {
 			listener.exitValue(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitValue) {
-			return visitor.visitValue(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2343,14 +2165,6 @@ export class Commasep_valueContext extends ParserRuleContext {
 			listener.exitCommasep_value(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitCommasep_value) {
-			return visitor.visitCommasep_value(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2373,14 +2187,6 @@ export class File_extension_declContext extends ParserRuleContext {
 			listener.exitFile_extension_decl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitFile_extension_decl) {
-			return visitor.visitFile_extension_decl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2401,14 +2207,6 @@ export class File_identifier_declContext extends ParserRuleContext {
 	public exitRule(listener: FlatBuffersListener): void {
 		if (listener.exitFile_identifier_decl) {
 			listener.exitFile_identifier_decl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitFile_identifier_decl) {
-			return visitor.visitFile_identifier_decl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2441,14 +2239,6 @@ export class Ns_identContext extends ParserRuleContext {
 			listener.exitNs_ident(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitNs_ident) {
-			return visitor.visitNs_ident(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2470,14 +2260,6 @@ export class Integer_constContext extends ParserRuleContext {
 	public exitRule(listener: FlatBuffersListener): void {
 		if (listener.exitInteger_const) {
 			listener.exitInteger_const(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: FlatBuffersVisitor<Result>): Result {
-		if (visitor.visitInteger_const) {
-			return visitor.visitInteger_const(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

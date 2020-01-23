@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { CMakeListener } from "./CMakeListener";
-import { CMakeVisitor } from "./CMakeVisitor";
-
 
 export class CMakeParser extends Parser {
 	public static readonly T__0 = 1;
@@ -334,14 +332,6 @@ export class FileContext extends ParserRuleContext {
 			listener.exitFile(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CMakeVisitor<Result>): Result {
-		if (visitor.visitFile) {
-			return visitor.visitFile(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -382,14 +372,6 @@ export class Command_invocationContext extends ParserRuleContext {
 			listener.exitCommand_invocation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: CMakeVisitor<Result>): Result {
-		if (visitor.visitCommand_invocation) {
-			return visitor.visitCommand_invocation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -413,14 +395,6 @@ export class Single_argumentContext extends ParserRuleContext {
 	public exitRule(listener: CMakeListener): void {
 		if (listener.exitSingle_argument) {
 			listener.exitSingle_argument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CMakeVisitor<Result>): Result {
-		if (visitor.visitSingle_argument) {
-			return visitor.visitSingle_argument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -460,14 +434,6 @@ export class Compound_argumentContext extends ParserRuleContext {
 	public exitRule(listener: CMakeListener): void {
 		if (listener.exitCompound_argument) {
 			listener.exitCompound_argument(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: CMakeVisitor<Result>): Result {
-		if (visitor.visitCompound_argument) {
-			return visitor.visitCompound_argument(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

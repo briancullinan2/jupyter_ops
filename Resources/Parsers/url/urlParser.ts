@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { urlListener } from "./urlListener";
-import { urlVisitor } from "./urlVisitor";
-
 
 export class urlParser extends Parser {
 	public static readonly T__0 = 1;
@@ -909,14 +907,6 @@ export class UrlContext extends ParserRuleContext {
 			listener.exitUrl(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitUrl) {
-			return visitor.visitUrl(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -960,14 +950,6 @@ export class UriContext extends ParserRuleContext {
 			listener.exitUri(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitUri) {
-			return visitor.visitUri(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -992,14 +974,6 @@ export class SchemeContext extends ParserRuleContext {
 			listener.exitScheme(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitScheme) {
-			return visitor.visitScheme(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1022,14 +996,6 @@ export class HostContext extends ParserRuleContext {
 	public exitRule(listener: urlListener): void {
 		if (listener.exitHost) {
 			listener.exitHost(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitHost) {
-			return visitor.visitHost(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1071,14 +1037,6 @@ export class DomainNameOrIPv4HostContext extends HostnameContext {
 			listener.exitDomainNameOrIPv4Host(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitDomainNameOrIPv4Host) {
-			return visitor.visitDomainNameOrIPv4Host(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IPv6HostContext extends HostnameContext {
 	public v6host(): V6hostContext {
@@ -1098,14 +1056,6 @@ export class IPv6HostContext extends HostnameContext {
 	public exitRule(listener: urlListener): void {
 		if (listener.exitIPv6Host) {
 			listener.exitIPv6Host(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitIPv6Host) {
-			return visitor.visitIPv6Host(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1147,14 +1097,6 @@ export class V6hostContext extends ParserRuleContext {
 			listener.exitV6host(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitV6host) {
-			return visitor.visitV6host(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1175,14 +1117,6 @@ export class PortContext extends ParserRuleContext {
 	public exitRule(listener: urlListener): void {
 		if (listener.exitPort) {
 			listener.exitPort(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitPort) {
-			return visitor.visitPort(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1215,14 +1149,6 @@ export class PathContext extends ParserRuleContext {
 			listener.exitPath(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitPath) {
-			return visitor.visitPath(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1245,14 +1171,6 @@ export class UserContext extends ParserRuleContext {
 	public exitRule(listener: urlListener): void {
 		if (listener.exitUser) {
 			listener.exitUser(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitUser) {
-			return visitor.visitUser(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1282,14 +1200,6 @@ export class LoginContext extends ParserRuleContext {
 			listener.exitLogin(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitLogin) {
-			return visitor.visitLogin(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1312,14 +1222,6 @@ export class PasswordContext extends ParserRuleContext {
 	public exitRule(listener: urlListener): void {
 		if (listener.exitPassword) {
 			listener.exitPassword(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitPassword) {
-			return visitor.visitPassword(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1347,14 +1249,6 @@ export class FragContext extends ParserRuleContext {
 			listener.exitFrag(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitFrag) {
-			return visitor.visitFrag(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1377,14 +1271,6 @@ export class QueryContext extends ParserRuleContext {
 	public exitRule(listener: urlListener): void {
 		if (listener.exitQuery) {
 			listener.exitQuery(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitQuery) {
-			return visitor.visitQuery(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1415,14 +1301,6 @@ export class SearchContext extends ParserRuleContext {
 	public exitRule(listener: urlListener): void {
 		if (listener.exitSearch) {
 			listener.exitSearch(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitSearch) {
-			return visitor.visitSearch(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1457,14 +1335,6 @@ export class SearchparameterContext extends ParserRuleContext {
 			listener.exitSearchparameter(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitSearchparameter) {
-			return visitor.visitSearchparameter(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1485,14 +1355,6 @@ export class StringContext extends ParserRuleContext {
 	public exitRule(listener: urlListener): void {
 		if (listener.exitString) {
 			listener.exitString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: urlVisitor<Result>): Result {
-		if (visitor.visitString) {
-			return visitor.visitString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { agcListener } from "./agcListener";
-import { agcVisitor } from "./agcVisitor";
-
 
 export class agcParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1694,14 +1692,6 @@ export class ProgContext extends ParserRuleContext {
 			listener.exitProg(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitProg) {
-			return visitor.visitProg(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1738,14 +1728,6 @@ export class LineContext extends ParserRuleContext {
 			listener.exitLine(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitLine) {
-			return visitor.visitLine(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1771,14 +1753,6 @@ export class Blank_lineContext extends ParserRuleContext {
 	public exitRule(listener: agcListener): void {
 		if (listener.exitBlank_line) {
 			listener.exitBlank_line(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitBlank_line) {
-			return visitor.visitBlank_line(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1809,14 +1783,6 @@ export class Comment_lineContext extends ParserRuleContext {
 	public exitRule(listener: agcListener): void {
 		if (listener.exitComment_line) {
 			listener.exitComment_line(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitComment_line) {
-			return visitor.visitComment_line(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1870,14 +1836,6 @@ export class Instruction_lineContext extends ParserRuleContext {
 			listener.exitInstruction_line(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitInstruction_line) {
-			return visitor.visitInstruction_line(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1924,14 +1882,6 @@ export class Erase_lineContext extends ParserRuleContext {
 	public exitRule(listener: agcListener): void {
 		if (listener.exitErase_line) {
 			listener.exitErase_line(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitErase_line) {
-			return visitor.visitErase_line(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1982,14 +1932,6 @@ export class Assignment_lineContext extends ParserRuleContext {
 			listener.exitAssignment_line(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitAssignment_line) {
-			return visitor.visitAssignment_line(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2021,14 +1963,6 @@ export class OpcodesContext extends ParserRuleContext {
 	public exitRule(listener: agcListener): void {
 		if (listener.exitOpcodes) {
 			listener.exitOpcodes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitOpcodes) {
-			return visitor.visitOpcodes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2073,14 +2007,6 @@ export class ArgumentContext extends ParserRuleContext {
 			listener.exitArgument(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitArgument) {
-			return visitor.visitArgument(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2101,14 +2027,6 @@ export class WsContext extends ParserRuleContext {
 	public exitRule(listener: agcListener): void {
 		if (listener.exitWs) {
 			listener.exitWs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitWs) {
-			return visitor.visitWs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2134,14 +2052,6 @@ export class EolContext extends ParserRuleContext {
 			listener.exitEol(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitEol) {
-			return visitor.visitEol(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2162,14 +2072,6 @@ export class CommentContext extends ParserRuleContext {
 	public exitRule(listener: agcListener): void {
 		if (listener.exitComment) {
 			listener.exitComment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2194,14 +2096,6 @@ export class LabelContext extends ParserRuleContext {
 			listener.exitLabel(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitLabel) {
-			return visitor.visitLabel(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2224,14 +2118,6 @@ export class VariableContext extends ParserRuleContext {
 	public exitRule(listener: agcListener): void {
 		if (listener.exitVariable) {
 			listener.exitVariable(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitVariable) {
-			return visitor.visitVariable(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2282,14 +2168,6 @@ export class ExpressionContext extends ParserRuleContext {
 			listener.exitExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitExpression) {
-			return visitor.visitExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2338,14 +2216,6 @@ export class MultiplyingExpressionContext extends ParserRuleContext {
 			listener.exitMultiplyingExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitMultiplyingExpression) {
-			return visitor.visitMultiplyingExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2382,14 +2252,6 @@ export class AtomContext extends ParserRuleContext {
 			listener.exitAtom(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitAtom) {
-			return visitor.visitAtom(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2410,14 +2272,6 @@ export class InteContext extends ParserRuleContext {
 	public exitRule(listener: agcListener): void {
 		if (listener.exitInte) {
 			listener.exitInte(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitInte) {
-			return visitor.visitInte(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2444,14 +2298,6 @@ export class DecimalContext extends ParserRuleContext {
 			listener.exitDecimal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitDecimal) {
-			return visitor.visitDecimal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2471,14 +2317,6 @@ export class RegisterContext extends ParserRuleContext {
 	public exitRule(listener: agcListener): void {
 		if (listener.exitRegister) {
 			listener.exitRegister(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitRegister) {
-			return visitor.visitRegister(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2511,14 +2349,6 @@ export class OpcodeContext extends ParserRuleContext {
 			listener.exitOpcode(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitOpcode) {
-			return visitor.visitOpcode(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2538,14 +2368,6 @@ export class Axt_opcodeContext extends ParserRuleContext {
 	public exitRule(listener: agcListener): void {
 		if (listener.exitAxt_opcode) {
 			listener.exitAxt_opcode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitAxt_opcode) {
-			return visitor.visitAxt_opcode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2569,14 +2391,6 @@ export class Pseudo_opcodeContext extends ParserRuleContext {
 			listener.exitPseudo_opcode(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitPseudo_opcode) {
-			return visitor.visitPseudo_opcode(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2596,14 +2410,6 @@ export class Standard_opcodeContext extends ParserRuleContext {
 	public exitRule(listener: agcListener): void {
 		if (listener.exitStandard_opcode) {
 			listener.exitStandard_opcode(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: agcVisitor<Result>): Result {
-		if (visitor.visitStandard_opcode) {
-			return visitor.visitStandard_opcode(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

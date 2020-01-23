@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { ErlangListener } from "./ErlangListener";
-import { ErlangVisitor } from "./ErlangVisitor";
-
 
 export class ErlangParser extends Parser {
 	public static readonly T__0 = 1;
@@ -5388,14 +5386,6 @@ export class FormsContext extends ParserRuleContext {
 			listener.exitForms(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitForms) {
-			return visitor.visitForms(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5426,14 +5416,6 @@ export class FormContext extends ParserRuleContext {
 			listener.exitForm(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitForm) {
-			return visitor.visitForm(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5454,14 +5436,6 @@ export class TokAtomContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitTokAtom) {
 			listener.exitTokAtom(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTokAtom) {
-			return visitor.visitTokAtom(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5486,14 +5460,6 @@ export class TokVarContext extends ParserRuleContext {
 			listener.exitTokVar(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTokVar) {
-			return visitor.visitTokVar(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5514,14 +5480,6 @@ export class TokFloatContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitTokFloat) {
 			listener.exitTokFloat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTokFloat) {
-			return visitor.visitTokFloat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5546,14 +5504,6 @@ export class TokIntegerContext extends ParserRuleContext {
 			listener.exitTokInteger(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTokInteger) {
-			return visitor.visitTokInteger(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5576,14 +5526,6 @@ export class TokCharContext extends ParserRuleContext {
 			listener.exitTokChar(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTokChar) {
-			return visitor.visitTokChar(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5604,14 +5546,6 @@ export class TokStringContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitTokString) {
 			listener.exitTokString(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTokString) {
-			return visitor.visitTokString(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5648,14 +5582,6 @@ export class AttributeContext extends ParserRuleContext {
 			listener.exitAttribute(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitAttribute) {
-			return visitor.visitAttribute(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5681,14 +5607,6 @@ export class TypeSpecContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitTypeSpec) {
 			listener.exitTypeSpec(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTypeSpec) {
-			return visitor.visitTypeSpec(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5724,14 +5642,6 @@ export class SpecFunContext extends ParserRuleContext {
 			listener.exitSpecFun(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitSpecFun) {
-			return visitor.visitSpecFun(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5762,14 +5672,6 @@ export class TypedAttrValContext extends ParserRuleContext {
 			listener.exitTypedAttrVal(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTypedAttrVal) {
-			return visitor.visitTypedAttrVal(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5792,14 +5694,6 @@ export class TypedRecordFieldsContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitTypedRecordFields) {
 			listener.exitTypedRecordFields(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTypedRecordFields) {
-			return visitor.visitTypedRecordFields(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5835,14 +5729,6 @@ export class TypedExprsContext extends ParserRuleContext {
 			listener.exitTypedExprs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTypedExprs) {
-			return visitor.visitTypedExprs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5868,14 +5754,6 @@ export class TypedExprContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitTypedExpr) {
 			listener.exitTypedExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTypedExpr) {
-			return visitor.visitTypedExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5908,14 +5786,6 @@ export class TypeSigsContext extends ParserRuleContext {
 			listener.exitTypeSigs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTypeSigs) {
-			return visitor.visitTypeSigs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -5941,14 +5811,6 @@ export class TypeSigContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitTypeSig) {
 			listener.exitTypeSig(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTypeSig) {
-			return visitor.visitTypeSig(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -5979,14 +5841,6 @@ export class TypeGuardsContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitTypeGuards) {
 			listener.exitTypeGuards(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTypeGuards) {
-			return visitor.visitTypeGuards(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6022,14 +5876,6 @@ export class TypeGuardContext extends ParserRuleContext {
 			listener.exitTypeGuard(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTypeGuard) {
-			return visitor.visitTypeGuard(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6060,14 +5906,6 @@ export class TopTypesContext extends ParserRuleContext {
 			listener.exitTopTypes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTopTypes) {
-			return visitor.visitTopTypes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6095,14 +5933,6 @@ export class TopTypeContext extends ParserRuleContext {
 			listener.exitTopType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTopType) {
-			return visitor.visitTopType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6128,14 +5958,6 @@ export class TopType100Context extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitTopType100) {
 			listener.exitTopType100(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTopType100) {
-			return visitor.visitTopType100(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6168,14 +5990,6 @@ export class Type200Context extends ParserRuleContext {
 			listener.exitType200(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitType200) {
-			return visitor.visitType200(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6204,14 +6018,6 @@ export class Type300Context extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitType300) {
 			listener.exitType300(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitType300) {
-			return visitor.visitType300(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6244,14 +6050,6 @@ export class Type400Context extends ParserRuleContext {
 			listener.exitType400(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitType400) {
-			return visitor.visitType400(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6277,14 +6075,6 @@ export class Type500Context extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitType500) {
 			listener.exitType500(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitType500) {
-			return visitor.visitType500(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6338,14 +6128,6 @@ export class TypeContext extends ParserRuleContext {
 			listener.exitType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitType) {
-			return visitor.visitType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6373,14 +6155,6 @@ export class FunType100Context extends ParserRuleContext {
 			listener.exitFunType100(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitFunType100) {
-			return visitor.visitFunType100(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6406,14 +6180,6 @@ export class FunTypeContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitFunType) {
 			listener.exitFunType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitFunType) {
-			return visitor.visitFunType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6446,14 +6212,6 @@ export class FieldTypesContext extends ParserRuleContext {
 			listener.exitFieldTypes(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitFieldTypes) {
-			return visitor.visitFieldTypes(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6479,14 +6237,6 @@ export class FieldTypeContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitFieldType) {
 			listener.exitFieldType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitFieldType) {
-			return visitor.visitFieldType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6516,14 +6266,6 @@ export class BinaryTypeContext extends ParserRuleContext {
 			listener.exitBinaryType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitBinaryType) {
-			return visitor.visitBinaryType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6549,14 +6291,6 @@ export class BinBaseTypeContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitBinBaseType) {
 			listener.exitBinBaseType(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitBinBaseType) {
-			return visitor.visitBinBaseType(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6592,14 +6326,6 @@ export class BinUnitTypeContext extends ParserRuleContext {
 			listener.exitBinUnitType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitBinUnitType) {
-			return visitor.visitBinUnitType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6625,14 +6351,6 @@ export class AttrValContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitAttrVal) {
 			listener.exitAttrVal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitAttrVal) {
-			return visitor.visitAttrVal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6663,14 +6381,6 @@ export class FunctionContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitFunction) {
 			listener.exitFunction(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitFunction) {
-			return visitor.visitFunction(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6706,14 +6416,6 @@ export class FunctionClauseContext extends ParserRuleContext {
 			listener.exitFunctionClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitFunctionClause) {
-			return visitor.visitFunctionClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6736,14 +6438,6 @@ export class ClauseArgsContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitClauseArgs) {
 			listener.exitClauseArgs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitClauseArgs) {
-			return visitor.visitClauseArgs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6770,14 +6464,6 @@ export class ClauseGuardContext extends ParserRuleContext {
 			listener.exitClauseGuard(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitClauseGuard) {
-			return visitor.visitClauseGuard(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6800,14 +6486,6 @@ export class ClauseBodyContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitClauseBody) {
 			listener.exitClauseBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitClauseBody) {
-			return visitor.visitClauseBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6835,14 +6513,6 @@ export class ExprContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitExpr) {
 			listener.exitExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExpr) {
-			return visitor.visitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6875,14 +6545,6 @@ export class Expr100Context extends ParserRuleContext {
 			listener.exitExpr100(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExpr100) {
-			return visitor.visitExpr100(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6913,14 +6575,6 @@ export class Expr150Context extends ParserRuleContext {
 			listener.exitExpr150(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExpr150) {
-			return visitor.visitExpr150(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -6949,14 +6603,6 @@ export class Expr160Context extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitExpr160) {
 			listener.exitExpr160(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExpr160) {
-			return visitor.visitExpr160(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -6990,14 +6636,6 @@ export class Expr200Context extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitExpr200) {
 			listener.exitExpr200(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExpr200) {
-			return visitor.visitExpr200(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7039,14 +6677,6 @@ export class Expr300Context extends ParserRuleContext {
 			listener.exitExpr300(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExpr300) {
-			return visitor.visitExpr300(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7084,14 +6714,6 @@ export class Expr400Context extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitExpr400) {
 			listener.exitExpr400(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExpr400) {
-			return visitor.visitExpr400(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7133,14 +6755,6 @@ export class Expr500Context extends ParserRuleContext {
 			listener.exitExpr500(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExpr500) {
-			return visitor.visitExpr500(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7166,14 +6780,6 @@ export class Expr600Context extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitExpr600) {
 			listener.exitExpr600(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExpr600) {
-			return visitor.visitExpr600(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7206,14 +6812,6 @@ export class Expr700Context extends ParserRuleContext {
 			listener.exitExpr700(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExpr700) {
-			return visitor.visitExpr700(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7242,14 +6840,6 @@ export class Expr800Context extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitExpr800) {
 			listener.exitExpr800(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExpr800) {
-			return visitor.visitExpr800(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7315,14 +6905,6 @@ export class ExprMaxContext extends ParserRuleContext {
 			listener.exitExprMax(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExprMax) {
-			return visitor.visitExprMax(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7348,14 +6930,6 @@ export class ListContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitList) {
 			listener.exitList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitList) {
-			return visitor.visitList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7385,14 +6959,6 @@ export class TailContext extends ParserRuleContext {
 			listener.exitTail(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTail) {
-			return visitor.visitTail(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7415,14 +6981,6 @@ export class BinaryContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitBinary) {
 			listener.exitBinary(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitBinary) {
-			return visitor.visitBinary(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7455,14 +7013,6 @@ export class BinElementsContext extends ParserRuleContext {
 			listener.exitBinElements(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitBinElements) {
-			return visitor.visitBinElements(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7493,14 +7043,6 @@ export class BinElementContext extends ParserRuleContext {
 			listener.exitBinElement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitBinElement) {
-			return visitor.visitBinElement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7528,14 +7070,6 @@ export class BitExprContext extends ParserRuleContext {
 			listener.exitBitExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitBitExpr) {
-			return visitor.visitBitExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7560,14 +7094,6 @@ export class OptBitSizeExprContext extends ParserRuleContext {
 			listener.exitOptBitSizeExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitOptBitSizeExpr) {
-			return visitor.visitOptBitSizeExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7590,14 +7116,6 @@ export class OptBitTypeListContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitOptBitTypeList) {
 			listener.exitOptBitTypeList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitOptBitTypeList) {
-			return visitor.visitOptBitTypeList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7630,14 +7148,6 @@ export class BitTypeListContext extends ParserRuleContext {
 			listener.exitBitTypeList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitBitTypeList) {
-			return visitor.visitBitTypeList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7665,14 +7175,6 @@ export class BitTypeContext extends ParserRuleContext {
 			listener.exitBitType(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitBitType) {
-			return visitor.visitBitType(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7695,14 +7197,6 @@ export class BitSizeExprContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitBitSizeExpr) {
 			listener.exitBitSizeExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitBitSizeExpr) {
-			return visitor.visitBitSizeExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7732,14 +7226,6 @@ export class ListComprehensionContext extends ParserRuleContext {
 			listener.exitListComprehension(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitListComprehension) {
-			return visitor.visitListComprehension(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7765,14 +7251,6 @@ export class BinaryComprehensionContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitBinaryComprehension) {
 			listener.exitBinaryComprehension(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitBinaryComprehension) {
-			return visitor.visitBinaryComprehension(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7803,14 +7281,6 @@ export class LcExprsContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitLcExprs) {
 			listener.exitLcExprs(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitLcExprs) {
-			return visitor.visitLcExprs(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7846,14 +7316,6 @@ export class LcExprContext extends ParserRuleContext {
 			listener.exitLcExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitLcExpr) {
-			return visitor.visitLcExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7876,14 +7338,6 @@ export class TupleContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitTuple) {
 			listener.exitTuple(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTuple) {
-			return visitor.visitTuple(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7925,14 +7379,6 @@ export class RecordExprContext extends ParserRuleContext {
 			listener.exitRecordExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitRecordExpr) {
-			return visitor.visitRecordExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -7955,14 +7401,6 @@ export class RecordTupleContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitRecordTuple) {
 			listener.exitRecordTuple(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitRecordTuple) {
-			return visitor.visitRecordTuple(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -7995,14 +7433,6 @@ export class RecordFieldsContext extends ParserRuleContext {
 			listener.exitRecordFields(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitRecordFields) {
-			return visitor.visitRecordFields(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8033,14 +7463,6 @@ export class RecordFieldContext extends ParserRuleContext {
 			listener.exitRecordField(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitRecordField) {
-			return visitor.visitRecordField(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8068,14 +7490,6 @@ export class FunctionCallContext extends ParserRuleContext {
 			listener.exitFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitFunctionCall) {
-			return visitor.visitFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8098,14 +7512,6 @@ export class IfExprContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitIfExpr) {
 			listener.exitIfExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitIfExpr) {
-			return visitor.visitIfExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8138,14 +7544,6 @@ export class IfClausesContext extends ParserRuleContext {
 			listener.exitIfClauses(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitIfClauses) {
-			return visitor.visitIfClauses(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8173,14 +7571,6 @@ export class IfClauseContext extends ParserRuleContext {
 			listener.exitIfClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitIfClause) {
-			return visitor.visitIfClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8206,14 +7596,6 @@ export class CaseExprContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitCaseExpr) {
 			listener.exitCaseExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitCaseExpr) {
-			return visitor.visitCaseExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8246,14 +7628,6 @@ export class CrClausesContext extends ParserRuleContext {
 			listener.exitCrClauses(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitCrClauses) {
-			return visitor.visitCrClauses(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8284,14 +7658,6 @@ export class CrClauseContext extends ParserRuleContext {
 			listener.exitCrClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitCrClause) {
-			return visitor.visitCrClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8320,14 +7686,6 @@ export class ReceiveExprContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitReceiveExpr) {
 			listener.exitReceiveExpr(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitReceiveExpr) {
-			return visitor.visitReceiveExpr(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8372,14 +7730,6 @@ export class FunExprContext extends ParserRuleContext {
 			listener.exitFunExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitFunExpr) {
-			return visitor.visitFunExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8407,14 +7757,6 @@ export class AtomOrVarContext extends ParserRuleContext {
 			listener.exitAtomOrVar(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitAtomOrVar) {
-			return visitor.visitAtomOrVar(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8440,14 +7782,6 @@ export class IntegerOrVarContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitIntegerOrVar) {
 			listener.exitIntegerOrVar(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitIntegerOrVar) {
-			return visitor.visitIntegerOrVar(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8480,14 +7814,6 @@ export class FunClausesContext extends ParserRuleContext {
 			listener.exitFunClauses(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitFunClauses) {
-			return visitor.visitFunClauses(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8516,14 +7842,6 @@ export class FunClauseContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitFunClause) {
 			listener.exitFunClause(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitFunClause) {
-			return visitor.visitFunClause(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8556,14 +7874,6 @@ export class TryExprContext extends ParserRuleContext {
 			listener.exitTryExpr(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTryExpr) {
-			return visitor.visitTryExpr(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8589,14 +7899,6 @@ export class TryCatchContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitTryCatch) {
 			listener.exitTryCatch(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTryCatch) {
-			return visitor.visitTryCatch(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8627,14 +7929,6 @@ export class TryClausesContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitTryClauses) {
 			listener.exitTryClauses(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTryClauses) {
-			return visitor.visitTryClauses(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8670,14 +7964,6 @@ export class TryClauseContext extends ParserRuleContext {
 			listener.exitTryClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitTryClause) {
-			return visitor.visitTryClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8700,14 +7986,6 @@ export class ArgumentListContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitArgumentList) {
 			listener.exitArgumentList(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitArgumentList) {
-			return visitor.visitArgumentList(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8740,14 +8018,6 @@ export class ExprsContext extends ParserRuleContext {
 			listener.exitExprs(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitExprs) {
-			return visitor.visitExprs(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8776,14 +8046,6 @@ export class GuardContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitGuard) {
 			listener.exitGuard(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitGuard) {
-			return visitor.visitGuard(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8828,14 +8090,6 @@ export class AtomicContext extends ParserRuleContext {
 			listener.exitAtomic(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitAtomic) {
-			return visitor.visitAtomic(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8855,14 +8109,6 @@ export class PrefixOpContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitPrefixOp) {
 			listener.exitPrefixOp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitPrefixOp) {
-			return visitor.visitPrefixOp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8886,14 +8132,6 @@ export class MultOpContext extends ParserRuleContext {
 			listener.exitMultOp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitMultOp) {
-			return visitor.visitMultOp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8913,14 +8151,6 @@ export class AddOpContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitAddOp) {
 			listener.exitAddOp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitAddOp) {
-			return visitor.visitAddOp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -8944,14 +8174,6 @@ export class ListOpContext extends ParserRuleContext {
 			listener.exitListOp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitListOp) {
-			return visitor.visitListOp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -8971,14 +8193,6 @@ export class CompOpContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitCompOp) {
 			listener.exitCompOp(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitCompOp) {
-			return visitor.visitCompOp(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9009,14 +8223,6 @@ export class RuleClausesContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitRuleClauses) {
 			listener.exitRuleClauses(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitRuleClauses) {
-			return visitor.visitRuleClauses(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -9052,14 +8258,6 @@ export class RuleClauseContext extends ParserRuleContext {
 			listener.exitRuleClause(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitRuleClause) {
-			return visitor.visitRuleClause(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -9082,14 +8280,6 @@ export class RuleBodyContext extends ParserRuleContext {
 	public exitRule(listener: ErlangListener): void {
 		if (listener.exitRuleBody) {
 			listener.exitRuleBody(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: ErlangVisitor<Result>): Result {
-		if (visitor.visitRuleBody) {
-			return visitor.visitRuleBody(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

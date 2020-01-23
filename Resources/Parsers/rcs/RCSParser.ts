@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { RCSListener } from "./RCSListener";
-import { RCSVisitor } from "./RCSVisitor";
-
 
 export class RCSParser extends Parser {
 	public static readonly COMMA = 1;
@@ -1215,14 +1213,6 @@ export class RcstextContext extends ParserRuleContext {
 			listener.exitRcstext(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitRcstext) {
-			return visitor.visitRcstext(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1245,14 +1235,6 @@ export class RcsheaderContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitRcsheader) {
 			listener.exitRcsheader(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitRcsheader) {
-			return visitor.visitRcsheader(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1280,14 +1262,6 @@ export class RcsrevisionsContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitRcsrevisions) {
 			listener.exitRcsrevisions(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitRcsrevisions) {
-			return visitor.visitRcsrevisions(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1344,14 +1318,6 @@ export class AdminContext extends ParserRuleContext {
 			listener.exitAdmin(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitAdmin) {
-			return visitor.visitAdmin(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1376,14 +1342,6 @@ export class HeadContext extends ParserRuleContext {
 			listener.exitHead(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitHead) {
-			return visitor.visitHead(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1406,14 +1364,6 @@ export class BranchContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitBranch) {
 			listener.exitBranch(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitBranch) {
-			return visitor.visitBranch(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1448,14 +1398,6 @@ export class AccessContext extends ParserRuleContext {
 			listener.exitAccess(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitAccess) {
-			return visitor.visitAccess(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1488,14 +1430,6 @@ export class SymbolsContext extends ParserRuleContext {
 			listener.exitSymbols(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitSymbols) {
-			return visitor.visitSymbols(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1518,14 +1452,6 @@ export class TagsContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitTags) {
 			listener.exitTags(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitTags) {
-			return visitor.visitTags(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1560,14 +1486,6 @@ export class LocksContext extends ParserRuleContext {
 			listener.exitLocks(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitLocks) {
-			return visitor.visitLocks(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1589,14 +1507,6 @@ export class StrictContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitStrict) {
 			listener.exitStrict(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitStrict) {
-			return visitor.visitStrict(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1623,14 +1533,6 @@ export class CommentContext extends ParserRuleContext {
 			listener.exitComment(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitComment) {
-			return visitor.visitComment(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1653,14 +1555,6 @@ export class ExpandContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitExpand) {
 			listener.exitExpand(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitExpand) {
-			return visitor.visitExpand(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1691,14 +1585,6 @@ export class DeltalistContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitDeltalist) {
 			listener.exitDeltalist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitDeltalist) {
-			return visitor.visitDeltalist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1747,14 +1633,6 @@ export class DeltaContext extends ParserRuleContext {
 			listener.exitDelta(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitDelta) {
-			return visitor.visitDelta(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1777,14 +1655,6 @@ export class Delta_dateContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitDelta_date) {
 			listener.exitDelta_date(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitDelta_date) {
-			return visitor.visitDelta_date(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1811,14 +1681,6 @@ export class Delta_authorContext extends ParserRuleContext {
 			listener.exitDelta_author(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitDelta_author) {
-			return visitor.visitDelta_author(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1841,14 +1703,6 @@ export class Delta_stateContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitDelta_state) {
 			listener.exitDelta_state(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitDelta_state) {
-			return visitor.visitDelta_state(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1883,14 +1737,6 @@ export class Delta_branchesContext extends ParserRuleContext {
 			listener.exitDelta_branches(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitDelta_branches) {
-			return visitor.visitDelta_branches(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1915,14 +1761,6 @@ export class Delta_nextContext extends ParserRuleContext {
 			listener.exitDelta_next(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitDelta_next) {
-			return visitor.visitDelta_next(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1944,14 +1782,6 @@ export class DescContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitDesc) {
 			listener.exitDesc(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitDesc) {
-			return visitor.visitDesc(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1982,14 +1812,6 @@ export class DeltatextlistContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitDeltatextlist) {
 			listener.exitDeltatextlist(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitDeltatextlist) {
-			return visitor.visitDeltatextlist(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2029,14 +1851,6 @@ export class DeltatextContext extends ParserRuleContext {
 			listener.exitDeltatext(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitDeltatext) {
-			return visitor.visitDeltatext(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2060,14 +1874,6 @@ export class Deltatext_logContext extends ParserRuleContext {
 			listener.exitDeltatext_log(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitDeltatext_log) {
-			return visitor.visitDeltatext_log(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2089,14 +1895,6 @@ export class Deltatext_textContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitDeltatext_text) {
 			listener.exitDeltatext_text(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitDeltatext_text) {
-			return visitor.visitDeltatext_text(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2128,14 +1926,6 @@ export class NewphraseContext extends ParserRuleContext {
 	public exitRule(listener: RCSListener): void {
 		if (listener.exitNewphrase) {
 			listener.exitNewphrase(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: RCSVisitor<Result>): Result {
-		if (visitor.visitNewphrase) {
-			return visitor.visitNewphrase(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

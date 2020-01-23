@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { UpnpListener } from "./UpnpListener";
-import { UpnpVisitor } from "./UpnpVisitor";
-
 
 export class UpnpParser extends Parser {
 	public static readonly T__0 = 1;
@@ -567,14 +565,6 @@ export class SearchCritContext extends ParserRuleContext {
 			listener.exitSearchCrit(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UpnpVisitor<Result>): Result {
-		if (visitor.visitSearchCrit) {
-			return visitor.visitSearchCrit(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -618,14 +608,6 @@ export class SearchExpContext extends ParserRuleContext {
 			listener.exitSearchExp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UpnpVisitor<Result>): Result {
-		if (visitor.visitSearchExp) {
-			return visitor.visitSearchExp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -663,14 +645,6 @@ export class RelExpContext extends ParserRuleContext {
 			listener.exitRelExp(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: UpnpVisitor<Result>): Result {
-		if (visitor.visitRelExp) {
-			return visitor.visitRelExp(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -702,14 +676,6 @@ export class QuotedValContext extends ParserRuleContext {
 	public exitRule(listener: UpnpListener): void {
 		if (listener.exitQuotedVal) {
 			listener.exitQuotedVal(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UpnpVisitor<Result>): Result {
-		if (visitor.visitQuotedVal) {
-			return visitor.visitQuotedVal(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -749,14 +715,6 @@ export class EscapedQuoteContext extends ParserRuleContext {
 	public exitRule(listener: UpnpListener): void {
 		if (listener.exitEscapedQuote) {
 			listener.exitEscapedQuote(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: UpnpVisitor<Result>): Result {
-		if (visitor.visitEscapedQuote) {
-			return visitor.visitEscapedQuote(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }

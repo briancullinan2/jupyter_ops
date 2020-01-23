@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { JavadocParserListener } from "./JavadocParserListener";
-import { JavadocParserVisitor } from "./JavadocParserVisitor";
-
 
 export class JavadocParser extends Parser {
 	public static readonly NAME = 1;
@@ -1453,14 +1451,6 @@ export class DocumentationContext extends ParserRuleContext {
 			listener.exitDocumentation(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitDocumentation) {
-			return visitor.visitDocumentation(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1506,14 +1496,6 @@ export class DocumentationContentContext extends ParserRuleContext {
 			listener.exitDocumentationContent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitDocumentationContent) {
-			return visitor.visitDocumentationContent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1535,14 +1517,6 @@ export class SkipWhitespaceContext extends ParserRuleContext {
 	public exitRule(listener: JavadocParserListener): void {
 		if (listener.exitSkipWhitespace) {
 			listener.exitSkipWhitespace(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitSkipWhitespace) {
-			return visitor.visitSkipWhitespace(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1584,14 +1558,6 @@ export class DescriptionContext extends ParserRuleContext {
 			listener.exitDescription(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitDescription) {
-			return visitor.visitDescription(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1626,14 +1592,6 @@ export class DescriptionLineContext extends ParserRuleContext {
 	public exitRule(listener: JavadocParserListener): void {
 		if (listener.exitDescriptionLine) {
 			listener.exitDescriptionLine(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitDescriptionLine) {
-			return visitor.visitDescriptionLine(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1684,14 +1642,6 @@ export class DescriptionLineStartContext extends ParserRuleContext {
 			listener.exitDescriptionLineStart(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitDescriptionLineStart) {
-			return visitor.visitDescriptionLineStart(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1719,14 +1669,6 @@ export class DescriptionLineNoSpaceNoAtContext extends ParserRuleContext {
 			listener.exitDescriptionLineNoSpaceNoAt(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitDescriptionLineNoSpaceNoAt) {
-			return visitor.visitDescriptionLineNoSpaceNoAt(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1752,14 +1694,6 @@ export class DescriptionLineElementContext extends ParserRuleContext {
 	public exitRule(listener: JavadocParserListener): void {
 		if (listener.exitDescriptionLineElement) {
 			listener.exitDescriptionLineElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitDescriptionLineElement) {
-			return visitor.visitDescriptionLineElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1810,14 +1744,6 @@ export class DescriptionLineTextContext extends ParserRuleContext {
 			listener.exitDescriptionLineText(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitDescriptionLineText) {
-			return visitor.visitDescriptionLineText(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1838,14 +1764,6 @@ export class DescriptionNewlineContext extends ParserRuleContext {
 	public exitRule(listener: JavadocParserListener): void {
 		if (listener.exitDescriptionNewline) {
 			listener.exitDescriptionNewline(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitDescriptionNewline) {
-			return visitor.visitDescriptionNewline(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1876,14 +1794,6 @@ export class TagSectionContext extends ParserRuleContext {
 	public exitRule(listener: JavadocParserListener): void {
 		if (listener.exitTagSection) {
 			listener.exitTagSection(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitTagSection) {
-			return visitor.visitTagSection(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1929,14 +1839,6 @@ export class BlockTagContext extends ParserRuleContext {
 			listener.exitBlockTag(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitBlockTag) {
-			return visitor.visitBlockTag(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1957,14 +1859,6 @@ export class BlockTagNameContext extends ParserRuleContext {
 	public exitRule(listener: JavadocParserListener): void {
 		if (listener.exitBlockTagName) {
 			listener.exitBlockTagName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitBlockTagName) {
-			return visitor.visitBlockTagName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1993,14 +1887,6 @@ export class BlockTagContentContext extends ParserRuleContext {
 	public exitRule(listener: JavadocParserListener): void {
 		if (listener.exitBlockTagContent) {
 			listener.exitBlockTagContent(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitBlockTagContent) {
-			return visitor.visitBlockTagContent(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2033,14 +1919,6 @@ export class BlockTagTextContext extends ParserRuleContext {
 			listener.exitBlockTagText(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitBlockTagText) {
-			return visitor.visitBlockTagText(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2067,14 +1945,6 @@ export class BlockTagTextElementContext extends ParserRuleContext {
 	public exitRule(listener: JavadocParserListener): void {
 		if (listener.exitBlockTagTextElement) {
 			listener.exitBlockTagTextElement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitBlockTagTextElement) {
-			return visitor.visitBlockTagTextElement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2115,14 +1985,6 @@ export class InlineTagContext extends ParserRuleContext {
 			listener.exitInlineTag(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitInlineTag) {
-			return visitor.visitInlineTag(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2143,14 +2005,6 @@ export class InlineTagNameContext extends ParserRuleContext {
 	public exitRule(listener: JavadocParserListener): void {
 		if (listener.exitInlineTagName) {
 			listener.exitInlineTagName(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitInlineTagName) {
-			return visitor.visitInlineTagName(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2183,14 +2037,6 @@ export class InlineTagContentContext extends ParserRuleContext {
 			listener.exitInlineTagContent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitInlineTagContent) {
-			return visitor.visitInlineTagContent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2221,14 +2067,6 @@ export class BraceExpressionContext extends ParserRuleContext {
 	public exitRule(listener: JavadocParserListener): void {
 		if (listener.exitBraceExpression) {
 			listener.exitBraceExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitBraceExpression) {
-			return visitor.visitBraceExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2273,14 +2111,6 @@ export class BraceContentContext extends ParserRuleContext {
 			listener.exitBraceContent(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitBraceContent) {
-			return visitor.visitBraceContent(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2306,14 +2136,6 @@ export class BraceTextContext extends ParserRuleContext {
 	public exitRule(listener: JavadocParserListener): void {
 		if (listener.exitBraceText) {
 			listener.exitBraceText(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: JavadocParserVisitor<Result>): Result {
-		if (visitor.visitBraceText) {
-			return visitor.visitBraceText(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
