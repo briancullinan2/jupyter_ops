@@ -50,41 +50,14 @@
                                       "MemberspecificationContext",
                                       {
                                         "type": "Property",
-                                        "kind": [
-                                          "DeclspecifierseqContext",
-                                          [
-                                            "DeclspecifierContext",
-                                            [
-                                              "TypespecifierContext",
-                                              {
-                                                "type": "Type",
-                                                "name": "menuframework_s"
-                                              }
-                                            ]
-                                          ]
-                                        ],
-                                        "key": [
-                                          "MemberdeclaratorlistContext",
-                                          [
-                                            "MemberdeclaratorContext",
-                                            [
-                                              "DeclaratorContext",
-                                              [
-                                                "PtrdeclaratorContext",
-                                                [
-                                                  "NoptrdeclaratorContext",
-                                                  [
-                                                    "DeclaratoridContext",
-                                                    {
-                                                      "type": "Identifier",
-                                                      "name": "menu"
-                                                    }
-                                                  ]
-                                                ]
-                                              ]
-                                            ]
-                                          ]
-                                        ],
+                                        "kind": {
+                                          "type": "Type",
+                                          "name": "menuframework_s"
+                                        },
+                                        "key": {
+                                          "type": "Identifier",
+                                          "name": "menu"
+                                        },
                                         "value": null,
                                         "method": false
                                       },
@@ -92,41 +65,14 @@
                                         "MemberspecificationContext",
                                         {
                                           "type": "Property",
-                                          "kind": [
-                                            "DeclspecifierseqContext",
-                                            [
-                                              "DeclspecifierContext",
-                                              [
-                                                "TypespecifierContext",
-                                                {
-                                                  "type": "Type",
-                                                  "name": "menutext_s"
-                                                }
-                                              ]
-                                            ]
-                                          ],
-                                          "key": [
-                                            "MemberdeclaratorlistContext",
-                                            [
-                                              "MemberdeclaratorContext",
-                                              [
-                                                "DeclaratorContext",
-                                                [
-                                                  "PtrdeclaratorContext",
-                                                  [
-                                                    "NoptrdeclaratorContext",
-                                                    [
-                                                      "DeclaratoridContext",
-                                                      {
-                                                        "type": "Identifier",
-                                                        "name": "banner"
-                                                      }
-                                                    ]
-                                                  ]
-                                                ]
-                                              ]
-                                            ]
-                                          ],
+                                          "kind": {
+                                            "type": "Type",
+                                            "name": "menutext_s"
+                                          },
+                                          "key": {
+                                            "type": "Identifier",
+                                            "name": "banner"
+                                          },
                                           "value": null,
                                           "method": false
                                         },
@@ -134,41 +80,14 @@
                                           "MemberspecificationContext",
                                           {
                                             "type": "Property",
-                                            "kind": [
-                                              "DeclspecifierseqContext",
-                                              [
-                                                "DeclspecifierContext",
-                                                [
-                                                  "TypespecifierContext",
-                                                  {
-                                                    "type": "Type",
-                                                    "name": "menubitmap_s"
-                                                  }
-                                                ]
-                                              ]
-                                            ],
-                                            "key": [
-                                              "MemberdeclaratorlistContext",
-                                              [
-                                                "MemberdeclaratorContext",
-                                                [
-                                                  "DeclaratorContext",
-                                                  [
-                                                    "PtrdeclaratorContext",
-                                                    [
-                                                      "NoptrdeclaratorContext",
-                                                      [
-                                                        "DeclaratoridContext",
-                                                        {
-                                                          "type": "Identifier",
-                                                          "name": "frame"
-                                                        }
-                                                      ]
-                                                    ]
-                                                  ]
-                                                ]
-                                              ]
-                                            ],
+                                            "kind": {
+                                              "type": "Type",
+                                              "name": "menubitmap_s"
+                                            },
+                                            "key": {
+                                              "type": "Identifier",
+                                              "name": "frame"
+                                            },
                                             "value": null,
                                             "method": false
                                           },
@@ -176,41 +95,14 @@
                                             "MemberspecificationContext",
                                             {
                                               "type": "Property",
-                                              "kind": [
-                                                "DeclspecifierseqContext",
-                                                [
-                                                  "DeclspecifierContext",
-                                                  [
-                                                    "TypespecifierContext",
-                                                    {
-                                                      "type": "Type",
-                                                      "name": "menufield_s"
-                                                    }
-                                                  ]
-                                                ]
-                                              ],
-                                              "key": [
-                                                "MemberdeclaratorlistContext",
-                                                [
-                                                  "MemberdeclaratorContext",
-                                                  [
-                                                    "DeclaratorContext",
-                                                    [
-                                                      "PtrdeclaratorContext",
-                                                      [
-                                                        "NoptrdeclaratorContext",
-                                                        [
-                                                          "DeclaratoridContext",
-                                                          {
-                                                            "type": "Identifier",
-                                                            "name": "cdkey"
-                                                          }
-                                                        ]
-                                                      ]
-                                                    ]
-                                                  ]
-                                                ]
-                                              ],
+                                              "kind": {
+                                                "type": "Type",
+                                                "name": "menufield_s"
+                                              },
+                                              "key": {
+                                                "type": "Identifier",
+                                                "name": "cdkey"
+                                              },
                                               "value": null,
                                               "method": false
                                             },
@@ -218,41 +110,14 @@
                                               "MemberspecificationContext",
                                               {
                                                 "type": "Property",
-                                                "kind": [
-                                                  "DeclspecifierseqContext",
-                                                  [
-                                                    "DeclspecifierContext",
-                                                    [
-                                                      "TypespecifierContext",
-                                                      {
-                                                        "type": "Type",
-                                                        "name": "menubitmap_s"
-                                                      }
-                                                    ]
-                                                  ]
-                                                ],
-                                                "key": [
-                                                  "MemberdeclaratorlistContext",
-                                                  [
-                                                    "MemberdeclaratorContext",
-                                                    [
-                                                      "DeclaratorContext",
-                                                      [
-                                                        "PtrdeclaratorContext",
-                                                        [
-                                                          "NoptrdeclaratorContext",
-                                                          [
-                                                            "DeclaratoridContext",
-                                                            {
-                                                              "type": "Identifier",
-                                                              "name": "accept"
-                                                            }
-                                                          ]
-                                                        ]
-                                                      ]
-                                                    ]
-                                                  ]
-                                                ],
+                                                "kind": {
+                                                  "type": "Type",
+                                                  "name": "menubitmap_s"
+                                                },
+                                                "key": {
+                                                  "type": "Identifier",
+                                                  "name": "accept"
+                                                },
                                                 "value": null,
                                                 "method": false
                                               },
@@ -260,41 +125,14 @@
                                                 "MemberspecificationContext",
                                                 {
                                                   "type": "Property",
-                                                  "kind": [
-                                                    "DeclspecifierseqContext",
-                                                    [
-                                                      "DeclspecifierContext",
-                                                      [
-                                                        "TypespecifierContext",
-                                                        {
-                                                          "type": "Type",
-                                                          "name": "menubitmap_s"
-                                                        }
-                                                      ]
-                                                    ]
-                                                  ],
-                                                  "key": [
-                                                    "MemberdeclaratorlistContext",
-                                                    [
-                                                      "MemberdeclaratorContext",
-                                                      [
-                                                        "DeclaratorContext",
-                                                        [
-                                                          "PtrdeclaratorContext",
-                                                          [
-                                                            "NoptrdeclaratorContext",
-                                                            [
-                                                              "DeclaratoridContext",
-                                                              {
-                                                                "type": "Identifier",
-                                                                "name": "back"
-                                                              }
-                                                            ]
-                                                          ]
-                                                        ]
-                                                      ]
-                                                    ]
-                                                  ],
+                                                  "kind": {
+                                                    "type": "Type",
+                                                    "name": "menubitmap_s"
+                                                  },
+                                                  "key": {
+                                                    "type": "Identifier",
+                                                    "name": "back"
+                                                  },
                                                   "value": null,
                                                   "method": false
                                                 }
