@@ -36,17 +36,17 @@
                                 "DeclspecifierContext",
                                 [
                                   "TypespecifierContext",
-                                  [
-                                    "ClassspecifierContext",
-                                    [
+                                  {
+                                    "type": "ClassExpression",
+                                    "id": null,
+                                    "superClass": [
                                       "ClassheadContext",
                                       [
                                         "ClasskeyContext",
                                         "struct"
                                       ]
                                     ],
-                                    "{",
-                                    [
+                                    "body": [
                                       "MemberspecificationContext",
                                       {
                                         "type": "Property",
@@ -141,9 +141,8 @@
                                           ]
                                         ]
                                       ]
-                                    ],
-                                    "}"
-                                  ]
+                                    ]
+                                  }
                                 ]
                               ]
                             ]
