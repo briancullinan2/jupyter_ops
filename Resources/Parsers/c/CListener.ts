@@ -1,8 +1,9 @@
-// Generated from /Users/briancullinan/jupyter_ops/Resources/Parsers/c/C.g4 by ANTLR 4.7.3-SNAPSHOT
+// Generated from Resources/Parsers/c/C.g4 by ANTLR 4.7.3-SNAPSHOT
 
 
 import { ParseTreeListener } from "antlr4ts/tree/ParseTreeListener";
 
+import { CompilationUnitContext } from "./CParser";
 import { PrimaryExpressionContext } from "./CParser";
 import { GenericSelectionContext } from "./CParser";
 import { GenericAssocListContext } from "./CParser";
@@ -85,7 +86,6 @@ import { ForConditionContext } from "./CParser";
 import { ForDeclarationContext } from "./CParser";
 import { ForExpressionContext } from "./CParser";
 import { JumpStatementContext } from "./CParser";
-import { CompilationUnitContext } from "./CParser";
 import { TranslationUnitContext } from "./CParser";
 import { ExternalDeclarationContext } from "./CParser";
 import { FunctionDefinitionContext } from "./CParser";
@@ -97,6 +97,17 @@ import { DeclarationListContext } from "./CParser";
  * `CParser`.
  */
 export interface CListener extends ParseTreeListener {
+	/**
+	 * Enter a parse tree produced by `CParser.compilationUnit`.
+	 * @param ctx the parse tree
+	 */
+	enterCompilationUnit?: (ctx: CompilationUnitContext) => void;
+	/**
+	 * Exit a parse tree produced by `CParser.compilationUnit`.
+	 * @param ctx the parse tree
+	 */
+	exitCompilationUnit?: (ctx: CompilationUnitContext) => void;
+
 	/**
 	 * Enter a parse tree produced by `CParser.primaryExpression`.
 	 * @param ctx the parse tree
@@ -998,17 +1009,6 @@ export interface CListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitJumpStatement?: (ctx: JumpStatementContext) => void;
-
-	/**
-	 * Enter a parse tree produced by `CParser.compilationUnit`.
-	 * @param ctx the parse tree
-	 */
-	enterCompilationUnit?: (ctx: CompilationUnitContext) => void;
-	/**
-	 * Exit a parse tree produced by `CParser.compilationUnit`.
-	 * @param ctx the parse tree
-	 */
-	exitCompilationUnit?: (ctx: CompilationUnitContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `CParser.translationUnit`.

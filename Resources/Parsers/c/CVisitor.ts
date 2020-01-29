@@ -1,8 +1,9 @@
-// Generated from /Users/briancullinan/jupyter_ops/Resources/Parsers/c/C.g4 by ANTLR 4.7.3-SNAPSHOT
+// Generated from Resources/Parsers/c/C.g4 by ANTLR 4.7.3-SNAPSHOT
 
 
 import { ParseTreeVisitor } from "antlr4ts/tree/ParseTreeVisitor";
 
+import { CompilationUnitContext } from "./CParser";
 import { PrimaryExpressionContext } from "./CParser";
 import { GenericSelectionContext } from "./CParser";
 import { GenericAssocListContext } from "./CParser";
@@ -85,7 +86,6 @@ import { ForConditionContext } from "./CParser";
 import { ForDeclarationContext } from "./CParser";
 import { ForExpressionContext } from "./CParser";
 import { JumpStatementContext } from "./CParser";
-import { CompilationUnitContext } from "./CParser";
 import { TranslationUnitContext } from "./CParser";
 import { ExternalDeclarationContext } from "./CParser";
 import { FunctionDefinitionContext } from "./CParser";
@@ -100,6 +100,13 @@ import { DeclarationListContext } from "./CParser";
  * operations with no return type.
  */
 export interface CVisitor<Result> extends ParseTreeVisitor<Result> {
+	/**
+	 * Visit a parse tree produced by `CParser.compilationUnit`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitCompilationUnit?: (ctx: CompilationUnitContext) => Result;
+
 	/**
 	 * Visit a parse tree produced by `CParser.primaryExpression`.
 	 * @param ctx the parse tree
@@ -673,13 +680,6 @@ export interface CVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitJumpStatement?: (ctx: JumpStatementContext) => Result;
-
-	/**
-	 * Visit a parse tree produced by `CParser.compilationUnit`.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	visitCompilationUnit?: (ctx: CompilationUnitContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by `CParser.translationUnit`.

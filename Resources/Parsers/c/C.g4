@@ -30,6 +30,10 @@
 grammar C;
 
 
+compilationUnit
+    :   translationUnit? EOF
+    ;
+
 primaryExpression
     :   Identifier
     |   Constant
@@ -522,10 +526,6 @@ jumpStatement
     |   'break' ';'
     |   'return' expression? ';'
     |   'goto' unaryExpression ';' // GCC extension
-    ;
-
-compilationUnit
-    :   translationUnit? EOF
     ;
 
 translationUnit
