@@ -39,6 +39,7 @@
         "fuse.js": "^3.4.6",
         "google-auth-library": "^5.5.1",
         "googleapis": "^45.0.0",
+        "ip6addr": "^0.2.3",
         "jsdom": "^15.2.1",
         "jsel": "^1.1.6",
         "mustache": "^3.1.0",
