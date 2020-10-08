@@ -8,6 +8,8 @@
         "import": "node --max-old-space-size=4096 -e \"var result = require('./Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))); result && result.catch ? result.catch(e => e).then(r => console.log(r)) : console.log(result)\" --",
         "interpret": "node -e \"console.info = () => {}; console.log(require('./Core').interpret(process.argv[1]))\"",
         "exec": "node -e \"console.log(require('./Core').import('spawn child process')(require('./Core').interpret(process.argv[1]).code))\"",
+        "update:blog": "npm run import -- \"test google sheet resources\" \"['https://docs.google.com/spreadsheets/d/1GG2R2gYvFrLz4ZoBPA2hgCOrXaKCHavKdUn8j-jkAwQ/edit#gid=1092692488']\"",
+        "update:resume": "npm run import -- \"test google sheet resources\" \"['https://docs.google.com/spreadsheets/d/1dAtBQyn5vwStM6ITn7iCpp996Sus26k0bJtbGNlCX2g/edit#gid=0']\"",
         "git:auto": "npm run exec \"git auto commit\"",
         "antlr4ts": "antlr4ts "
     },

@@ -22,4 +22,7 @@ DevOps crestomathy in jupyter notebooks.
 1. Self-hosted / no-dependencies
 2. Documentation export
 3. Multi-lingual, runs from Python/Matlab
+4. Logic merging (as opposed to line merging and feature branching, the enemies of code organization)
+5. [Aspects oriented](https://en.wikipedia.org/wiki/Aspect-oriented_programming)
+
 
