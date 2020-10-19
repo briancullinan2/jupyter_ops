@@ -5,6 +5,7 @@
     "scripts": {
         "start": "live-server --cors --port=8080 --host=0.0.0.0 --entry-file=./.output/app.html --mount=/:./.output --middleware=/Users/briancullinan/jupyter_ops/live-server-middleware.js",
         "start:function": "live-server --cors --port=8181 --host=0.0.0.0 --entry-file=./.output/app.html --mount=/:./.output --middleware=/Users/briancullinan/jupyter_ops/.functions/index.js",
+        "start:rpc": "npm run import -- \"express rpc wrapper\"",
         "import": "node --max-old-space-size=4096 -e \"var result = require('./Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))); result && result.catch ? result.catch(e => e).then(r => console.log(r)) : console.log(result)\" --",
         "interpret": "node -e \"console.info = () => {}; console.log(require('./Core').interpret(process.argv[1]))\"",
         "exec": "node -e \"console.log(require('./Core').import('spawn child process')(require('./Core').interpret(process.argv[1]).code))\"",
@@ -31,6 +32,7 @@
         "canvas": "^2.6.1",
         "cheerio": "^1.0.0-rc.3",
         "chrono-node": "^1.3.11",
+        "cors": "^2.8.5",
         "css": "^2.2.4",
         "cssom": "^0.4.4",
         "d3-node": "^2.2.1",
