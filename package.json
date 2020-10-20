@@ -46,12 +46,14 @@
         "ip6addr": "^0.2.3",
         "jsdom": "^15.2.1",
         "jsel": "^1.1.6",
+        "mime": "^2.4.6",
         "mustache": "^3.1.0",
         "node-ssh": "^10.0.2",
         "node-stream-zip": "^1.9.1",
         "puppeteer": "^2.0.0",
         "remarkable": "^2.0.0",
         "uuid": "^3.3.3",
+        "wasm-git": "0.0.4",
         "wgxpath": "^1.2.0"
     },
     "devDependencies": {
