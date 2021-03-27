@@ -41,6 +41,7 @@
         "esprima": "^4.0.1",
         "express": "^4.17.1",
         "fuse.js": "^3.4.6",
+        "gamedig": "^3.0.0",
         "google-auth-library": "^5.5.1",
         "googleapis": "^45.0.0",
         "ip6addr": "^0.2.3",
