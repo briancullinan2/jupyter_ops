@@ -30,8 +30,7 @@ module.exports = cells.reduce((obj, code, i) => {
 Module._extensions['.ipynb'] = (module, filename, ctx) => {
     console.log('hit')
     const tmpModule = {
-        _compile: () => {
-        }
+        _compile: () => {}
     }
     tmpModule._compile = () => (module.exports = newModule.exports.import(filename, ctx))
     return require.extensions['.js'](tmpModule, filename)
