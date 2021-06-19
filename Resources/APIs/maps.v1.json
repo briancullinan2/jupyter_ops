@@ -1,0 +1,63 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/FWWIv5Mr7484ZXrvaiuNSJ7MVDY\"",
+ "discoveryVersion": "v1",
+ "id": "maps:v1",
+ "name": "maps",
+ "version": "v1",
+ "revision": "20190606",
+ "title": "Google Maps Service",
+ "description": "Provides information about other Google APIs, such as what APIs are available, the resource, and method details for each API.",
+ "ownerDomain": "google.com",
+ "ownerName": "Google",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/feature/filing_cabinet_search-g16.png",
+  "x32": "http://www.google.com/images/icons/feature/filing_cabinet_search-g32.png"
+ },
+ "documentationLink": "https://developers.google.com/discovery/",
+ "protocol": "rest",
+ "baseUrl": "https://www.google.com/maps/",
+ "basePath": "/discovery/v1/",
+ "rootUrl": "https://www.google.com/",
+ "servicePath": "maps/v1/",
+ "batchPath": "batch/discovery/v1",
+ "parameters": {
+
+ },
+ "schemas": {
+
+ },
+ "resources": {
+  "maps": {
+   "methods": {
+    "getPanoramaByLocation": {
+     "id": "google.maps.getPanoramaByLocation",
+     "path": "photometa/{version}/getPanoramaByLocation",
+     "httpMethod": "GET",
+     "description": "Retrieve .",
+     "parameters": {
+      "api": {
+       "type": "string",
+       "description": "The name of the API.",
+       "required": true,
+       "location": "path"
+      },
+      "version": {
+       "type": "string",
+       "description": "The version of the API.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "api",
+      "version"
+     ],
+     "response": {
+      "$ref": "RestDescription"
+     }
+    }
+   }
+  }
+ }
+}
