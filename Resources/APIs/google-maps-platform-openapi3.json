@@ -89,6 +89,61 @@
         ]
       }
     },
+    "/cbk": {
+      "get": {
+        "servers": [
+          {
+            "url": "https://maps.google.com"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "output",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "en",
+              "enum": [
+                "tile"
+              ]
+            }
+          },
+          {
+            "name": "panoid",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "zoom",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "x",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
     "/geolocation/v1/geolocate": {
       "post": {
         "servers": [
