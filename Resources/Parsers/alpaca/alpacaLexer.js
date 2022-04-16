@@ -1,217 +1,132 @@
-"use strict";
-// Generated from /Users/briancullinan/jupyter_ops/Resources/Parsers/alpaca/alpaca.g4 by ANTLR 4.7.3-SNAPSHOT
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var ATNDeserializer_1 = require("antlr4ts/atn/ATNDeserializer");
-var Lexer_1 = require("antlr4ts/Lexer");
-var LexerATNSimulator_1 = require("antlr4ts/atn/LexerATNSimulator");
-var VocabularyImpl_1 = require("antlr4ts/VocabularyImpl");
-var Utils = require("antlr4ts/misc/Utils");
-var alpacaLexer = /** @class */ (function (_super) {
-    __extends(alpacaLexer, _super);
-    // tslint:enable:no-trailing-whitespace
-    function alpacaLexer(input) {
-        var _this = _super.call(this, input) || this;
-        _this._interp = new LexerATNSimulator_1.LexerATNSimulator(alpacaLexer._ATN, _this);
-        return _this;
+// Generated from Resources/Parsers/alpaca/alpaca.g4 by ANTLR 4.10.1
+// jshint ignore: start
+import antlr4 from 'antlr4';
+
+
+const serializedATN = [4,0,29,187,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,
+4,7,4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,
+12,2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,
+2,20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,
+27,7,27,2,28,7,28,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,2,1,3,1,3,1,3,1,
+3,1,3,1,3,1,4,1,4,1,4,1,4,1,4,1,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,
+5,1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,7,1,7,1,8,1,8,1,8,1,9,1,9,1,9,1,9,1,9,1,
+10,1,10,1,10,1,11,1,11,1,11,1,11,1,12,1,12,1,12,1,13,1,13,1,13,1,13,1,14,
+1,14,1,15,1,15,1,16,1,16,1,16,1,16,1,17,1,17,1,18,1,18,1,18,1,19,1,19,1,
+19,1,19,1,19,1,20,1,20,1,20,1,20,1,20,1,20,1,21,1,21,1,21,1,21,1,21,1,21,
+1,22,1,22,5,22,155,8,22,10,22,12,22,158,9,22,1,22,1,22,1,23,1,23,1,24,1,
+24,1,25,1,25,1,26,1,26,1,27,1,27,1,27,1,27,5,27,174,8,27,10,27,12,27,177,
+9,27,1,27,1,27,1,27,1,27,1,27,1,28,1,28,1,28,1,28,1,175,0,29,1,1,3,2,5,3,
+7,4,9,5,11,6,13,7,15,8,17,9,19,10,21,11,23,12,25,13,27,14,29,15,31,16,33,
+17,35,18,37,19,39,20,41,21,43,22,45,23,47,24,49,25,51,26,53,27,55,28,57,
+29,1,0,5,1,0,34,34,2,0,65,90,97,122,1,0,48,57,4,0,60,60,62,62,94,94,118,
+118,3,0,9,10,13,13,32,32,188,0,1,1,0,0,0,0,3,1,0,0,0,0,5,1,0,0,0,0,7,1,0,
+0,0,0,9,1,0,0,0,0,11,1,0,0,0,0,13,1,0,0,0,0,15,1,0,0,0,0,17,1,0,0,0,0,19,
+1,0,0,0,0,21,1,0,0,0,0,23,1,0,0,0,0,25,1,0,0,0,0,27,1,0,0,0,0,29,1,0,0,0,
+0,31,1,0,0,0,0,33,1,0,0,0,0,35,1,0,0,0,0,37,1,0,0,0,0,39,1,0,0,0,0,41,1,
+0,0,0,0,43,1,0,0,0,0,45,1,0,0,0,0,47,1,0,0,0,0,49,1,0,0,0,0,51,1,0,0,0,0,
+53,1,0,0,0,0,55,1,0,0,0,0,57,1,0,0,0,1,59,1,0,0,0,3,61,1,0,0,0,5,67,1,0,
+0,0,7,69,1,0,0,0,9,75,1,0,0,0,11,81,1,0,0,0,13,95,1,0,0,0,15,98,1,0,0,0,
+17,100,1,0,0,0,19,103,1,0,0,0,21,108,1,0,0,0,23,111,1,0,0,0,25,115,1,0,0,
+0,27,118,1,0,0,0,29,122,1,0,0,0,31,124,1,0,0,0,33,126,1,0,0,0,35,130,1,0,
+0,0,37,132,1,0,0,0,39,135,1,0,0,0,41,140,1,0,0,0,43,146,1,0,0,0,45,152,1,
+0,0,0,47,161,1,0,0,0,49,163,1,0,0,0,51,165,1,0,0,0,53,167,1,0,0,0,55,169,
+1,0,0,0,57,183,1,0,0,0,59,60,5,46,0,0,60,2,1,0,0,0,61,62,5,98,0,0,62,63,
+5,101,0,0,63,64,5,103,0,0,64,65,5,105,0,0,65,66,5,110,0,0,66,4,1,0,0,0,67,
+68,5,59,0,0,68,6,1,0,0,0,69,70,5,115,0,0,70,71,5,116,0,0,71,72,5,97,0,0,
+72,73,5,116,0,0,73,74,5,101,0,0,74,8,1,0,0,0,75,76,5,99,0,0,76,77,5,108,
+0,0,77,78,5,97,0,0,78,79,5,115,0,0,79,80,5,115,0,0,80,10,1,0,0,0,81,82,5,
+110,0,0,82,83,5,101,0,0,83,84,5,105,0,0,84,85,5,103,0,0,85,86,5,104,0,0,
+86,87,5,98,0,0,87,88,5,111,0,0,88,89,5,117,0,0,89,90,5,114,0,0,90,91,5,104,
+0,0,91,92,5,111,0,0,92,93,5,111,0,0,93,94,5,100,0,0,94,12,1,0,0,0,95,96,
+5,105,0,0,96,97,5,115,0,0,97,14,1,0,0,0,98,99,5,44,0,0,99,16,1,0,0,0,100,
+101,5,116,0,0,101,102,5,111,0,0,102,18,1,0,0,0,103,104,5,119,0,0,104,105,
+5,104,0,0,105,106,5,101,0,0,106,107,5,110,0,0,107,20,1,0,0,0,108,109,5,109,
+0,0,109,110,5,101,0,0,110,22,1,0,0,0,111,112,5,97,0,0,112,113,5,110,0,0,
+113,114,5,100,0,0,114,24,1,0,0,0,115,116,5,111,0,0,116,117,5,114,0,0,117,
+26,1,0,0,0,118,119,5,120,0,0,119,120,5,111,0,0,120,121,5,114,0,0,121,28,
+1,0,0,0,122,123,5,40,0,0,123,30,1,0,0,0,124,125,5,41,0,0,125,32,1,0,0,0,
+126,127,5,110,0,0,127,128,5,111,0,0,128,129,5,116,0,0,129,34,1,0,0,0,130,
+131,5,61,0,0,131,36,1,0,0,0,132,133,5,105,0,0,133,134,5,110,0,0,134,38,1,
+0,0,0,135,136,5,116,0,0,136,137,5,114,0,0,137,138,5,117,0,0,138,139,5,101,
+0,0,139,40,1,0,0,0,140,141,5,102,0,0,141,142,5,97,0,0,142,143,5,108,0,0,
+143,144,5,115,0,0,144,145,5,101,0,0,145,42,1,0,0,0,146,147,5,103,0,0,147,
+148,5,117,0,0,148,149,5,101,0,0,149,150,5,115,0,0,150,151,5,115,0,0,151,
+44,1,0,0,0,152,156,5,34,0,0,153,155,8,0,0,0,154,153,1,0,0,0,155,158,1,0,
+0,0,156,154,1,0,0,0,156,157,1,0,0,0,157,159,1,0,0,0,158,156,1,0,0,0,159,
+160,5,34,0,0,160,46,1,0,0,0,161,162,5,34,0,0,162,48,1,0,0,0,163,164,7,1,
+0,0,164,50,1,0,0,0,165,166,7,2,0,0,166,52,1,0,0,0,167,168,7,3,0,0,168,54,
+1,0,0,0,169,170,5,47,0,0,170,171,5,42,0,0,171,175,1,0,0,0,172,174,9,0,0,
+0,173,172,1,0,0,0,174,177,1,0,0,0,175,176,1,0,0,0,175,173,1,0,0,0,176,178,
+1,0,0,0,177,175,1,0,0,0,178,179,5,42,0,0,179,180,5,47,0,0,180,181,1,0,0,
+0,181,182,6,27,0,0,182,56,1,0,0,0,183,184,7,4,0,0,184,185,1,0,0,0,185,186,
+6,28,0,0,186,58,1,0,0,0,3,0,156,175,1,6,0,0];
+
+
+const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
+
+const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
+
+export default class alpacaLexer extends antlr4.Lexer {
+
+    static grammarFileName = "alpaca.g4";
+    static channelNames = [ "DEFAULT_TOKEN_CHANNEL", "HIDDEN" ];
+	static modeNames = [ "DEFAULT_MODE" ];
+	static literalNames = [ null, "'.'", "'begin'", "';'", "'state'", "'class'", 
+                         "'neighbourhood'", "'is'", "','", "'to'", "'when'", 
+                         "'me'", "'and'", "'or'", "'xor'", "'('", "')'", 
+                         "'not'", "'='", "'in'", "'true'", "'false'", "'guess'", 
+                         null, "'\"'" ];
+	static symbolicNames = [ null, null, null, null, null, null, null, null, 
+                          null, null, null, null, null, null, null, null, 
+                          null, null, null, null, null, null, null, "QUOTEDCHAR", 
+                          "QUOTE", "ALPHA", "DIGIT", "ARROW", "COMMENT", 
+                          "WS" ];
+	static ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", 
+                      "T__7", "T__8", "T__9", "T__10", "T__11", "T__12", 
+                      "T__13", "T__14", "T__15", "T__16", "T__17", "T__18", 
+                      "T__19", "T__20", "T__21", "QUOTEDCHAR", "QUOTE", 
+                      "ALPHA", "DIGIT", "ARROW", "COMMENT", "WS" ];
+
+    constructor(input) {
+        super(input)
+        this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.PredictionContextCache());
     }
-    Object.defineProperty(alpacaLexer.prototype, "vocabulary", {
-        // @Override
-        // @NotNull
-        get: function () {
-            return alpacaLexer.VOCABULARY;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(alpacaLexer.prototype, "grammarFileName", {
-        // @Override
-        get: function () { return "alpaca.g4"; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(alpacaLexer.prototype, "ruleNames", {
-        // @Override
-        get: function () { return alpacaLexer.ruleNames; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(alpacaLexer.prototype, "serializedATN", {
-        // @Override
-        get: function () { return alpacaLexer._serializedATN; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(alpacaLexer.prototype, "channelNames", {
-        // @Override
-        get: function () { return alpacaLexer.channelNames; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(alpacaLexer.prototype, "modeNames", {
-        // @Override
-        get: function () { return alpacaLexer.modeNames; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(alpacaLexer, "_ATN", {
-        get: function () {
-            if (!alpacaLexer.__ATN) {
-                alpacaLexer.__ATN = new ATNDeserializer_1.ATNDeserializer().deserialize(Utils.toCharArray(alpacaLexer._serializedATN));
-            }
-            return alpacaLexer.__ATN;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    alpacaLexer.T__0 = 1;
-    alpacaLexer.T__1 = 2;
-    alpacaLexer.T__2 = 3;
-    alpacaLexer.T__3 = 4;
-    alpacaLexer.T__4 = 5;
-    alpacaLexer.T__5 = 6;
-    alpacaLexer.T__6 = 7;
-    alpacaLexer.T__7 = 8;
-    alpacaLexer.T__8 = 9;
-    alpacaLexer.T__9 = 10;
-    alpacaLexer.T__10 = 11;
-    alpacaLexer.T__11 = 12;
-    alpacaLexer.T__12 = 13;
-    alpacaLexer.T__13 = 14;
-    alpacaLexer.T__14 = 15;
-    alpacaLexer.T__15 = 16;
-    alpacaLexer.T__16 = 17;
-    alpacaLexer.T__17 = 18;
-    alpacaLexer.T__18 = 19;
-    alpacaLexer.T__19 = 20;
-    alpacaLexer.T__20 = 21;
-    alpacaLexer.T__21 = 22;
-    alpacaLexer.QUOTEDCHAR = 23;
-    alpacaLexer.QUOTE = 24;
-    alpacaLexer.ALPHA = 25;
-    alpacaLexer.DIGIT = 26;
-    alpacaLexer.ARROW = 27;
-    alpacaLexer.COMMENT = 28;
-    alpacaLexer.WS = 29;
-    // tslint:disable:no-trailing-whitespace
-    alpacaLexer.channelNames = [
-        "DEFAULT_TOKEN_CHANNEL", "HIDDEN",
-    ];
-    // tslint:disable:no-trailing-whitespace
-    alpacaLexer.modeNames = [
-        "DEFAULT_MODE",
-    ];
-    alpacaLexer.ruleNames = [
-        "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8",
-        "T__9", "T__10", "T__11", "T__12", "T__13", "T__14", "T__15", "T__16",
-        "T__17", "T__18", "T__19", "T__20", "T__21", "QUOTEDCHAR", "QUOTE", "ALPHA",
-        "DIGIT", "ARROW", "COMMENT", "WS",
-    ];
-    alpacaLexer._LITERAL_NAMES = [
-        undefined, "'.'", "'begin'", "';'", "'state'", "'class'", "'neighbourhood'",
-        "'is'", "','", "'to'", "'when'", "'me'", "'and'", "'or'", "'xor'", "'('",
-        "')'", "'not'", "'='", "'in'", "'true'", "'false'", "'guess'", undefined,
-        "'\"'",
-    ];
-    alpacaLexer._SYMBOLIC_NAMES = [
-        undefined, undefined, undefined, undefined, undefined, undefined, undefined,
-        undefined, undefined, undefined, undefined, undefined, undefined, undefined,
-        undefined, undefined, undefined, undefined, undefined, undefined, undefined,
-        undefined, undefined, "QUOTEDCHAR", "QUOTE", "ALPHA", "DIGIT", "ARROW",
-        "COMMENT", "WS",
-    ];
-    alpacaLexer.VOCABULARY = new VocabularyImpl_1.VocabularyImpl(alpacaLexer._LITERAL_NAMES, alpacaLexer._SYMBOLIC_NAMES, []);
-    alpacaLexer._serializedATN = "\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x02\x1F\xBD\b\x01" +
-        "\x04\x02\t\x02\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06" +
-        "\x04\x07\t\x07\x04\b\t\b\x04\t\t\t\x04\n\t\n\x04\v\t\v\x04\f\t\f\x04\r" +
-        "\t\r\x04\x0E\t\x0E\x04\x0F\t\x0F\x04\x10\t\x10\x04\x11\t\x11\x04\x12\t" +
-        "\x12\x04\x13\t\x13\x04\x14\t\x14\x04\x15\t\x15\x04\x16\t\x16\x04\x17\t" +
-        "\x17\x04\x18\t\x18\x04\x19\t\x19\x04\x1A\t\x1A\x04\x1B\t\x1B\x04\x1C\t" +
-        "\x1C\x04\x1D\t\x1D\x04\x1E\t\x1E\x03\x02\x03\x02\x03\x03\x03\x03\x03\x03" +
-        "\x03\x03\x03\x03\x03\x03\x03\x04\x03\x04\x03\x05\x03\x05\x03\x05\x03\x05" +
-        "\x03\x05\x03\x05\x03\x06\x03\x06\x03\x06\x03\x06\x03\x06\x03\x06\x03\x07" +
-        "\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07\x03\x07" +
-        "\x03\x07\x03\x07\x03\x07\x03\x07\x03\b\x03\b\x03\b\x03\t\x03\t\x03\n\x03" +
-        "\n\x03\n\x03\v\x03\v\x03\v\x03\v\x03\v\x03\f\x03\f\x03\f\x03\r\x03\r\x03" +
-        "\r\x03\r\x03\x0E\x03\x0E\x03\x0E\x03\x0F\x03\x0F\x03\x0F\x03\x0F\x03\x10" +
-        "\x03\x10\x03\x11\x03\x11\x03\x12\x03\x12\x03\x12\x03\x12\x03\x13\x03\x13" +
-        "\x03\x14\x03\x14\x03\x14\x03\x15\x03\x15\x03\x15\x03\x15\x03\x15\x03\x16" +
-        "\x03\x16\x03\x16\x03\x16\x03\x16\x03\x16\x03\x17\x03\x17\x03\x17\x03\x17" +
-        "\x03\x17\x03\x17\x03\x18\x03\x18\x07\x18\x9D\n\x18\f\x18\x0E\x18\xA0\v" +
-        "\x18\x03\x18\x03\x18\x03\x19\x03\x19\x03\x1A\x03\x1A\x03\x1B\x03\x1B\x03" +
-        "\x1C\x03\x1C\x03\x1D\x03\x1D\x03\x1D\x03\x1D\x07\x1D\xB0\n\x1D\f\x1D\x0E" +
-        "\x1D\xB3\v\x1D\x03\x1D\x03\x1D\x03\x1D\x03\x1D\x03\x1D\x03\x1E\x03\x1E" +
-        "\x03\x1E\x03\x1E\x03\xB1\x02\x02\x1F\x03\x02\x03\x05\x02\x04\x07\x02\x05" +
-        "\t\x02\x06\v\x02\x07\r\x02\b\x0F\x02\t\x11\x02\n\x13\x02\v\x15\x02\f\x17" +
-        "\x02\r\x19\x02\x0E\x1B\x02\x0F\x1D\x02\x10\x1F\x02\x11!\x02\x12#\x02\x13" +
-        "%\x02\x14\'\x02\x15)\x02\x16+\x02\x17-\x02\x18/\x02\x191\x02\x1A3\x02" +
-        "\x1B5\x02\x1C7\x02\x1D9\x02\x1E;\x02\x1F\x03\x02\x07\x03\x02$$\x04\x02" +
-        "C\\c|\x03\x022;\x06\x02>>@@``xx\x05\x02\v\f\x0F\x0F\"\"\x02\xBE\x02\x03" +
-        "\x03\x02\x02\x02\x02\x05\x03\x02\x02\x02\x02\x07\x03\x02\x02\x02\x02\t" +
-        "\x03\x02\x02\x02\x02\v\x03\x02\x02\x02\x02\r\x03\x02\x02\x02\x02\x0F\x03" +
-        "\x02\x02\x02\x02\x11\x03\x02\x02\x02\x02\x13\x03\x02\x02\x02\x02\x15\x03" +
-        "\x02\x02\x02\x02\x17\x03\x02\x02\x02\x02\x19\x03\x02\x02\x02\x02\x1B\x03" +
-        "\x02\x02\x02\x02\x1D\x03\x02\x02\x02\x02\x1F\x03\x02\x02\x02\x02!\x03" +
-        "\x02\x02\x02\x02#\x03\x02\x02\x02\x02%\x03\x02\x02\x02\x02\'\x03\x02\x02" +
-        "\x02\x02)\x03\x02\x02\x02\x02+\x03\x02\x02\x02\x02-\x03\x02\x02\x02\x02" +
-        "/\x03\x02\x02\x02\x021\x03\x02\x02\x02\x023\x03\x02\x02\x02\x025\x03\x02" +
-        "\x02\x02\x027\x03\x02\x02\x02\x029\x03\x02\x02\x02\x02;\x03\x02\x02\x02" +
-        "\x03=\x03\x02\x02\x02\x05?\x03\x02\x02\x02\x07E\x03\x02\x02\x02\tG\x03" +
-        "\x02\x02\x02\vM\x03\x02\x02\x02\rS\x03\x02\x02\x02\x0Fa\x03\x02\x02\x02" +
-        "\x11d\x03\x02\x02\x02\x13f\x03\x02\x02\x02\x15i\x03\x02\x02\x02\x17n\x03" +
-        "\x02\x02\x02\x19q\x03\x02\x02\x02\x1Bu\x03\x02\x02\x02\x1Dx\x03\x02\x02" +
-        "\x02\x1F|\x03\x02\x02\x02!~\x03\x02\x02\x02#\x80\x03\x02\x02\x02%\x84" +
-        "\x03\x02\x02\x02\'\x86\x03\x02\x02\x02)\x89\x03\x02\x02\x02+\x8E\x03\x02" +
-        "\x02\x02-\x94\x03\x02\x02\x02/\x9A\x03\x02\x02\x021\xA3\x03\x02\x02\x02" +
-        "3\xA5\x03\x02\x02\x025\xA7\x03\x02\x02\x027\xA9\x03\x02\x02\x029\xAB\x03" +
-        "\x02\x02\x02;\xB9\x03\x02\x02\x02=>\x070\x02\x02>\x04\x03\x02\x02\x02" +
-        "?@\x07d\x02\x02@A\x07g\x02\x02AB\x07i\x02\x02BC\x07k\x02\x02CD\x07p\x02" +
-        "\x02D\x06\x03\x02\x02\x02EF\x07=\x02\x02F\b\x03\x02\x02\x02GH\x07u\x02" +
-        "\x02HI\x07v\x02\x02IJ\x07c\x02\x02JK\x07v\x02\x02KL\x07g\x02\x02L\n\x03" +
-        "\x02\x02\x02MN\x07e\x02\x02NO\x07n\x02\x02OP\x07c\x02\x02PQ\x07u\x02\x02" +
-        "QR\x07u\x02\x02R\f\x03\x02\x02\x02ST\x07p\x02\x02TU\x07g\x02\x02UV\x07" +
-        "k\x02\x02VW\x07i\x02\x02WX\x07j\x02\x02XY\x07d\x02\x02YZ\x07q\x02\x02" +
-        "Z[\x07w\x02\x02[\\\x07t\x02\x02\\]\x07j\x02\x02]^\x07q\x02\x02^_\x07q" +
-        "\x02\x02_`\x07f\x02\x02`\x0E\x03\x02\x02\x02ab\x07k\x02\x02bc\x07u\x02" +
-        "\x02c\x10\x03\x02\x02\x02de\x07.\x02\x02e\x12\x03\x02\x02\x02fg\x07v\x02" +
-        "\x02gh\x07q\x02\x02h\x14\x03\x02\x02\x02ij\x07y\x02\x02jk\x07j\x02\x02" +
-        "kl\x07g\x02\x02lm\x07p\x02\x02m\x16\x03\x02\x02\x02no\x07o\x02\x02op\x07" +
-        "g\x02\x02p\x18\x03\x02\x02\x02qr\x07c\x02\x02rs\x07p\x02\x02st\x07f\x02" +
-        "\x02t\x1A\x03\x02\x02\x02uv\x07q\x02\x02vw\x07t\x02\x02w\x1C\x03\x02\x02" +
-        "\x02xy\x07z\x02\x02yz\x07q\x02\x02z{\x07t\x02\x02{\x1E\x03\x02\x02\x02" +
-        "|}\x07*\x02\x02} \x03\x02\x02\x02~\x7F\x07+\x02\x02\x7F\"\x03\x02\x02" +
-        "\x02\x80\x81\x07p\x02\x02\x81\x82\x07q\x02\x02\x82\x83\x07v\x02\x02\x83" +
-        "$\x03\x02\x02\x02\x84\x85\x07?\x02\x02\x85&\x03\x02\x02\x02\x86\x87\x07" +
-        "k\x02\x02\x87\x88\x07p\x02\x02\x88(\x03\x02\x02\x02\x89\x8A\x07v\x02\x02" +
-        "\x8A\x8B\x07t\x02\x02\x8B\x8C\x07w\x02\x02\x8C\x8D\x07g\x02\x02\x8D*\x03" +
-        "\x02\x02\x02\x8E\x8F\x07h\x02\x02\x8F\x90\x07c\x02\x02\x90\x91\x07n\x02" +
-        "\x02\x91\x92\x07u\x02\x02\x92\x93\x07g\x02\x02\x93,\x03\x02\x02\x02\x94" +
-        "\x95\x07i\x02\x02\x95\x96\x07w\x02\x02\x96\x97\x07g\x02\x02\x97\x98\x07" +
-        "u\x02\x02\x98\x99\x07u\x02\x02\x99.\x03\x02\x02\x02\x9A\x9E\x07$\x02\x02" +
-        "\x9B\x9D\n\x02\x02\x02\x9C\x9B\x03\x02\x02\x02\x9D\xA0\x03\x02\x02\x02" +
-        "\x9E\x9C\x03\x02\x02\x02\x9E\x9F\x03\x02\x02\x02\x9F\xA1\x03\x02\x02\x02" +
-        "\xA0\x9E\x03\x02\x02\x02\xA1\xA2\x07$\x02\x02\xA20\x03\x02\x02\x02\xA3" +
-        "\xA4\x07$\x02\x02\xA42\x03\x02\x02\x02\xA5\xA6\t\x03\x02\x02\xA64\x03" +
-        "\x02\x02\x02\xA7\xA8\t\x04\x02\x02\xA86\x03\x02\x02\x02\xA9\xAA\t\x05" +
-        "\x02\x02\xAA8\x03\x02\x02\x02\xAB\xAC\x071\x02\x02\xAC\xAD\x07,\x02\x02" +
-        "\xAD\xB1\x03\x02\x02\x02\xAE\xB0\v\x02\x02\x02\xAF\xAE\x03\x02\x02\x02" +
-        "\xB0\xB3\x03\x02\x02\x02\xB1\xB2\x03\x02\x02\x02\xB1\xAF\x03\x02\x02\x02" +
-        "\xB2\xB4\x03\x02\x02\x02\xB3\xB1\x03\x02\x02\x02\xB4\xB5\x07,\x02\x02" +
-        "\xB5\xB6\x071\x02\x02\xB6\xB7\x03\x02\x02\x02\xB7\xB8\b\x1D\x02\x02\xB8" +
-        ":\x03\x02\x02\x02\xB9\xBA\t\x06\x02\x02\xBA\xBB\x03\x02\x02\x02\xBB\xBC" +
-        "\b\x1E\x02\x02\xBC<\x03\x02\x02\x02\x05\x02\x9E\xB1\x03\b\x02\x02";
-    return alpacaLexer;
-}(Lexer_1.Lexer));
-exports.alpacaLexer = alpacaLexer;
+
+    get atn() {
+        return atn;
+    }
+}
+
+alpacaLexer.EOF = antlr4.Token.EOF;
+alpacaLexer.T__0 = 1;
+alpacaLexer.T__1 = 2;
+alpacaLexer.T__2 = 3;
+alpacaLexer.T__3 = 4;
+alpacaLexer.T__4 = 5;
+alpacaLexer.T__5 = 6;
+alpacaLexer.T__6 = 7;
+alpacaLexer.T__7 = 8;
+alpacaLexer.T__8 = 9;
+alpacaLexer.T__9 = 10;
+alpacaLexer.T__10 = 11;
+alpacaLexer.T__11 = 12;
+alpacaLexer.T__12 = 13;
+alpacaLexer.T__13 = 14;
+alpacaLexer.T__14 = 15;
+alpacaLexer.T__15 = 16;
+alpacaLexer.T__16 = 17;
+alpacaLexer.T__17 = 18;
+alpacaLexer.T__18 = 19;
+alpacaLexer.T__19 = 20;
+alpacaLexer.T__20 = 21;
+alpacaLexer.T__21 = 22;
+alpacaLexer.QUOTEDCHAR = 23;
+alpacaLexer.QUOTE = 24;
+alpacaLexer.ALPHA = 25;
+alpacaLexer.DIGIT = 26;
+alpacaLexer.ARROW = 27;
+alpacaLexer.COMMENT = 28;
+alpacaLexer.WS = 29;
+
+
+

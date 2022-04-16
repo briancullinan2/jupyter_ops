@@ -1,166 +1,89 @@
-"use strict";
-// Generated from /Users/briancullinan/jupyter_ops/Resources/Parsers/arithmetic/arithmetic.g4 by ANTLR 4.7.3-SNAPSHOT
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var ATNDeserializer_1 = require("antlr4ts/atn/ATNDeserializer");
-var Lexer_1 = require("antlr4ts/Lexer");
-var LexerATNSimulator_1 = require("antlr4ts/atn/LexerATNSimulator");
-var VocabularyImpl_1 = require("antlr4ts/VocabularyImpl");
-var Utils = require("antlr4ts/misc/Utils");
-var arithmeticLexer = /** @class */ (function (_super) {
-    __extends(arithmeticLexer, _super);
-    // tslint:enable:no-trailing-whitespace
-    function arithmeticLexer(input) {
-        var _this = _super.call(this, input) || this;
-        _this._interp = new LexerATNSimulator_1.LexerATNSimulator(arithmeticLexer._ATN, _this);
-        return _this;
+// Generated from Resources/Parsers/arithmetic/arithmetic.g4 by ANTLR 4.10.1
+// jshint ignore: start
+import antlr4 from 'antlr4';
+
+
+const serializedATN = [4,0,14,115,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,
+4,7,4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,
+12,2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,
+1,0,1,0,5,0,44,8,0,10,0,12,0,47,9,0,1,1,3,1,50,8,1,1,2,1,2,3,2,54,8,2,1,
+3,1,3,1,3,3,3,59,8,3,1,3,1,3,3,3,63,8,3,1,4,4,4,66,8,4,11,4,12,4,67,1,4,
+1,4,4,4,72,8,4,11,4,12,4,73,3,4,76,8,4,1,5,4,5,79,8,5,11,5,12,5,80,1,6,1,
+6,1,7,1,7,1,8,1,8,1,9,1,9,1,10,1,10,1,11,1,11,1,12,1,12,1,13,1,13,1,14,1,
+14,1,15,1,15,1,16,1,16,1,17,1,17,1,18,1,18,1,19,4,19,110,8,19,11,19,12,19,
+111,1,19,1,19,0,0,20,1,1,3,0,5,0,7,2,9,0,11,0,13,0,15,0,17,3,19,4,21,5,23,
+6,25,7,27,8,29,9,31,10,33,11,35,12,37,13,39,14,1,0,4,3,0,65,90,95,95,97,
+122,2,0,69,69,101,101,2,0,43,43,45,45,3,0,9,10,13,13,32,32,117,0,1,1,0,0,
+0,0,7,1,0,0,0,0,17,1,0,0,0,0,19,1,0,0,0,0,21,1,0,0,0,0,23,1,0,0,0,0,25,1,
+0,0,0,0,27,1,0,0,0,0,29,1,0,0,0,0,31,1,0,0,0,0,33,1,0,0,0,0,35,1,0,0,0,0,
+37,1,0,0,0,0,39,1,0,0,0,1,41,1,0,0,0,3,49,1,0,0,0,5,53,1,0,0,0,7,55,1,0,
+0,0,9,65,1,0,0,0,11,78,1,0,0,0,13,82,1,0,0,0,15,84,1,0,0,0,17,86,1,0,0,0,
+19,88,1,0,0,0,21,90,1,0,0,0,23,92,1,0,0,0,25,94,1,0,0,0,27,96,1,0,0,0,29,
+98,1,0,0,0,31,100,1,0,0,0,33,102,1,0,0,0,35,104,1,0,0,0,37,106,1,0,0,0,39,
+109,1,0,0,0,41,45,3,3,1,0,42,44,3,5,2,0,43,42,1,0,0,0,44,47,1,0,0,0,45,43,
+1,0,0,0,45,46,1,0,0,0,46,2,1,0,0,0,47,45,1,0,0,0,48,50,7,0,0,0,49,48,1,0,
+0,0,50,4,1,0,0,0,51,54,3,3,1,0,52,54,2,48,57,0,53,51,1,0,0,0,53,52,1,0,0,
+0,54,6,1,0,0,0,55,62,3,9,4,0,56,58,3,13,6,0,57,59,3,15,7,0,58,57,1,0,0,0,
+58,59,1,0,0,0,59,60,1,0,0,0,60,61,3,11,5,0,61,63,1,0,0,0,62,56,1,0,0,0,62,
+63,1,0,0,0,63,8,1,0,0,0,64,66,2,48,57,0,65,64,1,0,0,0,66,67,1,0,0,0,67,65,
+1,0,0,0,67,68,1,0,0,0,68,75,1,0,0,0,69,71,5,46,0,0,70,72,2,48,57,0,71,70,
+1,0,0,0,72,73,1,0,0,0,73,71,1,0,0,0,73,74,1,0,0,0,74,76,1,0,0,0,75,69,1,
+0,0,0,75,76,1,0,0,0,76,10,1,0,0,0,77,79,2,48,57,0,78,77,1,0,0,0,79,80,1,
+0,0,0,80,78,1,0,0,0,80,81,1,0,0,0,81,12,1,0,0,0,82,83,7,1,0,0,83,14,1,0,
+0,0,84,85,7,2,0,0,85,16,1,0,0,0,86,87,5,40,0,0,87,18,1,0,0,0,88,89,5,41,
+0,0,89,20,1,0,0,0,90,91,5,43,0,0,91,22,1,0,0,0,92,93,5,45,0,0,93,24,1,0,
+0,0,94,95,5,42,0,0,95,26,1,0,0,0,96,97,5,47,0,0,97,28,1,0,0,0,98,99,5,62,
+0,0,99,30,1,0,0,0,100,101,5,60,0,0,101,32,1,0,0,0,102,103,5,61,0,0,103,34,
+1,0,0,0,104,105,5,46,0,0,105,36,1,0,0,0,106,107,5,94,0,0,107,38,1,0,0,0,
+108,110,7,3,0,0,109,108,1,0,0,0,110,111,1,0,0,0,111,109,1,0,0,0,111,112,
+1,0,0,0,112,113,1,0,0,0,113,114,6,19,0,0,114,40,1,0,0,0,11,0,45,49,53,58,
+62,67,73,75,80,111,1,6,0,0];
+
+
+const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
+
+const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
+
+export default class arithmeticLexer extends antlr4.Lexer {
+
+    static grammarFileName = "arithmetic.g4";
+    static channelNames = [ "DEFAULT_TOKEN_CHANNEL", "HIDDEN" ];
+	static modeNames = [ "DEFAULT_MODE" ];
+	static literalNames = [ null, null, null, "'('", "')'", "'+'", "'-'", "'*'", 
+                         "'/'", "'>'", "'<'", "'='", "'.'", "'^'" ];
+	static symbolicNames = [ null, "VARIABLE", "SCIENTIFIC_NUMBER", "LPAREN", 
+                          "RPAREN", "PLUS", "MINUS", "TIMES", "DIV", "GT", 
+                          "LT", "EQ", "POINT", "POW", "WS" ];
+	static ruleNames = [ "VARIABLE", "VALID_ID_START", "VALID_ID_CHAR", "SCIENTIFIC_NUMBER", 
+                      "NUMBER", "UNSIGNED_INTEGER", "E", "SIGN", "LPAREN", 
+                      "RPAREN", "PLUS", "MINUS", "TIMES", "DIV", "GT", "LT", 
+                      "EQ", "POINT", "POW", "WS" ];
+
+    constructor(input) {
+        super(input)
+        this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.PredictionContextCache());
     }
-    Object.defineProperty(arithmeticLexer.prototype, "vocabulary", {
-        // @Override
-        // @NotNull
-        get: function () {
-            return arithmeticLexer.VOCABULARY;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(arithmeticLexer.prototype, "grammarFileName", {
-        // @Override
-        get: function () { return "arithmetic.g4"; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(arithmeticLexer.prototype, "ruleNames", {
-        // @Override
-        get: function () { return arithmeticLexer.ruleNames; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(arithmeticLexer.prototype, "serializedATN", {
-        // @Override
-        get: function () { return arithmeticLexer._serializedATN; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(arithmeticLexer.prototype, "channelNames", {
-        // @Override
-        get: function () { return arithmeticLexer.channelNames; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(arithmeticLexer.prototype, "modeNames", {
-        // @Override
-        get: function () { return arithmeticLexer.modeNames; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(arithmeticLexer, "_ATN", {
-        get: function () {
-            if (!arithmeticLexer.__ATN) {
-                arithmeticLexer.__ATN = new ATNDeserializer_1.ATNDeserializer().deserialize(Utils.toCharArray(arithmeticLexer._serializedATN));
-            }
-            return arithmeticLexer.__ATN;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    arithmeticLexer.VARIABLE = 1;
-    arithmeticLexer.SCIENTIFIC_NUMBER = 2;
-    arithmeticLexer.LPAREN = 3;
-    arithmeticLexer.RPAREN = 4;
-    arithmeticLexer.PLUS = 5;
-    arithmeticLexer.MINUS = 6;
-    arithmeticLexer.TIMES = 7;
-    arithmeticLexer.DIV = 8;
-    arithmeticLexer.GT = 9;
-    arithmeticLexer.LT = 10;
-    arithmeticLexer.EQ = 11;
-    arithmeticLexer.POINT = 12;
-    arithmeticLexer.POW = 13;
-    arithmeticLexer.WS = 14;
-    // tslint:disable:no-trailing-whitespace
-    arithmeticLexer.channelNames = [
-        "DEFAULT_TOKEN_CHANNEL", "HIDDEN",
-    ];
-    // tslint:disable:no-trailing-whitespace
-    arithmeticLexer.modeNames = [
-        "DEFAULT_MODE",
-    ];
-    arithmeticLexer.ruleNames = [
-        "VARIABLE", "VALID_ID_START", "VALID_ID_CHAR", "SCIENTIFIC_NUMBER", "NUMBER",
-        "UNSIGNED_INTEGER", "E", "SIGN", "LPAREN", "RPAREN", "PLUS", "MINUS",
-        "TIMES", "DIV", "GT", "LT", "EQ", "POINT", "POW", "WS",
-    ];
-    arithmeticLexer._LITERAL_NAMES = [
-        undefined, undefined, undefined, "'('", "')'", "'+'", "'-'", "'*'", "'/'",
-        "'>'", "'<'", "'='", "'.'", "'^'",
-    ];
-    arithmeticLexer._SYMBOLIC_NAMES = [
-        undefined, "VARIABLE", "SCIENTIFIC_NUMBER", "LPAREN", "RPAREN", "PLUS",
-        "MINUS", "TIMES", "DIV", "GT", "LT", "EQ", "POINT", "POW", "WS",
-    ];
-    arithmeticLexer.VOCABULARY = new VocabularyImpl_1.VocabularyImpl(arithmeticLexer._LITERAL_NAMES, arithmeticLexer._SYMBOLIC_NAMES, []);
-    arithmeticLexer._serializedATN = "\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x02\x10u\b\x01\x04" +
-        "\x02\t\x02\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04" +
-        "\x07\t\x07\x04\b\t\b\x04\t\t\t\x04\n\t\n\x04\v\t\v\x04\f\t\f\x04\r\t\r" +
-        "\x04\x0E\t\x0E\x04\x0F\t\x0F\x04\x10\t\x10\x04\x11\t\x11\x04\x12\t\x12" +
-        "\x04\x13\t\x13\x04\x14\t\x14\x04\x15\t\x15\x03\x02\x03\x02\x07\x02.\n" +
-        "\x02\f\x02\x0E\x021\v\x02\x03\x03\x05\x034\n\x03\x03\x04\x03\x04\x05\x04" +
-        "8\n\x04\x03\x05\x03\x05\x03\x05\x05\x05=\n\x05\x03\x05\x03\x05\x05\x05" +
-        "A\n\x05\x03\x06\x06\x06D\n\x06\r\x06\x0E\x06E\x03\x06\x03\x06\x06\x06" +
-        "J\n\x06\r\x06\x0E\x06K\x05\x06N\n\x06\x03\x07\x06\x07Q\n\x07\r\x07\x0E" +
-        "\x07R\x03\b\x03\b\x03\t\x03\t\x03\n\x03\n\x03\v\x03\v\x03\f\x03\f\x03" +
-        "\r\x03\r\x03\x0E\x03\x0E\x03\x0F\x03\x0F\x03\x10\x03\x10\x03\x11\x03\x11" +
-        "\x03\x12\x03\x12\x03\x13\x03\x13\x03\x14\x03\x14\x03\x15\x06\x15p\n\x15" +
-        "\r\x15\x0E\x15q\x03\x15\x03\x15\x02\x02\x02\x16\x03\x02\x03\x05\x02\x02" +
-        "\x07\x02\x02\t\x02\x04\v\x02\x02\r\x02\x02\x0F\x02\x02\x11\x02\x02\x13" +
-        "\x02\x05\x15\x02\x06\x17\x02\x07\x19\x02\b\x1B\x02\t\x1D\x02\n\x1F\x02" +
-        "\v!\x02\f#\x02\r%\x02\x0E\'\x02\x0F)\x02\x10\x03\x02\x06\x05\x02C\\aa" +
-        "c|\x04\x02GGgg\x04\x02--//\x05\x02\v\f\x0F\x0F\"\"\x02w\x02\x03\x03\x02" +
-        "\x02\x02\x02\t\x03\x02\x02\x02\x02\x13\x03\x02\x02\x02\x02\x15\x03\x02" +
-        "\x02\x02\x02\x17\x03\x02\x02\x02\x02\x19\x03\x02\x02\x02\x02\x1B\x03\x02" +
-        "\x02\x02\x02\x1D\x03\x02\x02\x02\x02\x1F\x03\x02\x02\x02\x02!\x03\x02" +
-        "\x02\x02\x02#\x03\x02\x02\x02\x02%\x03\x02\x02\x02\x02\'\x03\x02\x02\x02" +
-        "\x02)\x03\x02\x02\x02\x03+\x03\x02\x02\x02\x053\x03\x02\x02\x02\x077\x03" +
-        "\x02\x02\x02\t9\x03\x02\x02\x02\vC\x03\x02\x02\x02\rP\x03\x02\x02\x02" +
-        "\x0FT\x03\x02\x02\x02\x11V\x03\x02\x02\x02\x13X\x03\x02\x02\x02\x15Z\x03" +
-        "\x02\x02\x02\x17\\\x03\x02\x02\x02\x19^\x03\x02\x02\x02\x1B`\x03\x02\x02" +
-        "\x02\x1Db\x03\x02\x02\x02\x1Fd\x03\x02\x02\x02!f\x03\x02\x02\x02#h\x03" +
-        "\x02\x02\x02%j\x03\x02\x02\x02\'l\x03\x02\x02\x02)o\x03\x02\x02\x02+/" +
-        "\x05\x05\x03\x02,.\x05\x07\x04\x02-,\x03\x02\x02\x02.1\x03\x02\x02\x02" +
-        "/-\x03\x02\x02\x02/0\x03\x02\x02\x020\x04\x03\x02\x02\x021/\x03\x02\x02" +
-        "\x0224\t\x02\x02\x0232\x03\x02\x02\x024\x06\x03\x02\x02\x0258\x05\x05" +
-        "\x03\x0268\x042;\x0275\x03\x02\x02\x0276\x03\x02\x02\x028\b\x03\x02\x02" +
-        "\x029@\x05\v\x06\x02:<\x05\x0F\b\x02;=\x05\x11\t\x02<;\x03\x02\x02\x02" +
-        "<=\x03\x02\x02\x02=>\x03\x02\x02\x02>?\x05\r\x07\x02?A\x03\x02\x02\x02" +
-        "@:\x03\x02\x02\x02@A\x03\x02\x02\x02A\n\x03\x02\x02\x02BD\x042;\x02CB" +
-        "\x03\x02\x02\x02DE\x03\x02\x02\x02EC\x03\x02\x02\x02EF\x03\x02\x02\x02" +
-        "FM\x03\x02\x02\x02GI\x070\x02\x02HJ\x042;\x02IH\x03\x02\x02\x02JK\x03" +
-        "\x02\x02\x02KI\x03\x02\x02\x02KL\x03\x02\x02\x02LN\x03\x02\x02\x02MG\x03" +
-        "\x02\x02\x02MN\x03\x02\x02\x02N\f\x03\x02\x02\x02OQ\x042;\x02PO\x03\x02" +
-        "\x02\x02QR\x03\x02\x02\x02RP\x03\x02\x02\x02RS\x03\x02\x02\x02S\x0E\x03" +
-        "\x02\x02\x02TU\t\x03\x02\x02U\x10\x03\x02\x02\x02VW\t\x04\x02\x02W\x12" +
-        "\x03\x02\x02\x02XY\x07*\x02\x02Y\x14\x03\x02\x02\x02Z[\x07+\x02\x02[\x16" +
-        "\x03\x02\x02\x02\\]\x07-\x02\x02]\x18\x03\x02\x02\x02^_\x07/\x02\x02_" +
-        "\x1A\x03\x02\x02\x02`a\x07,\x02\x02a\x1C\x03\x02\x02\x02bc\x071\x02\x02" +
-        "c\x1E\x03\x02\x02\x02de\x07@\x02\x02e \x03\x02\x02\x02fg\x07>\x02\x02" +
-        "g\"\x03\x02\x02\x02hi\x07?\x02\x02i$\x03\x02\x02\x02jk\x070\x02\x02k&" +
-        "\x03\x02\x02\x02lm\x07`\x02\x02m(\x03\x02\x02\x02np\t\x05\x02\x02on\x03" +
-        "\x02\x02\x02pq\x03\x02\x02\x02qo\x03\x02\x02\x02qr\x03\x02\x02\x02rs\x03" +
-        "\x02\x02\x02st\b\x15\x02\x02t*\x03\x02\x02\x02\r\x02/37<@EKMRq\x03\b\x02" +
-        "\x02";
-    return arithmeticLexer;
-}(Lexer_1.Lexer));
-exports.arithmeticLexer = arithmeticLexer;
+
+    get atn() {
+        return atn;
+    }
+}
+
+arithmeticLexer.EOF = antlr4.Token.EOF;
+arithmeticLexer.VARIABLE = 1;
+arithmeticLexer.SCIENTIFIC_NUMBER = 2;
+arithmeticLexer.LPAREN = 3;
+arithmeticLexer.RPAREN = 4;
+arithmeticLexer.PLUS = 5;
+arithmeticLexer.MINUS = 6;
+arithmeticLexer.TIMES = 7;
+arithmeticLexer.DIV = 8;
+arithmeticLexer.GT = 9;
+arithmeticLexer.LT = 10;
+arithmeticLexer.EQ = 11;
+arithmeticLexer.POINT = 12;
+arithmeticLexer.POW = 13;
+arithmeticLexer.WS = 14;
+
+
+

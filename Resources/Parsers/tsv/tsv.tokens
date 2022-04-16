@@ -1,5 +1,0 @@
-TAB=1
-EOL=2
-TEXT=3
-STRING=4
-'\t'=1

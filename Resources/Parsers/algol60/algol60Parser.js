@@ -1,8312 +1,8202 @@
-"use strict";
-// Generated from /Users/briancullinan/jupyter_ops/Resources/Parsers/algol60/algol60.g4 by ANTLR 4.7.3-SNAPSHOT
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var ATN_1 = require("antlr4ts/atn/ATN");
-var ATNDeserializer_1 = require("antlr4ts/atn/ATNDeserializer");
-var FailedPredicateException_1 = require("antlr4ts/FailedPredicateException");
-var NoViableAltException_1 = require("antlr4ts/NoViableAltException");
-var Parser_1 = require("antlr4ts/Parser");
-var ParserRuleContext_1 = require("antlr4ts/ParserRuleContext");
-var ParserATNSimulator_1 = require("antlr4ts/atn/ParserATNSimulator");
-var RecognitionException_1 = require("antlr4ts/RecognitionException");
-var Token_1 = require("antlr4ts/Token");
-var VocabularyImpl_1 = require("antlr4ts/VocabularyImpl");
-var Utils = require("antlr4ts/misc/Utils");
-var algol60Parser = /** @class */ (function (_super) {
-    __extends(algol60Parser, _super);
-    function algol60Parser(input) {
-        var _this = _super.call(this, input) || this;
-        _this._interp = new ParserATNSimulator_1.ParserATNSimulator(algol60Parser._ATN, _this);
-        return _this;
-    }
-    Object.defineProperty(algol60Parser.prototype, "vocabulary", {
-        // @Override
-        // @NotNull
-        get: function () {
-            return algol60Parser.VOCABULARY;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(algol60Parser.prototype, "grammarFileName", {
-        // tslint:enable:no-trailing-whitespace
-        // @Override
-        get: function () { return "algol60.g4"; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(algol60Parser.prototype, "ruleNames", {
-        // @Override
-        get: function () { return algol60Parser.ruleNames; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(algol60Parser.prototype, "serializedATN", {
-        // @Override
-        get: function () { return algol60Parser._serializedATN; },
-        enumerable: true,
-        configurable: true
-    });
-    // @RuleVersion(0)
-    algol60Parser.prototype.program = function () {
-        var _localctx = new ProgramContext(this._ctx, this.state);
-        this.enterRule(_localctx, 0, algol60Parser.RULE_program);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 182;
-                this._errHandler.sync(this);
-                switch (this.interpreter.adaptivePredict(this._input, 0, this._ctx)) {
-                    case 1:
-                        {
-                            this.state = 180;
-                            this.block();
-                        }
-                        break;
-                    case 2:
-                        {
-                            this.state = 181;
-                            this.compound_statement();
-                        }
-                        break;
-                }
-                this.state = 184;
-                this.match(algol60Parser.EOF);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.block = function () {
-        var _localctx = new BlockContext(this._ctx, this.state);
-        this.enterRule(_localctx, 2, algol60Parser.RULE_block);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 189;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if (_la === algol60Parser.LETTER || _la === algol60Parser.DIGIT) {
-                    {
-                        this.state = 186;
-                        this.label();
-                        this.state = 187;
-                        this.match(algol60Parser.T__0);
-                    }
-                }
-                this.state = 191;
-                this.block_head();
-                this.state = 192;
-                this.compound_tail();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.block_head = function () {
-        var _localctx = new Block_headContext(this._ctx, this.state);
-        this.enterRule(_localctx, 4, algol60Parser.RULE_block_head);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 194;
-                this.match(algol60Parser.T__1);
-                this.state = 198;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                do {
-                    {
-                        {
-                            this.state = 195;
-                            this.declaration();
-                            this.state = 196;
-                            this.match(algol60Parser.T__2);
-                        }
-                    }
-                    this.state = 200;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
-                } while ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << algol60Parser.T__4) | (1 << algol60Parser.T__5) | (1 << algol60Parser.T__6) | (1 << algol60Parser.T__7) | (1 << algol60Parser.T__9) | (1 << algol60Parser.T__10) | (1 << algol60Parser.T__12))) !== 0));
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.compound_statement = function () {
-        var _localctx = new Compound_statementContext(this._ctx, this.state);
-        this.enterRule(_localctx, 6, algol60Parser.RULE_compound_statement);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 205;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if (_la === algol60Parser.LETTER || _la === algol60Parser.DIGIT) {
-                    {
-                        this.state = 202;
-                        this.label();
-                        this.state = 203;
-                        this.match(algol60Parser.T__0);
-                    }
-                }
-                this.state = 207;
-                this.match(algol60Parser.T__1);
-                this.state = 208;
-                this.compound_tail();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.compound_tail = function () {
-        var _localctx = new Compound_tailContext(this._ctx, this.state);
-        this.enterRule(_localctx, 8, algol60Parser.RULE_compound_tail);
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 215;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 4, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        {
-                            {
-                                this.state = 210;
-                                this.statement();
-                                this.state = 211;
-                                this.match(algol60Parser.T__2);
-                            }
-                        }
-                    }
-                    this.state = 217;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 4, this._ctx);
-                }
-                this.state = 218;
-                this.statement();
-                this.state = 219;
-                this.match(algol60Parser.T__3);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.declaration = function () {
-        var _localctx = new DeclarationContext(this._ctx, this.state);
-        this.enterRule(_localctx, 10, algol60Parser.RULE_declaration);
-        try {
-            this.state = 225;
-            this._errHandler.sync(this);
-            switch (this.interpreter.adaptivePredict(this._input, 5, this._ctx)) {
-                case 1:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 221;
-                        this.type_declaration();
-                    }
-                    break;
-                case 2:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 222;
-                        this.array_declaration();
-                    }
-                    break;
-                case 3:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 223;
-                        this.switch_declaration();
-                    }
-                    break;
-                case 4:
-                    this.enterOuterAlt(_localctx, 4);
-                    {
-                        this.state = 224;
-                        this.procedure_declaration();
-                    }
-                    break;
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.type_declaration = function () {
-        var _localctx = new Type_declarationContext(this._ctx, this.state);
-        this.enterRule(_localctx, 12, algol60Parser.RULE_type_declaration);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 227;
-                this.local_or_own_type();
-                this.state = 228;
-                this.type_list();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.local_or_own_type = function () {
-        var _localctx = new Local_or_own_typeContext(this._ctx, this.state);
-        this.enterRule(_localctx, 14, algol60Parser.RULE_local_or_own_type);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 231;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if (_la === algol60Parser.T__4) {
-                    {
-                        this.state = 230;
-                        this.match(algol60Parser.T__4);
-                    }
-                }
-                this.state = 233;
-                this.type();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.type = function () {
-        var _localctx = new TypeContext(this._ctx, this.state);
-        this.enterRule(_localctx, 16, algol60Parser.RULE_type);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 235;
-                _la = this._input.LA(1);
-                if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << algol60Parser.T__5) | (1 << algol60Parser.T__6) | (1 << algol60Parser.T__7))) !== 0))) {
-                    this._errHandler.recoverInline(this);
-                }
-                else {
-                    if (this._input.LA(1) === Token_1.Token.EOF) {
-                        this.matchedEOF = true;
-                    }
-                    this._errHandler.reportMatch(this);
-                    this.consume();
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.type_list = function () {
-        var _localctx = new Type_listContext(this._ctx, this.state);
-        this.enterRule(_localctx, 18, algol60Parser.RULE_type_list);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 237;
-                this.simple_variable();
-                this.state = 242;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                while (_la === algol60Parser.T__8) {
-                    {
-                        {
-                            this.state = 238;
-                            this.match(algol60Parser.T__8);
-                            this.state = 239;
-                            this.simple_variable();
-                        }
-                    }
-                    this.state = 244;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.array_declaration = function () {
-        var _localctx = new Array_declarationContext(this._ctx, this.state);
-        this.enterRule(_localctx, 20, algol60Parser.RULE_array_declaration);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 246;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << algol60Parser.T__4) | (1 << algol60Parser.T__5) | (1 << algol60Parser.T__6) | (1 << algol60Parser.T__7))) !== 0)) {
-                    {
-                        this.state = 245;
-                        this.local_or_own_type();
-                    }
-                }
-                this.state = 248;
-                this.match(algol60Parser.T__9);
-                this.state = 249;
-                this.array_list();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.array_list = function () {
-        var _localctx = new Array_listContext(this._ctx, this.state);
-        this.enterRule(_localctx, 22, algol60Parser.RULE_array_list);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 251;
-                this.array_segment();
-                this.state = 256;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                while (_la === algol60Parser.T__8) {
-                    {
-                        {
-                            this.state = 252;
-                            this.match(algol60Parser.T__8);
-                            this.state = 253;
-                            this.array_segment();
-                        }
-                    }
-                    this.state = 258;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.array_segment = function () {
-        var _localctx = new Array_segmentContext(this._ctx, this.state);
-        this.enterRule(_localctx, 24, algol60Parser.RULE_array_segment);
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 264;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 10, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        {
-                            {
-                                this.state = 259;
-                                this.array_identifier();
-                                this.state = 260;
-                                this.match(algol60Parser.T__8);
-                            }
-                        }
-                    }
-                    this.state = 266;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 10, this._ctx);
-                }
-                this.state = 267;
-                this.array_identifier();
-                this.state = 268;
-                this.bound_pair_list();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.array_identifier = function () {
-        var _localctx = new Array_identifierContext(this._ctx, this.state);
-        this.enterRule(_localctx, 26, algol60Parser.RULE_array_identifier);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 270;
-                this.identifier();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.bound_pair_list = function () {
-        var _localctx = new Bound_pair_listContext(this._ctx, this.state);
-        this.enterRule(_localctx, 28, algol60Parser.RULE_bound_pair_list);
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 272;
-                this.bound_pair();
-                this.state = 277;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 11, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        {
-                            {
-                                this.state = 273;
-                                this.match(algol60Parser.T__8);
-                                this.state = 274;
-                                this.bound_pair();
-                            }
-                        }
-                    }
-                    this.state = 279;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 11, this._ctx);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.bound_pair = function () {
-        var _localctx = new Bound_pairContext(this._ctx, this.state);
-        this.enterRule(_localctx, 30, algol60Parser.RULE_bound_pair);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 280;
-                this.lower_bound();
-                this.state = 281;
-                this.match(algol60Parser.T__0);
-                this.state = 282;
-                this.upper_bound();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.upper_bound = function () {
-        var _localctx = new Upper_boundContext(this._ctx, this.state);
-        this.enterRule(_localctx, 32, algol60Parser.RULE_upper_bound);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 284;
-                this.arithmetic_expression(0);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.lower_bound = function () {
-        var _localctx = new Lower_boundContext(this._ctx, this.state);
-        this.enterRule(_localctx, 34, algol60Parser.RULE_lower_bound);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 286;
-                this.arithmetic_expression(0);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.switch_declaration = function () {
-        var _localctx = new Switch_declarationContext(this._ctx, this.state);
-        this.enterRule(_localctx, 36, algol60Parser.RULE_switch_declaration);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 288;
-                this.match(algol60Parser.T__10);
-                this.state = 289;
-                this.switch_identifier();
-                this.state = 290;
-                this.match(algol60Parser.T__11);
-                this.state = 291;
-                this.switch_list();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.switch_identifier = function () {
-        var _localctx = new Switch_identifierContext(this._ctx, this.state);
-        this.enterRule(_localctx, 38, algol60Parser.RULE_switch_identifier);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 293;
-                this.identifier();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.switch_list = function () {
-        var _localctx = new Switch_listContext(this._ctx, this.state);
-        this.enterRule(_localctx, 40, algol60Parser.RULE_switch_list);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 295;
-                this.designational_expression();
-                this.state = 300;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                while (_la === algol60Parser.T__8) {
-                    {
-                        {
-                            this.state = 296;
-                            this.match(algol60Parser.T__8);
-                            this.state = 297;
-                            this.designational_expression();
-                        }
-                    }
-                    this.state = 302;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.procedure_declaration = function () {
-        var _localctx = new Procedure_declarationContext(this._ctx, this.state);
-        this.enterRule(_localctx, 42, algol60Parser.RULE_procedure_declaration);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 304;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << algol60Parser.T__5) | (1 << algol60Parser.T__6) | (1 << algol60Parser.T__7))) !== 0)) {
-                    {
-                        this.state = 303;
-                        this.type();
-                    }
-                }
-                this.state = 306;
-                this.match(algol60Parser.T__12);
-                this.state = 307;
-                this.procedure_heading();
-                this.state = 308;
-                this.procedure_body();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.procedure_heading = function () {
-        var _localctx = new Procedure_headingContext(this._ctx, this.state);
-        this.enterRule(_localctx, 44, algol60Parser.RULE_procedure_heading);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 310;
-                this.procedure_identifier();
-                this.state = 312;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if (_la === algol60Parser.T__13) {
-                    {
-                        this.state = 311;
-                        this.formal_parameter_part();
-                    }
-                }
-                this.state = 314;
-                this.match(algol60Parser.T__2);
-                this.state = 316;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if (_la === algol60Parser.T__15) {
-                    {
-                        this.state = 315;
-                        this.value_part();
-                    }
-                }
-                this.state = 319;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << algol60Parser.T__5) | (1 << algol60Parser.T__6) | (1 << algol60Parser.T__7) | (1 << algol60Parser.T__9) | (1 << algol60Parser.T__10) | (1 << algol60Parser.T__12) | (1 << algol60Parser.T__16))) !== 0) || _la === algol60Parser.STRING) {
-                    {
-                        this.state = 318;
-                        this.specification_part();
-                    }
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.procedure_identifier = function () {
-        var _localctx = new Procedure_identifierContext(this._ctx, this.state);
-        this.enterRule(_localctx, 46, algol60Parser.RULE_procedure_identifier);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 321;
-                this.identifier();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.formal_parameter_part = function () {
-        var _localctx = new Formal_parameter_partContext(this._ctx, this.state);
-        this.enterRule(_localctx, 48, algol60Parser.RULE_formal_parameter_part);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 323;
-                this.formal_parameter_list();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.formal_parameter_list = function () {
-        var _localctx = new Formal_parameter_listContext(this._ctx, this.state);
-        this.enterRule(_localctx, 50, algol60Parser.RULE_formal_parameter_list);
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 325;
-                this.match(algol60Parser.T__13);
-                this.state = 326;
-                this.formal_parameter();
-                this.state = 332;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 17, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        {
-                            {
-                                this.state = 327;
-                                this.parameter_delimiter();
-                                this.state = 328;
-                                this.formal_parameter();
-                            }
-                        }
-                    }
-                    this.state = 334;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 17, this._ctx);
-                }
-                this.state = 335;
-                this.match(algol60Parser.T__14);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.formal_parameter = function () {
-        var _localctx = new Formal_parameterContext(this._ctx, this.state);
-        this.enterRule(_localctx, 52, algol60Parser.RULE_formal_parameter);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 337;
-                this.identifier();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.value_part = function () {
-        var _localctx = new Value_partContext(this._ctx, this.state);
-        this.enterRule(_localctx, 54, algol60Parser.RULE_value_part);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 339;
-                this.match(algol60Parser.T__15);
-                this.state = 340;
-                this.identifier_list();
-                this.state = 341;
-                this.match(algol60Parser.T__2);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.specification_part = function () {
-        var _localctx = new Specification_partContext(this._ctx, this.state);
-        this.enterRule(_localctx, 56, algol60Parser.RULE_specification_part);
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 343;
-                this.specifier();
-                this.state = 344;
-                this.identifier_list();
-                this.state = 351;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 18, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        {
-                            {
-                                this.state = 345;
-                                this.match(algol60Parser.T__2);
-                                this.state = 346;
-                                this.specifier();
-                                this.state = 347;
-                                this.identifier_list();
-                            }
-                        }
-                    }
-                    this.state = 353;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 18, this._ctx);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.specifier = function () {
-        var _localctx = new SpecifierContext(this._ctx, this.state);
-        this.enterRule(_localctx, 58, algol60Parser.RULE_specifier);
-        var _la;
-        try {
-            this.state = 366;
-            this._errHandler.sync(this);
-            switch (this.interpreter.adaptivePredict(this._input, 21, this._ctx)) {
-                case 1:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 354;
-                        this.match(algol60Parser.STRING);
-                    }
-                    break;
-                case 2:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 355;
-                        this.type();
-                    }
-                    break;
-                case 3:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 357;
-                        this._errHandler.sync(this);
-                        _la = this._input.LA(1);
-                        if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << algol60Parser.T__5) | (1 << algol60Parser.T__6) | (1 << algol60Parser.T__7))) !== 0)) {
-                            {
-                                this.state = 356;
-                                this.type();
-                            }
-                        }
-                        this.state = 359;
-                        this.match(algol60Parser.T__9);
-                    }
-                    break;
-                case 4:
-                    this.enterOuterAlt(_localctx, 4);
-                    {
-                        this.state = 360;
-                        this.match(algol60Parser.T__16);
-                    }
-                    break;
-                case 5:
-                    this.enterOuterAlt(_localctx, 5);
-                    {
-                        this.state = 361;
-                        this.match(algol60Parser.T__10);
-                    }
-                    break;
-                case 6:
-                    this.enterOuterAlt(_localctx, 6);
-                    {
-                        this.state = 363;
-                        this._errHandler.sync(this);
-                        _la = this._input.LA(1);
-                        if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << algol60Parser.T__5) | (1 << algol60Parser.T__6) | (1 << algol60Parser.T__7))) !== 0)) {
-                            {
-                                this.state = 362;
-                                this.type();
-                            }
-                        }
-                        this.state = 365;
-                        this.match(algol60Parser.T__12);
-                    }
-                    break;
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.identifier_list = function () {
-        var _localctx = new Identifier_listContext(this._ctx, this.state);
-        this.enterRule(_localctx, 60, algol60Parser.RULE_identifier_list);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 368;
-                this.identifier();
-                this.state = 373;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                while (_la === algol60Parser.T__8) {
-                    {
-                        {
-                            this.state = 369;
-                            this.match(algol60Parser.T__8);
-                            this.state = 370;
-                            this.identifier();
-                        }
-                    }
-                    this.state = 375;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.procedure_body = function () {
-        var _localctx = new Procedure_bodyContext(this._ctx, this.state);
-        this.enterRule(_localctx, 62, algol60Parser.RULE_procedure_body);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 376;
-                this.statement();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.statement = function () {
-        var _localctx = new StatementContext(this._ctx, this.state);
-        this.enterRule(_localctx, 64, algol60Parser.RULE_statement);
-        try {
-            this.state = 381;
-            this._errHandler.sync(this);
-            switch (this.interpreter.adaptivePredict(this._input, 23, this._ctx)) {
-                case 1:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 378;
-                        this.unconditional_statement();
-                    }
-                    break;
-                case 2:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 379;
-                        this.conditional_statement();
-                    }
-                    break;
-                case 3:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 380;
-                        this.for_statement();
-                    }
-                    break;
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.unconditional_statement = function () {
-        var _localctx = new Unconditional_statementContext(this._ctx, this.state);
-        this.enterRule(_localctx, 66, algol60Parser.RULE_unconditional_statement);
-        try {
-            this.state = 386;
-            this._errHandler.sync(this);
-            switch (this.interpreter.adaptivePredict(this._input, 24, this._ctx)) {
-                case 1:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 383;
-                        this.basic_statement();
-                    }
-                    break;
-                case 2:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 384;
-                        this.compound_statement();
-                    }
-                    break;
-                case 3:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 385;
-                        this.block();
-                    }
-                    break;
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.basic_statement = function () {
-        var _localctx = new Basic_statementContext(this._ctx, this.state);
-        this.enterRule(_localctx, 68, algol60Parser.RULE_basic_statement);
-        var _la;
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 393;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 25, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        {
-                            {
-                                this.state = 388;
-                                this.label();
-                                this.state = 389;
-                                this.match(algol60Parser.T__0);
-                            }
-                        }
-                    }
-                    this.state = 395;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 25, this._ctx);
-                }
-                this.state = 397;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if (_la === algol60Parser.T__17 || _la === algol60Parser.LETTER) {
-                    {
-                        this.state = 396;
-                        this.unlabelled_basic_statement();
-                    }
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.label = function () {
-        var _localctx = new LabelContext(this._ctx, this.state);
-        this.enterRule(_localctx, 70, algol60Parser.RULE_label);
-        try {
-            this.state = 401;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case algol60Parser.LETTER:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 399;
-                        this.identifier();
-                    }
-                    break;
-                case algol60Parser.DIGIT:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 400;
-                        this.unsigned_integer();
-                    }
-                    break;
-                default:
-                    throw new NoViableAltException_1.NoViableAltException(this);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.unlabelled_basic_statement = function () {
-        var _localctx = new Unlabelled_basic_statementContext(this._ctx, this.state);
-        this.enterRule(_localctx, 72, algol60Parser.RULE_unlabelled_basic_statement);
-        try {
-            this.state = 406;
-            this._errHandler.sync(this);
-            switch (this.interpreter.adaptivePredict(this._input, 28, this._ctx)) {
-                case 1:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 403;
-                        this.assignment_statement();
-                    }
-                    break;
-                case 2:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 404;
-                        this.go_to_statement();
-                    }
-                    break;
-                case 3:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 405;
-                        this.procedure_statement();
-                    }
-                    break;
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.assignment_statement = function () {
-        var _localctx = new Assignment_statementContext(this._ctx, this.state);
-        this.enterRule(_localctx, 74, algol60Parser.RULE_assignment_statement);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 408;
-                this.left_part_list();
-                this.state = 411;
-                this._errHandler.sync(this);
-                switch (this._input.LA(1)) {
-                    case algol60Parser.T__23:
-                        {
-                            this.state = 409;
-                            this.arithmetic_expression(0);
-                        }
-                        break;
-                    case algol60Parser.T__13:
-                    case algol60Parser.T__19:
-                    case algol60Parser.T__26:
-                    case algol60Parser.T__27:
-                    case algol60Parser.T__32:
-                    case algol60Parser.T__33:
-                    case algol60Parser.T__39:
-                    case algol60Parser.T__48:
-                    case algol60Parser.T__49:
-                    case algol60Parser.LETTER:
-                    case algol60Parser.DIGIT:
-                        {
-                            this.state = 410;
-                            this.boolean_expression(0);
-                        }
-                        break;
-                    default:
-                        throw new NoViableAltException_1.NoViableAltException(this);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.left_part_list = function () {
-        var _localctx = new Left_part_listContext(this._ctx, this.state);
-        this.enterRule(_localctx, 76, algol60Parser.RULE_left_part_list);
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 414;
-                this._errHandler.sync(this);
-                _alt = 1;
-                do {
-                    switch (_alt) {
-                        case 1:
-                            {
-                                {
-                                    this.state = 413;
-                                    this.left_part();
-                                }
-                            }
-                            break;
-                        default:
-                            throw new NoViableAltException_1.NoViableAltException(this);
-                    }
-                    this.state = 416;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 30, this._ctx);
-                } while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.left_part = function () {
-        var _localctx = new Left_partContext(this._ctx, this.state);
-        this.enterRule(_localctx, 78, algol60Parser.RULE_left_part);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 420;
-                this._errHandler.sync(this);
-                switch (this.interpreter.adaptivePredict(this._input, 31, this._ctx)) {
-                    case 1:
-                        {
-                            this.state = 418;
-                            this.variable();
-                        }
-                        break;
-                    case 2:
-                        {
-                            this.state = 419;
-                            this.procedure_identifier();
-                        }
-                        break;
-                }
-                this.state = 422;
-                this.match(algol60Parser.T__11);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.go_to_statement = function () {
-        var _localctx = new Go_to_statementContext(this._ctx, this.state);
-        this.enterRule(_localctx, 80, algol60Parser.RULE_go_to_statement);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 424;
-                this.match(algol60Parser.T__17);
-                this.state = 425;
-                this.designational_expression();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.designational_expression = function () {
-        var _localctx = new Designational_expressionContext(this._ctx, this.state);
-        this.enterRule(_localctx, 82, algol60Parser.RULE_designational_expression);
-        try {
-            this.state = 434;
-            this._errHandler.sync(this);
-            switch (this.interpreter.adaptivePredict(this._input, 32, this._ctx)) {
-                case 1:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 427;
-                        this.label();
-                    }
-                    break;
-                case 2:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 428;
-                        this.switch_designator();
-                    }
-                    break;
-                case 3:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 429;
-                        this.if_clause();
-                        this.state = 430;
-                        this.designational_expression();
-                        this.state = 431;
-                        this.match(algol60Parser.T__18);
-                        this.state = 432;
-                        this.designational_expression();
-                    }
-                    break;
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.switch_designator = function () {
-        var _localctx = new Switch_designatorContext(this._ctx, this.state);
-        this.enterRule(_localctx, 84, algol60Parser.RULE_switch_designator);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 436;
-                this.switch_identifier();
-                this.state = 438;
-                this._errHandler.sync(this);
-                switch (this.interpreter.adaptivePredict(this._input, 33, this._ctx)) {
-                    case 1:
-                        {
-                            this.state = 437;
-                            this.subscript_expression();
-                        }
-                        break;
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.procedure_statement = function () {
-        var _localctx = new Procedure_statementContext(this._ctx, this.state);
-        this.enterRule(_localctx, 86, algol60Parser.RULE_procedure_statement);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 440;
-                this.procedure_identifier();
-                this.state = 442;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if ((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << algol60Parser.T__13) | (1 << algol60Parser.T__19) | (1 << algol60Parser.T__23) | (1 << algol60Parser.T__26) | (1 << algol60Parser.T__27))) !== 0) || ((((_la - 33)) & ~0x1F) === 0 && ((1 << (_la - 33)) & ((1 << (algol60Parser.T__32 - 33)) | (1 << (algol60Parser.T__33 - 33)) | (1 << (algol60Parser.T__39 - 33)) | (1 << (algol60Parser.T__48 - 33)) | (1 << (algol60Parser.T__49 - 33)) | (1 << (algol60Parser.STRING - 33)) | (1 << (algol60Parser.LETTER - 33)) | (1 << (algol60Parser.DIGIT - 33)))) !== 0)) {
-                    {
-                        this.state = 441;
-                        this.actual_parameter_part();
-                    }
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.actual_parameter_part = function () {
-        var _localctx = new Actual_parameter_partContext(this._ctx, this.state);
-        this.enterRule(_localctx, 88, algol60Parser.RULE_actual_parameter_part);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 444;
-                this.actual_parameter_list();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.actual_parameter_list = function () {
-        var _localctx = new Actual_parameter_listContext(this._ctx, this.state);
-        this.enterRule(_localctx, 90, algol60Parser.RULE_actual_parameter_list);
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 446;
-                this.actual_parameter();
-                this.state = 452;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 35, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        {
-                            {
-                                this.state = 447;
-                                this.parameter_delimiter();
-                                this.state = 448;
-                                this.actual_parameter();
-                            }
-                        }
-                    }
-                    this.state = 454;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 35, this._ctx);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.parameter_delimiter = function () {
-        var _localctx = new Parameter_delimiterContext(this._ctx, this.state);
-        this.enterRule(_localctx, 92, algol60Parser.RULE_parameter_delimiter);
-        try {
-            this.state = 461;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case algol60Parser.T__8:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 455;
-                        this.match(algol60Parser.T__8);
-                    }
-                    break;
-                case algol60Parser.T__14:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 456;
-                        this.match(algol60Parser.T__14);
-                        this.state = 457;
-                        this.letter_string();
-                        this.state = 458;
-                        this.match(algol60Parser.T__0);
-                        this.state = 459;
-                        this.match(algol60Parser.T__13);
-                    }
-                    break;
-                default:
-                    throw new NoViableAltException_1.NoViableAltException(this);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.actual_parameter = function () {
-        var _localctx = new Actual_parameterContext(this._ctx, this.state);
-        this.enterRule(_localctx, 94, algol60Parser.RULE_actual_parameter);
-        try {
-            this.state = 468;
-            this._errHandler.sync(this);
-            switch (this.interpreter.adaptivePredict(this._input, 37, this._ctx)) {
-                case 1:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 463;
-                        this.match(algol60Parser.STRING);
-                    }
-                    break;
-                case 2:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 464;
-                        this.expression();
-                    }
-                    break;
-                case 3:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 465;
-                        this.array_identifier();
-                    }
-                    break;
-                case 4:
-                    this.enterOuterAlt(_localctx, 4);
-                    {
-                        this.state = 466;
-                        this.switch_identifier();
-                    }
-                    break;
-                case 5:
-                    this.enterOuterAlt(_localctx, 5);
-                    {
-                        this.state = 467;
-                        this.procedure_identifier();
-                    }
-                    break;
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.conditional_statement = function () {
-        var _localctx = new Conditional_statementContext(this._ctx, this.state);
-        this.enterRule(_localctx, 96, algol60Parser.RULE_conditional_statement);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 475;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                while (_la === algol60Parser.LETTER || _la === algol60Parser.DIGIT) {
-                    {
-                        {
-                            this.state = 470;
-                            this.label();
-                            this.state = 471;
-                            this.match(algol60Parser.T__0);
-                        }
-                    }
-                    this.state = 477;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
-                }
-                this.state = 486;
-                this._errHandler.sync(this);
-                switch (this.interpreter.adaptivePredict(this._input, 40, this._ctx)) {
-                    case 1:
-                        {
-                            {
-                                this.state = 478;
-                                this.if_statement();
-                                this.state = 481;
-                                this._errHandler.sync(this);
-                                _la = this._input.LA(1);
-                                if (_la === algol60Parser.T__18) {
-                                    {
-                                        this.state = 479;
-                                        this.match(algol60Parser.T__18);
-                                        this.state = 480;
-                                        this.statement();
-                                    }
-                                }
-                            }
-                        }
-                        break;
-                    case 2:
-                        {
-                            {
-                                this.state = 483;
-                                this.if_clause();
-                                this.state = 484;
-                                this.for_statement();
-                            }
-                        }
-                        break;
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.if_statement = function () {
-        var _localctx = new If_statementContext(this._ctx, this.state);
-        this.enterRule(_localctx, 98, algol60Parser.RULE_if_statement);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 488;
-                this.if_clause();
-                this.state = 489;
-                this.unconditional_statement();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.if_clause = function () {
-        var _localctx = new If_clauseContext(this._ctx, this.state);
-        this.enterRule(_localctx, 100, algol60Parser.RULE_if_clause);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 491;
-                this.match(algol60Parser.T__19);
-                this.state = 492;
-                this.boolean_expression(0);
-                this.state = 493;
-                this.match(algol60Parser.T__20);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.for_statement = function () {
-        var _localctx = new For_statementContext(this._ctx, this.state);
-        this.enterRule(_localctx, 102, algol60Parser.RULE_for_statement);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 500;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                while (_la === algol60Parser.LETTER || _la === algol60Parser.DIGIT) {
-                    {
-                        {
-                            this.state = 495;
-                            this.label();
-                            this.state = 496;
-                            this.match(algol60Parser.T__0);
-                        }
-                    }
-                    this.state = 502;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
-                }
-                this.state = 503;
-                this.for_clause();
-                this.state = 504;
-                this.statement();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.for_clause = function () {
-        var _localctx = new For_clauseContext(this._ctx, this.state);
-        this.enterRule(_localctx, 104, algol60Parser.RULE_for_clause);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 506;
-                this.match(algol60Parser.T__21);
-                this.state = 507;
-                this.variable();
-                this.state = 508;
-                this.match(algol60Parser.T__11);
-                this.state = 509;
-                this.for_list();
-                this.state = 510;
-                this.match(algol60Parser.T__22);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.for_list = function () {
-        var _localctx = new For_listContext(this._ctx, this.state);
-        this.enterRule(_localctx, 106, algol60Parser.RULE_for_list);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 512;
-                this.for_list_element();
-                this.state = 517;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                while (_la === algol60Parser.T__8) {
-                    {
-                        {
-                            this.state = 513;
-                            this.match(algol60Parser.T__8);
-                            this.state = 514;
-                            this.for_list_element();
-                        }
-                    }
-                    this.state = 519;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.for_list_element = function () {
-        var _localctx = new For_list_elementContext(this._ctx, this.state);
-        this.enterRule(_localctx, 108, algol60Parser.RULE_for_list_element);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 521;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if (_la === algol60Parser.T__23) {
-                    {
-                        this.state = 520;
-                        this.arithmetic_expression(0);
-                    }
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.arithmetic_expression = function (_p) {
-        if (_p === undefined) {
-            _p = 0;
-        }
-        var _parentctx = this._ctx;
-        var _parentState = this.state;
-        var _localctx = new Arithmetic_expressionContext(this._ctx, _parentState);
-        var _prevctx = _localctx;
-        var _startState = 110;
-        this.enterRecursionRule(_localctx, 110, algol60Parser.RULE_arithmetic_expression, _p);
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                {
-                    this.state = 524;
-                    this.match(algol60Parser.T__23);
-                    this.state = 525;
-                    this.arithmetic_expression(0);
-                    this.state = 526;
-                    this.match(algol60Parser.T__24);
-                    this.state = 527;
-                    this.arithmetic_expression(2);
-                }
-                this._ctx._stop = this._input.tryLT(-1);
-                this.state = 534;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 44, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        if (this._parseListeners != null) {
-                            this.triggerExitRuleEvent();
-                        }
-                        _prevctx = _localctx;
-                        {
-                            {
-                                _localctx = new Arithmetic_expressionContext(_parentctx, _parentState);
-                                this.pushNewRecursionContext(_localctx, _startState, algol60Parser.RULE_arithmetic_expression);
-                                this.state = 529;
-                                if (!(this.precpred(this._ctx, 1))) {
-                                    throw new FailedPredicateException_1.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
-                                }
-                                this.state = 530;
-                                this.match(algol60Parser.T__25);
-                                this.state = 531;
-                                this.boolean_expression(0);
-                            }
-                        }
-                    }
-                    this.state = 536;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 44, this._ctx);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.unrollRecursionContexts(_parentctx);
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.expression = function () {
-        var _localctx = new ExpressionContext(this._ctx, this.state);
-        this.enterRule(_localctx, 112, algol60Parser.RULE_expression);
-        try {
-            this.state = 540;
-            this._errHandler.sync(this);
-            switch (this.interpreter.adaptivePredict(this._input, 45, this._ctx)) {
-                case 1:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 537;
-                        this.arithmetic_expression(0);
-                    }
-                    break;
-                case 2:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 538;
-                        this.boolean_expression(0);
-                    }
-                    break;
-                case 3:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 539;
-                        this.designational_expression();
-                    }
-                    break;
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.arithmetic_expression2 = function () {
-        var _localctx = new Arithmetic_expression2Context(this._ctx, this.state);
-        this.enterRule(_localctx, 114, algol60Parser.RULE_arithmetic_expression2);
-        try {
-            this.state = 548;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case algol60Parser.T__13:
-                case algol60Parser.T__26:
-                case algol60Parser.T__27:
-                case algol60Parser.T__32:
-                case algol60Parser.T__33:
-                case algol60Parser.LETTER:
-                case algol60Parser.DIGIT:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 542;
-                        this.simple_arithmetic_expression();
-                    }
-                    break;
-                case algol60Parser.T__19:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 543;
-                        this.if_clause();
-                        this.state = 544;
-                        this.simple_arithmetic_expression();
-                        this.state = 545;
-                        this.match(algol60Parser.T__18);
-                        this.state = 546;
-                        this.arithmetic_expression(0);
-                    }
-                    break;
-                default:
-                    throw new NoViableAltException_1.NoViableAltException(this);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.simple_arithmetic_expression = function () {
-        var _localctx = new Simple_arithmetic_expressionContext(this._ctx, this.state);
-        this.enterRule(_localctx, 116, algol60Parser.RULE_simple_arithmetic_expression);
-        var _la;
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 551;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if (_la === algol60Parser.T__26 || _la === algol60Parser.T__27) {
-                    {
-                        this.state = 550;
-                        this.adding_operator();
-                    }
-                }
-                this.state = 553;
-                this.term();
-                this.state = 559;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 48, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        {
-                            {
-                                this.state = 554;
-                                this.adding_operator();
-                                this.state = 555;
-                                this.term();
-                            }
-                        }
-                    }
-                    this.state = 561;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 48, this._ctx);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.adding_operator = function () {
-        var _localctx = new Adding_operatorContext(this._ctx, this.state);
-        this.enterRule(_localctx, 118, algol60Parser.RULE_adding_operator);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 562;
-                _la = this._input.LA(1);
-                if (!(_la === algol60Parser.T__26 || _la === algol60Parser.T__27)) {
-                    this._errHandler.recoverInline(this);
-                }
-                else {
-                    if (this._input.LA(1) === Token_1.Token.EOF) {
-                        this.matchedEOF = true;
-                    }
-                    this._errHandler.reportMatch(this);
-                    this.consume();
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.term = function () {
-        var _localctx = new TermContext(this._ctx, this.state);
-        this.enterRule(_localctx, 120, algol60Parser.RULE_term);
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 564;
-                this.factor();
-                this.state = 570;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 49, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        {
-                            {
-                                this.state = 565;
-                                this.multiplying_operator();
-                                this.state = 566;
-                                this.factor();
-                            }
-                        }
-                    }
-                    this.state = 572;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 49, this._ctx);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.multiplying_operator = function () {
-        var _localctx = new Multiplying_operatorContext(this._ctx, this.state);
-        this.enterRule(_localctx, 122, algol60Parser.RULE_multiplying_operator);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 573;
-                _la = this._input.LA(1);
-                if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << algol60Parser.T__28) | (1 << algol60Parser.T__29) | (1 << algol60Parser.T__30))) !== 0))) {
-                    this._errHandler.recoverInline(this);
-                }
-                else {
-                    if (this._input.LA(1) === Token_1.Token.EOF) {
-                        this.matchedEOF = true;
-                    }
-                    this._errHandler.reportMatch(this);
-                    this.consume();
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.factor = function () {
-        var _localctx = new FactorContext(this._ctx, this.state);
-        this.enterRule(_localctx, 124, algol60Parser.RULE_factor);
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 575;
-                this.primary();
-                this.state = 580;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 50, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        {
-                            {
-                                this.state = 576;
-                                this.match(algol60Parser.T__31);
-                                this.state = 577;
-                                this.primary();
-                            }
-                        }
-                    }
-                    this.state = 582;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 50, this._ctx);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.primary = function () {
-        var _localctx = new PrimaryContext(this._ctx, this.state);
-        this.enterRule(_localctx, 126, algol60Parser.RULE_primary);
-        try {
-            this.state = 590;
-            this._errHandler.sync(this);
-            switch (this.interpreter.adaptivePredict(this._input, 51, this._ctx)) {
-                case 1:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 583;
-                        this.unsigned_number();
-                    }
-                    break;
-                case 2:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 584;
-                        this.variable();
-                    }
-                    break;
-                case 3:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 585;
-                        this.function_designator();
-                    }
-                    break;
-                case 4:
-                    this.enterOuterAlt(_localctx, 4);
-                    {
-                        this.state = 586;
-                        this.match(algol60Parser.T__13);
-                        this.state = 587;
-                        this.arithmetic_expression(0);
-                        this.state = 588;
-                        this.match(algol60Parser.T__14);
-                    }
-                    break;
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.unsigned_number = function () {
-        var _localctx = new Unsigned_numberContext(this._ctx, this.state);
-        this.enterRule(_localctx, 128, algol60Parser.RULE_unsigned_number);
-        try {
-            this.state = 597;
-            this._errHandler.sync(this);
-            switch (this.interpreter.adaptivePredict(this._input, 52, this._ctx)) {
-                case 1:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 592;
-                        this.decimal_number();
-                    }
-                    break;
-                case 2:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 593;
-                        this.exponential_part();
-                    }
-                    break;
-                case 3:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 594;
-                        this.decimal_number();
-                        this.state = 595;
-                        this.exponential_part();
-                    }
-                    break;
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.decimal_number = function () {
-        var _localctx = new Decimal_numberContext(this._ctx, this.state);
-        this.enterRule(_localctx, 130, algol60Parser.RULE_decimal_number);
-        try {
-            this.state = 604;
-            this._errHandler.sync(this);
-            switch (this.interpreter.adaptivePredict(this._input, 53, this._ctx)) {
-                case 1:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 599;
-                        this.unsigned_integer();
-                    }
-                    break;
-                case 2:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 600;
-                        this.decimal_fraction();
-                    }
-                    break;
-                case 3:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 601;
-                        this.unsigned_integer();
-                        this.state = 602;
-                        this.decimal_fraction();
-                    }
-                    break;
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.unsigned_integer = function () {
-        var _localctx = new Unsigned_integerContext(this._ctx, this.state);
-        this.enterRule(_localctx, 132, algol60Parser.RULE_unsigned_integer);
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 607;
-                this._errHandler.sync(this);
-                _alt = 1;
-                do {
-                    switch (_alt) {
-                        case 1:
-                            {
-                                {
-                                    this.state = 606;
-                                    this.match(algol60Parser.DIGIT);
-                                }
-                            }
-                            break;
-                        default:
-                            throw new NoViableAltException_1.NoViableAltException(this);
-                    }
-                    this.state = 609;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 54, this._ctx);
-                } while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.decimal_fraction = function () {
-        var _localctx = new Decimal_fractionContext(this._ctx, this.state);
-        this.enterRule(_localctx, 134, algol60Parser.RULE_decimal_fraction);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 611;
-                this.match(algol60Parser.T__32);
-                this.state = 612;
-                this.unsigned_integer();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.exponential_part = function () {
-        var _localctx = new Exponential_partContext(this._ctx, this.state);
-        this.enterRule(_localctx, 136, algol60Parser.RULE_exponential_part);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 614;
-                this.match(algol60Parser.T__33);
-                this.state = 615;
-                this.integer();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.integer = function () {
-        var _localctx = new IntegerContext(this._ctx, this.state);
-        this.enterRule(_localctx, 138, algol60Parser.RULE_integer);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 618;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                if (_la === algol60Parser.T__26 || _la === algol60Parser.T__34) {
-                    {
-                        this.state = 617;
-                        _la = this._input.LA(1);
-                        if (!(_la === algol60Parser.T__26 || _la === algol60Parser.T__34)) {
-                            this._errHandler.recoverInline(this);
-                        }
-                        else {
-                            if (this._input.LA(1) === Token_1.Token.EOF) {
-                                this.matchedEOF = true;
-                            }
-                            this._errHandler.reportMatch(this);
-                            this.consume();
-                        }
-                    }
-                }
-                this.state = 620;
-                this.unsigned_integer();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.boolean_expression = function (_p) {
-        if (_p === undefined) {
-            _p = 0;
-        }
-        var _parentctx = this._ctx;
-        var _parentState = this.state;
-        var _localctx = new Boolean_expressionContext(this._ctx, _parentState);
-        var _prevctx = _localctx;
-        var _startState = 140;
-        this.enterRecursionRule(_localctx, 140, algol60Parser.RULE_boolean_expression, _p);
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 638;
-                this._errHandler.sync(this);
-                switch (this.interpreter.adaptivePredict(this._input, 56, this._ctx)) {
-                    case 1:
-                        {
-                            this.state = 623;
-                            this.if_clause();
-                            this.state = 624;
-                            this.boolean_expression(0);
-                            this.state = 625;
-                            this.match(algol60Parser.T__18);
-                            this.state = 626;
-                            this.boolean_expression(11);
-                        }
-                        break;
-                    case 2:
-                        {
-                            this.state = 628;
-                            this.match(algol60Parser.T__39);
-                            this.state = 629;
-                            this.boolean_expression(6);
-                        }
-                        break;
-                    case 3:
-                        {
-                            this.state = 630;
-                            this.logical_value();
-                        }
-                        break;
-                    case 4:
-                        {
-                            this.state = 631;
-                            this.variable();
-                        }
-                        break;
-                    case 5:
-                        {
-                            this.state = 632;
-                            this.function_designator();
-                        }
-                        break;
-                    case 6:
-                        {
-                            this.state = 633;
-                            this.relation();
-                        }
-                        break;
-                    case 7:
-                        {
-                            this.state = 634;
-                            this.match(algol60Parser.T__13);
-                            this.state = 635;
-                            this.boolean_expression(0);
-                            this.state = 636;
-                            this.match(algol60Parser.T__14);
-                        }
-                        break;
-                }
-                this._ctx._stop = this._input.tryLT(-1);
-                this.state = 654;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 58, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        if (this._parseListeners != null) {
-                            this.triggerExitRuleEvent();
-                        }
-                        _prevctx = _localctx;
-                        {
-                            this.state = 652;
-                            this._errHandler.sync(this);
-                            switch (this.interpreter.adaptivePredict(this._input, 57, this._ctx)) {
-                                case 1:
-                                    {
-                                        _localctx = new Boolean_expressionContext(_parentctx, _parentState);
-                                        this.pushNewRecursionContext(_localctx, _startState, algol60Parser.RULE_boolean_expression);
-                                        this.state = 640;
-                                        if (!(this.precpred(this._ctx, 10))) {
-                                            throw new FailedPredicateException_1.FailedPredicateException(this, "this.precpred(this._ctx, 10)");
-                                        }
-                                        this.state = 641;
-                                        this.match(algol60Parser.T__35);
-                                        this.state = 642;
-                                        this.boolean_expression(11);
-                                    }
-                                    break;
-                                case 2:
-                                    {
-                                        _localctx = new Boolean_expressionContext(_parentctx, _parentState);
-                                        this.pushNewRecursionContext(_localctx, _startState, algol60Parser.RULE_boolean_expression);
-                                        this.state = 643;
-                                        if (!(this.precpred(this._ctx, 9))) {
-                                            throw new FailedPredicateException_1.FailedPredicateException(this, "this.precpred(this._ctx, 9)");
-                                        }
-                                        this.state = 644;
-                                        this.match(algol60Parser.T__36);
-                                        this.state = 645;
-                                        this.boolean_expression(10);
-                                    }
-                                    break;
-                                case 3:
-                                    {
-                                        _localctx = new Boolean_expressionContext(_parentctx, _parentState);
-                                        this.pushNewRecursionContext(_localctx, _startState, algol60Parser.RULE_boolean_expression);
-                                        this.state = 646;
-                                        if (!(this.precpred(this._ctx, 8))) {
-                                            throw new FailedPredicateException_1.FailedPredicateException(this, "this.precpred(this._ctx, 8)");
-                                        }
-                                        this.state = 647;
-                                        this.match(algol60Parser.T__37);
-                                        this.state = 648;
-                                        this.boolean_expression(9);
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        _localctx = new Boolean_expressionContext(_parentctx, _parentState);
-                                        this.pushNewRecursionContext(_localctx, _startState, algol60Parser.RULE_boolean_expression);
-                                        this.state = 649;
-                                        if (!(this.precpred(this._ctx, 7))) {
-                                            throw new FailedPredicateException_1.FailedPredicateException(this, "this.precpred(this._ctx, 7)");
-                                        }
-                                        this.state = 650;
-                                        this.match(algol60Parser.T__38);
-                                        this.state = 651;
-                                        this.boolean_expression(8);
-                                    }
-                                    break;
-                            }
-                        }
-                    }
-                    this.state = 656;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 58, this._ctx);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.unrollRecursionContexts(_parentctx);
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.relation = function () {
-        var _localctx = new RelationContext(this._ctx, this.state);
-        this.enterRule(_localctx, 142, algol60Parser.RULE_relation);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 657;
-                this.simple_arithmetic_expression();
-                this.state = 658;
-                this.relational_operator();
-                this.state = 659;
-                this.simple_arithmetic_expression();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.relational_operator = function () {
-        var _localctx = new Relational_operatorContext(this._ctx, this.state);
-        this.enterRule(_localctx, 144, algol60Parser.RULE_relational_operator);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 661;
-                _la = this._input.LA(1);
-                if (!(((((_la - 41)) & ~0x1F) === 0 && ((1 << (_la - 41)) & ((1 << (algol60Parser.T__40 - 41)) | (1 << (algol60Parser.T__41 - 41)) | (1 << (algol60Parser.T__42 - 41)) | (1 << (algol60Parser.T__43 - 41)) | (1 << (algol60Parser.T__44 - 41)) | (1 << (algol60Parser.T__45 - 41)))) !== 0))) {
-                    this._errHandler.recoverInline(this);
-                }
-                else {
-                    if (this._input.LA(1) === Token_1.Token.EOF) {
-                        this.matchedEOF = true;
-                    }
-                    this._errHandler.reportMatch(this);
-                    this.consume();
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.function_designator = function () {
-        var _localctx = new Function_designatorContext(this._ctx, this.state);
-        this.enterRule(_localctx, 146, algol60Parser.RULE_function_designator);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 663;
-                this.procedure_identifier();
-                this.state = 664;
-                this.actual_parameter_part();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.variable = function () {
-        var _localctx = new VariableContext(this._ctx, this.state);
-        this.enterRule(_localctx, 148, algol60Parser.RULE_variable);
-        try {
-            this.state = 668;
-            this._errHandler.sync(this);
-            switch (this.interpreter.adaptivePredict(this._input, 59, this._ctx)) {
-                case 1:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 666;
-                        this.simple_variable();
-                    }
-                    break;
-                case 2:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 667;
-                        this.subscripted_variable();
-                    }
-                    break;
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.simple_variable = function () {
-        var _localctx = new Simple_variableContext(this._ctx, this.state);
-        this.enterRule(_localctx, 150, algol60Parser.RULE_simple_variable);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 670;
-                this.variable_identifier();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.variable_identifier = function () {
-        var _localctx = new Variable_identifierContext(this._ctx, this.state);
-        this.enterRule(_localctx, 152, algol60Parser.RULE_variable_identifier);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 672;
-                this.identifier();
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.subscripted_variable = function () {
-        var _localctx = new Subscripted_variableContext(this._ctx, this.state);
-        this.enterRule(_localctx, 154, algol60Parser.RULE_subscripted_variable);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 674;
-                this.array_identifier();
-                this.state = 675;
-                this.match(algol60Parser.T__46);
-                this.state = 676;
-                this.subscript_list();
-                this.state = 677;
-                this.match(algol60Parser.T__47);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.subscript_list = function () {
-        var _localctx = new Subscript_listContext(this._ctx, this.state);
-        this.enterRule(_localctx, 156, algol60Parser.RULE_subscript_list);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 679;
-                this.subscript_expression();
-                this.state = 684;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                while (_la === algol60Parser.T__8) {
-                    {
-                        {
-                            this.state = 680;
-                            this.match(algol60Parser.T__8);
-                            this.state = 681;
-                            this.subscript_expression();
-                        }
-                    }
-                    this.state = 686;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.subscript_expression = function () {
-        var _localctx = new Subscript_expressionContext(this._ctx, this.state);
-        this.enterRule(_localctx, 158, algol60Parser.RULE_subscript_expression);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 687;
-                this.arithmetic_expression(0);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.open_string = function () {
-        var _localctx = new Open_stringContext(this._ctx, this.state);
-        this.enterRule(_localctx, 160, algol60Parser.RULE_open_string);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 690;
-                this._errHandler.sync(this);
-                switch (this.interpreter.adaptivePredict(this._input, 61, this._ctx)) {
-                    case 1:
-                        {
-                            this.state = 689;
-                            this.proper_string();
-                        }
-                        break;
-                }
-                this.state = 692;
-                this.match(algol60Parser.STRING);
-                this.state = 697;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                do {
-                    {
-                        {
-                            this.state = 694;
-                            this._errHandler.sync(this);
-                            switch (this.interpreter.adaptivePredict(this._input, 62, this._ctx)) {
-                                case 1:
-                                    {
-                                        this.state = 693;
-                                        this.proper_string();
-                                    }
-                                    break;
-                            }
-                            this.state = 696;
-                            this.match(algol60Parser.STRING);
-                        }
-                    }
-                    this.state = 699;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
-                } while (_la === algol60Parser.STRING);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.proper_string = function () {
-        var _localctx = new Proper_stringContext(this._ctx, this.state);
-        this.enterRule(_localctx, 162, algol60Parser.RULE_proper_string);
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 701;
-                this.match(algol60Parser.STRING);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.letter_string = function () {
-        var _localctx = new Letter_stringContext(this._ctx, this.state);
-        this.enterRule(_localctx, 164, algol60Parser.RULE_letter_string);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 704;
-                this._errHandler.sync(this);
-                _la = this._input.LA(1);
-                do {
-                    {
-                        {
-                            this.state = 703;
-                            this.match(algol60Parser.LETTER);
-                        }
-                    }
-                    this.state = 706;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
-                } while (_la === algol60Parser.LETTER);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.identifier = function () {
-        var _localctx = new IdentifierContext(this._ctx, this.state);
-        this.enterRule(_localctx, 166, algol60Parser.RULE_identifier);
-        var _la;
-        try {
-            var _alt = void 0;
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 708;
-                this.match(algol60Parser.LETTER);
-                this.state = 712;
-                this._errHandler.sync(this);
-                _alt = this.interpreter.adaptivePredict(this._input, 65, this._ctx);
-                while (_alt !== 2 && _alt !== ATN_1.ATN.INVALID_ALT_NUMBER) {
-                    if (_alt === 1) {
-                        {
-                            {
-                                this.state = 709;
-                                _la = this._input.LA(1);
-                                if (!(_la === algol60Parser.LETTER || _la === algol60Parser.DIGIT)) {
-                                    this._errHandler.recoverInline(this);
-                                }
-                                else {
-                                    if (this._input.LA(1) === Token_1.Token.EOF) {
-                                        this.matchedEOF = true;
-                                    }
-                                    this._errHandler.reportMatch(this);
-                                    this.consume();
-                                }
-                            }
-                        }
-                    }
-                    this.state = 714;
-                    this._errHandler.sync(this);
-                    _alt = this.interpreter.adaptivePredict(this._input, 65, this._ctx);
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.basic_symbol = function () {
-        var _localctx = new Basic_symbolContext(this._ctx, this.state);
-        this.enterRule(_localctx, 168, algol60Parser.RULE_basic_symbol);
-        try {
-            this.state = 719;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case algol60Parser.LETTER:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 715;
-                        this.match(algol60Parser.LETTER);
-                    }
-                    break;
-                case algol60Parser.DIGIT:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 716;
-                        this.match(algol60Parser.DIGIT);
-                    }
-                    break;
-                case algol60Parser.T__48:
-                case algol60Parser.T__49:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 717;
-                        this.logical_value();
-                    }
-                    break;
-                case algol60Parser.T__1:
-                case algol60Parser.T__3:
-                case algol60Parser.T__13:
-                case algol60Parser.T__14:
-                case algol60Parser.T__15:
-                case algol60Parser.T__16:
-                case algol60Parser.T__46:
-                case algol60Parser.T__47:
-                case algol60Parser.T__50:
-                case algol60Parser.T__51:
-                case algol60Parser.T__52:
-                case algol60Parser.ARITHMETIC_OPERATOR:
-                case algol60Parser.RELATIONAL_OPERATOR:
-                case algol60Parser.LOGICAL_OPERATOR:
-                case algol60Parser.SEQUENTIAL_OPERATOR:
-                case algol60Parser.SEPARATOR:
-                case algol60Parser.DECLARATOR:
-                    this.enterOuterAlt(_localctx, 4);
-                    {
-                        this.state = 718;
-                        this.delimiter();
-                    }
-                    break;
-                default:
-                    throw new NoViableAltException_1.NoViableAltException(this);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.logical_value = function () {
-        var _localctx = new Logical_valueContext(this._ctx, this.state);
-        this.enterRule(_localctx, 170, algol60Parser.RULE_logical_value);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 721;
-                _la = this._input.LA(1);
-                if (!(_la === algol60Parser.T__48 || _la === algol60Parser.T__49)) {
-                    this._errHandler.recoverInline(this);
-                }
-                else {
-                    if (this._input.LA(1) === Token_1.Token.EOF) {
-                        this.matchedEOF = true;
-                    }
-                    this._errHandler.reportMatch(this);
-                    this.consume();
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.delimiter = function () {
-        var _localctx = new DelimiterContext(this._ctx, this.state);
-        this.enterRule(_localctx, 172, algol60Parser.RULE_delimiter);
-        try {
-            this.state = 728;
-            this._errHandler.sync(this);
-            switch (this._input.LA(1)) {
-                case algol60Parser.ARITHMETIC_OPERATOR:
-                case algol60Parser.RELATIONAL_OPERATOR:
-                case algol60Parser.LOGICAL_OPERATOR:
-                case algol60Parser.SEQUENTIAL_OPERATOR:
-                    this.enterOuterAlt(_localctx, 1);
-                    {
-                        this.state = 723;
-                        this.operator();
-                    }
-                    break;
-                case algol60Parser.SEPARATOR:
-                    this.enterOuterAlt(_localctx, 2);
-                    {
-                        this.state = 724;
-                        this.match(algol60Parser.SEPARATOR);
-                    }
-                    break;
-                case algol60Parser.T__1:
-                case algol60Parser.T__3:
-                case algol60Parser.T__13:
-                case algol60Parser.T__14:
-                case algol60Parser.T__46:
-                case algol60Parser.T__47:
-                case algol60Parser.T__50:
-                case algol60Parser.T__51:
-                    this.enterOuterAlt(_localctx, 3);
-                    {
-                        this.state = 725;
-                        this.bracket();
-                    }
-                    break;
-                case algol60Parser.DECLARATOR:
-                    this.enterOuterAlt(_localctx, 4);
-                    {
-                        this.state = 726;
-                        this.match(algol60Parser.DECLARATOR);
-                    }
-                    break;
-                case algol60Parser.T__15:
-                case algol60Parser.T__16:
-                case algol60Parser.T__52:
-                    this.enterOuterAlt(_localctx, 5);
-                    {
-                        this.state = 727;
-                        this.specificator();
-                    }
-                    break;
-                default:
-                    throw new NoViableAltException_1.NoViableAltException(this);
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.operator = function () {
-        var _localctx = new OperatorContext(this._ctx, this.state);
-        this.enterRule(_localctx, 174, algol60Parser.RULE_operator);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 730;
-                _la = this._input.LA(1);
-                if (!(((((_la - 57)) & ~0x1F) === 0 && ((1 << (_la - 57)) & ((1 << (algol60Parser.ARITHMETIC_OPERATOR - 57)) | (1 << (algol60Parser.RELATIONAL_OPERATOR - 57)) | (1 << (algol60Parser.LOGICAL_OPERATOR - 57)) | (1 << (algol60Parser.SEQUENTIAL_OPERATOR - 57)))) !== 0))) {
-                    this._errHandler.recoverInline(this);
-                }
-                else {
-                    if (this._input.LA(1) === Token_1.Token.EOF) {
-                        this.matchedEOF = true;
-                    }
-                    this._errHandler.reportMatch(this);
-                    this.consume();
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.bracket = function () {
-        var _localctx = new BracketContext(this._ctx, this.state);
-        this.enterRule(_localctx, 176, algol60Parser.RULE_bracket);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 732;
-                _la = this._input.LA(1);
-                if (!((((_la) & ~0x1F) === 0 && ((1 << _la) & ((1 << algol60Parser.T__1) | (1 << algol60Parser.T__3) | (1 << algol60Parser.T__13) | (1 << algol60Parser.T__14))) !== 0) || ((((_la - 47)) & ~0x1F) === 0 && ((1 << (_la - 47)) & ((1 << (algol60Parser.T__46 - 47)) | (1 << (algol60Parser.T__47 - 47)) | (1 << (algol60Parser.T__50 - 47)) | (1 << (algol60Parser.T__51 - 47)))) !== 0))) {
-                    this._errHandler.recoverInline(this);
-                }
-                else {
-                    if (this._input.LA(1) === Token_1.Token.EOF) {
-                        this.matchedEOF = true;
-                    }
-                    this._errHandler.reportMatch(this);
-                    this.consume();
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    // @RuleVersion(0)
-    algol60Parser.prototype.specificator = function () {
-        var _localctx = new SpecificatorContext(this._ctx, this.state);
-        this.enterRule(_localctx, 178, algol60Parser.RULE_specificator);
-        var _la;
-        try {
-            this.enterOuterAlt(_localctx, 1);
-            {
-                this.state = 734;
-                _la = this._input.LA(1);
-                if (!(_la === algol60Parser.T__15 || _la === algol60Parser.T__16 || _la === algol60Parser.T__52)) {
-                    this._errHandler.recoverInline(this);
-                }
-                else {
-                    if (this._input.LA(1) === Token_1.Token.EOF) {
-                        this.matchedEOF = true;
-                    }
-                    this._errHandler.reportMatch(this);
-                    this.consume();
-                }
-            }
-        }
-        catch (re) {
-            if (re instanceof RecognitionException_1.RecognitionException) {
-                _localctx.exception = re;
-                this._errHandler.reportError(this, re);
-                this._errHandler.recover(this, re);
-            }
-            else {
-                throw re;
-            }
-        }
-        finally {
-            this.exitRule();
-        }
-        return _localctx;
-    };
-    algol60Parser.prototype.sempred = function (_localctx, ruleIndex, predIndex) {
-        switch (ruleIndex) {
-            case 55:
-                return this.arithmetic_expression_sempred(_localctx, predIndex);
-            case 70:
-                return this.boolean_expression_sempred(_localctx, predIndex);
-        }
-        return true;
-    };
-    algol60Parser.prototype.arithmetic_expression_sempred = function (_localctx, predIndex) {
-        switch (predIndex) {
-            case 0:
-                return this.precpred(this._ctx, 1);
-        }
-        return true;
-    };
-    algol60Parser.prototype.boolean_expression_sempred = function (_localctx, predIndex) {
-        switch (predIndex) {
-            case 1:
-                return this.precpred(this._ctx, 10);
-            case 2:
-                return this.precpred(this._ctx, 9);
-            case 3:
-                return this.precpred(this._ctx, 8);
-            case 4:
-                return this.precpred(this._ctx, 7);
-        }
-        return true;
-    };
-    Object.defineProperty(algol60Parser, "_ATN", {
-        get: function () {
-            if (!algol60Parser.__ATN) {
-                algol60Parser.__ATN = new ATNDeserializer_1.ATNDeserializer().deserialize(Utils.toCharArray(algol60Parser._serializedATN));
-            }
-            return algol60Parser.__ATN;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    algol60Parser.T__0 = 1;
-    algol60Parser.T__1 = 2;
-    algol60Parser.T__2 = 3;
-    algol60Parser.T__3 = 4;
-    algol60Parser.T__4 = 5;
-    algol60Parser.T__5 = 6;
-    algol60Parser.T__6 = 7;
-    algol60Parser.T__7 = 8;
-    algol60Parser.T__8 = 9;
-    algol60Parser.T__9 = 10;
-    algol60Parser.T__10 = 11;
-    algol60Parser.T__11 = 12;
-    algol60Parser.T__12 = 13;
-    algol60Parser.T__13 = 14;
-    algol60Parser.T__14 = 15;
-    algol60Parser.T__15 = 16;
-    algol60Parser.T__16 = 17;
-    algol60Parser.T__17 = 18;
-    algol60Parser.T__18 = 19;
-    algol60Parser.T__19 = 20;
-    algol60Parser.T__20 = 21;
-    algol60Parser.T__21 = 22;
-    algol60Parser.T__22 = 23;
-    algol60Parser.T__23 = 24;
-    algol60Parser.T__24 = 25;
-    algol60Parser.T__25 = 26;
-    algol60Parser.T__26 = 27;
-    algol60Parser.T__27 = 28;
-    algol60Parser.T__28 = 29;
-    algol60Parser.T__29 = 30;
-    algol60Parser.T__30 = 31;
-    algol60Parser.T__31 = 32;
-    algol60Parser.T__32 = 33;
-    algol60Parser.T__33 = 34;
-    algol60Parser.T__34 = 35;
-    algol60Parser.T__35 = 36;
-    algol60Parser.T__36 = 37;
-    algol60Parser.T__37 = 38;
-    algol60Parser.T__38 = 39;
-    algol60Parser.T__39 = 40;
-    algol60Parser.T__40 = 41;
-    algol60Parser.T__41 = 42;
-    algol60Parser.T__42 = 43;
-    algol60Parser.T__43 = 44;
-    algol60Parser.T__44 = 45;
-    algol60Parser.T__45 = 46;
-    algol60Parser.T__46 = 47;
-    algol60Parser.T__47 = 48;
-    algol60Parser.T__48 = 49;
-    algol60Parser.T__49 = 50;
-    algol60Parser.T__50 = 51;
-    algol60Parser.T__51 = 52;
-    algol60Parser.T__52 = 53;
-    algol60Parser.STRING = 54;
-    algol60Parser.LETTER = 55;
-    algol60Parser.DIGIT = 56;
-    algol60Parser.ARITHMETIC_OPERATOR = 57;
-    algol60Parser.RELATIONAL_OPERATOR = 58;
-    algol60Parser.LOGICAL_OPERATOR = 59;
-    algol60Parser.SEQUENTIAL_OPERATOR = 60;
-    algol60Parser.SEPARATOR = 61;
-    algol60Parser.DECLARATOR = 62;
-    algol60Parser.WS = 63;
-    algol60Parser.RULE_program = 0;
-    algol60Parser.RULE_block = 1;
-    algol60Parser.RULE_block_head = 2;
-    algol60Parser.RULE_compound_statement = 3;
-    algol60Parser.RULE_compound_tail = 4;
-    algol60Parser.RULE_declaration = 5;
-    algol60Parser.RULE_type_declaration = 6;
-    algol60Parser.RULE_local_or_own_type = 7;
-    algol60Parser.RULE_type = 8;
-    algol60Parser.RULE_type_list = 9;
-    algol60Parser.RULE_array_declaration = 10;
-    algol60Parser.RULE_array_list = 11;
-    algol60Parser.RULE_array_segment = 12;
-    algol60Parser.RULE_array_identifier = 13;
-    algol60Parser.RULE_bound_pair_list = 14;
-    algol60Parser.RULE_bound_pair = 15;
-    algol60Parser.RULE_upper_bound = 16;
-    algol60Parser.RULE_lower_bound = 17;
-    algol60Parser.RULE_switch_declaration = 18;
-    algol60Parser.RULE_switch_identifier = 19;
-    algol60Parser.RULE_switch_list = 20;
-    algol60Parser.RULE_procedure_declaration = 21;
-    algol60Parser.RULE_procedure_heading = 22;
-    algol60Parser.RULE_procedure_identifier = 23;
-    algol60Parser.RULE_formal_parameter_part = 24;
-    algol60Parser.RULE_formal_parameter_list = 25;
-    algol60Parser.RULE_formal_parameter = 26;
-    algol60Parser.RULE_value_part = 27;
-    algol60Parser.RULE_specification_part = 28;
-    algol60Parser.RULE_specifier = 29;
-    algol60Parser.RULE_identifier_list = 30;
-    algol60Parser.RULE_procedure_body = 31;
-    algol60Parser.RULE_statement = 32;
-    algol60Parser.RULE_unconditional_statement = 33;
-    algol60Parser.RULE_basic_statement = 34;
-    algol60Parser.RULE_label = 35;
-    algol60Parser.RULE_unlabelled_basic_statement = 36;
-    algol60Parser.RULE_assignment_statement = 37;
-    algol60Parser.RULE_left_part_list = 38;
-    algol60Parser.RULE_left_part = 39;
-    algol60Parser.RULE_go_to_statement = 40;
-    algol60Parser.RULE_designational_expression = 41;
-    algol60Parser.RULE_switch_designator = 42;
-    algol60Parser.RULE_procedure_statement = 43;
-    algol60Parser.RULE_actual_parameter_part = 44;
-    algol60Parser.RULE_actual_parameter_list = 45;
-    algol60Parser.RULE_parameter_delimiter = 46;
-    algol60Parser.RULE_actual_parameter = 47;
-    algol60Parser.RULE_conditional_statement = 48;
-    algol60Parser.RULE_if_statement = 49;
-    algol60Parser.RULE_if_clause = 50;
-    algol60Parser.RULE_for_statement = 51;
-    algol60Parser.RULE_for_clause = 52;
-    algol60Parser.RULE_for_list = 53;
-    algol60Parser.RULE_for_list_element = 54;
-    algol60Parser.RULE_arithmetic_expression = 55;
-    algol60Parser.RULE_expression = 56;
-    algol60Parser.RULE_arithmetic_expression2 = 57;
-    algol60Parser.RULE_simple_arithmetic_expression = 58;
-    algol60Parser.RULE_adding_operator = 59;
-    algol60Parser.RULE_term = 60;
-    algol60Parser.RULE_multiplying_operator = 61;
-    algol60Parser.RULE_factor = 62;
-    algol60Parser.RULE_primary = 63;
-    algol60Parser.RULE_unsigned_number = 64;
-    algol60Parser.RULE_decimal_number = 65;
-    algol60Parser.RULE_unsigned_integer = 66;
-    algol60Parser.RULE_decimal_fraction = 67;
-    algol60Parser.RULE_exponential_part = 68;
-    algol60Parser.RULE_integer = 69;
-    algol60Parser.RULE_boolean_expression = 70;
-    algol60Parser.RULE_relation = 71;
-    algol60Parser.RULE_relational_operator = 72;
-    algol60Parser.RULE_function_designator = 73;
-    algol60Parser.RULE_variable = 74;
-    algol60Parser.RULE_simple_variable = 75;
-    algol60Parser.RULE_variable_identifier = 76;
-    algol60Parser.RULE_subscripted_variable = 77;
-    algol60Parser.RULE_subscript_list = 78;
-    algol60Parser.RULE_subscript_expression = 79;
-    algol60Parser.RULE_open_string = 80;
-    algol60Parser.RULE_proper_string = 81;
-    algol60Parser.RULE_letter_string = 82;
-    algol60Parser.RULE_identifier = 83;
-    algol60Parser.RULE_basic_symbol = 84;
-    algol60Parser.RULE_logical_value = 85;
-    algol60Parser.RULE_delimiter = 86;
-    algol60Parser.RULE_operator = 87;
-    algol60Parser.RULE_bracket = 88;
-    algol60Parser.RULE_specificator = 89;
-    // tslint:disable:no-trailing-whitespace
-    algol60Parser.ruleNames = [
-        "program", "block", "block_head", "compound_statement", "compound_tail",
-        "declaration", "type_declaration", "local_or_own_type", "type", "type_list",
-        "array_declaration", "array_list", "array_segment", "array_identifier",
-        "bound_pair_list", "bound_pair", "upper_bound", "lower_bound", "switch_declaration",
-        "switch_identifier", "switch_list", "procedure_declaration", "procedure_heading",
-        "procedure_identifier", "formal_parameter_part", "formal_parameter_list",
-        "formal_parameter", "value_part", "specification_part", "specifier", "identifier_list",
-        "procedure_body", "statement", "unconditional_statement", "basic_statement",
-        "label", "unlabelled_basic_statement", "assignment_statement", "left_part_list",
-        "left_part", "go_to_statement", "designational_expression", "switch_designator",
-        "procedure_statement", "actual_parameter_part", "actual_parameter_list",
-        "parameter_delimiter", "actual_parameter", "conditional_statement", "if_statement",
-        "if_clause", "for_statement", "for_clause", "for_list", "for_list_element",
-        "arithmetic_expression", "expression", "arithmetic_expression2", "simple_arithmetic_expression",
-        "adding_operator", "term", "multiplying_operator", "factor", "primary",
-        "unsigned_number", "decimal_number", "unsigned_integer", "decimal_fraction",
-        "exponential_part", "integer", "boolean_expression", "relation", "relational_operator",
-        "function_designator", "variable", "simple_variable", "variable_identifier",
-        "subscripted_variable", "subscript_list", "subscript_expression", "open_string",
-        "proper_string", "letter_string", "identifier", "basic_symbol", "logical_value",
-        "delimiter", "operator", "bracket", "specificator",
-    ];
-    algol60Parser._LITERAL_NAMES = [
-        undefined, "':'", "'begin'", "';'", "'end'", "'own'", "'real'", "'integer'",
-        "'boolean'", "','", "'array'", "'switch'", "':='", "'procedure'", "'('",
-        "')'", "'value'", "'label'", "'goto'", "'else'", "'if'", "'then'", "'for'",
-        "'do'", "'step'", "'until'", "'while'", "'+'", "' \u2013'", "'\u00D7'",
-        "'/'", "'\u00F7'", "'\u2191'", "'.'", "'10'", "'\u2013'", "'\u2263'",
-        "'\u2283'", "'\u22C1'", "'\u22C0'", "'\u00AC'", "'<'", "'\u2264'", "'='",
-        "'\u2260'", "'>'", "'\u2265'", "'['", "']'", "'true'", "'false'", "'`'",
-        "'''", "'string'",
-    ];
-    algol60Parser._SYMBOLIC_NAMES = [
-        undefined, undefined, undefined, undefined, undefined, undefined, undefined,
-        undefined, undefined, undefined, undefined, undefined, undefined, undefined,
-        undefined, undefined, undefined, undefined, undefined, undefined, undefined,
-        undefined, undefined, undefined, undefined, undefined, undefined, undefined,
-        undefined, undefined, undefined, undefined, undefined, undefined, undefined,
-        undefined, undefined, undefined, undefined, undefined, undefined, undefined,
-        undefined, undefined, undefined, undefined, undefined, undefined, undefined,
-        undefined, undefined, undefined, undefined, undefined, "STRING", "LETTER",
-        "DIGIT", "ARITHMETIC_OPERATOR", "RELATIONAL_OPERATOR", "LOGICAL_OPERATOR",
-        "SEQUENTIAL_OPERATOR", "SEPARATOR", "DECLARATOR", "WS",
-    ];
-    algol60Parser.VOCABULARY = new VocabularyImpl_1.VocabularyImpl(algol60Parser._LITERAL_NAMES, algol60Parser._SYMBOLIC_NAMES, []);
-    algol60Parser._serializedATNSegments = 2;
-    algol60Parser._serializedATNSegment0 = "\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03A\u02E3\x04\x02" +
-        "\t\x02\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04\x07" +
-        "\t\x07\x04\b\t\b\x04\t\t\t\x04\n\t\n\x04\v\t\v\x04\f\t\f\x04\r\t\r\x04" +
-        "\x0E\t\x0E\x04\x0F\t\x0F\x04\x10\t\x10\x04\x11\t\x11\x04\x12\t\x12\x04" +
-        "\x13\t\x13\x04\x14\t\x14\x04\x15\t\x15\x04\x16\t\x16\x04\x17\t\x17\x04" +
-        "\x18\t\x18\x04\x19\t\x19\x04\x1A\t\x1A\x04\x1B\t\x1B\x04\x1C\t\x1C\x04" +
-        "\x1D\t\x1D\x04\x1E\t\x1E\x04\x1F\t\x1F\x04 \t \x04!\t!\x04\"\t\"\x04#" +
-        "\t#\x04$\t$\x04%\t%\x04&\t&\x04\'\t\'\x04(\t(\x04)\t)\x04*\t*\x04+\t+" +
-        "\x04,\t,\x04-\t-\x04.\t.\x04/\t/\x040\t0\x041\t1\x042\t2\x043\t3\x044" +
-        "\t4\x045\t5\x046\t6\x047\t7\x048\t8\x049\t9\x04:\t:\x04;\t;\x04<\t<\x04" +
-        "=\t=\x04>\t>\x04?\t?\x04@\t@\x04A\tA\x04B\tB\x04C\tC\x04D\tD\x04E\tE\x04" +
-        "F\tF\x04G\tG\x04H\tH\x04I\tI\x04J\tJ\x04K\tK\x04L\tL\x04M\tM\x04N\tN\x04" +
-        "O\tO\x04P\tP\x04Q\tQ\x04R\tR\x04S\tS\x04T\tT\x04U\tU\x04V\tV\x04W\tW\x04" +
-        "X\tX\x04Y\tY\x04Z\tZ\x04[\t[\x03\x02\x03\x02\x05\x02\xB9\n\x02\x03\x02" +
-        "\x03\x02\x03\x03\x03\x03\x03\x03\x05\x03\xC0\n\x03\x03\x03\x03\x03\x03" +
-        "\x03\x03\x04\x03\x04\x03\x04\x03\x04\x06\x04\xC9\n\x04\r\x04\x0E\x04\xCA" +
-        "\x03\x05\x03\x05\x03\x05\x05\x05\xD0\n\x05\x03\x05\x03\x05\x03\x05\x03" +
-        "\x06\x03\x06\x03\x06\x07\x06\xD8\n\x06\f\x06\x0E\x06\xDB\v\x06\x03\x06" +
-        "\x03\x06\x03\x06\x03\x07\x03\x07\x03\x07\x03\x07\x05\x07\xE4\n\x07\x03" +
-        "\b\x03\b\x03\b\x03\t\x05\t\xEA\n\t\x03\t\x03\t\x03\n\x03\n\x03\v\x03\v" +
-        "\x03\v\x07\v\xF3\n\v\f\v\x0E\v\xF6\v\v\x03\f\x05\f\xF9\n\f\x03\f\x03\f" +
-        "\x03\f\x03\r\x03\r\x03\r\x07\r\u0101\n\r\f\r\x0E\r\u0104\v\r\x03\x0E\x03" +
-        "\x0E\x03\x0E\x07\x0E\u0109\n\x0E\f\x0E\x0E\x0E\u010C\v\x0E\x03\x0E\x03" +
-        "\x0E\x03\x0E\x03\x0F\x03\x0F\x03\x10\x03\x10\x03\x10\x07\x10\u0116\n\x10" +
-        "\f\x10\x0E\x10\u0119\v\x10\x03\x11\x03\x11\x03\x11\x03\x11\x03\x12\x03" +
-        "\x12\x03\x13\x03\x13\x03\x14\x03\x14\x03\x14\x03\x14\x03\x14\x03\x15\x03" +
-        "\x15\x03\x16\x03\x16\x03\x16\x07\x16\u012D\n\x16\f\x16\x0E\x16\u0130\v" +
-        "\x16\x03\x17\x05\x17\u0133\n\x17\x03\x17\x03\x17\x03\x17\x03\x17\x03\x18" +
-        "\x03\x18\x05\x18\u013B\n\x18\x03\x18\x03\x18\x05\x18\u013F\n\x18\x03\x18" +
-        "\x05\x18\u0142\n\x18\x03\x19\x03\x19\x03\x1A\x03\x1A\x03\x1B\x03\x1B\x03" +
-        "\x1B\x03\x1B\x03\x1B\x07\x1B\u014D\n\x1B\f\x1B\x0E\x1B\u0150\v\x1B\x03" +
-        "\x1B\x03\x1B\x03\x1C\x03\x1C\x03\x1D\x03\x1D\x03\x1D\x03\x1D\x03\x1E\x03" +
-        "\x1E\x03\x1E\x03\x1E\x03\x1E\x03\x1E\x07\x1E\u0160\n\x1E\f\x1E\x0E\x1E" +
-        "\u0163\v\x1E\x03\x1F\x03\x1F\x03\x1F\x05\x1F\u0168\n\x1F\x03\x1F\x03\x1F" +
-        "\x03\x1F\x03\x1F\x05\x1F\u016E\n\x1F\x03\x1F\x05\x1F\u0171\n\x1F\x03 " +
-        "\x03 \x03 \x07 \u0176\n \f \x0E \u0179\v \x03!\x03!\x03\"\x03\"\x03\"" +
-        "\x05\"\u0180\n\"\x03#\x03#\x03#\x05#\u0185\n#\x03$\x03$\x03$\x07$\u018A" +
-        "\n$\f$\x0E$\u018D\v$\x03$\x05$\u0190\n$\x03%\x03%\x05%\u0194\n%\x03&\x03" +
-        "&\x03&\x05&\u0199\n&\x03\'\x03\'\x03\'\x05\'\u019E\n\'\x03(\x06(\u01A1" +
-        "\n(\r(\x0E(\u01A2\x03)\x03)\x05)\u01A7\n)\x03)\x03)\x03*\x03*\x03*\x03" +
-        "+\x03+\x03+\x03+\x03+\x03+\x03+\x05+\u01B5\n+\x03,\x03,\x05,\u01B9\n," +
-        "\x03-\x03-\x05-\u01BD\n-\x03.\x03.\x03/\x03/\x03/\x03/\x07/\u01C5\n/\f" +
-        "/\x0E/\u01C8\v/\x030\x030\x030\x030\x030\x030\x050\u01D0\n0\x031\x031" +
-        "\x031\x031\x031\x051\u01D7\n1\x032\x032\x032\x072\u01DC\n2\f2\x0E2\u01DF" +
-        "\v2\x032\x032\x032\x052\u01E4\n2\x032\x032\x032\x052\u01E9\n2\x033\x03" +
-        "3\x033\x034\x034\x034\x034\x035\x035\x035\x075\u01F5\n5\f5\x0E5\u01F8" +
-        "\v5\x035\x035\x035\x036\x036\x036\x036\x036\x036\x037\x037\x037\x077\u0206" +
-        "\n7\f7\x0E7\u0209\v7\x038\x058\u020C\n8\x039\x039\x039\x039\x039\x039" +
-        "\x039\x039\x039\x079\u0217\n9\f9\x0E9\u021A\v9\x03:\x03:\x03:\x05:\u021F" +
-        "\n:\x03;\x03;\x03;\x03;\x03;\x03;\x05;\u0227\n;\x03<\x05<\u022A\n<\x03" +
-        "<\x03<\x03<\x03<\x07<\u0230\n<\f<\x0E<\u0233\v<\x03=\x03=\x03>\x03>\x03" +
-        ">\x03>\x07>\u023B\n>\f>\x0E>\u023E\v>\x03?\x03?\x03@\x03@\x03@\x07@\u0245" +
-        "\n@\f@\x0E@\u0248\v@\x03A\x03A\x03A\x03A\x03A\x03A\x03A\x05A\u0251\nA" +
-        "\x03B\x03B\x03B\x03B\x03B\x05B\u0258\nB\x03C\x03C\x03C\x03C\x03C\x05C" +
-        "\u025F\nC\x03D\x06D\u0262\nD\rD\x0ED\u0263\x03E\x03E\x03E\x03F\x03F\x03" +
-        "F\x03G\x05G\u026D\nG\x03G\x03G\x03H\x03H\x03H\x03H\x03H\x03H\x03H\x03" +
-        "H\x03H\x03H\x03H\x03H\x03H\x03H\x03H\x03H\x05H\u0281\nH\x03H\x03H\x03" +
-        "H\x03H\x03H\x03H\x03H\x03H\x03H\x03H\x03H\x03H\x07H\u028F\nH\fH\x0EH\u0292" +
-        "\vH\x03I\x03I\x03I\x03I\x03J\x03J\x03K\x03K\x03K\x03L\x03L\x05L\u029F" +
-        "\nL\x03M\x03M\x03N\x03N\x03O\x03O\x03O\x03O\x03O\x03P\x03P\x03P\x07P\u02AD" +
-        "\nP\fP\x0EP\u02B0\vP\x03Q\x03Q\x03R\x05R\u02B5\nR\x03R\x03R\x05R\u02B9" +
-        "\nR\x03R\x06R\u02BC\nR\rR\x0ER\u02BD\x03S\x03S\x03T\x06T\u02C3\nT\rT\x0E" +
-        "T\u02C4\x03U\x03U\x07U\u02C9\nU\fU\x0EU\u02CC\vU\x03V\x03V\x03V\x03V\x05" +
-        "V\u02D2\nV\x03W\x03W\x03X\x03X\x03X\x03X\x03X\x05X\u02DB\nX\x03Y\x03Y" +
-        "\x03Z\x03Z\x03[\x03[\x03[\x02\x02\x04p\x8E\\\x02\x02\x04\x02\x06\x02\b" +
-        "\x02\n\x02\f\x02\x0E\x02\x10\x02\x12\x02\x14\x02\x16\x02\x18\x02\x1A\x02" +
-        "\x1C\x02\x1E\x02 \x02\"\x02$\x02&\x02(\x02*\x02,\x02.\x020\x022\x024\x02" +
-        "6\x028\x02:\x02<\x02>\x02@\x02B\x02D\x02F\x02H\x02J\x02L\x02N\x02P\x02" +
-        "R\x02T\x02V\x02X\x02Z\x02\\\x02^\x02`\x02b\x02d\x02f\x02h\x02j\x02l\x02" +
-        "n\x02p\x02r\x02t\x02v\x02x\x02z\x02|\x02~\x02\x80\x02\x82\x02\x84\x02" +
-        "\x86\x02\x88\x02\x8A\x02\x8C\x02\x8E\x02\x90\x02\x92\x02\x94\x02\x96\x02" +
-        "\x98\x02\x9A\x02\x9C\x02\x9E\x02\xA0\x02\xA2\x02\xA4\x02\xA6\x02\xA8\x02" +
-        "\xAA\x02\xAC\x02\xAE\x02\xB0\x02\xB2\x02\xB4\x02\x02\f\x03\x02\b\n\x03" +
-        "\x02\x1D\x1E\x03\x02\x1F!\x04\x02\x1D\x1D%%\x03\x02+0\x03\x029:\x03\x02" +
-        "34\x03\x02;>\x07\x02\x04\x04\x06\x06\x10\x111256\x04\x02\x12\x1377\x02" +
-        "\u02EA\x02\xB8\x03\x02\x02\x02\x04\xBF\x03\x02\x02\x02\x06\xC4\x03\x02" +
-        "\x02\x02\b\xCF\x03\x02\x02\x02\n\xD9\x03\x02\x02\x02\f\xE3\x03\x02\x02" +
-        "\x02\x0E\xE5\x03\x02\x02\x02\x10\xE9\x03\x02\x02\x02\x12\xED\x03\x02\x02" +
-        "\x02\x14\xEF\x03\x02\x02\x02\x16\xF8\x03\x02\x02\x02\x18\xFD\x03\x02\x02" +
-        "\x02\x1A\u010A\x03\x02\x02\x02\x1C\u0110\x03\x02\x02\x02\x1E\u0112\x03" +
-        "\x02\x02\x02 \u011A\x03\x02\x02\x02\"\u011E\x03\x02\x02\x02$\u0120\x03" +
-        "\x02\x02\x02&\u0122\x03\x02\x02\x02(\u0127\x03\x02\x02\x02*\u0129\x03" +
-        "\x02\x02\x02,\u0132\x03\x02\x02\x02.\u0138\x03\x02\x02\x020\u0143\x03" +
-        "\x02\x02\x022\u0145\x03\x02\x02\x024\u0147\x03\x02\x02\x026\u0153\x03" +
-        "\x02\x02\x028\u0155\x03\x02\x02\x02:\u0159\x03\x02\x02\x02<\u0170\x03" +
-        "\x02\x02\x02>\u0172\x03\x02\x02\x02@\u017A\x03\x02\x02\x02B\u017F\x03" +
-        "\x02\x02\x02D\u0184\x03\x02\x02\x02F\u018B\x03\x02\x02\x02H\u0193\x03" +
-        "\x02\x02\x02J\u0198\x03\x02\x02\x02L\u019A\x03\x02\x02\x02N\u01A0\x03" +
-        "\x02\x02\x02P\u01A6\x03\x02\x02\x02R\u01AA\x03\x02\x02\x02T\u01B4\x03" +
-        "\x02\x02\x02V\u01B6\x03\x02\x02\x02X\u01BA\x03\x02\x02\x02Z\u01BE\x03" +
-        "\x02\x02\x02\\\u01C0\x03\x02\x02\x02^\u01CF\x03\x02\x02\x02`\u01D6\x03" +
-        "\x02\x02\x02b\u01DD\x03\x02\x02\x02d\u01EA\x03\x02\x02\x02f\u01ED\x03" +
-        "\x02\x02\x02h\u01F6\x03\x02\x02\x02j\u01FC\x03\x02\x02\x02l\u0202\x03" +
-        "\x02\x02\x02n\u020B\x03\x02\x02\x02p\u020D\x03\x02\x02\x02r\u021E\x03" +
-        "\x02\x02\x02t\u0226\x03\x02\x02\x02v\u0229\x03\x02\x02\x02x\u0234\x03" +
-        "\x02\x02\x02z\u0236\x03\x02\x02\x02|\u023F\x03\x02\x02\x02~\u0241\x03" +
-        "\x02\x02\x02\x80\u0250\x03\x02\x02\x02\x82\u0257\x03\x02\x02\x02\x84\u025E" +
-        "\x03\x02\x02\x02\x86\u0261\x03\x02\x02\x02\x88\u0265\x03\x02\x02\x02\x8A" +
-        "\u0268\x03\x02\x02\x02\x8C\u026C\x03\x02\x02\x02\x8E\u0280\x03\x02\x02" +
-        "\x02\x90\u0293\x03\x02\x02\x02\x92\u0297\x03\x02\x02\x02\x94\u0299\x03" +
-        "\x02\x02\x02\x96\u029E\x03\x02\x02\x02\x98\u02A0\x03\x02\x02\x02\x9A\u02A2" +
-        "\x03\x02\x02\x02\x9C\u02A4\x03\x02\x02\x02\x9E\u02A9\x03\x02\x02\x02\xA0" +
-        "\u02B1\x03\x02\x02\x02\xA2\u02B4\x03\x02\x02\x02\xA4\u02BF\x03\x02\x02" +
-        "\x02\xA6\u02C2\x03\x02\x02\x02\xA8\u02C6\x03\x02\x02\x02\xAA\u02D1\x03" +
-        "\x02\x02\x02\xAC\u02D3\x03\x02\x02\x02\xAE\u02DA\x03\x02\x02\x02\xB0\u02DC" +
-        "\x03\x02\x02\x02\xB2\u02DE\x03\x02\x02\x02\xB4\u02E0\x03\x02\x02\x02\xB6" +
-        "\xB9\x05\x04\x03\x02\xB7\xB9\x05\b\x05\x02\xB8\xB6\x03\x02\x02\x02\xB8" +
-        "\xB7\x03\x02\x02\x02\xB9\xBA\x03\x02\x02\x02\xBA\xBB\x07\x02\x02\x03\xBB" +
-        "\x03\x03\x02\x02\x02\xBC\xBD\x05H%\x02\xBD\xBE\x07\x03\x02\x02\xBE\xC0" +
-        "\x03\x02\x02\x02\xBF\xBC\x03\x02\x02\x02\xBF\xC0\x03\x02\x02\x02\xC0\xC1" +
-        "\x03\x02\x02\x02\xC1\xC2\x05\x06\x04\x02\xC2\xC3\x05\n\x06\x02\xC3\x05" +
-        "\x03\x02\x02\x02\xC4\xC8\x07\x04\x02\x02\xC5\xC6\x05\f\x07\x02\xC6\xC7" +
-        "\x07\x05\x02\x02\xC7\xC9\x03\x02\x02\x02\xC8\xC5\x03\x02\x02\x02\xC9\xCA" +
-        "\x03\x02\x02\x02\xCA\xC8\x03\x02\x02\x02\xCA\xCB\x03\x02\x02\x02\xCB\x07" +
-        "\x03\x02\x02\x02\xCC\xCD\x05H%\x02\xCD\xCE\x07\x03\x02\x02\xCE\xD0\x03" +
-        "\x02\x02\x02\xCF\xCC\x03\x02\x02\x02\xCF\xD0\x03\x02\x02\x02\xD0\xD1\x03" +
-        "\x02\x02\x02\xD1\xD2\x07\x04\x02\x02\xD2\xD3\x05\n\x06\x02\xD3\t\x03\x02" +
-        "\x02\x02\xD4\xD5\x05B\"\x02\xD5\xD6\x07\x05\x02\x02\xD6\xD8\x03\x02\x02" +
-        "\x02\xD7\xD4\x03\x02\x02\x02\xD8\xDB\x03\x02\x02\x02\xD9\xD7\x03\x02\x02" +
-        "\x02\xD9\xDA\x03\x02\x02\x02\xDA\xDC\x03\x02\x02\x02\xDB\xD9\x03\x02\x02" +
-        "\x02\xDC\xDD\x05B\"\x02\xDD\xDE\x07\x06\x02\x02\xDE\v\x03\x02\x02\x02" +
-        "\xDF\xE4\x05\x0E\b\x02\xE0\xE4\x05\x16\f\x02\xE1\xE4\x05&\x14\x02\xE2" +
-        "\xE4\x05,\x17\x02\xE3\xDF\x03\x02\x02\x02\xE3\xE0\x03\x02\x02\x02\xE3" +
-        "\xE1\x03\x02\x02\x02\xE3\xE2\x03\x02\x02\x02\xE4\r\x03\x02\x02\x02\xE5" +
-        "\xE6\x05\x10\t\x02\xE6\xE7\x05\x14\v\x02\xE7\x0F\x03\x02\x02\x02\xE8\xEA" +
-        "\x07\x07\x02\x02\xE9\xE8\x03\x02\x02\x02\xE9\xEA\x03\x02\x02\x02\xEA\xEB" +
-        "\x03\x02\x02\x02\xEB\xEC\x05\x12\n\x02\xEC\x11\x03\x02\x02\x02\xED\xEE" +
-        "\t\x02\x02\x02\xEE\x13\x03\x02\x02\x02\xEF\xF4\x05\x98M\x02\xF0\xF1\x07" +
-        "\v\x02\x02\xF1\xF3\x05\x98M\x02\xF2\xF0\x03\x02\x02\x02\xF3\xF6\x03\x02" +
-        "\x02\x02\xF4\xF2\x03\x02\x02\x02\xF4\xF5\x03\x02\x02\x02\xF5\x15\x03\x02" +
-        "\x02\x02\xF6\xF4\x03\x02\x02\x02\xF7\xF9\x05\x10\t\x02\xF8\xF7\x03\x02" +
-        "\x02\x02\xF8\xF9\x03\x02\x02\x02\xF9\xFA\x03\x02\x02\x02\xFA\xFB\x07\f" +
-        "\x02\x02\xFB\xFC\x05\x18\r\x02\xFC\x17\x03\x02\x02\x02\xFD\u0102\x05\x1A" +
-        "\x0E\x02\xFE\xFF\x07\v\x02\x02\xFF\u0101\x05\x1A\x0E\x02\u0100\xFE\x03" +
-        "\x02\x02\x02\u0101\u0104\x03\x02\x02\x02\u0102\u0100\x03\x02\x02\x02\u0102" +
-        "\u0103\x03\x02\x02\x02\u0103\x19\x03\x02\x02\x02\u0104\u0102\x03\x02\x02" +
-        "\x02\u0105\u0106\x05\x1C\x0F\x02\u0106\u0107\x07\v\x02\x02\u0107\u0109" +
-        "\x03\x02\x02\x02\u0108\u0105\x03\x02\x02\x02\u0109\u010C\x03\x02\x02\x02" +
-        "\u010A\u0108\x03\x02\x02\x02\u010A\u010B\x03\x02\x02\x02\u010B\u010D\x03" +
-        "\x02\x02\x02\u010C\u010A\x03\x02\x02\x02\u010D\u010E\x05\x1C\x0F\x02\u010E" +
-        "\u010F\x05\x1E\x10\x02\u010F\x1B\x03\x02\x02\x02\u0110\u0111\x05\xA8U" +
-        "\x02\u0111\x1D\x03\x02\x02\x02\u0112\u0117\x05 \x11\x02\u0113\u0114\x07" +
-        "\v\x02\x02\u0114\u0116\x05 \x11\x02\u0115\u0113\x03\x02\x02\x02\u0116" +
-        "\u0119\x03\x02\x02\x02\u0117\u0115\x03\x02\x02\x02\u0117\u0118\x03\x02" +
-        "\x02\x02\u0118\x1F\x03\x02\x02\x02\u0119\u0117\x03\x02\x02\x02\u011A\u011B" +
-        "\x05$\x13\x02\u011B\u011C\x07\x03\x02\x02\u011C\u011D\x05\"\x12\x02\u011D" +
-        "!\x03\x02\x02\x02\u011E\u011F\x05p9\x02\u011F#\x03\x02\x02\x02\u0120\u0121" +
-        "\x05p9\x02\u0121%\x03\x02\x02\x02\u0122\u0123\x07\r\x02\x02\u0123\u0124" +
-        "\x05(\x15\x02\u0124\u0125\x07\x0E\x02\x02\u0125\u0126\x05*\x16\x02\u0126" +
-        "\'\x03\x02\x02\x02\u0127\u0128\x05\xA8U\x02\u0128)\x03\x02\x02\x02\u0129" +
-        "\u012E\x05T+\x02\u012A\u012B\x07\v\x02\x02\u012B\u012D\x05T+\x02\u012C" +
-        "\u012A\x03\x02\x02\x02\u012D\u0130\x03\x02\x02\x02\u012E\u012C\x03\x02" +
-        "\x02\x02\u012E\u012F\x03\x02\x02\x02\u012F+\x03\x02\x02\x02\u0130\u012E" +
-        "\x03\x02\x02\x02\u0131\u0133\x05\x12\n\x02\u0132\u0131\x03\x02\x02\x02" +
-        "\u0132\u0133\x03\x02\x02\x02\u0133\u0134\x03\x02\x02\x02\u0134\u0135\x07" +
-        "\x0F\x02\x02\u0135\u0136\x05.\x18\x02\u0136\u0137\x05@!\x02\u0137-\x03" +
-        "\x02\x02\x02\u0138\u013A\x050\x19\x02\u0139\u013B\x052\x1A\x02\u013A\u0139" +
-        "\x03\x02\x02\x02\u013A\u013B\x03\x02\x02\x02\u013B\u013C\x03\x02\x02\x02" +
-        "\u013C\u013E\x07\x05\x02\x02\u013D\u013F\x058\x1D\x02\u013E\u013D\x03" +
-        "\x02\x02\x02\u013E\u013F\x03\x02\x02\x02\u013F\u0141\x03\x02\x02\x02\u0140" +
-        "\u0142\x05:\x1E\x02\u0141\u0140\x03\x02\x02\x02\u0141\u0142\x03\x02\x02" +
-        "\x02\u0142/\x03\x02\x02\x02\u0143\u0144\x05\xA8U\x02\u01441\x03\x02\x02" +
-        "\x02\u0145\u0146\x054\x1B\x02\u01463\x03\x02\x02\x02\u0147\u0148\x07\x10" +
-        "\x02\x02\u0148\u014E\x056\x1C\x02\u0149\u014A\x05^0\x02\u014A\u014B\x05" +
-        "6\x1C\x02\u014B\u014D\x03\x02\x02\x02\u014C\u0149\x03\x02\x02\x02\u014D" +
-        "\u0150\x03\x02\x02\x02\u014E\u014C\x03\x02\x02\x02\u014E\u014F\x03\x02" +
-        "\x02\x02\u014F\u0151\x03\x02\x02\x02\u0150\u014E\x03\x02\x02\x02\u0151" +
-        "\u0152\x07\x11\x02\x02\u01525\x03\x02\x02\x02\u0153\u0154\x05\xA8U\x02" +
-        "\u01547\x03\x02\x02\x02\u0155\u0156\x07\x12\x02\x02\u0156\u0157\x05> " +
-        "\x02\u0157\u0158\x07\x05\x02\x02\u01589\x03\x02\x02\x02\u0159\u015A\x05" +
-        "<\x1F\x02\u015A\u0161\x05> \x02\u015B\u015C\x07\x05\x02\x02\u015C\u015D" +
-        "\x05<\x1F\x02\u015D\u015E\x05> \x02\u015E\u0160\x03\x02\x02\x02\u015F" +
-        "\u015B\x03\x02\x02\x02\u0160\u0163\x03\x02\x02\x02\u0161\u015F\x03\x02" +
-        "\x02\x02\u0161\u0162\x03\x02\x02\x02\u0162;\x03\x02\x02\x02\u0163\u0161" +
-        "\x03\x02\x02\x02\u0164\u0171\x078\x02\x02\u0165\u0171\x05\x12\n\x02\u0166" +
-        "\u0168\x05\x12\n\x02\u0167\u0166\x03\x02\x02\x02\u0167\u0168\x03\x02\x02" +
-        "\x02\u0168\u0169\x03\x02\x02\x02\u0169\u0171\x07\f\x02\x02\u016A\u0171" +
-        "\x07\x13\x02\x02\u016B\u0171\x07\r\x02\x02\u016C\u016E\x05\x12\n\x02\u016D" +
-        "\u016C\x03\x02\x02\x02\u016D\u016E\x03\x02\x02\x02\u016E\u016F\x03\x02" +
-        "\x02\x02\u016F\u0171\x07\x0F\x02\x02\u0170\u0164\x03\x02\x02\x02\u0170" +
-        "\u0165\x03\x02\x02\x02\u0170\u0167\x03\x02\x02\x02\u0170\u016A\x03\x02" +
-        "\x02\x02\u0170\u016B\x03\x02\x02\x02\u0170\u016D\x03\x02\x02\x02\u0171" +
-        "=\x03\x02\x02\x02\u0172\u0177\x05\xA8U\x02\u0173\u0174\x07\v\x02\x02\u0174" +
-        "\u0176\x05\xA8U\x02\u0175\u0173\x03\x02\x02\x02\u0176\u0179\x03\x02\x02" +
-        "\x02\u0177\u0175\x03\x02\x02\x02\u0177\u0178\x03\x02\x02\x02\u0178?\x03" +
-        "\x02\x02\x02\u0179\u0177\x03\x02\x02\x02\u017A\u017B\x05B\"\x02\u017B" +
-        "A\x03\x02\x02\x02\u017C\u0180\x05D#\x02\u017D\u0180\x05b2\x02\u017E\u0180" +
-        "\x05h5\x02\u017F\u017C\x03\x02\x02\x02\u017F\u017D\x03\x02\x02\x02\u017F" +
-        "\u017E\x03\x02\x02\x02\u0180C\x03\x02\x02\x02\u0181\u0185\x05F$\x02\u0182" +
-        "\u0185\x05\b\x05\x02\u0183\u0185\x05\x04\x03\x02\u0184\u0181\x03\x02\x02" +
-        "\x02\u0184\u0182\x03\x02\x02\x02\u0184\u0183\x03\x02\x02\x02\u0185E\x03" +
-        "\x02\x02\x02\u0186\u0187\x05H%\x02\u0187\u0188\x07\x03\x02\x02\u0188\u018A" +
-        "\x03\x02\x02\x02\u0189\u0186\x03\x02\x02\x02\u018A\u018D\x03\x02\x02\x02" +
-        "\u018B\u0189\x03\x02\x02\x02\u018B\u018C\x03\x02\x02\x02\u018C\u018F\x03" +
-        "\x02\x02\x02\u018D\u018B\x03\x02\x02\x02\u018E\u0190\x05J&\x02\u018F\u018E" +
-        "\x03\x02\x02\x02\u018F\u0190\x03\x02\x02\x02\u0190G\x03\x02\x02\x02\u0191" +
-        "\u0194\x05\xA8U\x02\u0192\u0194\x05\x86D\x02\u0193\u0191\x03\x02\x02\x02" +
-        "\u0193\u0192\x03\x02\x02\x02\u0194I\x03\x02\x02\x02\u0195\u0199\x05L\'" +
-        "\x02\u0196\u0199\x05R*\x02\u0197\u0199\x05X-\x02\u0198\u0195\x03\x02\x02" +
-        "\x02\u0198\u0196\x03\x02\x02\x02\u0198\u0197\x03\x02\x02\x02\u0199K\x03" +
-        "\x02\x02\x02\u019A\u019D\x05N(\x02\u019B\u019E\x05p9\x02\u019C\u019E\x05" +
-        "\x8EH\x02\u019D\u019B\x03\x02\x02\x02\u019D\u019C\x03\x02\x02\x02\u019E" +
-        "M\x03\x02\x02\x02\u019F\u01A1\x05P)\x02\u01A0\u019F\x03\x02\x02\x02\u01A1" +
-        "\u01A2\x03\x02\x02\x02\u01A2\u01A0\x03\x02\x02\x02\u01A2\u01A3\x03\x02" +
-        "\x02\x02\u01A3O\x03\x02\x02\x02\u01A4\u01A7\x05\x96L\x02\u01A5\u01A7\x05" +
-        "0\x19\x02\u01A6\u01A4\x03\x02\x02\x02\u01A6\u01A5\x03\x02\x02\x02\u01A7" +
-        "\u01A8\x03\x02\x02\x02\u01A8\u01A9\x07\x0E\x02\x02\u01A9Q\x03\x02\x02" +
-        "\x02\u01AA\u01AB\x07\x14\x02\x02\u01AB\u01AC\x05T+\x02\u01ACS\x03\x02" +
-        "\x02\x02\u01AD\u01B5\x05H%\x02\u01AE\u01B5\x05V,\x02\u01AF\u01B0\x05f" +
-        "4\x02\u01B0\u01B1\x05T+\x02\u01B1\u01B2\x07\x15\x02\x02\u01B2\u01B3\x05" +
-        "T+\x02\u01B3\u01B5\x03\x02\x02\x02\u01B4\u01AD\x03\x02\x02\x02\u01B4\u01AE" +
-        "\x03\x02\x02\x02\u01B4\u01AF\x03\x02\x02\x02\u01B5U\x03\x02\x02\x02\u01B6" +
-        "\u01B8\x05(\x15\x02\u01B7\u01B9\x05\xA0Q\x02\u01B8\u01B7\x03\x02\x02\x02" +
-        "\u01B8\u01B9\x03\x02\x02\x02\u01B9W\x03\x02\x02\x02\u01BA\u01BC\x050\x19" +
-        "\x02\u01BB\u01BD\x05Z.\x02\u01BC\u01BB\x03\x02\x02\x02\u01BC\u01BD\x03" +
-        "\x02\x02\x02\u01BDY\x03\x02\x02\x02\u01BE\u01BF\x05\\/\x02\u01BF[\x03" +
-        "\x02\x02\x02\u01C0\u01C6\x05`1\x02\u01C1\u01C2\x05^0\x02\u01C2\u01C3\x05" +
-        "`1\x02\u01C3\u01C5\x03\x02\x02\x02\u01C4\u01C1\x03\x02\x02\x02\u01C5\u01C8" +
-        "\x03\x02\x02\x02\u01C6\u01C4\x03\x02\x02\x02\u01C6\u01C7\x03\x02\x02\x02" +
-        "\u01C7]\x03\x02\x02\x02\u01C8\u01C6\x03\x02\x02\x02\u01C9\u01D0\x07\v" +
-        "\x02\x02\u01CA\u01CB\x07\x11\x02\x02\u01CB\u01CC\x05\xA6T\x02\u01CC\u01CD" +
-        "\x07\x03\x02\x02\u01CD\u01CE\x07\x10\x02\x02\u01CE\u01D0\x03\x02\x02\x02" +
-        "\u01CF\u01C9\x03\x02\x02\x02\u01CF\u01CA\x03\x02\x02\x02\u01D0_\x03\x02" +
-        "\x02\x02\u01D1\u01D7\x078\x02\x02\u01D2\u01D7\x05r:\x02\u01D3\u01D7\x05" +
-        "\x1C\x0F\x02\u01D4\u01D7\x05(\x15\x02\u01D5\u01D7\x050\x19\x02\u01D6\u01D1" +
-        "\x03\x02\x02\x02\u01D6\u01D2\x03\x02\x02\x02\u01D6\u01D3\x03\x02\x02\x02" +
-        "\u01D6\u01D4\x03\x02\x02\x02\u01D6\u01D5\x03\x02\x02\x02\u01D7a\x03\x02" +
-        "\x02\x02\u01D8\u01D9\x05H%\x02\u01D9\u01DA\x07\x03\x02\x02\u01DA\u01DC" +
-        "\x03\x02\x02\x02\u01DB\u01D8\x03\x02\x02\x02\u01DC\u01DF\x03\x02\x02\x02" +
-        "\u01DD\u01DB\x03\x02\x02\x02\u01DD\u01DE\x03\x02\x02\x02\u01DE\u01E8\x03" +
-        "\x02\x02\x02\u01DF\u01DD\x03\x02\x02\x02\u01E0\u01E3\x05d3\x02\u01E1\u01E2" +
-        "\x07\x15\x02\x02\u01E2\u01E4\x05B\"\x02\u01E3\u01E1\x03\x02\x02\x02\u01E3" +
-        "\u01E4\x03\x02\x02\x02\u01E4\u01E9\x03\x02\x02\x02\u01E5\u01E6\x05f4\x02" +
-        "\u01E6\u01E7\x05h5\x02\u01E7\u01E9\x03\x02\x02\x02\u01E8\u01E0\x03\x02" +
-        "\x02\x02\u01E8\u01E5\x03\x02\x02\x02\u01E9c\x03\x02\x02\x02\u01EA\u01EB" +
-        "\x05f4\x02\u01EB\u01EC\x05D#\x02\u01ECe\x03\x02\x02\x02\u01ED\u01EE\x07" +
-        "\x16\x02\x02\u01EE\u01EF\x05\x8EH\x02\u01EF\u01F0\x07\x17\x02\x02\u01F0" +
-        "g\x03\x02\x02\x02\u01F1\u01F2\x05H%\x02\u01F2\u01F3\x07\x03\x02\x02\u01F3" +
-        "\u01F5\x03\x02\x02\x02\u01F4\u01F1\x03\x02\x02\x02\u01F5\u01F8\x03\x02" +
-        "\x02\x02\u01F6\u01F4\x03\x02\x02\x02\u01F6\u01F7\x03\x02\x02\x02\u01F7" +
-        "\u01F9\x03\x02\x02\x02\u01F8\u01F6\x03\x02\x02\x02\u01F9\u01FA\x05j6\x02" +
-        "\u01FA\u01FB\x05B\"\x02\u01FBi\x03\x02\x02\x02\u01FC\u01FD\x07\x18\x02" +
-        "\x02\u01FD\u01FE\x05\x96L\x02\u01FE\u01FF\x07\x0E\x02\x02\u01FF\u0200" +
-        "\x05l7\x02\u0200\u0201\x07\x19\x02\x02\u0201k\x03\x02\x02\x02\u0202\u0207" +
-        "\x05n8\x02\u0203\u0204\x07\v\x02\x02\u0204\u0206\x05n8\x02\u0205\u0203" +
-        "\x03\x02\x02\x02\u0206\u0209\x03\x02\x02\x02\u0207\u0205\x03\x02\x02\x02" +
-        "\u0207\u0208\x03\x02\x02\x02\u0208m\x03\x02\x02\x02\u0209\u0207\x03\x02" +
-        "\x02\x02\u020A\u020C\x05p9\x02\u020B\u020A\x03\x02\x02\x02\u020B\u020C" +
-        "\x03\x02\x02\x02\u020Co\x03\x02\x02\x02\u020D\u020E\b9\x01\x02\u020E\u020F" +
-        "\x07\x1A\x02\x02\u020F\u0210\x05p9\x02\u0210\u0211\x07\x1B\x02\x02\u0211" +
-        "\u0212\x05p9\x04\u0212\u0218\x03\x02\x02\x02\u0213\u0214\f\x03\x02\x02" +
-        "\u0214\u0215\x07\x1C\x02\x02\u0215\u0217\x05\x8EH\x02\u0216\u0213\x03" +
-        "\x02\x02\x02\u0217\u021A\x03\x02\x02\x02\u0218\u0216\x03\x02\x02\x02\u0218" +
-        "\u0219\x03\x02\x02\x02\u0219q\x03\x02\x02\x02\u021A\u0218\x03\x02\x02" +
-        "\x02\u021B\u021F\x05p9\x02\u021C\u021F\x05\x8EH\x02\u021D\u021F\x05T+" +
-        "\x02\u021E\u021B\x03\x02\x02\x02\u021E\u021C\x03\x02\x02\x02\u021E\u021D" +
-        "\x03\x02\x02\x02\u021Fs\x03\x02\x02\x02\u0220\u0227\x05v<\x02\u0221\u0222" +
-        "\x05f4\x02\u0222\u0223\x05v<\x02\u0223\u0224\x07\x15\x02\x02\u0224\u0225" +
-        "\x05p9\x02\u0225\u0227\x03\x02\x02\x02\u0226\u0220\x03\x02\x02\x02\u0226" +
-        "\u0221\x03\x02\x02\x02\u0227u\x03\x02\x02\x02\u0228\u022A\x05x=\x02\u0229" +
-        "\u0228\x03\x02\x02\x02\u0229\u022A\x03\x02\x02\x02\u022A\u022B\x03\x02" +
-        "\x02\x02\u022B\u0231\x05z>\x02\u022C\u022D\x05x=\x02\u022D\u022E\x05z" +
-        ">\x02\u022E\u0230\x03\x02\x02\x02\u022F\u022C\x03\x02\x02";
-    algol60Parser._serializedATNSegment1 = "\x02\u0230\u0233\x03\x02\x02\x02\u0231\u022F\x03\x02\x02\x02\u0231\u0232" +
-        "\x03\x02\x02\x02\u0232w\x03\x02\x02\x02\u0233\u0231\x03\x02\x02\x02\u0234" +
-        "\u0235\t\x03\x02\x02\u0235y\x03\x02\x02\x02\u0236\u023C\x05~@\x02\u0237" +
-        "\u0238\x05|?\x02\u0238\u0239\x05~@\x02\u0239\u023B\x03\x02\x02\x02\u023A" +
-        "\u0237\x03\x02\x02\x02\u023B\u023E\x03\x02\x02\x02\u023C\u023A\x03\x02" +
-        "\x02\x02\u023C\u023D\x03\x02\x02\x02\u023D{\x03\x02\x02\x02\u023E\u023C" +
-        "\x03\x02\x02\x02\u023F\u0240\t\x04\x02\x02\u0240}\x03\x02\x02\x02\u0241" +
-        "\u0246\x05\x80A\x02\u0242\u0243\x07\"\x02\x02\u0243\u0245\x05\x80A\x02" +
-        "\u0244\u0242\x03\x02\x02\x02\u0245\u0248\x03\x02\x02\x02\u0246\u0244\x03" +
-        "\x02\x02\x02\u0246\u0247\x03\x02\x02\x02\u0247\x7F\x03\x02\x02\x02\u0248" +
-        "\u0246\x03\x02\x02\x02\u0249\u0251\x05\x82B\x02\u024A\u0251\x05\x96L\x02" +
-        "\u024B\u0251\x05\x94K\x02\u024C\u024D\x07\x10\x02\x02\u024D\u024E\x05" +
-        "p9\x02\u024E\u024F\x07\x11\x02\x02\u024F\u0251\x03\x02\x02\x02\u0250\u0249" +
-        "\x03\x02\x02\x02\u0250\u024A\x03\x02\x02\x02\u0250\u024B\x03\x02\x02\x02" +
-        "\u0250\u024C\x03\x02\x02\x02\u0251\x81\x03\x02\x02\x02\u0252\u0258\x05" +
-        "\x84C\x02\u0253\u0258\x05\x8AF\x02\u0254\u0255\x05\x84C\x02\u0255\u0256" +
-        "\x05\x8AF\x02\u0256\u0258\x03\x02\x02\x02\u0257\u0252\x03\x02\x02\x02" +
-        "\u0257\u0253\x03\x02\x02\x02\u0257\u0254\x03\x02\x02\x02\u0258\x83\x03" +
-        "\x02\x02\x02\u0259\u025F\x05\x86D\x02\u025A\u025F\x05\x88E\x02\u025B\u025C" +
-        "\x05\x86D\x02\u025C\u025D\x05\x88E\x02\u025D\u025F\x03\x02\x02\x02\u025E" +
-        "\u0259\x03\x02\x02\x02\u025E\u025A\x03\x02\x02\x02\u025E\u025B\x03\x02" +
-        "\x02\x02\u025F\x85\x03\x02\x02\x02\u0260\u0262\x07:\x02\x02\u0261\u0260" +
-        "\x03\x02\x02\x02\u0262\u0263\x03\x02\x02\x02\u0263\u0261\x03\x02\x02\x02" +
-        "\u0263\u0264\x03\x02\x02\x02\u0264\x87\x03\x02\x02\x02\u0265\u0266\x07" +
-        "#\x02\x02\u0266\u0267\x05\x86D\x02\u0267\x89\x03\x02\x02\x02\u0268\u0269" +
-        "\x07$\x02\x02\u0269\u026A\x05\x8CG\x02\u026A\x8B\x03\x02\x02\x02\u026B" +
-        "\u026D\t\x05\x02\x02\u026C\u026B\x03\x02\x02\x02\u026C\u026D\x03\x02\x02" +
-        "\x02\u026D\u026E\x03\x02\x02\x02\u026E\u026F\x05\x86D\x02\u026F\x8D\x03" +
-        "\x02\x02\x02\u0270\u0271\bH\x01\x02\u0271\u0272\x05f4\x02\u0272\u0273" +
-        "\x05\x8EH\x02\u0273\u0274\x07\x15\x02\x02\u0274\u0275\x05\x8EH\r\u0275" +
-        "\u0281\x03\x02\x02\x02\u0276\u0277\x07*\x02\x02\u0277\u0281\x05\x8EH\b" +
-        "\u0278\u0281\x05\xACW\x02\u0279\u0281\x05\x96L\x02\u027A\u0281\x05\x94" +
-        "K\x02\u027B\u0281\x05\x90I\x02\u027C\u027D\x07\x10\x02\x02\u027D\u027E" +
-        "\x05\x8EH\x02\u027E\u027F\x07\x11\x02\x02\u027F\u0281\x03\x02\x02\x02" +
-        "\u0280\u0270\x03\x02\x02\x02\u0280\u0276\x03\x02\x02\x02\u0280\u0278\x03" +
-        "\x02\x02\x02\u0280\u0279\x03\x02\x02\x02\u0280\u027A\x03\x02\x02\x02\u0280" +
-        "\u027B\x03\x02\x02\x02\u0280\u027C\x03\x02\x02\x02\u0281\u0290\x03\x02" +
-        "\x02\x02\u0282\u0283\f\f\x02\x02\u0283\u0284\x07&\x02\x02\u0284\u028F" +
-        "\x05\x8EH\r\u0285\u0286\f\v\x02\x02\u0286\u0287\x07\'\x02\x02\u0287\u028F" +
-        "\x05\x8EH\f\u0288\u0289\f\n\x02\x02\u0289\u028A\x07(\x02\x02\u028A\u028F" +
-        "\x05\x8EH\v\u028B\u028C\f\t\x02\x02\u028C\u028D\x07)\x02\x02\u028D\u028F" +
-        "\x05\x8EH\n\u028E\u0282\x03\x02\x02\x02\u028E\u0285\x03\x02\x02\x02\u028E" +
-        "\u0288\x03\x02\x02\x02\u028E\u028B\x03\x02\x02\x02\u028F\u0292\x03\x02" +
-        "\x02\x02\u0290\u028E\x03\x02\x02\x02\u0290\u0291\x03\x02\x02\x02\u0291" +
-        "\x8F\x03\x02\x02\x02\u0292\u0290\x03\x02\x02\x02\u0293\u0294\x05v<\x02" +
-        "\u0294\u0295\x05\x92J\x02\u0295\u0296\x05v<\x02\u0296\x91\x03\x02\x02" +
-        "\x02\u0297\u0298\t\x06\x02\x02\u0298\x93\x03\x02\x02\x02\u0299\u029A\x05" +
-        "0\x19\x02\u029A\u029B\x05Z.\x02\u029B\x95\x03\x02\x02\x02\u029C\u029F" +
-        "\x05\x98M\x02\u029D\u029F\x05\x9CO\x02\u029E\u029C\x03\x02\x02\x02\u029E" +
-        "\u029D\x03\x02\x02\x02\u029F\x97\x03\x02\x02\x02\u02A0\u02A1\x05\x9AN" +
-        "\x02\u02A1\x99\x03\x02\x02\x02\u02A2\u02A3\x05\xA8U\x02\u02A3\x9B\x03" +
-        "\x02\x02\x02\u02A4\u02A5\x05\x1C\x0F\x02\u02A5\u02A6\x071\x02\x02\u02A6" +
-        "\u02A7\x05\x9EP\x02\u02A7\u02A8\x072\x02\x02\u02A8\x9D\x03\x02\x02\x02" +
-        "\u02A9\u02AE\x05\xA0Q\x02\u02AA\u02AB\x07\v\x02\x02\u02AB\u02AD\x05\xA0" +
-        "Q\x02\u02AC\u02AA\x03\x02\x02\x02\u02AD\u02B0\x03\x02\x02\x02\u02AE\u02AC" +
-        "\x03\x02\x02\x02\u02AE\u02AF\x03\x02\x02\x02\u02AF\x9F\x03\x02\x02\x02" +
-        "\u02B0\u02AE\x03\x02\x02\x02\u02B1\u02B2\x05p9\x02\u02B2\xA1\x03\x02\x02" +
-        "\x02\u02B3\u02B5\x05\xA4S\x02\u02B4\u02B3\x03\x02\x02\x02\u02B4\u02B5" +
-        "\x03\x02\x02\x02\u02B5\u02B6\x03\x02\x02\x02\u02B6\u02BB\x078\x02\x02" +
-        "\u02B7\u02B9\x05\xA4S\x02\u02B8\u02B7\x03\x02\x02\x02\u02B8\u02B9\x03" +
-        "\x02\x02\x02\u02B9\u02BA\x03\x02\x02\x02\u02BA\u02BC\x078\x02\x02\u02BB" +
-        "\u02B8\x03\x02\x02\x02\u02BC\u02BD\x03\x02\x02\x02\u02BD\u02BB\x03\x02" +
-        "\x02\x02\u02BD\u02BE\x03\x02\x02\x02\u02BE\xA3\x03\x02\x02\x02\u02BF\u02C0" +
-        "\x078\x02\x02\u02C0\xA5\x03\x02\x02\x02\u02C1\u02C3\x079\x02\x02\u02C2" +
-        "\u02C1\x03\x02\x02\x02\u02C3\u02C4\x03\x02\x02\x02\u02C4\u02C2\x03\x02" +
-        "\x02\x02\u02C4\u02C5\x03\x02\x02\x02\u02C5\xA7\x03\x02\x02\x02\u02C6\u02CA" +
-        "\x079\x02\x02\u02C7\u02C9\t\x07\x02\x02\u02C8\u02C7\x03\x02\x02\x02\u02C9" +
-        "\u02CC\x03\x02\x02\x02\u02CA\u02C8\x03\x02\x02\x02\u02CA\u02CB\x03\x02" +
-        "\x02\x02\u02CB\xA9\x03\x02\x02\x02\u02CC\u02CA\x03\x02\x02\x02\u02CD\u02D2" +
-        "\x079\x02\x02\u02CE\u02D2\x07:\x02\x02\u02CF\u02D2\x05\xACW\x02\u02D0" +
-        "\u02D2\x05\xAEX\x02\u02D1\u02CD\x03\x02\x02\x02\u02D1\u02CE\x03\x02\x02" +
-        "\x02\u02D1\u02CF\x03\x02\x02\x02\u02D1\u02D0\x03\x02\x02\x02\u02D2\xAB" +
-        "\x03\x02\x02\x02\u02D3\u02D4\t\b\x02\x02\u02D4\xAD\x03\x02\x02\x02\u02D5" +
-        "\u02DB\x05\xB0Y\x02\u02D6\u02DB\x07?\x02\x02\u02D7\u02DB\x05\xB2Z\x02" +
-        "\u02D8\u02DB\x07@\x02\x02\u02D9\u02DB\x05\xB4[\x02\u02DA\u02D5\x03\x02" +
-        "\x02\x02\u02DA\u02D6\x03\x02\x02\x02\u02DA\u02D7\x03\x02\x02\x02\u02DA" +
-        "\u02D8\x03\x02\x02\x02\u02DA\u02D9\x03\x02\x02\x02\u02DB\xAF\x03\x02\x02" +
-        "\x02\u02DC\u02DD\t\t\x02\x02\u02DD\xB1\x03\x02\x02\x02\u02DE\u02DF\t\n" +
-        "\x02\x02\u02DF\xB3\x03\x02\x02\x02\u02E0\u02E1\t\v\x02\x02\u02E1\xB5\x03" +
-        "\x02\x02\x02F\xB8\xBF\xCA\xCF\xD9\xE3\xE9\xF4\xF8\u0102\u010A\u0117\u012E" +
-        "\u0132\u013A\u013E\u0141\u014E\u0161\u0167\u016D\u0170\u0177\u017F\u0184" +
-        "\u018B\u018F\u0193\u0198\u019D\u01A2\u01A6\u01B4\u01B8\u01BC\u01C6\u01CF" +
-        "\u01D6\u01DD\u01E3\u01E8\u01F6\u0207\u020B\u0218\u021E\u0226\u0229\u0231" +
-        "\u023C\u0246\u0250\u0257\u025E\u0263\u026C\u0280\u028E\u0290\u029E\u02AE" +
-        "\u02B4\u02B8\u02BD\u02C4\u02CA\u02D1\u02DA";
-    algol60Parser._serializedATN = Utils.join([
-        algol60Parser._serializedATNSegment0,
-        algol60Parser._serializedATNSegment1,
-    ], "");
-    return algol60Parser;
-}(Parser_1.Parser));
-exports.algol60Parser = algol60Parser;
-var ProgramContext = /** @class */ (function (_super) {
-    __extends(ProgramContext, _super);
-    function ProgramContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
-    }
-    ProgramContext.prototype.EOF = function () { return this.getToken(algol60Parser.EOF, 0); };
-    ProgramContext.prototype.block = function () {
-        return this.tryGetRuleContext(0, BlockContext);
-    };
-    ProgramContext.prototype.compound_statement = function () {
-        return this.tryGetRuleContext(0, Compound_statementContext);
-    };
-    Object.defineProperty(ProgramContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_program; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    ProgramContext.prototype.enterRule = function (listener) {
-        if (listener.enterProgram) {
-            listener.enterProgram(this);
-        }
-    };
-    // @Override
-    ProgramContext.prototype.exitRule = function (listener) {
-        if (listener.exitProgram) {
-            listener.exitProgram(this);
-        }
-    };
-    // @Override
-    ProgramContext.prototype.accept = function (visitor) {
-        if (visitor.visitProgram) {
-            return visitor.visitProgram(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return ProgramContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.ProgramContext = ProgramContext;
-var BlockContext = /** @class */ (function (_super) {
-    __extends(BlockContext, _super);
-    function BlockContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
-    }
-    BlockContext.prototype.block_head = function () {
-        return this.getRuleContext(0, Block_headContext);
-    };
-    BlockContext.prototype.compound_tail = function () {
-        return this.getRuleContext(0, Compound_tailContext);
-    };
-    BlockContext.prototype.label = function () {
-        return this.tryGetRuleContext(0, LabelContext);
-    };
-    Object.defineProperty(BlockContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_block; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    BlockContext.prototype.enterRule = function (listener) {
-        if (listener.enterBlock) {
-            listener.enterBlock(this);
-        }
-    };
-    // @Override
-    BlockContext.prototype.exitRule = function (listener) {
-        if (listener.exitBlock) {
-            listener.exitBlock(this);
-        }
-    };
-    // @Override
-    BlockContext.prototype.accept = function (visitor) {
-        if (visitor.visitBlock) {
-            return visitor.visitBlock(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return BlockContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.BlockContext = BlockContext;
-var Block_headContext = /** @class */ (function (_super) {
-    __extends(Block_headContext, _super);
-    function Block_headContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
-    }
-    Block_headContext.prototype.declaration = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(DeclarationContext);
-        }
-        else {
-            return this.getRuleContext(i, DeclarationContext);
-        }
-    };
-    Object.defineProperty(Block_headContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_block_head; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Block_headContext.prototype.enterRule = function (listener) {
-        if (listener.enterBlock_head) {
-            listener.enterBlock_head(this);
-        }
-    };
-    // @Override
-    Block_headContext.prototype.exitRule = function (listener) {
-        if (listener.exitBlock_head) {
-            listener.exitBlock_head(this);
-        }
-    };
-    // @Override
-    Block_headContext.prototype.accept = function (visitor) {
-        if (visitor.visitBlock_head) {
-            return visitor.visitBlock_head(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Block_headContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Block_headContext = Block_headContext;
-var Compound_statementContext = /** @class */ (function (_super) {
-    __extends(Compound_statementContext, _super);
-    function Compound_statementContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
-    }
-    Compound_statementContext.prototype.compound_tail = function () {
-        return this.getRuleContext(0, Compound_tailContext);
-    };
-    Compound_statementContext.prototype.label = function () {
-        return this.tryGetRuleContext(0, LabelContext);
-    };
-    Object.defineProperty(Compound_statementContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_compound_statement; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Compound_statementContext.prototype.enterRule = function (listener) {
-        if (listener.enterCompound_statement) {
-            listener.enterCompound_statement(this);
-        }
-    };
-    // @Override
-    Compound_statementContext.prototype.exitRule = function (listener) {
-        if (listener.exitCompound_statement) {
-            listener.exitCompound_statement(this);
-        }
-    };
-    // @Override
-    Compound_statementContext.prototype.accept = function (visitor) {
-        if (visitor.visitCompound_statement) {
-            return visitor.visitCompound_statement(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Compound_statementContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Compound_statementContext = Compound_statementContext;
-var Compound_tailContext = /** @class */ (function (_super) {
-    __extends(Compound_tailContext, _super);
-    function Compound_tailContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
-    }
-    Compound_tailContext.prototype.statement = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(StatementContext);
-        }
-        else {
-            return this.getRuleContext(i, StatementContext);
-        }
-    };
-    Object.defineProperty(Compound_tailContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_compound_tail; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Compound_tailContext.prototype.enterRule = function (listener) {
-        if (listener.enterCompound_tail) {
-            listener.enterCompound_tail(this);
-        }
-    };
-    // @Override
-    Compound_tailContext.prototype.exitRule = function (listener) {
-        if (listener.exitCompound_tail) {
-            listener.exitCompound_tail(this);
-        }
-    };
-    // @Override
-    Compound_tailContext.prototype.accept = function (visitor) {
-        if (visitor.visitCompound_tail) {
-            return visitor.visitCompound_tail(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Compound_tailContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Compound_tailContext = Compound_tailContext;
-var DeclarationContext = /** @class */ (function (_super) {
-    __extends(DeclarationContext, _super);
-    function DeclarationContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
-    }
-    DeclarationContext.prototype.type_declaration = function () {
-        return this.tryGetRuleContext(0, Type_declarationContext);
-    };
-    DeclarationContext.prototype.array_declaration = function () {
-        return this.tryGetRuleContext(0, Array_declarationContext);
-    };
-    DeclarationContext.prototype.switch_declaration = function () {
-        return this.tryGetRuleContext(0, Switch_declarationContext);
-    };
-    DeclarationContext.prototype.procedure_declaration = function () {
-        return this.tryGetRuleContext(0, Procedure_declarationContext);
-    };
-    Object.defineProperty(DeclarationContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_declaration; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    DeclarationContext.prototype.enterRule = function (listener) {
-        if (listener.enterDeclaration) {
-            listener.enterDeclaration(this);
-        }
-    };
-    // @Override
-    DeclarationContext.prototype.exitRule = function (listener) {
-        if (listener.exitDeclaration) {
-            listener.exitDeclaration(this);
-        }
-    };
-    // @Override
-    DeclarationContext.prototype.accept = function (visitor) {
-        if (visitor.visitDeclaration) {
-            return visitor.visitDeclaration(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return DeclarationContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.DeclarationContext = DeclarationContext;
-var Type_declarationContext = /** @class */ (function (_super) {
-    __extends(Type_declarationContext, _super);
-    function Type_declarationContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
-    }
-    Type_declarationContext.prototype.local_or_own_type = function () {
-        return this.getRuleContext(0, Local_or_own_typeContext);
-    };
-    Type_declarationContext.prototype.type_list = function () {
-        return this.getRuleContext(0, Type_listContext);
-    };
-    Object.defineProperty(Type_declarationContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_type_declaration; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Type_declarationContext.prototype.enterRule = function (listener) {
-        if (listener.enterType_declaration) {
-            listener.enterType_declaration(this);
-        }
-    };
-    // @Override
-    Type_declarationContext.prototype.exitRule = function (listener) {
-        if (listener.exitType_declaration) {
-            listener.exitType_declaration(this);
-        }
-    };
-    // @Override
-    Type_declarationContext.prototype.accept = function (visitor) {
-        if (visitor.visitType_declaration) {
-            return visitor.visitType_declaration(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Type_declarationContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Type_declarationContext = Type_declarationContext;
-var Local_or_own_typeContext = /** @class */ (function (_super) {
-    __extends(Local_or_own_typeContext, _super);
-    function Local_or_own_typeContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+// Generated from Resources/Parsers/algol60/algol60.g4 by ANTLR 4.10.1
+// jshint ignore: start
+import antlr4 from 'antlr4';
+import algol60Listener from './algol60Listener.js';
+const serializedATN = [4,1,64,776,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
+2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
+20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,
+7,27,2,28,7,28,2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,2,33,7,33,2,34,7,
+34,2,35,7,35,2,36,7,36,2,37,7,37,2,38,7,38,2,39,7,39,2,40,7,40,2,41,7,41,
+2,42,7,42,2,43,7,43,2,44,7,44,2,45,7,45,2,46,7,46,2,47,7,47,2,48,7,48,2,
+49,7,49,2,50,7,50,2,51,7,51,2,52,7,52,2,53,7,53,2,54,7,54,2,55,7,55,2,56,
+7,56,2,57,7,57,2,58,7,58,2,59,7,59,2,60,7,60,2,61,7,61,2,62,7,62,2,63,7,
+63,2,64,7,64,2,65,7,65,2,66,7,66,2,67,7,67,2,68,7,68,2,69,7,69,2,70,7,70,
+2,71,7,71,2,72,7,72,2,73,7,73,2,74,7,74,2,75,7,75,2,76,7,76,2,77,7,77,2,
+78,7,78,2,79,7,79,2,80,7,80,2,81,7,81,2,82,7,82,2,83,7,83,2,84,7,84,2,85,
+7,85,2,86,7,86,2,87,7,87,1,0,1,0,1,1,1,1,1,1,1,1,1,1,3,1,184,8,1,1,2,1,2,
+1,2,1,2,1,2,3,2,191,8,2,1,3,1,3,1,3,3,3,196,8,3,1,4,1,4,1,5,1,5,1,6,1,6,
+1,7,1,7,1,7,1,7,1,7,1,7,5,7,210,8,7,10,7,12,7,213,9,7,1,8,1,8,1,9,1,9,1,
+9,1,9,1,9,1,10,1,10,3,10,224,8,10,1,11,1,11,1,12,1,12,1,12,1,12,1,12,3,12,
+233,8,12,1,13,1,13,1,13,1,13,1,13,3,13,240,8,13,1,14,1,14,1,14,1,14,1,14,
+1,14,1,14,5,14,249,8,14,10,14,12,14,252,9,14,1,15,1,15,1,15,1,16,1,16,1,
+17,1,17,1,18,1,18,1,18,1,18,1,18,1,18,1,18,3,18,268,8,18,1,19,1,19,1,19,
+1,19,1,19,1,19,5,19,276,8,19,10,19,12,19,279,9,19,1,20,1,20,1,20,1,20,1,
+20,1,20,1,20,5,20,288,8,20,10,20,12,20,291,9,20,1,21,1,21,1,21,1,21,1,21,
+3,21,298,8,21,1,21,1,21,1,21,1,21,5,21,304,8,21,10,21,12,21,307,9,21,1,22,
+1,22,1,22,1,22,1,23,1,23,1,23,1,23,1,23,1,23,3,23,319,8,23,1,24,1,24,1,24,
+1,24,1,25,1,25,1,25,1,25,1,25,1,25,1,25,1,25,3,25,333,8,25,1,26,1,26,1,26,
+3,26,338,8,26,1,27,1,27,1,27,1,27,1,27,1,27,5,27,346,8,27,10,27,12,27,349,
+9,27,1,28,1,28,1,28,1,28,1,28,1,28,5,28,357,8,28,10,28,12,28,360,9,28,1,
+29,1,29,1,29,1,29,1,29,1,29,5,29,368,8,29,10,29,12,29,371,9,29,1,30,1,30,
+1,30,1,30,1,30,1,30,5,30,379,8,30,10,30,12,30,382,9,30,1,31,1,31,1,31,1,
+31,1,31,1,31,3,31,390,8,31,1,32,1,32,1,33,1,33,1,34,1,34,1,34,1,34,1,34,
+1,35,1,35,1,35,1,35,1,35,1,35,3,35,407,8,35,1,36,1,36,1,36,1,36,1,36,1,36,
+3,36,415,8,36,1,37,1,37,1,37,1,37,3,37,421,8,37,1,38,1,38,1,38,1,38,1,38,
+3,38,428,8,38,1,39,1,39,1,39,3,39,433,8,39,1,40,1,40,1,40,3,40,438,8,40,
+1,41,1,41,1,41,1,41,1,41,1,41,1,41,3,41,447,8,41,1,42,1,42,1,42,1,42,1,42,
+1,42,1,42,5,42,456,8,42,10,42,12,42,459,9,42,1,43,1,43,1,43,1,44,1,44,1,
+44,1,44,1,45,1,45,1,45,1,45,1,45,3,45,473,8,45,1,46,1,46,1,46,1,46,1,46,
+3,46,480,8,46,1,47,1,47,3,47,484,8,47,1,47,1,47,1,48,1,48,3,48,490,8,48,
+1,49,1,49,1,49,1,49,1,49,1,49,3,49,498,8,49,1,50,1,50,1,50,1,50,1,50,5,50,
+505,8,50,10,50,12,50,508,9,50,1,51,1,51,1,51,1,51,1,51,1,51,3,51,516,8,51,
+1,52,1,52,1,52,1,53,1,53,1,54,1,54,1,54,1,55,1,55,1,55,1,55,1,55,1,55,1,
+55,1,55,1,55,1,55,1,55,1,55,3,55,538,8,55,1,56,1,56,1,56,1,56,1,56,1,56,
+1,56,1,56,1,56,1,56,1,56,3,56,551,8,56,1,57,1,57,1,57,1,57,1,57,1,57,5,57,
+559,8,57,10,57,12,57,562,9,57,1,58,1,58,1,58,1,58,1,58,1,58,1,59,1,59,1,
+59,1,59,1,59,1,59,1,59,3,59,577,8,59,1,60,1,60,1,60,1,60,1,60,3,60,584,8,
+60,1,61,1,61,1,61,1,62,5,62,590,8,62,10,62,12,62,593,9,62,1,63,1,63,1,63,
+1,63,3,63,599,8,63,1,64,1,64,1,64,1,64,1,64,3,64,606,8,64,1,65,1,65,1,66,
+1,66,3,66,612,8,66,1,67,1,67,1,67,1,67,1,68,1,68,1,69,1,69,1,70,1,70,1,70,
+1,70,1,71,1,71,1,71,1,71,1,71,1,71,5,71,632,8,71,10,71,12,71,635,9,71,1,
+72,1,72,1,72,1,72,1,72,1,72,1,72,1,72,1,72,3,72,646,8,72,1,73,1,73,1,73,
+1,73,1,73,1,73,5,73,654,8,73,10,73,12,73,657,9,73,1,74,1,74,1,74,1,74,3,
+74,663,8,74,1,75,1,75,1,75,1,75,1,76,1,76,1,76,1,76,1,76,1,76,5,76,675,8,
+76,10,76,12,76,678,9,76,1,77,1,77,1,77,1,77,1,77,1,78,1,78,1,79,1,79,1,79,
+1,79,1,79,1,79,1,79,5,79,694,8,79,10,79,12,79,697,9,79,1,80,1,80,1,80,1,
+80,1,80,3,80,704,8,80,1,81,1,81,1,81,1,81,1,81,1,81,5,81,712,8,81,10,81,
+12,81,715,9,81,1,82,1,82,1,82,1,82,1,82,3,82,722,8,82,1,83,1,83,1,83,1,83,
+1,83,1,83,1,83,1,83,1,83,1,83,1,83,1,83,3,83,736,8,83,1,84,1,84,1,84,1,84,
+1,84,1,84,3,84,744,8,84,1,84,1,84,1,84,1,84,5,84,750,8,84,10,84,12,84,753,
+9,84,1,85,1,85,1,85,1,85,1,85,1,85,1,86,1,86,3,86,763,8,86,1,87,1,87,1,87,
+1,87,1,87,1,87,1,87,1,87,1,87,3,87,774,8,87,1,87,0,18,14,28,38,40,42,54,
+56,58,60,84,100,114,142,146,152,158,162,168,88,0,2,4,6,8,10,12,14,16,18,
+20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,
+68,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,
+112,114,116,118,120,122,124,126,128,130,132,134,136,138,140,142,144,146,
+148,150,152,154,156,158,160,162,164,166,168,170,172,174,0,4,2,0,42,42,47,
+47,2,0,30,30,43,43,1,0,57,58,3,0,3,3,12,12,16,16,773,0,176,1,0,0,0,2,183,
+1,0,0,0,4,190,1,0,0,0,6,195,1,0,0,0,8,197,1,0,0,0,10,199,1,0,0,0,12,201,
+1,0,0,0,14,203,1,0,0,0,16,214,1,0,0,0,18,216,1,0,0,0,20,223,1,0,0,0,22,225,
+1,0,0,0,24,232,1,0,0,0,26,239,1,0,0,0,28,241,1,0,0,0,30,253,1,0,0,0,32,256,
+1,0,0,0,34,258,1,0,0,0,36,267,1,0,0,0,38,269,1,0,0,0,40,280,1,0,0,0,42,297,
+1,0,0,0,44,308,1,0,0,0,46,318,1,0,0,0,48,320,1,0,0,0,50,332,1,0,0,0,52,337,
+1,0,0,0,54,339,1,0,0,0,56,350,1,0,0,0,58,361,1,0,0,0,60,372,1,0,0,0,62,389,
+1,0,0,0,64,391,1,0,0,0,66,393,1,0,0,0,68,395,1,0,0,0,70,406,1,0,0,0,72,414,
+1,0,0,0,74,420,1,0,0,0,76,427,1,0,0,0,78,432,1,0,0,0,80,437,1,0,0,0,82,446,
+1,0,0,0,84,448,1,0,0,0,86,460,1,0,0,0,88,463,1,0,0,0,90,472,1,0,0,0,92,479,
+1,0,0,0,94,483,1,0,0,0,96,489,1,0,0,0,98,497,1,0,0,0,100,499,1,0,0,0,102,
+515,1,0,0,0,104,517,1,0,0,0,106,520,1,0,0,0,108,522,1,0,0,0,110,537,1,0,
+0,0,112,550,1,0,0,0,114,552,1,0,0,0,116,563,1,0,0,0,118,576,1,0,0,0,120,
+583,1,0,0,0,122,585,1,0,0,0,124,591,1,0,0,0,126,598,1,0,0,0,128,605,1,0,
+0,0,130,607,1,0,0,0,132,611,1,0,0,0,134,613,1,0,0,0,136,617,1,0,0,0,138,
+619,1,0,0,0,140,621,1,0,0,0,142,625,1,0,0,0,144,645,1,0,0,0,146,647,1,0,
+0,0,148,662,1,0,0,0,150,664,1,0,0,0,152,668,1,0,0,0,154,679,1,0,0,0,156,
+684,1,0,0,0,158,686,1,0,0,0,160,703,1,0,0,0,162,705,1,0,0,0,164,721,1,0,
+0,0,166,735,1,0,0,0,168,743,1,0,0,0,170,754,1,0,0,0,172,762,1,0,0,0,174,
+773,1,0,0,0,176,177,1,0,0,0,177,1,1,0,0,0,178,184,5,58,0,0,179,180,5,47,
+0,0,180,184,5,58,0,0,181,182,5,42,0,0,182,184,5,58,0,0,183,178,1,0,0,0,183,
+179,1,0,0,0,183,181,1,0,0,0,184,3,1,0,0,0,185,191,5,62,0,0,186,187,5,47,
+0,0,187,191,5,62,0,0,188,189,5,42,0,0,189,191,5,62,0,0,190,185,1,0,0,0,190,
+186,1,0,0,0,190,188,1,0,0,0,191,5,1,0,0,0,192,196,3,46,23,0,193,196,3,62,
+31,0,194,196,3,72,36,0,195,192,1,0,0,0,195,193,1,0,0,0,195,194,1,0,0,0,196,
+7,1,0,0,0,197,198,5,57,0,0,198,9,1,0,0,0,199,200,3,8,4,0,200,11,1,0,0,0,
+201,202,3,46,23,0,202,13,1,0,0,0,203,204,6,7,-1,0,204,205,3,12,6,0,205,211,
+1,0,0,0,206,207,10,1,0,0,207,208,5,28,0,0,208,210,3,12,6,0,209,206,1,0,0,
+0,210,213,1,0,0,0,211,209,1,0,0,0,211,212,1,0,0,0,212,15,1,0,0,0,213,211,
+1,0,0,0,214,215,5,57,0,0,215,17,1,0,0,0,216,217,3,16,8,0,217,218,5,38,0,
+0,218,219,3,14,7,0,219,220,5,48,0,0,220,19,1,0,0,0,221,224,3,10,5,0,222,
+224,3,18,9,0,223,221,1,0,0,0,223,222,1,0,0,0,224,21,1,0,0,0,225,226,5,57,
+0,0,226,23,1,0,0,0,227,233,5,28,0,0,228,229,5,49,0,0,229,230,5,57,0,0,230,
+231,5,27,0,0,231,233,5,40,0,0,232,227,1,0,0,0,232,228,1,0,0,0,233,25,1,0,
+0,0,234,240,5,63,0,0,235,240,3,6,3,0,236,240,3,16,8,0,237,240,3,66,33,0,
+238,240,3,22,11,0,239,234,1,0,0,0,239,235,1,0,0,0,239,236,1,0,0,0,239,237,
+1,0,0,0,239,238,1,0,0,0,240,27,1,0,0,0,241,242,6,14,-1,0,242,243,3,26,13,
+0,243,250,1,0,0,0,244,245,10,1,0,0,245,246,3,24,12,0,246,247,3,26,13,0,247,
+249,1,0,0,0,248,244,1,0,0,0,249,252,1,0,0,0,250,248,1,0,0,0,250,251,1,0,
+0,0,251,29,1,0,0,0,252,250,1,0,0,0,253,254,3,22,11,0,254,255,3,120,60,0,
+255,31,1,0,0,0,256,257,7,0,0,0,257,33,1,0,0,0,258,259,7,1,0,0,259,35,1,0,
+0,0,260,268,5,62,0,0,261,268,3,20,10,0,262,268,3,30,15,0,263,264,5,40,0,
+0,264,265,3,46,23,0,265,266,5,49,0,0,266,268,1,0,0,0,267,260,1,0,0,0,267,
+261,1,0,0,0,267,262,1,0,0,0,267,263,1,0,0,0,268,37,1,0,0,0,269,270,6,19,
+-1,0,270,271,3,36,18,0,271,277,1,0,0,0,272,273,10,1,0,0,273,274,5,34,0,0,
+274,276,3,36,18,0,275,272,1,0,0,0,276,279,1,0,0,0,277,275,1,0,0,0,277,278,
+1,0,0,0,278,39,1,0,0,0,279,277,1,0,0,0,280,281,6,20,-1,0,281,282,3,38,19,
+0,282,289,1,0,0,0,283,284,10,1,0,0,284,285,3,34,17,0,285,286,3,38,19,0,286,
+288,1,0,0,0,287,283,1,0,0,0,288,291,1,0,0,0,289,287,1,0,0,0,289,290,1,0,
+0,0,290,41,1,0,0,0,291,289,1,0,0,0,292,293,6,21,-1,0,293,298,3,40,20,0,294,
+295,3,32,16,0,295,296,3,40,20,0,296,298,1,0,0,0,297,292,1,0,0,0,297,294,
+1,0,0,0,298,305,1,0,0,0,299,300,10,1,0,0,300,301,3,32,16,0,301,302,3,40,
+20,0,302,304,1,0,0,0,303,299,1,0,0,0,304,307,1,0,0,0,305,303,1,0,0,0,305,
+306,1,0,0,0,306,43,1,0,0,0,307,305,1,0,0,0,308,309,5,11,0,0,309,310,3,62,
+31,0,310,311,5,20,0,0,311,45,1,0,0,0,312,319,3,42,21,0,313,314,3,44,22,0,
+314,315,3,42,21,0,315,316,5,6,0,0,316,317,3,46,23,0,317,319,1,0,0,0,318,
+312,1,0,0,0,318,313,1,0,0,0,319,47,1,0,0,0,320,321,3,42,21,0,321,322,5,55,
+0,0,322,323,3,42,21,0,323,49,1,0,0,0,324,333,5,54,0,0,325,333,3,20,10,0,
+326,333,3,30,15,0,327,333,3,48,24,0,328,329,5,40,0,0,329,330,3,62,31,0,330,
+331,5,49,0,0,331,333,1,0,0,0,332,324,1,0,0,0,332,325,1,0,0,0,332,326,1,0,
+0,0,332,327,1,0,0,0,332,328,1,0,0,0,333,51,1,0,0,0,334,338,3,50,25,0,335,
+336,5,45,0,0,336,338,3,50,25,0,337,334,1,0,0,0,337,335,1,0,0,0,338,53,1,
+0,0,0,339,340,6,27,-1,0,340,341,3,52,26,0,341,347,1,0,0,0,342,343,10,1,0,
+0,343,344,5,25,0,0,344,346,3,52,26,0,345,342,1,0,0,0,346,349,1,0,0,0,347,
+345,1,0,0,0,347,348,1,0,0,0,348,55,1,0,0,0,349,347,1,0,0,0,350,351,6,28,
+-1,0,351,352,3,54,27,0,352,358,1,0,0,0,353,354,10,1,0,0,354,355,5,46,0,0,
+355,357,3,54,27,0,356,353,1,0,0,0,357,360,1,0,0,0,358,356,1,0,0,0,358,359,
+1,0,0,0,359,57,1,0,0,0,360,358,1,0,0,0,361,362,6,29,-1,0,362,363,3,56,28,
+0,363,369,1,0,0,0,364,365,10,1,0,0,365,366,5,37,0,0,366,368,3,56,28,0,367,
+364,1,0,0,0,368,371,1,0,0,0,369,367,1,0,0,0,369,370,1,0,0,0,370,59,1,0,0,
+0,371,369,1,0,0,0,372,373,6,30,-1,0,373,374,3,58,29,0,374,380,1,0,0,0,375,
+376,10,1,0,0,376,377,5,33,0,0,377,379,3,58,29,0,378,375,1,0,0,0,379,382,
+1,0,0,0,380,378,1,0,0,0,380,381,1,0,0,0,381,61,1,0,0,0,382,380,1,0,0,0,383,
+390,3,60,30,0,384,385,3,44,22,0,385,386,3,60,30,0,386,387,5,6,0,0,387,388,
+3,62,31,0,388,390,1,0,0,0,389,383,1,0,0,0,389,384,1,0,0,0,390,63,1,0,0,0,
+391,392,7,2,0,0,392,65,1,0,0,0,393,394,5,57,0,0,394,67,1,0,0,0,395,396,3,
+66,33,0,396,397,5,38,0,0,397,398,3,12,6,0,398,399,5,48,0,0,399,69,1,0,0,
+0,400,407,3,64,32,0,401,407,3,68,34,0,402,403,5,40,0,0,403,404,3,72,36,0,
+404,405,5,49,0,0,405,407,1,0,0,0,406,400,1,0,0,0,406,401,1,0,0,0,406,402,
+1,0,0,0,407,71,1,0,0,0,408,415,3,70,35,0,409,410,3,44,22,0,410,411,3,70,
+35,0,411,412,5,6,0,0,412,413,3,72,36,0,413,415,1,0,0,0,414,408,1,0,0,0,414,
+409,1,0,0,0,415,73,1,0,0,0,416,421,3,102,51,0,417,421,3,104,52,0,418,421,
+3,106,53,0,419,421,3,122,61,0,420,416,1,0,0,0,420,417,1,0,0,0,420,418,1,
+0,0,0,420,419,1,0,0,0,421,75,1,0,0,0,422,428,3,74,37,0,423,424,3,64,32,0,
+424,425,5,27,0,0,425,426,3,76,38,0,426,428,1,0,0,0,427,422,1,0,0,0,427,423,
+1,0,0,0,428,77,1,0,0,0,429,433,3,76,38,0,430,433,3,90,45,0,431,433,3,92,
+46,0,432,429,1,0,0,0,432,430,1,0,0,0,432,431,1,0,0,0,433,79,1,0,0,0,434,
+438,3,78,39,0,435,438,3,110,55,0,436,438,3,118,59,0,437,434,1,0,0,0,437,
+435,1,0,0,0,437,436,1,0,0,0,438,81,1,0,0,0,439,440,3,80,40,0,440,441,5,7,
+0,0,441,447,1,0,0,0,442,443,3,80,40,0,443,444,5,50,0,0,444,445,3,82,41,0,
+445,447,1,0,0,0,446,439,1,0,0,0,446,442,1,0,0,0,447,83,1,0,0,0,448,449,6,
+42,-1,0,449,450,5,2,0,0,450,451,3,126,63,0,451,457,1,0,0,0,452,453,10,1,
+0,0,453,454,5,50,0,0,454,456,3,126,63,0,455,452,1,0,0,0,456,459,1,0,0,0,
+457,455,1,0,0,0,457,458,1,0,0,0,458,85,1,0,0,0,459,457,1,0,0,0,460,461,5,
+2,0,0,461,462,3,82,41,0,462,87,1,0,0,0,463,464,3,84,42,0,464,465,5,50,0,
+0,465,466,3,82,41,0,466,89,1,0,0,0,467,473,3,86,43,0,468,469,3,64,32,0,469,
+470,5,27,0,0,470,471,3,90,45,0,471,473,1,0,0,0,472,467,1,0,0,0,472,468,1,
+0,0,0,473,91,1,0,0,0,474,480,3,88,44,0,475,476,3,64,32,0,476,477,5,27,0,
+0,477,478,3,92,46,0,478,480,1,0,0,0,479,474,1,0,0,0,479,475,1,0,0,0,480,
+93,1,0,0,0,481,484,3,92,46,0,482,484,3,90,45,0,483,481,1,0,0,0,483,482,1,
+0,0,0,484,485,1,0,0,0,485,486,5,0,0,1,486,95,1,0,0,0,487,490,3,20,10,0,488,
+490,3,22,11,0,489,487,1,0,0,0,489,488,1,0,0,0,490,97,1,0,0,0,491,492,3,20,
+10,0,492,493,5,26,0,0,493,498,1,0,0,0,494,495,3,22,11,0,495,496,5,26,0,0,
+496,498,1,0,0,0,497,491,1,0,0,0,497,494,1,0,0,0,498,99,1,0,0,0,499,500,6,
+50,-1,0,500,501,3,98,49,0,501,506,1,0,0,0,502,503,10,1,0,0,503,505,3,98,
+49,0,504,502,1,0,0,0,505,508,1,0,0,0,506,504,1,0,0,0,506,507,1,0,0,0,507,
+101,1,0,0,0,508,506,1,0,0,0,509,510,3,100,50,0,510,511,3,46,23,0,511,516,
+1,0,0,0,512,513,3,100,50,0,513,514,3,62,31,0,514,516,1,0,0,0,515,509,1,0,
+0,0,515,512,1,0,0,0,516,103,1,0,0,0,517,518,5,10,0,0,518,519,3,72,36,0,519,
+105,1,0,0,0,520,521,3,0,0,0,521,107,1,0,0,0,522,523,3,44,22,0,523,524,3,
+78,39,0,524,109,1,0,0,0,525,538,3,108,54,0,526,527,3,108,54,0,527,528,5,
+6,0,0,528,529,3,80,40,0,529,538,1,0,0,0,530,531,3,44,22,0,531,532,3,118,
+59,0,532,538,1,0,0,0,533,534,3,64,32,0,534,535,5,27,0,0,535,536,3,110,55,
+0,536,538,1,0,0,0,537,525,1,0,0,0,537,526,1,0,0,0,537,530,1,0,0,0,537,533,
+1,0,0,0,538,111,1,0,0,0,539,551,3,46,23,0,540,541,3,46,23,0,541,542,5,17,
+0,0,542,543,3,46,23,0,543,544,5,22,0,0,544,545,3,46,23,0,545,551,1,0,0,0,
+546,547,3,46,23,0,547,548,5,24,0,0,548,549,3,62,31,0,549,551,1,0,0,0,550,
+539,1,0,0,0,550,540,1,0,0,0,550,546,1,0,0,0,551,113,1,0,0,0,552,553,6,57,
+-1,0,553,554,3,112,56,0,554,560,1,0,0,0,555,556,10,1,0,0,556,557,5,28,0,
+0,557,559,3,112,56,0,558,555,1,0,0,0,559,562,1,0,0,0,560,558,1,0,0,0,560,
+561,1,0,0,0,561,115,1,0,0,0,562,560,1,0,0,0,563,564,5,9,0,0,564,565,3,20,
+10,0,565,566,5,26,0,0,566,567,3,114,57,0,567,568,5,5,0,0,568,117,1,0,0,0,
+569,570,3,116,58,0,570,571,3,80,40,0,571,577,1,0,0,0,572,573,3,64,32,0,573,
+574,5,27,0,0,574,575,3,118,59,0,575,577,1,0,0,0,576,569,1,0,0,0,576,572,
+1,0,0,0,577,119,1,0,0,0,578,584,3,0,0,0,579,580,5,40,0,0,580,581,3,28,14,
+0,581,582,5,49,0,0,582,584,1,0,0,0,583,578,1,0,0,0,583,579,1,0,0,0,584,121,
+1,0,0,0,585,586,3,22,11,0,586,587,3,120,60,0,587,123,1,0,0,0,588,590,9,0,
+0,0,589,588,1,0,0,0,590,593,1,0,0,0,591,589,1,0,0,0,591,592,1,0,0,0,592,
+125,1,0,0,0,593,591,1,0,0,0,594,599,3,134,67,0,595,599,3,150,75,0,596,599,
+3,154,77,0,597,599,3,174,87,0,598,594,1,0,0,0,598,595,1,0,0,0,598,596,1,
+0,0,0,598,597,1,0,0,0,599,127,1,0,0,0,600,606,3,10,5,0,601,602,3,10,5,0,
+602,603,5,28,0,0,603,604,3,128,64,0,604,606,1,0,0,0,605,600,1,0,0,0,605,
+601,1,0,0,0,606,129,1,0,0,0,607,608,7,3,0,0,608,131,1,0,0,0,609,612,3,0,
+0,0,610,612,5,14,0,0,611,609,1,0,0,0,611,610,1,0,0,0,612,133,1,0,0,0,613,
+614,3,132,66,0,614,615,3,130,65,0,615,616,3,128,64,0,616,135,1,0,0,0,617,
+618,3,46,23,0,618,137,1,0,0,0,619,620,3,46,23,0,620,139,1,0,0,0,621,622,
+3,136,68,0,622,623,5,27,0,0,623,624,3,138,69,0,624,141,1,0,0,0,625,626,6,
+71,-1,0,626,627,3,140,70,0,627,633,1,0,0,0,628,629,10,1,0,0,629,630,5,28,
+0,0,630,632,3,140,70,0,631,628,1,0,0,0,632,635,1,0,0,0,633,631,1,0,0,0,633,
+634,1,0,0,0,634,143,1,0,0,0,635,633,1,0,0,0,636,637,3,16,8,0,637,638,5,38,
+0,0,638,639,3,142,71,0,639,640,5,48,0,0,640,646,1,0,0,0,641,642,3,16,8,0,
+642,643,5,28,0,0,643,644,3,144,72,0,644,646,1,0,0,0,645,636,1,0,0,0,645,
+641,1,0,0,0,646,145,1,0,0,0,647,648,6,73,-1,0,648,649,3,144,72,0,649,655,
+1,0,0,0,650,651,10,1,0,0,651,652,5,28,0,0,652,654,3,144,72,0,653,650,1,0,
+0,0,654,657,1,0,0,0,655,653,1,0,0,0,655,656,1,0,0,0,656,147,1,0,0,0,657,
+655,1,0,0,0,658,659,3,130,65,0,659,660,5,1,0,0,660,663,1,0,0,0,661,663,5,
+1,0,0,662,658,1,0,0,0,662,661,1,0,0,0,663,149,1,0,0,0,664,665,3,132,66,0,
+665,666,3,148,74,0,666,667,3,146,73,0,667,151,1,0,0,0,668,669,6,76,-1,0,
+669,670,3,72,36,0,670,676,1,0,0,0,671,672,10,1,0,0,672,673,5,28,0,0,673,
+675,3,72,36,0,674,671,1,0,0,0,675,678,1,0,0,0,676,674,1,0,0,0,676,677,1,
+0,0,0,677,153,1,0,0,0,678,676,1,0,0,0,679,680,5,19,0,0,680,681,3,66,33,0,
+681,682,5,26,0,0,682,683,3,152,76,0,683,155,1,0,0,0,684,685,5,57,0,0,685,
+157,1,0,0,0,686,687,6,79,-1,0,687,688,3,156,78,0,688,695,1,0,0,0,689,690,
+10,1,0,0,690,691,3,24,12,0,691,692,3,156,78,0,692,694,1,0,0,0,693,689,1,
+0,0,0,694,697,1,0,0,0,695,693,1,0,0,0,695,696,1,0,0,0,696,159,1,0,0,0,697,
+695,1,0,0,0,698,704,3,0,0,0,699,700,5,40,0,0,700,701,3,158,79,0,701,702,
+5,49,0,0,702,704,1,0,0,0,703,698,1,0,0,0,703,699,1,0,0,0,704,161,1,0,0,0,
+705,706,6,81,-1,0,706,707,5,57,0,0,707,713,1,0,0,0,708,709,10,1,0,0,709,
+710,5,28,0,0,710,712,5,57,0,0,711,708,1,0,0,0,712,715,1,0,0,0,713,711,1,
+0,0,0,713,714,1,0,0,0,714,163,1,0,0,0,715,713,1,0,0,0,716,717,5,23,0,0,717,
+718,3,162,81,0,718,719,5,50,0,0,719,722,1,0,0,0,720,722,3,0,0,0,721,716,
+1,0,0,0,721,720,1,0,0,0,722,165,1,0,0,0,723,736,5,18,0,0,724,736,3,130,65,
+0,725,736,5,1,0,0,726,727,3,130,65,0,727,728,5,1,0,0,728,736,1,0,0,0,729,
+736,5,13,0,0,730,736,5,19,0,0,731,736,5,15,0,0,732,733,3,130,65,0,733,734,
+5,15,0,0,734,736,1,0,0,0,735,723,1,0,0,0,735,724,1,0,0,0,735,725,1,0,0,0,
+735,726,1,0,0,0,735,729,1,0,0,0,735,730,1,0,0,0,735,731,1,0,0,0,735,732,
+1,0,0,0,736,167,1,0,0,0,737,738,6,84,-1,0,738,744,3,0,0,0,739,740,3,166,
+83,0,740,741,3,162,81,0,741,742,5,50,0,0,742,744,1,0,0,0,743,737,1,0,0,0,
+743,739,1,0,0,0,744,751,1,0,0,0,745,746,10,1,0,0,746,747,3,166,83,0,747,
+748,3,162,81,0,748,750,1,0,0,0,749,745,1,0,0,0,750,753,1,0,0,0,751,749,1,
+0,0,0,751,752,1,0,0,0,752,169,1,0,0,0,753,751,1,0,0,0,754,755,3,22,11,0,
+755,756,3,160,80,0,756,757,5,50,0,0,757,758,3,164,82,0,758,759,3,168,84,
+0,759,171,1,0,0,0,760,763,3,80,40,0,761,763,3,124,62,0,762,760,1,0,0,0,762,
+761,1,0,0,0,763,173,1,0,0,0,764,765,5,15,0,0,765,766,3,170,85,0,766,767,
+3,172,86,0,767,774,1,0,0,0,768,769,3,130,65,0,769,770,5,15,0,0,770,771,3,
+170,85,0,771,772,3,172,86,0,772,774,1,0,0,0,773,764,1,0,0,0,773,768,1,0,
+0,0,774,175,1,0,0,0,59,183,190,195,211,223,232,239,250,267,277,289,297,305,
+318,332,337,347,358,369,380,389,406,414,420,427,432,437,446,457,472,479,
+483,489,497,506,515,537,550,560,576,583,591,598,605,611,633,645,655,662,
+676,695,703,713,721,735,743,751,762,773];
+
+
+const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
+
+const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
+
+const sharedContextCache = new antlr4.PredictionContextCache();
+
+export default class algol60Parser extends antlr4.Parser {
+
+    static grammarFileName = "algol60.g4";
+    static literalNames = [ null, null, null, null, null, null, null, null, 
+                            null, null, null, null, null, null, null, null, 
+                            null, null, null, null, null, null, null, null, 
+                            null, null, "':='", "':'", "','", "'.'", null, 
+                            "'^='", "'='", "'\\u2261'", null, "'>'", null, 
+                            "'\\u2283'", "'['", null, "'('", "'<'", null, 
+                            null, null, null, null, "'+'", "']'", "')'", 
+                            "';'", "'_'" ];
+    static symbolicNames = [ null, "Array_", "Begin_", "Boolean_", "Comment_", 
+                             "Do_", "Else_", "End_", "False_", "For_", "Goto_", 
+                             "If_", "Integer_", "Label_", "Own_", "Procedure_", 
+                             "Real_", "Step_", "String_", "Switch_", "Then_", 
+                             "True_", "Until_", "Value_", "While_", "And_", 
+                             "Assign_", "Colon_", "Comma_", "Dot_", "Divide_", 
+                             "Eor_", "Eq_", "Equiv_", "Exp_", "Gt_", "Ge_", 
+                             "Includes_", "Lb_", "Le_", "LP_", "Lt_", "Minus_", 
+                             "Mult_", "Ne_", "Not_", "Or_", "Plus_", "Rb_", 
+                             "Rp_", "Semi_", "Underscore_", "ULCorner", 
+                             "URCorner", "Logical_value", "Relational_operator", 
+                             "Comment", "Identifier", "Unsigned_integer", 
+                             "Decimal_fraction", "Exponential_part", "Decimal_number", 
+                             "Unsigned_number", "String", "WS" ];
+    static ruleNames = [ "empty_", "integer", "number", "expression", "variable_identifier", 
+                         "simple_variable", "subscript_expression", "subscript_list", 
+                         "array_identifier", "subscripted_variable", "variable", 
+                         "procedure_identifier", "parameter_delimiter", 
+                         "actual_parameter", "actual_parameter_list", "function_designator", 
+                         "adding_operator", "multiplying_operator", "primary", 
+                         "factor", "term", "simple_arithmetic_expression", 
+                         "if_clause", "arithmetic_expression", "relation", 
+                         "boolean_primary", "boolean_secondary", "boolean_factor", 
+                         "boolean_term", "implication", "simple_boolean", 
+                         "boolean_expression", "label", "switch_identifier", 
+                         "switch_designator", "simple_designational_expression", 
+                         "designational_expression", "unlabelled_basic_statement", 
+                         "basic_statement", "unconditional_statement", "statement", 
+                         "compound_tail", "block_head", "unlabelled_compound", 
+                         "unlabelled_block", "compound_statement", "block", 
+                         "program", "destination", "left_part", "left_part_list", 
+                         "assignment_statement", "go_to_statement", "dummy_statement", 
+                         "if_statement", "conditional_statement", "for_list_element", 
+                         "for_list", "for_clause", "for_statement", "actual_parameter_part", 
+                         "procedure_statement", "code", "declaration", "type_list", 
+                         "type_", "local_or_own", "type_declaration", "lower_bound", 
+                         "upper_bound", "bound_pair", "bound_pair_list", 
+                         "array_segment", "array_list", "array_declarer", 
+                         "array_declaration", "switch_list", "switch_declaration", 
+                         "formal_parameter", "formal_parameter_list", "formal_parameter_part", 
+                         "identifier_list", "value_part", "specifier", "specification_part", 
+                         "procedure_heading", "procedure_body", "procedure_declaration" ];
+
+    constructor(input) {
+        super(input);
+        this._interp = new antlr4.atn.ParserATNSimulator(this, atn, decisionsToDFA, sharedContextCache);
+        this.ruleNames = algol60Parser.ruleNames;
+        this.literalNames = algol60Parser.literalNames;
+        this.symbolicNames = algol60Parser.symbolicNames;
     }
-    Local_or_own_typeContext.prototype.type = function () {
-        return this.getRuleContext(0, TypeContext);
-    };
-    Object.defineProperty(Local_or_own_typeContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_local_or_own_type; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Local_or_own_typeContext.prototype.enterRule = function (listener) {
-        if (listener.enterLocal_or_own_type) {
-            listener.enterLocal_or_own_type(this);
-        }
-    };
-    // @Override
-    Local_or_own_typeContext.prototype.exitRule = function (listener) {
-        if (listener.exitLocal_or_own_type) {
-            listener.exitLocal_or_own_type(this);
-        }
-    };
-    // @Override
-    Local_or_own_typeContext.prototype.accept = function (visitor) {
-        if (visitor.visitLocal_or_own_type) {
-            return visitor.visitLocal_or_own_type(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Local_or_own_typeContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Local_or_own_typeContext = Local_or_own_typeContext;
-var TypeContext = /** @class */ (function (_super) {
-    __extends(TypeContext, _super);
-    function TypeContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+    get atn() {
+        return atn;
     }
-    Object.defineProperty(TypeContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_type; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    TypeContext.prototype.enterRule = function (listener) {
-        if (listener.enterType) {
-            listener.enterType(this);
-        }
-    };
-    // @Override
-    TypeContext.prototype.exitRule = function (listener) {
-        if (listener.exitType) {
-            listener.exitType(this);
-        }
-    };
-    // @Override
-    TypeContext.prototype.accept = function (visitor) {
-        if (visitor.visitType) {
-            return visitor.visitType(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return TypeContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.TypeContext = TypeContext;
-var Type_listContext = /** @class */ (function (_super) {
-    __extends(Type_listContext, _super);
-    function Type_listContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+    sempred(localctx, ruleIndex, predIndex) {
+    	switch(ruleIndex) {
+    	case 7:
+    	    		return this.subscript_list_sempred(localctx, predIndex);
+    	case 14:
+    	    		return this.actual_parameter_list_sempred(localctx, predIndex);
+    	case 19:
+    	    		return this.factor_sempred(localctx, predIndex);
+    	case 20:
+    	    		return this.term_sempred(localctx, predIndex);
+    	case 21:
+    	    		return this.simple_arithmetic_expression_sempred(localctx, predIndex);
+    	case 27:
+    	    		return this.boolean_factor_sempred(localctx, predIndex);
+    	case 28:
+    	    		return this.boolean_term_sempred(localctx, predIndex);
+    	case 29:
+    	    		return this.implication_sempred(localctx, predIndex);
+    	case 30:
+    	    		return this.simple_boolean_sempred(localctx, predIndex);
+    	case 42:
+    	    		return this.block_head_sempred(localctx, predIndex);
+    	case 50:
+    	    		return this.left_part_list_sempred(localctx, predIndex);
+    	case 57:
+    	    		return this.for_list_sempred(localctx, predIndex);
+    	case 71:
+    	    		return this.bound_pair_list_sempred(localctx, predIndex);
+    	case 73:
+    	    		return this.array_list_sempred(localctx, predIndex);
+    	case 76:
+    	    		return this.switch_list_sempred(localctx, predIndex);
+    	case 79:
+    	    		return this.formal_parameter_list_sempred(localctx, predIndex);
+    	case 81:
+    	    		return this.identifier_list_sempred(localctx, predIndex);
+    	case 84:
+    	    		return this.specification_part_sempred(localctx, predIndex);
+        default:
+            throw "No predicate with index:" + ruleIndex;
+       }
     }
-    Type_listContext.prototype.simple_variable = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Simple_variableContext);
-        }
-        else {
-            return this.getRuleContext(i, Simple_variableContext);
-        }
-    };
-    Object.defineProperty(Type_listContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_type_list; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Type_listContext.prototype.enterRule = function (listener) {
-        if (listener.enterType_list) {
-            listener.enterType_list(this);
-        }
-    };
-    // @Override
-    Type_listContext.prototype.exitRule = function (listener) {
-        if (listener.exitType_list) {
-            listener.exitType_list(this);
-        }
-    };
-    // @Override
-    Type_listContext.prototype.accept = function (visitor) {
-        if (visitor.visitType_list) {
-            return visitor.visitType_list(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Type_listContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Type_listContext = Type_listContext;
-var Array_declarationContext = /** @class */ (function (_super) {
-    __extends(Array_declarationContext, _super);
-    function Array_declarationContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+    subscript_list_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 0:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    actual_parameter_list_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 1:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    factor_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 2:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    term_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 3:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    simple_arithmetic_expression_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 4:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    boolean_factor_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 5:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    boolean_term_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 6:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    implication_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 7:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    simple_boolean_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 8:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    block_head_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 9:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    left_part_list_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 10:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    for_list_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 11:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    bound_pair_list_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 12:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    array_list_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 13:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    switch_list_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 14:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    formal_parameter_list_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 15:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    identifier_list_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 16:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+    specification_part_sempred(localctx, predIndex) {
+    	switch(predIndex) {
+    		case 17:
+    			return this.precpred(this._ctx, 1);
+    		default:
+    			throw "No predicate with index:" + predIndex;
+    	}
+    };
+
+
+
+
+	empty_() {
+	    let localctx = new Empty_Context(this, this._ctx, this.state);
+	    this.enterRule(localctx, 0, algol60Parser.RULE_empty_);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	integer() {
+	    let localctx = new IntegerContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 2, algol60Parser.RULE_integer);
+	    try {
+	        this.state = 183;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.Unsigned_integer:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 178;
+	            this.match(algol60Parser.Unsigned_integer);
+	            break;
+	        case algol60Parser.Plus_:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 179;
+	            this.match(algol60Parser.Plus_);
+	            this.state = 180;
+	            this.match(algol60Parser.Unsigned_integer);
+	            break;
+	        case algol60Parser.Minus_:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 181;
+	            this.match(algol60Parser.Minus_);
+	            this.state = 182;
+	            this.match(algol60Parser.Unsigned_integer);
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	number() {
+	    let localctx = new NumberContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 4, algol60Parser.RULE_number);
+	    try {
+	        this.state = 190;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.Unsigned_number:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 185;
+	            this.match(algol60Parser.Unsigned_number);
+	            break;
+	        case algol60Parser.Plus_:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 186;
+	            this.match(algol60Parser.Plus_);
+	            this.state = 187;
+	            this.match(algol60Parser.Unsigned_number);
+	            break;
+	        case algol60Parser.Minus_:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 188;
+	            this.match(algol60Parser.Minus_);
+	            this.state = 189;
+	            this.match(algol60Parser.Unsigned_number);
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	expression() {
+	    let localctx = new ExpressionContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 6, algol60Parser.RULE_expression);
+	    try {
+	        this.state = 195;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,2,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 192;
+	            this.arithmetic_expression();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 193;
+	            this.boolean_expression();
+	            break;
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 194;
+	            this.designational_expression();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	variable_identifier() {
+	    let localctx = new Variable_identifierContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 8, algol60Parser.RULE_variable_identifier);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 197;
+	        this.match(algol60Parser.Identifier);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	simple_variable() {
+	    let localctx = new Simple_variableContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 10, algol60Parser.RULE_simple_variable);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 199;
+	        this.variable_identifier();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	subscript_expression() {
+	    let localctx = new Subscript_expressionContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 12, algol60Parser.RULE_subscript_expression);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 201;
+	        this.arithmetic_expression();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	subscript_list(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Subscript_listContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 14;
+	    this.enterRecursionRule(localctx, 14, algol60Parser.RULE_subscript_list, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 204;
+	        this.subscript_expression();
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 211;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,3,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Subscript_listContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_subscript_list);
+	                this.state = 206;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 207;
+	                this.match(algol60Parser.Comma_);
+	                this.state = 208;
+	                this.subscript_expression(); 
+	            }
+	            this.state = 213;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,3,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	array_identifier() {
+	    let localctx = new Array_identifierContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 16, algol60Parser.RULE_array_identifier);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 214;
+	        this.match(algol60Parser.Identifier);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	subscripted_variable() {
+	    let localctx = new Subscripted_variableContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 18, algol60Parser.RULE_subscripted_variable);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 216;
+	        this.array_identifier();
+	        this.state = 217;
+	        this.match(algol60Parser.Lb_);
+	        this.state = 218;
+	        this.subscript_list(0);
+	        this.state = 219;
+	        this.match(algol60Parser.Rb_);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	variable() {
+	    let localctx = new VariableContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 20, algol60Parser.RULE_variable);
+	    try {
+	        this.state = 223;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,4,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 221;
+	            this.simple_variable();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 222;
+	            this.subscripted_variable();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	procedure_identifier() {
+	    let localctx = new Procedure_identifierContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 22, algol60Parser.RULE_procedure_identifier);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 225;
+	        this.match(algol60Parser.Identifier);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	parameter_delimiter() {
+	    let localctx = new Parameter_delimiterContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 24, algol60Parser.RULE_parameter_delimiter);
+	    try {
+	        this.state = 232;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.Comma_:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 227;
+	            this.match(algol60Parser.Comma_);
+	            break;
+	        case algol60Parser.Rp_:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 228;
+	            this.match(algol60Parser.Rp_);
+	            this.state = 229;
+	            this.match(algol60Parser.Identifier);
+	            this.state = 230;
+	            this.match(algol60Parser.Colon_);
+	            this.state = 231;
+	            this.match(algol60Parser.LP_);
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	actual_parameter() {
+	    let localctx = new Actual_parameterContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 26, algol60Parser.RULE_actual_parameter);
+	    try {
+	        this.state = 239;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,6,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 234;
+	            this.match(algol60Parser.String);
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 235;
+	            this.expression();
+	            break;
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 236;
+	            this.array_identifier();
+	            break;
+
+	        case 4:
+	            this.enterOuterAlt(localctx, 4);
+	            this.state = 237;
+	            this.switch_identifier();
+	            break;
+
+	        case 5:
+	            this.enterOuterAlt(localctx, 5);
+	            this.state = 238;
+	            this.procedure_identifier();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	actual_parameter_list(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Actual_parameter_listContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 28;
+	    this.enterRecursionRule(localctx, 28, algol60Parser.RULE_actual_parameter_list, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 242;
+	        this.actual_parameter();
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 250;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,7,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Actual_parameter_listContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_actual_parameter_list);
+	                this.state = 244;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 245;
+	                this.parameter_delimiter();
+	                this.state = 246;
+	                this.actual_parameter(); 
+	            }
+	            this.state = 252;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,7,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	function_designator() {
+	    let localctx = new Function_designatorContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 30, algol60Parser.RULE_function_designator);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 253;
+	        this.procedure_identifier();
+	        this.state = 254;
+	        this.actual_parameter_part();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	adding_operator() {
+	    let localctx = new Adding_operatorContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 32, algol60Parser.RULE_adding_operator);
+	    var _la = 0; // Token type
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 256;
+	        _la = this._input.LA(1);
+	        if(!(_la===algol60Parser.Minus_ || _la===algol60Parser.Plus_)) {
+	        this._errHandler.recoverInline(this);
+	        }
+	        else {
+	        	this._errHandler.reportMatch(this);
+	            this.consume();
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	multiplying_operator() {
+	    let localctx = new Multiplying_operatorContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 34, algol60Parser.RULE_multiplying_operator);
+	    var _la = 0; // Token type
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 258;
+	        _la = this._input.LA(1);
+	        if(!(_la===algol60Parser.Divide_ || _la===algol60Parser.Mult_)) {
+	        this._errHandler.recoverInline(this);
+	        }
+	        else {
+	        	this._errHandler.reportMatch(this);
+	            this.consume();
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	primary() {
+	    let localctx = new PrimaryContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 36, algol60Parser.RULE_primary);
+	    try {
+	        this.state = 267;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,8,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 260;
+	            this.match(algol60Parser.Unsigned_number);
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 261;
+	            this.variable();
+	            break;
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 262;
+	            this.function_designator();
+	            break;
+
+	        case 4:
+	            this.enterOuterAlt(localctx, 4);
+	            this.state = 263;
+	            this.match(algol60Parser.LP_);
+	            this.state = 264;
+	            this.arithmetic_expression();
+	            this.state = 265;
+	            this.match(algol60Parser.Rp_);
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	factor(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new FactorContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 38;
+	    this.enterRecursionRule(localctx, 38, algol60Parser.RULE_factor, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 270;
+	        this.primary();
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 277;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,9,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new FactorContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_factor);
+	                this.state = 272;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 273;
+	                this.match(algol60Parser.Exp_);
+	                this.state = 274;
+	                this.primary(); 
+	            }
+	            this.state = 279;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,9,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+	term(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new TermContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 40;
+	    this.enterRecursionRule(localctx, 40, algol60Parser.RULE_term, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 281;
+	        this.factor(0);
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 289;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,10,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new TermContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_term);
+	                this.state = 283;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 284;
+	                this.multiplying_operator();
+	                this.state = 285;
+	                this.factor(0); 
+	            }
+	            this.state = 291;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,10,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+	simple_arithmetic_expression(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Simple_arithmetic_expressionContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 42;
+	    this.enterRecursionRule(localctx, 42, algol60Parser.RULE_simple_arithmetic_expression, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 297;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.LP_:
+	        case algol60Parser.Identifier:
+	        case algol60Parser.Unsigned_number:
+	            this.state = 293;
+	            this.term(0);
+	            break;
+	        case algol60Parser.Minus_:
+	        case algol60Parser.Plus_:
+	            this.state = 294;
+	            this.adding_operator();
+	            this.state = 295;
+	            this.term(0);
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 305;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,12,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Simple_arithmetic_expressionContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_simple_arithmetic_expression);
+	                this.state = 299;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 300;
+	                this.adding_operator();
+	                this.state = 301;
+	                this.term(0); 
+	            }
+	            this.state = 307;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,12,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	if_clause() {
+	    let localctx = new If_clauseContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 44, algol60Parser.RULE_if_clause);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 308;
+	        this.match(algol60Parser.If_);
+	        this.state = 309;
+	        this.boolean_expression();
+	        this.state = 310;
+	        this.match(algol60Parser.Then_);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	arithmetic_expression() {
+	    let localctx = new Arithmetic_expressionContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 46, algol60Parser.RULE_arithmetic_expression);
+	    try {
+	        this.state = 318;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.LP_:
+	        case algol60Parser.Minus_:
+	        case algol60Parser.Plus_:
+	        case algol60Parser.Identifier:
+	        case algol60Parser.Unsigned_number:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 312;
+	            this.simple_arithmetic_expression(0);
+	            break;
+	        case algol60Parser.If_:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 313;
+	            this.if_clause();
+	            this.state = 314;
+	            this.simple_arithmetic_expression(0);
+	            this.state = 315;
+	            this.match(algol60Parser.Else_);
+	            this.state = 316;
+	            this.arithmetic_expression();
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	relation() {
+	    let localctx = new RelationContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 48, algol60Parser.RULE_relation);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 320;
+	        this.simple_arithmetic_expression(0);
+	        this.state = 321;
+	        this.match(algol60Parser.Relational_operator);
+	        this.state = 322;
+	        this.simple_arithmetic_expression(0);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	boolean_primary() {
+	    let localctx = new Boolean_primaryContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 50, algol60Parser.RULE_boolean_primary);
+	    try {
+	        this.state = 332;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,14,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 324;
+	            this.match(algol60Parser.Logical_value);
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 325;
+	            this.variable();
+	            break;
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 326;
+	            this.function_designator();
+	            break;
+
+	        case 4:
+	            this.enterOuterAlt(localctx, 4);
+	            this.state = 327;
+	            this.relation();
+	            break;
+
+	        case 5:
+	            this.enterOuterAlt(localctx, 5);
+	            this.state = 328;
+	            this.match(algol60Parser.LP_);
+	            this.state = 329;
+	            this.boolean_expression();
+	            this.state = 330;
+	            this.match(algol60Parser.Rp_);
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	boolean_secondary() {
+	    let localctx = new Boolean_secondaryContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 52, algol60Parser.RULE_boolean_secondary);
+	    try {
+	        this.state = 337;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.LP_:
+	        case algol60Parser.Minus_:
+	        case algol60Parser.Plus_:
+	        case algol60Parser.Logical_value:
+	        case algol60Parser.Identifier:
+	        case algol60Parser.Unsigned_number:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 334;
+	            this.boolean_primary();
+	            break;
+	        case algol60Parser.Not_:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 335;
+	            this.match(algol60Parser.Not_);
+	            this.state = 336;
+	            this.boolean_primary();
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	boolean_factor(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Boolean_factorContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 54;
+	    this.enterRecursionRule(localctx, 54, algol60Parser.RULE_boolean_factor, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 340;
+	        this.boolean_secondary();
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 347;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,16,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Boolean_factorContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_boolean_factor);
+	                this.state = 342;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 343;
+	                this.match(algol60Parser.And_);
+	                this.state = 344;
+	                this.boolean_secondary(); 
+	            }
+	            this.state = 349;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,16,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+	boolean_term(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Boolean_termContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 56;
+	    this.enterRecursionRule(localctx, 56, algol60Parser.RULE_boolean_term, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 351;
+	        this.boolean_factor(0);
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 358;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,17,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Boolean_termContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_boolean_term);
+	                this.state = 353;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 354;
+	                this.match(algol60Parser.Or_);
+	                this.state = 355;
+	                this.boolean_factor(0); 
+	            }
+	            this.state = 360;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,17,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+	implication(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new ImplicationContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 58;
+	    this.enterRecursionRule(localctx, 58, algol60Parser.RULE_implication, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 362;
+	        this.boolean_term(0);
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 369;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,18,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new ImplicationContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_implication);
+	                this.state = 364;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 365;
+	                this.match(algol60Parser.Includes_);
+	                this.state = 366;
+	                this.boolean_term(0); 
+	            }
+	            this.state = 371;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,18,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+	simple_boolean(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Simple_booleanContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 60;
+	    this.enterRecursionRule(localctx, 60, algol60Parser.RULE_simple_boolean, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 373;
+	        this.implication(0);
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 380;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,19,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Simple_booleanContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_simple_boolean);
+	                this.state = 375;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 376;
+	                this.match(algol60Parser.Equiv_);
+	                this.state = 377;
+	                this.implication(0); 
+	            }
+	            this.state = 382;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,19,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	boolean_expression() {
+	    let localctx = new Boolean_expressionContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 62, algol60Parser.RULE_boolean_expression);
+	    try {
+	        this.state = 389;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.LP_:
+	        case algol60Parser.Minus_:
+	        case algol60Parser.Not_:
+	        case algol60Parser.Plus_:
+	        case algol60Parser.Logical_value:
+	        case algol60Parser.Identifier:
+	        case algol60Parser.Unsigned_number:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 383;
+	            this.simple_boolean(0);
+	            break;
+	        case algol60Parser.If_:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 384;
+	            this.if_clause();
+	            this.state = 385;
+	            this.simple_boolean(0);
+	            this.state = 386;
+	            this.match(algol60Parser.Else_);
+	            this.state = 387;
+	            this.boolean_expression();
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	label() {
+	    let localctx = new LabelContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 64, algol60Parser.RULE_label);
+	    var _la = 0; // Token type
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 391;
+	        _la = this._input.LA(1);
+	        if(!(_la===algol60Parser.Identifier || _la===algol60Parser.Unsigned_integer)) {
+	        this._errHandler.recoverInline(this);
+	        }
+	        else {
+	        	this._errHandler.reportMatch(this);
+	            this.consume();
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	switch_identifier() {
+	    let localctx = new Switch_identifierContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 66, algol60Parser.RULE_switch_identifier);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 393;
+	        this.match(algol60Parser.Identifier);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	switch_designator() {
+	    let localctx = new Switch_designatorContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 68, algol60Parser.RULE_switch_designator);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 395;
+	        this.switch_identifier();
+	        this.state = 396;
+	        this.match(algol60Parser.Lb_);
+	        this.state = 397;
+	        this.subscript_expression();
+	        this.state = 398;
+	        this.match(algol60Parser.Rb_);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	simple_designational_expression() {
+	    let localctx = new Simple_designational_expressionContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 70, algol60Parser.RULE_simple_designational_expression);
+	    try {
+	        this.state = 406;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,21,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 400;
+	            this.label();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 401;
+	            this.switch_designator();
+	            break;
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 402;
+	            this.match(algol60Parser.LP_);
+	            this.state = 403;
+	            this.designational_expression();
+	            this.state = 404;
+	            this.match(algol60Parser.Rp_);
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	designational_expression() {
+	    let localctx = new Designational_expressionContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 72, algol60Parser.RULE_designational_expression);
+	    try {
+	        this.state = 414;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.LP_:
+	        case algol60Parser.Identifier:
+	        case algol60Parser.Unsigned_integer:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 408;
+	            this.simple_designational_expression();
+	            break;
+	        case algol60Parser.If_:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 409;
+	            this.if_clause();
+	            this.state = 410;
+	            this.simple_designational_expression();
+	            this.state = 411;
+	            this.match(algol60Parser.Else_);
+	            this.state = 412;
+	            this.designational_expression();
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	unlabelled_basic_statement() {
+	    let localctx = new Unlabelled_basic_statementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 74, algol60Parser.RULE_unlabelled_basic_statement);
+	    try {
+	        this.state = 420;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,23,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 416;
+	            this.assignment_statement();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 417;
+	            this.go_to_statement();
+	            break;
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 418;
+	            this.dummy_statement();
+	            break;
+
+	        case 4:
+	            this.enterOuterAlt(localctx, 4);
+	            this.state = 419;
+	            this.procedure_statement();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	basic_statement() {
+	    let localctx = new Basic_statementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 76, algol60Parser.RULE_basic_statement);
+	    try {
+	        this.state = 427;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,24,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 422;
+	            this.unlabelled_basic_statement();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 423;
+	            this.label();
+	            this.state = 424;
+	            this.match(algol60Parser.Colon_);
+	            this.state = 425;
+	            this.basic_statement();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	unconditional_statement() {
+	    let localctx = new Unconditional_statementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 78, algol60Parser.RULE_unconditional_statement);
+	    try {
+	        this.state = 432;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,25,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 429;
+	            this.basic_statement();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 430;
+	            this.compound_statement();
+	            break;
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 431;
+	            this.block();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	statement() {
+	    let localctx = new StatementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 80, algol60Parser.RULE_statement);
+	    try {
+	        this.state = 437;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,26,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 434;
+	            this.unconditional_statement();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 435;
+	            this.conditional_statement();
+	            break;
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 436;
+	            this.for_statement();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	compound_tail() {
+	    let localctx = new Compound_tailContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 82, algol60Parser.RULE_compound_tail);
+	    try {
+	        this.state = 446;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,27,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 439;
+	            this.statement();
+	            this.state = 440;
+	            this.match(algol60Parser.End_);
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 442;
+	            this.statement();
+	            this.state = 443;
+	            this.match(algol60Parser.Semi_);
+	            this.state = 444;
+	            this.compound_tail();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	block_head(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Block_headContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 84;
+	    this.enterRecursionRule(localctx, 84, algol60Parser.RULE_block_head, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 449;
+	        this.match(algol60Parser.Begin_);
+	        this.state = 450;
+	        this.declaration();
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 457;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,28,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Block_headContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_block_head);
+	                this.state = 452;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 453;
+	                this.match(algol60Parser.Semi_);
+	                this.state = 454;
+	                this.declaration(); 
+	            }
+	            this.state = 459;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,28,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	unlabelled_compound() {
+	    let localctx = new Unlabelled_compoundContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 86, algol60Parser.RULE_unlabelled_compound);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 460;
+	        this.match(algol60Parser.Begin_);
+	        this.state = 461;
+	        this.compound_tail();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	unlabelled_block() {
+	    let localctx = new Unlabelled_blockContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 88, algol60Parser.RULE_unlabelled_block);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 463;
+	        this.block_head(0);
+	        this.state = 464;
+	        this.match(algol60Parser.Semi_);
+	        this.state = 465;
+	        this.compound_tail();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	compound_statement() {
+	    let localctx = new Compound_statementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 90, algol60Parser.RULE_compound_statement);
+	    try {
+	        this.state = 472;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.Begin_:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 467;
+	            this.unlabelled_compound();
+	            break;
+	        case algol60Parser.Identifier:
+	        case algol60Parser.Unsigned_integer:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 468;
+	            this.label();
+	            this.state = 469;
+	            this.match(algol60Parser.Colon_);
+	            this.state = 470;
+	            this.compound_statement();
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	block() {
+	    let localctx = new BlockContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 92, algol60Parser.RULE_block);
+	    try {
+	        this.state = 479;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.Begin_:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 474;
+	            this.unlabelled_block();
+	            break;
+	        case algol60Parser.Identifier:
+	        case algol60Parser.Unsigned_integer:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 475;
+	            this.label();
+	            this.state = 476;
+	            this.match(algol60Parser.Colon_);
+	            this.state = 477;
+	            this.block();
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	program() {
+	    let localctx = new ProgramContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 94, algol60Parser.RULE_program);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 483;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,31,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.state = 481;
+	            this.block();
+	            break;
+
+	        case 2:
+	            this.state = 482;
+	            this.compound_statement();
+	            break;
+
+	        }
+	        this.state = 485;
+	        this.match(algol60Parser.EOF);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	destination() {
+	    let localctx = new DestinationContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 96, algol60Parser.RULE_destination);
+	    try {
+	        this.state = 489;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,32,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 487;
+	            this.variable();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 488;
+	            this.procedure_identifier();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	left_part() {
+	    let localctx = new Left_partContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 98, algol60Parser.RULE_left_part);
+	    try {
+	        this.state = 497;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,33,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 491;
+	            this.variable();
+	            this.state = 492;
+	            this.match(algol60Parser.Assign_);
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 494;
+	            this.procedure_identifier();
+	            this.state = 495;
+	            this.match(algol60Parser.Assign_);
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	left_part_list(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Left_part_listContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 100;
+	    this.enterRecursionRule(localctx, 100, algol60Parser.RULE_left_part_list, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 500;
+	        this.left_part();
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 506;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,34,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Left_part_listContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_left_part_list);
+	                this.state = 502;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 503;
+	                this.left_part(); 
+	            }
+	            this.state = 508;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,34,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	assignment_statement() {
+	    let localctx = new Assignment_statementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 102, algol60Parser.RULE_assignment_statement);
+	    try {
+	        this.state = 515;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,35,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 509;
+	            this.left_part_list(0);
+	            this.state = 510;
+	            this.arithmetic_expression();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 512;
+	            this.left_part_list(0);
+	            this.state = 513;
+	            this.boolean_expression();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	go_to_statement() {
+	    let localctx = new Go_to_statementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 104, algol60Parser.RULE_go_to_statement);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 517;
+	        this.match(algol60Parser.Goto_);
+	        this.state = 518;
+	        this.designational_expression();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	dummy_statement() {
+	    let localctx = new Dummy_statementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 106, algol60Parser.RULE_dummy_statement);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 520;
+	        this.empty_();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	if_statement() {
+	    let localctx = new If_statementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 108, algol60Parser.RULE_if_statement);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 522;
+	        this.if_clause();
+	        this.state = 523;
+	        this.unconditional_statement();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	conditional_statement() {
+	    let localctx = new Conditional_statementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 110, algol60Parser.RULE_conditional_statement);
+	    try {
+	        this.state = 537;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,36,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 525;
+	            this.if_statement();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 526;
+	            this.if_statement();
+	            this.state = 527;
+	            this.match(algol60Parser.Else_);
+	            this.state = 528;
+	            this.statement();
+	            break;
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 530;
+	            this.if_clause();
+	            this.state = 531;
+	            this.for_statement();
+	            break;
+
+	        case 4:
+	            this.enterOuterAlt(localctx, 4);
+	            this.state = 533;
+	            this.label();
+	            this.state = 534;
+	            this.match(algol60Parser.Colon_);
+	            this.state = 535;
+	            this.conditional_statement();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	for_list_element() {
+	    let localctx = new For_list_elementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 112, algol60Parser.RULE_for_list_element);
+	    try {
+	        this.state = 550;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,37,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 539;
+	            this.arithmetic_expression();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 540;
+	            this.arithmetic_expression();
+	            this.state = 541;
+	            this.match(algol60Parser.Step_);
+	            this.state = 542;
+	            this.arithmetic_expression();
+	            this.state = 543;
+	            this.match(algol60Parser.Until_);
+	            this.state = 544;
+	            this.arithmetic_expression();
+	            break;
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 546;
+	            this.arithmetic_expression();
+	            this.state = 547;
+	            this.match(algol60Parser.While_);
+	            this.state = 548;
+	            this.boolean_expression();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	for_list(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new For_listContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 114;
+	    this.enterRecursionRule(localctx, 114, algol60Parser.RULE_for_list, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 553;
+	        this.for_list_element();
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 560;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,38,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new For_listContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_for_list);
+	                this.state = 555;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 556;
+	                this.match(algol60Parser.Comma_);
+	                this.state = 557;
+	                this.for_list_element(); 
+	            }
+	            this.state = 562;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,38,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	for_clause() {
+	    let localctx = new For_clauseContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 116, algol60Parser.RULE_for_clause);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 563;
+	        this.match(algol60Parser.For_);
+	        this.state = 564;
+	        this.variable();
+	        this.state = 565;
+	        this.match(algol60Parser.Assign_);
+	        this.state = 566;
+	        this.for_list(0);
+	        this.state = 567;
+	        this.match(algol60Parser.Do_);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	for_statement() {
+	    let localctx = new For_statementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 118, algol60Parser.RULE_for_statement);
+	    try {
+	        this.state = 576;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.For_:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 569;
+	            this.for_clause();
+	            this.state = 570;
+	            this.statement();
+	            break;
+	        case algol60Parser.Identifier:
+	        case algol60Parser.Unsigned_integer:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 572;
+	            this.label();
+	            this.state = 573;
+	            this.match(algol60Parser.Colon_);
+	            this.state = 574;
+	            this.for_statement();
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	actual_parameter_part() {
+	    let localctx = new Actual_parameter_partContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 120, algol60Parser.RULE_actual_parameter_part);
+	    try {
+	        this.state = 583;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,40,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 578;
+	            this.empty_();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 579;
+	            this.match(algol60Parser.LP_);
+	            this.state = 580;
+	            this.actual_parameter_list(0);
+	            this.state = 581;
+	            this.match(algol60Parser.Rp_);
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	procedure_statement() {
+	    let localctx = new Procedure_statementContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 122, algol60Parser.RULE_procedure_statement);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 585;
+	        this.procedure_identifier();
+	        this.state = 586;
+	        this.actual_parameter_part();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	code() {
+	    let localctx = new CodeContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 124, algol60Parser.RULE_code);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 591;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,41,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                this.state = 588;
+	                this.matchWildcard(); 
+	            }
+	            this.state = 593;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,41,this._ctx);
+	        }
+
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	declaration() {
+	    let localctx = new DeclarationContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 126, algol60Parser.RULE_declaration);
+	    try {
+	        this.state = 598;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,42,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 594;
+	            this.type_declaration();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 595;
+	            this.array_declaration();
+	            break;
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 596;
+	            this.switch_declaration();
+	            break;
+
+	        case 4:
+	            this.enterOuterAlt(localctx, 4);
+	            this.state = 597;
+	            this.procedure_declaration();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	type_list() {
+	    let localctx = new Type_listContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 128, algol60Parser.RULE_type_list);
+	    try {
+	        this.state = 605;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,43,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 600;
+	            this.simple_variable();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 601;
+	            this.simple_variable();
+	            this.state = 602;
+	            this.match(algol60Parser.Comma_);
+	            this.state = 603;
+	            this.type_list();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	type_() {
+	    let localctx = new Type_Context(this, this._ctx, this.state);
+	    this.enterRule(localctx, 130, algol60Parser.RULE_type_);
+	    var _la = 0; // Token type
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 607;
+	        _la = this._input.LA(1);
+	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << algol60Parser.Boolean_) | (1 << algol60Parser.Integer_) | (1 << algol60Parser.Real_))) !== 0))) {
+	        this._errHandler.recoverInline(this);
+	        }
+	        else {
+	        	this._errHandler.reportMatch(this);
+	            this.consume();
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	local_or_own() {
+	    let localctx = new Local_or_ownContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 132, algol60Parser.RULE_local_or_own);
+	    try {
+	        this.state = 611;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.Array_:
+	        case algol60Parser.Boolean_:
+	        case algol60Parser.Integer_:
+	        case algol60Parser.Real_:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 609;
+	            this.empty_();
+	            break;
+	        case algol60Parser.Own_:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 610;
+	            this.match(algol60Parser.Own_);
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	type_declaration() {
+	    let localctx = new Type_declarationContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 134, algol60Parser.RULE_type_declaration);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 613;
+	        this.local_or_own();
+	        this.state = 614;
+	        this.type_();
+	        this.state = 615;
+	        this.type_list();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	lower_bound() {
+	    let localctx = new Lower_boundContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 136, algol60Parser.RULE_lower_bound);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 617;
+	        this.arithmetic_expression();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	upper_bound() {
+	    let localctx = new Upper_boundContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 138, algol60Parser.RULE_upper_bound);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 619;
+	        this.arithmetic_expression();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	bound_pair() {
+	    let localctx = new Bound_pairContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 140, algol60Parser.RULE_bound_pair);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 621;
+	        this.lower_bound();
+	        this.state = 622;
+	        this.match(algol60Parser.Colon_);
+	        this.state = 623;
+	        this.upper_bound();
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	bound_pair_list(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Bound_pair_listContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 142;
+	    this.enterRecursionRule(localctx, 142, algol60Parser.RULE_bound_pair_list, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 626;
+	        this.bound_pair();
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 633;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,45,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Bound_pair_listContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_bound_pair_list);
+	                this.state = 628;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 629;
+	                this.match(algol60Parser.Comma_);
+	                this.state = 630;
+	                this.bound_pair(); 
+	            }
+	            this.state = 635;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,45,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	array_segment() {
+	    let localctx = new Array_segmentContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 144, algol60Parser.RULE_array_segment);
+	    try {
+	        this.state = 645;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,46,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 636;
+	            this.array_identifier();
+	            this.state = 637;
+	            this.match(algol60Parser.Lb_);
+	            this.state = 638;
+	            this.bound_pair_list(0);
+	            this.state = 639;
+	            this.match(algol60Parser.Rb_);
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 641;
+	            this.array_identifier();
+	            this.state = 642;
+	            this.match(algol60Parser.Comma_);
+	            this.state = 643;
+	            this.array_segment();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	array_list(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Array_listContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 146;
+	    this.enterRecursionRule(localctx, 146, algol60Parser.RULE_array_list, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 648;
+	        this.array_segment();
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 655;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,47,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Array_listContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_array_list);
+	                this.state = 650;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 651;
+	                this.match(algol60Parser.Comma_);
+	                this.state = 652;
+	                this.array_segment(); 
+	            }
+	            this.state = 657;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,47,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	array_declarer() {
+	    let localctx = new Array_declarerContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 148, algol60Parser.RULE_array_declarer);
+	    try {
+	        this.state = 662;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.Boolean_:
+	        case algol60Parser.Integer_:
+	        case algol60Parser.Real_:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 658;
+	            this.type_();
+	            this.state = 659;
+	            this.match(algol60Parser.Array_);
+	            break;
+	        case algol60Parser.Array_:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 661;
+	            this.match(algol60Parser.Array_);
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	array_declaration() {
+	    let localctx = new Array_declarationContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 150, algol60Parser.RULE_array_declaration);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 664;
+	        this.local_or_own();
+	        this.state = 665;
+	        this.array_declarer();
+	        this.state = 666;
+	        this.array_list(0);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	switch_list(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Switch_listContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 152;
+	    this.enterRecursionRule(localctx, 152, algol60Parser.RULE_switch_list, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 669;
+	        this.designational_expression();
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 676;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,49,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Switch_listContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_switch_list);
+	                this.state = 671;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 672;
+	                this.match(algol60Parser.Comma_);
+	                this.state = 673;
+	                this.designational_expression(); 
+	            }
+	            this.state = 678;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,49,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	switch_declaration() {
+	    let localctx = new Switch_declarationContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 154, algol60Parser.RULE_switch_declaration);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 679;
+	        this.match(algol60Parser.Switch_);
+	        this.state = 680;
+	        this.switch_identifier();
+	        this.state = 681;
+	        this.match(algol60Parser.Assign_);
+	        this.state = 682;
+	        this.switch_list(0);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	formal_parameter() {
+	    let localctx = new Formal_parameterContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 156, algol60Parser.RULE_formal_parameter);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 684;
+	        this.match(algol60Parser.Identifier);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	formal_parameter_list(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Formal_parameter_listContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 158;
+	    this.enterRecursionRule(localctx, 158, algol60Parser.RULE_formal_parameter_list, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 687;
+	        this.formal_parameter();
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 695;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,50,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Formal_parameter_listContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_formal_parameter_list);
+	                this.state = 689;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 690;
+	                this.parameter_delimiter();
+	                this.state = 691;
+	                this.formal_parameter(); 
+	            }
+	            this.state = 697;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,50,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	formal_parameter_part() {
+	    let localctx = new Formal_parameter_partContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 160, algol60Parser.RULE_formal_parameter_part);
+	    try {
+	        this.state = 703;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.Semi_:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 698;
+	            this.empty_();
+	            break;
+	        case algol60Parser.LP_:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 699;
+	            this.match(algol60Parser.LP_);
+	            this.state = 700;
+	            this.formal_parameter_list(0);
+	            this.state = 701;
+	            this.match(algol60Parser.Rp_);
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	identifier_list(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Identifier_listContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 162;
+	    this.enterRecursionRule(localctx, 162, algol60Parser.RULE_identifier_list, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 706;
+	        this.match(algol60Parser.Identifier);
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 713;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,52,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Identifier_listContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_identifier_list);
+	                this.state = 708;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 709;
+	                this.match(algol60Parser.Comma_);
+	                this.state = 710;
+	                this.match(algol60Parser.Identifier); 
+	            }
+	            this.state = 715;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,52,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	value_part() {
+	    let localctx = new Value_partContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 164, algol60Parser.RULE_value_part);
+	    try {
+	        this.state = 721;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,53,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 716;
+	            this.match(algol60Parser.Value_);
+	            this.state = 717;
+	            this.identifier_list(0);
+	            this.state = 718;
+	            this.match(algol60Parser.Semi_);
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 720;
+	            this.empty_();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	specifier() {
+	    let localctx = new SpecifierContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 166, algol60Parser.RULE_specifier);
+	    try {
+	        this.state = 735;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,54,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 723;
+	            this.match(algol60Parser.String_);
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 724;
+	            this.type_();
+	            break;
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 725;
+	            this.match(algol60Parser.Array_);
+	            break;
+
+	        case 4:
+	            this.enterOuterAlt(localctx, 4);
+	            this.state = 726;
+	            this.type_();
+	            this.state = 727;
+	            this.match(algol60Parser.Array_);
+	            break;
+
+	        case 5:
+	            this.enterOuterAlt(localctx, 5);
+	            this.state = 729;
+	            this.match(algol60Parser.Label_);
+	            break;
+
+	        case 6:
+	            this.enterOuterAlt(localctx, 6);
+	            this.state = 730;
+	            this.match(algol60Parser.Switch_);
+	            break;
+
+	        case 7:
+	            this.enterOuterAlt(localctx, 7);
+	            this.state = 731;
+	            this.match(algol60Parser.Procedure_);
+	            break;
+
+	        case 8:
+	            this.enterOuterAlt(localctx, 8);
+	            this.state = 732;
+	            this.type_();
+	            this.state = 733;
+	            this.match(algol60Parser.Procedure_);
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+	specification_part(_p) {
+		if(_p===undefined) {
+		    _p = 0;
+		}
+	    const _parentctx = this._ctx;
+	    const _parentState = this.state;
+	    let localctx = new Specification_partContext(this, this._ctx, _parentState);
+	    let _prevctx = localctx;
+	    const _startState = 168;
+	    this.enterRecursionRule(localctx, 168, algol60Parser.RULE_specification_part, _p);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 743;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,55,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.state = 738;
+	            this.empty_();
+	            break;
+
+	        case 2:
+	            this.state = 739;
+	            this.specifier();
+	            this.state = 740;
+	            this.identifier_list(0);
+	            this.state = 741;
+	            this.match(algol60Parser.Semi_);
+	            break;
+
+	        }
+	        this._ctx.stop = this._input.LT(-1);
+	        this.state = 751;
+	        this._errHandler.sync(this);
+	        var _alt = this._interp.adaptivePredict(this._input,56,this._ctx)
+	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+	            if(_alt===1) {
+	                if(this._parseListeners!==null) {
+	                    this.triggerExitRuleEvent();
+	                }
+	                _prevctx = localctx;
+	                localctx = new Specification_partContext(this, _parentctx, _parentState);
+	                this.pushNewRecursionContext(localctx, _startState, algol60Parser.RULE_specification_part);
+	                this.state = 745;
+	                if (!( this.precpred(this._ctx, 1))) {
+	                    throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+	                }
+	                this.state = 746;
+	                this.specifier();
+	                this.state = 747;
+	                this.identifier_list(0); 
+	            }
+	            this.state = 753;
+	            this._errHandler.sync(this);
+	            _alt = this._interp.adaptivePredict(this._input,56,this._ctx);
+	        }
+
+	    } catch( error) {
+	        if(error instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = error;
+		        this._errHandler.reportError(this, error);
+		        this._errHandler.recover(this, error);
+		    } else {
+		    	throw error;
+		    }
+	    } finally {
+	        this.unrollRecursionContexts(_parentctx)
+	    }
+	    return localctx;
+	}
+
+
+
+	procedure_heading() {
+	    let localctx = new Procedure_headingContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 170, algol60Parser.RULE_procedure_heading);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 754;
+	        this.procedure_identifier();
+	        this.state = 755;
+	        this.formal_parameter_part();
+	        this.state = 756;
+	        this.match(algol60Parser.Semi_);
+	        this.state = 757;
+	        this.value_part();
+	        this.state = 758;
+	        this.specification_part(0);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	procedure_body() {
+	    let localctx = new Procedure_bodyContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 172, algol60Parser.RULE_procedure_body);
+	    try {
+	        this.state = 762;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,57,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 760;
+	            this.statement();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 761;
+	            this.code();
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	procedure_declaration() {
+	    let localctx = new Procedure_declarationContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 174, algol60Parser.RULE_procedure_declaration);
+	    try {
+	        this.state = 773;
+	        this._errHandler.sync(this);
+	        switch(this._input.LA(1)) {
+	        case algol60Parser.Procedure_:
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 764;
+	            this.match(algol60Parser.Procedure_);
+	            this.state = 765;
+	            this.procedure_heading();
+	            this.state = 766;
+	            this.procedure_body();
+	            break;
+	        case algol60Parser.Boolean_:
+	        case algol60Parser.Integer_:
+	        case algol60Parser.Real_:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 768;
+	            this.type_();
+	            this.state = 769;
+	            this.match(algol60Parser.Procedure_);
+	            this.state = 770;
+	            this.procedure_heading();
+	            this.state = 771;
+	            this.procedure_body();
+	            break;
+	        default:
+	            throw new antlr4.error.NoViableAltException(this);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+}
+
+algol60Parser.EOF = antlr4.Token.EOF;
+algol60Parser.Array_ = 1;
+algol60Parser.Begin_ = 2;
+algol60Parser.Boolean_ = 3;
+algol60Parser.Comment_ = 4;
+algol60Parser.Do_ = 5;
+algol60Parser.Else_ = 6;
+algol60Parser.End_ = 7;
+algol60Parser.False_ = 8;
+algol60Parser.For_ = 9;
+algol60Parser.Goto_ = 10;
+algol60Parser.If_ = 11;
+algol60Parser.Integer_ = 12;
+algol60Parser.Label_ = 13;
+algol60Parser.Own_ = 14;
+algol60Parser.Procedure_ = 15;
+algol60Parser.Real_ = 16;
+algol60Parser.Step_ = 17;
+algol60Parser.String_ = 18;
+algol60Parser.Switch_ = 19;
+algol60Parser.Then_ = 20;
+algol60Parser.True_ = 21;
+algol60Parser.Until_ = 22;
+algol60Parser.Value_ = 23;
+algol60Parser.While_ = 24;
+algol60Parser.And_ = 25;
+algol60Parser.Assign_ = 26;
+algol60Parser.Colon_ = 27;
+algol60Parser.Comma_ = 28;
+algol60Parser.Dot_ = 29;
+algol60Parser.Divide_ = 30;
+algol60Parser.Eor_ = 31;
+algol60Parser.Eq_ = 32;
+algol60Parser.Equiv_ = 33;
+algol60Parser.Exp_ = 34;
+algol60Parser.Gt_ = 35;
+algol60Parser.Ge_ = 36;
+algol60Parser.Includes_ = 37;
+algol60Parser.Lb_ = 38;
+algol60Parser.Le_ = 39;
+algol60Parser.LP_ = 40;
+algol60Parser.Lt_ = 41;
+algol60Parser.Minus_ = 42;
+algol60Parser.Mult_ = 43;
+algol60Parser.Ne_ = 44;
+algol60Parser.Not_ = 45;
+algol60Parser.Or_ = 46;
+algol60Parser.Plus_ = 47;
+algol60Parser.Rb_ = 48;
+algol60Parser.Rp_ = 49;
+algol60Parser.Semi_ = 50;
+algol60Parser.Underscore_ = 51;
+algol60Parser.ULCorner = 52;
+algol60Parser.URCorner = 53;
+algol60Parser.Logical_value = 54;
+algol60Parser.Relational_operator = 55;
+algol60Parser.Comment = 56;
+algol60Parser.Identifier = 57;
+algol60Parser.Unsigned_integer = 58;
+algol60Parser.Decimal_fraction = 59;
+algol60Parser.Exponential_part = 60;
+algol60Parser.Decimal_number = 61;
+algol60Parser.Unsigned_number = 62;
+algol60Parser.String = 63;
+algol60Parser.WS = 64;
+
+algol60Parser.RULE_empty_ = 0;
+algol60Parser.RULE_integer = 1;
+algol60Parser.RULE_number = 2;
+algol60Parser.RULE_expression = 3;
+algol60Parser.RULE_variable_identifier = 4;
+algol60Parser.RULE_simple_variable = 5;
+algol60Parser.RULE_subscript_expression = 6;
+algol60Parser.RULE_subscript_list = 7;
+algol60Parser.RULE_array_identifier = 8;
+algol60Parser.RULE_subscripted_variable = 9;
+algol60Parser.RULE_variable = 10;
+algol60Parser.RULE_procedure_identifier = 11;
+algol60Parser.RULE_parameter_delimiter = 12;
+algol60Parser.RULE_actual_parameter = 13;
+algol60Parser.RULE_actual_parameter_list = 14;
+algol60Parser.RULE_function_designator = 15;
+algol60Parser.RULE_adding_operator = 16;
+algol60Parser.RULE_multiplying_operator = 17;
+algol60Parser.RULE_primary = 18;
+algol60Parser.RULE_factor = 19;
+algol60Parser.RULE_term = 20;
+algol60Parser.RULE_simple_arithmetic_expression = 21;
+algol60Parser.RULE_if_clause = 22;
+algol60Parser.RULE_arithmetic_expression = 23;
+algol60Parser.RULE_relation = 24;
+algol60Parser.RULE_boolean_primary = 25;
+algol60Parser.RULE_boolean_secondary = 26;
+algol60Parser.RULE_boolean_factor = 27;
+algol60Parser.RULE_boolean_term = 28;
+algol60Parser.RULE_implication = 29;
+algol60Parser.RULE_simple_boolean = 30;
+algol60Parser.RULE_boolean_expression = 31;
+algol60Parser.RULE_label = 32;
+algol60Parser.RULE_switch_identifier = 33;
+algol60Parser.RULE_switch_designator = 34;
+algol60Parser.RULE_simple_designational_expression = 35;
+algol60Parser.RULE_designational_expression = 36;
+algol60Parser.RULE_unlabelled_basic_statement = 37;
+algol60Parser.RULE_basic_statement = 38;
+algol60Parser.RULE_unconditional_statement = 39;
+algol60Parser.RULE_statement = 40;
+algol60Parser.RULE_compound_tail = 41;
+algol60Parser.RULE_block_head = 42;
+algol60Parser.RULE_unlabelled_compound = 43;
+algol60Parser.RULE_unlabelled_block = 44;
+algol60Parser.RULE_compound_statement = 45;
+algol60Parser.RULE_block = 46;
+algol60Parser.RULE_program = 47;
+algol60Parser.RULE_destination = 48;
+algol60Parser.RULE_left_part = 49;
+algol60Parser.RULE_left_part_list = 50;
+algol60Parser.RULE_assignment_statement = 51;
+algol60Parser.RULE_go_to_statement = 52;
+algol60Parser.RULE_dummy_statement = 53;
+algol60Parser.RULE_if_statement = 54;
+algol60Parser.RULE_conditional_statement = 55;
+algol60Parser.RULE_for_list_element = 56;
+algol60Parser.RULE_for_list = 57;
+algol60Parser.RULE_for_clause = 58;
+algol60Parser.RULE_for_statement = 59;
+algol60Parser.RULE_actual_parameter_part = 60;
+algol60Parser.RULE_procedure_statement = 61;
+algol60Parser.RULE_code = 62;
+algol60Parser.RULE_declaration = 63;
+algol60Parser.RULE_type_list = 64;
+algol60Parser.RULE_type_ = 65;
+algol60Parser.RULE_local_or_own = 66;
+algol60Parser.RULE_type_declaration = 67;
+algol60Parser.RULE_lower_bound = 68;
+algol60Parser.RULE_upper_bound = 69;
+algol60Parser.RULE_bound_pair = 70;
+algol60Parser.RULE_bound_pair_list = 71;
+algol60Parser.RULE_array_segment = 72;
+algol60Parser.RULE_array_list = 73;
+algol60Parser.RULE_array_declarer = 74;
+algol60Parser.RULE_array_declaration = 75;
+algol60Parser.RULE_switch_list = 76;
+algol60Parser.RULE_switch_declaration = 77;
+algol60Parser.RULE_formal_parameter = 78;
+algol60Parser.RULE_formal_parameter_list = 79;
+algol60Parser.RULE_formal_parameter_part = 80;
+algol60Parser.RULE_identifier_list = 81;
+algol60Parser.RULE_value_part = 82;
+algol60Parser.RULE_specifier = 83;
+algol60Parser.RULE_specification_part = 84;
+algol60Parser.RULE_procedure_heading = 85;
+algol60Parser.RULE_procedure_body = 86;
+algol60Parser.RULE_procedure_declaration = 87;
+
+class Empty_Context extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_empty_;
     }
-    Array_declarationContext.prototype.array_list = function () {
-        return this.getRuleContext(0, Array_listContext);
-    };
-    Array_declarationContext.prototype.local_or_own_type = function () {
-        return this.tryGetRuleContext(0, Local_or_own_typeContext);
-    };
-    Object.defineProperty(Array_declarationContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_array_declaration; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Array_declarationContext.prototype.enterRule = function (listener) {
-        if (listener.enterArray_declaration) {
-            listener.enterArray_declaration(this);
-        }
-    };
-    // @Override
-    Array_declarationContext.prototype.exitRule = function (listener) {
-        if (listener.exitArray_declaration) {
-            listener.exitArray_declaration(this);
-        }
-    };
-    // @Override
-    Array_declarationContext.prototype.accept = function (visitor) {
-        if (visitor.visitArray_declaration) {
-            return visitor.visitArray_declaration(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Array_declarationContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Array_declarationContext = Array_declarationContext;
-var Array_listContext = /** @class */ (function (_super) {
-    __extends(Array_listContext, _super);
-    function Array_listContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterEmpty_(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitEmpty_(this);
+		}
+	}
+
+
+}
+
+
+
+class IntegerContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_integer;
     }
-    Array_listContext.prototype.array_segment = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Array_segmentContext);
-        }
-        else {
-            return this.getRuleContext(i, Array_segmentContext);
-        }
-    };
-    Object.defineProperty(Array_listContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_array_list; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Array_listContext.prototype.enterRule = function (listener) {
-        if (listener.enterArray_list) {
-            listener.enterArray_list(this);
-        }
-    };
-    // @Override
-    Array_listContext.prototype.exitRule = function (listener) {
-        if (listener.exitArray_list) {
-            listener.exitArray_list(this);
-        }
-    };
-    // @Override
-    Array_listContext.prototype.accept = function (visitor) {
-        if (visitor.visitArray_list) {
-            return visitor.visitArray_list(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Array_listContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Array_listContext = Array_listContext;
-var Array_segmentContext = /** @class */ (function (_super) {
-    __extends(Array_segmentContext, _super);
-    function Array_segmentContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Unsigned_integer() {
+	    return this.getToken(algol60Parser.Unsigned_integer, 0);
+	};
+
+	Plus_() {
+	    return this.getToken(algol60Parser.Plus_, 0);
+	};
+
+	Minus_() {
+	    return this.getToken(algol60Parser.Minus_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterInteger(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitInteger(this);
+		}
+	}
+
+
+}
+
+
+
+class NumberContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_number;
     }
-    Array_segmentContext.prototype.array_identifier = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Array_identifierContext);
-        }
-        else {
-            return this.getRuleContext(i, Array_identifierContext);
-        }
-    };
-    Array_segmentContext.prototype.bound_pair_list = function () {
-        return this.getRuleContext(0, Bound_pair_listContext);
-    };
-    Object.defineProperty(Array_segmentContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_array_segment; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Array_segmentContext.prototype.enterRule = function (listener) {
-        if (listener.enterArray_segment) {
-            listener.enterArray_segment(this);
-        }
-    };
-    // @Override
-    Array_segmentContext.prototype.exitRule = function (listener) {
-        if (listener.exitArray_segment) {
-            listener.exitArray_segment(this);
-        }
-    };
-    // @Override
-    Array_segmentContext.prototype.accept = function (visitor) {
-        if (visitor.visitArray_segment) {
-            return visitor.visitArray_segment(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Array_segmentContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Array_segmentContext = Array_segmentContext;
-var Array_identifierContext = /** @class */ (function (_super) {
-    __extends(Array_identifierContext, _super);
-    function Array_identifierContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Unsigned_number() {
+	    return this.getToken(algol60Parser.Unsigned_number, 0);
+	};
+
+	Plus_() {
+	    return this.getToken(algol60Parser.Plus_, 0);
+	};
+
+	Minus_() {
+	    return this.getToken(algol60Parser.Minus_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterNumber(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitNumber(this);
+		}
+	}
+
+
+}
+
+
+
+class ExpressionContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_expression;
     }
-    Array_identifierContext.prototype.identifier = function () {
-        return this.getRuleContext(0, IdentifierContext);
-    };
-    Object.defineProperty(Array_identifierContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_array_identifier; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Array_identifierContext.prototype.enterRule = function (listener) {
-        if (listener.enterArray_identifier) {
-            listener.enterArray_identifier(this);
-        }
-    };
-    // @Override
-    Array_identifierContext.prototype.exitRule = function (listener) {
-        if (listener.exitArray_identifier) {
-            listener.exitArray_identifier(this);
-        }
-    };
-    // @Override
-    Array_identifierContext.prototype.accept = function (visitor) {
-        if (visitor.visitArray_identifier) {
-            return visitor.visitArray_identifier(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Array_identifierContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Array_identifierContext = Array_identifierContext;
-var Bound_pair_listContext = /** @class */ (function (_super) {
-    __extends(Bound_pair_listContext, _super);
-    function Bound_pair_listContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	arithmetic_expression() {
+	    return this.getTypedRuleContext(Arithmetic_expressionContext,0);
+	};
+
+	boolean_expression() {
+	    return this.getTypedRuleContext(Boolean_expressionContext,0);
+	};
+
+	designational_expression() {
+	    return this.getTypedRuleContext(Designational_expressionContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterExpression(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitExpression(this);
+		}
+	}
+
+
+}
+
+
+
+class Variable_identifierContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_variable_identifier;
     }
-    Bound_pair_listContext.prototype.bound_pair = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Bound_pairContext);
-        }
-        else {
-            return this.getRuleContext(i, Bound_pairContext);
-        }
-    };
-    Object.defineProperty(Bound_pair_listContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_bound_pair_list; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Bound_pair_listContext.prototype.enterRule = function (listener) {
-        if (listener.enterBound_pair_list) {
-            listener.enterBound_pair_list(this);
-        }
-    };
-    // @Override
-    Bound_pair_listContext.prototype.exitRule = function (listener) {
-        if (listener.exitBound_pair_list) {
-            listener.exitBound_pair_list(this);
-        }
-    };
-    // @Override
-    Bound_pair_listContext.prototype.accept = function (visitor) {
-        if (visitor.visitBound_pair_list) {
-            return visitor.visitBound_pair_list(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Bound_pair_listContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Bound_pair_listContext = Bound_pair_listContext;
-var Bound_pairContext = /** @class */ (function (_super) {
-    __extends(Bound_pairContext, _super);
-    function Bound_pairContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Identifier() {
+	    return this.getToken(algol60Parser.Identifier, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterVariable_identifier(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitVariable_identifier(this);
+		}
+	}
+
+
+}
+
+
+
+class Simple_variableContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_simple_variable;
     }
-    Bound_pairContext.prototype.lower_bound = function () {
-        return this.getRuleContext(0, Lower_boundContext);
-    };
-    Bound_pairContext.prototype.upper_bound = function () {
-        return this.getRuleContext(0, Upper_boundContext);
-    };
-    Object.defineProperty(Bound_pairContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_bound_pair; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Bound_pairContext.prototype.enterRule = function (listener) {
-        if (listener.enterBound_pair) {
-            listener.enterBound_pair(this);
-        }
-    };
-    // @Override
-    Bound_pairContext.prototype.exitRule = function (listener) {
-        if (listener.exitBound_pair) {
-            listener.exitBound_pair(this);
-        }
-    };
-    // @Override
-    Bound_pairContext.prototype.accept = function (visitor) {
-        if (visitor.visitBound_pair) {
-            return visitor.visitBound_pair(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Bound_pairContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Bound_pairContext = Bound_pairContext;
-var Upper_boundContext = /** @class */ (function (_super) {
-    __extends(Upper_boundContext, _super);
-    function Upper_boundContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	variable_identifier() {
+	    return this.getTypedRuleContext(Variable_identifierContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSimple_variable(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSimple_variable(this);
+		}
+	}
+
+
+}
+
+
+
+class Subscript_expressionContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_subscript_expression;
     }
-    Upper_boundContext.prototype.arithmetic_expression = function () {
-        return this.getRuleContext(0, Arithmetic_expressionContext);
-    };
-    Object.defineProperty(Upper_boundContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_upper_bound; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Upper_boundContext.prototype.enterRule = function (listener) {
-        if (listener.enterUpper_bound) {
-            listener.enterUpper_bound(this);
-        }
-    };
-    // @Override
-    Upper_boundContext.prototype.exitRule = function (listener) {
-        if (listener.exitUpper_bound) {
-            listener.exitUpper_bound(this);
-        }
-    };
-    // @Override
-    Upper_boundContext.prototype.accept = function (visitor) {
-        if (visitor.visitUpper_bound) {
-            return visitor.visitUpper_bound(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Upper_boundContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Upper_boundContext = Upper_boundContext;
-var Lower_boundContext = /** @class */ (function (_super) {
-    __extends(Lower_boundContext, _super);
-    function Lower_boundContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	arithmetic_expression() {
+	    return this.getTypedRuleContext(Arithmetic_expressionContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSubscript_expression(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSubscript_expression(this);
+		}
+	}
+
+
+}
+
+
+
+class Subscript_listContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_subscript_list;
     }
-    Lower_boundContext.prototype.arithmetic_expression = function () {
-        return this.getRuleContext(0, Arithmetic_expressionContext);
-    };
-    Object.defineProperty(Lower_boundContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_lower_bound; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Lower_boundContext.prototype.enterRule = function (listener) {
-        if (listener.enterLower_bound) {
-            listener.enterLower_bound(this);
-        }
-    };
-    // @Override
-    Lower_boundContext.prototype.exitRule = function (listener) {
-        if (listener.exitLower_bound) {
-            listener.exitLower_bound(this);
-        }
-    };
-    // @Override
-    Lower_boundContext.prototype.accept = function (visitor) {
-        if (visitor.visitLower_bound) {
-            return visitor.visitLower_bound(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Lower_boundContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Lower_boundContext = Lower_boundContext;
-var Switch_declarationContext = /** @class */ (function (_super) {
-    __extends(Switch_declarationContext, _super);
-    function Switch_declarationContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	subscript_expression() {
+	    return this.getTypedRuleContext(Subscript_expressionContext,0);
+	};
+
+	subscript_list() {
+	    return this.getTypedRuleContext(Subscript_listContext,0);
+	};
+
+	Comma_() {
+	    return this.getToken(algol60Parser.Comma_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSubscript_list(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSubscript_list(this);
+		}
+	}
+
+
+}
+
+
+
+class Array_identifierContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_array_identifier;
     }
-    Switch_declarationContext.prototype.switch_identifier = function () {
-        return this.getRuleContext(0, Switch_identifierContext);
-    };
-    Switch_declarationContext.prototype.switch_list = function () {
-        return this.getRuleContext(0, Switch_listContext);
-    };
-    Object.defineProperty(Switch_declarationContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_switch_declaration; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Switch_declarationContext.prototype.enterRule = function (listener) {
-        if (listener.enterSwitch_declaration) {
-            listener.enterSwitch_declaration(this);
-        }
-    };
-    // @Override
-    Switch_declarationContext.prototype.exitRule = function (listener) {
-        if (listener.exitSwitch_declaration) {
-            listener.exitSwitch_declaration(this);
-        }
-    };
-    // @Override
-    Switch_declarationContext.prototype.accept = function (visitor) {
-        if (visitor.visitSwitch_declaration) {
-            return visitor.visitSwitch_declaration(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Switch_declarationContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Switch_declarationContext = Switch_declarationContext;
-var Switch_identifierContext = /** @class */ (function (_super) {
-    __extends(Switch_identifierContext, _super);
-    function Switch_identifierContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Identifier() {
+	    return this.getToken(algol60Parser.Identifier, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterArray_identifier(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitArray_identifier(this);
+		}
+	}
+
+
+}
+
+
+
+class Subscripted_variableContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_subscripted_variable;
     }
-    Switch_identifierContext.prototype.identifier = function () {
-        return this.getRuleContext(0, IdentifierContext);
-    };
-    Object.defineProperty(Switch_identifierContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_switch_identifier; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Switch_identifierContext.prototype.enterRule = function (listener) {
-        if (listener.enterSwitch_identifier) {
-            listener.enterSwitch_identifier(this);
-        }
-    };
-    // @Override
-    Switch_identifierContext.prototype.exitRule = function (listener) {
-        if (listener.exitSwitch_identifier) {
-            listener.exitSwitch_identifier(this);
-        }
-    };
-    // @Override
-    Switch_identifierContext.prototype.accept = function (visitor) {
-        if (visitor.visitSwitch_identifier) {
-            return visitor.visitSwitch_identifier(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Switch_identifierContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Switch_identifierContext = Switch_identifierContext;
-var Switch_listContext = /** @class */ (function (_super) {
-    __extends(Switch_listContext, _super);
-    function Switch_listContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	array_identifier() {
+	    return this.getTypedRuleContext(Array_identifierContext,0);
+	};
+
+	Lb_() {
+	    return this.getToken(algol60Parser.Lb_, 0);
+	};
+
+	subscript_list() {
+	    return this.getTypedRuleContext(Subscript_listContext,0);
+	};
+
+	Rb_() {
+	    return this.getToken(algol60Parser.Rb_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSubscripted_variable(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSubscripted_variable(this);
+		}
+	}
+
+
+}
+
+
+
+class VariableContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_variable;
     }
-    Switch_listContext.prototype.designational_expression = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Designational_expressionContext);
-        }
-        else {
-            return this.getRuleContext(i, Designational_expressionContext);
-        }
-    };
-    Object.defineProperty(Switch_listContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_switch_list; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Switch_listContext.prototype.enterRule = function (listener) {
-        if (listener.enterSwitch_list) {
-            listener.enterSwitch_list(this);
-        }
-    };
-    // @Override
-    Switch_listContext.prototype.exitRule = function (listener) {
-        if (listener.exitSwitch_list) {
-            listener.exitSwitch_list(this);
-        }
-    };
-    // @Override
-    Switch_listContext.prototype.accept = function (visitor) {
-        if (visitor.visitSwitch_list) {
-            return visitor.visitSwitch_list(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Switch_listContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Switch_listContext = Switch_listContext;
-var Procedure_declarationContext = /** @class */ (function (_super) {
-    __extends(Procedure_declarationContext, _super);
-    function Procedure_declarationContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	simple_variable() {
+	    return this.getTypedRuleContext(Simple_variableContext,0);
+	};
+
+	subscripted_variable() {
+	    return this.getTypedRuleContext(Subscripted_variableContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterVariable(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitVariable(this);
+		}
+	}
+
+
+}
+
+
+
+class Procedure_identifierContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_procedure_identifier;
     }
-    Procedure_declarationContext.prototype.procedure_heading = function () {
-        return this.getRuleContext(0, Procedure_headingContext);
-    };
-    Procedure_declarationContext.prototype.procedure_body = function () {
-        return this.getRuleContext(0, Procedure_bodyContext);
-    };
-    Procedure_declarationContext.prototype.type = function () {
-        return this.tryGetRuleContext(0, TypeContext);
-    };
-    Object.defineProperty(Procedure_declarationContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_procedure_declaration; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Procedure_declarationContext.prototype.enterRule = function (listener) {
-        if (listener.enterProcedure_declaration) {
-            listener.enterProcedure_declaration(this);
-        }
-    };
-    // @Override
-    Procedure_declarationContext.prototype.exitRule = function (listener) {
-        if (listener.exitProcedure_declaration) {
-            listener.exitProcedure_declaration(this);
-        }
-    };
-    // @Override
-    Procedure_declarationContext.prototype.accept = function (visitor) {
-        if (visitor.visitProcedure_declaration) {
-            return visitor.visitProcedure_declaration(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Procedure_declarationContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Procedure_declarationContext = Procedure_declarationContext;
-var Procedure_headingContext = /** @class */ (function (_super) {
-    __extends(Procedure_headingContext, _super);
-    function Procedure_headingContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Identifier() {
+	    return this.getToken(algol60Parser.Identifier, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterProcedure_identifier(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitProcedure_identifier(this);
+		}
+	}
+
+
+}
+
+
+
+class Parameter_delimiterContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_parameter_delimiter;
     }
-    Procedure_headingContext.prototype.procedure_identifier = function () {
-        return this.getRuleContext(0, Procedure_identifierContext);
-    };
-    Procedure_headingContext.prototype.formal_parameter_part = function () {
-        return this.tryGetRuleContext(0, Formal_parameter_partContext);
-    };
-    Procedure_headingContext.prototype.value_part = function () {
-        return this.tryGetRuleContext(0, Value_partContext);
-    };
-    Procedure_headingContext.prototype.specification_part = function () {
-        return this.tryGetRuleContext(0, Specification_partContext);
-    };
-    Object.defineProperty(Procedure_headingContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_procedure_heading; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Procedure_headingContext.prototype.enterRule = function (listener) {
-        if (listener.enterProcedure_heading) {
-            listener.enterProcedure_heading(this);
-        }
-    };
-    // @Override
-    Procedure_headingContext.prototype.exitRule = function (listener) {
-        if (listener.exitProcedure_heading) {
-            listener.exitProcedure_heading(this);
-        }
-    };
-    // @Override
-    Procedure_headingContext.prototype.accept = function (visitor) {
-        if (visitor.visitProcedure_heading) {
-            return visitor.visitProcedure_heading(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Procedure_headingContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Procedure_headingContext = Procedure_headingContext;
-var Procedure_identifierContext = /** @class */ (function (_super) {
-    __extends(Procedure_identifierContext, _super);
-    function Procedure_identifierContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Comma_() {
+	    return this.getToken(algol60Parser.Comma_, 0);
+	};
+
+	Rp_() {
+	    return this.getToken(algol60Parser.Rp_, 0);
+	};
+
+	Identifier() {
+	    return this.getToken(algol60Parser.Identifier, 0);
+	};
+
+	Colon_() {
+	    return this.getToken(algol60Parser.Colon_, 0);
+	};
+
+	LP_() {
+	    return this.getToken(algol60Parser.LP_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterParameter_delimiter(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitParameter_delimiter(this);
+		}
+	}
+
+
+}
+
+
+
+class Actual_parameterContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_actual_parameter;
     }
-    Procedure_identifierContext.prototype.identifier = function () {
-        return this.getRuleContext(0, IdentifierContext);
-    };
-    Object.defineProperty(Procedure_identifierContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_procedure_identifier; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Procedure_identifierContext.prototype.enterRule = function (listener) {
-        if (listener.enterProcedure_identifier) {
-            listener.enterProcedure_identifier(this);
-        }
-    };
-    // @Override
-    Procedure_identifierContext.prototype.exitRule = function (listener) {
-        if (listener.exitProcedure_identifier) {
-            listener.exitProcedure_identifier(this);
-        }
-    };
-    // @Override
-    Procedure_identifierContext.prototype.accept = function (visitor) {
-        if (visitor.visitProcedure_identifier) {
-            return visitor.visitProcedure_identifier(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Procedure_identifierContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Procedure_identifierContext = Procedure_identifierContext;
-var Formal_parameter_partContext = /** @class */ (function (_super) {
-    __extends(Formal_parameter_partContext, _super);
-    function Formal_parameter_partContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	String() {
+	    return this.getToken(algol60Parser.String, 0);
+	};
+
+	expression() {
+	    return this.getTypedRuleContext(ExpressionContext,0);
+	};
+
+	array_identifier() {
+	    return this.getTypedRuleContext(Array_identifierContext,0);
+	};
+
+	switch_identifier() {
+	    return this.getTypedRuleContext(Switch_identifierContext,0);
+	};
+
+	procedure_identifier() {
+	    return this.getTypedRuleContext(Procedure_identifierContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterActual_parameter(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitActual_parameter(this);
+		}
+	}
+
+
+}
+
+
+
+class Actual_parameter_listContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_actual_parameter_list;
     }
-    Formal_parameter_partContext.prototype.formal_parameter_list = function () {
-        return this.getRuleContext(0, Formal_parameter_listContext);
-    };
-    Object.defineProperty(Formal_parameter_partContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_formal_parameter_part; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Formal_parameter_partContext.prototype.enterRule = function (listener) {
-        if (listener.enterFormal_parameter_part) {
-            listener.enterFormal_parameter_part(this);
-        }
-    };
-    // @Override
-    Formal_parameter_partContext.prototype.exitRule = function (listener) {
-        if (listener.exitFormal_parameter_part) {
-            listener.exitFormal_parameter_part(this);
-        }
-    };
-    // @Override
-    Formal_parameter_partContext.prototype.accept = function (visitor) {
-        if (visitor.visitFormal_parameter_part) {
-            return visitor.visitFormal_parameter_part(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Formal_parameter_partContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Formal_parameter_partContext = Formal_parameter_partContext;
-var Formal_parameter_listContext = /** @class */ (function (_super) {
-    __extends(Formal_parameter_listContext, _super);
-    function Formal_parameter_listContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	actual_parameter() {
+	    return this.getTypedRuleContext(Actual_parameterContext,0);
+	};
+
+	actual_parameter_list() {
+	    return this.getTypedRuleContext(Actual_parameter_listContext,0);
+	};
+
+	parameter_delimiter() {
+	    return this.getTypedRuleContext(Parameter_delimiterContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterActual_parameter_list(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitActual_parameter_list(this);
+		}
+	}
+
+
+}
+
+
+
+class Function_designatorContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_function_designator;
     }
-    Formal_parameter_listContext.prototype.formal_parameter = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Formal_parameterContext);
-        }
-        else {
-            return this.getRuleContext(i, Formal_parameterContext);
-        }
-    };
-    Formal_parameter_listContext.prototype.parameter_delimiter = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Parameter_delimiterContext);
-        }
-        else {
-            return this.getRuleContext(i, Parameter_delimiterContext);
-        }
-    };
-    Object.defineProperty(Formal_parameter_listContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_formal_parameter_list; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Formal_parameter_listContext.prototype.enterRule = function (listener) {
-        if (listener.enterFormal_parameter_list) {
-            listener.enterFormal_parameter_list(this);
-        }
-    };
-    // @Override
-    Formal_parameter_listContext.prototype.exitRule = function (listener) {
-        if (listener.exitFormal_parameter_list) {
-            listener.exitFormal_parameter_list(this);
-        }
-    };
-    // @Override
-    Formal_parameter_listContext.prototype.accept = function (visitor) {
-        if (visitor.visitFormal_parameter_list) {
-            return visitor.visitFormal_parameter_list(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Formal_parameter_listContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Formal_parameter_listContext = Formal_parameter_listContext;
-var Formal_parameterContext = /** @class */ (function (_super) {
-    __extends(Formal_parameterContext, _super);
-    function Formal_parameterContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	procedure_identifier() {
+	    return this.getTypedRuleContext(Procedure_identifierContext,0);
+	};
+
+	actual_parameter_part() {
+	    return this.getTypedRuleContext(Actual_parameter_partContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterFunction_designator(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitFunction_designator(this);
+		}
+	}
+
+
+}
+
+
+
+class Adding_operatorContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_adding_operator;
     }
-    Formal_parameterContext.prototype.identifier = function () {
-        return this.getRuleContext(0, IdentifierContext);
-    };
-    Object.defineProperty(Formal_parameterContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_formal_parameter; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Formal_parameterContext.prototype.enterRule = function (listener) {
-        if (listener.enterFormal_parameter) {
-            listener.enterFormal_parameter(this);
-        }
-    };
-    // @Override
-    Formal_parameterContext.prototype.exitRule = function (listener) {
-        if (listener.exitFormal_parameter) {
-            listener.exitFormal_parameter(this);
-        }
-    };
-    // @Override
-    Formal_parameterContext.prototype.accept = function (visitor) {
-        if (visitor.visitFormal_parameter) {
-            return visitor.visitFormal_parameter(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Formal_parameterContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Formal_parameterContext = Formal_parameterContext;
-var Value_partContext = /** @class */ (function (_super) {
-    __extends(Value_partContext, _super);
-    function Value_partContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Plus_() {
+	    return this.getToken(algol60Parser.Plus_, 0);
+	};
+
+	Minus_() {
+	    return this.getToken(algol60Parser.Minus_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterAdding_operator(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitAdding_operator(this);
+		}
+	}
+
+
+}
+
+
+
+class Multiplying_operatorContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_multiplying_operator;
     }
-    Value_partContext.prototype.identifier_list = function () {
-        return this.getRuleContext(0, Identifier_listContext);
-    };
-    Object.defineProperty(Value_partContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_value_part; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Value_partContext.prototype.enterRule = function (listener) {
-        if (listener.enterValue_part) {
-            listener.enterValue_part(this);
-        }
-    };
-    // @Override
-    Value_partContext.prototype.exitRule = function (listener) {
-        if (listener.exitValue_part) {
-            listener.exitValue_part(this);
-        }
-    };
-    // @Override
-    Value_partContext.prototype.accept = function (visitor) {
-        if (visitor.visitValue_part) {
-            return visitor.visitValue_part(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Value_partContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Value_partContext = Value_partContext;
-var Specification_partContext = /** @class */ (function (_super) {
-    __extends(Specification_partContext, _super);
-    function Specification_partContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Mult_() {
+	    return this.getToken(algol60Parser.Mult_, 0);
+	};
+
+	Divide_() {
+	    return this.getToken(algol60Parser.Divide_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterMultiplying_operator(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitMultiplying_operator(this);
+		}
+	}
+
+
+}
+
+
+
+class PrimaryContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_primary;
     }
-    Specification_partContext.prototype.specifier = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(SpecifierContext);
-        }
-        else {
-            return this.getRuleContext(i, SpecifierContext);
-        }
-    };
-    Specification_partContext.prototype.identifier_list = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Identifier_listContext);
-        }
-        else {
-            return this.getRuleContext(i, Identifier_listContext);
-        }
-    };
-    Object.defineProperty(Specification_partContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_specification_part; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Specification_partContext.prototype.enterRule = function (listener) {
-        if (listener.enterSpecification_part) {
-            listener.enterSpecification_part(this);
-        }
-    };
-    // @Override
-    Specification_partContext.prototype.exitRule = function (listener) {
-        if (listener.exitSpecification_part) {
-            listener.exitSpecification_part(this);
-        }
-    };
-    // @Override
-    Specification_partContext.prototype.accept = function (visitor) {
-        if (visitor.visitSpecification_part) {
-            return visitor.visitSpecification_part(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Specification_partContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Specification_partContext = Specification_partContext;
-var SpecifierContext = /** @class */ (function (_super) {
-    __extends(SpecifierContext, _super);
-    function SpecifierContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Unsigned_number() {
+	    return this.getToken(algol60Parser.Unsigned_number, 0);
+	};
+
+	variable() {
+	    return this.getTypedRuleContext(VariableContext,0);
+	};
+
+	function_designator() {
+	    return this.getTypedRuleContext(Function_designatorContext,0);
+	};
+
+	LP_() {
+	    return this.getToken(algol60Parser.LP_, 0);
+	};
+
+	arithmetic_expression() {
+	    return this.getTypedRuleContext(Arithmetic_expressionContext,0);
+	};
+
+	Rp_() {
+	    return this.getToken(algol60Parser.Rp_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterPrimary(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitPrimary(this);
+		}
+	}
+
+
+}
+
+
+
+class FactorContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_factor;
     }
-    SpecifierContext.prototype.STRING = function () { return this.tryGetToken(algol60Parser.STRING, 0); };
-    SpecifierContext.prototype.type = function () {
-        return this.tryGetRuleContext(0, TypeContext);
-    };
-    Object.defineProperty(SpecifierContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_specifier; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    SpecifierContext.prototype.enterRule = function (listener) {
-        if (listener.enterSpecifier) {
-            listener.enterSpecifier(this);
-        }
-    };
-    // @Override
-    SpecifierContext.prototype.exitRule = function (listener) {
-        if (listener.exitSpecifier) {
-            listener.exitSpecifier(this);
-        }
-    };
-    // @Override
-    SpecifierContext.prototype.accept = function (visitor) {
-        if (visitor.visitSpecifier) {
-            return visitor.visitSpecifier(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return SpecifierContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.SpecifierContext = SpecifierContext;
-var Identifier_listContext = /** @class */ (function (_super) {
-    __extends(Identifier_listContext, _super);
-    function Identifier_listContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	primary() {
+	    return this.getTypedRuleContext(PrimaryContext,0);
+	};
+
+	factor() {
+	    return this.getTypedRuleContext(FactorContext,0);
+	};
+
+	Exp_() {
+	    return this.getToken(algol60Parser.Exp_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterFactor(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitFactor(this);
+		}
+	}
+
+
+}
+
+
+
+class TermContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_term;
     }
-    Identifier_listContext.prototype.identifier = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(IdentifierContext);
-        }
-        else {
-            return this.getRuleContext(i, IdentifierContext);
-        }
-    };
-    Object.defineProperty(Identifier_listContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_identifier_list; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Identifier_listContext.prototype.enterRule = function (listener) {
-        if (listener.enterIdentifier_list) {
-            listener.enterIdentifier_list(this);
-        }
-    };
-    // @Override
-    Identifier_listContext.prototype.exitRule = function (listener) {
-        if (listener.exitIdentifier_list) {
-            listener.exitIdentifier_list(this);
-        }
-    };
-    // @Override
-    Identifier_listContext.prototype.accept = function (visitor) {
-        if (visitor.visitIdentifier_list) {
-            return visitor.visitIdentifier_list(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Identifier_listContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Identifier_listContext = Identifier_listContext;
-var Procedure_bodyContext = /** @class */ (function (_super) {
-    __extends(Procedure_bodyContext, _super);
-    function Procedure_bodyContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	factor() {
+	    return this.getTypedRuleContext(FactorContext,0);
+	};
+
+	term() {
+	    return this.getTypedRuleContext(TermContext,0);
+	};
+
+	multiplying_operator() {
+	    return this.getTypedRuleContext(Multiplying_operatorContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterTerm(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitTerm(this);
+		}
+	}
+
+
+}
+
+
+
+class Simple_arithmetic_expressionContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_simple_arithmetic_expression;
     }
-    Procedure_bodyContext.prototype.statement = function () {
-        return this.getRuleContext(0, StatementContext);
-    };
-    Object.defineProperty(Procedure_bodyContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_procedure_body; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Procedure_bodyContext.prototype.enterRule = function (listener) {
-        if (listener.enterProcedure_body) {
-            listener.enterProcedure_body(this);
-        }
-    };
-    // @Override
-    Procedure_bodyContext.prototype.exitRule = function (listener) {
-        if (listener.exitProcedure_body) {
-            listener.exitProcedure_body(this);
-        }
-    };
-    // @Override
-    Procedure_bodyContext.prototype.accept = function (visitor) {
-        if (visitor.visitProcedure_body) {
-            return visitor.visitProcedure_body(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Procedure_bodyContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Procedure_bodyContext = Procedure_bodyContext;
-var StatementContext = /** @class */ (function (_super) {
-    __extends(StatementContext, _super);
-    function StatementContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	term() {
+	    return this.getTypedRuleContext(TermContext,0);
+	};
+
+	adding_operator() {
+	    return this.getTypedRuleContext(Adding_operatorContext,0);
+	};
+
+	simple_arithmetic_expression() {
+	    return this.getTypedRuleContext(Simple_arithmetic_expressionContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSimple_arithmetic_expression(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSimple_arithmetic_expression(this);
+		}
+	}
+
+
+}
+
+
+
+class If_clauseContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_if_clause;
     }
-    StatementContext.prototype.unconditional_statement = function () {
-        return this.tryGetRuleContext(0, Unconditional_statementContext);
-    };
-    StatementContext.prototype.conditional_statement = function () {
-        return this.tryGetRuleContext(0, Conditional_statementContext);
-    };
-    StatementContext.prototype.for_statement = function () {
-        return this.tryGetRuleContext(0, For_statementContext);
-    };
-    Object.defineProperty(StatementContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_statement; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    StatementContext.prototype.enterRule = function (listener) {
-        if (listener.enterStatement) {
-            listener.enterStatement(this);
-        }
-    };
-    // @Override
-    StatementContext.prototype.exitRule = function (listener) {
-        if (listener.exitStatement) {
-            listener.exitStatement(this);
-        }
-    };
-    // @Override
-    StatementContext.prototype.accept = function (visitor) {
-        if (visitor.visitStatement) {
-            return visitor.visitStatement(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return StatementContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.StatementContext = StatementContext;
-var Unconditional_statementContext = /** @class */ (function (_super) {
-    __extends(Unconditional_statementContext, _super);
-    function Unconditional_statementContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	If_() {
+	    return this.getToken(algol60Parser.If_, 0);
+	};
+
+	boolean_expression() {
+	    return this.getTypedRuleContext(Boolean_expressionContext,0);
+	};
+
+	Then_() {
+	    return this.getToken(algol60Parser.Then_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterIf_clause(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitIf_clause(this);
+		}
+	}
+
+
+}
+
+
+
+class Arithmetic_expressionContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_arithmetic_expression;
     }
-    Unconditional_statementContext.prototype.basic_statement = function () {
-        return this.tryGetRuleContext(0, Basic_statementContext);
-    };
-    Unconditional_statementContext.prototype.compound_statement = function () {
-        return this.tryGetRuleContext(0, Compound_statementContext);
-    };
-    Unconditional_statementContext.prototype.block = function () {
-        return this.tryGetRuleContext(0, BlockContext);
-    };
-    Object.defineProperty(Unconditional_statementContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_unconditional_statement; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Unconditional_statementContext.prototype.enterRule = function (listener) {
-        if (listener.enterUnconditional_statement) {
-            listener.enterUnconditional_statement(this);
-        }
-    };
-    // @Override
-    Unconditional_statementContext.prototype.exitRule = function (listener) {
-        if (listener.exitUnconditional_statement) {
-            listener.exitUnconditional_statement(this);
-        }
-    };
-    // @Override
-    Unconditional_statementContext.prototype.accept = function (visitor) {
-        if (visitor.visitUnconditional_statement) {
-            return visitor.visitUnconditional_statement(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Unconditional_statementContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Unconditional_statementContext = Unconditional_statementContext;
-var Basic_statementContext = /** @class */ (function (_super) {
-    __extends(Basic_statementContext, _super);
-    function Basic_statementContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	simple_arithmetic_expression() {
+	    return this.getTypedRuleContext(Simple_arithmetic_expressionContext,0);
+	};
+
+	if_clause() {
+	    return this.getTypedRuleContext(If_clauseContext,0);
+	};
+
+	Else_() {
+	    return this.getToken(algol60Parser.Else_, 0);
+	};
+
+	arithmetic_expression() {
+	    return this.getTypedRuleContext(Arithmetic_expressionContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterArithmetic_expression(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitArithmetic_expression(this);
+		}
+	}
+
+
+}
+
+
+
+class RelationContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_relation;
     }
-    Basic_statementContext.prototype.label = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(LabelContext);
-        }
-        else {
-            return this.getRuleContext(i, LabelContext);
-        }
-    };
-    Basic_statementContext.prototype.unlabelled_basic_statement = function () {
-        return this.tryGetRuleContext(0, Unlabelled_basic_statementContext);
-    };
-    Object.defineProperty(Basic_statementContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_basic_statement; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Basic_statementContext.prototype.enterRule = function (listener) {
-        if (listener.enterBasic_statement) {
-            listener.enterBasic_statement(this);
-        }
-    };
-    // @Override
-    Basic_statementContext.prototype.exitRule = function (listener) {
-        if (listener.exitBasic_statement) {
-            listener.exitBasic_statement(this);
-        }
-    };
-    // @Override
-    Basic_statementContext.prototype.accept = function (visitor) {
-        if (visitor.visitBasic_statement) {
-            return visitor.visitBasic_statement(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Basic_statementContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Basic_statementContext = Basic_statementContext;
-var LabelContext = /** @class */ (function (_super) {
-    __extends(LabelContext, _super);
-    function LabelContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	simple_arithmetic_expression = function(i) {
+	    if(i===undefined) {
+	        i = null;
+	    }
+	    if(i===null) {
+	        return this.getTypedRuleContexts(Simple_arithmetic_expressionContext);
+	    } else {
+	        return this.getTypedRuleContext(Simple_arithmetic_expressionContext,i);
+	    }
+	};
+
+	Relational_operator() {
+	    return this.getToken(algol60Parser.Relational_operator, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterRelation(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitRelation(this);
+		}
+	}
+
+
+}
+
+
+
+class Boolean_primaryContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_boolean_primary;
     }
-    LabelContext.prototype.identifier = function () {
-        return this.tryGetRuleContext(0, IdentifierContext);
-    };
-    LabelContext.prototype.unsigned_integer = function () {
-        return this.tryGetRuleContext(0, Unsigned_integerContext);
-    };
-    Object.defineProperty(LabelContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_label; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    LabelContext.prototype.enterRule = function (listener) {
-        if (listener.enterLabel) {
-            listener.enterLabel(this);
-        }
-    };
-    // @Override
-    LabelContext.prototype.exitRule = function (listener) {
-        if (listener.exitLabel) {
-            listener.exitLabel(this);
-        }
-    };
-    // @Override
-    LabelContext.prototype.accept = function (visitor) {
-        if (visitor.visitLabel) {
-            return visitor.visitLabel(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return LabelContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.LabelContext = LabelContext;
-var Unlabelled_basic_statementContext = /** @class */ (function (_super) {
-    __extends(Unlabelled_basic_statementContext, _super);
-    function Unlabelled_basic_statementContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Logical_value() {
+	    return this.getToken(algol60Parser.Logical_value, 0);
+	};
+
+	variable() {
+	    return this.getTypedRuleContext(VariableContext,0);
+	};
+
+	function_designator() {
+	    return this.getTypedRuleContext(Function_designatorContext,0);
+	};
+
+	relation() {
+	    return this.getTypedRuleContext(RelationContext,0);
+	};
+
+	LP_() {
+	    return this.getToken(algol60Parser.LP_, 0);
+	};
+
+	boolean_expression() {
+	    return this.getTypedRuleContext(Boolean_expressionContext,0);
+	};
+
+	Rp_() {
+	    return this.getToken(algol60Parser.Rp_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterBoolean_primary(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitBoolean_primary(this);
+		}
+	}
+
+
+}
+
+
+
+class Boolean_secondaryContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_boolean_secondary;
     }
-    Unlabelled_basic_statementContext.prototype.assignment_statement = function () {
-        return this.tryGetRuleContext(0, Assignment_statementContext);
-    };
-    Unlabelled_basic_statementContext.prototype.go_to_statement = function () {
-        return this.tryGetRuleContext(0, Go_to_statementContext);
-    };
-    Unlabelled_basic_statementContext.prototype.procedure_statement = function () {
-        return this.tryGetRuleContext(0, Procedure_statementContext);
-    };
-    Object.defineProperty(Unlabelled_basic_statementContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_unlabelled_basic_statement; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Unlabelled_basic_statementContext.prototype.enterRule = function (listener) {
-        if (listener.enterUnlabelled_basic_statement) {
-            listener.enterUnlabelled_basic_statement(this);
-        }
-    };
-    // @Override
-    Unlabelled_basic_statementContext.prototype.exitRule = function (listener) {
-        if (listener.exitUnlabelled_basic_statement) {
-            listener.exitUnlabelled_basic_statement(this);
-        }
-    };
-    // @Override
-    Unlabelled_basic_statementContext.prototype.accept = function (visitor) {
-        if (visitor.visitUnlabelled_basic_statement) {
-            return visitor.visitUnlabelled_basic_statement(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Unlabelled_basic_statementContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Unlabelled_basic_statementContext = Unlabelled_basic_statementContext;
-var Assignment_statementContext = /** @class */ (function (_super) {
-    __extends(Assignment_statementContext, _super);
-    function Assignment_statementContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	boolean_primary() {
+	    return this.getTypedRuleContext(Boolean_primaryContext,0);
+	};
+
+	Not_() {
+	    return this.getToken(algol60Parser.Not_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterBoolean_secondary(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitBoolean_secondary(this);
+		}
+	}
+
+
+}
+
+
+
+class Boolean_factorContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_boolean_factor;
     }
-    Assignment_statementContext.prototype.left_part_list = function () {
-        return this.getRuleContext(0, Left_part_listContext);
-    };
-    Assignment_statementContext.prototype.arithmetic_expression = function () {
-        return this.tryGetRuleContext(0, Arithmetic_expressionContext);
-    };
-    Assignment_statementContext.prototype.boolean_expression = function () {
-        return this.tryGetRuleContext(0, Boolean_expressionContext);
-    };
-    Object.defineProperty(Assignment_statementContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_assignment_statement; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Assignment_statementContext.prototype.enterRule = function (listener) {
-        if (listener.enterAssignment_statement) {
-            listener.enterAssignment_statement(this);
-        }
-    };
-    // @Override
-    Assignment_statementContext.prototype.exitRule = function (listener) {
-        if (listener.exitAssignment_statement) {
-            listener.exitAssignment_statement(this);
-        }
-    };
-    // @Override
-    Assignment_statementContext.prototype.accept = function (visitor) {
-        if (visitor.visitAssignment_statement) {
-            return visitor.visitAssignment_statement(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Assignment_statementContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Assignment_statementContext = Assignment_statementContext;
-var Left_part_listContext = /** @class */ (function (_super) {
-    __extends(Left_part_listContext, _super);
-    function Left_part_listContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	boolean_secondary() {
+	    return this.getTypedRuleContext(Boolean_secondaryContext,0);
+	};
+
+	boolean_factor() {
+	    return this.getTypedRuleContext(Boolean_factorContext,0);
+	};
+
+	And_() {
+	    return this.getToken(algol60Parser.And_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterBoolean_factor(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitBoolean_factor(this);
+		}
+	}
+
+
+}
+
+
+
+class Boolean_termContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_boolean_term;
     }
-    Left_part_listContext.prototype.left_part = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Left_partContext);
-        }
-        else {
-            return this.getRuleContext(i, Left_partContext);
-        }
-    };
-    Object.defineProperty(Left_part_listContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_left_part_list; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Left_part_listContext.prototype.enterRule = function (listener) {
-        if (listener.enterLeft_part_list) {
-            listener.enterLeft_part_list(this);
-        }
-    };
-    // @Override
-    Left_part_listContext.prototype.exitRule = function (listener) {
-        if (listener.exitLeft_part_list) {
-            listener.exitLeft_part_list(this);
-        }
-    };
-    // @Override
-    Left_part_listContext.prototype.accept = function (visitor) {
-        if (visitor.visitLeft_part_list) {
-            return visitor.visitLeft_part_list(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Left_part_listContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Left_part_listContext = Left_part_listContext;
-var Left_partContext = /** @class */ (function (_super) {
-    __extends(Left_partContext, _super);
-    function Left_partContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	boolean_factor() {
+	    return this.getTypedRuleContext(Boolean_factorContext,0);
+	};
+
+	boolean_term() {
+	    return this.getTypedRuleContext(Boolean_termContext,0);
+	};
+
+	Or_() {
+	    return this.getToken(algol60Parser.Or_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterBoolean_term(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitBoolean_term(this);
+		}
+	}
+
+
+}
+
+
+
+class ImplicationContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_implication;
     }
-    Left_partContext.prototype.variable = function () {
-        return this.tryGetRuleContext(0, VariableContext);
-    };
-    Left_partContext.prototype.procedure_identifier = function () {
-        return this.tryGetRuleContext(0, Procedure_identifierContext);
-    };
-    Object.defineProperty(Left_partContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_left_part; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Left_partContext.prototype.enterRule = function (listener) {
-        if (listener.enterLeft_part) {
-            listener.enterLeft_part(this);
-        }
-    };
-    // @Override
-    Left_partContext.prototype.exitRule = function (listener) {
-        if (listener.exitLeft_part) {
-            listener.exitLeft_part(this);
-        }
-    };
-    // @Override
-    Left_partContext.prototype.accept = function (visitor) {
-        if (visitor.visitLeft_part) {
-            return visitor.visitLeft_part(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Left_partContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Left_partContext = Left_partContext;
-var Go_to_statementContext = /** @class */ (function (_super) {
-    __extends(Go_to_statementContext, _super);
-    function Go_to_statementContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	boolean_term() {
+	    return this.getTypedRuleContext(Boolean_termContext,0);
+	};
+
+	implication() {
+	    return this.getTypedRuleContext(ImplicationContext,0);
+	};
+
+	Includes_() {
+	    return this.getToken(algol60Parser.Includes_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterImplication(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitImplication(this);
+		}
+	}
+
+
+}
+
+
+
+class Simple_booleanContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_simple_boolean;
     }
-    Go_to_statementContext.prototype.designational_expression = function () {
-        return this.getRuleContext(0, Designational_expressionContext);
-    };
-    Object.defineProperty(Go_to_statementContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_go_to_statement; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Go_to_statementContext.prototype.enterRule = function (listener) {
-        if (listener.enterGo_to_statement) {
-            listener.enterGo_to_statement(this);
-        }
-    };
-    // @Override
-    Go_to_statementContext.prototype.exitRule = function (listener) {
-        if (listener.exitGo_to_statement) {
-            listener.exitGo_to_statement(this);
-        }
-    };
-    // @Override
-    Go_to_statementContext.prototype.accept = function (visitor) {
-        if (visitor.visitGo_to_statement) {
-            return visitor.visitGo_to_statement(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Go_to_statementContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Go_to_statementContext = Go_to_statementContext;
-var Designational_expressionContext = /** @class */ (function (_super) {
-    __extends(Designational_expressionContext, _super);
-    function Designational_expressionContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	implication() {
+	    return this.getTypedRuleContext(ImplicationContext,0);
+	};
+
+	simple_boolean() {
+	    return this.getTypedRuleContext(Simple_booleanContext,0);
+	};
+
+	Equiv_() {
+	    return this.getToken(algol60Parser.Equiv_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSimple_boolean(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSimple_boolean(this);
+		}
+	}
+
+
+}
+
+
+
+class Boolean_expressionContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_boolean_expression;
     }
-    Designational_expressionContext.prototype.label = function () {
-        return this.tryGetRuleContext(0, LabelContext);
-    };
-    Designational_expressionContext.prototype.switch_designator = function () {
-        return this.tryGetRuleContext(0, Switch_designatorContext);
-    };
-    Designational_expressionContext.prototype.if_clause = function () {
-        return this.tryGetRuleContext(0, If_clauseContext);
-    };
-    Designational_expressionContext.prototype.designational_expression = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Designational_expressionContext);
-        }
-        else {
-            return this.getRuleContext(i, Designational_expressionContext);
-        }
-    };
-    Object.defineProperty(Designational_expressionContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_designational_expression; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Designational_expressionContext.prototype.enterRule = function (listener) {
-        if (listener.enterDesignational_expression) {
-            listener.enterDesignational_expression(this);
-        }
-    };
-    // @Override
-    Designational_expressionContext.prototype.exitRule = function (listener) {
-        if (listener.exitDesignational_expression) {
-            listener.exitDesignational_expression(this);
-        }
-    };
-    // @Override
-    Designational_expressionContext.prototype.accept = function (visitor) {
-        if (visitor.visitDesignational_expression) {
-            return visitor.visitDesignational_expression(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Designational_expressionContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Designational_expressionContext = Designational_expressionContext;
-var Switch_designatorContext = /** @class */ (function (_super) {
-    __extends(Switch_designatorContext, _super);
-    function Switch_designatorContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	simple_boolean() {
+	    return this.getTypedRuleContext(Simple_booleanContext,0);
+	};
+
+	if_clause() {
+	    return this.getTypedRuleContext(If_clauseContext,0);
+	};
+
+	Else_() {
+	    return this.getToken(algol60Parser.Else_, 0);
+	};
+
+	boolean_expression() {
+	    return this.getTypedRuleContext(Boolean_expressionContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterBoolean_expression(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitBoolean_expression(this);
+		}
+	}
+
+
+}
+
+
+
+class LabelContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_label;
     }
-    Switch_designatorContext.prototype.switch_identifier = function () {
-        return this.getRuleContext(0, Switch_identifierContext);
-    };
-    Switch_designatorContext.prototype.subscript_expression = function () {
-        return this.tryGetRuleContext(0, Subscript_expressionContext);
-    };
-    Object.defineProperty(Switch_designatorContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_switch_designator; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Switch_designatorContext.prototype.enterRule = function (listener) {
-        if (listener.enterSwitch_designator) {
-            listener.enterSwitch_designator(this);
-        }
-    };
-    // @Override
-    Switch_designatorContext.prototype.exitRule = function (listener) {
-        if (listener.exitSwitch_designator) {
-            listener.exitSwitch_designator(this);
-        }
-    };
-    // @Override
-    Switch_designatorContext.prototype.accept = function (visitor) {
-        if (visitor.visitSwitch_designator) {
-            return visitor.visitSwitch_designator(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Switch_designatorContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Switch_designatorContext = Switch_designatorContext;
-var Procedure_statementContext = /** @class */ (function (_super) {
-    __extends(Procedure_statementContext, _super);
-    function Procedure_statementContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Identifier() {
+	    return this.getToken(algol60Parser.Identifier, 0);
+	};
+
+	Unsigned_integer() {
+	    return this.getToken(algol60Parser.Unsigned_integer, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterLabel(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitLabel(this);
+		}
+	}
+
+
+}
+
+
+
+class Switch_identifierContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_switch_identifier;
     }
-    Procedure_statementContext.prototype.procedure_identifier = function () {
-        return this.getRuleContext(0, Procedure_identifierContext);
-    };
-    Procedure_statementContext.prototype.actual_parameter_part = function () {
-        return this.tryGetRuleContext(0, Actual_parameter_partContext);
-    };
-    Object.defineProperty(Procedure_statementContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_procedure_statement; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Procedure_statementContext.prototype.enterRule = function (listener) {
-        if (listener.enterProcedure_statement) {
-            listener.enterProcedure_statement(this);
-        }
-    };
-    // @Override
-    Procedure_statementContext.prototype.exitRule = function (listener) {
-        if (listener.exitProcedure_statement) {
-            listener.exitProcedure_statement(this);
-        }
-    };
-    // @Override
-    Procedure_statementContext.prototype.accept = function (visitor) {
-        if (visitor.visitProcedure_statement) {
-            return visitor.visitProcedure_statement(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Procedure_statementContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Procedure_statementContext = Procedure_statementContext;
-var Actual_parameter_partContext = /** @class */ (function (_super) {
-    __extends(Actual_parameter_partContext, _super);
-    function Actual_parameter_partContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Identifier() {
+	    return this.getToken(algol60Parser.Identifier, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSwitch_identifier(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSwitch_identifier(this);
+		}
+	}
+
+
+}
+
+
+
+class Switch_designatorContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_switch_designator;
     }
-    Actual_parameter_partContext.prototype.actual_parameter_list = function () {
-        return this.getRuleContext(0, Actual_parameter_listContext);
-    };
-    Object.defineProperty(Actual_parameter_partContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_actual_parameter_part; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Actual_parameter_partContext.prototype.enterRule = function (listener) {
-        if (listener.enterActual_parameter_part) {
-            listener.enterActual_parameter_part(this);
-        }
-    };
-    // @Override
-    Actual_parameter_partContext.prototype.exitRule = function (listener) {
-        if (listener.exitActual_parameter_part) {
-            listener.exitActual_parameter_part(this);
-        }
-    };
-    // @Override
-    Actual_parameter_partContext.prototype.accept = function (visitor) {
-        if (visitor.visitActual_parameter_part) {
-            return visitor.visitActual_parameter_part(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Actual_parameter_partContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Actual_parameter_partContext = Actual_parameter_partContext;
-var Actual_parameter_listContext = /** @class */ (function (_super) {
-    __extends(Actual_parameter_listContext, _super);
-    function Actual_parameter_listContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	switch_identifier() {
+	    return this.getTypedRuleContext(Switch_identifierContext,0);
+	};
+
+	Lb_() {
+	    return this.getToken(algol60Parser.Lb_, 0);
+	};
+
+	subscript_expression() {
+	    return this.getTypedRuleContext(Subscript_expressionContext,0);
+	};
+
+	Rb_() {
+	    return this.getToken(algol60Parser.Rb_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSwitch_designator(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSwitch_designator(this);
+		}
+	}
+
+
+}
+
+
+
+class Simple_designational_expressionContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_simple_designational_expression;
     }
-    Actual_parameter_listContext.prototype.actual_parameter = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Actual_parameterContext);
-        }
-        else {
-            return this.getRuleContext(i, Actual_parameterContext);
-        }
-    };
-    Actual_parameter_listContext.prototype.parameter_delimiter = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Parameter_delimiterContext);
-        }
-        else {
-            return this.getRuleContext(i, Parameter_delimiterContext);
-        }
-    };
-    Object.defineProperty(Actual_parameter_listContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_actual_parameter_list; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Actual_parameter_listContext.prototype.enterRule = function (listener) {
-        if (listener.enterActual_parameter_list) {
-            listener.enterActual_parameter_list(this);
-        }
-    };
-    // @Override
-    Actual_parameter_listContext.prototype.exitRule = function (listener) {
-        if (listener.exitActual_parameter_list) {
-            listener.exitActual_parameter_list(this);
-        }
-    };
-    // @Override
-    Actual_parameter_listContext.prototype.accept = function (visitor) {
-        if (visitor.visitActual_parameter_list) {
-            return visitor.visitActual_parameter_list(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Actual_parameter_listContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Actual_parameter_listContext = Actual_parameter_listContext;
-var Parameter_delimiterContext = /** @class */ (function (_super) {
-    __extends(Parameter_delimiterContext, _super);
-    function Parameter_delimiterContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	label() {
+	    return this.getTypedRuleContext(LabelContext,0);
+	};
+
+	switch_designator() {
+	    return this.getTypedRuleContext(Switch_designatorContext,0);
+	};
+
+	LP_() {
+	    return this.getToken(algol60Parser.LP_, 0);
+	};
+
+	designational_expression() {
+	    return this.getTypedRuleContext(Designational_expressionContext,0);
+	};
+
+	Rp_() {
+	    return this.getToken(algol60Parser.Rp_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSimple_designational_expression(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSimple_designational_expression(this);
+		}
+	}
+
+
+}
+
+
+
+class Designational_expressionContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_designational_expression;
     }
-    Parameter_delimiterContext.prototype.letter_string = function () {
-        return this.tryGetRuleContext(0, Letter_stringContext);
-    };
-    Object.defineProperty(Parameter_delimiterContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_parameter_delimiter; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Parameter_delimiterContext.prototype.enterRule = function (listener) {
-        if (listener.enterParameter_delimiter) {
-            listener.enterParameter_delimiter(this);
-        }
-    };
-    // @Override
-    Parameter_delimiterContext.prototype.exitRule = function (listener) {
-        if (listener.exitParameter_delimiter) {
-            listener.exitParameter_delimiter(this);
-        }
-    };
-    // @Override
-    Parameter_delimiterContext.prototype.accept = function (visitor) {
-        if (visitor.visitParameter_delimiter) {
-            return visitor.visitParameter_delimiter(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Parameter_delimiterContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Parameter_delimiterContext = Parameter_delimiterContext;
-var Actual_parameterContext = /** @class */ (function (_super) {
-    __extends(Actual_parameterContext, _super);
-    function Actual_parameterContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	simple_designational_expression() {
+	    return this.getTypedRuleContext(Simple_designational_expressionContext,0);
+	};
+
+	if_clause() {
+	    return this.getTypedRuleContext(If_clauseContext,0);
+	};
+
+	Else_() {
+	    return this.getToken(algol60Parser.Else_, 0);
+	};
+
+	designational_expression() {
+	    return this.getTypedRuleContext(Designational_expressionContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterDesignational_expression(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitDesignational_expression(this);
+		}
+	}
+
+
+}
+
+
+
+class Unlabelled_basic_statementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_unlabelled_basic_statement;
     }
-    Actual_parameterContext.prototype.STRING = function () { return this.tryGetToken(algol60Parser.STRING, 0); };
-    Actual_parameterContext.prototype.expression = function () {
-        return this.tryGetRuleContext(0, ExpressionContext);
-    };
-    Actual_parameterContext.prototype.array_identifier = function () {
-        return this.tryGetRuleContext(0, Array_identifierContext);
-    };
-    Actual_parameterContext.prototype.switch_identifier = function () {
-        return this.tryGetRuleContext(0, Switch_identifierContext);
-    };
-    Actual_parameterContext.prototype.procedure_identifier = function () {
-        return this.tryGetRuleContext(0, Procedure_identifierContext);
-    };
-    Object.defineProperty(Actual_parameterContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_actual_parameter; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Actual_parameterContext.prototype.enterRule = function (listener) {
-        if (listener.enterActual_parameter) {
-            listener.enterActual_parameter(this);
-        }
-    };
-    // @Override
-    Actual_parameterContext.prototype.exitRule = function (listener) {
-        if (listener.exitActual_parameter) {
-            listener.exitActual_parameter(this);
-        }
-    };
-    // @Override
-    Actual_parameterContext.prototype.accept = function (visitor) {
-        if (visitor.visitActual_parameter) {
-            return visitor.visitActual_parameter(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Actual_parameterContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Actual_parameterContext = Actual_parameterContext;
-var Conditional_statementContext = /** @class */ (function (_super) {
-    __extends(Conditional_statementContext, _super);
-    function Conditional_statementContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	assignment_statement() {
+	    return this.getTypedRuleContext(Assignment_statementContext,0);
+	};
+
+	go_to_statement() {
+	    return this.getTypedRuleContext(Go_to_statementContext,0);
+	};
+
+	dummy_statement() {
+	    return this.getTypedRuleContext(Dummy_statementContext,0);
+	};
+
+	procedure_statement() {
+	    return this.getTypedRuleContext(Procedure_statementContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterUnlabelled_basic_statement(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitUnlabelled_basic_statement(this);
+		}
+	}
+
+
+}
+
+
+
+class Basic_statementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_basic_statement;
     }
-    Conditional_statementContext.prototype.label = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(LabelContext);
-        }
-        else {
-            return this.getRuleContext(i, LabelContext);
-        }
-    };
-    Conditional_statementContext.prototype.if_statement = function () {
-        return this.tryGetRuleContext(0, If_statementContext);
-    };
-    Conditional_statementContext.prototype.if_clause = function () {
-        return this.tryGetRuleContext(0, If_clauseContext);
-    };
-    Conditional_statementContext.prototype.for_statement = function () {
-        return this.tryGetRuleContext(0, For_statementContext);
-    };
-    Conditional_statementContext.prototype.statement = function () {
-        return this.tryGetRuleContext(0, StatementContext);
-    };
-    Object.defineProperty(Conditional_statementContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_conditional_statement; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Conditional_statementContext.prototype.enterRule = function (listener) {
-        if (listener.enterConditional_statement) {
-            listener.enterConditional_statement(this);
-        }
-    };
-    // @Override
-    Conditional_statementContext.prototype.exitRule = function (listener) {
-        if (listener.exitConditional_statement) {
-            listener.exitConditional_statement(this);
-        }
-    };
-    // @Override
-    Conditional_statementContext.prototype.accept = function (visitor) {
-        if (visitor.visitConditional_statement) {
-            return visitor.visitConditional_statement(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Conditional_statementContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Conditional_statementContext = Conditional_statementContext;
-var If_statementContext = /** @class */ (function (_super) {
-    __extends(If_statementContext, _super);
-    function If_statementContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	unlabelled_basic_statement() {
+	    return this.getTypedRuleContext(Unlabelled_basic_statementContext,0);
+	};
+
+	label() {
+	    return this.getTypedRuleContext(LabelContext,0);
+	};
+
+	Colon_() {
+	    return this.getToken(algol60Parser.Colon_, 0);
+	};
+
+	basic_statement() {
+	    return this.getTypedRuleContext(Basic_statementContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterBasic_statement(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitBasic_statement(this);
+		}
+	}
+
+
+}
+
+
+
+class Unconditional_statementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_unconditional_statement;
     }
-    If_statementContext.prototype.if_clause = function () {
-        return this.getRuleContext(0, If_clauseContext);
-    };
-    If_statementContext.prototype.unconditional_statement = function () {
-        return this.getRuleContext(0, Unconditional_statementContext);
-    };
-    Object.defineProperty(If_statementContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_if_statement; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    If_statementContext.prototype.enterRule = function (listener) {
-        if (listener.enterIf_statement) {
-            listener.enterIf_statement(this);
-        }
-    };
-    // @Override
-    If_statementContext.prototype.exitRule = function (listener) {
-        if (listener.exitIf_statement) {
-            listener.exitIf_statement(this);
-        }
-    };
-    // @Override
-    If_statementContext.prototype.accept = function (visitor) {
-        if (visitor.visitIf_statement) {
-            return visitor.visitIf_statement(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return If_statementContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.If_statementContext = If_statementContext;
-var If_clauseContext = /** @class */ (function (_super) {
-    __extends(If_clauseContext, _super);
-    function If_clauseContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	basic_statement() {
+	    return this.getTypedRuleContext(Basic_statementContext,0);
+	};
+
+	compound_statement() {
+	    return this.getTypedRuleContext(Compound_statementContext,0);
+	};
+
+	block() {
+	    return this.getTypedRuleContext(BlockContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterUnconditional_statement(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitUnconditional_statement(this);
+		}
+	}
+
+
+}
+
+
+
+class StatementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_statement;
     }
-    If_clauseContext.prototype.boolean_expression = function () {
-        return this.getRuleContext(0, Boolean_expressionContext);
-    };
-    Object.defineProperty(If_clauseContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_if_clause; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    If_clauseContext.prototype.enterRule = function (listener) {
-        if (listener.enterIf_clause) {
-            listener.enterIf_clause(this);
-        }
-    };
-    // @Override
-    If_clauseContext.prototype.exitRule = function (listener) {
-        if (listener.exitIf_clause) {
-            listener.exitIf_clause(this);
-        }
-    };
-    // @Override
-    If_clauseContext.prototype.accept = function (visitor) {
-        if (visitor.visitIf_clause) {
-            return visitor.visitIf_clause(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return If_clauseContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.If_clauseContext = If_clauseContext;
-var For_statementContext = /** @class */ (function (_super) {
-    __extends(For_statementContext, _super);
-    function For_statementContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	unconditional_statement() {
+	    return this.getTypedRuleContext(Unconditional_statementContext,0);
+	};
+
+	conditional_statement() {
+	    return this.getTypedRuleContext(Conditional_statementContext,0);
+	};
+
+	for_statement() {
+	    return this.getTypedRuleContext(For_statementContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterStatement(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitStatement(this);
+		}
+	}
+
+
+}
+
+
+
+class Compound_tailContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_compound_tail;
     }
-    For_statementContext.prototype.for_clause = function () {
-        return this.getRuleContext(0, For_clauseContext);
-    };
-    For_statementContext.prototype.statement = function () {
-        return this.getRuleContext(0, StatementContext);
-    };
-    For_statementContext.prototype.label = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(LabelContext);
-        }
-        else {
-            return this.getRuleContext(i, LabelContext);
-        }
-    };
-    Object.defineProperty(For_statementContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_for_statement; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    For_statementContext.prototype.enterRule = function (listener) {
-        if (listener.enterFor_statement) {
-            listener.enterFor_statement(this);
-        }
-    };
-    // @Override
-    For_statementContext.prototype.exitRule = function (listener) {
-        if (listener.exitFor_statement) {
-            listener.exitFor_statement(this);
-        }
-    };
-    // @Override
-    For_statementContext.prototype.accept = function (visitor) {
-        if (visitor.visitFor_statement) {
-            return visitor.visitFor_statement(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return For_statementContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.For_statementContext = For_statementContext;
-var For_clauseContext = /** @class */ (function (_super) {
-    __extends(For_clauseContext, _super);
-    function For_clauseContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	statement() {
+	    return this.getTypedRuleContext(StatementContext,0);
+	};
+
+	End_() {
+	    return this.getToken(algol60Parser.End_, 0);
+	};
+
+	Semi_() {
+	    return this.getToken(algol60Parser.Semi_, 0);
+	};
+
+	compound_tail() {
+	    return this.getTypedRuleContext(Compound_tailContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterCompound_tail(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitCompound_tail(this);
+		}
+	}
+
+
+}
+
+
+
+class Block_headContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_block_head;
     }
-    For_clauseContext.prototype.variable = function () {
-        return this.getRuleContext(0, VariableContext);
-    };
-    For_clauseContext.prototype.for_list = function () {
-        return this.getRuleContext(0, For_listContext);
-    };
-    Object.defineProperty(For_clauseContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_for_clause; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    For_clauseContext.prototype.enterRule = function (listener) {
-        if (listener.enterFor_clause) {
-            listener.enterFor_clause(this);
-        }
-    };
-    // @Override
-    For_clauseContext.prototype.exitRule = function (listener) {
-        if (listener.exitFor_clause) {
-            listener.exitFor_clause(this);
-        }
-    };
-    // @Override
-    For_clauseContext.prototype.accept = function (visitor) {
-        if (visitor.visitFor_clause) {
-            return visitor.visitFor_clause(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return For_clauseContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.For_clauseContext = For_clauseContext;
-var For_listContext = /** @class */ (function (_super) {
-    __extends(For_listContext, _super);
-    function For_listContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Begin_() {
+	    return this.getToken(algol60Parser.Begin_, 0);
+	};
+
+	declaration() {
+	    return this.getTypedRuleContext(DeclarationContext,0);
+	};
+
+	block_head() {
+	    return this.getTypedRuleContext(Block_headContext,0);
+	};
+
+	Semi_() {
+	    return this.getToken(algol60Parser.Semi_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterBlock_head(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitBlock_head(this);
+		}
+	}
+
+
+}
+
+
+
+class Unlabelled_compoundContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_unlabelled_compound;
     }
-    For_listContext.prototype.for_list_element = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(For_list_elementContext);
-        }
-        else {
-            return this.getRuleContext(i, For_list_elementContext);
-        }
-    };
-    Object.defineProperty(For_listContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_for_list; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    For_listContext.prototype.enterRule = function (listener) {
-        if (listener.enterFor_list) {
-            listener.enterFor_list(this);
-        }
-    };
-    // @Override
-    For_listContext.prototype.exitRule = function (listener) {
-        if (listener.exitFor_list) {
-            listener.exitFor_list(this);
-        }
-    };
-    // @Override
-    For_listContext.prototype.accept = function (visitor) {
-        if (visitor.visitFor_list) {
-            return visitor.visitFor_list(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return For_listContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.For_listContext = For_listContext;
-var For_list_elementContext = /** @class */ (function (_super) {
-    __extends(For_list_elementContext, _super);
-    function For_list_elementContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Begin_() {
+	    return this.getToken(algol60Parser.Begin_, 0);
+	};
+
+	compound_tail() {
+	    return this.getTypedRuleContext(Compound_tailContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterUnlabelled_compound(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitUnlabelled_compound(this);
+		}
+	}
+
+
+}
+
+
+
+class Unlabelled_blockContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_unlabelled_block;
     }
-    For_list_elementContext.prototype.arithmetic_expression = function () {
-        return this.tryGetRuleContext(0, Arithmetic_expressionContext);
-    };
-    Object.defineProperty(For_list_elementContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_for_list_element; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    For_list_elementContext.prototype.enterRule = function (listener) {
-        if (listener.enterFor_list_element) {
-            listener.enterFor_list_element(this);
-        }
-    };
-    // @Override
-    For_list_elementContext.prototype.exitRule = function (listener) {
-        if (listener.exitFor_list_element) {
-            listener.exitFor_list_element(this);
-        }
-    };
-    // @Override
-    For_list_elementContext.prototype.accept = function (visitor) {
-        if (visitor.visitFor_list_element) {
-            return visitor.visitFor_list_element(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return For_list_elementContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.For_list_elementContext = For_list_elementContext;
-var Arithmetic_expressionContext = /** @class */ (function (_super) {
-    __extends(Arithmetic_expressionContext, _super);
-    function Arithmetic_expressionContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	block_head() {
+	    return this.getTypedRuleContext(Block_headContext,0);
+	};
+
+	Semi_() {
+	    return this.getToken(algol60Parser.Semi_, 0);
+	};
+
+	compound_tail() {
+	    return this.getTypedRuleContext(Compound_tailContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterUnlabelled_block(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitUnlabelled_block(this);
+		}
+	}
+
+
+}
+
+
+
+class Compound_statementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_compound_statement;
     }
-    Arithmetic_expressionContext.prototype.arithmetic_expression = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Arithmetic_expressionContext);
-        }
-        else {
-            return this.getRuleContext(i, Arithmetic_expressionContext);
-        }
-    };
-    Arithmetic_expressionContext.prototype.boolean_expression = function () {
-        return this.tryGetRuleContext(0, Boolean_expressionContext);
-    };
-    Object.defineProperty(Arithmetic_expressionContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_arithmetic_expression; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Arithmetic_expressionContext.prototype.enterRule = function (listener) {
-        if (listener.enterArithmetic_expression) {
-            listener.enterArithmetic_expression(this);
-        }
-    };
-    // @Override
-    Arithmetic_expressionContext.prototype.exitRule = function (listener) {
-        if (listener.exitArithmetic_expression) {
-            listener.exitArithmetic_expression(this);
-        }
-    };
-    // @Override
-    Arithmetic_expressionContext.prototype.accept = function (visitor) {
-        if (visitor.visitArithmetic_expression) {
-            return visitor.visitArithmetic_expression(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Arithmetic_expressionContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Arithmetic_expressionContext = Arithmetic_expressionContext;
-var ExpressionContext = /** @class */ (function (_super) {
-    __extends(ExpressionContext, _super);
-    function ExpressionContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	unlabelled_compound() {
+	    return this.getTypedRuleContext(Unlabelled_compoundContext,0);
+	};
+
+	label() {
+	    return this.getTypedRuleContext(LabelContext,0);
+	};
+
+	Colon_() {
+	    return this.getToken(algol60Parser.Colon_, 0);
+	};
+
+	compound_statement() {
+	    return this.getTypedRuleContext(Compound_statementContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterCompound_statement(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitCompound_statement(this);
+		}
+	}
+
+
+}
+
+
+
+class BlockContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_block;
     }
-    ExpressionContext.prototype.arithmetic_expression = function () {
-        return this.tryGetRuleContext(0, Arithmetic_expressionContext);
-    };
-    ExpressionContext.prototype.boolean_expression = function () {
-        return this.tryGetRuleContext(0, Boolean_expressionContext);
-    };
-    ExpressionContext.prototype.designational_expression = function () {
-        return this.tryGetRuleContext(0, Designational_expressionContext);
-    };
-    Object.defineProperty(ExpressionContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_expression; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    ExpressionContext.prototype.enterRule = function (listener) {
-        if (listener.enterExpression) {
-            listener.enterExpression(this);
-        }
-    };
-    // @Override
-    ExpressionContext.prototype.exitRule = function (listener) {
-        if (listener.exitExpression) {
-            listener.exitExpression(this);
-        }
-    };
-    // @Override
-    ExpressionContext.prototype.accept = function (visitor) {
-        if (visitor.visitExpression) {
-            return visitor.visitExpression(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return ExpressionContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.ExpressionContext = ExpressionContext;
-var Arithmetic_expression2Context = /** @class */ (function (_super) {
-    __extends(Arithmetic_expression2Context, _super);
-    function Arithmetic_expression2Context(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	unlabelled_block() {
+	    return this.getTypedRuleContext(Unlabelled_blockContext,0);
+	};
+
+	label() {
+	    return this.getTypedRuleContext(LabelContext,0);
+	};
+
+	Colon_() {
+	    return this.getToken(algol60Parser.Colon_, 0);
+	};
+
+	block() {
+	    return this.getTypedRuleContext(BlockContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterBlock(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitBlock(this);
+		}
+	}
+
+
+}
+
+
+
+class ProgramContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_program;
     }
-    Arithmetic_expression2Context.prototype.simple_arithmetic_expression = function () {
-        return this.getRuleContext(0, Simple_arithmetic_expressionContext);
-    };
-    Arithmetic_expression2Context.prototype.if_clause = function () {
-        return this.tryGetRuleContext(0, If_clauseContext);
-    };
-    Arithmetic_expression2Context.prototype.arithmetic_expression = function () {
-        return this.tryGetRuleContext(0, Arithmetic_expressionContext);
-    };
-    Object.defineProperty(Arithmetic_expression2Context.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_arithmetic_expression2; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Arithmetic_expression2Context.prototype.enterRule = function (listener) {
-        if (listener.enterArithmetic_expression2) {
-            listener.enterArithmetic_expression2(this);
-        }
-    };
-    // @Override
-    Arithmetic_expression2Context.prototype.exitRule = function (listener) {
-        if (listener.exitArithmetic_expression2) {
-            listener.exitArithmetic_expression2(this);
-        }
-    };
-    // @Override
-    Arithmetic_expression2Context.prototype.accept = function (visitor) {
-        if (visitor.visitArithmetic_expression2) {
-            return visitor.visitArithmetic_expression2(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Arithmetic_expression2Context;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Arithmetic_expression2Context = Arithmetic_expression2Context;
-var Simple_arithmetic_expressionContext = /** @class */ (function (_super) {
-    __extends(Simple_arithmetic_expressionContext, _super);
-    function Simple_arithmetic_expressionContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	EOF() {
+	    return this.getToken(algol60Parser.EOF, 0);
+	};
+
+	block() {
+	    return this.getTypedRuleContext(BlockContext,0);
+	};
+
+	compound_statement() {
+	    return this.getTypedRuleContext(Compound_statementContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterProgram(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitProgram(this);
+		}
+	}
+
+
+}
+
+
+
+class DestinationContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_destination;
     }
-    Simple_arithmetic_expressionContext.prototype.term = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(TermContext);
-        }
-        else {
-            return this.getRuleContext(i, TermContext);
-        }
-    };
-    Simple_arithmetic_expressionContext.prototype.adding_operator = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Adding_operatorContext);
-        }
-        else {
-            return this.getRuleContext(i, Adding_operatorContext);
-        }
-    };
-    Object.defineProperty(Simple_arithmetic_expressionContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_simple_arithmetic_expression; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Simple_arithmetic_expressionContext.prototype.enterRule = function (listener) {
-        if (listener.enterSimple_arithmetic_expression) {
-            listener.enterSimple_arithmetic_expression(this);
-        }
-    };
-    // @Override
-    Simple_arithmetic_expressionContext.prototype.exitRule = function (listener) {
-        if (listener.exitSimple_arithmetic_expression) {
-            listener.exitSimple_arithmetic_expression(this);
-        }
-    };
-    // @Override
-    Simple_arithmetic_expressionContext.prototype.accept = function (visitor) {
-        if (visitor.visitSimple_arithmetic_expression) {
-            return visitor.visitSimple_arithmetic_expression(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Simple_arithmetic_expressionContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Simple_arithmetic_expressionContext = Simple_arithmetic_expressionContext;
-var Adding_operatorContext = /** @class */ (function (_super) {
-    __extends(Adding_operatorContext, _super);
-    function Adding_operatorContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	variable() {
+	    return this.getTypedRuleContext(VariableContext,0);
+	};
+
+	procedure_identifier() {
+	    return this.getTypedRuleContext(Procedure_identifierContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterDestination(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitDestination(this);
+		}
+	}
+
+
+}
+
+
+
+class Left_partContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_left_part;
     }
-    Object.defineProperty(Adding_operatorContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_adding_operator; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Adding_operatorContext.prototype.enterRule = function (listener) {
-        if (listener.enterAdding_operator) {
-            listener.enterAdding_operator(this);
-        }
-    };
-    // @Override
-    Adding_operatorContext.prototype.exitRule = function (listener) {
-        if (listener.exitAdding_operator) {
-            listener.exitAdding_operator(this);
-        }
-    };
-    // @Override
-    Adding_operatorContext.prototype.accept = function (visitor) {
-        if (visitor.visitAdding_operator) {
-            return visitor.visitAdding_operator(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Adding_operatorContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Adding_operatorContext = Adding_operatorContext;
-var TermContext = /** @class */ (function (_super) {
-    __extends(TermContext, _super);
-    function TermContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	variable() {
+	    return this.getTypedRuleContext(VariableContext,0);
+	};
+
+	Assign_() {
+	    return this.getToken(algol60Parser.Assign_, 0);
+	};
+
+	procedure_identifier() {
+	    return this.getTypedRuleContext(Procedure_identifierContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterLeft_part(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitLeft_part(this);
+		}
+	}
+
+
+}
+
+
+
+class Left_part_listContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_left_part_list;
     }
-    TermContext.prototype.factor = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(FactorContext);
-        }
-        else {
-            return this.getRuleContext(i, FactorContext);
-        }
-    };
-    TermContext.prototype.multiplying_operator = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Multiplying_operatorContext);
-        }
-        else {
-            return this.getRuleContext(i, Multiplying_operatorContext);
-        }
-    };
-    Object.defineProperty(TermContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_term; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    TermContext.prototype.enterRule = function (listener) {
-        if (listener.enterTerm) {
-            listener.enterTerm(this);
-        }
-    };
-    // @Override
-    TermContext.prototype.exitRule = function (listener) {
-        if (listener.exitTerm) {
-            listener.exitTerm(this);
-        }
-    };
-    // @Override
-    TermContext.prototype.accept = function (visitor) {
-        if (visitor.visitTerm) {
-            return visitor.visitTerm(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return TermContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.TermContext = TermContext;
-var Multiplying_operatorContext = /** @class */ (function (_super) {
-    __extends(Multiplying_operatorContext, _super);
-    function Multiplying_operatorContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	left_part() {
+	    return this.getTypedRuleContext(Left_partContext,0);
+	};
+
+	left_part_list() {
+	    return this.getTypedRuleContext(Left_part_listContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterLeft_part_list(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitLeft_part_list(this);
+		}
+	}
+
+
+}
+
+
+
+class Assignment_statementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_assignment_statement;
     }
-    Object.defineProperty(Multiplying_operatorContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_multiplying_operator; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Multiplying_operatorContext.prototype.enterRule = function (listener) {
-        if (listener.enterMultiplying_operator) {
-            listener.enterMultiplying_operator(this);
-        }
-    };
-    // @Override
-    Multiplying_operatorContext.prototype.exitRule = function (listener) {
-        if (listener.exitMultiplying_operator) {
-            listener.exitMultiplying_operator(this);
-        }
-    };
-    // @Override
-    Multiplying_operatorContext.prototype.accept = function (visitor) {
-        if (visitor.visitMultiplying_operator) {
-            return visitor.visitMultiplying_operator(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Multiplying_operatorContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Multiplying_operatorContext = Multiplying_operatorContext;
-var FactorContext = /** @class */ (function (_super) {
-    __extends(FactorContext, _super);
-    function FactorContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	left_part_list() {
+	    return this.getTypedRuleContext(Left_part_listContext,0);
+	};
+
+	arithmetic_expression() {
+	    return this.getTypedRuleContext(Arithmetic_expressionContext,0);
+	};
+
+	boolean_expression() {
+	    return this.getTypedRuleContext(Boolean_expressionContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterAssignment_statement(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitAssignment_statement(this);
+		}
+	}
+
+
+}
+
+
+
+class Go_to_statementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_go_to_statement;
+    }
+
+	Goto_() {
+	    return this.getToken(algol60Parser.Goto_, 0);
+	};
+
+	designational_expression() {
+	    return this.getTypedRuleContext(Designational_expressionContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterGo_to_statement(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitGo_to_statement(this);
+		}
+	}
+
+
+}
+
+
+
+class Dummy_statementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_dummy_statement;
+    }
+
+	empty_() {
+	    return this.getTypedRuleContext(Empty_Context,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterDummy_statement(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitDummy_statement(this);
+		}
+	}
+
+
+}
+
+
+
+class If_statementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_if_statement;
+    }
+
+	if_clause() {
+	    return this.getTypedRuleContext(If_clauseContext,0);
+	};
+
+	unconditional_statement() {
+	    return this.getTypedRuleContext(Unconditional_statementContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterIf_statement(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitIf_statement(this);
+		}
+	}
+
+
+}
+
+
+
+class Conditional_statementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_conditional_statement;
+    }
+
+	if_statement() {
+	    return this.getTypedRuleContext(If_statementContext,0);
+	};
+
+	Else_() {
+	    return this.getToken(algol60Parser.Else_, 0);
+	};
+
+	statement() {
+	    return this.getTypedRuleContext(StatementContext,0);
+	};
+
+	if_clause() {
+	    return this.getTypedRuleContext(If_clauseContext,0);
+	};
+
+	for_statement() {
+	    return this.getTypedRuleContext(For_statementContext,0);
+	};
+
+	label() {
+	    return this.getTypedRuleContext(LabelContext,0);
+	};
+
+	Colon_() {
+	    return this.getToken(algol60Parser.Colon_, 0);
+	};
+
+	conditional_statement() {
+	    return this.getTypedRuleContext(Conditional_statementContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterConditional_statement(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitConditional_statement(this);
+		}
+	}
+
+
+}
+
+
+
+class For_list_elementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_for_list_element;
+    }
+
+	arithmetic_expression = function(i) {
+	    if(i===undefined) {
+	        i = null;
+	    }
+	    if(i===null) {
+	        return this.getTypedRuleContexts(Arithmetic_expressionContext);
+	    } else {
+	        return this.getTypedRuleContext(Arithmetic_expressionContext,i);
+	    }
+	};
+
+	Step_() {
+	    return this.getToken(algol60Parser.Step_, 0);
+	};
+
+	Until_() {
+	    return this.getToken(algol60Parser.Until_, 0);
+	};
+
+	While_() {
+	    return this.getToken(algol60Parser.While_, 0);
+	};
+
+	boolean_expression() {
+	    return this.getTypedRuleContext(Boolean_expressionContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterFor_list_element(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitFor_list_element(this);
+		}
+	}
+
+
+}
+
+
+
+class For_listContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_for_list;
+    }
+
+	for_list_element() {
+	    return this.getTypedRuleContext(For_list_elementContext,0);
+	};
+
+	for_list() {
+	    return this.getTypedRuleContext(For_listContext,0);
+	};
+
+	Comma_() {
+	    return this.getToken(algol60Parser.Comma_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterFor_list(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitFor_list(this);
+		}
+	}
+
+
+}
+
+
+
+class For_clauseContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_for_clause;
+    }
+
+	For_() {
+	    return this.getToken(algol60Parser.For_, 0);
+	};
+
+	variable() {
+	    return this.getTypedRuleContext(VariableContext,0);
+	};
+
+	Assign_() {
+	    return this.getToken(algol60Parser.Assign_, 0);
+	};
+
+	for_list() {
+	    return this.getTypedRuleContext(For_listContext,0);
+	};
+
+	Do_() {
+	    return this.getToken(algol60Parser.Do_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterFor_clause(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitFor_clause(this);
+		}
+	}
+
+
+}
+
+
+
+class For_statementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_for_statement;
+    }
+
+	for_clause() {
+	    return this.getTypedRuleContext(For_clauseContext,0);
+	};
+
+	statement() {
+	    return this.getTypedRuleContext(StatementContext,0);
+	};
+
+	label() {
+	    return this.getTypedRuleContext(LabelContext,0);
+	};
+
+	Colon_() {
+	    return this.getToken(algol60Parser.Colon_, 0);
+	};
+
+	for_statement() {
+	    return this.getTypedRuleContext(For_statementContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterFor_statement(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitFor_statement(this);
+		}
+	}
+
+
+}
+
+
+
+class Actual_parameter_partContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_actual_parameter_part;
     }
-    FactorContext.prototype.primary = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(PrimaryContext);
-        }
-        else {
-            return this.getRuleContext(i, PrimaryContext);
-        }
-    };
-    Object.defineProperty(FactorContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_factor; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    FactorContext.prototype.enterRule = function (listener) {
-        if (listener.enterFactor) {
-            listener.enterFactor(this);
-        }
-    };
-    // @Override
-    FactorContext.prototype.exitRule = function (listener) {
-        if (listener.exitFactor) {
-            listener.exitFactor(this);
-        }
-    };
-    // @Override
-    FactorContext.prototype.accept = function (visitor) {
-        if (visitor.visitFactor) {
-            return visitor.visitFactor(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return FactorContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.FactorContext = FactorContext;
-var PrimaryContext = /** @class */ (function (_super) {
-    __extends(PrimaryContext, _super);
-    function PrimaryContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	empty_() {
+	    return this.getTypedRuleContext(Empty_Context,0);
+	};
+
+	LP_() {
+	    return this.getToken(algol60Parser.LP_, 0);
+	};
+
+	actual_parameter_list() {
+	    return this.getTypedRuleContext(Actual_parameter_listContext,0);
+	};
+
+	Rp_() {
+	    return this.getToken(algol60Parser.Rp_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterActual_parameter_part(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitActual_parameter_part(this);
+		}
+	}
+
+
+}
+
+
+
+class Procedure_statementContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_procedure_statement;
     }
-    PrimaryContext.prototype.unsigned_number = function () {
-        return this.tryGetRuleContext(0, Unsigned_numberContext);
-    };
-    PrimaryContext.prototype.variable = function () {
-        return this.tryGetRuleContext(0, VariableContext);
-    };
-    PrimaryContext.prototype.function_designator = function () {
-        return this.tryGetRuleContext(0, Function_designatorContext);
-    };
-    PrimaryContext.prototype.arithmetic_expression = function () {
-        return this.tryGetRuleContext(0, Arithmetic_expressionContext);
-    };
-    Object.defineProperty(PrimaryContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_primary; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    PrimaryContext.prototype.enterRule = function (listener) {
-        if (listener.enterPrimary) {
-            listener.enterPrimary(this);
-        }
-    };
-    // @Override
-    PrimaryContext.prototype.exitRule = function (listener) {
-        if (listener.exitPrimary) {
-            listener.exitPrimary(this);
-        }
-    };
-    // @Override
-    PrimaryContext.prototype.accept = function (visitor) {
-        if (visitor.visitPrimary) {
-            return visitor.visitPrimary(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return PrimaryContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.PrimaryContext = PrimaryContext;
-var Unsigned_numberContext = /** @class */ (function (_super) {
-    __extends(Unsigned_numberContext, _super);
-    function Unsigned_numberContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	procedure_identifier() {
+	    return this.getTypedRuleContext(Procedure_identifierContext,0);
+	};
+
+	actual_parameter_part() {
+	    return this.getTypedRuleContext(Actual_parameter_partContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterProcedure_statement(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitProcedure_statement(this);
+		}
+	}
+
+
+}
+
+
+
+class CodeContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_code;
     }
-    Unsigned_numberContext.prototype.decimal_number = function () {
-        return this.tryGetRuleContext(0, Decimal_numberContext);
-    };
-    Unsigned_numberContext.prototype.exponential_part = function () {
-        return this.tryGetRuleContext(0, Exponential_partContext);
-    };
-    Object.defineProperty(Unsigned_numberContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_unsigned_number; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Unsigned_numberContext.prototype.enterRule = function (listener) {
-        if (listener.enterUnsigned_number) {
-            listener.enterUnsigned_number(this);
-        }
-    };
-    // @Override
-    Unsigned_numberContext.prototype.exitRule = function (listener) {
-        if (listener.exitUnsigned_number) {
-            listener.exitUnsigned_number(this);
-        }
-    };
-    // @Override
-    Unsigned_numberContext.prototype.accept = function (visitor) {
-        if (visitor.visitUnsigned_number) {
-            return visitor.visitUnsigned_number(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Unsigned_numberContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Unsigned_numberContext = Unsigned_numberContext;
-var Decimal_numberContext = /** @class */ (function (_super) {
-    __extends(Decimal_numberContext, _super);
-    function Decimal_numberContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterCode(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitCode(this);
+		}
+	}
+
+
+}
+
+
+
+class DeclarationContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_declaration;
     }
-    Decimal_numberContext.prototype.unsigned_integer = function () {
-        return this.tryGetRuleContext(0, Unsigned_integerContext);
-    };
-    Decimal_numberContext.prototype.decimal_fraction = function () {
-        return this.tryGetRuleContext(0, Decimal_fractionContext);
-    };
-    Object.defineProperty(Decimal_numberContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_decimal_number; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Decimal_numberContext.prototype.enterRule = function (listener) {
-        if (listener.enterDecimal_number) {
-            listener.enterDecimal_number(this);
-        }
-    };
-    // @Override
-    Decimal_numberContext.prototype.exitRule = function (listener) {
-        if (listener.exitDecimal_number) {
-            listener.exitDecimal_number(this);
-        }
-    };
-    // @Override
-    Decimal_numberContext.prototype.accept = function (visitor) {
-        if (visitor.visitDecimal_number) {
-            return visitor.visitDecimal_number(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Decimal_numberContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Decimal_numberContext = Decimal_numberContext;
-var Unsigned_integerContext = /** @class */ (function (_super) {
-    __extends(Unsigned_integerContext, _super);
-    function Unsigned_integerContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	type_declaration() {
+	    return this.getTypedRuleContext(Type_declarationContext,0);
+	};
+
+	array_declaration() {
+	    return this.getTypedRuleContext(Array_declarationContext,0);
+	};
+
+	switch_declaration() {
+	    return this.getTypedRuleContext(Switch_declarationContext,0);
+	};
+
+	procedure_declaration() {
+	    return this.getTypedRuleContext(Procedure_declarationContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterDeclaration(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitDeclaration(this);
+		}
+	}
+
+
+}
+
+
+
+class Type_listContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_type_list;
     }
-    Unsigned_integerContext.prototype.DIGIT = function (i) {
-        if (i === undefined) {
-            return this.getTokens(algol60Parser.DIGIT);
-        }
-        else {
-            return this.getToken(algol60Parser.DIGIT, i);
-        }
-    };
-    Object.defineProperty(Unsigned_integerContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_unsigned_integer; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Unsigned_integerContext.prototype.enterRule = function (listener) {
-        if (listener.enterUnsigned_integer) {
-            listener.enterUnsigned_integer(this);
-        }
-    };
-    // @Override
-    Unsigned_integerContext.prototype.exitRule = function (listener) {
-        if (listener.exitUnsigned_integer) {
-            listener.exitUnsigned_integer(this);
-        }
-    };
-    // @Override
-    Unsigned_integerContext.prototype.accept = function (visitor) {
-        if (visitor.visitUnsigned_integer) {
-            return visitor.visitUnsigned_integer(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Unsigned_integerContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Unsigned_integerContext = Unsigned_integerContext;
-var Decimal_fractionContext = /** @class */ (function (_super) {
-    __extends(Decimal_fractionContext, _super);
-    function Decimal_fractionContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	simple_variable() {
+	    return this.getTypedRuleContext(Simple_variableContext,0);
+	};
+
+	Comma_() {
+	    return this.getToken(algol60Parser.Comma_, 0);
+	};
+
+	type_list() {
+	    return this.getTypedRuleContext(Type_listContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterType_list(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitType_list(this);
+		}
+	}
+
+
+}
+
+
+
+class Type_Context extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_type_;
     }
-    Decimal_fractionContext.prototype.unsigned_integer = function () {
-        return this.getRuleContext(0, Unsigned_integerContext);
-    };
-    Object.defineProperty(Decimal_fractionContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_decimal_fraction; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Decimal_fractionContext.prototype.enterRule = function (listener) {
-        if (listener.enterDecimal_fraction) {
-            listener.enterDecimal_fraction(this);
-        }
-    };
-    // @Override
-    Decimal_fractionContext.prototype.exitRule = function (listener) {
-        if (listener.exitDecimal_fraction) {
-            listener.exitDecimal_fraction(this);
-        }
-    };
-    // @Override
-    Decimal_fractionContext.prototype.accept = function (visitor) {
-        if (visitor.visitDecimal_fraction) {
-            return visitor.visitDecimal_fraction(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Decimal_fractionContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Decimal_fractionContext = Decimal_fractionContext;
-var Exponential_partContext = /** @class */ (function (_super) {
-    __extends(Exponential_partContext, _super);
-    function Exponential_partContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Real_() {
+	    return this.getToken(algol60Parser.Real_, 0);
+	};
+
+	Integer_() {
+	    return this.getToken(algol60Parser.Integer_, 0);
+	};
+
+	Boolean_() {
+	    return this.getToken(algol60Parser.Boolean_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterType_(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitType_(this);
+		}
+	}
+
+
+}
+
+
+
+class Local_or_ownContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_local_or_own;
     }
-    Exponential_partContext.prototype.integer = function () {
-        return this.getRuleContext(0, IntegerContext);
-    };
-    Object.defineProperty(Exponential_partContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_exponential_part; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Exponential_partContext.prototype.enterRule = function (listener) {
-        if (listener.enterExponential_part) {
-            listener.enterExponential_part(this);
-        }
-    };
-    // @Override
-    Exponential_partContext.prototype.exitRule = function (listener) {
-        if (listener.exitExponential_part) {
-            listener.exitExponential_part(this);
-        }
-    };
-    // @Override
-    Exponential_partContext.prototype.accept = function (visitor) {
-        if (visitor.visitExponential_part) {
-            return visitor.visitExponential_part(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Exponential_partContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Exponential_partContext = Exponential_partContext;
-var IntegerContext = /** @class */ (function (_super) {
-    __extends(IntegerContext, _super);
-    function IntegerContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	empty_() {
+	    return this.getTypedRuleContext(Empty_Context,0);
+	};
+
+	Own_() {
+	    return this.getToken(algol60Parser.Own_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterLocal_or_own(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitLocal_or_own(this);
+		}
+	}
+
+
+}
+
+
+
+class Type_declarationContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_type_declaration;
     }
-    IntegerContext.prototype.unsigned_integer = function () {
-        return this.getRuleContext(0, Unsigned_integerContext);
-    };
-    Object.defineProperty(IntegerContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_integer; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    IntegerContext.prototype.enterRule = function (listener) {
-        if (listener.enterInteger) {
-            listener.enterInteger(this);
-        }
-    };
-    // @Override
-    IntegerContext.prototype.exitRule = function (listener) {
-        if (listener.exitInteger) {
-            listener.exitInteger(this);
-        }
-    };
-    // @Override
-    IntegerContext.prototype.accept = function (visitor) {
-        if (visitor.visitInteger) {
-            return visitor.visitInteger(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return IntegerContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.IntegerContext = IntegerContext;
-var Boolean_expressionContext = /** @class */ (function (_super) {
-    __extends(Boolean_expressionContext, _super);
-    function Boolean_expressionContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	local_or_own() {
+	    return this.getTypedRuleContext(Local_or_ownContext,0);
+	};
+
+	type_() {
+	    return this.getTypedRuleContext(Type_Context,0);
+	};
+
+	type_list() {
+	    return this.getTypedRuleContext(Type_listContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterType_declaration(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitType_declaration(this);
+		}
+	}
+
+
+}
+
+
+
+class Lower_boundContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_lower_bound;
     }
-    Boolean_expressionContext.prototype.if_clause = function () {
-        return this.tryGetRuleContext(0, If_clauseContext);
-    };
-    Boolean_expressionContext.prototype.boolean_expression = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Boolean_expressionContext);
-        }
-        else {
-            return this.getRuleContext(i, Boolean_expressionContext);
-        }
-    };
-    Boolean_expressionContext.prototype.logical_value = function () {
-        return this.tryGetRuleContext(0, Logical_valueContext);
-    };
-    Boolean_expressionContext.prototype.variable = function () {
-        return this.tryGetRuleContext(0, VariableContext);
-    };
-    Boolean_expressionContext.prototype.function_designator = function () {
-        return this.tryGetRuleContext(0, Function_designatorContext);
-    };
-    Boolean_expressionContext.prototype.relation = function () {
-        return this.tryGetRuleContext(0, RelationContext);
-    };
-    Object.defineProperty(Boolean_expressionContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_boolean_expression; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Boolean_expressionContext.prototype.enterRule = function (listener) {
-        if (listener.enterBoolean_expression) {
-            listener.enterBoolean_expression(this);
-        }
-    };
-    // @Override
-    Boolean_expressionContext.prototype.exitRule = function (listener) {
-        if (listener.exitBoolean_expression) {
-            listener.exitBoolean_expression(this);
-        }
-    };
-    // @Override
-    Boolean_expressionContext.prototype.accept = function (visitor) {
-        if (visitor.visitBoolean_expression) {
-            return visitor.visitBoolean_expression(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Boolean_expressionContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Boolean_expressionContext = Boolean_expressionContext;
-var RelationContext = /** @class */ (function (_super) {
-    __extends(RelationContext, _super);
-    function RelationContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	arithmetic_expression() {
+	    return this.getTypedRuleContext(Arithmetic_expressionContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterLower_bound(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitLower_bound(this);
+		}
+	}
+
+
+}
+
+
+
+class Upper_boundContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_upper_bound;
     }
-    RelationContext.prototype.simple_arithmetic_expression = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Simple_arithmetic_expressionContext);
-        }
-        else {
-            return this.getRuleContext(i, Simple_arithmetic_expressionContext);
-        }
-    };
-    RelationContext.prototype.relational_operator = function () {
-        return this.getRuleContext(0, Relational_operatorContext);
-    };
-    Object.defineProperty(RelationContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_relation; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    RelationContext.prototype.enterRule = function (listener) {
-        if (listener.enterRelation) {
-            listener.enterRelation(this);
-        }
-    };
-    // @Override
-    RelationContext.prototype.exitRule = function (listener) {
-        if (listener.exitRelation) {
-            listener.exitRelation(this);
-        }
-    };
-    // @Override
-    RelationContext.prototype.accept = function (visitor) {
-        if (visitor.visitRelation) {
-            return visitor.visitRelation(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return RelationContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.RelationContext = RelationContext;
-var Relational_operatorContext = /** @class */ (function (_super) {
-    __extends(Relational_operatorContext, _super);
-    function Relational_operatorContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	arithmetic_expression() {
+	    return this.getTypedRuleContext(Arithmetic_expressionContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterUpper_bound(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitUpper_bound(this);
+		}
+	}
+
+
+}
+
+
+
+class Bound_pairContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_bound_pair;
     }
-    Object.defineProperty(Relational_operatorContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_relational_operator; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Relational_operatorContext.prototype.enterRule = function (listener) {
-        if (listener.enterRelational_operator) {
-            listener.enterRelational_operator(this);
-        }
-    };
-    // @Override
-    Relational_operatorContext.prototype.exitRule = function (listener) {
-        if (listener.exitRelational_operator) {
-            listener.exitRelational_operator(this);
-        }
-    };
-    // @Override
-    Relational_operatorContext.prototype.accept = function (visitor) {
-        if (visitor.visitRelational_operator) {
-            return visitor.visitRelational_operator(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Relational_operatorContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Relational_operatorContext = Relational_operatorContext;
-var Function_designatorContext = /** @class */ (function (_super) {
-    __extends(Function_designatorContext, _super);
-    function Function_designatorContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	lower_bound() {
+	    return this.getTypedRuleContext(Lower_boundContext,0);
+	};
+
+	Colon_() {
+	    return this.getToken(algol60Parser.Colon_, 0);
+	};
+
+	upper_bound() {
+	    return this.getTypedRuleContext(Upper_boundContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterBound_pair(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitBound_pair(this);
+		}
+	}
+
+
+}
+
+
+
+class Bound_pair_listContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_bound_pair_list;
     }
-    Function_designatorContext.prototype.procedure_identifier = function () {
-        return this.getRuleContext(0, Procedure_identifierContext);
-    };
-    Function_designatorContext.prototype.actual_parameter_part = function () {
-        return this.getRuleContext(0, Actual_parameter_partContext);
-    };
-    Object.defineProperty(Function_designatorContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_function_designator; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Function_designatorContext.prototype.enterRule = function (listener) {
-        if (listener.enterFunction_designator) {
-            listener.enterFunction_designator(this);
-        }
-    };
-    // @Override
-    Function_designatorContext.prototype.exitRule = function (listener) {
-        if (listener.exitFunction_designator) {
-            listener.exitFunction_designator(this);
-        }
-    };
-    // @Override
-    Function_designatorContext.prototype.accept = function (visitor) {
-        if (visitor.visitFunction_designator) {
-            return visitor.visitFunction_designator(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Function_designatorContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Function_designatorContext = Function_designatorContext;
-var VariableContext = /** @class */ (function (_super) {
-    __extends(VariableContext, _super);
-    function VariableContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	bound_pair() {
+	    return this.getTypedRuleContext(Bound_pairContext,0);
+	};
+
+	bound_pair_list() {
+	    return this.getTypedRuleContext(Bound_pair_listContext,0);
+	};
+
+	Comma_() {
+	    return this.getToken(algol60Parser.Comma_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterBound_pair_list(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitBound_pair_list(this);
+		}
+	}
+
+
+}
+
+
+
+class Array_segmentContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_array_segment;
     }
-    VariableContext.prototype.simple_variable = function () {
-        return this.tryGetRuleContext(0, Simple_variableContext);
-    };
-    VariableContext.prototype.subscripted_variable = function () {
-        return this.tryGetRuleContext(0, Subscripted_variableContext);
-    };
-    Object.defineProperty(VariableContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_variable; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    VariableContext.prototype.enterRule = function (listener) {
-        if (listener.enterVariable) {
-            listener.enterVariable(this);
-        }
-    };
-    // @Override
-    VariableContext.prototype.exitRule = function (listener) {
-        if (listener.exitVariable) {
-            listener.exitVariable(this);
-        }
-    };
-    // @Override
-    VariableContext.prototype.accept = function (visitor) {
-        if (visitor.visitVariable) {
-            return visitor.visitVariable(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return VariableContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.VariableContext = VariableContext;
-var Simple_variableContext = /** @class */ (function (_super) {
-    __extends(Simple_variableContext, _super);
-    function Simple_variableContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	array_identifier() {
+	    return this.getTypedRuleContext(Array_identifierContext,0);
+	};
+
+	Lb_() {
+	    return this.getToken(algol60Parser.Lb_, 0);
+	};
+
+	bound_pair_list() {
+	    return this.getTypedRuleContext(Bound_pair_listContext,0);
+	};
+
+	Rb_() {
+	    return this.getToken(algol60Parser.Rb_, 0);
+	};
+
+	Comma_() {
+	    return this.getToken(algol60Parser.Comma_, 0);
+	};
+
+	array_segment() {
+	    return this.getTypedRuleContext(Array_segmentContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterArray_segment(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitArray_segment(this);
+		}
+	}
+
+
+}
+
+
+
+class Array_listContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_array_list;
     }
-    Simple_variableContext.prototype.variable_identifier = function () {
-        return this.getRuleContext(0, Variable_identifierContext);
-    };
-    Object.defineProperty(Simple_variableContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_simple_variable; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Simple_variableContext.prototype.enterRule = function (listener) {
-        if (listener.enterSimple_variable) {
-            listener.enterSimple_variable(this);
-        }
-    };
-    // @Override
-    Simple_variableContext.prototype.exitRule = function (listener) {
-        if (listener.exitSimple_variable) {
-            listener.exitSimple_variable(this);
-        }
-    };
-    // @Override
-    Simple_variableContext.prototype.accept = function (visitor) {
-        if (visitor.visitSimple_variable) {
-            return visitor.visitSimple_variable(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Simple_variableContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Simple_variableContext = Simple_variableContext;
-var Variable_identifierContext = /** @class */ (function (_super) {
-    __extends(Variable_identifierContext, _super);
-    function Variable_identifierContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	array_segment() {
+	    return this.getTypedRuleContext(Array_segmentContext,0);
+	};
+
+	array_list() {
+	    return this.getTypedRuleContext(Array_listContext,0);
+	};
+
+	Comma_() {
+	    return this.getToken(algol60Parser.Comma_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterArray_list(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitArray_list(this);
+		}
+	}
+
+
+}
+
+
+
+class Array_declarerContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_array_declarer;
     }
-    Variable_identifierContext.prototype.identifier = function () {
-        return this.getRuleContext(0, IdentifierContext);
-    };
-    Object.defineProperty(Variable_identifierContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_variable_identifier; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Variable_identifierContext.prototype.enterRule = function (listener) {
-        if (listener.enterVariable_identifier) {
-            listener.enterVariable_identifier(this);
-        }
-    };
-    // @Override
-    Variable_identifierContext.prototype.exitRule = function (listener) {
-        if (listener.exitVariable_identifier) {
-            listener.exitVariable_identifier(this);
-        }
-    };
-    // @Override
-    Variable_identifierContext.prototype.accept = function (visitor) {
-        if (visitor.visitVariable_identifier) {
-            return visitor.visitVariable_identifier(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Variable_identifierContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Variable_identifierContext = Variable_identifierContext;
-var Subscripted_variableContext = /** @class */ (function (_super) {
-    __extends(Subscripted_variableContext, _super);
-    function Subscripted_variableContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	type_() {
+	    return this.getTypedRuleContext(Type_Context,0);
+	};
+
+	Array_() {
+	    return this.getToken(algol60Parser.Array_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterArray_declarer(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitArray_declarer(this);
+		}
+	}
+
+
+}
+
+
+
+class Array_declarationContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_array_declaration;
     }
-    Subscripted_variableContext.prototype.array_identifier = function () {
-        return this.getRuleContext(0, Array_identifierContext);
-    };
-    Subscripted_variableContext.prototype.subscript_list = function () {
-        return this.getRuleContext(0, Subscript_listContext);
-    };
-    Object.defineProperty(Subscripted_variableContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_subscripted_variable; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Subscripted_variableContext.prototype.enterRule = function (listener) {
-        if (listener.enterSubscripted_variable) {
-            listener.enterSubscripted_variable(this);
-        }
-    };
-    // @Override
-    Subscripted_variableContext.prototype.exitRule = function (listener) {
-        if (listener.exitSubscripted_variable) {
-            listener.exitSubscripted_variable(this);
-        }
-    };
-    // @Override
-    Subscripted_variableContext.prototype.accept = function (visitor) {
-        if (visitor.visitSubscripted_variable) {
-            return visitor.visitSubscripted_variable(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Subscripted_variableContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Subscripted_variableContext = Subscripted_variableContext;
-var Subscript_listContext = /** @class */ (function (_super) {
-    __extends(Subscript_listContext, _super);
-    function Subscript_listContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	local_or_own() {
+	    return this.getTypedRuleContext(Local_or_ownContext,0);
+	};
+
+	array_declarer() {
+	    return this.getTypedRuleContext(Array_declarerContext,0);
+	};
+
+	array_list() {
+	    return this.getTypedRuleContext(Array_listContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterArray_declaration(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitArray_declaration(this);
+		}
+	}
+
+
+}
+
+
+
+class Switch_listContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_switch_list;
     }
-    Subscript_listContext.prototype.subscript_expression = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Subscript_expressionContext);
-        }
-        else {
-            return this.getRuleContext(i, Subscript_expressionContext);
-        }
-    };
-    Object.defineProperty(Subscript_listContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_subscript_list; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Subscript_listContext.prototype.enterRule = function (listener) {
-        if (listener.enterSubscript_list) {
-            listener.enterSubscript_list(this);
-        }
-    };
-    // @Override
-    Subscript_listContext.prototype.exitRule = function (listener) {
-        if (listener.exitSubscript_list) {
-            listener.exitSubscript_list(this);
-        }
-    };
-    // @Override
-    Subscript_listContext.prototype.accept = function (visitor) {
-        if (visitor.visitSubscript_list) {
-            return visitor.visitSubscript_list(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Subscript_listContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Subscript_listContext = Subscript_listContext;
-var Subscript_expressionContext = /** @class */ (function (_super) {
-    __extends(Subscript_expressionContext, _super);
-    function Subscript_expressionContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	designational_expression() {
+	    return this.getTypedRuleContext(Designational_expressionContext,0);
+	};
+
+	switch_list() {
+	    return this.getTypedRuleContext(Switch_listContext,0);
+	};
+
+	Comma_() {
+	    return this.getToken(algol60Parser.Comma_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSwitch_list(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSwitch_list(this);
+		}
+	}
+
+
+}
+
+
+
+class Switch_declarationContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_switch_declaration;
     }
-    Subscript_expressionContext.prototype.arithmetic_expression = function () {
-        return this.getRuleContext(0, Arithmetic_expressionContext);
-    };
-    Object.defineProperty(Subscript_expressionContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_subscript_expression; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Subscript_expressionContext.prototype.enterRule = function (listener) {
-        if (listener.enterSubscript_expression) {
-            listener.enterSubscript_expression(this);
-        }
-    };
-    // @Override
-    Subscript_expressionContext.prototype.exitRule = function (listener) {
-        if (listener.exitSubscript_expression) {
-            listener.exitSubscript_expression(this);
-        }
-    };
-    // @Override
-    Subscript_expressionContext.prototype.accept = function (visitor) {
-        if (visitor.visitSubscript_expression) {
-            return visitor.visitSubscript_expression(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Subscript_expressionContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Subscript_expressionContext = Subscript_expressionContext;
-var Open_stringContext = /** @class */ (function (_super) {
-    __extends(Open_stringContext, _super);
-    function Open_stringContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Switch_() {
+	    return this.getToken(algol60Parser.Switch_, 0);
+	};
+
+	switch_identifier() {
+	    return this.getTypedRuleContext(Switch_identifierContext,0);
+	};
+
+	Assign_() {
+	    return this.getToken(algol60Parser.Assign_, 0);
+	};
+
+	switch_list() {
+	    return this.getTypedRuleContext(Switch_listContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSwitch_declaration(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSwitch_declaration(this);
+		}
+	}
+
+
+}
+
+
+
+class Formal_parameterContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_formal_parameter;
     }
-    Open_stringContext.prototype.STRING = function (i) {
-        if (i === undefined) {
-            return this.getTokens(algol60Parser.STRING);
-        }
-        else {
-            return this.getToken(algol60Parser.STRING, i);
-        }
-    };
-    Open_stringContext.prototype.proper_string = function (i) {
-        if (i === undefined) {
-            return this.getRuleContexts(Proper_stringContext);
-        }
-        else {
-            return this.getRuleContext(i, Proper_stringContext);
-        }
-    };
-    Object.defineProperty(Open_stringContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_open_string; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Open_stringContext.prototype.enterRule = function (listener) {
-        if (listener.enterOpen_string) {
-            listener.enterOpen_string(this);
-        }
-    };
-    // @Override
-    Open_stringContext.prototype.exitRule = function (listener) {
-        if (listener.exitOpen_string) {
-            listener.exitOpen_string(this);
-        }
-    };
-    // @Override
-    Open_stringContext.prototype.accept = function (visitor) {
-        if (visitor.visitOpen_string) {
-            return visitor.visitOpen_string(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Open_stringContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Open_stringContext = Open_stringContext;
-var Proper_stringContext = /** @class */ (function (_super) {
-    __extends(Proper_stringContext, _super);
-    function Proper_stringContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Identifier() {
+	    return this.getToken(algol60Parser.Identifier, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterFormal_parameter(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitFormal_parameter(this);
+		}
+	}
+
+
+}
+
+
+
+class Formal_parameter_listContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_formal_parameter_list;
     }
-    Proper_stringContext.prototype.STRING = function () { return this.getToken(algol60Parser.STRING, 0); };
-    Object.defineProperty(Proper_stringContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_proper_string; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Proper_stringContext.prototype.enterRule = function (listener) {
-        if (listener.enterProper_string) {
-            listener.enterProper_string(this);
-        }
-    };
-    // @Override
-    Proper_stringContext.prototype.exitRule = function (listener) {
-        if (listener.exitProper_string) {
-            listener.exitProper_string(this);
-        }
-    };
-    // @Override
-    Proper_stringContext.prototype.accept = function (visitor) {
-        if (visitor.visitProper_string) {
-            return visitor.visitProper_string(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Proper_stringContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Proper_stringContext = Proper_stringContext;
-var Letter_stringContext = /** @class */ (function (_super) {
-    __extends(Letter_stringContext, _super);
-    function Letter_stringContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	formal_parameter() {
+	    return this.getTypedRuleContext(Formal_parameterContext,0);
+	};
+
+	formal_parameter_list() {
+	    return this.getTypedRuleContext(Formal_parameter_listContext,0);
+	};
+
+	parameter_delimiter() {
+	    return this.getTypedRuleContext(Parameter_delimiterContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterFormal_parameter_list(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitFormal_parameter_list(this);
+		}
+	}
+
+
+}
+
+
+
+class Formal_parameter_partContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_formal_parameter_part;
     }
-    Letter_stringContext.prototype.LETTER = function (i) {
-        if (i === undefined) {
-            return this.getTokens(algol60Parser.LETTER);
-        }
-        else {
-            return this.getToken(algol60Parser.LETTER, i);
-        }
-    };
-    Object.defineProperty(Letter_stringContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_letter_string; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Letter_stringContext.prototype.enterRule = function (listener) {
-        if (listener.enterLetter_string) {
-            listener.enterLetter_string(this);
-        }
-    };
-    // @Override
-    Letter_stringContext.prototype.exitRule = function (listener) {
-        if (listener.exitLetter_string) {
-            listener.exitLetter_string(this);
-        }
-    };
-    // @Override
-    Letter_stringContext.prototype.accept = function (visitor) {
-        if (visitor.visitLetter_string) {
-            return visitor.visitLetter_string(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Letter_stringContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Letter_stringContext = Letter_stringContext;
-var IdentifierContext = /** @class */ (function (_super) {
-    __extends(IdentifierContext, _super);
-    function IdentifierContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	empty_() {
+	    return this.getTypedRuleContext(Empty_Context,0);
+	};
+
+	LP_() {
+	    return this.getToken(algol60Parser.LP_, 0);
+	};
+
+	formal_parameter_list() {
+	    return this.getTypedRuleContext(Formal_parameter_listContext,0);
+	};
+
+	Rp_() {
+	    return this.getToken(algol60Parser.Rp_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterFormal_parameter_part(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitFormal_parameter_part(this);
+		}
+	}
+
+
+}
+
+
+
+class Identifier_listContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_identifier_list;
     }
-    IdentifierContext.prototype.LETTER = function (i) {
-        if (i === undefined) {
-            return this.getTokens(algol60Parser.LETTER);
-        }
-        else {
-            return this.getToken(algol60Parser.LETTER, i);
-        }
-    };
-    IdentifierContext.prototype.DIGIT = function (i) {
-        if (i === undefined) {
-            return this.getTokens(algol60Parser.DIGIT);
-        }
-        else {
-            return this.getToken(algol60Parser.DIGIT, i);
-        }
-    };
-    Object.defineProperty(IdentifierContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_identifier; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    IdentifierContext.prototype.enterRule = function (listener) {
-        if (listener.enterIdentifier) {
-            listener.enterIdentifier(this);
-        }
-    };
-    // @Override
-    IdentifierContext.prototype.exitRule = function (listener) {
-        if (listener.exitIdentifier) {
-            listener.exitIdentifier(this);
-        }
-    };
-    // @Override
-    IdentifierContext.prototype.accept = function (visitor) {
-        if (visitor.visitIdentifier) {
-            return visitor.visitIdentifier(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return IdentifierContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.IdentifierContext = IdentifierContext;
-var Basic_symbolContext = /** @class */ (function (_super) {
-    __extends(Basic_symbolContext, _super);
-    function Basic_symbolContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Identifier() {
+	    return this.getToken(algol60Parser.Identifier, 0);
+	};
+
+	identifier_list() {
+	    return this.getTypedRuleContext(Identifier_listContext,0);
+	};
+
+	Comma_() {
+	    return this.getToken(algol60Parser.Comma_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterIdentifier_list(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitIdentifier_list(this);
+		}
+	}
+
+
+}
+
+
+
+class Value_partContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_value_part;
     }
-    Basic_symbolContext.prototype.LETTER = function () { return this.tryGetToken(algol60Parser.LETTER, 0); };
-    Basic_symbolContext.prototype.DIGIT = function () { return this.tryGetToken(algol60Parser.DIGIT, 0); };
-    Basic_symbolContext.prototype.logical_value = function () {
-        return this.tryGetRuleContext(0, Logical_valueContext);
-    };
-    Basic_symbolContext.prototype.delimiter = function () {
-        return this.tryGetRuleContext(0, DelimiterContext);
-    };
-    Object.defineProperty(Basic_symbolContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_basic_symbol; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Basic_symbolContext.prototype.enterRule = function (listener) {
-        if (listener.enterBasic_symbol) {
-            listener.enterBasic_symbol(this);
-        }
-    };
-    // @Override
-    Basic_symbolContext.prototype.exitRule = function (listener) {
-        if (listener.exitBasic_symbol) {
-            listener.exitBasic_symbol(this);
-        }
-    };
-    // @Override
-    Basic_symbolContext.prototype.accept = function (visitor) {
-        if (visitor.visitBasic_symbol) {
-            return visitor.visitBasic_symbol(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Basic_symbolContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Basic_symbolContext = Basic_symbolContext;
-var Logical_valueContext = /** @class */ (function (_super) {
-    __extends(Logical_valueContext, _super);
-    function Logical_valueContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	Value_() {
+	    return this.getToken(algol60Parser.Value_, 0);
+	};
+
+	identifier_list() {
+	    return this.getTypedRuleContext(Identifier_listContext,0);
+	};
+
+	Semi_() {
+	    return this.getToken(algol60Parser.Semi_, 0);
+	};
+
+	empty_() {
+	    return this.getTypedRuleContext(Empty_Context,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterValue_part(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitValue_part(this);
+		}
+	}
+
+
+}
+
+
+
+class SpecifierContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_specifier;
     }
-    Object.defineProperty(Logical_valueContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_logical_value; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    Logical_valueContext.prototype.enterRule = function (listener) {
-        if (listener.enterLogical_value) {
-            listener.enterLogical_value(this);
-        }
-    };
-    // @Override
-    Logical_valueContext.prototype.exitRule = function (listener) {
-        if (listener.exitLogical_value) {
-            listener.exitLogical_value(this);
-        }
-    };
-    // @Override
-    Logical_valueContext.prototype.accept = function (visitor) {
-        if (visitor.visitLogical_value) {
-            return visitor.visitLogical_value(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return Logical_valueContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.Logical_valueContext = Logical_valueContext;
-var DelimiterContext = /** @class */ (function (_super) {
-    __extends(DelimiterContext, _super);
-    function DelimiterContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	String_() {
+	    return this.getToken(algol60Parser.String_, 0);
+	};
+
+	type_() {
+	    return this.getTypedRuleContext(Type_Context,0);
+	};
+
+	Array_() {
+	    return this.getToken(algol60Parser.Array_, 0);
+	};
+
+	Label_() {
+	    return this.getToken(algol60Parser.Label_, 0);
+	};
+
+	Switch_() {
+	    return this.getToken(algol60Parser.Switch_, 0);
+	};
+
+	Procedure_() {
+	    return this.getToken(algol60Parser.Procedure_, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSpecifier(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSpecifier(this);
+		}
+	}
+
+
+}
+
+
+
+class Specification_partContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_specification_part;
     }
-    DelimiterContext.prototype.operator = function () {
-        return this.tryGetRuleContext(0, OperatorContext);
-    };
-    DelimiterContext.prototype.SEPARATOR = function () { return this.tryGetToken(algol60Parser.SEPARATOR, 0); };
-    DelimiterContext.prototype.bracket = function () {
-        return this.tryGetRuleContext(0, BracketContext);
-    };
-    DelimiterContext.prototype.DECLARATOR = function () { return this.tryGetToken(algol60Parser.DECLARATOR, 0); };
-    DelimiterContext.prototype.specificator = function () {
-        return this.tryGetRuleContext(0, SpecificatorContext);
-    };
-    Object.defineProperty(DelimiterContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_delimiter; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    DelimiterContext.prototype.enterRule = function (listener) {
-        if (listener.enterDelimiter) {
-            listener.enterDelimiter(this);
-        }
-    };
-    // @Override
-    DelimiterContext.prototype.exitRule = function (listener) {
-        if (listener.exitDelimiter) {
-            listener.exitDelimiter(this);
-        }
-    };
-    // @Override
-    DelimiterContext.prototype.accept = function (visitor) {
-        if (visitor.visitDelimiter) {
-            return visitor.visitDelimiter(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return DelimiterContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.DelimiterContext = DelimiterContext;
-var OperatorContext = /** @class */ (function (_super) {
-    __extends(OperatorContext, _super);
-    function OperatorContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	empty_() {
+	    return this.getTypedRuleContext(Empty_Context,0);
+	};
+
+	specifier() {
+	    return this.getTypedRuleContext(SpecifierContext,0);
+	};
+
+	identifier_list() {
+	    return this.getTypedRuleContext(Identifier_listContext,0);
+	};
+
+	Semi_() {
+	    return this.getToken(algol60Parser.Semi_, 0);
+	};
+
+	specification_part() {
+	    return this.getTypedRuleContext(Specification_partContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterSpecification_part(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitSpecification_part(this);
+		}
+	}
+
+
+}
+
+
+
+class Procedure_headingContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_procedure_heading;
     }
-    OperatorContext.prototype.ARITHMETIC_OPERATOR = function () { return this.tryGetToken(algol60Parser.ARITHMETIC_OPERATOR, 0); };
-    OperatorContext.prototype.RELATIONAL_OPERATOR = function () { return this.tryGetToken(algol60Parser.RELATIONAL_OPERATOR, 0); };
-    OperatorContext.prototype.LOGICAL_OPERATOR = function () { return this.tryGetToken(algol60Parser.LOGICAL_OPERATOR, 0); };
-    OperatorContext.prototype.SEQUENTIAL_OPERATOR = function () { return this.tryGetToken(algol60Parser.SEQUENTIAL_OPERATOR, 0); };
-    Object.defineProperty(OperatorContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_operator; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    OperatorContext.prototype.enterRule = function (listener) {
-        if (listener.enterOperator) {
-            listener.enterOperator(this);
-        }
-    };
-    // @Override
-    OperatorContext.prototype.exitRule = function (listener) {
-        if (listener.exitOperator) {
-            listener.exitOperator(this);
-        }
-    };
-    // @Override
-    OperatorContext.prototype.accept = function (visitor) {
-        if (visitor.visitOperator) {
-            return visitor.visitOperator(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return OperatorContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.OperatorContext = OperatorContext;
-var BracketContext = /** @class */ (function (_super) {
-    __extends(BracketContext, _super);
-    function BracketContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	procedure_identifier() {
+	    return this.getTypedRuleContext(Procedure_identifierContext,0);
+	};
+
+	formal_parameter_part() {
+	    return this.getTypedRuleContext(Formal_parameter_partContext,0);
+	};
+
+	Semi_() {
+	    return this.getToken(algol60Parser.Semi_, 0);
+	};
+
+	value_part() {
+	    return this.getTypedRuleContext(Value_partContext,0);
+	};
+
+	specification_part() {
+	    return this.getTypedRuleContext(Specification_partContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterProcedure_heading(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitProcedure_heading(this);
+		}
+	}
+
+
+}
+
+
+
+class Procedure_bodyContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_procedure_body;
     }
-    Object.defineProperty(BracketContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_bracket; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    BracketContext.prototype.enterRule = function (listener) {
-        if (listener.enterBracket) {
-            listener.enterBracket(this);
-        }
-    };
-    // @Override
-    BracketContext.prototype.exitRule = function (listener) {
-        if (listener.exitBracket) {
-            listener.exitBracket(this);
-        }
-    };
-    // @Override
-    BracketContext.prototype.accept = function (visitor) {
-        if (visitor.visitBracket) {
-            return visitor.visitBracket(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return BracketContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.BracketContext = BracketContext;
-var SpecificatorContext = /** @class */ (function (_super) {
-    __extends(SpecificatorContext, _super);
-    function SpecificatorContext(parent, invokingState) {
-        return _super.call(this, parent, invokingState) || this;
+
+	statement() {
+	    return this.getTypedRuleContext(StatementContext,0);
+	};
+
+	code() {
+	    return this.getTypedRuleContext(CodeContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterProcedure_body(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitProcedure_body(this);
+		}
+	}
+
+
+}
+
+
+
+class Procedure_declarationContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = algol60Parser.RULE_procedure_declaration;
     }
-    Object.defineProperty(SpecificatorContext.prototype, "ruleIndex", {
-        // @Override
-        get: function () { return algol60Parser.RULE_specificator; },
-        enumerable: true,
-        configurable: true
-    });
-    // @Override
-    SpecificatorContext.prototype.enterRule = function (listener) {
-        if (listener.enterSpecificator) {
-            listener.enterSpecificator(this);
-        }
-    };
-    // @Override
-    SpecificatorContext.prototype.exitRule = function (listener) {
-        if (listener.exitSpecificator) {
-            listener.exitSpecificator(this);
-        }
-    };
-    // @Override
-    SpecificatorContext.prototype.accept = function (visitor) {
-        if (visitor.visitSpecificator) {
-            return visitor.visitSpecificator(this);
-        }
-        else {
-            return visitor.visitChildren(this);
-        }
-    };
-    return SpecificatorContext;
-}(ParserRuleContext_1.ParserRuleContext));
-exports.SpecificatorContext = SpecificatorContext;
+
+	Procedure_() {
+	    return this.getToken(algol60Parser.Procedure_, 0);
+	};
+
+	procedure_heading() {
+	    return this.getTypedRuleContext(Procedure_headingContext,0);
+	};
+
+	procedure_body() {
+	    return this.getTypedRuleContext(Procedure_bodyContext,0);
+	};
+
+	type_() {
+	    return this.getTypedRuleContext(Type_Context,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.enterProcedure_declaration(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof algol60Listener ) {
+	        listener.exitProcedure_declaration(this);
+		}
+	}
+
+
+}
+
+
+
+
+algol60Parser.Empty_Context = Empty_Context; 
+algol60Parser.IntegerContext = IntegerContext; 
+algol60Parser.NumberContext = NumberContext; 
+algol60Parser.ExpressionContext = ExpressionContext; 
+algol60Parser.Variable_identifierContext = Variable_identifierContext; 
+algol60Parser.Simple_variableContext = Simple_variableContext; 
+algol60Parser.Subscript_expressionContext = Subscript_expressionContext; 
+algol60Parser.Subscript_listContext = Subscript_listContext; 
+algol60Parser.Array_identifierContext = Array_identifierContext; 
+algol60Parser.Subscripted_variableContext = Subscripted_variableContext; 
+algol60Parser.VariableContext = VariableContext; 
+algol60Parser.Procedure_identifierContext = Procedure_identifierContext; 
+algol60Parser.Parameter_delimiterContext = Parameter_delimiterContext; 
+algol60Parser.Actual_parameterContext = Actual_parameterContext; 
+algol60Parser.Actual_parameter_listContext = Actual_parameter_listContext; 
+algol60Parser.Function_designatorContext = Function_designatorContext; 
+algol60Parser.Adding_operatorContext = Adding_operatorContext; 
+algol60Parser.Multiplying_operatorContext = Multiplying_operatorContext; 
+algol60Parser.PrimaryContext = PrimaryContext; 
+algol60Parser.FactorContext = FactorContext; 
+algol60Parser.TermContext = TermContext; 
+algol60Parser.Simple_arithmetic_expressionContext = Simple_arithmetic_expressionContext; 
+algol60Parser.If_clauseContext = If_clauseContext; 
+algol60Parser.Arithmetic_expressionContext = Arithmetic_expressionContext; 
+algol60Parser.RelationContext = RelationContext; 
+algol60Parser.Boolean_primaryContext = Boolean_primaryContext; 
+algol60Parser.Boolean_secondaryContext = Boolean_secondaryContext; 
+algol60Parser.Boolean_factorContext = Boolean_factorContext; 
+algol60Parser.Boolean_termContext = Boolean_termContext; 
+algol60Parser.ImplicationContext = ImplicationContext; 
+algol60Parser.Simple_booleanContext = Simple_booleanContext; 
+algol60Parser.Boolean_expressionContext = Boolean_expressionContext; 
+algol60Parser.LabelContext = LabelContext; 
+algol60Parser.Switch_identifierContext = Switch_identifierContext; 
+algol60Parser.Switch_designatorContext = Switch_designatorContext; 
+algol60Parser.Simple_designational_expressionContext = Simple_designational_expressionContext; 
+algol60Parser.Designational_expressionContext = Designational_expressionContext; 
+algol60Parser.Unlabelled_basic_statementContext = Unlabelled_basic_statementContext; 
+algol60Parser.Basic_statementContext = Basic_statementContext; 
+algol60Parser.Unconditional_statementContext = Unconditional_statementContext; 
+algol60Parser.StatementContext = StatementContext; 
+algol60Parser.Compound_tailContext = Compound_tailContext; 
+algol60Parser.Block_headContext = Block_headContext; 
+algol60Parser.Unlabelled_compoundContext = Unlabelled_compoundContext; 
+algol60Parser.Unlabelled_blockContext = Unlabelled_blockContext; 
+algol60Parser.Compound_statementContext = Compound_statementContext; 
+algol60Parser.BlockContext = BlockContext; 
+algol60Parser.ProgramContext = ProgramContext; 
+algol60Parser.DestinationContext = DestinationContext; 
+algol60Parser.Left_partContext = Left_partContext; 
+algol60Parser.Left_part_listContext = Left_part_listContext; 
+algol60Parser.Assignment_statementContext = Assignment_statementContext; 
+algol60Parser.Go_to_statementContext = Go_to_statementContext; 
+algol60Parser.Dummy_statementContext = Dummy_statementContext; 
+algol60Parser.If_statementContext = If_statementContext; 
+algol60Parser.Conditional_statementContext = Conditional_statementContext; 
+algol60Parser.For_list_elementContext = For_list_elementContext; 
+algol60Parser.For_listContext = For_listContext; 
+algol60Parser.For_clauseContext = For_clauseContext; 
+algol60Parser.For_statementContext = For_statementContext; 
+algol60Parser.Actual_parameter_partContext = Actual_parameter_partContext; 
+algol60Parser.Procedure_statementContext = Procedure_statementContext; 
+algol60Parser.CodeContext = CodeContext; 
+algol60Parser.DeclarationContext = DeclarationContext; 
+algol60Parser.Type_listContext = Type_listContext; 
+algol60Parser.Type_Context = Type_Context; 
+algol60Parser.Local_or_ownContext = Local_or_ownContext; 
+algol60Parser.Type_declarationContext = Type_declarationContext; 
+algol60Parser.Lower_boundContext = Lower_boundContext; 
+algol60Parser.Upper_boundContext = Upper_boundContext; 
+algol60Parser.Bound_pairContext = Bound_pairContext; 
+algol60Parser.Bound_pair_listContext = Bound_pair_listContext; 
+algol60Parser.Array_segmentContext = Array_segmentContext; 
+algol60Parser.Array_listContext = Array_listContext; 
+algol60Parser.Array_declarerContext = Array_declarerContext; 
+algol60Parser.Array_declarationContext = Array_declarationContext; 
+algol60Parser.Switch_listContext = Switch_listContext; 
+algol60Parser.Switch_declarationContext = Switch_declarationContext; 
+algol60Parser.Formal_parameterContext = Formal_parameterContext; 
+algol60Parser.Formal_parameter_listContext = Formal_parameter_listContext; 
+algol60Parser.Formal_parameter_partContext = Formal_parameter_partContext; 
+algol60Parser.Identifier_listContext = Identifier_listContext; 
+algol60Parser.Value_partContext = Value_partContext; 
+algol60Parser.SpecifierContext = SpecifierContext; 
+algol60Parser.Specification_partContext = Specification_partContext; 
+algol60Parser.Procedure_headingContext = Procedure_headingContext; 
+algol60Parser.Procedure_bodyContext = Procedure_bodyContext; 
+algol60Parser.Procedure_declarationContext = Procedure_declarationContext; 
