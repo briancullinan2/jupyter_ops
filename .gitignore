@@ -13,3 +13,5 @@ Analytics/movies.sqlite.db
 Analytics/movies.sqlite.db-journal
 *.tags*
 .tags
+Analytics/.DS_Store
+**/.DS_Store

@@ -1,0 +1,66 @@
+token literal names:
+null
+'E'
+'G'
+'I'
+'R'
+'U'
+'V'
+'C'
+'K'
+'L'
+'M'
+'N'
+'O'
+'T'
+'W'
+'X'
+'Y'
+'Z'
+'F'
+'H'
+'Q'
+'S'
+'UU'
+'&'
+null
+' '
+null
+
+token symbolic names:
+null
+BROMINE
+CHLORINE
+IODINE
+BENZENE
+DOUBLEBOND
+CARBONYL
+CARBONNON
+NITROGEN3PLUS
+CARBOSYCLIC
+IMINO
+NITROGEN4LESS
+OXYGEN
+HETEROCYCLIC
+DIOXO
+CARBON4
+CARBON3
+AMINO
+FLOURINE
+HYDROGEN
+HYDROXYL
+SULFER
+TRIPLE
+AMP
+DIGIT
+SPACE
+WS
+
+rule names:
+wln
+group
+symbol
+
+
+atn:
+[4, 1, 26, 24, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 1, 0, 1, 0, 1, 0, 5, 0, 10, 8, 0, 10, 0, 12, 0, 13, 9, 0, 1, 0, 1, 0, 1, 1, 4, 1, 18, 8, 1, 11, 1, 12, 1, 19, 1, 2, 1, 2, 1, 2, 0, 0, 3, 0, 2, 4, 0, 1, 2, 0, 1, 22, 24, 24, 22, 0, 6, 1, 0, 0, 0, 2, 17, 1, 0, 0, 0, 4, 21, 1, 0, 0, 0, 6, 11, 3, 2, 1, 0, 7, 8, 5, 25, 0, 0, 8, 10, 3, 2, 1, 0, 9, 7, 1, 0, 0, 0, 10, 13, 1, 0, 0, 0, 11, 9, 1, 0, 0, 0, 11, 12, 1, 0, 0, 0, 12, 14, 1, 0, 0, 0, 13, 11, 1, 0, 0, 0, 14, 15, 5, 0, 0, 1, 15, 1, 1, 0, 0, 0, 16, 18, 3, 4, 2, 0, 17, 16, 1, 0, 0, 0, 18, 19, 1, 0, 0, 0, 19, 17, 1, 0, 0, 0, 19, 20, 1, 0, 0, 0, 20, 3, 1, 0, 0, 0, 21, 22, 7, 0, 0, 0, 22, 5, 1, 0, 0, 0, 2, 11, 19]

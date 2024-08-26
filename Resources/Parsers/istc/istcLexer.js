@@ -1,0 +1,48 @@
+// Generated from Resources/Parsers/istc/istc.g4 by ANTLR 4.10.1
+// jshint ignore: start
+import antlr4 from 'antlr4';
+
+
+const serializedATN = [4,0,5,29,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,
+7,4,1,0,1,0,1,0,1,0,1,0,1,1,1,1,1,2,1,2,1,3,1,3,1,4,4,4,24,8,4,11,4,12,4,
+25,1,4,1,4,0,0,5,1,1,3,2,5,3,7,4,9,5,1,0,3,2,0,32,32,45,45,2,0,48,57,65,
+70,2,0,9,10,13,13,29,0,1,1,0,0,0,0,3,1,0,0,0,0,5,1,0,0,0,0,7,1,0,0,0,0,9,
+1,0,0,0,1,11,1,0,0,0,3,16,1,0,0,0,5,18,1,0,0,0,7,20,1,0,0,0,9,23,1,0,0,0,
+11,12,5,73,0,0,12,13,5,83,0,0,13,14,5,84,0,0,14,15,5,67,0,0,15,2,1,0,0,0,
+16,17,5,32,0,0,17,4,1,0,0,0,18,19,7,0,0,0,19,6,1,0,0,0,20,21,7,1,0,0,21,
+8,1,0,0,0,22,24,7,2,0,0,23,22,1,0,0,0,24,25,1,0,0,0,25,23,1,0,0,0,25,26,
+1,0,0,0,26,27,1,0,0,0,27,28,6,4,0,0,28,10,1,0,0,0,2,0,25,1,6,0,0];
+
+
+const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
+
+const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
+
+export default class istcLexer extends antlr4.Lexer {
+
+    static grammarFileName = "istc.g4";
+    static channelNames = [ "DEFAULT_TOKEN_CHANNEL", "HIDDEN" ];
+	static modeNames = [ "DEFAULT_MODE" ];
+	static literalNames = [ null, "'ISTC'", "' '" ];
+	static symbolicNames = [ null, null, null, "SEP", "CHAR", "WS" ];
+	static ruleNames = [ "T__0", "T__1", "SEP", "CHAR", "WS" ];
+
+    constructor(input) {
+        super(input)
+        this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.PredictionContextCache());
+    }
+
+    get atn() {
+        return atn;
+    }
+}
+
+istcLexer.EOF = antlr4.Token.EOF;
+istcLexer.T__0 = 1;
+istcLexer.T__1 = 2;
+istcLexer.SEP = 3;
+istcLexer.CHAR = 4;
+istcLexer.WS = 5;
+
+
+
