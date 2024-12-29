@@ -26,6 +26,7 @@
         "escodegen": "^2.1.0",
         "esprima": "^4.0.1",
         "glob": "^11.0.0",
+        "googleapis": "^144.0.0",
         "jsdom": "^24.1.1",
         "node-stream-zip": "^1.15.0",
         "wgxpath": "^1.2.0"
