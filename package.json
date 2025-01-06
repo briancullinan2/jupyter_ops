@@ -6,7 +6,7 @@
         "start": "live-server --cors --port=8080 --host=0.0.0.0 --entry-file=./.output/app.html --mount=/:./.output --middleware=/Users/briancullinan/jupyter_ops/live-server-middleware.js",
         "start:function": "live-server --cors --port=8181 --host=0.0.0.0 --entry-file=./.output/app.html --mount=/:./.output --middleware=/Users/briancullinan/jupyter_ops/.functions/index.js",
         "start:rpc": "npm run import -- \"express rpc wrapper\"",
-        "import": "node --max-old-space-size=4096 --experimental-vm-modules -e \"var result = require('./Core').run()\"",
+        "import": "node --inspect-brk --max-old-space-size=4096 --experimental-vm-modules -e \"var result = require('./Core').run()\"",
         "interpret": "node -e \"console.info = () => {}; console.log(require('./Core').interpret(process.argv[1]))\"",
         "exec": "node -e \"console.log(require('./Core').import('spawn child process')(require('./Core').interpret(process.argv[1]).code))\"",
         "update:blog": "npm run import -- \"test google sheet resources\" \"['https://docs.google.com/spreadsheets/d/1GG2R2gYvFrLz4ZoBPA2hgCOrXaKCHavKdUn8j-jkAwQ/edit#gid=1092692488']\"",
