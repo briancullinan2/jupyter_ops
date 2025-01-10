@@ -11604,5 +11604,2932 @@
         "date": 1213044025000,
         "from": 16881,
         "to": 16902
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[807]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing the development of a media player application, specifically focusing on taskbar updates, file filtering, and user settings. Brian Cullinan is working on adding features like a filter to display only specific file types and replacing buttons with filters.",
+        "emotions": [
+            "Frustrated",
+            "Enthusiastic",
+            "Confident",
+            "Lighthearted",
+            "Disappointed"
+        ],
+        "category": "Software Development",
+        "hash": -1102413727,
+        "date": 1213068373000,
+        "from": 16903,
+        "to": 16922
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[808]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing the setup process for a software application, with Robert Douglas suggesting a user-configurable setup similar to installing Windows XP. Brian Cullinan mentions internet connection issues due to torrenting and a slow ISP.",
+        "emotions": [
+            "Humorous",
+            "Annoyed",
+            "Lighthearted"
+        ],
+        "category": "Software Development",
+        "hash": -834973216,
+        "date": 1213068898000,
+        "from": 16923,
+        "to": 16942
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[809]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing online privacy and file sharing, with Robert Douglas advising Brian Cullinan to encrypt downloaded music files to protect against ISP monitoring and legal repercussions.  The conversation also includes brief mentions of a bike service appointment and a weekend event.",
+        "emotions": [
+            "Concerned",
+            "Informative"
+        ],
+        "category": "Privacy",
+        "hash": -2132766064,
+        "date": 1213071255000,
+        "from": 16943,
+        "to": 16966
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[810]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing setting up a media streaming server and forum software. Robert Douglas is asking about Brian Cullinan's experience with SMF, a forum software similar to vBulletin.",
+        "emotions": [
+            "Humorous",
+            "Neutral"
+        ],
+        "category": "Tech Support",
+        "hash": -1499637861,
+        "date": 1213595435000,
+        "from": 16967,
+        "to": 16990
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[811]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing personal anecdotes and Brian Cullinan's progress on a media server project. Brian shares details about his weekend activities and provides a link to the server for Robert Douglas to access.",
+        "emotions": [
+            "Excited",
+            "Humorous",
+            "Frustrated"
+        ],
+        "category": "Casual Conversation",
+        "hash": 1331106179,
+        "date": 1214063043000,
+        "from": 16991,
+        "to": 17014
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[812]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing the technical implementation of a media server, specifically the use of a database to store file information for faster access and searching. Brian Cullinan explains that storing file metadata in a database improves performance compared to constantly reading from the file system.",
+        "emotions": [
+            "Confident",
+            "Informative"
+        ],
+        "category": "Database Optimization",
+        "hash": 1820405410,
+        "date": 1214189112000,
+        "from": 17015,
+        "to": 17034
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[813]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing the development of a media player application, with Brian Cullinan outlining plans for features like database management, playlist functionality, and CD cover display.  They also explore the possibility of transcoding FLV files and rendering output in different formats.",
+        "emotions": [
+            "Excited",
+            "Enthusiastic",
+            "Confident"
+        ],
+        "category": "Media Player Development",
+        "hash": -131930824,
+        "date": 1214189280000,
+        "from": 17035,
+        "to": 17054
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[814]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing the design and functionality of a media portal, specifically how to display file counts and potentially integrate with APIs for streaming.  They also touch on the idea of using a Flash player for streaming a single content type.",
+        "emotions": [
+            "Neutral",
+            "Casual",
+            "Thoughtful"
+        ],
+        "category": "Media Portal Design",
+        "hash": -297411229,
+        "date": 1214189439000,
+        "from": 17055,
+        "to": 17074
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[815]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing plans to hang out and Robert Douglas is asking about PHP session management.  The conversation is interrupted by frequent disconnections.",
+        "emotions": [
+            "Curious",
+            "Neutral"
+        ],
+        "category": "Tech Support",
+        "hash": -1425666654,
+        "date": 1214197756000,
+        "from": 17075,
+        "to": 17096
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[816]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing the development of a web application, specifically adding functionality for refreshing content after a timeout.  They also briefly chat about a good deal on a plasma TV.",
+        "emotions": [
+            "Excited",
+            "Happy"
+        ],
+        "category": "Web Development",
+        "hash": 503641387,
+        "date": 1214262529000,
+        "from": 17097,
+        "to": 17122
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[817]": {
+        "mtime": 1268083876000,
+        "summary": "They are intermittently trying to connect and chat, with frequent disconnections.  The conversations are brief and mostly consist of greetings and check-ins.",
+        "emotions": [
+            "Frustrated",
+            "Annoyed"
+        ],
+        "category": "Intermittent Connection",
+        "hash": 1311464185,
+        "date": 1214456233000,
+        "from": 17123,
+        "to": 17146
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[818]": {
+        "mtime": 1268083876000,
+        "summary": "They are catching up briefly, discussing movies and Robert Douglas's busy schedule.  They realize they won't be able to see a movie together.",
+        "emotions": [
+            "Neutral",
+            "Bored",
+            "Disappointed"
+        ],
+        "category": "Catching Up",
+        "hash": 1742312698,
+        "date": 1216022980000,
+        "from": 17147,
+        "to": 17166
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[819]": {
+        "mtime": 1268083876000,
+        "summary": "They discuss the movie Hellboy II, with Brian Cullinan giving a positive review.  They then shift to a discussion about a domain registration scam, with Robert Douglas advising Brian Cullinan on how to handle it.",
+        "emotions": [
+            "Neutral",
+            "Concerned"
+        ],
+        "category": "Movie Discussion",
+        "hash": -441261230,
+        "date": 1216058317000,
+        "from": 17167,
+        "to": 17188
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[820]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing a media server website that Brian Cullinan is developing.  Robert Douglas provides feedback on the design, noting issues with icon readability and file name visibility.",
+        "emotions": [
+            "Neutral",
+            "Frustrated",
+            "Helpful"
+        ],
+        "category": "Website Feedback",
+        "hash": 926431506,
+        "date": 1216934086000,
+        "from": 17189,
+        "to": 17212
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[821]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing an issue with file names being too long to read on Brian Cullinan's media server.  Brian Cullinan is working on a solution, including switching to list view and addressing the server's overheating.",
+        "emotions": [
+            "Frustrated",
+            "Helpful",
+            "Annoyed"
+        ],
+        "category": "Technical Support",
+        "hash": 1862053407,
+        "date": 1216937988000,
+        "from": 17213,
+        "to": 17236
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[822]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing Brian Cullinan's media server project, with Brian detailing its progress and Robert offering feedback.  They also chat about the affordability of hard drives and Brian's plans for a RAID system.",
+        "emotions": [
+            "Excited",
+            "Frustrated",
+            "Enthusiastic",
+            "Confident"
+        ],
+        "category": "Project Development",
+        "hash": -1332060993,
+        "date": 1216940994000,
+        "from": 17237,
+        "to": 17258
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[823]": {
+        "mtime": 1268083876000,
+        "summary": "They briefly discuss Brian Cullinan's new 5TB hard drive and Robert Douglas's plans to see The Dark Knight at IMAX.  Later, Robert Douglas asks Brian Cullinan about his coding experience with ASP and .NET.",
+        "emotions": [
+            "Excited",
+            "Impressed",
+            "Surprised"
+        ],
+        "category": "Tech Enthusiasts",
+        "hash": -1951152855,
+        "date": 1216946165000,
+        "from": 17259,
+        "to": 17282
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[824]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan is experiencing technical difficulties with his web server, including issues with directory listings and rewrite rules. Robert Douglas provides some guidance and troubleshooting tips.",
+        "emotions": [
+            "Frustrated",
+            "Annoyed"
+        ],
+        "category": "Tech Support",
+        "hash": -182837047,
+        "date": 1217103563000,
+        "from": 17283,
+        "to": 17308
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[825]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan is having trouble with his .htaccess file and mod_rewrite rules, seeking advice from Robert Douglas.  Later, Brian asks about a domain name registration, which Robert Douglas confirms he hasn't handled.",
+        "emotions": [
+            "Confused",
+            "Frustrated",
+            "Confused"
+        ],
+        "category": "Tech Support",
+        "hash": 1133239241,
+        "date": 1217313692000,
+        "from": 17309,
+        "to": 17332
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[826]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan is trying to register a domain name and is having trouble because his email address is not recognized. Robert Douglas helps him troubleshoot the issue, realizing Brian had changed his email address for tracking purposes and offers to forward it for him.",
+        "emotions": [
+            "Confused",
+            "Grateful",
+            "Frustrated",
+            "Confused",
+            "Relieved"
+        ],
+        "category": "Domain Registration Help",
+        "hash": -1017390682,
+        "date": 1217626284000,
+        "from": 17333,
+        "to": 17352
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[827]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan is showing Robert Douglas his new media server setup, which now supports torrent downloads.  They discuss issues with exporting FLV files and sound not working properly.",
+        "emotions": [
+            "Frustrated",
+            "Amusement"
+        ],
+        "category": "Tech Demo/Troubleshooting",
+        "hash": -1031414395,
+        "date": 1217629763000,
+        "from": 17353,
+        "to": 17372
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[828]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan is working on an open-source project and asks for encoder suggestions.  The conversation then shifts to hardware, with Robert Douglas offering a spare CPU fan and discussing a potential meeting.",
+        "emotions": [
+            "Humorous",
+            "Playful",
+            "Helpful",
+            "Enthusiastic",
+            "Apathetic",
+            "Interested"
+        ],
+        "category": "Tech & Hangout",
+        "hash": -979645485,
+        "date": 1217630383000,
+        "from": 17373,
+        "to": 17392
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[829]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is offering to sell his old AMD CPU, motherboard, and fan for a low price. Brian Cullinan is interested but already has some components for his next computer build.",
+        "emotions": [
+            "Nostalgic",
+            "Humorous",
+            "Frustrated",
+            "Helpful",
+            "Confident",
+            "Amusing",
+            "Interested"
+        ],
+        "category": "Tech &  Bargaining",
+        "hash": -1088315611,
+        "date": 1217635063000,
+        "from": 17393,
+        "to": 17412
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[830]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan is looking for solutions for FLV streaming and asks Robert Douglas for ideas. They discuss various options, including VLC implementations and a potential solution using CoverFlow and VLC.",
+        "emotions": [
+            "Hopeful",
+            "Frustrated",
+            "Enthusiastic"
+        ],
+        "category": "Tech Support",
+        "hash": 576010834,
+        "date": 1217635355000,
+        "from": 17413,
+        "to": 17432
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[831]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan is trying to find a way to play FLV videos on a webpage and suggests using VLC's embedded player. Robert Douglas is hesitant because he believes requiring users to install VLC is not ideal.",
+        "emotions": [
+            "Hopeful",
+            "Determined",
+            "Frustrated",
+            "Exasperated",
+            "Skeptical"
+        ],
+        "category": "Tech Troubleshooting",
+        "hash": 1065150182,
+        "date": 1217636414000,
+        "from": 17433,
+        "to": 17452
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[832]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation starts with Brian Cullinan complaining about a fan and Robert Douglas briefly joining before leaving.  Later, they share humorous links and engage in lighthearted banter.",
+        "emotions": [
+            "Humorous",
+            "Playful",
+            "Frustrated",
+            "Amusing"
+        ],
+        "category": "Casual banter",
+        "hash": -672324979,
+        "date": 1217637522000,
+        "from": 17453,
+        "to": 17476
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[833]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and Brian Cullinan are troubleshooting a technical issue with a player.  Brian is stuck and Robert suggests using Microsoft Silverlight as a potential solution.",
+        "emotions": [
+            "Frustrated"
+        ],
+        "category": "Technical Support",
+        "hash": -1526489547,
+        "date": 1218182568000,
+        "from": 17477,
+        "to": 17498
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[834]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan is trying to find a way to play various video formats, including DVD images, and is frustrated with the lack of options. Robert Douglas suggests using separate video players for each format and shares a link to a website he finds poorly designed.",
+        "emotions": [
+            "Frustrated",
+            "Annoyed",
+            "Dismissive"
+        ],
+        "category": "Tech Support/Discussion",
+        "hash": 536933682,
+        "date": 1218584585000,
+        "from": 17499,
+        "to": 17518
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[835]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan wants to use VLC to play various video formats on a website, but Robert Douglas is concerned about requiring users to install it. They discuss alternative solutions, such as offering a VLC plugin and auto-detecting its installation.",
+        "emotions": [
+            "Frustrated",
+            "Concerned"
+        ],
+        "category": "Website Development",
+        "hash": -2047094284,
+        "date": 1218584780000,
+        "from": 17519,
+        "to": 17538
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[836]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan is excited about the features and capabilities of Ext JS, a JavaScript framework, and shares links to various examples with Robert Douglas.  They discuss the potential of using Ext JS for a project, particularly its free availability.",
+        "emotions": [
+            "Excited",
+            "Enthusiastic"
+        ],
+        "category": "Technology Discussion",
+        "hash": 111669088,
+        "date": 1218585097000,
+        "from": 17539,
+        "to": 17558
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[837]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan and Robert Douglas are discussing the use of Ext JS, a JavaScript framework, for a project. Robert Douglas is experiencing a JavaScript error and asks Brian Cullinan for help debugging it.",
+        "emotions": [
+            "Helpful",
+            "Confident"
+        ],
+        "category": "Web Development Support",
+        "hash": 871549276,
+        "date": 1218587433000,
+        "from": 17559,
+        "to": 17580
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[838]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan helps Robert Douglas debug a JavaScript error related to the `window.onload` event and how it's being used to initialize a footer function.  They then discuss a new feature in Brian's folder view that dynamically displays columns based on the type of files within a folder.",
+        "emotions": [
+            "Helpful",
+            "Confident"
+        ],
+        "category": "JavaScript Debugging",
+        "hash": -199406742,
+        "date": 1218594970000,
+        "from": 17581,
+        "to": 17602
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[839]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and Brian Cullinan briefly discuss music file tags and then transition to talking about the movie \"Tropic Thunder.\" They debate the movie's humor and controversy surrounding its use of the word \"retard.\"",
+        "emotions": [
+            "Humorous",
+            "Curious",
+            "Neutral",
+            "Intrigued"
+        ],
+        "category": "Movie Discussion",
+        "hash": -495064915,
+        "date": 1218677499000,
+        "from": 17603,
+        "to": 17622
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[840]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan and Robert Douglas discuss the movie \"Tropic Thunder\" and its controversial use of the word \"retard,\" with Brian ultimately deciding to see it.  They then shift to a discussion about Brian's software project, where he informs Robert Douglas that full support for sorting in the details view is now implemented.",
+        "emotions": [
+            "Humorous"
+        ],
+        "category": "Casual Conversation",
+        "hash": 766499493,
+        "date": 1218678585000,
+        "from": 17623,
+        "to": 17644
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[841]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan discusses his work on a software project, highlighting some of the challenges and improvements he's made. Robert Douglas suggests sharing his code with the project's developers to gain recognition and potentially receive feedback.",
+        "emotions": [
+            "Frustrated",
+            "Confident"
+        ],
+        "category": "Software Development",
+        "hash": -770444617,
+        "date": 1218752320000,
+        "from": 17645,
+        "to": 17664
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[842]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas seeks feedback and assistance from Brian Cullinan on his software development projects, specifically regarding CSS and JavaScript issues.  He reaches out to Brian on multiple occasions, sometimes finding solutions independently before Brian can respond.",
+        "emotions": [
+            "Hopeful",
+            "Frustrated"
+        ],
+        "category": "Technical Support",
+        "hash": -872301613,
+        "date": 1218753192000,
+        "from": 17665,
+        "to": 17688
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[843]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas asks Brian Cullinan about PHP web development and website hacking.  Despite repeated attempts to connect, their conversation is interrupted by frequent disconnections.",
+        "emotions": [
+            "Curious"
+        ],
+        "category": "Technical Discussion",
+        "hash": 427412586,
+        "date": 1219115165000,
+        "from": 17689,
+        "to": 17708
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[844]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas repeatedly attempts to connect with Brian Cullinan, experiencing frequent disconnections.  When they finally connect, Brian mentions a Verizon Wireless sync product.",
+        "emotions": [
+            "Frustrated"
+        ],
+        "category": "Connection Issues",
+        "hash": 471903802,
+        "date": 1219205150000,
+        "from": 17709,
+        "to": 17728
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[845]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas informs Brian Cullinan about his new remote MySQL access to a server and its implications.  Their conversation is repeatedly interrupted by disconnections.",
+        "emotions": [
+            "Frustrated",
+            "Confident"
+        ],
+        "category": "Technical Discussion",
+        "hash": 991291210,
+        "date": 1219269550000,
+        "from": 17729,
+        "to": 17750
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[846]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas shares his new remote MySQL access with Brian Cullinan, who expresses excitement.  Their conversation is repeatedly interrupted by disconnections.",
+        "emotions": [
+            "Excited",
+            "Frustrated"
+        ],
+        "category": "Technical Discussion",
+        "hash": 1960576849,
+        "date": 1219318180000,
+        "from": 17751,
+        "to": 17772
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[847]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas expresses his intention to copy a website and create a .info version of it.  Their conversation is repeatedly interrupted by disconnections.",
+        "emotions": [
+            "Playful"
+        ],
+        "category": "Website Discussion",
+        "hash": -970218509,
+        "date": 1219420318000,
+        "from": 17773,
+        "to": 17792
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[848]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan discusses his new wireless sync capabilities with his smartphone, including its RSS aggregator and syncing features. Robert Douglas expresses interest and asks for more details.",
+        "emotions": [
+            "Excited",
+            "Curious"
+        ],
+        "category": "Technology Discussion",
+        "hash": 1583994526,
+        "date": 1219506359000,
+        "from": 17793,
+        "to": 17818
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[849]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan shares a link to a Facebook event, and later they discuss music software and a touch screen computer. Robert Douglas is interested in using Album Player software on a touch screen device.",
+        "emotions": [
+            "Excited",
+            "Curious",
+            "Interested"
+        ],
+        "category": "Tech Enthusiasts",
+        "hash": 232614921,
+        "date": 1220480259000,
+        "from": 17819,
+        "to": 17842
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[850]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas asks for advice on reorganizing his music library, specifically how to move and organize MP3 files. Brian Cullinan suggests using software like DB Poweramp and describes his plans for a media server in his coffee table computer case.",
+        "emotions": [
+            "Excited",
+            "Curious",
+            "Enthusiastic"
+        ],
+        "category": "Tech Enthusiasts",
+        "hash": 460388891,
+        "date": 1221003242000,
+        "from": 17843,
+        "to": 17862
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[851]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and Brian Cullinan discuss using DB Poweramp to reorganize Robert's music library, including renaming and moving files. Brian provides instructions and links to help Robert configure the software.",
+        "emotions": [
+            "Determined",
+            "Helpful"
+        ],
+        "category": "Software Support",
+        "hash": -339692064,
+        "date": 1221003397000,
+        "from": 17863,
+        "to": 17882
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[852]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is copying MP3 files and wants to know the best way to organize them, specifically regarding bitrate and tag renaming. Brian Cullinan advises him on using DB Poweramp's features and plugins to achieve this.",
+        "emotions": [
+            "Confused",
+            "Helpful",
+            "Confused"
+        ],
+        "category": "Audio File Management",
+        "hash": 1488818076,
+        "date": 1221003866000,
+        "from": 17883,
+        "to": 17902
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[853]": {
+        "mtime": 1268083876000,
+        "summary": "Brian Cullinan helps Robert Douglas understand that he needs a registered version of DB Poweramp to use certain plugins.  Later, Robert Douglas asks Brian about linking fields in MySQL and his experience with MySQL Workbench.",
+        "emotions": [
+            "Neutral",
+            "Helpful",
+            "Enthusiastic",
+            "Informative"
+        ],
+        "category": "Software Support",
+        "hash": 1402171844,
+        "date": 1221004136000,
+        "from": 17903,
+        "to": 17926
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[854]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas asks for suggestions for a PHP document repository and then seeks advice on linking fields between MySQL tables. Brian Cullinan recommends SVN for version control and suggests using MySQL events to achieve the desired field linking functionality.",
+        "emotions": [
+            "Neutral",
+            "Helpful",
+            "Informative"
+        ],
+        "category": "Database",
+        "hash": -622022556,
+        "date": 1221177068000,
+        "from": 17927,
+        "to": 17952
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[855]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation covers a range of topics, including frustration with Palm devices, upcoming software releases, a request for Acronis software, and a debugging session where Robert Douglas seeks help with a PHP memory error.  Brian Cullinan assists Robert in identifying the issue with the provided link and points out that it's not a code link.",
+        "emotions": [
+            "Confused",
+            "Frustrated",
+            "Annoyed",
+            "Confused",
+            "Worried",
+            "Disappointed"
+        ],
+        "category": "Tech Support",
+        "hash": 1358541556,
+        "date": 1221529118000,
+        "from": 17953,
+        "to": 17978
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[856]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is experiencing issues with a code website, encountering a large amount of spam and a potential database loop. Brian Cullinan suspects a database restore may have caused the problem.",
+        "emotions": [
+            "Confused",
+            "Frustrated",
+            "Annoyed",
+            "Confused",
+            "Worried",
+            "Disappointed"
+        ],
+        "category": "Website Debugging",
+        "hash": 1593953139,
+        "date": 1222151964000,
+        "from": 17979,
+        "to": 17998
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[857]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and Brian Cullinan are troubleshooting a website issue caused by a large influx of spam submissions. They suspect a recursive issue in the code is preventing new submissions from posting.",
+        "emotions": [
+            "Confused",
+            "Frustrated",
+            "Annoyed",
+            "Confused",
+            "Worried",
+            "Relieved"
+        ],
+        "category": "Website Troubleshooting",
+        "hash": 1834960516,
+        "date": 1222154044000,
+        "from": 17999,
+        "to": 18018
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[858]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and Brian Cullinan are troubleshooting a website issue where data is not displaying correctly, suspecting a problem with the user table.  Brian ultimately decides to rewrite the website due to time constraints.",
+        "emotions": [
+            "Confused",
+            "Hopeful",
+            "Neutral",
+            "Frustrated",
+            "Casual",
+            "Annoyed",
+            "Confused",
+            "Amusing",
+            "Disappointed",
+            "Indecisive"
+        ],
+        "category": "Website Development",
+        "hash": 939262615,
+        "date": 1222154297000,
+        "from": 18019,
+        "to": 18040
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[859]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and Brian Cullinan discuss their preferred IDEs for PHP development, with Brian expressing a preference for Dreamweaver despite considering alternatives.  They then shift their conversation to monitor preferences and prices, with Brian considering adding another 24-inch monitor to his setup.",
+        "emotions": [
+            "Neutral",
+            "Casual",
+            "Thoughtful",
+            "Amusing",
+            "Indecisive"
+        ],
+        "category": "Tech Discussion",
+        "hash": -1445828276,
+        "date": 1222196561000,
+        "from": 18041,
+        "to": 18060
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[860]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around the pros and cons of different monitor sizes and setups.  They discuss the value of 24-inch vs. 22-inch monitors and the benefits of using monitor arms for desk organization.",
+        "emotions": [
+            "Playful",
+            "Helpful",
+            "Confident",
+            "Interested"
+        ],
+        "category": "Tech Advice",
+        "hash": -1192950101,
+        "date": 1222196908000,
+        "from": 18061,
+        "to": 18080
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[861]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation starts with a discussion about monitor stands and desk aesthetics.  It then shifts to plans for the weekend, with Robert Douglas going boating and b.cullinan@cox.net suggesting a bar visit.",
+        "emotions": [
+            "Confident",
+            "Dismissive",
+            "Disappointed"
+        ],
+        "category": "Desk Decor/Weekend Plans",
+        "hash": 1283769598,
+        "date": 1222197423000,
+        "from": 18081,
+        "to": 18102
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[862]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas invites b.cullinan@cox.net on a boating trip with wakeboarding and skiing, but b.cullinan@cox.net declines due to prior commitments. They reschedule to hang out on Sunday.",
+        "emotions": [
+            "Apologetic",
+            "Enthusiastic",
+            "Casual",
+            "Apologetic",
+            "Teasing",
+            "Disappointed"
+        ],
+        "category": "Boating Plans/Hangout",
+        "hash": -1828589995,
+        "date": 1222330119000,
+        "from": 18103,
+        "to": 18125
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[863]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation first discusses a website called Cramster, which provides solutions to homework problems.  It then shifts to b.cullinan@cox.net explaining their project to create a proxy server for their cell phone and media server to remove ads, bypass restrictions, and improve performance.",
+        "emotions": [
+            "Confused",
+            "Excited",
+            "Curious",
+            "Confused",
+            "Passionate",
+            "Informative"
+        ],
+        "category": "Tech Projects/Discussion",
+        "hash": -249771660,
+        "date": 1222970710000,
+        "from": 18126,
+        "to": 18147
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[864]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation starts with b.cullinan@cox.net discussing their idea for a proxy to remove ads and Robert Douglas suggests using an ad blocker instead.  The conversation then shifts to b.cullinan@cox.net explaining their need for a proxy to download NZB files and search Newzbin automatically, prompting Robert Douglas to suggest looking at ad blocker source code for inspiration.",
+        "emotions": [
+            "Helpful",
+            "Confident",
+            "Understanding",
+            "Passionate",
+            "Skeptical"
+        ],
+        "category": "Tech Projects/Discussion",
+        "hash": -327561239,
+        "date": 1223406052000,
+        "from": 18148,
+        "to": 18167
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[865]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net discuss setting up a domain name (proxy.bjcullinan.com) for b.cullinan@cox.net's project, with Robert Douglas offering to create a DNS entry to point the domain to b.cullinan@cox.net's server.  Robert Douglas will send b.cullinan@cox.net the DNS configuration later as b.cullinan@cox.net is unfamiliar with setting them up.",
+        "emotions": [
+            "Helpful",
+            "Enthusiastic",
+            "Casual",
+            "Relieved"
+        ],
+        "category": "Tech Support/Domain Setup",
+        "hash": 1457849824,
+        "date": 1223406700000,
+        "from": 18168,
+        "to": 18189
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[866]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net asks Robert Douglas how to escape a question mark in a regular expression for use with mod_rewrite. Robert Douglas provides guidance and a link to a forum post, ultimately suggesting a solution involving escaping the question mark with a backslash.",
+        "emotions": [
+            "Confused",
+            "Determined",
+            "Frustrated",
+            "Helpful",
+            "Confused"
+        ],
+        "category": "Regex Help/Troubleshooting",
+        "hash": 1173170320,
+        "date": 1223410684000,
+        "from": 18190,
+        "to": 18215
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[867]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas initially asked b.cullinan@cox.net for help with some regular expression questions but then figured them out.  Later, Robert Douglas needed help with a regex to remove code between specific HTML tags and b.cullinan@cox.net suggested using preg_replace.",
+        "emotions": [
+            "Playful",
+            "Helpful",
+            "Casual",
+            "Confident",
+            "Amused"
+        ],
+        "category": "Regex Help/Casual Chat",
+        "hash": -966692271,
+        "date": 1223853987000,
+        "from": 18216,
+        "to": 18242
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[868]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net discuss a regex solution, with Robert Douglas confirming the correct pattern. Later, b.cullinan@cox.net asks for help setting up a DNS server and requests Robert Douglas to change the IP address for their domain.",
+        "emotions": [
+            "Hopeful",
+            "Helpful",
+            "Confident",
+            "Uncertain",
+            "Relieved"
+        ],
+        "category": "Tech Support/DNS Help",
+        "hash": -1382318043,
+        "date": 1223858507000,
+        "from": 18243,
+        "to": 18268
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[869]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net discuss setting up DNS for the domain pqbride.net.  b.cullinan@cox.net wants to test their DNS server and needs to change the nameservers to point directly to their server's IP address.",
+        "emotions": [
+            "Determined",
+            "Helpful",
+            "Confident",
+            "Uncertain"
+        ],
+        "category": "DNS Configuration Help",
+        "hash": 772035658,
+        "date": 1224106759000,
+        "from": 18269,
+        "to": 18288
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[870]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas guides b.cullinan@cox.net on how to change the nameservers for their domain through an online portal.  Later, the conversation shifts to a discussion about SPB software for phones and a reference version of DBPoweramp.",
+        "emotions": [
+            "Curious",
+            "Neutral",
+            "Helpful",
+            "Uncertain"
+        ],
+        "category": "Tech Support/Software Discussion",
+        "hash": 2105007517,
+        "date": 1224106937000,
+        "from": 18289,
+        "to": 18314
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[871]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net and Robert Douglas discuss external hard drives, specifically a 1.5TB drive that they find to be a good deal. They talk about storage capacity, RAID configurations, and the speed of Raptor drives.",
+        "emotions": [
+            "Excited",
+            "Enthusiastic",
+            "Amused"
+        ],
+        "category": "Tech Shopping/Storage Discussion",
+        "hash": 1830228269,
+        "date": 1224383935000,
+        "from": 18315,
+        "to": 18334
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[872]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net discuss RAID configurations for storage, specifically whether RAID 0 or RAID 1 is better for different types of data.  They talk about the pros and cons of each configuration, considering factors like cost, speed, and data redundancy.",
+        "emotions": [
+            "Excited",
+            "Enthusiastic",
+            "Disappointed",
+            "Indecisive"
+        ],
+        "category": "Tech Storage Advice",
+        "hash": 536567911,
+        "date": 1224384102000,
+        "from": 18335,
+        "to": 18354
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[873]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net discuss the pros and cons of RAID configurations (RAID 0, RAID 1, and RAID 5) for storage, debating which is best for their specific needs.  They also talk about b.cullinan@cox.net's extensive storage setup, including a server rack and plans to convert their computers to rack-mounted units.",
+        "emotions": [
+            "Confident",
+            "Teasing",
+            "Knowledgeable"
+        ],
+        "category": "Tech Storage Debate",
+        "hash": -956309980,
+        "date": 1224384370000,
+        "from": 18355,
+        "to": 18374
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[874]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net discuss the return of old computer hardware, specifically a video card that Robert Douglas had previously sent to b.cullinan@cox.net.  They reminisce about the video card's specifications and price, ultimately clarifying that b.cullinan@cox.net had actually received a different card from Robert Douglas.",
+        "emotions": [
+            "Confused",
+            "Nostalgic",
+            "Helpful",
+            "Confused",
+            "Embarrassed",
+            "Amusing"
+        ],
+        "category": "Tech Hardware Discussion",
+        "hash": -75976585,
+        "date": 1224384563000,
+        "from": 18375,
+        "to": 18394
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[875]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net discuss a Sapphire graphics card that Robert Douglas had previously given to b.cullinan@cox.net. They talk about the card's performance and b.cullinan@cox.net's new Usenet account with gigabit download speeds.",
+        "emotions": [
+            "Confused",
+            "Excited",
+            "Enthusiastic",
+            "Casual",
+            "Confused",
+            "Amusing",
+            "Knowledgeable"
+        ],
+        "category": "Tech Enthusiasm",
+        "hash": -1699195005,
+        "date": 1224384674000,
+        "from": 18395,
+        "to": 18414
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[876]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net excitedly explains Usenet to Robert Douglas, highlighting its benefits like anonymous access, high download speeds, and a vast archive of news and files. Robert Douglas expresses interest and asks questions about bandwidth limits and security measures.",
+        "emotions": [
+            "Excited",
+            "Curious",
+            "Enthusiastic",
+            "Impressed"
+        ],
+        "category": "Usenet Discussion",
+        "hash": -1284896182,
+        "date": 1224385245000,
+        "from": 18415,
+        "to": 18434
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[877]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net asks Robert Douglas to forward all subdomains of bjcullinan.com to their IP address and later seeks help troubleshooting a name server issue they're experiencing.  They are trying to set up a subdomain for their website.",
+        "emotions": [
+            "Confused",
+            "Excited",
+            "Frustrated",
+            "Helpful",
+            "Confused"
+        ],
+        "category": "Domain Setup",
+        "hash": -2136367347,
+        "date": 1224569222000,
+        "from": 18435,
+        "to": 18458
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[878]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is trying to set up DNS for their domain, bjcullinan.com, and is experiencing issues getting it to work. Robert Douglas offers advice and tools to help troubleshoot the problem.",
+        "emotions": [
+            "Confused",
+            "Frustrated",
+            "Helpful",
+            "Confused",
+            "Uncertain"
+        ],
+        "category": "DNS Troubleshooting",
+        "hash": -1382703560,
+        "date": 1224720274000,
+        "from": 18459,
+        "to": 18478
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[879]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is experiencing issues with DNS propagation and is seeking help from Robert Douglas. Robert Douglas advises them to check with sysadmins and explains how to speed up the process by lowering the TTL value on the DNS server.",
+        "emotions": [
+            "Anxious",
+            "Frustrated",
+            "Helpful",
+            "Condescending"
+        ],
+        "category": "DNS Troubleshooting",
+        "hash": -1944088761,
+        "date": 1224720999000,
+        "from": 18479,
+        "to": 18498
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[880]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is trying to set up DNS for their domain and is confused about the process. Robert Douglas helps them through the steps, eventually getting it working.",
+        "emotions": [
+            "Confused",
+            "Frustrated",
+            "Helpful",
+            "Confused",
+            "Relieved",
+            "Impatient"
+        ],
+        "category": "DNS Setup",
+        "hash": 1467282515,
+        "date": 1224723744000,
+        "from": 18499,
+        "to": 18522
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[881]": {
+        "mtime": 1268083876000,
+        "summary": "This conversation is between Robert Douglas and b.cullinan@cox.net, likely colleagues.  b.cullinan@cox.net had a difficult day but plans to write a report summarizing their learnings and share it with Robert.",
+        "emotions": [
+            "Frustrated",
+            "Helpful",
+            "Encouraging",
+            "Relieved"
+        ],
+        "category": "DNS Learning",
+        "hash": 180833399,
+        "date": 1224738996000,
+        "from": 18523,
+        "to": 18546
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[882]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net asks Robert Douglas for a LinkedIn recommendation. Robert Douglas is hesitant to join LinkedIn because he doesn't want to be found online but agrees to write the recommendation if b.cullinan@cox.net explains how.",
+        "emotions": [
+            "Annoyed",
+            "Hesitant"
+        ],
+        "category": "LinkedIn Recommendation",
+        "hash": -236526531,
+        "date": 1224818439000,
+        "from": 18547,
+        "to": 18568
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[883]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net requested a logo from Robert Douglas for a simple design using blues and whites.  Robert Douglas quoted a price range of $150-$300 and asked for a written description of the desired logo.",
+        "emotions": [],
+        "category": "Logo Design Quote",
+        "hash": 1866761683,
+        "date": 1224821335000,
+        "from": 18569,
+        "to": 18590
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[884]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net was having trouble installing and configuring mod_security on their server. Robert Douglas helped troubleshoot the issue, determining that b.cullinan@cox.net had installed the wrong version.",
+        "emotions": [
+            "Frustrated",
+            "Embarrassed",
+            "Amused",
+            "Relieved"
+        ],
+        "category": "Server Security Help",
+        "hash": -1745816468,
+        "date": 1225173482000,
+        "from": 18591,
+        "to": 18616
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[885]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas expresses interest in b.cullinan@cox.net's media server project, but b.cullinan@cox.net admits it's unfinished due to time constraints and a roadblock with VLC.  They discuss potential features like billing and access controls, and b.cullinan@cox.net suggests selling the script once it's complete.",
+        "emotions": [
+            "Hopeful",
+            "Enthusiastic",
+            "Confident"
+        ],
+        "category": "Media Server Development",
+        "hash": -755654074,
+        "date": 1225919813000,
+        "from": 18617,
+        "to": 18636
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[886]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net discuss ways to enhance the security and functionality of b.cullinan@cox.net's file-sharing script. They explore options like encryption, password protection, and using HTTPS to secure data transmission, ultimately deciding that HTTPS might be sufficient for their needs.",
+        "emotions": [
+            "Enthusiastic",
+            "Concerned",
+            "Thoughtful",
+            "Dismissive"
+        ],
+        "category": "File Sharing Security",
+        "hash": -290981239,
+        "date": 1225920107000,
+        "from": 18637,
+        "to": 18656
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[887]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net discuss ways to enhance the security and functionality of b.cullinan@cox.net's file-sharing script, exploring options like encrypted torrents and HTTPS.  b.cullinan@cox.net expresses a desire to add more features but lacks the time to do so.",
+        "emotions": [
+            "Hopeful",
+            "Frustrated",
+            "Enthusiastic",
+            "Thoughtful",
+            "Disappointed"
+        ],
+        "category": "File Sharing Development",
+        "hash": 1855717431,
+        "date": 1225920282000,
+        "from": 18657,
+        "to": 18676
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[888]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net briefly chat about the weather and biking before discussing a security issue on codepaster where a guest profile was deleted.  b.cullinan@cox.net speculates that the deletion might be due to a security breach.",
+        "emotions": [
+            "Casual",
+            "Concerned",
+            "Thoughtful",
+            "Amusing"
+        ],
+        "category": "Casual Conversation",
+        "hash": -2060594222,
+        "date": 1225920969000,
+        "from": 18677,
+        "to": 18698
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[889]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net discuss the possibility of using phpBB or vBulletin for a project, and b.cullinan@cox.net offers to help Robert Douglas restore a feature.  Later, they briefly chat about b.cullinan@cox.net's progress on mod_rewrite and Robert Douglas inquires about NAU's school schedule.",
+        "emotions": [
+            "Curious",
+            "Hopeful",
+            "Neutral",
+            "Helpful",
+            "Thoughtful"
+        ],
+        "category": "Project Discussion",
+        "hash": -1985380175,
+        "date": 1225995766000,
+        "from": 18699,
+        "to": 18726
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[890]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net discuss Robert Douglas's mod_rewrite issues and share a quick conversation about Robert Douglas's upcoming birthday.  They also plan to hang out in Photown over the weekend.",
+        "emotions": [
+            "Excited",
+            "Neutral",
+            "Helpful",
+            "Thoughtful",
+            "Relieved"
+        ],
+        "category": "Tech Support",
+        "hash": 424350157,
+        "date": 1226383481000,
+        "from": 18727,
+        "to": 18748
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[891]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation is about Robert Douglas and b.cullinan@cox.net arranging to meet up.  They are discussing bed frames, with b.cullinan@cox.net recently getting a new queen-sized bed and Robert Douglas needing a new one.",
+        "emotions": [
+            "Excited",
+            "Frustrated",
+            "Resignation"
+        ],
+        "category": "Friends catching up",
+        "hash": -765365719,
+        "date": 1226522363000,
+        "from": 18749,
+        "to": 18768
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[892]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation is about Robert Douglas and b.cullinan@cox.net discussing server setups and virtualization.  b.cullinan@cox.net plans to convert their computers to rack-mounted systems and use VMware.",
+        "emotions": [
+            "Excited",
+            "Humorous"
+        ],
+        "category": "Tech Enthusiasts",
+        "hash": 1942346641,
+        "date": 1226522552000,
+        "from": 18769,
+        "to": 18790
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[893]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation is about Robert Douglas installing VMware Workstation on his desktop.  b.cullinan@cox.net provides some advice and clarifies that VMware Workstation is different from VMware Server.",
+        "emotions": [
+            "Neutral",
+            "Helpful"
+        ],
+        "category": "Tech Support",
+        "hash": -873915577,
+        "date": 1226558758000,
+        "from": 18791,
+        "to": 18812
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[894]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation starts with Robert Douglas having trouble installing VMware Workstation and asking for help.  It then shifts to b.cullinan@cox.net needing business cards and party invitations.",
+        "emotions": [
+            "Frustrated"
+        ],
+        "category": "Tech Support",
+        "hash": 7895585,
+        "date": 1226614444000,
+        "from": 18813,
+        "to": 18838
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[895]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation is about b.cullinan@cox.net wanting to order business cards, specifically black cardstock with red metallic ink. Robert Douglas offers a free option with a logo on the back but suggests a paid option for the desired design.",
+        "emotions": [
+            "Neutral",
+            "Helpful"
+        ],
+        "category": "Business Cards",
+        "hash": -436796150,
+        "date": 1226687207000,
+        "from": 18839,
+        "to": 18858
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[896]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is creating a fireworks border design and sharing the file dimensions with Robert Douglas. They also briefly discuss their experiences with different versions of Adobe software.",
+        "emotions": [
+            "Enthusiastic",
+            "Confident",
+            "Amused",
+            "Amusing",
+            "Disappointed"
+        ],
+        "category": "Design Collaboration",
+        "hash": -1264460275,
+        "date": 1226692185000,
+        "from": 18859,
+        "to": 18878
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[897]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is having trouble with their Mod Security configuration, which is blocking access to their server. Robert Douglas offers suggestions for improving the server's features and functionality.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Annoyed",
+            "Encouraging",
+            "Amusing"
+        ],
+        "category": "Server Troubleshooting",
+        "hash": 373956887,
+        "date": 1226692359000,
+        "from": 18879,
+        "to": 18898
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[898]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net are discussing the development of a media server.  They are troubleshooting video playback issues and discussing features like user permissions and profiles.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Enthusiastic",
+            "Confident"
+        ],
+        "category": "Media Server Development",
+        "hash": -1232041359,
+        "date": 1226692584000,
+        "from": 18899,
+        "to": 18922
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[899]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is asking b.cullinan@cox.net for help with a PHP code snippet that is supposed to extract a number from a string.  He eventually figures it out but feels the solution isn't elegant.",
+        "emotions": [
+            "Anxious",
+            "Determined",
+            "Frustrated",
+            "Relieved"
+        ],
+        "category": "PHP Help Request",
+        "hash": -1297513426,
+        "date": 1226707550000,
+        "from": 18923,
+        "to": 18946
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[900]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is frustrated after spending two hours on a programming problem and is feeling exhausted.  He expresses his tiredness and mentions having a lot to do, but is open to hanging out the next day.",
+        "emotions": [
+            "Supportive",
+            "Frustrated",
+            "Concerned",
+            "Tired",
+            "Understanding"
+        ],
+        "category": "Programming Frustration",
+        "hash": 461128695,
+        "date": 1226793716000,
+        "from": 18947,
+        "to": 18970
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[901]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is having issues with the appearance of a webpage in Firefox and asks b.cullinan@cox.net for help.  b.cullinan@cox.net checks the page and doesn't see the same problem, suggesting Robert Douglas clear his cache.",
+        "emotions": [
+            "Frustrated",
+            "Understanding",
+            "Disappointed"
+        ],
+        "category": "Web Design Issue",
+        "hash": 831625336,
+        "date": 1226808638000,
+        "from": 18971,
+        "to": 18992
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[902]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is experiencing a persistent issue with a webpage displaying incorrectly in Firefox and seeks help from b.cullinan@cox.net.  Later, Robert Douglas asks about using output buffers in PHP to execute code after the page fully loads.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Helpful",
+            "Casual",
+            "Understanding"
+        ],
+        "category": "Web Development Help",
+        "hash": -1458784163,
+        "date": 1226888182000,
+        "from": 18993,
+        "to": 19016
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[903]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is trying to figure out how to display debug array values at the top of a webpage after the page has fully loaded. b.cullinan@cox.net suggests using output buffers or templates to achieve this, referencing their previous work on the jambonie site.",
+        "emotions": [
+            "Excited",
+            "Determined",
+            "Helpful",
+            "Enthusiastic",
+            "Confident",
+            "Knowledgeable"
+        ],
+        "category": "PHP Debugging Techniques",
+        "hash": -448723177,
+        "date": 1227120665000,
+        "from": 19017,
+        "to": 19036
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[904]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is asking about how to insert debug information at the top of a webpage while maintaining the existing header and footer structure. b.cullinan@cox.net explains how to use output buffers (`ob_start()`, `ob_get_contents()`, `ob_end_clean()`) to achieve this.",
+        "emotions": [
+            "Determined",
+            "Helpful",
+            "Enthusiastic",
+            "Confident",
+            "Relieved",
+            "Knowledgeable"
+        ],
+        "category": "PHP Debugging Technique",
+        "hash": 1993901121,
+        "date": 1227121014000,
+        "from": 19037,
+        "to": 19056
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[905]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is trying to display debug information on a webpage and is exploring different methods, initially considering output buffers and then opting for JavaScript to update a div.  He then asks about sending $_POST information without using a form or session storage.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Helpful",
+            "Enthusiastic",
+            "Confident",
+            "Amusing"
+        ],
+        "category": "PHP Debugging Techniques",
+        "hash": -939403586,
+        "date": 1227122391000,
+        "from": 19057,
+        "to": 19079
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[906]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is trying to find a way to store and retrieve data sent to a MySQL database without using sessions, exploring alternatives like libraries or JavaScript popups. b.cullinan@cox.net suggests using sessions as the most suitable solution and provides guidance on using JavaScript to manipulate popups.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Helpful",
+            "Confident"
+        ],
+        "category": "Web Development Techniques",
+        "hash": 1789348011,
+        "date": 1227124545000,
+        "from": 19080,
+        "to": 19101
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[907]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net are discussing web development techniques, specifically focusing on using Ext JS for creating a custom file upload button and its advantages over other styling libraries. They admire the capabilities and ease of use of Ext JS, envisioning its potential for various applications.",
+        "emotions": [
+            "Enthusiastic",
+            "Confident",
+            "Impressed"
+        ],
+        "category": "Web Development Techniques",
+        "hash": 92429834,
+        "date": 1227467568000,
+        "from": 19102,
+        "to": 19121
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[908]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net are discussing the possibility of converting a vBulletin forum to use Ext JS, acknowledging the potential challenges and benefits. They reminisce about past experiences with other platforms like Xcart, expressing their dislike for its complexity.",
+        "emotions": [
+            "Frustrated",
+            "Enthusiastic",
+            "Confident",
+            "Dismissive"
+        ],
+        "category": "Web Development Discussion",
+        "hash": -2027083565,
+        "date": 1227467865000,
+        "from": 19122,
+        "to": 19141
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[909]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation starts with b.cullinan@cox.net praising Mod Security, a web application firewall, while Robert Douglas acknowledges its benefits but mentions compatibility issues with older browsers.  The conversation then shifts to Robert Douglas seeking a file upload script with multiple file support and a progress bar, offering $100 for the service.",
+        "emotions": [
+            "Frustrated",
+            "Enthusiastic",
+            "Confident",
+            "Understanding"
+        ],
+        "category": "Web Security and Development",
+        "hash": -606151612,
+        "date": 1227683187000,
+        "from": 19142,
+        "to": 19165
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[910]": {
+        "mtime": 1268083876000,
+        "summary": "This conversation consists of brief exchanges between Robert Douglas and b.cullinan@cox.net, primarily marking the start and end of their sessions over several days.  The only substantive message is a simple \"happy thanksgiving\" from Robert Douglas.",
+        "emotions": [
+            "Grateful",
+            "Neutral"
+        ],
+        "category": "Online Chat Log",
+        "hash": 1614658554,
+        "date": 1227757657000,
+        "from": 19166,
+        "to": 19187
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[911]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas asks b.cullinan@cox.net for advice on using AJAX to retrieve HTML from another page.  b.cullinan@cox.net suggests using Firebug, a web development tool, and Robert Douglas expresses appreciation for the help.",
+        "emotions": [
+            "Helpful",
+            "Enthusiastic",
+            "Casual"
+        ],
+        "category": "Technical Support",
+        "hash": -1489064785,
+        "date": 1228596338000,
+        "from": 19188,
+        "to": 19211
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[912]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation starts with Robert Douglas mentioning he installed Firebug and finds it nice.  The conversation then shifts to a joke about a doctor and a patient, followed by Robert Douglas asking for the name of a JavaScript AJAX library.",
+        "emotions": [
+            "Humorous",
+            "Enthusiastic"
+        ],
+        "category": "Casual Conversation",
+        "hash": 940077458,
+        "date": 1228598455000,
+        "from": 19212,
+        "to": 19237
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[913]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation starts with b.cullinan@cox.net explaining the features of Ext JS and sharing a link to their media server built with it.  The conversation then shifts to Robert Douglas sharing a link to his website built with Ext JS and showing off a webcam feature, leading to a discussion about his girlfriend and a request for her phone number.",
+        "emotions": [
+            "Playful",
+            "Proud",
+            "Flirty",
+            "Intrigued",
+            "Amusement",
+            "Informative"
+        ],
+        "category": "Tech Talk & Flirting",
+        "hash": -722003342,
+        "date": 1228771113000,
+        "from": 19238,
+        "to": 19257
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[914]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation revolves around Robert Douglas showing off his webcam to b.cullinan@cox.net, who is amused and intrigued.  They exchange phone numbers and discuss finding someone of similar attractiveness.",
+        "emotions": [
+            "Playful",
+            "Flirty",
+            "Confident",
+            "Embarrassed",
+            "Suggestive",
+            "Intrigued",
+            "Amusement"
+        ],
+        "category": "Flirty Webcam",
+        "hash": -721119295,
+        "date": 1228771466000,
+        "from": 19258,
+        "to": 19277
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[915]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around b.cullinan@cox.net describing a game of \"strip study\" he played with his backup girlfriend.  He emphasizes that his primary girlfriend is still more attractive.",
+        "emotions": [
+            "Playful",
+            "Flirty",
+            "Confident",
+            "Suggestive",
+            "Amusement"
+        ],
+        "category": "Flirty",
+        "hash": -1497836807,
+        "date": 1228772466000,
+        "from": 19278,
+        "to": 19297
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[916]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation shifts from b.cullinan@cox.net boasting about his girlfriends to him mentioning his girlfriend's intelligence and academic achievements.  He then expresses a desire to share more explicit photos but is deterred by his current situation and impending exam.",
+        "emotions": [
+            "Anxious",
+            "Playful",
+            "Flirty",
+            "Confident",
+            "Embarrassed",
+            "Suggestive",
+            "Disappointed"
+        ],
+        "category": "Flirty",
+        "hash": -1950108996,
+        "date": 1228772645000,
+        "from": 19298,
+        "to": 19317
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[917]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is at school using a remote connection and is playing GTA4 with his friend John.  He is annoyed that someone, possibly his girlfriend, has been using his phone.",
+        "emotions": [
+            "Playful",
+            "Frustrated",
+            "Annoyed"
+        ],
+        "category": "Teen chat",
+        "hash": -1066641981,
+        "date": 1228773148000,
+        "from": 19318,
+        "to": 19337
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[918]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas reminds b.cullinan@cox.net that their website domain, legalactresses.com, is expiring soon. They discuss the option of not renewing the domain due to lack of time and profitability.",
+        "emotions": [
+            "Happy",
+            "Relieved",
+            "Informative"
+        ],
+        "category": "Domain renewal discussion",
+        "hash": 911497468,
+        "date": 1228948234000,
+        "from": 19338,
+        "to": 19359
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[919]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net describes their accomplishment of modifying earbuds and a tape converter to play music in their car. They detail the process of cutting, soldering, and using VLC transcoding to achieve this.",
+        "emotions": [
+            "Excited",
+            "Proud",
+            "Amused",
+            "Impressed",
+            "Amusing"
+        ],
+        "category": "Tech DIY project",
+        "hash": -1814084516,
+        "date": 1228950244000,
+        "from": 19360,
+        "to": 19381
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[920]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is sharing a stream link using the Windows Media Protocol (ASF) and is troubleshooting playback issues with Robert Douglas. They suspect their internet service provider (ISP) is the cause of the problem.",
+        "emotions": [
+            "Frustrated",
+            "Annoyed",
+            "Concerned",
+            "Surprised"
+        ],
+        "category": "Online streaming issue",
+        "hash": 783517296,
+        "date": 1228980219000,
+        "from": 19382,
+        "to": 19401
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[921]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is setting up a radio stream and sharing it with Robert Douglas, who initially has technical difficulties but eventually enjoys the stream.  Robert Douglas finds the current song unappealing but appreciates the overall concept of the radio stream.",
+        "emotions": [
+            "Excited",
+            "Frustrated",
+            "Enthusiastic",
+            "Confident",
+            "Amusing",
+            "Disappointed",
+            "Indifferent"
+        ],
+        "category": "Tech setup",
+        "hash": -1702898496,
+        "date": 1228980581000,
+        "from": 19402,
+        "to": 19421
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[922]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is sharing a dance music playlist with Robert Douglas, who initially expresses some reservations but ultimately enjoys the concept.  They plan to discuss it further after Robert Douglas's final exam.",
+        "emotions": [
+            "Enthusiastic",
+            "Casual",
+            "Confident",
+            "Tired",
+            "Amusing",
+            "Disappointed",
+            "Indifferent"
+        ],
+        "category": "Music sharing",
+        "hash": 867701619,
+        "date": 1228981290000,
+        "from": 19422,
+        "to": 19441
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[923]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net and Robert Douglas are discussing the future of a website domain, debating which forum software to use. They decide on SMF, which Robert Douglas recommends, and b.cullinan@cox.net plans to add their custom JavaScript and code highlighting features.",
+        "emotions": [
+            "Determined",
+            "Helpful",
+            "Enthusiastic",
+            "Confident",
+            "Indecisive"
+        ],
+        "category": "Website planning",
+        "hash": 470960383,
+        "date": 1229122352000,
+        "from": 19442,
+        "to": 19463
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[924]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is setting up a large storage system with RAID configurations and discussing it with Robert Douglas, who expresses both envy and amusement.  The conversation is interrupted, but b.cullinan@cox.net later reports fixing a bug in their media server.",
+        "emotions": [
+            "Curious",
+            "Enthusiastic",
+            "Confident",
+            "Amusing",
+            "Indifferent"
+        ],
+        "category": "Tech talk",
+        "hash": -24362172,
+        "date": 1229123072000,
+        "from": 19464,
+        "to": 19485
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[925]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas boasts about hacking into a Counter-Strike server and getting unbanned, explaining his method using a PHP vulnerability. b.cullinan@cox.net expresses interest and asks for more details about the exploit.",
+        "emotions": [
+            "Curious",
+            "Proud",
+            "Confident",
+            "Amusing"
+        ],
+        "category": "Hacking",
+        "hash": -1382850991,
+        "date": 1229458525000,
+        "from": 19486,
+        "to": 19505
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[926]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net and Robert Douglas discuss a security vulnerability Robert exploited on a Counter-Strike server, where he gained access by uploading a PHP script disguised as a demo file and used it to log forum login attempts and anonymously view the server's logs.  b.cullinan@cox.net suggests more destructive actions, but Robert Douglas prefers a more subtle approach.",
+        "emotions": [
+            "Curious",
+            "Confident",
+            "Amusing"
+        ],
+        "category": "Hacking",
+        "hash": 1822234604,
+        "date": 1229458775000,
+        "from": 19506,
+        "to": 19525
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[927]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas outlines a plan to completely wipe a server's data and then further disrupt its functionality by blocking access from key IP addresses and manipulating DNS records. b.cullinan@cox.net expresses amusement and approval at the elaborate and destructive scheme.",
+        "emotions": [
+            "Proud",
+            "Confident",
+            "Amusing"
+        ],
+        "category": "Cyberattack",
+        "hash": -1360597848,
+        "date": 1229458925000,
+        "from": 19526,
+        "to": 19545
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[928]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net expresses interest in Robert Douglas's plan to take down a website and asks for details, but Robert Douglas prefers to keep the specifics private.  The conversation then shifts to b.cullinan@cox.net's own server projects, including reorganizing files and managing a large media library.",
+        "emotions": [
+            "Excited",
+            "Curious",
+            "Confident",
+            "Amusing"
+        ],
+        "category": "Cyberattack",
+        "hash": 359596524,
+        "date": 1229459059000,
+        "from": 19546,
+        "to": 19565
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[929]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around technical troubleshooting, with b.cullinan@cox.net helping Robert Douglas with installing VMware on his XP system and offering advice on server management tasks.  They discuss issues with video streaming, access privileges, and the need for specific libraries for VMware installation.",
+        "emotions": [
+            "Frustrated",
+            "Helpful"
+        ],
+        "category": "Tech Support",
+        "hash": -998138971,
+        "date": 1229459228000,
+        "from": 19566,
+        "to": 19585
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[930]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is experiencing issues with VMware and seeks alternative virtualization solutions. b.cullinan@cox.net suggests Virtual PC and Xen, highlighting Xen's capabilities for passing PCI devices to VMs, which aligns with Robert Douglas's need for a wireless card within a virtual environment.",
+        "emotions": [
+            "Confused",
+            "Excited",
+            "Hopeful",
+            "Frustrated",
+            "Confused"
+        ],
+        "category": "Tech Support",
+        "hash": 144531713,
+        "date": 1229459475000,
+        "from": 19586,
+        "to": 19605
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[931]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation shifts from discussing virtualization options to comparing different virtualization platforms like Xen and Citrix.  They explore the pros and cons of each, with b.cullinan@cox.net highlighting Xen's ability to run on bare metal and Citrix's focus on large-scale terminal server deployments.",
+        "emotions": [
+            "Excited",
+            "Curious",
+            "Amusing"
+        ],
+        "category": "Tech Discussion",
+        "hash": -429566001,
+        "date": 1229459642000,
+        "from": 19606,
+        "to": 19625
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[932]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around virtualization and network configuration. They discuss using Xen and Citrix, the possibility of running them on existing XP installations, and explore how to use Synergy across multiple networks through port forwarding.",
+        "emotions": [
+            "Curious",
+            "Helpful"
+        ],
+        "category": "Tech Support",
+        "hash": 421422910,
+        "date": 1229460016000,
+        "from": 19626,
+        "to": 19645
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[933]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around setting up Synergy to connect across two networks, with b.cullinan@cox.net explaining the need for port forwarding on both routers.  They briefly digress into a discussion about BackTrack, a security tool Robert Douglas is using.",
+        "emotions": [
+            "Curious",
+            "Enthusiastic"
+        ],
+        "category": "Tech Support",
+        "hash": 1893010485,
+        "date": 1229461034000,
+        "from": 19646,
+        "to": 19667
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[934]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing web development, specifically the use of ExtJS and the design of a website.  Robert Douglas is impressed with the look and functionality of b.cullinan@cox.net's site, suggesting they could borrow some design elements.",
+        "emotions": [
+            "Playful",
+            "Enthusiastic",
+            "Confident",
+            "Impressed"
+        ],
+        "category": "Web Development",
+        "hash": -1624098030,
+        "date": 1229634606000,
+        "from": 19668,
+        "to": 19687
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[935]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing the design and functionality of a website, specifically the layout and features of a file manager.  Robert Douglas is impressed with b.cullinan@cox.net's work, but also points out potential issues and similarities to another website.",
+        "emotions": [
+            "Playful",
+            "Enthusiastic",
+            "Confident"
+        ],
+        "category": "Web Development",
+        "hash": -2309771,
+        "date": 1229636484000,
+        "from": 19688,
+        "to": 19709
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[936]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation starts with Robert Douglas complimenting b.cullinan@cox.net's work on a website, then abruptly shifts to Robert Douglas describing his backpacking trip across the Grand Canyon.  He claims to have \"dominated\" the Grand Canyon by backpacking across it.",
+        "emotions": [
+            "Enthusiastic",
+            "Confident",
+            "Surprised"
+        ],
+        "category": "Web Development",
+        "hash": 1576647891,
+        "date": 1229639747000,
+        "from": 19710,
+        "to": 19731
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[937]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing b.cullinan@cox.net's website development work, specifically a new feature involving aliasing.  Robert Douglas expresses interest and then signs off due to tiredness.",
+        "emotions": [
+            "Enthusiastic",
+            "Confident",
+            "Tired"
+        ],
+        "category": "Web Development",
+        "hash": -391826774,
+        "date": 1230097862000,
+        "from": 19732,
+        "to": 19753
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[938]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing plans to meet up for lunch and potentially watch a movie.  They decide to meet at Chipotle, but Robert Douglas suggests watching Eagle Eye at his place after.",
+        "emotions": [
+            "Excited",
+            "Enthusiastic",
+            "Casual",
+            "Friendly"
+        ],
+        "category": "Friends",
+        "hash": 1004089516,
+        "date": 1230448275000,
+        "from": 19754,
+        "to": 19773
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[939]": {
+        "mtime": 1268083876000,
+        "summary": "They are discussing plans to watch a movie and eat, with Robert Douglas needing to pick up a PS3 first. They decide to have french toast for breakfast and then go to Chipotle for lunch before watching the movie.",
+        "emotions": [
+            "Excited",
+            "Determined",
+            "Casual",
+            "Disappointed"
+        ],
+        "category": "Movie Plans",
+        "hash": 2014723238,
+        "date": 1230485711000,
+        "from": 19774,
+        "to": 19793
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[940]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas invites b.cullinan@cox.net over for french toast, but b.cullinan@cox.net is busy and will arrive in about 30 minutes.  They agree to meet later after b.cullinan@cox.net finishes work.",
+        "emotions": [
+            "Casual",
+            "Apathetic",
+            "Indecisive"
+        ],
+        "category": "Food",
+        "hash": -1929593688,
+        "date": 1230486368000,
+        "from": 19794,
+        "to": 19815
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[941]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas invites b.cullinan@cox.net to see the movie Valkyrie with him and suggests they meet at his place to drive together.  They discuss the time, transportation, and whether they are bringing dates.",
+        "emotions": [
+            "Excited",
+            "Casual",
+            "Friendly"
+        ],
+        "category": "Movie Plans",
+        "hash": -1296696701,
+        "date": 1230491214000,
+        "from": 19816,
+        "to": 19835
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[942]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas asks b.cullinan@cox.net for help finding a French translator and then discusses his experience with Windows 7.  He mentions downloading it from the Pirate Bay.",
+        "emotions": [
+            "Excited",
+            "Curious",
+            "Neutral",
+            "Apathetic"
+        ],
+        "category": "Tech Talk",
+        "hash": -749159634,
+        "date": 1230507889000,
+        "from": 19836,
+        "to": 19863
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[943]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas shares photos of the Grand Canyon with b.cullinan@cox.net.  Later, b.cullinan@cox.net asks if Robert Douglas sent a YouTube video of a child dancing to Beyonce.",
+        "emotions": [
+            "Excited",
+            "Happy",
+            "Apathetic"
+        ],
+        "category": "Online Chat",
+        "hash": -1527260694,
+        "date": 1230620847000,
+        "from": 19864,
+        "to": 19885
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[944]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation is between two people, Robert Douglas and b.cullinan@cox.net, who are likely friends or acquaintances.  They discuss various topics including a YouTube video of a dancing child, a website, and video transcoding.",
+        "emotions": [
+            "Supportive",
+            "Curious",
+            "Casual",
+            "Enthusiasm",
+            "Confident",
+            "Amusement"
+        ],
+        "category": "Online Friendship",
+        "hash": -662678910,
+        "date": 1231052554000,
+        "from": 19886,
+        "to": 19911
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[945]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around b.cullinan@cox.net's progress in developing their website, specifically mentioning the successful porting to Windows and a reduced installation time.  They also briefly discuss their classes.",
+        "emotions": [
+            "Proud",
+            "Neutral",
+            "Enthusiastic",
+            "Casual",
+            "Confident",
+            "Indifferent"
+        ],
+        "category": "Tech Discussion",
+        "hash": -1576783295,
+        "date": 1234032886000,
+        "from": 19912,
+        "to": 19937
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[946]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around b.cullinan@cox.net's website development and their experience with Linux networking, specifically iptables. Robert Douglas seeks advice on configuring iptables for a project involving network security.",
+        "emotions": [
+            "Neutral",
+            "Frustrated",
+            "Helpful",
+            "Concerned",
+            "Confident"
+        ],
+        "category": "Technical Support",
+        "hash": -156412383,
+        "date": 1234234838000,
+        "from": 19938,
+        "to": 19961
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[947]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is experiencing difficulties with a Linux project, while b.cullinan@cox.net is locked out of their media server and needs help recovering their account. Robert Douglas provides b.cullinan@cox.net with their email address and password, which resolves the issue.",
+        "emotions": [
+            "Frustrated",
+            "Helpful",
+            "Relieved"
+        ],
+        "category": "Tech Support",
+        "hash": -630166046,
+        "date": 1235963973000,
+        "from": 19962,
+        "to": 19985
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[948]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is experiencing issues with their domain name resolving, despite the nameservers appearing to be configured correctly. Robert Douglas helps troubleshoot the issue, suggesting that the problem may lie with the domain registrar or a caching issue.",
+        "emotions": [
+            "Confused",
+            "Determined",
+            "Neutral",
+            "Frustrated",
+            "Concerned",
+            "Confused"
+        ],
+        "category": "Domain Name Issue",
+        "hash": -536971101,
+        "date": 1236449952000,
+        "from": 19986,
+        "to": 20009
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[949]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is experiencing issues with their domain name resolving and they are waiting for it to propagate. Robert Douglas offers to help troubleshoot the issue and check on it the next day.",
+        "emotions": [
+            "Neutral",
+            "Helpful",
+            "Concerned",
+            "Relieved"
+        ],
+        "category": "Domain Name Issue",
+        "hash": 889481948,
+        "date": 1236725811000,
+        "from": 20010,
+        "to": 20031
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[950]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is experiencing issues with multiple domains hosted on their server, suspecting a problem with their router. Robert Douglas offers to have an administrator investigate the issue further, requesting server setup information and configuration files.",
+        "emotions": [
+            "Confused",
+            "Determined",
+            "Frustrated",
+            "Concerned",
+            "Confused"
+        ],
+        "category": "Network Troubleshooting",
+        "hash": 1636096799,
+        "date": 1237664153000,
+        "from": 20032,
+        "to": 20051
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[951]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is experiencing issues accessing a specific IP address, initially suspecting a problem with their own setup but later discovering that the issue lies with the server itself.  Robert Douglas attempts to connect to the IP address but also encounters connection interruptions and is unable to access any content.",
+        "emotions": [
+            "Confused",
+            "Determined",
+            "Frustrated",
+            "Confused"
+        ],
+        "category": "Network Troubleshooting",
+        "hash": 456765850,
+        "date": 1237665200000,
+        "from": 20052,
+        "to": 20091
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[952]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net and Robert Douglas are experiencing issues accessing a specific IP address (209.250.30.30) and are trying to troubleshoot the problem.  They are encountering connection errors and permission issues, suggesting a problem with the server itself.",
+        "emotions": [
+            "Confused",
+            "Determined",
+            "Frustrated",
+            "Confused"
+        ],
+        "category": "Server Access Issue",
+        "hash": 1080767863,
+        "date": 1237665583000,
+        "from": 20092,
+        "to": 20134
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[953]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net are troubleshooting a server issue where external access is failing. They are using various tools to diagnose the problem, suspecting a server-side issue based on connection errors and inability to reach the server from external locations.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Concerned"
+        ],
+        "category": "Server Troubleshooting",
+        "hash": -256885842,
+        "date": 1237666242000,
+        "from": 20135,
+        "to": 20155
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[954]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net and Robert Douglas are troubleshooting a network connectivity issue where b.cullinan@cox.net's server appears to be unable to communicate with the outside world. They suspect a problem with the network configuration, specifically related to NAT and the router's static IP address.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Concerned"
+        ],
+        "category": "Network Troubleshooting",
+        "hash": -1832010724,
+        "date": 1237666509000,
+        "from": 20156,
+        "to": 20175
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[955]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net are troubleshooting a network connectivity issue where b.cullinan@cox.net's server is unable to access external websites despite being able to trace routes. They suspect a problem with NAT configuration and suggest using a packet sniffer to analyze network traffic for dropped packets.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Concerned"
+        ],
+        "category": "Network Troubleshooting",
+        "hash": 1278341548,
+        "date": 1237667027000,
+        "from": 20176,
+        "to": 20197
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[956]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is experiencing internet connectivity issues despite being able to communicate online. Robert Douglas suspects the problem lies with b.cullinan@cox.net's router, particularly its firewall or NAT configuration, and suggests disabling the firewall or replacing the modem as potential solutions.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Annoyed"
+        ],
+        "category": "Network Troubleshooting",
+        "hash": 1284633325,
+        "date": 1237667478000,
+        "from": 20198,
+        "to": 20219
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[957]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is experiencing intermittent internet connectivity issues and suspects their modem is the culprit.  They decide to swap out the modem for an older one that previously worked, which resolves the issue.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Annoyed"
+        ],
+        "category": "Network Troubleshooting",
+        "hash": 1135825900,
+        "date": 1237667786000,
+        "from": 20220,
+        "to": 20241
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[958]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is experiencing internet connectivity issues and suspects a problem with their new modem. After swapping out the modem for an older one, the issue is resolved.",
+        "emotions": [
+            "Frustrated",
+            "Happy",
+            "Relieved"
+        ],
+        "category": "Network Troubleshooting",
+        "hash": -1664425079,
+        "date": 1237668478000,
+        "from": 20242,
+        "to": 20265
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[959]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is experiencing issues accessing their website (monolithicmedia.org) while other sites work fine. They suspect a problem with their DNS configuration and attempt to troubleshoot with Robert Douglas by using dig commands to check DNS resolution.",
+        "emotions": [
+            "Confused",
+            "Determined",
+            "Frustrated",
+            "Confused"
+        ],
+        "category": "Network Troubleshooting",
+        "hash": -1237134680,
+        "date": 1237757665000,
+        "from": 20266,
+        "to": 20285
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[960]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is experiencing issues with a website (cogentco.com) and its DNS resolution.  He later asks b.cullinan@cox.net for help with a different issue related to htaccess and mod_rewrite on a Windows server.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Annoyed"
+        ],
+        "category": "Network Troubleshooting",
+        "hash": -253333724,
+        "date": 1237757894000,
+        "from": 20286,
+        "to": 20309
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[961]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is having trouble with mod_rewrite in IIS and asks b.cullinan@cox.net for help. b.cullinan@cox.net suggests using pretty URLs without mod_rewrite, which Robert Douglas eventually implements by restarting the website in IIS.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Relieved"
+        ],
+        "category": "Web Development Support",
+        "hash": -2029073804,
+        "date": 1237963995000,
+        "from": 20310,
+        "to": 20326
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[962]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net explains to Robert Douglas how Apache handles script execution and the potential security risks associated with using variables like script_path.  They discuss safer alternatives like php_path and php_script, and b.cullinan@cox.net briefly mentions a project they're working on involving media, Amazon product IDs, and album art.",
+        "emotions": [
+            "Proud",
+            "Helpful",
+            "Concerned",
+            "Surprised",
+            "Informative"
+        ],
+        "category": "Web Security",
+        "hash": 481241028,
+        "date": 1237966113000,
+        "from": 20327,
+        "to": 20346
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[963]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas asks b.cullinan@cox.net to write a tutorial on exploiting a web security vulnerability they discussed earlier.  b.cullinan@cox.net shares their extensive to-do list and changelog for their media website project, which involves downloading music data from Amazon and creating a discography module.",
+        "emotions": [
+            "Excited",
+            "Curious",
+            "Proud",
+            "Amused",
+            "Impressed"
+        ],
+        "category": "Web Development",
+        "hash": -1851600858,
+        "date": 1237966533000,
+        "from": 20347,
+        "to": 20368
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[964]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is experiencing issues with their .org domain and asks Robert Douglas for help troubleshooting.  Robert Douglas attempts to diagnose the problem, suggesting checks on b.cullinan@cox.net's end and investigating DNS records.",
+        "emotions": [
+            "Frustrated",
+            "Annoyed",
+            "Concerned"
+        ],
+        "category": "DNS Troubleshooting",
+        "hash": -1681193597,
+        "date": 1238402781000,
+        "from": 20369,
+        "to": 20392
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[965]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net and Robert Douglas are troubleshooting a DNS issue, likely related to a domain name transfer. They discuss using a test domain to check DNS propagation and the potential impact of previous DNS settings on the transfer process.",
+        "emotions": [
+            "Curious",
+            "Determined",
+            "Concerned"
+        ],
+        "category": "DNS Troubleshooting",
+        "hash": 421191494,
+        "date": 1238650055000,
+        "from": 20393,
+        "to": 20412
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[966]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net are discussing DNS Time-to-Live (TTL) values and how they affect domain propagation.  They then shift to discussing b.cullinan@cox.net's website, which features a file sharing system with a searchable interface.",
+        "emotions": [
+            "Curious",
+            "Impressed",
+            "Disappointed"
+        ],
+        "category": "DNS",
+        "hash": 1417526281,
+        "date": 1238651060000,
+        "from": 20413,
+        "to": 20432
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[967]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net are discussing the speed of a file-sharing application and plans for syncing files between libraries.  b.cullinan@cox.net is building a server and plans to write a script to synchronize files between two locations.",
+        "emotions": [
+            "Enthusiasm",
+            "Amused",
+            "Disappointed"
+        ],
+        "category": "Tech",
+        "hash": 1436663437,
+        "date": 1238651705000,
+        "from": 20433,
+        "to": 20452
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[968]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around b.cullinan@cox.net's development of a file-sharing site with features like automatic file renaming and error checking.  They also discuss Robert Douglas's RAID setup and plans to add user accounts with enhanced security.",
+        "emotions": [
+            "Excited",
+            "Playful",
+            "Proud",
+            "Neutral",
+            "Impressed",
+            "Interested"
+        ],
+        "category": "Tech",
+        "hash": 1019072221,
+        "date": 1238652634000,
+        "from": 20453,
+        "to": 20472
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[969]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation discusses various hacking techniques, including session hijacking and exploiting server variables. They also talk about XRumer, a spam software used for automated email account registration and link clicking.",
+        "emotions": [
+            "Excited",
+            "Intrigued",
+            "Amusement"
+        ],
+        "category": "Cybersecurity",
+        "hash": -950194978,
+        "date": 1238652991000,
+        "from": 20473,
+        "to": 20492
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[970]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation discusses a website issue related to DNS settings and a tool for scanning repositories.  They also briefly mention a dental procedure Robert Douglas underwent.",
+        "emotions": [
+            "Tired"
+        ],
+        "category": "Tech Support",
+        "hash": 597114619,
+        "date": 1238653871000,
+        "from": 20493,
+        "to": 20514
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[971]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around troubleshooting a website issue where certain characters are not displaying correctly.  They discuss regular expressions to identify and handle the problematic characters.",
+        "emotions": [
+            "Excited",
+            "Neutral",
+            "Frustrated"
+        ],
+        "category": "Tech Support",
+        "hash": -152534357,
+        "date": 1238718094000,
+        "from": 20515,
+        "to": 20536
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[972]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around debugging a website, specifically an issue with a search function and directory listing.  They discuss a fix for the issue and future plans for the website, including an advanced search and downloads section.",
+        "emotions": [
+            "Excited",
+            "Frustrated",
+            "Confident",
+            "Relieved",
+            "Amusement"
+        ],
+        "category": "Website Development",
+        "hash": 1689859867,
+        "date": 1238731727000,
+        "from": 20537,
+        "to": 20562
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[973]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around uninterruptible power supplies (UPS) and their capabilities. They discuss the wattage of their UPS units and the importance of having sufficient power backup for electronics.",
+        "emotions": [
+            "Excited",
+            "Frustrated",
+            "Understanding",
+            "Impressed",
+            "Relieved",
+            "Amusement"
+        ],
+        "category": "UPS Discussion",
+        "hash": 1884422236,
+        "date": 1238811812000,
+        "from": 20563,
+        "to": 20586
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[974]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around troubleshooting a website issue with the domain name newyorkmusic.org. They suspect a DNS problem and discuss solutions like setting up a second nameserver and potentially migrating the website to Robert Douglas's server.",
+        "emotions": [
+            "Confused",
+            "Determined",
+            "Frustrated",
+            "Concerned",
+            "Confused",
+            "Relieved"
+        ],
+        "category": "DNS Troubleshooting",
+        "hash": -2105027164,
+        "date": 1238872282000,
+        "from": 20587,
+        "to": 20606
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[975]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around troubleshooting a DNS issue with a .org domain that is not resolving properly. They determine that the issue stems from the domain only having one nameserver, and that two nameservers are required for proper DNS functionality.",
+        "emotions": [
+            "Confused",
+            "Determined",
+            "Frustrated",
+            "Confused",
+            "Relieved",
+            "Informative"
+        ],
+        "category": "DNS Troubleshooting",
+        "hash": 1104432284,
+        "date": 1238874248000,
+        "from": 20607,
+        "to": 20626
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[976]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around troubleshooting a DNS issue with monolithicmedia.net, specifically related to the SOA MNAME entry and the need for at least two nameservers. They discuss potential solutions, including seeking help on webhostingtalk forums and investigating caching issues with .deb files.",
+        "emotions": [
+            "Confused",
+            "Frustrated",
+            "Helpful",
+            "Confused"
+        ],
+        "category": "DNS Troubleshooting",
+        "hash": 145722418,
+        "date": 1238874948000,
+        "from": 20627,
+        "to": 20650
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[977]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around troubleshooting a persistent issue with a .org domain that is not resolving properly. They discuss the need for expert DNS help, with Robert Douglas suggesting posting on webhostingtalk forums for assistance.",
+        "emotions": [
+            "Frustrated",
+            "Helpful",
+            "Enthusiastic"
+        ],
+        "category": "DNS Troubleshooting",
+        "hash": 1020539761,
+        "date": 1239047474000,
+        "from": 20651,
+        "to": 20672
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[978]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around b.cullinan@cox.net experiencing a denial-of-service attack and seeking help from Robert Douglas on how to block the attacker.  They discuss blocking the attacker's IP address, but the attacker is still able to make requests, leading b.cullinan@cox.net to want to take them offline.",
+        "emotions": [
+            "Anxious",
+            "Determined",
+            "Frustrated",
+            "Helpful"
+        ],
+        "category": "Security Incident",
+        "hash": 191879122,
+        "date": 1239522582000,
+        "from": 20673,
+        "to": 20695
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[979]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around b.cullinan@cox.net seeking advice on how to deal with a persistent attacker. Robert Douglas suggests reporting the attacker's IP address to their ISP, Qwest Communications Corporation, and provides contact information for abuse reporting.",
+        "emotions": [
+            "Humorous",
+            "Determined",
+            "Frustrated",
+            "Helpful",
+            "Relieved",
+            "Informative"
+        ],
+        "category": "Abuse Reporting",
+        "hash": 1107010391,
+        "date": 1239522755000,
+        "from": 20696,
+        "to": 20715
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[980]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around b.cullinan@cox.net dealing with a security incident and seeking advice from Robert Douglas on how to handle it. They discuss reporting the abuse to the attacker's ISP, gathering logs, and changing server passwords.",
+        "emotions": [
+            "Humorous",
+            "Anxious",
+            "Frustrated",
+            "Helpful",
+            "Concerned",
+            "Relieved"
+        ],
+        "category": "Security Incident Response",
+        "hash": -1365812173,
+        "date": 1239524691000,
+        "from": 20716,
+        "to": 20737
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[981]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation starts with Robert Douglas checking in on b.cullinan@cox.net regarding a previous security incident. It then shifts to a lighthearted discussion about a friend who ran a vulnerability test without permission, followed by a brief exchange about ASP programming.",
+        "emotions": [
+            "Curious",
+            "Playful",
+            "Frustrated",
+            "Annoyed",
+            "Lighthearted",
+            "Amusing"
+        ],
+        "category": "Casual Tech Chat",
+        "hash": -1215850771,
+        "date": 1239557048000,
+        "from": 20738,
+        "to": 20761
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[982]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation starts with b.cullinan@cox.net helping Robert Douglas with ASP code to check for empty strings. Later, Robert Douglas asks for help testing something but doesn't elaborate. Finally, he shares some images.",
+        "emotions": [
+            "Neutral",
+            "Frustrated",
+            "Helpful",
+            "Annoyed",
+            "Relieved"
+        ],
+        "category": "Technical Assistance",
+        "hash": 1661071525,
+        "date": 1239604516000,
+        "from": 20762,
+        "to": 20785
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[983]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas shares photos from a summer party at his apartment complex, commenting on the attractiveness of the attendees.  He expresses disappointment that b.cullinan@cox.net won't be in Phoenix for the summer but suggests they get together when possible.",
+        "emotions": [
+            "Excited",
+            "Hopeful",
+            "Neutral",
+            "Confident",
+            "Disappointed"
+        ],
+        "category": "Summer Party Plans",
+        "hash": 28971522,
+        "date": 1240010046000,
+        "from": 20786,
+        "to": 20806
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[984]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is seeking advice on how to write a script that automatically checks external web pages for specific keywords, and if found, sends an email notification with the page title.  He asks b.cullinan@cox.net for suggestions on the best way to achieve this, particularly regarding parsing the page title and adding an hour to a timestamp.",
+        "emotions": [
+            "Curious",
+            "Neutral",
+            "Helpful",
+            "Confident"
+        ],
+        "category": "Web Scripting Help",
+        "hash": -1605315058,
+        "date": 1240085707000,
+        "from": 20807,
+        "to": 20830
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[985]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is seeking help from b.cullinan@cox.net on how to add one hour to a timestamp in PHP without manually setting all the time components.  Later, b.cullinan@cox.net asks Robert Douglas to fill out a user survey for a project.",
+        "emotions": [
+            "Confused",
+            "Neutral",
+            "Helpful",
+            "Annoyed",
+            "Confused"
+        ],
+        "category": "Technical Help",
+        "hash": -810992253,
+        "date": 1240090871000,
+        "from": 20831,
+        "to": 20854
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[986]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation starts with a brief, uneventful exchange.  It then shifts to b.cullinan@cox.net sharing a humorous anecdote about a trip to a strip club and Robert Douglas's lighthearted response.",
+        "emotions": [
+            "Humorous",
+            "Embarrassed",
+            "Amusement"
+        ],
+        "category": "Casual banter",
+        "hash": 627109964,
+        "date": 1240346459000,
+        "from": 20855,
+        "to": 20884
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[987]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation is about the two friends' upcoming finals. They discuss their procrastination habits and anticipation for the end of the semester.",
+        "emotions": [
+            "Anxious",
+            "Hopeful",
+            "Enthusiastic",
+            "Casual",
+            "Confident",
+            "Longing",
+            "Relieved",
+            "Resigned"
+        ],
+        "category": "Finals stress",
+        "hash": 1795085407,
+        "date": 1241381320000,
+        "from": 20885,
+        "to": 20904
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[988]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around the development of a website and the desire to organize MP3 collections.  They discuss features like user management, templates, and tools for fixing MP3 tags.",
+        "emotions": [
+            "Excited",
+            "Anxious",
+            "Determined",
+            "Neutral",
+            "Helpful",
+            "Enthusiastic",
+            "Interested"
+        ],
+        "category": "Website development",
+        "hash": 1196119856,
+        "date": 1241381787000,
+        "from": 20905,
+        "to": 20926
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[989]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around the development of a website and the need for user management and templates.  They also briefly discuss the need for a business card and the cost of professional design.",
+        "emotions": [
+            "Determined",
+            "Frustrated",
+            "Helpful",
+            "Enthusiastic",
+            "Concerned",
+            "Amused",
+            "Surprised"
+        ],
+        "category": "Website development & design",
+        "hash": 722736628,
+        "date": 1241820024000,
+        "from": 20927,
+        "to": 20952
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[990]": {
+        "mtime": 1268083876000,
+        "summary": "The conversation centers around finding an affordable option for business cards. They discuss various pricing options, including a cheaper deal that Robert Douglas no longer offers and Vistaprint's deals with a logo on the back.",
+        "emotions": [
+            "Hopeful",
+            "Determined",
+            "Helpful",
+            "Understanding",
+            "Amusing",
+            "Disappointed"
+        ],
+        "category": "Printing Costs",
+        "hash": -168320653,
+        "date": 1242005951000,
+        "from": 20953,
+        "to": 20972
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[991]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is looking for a cost-effective way to print cards, initially considering a cheap option but then exploring more design possibilities.  They are ultimately considering Vistaprint but want to avoid their logo on the back of the cards.",
+        "emotions": [
+            "Excited",
+            "Playful",
+            "Disappointed",
+            "Indecisive"
+        ],
+        "category": "Business Card Design",
+        "hash": 1745000399,
+        "date": 1242006425000,
+        "from": 20973,
+        "to": 20994
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[992]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is designing party cards and is considering using Vistaprint, despite their logo on the back.  They then shift the conversation to their TV show preferences and photography.",
+        "emotions": [
+            "Curious",
+            "Playful",
+            "Neutral",
+            "Enthusiastic",
+            "Casual",
+            "Indecisive",
+            "Indifferent"
+        ],
+        "category": "Business Card Design",
+        "hash": -2030612672,
+        "date": 1242010246000,
+        "from": 20995,
+        "to": 21016
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[993]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is looking for information about cameras and expresses interest in a project b.cullinan@cox.net is working on involving a clock.  Later, Robert Douglas discusses difficulties he's having programming on Android.",
+        "emotions": [
+            "Curious",
+            "Determined",
+            "Frustrated",
+            "Annoyed",
+            "Amused",
+            "Surprised"
+        ],
+        "category": "Cameras and Programming",
+        "hash": 1129539848,
+        "date": 1242015689000,
+        "from": 21017,
+        "to": 21038
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[994]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas is frustrated with a school project and a computer issue while b.cullinan@cox.net is lamenting the disappearance of their whiskey.  They bond over their shared late-night struggles.",
+        "emotions": [
+            "Annoyed",
+            "Bored",
+            "Amusement"
+        ],
+        "category": "Late Night Struggles",
+        "hash": -1834622944,
+        "date": 1242112188000,
+        "from": 21039,
+        "to": 21060
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[995]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net are discussing their late-night boredom and plans to meet up.  b.cullinan@cox.net emphasizes their comfortable bed, prompting Robert Douglas to jokingly tell them to stop talking about it.",
+        "emotions": [
+            "Excited",
+            "Playful",
+            "Enthusiastic",
+            "Content",
+            "Bored",
+            "Indifferent"
+        ],
+        "category": "Late Night Chat",
+        "hash": -1368749751,
+        "date": 1242123271000,
+        "from": 21061,
+        "to": 21080
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[996]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net is working on a project involving a custom HD clock and shares it with Robert Douglas.  Robert Douglas expresses interest and asks when b.cullinan@cox.net will be in Phoenix.",
+        "emotions": [
+            "Supportive",
+            "Excited",
+            "Proud",
+            "Enthusiastic",
+            "Tired",
+            "Impressed"
+        ],
+        "category": "Project Showcase",
+        "hash": -1312373365,
+        "date": 1242124244000,
+        "from": 21081,
+        "to": 21102
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[997]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net are troubleshooting email delivery issues related to billing for a service. They discuss the possibility of b.cullinan@cox.net's email being marked as spam or missed, and consider alternative email addresses or further testing.",
+        "emotions": [
+            "Confused",
+            "Determined",
+            "Frustrated",
+            "Annoyed",
+            "Concerned",
+            "Confused"
+        ],
+        "category": "Email Troubleshooting",
+        "hash": 969503121,
+        "date": 1242600423000,
+        "from": 21103,
+        "to": 21128
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[998]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net suggests using a Gmail address for billing and then asks Robert Douglas to join LinkedIn for recommendations.  Robert Douglas declines due to privacy concerns, citing the ability to find personal information through online platforms.",
+        "emotions": [
+            "Annoyed",
+            "Concerned",
+            "Dismissive",
+            "Skeptical"
+        ],
+        "category": "Privacy Concerns",
+        "hash": -1396602746,
+        "date": 1243647490000,
+        "from": 21129,
+        "to": 21152
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[999]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas and b.cullinan@cox.net discuss the pros and cons of online visibility, with Robert Douglas expressing a preference for privacy.  Later, Robert Douglas shares a humorous chain email with b.cullinan@cox.net.",
+        "emotions": [
+            "Humorous",
+            "Concerned",
+            "Dismissive",
+            "Skeptical"
+        ],
+        "category": "Privacy Concerns  and Humor",
+        "hash": -717978098,
+        "date": 1244495714000,
+        "from": 21153,
+        "to": 21183
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[1000]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net invites Robert Douglas to a movie and they make plans to meet up.  They discuss their movie plans and Robert Douglas mentions seeing \"Pelham 123\" earlier.",
+        "emotions": [
+            "Excited",
+            "Enthusiastic",
+            "Casual",
+            "Content",
+            "Disappointed"
+        ],
+        "category": "Movie Plans",
+        "hash": 2112438391,
+        "date": 1246315813000,
+        "from": 21184,
+        "to": 21207
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[1001]": {
+        "mtime": 1268083876000,
+        "summary": "b.cullinan@cox.net and Robert Douglas discuss plans to meet up, with Robert Douglas inviting b.cullinan@cox.net to a poolside BBQ on the 4th of July.  They also talk about potential hiking plans for the 4th of July.",
+        "emotions": [
+            "Excited",
+            "Hopeful",
+            "Enthusiastic",
+            "Casual"
+        ],
+        "category": "Summer Plans",
+        "hash": -1854665930,
+        "date": 1246384393000,
+        "from": 21208,
+        "to": 21229
+    },
+    "/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query/fuji897@hotmail.com.log[1002]": {
+        "mtime": 1268083876000,
+        "summary": "Robert Douglas invited b.cullinan@cox.net to his house for dinner and activities, but b.cullinan@cox.net was unsure if they could stay for dinner due to other commitments.  They later confirmed they would likely not stay for dinner but were open to coming over for volleyball and pool.",
+        "emotions": [
+            "Casual",
+            "Uncertain",
+            "Understanding"
+        ],
+        "category": "Social Plans",
+        "hash": -378139844,
+        "date": 1246579919000,
+        "from": 21230,
+        "to": 21248
     }
 }
