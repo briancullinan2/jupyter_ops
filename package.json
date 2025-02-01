@@ -26,6 +26,7 @@
         "d3-node": "^4.0.1",
         "escodegen": "^2.1.0",
         "esprima": "^4.0.1",
+        "express": "^4.21.2",
         "ffi-rs": "^1.2.4",
         "glob": "^11.0.0",
         "googleapis": "^144.0.0",
