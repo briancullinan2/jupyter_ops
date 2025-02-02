@@ -23,6 +23,7 @@
         "url": "git+https://github.com/megamindbrian/jupyter_ops.git"
     },
     "dependencies": {
+        "cors": "^2.8.5",
         "d3-node": "^4.0.1",
         "escodegen": "^2.1.0",
         "esprima": "^4.0.1",
@@ -31,10 +32,13 @@
         "glob": "^11.0.0",
         "googleapis": "^144.0.0",
         "jsdom": "^24.1.1",
+        "mouse-controller": "^1.0.0",
         "node-llama-cpp": "^3.3.2",
+        "node-screenshots": "^0.2.1",
         "node-stream-zip": "^1.15.0",
         "puppeteer": "^23.11.1",
         "remarkable": "^2.0.1",
+        "robotjs": "^0.6.0",
         "wgxpath": "^1.2.0",
         "xlsx": "^0.18.5"
     }
