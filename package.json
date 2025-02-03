@@ -23,6 +23,7 @@
         "url": "git+https://github.com/megamindbrian/jupyter_ops.git"
     },
     "dependencies": {
+        "cookie-parser": "^1.4.7",
         "cors": "^2.8.5",
         "d3-node": "^4.0.1",
         "escodegen": "^2.1.0",
@@ -39,6 +40,7 @@
         "puppeteer": "^23.11.1",
         "remarkable": "^2.0.1",
         "robotjs": "^0.6.0",
+        "sharp": "^0.33.5",
         "wgxpath": "^1.2.0",
         "xlsx": "^0.18.5"
     }
