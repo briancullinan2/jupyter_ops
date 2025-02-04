@@ -1,0 +1,182 @@
+.section-subgroups-link>div>div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+body.packs>div:nth-of-type(2)>div {
+    display: flex;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.section-subgroups-link>div>div>*,
+body.packs>div:nth-of-type(2)>div>* {
+    flex-basis: 50%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 20px;
+}
+
+.section-subgroups-link>div>div>*>div,
+body.packs>div:nth-of-type(2)>div>*>div {
+    padding: 20px;
+    border: 1px solid #333;
+    position: relative;
+    background: #EEE;
+    text-align: left;
+    border-radius: 1px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+    box-shadow: 1px 2px 20px rgba(255, 255, 255, 1);
+    border-radius: 4px;
+}
+
+.section-subgroups-link>div>div>*>div>a,
+body.packs>div:nth-of-type(2)>div>*>div>a {
+    flex-basis: 100%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.section-subgroups-link>div>div>*>div>a>img,
+body.packs>div:nth-of-type(2)>div>*>div>a>img {
+    margin: auto 20px;
+    max-width: 100px;
+    width: auto;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.section-subgroups-link>div>div>*>div>div img,
+body.packs>div:nth-of-type(2)>div>*>div>div img {
+    max-height: 120px;
+}
+
+.section-subgroups-link>div>div>*>div>div a,
+body.packs>div:nth-of-type(2)>div>*>div>div a {
+    display: block;
+    content: " ";
+}
+
+.section-subgroups-link>div>div>*>div>div,
+body.packs>div:nth-of-type(2)>div>*>div>div {
+    position: relative;
+}
+
+body.packs>div:nth-of-type(2)>div>*>div>div:hover:before {
+    height: 0;
+    border: 0 solid transparent;
+}
+
+body.packs>div:nth-of-type(2)>div>*>div>div:hover:after {
+    height: 0;
+    border-right: 0;
+    margin-top: -20px;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 25px solid #09B;
+}
+
+body.packs>div:nth-of-type(2)>div>*>div>div:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    right: 5px;
+    margin-top: -2px;
+    top: 50%;
+    width: 25px;
+    border-top: 2px solid #bbb;
+    border-left: 0 solid transparent;
+    border-right: 0 solid transparent;
+    border-bottom: 4px solid #bbb;
+    height: 12px;
+    transition: .15s ease-in-out;
+}
+
+body.packs>div:nth-of-type(2)>div>*>div>div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    right: 5px;
+    margin-top: -14px;
+    top: 50%;
+    width: 25px;
+    border-top: 4px solid #bbb;
+    border-left: 0 solid transparent;
+    border-right: 0 solid transparent;
+    border-bottom: 2px solid #bbb;
+    height: 12px;
+    transition: .15s ease-in-out;
+}
+
+.section-subgroups-link>div>div>*>div>div span,
+body.packs>div:nth-of-type(2)>div>*>div>div span {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: #bbb;
+    width: 100%;
+    display: block;
+    top: auto;
+    margin-left: 0;
+    padding-left:120px;
+}
+
+.section-subgroups-link>div>div>*>div>div a>span,
+body.packs>div:nth-of-type(2)>div>*>div>div a>span {
+    flex-basis: 50%;
+    flex-grow: 1;
+}
+
+.section-subgroups-link>div>div>*>div>div a>span:last-of-type,
+body.packs>div:nth-of-type(2)>div>*>div>div a>span:last-of-type {
+    text-align: right;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
+
+body.pack form>div {
+    flex-basis: 50%;
+    padding: 20px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+body.pack form>div:nth-last-of-type(even) {
+    padding-left: 160px;
+    margin-left: 80px;
+    left: 80px;
+}
+
+body.pack form>div:nth-last-of-type(odd) {
+    padding-left: 80px;
+    margin-left: -80px;
+}
+
+body.pack form {
+    background: #EEE;
+    border: 1px solid #333;
+    border-radius: 4px;
+    box-shadow: 1px 2px 20px rgba(255, 255, 255, 1);
+    padding: 20px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+body.pack form img {
+    max-height: 200px;
+    width: 200px;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    margin-top: -50px;
+}

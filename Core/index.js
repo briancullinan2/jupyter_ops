@@ -33,5 +33,5 @@ Module._extensions['.ipynb'] = (module, filename, ctx) => {
         _compile: () => {}
     }
     tmpModule._compile = () => (module.exports = newModule.exports.import(filename, ctx))
-    return require.extensions['.js'](tmpModule, filename)
+    return Module._extensions['.js'](tmpModule, filename, ctx)
 }
