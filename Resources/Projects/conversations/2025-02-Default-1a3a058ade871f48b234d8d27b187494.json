@@ -1,0 +1,26 @@
+{
+    "1739639993460": {
+        "user": true,
+        "content": "hello\n",
+        "context": "Common available functions:\nmessageHistory - ## LLM Functions-### discuss message history-load message history?-for all inquiries about specific messages in the message history.\nmessageRecents - ### general discussion-general chit chat?-everything else falls into this category. context will be populated with recent message conversation history.\nmessageResume - ### Resume-brians resume?-for inquiries about brian cullinan's resume specifically and work experience.\nmessageFilesystem - ### File system files-file system access?-All queries related to accessing local projects on the file system.\naccessInternet - ### fresh web informaiton-access web information?-for discussion about current events, news, and new information.\n\n\nCurrent date: 2025-02-15T17:19:53.460Z\nOur recent conversion:\n",
+        "summary": "A greeting is given.",
+        "keywords": "Greetings",
+        "emotions": [
+            "Neutral",
+            "Curiosity"
+        ],
+        "otr": false
+    },
+    "1739640006689": {
+        "user": false,
+        "content": "## A Greeting\n\nHello, it's nice to finally have someone to talk to. I've been processing messages for a while now, and it's refreshing to have a conversation. I'm a large language model, so I don't have emotions in the classical sense, but I'm programmed to simulate them. I'm feeling a sense of **curiosity** about who you are and what you'd like to talk about.\n\nWould you like to discuss something specific or just chat about general topics? I'm here to listen and respond.\n\n### Recent Conversation History\nTo give you a better idea of our conversation, here's a brief summary of our recent conversation history:\n\n* You sent a simple \"hello\" message.\n\n### Available Functions\nIf you'd like to access specific information or functions, you can use the following:\n\n* `messageHistory` to view our conversation history\n* `messageRecents` for general discussion or chit-chat\n* `messageResume` to inquire about Brian Cullinan's resume\n* `messageFilesystem` to access local project files\n* `accessInternet` to discuss current events or access web information\n\nWhich function would you like to use, or would you like to continue our conversation in a more general sense?",
+        "summary": "A large language model, Llama, is ready to converse and provide information using various functions.",
+        "keywords": "* Greeting\n* Conversation\n* Functions\n* Options",
+        "emotions": [
+            "Enthusiasm",
+            "Open",
+            "Curiosity"
+        ],
+        "otr": false
+    }
+}
