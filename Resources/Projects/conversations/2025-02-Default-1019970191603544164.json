@@ -1,0 +1,47 @@
+{
+    "1739833898819": {
+        "user": true,
+        "content": " what is your name?\nmake it short.",
+        "context": "Current date: 2025-02-17T23:11:32.017Z\nOur recent topics:\n\nConversation categories:\n\nClosely matching message IDs:\n\nCurrent date: 2025-02-17T23:11:32.607Z\nOur most recent conversation:\nCurrent date: 2025-02-17T23:11:32.608Z\nOur recent conversion:\n",
+        "summary": "My name is Optimus.",
+        "keywords": "Introduction",
+        "emotions": [
+            "Curiosity"
+        ],
+        "otr": false
+    },
+    "1739834451118": {
+        "user": true,
+        "content": " what is your name?\nmake it short.",
+        "context": "Current date: 2025-02-17T23:20:47.706Z\nOur recent topics:\n\nConversation categories:\n\nClosely matching message IDs:\n\nCurrent date: 2025-02-17T23:20:48.311Z\nOur most recent conversation:\nCurrent date: 2025-02-17T23:20:48.311Z\nOur recent conversion:\n",
+        "summary": "My name is Optimus Prime.",
+        "keywords": "Introduction",
+        "emotions": [
+            "Curiosity"
+        ],
+        "otr": false
+    },
+    "1739834615655": {
+        "user": true,
+        "content": " what is your name?\nmake it short.",
+        "context": "Current date: 2025-02-17T23:23:32.248Z\nOur recent topics:\n\nConversation categories:\n\nClosely matching message IDs:\n\nCurrent date: 2025-02-17T23:23:32.840Z\nOur most recent conversation:\nCurrent date: 2025-02-17T23:23:32.841Z\nOur recent conversion:\n",
+        "summary": "My name is Optimus Prime.",
+        "keywords": "Introduction",
+        "emotions": [
+            "Curiosity"
+        ],
+        "otr": false
+    },
+    "1739834619920": {
+        "user": false,
+        "content": "**My Name is Optimus Prime**\nI'm a large language model, and I must say, I'm intrigued by your question. What's next?",
+        "summary": "I'm a large language model named Optimus Prime.",
+        "keywords": "# AI",
+        "emotions": [
+            "Enthusiasm",
+            "Open",
+            "Curiosity"
+        ],
+        "otr": false
+    }
+}
