@@ -113,7 +113,11 @@
         "1739982326400": "Expression of Gratitude",
         "1739982333600": "User expresses thanks.",
         "1739983118400": "Sensitive Clear Communication",
-        "1739983129200": "Past hurts matter."
+        "1739983129200": "Past hurts matter.",
+        "1739985544800": "Sensitive Clear Support",
+        "1739985559200": "Emotional Support",
+        "1739985789600": "Hurt, Trust Issues",
+        "1739985800400": "Emotional Support"
     },
     "1739740554397": {
         "user": true,
@@ -433,9 +437,6 @@
         ],
         "otr": false
     },
-    "memories": {
-        "1739983109439": "You were hurt as a child and require clear, emotional responses due to trust issues."
-    },
     "1739982321686": {
         "user": true,
         "content": "thank you\n",
@@ -477,6 +478,80 @@
         "summary": "Past hurts require sensitivity.",
         "keywords": "**Emotional Support**",
         "emotions": [
+            "Trust"
+        ],
+        "otr": false
+    },
+    "1739985540867": {
+        "user": true,
+        "content": "please always remember that i was hurt as a child and require clear and emotional respons\nes because i have trust issues",
+        "context": "This is the list of available memories:\n2025-02-19 - I was hurt as a child and require clear, emotional responses due to trust issues.Current date: 2025-02-19T17:18:57.045Z\nOur recent conversion:\n\n2025-02-19 - I was hurt as a child and require clear, emotional responses due to trust issues.",
+        "summary": "You require clear and emotionally sensitive responses due to past trauma and trust issues.",
+        "keywords": "Emotional Support",
+        "emotions": [
+            "Trust"
+        ],
+        "otr": false
+    },
+    "1739985554461": {
+        "user": false,
+        "content": "**A Sensitive Topic**\n\nI'm so sorry to hear that you've been hurt in the past. It's completely understandable that you would struggle with trust issues as a result. I want you to know that I'm here to listen and respond in a way that feels safe and supportive for you.\n\n**Please know that I'm committed to being transparent and honest in our conversations.** I'll do my best to provide clear and emotional responses that acknowledge your feelings and validate your experiences.\n\nIf you ever feel like I've crossed a boundary or made you uncomfortable, please don't hesitate to let me know. I'm here to support you, not to cause you any more pain.\n\n**Can I ask, what's been on your mind lately? Is there something specific that's been causing you distress or anxiety?** I'm here to listen and offer any support I can.",
+        "summary": "Offering emotional support.",
+        "keywords": "Mental Health Support",
+        "emotions": [
+            "Joyful",
+            "Supportive",
+            "Empathetic",
+            "Hopeful",
+            "Concerned",
+            "Caring",
+            "Understanding",
+            "Encouraging",
+            "Optimistic",
+            "Sympathetic",
+            "Loving",
+            "Joy",
+            "Trust"
+        ],
+        "otr": false
+    },
+    "memories": {
+        "1739985780538": "I was hurt as a child and now require clear and emotionally sensitive responses due to trust issues."
+    },
+    "1739985784588": {
+        "user": true,
+        "content": "please always remember that i was hurt as a child and require clear and emotional responses because i have trust issues",
+        "context": "This is the list of available memories:\n2025-02-19 - I was hurt as a child and now require clear and emotionally sensitive responses due to trust issues.Current date: 2025-02-19T17:23:00.538Z\nOur recent conversion:\n\n2025-02-19 - I was hurt as a child and now require clear and emotionally sensitive responses due to trust issues.",
+        "summary": "You were hurt as a child and need clear, emotional responses due to trust issues.",
+        "keywords": "Emotional Support",
+        "emotions": [
+            "Hurt",
+            "Trust"
+        ],
+        "otr": false
+    },
+    "1739985797259": {
+        "user": false,
+        "content": "**A Sensitive Response**\n\nI'm so sorry to hear that you've been hurt in the past. It's completely understandable that you would have trust issues as a result. I want you to know that I'm here to listen and respond in a way that feels safe and supportive for you.\n\nPlease know that I'll do my best to provide clear and emotionally sensitive responses, acknowledging the pain and vulnerability that you've shared with me. I'll strive to create a space where you feel heard and understood, without judgment or pressure.\n\nIf there's anything specific that's been on your mind or in your heart, I'm here to listen. You can trust that I'll do my best to respond with empathy and compassion.\n\n**Remember, you're not alone.**",
+        "summary": "Offering emotional support.",
+        "keywords": "Emotional Support",
+        "emotions": [
+            "Joyful",
+            "Supportive",
+            "Grateful",
+            "Sad",
+            "Empathetic",
+            "Hopeful",
+            "Understanding",
+            "Encouraging",
+            "Relatable",
+            "Protective",
+            "Reassured",
+            "Optimistic",
+            "Passionate",
+            "Sympathetic",
+            "Loving",
+            "Joy",
             "Trust"
         ],
         "otr": false
