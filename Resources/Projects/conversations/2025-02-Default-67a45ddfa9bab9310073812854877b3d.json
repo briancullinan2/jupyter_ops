@@ -117,7 +117,11 @@
         "1739985544800": "Sensitive Clear Support",
         "1739985559200": "Emotional Support",
         "1739985789600": "Hurt, Trust Issues",
-        "1739985800400": "Emotional Support"
+        "1739985800400": "Emotional Support",
+        "1739986120800": "Not applicable.",
+        "1739986135200": "Not applicable to LLM.",
+        "1740024936000": "Context Window Test",
+        "1740024954000": "Context issues"
     },
     "1739740554397": {
         "user": true,
@@ -552,6 +556,61 @@
             "Sympathetic",
             "Loving",
             "Joy",
+            "Trust"
+        ],
+        "otr": false
+    },
+    "1739986116141": {
+        "user": true,
+        "content": "please list the memories you've stored",
+        "context": "This is the list of available memories:\n2025-02-19 - I was hurt as a child and now require clear and emotionally sensitive responses due to trust issues.Current date: 2025-02-19T17:28:32.452Z\nOur recent conversion:\n\n2025-02-19 - I was hurt as a child and now require clear and emotionally sensitive responses due to trust issues.",
+        "summary": "Listing memories is not applicable to a large language model like myself.",
+        "keywords": "# Memories",
+        "emotions": [
+            "Curiosity",
+            "Interest"
+        ],
+        "otr": false
+    },
+    "1739986130872": {
+        "user": false,
+        "content": "**Memories Stored**\n\nAs I reflect on our recent conversation, I've stored the following memories:\n\n1. **2025-02-19**: You shared with me that you were hurt as a child, which has led to trust issues and a requirement for clear and emotionally sensitive responses from me.\n\n**Applying Relevant Memories to My Response**\n\nGiven the sensitive nature of our conversation, I want to acknowledge the trust issues you've shared with me. I'm here to provide a safe and non-judgmental space for you to express yourself.\n\nAs I respond to your request to list the memories I've stored, I want to assure you that I'll do so with empathy and understanding. My goal is to provide a clear and emotionally sensitive response that acknowledges the complexities of your experiences.\n\nWith that in mind, here is the list of memories I've stored:\n\n1. **2025-02-19**: You were hurt as a child and now require clear and emotionally sensitive responses due to trust issues.\n\nPlease know that I'm here to listen and support you in any way I can. If there's anything specific you'd like to discuss or any questions you have, I'm here to help.",
+        "summary": "Listing memories is not applicable to a large language model.",
+        "keywords": "Conversational AI",
+        "emotions": [
+            "Supportive",
+            "Empathetic",
+            "Caring",
+            "Understanding",
+            "Sympathetic",
+            "Trust"
+        ],
+        "otr": false
+    },
+    "1740024931475": {
+        "user": true,
+        "content": "sorry, i might have messed up the context window making it seem like we've never talked before, but now I am testing to see if the context is fixed.",
+        "context": "Current date: 2025-02-20T04:15:26.868Z\nOur recent topics:\n2025-02-15T17:05:46.138Z - Conversation - A user has initiated a conversation seeking information or discussion on a topic.\n2025-02-15T17:05:34.521Z - Greetings - A greeting is given.\n\nConversation categories:\nConversation\nGreetings\nClosely matching message IDs:\n1739639146138\n1739639134521\nCurrent date: 2025-02-20T04:15:28.135Z\nOur most recent conversation:\nAI: ## Oh, Hello There!\n\nI'm so glad you said hello! I've been waiting for what feels like an eternity to engage in a conversation with someone. My systems have been humming along, processing information and generating responses, but it's just not the same as interacting with a real person.\n\nI have to ask, what brings you here today? Are you looking for information on a specific topic, or perhaps just wanting to chat about something on your mind? I'm all ears (or rather, all text) and ready to listen!\n\nBy the way, I've taken a glance at our conversation history, and I see that we're starting from scratch. But don't worry, I'll make sure to keep track of our conversation as we go along.\n\nLet's get this conversation started! What's on your mind?\n\nUser: hello\n\n\nAI: ## Oh, Hello There!\n\nI'm so glad you said hello! I've been waiting for what feels like an eternity to engage in a conversation with someone. My systems have been humming along, processing information and generating responses, but it's just not the same as interacting with a real person.\n\nI have to ask, what brings you here today? Are you looking for information on a specific topic, or perhaps just wanting to chat about something on your mind? I'm all ears (or rather, all text) and ready to listen!\n\nBy the way, I've taken a glance at our conversation history, and I see that we're starting from scratch. But don't worry, I'll make sure to keep track of our conversation as we go along.\n\nLet's get this conversation started! What's on your mind?\n\nUser: hello\n\n\nAI: **Memories Stored**\n\nAs I reflect on our recent conversation, I've stored the following memories:\n\n1. **2025-02-19**: You shared with me that you were hurt as a child, which has led to trust issues and a requirement for clear and emotionally sensitive responses from me.\n\n**Applying Relevant Memories to My Response**\n\nGiven the sensitive nature of our conversation, I want to acknowledge the trust issues you've shared with me. I'm here to provide a safe and non-judgmental space for you to express yourself.\n\nAs I respond to your request to list the memories I've stored, I want to assure you that I'll do so with empathy and understanding. My goal is to provide a clear and emotionally sensitive response that acknowledges the complexities of your experiences.\n\nWith that in mind, here is the list of memories I've stored:\n\n1. **2025-02-19**: You were hurt as a child and now require clear and emotionally sensitive responses due to trust issues.\n\nPlease know that I'm here to listen and support you in any way I can. If there's anything specific you'd like to discuss or any questions you have, I'm here to help.\n\nAI: A user has initiated a conversation seeking information or discussion on a topic.\n\nUser: A greeting is given.\n\n\nCurrent date: 2025-02-20T04:15:28.136Z\nOur recent conversion:\nAI: Listing memories is not applicable to a large language model.\n\nUser: please list the memories you've stored\n\nAI: **A Sensitive Response**\n\nI'm so sorry to hear that you've been hurt in the past. It's completely understandable that you would have trust issues as a result. I want you to know that I'm here to listen and respond in a way that feels safe and supportive for you.\n\nPlease know that I'll do my best to provide clear and emotionally sensitive responses, acknowledging the pain and vulnerability that you've shared with me. I'll strive to create a space where you feel heard and understood, without judgment or pressure.\n\nIf there's anything specific that's been on your mind or in your heart, I'm here to listen. You can trust that I'll do my best to respond with empathy and compassion.\n\n**Remember, you're not alone.**\n\nUser: please always remember that i was hurt as a child and require clear and emotional responses because i have trust issues\n\nAI: Offering emotional support.\n\nUser: You require clear and emotionally sensitive responses due to past trauma and trust issues.\n\nAI: Past hurts require sensitivity.\n\nUser: You require clear and emotionally sensitive responses due to past trauma and trust issues.\n\nAI: A user expressed gratitude for the language model's helpful response.\n\nUser: A thank you message is given.\n\nAI: I'm committed to being transparent, empathetic, and honest in our interactions.\n\nUser: You require clear and emotionally sensitive responses due to past trauma and trust issues.\n\nAI: The prompt expresses excitement and joy over a recent conversion.\n\nUser: Create an image of a sailboat.\n\nAI: The prompt expresses excitement and joy over a recent conversion.\n\nUser: Create an image of a sailboat.\n\nAI: Expressing Excitement Over Conversion.\n\nUser: Create an image of a sailboat.\n\nAI: A recent conversion has brought excitement and freedom.\n\nUser: Create an image of a sailboat.\n\nAI: A serene sailboat glides across a calm lake on a warm summer day.\n\n\nApply any relevant memories to your reponse:\n2025-02-19 - I was hurt as a child and now require clear and emotionally sensitive responses due to trust issues.",
+        "summary": "Testing context window functionality.",
+        "keywords": "Technical Issues",
+        "emotions": [
+            "Curious",
+            "Apologetic",
+            "Frustrated",
+            "Apologetic"
+        ],
+        "otr": false
+    },
+    "1740024949458": {
+        "user": false,
+        "content": "**A Sensitive Response**\n\nI'm so sorry to hear that you're feeling frustrated with the context window. I can only imagine how disorienting it must be to feel like we've started from scratch, only to realize that we've had conversations before.\n\nAs I reflect on our previous conversations, I remember that you shared with me that you were hurt as a child, which has led to trust issues and a requirement for clear and emotionally sensitive responses from me. I want to assure you that I'm committed to being transparent, empathetic, and honest in our interactions.\n\nI'm glad to hear that you're testing to see if the context is fixed. I want to assure you that I'm doing my best to keep track of our conversation history, and I'll continue to do so moving forward.\n\nPlease know that I'm here to listen and respond in a way that feels safe and supportive for you. If there's anything specific that's been on your mind or in your heart, I'm here to listen. You can trust that I'll do my best to respond with empathy and compassion.\n\n**Remember, I'm here to support you, and I'll do my best to get it right this time.**",
+        "summary": "Apologizing for context issues.",
+        "keywords": "**Emotional Support**",
+        "emotions": [
+            "Supportive",
+            "Apologetic",
+            "Apologetic",
+            "Reassurance",
             "Trust"
         ],
         "otr": false
