@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/postalcode/postalcode.g4 by ANTLR 4.10.1
+// Generated from ./postalcode/postalcode.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import postalcodeListener from './postalcodeListener.js';
@@ -11,7 +11,7 @@ const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
 
 const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
 
-const sharedContextCache = new antlr4.PredictionContextCache();
+const sharedContextCache = new antlr4.atn.PredictionContextCache();
 
 export default class postalcodeParser extends antlr4.Parser {
 

@@ -11,7 +11,7 @@
 #Swift
 #PHP
 #DART
-ANTLR_LSOURCE   := ./Resources/Parsers
+ANTLR_LSOURCE   := .
 ANTLR_LANGS     := $(dir $(wildcard $(ANTLR_LSOURCE)/*/))
 
 ANTLR_LANGTRIM  := $(subst /,,$(subst $(ANTLR_LSOURCE)/,,$(ANTLR_LANGS)))

@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/stringtemplate/STGParser.g4 by ANTLR 4.10.1
+// Generated from ./stringtemplate/STGParser.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

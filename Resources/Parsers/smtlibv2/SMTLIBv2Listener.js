@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/smtlibv2/SMTLIBv2.g4 by ANTLR 4.10.1
+// Generated from ./smtlibv2/SMTLIBv2.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

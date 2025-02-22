@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/microc/microc.g4 by ANTLR 4.10.1
+// Generated from ./microc/microc.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

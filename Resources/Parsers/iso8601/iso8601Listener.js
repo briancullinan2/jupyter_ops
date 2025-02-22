@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/iso8601/iso8601.g4 by ANTLR 4.10.1
+// Generated from ./iso8601/iso8601.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

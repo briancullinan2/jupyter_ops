@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/tinyc/tinyc.g4 by ANTLR 4.10.1
+// Generated from ./tinyc/tinyc.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

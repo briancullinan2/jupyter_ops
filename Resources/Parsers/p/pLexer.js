@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/p/p.g4 by ANTLR 4.10.1
+// Generated from ./p/p.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -27,7 +27,7 @@ export default class pLexer extends antlr4.Lexer {
 
     constructor(input) {
         super(input)
-        this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.PredictionContextCache());
+        this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.atn.PredictionContextCache());
     }
 
     get atn() {

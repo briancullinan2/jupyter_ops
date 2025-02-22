@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/css3/css3.g4 by ANTLR 4.10.1
+// Generated from ./css3/css3.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

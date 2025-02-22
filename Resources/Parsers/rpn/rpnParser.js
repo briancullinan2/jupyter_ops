@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/rpn/rpn.g4 by ANTLR 4.10.1
+// Generated from ./rpn/rpn.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import rpnListener from './rpnListener.js';
@@ -19,7 +19,7 @@ const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
 
 const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
 
-const sharedContextCache = new antlr4.PredictionContextCache();
+const sharedContextCache = new antlr4.atn.PredictionContextCache();
 
 export default class rpnParser extends antlr4.Parser {
 

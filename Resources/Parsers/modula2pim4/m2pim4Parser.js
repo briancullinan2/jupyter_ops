@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/modula2pim4/m2pim4.g4 by ANTLR 4.10.1
+// Generated from ./modula2pim4/m2pim4.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import m2pim4Listener from './m2pim4Listener.js';
@@ -274,7 +274,7 @@ const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
 
 const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
 
-const sharedContextCache = new antlr4.PredictionContextCache();
+const sharedContextCache = new antlr4.atn.PredictionContextCache();
 
 export default class m2pim4Parser extends antlr4.Parser {
 

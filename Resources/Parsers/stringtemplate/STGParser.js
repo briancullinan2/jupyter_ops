@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/stringtemplate/STGParser.g4 by ANTLR 4.10.1
+// Generated from ./stringtemplate/STGParser.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import STGParserListener from './STGParserListener.js';
@@ -48,7 +48,7 @@ const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
 
 const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
 
-const sharedContextCache = new antlr4.PredictionContextCache();
+const sharedContextCache = new antlr4.atn.PredictionContextCache();
 
 export default class STGParser extends antlr4.Parser {
 

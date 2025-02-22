@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/hypertalk/HyperTalk.g4 by ANTLR 4.10.1
+// Generated from ./hypertalk/HyperTalk.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -1169,7 +1169,7 @@ export default class HyperTalkLexer extends antlr4.Lexer {
 
     constructor(input) {
         super(input)
-        this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.PredictionContextCache());
+        this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.atn.PredictionContextCache());
     }
 
     get atn() {

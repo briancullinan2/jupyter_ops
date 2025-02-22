@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/idl/IDL.g4 by ANTLR 4.10.1
+// Generated from ./idl/IDL.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

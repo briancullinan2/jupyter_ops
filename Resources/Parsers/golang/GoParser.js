@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/golang/GoParser.g4 by ANTLR 4.10.1
+// Generated from ./golang/GoParser.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import GoParserListener from './GoParserListener.js';
@@ -328,7 +328,7 @@ const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
 
 const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
 
-const sharedContextCache = new antlr4.PredictionContextCache();
+const sharedContextCache = new antlr4.atn.PredictionContextCache();
 
 export default class GoParser extends GoParserBase {
 

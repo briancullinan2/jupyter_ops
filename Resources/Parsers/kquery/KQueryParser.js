@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/kquery/KQuery.g4 by ANTLR 4.10.1
+// Generated from ./kquery/KQuery.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import KQueryListener from './KQueryListener.js';
@@ -102,7 +102,7 @@ const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
 
 const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
 
-const sharedContextCache = new antlr4.PredictionContextCache();
+const sharedContextCache = new antlr4.atn.PredictionContextCache();
 
 export default class KQueryParser extends antlr4.Parser {
 

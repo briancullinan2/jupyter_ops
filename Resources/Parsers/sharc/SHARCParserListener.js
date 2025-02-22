@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/sharc/SHARCParser.g4 by ANTLR 4.10.1
+// Generated from ./sharc/SHARCParser.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

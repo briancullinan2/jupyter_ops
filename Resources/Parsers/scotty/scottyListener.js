@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/scotty/scotty.g4 by ANTLR 4.10.1
+// Generated from ./scotty/scotty.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

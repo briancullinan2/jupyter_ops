@@ -24,6 +24,8 @@
         "url": "git+https://github.com/megamindbrian/jupyter_ops.git"
     },
     "dependencies": {
+        "antlr4": "^4.13.2",
+        "antlr4ts": "^0.5.0-alpha.4",
         "cookie-parser": "^1.4.7",
         "cors": "^2.8.5",
         "d3-node": "^4.0.1",

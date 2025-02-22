@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/icon/icon.g4 by ANTLR 4.10.1
+// Generated from ./icon/icon.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

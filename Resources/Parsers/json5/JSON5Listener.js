@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/json5/JSON5.g4 by ANTLR 4.10.1
+// Generated from ./json5/JSON5.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/rfc1960/filter.g4 by ANTLR 4.10.1
+// Generated from ./rfc1960/filter.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

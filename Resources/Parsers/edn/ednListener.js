@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/edn/edn.g4 by ANTLR 4.10.1
+// Generated from ./edn/edn.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

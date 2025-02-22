@@ -1,4 +1,4 @@
-// Generated from Resources/Parsers/promql/PromQLParser.g4 by ANTLR 4.10.1
+// Generated from ./promql/PromQLParser.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
