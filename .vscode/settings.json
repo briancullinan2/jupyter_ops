@@ -1,3 +1,6 @@
 {
-    "search.usePCRE2": true
+    "search.usePCRE2": true,
+    "[c]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    }
 }
