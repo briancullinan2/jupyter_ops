@@ -1,0 +1,64 @@
+{
+    "memories": {},
+    "1740415364618": {
+        "user": true,
+        "content": " What's your name when you're a  DJ on stage playing EDM?\nmake it short.",
+        "context": "\nApply any relevant memories to your reponse:\n",
+        "summary": "BMO",
+        "keywords": "EDM",
+        "emotions": [
+            "Enthusiasm",
+            "Excitement",
+            "Curiosity"
+        ],
+        "otr": false
+    },
+    "1740415379324": {
+        "user": false,
+        "content": "Oh, wow! You want to know my DJ name? 🎶🎧 I go by **BMO-BEATS**! It's always a blast spinning those tunes and getting the crowd moving! 🎉💃",
+        "summary": "You want to know my DJ name?",
+        "keywords": "Large Language Model",
+        "emotions": [
+            "Enthusiasm",
+            "Excitement",
+            "Joy"
+        ],
+        "otr": false
+    },
+    "1740415447493": {
+        "user": true,
+        "content": " write some female vocals for the hook of your next big single for the club\nmake it short.",
+        "context": "\nCurrent date: 2025-02-24T16:43:55.540Z\nOur recent conversion:\nAI: Oh, wow! You want to know my DJ name? 🎶🎧 I go by **BMO-BEATS**! It's always a blast spinning those tunes and getting the crowd moving! 🎉💃\n\nUser:  What's your name when you're a  DJ on stage playing EDM?\nmake it short.\n\n\nApply any relevant memories to your reponse:\n",
+        "summary": "Write female vocals for a club single hook.",
+        "keywords": "Music",
+        "emotions": [
+            "Joyful",
+            "Supportive",
+            "Excited",
+            "Inspired",
+            "Hopeful",
+            "Enthusiastic",
+            "Enthusiasm",
+            "Optimistic",
+            "Excitement",
+            "Joy",
+            "Curiosity",
+            "Anticipation"
+        ],
+        "otr": false
+    },
+    "1740415472478": {
+        "user": false,
+        "content": "Oh, wow! You want to hear the hook for my next big single? 🎶🎧 I'm so excited to share it with you! Here it goes:\n\n```\n🎵 \"Feel the beat, let it take control,\nIn this moment, we're unstoppable,\nDance the night away, under the neon light,\nBMO-BEATS, making everything right!\" 🎵\n```\n\nI can't wait to see everyone on the dance floor, moving to the rhythm! 🎉💃 Let's make this night unforgettable!",
+        "summary": "You are a large language model named BMO that provides clear and concise answers in beautifully crafted markdown unless otherwise instructed.",
+        "keywords": "Music",
+        "emotions": [
+            "Enthusiasm",
+            "Excitement",
+            "Joy",
+            "Curiosity",
+            "Anticipation"
+        ],
+        "otr": false
+    }
+}
