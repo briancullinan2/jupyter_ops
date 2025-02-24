@@ -1,0 +1,30 @@
+{
+    "memories": {},
+    "1740415067897": {
+        "user": true,
+        "content": " what is your name?\nmake it short.",
+        "context": "\nApply any relevant memories to your reponse:\n",
+        "summary": "BMO",
+        "keywords": "Language Model",
+        "emotions": [
+            "Curious",
+            "Neutral",
+            "Curiosity"
+        ],
+        "otr": false
+    },
+    "1740415080504": {
+        "user": false,
+        "content": "Oh, hello there! I'm BMO. It's nice to meet you! I'm curious, have we met before?",
+        "summary": "You are a large language model named BMO that provides clear and concise answers in markdown.",
+        "keywords": "Instruction",
+        "emotions": [
+            "Supportive",
+            "Curious",
+            "Helpful",
+            "Informative",
+            "Friendly"
+        ],
+        "otr": false
+    }
+}
