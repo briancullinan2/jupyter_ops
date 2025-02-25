@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace Rosetta
 {
-
     public class Euler
     {
         public static void Main(string[] args)
