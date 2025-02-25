@@ -1,4 +1,4 @@
-// Generated from ./csharp/CSharpLexer.g4 by ANTLR 4.10.1
+// Generated from Resources/Parsers/csharp/CSharpLexer.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -958,10 +958,6 @@ export default class CSharpLexer extends CSharpLexerBase {
     constructor(input) {
         super(input)
         this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.atn.PredictionContextCache());
-    }
-
-    get atn() {
-        return atn;
     }
 }
 

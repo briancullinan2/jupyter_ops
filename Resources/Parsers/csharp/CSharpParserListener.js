@@ -1,4 +1,4 @@
-// Generated from ./csharp/CSharpParser.g4 by ANTLR 4.10.1
+// Generated from Resources/Parsers/csharp/CSharpParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

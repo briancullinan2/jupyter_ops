@@ -1,4 +1,4 @@
-// Generated from ./csharp/CSharpParser.g4 by ANTLR 4.10.1
+// Generated from Resources/Parsers/csharp/CSharpParser.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import CSharpParserListener from './CSharpParserListener.js';
@@ -1198,10 +1198,6 @@ export default class CSharpParser extends CSharpParserBase {
         this.symbolicNames = CSharpParser.symbolicNames;
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 86:
@@ -1229,7 +1225,7 @@ export default class CSharpParser extends CSharpParserBase {
     right_arrow_sempred(localctx, predIndex) {
     	switch(predIndex) {
     		case 1:
-    			return (localctx.first === null ? 0 : localctx.first.tokenIndex) + 1 == (localctx.second === null ? 0 : localctx.second.tokenIndex);
+    			return (localctx.first == null ? 0 : localctx.first.tokenIndex) + 1 == (localctx.second == null ? 0 : localctx.second.tokenIndex);
     		default:
     			throw "No predicate with index:" + predIndex;
     	}
@@ -1238,7 +1234,7 @@ export default class CSharpParser extends CSharpParserBase {
     right_shift_sempred(localctx, predIndex) {
     	switch(predIndex) {
     		case 2:
-    			return (localctx.first === null ? 0 : localctx.first.tokenIndex) + 1 == (localctx.second === null ? 0 : localctx.second.tokenIndex);
+    			return (localctx.first == null ? 0 : localctx.first.tokenIndex) + 1 == (localctx.second == null ? 0 : localctx.second.tokenIndex);
     		default:
     			throw "No predicate with index:" + predIndex;
     	}
@@ -1247,7 +1243,7 @@ export default class CSharpParser extends CSharpParserBase {
     right_shift_assignment_sempred(localctx, predIndex) {
     	switch(predIndex) {
     		case 3:
-    			return (localctx.first === null ? 0 : localctx.first.tokenIndex) + 1 == (localctx.second === null ? 0 : localctx.second.tokenIndex);
+    			return (localctx.first == null ? 0 : localctx.first.tokenIndex) + 1 == (localctx.second == null ? 0 : localctx.second.tokenIndex);
     		default:
     			throw "No predicate with index:" + predIndex;
     	}
@@ -1259,13 +1255,13 @@ export default class CSharpParser extends CSharpParserBase {
 	compilation_unit() {
 	    let localctx = new Compilation_unitContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, CSharpParser.RULE_compilation_unit);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 437;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.BYTE_ORDER_MARK) {
+	        if(_la===1) {
 	            this.state = 436;
 	            this.match(CSharpParser.BYTE_ORDER_MARK);
 	        }
@@ -1281,7 +1277,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 443;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.USING) {
+	        if(_la===105) {
 	            this.state = 442;
 	            this.using_directives();
 	        }
@@ -1302,7 +1298,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 452;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ABSTRACT) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.CLASS) | (1 << CSharpParser.DELEGATE))) !== 0) || ((((_la - 37)) & ~0x1f) == 0 && ((1 << (_la - 37)) & ((1 << (CSharpParser.ENUM - 37)) | (1 << (CSharpParser.EXTERN - 37)) | (1 << (CSharpParser.INTERFACE - 37)) | (1 << (CSharpParser.INTERNAL - 37)) | (1 << (CSharpParser.NAMESPACE - 37)) | (1 << (CSharpParser.NEW - 37)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (CSharpParser.OVERRIDE - 73)) | (1 << (CSharpParser.PARTIAL - 73)) | (1 << (CSharpParser.PRIVATE - 73)) | (1 << (CSharpParser.PROTECTED - 73)) | (1 << (CSharpParser.PUBLIC - 73)) | (1 << (CSharpParser.READONLY - 73)) | (1 << (CSharpParser.REF - 73)) | (1 << (CSharpParser.SEALED - 73)) | (1 << (CSharpParser.STATIC - 73)) | (1 << (CSharpParser.STRUCT - 73)) | (1 << (CSharpParser.UNSAFE - 73)))) !== 0) || ((((_la - 107)) & ~0x1f) == 0 && ((1 << (_la - 107)) & ((1 << (CSharpParser.VIRTUAL - 107)) | (1 << (CSharpParser.VOLATILE - 107)) | (1 << (CSharpParser.OPEN_BRACKET - 107)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2214625792) !== 0) || ((((_la - 37)) & ~0x1f) === 0 && ((1 << (_la - 37)) & 806879249) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 1074399485) !== 0) || ((((_la - 107)) & ~0x1f) === 0 && ((1 << (_la - 107)) & 1048581) !== 0)) {
 	            this.state = 451;
 	            this.namespace_member_declarations();
 	        }
@@ -1407,15 +1403,15 @@ export default class CSharpParser extends CSharpParserBase {
 	                this.state = 477;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case CSharpParser.INTERR:
+	                case 148:
 	                    this.state = 474;
 	                    this.match(CSharpParser.INTERR);
 	                    break;
-	                case CSharpParser.OPEN_BRACKET:
+	                case 127:
 	                    this.state = 475;
 	                    this.rank_specifier();
 	                    break;
-	                case CSharpParser.STAR:
+	                case 137:
 	                    this.state = 476;
 	                    this.match(CSharpParser.STAR);
 	                    break;
@@ -1451,66 +1447,66 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 487;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.INT:
-	        case CSharpParser.LONG:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.USHORT:
+	        case 18:
+	        case 21:
+	        case 24:
+	        case 29:
+	        case 34:
+	        case 45:
+	        case 55:
+	        case 63:
+	        case 83:
+	        case 87:
+	        case 99:
+	        case 100:
+	        case 104:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 482;
 	            this.simple_type();
 	            break;
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BY:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.STRING:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 20:
+	        case 32:
+	        case 35:
+	        case 38:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 64:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 81:
+	        case 85:
+	        case 86:
+	        case 91:
+	        case 102:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 483;
 	            this.class_type();
 	            break;
-	        case CSharpParser.VOID:
+	        case 108:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 484;
 	            this.match(CSharpParser.VOID);
 	            this.state = 485;
 	            this.match(CSharpParser.STAR);
 	            break;
-	        case CSharpParser.OPEN_PARENS:
+	        case 129:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 486;
 	            this.tuple_type();
@@ -1537,7 +1533,7 @@ export default class CSharpParser extends CSharpParserBase {
 	tuple_type() {
 	    let localctx = new Tuple_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 8, CSharpParser.RULE_tuple_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 489;
@@ -1555,7 +1551,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 495; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===CSharpParser.COMMA);
+	        } while(_la===132);
 	        this.state = 497;
 	        this.match(CSharpParser.CLOSE_PARENS);
 	    } catch (re) {
@@ -1577,7 +1573,7 @@ export default class CSharpParser extends CSharpParserBase {
 	tuple_element() {
 	    let localctx = new Tuple_elementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, CSharpParser.RULE_tuple_element);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 499;
@@ -1585,7 +1581,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 501;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BY))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (CSharpParser.UNMANAGED - 102)) | (1 << (CSharpParser.VAR - 102)) | (1 << (CSharpParser.WHEN - 102)) | (1 << (CSharpParser.WHERE - 102)) | (1 << (CSharpParser.YIELD - 102)) | (1 << (CSharpParser.IDENTIFIER - 102)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1170432) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 873136201) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 6424737) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 6929) !== 0)) {
 	            this.state = 500;
 	            this.identifier();
 	        }
@@ -1613,23 +1609,23 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 505;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.INT:
-	        case CSharpParser.LONG:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.USHORT:
+	        case 21:
+	        case 24:
+	        case 29:
+	        case 34:
+	        case 45:
+	        case 55:
+	        case 63:
+	        case 83:
+	        case 87:
+	        case 99:
+	        case 100:
+	        case 104:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 503;
 	            this.numeric_type();
 	            break;
-	        case CSharpParser.BOOL:
+	        case 18:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 504;
 	            this.match(CSharpParser.BOOL);
@@ -1660,26 +1656,26 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 510;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.INT:
-	        case CSharpParser.LONG:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.USHORT:
+	        case 21:
+	        case 24:
+	        case 55:
+	        case 63:
+	        case 83:
+	        case 87:
+	        case 99:
+	        case 100:
+	        case 104:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 507;
 	            this.integral_type();
 	            break;
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.FLOAT:
+	        case 34:
+	        case 45:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 508;
 	            this.floating_point_type();
 	            break;
-	        case CSharpParser.DECIMAL:
+	        case 29:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 509;
 	            this.match(CSharpParser.DECIMAL);
@@ -1706,12 +1702,12 @@ export default class CSharpParser extends CSharpParserBase {
 	integral_type() {
 	    let localctx = new Integral_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 16, CSharpParser.RULE_integral_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 512;
 	        _la = this._input.LA(1);
-	        if(!(_la===CSharpParser.BYTE || _la===CSharpParser.CHAR || ((((_la - 55)) & ~0x1f) == 0 && ((1 << (_la - 55)) & ((1 << (CSharpParser.INT - 55)) | (1 << (CSharpParser.LONG - 55)) | (1 << (CSharpParser.SBYTE - 55)))) !== 0) || ((((_la - 87)) & ~0x1f) == 0 && ((1 << (_la - 87)) & ((1 << (CSharpParser.SHORT - 87)) | (1 << (CSharpParser.UINT - 87)) | (1 << (CSharpParser.ULONG - 87)) | (1 << (CSharpParser.USHORT - 87)))) !== 0))) {
+	        if(!(_la===21 || _la===24 || ((((_la - 55)) & ~0x1f) === 0 && ((1 << (_la - 55)) & 268435713) !== 0) || ((((_la - 87)) & ~0x1f) === 0 && ((1 << (_la - 87)) & 143361) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1737,12 +1733,12 @@ export default class CSharpParser extends CSharpParserBase {
 	floating_point_type() {
 	    let localctx = new Floating_point_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, CSharpParser.RULE_floating_point_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 514;
 	        _la = this._input.LA(1);
-	        if(!(_la===CSharpParser.DOUBLE || _la===CSharpParser.FLOAT)) {
+	        if(!(_la===34 || _la===45)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1817,7 +1813,7 @@ export default class CSharpParser extends CSharpParserBase {
 	type_argument_list() {
 	    let localctx = new Type_argument_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, CSharpParser.RULE_type_argument_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 522;
@@ -1827,7 +1823,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 528;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 524;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 525;
@@ -1857,7 +1853,7 @@ export default class CSharpParser extends CSharpParserBase {
 	argument_list() {
 	    let localctx = new Argument_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 24, CSharpParser.RULE_argument_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 533;
@@ -1865,7 +1861,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 538;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 534;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 535;
@@ -1893,7 +1889,7 @@ export default class CSharpParser extends CSharpParserBase {
 	argument() {
 	    let localctx = new ArgumentContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, CSharpParser.RULE_argument);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 544;
@@ -1913,7 +1909,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 546;
 	            localctx.refout = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 54)) & ~0x1f) == 0 && ((1 << (_la - 54)) & ((1 << (CSharpParser.IN - 54)) | (1 << (CSharpParser.OUT - 54)) | (1 << (CSharpParser.REF - 54)))) !== 0))) {
+	            if(!(((((_la - 54)) & ~0x1f) === 0 && ((1 << (_la - 54)) & 67371009) !== 0))) {
 	                localctx.refout = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -2092,57 +2088,57 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 587;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ASSIGNMENT:
+	        case 145:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 576;
 	            this.match(CSharpParser.ASSIGNMENT);
 	            break;
-	        case CSharpParser.OP_ADD_ASSIGNMENT:
+	        case 160:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 577;
 	            this.match(CSharpParser.OP_ADD_ASSIGNMENT);
 	            break;
-	        case CSharpParser.OP_SUB_ASSIGNMENT:
+	        case 161:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 578;
 	            this.match(CSharpParser.OP_SUB_ASSIGNMENT);
 	            break;
-	        case CSharpParser.OP_MULT_ASSIGNMENT:
+	        case 162:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 579;
 	            this.match(CSharpParser.OP_MULT_ASSIGNMENT);
 	            break;
-	        case CSharpParser.OP_DIV_ASSIGNMENT:
+	        case 163:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 580;
 	            this.match(CSharpParser.OP_DIV_ASSIGNMENT);
 	            break;
-	        case CSharpParser.OP_MOD_ASSIGNMENT:
+	        case 164:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 581;
 	            this.match(CSharpParser.OP_MOD_ASSIGNMENT);
 	            break;
-	        case CSharpParser.OP_AND_ASSIGNMENT:
+	        case 165:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 582;
 	            this.match(CSharpParser.OP_AND_ASSIGNMENT);
 	            break;
-	        case CSharpParser.OP_OR_ASSIGNMENT:
+	        case 166:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 583;
 	            this.match(CSharpParser.OP_OR_ASSIGNMENT);
 	            break;
-	        case CSharpParser.OP_XOR_ASSIGNMENT:
+	        case 167:
 	            this.enterOuterAlt(localctx, 9);
 	            this.state = 584;
 	            this.match(CSharpParser.OP_XOR_ASSIGNMENT);
 	            break;
-	        case CSharpParser.OP_LEFT_SHIFT_ASSIGNMENT:
+	        case 169:
 	            this.enterOuterAlt(localctx, 10);
 	            this.state = 585;
 	            this.match(CSharpParser.OP_LEFT_SHIFT_ASSIGNMENT);
 	            break;
-	        case CSharpParser.GT:
+	        case 147:
 	            this.enterOuterAlt(localctx, 11);
 	            this.state = 586;
 	            this.right_shift_assignment();
@@ -2219,87 +2215,87 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 601;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case CSharpParser.ADD:
-	            case CSharpParser.ALIAS:
-	            case CSharpParser.ARGLIST:
-	            case CSharpParser.ASCENDING:
-	            case CSharpParser.ASYNC:
-	            case CSharpParser.AWAIT:
-	            case CSharpParser.BASE:
-	            case CSharpParser.BOOL:
-	            case CSharpParser.BY:
-	            case CSharpParser.BYTE:
-	            case CSharpParser.CHAR:
-	            case CSharpParser.CHECKED:
-	            case CSharpParser.DECIMAL:
-	            case CSharpParser.DEFAULT:
-	            case CSharpParser.DELEGATE:
-	            case CSharpParser.DESCENDING:
-	            case CSharpParser.DOUBLE:
-	            case CSharpParser.DYNAMIC:
-	            case CSharpParser.EQUALS:
-	            case CSharpParser.FALSE:
-	            case CSharpParser.FLOAT:
-	            case CSharpParser.FROM:
-	            case CSharpParser.GET:
-	            case CSharpParser.GROUP:
-	            case CSharpParser.INT:
-	            case CSharpParser.INTO:
-	            case CSharpParser.JOIN:
-	            case CSharpParser.LET:
-	            case CSharpParser.LONG:
-	            case CSharpParser.NAMEOF:
-	            case CSharpParser.NEW:
-	            case CSharpParser.NULL_:
-	            case CSharpParser.OBJECT:
-	            case CSharpParser.ON:
-	            case CSharpParser.ORDERBY:
-	            case CSharpParser.PARTIAL:
-	            case CSharpParser.REMOVE:
-	            case CSharpParser.SBYTE:
-	            case CSharpParser.SELECT:
-	            case CSharpParser.SET:
-	            case CSharpParser.SHORT:
-	            case CSharpParser.SIZEOF:
-	            case CSharpParser.STRING:
-	            case CSharpParser.THIS:
-	            case CSharpParser.TRUE:
-	            case CSharpParser.TYPEOF:
-	            case CSharpParser.UINT:
-	            case CSharpParser.ULONG:
-	            case CSharpParser.UNCHECKED:
-	            case CSharpParser.UNMANAGED:
-	            case CSharpParser.USHORT:
-	            case CSharpParser.VAR:
-	            case CSharpParser.WHEN:
-	            case CSharpParser.WHERE:
-	            case CSharpParser.YIELD:
-	            case CSharpParser.IDENTIFIER:
-	            case CSharpParser.LITERAL_ACCESS:
-	            case CSharpParser.INTEGER_LITERAL:
-	            case CSharpParser.HEX_INTEGER_LITERAL:
-	            case CSharpParser.BIN_INTEGER_LITERAL:
-	            case CSharpParser.REAL_LITERAL:
-	            case CSharpParser.CHARACTER_LITERAL:
-	            case CSharpParser.REGULAR_STRING:
-	            case CSharpParser.VERBATIUM_STRING:
-	            case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	            case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
-	            case CSharpParser.OPEN_PARENS:
-	            case CSharpParser.PLUS:
-	            case CSharpParser.MINUS:
-	            case CSharpParser.STAR:
-	            case CSharpParser.AMP:
-	            case CSharpParser.CARET:
-	            case CSharpParser.BANG:
-	            case CSharpParser.TILDE:
-	            case CSharpParser.OP_INC:
-	            case CSharpParser.OP_DEC:
-	            case CSharpParser.OP_RANGE:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 17:
+	            case 18:
+	            case 20:
+	            case 21:
+	            case 24:
+	            case 25:
+	            case 29:
+	            case 30:
+	            case 31:
+	            case 32:
+	            case 34:
+	            case 35:
+	            case 38:
+	            case 42:
+	            case 45:
+	            case 48:
+	            case 49:
+	            case 51:
+	            case 55:
+	            case 58:
+	            case 60:
+	            case 61:
+	            case 63:
+	            case 64:
+	            case 66:
+	            case 67:
+	            case 68:
+	            case 69:
+	            case 71:
+	            case 75:
+	            case 81:
+	            case 83:
+	            case 85:
+	            case 86:
+	            case 87:
+	            case 88:
+	            case 91:
+	            case 94:
+	            case 96:
+	            case 98:
+	            case 99:
+	            case 100:
+	            case 101:
+	            case 102:
+	            case 104:
+	            case 106:
+	            case 110:
+	            case 111:
+	            case 113:
+	            case 114:
+	            case 115:
+	            case 116:
+	            case 117:
+	            case 118:
+	            case 119:
+	            case 120:
+	            case 121:
+	            case 122:
+	            case 123:
+	            case 124:
+	            case 129:
+	            case 135:
+	            case 136:
+	            case 137:
+	            case 140:
+	            case 142:
+	            case 143:
+	            case 144:
+	            case 151:
+	            case 152:
+	            case 171:
 	                this.state = 599;
 	                this.null_coalescing_expression();
 	                break;
-	            case CSharpParser.THROW:
+	            case 95:
 	                this.state = 600;
 	                this.throw_expression();
 	                break;
@@ -2517,7 +2513,7 @@ export default class CSharpParser extends CSharpParserBase {
 	equality_expression() {
 	    let localctx = new Equality_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, CSharpParser.RULE_equality_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 645;
@@ -2529,7 +2525,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            if(_alt===1) {
 	                this.state = 646;
 	                _la = this._input.LA(1);
-	                if(!(_la===CSharpParser.OP_EQ || _la===CSharpParser.OP_NE)) {
+	                if(!(_la===156 || _la===157)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -2563,7 +2559,7 @@ export default class CSharpParser extends CSharpParserBase {
 	relational_expression() {
 	    let localctx = new Relational_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, CSharpParser.RULE_relational_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 653;
@@ -2576,13 +2572,13 @@ export default class CSharpParser extends CSharpParserBase {
 	                this.state = 660;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case CSharpParser.LT:
-	                case CSharpParser.GT:
-	                case CSharpParser.OP_LE:
-	                case CSharpParser.OP_GE:
+	                case 146:
+	                case 147:
+	                case 158:
+	                case 159:
 	                    this.state = 654;
 	                    _la = this._input.LA(1);
-	                    if(!(((((_la - 146)) & ~0x1f) == 0 && ((1 << (_la - 146)) & ((1 << (CSharpParser.LT - 146)) | (1 << (CSharpParser.GT - 146)) | (1 << (CSharpParser.OP_LE - 146)) | (1 << (CSharpParser.OP_GE - 146)))) !== 0))) {
+	                    if(!(((((_la - 146)) & ~0x1f) === 0 && ((1 << (_la - 146)) & 12291) !== 0))) {
 	                    this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -2592,13 +2588,13 @@ export default class CSharpParser extends CSharpParserBase {
 	                    this.state = 655;
 	                    this.shift_expression();
 	                    break;
-	                case CSharpParser.IS:
+	                case 59:
 	                    this.state = 656;
 	                    this.match(CSharpParser.IS);
 	                    this.state = 657;
 	                    this.isType();
 	                    break;
-	                case CSharpParser.AS:
+	                case 13:
 	                    this.state = 658;
 	                    this.match(CSharpParser.AS);
 	                    this.state = 659;
@@ -2644,11 +2640,11 @@ export default class CSharpParser extends CSharpParserBase {
 	                this.state = 668;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case CSharpParser.OP_LEFT_SHIFT:
+	                case 168:
 	                    this.state = 666;
 	                    this.match(CSharpParser.OP_LEFT_SHIFT);
 	                    break;
-	                case CSharpParser.GT:
+	                case 147:
 	                    this.state = 667;
 	                    this.right_shift();
 	                    break;
@@ -2682,7 +2678,7 @@ export default class CSharpParser extends CSharpParserBase {
 	additive_expression() {
 	    let localctx = new Additive_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, CSharpParser.RULE_additive_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 676;
@@ -2694,7 +2690,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            if(_alt===1) {
 	                this.state = 677;
 	                _la = this._input.LA(1);
-	                if(!(_la===CSharpParser.PLUS || _la===CSharpParser.MINUS)) {
+	                if(!(_la===135 || _la===136)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -2728,7 +2724,7 @@ export default class CSharpParser extends CSharpParserBase {
 	multiplicative_expression() {
 	    let localctx = new Multiplicative_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 58, CSharpParser.RULE_multiplicative_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 684;
@@ -2740,7 +2736,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            if(_alt===1) {
 	                this.state = 685;
 	                _la = this._input.LA(1);
-	                if(!(((((_la - 137)) & ~0x1f) == 0 && ((1 << (_la - 137)) & ((1 << (CSharpParser.STAR - 137)) | (1 << (CSharpParser.DIV - 137)) | (1 << (CSharpParser.PERCENT - 137)))) !== 0))) {
+	                if(!(((((_la - 137)) & ~0x1f) === 0 && ((1 << (_la - 137)) & 7) !== 0))) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -2774,7 +2770,7 @@ export default class CSharpParser extends CSharpParserBase {
 	switch_expression() {
 	    let localctx = new Switch_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, CSharpParser.RULE_switch_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 692;
@@ -2790,13 +2786,13 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 699;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 110)) & ~0x1f) == 0 && ((1 << (_la - 110)) & ((1 << (CSharpParser.WHEN - 110)) | (1 << (CSharpParser.WHERE - 110)) | (1 << (CSharpParser.YIELD - 110)) | (1 << (CSharpParser.IDENTIFIER - 110)) | (1 << (CSharpParser.LITERAL_ACCESS - 110)) | (1 << (CSharpParser.INTEGER_LITERAL - 110)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.REAL_LITERAL - 110)) | (1 << (CSharpParser.CHARACTER_LITERAL - 110)) | (1 << (CSharpParser.REGULAR_STRING - 110)) | (1 << (CSharpParser.VERBATIUM_STRING - 110)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 110)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 110)) | (1 << (CSharpParser.OPEN_PARENS - 110)) | (1 << (CSharpParser.PLUS - 110)) | (1 << (CSharpParser.MINUS - 110)) | (1 << (CSharpParser.STAR - 110)) | (1 << (CSharpParser.AMP - 110)))) !== 0) || ((((_la - 142)) & ~0x1f) == 0 && ((1 << (_la - 142)) & ((1 << (CSharpParser.CARET - 142)) | (1 << (CSharpParser.BANG - 142)) | (1 << (CSharpParser.TILDE - 142)) | (1 << (CSharpParser.OP_INC - 142)) | (1 << (CSharpParser.OP_DEC - 142)) | (1 << (CSharpParser.OP_RANGE - 142)))) !== 0)) {
+	            if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 795681481) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 2947104097) !== 0) || ((((_la - 110)) & ~0x1f) === 0 && ((1 << (_la - 110)) & 1309179899) !== 0) || ((((_la - 142)) & ~0x1f) === 0 && ((1 << (_la - 142)) & 536872455) !== 0)) {
 	                this.state = 695;
 	                this.switch_expression_arms();
 	                this.state = 697;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===CSharpParser.COMMA) {
+	                if(_la===132) {
 	                    this.state = 696;
 	                    this.match(CSharpParser.COMMA);
 	                }
@@ -2864,7 +2860,7 @@ export default class CSharpParser extends CSharpParserBase {
 	switch_expression_arm() {
 	    let localctx = new Switch_expression_armContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 64, CSharpParser.RULE_switch_expression_arm);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 712;
@@ -2872,7 +2868,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 714;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.WHEN) {
+	        if(_la===110) {
 	            this.state = 713;
 	            this.case_guard();
 	        }
@@ -2900,7 +2896,7 @@ export default class CSharpParser extends CSharpParserBase {
 	range_expression() {
 	    let localctx = new Range_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, CSharpParser.RULE_range_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 727;
 	        this._errHandler.sync(this);
@@ -2917,7 +2913,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 721;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BASE) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.CHECKED) | (1 << CSharpParser.DECIMAL) | (1 << CSharpParser.DEFAULT) | (1 << CSharpParser.DELEGATE))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FALSE - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.NEW - 64)) | (1 << (CSharpParser.NULL_ - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.SIZEOF - 64)) | (1 << (CSharpParser.STRING - 64)) | (1 << (CSharpParser.THIS - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (CSharpParser.TRUE - 96)) | (1 << (CSharpParser.TYPEOF - 96)) | (1 << (CSharpParser.UINT - 96)) | (1 << (CSharpParser.ULONG - 96)) | (1 << (CSharpParser.UNCHECKED - 96)) | (1 << (CSharpParser.UNMANAGED - 96)) | (1 << (CSharpParser.USHORT - 96)) | (1 << (CSharpParser.VAR - 96)) | (1 << (CSharpParser.WHEN - 96)) | (1 << (CSharpParser.WHERE - 96)) | (1 << (CSharpParser.YIELD - 96)) | (1 << (CSharpParser.IDENTIFIER - 96)) | (1 << (CSharpParser.LITERAL_ACCESS - 96)) | (1 << (CSharpParser.INTEGER_LITERAL - 96)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 96)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 96)) | (1 << (CSharpParser.REAL_LITERAL - 96)) | (1 << (CSharpParser.CHARACTER_LITERAL - 96)) | (1 << (CSharpParser.REGULAR_STRING - 96)) | (1 << (CSharpParser.VERBATIUM_STRING - 96)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 96)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 96)))) !== 0) || ((((_la - 129)) & ~0x1f) == 0 && ((1 << (_la - 129)) & ((1 << (CSharpParser.OPEN_PARENS - 129)) | (1 << (CSharpParser.PLUS - 129)) | (1 << (CSharpParser.MINUS - 129)) | (1 << (CSharpParser.STAR - 129)) | (1 << (CSharpParser.AMP - 129)) | (1 << (CSharpParser.CARET - 129)) | (1 << (CSharpParser.BANG - 129)) | (1 << (CSharpParser.TILDE - 129)) | (1 << (CSharpParser.OP_INC - 129)) | (1 << (CSharpParser.OP_DEC - 129)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3812088832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3029017677) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 1240074429) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 536790397) !== 0) || ((((_la - 129)) & ~0x1f) === 0 && ((1 << (_la - 129)) & 12642753) !== 0)) {
 	                this.state = 720;
 	                this.unary_expression();
 	            }
@@ -3118,24 +3114,24 @@ export default class CSharpParser extends CSharpParserBase {
 	                this.state = 776;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case CSharpParser.DOT:
-	                case CSharpParser.INTERR:
+	                case 131:
+	                case 148:
 	                    this.state = 770;
 	                    this.member_access();
 	                    break;
-	                case CSharpParser.OPEN_PARENS:
+	                case 129:
 	                    this.state = 771;
 	                    this.method_invocation();
 	                    break;
-	                case CSharpParser.OP_INC:
+	                case 151:
 	                    this.state = 772;
 	                    this.match(CSharpParser.OP_INC);
 	                    break;
-	                case CSharpParser.OP_DEC:
+	                case 152:
 	                    this.state = 773;
 	                    this.match(CSharpParser.OP_DEC);
 	                    break;
-	                case CSharpParser.OP_PTR:
+	                case 155:
 	                    this.state = 774;
 	                    this.match(CSharpParser.OP_PTR);
 	                    this.state = 775;
@@ -3198,7 +3194,7 @@ export default class CSharpParser extends CSharpParserBase {
 	primary_expression_start() {
 	    let localctx = new Primary_expression_startContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 72, CSharpParser.RULE_primary_expression_start);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 916;
 	        this._errHandler.sync(this);
@@ -3273,7 +3269,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 818;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case CSharpParser.DOT:
+	            case 131:
 	                this.state = 809;
 	                this.match(CSharpParser.DOT);
 	                this.state = 810;
@@ -3287,7 +3283,7 @@ export default class CSharpParser extends CSharpParserBase {
 
 	                }
 	                break;
-	            case CSharpParser.OPEN_BRACKET:
+	            case 127:
 	                this.state = 814;
 	                this.match(CSharpParser.OPEN_BRACKET);
 	                this.state = 815;
@@ -3308,52 +3304,52 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 849;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case CSharpParser.ADD:
-	            case CSharpParser.ALIAS:
-	            case CSharpParser.ARGLIST:
-	            case CSharpParser.ASCENDING:
-	            case CSharpParser.ASYNC:
-	            case CSharpParser.AWAIT:
-	            case CSharpParser.BOOL:
-	            case CSharpParser.BY:
-	            case CSharpParser.BYTE:
-	            case CSharpParser.CHAR:
-	            case CSharpParser.DECIMAL:
-	            case CSharpParser.DESCENDING:
-	            case CSharpParser.DOUBLE:
-	            case CSharpParser.DYNAMIC:
-	            case CSharpParser.EQUALS:
-	            case CSharpParser.FLOAT:
-	            case CSharpParser.FROM:
-	            case CSharpParser.GET:
-	            case CSharpParser.GROUP:
-	            case CSharpParser.INT:
-	            case CSharpParser.INTO:
-	            case CSharpParser.JOIN:
-	            case CSharpParser.LET:
-	            case CSharpParser.LONG:
-	            case CSharpParser.NAMEOF:
-	            case CSharpParser.OBJECT:
-	            case CSharpParser.ON:
-	            case CSharpParser.ORDERBY:
-	            case CSharpParser.PARTIAL:
-	            case CSharpParser.REMOVE:
-	            case CSharpParser.SBYTE:
-	            case CSharpParser.SELECT:
-	            case CSharpParser.SET:
-	            case CSharpParser.SHORT:
-	            case CSharpParser.STRING:
-	            case CSharpParser.UINT:
-	            case CSharpParser.ULONG:
-	            case CSharpParser.UNMANAGED:
-	            case CSharpParser.USHORT:
-	            case CSharpParser.VAR:
-	            case CSharpParser.VOID:
-	            case CSharpParser.WHEN:
-	            case CSharpParser.WHERE:
-	            case CSharpParser.YIELD:
-	            case CSharpParser.IDENTIFIER:
-	            case CSharpParser.OPEN_PARENS:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 18:
+	            case 20:
+	            case 21:
+	            case 24:
+	            case 29:
+	            case 32:
+	            case 34:
+	            case 35:
+	            case 38:
+	            case 45:
+	            case 48:
+	            case 49:
+	            case 51:
+	            case 55:
+	            case 58:
+	            case 60:
+	            case 61:
+	            case 63:
+	            case 64:
+	            case 68:
+	            case 69:
+	            case 71:
+	            case 75:
+	            case 81:
+	            case 83:
+	            case 85:
+	            case 86:
+	            case 87:
+	            case 91:
+	            case 99:
+	            case 100:
+	            case 102:
+	            case 104:
+	            case 106:
+	            case 108:
+	            case 110:
+	            case 111:
+	            case 113:
+	            case 114:
+	            case 129:
 	                this.state = 821;
 	                this.type_();
 	                this.state = 843;
@@ -3410,18 +3406,18 @@ export default class CSharpParser extends CSharpParserBase {
 	                        this.state = 839; 
 	                        this._errHandler.sync(this);
 	                        _la = this._input.LA(1);
-	                    } while(_la===CSharpParser.OPEN_BRACKET);
+	                    } while(_la===127);
 	                    this.state = 841;
 	                    this.array_initializer();
 	                    break;
 
 	                }
 	                break;
-	            case CSharpParser.OPEN_BRACE:
+	            case 125:
 	                this.state = 845;
 	                this.anonymous_object_initializer();
 	                break;
-	            case CSharpParser.OPEN_BRACKET:
+	            case 127:
 	                this.state = 846;
 	                this.rank_specifier();
 	                this.state = 847;
@@ -3450,7 +3446,7 @@ export default class CSharpParser extends CSharpParserBase {
 	                this.state = 857; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===CSharpParser.COMMA);
+	            } while(_la===132);
 	            this.state = 859;
 	            this.match(CSharpParser.CLOSE_PARENS);
 	            break;
@@ -3537,7 +3533,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 887;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.ASYNC) {
+	            if(_la===15) {
 	                this.state = 886;
 	                this.match(CSharpParser.ASYNC);
 	            }
@@ -3547,13 +3543,13 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 895;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.OPEN_PARENS) {
+	            if(_la===129) {
 	                this.state = 890;
 	                this.match(CSharpParser.OPEN_PARENS);
 	                this.state = 892;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.DECIMAL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.IN - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.OUT - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.STRING - 64)))) !== 0) || ((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (CSharpParser.UINT - 99)) | (1 << (CSharpParser.ULONG - 99)) | (1 << (CSharpParser.UNMANAGED - 99)) | (1 << (CSharpParser.USHORT - 99)) | (1 << (CSharpParser.VAR - 99)) | (1 << (CSharpParser.VOID - 99)) | (1 << (CSharpParser.WHEN - 99)) | (1 << (CSharpParser.WHERE - 99)) | (1 << (CSharpParser.YIELD - 99)) | (1 << (CSharpParser.IDENTIFIER - 99)) | (1 << (CSharpParser.OPEN_PARENS - 99)))) !== 0)) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 557177856) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3033210957) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 149621169) !== 0) || ((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 1073797803) !== 0)) {
 	                    this.state = 891;
 	                    this.explicit_anonymous_function_parameter_list();
 	                }
@@ -3631,89 +3627,89 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 920;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BASE:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CHECKED:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DEFAULT:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FALSE:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.NEW:
-	        case CSharpParser.NULL_:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.SIZEOF:
-	        case CSharpParser.STRING:
-	        case CSharpParser.THIS:
-	        case CSharpParser.TRUE:
-	        case CSharpParser.TYPEOF:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNCHECKED:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.LITERAL_ACCESS:
-	        case CSharpParser.INTEGER_LITERAL:
-	        case CSharpParser.HEX_INTEGER_LITERAL:
-	        case CSharpParser.BIN_INTEGER_LITERAL:
-	        case CSharpParser.REAL_LITERAL:
-	        case CSharpParser.CHARACTER_LITERAL:
-	        case CSharpParser.REGULAR_STRING:
-	        case CSharpParser.VERBATIUM_STRING:
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
-	        case CSharpParser.OPEN_PARENS:
-	        case CSharpParser.PLUS:
-	        case CSharpParser.MINUS:
-	        case CSharpParser.STAR:
-	        case CSharpParser.AMP:
-	        case CSharpParser.CARET:
-	        case CSharpParser.BANG:
-	        case CSharpParser.TILDE:
-	        case CSharpParser.OP_INC:
-	        case CSharpParser.OP_DEC:
-	        case CSharpParser.OP_RANGE:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 42:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 80:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 91:
+	        case 94:
+	        case 96:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 104:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 129:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 140:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 151:
+	        case 152:
+	        case 171:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 918;
 	            this.expression();
 	            break;
-	        case CSharpParser.THROW:
+	        case 95:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 919;
 	            this.throw_expression();
@@ -3765,13 +3761,13 @@ export default class CSharpParser extends CSharpParserBase {
 	member_access() {
 	    let localctx = new Member_accessContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 78, CSharpParser.RULE_member_access);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 926;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.INTERR) {
+	        if(_la===148) {
 	            this.state = 925;
 	            this.match(CSharpParser.INTERR);
 	        }
@@ -3807,13 +3803,13 @@ export default class CSharpParser extends CSharpParserBase {
 	bracket_expression() {
 	    let localctx = new Bracket_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 80, CSharpParser.RULE_bracket_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 934;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.INTERR) {
+	        if(_la===148) {
 	            this.state = 933;
 	            this.match(CSharpParser.INTERR);
 	        }
@@ -3825,7 +3821,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 942;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 938;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 939;
@@ -3888,12 +3884,12 @@ export default class CSharpParser extends CSharpParserBase {
 	predefined_type() {
 	    let localctx = new Predefined_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, CSharpParser.RULE_predefined_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 954;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 18)) & ~0x1f) == 0 && ((1 << (_la - 18)) & ((1 << (CSharpParser.BOOL - 18)) | (1 << (CSharpParser.BYTE - 18)) | (1 << (CSharpParser.CHAR - 18)) | (1 << (CSharpParser.DECIMAL - 18)) | (1 << (CSharpParser.DOUBLE - 18)) | (1 << (CSharpParser.FLOAT - 18)))) !== 0) || ((((_la - 55)) & ~0x1f) == 0 && ((1 << (_la - 55)) & ((1 << (CSharpParser.INT - 55)) | (1 << (CSharpParser.LONG - 55)) | (1 << (CSharpParser.OBJECT - 55)) | (1 << (CSharpParser.SBYTE - 55)))) !== 0) || ((((_la - 87)) & ~0x1f) == 0 && ((1 << (_la - 87)) & ((1 << (CSharpParser.SHORT - 87)) | (1 << (CSharpParser.STRING - 87)) | (1 << (CSharpParser.UINT - 87)) | (1 << (CSharpParser.ULONG - 87)) | (1 << (CSharpParser.USHORT - 87)))) !== 0))) {
+	        if(!(((((_la - 18)) & ~0x1f) === 0 && ((1 << (_la - 18)) & 134285385) !== 0) || ((((_la - 55)) & ~0x1f) === 0 && ((1 << (_la - 55)) & 268443905) !== 0) || ((((_la - 87)) & ~0x1f) === 0 && ((1 << (_la - 87)) & 143377) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3919,7 +3915,7 @@ export default class CSharpParser extends CSharpParserBase {
 	expression_list() {
 	    let localctx = new Expression_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 86, CSharpParser.RULE_expression_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 956;
@@ -3927,7 +3923,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 961;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 957;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 958;
@@ -3992,7 +3988,7 @@ export default class CSharpParser extends CSharpParserBase {
 	object_initializer() {
 	    let localctx = new Object_initializerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, CSharpParser.RULE_object_initializer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 968;
@@ -4000,13 +3996,13 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 973;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BY))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (CSharpParser.UNMANAGED - 102)) | (1 << (CSharpParser.VAR - 102)) | (1 << (CSharpParser.WHEN - 102)) | (1 << (CSharpParser.WHERE - 102)) | (1 << (CSharpParser.YIELD - 102)) | (1 << (CSharpParser.IDENTIFIER - 102)) | (1 << (CSharpParser.OPEN_BRACKET - 102)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1170432) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 873136201) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 6424737) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 33561361) !== 0)) {
 	            this.state = 969;
 	            this.member_initializer_list();
 	            this.state = 971;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.COMMA) {
+	            if(_la===132) {
 	                this.state = 970;
 	                this.match(CSharpParser.COMMA);
 	            }
@@ -4077,39 +4073,39 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 990;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BY:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 20:
+	        case 32:
+	        case 35:
+	        case 38:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 64:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 81:
+	        case 85:
+	        case 86:
+	        case 102:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
 	            this.state = 985;
 	            this.identifier();
 	            break;
-	        case CSharpParser.OPEN_BRACKET:
+	        case 127:
 	            this.state = 986;
 	            this.match(CSharpParser.OPEN_BRACKET);
 	            this.state = 987;
@@ -4147,89 +4143,89 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 997;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BASE:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CHECKED:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DEFAULT:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FALSE:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.NEW:
-	        case CSharpParser.NULL_:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.SIZEOF:
-	        case CSharpParser.STRING:
-	        case CSharpParser.THIS:
-	        case CSharpParser.TRUE:
-	        case CSharpParser.TYPEOF:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNCHECKED:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.LITERAL_ACCESS:
-	        case CSharpParser.INTEGER_LITERAL:
-	        case CSharpParser.HEX_INTEGER_LITERAL:
-	        case CSharpParser.BIN_INTEGER_LITERAL:
-	        case CSharpParser.REAL_LITERAL:
-	        case CSharpParser.CHARACTER_LITERAL:
-	        case CSharpParser.REGULAR_STRING:
-	        case CSharpParser.VERBATIUM_STRING:
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
-	        case CSharpParser.OPEN_PARENS:
-	        case CSharpParser.PLUS:
-	        case CSharpParser.MINUS:
-	        case CSharpParser.STAR:
-	        case CSharpParser.AMP:
-	        case CSharpParser.CARET:
-	        case CSharpParser.BANG:
-	        case CSharpParser.TILDE:
-	        case CSharpParser.OP_INC:
-	        case CSharpParser.OP_DEC:
-	        case CSharpParser.OP_RANGE:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 42:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 80:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 91:
+	        case 94:
+	        case 96:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 104:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 129:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 140:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 151:
+	        case 152:
+	        case 171:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 995;
 	            this.expression();
 	            break;
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 996;
 	            this.object_or_collection_initializer();
@@ -4256,7 +4252,7 @@ export default class CSharpParser extends CSharpParserBase {
 	collection_initializer() {
 	    let localctx = new Collection_initializerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 98, CSharpParser.RULE_collection_initializer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 999;
@@ -4281,7 +4277,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1009;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.COMMA) {
+	        if(_la===132) {
 	            this.state = 1008;
 	            this.match(CSharpParser.COMMA);
 	        }
@@ -4311,88 +4307,88 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1018;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BASE:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CHECKED:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DEFAULT:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FALSE:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.NEW:
-	        case CSharpParser.NULL_:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.SIZEOF:
-	        case CSharpParser.STRING:
-	        case CSharpParser.THIS:
-	        case CSharpParser.TRUE:
-	        case CSharpParser.TYPEOF:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNCHECKED:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.LITERAL_ACCESS:
-	        case CSharpParser.INTEGER_LITERAL:
-	        case CSharpParser.HEX_INTEGER_LITERAL:
-	        case CSharpParser.BIN_INTEGER_LITERAL:
-	        case CSharpParser.REAL_LITERAL:
-	        case CSharpParser.CHARACTER_LITERAL:
-	        case CSharpParser.REGULAR_STRING:
-	        case CSharpParser.VERBATIUM_STRING:
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
-	        case CSharpParser.OPEN_PARENS:
-	        case CSharpParser.PLUS:
-	        case CSharpParser.MINUS:
-	        case CSharpParser.STAR:
-	        case CSharpParser.AMP:
-	        case CSharpParser.CARET:
-	        case CSharpParser.BANG:
-	        case CSharpParser.TILDE:
-	        case CSharpParser.OP_INC:
-	        case CSharpParser.OP_DEC:
-	        case CSharpParser.OP_RANGE:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 42:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 91:
+	        case 94:
+	        case 96:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 104:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 129:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 140:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 151:
+	        case 152:
+	        case 171:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1013;
 	            this.non_assignment_expression();
 	            break;
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1014;
 	            this.match(CSharpParser.OPEN_BRACE);
@@ -4423,7 +4419,7 @@ export default class CSharpParser extends CSharpParserBase {
 	anonymous_object_initializer() {
 	    let localctx = new Anonymous_object_initializerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 102, CSharpParser.RULE_anonymous_object_initializer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1020;
@@ -4431,13 +4427,13 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1025;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 110)) & ~0x1f) == 0 && ((1 << (_la - 110)) & ((1 << (CSharpParser.WHEN - 110)) | (1 << (CSharpParser.WHERE - 110)) | (1 << (CSharpParser.YIELD - 110)) | (1 << (CSharpParser.IDENTIFIER - 110)) | (1 << (CSharpParser.LITERAL_ACCESS - 110)) | (1 << (CSharpParser.INTEGER_LITERAL - 110)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.REAL_LITERAL - 110)) | (1 << (CSharpParser.CHARACTER_LITERAL - 110)) | (1 << (CSharpParser.REGULAR_STRING - 110)) | (1 << (CSharpParser.VERBATIUM_STRING - 110)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 110)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 110)) | (1 << (CSharpParser.OPEN_PARENS - 110)))) !== 0)) {
+	        if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 795681481) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 2947104065) !== 0) || ((((_la - 110)) & ~0x1f) === 0 && ((1 << (_la - 110)) & 557051) !== 0)) {
 	            this.state = 1021;
 	            this.member_declarator_list();
 	            this.state = 1023;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.COMMA) {
+	            if(_la===132) {
 	                this.state = 1022;
 	                this.match(CSharpParser.COMMA);
 	            }
@@ -4544,7 +4540,7 @@ export default class CSharpParser extends CSharpParserBase {
 	unbound_type_name() {
 	    let localctx = new Unbound_type_nameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 108, CSharpParser.RULE_unbound_type_name);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1044;
@@ -4552,19 +4548,19 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1053;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.CLOSE_PARENS:
-	        case CSharpParser.DOT:
-	        case CSharpParser.LT:
+	        case 130:
+	        case 131:
+	        case 146:
 	            this.state = 1046;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.LT) {
+	            if(_la===146) {
 	                this.state = 1045;
 	                this.generic_dimension_specifier();
 	            }
 
 	            break;
-	        case CSharpParser.DOUBLE_COLON:
+	        case 149:
 	            this.state = 1048;
 	            this.match(CSharpParser.DOUBLE_COLON);
 	            this.state = 1049;
@@ -4572,7 +4568,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1051;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.LT) {
+	            if(_la===146) {
 	                this.state = 1050;
 	                this.generic_dimension_specifier();
 	            }
@@ -4584,7 +4580,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1062;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.DOT) {
+	        while(_la===131) {
 	            this.state = 1055;
 	            this.match(CSharpParser.DOT);
 	            this.state = 1056;
@@ -4592,7 +4588,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1058;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.LT) {
+	            if(_la===146) {
 	                this.state = 1057;
 	                this.generic_dimension_specifier();
 	            }
@@ -4620,7 +4616,7 @@ export default class CSharpParser extends CSharpParserBase {
 	generic_dimension_specifier() {
 	    let localctx = new Generic_dimension_specifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 110, CSharpParser.RULE_generic_dimension_specifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1065;
@@ -4628,7 +4624,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1069;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 1066;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 1071;
@@ -4668,11 +4664,11 @@ export default class CSharpParser extends CSharpParserBase {
 	                this.state = 1077;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case CSharpParser.OPEN_BRACKET:
+	                case 127:
 	                    this.state = 1075;
 	                    this.rank_specifier();
 	                    break;
-	                case CSharpParser.STAR:
+	                case 137:
 	                    this.state = 1076;
 	                    this.match(CSharpParser.STAR);
 	                    break;
@@ -4728,7 +4724,7 @@ export default class CSharpParser extends CSharpParserBase {
 	isTypePatternArms() {
 	    let localctx = new IsTypePatternArmsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 114, CSharpParser.RULE_isTypePatternArms);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1091;
@@ -4738,7 +4734,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1097;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 1093;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 1094;
@@ -4889,7 +4885,7 @@ export default class CSharpParser extends CSharpParserBase {
 	explicit_anonymous_function_parameter_list() {
 	    let localctx = new Explicit_anonymous_function_parameter_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 122, CSharpParser.RULE_explicit_anonymous_function_parameter_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1126;
@@ -4897,7 +4893,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1131;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 1127;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 1128;
@@ -4925,17 +4921,17 @@ export default class CSharpParser extends CSharpParserBase {
 	explicit_anonymous_function_parameter() {
 	    let localctx = new Explicit_anonymous_function_parameterContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 124, CSharpParser.RULE_explicit_anonymous_function_parameter);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1135;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 54)) & ~0x1f) == 0 && ((1 << (_la - 54)) & ((1 << (CSharpParser.IN - 54)) | (1 << (CSharpParser.OUT - 54)) | (1 << (CSharpParser.REF - 54)))) !== 0)) {
+	        if(((((_la - 54)) & ~0x1f) === 0 && ((1 << (_la - 54)) & 67371009) !== 0)) {
 	            this.state = 1134;
 	            localctx.refout = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(((((_la - 54)) & ~0x1f) == 0 && ((1 << (_la - 54)) & ((1 << (CSharpParser.IN - 54)) | (1 << (CSharpParser.OUT - 54)) | (1 << (CSharpParser.REF - 54)))) !== 0))) {
+	            if(!(((((_la - 54)) & ~0x1f) === 0 && ((1 << (_la - 54)) & 67371009) !== 0))) {
 	                localctx.refout = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -4967,7 +4963,7 @@ export default class CSharpParser extends CSharpParserBase {
 	implicit_anonymous_function_parameter_list() {
 	    let localctx = new Implicit_anonymous_function_parameter_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 126, CSharpParser.RULE_implicit_anonymous_function_parameter_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1140;
@@ -4975,7 +4971,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1145;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 1141;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 1142;
@@ -5007,90 +5003,90 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1150;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BASE:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CHECKED:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DEFAULT:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FALSE:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.NEW:
-	        case CSharpParser.NULL_:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.SIZEOF:
-	        case CSharpParser.STRING:
-	        case CSharpParser.THIS:
-	        case CSharpParser.THROW:
-	        case CSharpParser.TRUE:
-	        case CSharpParser.TYPEOF:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNCHECKED:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.LITERAL_ACCESS:
-	        case CSharpParser.INTEGER_LITERAL:
-	        case CSharpParser.HEX_INTEGER_LITERAL:
-	        case CSharpParser.BIN_INTEGER_LITERAL:
-	        case CSharpParser.REAL_LITERAL:
-	        case CSharpParser.CHARACTER_LITERAL:
-	        case CSharpParser.REGULAR_STRING:
-	        case CSharpParser.VERBATIUM_STRING:
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
-	        case CSharpParser.OPEN_PARENS:
-	        case CSharpParser.PLUS:
-	        case CSharpParser.MINUS:
-	        case CSharpParser.STAR:
-	        case CSharpParser.AMP:
-	        case CSharpParser.CARET:
-	        case CSharpParser.BANG:
-	        case CSharpParser.TILDE:
-	        case CSharpParser.OP_INC:
-	        case CSharpParser.OP_DEC:
-	        case CSharpParser.OP_RANGE:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 42:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 80:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 91:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 104:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 129:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 140:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 151:
+	        case 152:
+	        case 171:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1148;
 	            this.throwable_expression();
 	            break;
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1149;
 	            this.block();
@@ -5179,13 +5175,13 @@ export default class CSharpParser extends CSharpParserBase {
 	query_body() {
 	    let localctx = new Query_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 134, CSharpParser.RULE_query_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1166;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 48)) & ~0x1f) == 0 && ((1 << (_la - 48)) & ((1 << (CSharpParser.FROM - 48)) | (1 << (CSharpParser.JOIN - 48)) | (1 << (CSharpParser.LET - 48)) | (1 << (CSharpParser.ORDERBY - 48)))) !== 0) || _la===CSharpParser.WHERE) {
+	        while(((((_la - 48)) & ~0x1f) === 0 && ((1 << (_la - 48)) & 8400897) !== 0) || _la===111) {
 	            this.state = 1163;
 	            this.query_body_clause();
 	            this.state = 1168;
@@ -5225,27 +5221,27 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1178;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.FROM:
+	        case 48:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1173;
 	            this.from_clause();
 	            break;
-	        case CSharpParser.LET:
+	        case 61:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1174;
 	            this.let_clause();
 	            break;
-	        case CSharpParser.WHERE:
+	        case 111:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1175;
 	            this.where_clause();
 	            break;
-	        case CSharpParser.JOIN:
+	        case 60:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 1176;
 	            this.combined_join_clause();
 	            break;
-	        case CSharpParser.ORDERBY:
+	        case 71:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 1177;
 	            this.orderby_clause();
@@ -5326,7 +5322,7 @@ export default class CSharpParser extends CSharpParserBase {
 	combined_join_clause() {
 	    let localctx = new Combined_join_clauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 142, CSharpParser.RULE_combined_join_clause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1188;
@@ -5356,7 +5352,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1201;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.INTO) {
+	        if(_la===58) {
 	            this.state = 1199;
 	            this.match(CSharpParser.INTO);
 	            this.state = 1200;
@@ -5382,7 +5378,7 @@ export default class CSharpParser extends CSharpParserBase {
 	orderby_clause() {
 	    let localctx = new Orderby_clauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 144, CSharpParser.RULE_orderby_clause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1203;
@@ -5392,7 +5388,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1209;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 1205;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 1206;
@@ -5420,7 +5416,7 @@ export default class CSharpParser extends CSharpParserBase {
 	ordering() {
 	    let localctx = new OrderingContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 146, CSharpParser.RULE_ordering);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1212;
@@ -5428,11 +5424,11 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1214;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.ASCENDING || _la===CSharpParser.DESCENDING) {
+	        if(_la===14 || _la===32) {
 	            this.state = 1213;
 	            localctx.dir = this._input.LT(1);
 	            _la = this._input.LA(1);
-	            if(!(_la===CSharpParser.ASCENDING || _la===CSharpParser.DESCENDING)) {
+	            if(!(_la===14 || _la===32)) {
 	                localctx.dir = this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -5464,14 +5460,14 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1223;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.SELECT:
+	        case 85:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1216;
 	            this.match(CSharpParser.SELECT);
 	            this.state = 1217;
 	            this.expression();
 	            break;
-	        case CSharpParser.GROUP:
+	        case 51:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1218;
 	            this.match(CSharpParser.GROUP);
@@ -5646,7 +5642,7 @@ export default class CSharpParser extends CSharpParserBase {
 	local_function_header() {
 	    let localctx = new Local_function_headerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 158, CSharpParser.RULE_local_function_header);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1247;
@@ -5664,7 +5660,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1252;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.LT) {
+	        if(_la===146) {
 	            this.state = 1251;
 	            this.type_parameter_list();
 	        }
@@ -5674,7 +5670,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1256;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.DECIMAL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.IN - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.OUT - 64)) | (1 << (CSharpParser.PARAMS - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.STRING - 64)) | (1 << (CSharpParser.THIS - 64)))) !== 0) || ((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (CSharpParser.UINT - 99)) | (1 << (CSharpParser.ULONG - 99)) | (1 << (CSharpParser.UNMANAGED - 99)) | (1 << (CSharpParser.USHORT - 99)) | (1 << (CSharpParser.VAR - 99)) | (1 << (CSharpParser.VOID - 99)) | (1 << (CSharpParser.WHEN - 99)) | (1 << (CSharpParser.WHERE - 99)) | (1 << (CSharpParser.YIELD - 99)) | (1 << (CSharpParser.IDENTIFIER - 99)) | (1 << (CSharpParser.OPEN_BRACKET - 99)) | (1 << (CSharpParser.OPEN_PARENS - 99)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 557177856) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3033210957) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 1223364017) !== 0) || ((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 1342233259) !== 0)) {
 	            this.state = 1255;
 	            this.formal_parameter_list();
 	        }
@@ -5684,7 +5680,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1260;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.WHERE) {
+	        if(_la===111) {
 	            this.state = 1259;
 	            this.type_parameter_constraints_clauses();
 	        }
@@ -5708,17 +5704,17 @@ export default class CSharpParser extends CSharpParserBase {
 	local_function_modifiers() {
 	    let localctx = new Local_function_modifiersContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 160, CSharpParser.RULE_local_function_modifiers);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1268;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.UNSAFE:
+	        case 15:
+	        case 103:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1262;
 	            _la = this._input.LA(1);
-	            if(!(_la===CSharpParser.ASYNC || _la===CSharpParser.UNSAFE)) {
+	            if(!(_la===15 || _la===103)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -5728,19 +5724,19 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1264;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.STATIC) {
+	            if(_la===90) {
 	                this.state = 1263;
 	                this.match(CSharpParser.STATIC);
 	            }
 
 	            break;
-	        case CSharpParser.STATIC:
+	        case 90:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1266;
 	            this.match(CSharpParser.STATIC);
 	            this.state = 1267;
 	            _la = this._input.LA(1);
-	            if(!(_la===CSharpParser.ASYNC || _la===CSharpParser.UNSAFE)) {
+	            if(!(_la===15 || _la===103)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -5774,12 +5770,12 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1275;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1270;
 	            this.block();
 	            break;
-	        case CSharpParser.ASSIGNMENT:
+	        case 145:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1271;
 	            this.right_arrow();
@@ -5841,106 +5837,106 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1283;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1281;
 	            this.block();
 	            break;
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BASE:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BREAK:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CHECKED:
-	        case CSharpParser.CONTINUE:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DEFAULT:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DO:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FALSE:
-	        case CSharpParser.FIXED:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FOR:
-	        case CSharpParser.FOREACH:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GOTO:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.IF:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LOCK:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.NEW:
-	        case CSharpParser.NULL_:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.RETURN:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.SIZEOF:
-	        case CSharpParser.STRING:
-	        case CSharpParser.SWITCH:
-	        case CSharpParser.THIS:
-	        case CSharpParser.THROW:
-	        case CSharpParser.TRUE:
-	        case CSharpParser.TRY:
-	        case CSharpParser.TYPEOF:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNCHECKED:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.UNSAFE:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.USING:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.WHILE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.LITERAL_ACCESS:
-	        case CSharpParser.INTEGER_LITERAL:
-	        case CSharpParser.HEX_INTEGER_LITERAL:
-	        case CSharpParser.BIN_INTEGER_LITERAL:
-	        case CSharpParser.REAL_LITERAL:
-	        case CSharpParser.CHARACTER_LITERAL:
-	        case CSharpParser.REGULAR_STRING:
-	        case CSharpParser.VERBATIUM_STRING:
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
-	        case CSharpParser.OPEN_PARENS:
-	        case CSharpParser.SEMICOLON:
-	        case CSharpParser.PLUS:
-	        case CSharpParser.MINUS:
-	        case CSharpParser.STAR:
-	        case CSharpParser.AMP:
-	        case CSharpParser.CARET:
-	        case CSharpParser.BANG:
-	        case CSharpParser.TILDE:
-	        case CSharpParser.OP_INC:
-	        case CSharpParser.OP_DEC:
-	        case CSharpParser.OP_RANGE:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 42:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 91:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 103:
+	        case 104:
+	        case 105:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 129:
+	        case 134:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 140:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 151:
+	        case 152:
+	        case 171:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1282;
 	            this.simple_embedded_statement();
@@ -5967,7 +5963,7 @@ export default class CSharpParser extends CSharpParserBase {
 	simple_embedded_statement() {
 	    let localctx = new Simple_embedded_statementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 168, CSharpParser.RULE_simple_embedded_statement);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1415;
 	        this._errHandler.sync(this);
@@ -6030,7 +6026,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1306;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===CSharpParser.CASE || _la===CSharpParser.DEFAULT) {
+	            while(_la===22 || _la===30) {
 	                this.state = 1303;
 	                this.switch_section();
 	                this.state = 1308;
@@ -6085,7 +6081,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1328;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FIXED - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.USING - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 108)) & ~0x1f) == 0 && ((1 << (_la - 108)) & ((1 << (CSharpParser.VOID - 108)) | (1 << (CSharpParser.WHEN - 108)) | (1 << (CSharpParser.WHERE - 108)) | (1 << (CSharpParser.YIELD - 108)) | (1 << (CSharpParser.IDENTIFIER - 108)) | (1 << (CSharpParser.LITERAL_ACCESS - 108)) | (1 << (CSharpParser.INTEGER_LITERAL - 108)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 108)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 108)) | (1 << (CSharpParser.REAL_LITERAL - 108)) | (1 << (CSharpParser.CHARACTER_LITERAL - 108)) | (1 << (CSharpParser.REGULAR_STRING - 108)) | (1 << (CSharpParser.VERBATIUM_STRING - 108)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 108)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 108)) | (1 << (CSharpParser.OPEN_PARENS - 108)) | (1 << (CSharpParser.PLUS - 108)) | (1 << (CSharpParser.MINUS - 108)) | (1 << (CSharpParser.STAR - 108)))) !== 0) || ((((_la - 140)) & ~0x1f) == 0 && ((1 << (_la - 140)) & ((1 << (CSharpParser.AMP - 140)) | (1 << (CSharpParser.CARET - 140)) | (1 << (CSharpParser.BANG - 140)) | (1 << (CSharpParser.TILDE - 140)) | (1 << (CSharpParser.OP_INC - 140)) | (1 << (CSharpParser.OP_DEC - 140)) | (1 << (CSharpParser.OP_RANGE - 140)))) !== 0)) {
+	            if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 795681485) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 4020845921) !== 0) || ((((_la - 108)) & ~0x1f) === 0 && ((1 << (_la - 108)) & 941752301) !== 0) || ((((_la - 140)) & ~0x1f) === 0 && ((1 << (_la - 140)) & 2147489821) !== 0)) {
 	                this.state = 1327;
 	                this.for_initializer();
 	            }
@@ -6095,7 +6091,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1332;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 110)) & ~0x1f) == 0 && ((1 << (_la - 110)) & ((1 << (CSharpParser.WHEN - 110)) | (1 << (CSharpParser.WHERE - 110)) | (1 << (CSharpParser.YIELD - 110)) | (1 << (CSharpParser.IDENTIFIER - 110)) | (1 << (CSharpParser.LITERAL_ACCESS - 110)) | (1 << (CSharpParser.INTEGER_LITERAL - 110)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.REAL_LITERAL - 110)) | (1 << (CSharpParser.CHARACTER_LITERAL - 110)) | (1 << (CSharpParser.REGULAR_STRING - 110)) | (1 << (CSharpParser.VERBATIUM_STRING - 110)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 110)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 110)) | (1 << (CSharpParser.OPEN_PARENS - 110)) | (1 << (CSharpParser.PLUS - 110)) | (1 << (CSharpParser.MINUS - 110)) | (1 << (CSharpParser.STAR - 110)) | (1 << (CSharpParser.AMP - 110)))) !== 0) || ((((_la - 142)) & ~0x1f) == 0 && ((1 << (_la - 142)) & ((1 << (CSharpParser.CARET - 142)) | (1 << (CSharpParser.BANG - 142)) | (1 << (CSharpParser.TILDE - 142)) | (1 << (CSharpParser.OP_INC - 142)) | (1 << (CSharpParser.OP_DEC - 142)) | (1 << (CSharpParser.OP_RANGE - 142)))) !== 0)) {
+	            if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 795681481) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 2947104097) !== 0) || ((((_la - 110)) & ~0x1f) === 0 && ((1 << (_la - 110)) & 1309179899) !== 0) || ((((_la - 142)) & ~0x1f) === 0 && ((1 << (_la - 142)) & 536872455) !== 0)) {
 	                this.state = 1331;
 	                this.expression();
 	            }
@@ -6105,7 +6101,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1336;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 110)) & ~0x1f) == 0 && ((1 << (_la - 110)) & ((1 << (CSharpParser.WHEN - 110)) | (1 << (CSharpParser.WHERE - 110)) | (1 << (CSharpParser.YIELD - 110)) | (1 << (CSharpParser.IDENTIFIER - 110)) | (1 << (CSharpParser.LITERAL_ACCESS - 110)) | (1 << (CSharpParser.INTEGER_LITERAL - 110)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.REAL_LITERAL - 110)) | (1 << (CSharpParser.CHARACTER_LITERAL - 110)) | (1 << (CSharpParser.REGULAR_STRING - 110)) | (1 << (CSharpParser.VERBATIUM_STRING - 110)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 110)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 110)) | (1 << (CSharpParser.OPEN_PARENS - 110)) | (1 << (CSharpParser.PLUS - 110)) | (1 << (CSharpParser.MINUS - 110)) | (1 << (CSharpParser.STAR - 110)) | (1 << (CSharpParser.AMP - 110)))) !== 0) || ((((_la - 142)) & ~0x1f) == 0 && ((1 << (_la - 142)) & ((1 << (CSharpParser.CARET - 142)) | (1 << (CSharpParser.BANG - 142)) | (1 << (CSharpParser.TILDE - 142)) | (1 << (CSharpParser.OP_INC - 142)) | (1 << (CSharpParser.OP_DEC - 142)) | (1 << (CSharpParser.OP_RANGE - 142)))) !== 0)) {
+	            if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 795681481) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 2947104097) !== 0) || ((((_la - 110)) & ~0x1f) === 0 && ((1 << (_la - 110)) & 1309179899) !== 0) || ((((_la - 142)) & ~0x1f) === 0 && ((1 << (_la - 142)) & 536872455) !== 0)) {
 	                this.state = 1335;
 	                this.for_iterator();
 	            }
@@ -6122,7 +6118,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1341;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.AWAIT) {
+	            if(_la===16) {
 	                this.state = 1340;
 	                this.match(CSharpParser.AWAIT);
 	            }
@@ -6171,45 +6167,45 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1361;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case CSharpParser.ADD:
-	            case CSharpParser.ALIAS:
-	            case CSharpParser.ARGLIST:
-	            case CSharpParser.ASCENDING:
-	            case CSharpParser.ASYNC:
-	            case CSharpParser.AWAIT:
-	            case CSharpParser.BY:
-	            case CSharpParser.DESCENDING:
-	            case CSharpParser.DYNAMIC:
-	            case CSharpParser.EQUALS:
-	            case CSharpParser.FROM:
-	            case CSharpParser.GET:
-	            case CSharpParser.GROUP:
-	            case CSharpParser.INTO:
-	            case CSharpParser.JOIN:
-	            case CSharpParser.LET:
-	            case CSharpParser.NAMEOF:
-	            case CSharpParser.ON:
-	            case CSharpParser.ORDERBY:
-	            case CSharpParser.PARTIAL:
-	            case CSharpParser.REMOVE:
-	            case CSharpParser.SELECT:
-	            case CSharpParser.SET:
-	            case CSharpParser.UNMANAGED:
-	            case CSharpParser.VAR:
-	            case CSharpParser.WHEN:
-	            case CSharpParser.WHERE:
-	            case CSharpParser.YIELD:
-	            case CSharpParser.IDENTIFIER:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 20:
+	            case 32:
+	            case 35:
+	            case 38:
+	            case 48:
+	            case 49:
+	            case 51:
+	            case 58:
+	            case 60:
+	            case 61:
+	            case 64:
+	            case 69:
+	            case 71:
+	            case 75:
+	            case 81:
+	            case 85:
+	            case 86:
+	            case 102:
+	            case 106:
+	            case 110:
+	            case 111:
+	            case 113:
+	            case 114:
 	                this.state = 1357;
 	                this.identifier();
 	                break;
-	            case CSharpParser.CASE:
+	            case 22:
 	                this.state = 1358;
 	                this.match(CSharpParser.CASE);
 	                this.state = 1359;
 	                this.expression();
 	                break;
-	            case CSharpParser.DEFAULT:
+	            case 30:
 	                this.state = 1360;
 	                this.match(CSharpParser.DEFAULT);
 	                break;
@@ -6228,7 +6224,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1366;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 110)) & ~0x1f) == 0 && ((1 << (_la - 110)) & ((1 << (CSharpParser.WHEN - 110)) | (1 << (CSharpParser.WHERE - 110)) | (1 << (CSharpParser.YIELD - 110)) | (1 << (CSharpParser.IDENTIFIER - 110)) | (1 << (CSharpParser.LITERAL_ACCESS - 110)) | (1 << (CSharpParser.INTEGER_LITERAL - 110)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.REAL_LITERAL - 110)) | (1 << (CSharpParser.CHARACTER_LITERAL - 110)) | (1 << (CSharpParser.REGULAR_STRING - 110)) | (1 << (CSharpParser.VERBATIUM_STRING - 110)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 110)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 110)) | (1 << (CSharpParser.OPEN_PARENS - 110)) | (1 << (CSharpParser.PLUS - 110)) | (1 << (CSharpParser.MINUS - 110)) | (1 << (CSharpParser.STAR - 110)) | (1 << (CSharpParser.AMP - 110)))) !== 0) || ((((_la - 142)) & ~0x1f) == 0 && ((1 << (_la - 142)) & ((1 << (CSharpParser.CARET - 142)) | (1 << (CSharpParser.BANG - 142)) | (1 << (CSharpParser.TILDE - 142)) | (1 << (CSharpParser.OP_INC - 142)) | (1 << (CSharpParser.OP_DEC - 142)) | (1 << (CSharpParser.OP_RANGE - 142)))) !== 0)) {
+	            if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 795681481) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 2947104097) !== 0) || ((((_la - 110)) & ~0x1f) === 0 && ((1 << (_la - 110)) & 1309179899) !== 0) || ((((_la - 142)) & ~0x1f) === 0 && ((1 << (_la - 142)) & 536872455) !== 0)) {
 	                this.state = 1365;
 	                this.expression();
 	            }
@@ -6245,7 +6241,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1371;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 110)) & ~0x1f) == 0 && ((1 << (_la - 110)) & ((1 << (CSharpParser.WHEN - 110)) | (1 << (CSharpParser.WHERE - 110)) | (1 << (CSharpParser.YIELD - 110)) | (1 << (CSharpParser.IDENTIFIER - 110)) | (1 << (CSharpParser.LITERAL_ACCESS - 110)) | (1 << (CSharpParser.INTEGER_LITERAL - 110)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.REAL_LITERAL - 110)) | (1 << (CSharpParser.CHARACTER_LITERAL - 110)) | (1 << (CSharpParser.REGULAR_STRING - 110)) | (1 << (CSharpParser.VERBATIUM_STRING - 110)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 110)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 110)) | (1 << (CSharpParser.OPEN_PARENS - 110)) | (1 << (CSharpParser.PLUS - 110)) | (1 << (CSharpParser.MINUS - 110)) | (1 << (CSharpParser.STAR - 110)) | (1 << (CSharpParser.AMP - 110)))) !== 0) || ((((_la - 142)) & ~0x1f) == 0 && ((1 << (_la - 142)) & ((1 << (CSharpParser.CARET - 142)) | (1 << (CSharpParser.BANG - 142)) | (1 << (CSharpParser.TILDE - 142)) | (1 << (CSharpParser.OP_INC - 142)) | (1 << (CSharpParser.OP_DEC - 142)) | (1 << (CSharpParser.OP_RANGE - 142)))) !== 0)) {
+	            if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 795681481) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 2947104097) !== 0) || ((((_la - 110)) & ~0x1f) === 0 && ((1 << (_la - 110)) & 1309179899) !== 0) || ((((_la - 142)) & ~0x1f) === 0 && ((1 << (_la - 142)) & 536872455) !== 0)) {
 	                this.state = 1370;
 	                this.expression();
 	            }
@@ -6264,19 +6260,19 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1381;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case CSharpParser.CATCH:
+	            case 23:
 	                this.state = 1376;
 	                this.catch_clauses();
 	                this.state = 1378;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===CSharpParser.FINALLY) {
+	                if(_la===43) {
 	                    this.state = 1377;
 	                    this.finally_clause();
 	                }
 
 	                break;
-	            case CSharpParser.FINALLY:
+	            case 43:
 	                this.state = 1380;
 	                this.finally_clause();
 	                break;
@@ -6341,13 +6337,13 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1403;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case CSharpParser.RETURN:
+	            case 82:
 	                this.state = 1400;
 	                this.match(CSharpParser.RETURN);
 	                this.state = 1401;
 	                this.expression();
 	                break;
-	            case CSharpParser.BREAK:
+	            case 19:
 	                this.state = 1402;
 	                this.match(CSharpParser.BREAK);
 	                break;
@@ -6404,7 +6400,7 @@ export default class CSharpParser extends CSharpParserBase {
 	block() {
 	    let localctx = new BlockContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 170, CSharpParser.RULE_block);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1417;
@@ -6412,7 +6408,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1419;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BREAK - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.CONST - 10)) | (1 << (CSharpParser.CONTINUE - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DO - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FIXED - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FOR - 42)) | (1 << (CSharpParser.FOREACH - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GOTO - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.IF - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LOCK - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.RETURN - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STATIC - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.SWITCH - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.THROW - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TRY - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.UNSAFE - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.USING - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 108)) & ~0x1f) == 0 && ((1 << (_la - 108)) & ((1 << (CSharpParser.VOID - 108)) | (1 << (CSharpParser.WHEN - 108)) | (1 << (CSharpParser.WHERE - 108)) | (1 << (CSharpParser.WHILE - 108)) | (1 << (CSharpParser.YIELD - 108)) | (1 << (CSharpParser.IDENTIFIER - 108)) | (1 << (CSharpParser.LITERAL_ACCESS - 108)) | (1 << (CSharpParser.INTEGER_LITERAL - 108)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 108)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 108)) | (1 << (CSharpParser.REAL_LITERAL - 108)) | (1 << (CSharpParser.CHARACTER_LITERAL - 108)) | (1 << (CSharpParser.REGULAR_STRING - 108)) | (1 << (CSharpParser.VERBATIUM_STRING - 108)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 108)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 108)) | (1 << (CSharpParser.OPEN_BRACE - 108)) | (1 << (CSharpParser.OPEN_PARENS - 108)) | (1 << (CSharpParser.SEMICOLON - 108)) | (1 << (CSharpParser.PLUS - 108)) | (1 << (CSharpParser.MINUS - 108)) | (1 << (CSharpParser.STAR - 108)))) !== 0) || ((((_la - 140)) & ~0x1f) == 0 && ((1 << (_la - 140)) & ((1 << (CSharpParser.AMP - 140)) | (1 << (CSharpParser.CARET - 140)) | (1 << (CSharpParser.BANG - 140)) | (1 << (CSharpParser.TILDE - 140)) | (1 << (CSharpParser.OP_INC - 140)) | (1 << (CSharpParser.OP_DEC - 140)) | (1 << (CSharpParser.OP_RANGE - 140)))) !== 0)) {
+	        if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 335466487) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 796731389) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 4294819297) !== 0) || ((((_la - 108)) & ~0x1f) === 0 && ((1 << (_la - 108)) & 1008992253) !== 0) || ((((_la - 140)) & ~0x1f) === 0 && ((1 << (_la - 140)) & 2147489821) !== 0)) {
 	            this.state = 1418;
 	            this.statement_list();
 	        }
@@ -6438,59 +6434,59 @@ export default class CSharpParser extends CSharpParserBase {
 	local_variable_declaration() {
 	    let localctx = new Local_variable_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 172, CSharpParser.RULE_local_variable_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1444;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.STRING:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.USING:
-	        case CSharpParser.VAR:
-	        case CSharpParser.VOID:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.OPEN_PARENS:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 29:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 80:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 91:
+	        case 99:
+	        case 100:
+	        case 102:
+	        case 104:
+	        case 105:
+	        case 106:
+	        case 108:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 129:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1427;
 	            this._errHandler.sync(this);
@@ -6517,7 +6513,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1437;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===CSharpParser.COMMA) {
+	            while(_la===132) {
 	                this.state = 1431;
 	                this.match(CSharpParser.COMMA);
 	                this.state = 1432;
@@ -6531,7 +6527,7 @@ export default class CSharpParser extends CSharpParserBase {
 	                _la = this._input.LA(1);
 	            }
 	            break;
-	        case CSharpParser.FIXED:
+	        case 44:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1440;
 	            this.match(CSharpParser.FIXED);
@@ -6644,94 +6640,94 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1461;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BASE:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CHECKED:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DEFAULT:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FALSE:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.NEW:
-	        case CSharpParser.NULL_:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.SIZEOF:
-	        case CSharpParser.STRING:
-	        case CSharpParser.THIS:
-	        case CSharpParser.TRUE:
-	        case CSharpParser.TYPEOF:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNCHECKED:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.LITERAL_ACCESS:
-	        case CSharpParser.INTEGER_LITERAL:
-	        case CSharpParser.HEX_INTEGER_LITERAL:
-	        case CSharpParser.BIN_INTEGER_LITERAL:
-	        case CSharpParser.REAL_LITERAL:
-	        case CSharpParser.CHARACTER_LITERAL:
-	        case CSharpParser.REGULAR_STRING:
-	        case CSharpParser.VERBATIUM_STRING:
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
-	        case CSharpParser.OPEN_PARENS:
-	        case CSharpParser.PLUS:
-	        case CSharpParser.MINUS:
-	        case CSharpParser.STAR:
-	        case CSharpParser.AMP:
-	        case CSharpParser.CARET:
-	        case CSharpParser.BANG:
-	        case CSharpParser.TILDE:
-	        case CSharpParser.OP_INC:
-	        case CSharpParser.OP_DEC:
-	        case CSharpParser.OP_RANGE:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 42:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 80:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 91:
+	        case 94:
+	        case 96:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 104:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 129:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 140:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 151:
+	        case 152:
+	        case 171:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1458;
 	            this.expression();
 	            break;
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1459;
 	            this.array_initializer();
 	            break;
-	        case CSharpParser.STACKALLOC:
+	        case 89:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 1460;
 	            this.stackalloc_initializer();
@@ -6789,106 +6785,106 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1469;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1467;
 	            this.block();
 	            break;
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BASE:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BREAK:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CHECKED:
-	        case CSharpParser.CONTINUE:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DEFAULT:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DO:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FALSE:
-	        case CSharpParser.FIXED:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FOR:
-	        case CSharpParser.FOREACH:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GOTO:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.IF:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LOCK:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.NEW:
-	        case CSharpParser.NULL_:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.RETURN:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.SIZEOF:
-	        case CSharpParser.STRING:
-	        case CSharpParser.SWITCH:
-	        case CSharpParser.THIS:
-	        case CSharpParser.THROW:
-	        case CSharpParser.TRUE:
-	        case CSharpParser.TRY:
-	        case CSharpParser.TYPEOF:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNCHECKED:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.UNSAFE:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.USING:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.WHILE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.LITERAL_ACCESS:
-	        case CSharpParser.INTEGER_LITERAL:
-	        case CSharpParser.HEX_INTEGER_LITERAL:
-	        case CSharpParser.BIN_INTEGER_LITERAL:
-	        case CSharpParser.REAL_LITERAL:
-	        case CSharpParser.CHARACTER_LITERAL:
-	        case CSharpParser.REGULAR_STRING:
-	        case CSharpParser.VERBATIUM_STRING:
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
-	        case CSharpParser.OPEN_PARENS:
-	        case CSharpParser.SEMICOLON:
-	        case CSharpParser.PLUS:
-	        case CSharpParser.MINUS:
-	        case CSharpParser.STAR:
-	        case CSharpParser.AMP:
-	        case CSharpParser.CARET:
-	        case CSharpParser.BANG:
-	        case CSharpParser.TILDE:
-	        case CSharpParser.OP_INC:
-	        case CSharpParser.OP_DEC:
-	        case CSharpParser.OP_RANGE:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 28:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 42:
+	        case 44:
+	        case 45:
+	        case 46:
+	        case 47:
+	        case 48:
+	        case 49:
+	        case 50:
+	        case 51:
+	        case 52:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 62:
+	        case 63:
+	        case 64:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 80:
+	        case 81:
+	        case 82:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 91:
+	        case 93:
+	        case 94:
+	        case 95:
+	        case 96:
+	        case 97:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 103:
+	        case 104:
+	        case 105:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 112:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 129:
+	        case 134:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 140:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 151:
+	        case 152:
+	        case 171:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1468;
 	            this.simple_embedded_statement();
@@ -6954,12 +6950,12 @@ export default class CSharpParser extends CSharpParserBase {
 	switch_label() {
 	    let localctx = new Switch_labelContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 186, CSharpParser.RULE_switch_label);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1487;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.CASE:
+	        case 22:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1478;
 	            this.match(CSharpParser.CASE);
@@ -6968,7 +6964,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1481;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.WHEN) {
+	            if(_la===110) {
 	                this.state = 1480;
 	                this.case_guard();
 	            }
@@ -6976,7 +6972,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1483;
 	            this.match(CSharpParser.COLON);
 	            break;
-	        case CSharpParser.DEFAULT:
+	        case 30:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1485;
 	            this.match(CSharpParser.DEFAULT);
@@ -7067,7 +7063,7 @@ export default class CSharpParser extends CSharpParserBase {
 	for_initializer() {
 	    let localctx = new For_initializerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 192, CSharpParser.RULE_for_initializer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1506;
 	        this._errHandler.sync(this);
@@ -7086,7 +7082,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1503;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===CSharpParser.COMMA) {
+	            while(_la===132) {
 	                this.state = 1499;
 	                this.match(CSharpParser.COMMA);
 	                this.state = 1500;
@@ -7117,7 +7113,7 @@ export default class CSharpParser extends CSharpParserBase {
 	for_iterator() {
 	    let localctx = new For_iteratorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 194, CSharpParser.RULE_for_iterator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1508;
@@ -7125,7 +7121,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1513;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 1509;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 1510;
@@ -7153,7 +7149,7 @@ export default class CSharpParser extends CSharpParserBase {
 	catch_clauses() {
 	    let localctx = new Catch_clausesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 196, CSharpParser.RULE_catch_clauses);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1527;
 	        this._errHandler.sync(this);
@@ -7179,7 +7175,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1524;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.CATCH) {
+	            if(_la===23) {
 	                this.state = 1523;
 	                this.general_catch_clause();
 	            }
@@ -7212,7 +7208,7 @@ export default class CSharpParser extends CSharpParserBase {
 	specific_catch_clause() {
 	    let localctx = new Specific_catch_clauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 198, CSharpParser.RULE_specific_catch_clause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1529;
@@ -7224,7 +7220,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1533;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BY))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (CSharpParser.UNMANAGED - 102)) | (1 << (CSharpParser.VAR - 102)) | (1 << (CSharpParser.WHEN - 102)) | (1 << (CSharpParser.WHERE - 102)) | (1 << (CSharpParser.YIELD - 102)) | (1 << (CSharpParser.IDENTIFIER - 102)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1170432) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 873136201) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 6424737) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 6929) !== 0)) {
 	            this.state = 1532;
 	            this.identifier();
 	        }
@@ -7234,7 +7230,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1537;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.WHEN) {
+	        if(_la===110) {
 	            this.state = 1536;
 	            this.exception_filter();
 	        }
@@ -7260,7 +7256,7 @@ export default class CSharpParser extends CSharpParserBase {
 	general_catch_clause() {
 	    let localctx = new General_catch_clauseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 200, CSharpParser.RULE_general_catch_clause);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1541;
@@ -7268,7 +7264,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1543;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.WHEN) {
+	        if(_la===110) {
 	            this.state = 1542;
 	            this.exception_filter();
 	        }
@@ -7385,7 +7381,7 @@ export default class CSharpParser extends CSharpParserBase {
 	namespace_declaration() {
 	    let localctx = new Namespace_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 208, CSharpParser.RULE_namespace_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1559;
@@ -7397,7 +7393,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1563;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.SEMICOLON) {
+	        if(_la===134) {
 	            this.state = 1562;
 	            this.match(CSharpParser.SEMICOLON);
 	        }
@@ -7421,7 +7417,7 @@ export default class CSharpParser extends CSharpParserBase {
 	qualified_identifier() {
 	    let localctx = new Qualified_identifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 210, CSharpParser.RULE_qualified_identifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1565;
@@ -7429,7 +7425,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1570;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.DOT) {
+	        while(_la===131) {
 	            this.state = 1566;
 	            this.match(CSharpParser.DOT);
 	            this.state = 1567;
@@ -7457,7 +7453,7 @@ export default class CSharpParser extends CSharpParserBase {
 	namespace_body() {
 	    let localctx = new Namespace_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 212, CSharpParser.RULE_namespace_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1573;
@@ -7473,7 +7469,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1578;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.USING) {
+	        if(_la===105) {
 	            this.state = 1577;
 	            this.using_directives();
 	        }
@@ -7481,7 +7477,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1581;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ABSTRACT) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.CLASS) | (1 << CSharpParser.DELEGATE))) !== 0) || ((((_la - 37)) & ~0x1f) == 0 && ((1 << (_la - 37)) & ((1 << (CSharpParser.ENUM - 37)) | (1 << (CSharpParser.EXTERN - 37)) | (1 << (CSharpParser.INTERFACE - 37)) | (1 << (CSharpParser.INTERNAL - 37)) | (1 << (CSharpParser.NAMESPACE - 37)) | (1 << (CSharpParser.NEW - 37)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (CSharpParser.OVERRIDE - 73)) | (1 << (CSharpParser.PARTIAL - 73)) | (1 << (CSharpParser.PRIVATE - 73)) | (1 << (CSharpParser.PROTECTED - 73)) | (1 << (CSharpParser.PUBLIC - 73)) | (1 << (CSharpParser.READONLY - 73)) | (1 << (CSharpParser.REF - 73)) | (1 << (CSharpParser.SEALED - 73)) | (1 << (CSharpParser.STATIC - 73)) | (1 << (CSharpParser.STRUCT - 73)) | (1 << (CSharpParser.UNSAFE - 73)))) !== 0) || ((((_la - 107)) & ~0x1f) == 0 && ((1 << (_la - 107)) & ((1 << (CSharpParser.VIRTUAL - 107)) | (1 << (CSharpParser.VOLATILE - 107)) | (1 << (CSharpParser.OPEN_BRACKET - 107)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2214625792) !== 0) || ((((_la - 37)) & ~0x1f) === 0 && ((1 << (_la - 37)) & 806879249) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 1074399485) !== 0) || ((((_la - 107)) & ~0x1f) === 0 && ((1 << (_la - 107)) & 1048581) !== 0)) {
 	            this.state = 1580;
 	            this.namespace_member_declarations();
 	        }
@@ -7573,7 +7569,7 @@ export default class CSharpParser extends CSharpParserBase {
 	using_directives() {
 	    let localctx = new Using_directivesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 218, CSharpParser.RULE_using_directives);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1596; 
@@ -7585,7 +7581,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1598; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===CSharpParser.USING);
+	        } while(_la===105);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -7669,7 +7665,7 @@ export default class CSharpParser extends CSharpParserBase {
 	namespace_member_declarations() {
 	    let localctx = new Namespace_member_declarationsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 222, CSharpParser.RULE_namespace_member_declarations);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1618; 
@@ -7681,7 +7677,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1620; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ABSTRACT) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.CLASS) | (1 << CSharpParser.DELEGATE))) !== 0) || ((((_la - 37)) & ~0x1f) == 0 && ((1 << (_la - 37)) & ((1 << (CSharpParser.ENUM - 37)) | (1 << (CSharpParser.EXTERN - 37)) | (1 << (CSharpParser.INTERFACE - 37)) | (1 << (CSharpParser.INTERNAL - 37)) | (1 << (CSharpParser.NAMESPACE - 37)) | (1 << (CSharpParser.NEW - 37)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (CSharpParser.OVERRIDE - 73)) | (1 << (CSharpParser.PARTIAL - 73)) | (1 << (CSharpParser.PRIVATE - 73)) | (1 << (CSharpParser.PROTECTED - 73)) | (1 << (CSharpParser.PUBLIC - 73)) | (1 << (CSharpParser.READONLY - 73)) | (1 << (CSharpParser.REF - 73)) | (1 << (CSharpParser.SEALED - 73)) | (1 << (CSharpParser.STATIC - 73)) | (1 << (CSharpParser.STRUCT - 73)) | (1 << (CSharpParser.UNSAFE - 73)))) !== 0) || ((((_la - 107)) & ~0x1f) == 0 && ((1 << (_la - 107)) & ((1 << (CSharpParser.VIRTUAL - 107)) | (1 << (CSharpParser.VOLATILE - 107)) | (1 << (CSharpParser.OPEN_BRACKET - 107)))) !== 0));
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2214625792) !== 0) || ((((_la - 37)) & ~0x1f) === 0 && ((1 << (_la - 37)) & 806879249) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 1074399485) !== 0) || ((((_la - 107)) & ~0x1f) === 0 && ((1 << (_la - 107)) & 1048581) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -7705,34 +7701,34 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1624;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.NAMESPACE:
+	        case 65:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1622;
 	            this.namespace_declaration();
 	            break;
-	        case CSharpParser.ABSTRACT:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.CLASS:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.ENUM:
-	        case CSharpParser.EXTERN:
-	        case CSharpParser.INTERFACE:
-	        case CSharpParser.INTERNAL:
-	        case CSharpParser.NEW:
-	        case CSharpParser.OVERRIDE:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.PRIVATE:
-	        case CSharpParser.PROTECTED:
-	        case CSharpParser.PUBLIC:
-	        case CSharpParser.READONLY:
-	        case CSharpParser.REF:
-	        case CSharpParser.SEALED:
-	        case CSharpParser.STATIC:
-	        case CSharpParser.STRUCT:
-	        case CSharpParser.UNSAFE:
-	        case CSharpParser.VIRTUAL:
-	        case CSharpParser.VOLATILE:
-	        case CSharpParser.OPEN_BRACKET:
+	        case 9:
+	        case 15:
+	        case 26:
+	        case 31:
+	        case 37:
+	        case 41:
+	        case 56:
+	        case 57:
+	        case 66:
+	        case 73:
+	        case 75:
+	        case 76:
+	        case 77:
+	        case 78:
+	        case 79:
+	        case 80:
+	        case 84:
+	        case 90:
+	        case 92:
+	        case 103:
+	        case 107:
+	        case 109:
+	        case 127:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1623;
 	            this.type_declaration();
@@ -7759,13 +7755,13 @@ export default class CSharpParser extends CSharpParserBase {
 	type_declaration() {
 	    let localctx = new Type_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 226, CSharpParser.RULE_type_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1627;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 1626;
 	            this.attributes();
 	        }
@@ -7781,25 +7777,25 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1637;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.CLASS:
+	        case 26:
 	            this.state = 1632;
 	            this.class_definition();
 	            break;
-	        case CSharpParser.READONLY:
-	        case CSharpParser.REF:
-	        case CSharpParser.STRUCT:
+	        case 79:
+	        case 80:
+	        case 92:
 	            this.state = 1633;
 	            this.struct_definition();
 	            break;
-	        case CSharpParser.INTERFACE:
+	        case 56:
 	            this.state = 1634;
 	            this.interface_definition();
 	            break;
-	        case CSharpParser.ENUM:
+	        case 37:
 	            this.state = 1635;
 	            this.enum_definition();
 	            break;
-	        case CSharpParser.DELEGATE:
+	        case 31:
 	            this.state = 1636;
 	            this.delegate_definition();
 	            break;
@@ -7860,7 +7856,7 @@ export default class CSharpParser extends CSharpParserBase {
 	type_parameter_list() {
 	    let localctx = new Type_parameter_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 230, CSharpParser.RULE_type_parameter_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1645;
@@ -7870,7 +7866,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1651;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 1647;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 1648;
@@ -7900,13 +7896,13 @@ export default class CSharpParser extends CSharpParserBase {
 	type_parameter() {
 	    let localctx = new Type_parameterContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 232, CSharpParser.RULE_type_parameter);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1657;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 1656;
 	            this.attributes();
 	        }
@@ -7932,7 +7928,7 @@ export default class CSharpParser extends CSharpParserBase {
 	class_base() {
 	    let localctx = new Class_baseContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 234, CSharpParser.RULE_class_base);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1661;
@@ -7942,7 +7938,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1667;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 1663;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 1664;
@@ -7970,7 +7966,7 @@ export default class CSharpParser extends CSharpParserBase {
 	interface_type_list() {
 	    let localctx = new Interface_type_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 236, CSharpParser.RULE_interface_type_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1670;
@@ -7978,7 +7974,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1675;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 1671;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 1672;
@@ -8006,7 +8002,7 @@ export default class CSharpParser extends CSharpParserBase {
 	type_parameter_constraints_clauses() {
 	    let localctx = new Type_parameter_constraints_clausesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 238, CSharpParser.RULE_type_parameter_constraints_clauses);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1679; 
@@ -8018,7 +8014,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1681; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===CSharpParser.WHERE);
+	        } while(_la===111);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -8067,49 +8063,49 @@ export default class CSharpParser extends CSharpParserBase {
 	type_parameter_constraints() {
 	    let localctx = new Type_parameter_constraintsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 242, CSharpParser.RULE_type_parameter_constraints);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1698;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.NEW:
+	        case 66:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1688;
 	            this.constructor_constraint();
 	            break;
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BY:
-	        case CSharpParser.CLASS:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.STRING:
-	        case CSharpParser.STRUCT:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 20:
+	        case 26:
+	        case 32:
+	        case 35:
+	        case 38:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 64:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 81:
+	        case 85:
+	        case 86:
+	        case 91:
+	        case 92:
+	        case 102:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1689;
 	            this.primary_constraint();
@@ -8126,7 +8122,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1696;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.COMMA) {
+	            if(_la===132) {
 	                this.state = 1694;
 	                this.match(CSharpParser.COMMA);
 	                this.state = 1695;
@@ -8156,7 +8152,7 @@ export default class CSharpParser extends CSharpParserBase {
 	primary_constraint() {
 	    let localctx = new Primary_constraintContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 244, CSharpParser.RULE_primary_constraint);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1707;
 	        this._errHandler.sync(this);
@@ -8175,7 +8171,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1703;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.INTERR) {
+	            if(_la===148) {
 	                this.state = 1702;
 	                this.match(CSharpParser.INTERR);
 	            }
@@ -8279,7 +8275,7 @@ export default class CSharpParser extends CSharpParserBase {
 	class_body() {
 	    let localctx = new Class_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 250, CSharpParser.RULE_class_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1721;
@@ -8287,7 +8283,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1723;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ABSTRACT) | (1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.CLASS) | (1 << CSharpParser.CONST) | (1 << CSharpParser.DECIMAL) | (1 << CSharpParser.DELEGATE))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.ENUM - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.EVENT - 32)) | (1 << (CSharpParser.EXPLICIT - 32)) | (1 << (CSharpParser.EXTERN - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.IMPLICIT - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTERFACE - 32)) | (1 << (CSharpParser.INTERNAL - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.NEW - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.OVERRIDE - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.PRIVATE - 64)) | (1 << (CSharpParser.PROTECTED - 64)) | (1 << (CSharpParser.PUBLIC - 64)) | (1 << (CSharpParser.READONLY - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SEALED - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.STATIC - 64)) | (1 << (CSharpParser.STRING - 64)) | (1 << (CSharpParser.STRUCT - 64)))) !== 0) || ((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (CSharpParser.UINT - 99)) | (1 << (CSharpParser.ULONG - 99)) | (1 << (CSharpParser.UNMANAGED - 99)) | (1 << (CSharpParser.UNSAFE - 99)) | (1 << (CSharpParser.USHORT - 99)) | (1 << (CSharpParser.VAR - 99)) | (1 << (CSharpParser.VIRTUAL - 99)) | (1 << (CSharpParser.VOID - 99)) | (1 << (CSharpParser.VOLATILE - 99)) | (1 << (CSharpParser.WHEN - 99)) | (1 << (CSharpParser.WHERE - 99)) | (1 << (CSharpParser.YIELD - 99)) | (1 << (CSharpParser.IDENTIFIER - 99)) | (1 << (CSharpParser.OPEN_BRACKET - 99)) | (1 << (CSharpParser.OPEN_PARENS - 99)))) !== 0) || _la===CSharpParser.TILDE) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 2905988608) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3081446381) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 486275765) !== 0) || ((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 1342234555) !== 0) || _la===144) {
 	            this.state = 1722;
 	            this.class_member_declarations();
 	        }
@@ -8313,7 +8309,7 @@ export default class CSharpParser extends CSharpParserBase {
 	class_member_declarations() {
 	    let localctx = new Class_member_declarationsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 252, CSharpParser.RULE_class_member_declarations);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1728; 
@@ -8325,7 +8321,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1730; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ABSTRACT) | (1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.CLASS) | (1 << CSharpParser.CONST) | (1 << CSharpParser.DECIMAL) | (1 << CSharpParser.DELEGATE))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.ENUM - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.EVENT - 32)) | (1 << (CSharpParser.EXPLICIT - 32)) | (1 << (CSharpParser.EXTERN - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.IMPLICIT - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTERFACE - 32)) | (1 << (CSharpParser.INTERNAL - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.NEW - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.OVERRIDE - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.PRIVATE - 64)) | (1 << (CSharpParser.PROTECTED - 64)) | (1 << (CSharpParser.PUBLIC - 64)) | (1 << (CSharpParser.READONLY - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SEALED - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.STATIC - 64)) | (1 << (CSharpParser.STRING - 64)) | (1 << (CSharpParser.STRUCT - 64)))) !== 0) || ((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (CSharpParser.UINT - 99)) | (1 << (CSharpParser.ULONG - 99)) | (1 << (CSharpParser.UNMANAGED - 99)) | (1 << (CSharpParser.UNSAFE - 99)) | (1 << (CSharpParser.USHORT - 99)) | (1 << (CSharpParser.VAR - 99)) | (1 << (CSharpParser.VIRTUAL - 99)) | (1 << (CSharpParser.VOID - 99)) | (1 << (CSharpParser.VOLATILE - 99)) | (1 << (CSharpParser.WHEN - 99)) | (1 << (CSharpParser.WHERE - 99)) | (1 << (CSharpParser.YIELD - 99)) | (1 << (CSharpParser.IDENTIFIER - 99)) | (1 << (CSharpParser.OPEN_BRACKET - 99)) | (1 << (CSharpParser.OPEN_PARENS - 99)))) !== 0) || _la===CSharpParser.TILDE);
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2905988608) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3081446381) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 486275765) !== 0) || ((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 1342234555) !== 0) || _la===144);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -8345,13 +8341,13 @@ export default class CSharpParser extends CSharpParserBase {
 	class_member_declaration() {
 	    let localctx = new Class_member_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 254, CSharpParser.RULE_class_member_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1733;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 1732;
 	            this.attributes();
 	        }
@@ -8367,67 +8363,67 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1740;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CLASS:
-	        case CSharpParser.CONST:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.ENUM:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.EVENT:
-	        case CSharpParser.EXPLICIT:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.IMPLICIT:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTERFACE:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.READONLY:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.STRING:
-	        case CSharpParser.STRUCT:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.VAR:
-	        case CSharpParser.VOID:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.OPEN_PARENS:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 26:
+	        case 27:
+	        case 29:
+	        case 31:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 53:
+	        case 55:
+	        case 56:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 91:
+	        case 92:
+	        case 99:
+	        case 100:
+	        case 102:
+	        case 104:
+	        case 106:
+	        case 108:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 129:
 	            this.state = 1738;
 	            this.common_member_declaration();
 	            break;
-	        case CSharpParser.TILDE:
+	        case 144:
 	            this.state = 1739;
 	            this.destructor_definition();
 	            break;
@@ -8490,12 +8486,12 @@ export default class CSharpParser extends CSharpParserBase {
 	all_member_modifier() {
 	    let localctx = new All_member_modifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 258, CSharpParser.RULE_all_member_modifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1747;
 	        _la = this._input.LA(1);
-	        if(!(_la===CSharpParser.ABSTRACT || _la===CSharpParser.ASYNC || ((((_la - 41)) & ~0x1f) == 0 && ((1 << (_la - 41)) & ((1 << (CSharpParser.EXTERN - 41)) | (1 << (CSharpParser.INTERNAL - 41)) | (1 << (CSharpParser.NEW - 41)))) !== 0) || ((((_la - 73)) & ~0x1f) == 0 && ((1 << (_la - 73)) & ((1 << (CSharpParser.OVERRIDE - 73)) | (1 << (CSharpParser.PARTIAL - 73)) | (1 << (CSharpParser.PRIVATE - 73)) | (1 << (CSharpParser.PROTECTED - 73)) | (1 << (CSharpParser.PUBLIC - 73)) | (1 << (CSharpParser.READONLY - 73)) | (1 << (CSharpParser.SEALED - 73)) | (1 << (CSharpParser.STATIC - 73)) | (1 << (CSharpParser.UNSAFE - 73)))) !== 0) || _la===CSharpParser.VIRTUAL || _la===CSharpParser.VOLATILE)) {
+	        if(!(_la===9 || _la===15 || ((((_la - 41)) & ~0x1f) === 0 && ((1 << (_la - 41)) & 33619969) !== 0) || ((((_la - 73)) & ~0x1f) === 0 && ((1 << (_la - 73)) & 1073875069) !== 0) || _la===107 || _la===109)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -8551,12 +8547,12 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1758;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case CSharpParser.OPEN_BRACE:
-	            case CSharpParser.SEMICOLON:
+	            case 125:
+	            case 134:
 	                this.state = 1753;
 	                this.body();
 	                break;
-	            case CSharpParser.ASSIGNMENT:
+	            case 145:
 	                this.state = 1754;
 	                this.right_arrow();
 	                this.state = 1755;
@@ -8715,7 +8711,7 @@ export default class CSharpParser extends CSharpParserBase {
 	constant_declarators() {
 	    let localctx = new Constant_declaratorsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 264, CSharpParser.RULE_constant_declarators);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1789;
@@ -8723,7 +8719,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1794;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 1790;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 1791;
@@ -8778,7 +8774,7 @@ export default class CSharpParser extends CSharpParserBase {
 	variable_declarators() {
 	    let localctx = new Variable_declaratorsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 268, CSharpParser.RULE_variable_declarators);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1801;
@@ -8786,7 +8782,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1806;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 1802;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 1803;
@@ -8814,7 +8810,7 @@ export default class CSharpParser extends CSharpParserBase {
 	variable_declarator() {
 	    let localctx = new Variable_declaratorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 270, CSharpParser.RULE_variable_declarator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1809;
@@ -8822,7 +8818,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1812;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.ASSIGNMENT) {
+	        if(_la===145) {
 	            this.state = 1810;
 	            this.match(CSharpParser.ASSIGNMENT);
 	            this.state = 1811;
@@ -8852,89 +8848,89 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1816;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BASE:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CHECKED:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DEFAULT:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FALSE:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.NEW:
-	        case CSharpParser.NULL_:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.SIZEOF:
-	        case CSharpParser.STRING:
-	        case CSharpParser.THIS:
-	        case CSharpParser.TRUE:
-	        case CSharpParser.TYPEOF:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNCHECKED:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.LITERAL_ACCESS:
-	        case CSharpParser.INTEGER_LITERAL:
-	        case CSharpParser.HEX_INTEGER_LITERAL:
-	        case CSharpParser.BIN_INTEGER_LITERAL:
-	        case CSharpParser.REAL_LITERAL:
-	        case CSharpParser.CHARACTER_LITERAL:
-	        case CSharpParser.REGULAR_STRING:
-	        case CSharpParser.VERBATIUM_STRING:
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
-	        case CSharpParser.OPEN_PARENS:
-	        case CSharpParser.PLUS:
-	        case CSharpParser.MINUS:
-	        case CSharpParser.STAR:
-	        case CSharpParser.AMP:
-	        case CSharpParser.CARET:
-	        case CSharpParser.BANG:
-	        case CSharpParser.TILDE:
-	        case CSharpParser.OP_INC:
-	        case CSharpParser.OP_DEC:
-	        case CSharpParser.OP_RANGE:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 42:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 80:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 91:
+	        case 94:
+	        case 96:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 104:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 129:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 140:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 151:
+	        case 152:
+	        case 171:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1814;
 	            this.expression();
 	            break;
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1815;
 	            this.array_initializer();
@@ -9025,12 +9021,12 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1826;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1824;
 	            this.block();
 	            break;
-	        case CSharpParser.SEMICOLON:
+	        case 134:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1825;
 	            this.match(CSharpParser.SEMICOLON);
@@ -9057,7 +9053,7 @@ export default class CSharpParser extends CSharpParserBase {
 	formal_parameter_list() {
 	    let localctx = new Formal_parameter_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 280, CSharpParser.RULE_formal_parameter_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1834;
 	        this._errHandler.sync(this);
@@ -9076,7 +9072,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1832;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.COMMA) {
+	            if(_la===132) {
 	                this.state = 1830;
 	                this.match(CSharpParser.COMMA);
 	                this.state = 1831;
@@ -9143,7 +9139,7 @@ export default class CSharpParser extends CSharpParserBase {
 	fixed_parameter() {
 	    let localctx = new Fixed_parameterContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 284, CSharpParser.RULE_fixed_parameter);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 1852;
 	        this._errHandler.sync(this);
@@ -9154,7 +9150,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1845;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.OPEN_BRACKET) {
+	            if(_la===127) {
 	                this.state = 1844;
 	                this.attributes();
 	            }
@@ -9162,7 +9158,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1848;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 54)) & ~0x1f) == 0 && ((1 << (_la - 54)) & ((1 << (CSharpParser.IN - 54)) | (1 << (CSharpParser.OUT - 54)) | (1 << (CSharpParser.REF - 54)))) !== 0) || _la===CSharpParser.THIS) {
+	            if(((((_la - 54)) & ~0x1f) === 0 && ((1 << (_la - 54)) & 67371009) !== 0) || _la===94) {
 	                this.state = 1847;
 	                this.parameter_modifier();
 	            }
@@ -9262,13 +9258,13 @@ export default class CSharpParser extends CSharpParserBase {
 	parameter_array() {
 	    let localctx = new Parameter_arrayContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 288, CSharpParser.RULE_parameter_array);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1865;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 1864;
 	            this.attributes();
 	        }
@@ -9298,13 +9294,13 @@ export default class CSharpParser extends CSharpParserBase {
 	accessor_declarations() {
 	    let localctx = new Accessor_declarationsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 290, CSharpParser.RULE_accessor_declarations);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1872;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 1871;
 	            localctx.attrs = this.attributes();
 	        }
@@ -9312,7 +9308,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1875;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 57)) & ~0x1f) == 0 && ((1 << (_la - 57)) & ((1 << (CSharpParser.INTERNAL - 57)) | (1 << (CSharpParser.PRIVATE - 57)) | (1 << (CSharpParser.PROTECTED - 57)))) !== 0)) {
+	        if(((((_la - 57)) & ~0x1f) === 0 && ((1 << (_la - 57)) & 1572865) !== 0)) {
 	            this.state = 1874;
 	            localctx.mods = this.accessor_modifier();
 	        }
@@ -9320,7 +9316,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1887;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.GET:
+	        case 49:
 	            this.state = 1877;
 	            this.match(CSharpParser.GET);
 	            this.state = 1878;
@@ -9328,13 +9324,13 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1880;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 57)) & ~0x1f) == 0 && ((1 << (_la - 57)) & ((1 << (CSharpParser.INTERNAL - 57)) | (1 << (CSharpParser.PRIVATE - 57)) | (1 << (CSharpParser.PROTECTED - 57)) | (1 << (CSharpParser.SET - 57)))) !== 0) || _la===CSharpParser.OPEN_BRACKET) {
+	            if(((((_la - 57)) & ~0x1f) === 0 && ((1 << (_la - 57)) & 538443777) !== 0) || _la===127) {
 	                this.state = 1879;
 	                this.set_accessor_declaration();
 	            }
 
 	            break;
-	        case CSharpParser.SET:
+	        case 86:
 	            this.state = 1882;
 	            this.match(CSharpParser.SET);
 	            this.state = 1883;
@@ -9342,7 +9338,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1885;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 49)) & ~0x1f) == 0 && ((1 << (_la - 49)) & ((1 << (CSharpParser.GET - 49)) | (1 << (CSharpParser.INTERNAL - 49)) | (1 << (CSharpParser.PRIVATE - 49)) | (1 << (CSharpParser.PROTECTED - 49)))) !== 0) || _la===CSharpParser.OPEN_BRACKET) {
+	            if(((((_la - 49)) & ~0x1f) === 0 && ((1 << (_la - 49)) & 402653441) !== 0) || _la===127) {
 	                this.state = 1884;
 	                this.get_accessor_declaration();
 	            }
@@ -9370,13 +9366,13 @@ export default class CSharpParser extends CSharpParserBase {
 	get_accessor_declaration() {
 	    let localctx = new Get_accessor_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 292, CSharpParser.RULE_get_accessor_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1890;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 1889;
 	            this.attributes();
 	        }
@@ -9384,7 +9380,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1893;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 57)) & ~0x1f) == 0 && ((1 << (_la - 57)) & ((1 << (CSharpParser.INTERNAL - 57)) | (1 << (CSharpParser.PRIVATE - 57)) | (1 << (CSharpParser.PROTECTED - 57)))) !== 0)) {
+	        if(((((_la - 57)) & ~0x1f) === 0 && ((1 << (_la - 57)) & 1572865) !== 0)) {
 	            this.state = 1892;
 	            this.accessor_modifier();
 	        }
@@ -9412,13 +9408,13 @@ export default class CSharpParser extends CSharpParserBase {
 	set_accessor_declaration() {
 	    let localctx = new Set_accessor_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 294, CSharpParser.RULE_set_accessor_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1899;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 1898;
 	            this.attributes();
 	        }
@@ -9426,7 +9422,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1902;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 57)) & ~0x1f) == 0 && ((1 << (_la - 57)) & ((1 << (CSharpParser.INTERNAL - 57)) | (1 << (CSharpParser.PRIVATE - 57)) | (1 << (CSharpParser.PROTECTED - 57)))) !== 0)) {
+	        if(((((_la - 57)) & ~0x1f) === 0 && ((1 << (_la - 57)) & 1572865) !== 0)) {
 	            this.state = 1901;
 	            this.accessor_modifier();
 	        }
@@ -9517,12 +9513,12 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1918;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1916;
 	            this.block();
 	            break;
-	        case CSharpParser.SEMICOLON:
+	        case 134:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1917;
 	            this.match(CSharpParser.SEMICOLON);
@@ -9549,13 +9545,13 @@ export default class CSharpParser extends CSharpParserBase {
 	event_accessor_declarations() {
 	    let localctx = new Event_accessor_declarationsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 300, CSharpParser.RULE_event_accessor_declarations);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1921;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 1920;
 	            this.attributes();
 	        }
@@ -9563,7 +9559,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1931;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
+	        case 10:
 	            this.state = 1923;
 	            this.match(CSharpParser.ADD);
 	            this.state = 1924;
@@ -9571,7 +9567,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 1925;
 	            this.remove_accessor_declaration();
 	            break;
-	        case CSharpParser.REMOVE:
+	        case 81:
 	            this.state = 1927;
 	            this.match(CSharpParser.REMOVE);
 	            this.state = 1928;
@@ -9601,13 +9597,13 @@ export default class CSharpParser extends CSharpParserBase {
 	add_accessor_declaration() {
 	    let localctx = new Add_accessor_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 302, CSharpParser.RULE_add_accessor_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1934;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 1933;
 	            this.attributes();
 	        }
@@ -9635,13 +9631,13 @@ export default class CSharpParser extends CSharpParserBase {
 	remove_accessor_declaration() {
 	    let localctx = new Remove_accessor_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 304, CSharpParser.RULE_remove_accessor_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1940;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 1939;
 	            this.attributes();
 	        }
@@ -9826,12 +9822,12 @@ export default class CSharpParser extends CSharpParserBase {
 	conversion_operator_declarator() {
 	    let localctx = new Conversion_operator_declaratorContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 308, CSharpParser.RULE_conversion_operator_declarator);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1969;
 	        _la = this._input.LA(1);
-	        if(!(_la===CSharpParser.EXPLICIT || _la===CSharpParser.IMPLICIT)) {
+	        if(!(_la===40 || _la===53)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -9867,14 +9863,14 @@ export default class CSharpParser extends CSharpParserBase {
 	constructor_initializer() {
 	    let localctx = new Constructor_initializerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 310, CSharpParser.RULE_constructor_initializer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1976;
 	        this.match(CSharpParser.COLON);
 	        this.state = 1977;
 	        _la = this._input.LA(1);
-	        if(!(_la===CSharpParser.BASE || _la===CSharpParser.THIS)) {
+	        if(!(_la===17 || _la===94)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -9886,7 +9882,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1980;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.IN - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)) | (1 << (CSharpParser.OUT - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 108)) & ~0x1f) == 0 && ((1 << (_la - 108)) & ((1 << (CSharpParser.VOID - 108)) | (1 << (CSharpParser.WHEN - 108)) | (1 << (CSharpParser.WHERE - 108)) | (1 << (CSharpParser.YIELD - 108)) | (1 << (CSharpParser.IDENTIFIER - 108)) | (1 << (CSharpParser.LITERAL_ACCESS - 108)) | (1 << (CSharpParser.INTEGER_LITERAL - 108)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 108)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 108)) | (1 << (CSharpParser.REAL_LITERAL - 108)) | (1 << (CSharpParser.CHARACTER_LITERAL - 108)) | (1 << (CSharpParser.REGULAR_STRING - 108)) | (1 << (CSharpParser.VERBATIUM_STRING - 108)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 108)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 108)) | (1 << (CSharpParser.OPEN_PARENS - 108)) | (1 << (CSharpParser.PLUS - 108)) | (1 << (CSharpParser.MINUS - 108)) | (1 << (CSharpParser.STAR - 108)))) !== 0) || ((((_la - 140)) & ~0x1f) == 0 && ((1 << (_la - 140)) & ((1 << (CSharpParser.AMP - 140)) | (1 << (CSharpParser.CARET - 140)) | (1 << (CSharpParser.BANG - 140)) | (1 << (CSharpParser.TILDE - 140)) | (1 << (CSharpParser.OP_INC - 140)) | (1 << (CSharpParser.OP_DEC - 140)) | (1 << (CSharpParser.OP_RANGE - 140)))) !== 0)) {
+	        if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 1869427401) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 2947104097) !== 0) || ((((_la - 108)) & ~0x1f) === 0 && ((1 << (_la - 108)) & 941752301) !== 0) || ((((_la - 140)) & ~0x1f) === 0 && ((1 << (_la - 140)) & 2147489821) !== 0)) {
 	            this.state = 1979;
 	            this.argument_list();
 	        }
@@ -9916,12 +9912,12 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1986;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 1984;
 	            this.block();
 	            break;
-	        case CSharpParser.SEMICOLON:
+	        case 134:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 1985;
 	            this.match(CSharpParser.SEMICOLON);
@@ -9973,7 +9969,7 @@ export default class CSharpParser extends CSharpParserBase {
 	struct_body() {
 	    let localctx = new Struct_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 316, CSharpParser.RULE_struct_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 1991;
@@ -9981,7 +9977,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 1995;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ABSTRACT) | (1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.CLASS) | (1 << CSharpParser.CONST) | (1 << CSharpParser.DECIMAL) | (1 << CSharpParser.DELEGATE))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.ENUM - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.EVENT - 32)) | (1 << (CSharpParser.EXPLICIT - 32)) | (1 << (CSharpParser.EXTERN - 32)) | (1 << (CSharpParser.FIXED - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.IMPLICIT - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTERFACE - 32)) | (1 << (CSharpParser.INTERNAL - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.NEW - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.OVERRIDE - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.PRIVATE - 64)) | (1 << (CSharpParser.PROTECTED - 64)) | (1 << (CSharpParser.PUBLIC - 64)) | (1 << (CSharpParser.READONLY - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SEALED - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.STATIC - 64)) | (1 << (CSharpParser.STRING - 64)) | (1 << (CSharpParser.STRUCT - 64)))) !== 0) || ((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (CSharpParser.UINT - 99)) | (1 << (CSharpParser.ULONG - 99)) | (1 << (CSharpParser.UNMANAGED - 99)) | (1 << (CSharpParser.UNSAFE - 99)) | (1 << (CSharpParser.USHORT - 99)) | (1 << (CSharpParser.VAR - 99)) | (1 << (CSharpParser.VIRTUAL - 99)) | (1 << (CSharpParser.VOID - 99)) | (1 << (CSharpParser.VOLATILE - 99)) | (1 << (CSharpParser.WHEN - 99)) | (1 << (CSharpParser.WHERE - 99)) | (1 << (CSharpParser.YIELD - 99)) | (1 << (CSharpParser.IDENTIFIER - 99)) | (1 << (CSharpParser.OPEN_BRACKET - 99)) | (1 << (CSharpParser.OPEN_PARENS - 99)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2905988608) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3081450477) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 486275765) !== 0) || ((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 1342234555) !== 0)) {
 	            this.state = 1992;
 	            this.struct_member_declaration();
 	            this.state = 1997;
@@ -10009,13 +10005,13 @@ export default class CSharpParser extends CSharpParserBase {
 	struct_member_declaration() {
 	    let localctx = new Struct_member_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 318, CSharpParser.RULE_struct_member_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2001;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 2000;
 	            this.attributes();
 	        }
@@ -10031,67 +10027,67 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2016;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CLASS:
-	        case CSharpParser.CONST:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.ENUM:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.EVENT:
-	        case CSharpParser.EXPLICIT:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.IMPLICIT:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTERFACE:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.READONLY:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.STRING:
-	        case CSharpParser.STRUCT:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.VAR:
-	        case CSharpParser.VOID:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.OPEN_PARENS:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 26:
+	        case 27:
+	        case 29:
+	        case 31:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 37:
+	        case 38:
+	        case 39:
+	        case 40:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 53:
+	        case 55:
+	        case 56:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 79:
+	        case 80:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 91:
+	        case 92:
+	        case 99:
+	        case 100:
+	        case 102:
+	        case 104:
+	        case 106:
+	        case 108:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 129:
 	            this.state = 2006;
 	            this.common_member_declaration();
 	            break;
-	        case CSharpParser.FIXED:
+	        case 44:
 	            this.state = 2007;
 	            this.match(CSharpParser.FIXED);
 	            this.state = 2008;
@@ -10105,7 +10101,7 @@ export default class CSharpParser extends CSharpParserBase {
 	                this.state = 2012; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BY))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (CSharpParser.UNMANAGED - 102)) | (1 << (CSharpParser.VAR - 102)) | (1 << (CSharpParser.WHEN - 102)) | (1 << (CSharpParser.WHERE - 102)) | (1 << (CSharpParser.YIELD - 102)) | (1 << (CSharpParser.IDENTIFIER - 102)))) !== 0));
+	            } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1170432) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 873136201) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 6424737) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 6929) !== 0));
 	            this.state = 2014;
 	            this.match(CSharpParser.SEMICOLON);
 	            break;
@@ -10131,7 +10127,7 @@ export default class CSharpParser extends CSharpParserBase {
 	array_type() {
 	    let localctx = new Array_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 320, CSharpParser.RULE_array_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2018;
@@ -10143,10 +10139,10 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2022;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===CSharpParser.STAR || _la===CSharpParser.INTERR) {
+	            while(_la===137 || _la===148) {
 	                this.state = 2019;
 	                _la = this._input.LA(1);
-	                if(!(_la===CSharpParser.STAR || _la===CSharpParser.INTERR)) {
+	                if(!(_la===137 || _la===148)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -10162,7 +10158,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2028; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(((((_la - 127)) & ~0x1f) == 0 && ((1 << (_la - 127)) & ((1 << (CSharpParser.OPEN_BRACKET - 127)) | (1 << (CSharpParser.STAR - 127)) | (1 << (CSharpParser.INTERR - 127)))) !== 0));
+	        } while(((((_la - 127)) & ~0x1f) === 0 && ((1 << (_la - 127)) & 2098177) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -10182,7 +10178,7 @@ export default class CSharpParser extends CSharpParserBase {
 	rank_specifier() {
 	    let localctx = new Rank_specifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 322, CSharpParser.RULE_rank_specifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2030;
@@ -10190,7 +10186,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2034;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 2031;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 2036;
@@ -10218,7 +10214,7 @@ export default class CSharpParser extends CSharpParserBase {
 	array_initializer() {
 	    let localctx = new Array_initializerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 324, CSharpParser.RULE_array_initializer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2039;
@@ -10226,7 +10222,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2051;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 110)) & ~0x1f) == 0 && ((1 << (_la - 110)) & ((1 << (CSharpParser.WHEN - 110)) | (1 << (CSharpParser.WHERE - 110)) | (1 << (CSharpParser.YIELD - 110)) | (1 << (CSharpParser.IDENTIFIER - 110)) | (1 << (CSharpParser.LITERAL_ACCESS - 110)) | (1 << (CSharpParser.INTEGER_LITERAL - 110)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.REAL_LITERAL - 110)) | (1 << (CSharpParser.CHARACTER_LITERAL - 110)) | (1 << (CSharpParser.REGULAR_STRING - 110)) | (1 << (CSharpParser.VERBATIUM_STRING - 110)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 110)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 110)) | (1 << (CSharpParser.OPEN_BRACE - 110)) | (1 << (CSharpParser.OPEN_PARENS - 110)) | (1 << (CSharpParser.PLUS - 110)) | (1 << (CSharpParser.MINUS - 110)) | (1 << (CSharpParser.STAR - 110)) | (1 << (CSharpParser.AMP - 110)))) !== 0) || ((((_la - 142)) & ~0x1f) == 0 && ((1 << (_la - 142)) & ((1 << (CSharpParser.CARET - 142)) | (1 << (CSharpParser.BANG - 142)) | (1 << (CSharpParser.TILDE - 142)) | (1 << (CSharpParser.OP_INC - 142)) | (1 << (CSharpParser.OP_DEC - 142)) | (1 << (CSharpParser.OP_RANGE - 142)))) !== 0)) {
+	        if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 795681481) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 2947104097) !== 0) || ((((_la - 110)) & ~0x1f) === 0 && ((1 << (_la - 110)) & 1309212667) !== 0) || ((((_la - 142)) & ~0x1f) === 0 && ((1 << (_la - 142)) & 536872455) !== 0)) {
 	            this.state = 2040;
 	            this.variable_initializer();
 	            this.state = 2045;
@@ -10247,7 +10243,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2049;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.COMMA) {
+	            if(_la===132) {
 	                this.state = 2048;
 	                this.match(CSharpParser.COMMA);
 	            }
@@ -10275,7 +10271,7 @@ export default class CSharpParser extends CSharpParserBase {
 	variant_type_parameter_list() {
 	    let localctx = new Variant_type_parameter_listContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 326, CSharpParser.RULE_variant_type_parameter_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2055;
@@ -10285,7 +10281,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2061;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 2057;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 2058;
@@ -10315,13 +10311,13 @@ export default class CSharpParser extends CSharpParserBase {
 	variant_type_parameter() {
 	    let localctx = new Variant_type_parameterContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 328, CSharpParser.RULE_variant_type_parameter);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2067;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 2066;
 	            this.attributes();
 	        }
@@ -10329,7 +10325,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2070;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.IN || _la===CSharpParser.OUT) {
+	        if(_la===54 || _la===72) {
 	            this.state = 2069;
 	            this.variance_annotation();
 	        }
@@ -10355,12 +10351,12 @@ export default class CSharpParser extends CSharpParserBase {
 	variance_annotation() {
 	    let localctx = new Variance_annotationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 330, CSharpParser.RULE_variance_annotation);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2074;
 	        _la = this._input.LA(1);
-	        if(!(_la===CSharpParser.IN || _la===CSharpParser.OUT)) {
+	        if(!(_la===54 || _la===72)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -10411,7 +10407,7 @@ export default class CSharpParser extends CSharpParserBase {
 	interface_body() {
 	    let localctx = new Interface_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 334, CSharpParser.RULE_interface_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2079;
@@ -10419,7 +10415,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2083;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.DECIMAL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.EVENT - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.NEW - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.READONLY - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.STRING - 64)))) !== 0) || ((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (CSharpParser.UINT - 99)) | (1 << (CSharpParser.ULONG - 99)) | (1 << (CSharpParser.UNMANAGED - 99)) | (1 << (CSharpParser.UNSAFE - 99)) | (1 << (CSharpParser.USHORT - 99)) | (1 << (CSharpParser.VAR - 99)) | (1 << (CSharpParser.VOID - 99)) | (1 << (CSharpParser.WHEN - 99)) | (1 << (CSharpParser.WHERE - 99)) | (1 << (CSharpParser.YIELD - 99)) | (1 << (CSharpParser.IDENTIFIER - 99)) | (1 << (CSharpParser.OPEN_BRACKET - 99)) | (1 << (CSharpParser.OPEN_PARENS - 99)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 557177856) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3029016781) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 149653685) !== 0) || ((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 1342233275) !== 0)) {
 	            this.state = 2080;
 	            this.interface_member_declaration();
 	            this.state = 2085;
@@ -10447,13 +10443,13 @@ export default class CSharpParser extends CSharpParserBase {
 	interface_member_declaration() {
 	    let localctx = new Interface_member_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 336, CSharpParser.RULE_interface_member_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2089;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 2088;
 	            this.attributes();
 	        }
@@ -10461,7 +10457,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2092;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.NEW) {
+	        if(_la===66) {
 	            this.state = 2091;
 	            this.match(CSharpParser.NEW);
 	        }
@@ -10474,7 +10470,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2095;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.UNSAFE) {
+	            if(_la===103) {
 	                this.state = 2094;
 	                this.match(CSharpParser.UNSAFE);
 	            }
@@ -10511,7 +10507,7 @@ export default class CSharpParser extends CSharpParserBase {
 	                this.state = 2107;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===CSharpParser.LT) {
+	                if(_la===146) {
 	                    this.state = 2106;
 	                    this.type_parameter_list();
 	                }
@@ -10521,7 +10517,7 @@ export default class CSharpParser extends CSharpParserBase {
 	                this.state = 2111;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.DECIMAL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.IN - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.OUT - 64)) | (1 << (CSharpParser.PARAMS - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.STRING - 64)) | (1 << (CSharpParser.THIS - 64)))) !== 0) || ((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (CSharpParser.UINT - 99)) | (1 << (CSharpParser.ULONG - 99)) | (1 << (CSharpParser.UNMANAGED - 99)) | (1 << (CSharpParser.USHORT - 99)) | (1 << (CSharpParser.VAR - 99)) | (1 << (CSharpParser.VOID - 99)) | (1 << (CSharpParser.WHEN - 99)) | (1 << (CSharpParser.WHERE - 99)) | (1 << (CSharpParser.YIELD - 99)) | (1 << (CSharpParser.IDENTIFIER - 99)) | (1 << (CSharpParser.OPEN_BRACKET - 99)) | (1 << (CSharpParser.OPEN_PARENS - 99)))) !== 0)) {
+	                if((((_la) & ~0x1f) === 0 && ((1 << _la) & 557177856) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3033210957) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 1223364017) !== 0) || ((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 1342233259) !== 0)) {
 	                    this.state = 2110;
 	                    this.formal_parameter_list();
 	                }
@@ -10531,7 +10527,7 @@ export default class CSharpParser extends CSharpParserBase {
 	                this.state = 2115;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===CSharpParser.WHERE) {
+	                if(_la===111) {
 	                    this.state = 2114;
 	                    this.type_parameter_constraints_clauses();
 	                }
@@ -10575,7 +10571,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2135;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.UNSAFE) {
+	            if(_la===103) {
 	                this.state = 2134;
 	                this.match(CSharpParser.UNSAFE);
 	            }
@@ -10587,7 +10583,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2140;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.LT) {
+	            if(_la===146) {
 	                this.state = 2139;
 	                this.type_parameter_list();
 	            }
@@ -10597,7 +10593,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2144;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.DECIMAL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.IN - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.OUT - 64)) | (1 << (CSharpParser.PARAMS - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.STRING - 64)) | (1 << (CSharpParser.THIS - 64)))) !== 0) || ((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (CSharpParser.UINT - 99)) | (1 << (CSharpParser.ULONG - 99)) | (1 << (CSharpParser.UNMANAGED - 99)) | (1 << (CSharpParser.USHORT - 99)) | (1 << (CSharpParser.VAR - 99)) | (1 << (CSharpParser.VOID - 99)) | (1 << (CSharpParser.WHEN - 99)) | (1 << (CSharpParser.WHERE - 99)) | (1 << (CSharpParser.YIELD - 99)) | (1 << (CSharpParser.IDENTIFIER - 99)) | (1 << (CSharpParser.OPEN_BRACKET - 99)) | (1 << (CSharpParser.OPEN_PARENS - 99)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 557177856) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3033210957) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 1223364017) !== 0) || ((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 1342233259) !== 0)) {
 	                this.state = 2143;
 	                this.formal_parameter_list();
 	            }
@@ -10607,7 +10603,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2148;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.WHERE) {
+	            if(_la===111) {
 	                this.state = 2147;
 	                this.type_parameter_constraints_clauses();
 	            }
@@ -10647,13 +10643,13 @@ export default class CSharpParser extends CSharpParserBase {
 	interface_accessors() {
 	    let localctx = new Interface_accessorsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 338, CSharpParser.RULE_interface_accessors);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2160;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 2159;
 	            this.attributes();
 	        }
@@ -10661,7 +10657,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2180;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.GET:
+	        case 49:
 	            this.state = 2162;
 	            this.match(CSharpParser.GET);
 	            this.state = 2163;
@@ -10669,11 +10665,11 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2169;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.SET || _la===CSharpParser.OPEN_BRACKET) {
+	            if(_la===86 || _la===127) {
 	                this.state = 2165;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===CSharpParser.OPEN_BRACKET) {
+	                if(_la===127) {
 	                    this.state = 2164;
 	                    this.attributes();
 	                }
@@ -10685,7 +10681,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            }
 
 	            break;
-	        case CSharpParser.SET:
+	        case 86:
 	            this.state = 2171;
 	            this.match(CSharpParser.SET);
 	            this.state = 2172;
@@ -10693,11 +10689,11 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2178;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.GET || _la===CSharpParser.OPEN_BRACKET) {
+	            if(_la===49 || _la===127) {
 	                this.state = 2174;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===CSharpParser.OPEN_BRACKET) {
+	                if(_la===127) {
 	                    this.state = 2173;
 	                    this.attributes();
 	                }
@@ -10756,7 +10752,7 @@ export default class CSharpParser extends CSharpParserBase {
 	enum_body() {
 	    let localctx = new Enum_bodyContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 342, CSharpParser.RULE_enum_body);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2185;
@@ -10764,7 +10760,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2197;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BY))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (CSharpParser.UNMANAGED - 102)) | (1 << (CSharpParser.VAR - 102)) | (1 << (CSharpParser.WHEN - 102)) | (1 << (CSharpParser.WHERE - 102)) | (1 << (CSharpParser.YIELD - 102)) | (1 << (CSharpParser.IDENTIFIER - 102)) | (1 << (CSharpParser.OPEN_BRACKET - 102)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1170432) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 873136201) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 6424737) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 33561361) !== 0)) {
 	            this.state = 2186;
 	            this.enum_member_declaration();
 	            this.state = 2191;
@@ -10785,7 +10781,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2195;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.COMMA) {
+	            if(_la===132) {
 	                this.state = 2194;
 	                this.match(CSharpParser.COMMA);
 	            }
@@ -10813,13 +10809,13 @@ export default class CSharpParser extends CSharpParserBase {
 	enum_member_declaration() {
 	    let localctx = new Enum_member_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 344, CSharpParser.RULE_enum_member_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2202;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_BRACKET) {
+	        if(_la===127) {
 	            this.state = 2201;
 	            this.attributes();
 	        }
@@ -10829,7 +10825,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2207;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.ASSIGNMENT) {
+	        if(_la===145) {
 	            this.state = 2205;
 	            this.match(CSharpParser.ASSIGNMENT);
 	            this.state = 2206;
@@ -10855,7 +10851,7 @@ export default class CSharpParser extends CSharpParserBase {
 	global_attribute_section() {
 	    let localctx = new Global_attribute_sectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 346, CSharpParser.RULE_global_attribute_section);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2209;
@@ -10869,7 +10865,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2214;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.COMMA) {
+	        if(_la===132) {
 	            this.state = 2213;
 	            this.match(CSharpParser.COMMA);
 	        }
@@ -10932,7 +10928,7 @@ export default class CSharpParser extends CSharpParserBase {
 	attributes() {
 	    let localctx = new AttributesContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 350, CSharpParser.RULE_attributes);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2223; 
@@ -10944,7 +10940,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2225; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===CSharpParser.OPEN_BRACKET);
+	        } while(_la===127);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -10964,7 +10960,7 @@ export default class CSharpParser extends CSharpParserBase {
 	attribute_section() {
 	    let localctx = new Attribute_sectionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 352, CSharpParser.RULE_attribute_section);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2227;
@@ -10984,7 +10980,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2235;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.COMMA) {
+	        if(_la===132) {
 	            this.state = 2234;
 	            this.match(CSharpParser.COMMA);
 	        }
@@ -11085,7 +11081,7 @@ export default class CSharpParser extends CSharpParserBase {
 	attribute() {
 	    let localctx = new AttributeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 358, CSharpParser.RULE_attribute);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2251;
@@ -11093,19 +11089,19 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2264;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.OPEN_PARENS) {
+	        if(_la===129) {
 	            this.state = 2252;
 	            this.match(CSharpParser.OPEN_PARENS);
 	            this.state = 2261;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 110)) & ~0x1f) == 0 && ((1 << (_la - 110)) & ((1 << (CSharpParser.WHEN - 110)) | (1 << (CSharpParser.WHERE - 110)) | (1 << (CSharpParser.YIELD - 110)) | (1 << (CSharpParser.IDENTIFIER - 110)) | (1 << (CSharpParser.LITERAL_ACCESS - 110)) | (1 << (CSharpParser.INTEGER_LITERAL - 110)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.REAL_LITERAL - 110)) | (1 << (CSharpParser.CHARACTER_LITERAL - 110)) | (1 << (CSharpParser.REGULAR_STRING - 110)) | (1 << (CSharpParser.VERBATIUM_STRING - 110)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 110)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 110)) | (1 << (CSharpParser.OPEN_PARENS - 110)) | (1 << (CSharpParser.PLUS - 110)) | (1 << (CSharpParser.MINUS - 110)) | (1 << (CSharpParser.STAR - 110)) | (1 << (CSharpParser.AMP - 110)))) !== 0) || ((((_la - 142)) & ~0x1f) == 0 && ((1 << (_la - 142)) & ((1 << (CSharpParser.CARET - 142)) | (1 << (CSharpParser.BANG - 142)) | (1 << (CSharpParser.TILDE - 142)) | (1 << (CSharpParser.OP_INC - 142)) | (1 << (CSharpParser.OP_DEC - 142)) | (1 << (CSharpParser.OP_RANGE - 142)))) !== 0)) {
+	            if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 795681481) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 2947104097) !== 0) || ((((_la - 110)) & ~0x1f) === 0 && ((1 << (_la - 110)) & 1309179899) !== 0) || ((((_la - 142)) & ~0x1f) === 0 && ((1 << (_la - 142)) & 536872455) !== 0)) {
 	                this.state = 2253;
 	                this.attribute_argument();
 	                this.state = 2258;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===CSharpParser.COMMA) {
+	                while(_la===132) {
 	                    this.state = 2254;
 	                    this.match(CSharpParser.COMMA);
 	                    this.state = 2255;
@@ -11172,106 +11168,106 @@ export default class CSharpParser extends CSharpParserBase {
 	pointer_type() {
 	    let localctx = new Pointer_typeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 362, CSharpParser.RULE_pointer_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2288;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.STRING:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 29:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 91:
+	        case 99:
+	        case 100:
+	        case 102:
+	        case 104:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2275;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case CSharpParser.BOOL:
-	            case CSharpParser.BYTE:
-	            case CSharpParser.CHAR:
-	            case CSharpParser.DECIMAL:
-	            case CSharpParser.DOUBLE:
-	            case CSharpParser.FLOAT:
-	            case CSharpParser.INT:
-	            case CSharpParser.LONG:
-	            case CSharpParser.SBYTE:
-	            case CSharpParser.SHORT:
-	            case CSharpParser.UINT:
-	            case CSharpParser.ULONG:
-	            case CSharpParser.USHORT:
+	            case 18:
+	            case 21:
+	            case 24:
+	            case 29:
+	            case 34:
+	            case 45:
+	            case 55:
+	            case 63:
+	            case 83:
+	            case 87:
+	            case 99:
+	            case 100:
+	            case 104:
 	                this.state = 2273;
 	                this.simple_type();
 	                break;
-	            case CSharpParser.ADD:
-	            case CSharpParser.ALIAS:
-	            case CSharpParser.ARGLIST:
-	            case CSharpParser.ASCENDING:
-	            case CSharpParser.ASYNC:
-	            case CSharpParser.AWAIT:
-	            case CSharpParser.BY:
-	            case CSharpParser.DESCENDING:
-	            case CSharpParser.DYNAMIC:
-	            case CSharpParser.EQUALS:
-	            case CSharpParser.FROM:
-	            case CSharpParser.GET:
-	            case CSharpParser.GROUP:
-	            case CSharpParser.INTO:
-	            case CSharpParser.JOIN:
-	            case CSharpParser.LET:
-	            case CSharpParser.NAMEOF:
-	            case CSharpParser.OBJECT:
-	            case CSharpParser.ON:
-	            case CSharpParser.ORDERBY:
-	            case CSharpParser.PARTIAL:
-	            case CSharpParser.REMOVE:
-	            case CSharpParser.SELECT:
-	            case CSharpParser.SET:
-	            case CSharpParser.STRING:
-	            case CSharpParser.UNMANAGED:
-	            case CSharpParser.VAR:
-	            case CSharpParser.WHEN:
-	            case CSharpParser.WHERE:
-	            case CSharpParser.YIELD:
-	            case CSharpParser.IDENTIFIER:
+	            case 10:
+	            case 11:
+	            case 12:
+	            case 14:
+	            case 15:
+	            case 16:
+	            case 20:
+	            case 32:
+	            case 35:
+	            case 38:
+	            case 48:
+	            case 49:
+	            case 51:
+	            case 58:
+	            case 60:
+	            case 61:
+	            case 64:
+	            case 68:
+	            case 69:
+	            case 71:
+	            case 75:
+	            case 81:
+	            case 85:
+	            case 86:
+	            case 91:
+	            case 102:
+	            case 106:
+	            case 110:
+	            case 111:
+	            case 113:
+	            case 114:
 	                this.state = 2274;
 	                this.class_type();
 	                break;
@@ -11281,15 +11277,15 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2281;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===CSharpParser.OPEN_BRACKET || _la===CSharpParser.INTERR) {
+	            while(_la===127 || _la===148) {
 	                this.state = 2279;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case CSharpParser.OPEN_BRACKET:
+	                case 127:
 	                    this.state = 2277;
 	                    this.rank_specifier();
 	                    break;
-	                case CSharpParser.INTERR:
+	                case 148:
 	                    this.state = 2278;
 	                    this.match(CSharpParser.INTERR);
 	                    break;
@@ -11303,7 +11299,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2284;
 	            this.match(CSharpParser.STAR);
 	            break;
-	        case CSharpParser.VOID:
+	        case 108:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2286;
 	            this.match(CSharpParser.VOID);
@@ -11332,7 +11328,7 @@ export default class CSharpParser extends CSharpParserBase {
 	fixed_pointer_declarators() {
 	    let localctx = new Fixed_pointer_declaratorsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 364, CSharpParser.RULE_fixed_pointer_declarators);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2290;
@@ -11340,7 +11336,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2295;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 2291;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 2292;
@@ -11399,84 +11395,84 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2307;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BASE:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CHECKED:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DEFAULT:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FALSE:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.NEW:
-	        case CSharpParser.NULL_:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.SIZEOF:
-	        case CSharpParser.STRING:
-	        case CSharpParser.THIS:
-	        case CSharpParser.TRUE:
-	        case CSharpParser.TYPEOF:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNCHECKED:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.LITERAL_ACCESS:
-	        case CSharpParser.INTEGER_LITERAL:
-	        case CSharpParser.HEX_INTEGER_LITERAL:
-	        case CSharpParser.BIN_INTEGER_LITERAL:
-	        case CSharpParser.REAL_LITERAL:
-	        case CSharpParser.CHARACTER_LITERAL:
-	        case CSharpParser.REGULAR_STRING:
-	        case CSharpParser.VERBATIUM_STRING:
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
-	        case CSharpParser.OPEN_PARENS:
-	        case CSharpParser.PLUS:
-	        case CSharpParser.MINUS:
-	        case CSharpParser.STAR:
-	        case CSharpParser.AMP:
-	        case CSharpParser.CARET:
-	        case CSharpParser.BANG:
-	        case CSharpParser.TILDE:
-	        case CSharpParser.OP_INC:
-	        case CSharpParser.OP_DEC:
-	        case CSharpParser.OP_RANGE:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 42:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 80:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 91:
+	        case 94:
+	        case 96:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 104:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 129:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 140:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 151:
+	        case 152:
+	        case 171:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2303;
 	            this._errHandler.sync(this);
@@ -11489,7 +11485,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2305;
 	            this.expression();
 	            break;
-	        case CSharpParser.STACKALLOC:
+	        case 89:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2306;
 	            this.stackalloc_initializer();
@@ -11545,7 +11541,7 @@ export default class CSharpParser extends CSharpParserBase {
 	stackalloc_initializer() {
 	    let localctx = new Stackalloc_initializerContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 372, CSharpParser.RULE_stackalloc_initializer);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 2343;
 	        this._errHandler.sync(this);
@@ -11572,7 +11568,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2322;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.DECIMAL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.STRING - 64)))) !== 0) || ((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (CSharpParser.UINT - 99)) | (1 << (CSharpParser.ULONG - 99)) | (1 << (CSharpParser.UNMANAGED - 99)) | (1 << (CSharpParser.USHORT - 99)) | (1 << (CSharpParser.VAR - 99)) | (1 << (CSharpParser.VOID - 99)) | (1 << (CSharpParser.WHEN - 99)) | (1 << (CSharpParser.WHERE - 99)) | (1 << (CSharpParser.YIELD - 99)) | (1 << (CSharpParser.IDENTIFIER - 99)) | (1 << (CSharpParser.OPEN_PARENS - 99)))) !== 0)) {
+	            if((((_la) & ~0x1f) === 0 && ((1 << _la) & 557177856) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3029016653) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 149555377) !== 0) || ((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 1073797803) !== 0)) {
 	                this.state = 2321;
 	                this.type_();
 	            }
@@ -11582,7 +11578,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2326;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 110)) & ~0x1f) == 0 && ((1 << (_la - 110)) & ((1 << (CSharpParser.WHEN - 110)) | (1 << (CSharpParser.WHERE - 110)) | (1 << (CSharpParser.YIELD - 110)) | (1 << (CSharpParser.IDENTIFIER - 110)) | (1 << (CSharpParser.LITERAL_ACCESS - 110)) | (1 << (CSharpParser.INTEGER_LITERAL - 110)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 110)) | (1 << (CSharpParser.REAL_LITERAL - 110)) | (1 << (CSharpParser.CHARACTER_LITERAL - 110)) | (1 << (CSharpParser.REGULAR_STRING - 110)) | (1 << (CSharpParser.VERBATIUM_STRING - 110)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 110)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 110)) | (1 << (CSharpParser.OPEN_PARENS - 110)) | (1 << (CSharpParser.PLUS - 110)) | (1 << (CSharpParser.MINUS - 110)) | (1 << (CSharpParser.STAR - 110)) | (1 << (CSharpParser.AMP - 110)))) !== 0) || ((((_la - 142)) & ~0x1f) == 0 && ((1 << (_la - 142)) & ((1 << (CSharpParser.CARET - 142)) | (1 << (CSharpParser.BANG - 142)) | (1 << (CSharpParser.TILDE - 142)) | (1 << (CSharpParser.OP_INC - 142)) | (1 << (CSharpParser.OP_DEC - 142)) | (1 << (CSharpParser.OP_RANGE - 142)))) !== 0)) {
+	            if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 795681481) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 2947104097) !== 0) || ((((_la - 110)) & ~0x1f) === 0 && ((1 << (_la - 110)) & 1309179899) !== 0) || ((((_la - 142)) & ~0x1f) === 0 && ((1 << (_la - 142)) & 536872455) !== 0)) {
 	                this.state = 2325;
 	                this.expression();
 	            }
@@ -11611,7 +11607,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2339;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.COMMA) {
+	            if(_la===132) {
 	                this.state = 2338;
 	                this.match(CSharpParser.COMMA);
 	            }
@@ -11647,7 +11643,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2346;
 	        localctx.second = this.match(CSharpParser.GT);
 	        this.state = 2347;
-	        if (!( (localctx.first === null ? 0 : localctx.first.tokenIndex) + 1 == (localctx.second === null ? 0 : localctx.second.tokenIndex))) {
+	        if (!( (localctx.first == null ? 0 : localctx.first.tokenIndex) + 1 == (localctx.second == null ? 0 : localctx.second.tokenIndex))) {
 	            throw new antlr4.error.FailedPredicateException(this, "$first.index + 1 == $second.index");
 	        }
 	    } catch (re) {
@@ -11676,7 +11672,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2350;
 	        localctx.second = this.match(CSharpParser.GT);
 	        this.state = 2351;
-	        if (!( (localctx.first === null ? 0 : localctx.first.tokenIndex) + 1 == (localctx.second === null ? 0 : localctx.second.tokenIndex))) {
+	        if (!( (localctx.first == null ? 0 : localctx.first.tokenIndex) + 1 == (localctx.second == null ? 0 : localctx.second.tokenIndex))) {
 	            throw new antlr4.error.FailedPredicateException(this, "$first.index + 1 == $second.index");
 	        }
 	    } catch (re) {
@@ -11705,7 +11701,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2354;
 	        localctx.second = this.match(CSharpParser.OP_GE);
 	        this.state = 2355;
-	        if (!( (localctx.first === null ? 0 : localctx.first.tokenIndex) + 1 == (localctx.second === null ? 0 : localctx.second.tokenIndex))) {
+	        if (!( (localctx.first == null ? 0 : localctx.first.tokenIndex) + 1 == (localctx.second == null ? 0 : localctx.second.tokenIndex))) {
 	            throw new antlr4.error.FailedPredicateException(this, "$first.index + 1 == $second.index");
 	        }
 	    } catch (re) {
@@ -11731,46 +11727,46 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2365;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.FALSE:
-	        case CSharpParser.TRUE:
+	        case 42:
+	        case 96:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2357;
 	            this.boolean_literal();
 	            break;
-	        case CSharpParser.REGULAR_STRING:
-	        case CSharpParser.VERBATIUM_STRING:
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2358;
 	            this.string_literal();
 	            break;
-	        case CSharpParser.INTEGER_LITERAL:
+	        case 116:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2359;
 	            this.match(CSharpParser.INTEGER_LITERAL);
 	            break;
-	        case CSharpParser.HEX_INTEGER_LITERAL:
+	        case 117:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2360;
 	            this.match(CSharpParser.HEX_INTEGER_LITERAL);
 	            break;
-	        case CSharpParser.BIN_INTEGER_LITERAL:
+	        case 118:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 2361;
 	            this.match(CSharpParser.BIN_INTEGER_LITERAL);
 	            break;
-	        case CSharpParser.REAL_LITERAL:
+	        case 119:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 2362;
 	            this.match(CSharpParser.REAL_LITERAL);
 	            break;
-	        case CSharpParser.CHARACTER_LITERAL:
+	        case 120:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 2363;
 	            this.match(CSharpParser.CHARACTER_LITERAL);
 	            break;
-	        case CSharpParser.NULL_:
+	        case 67:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 2364;
 	            this.match(CSharpParser.NULL_);
@@ -11797,12 +11793,12 @@ export default class CSharpParser extends CSharpParserBase {
 	boolean_literal() {
 	    let localctx = new Boolean_literalContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 382, CSharpParser.RULE_boolean_literal);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2367;
 	        _la = this._input.LA(1);
-	        if(!(_la===CSharpParser.FALSE || _la===CSharpParser.TRUE)) {
+	        if(!(_la===42 || _la===96)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -11832,22 +11828,22 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2373;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
+	        case 123:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2369;
 	            this.interpolated_regular_string();
 	            break;
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
+	        case 124:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2370;
 	            this.interpolated_verbatium_string();
 	            break;
-	        case CSharpParser.REGULAR_STRING:
+	        case 121:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2371;
 	            this.match(CSharpParser.REGULAR_STRING);
 	            break;
-	        case CSharpParser.VERBATIUM_STRING:
+	        case 122:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2372;
 	            this.match(CSharpParser.VERBATIUM_STRING);
@@ -11874,7 +11870,7 @@ export default class CSharpParser extends CSharpParserBase {
 	interpolated_regular_string() {
 	    let localctx = new Interpolated_regular_stringContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 386, CSharpParser.RULE_interpolated_regular_string);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2375;
@@ -11882,7 +11878,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2379;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BASE) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.CHECKED) | (1 << CSharpParser.DECIMAL) | (1 << CSharpParser.DEFAULT) | (1 << CSharpParser.DELEGATE))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FALSE - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.NEW - 64)) | (1 << (CSharpParser.NULL_ - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.SIZEOF - 64)) | (1 << (CSharpParser.STRING - 64)) | (1 << (CSharpParser.THIS - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (CSharpParser.TRUE - 96)) | (1 << (CSharpParser.TYPEOF - 96)) | (1 << (CSharpParser.UINT - 96)) | (1 << (CSharpParser.ULONG - 96)) | (1 << (CSharpParser.UNCHECKED - 96)) | (1 << (CSharpParser.UNMANAGED - 96)) | (1 << (CSharpParser.USHORT - 96)) | (1 << (CSharpParser.VAR - 96)) | (1 << (CSharpParser.WHEN - 96)) | (1 << (CSharpParser.WHERE - 96)) | (1 << (CSharpParser.YIELD - 96)) | (1 << (CSharpParser.IDENTIFIER - 96)) | (1 << (CSharpParser.LITERAL_ACCESS - 96)) | (1 << (CSharpParser.INTEGER_LITERAL - 96)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 96)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 96)) | (1 << (CSharpParser.REAL_LITERAL - 96)) | (1 << (CSharpParser.CHARACTER_LITERAL - 96)) | (1 << (CSharpParser.REGULAR_STRING - 96)) | (1 << (CSharpParser.VERBATIUM_STRING - 96)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 96)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 96)))) !== 0) || ((((_la - 129)) & ~0x1f) == 0 && ((1 << (_la - 129)) & ((1 << (CSharpParser.OPEN_PARENS - 129)) | (1 << (CSharpParser.PLUS - 129)) | (1 << (CSharpParser.MINUS - 129)) | (1 << (CSharpParser.STAR - 129)) | (1 << (CSharpParser.AMP - 129)) | (1 << (CSharpParser.CARET - 129)) | (1 << (CSharpParser.BANG - 129)) | (1 << (CSharpParser.TILDE - 129)) | (1 << (CSharpParser.OP_INC - 129)) | (1 << (CSharpParser.OP_DEC - 129)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (CSharpParser.OP_RANGE - 171)) | (1 << (CSharpParser.DOUBLE_CURLY_INSIDE - 171)) | (1 << (CSharpParser.REGULAR_CHAR_INSIDE - 171)) | (1 << (CSharpParser.REGULAR_STRING_INSIDE - 171)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 3812088832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3029017677) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 1240139965) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 536790397) !== 0) || ((((_la - 129)) & ~0x1f) === 0 && ((1 << (_la - 129)) & 12642753) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 75) !== 0)) {
 	            this.state = 2376;
 	            this.interpolated_regular_string_part();
 	            this.state = 2381;
@@ -11910,7 +11906,7 @@ export default class CSharpParser extends CSharpParserBase {
 	interpolated_verbatium_string() {
 	    let localctx = new Interpolated_verbatium_stringContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 388, CSharpParser.RULE_interpolated_verbatium_string);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2384;
@@ -11918,7 +11914,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2388;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BASE) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.CHECKED) | (1 << CSharpParser.DECIMAL) | (1 << CSharpParser.DEFAULT) | (1 << CSharpParser.DELEGATE))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FALSE - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.NEW - 64)) | (1 << (CSharpParser.NULL_ - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.SIZEOF - 64)) | (1 << (CSharpParser.STRING - 64)) | (1 << (CSharpParser.THIS - 64)))) !== 0) || ((((_la - 96)) & ~0x1f) == 0 && ((1 << (_la - 96)) & ((1 << (CSharpParser.TRUE - 96)) | (1 << (CSharpParser.TYPEOF - 96)) | (1 << (CSharpParser.UINT - 96)) | (1 << (CSharpParser.ULONG - 96)) | (1 << (CSharpParser.UNCHECKED - 96)) | (1 << (CSharpParser.UNMANAGED - 96)) | (1 << (CSharpParser.USHORT - 96)) | (1 << (CSharpParser.VAR - 96)) | (1 << (CSharpParser.WHEN - 96)) | (1 << (CSharpParser.WHERE - 96)) | (1 << (CSharpParser.YIELD - 96)) | (1 << (CSharpParser.IDENTIFIER - 96)) | (1 << (CSharpParser.LITERAL_ACCESS - 96)) | (1 << (CSharpParser.INTEGER_LITERAL - 96)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 96)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 96)) | (1 << (CSharpParser.REAL_LITERAL - 96)) | (1 << (CSharpParser.CHARACTER_LITERAL - 96)) | (1 << (CSharpParser.REGULAR_STRING - 96)) | (1 << (CSharpParser.VERBATIUM_STRING - 96)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 96)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 96)))) !== 0) || ((((_la - 129)) & ~0x1f) == 0 && ((1 << (_la - 129)) & ((1 << (CSharpParser.OPEN_PARENS - 129)) | (1 << (CSharpParser.PLUS - 129)) | (1 << (CSharpParser.MINUS - 129)) | (1 << (CSharpParser.STAR - 129)) | (1 << (CSharpParser.AMP - 129)) | (1 << (CSharpParser.CARET - 129)) | (1 << (CSharpParser.BANG - 129)) | (1 << (CSharpParser.TILDE - 129)) | (1 << (CSharpParser.OP_INC - 129)) | (1 << (CSharpParser.OP_DEC - 129)))) !== 0) || ((((_la - 171)) & ~0x1f) == 0 && ((1 << (_la - 171)) & ((1 << (CSharpParser.OP_RANGE - 171)) | (1 << (CSharpParser.DOUBLE_CURLY_INSIDE - 171)) | (1 << (CSharpParser.VERBATIUM_DOUBLE_QUOTE_INSIDE - 171)) | (1 << (CSharpParser.VERBATIUM_INSIDE_STRING - 171)))) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 3812088832) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3029017677) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 1240139965) !== 0) || ((((_la - 96)) & ~0x1f) === 0 && ((1 << (_la - 96)) & 536790397) !== 0) || ((((_la - 129)) & ~0x1f) === 0 && ((1 << (_la - 129)) & 12642753) !== 0) || ((((_la - 171)) & ~0x1f) === 0 && ((1 << (_la - 171)) & 147) !== 0)) {
 	            this.state = 2385;
 	            this.interpolated_verbatium_string_part();
 	            this.state = 2390;
@@ -11950,99 +11946,99 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2397;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BASE:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CHECKED:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DEFAULT:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FALSE:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.NEW:
-	        case CSharpParser.NULL_:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.SIZEOF:
-	        case CSharpParser.STRING:
-	        case CSharpParser.THIS:
-	        case CSharpParser.TRUE:
-	        case CSharpParser.TYPEOF:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNCHECKED:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.LITERAL_ACCESS:
-	        case CSharpParser.INTEGER_LITERAL:
-	        case CSharpParser.HEX_INTEGER_LITERAL:
-	        case CSharpParser.BIN_INTEGER_LITERAL:
-	        case CSharpParser.REAL_LITERAL:
-	        case CSharpParser.CHARACTER_LITERAL:
-	        case CSharpParser.REGULAR_STRING:
-	        case CSharpParser.VERBATIUM_STRING:
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
-	        case CSharpParser.OPEN_PARENS:
-	        case CSharpParser.PLUS:
-	        case CSharpParser.MINUS:
-	        case CSharpParser.STAR:
-	        case CSharpParser.AMP:
-	        case CSharpParser.CARET:
-	        case CSharpParser.BANG:
-	        case CSharpParser.TILDE:
-	        case CSharpParser.OP_INC:
-	        case CSharpParser.OP_DEC:
-	        case CSharpParser.OP_RANGE:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 42:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 80:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 91:
+	        case 94:
+	        case 96:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 104:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 129:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 140:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 151:
+	        case 152:
+	        case 171:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2393;
 	            this.interpolated_string_expression();
 	            break;
-	        case CSharpParser.DOUBLE_CURLY_INSIDE:
+	        case 172:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2394;
 	            this.match(CSharpParser.DOUBLE_CURLY_INSIDE);
 	            break;
-	        case CSharpParser.REGULAR_CHAR_INSIDE:
+	        case 174:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2395;
 	            this.match(CSharpParser.REGULAR_CHAR_INSIDE);
 	            break;
-	        case CSharpParser.REGULAR_STRING_INSIDE:
+	        case 177:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2396;
 	            this.match(CSharpParser.REGULAR_STRING_INSIDE);
@@ -12073,99 +12069,99 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2403;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.ADD:
-	        case CSharpParser.ALIAS:
-	        case CSharpParser.ARGLIST:
-	        case CSharpParser.ASCENDING:
-	        case CSharpParser.ASYNC:
-	        case CSharpParser.AWAIT:
-	        case CSharpParser.BASE:
-	        case CSharpParser.BOOL:
-	        case CSharpParser.BY:
-	        case CSharpParser.BYTE:
-	        case CSharpParser.CHAR:
-	        case CSharpParser.CHECKED:
-	        case CSharpParser.DECIMAL:
-	        case CSharpParser.DEFAULT:
-	        case CSharpParser.DELEGATE:
-	        case CSharpParser.DESCENDING:
-	        case CSharpParser.DOUBLE:
-	        case CSharpParser.DYNAMIC:
-	        case CSharpParser.EQUALS:
-	        case CSharpParser.FALSE:
-	        case CSharpParser.FLOAT:
-	        case CSharpParser.FROM:
-	        case CSharpParser.GET:
-	        case CSharpParser.GROUP:
-	        case CSharpParser.INT:
-	        case CSharpParser.INTO:
-	        case CSharpParser.JOIN:
-	        case CSharpParser.LET:
-	        case CSharpParser.LONG:
-	        case CSharpParser.NAMEOF:
-	        case CSharpParser.NEW:
-	        case CSharpParser.NULL_:
-	        case CSharpParser.OBJECT:
-	        case CSharpParser.ON:
-	        case CSharpParser.ORDERBY:
-	        case CSharpParser.PARTIAL:
-	        case CSharpParser.REF:
-	        case CSharpParser.REMOVE:
-	        case CSharpParser.SBYTE:
-	        case CSharpParser.SELECT:
-	        case CSharpParser.SET:
-	        case CSharpParser.SHORT:
-	        case CSharpParser.SIZEOF:
-	        case CSharpParser.STRING:
-	        case CSharpParser.THIS:
-	        case CSharpParser.TRUE:
-	        case CSharpParser.TYPEOF:
-	        case CSharpParser.UINT:
-	        case CSharpParser.ULONG:
-	        case CSharpParser.UNCHECKED:
-	        case CSharpParser.UNMANAGED:
-	        case CSharpParser.USHORT:
-	        case CSharpParser.VAR:
-	        case CSharpParser.WHEN:
-	        case CSharpParser.WHERE:
-	        case CSharpParser.YIELD:
-	        case CSharpParser.IDENTIFIER:
-	        case CSharpParser.LITERAL_ACCESS:
-	        case CSharpParser.INTEGER_LITERAL:
-	        case CSharpParser.HEX_INTEGER_LITERAL:
-	        case CSharpParser.BIN_INTEGER_LITERAL:
-	        case CSharpParser.REAL_LITERAL:
-	        case CSharpParser.CHARACTER_LITERAL:
-	        case CSharpParser.REGULAR_STRING:
-	        case CSharpParser.VERBATIUM_STRING:
-	        case CSharpParser.INTERPOLATED_REGULAR_STRING_START:
-	        case CSharpParser.INTERPOLATED_VERBATIUM_STRING_START:
-	        case CSharpParser.OPEN_PARENS:
-	        case CSharpParser.PLUS:
-	        case CSharpParser.MINUS:
-	        case CSharpParser.STAR:
-	        case CSharpParser.AMP:
-	        case CSharpParser.CARET:
-	        case CSharpParser.BANG:
-	        case CSharpParser.TILDE:
-	        case CSharpParser.OP_INC:
-	        case CSharpParser.OP_DEC:
-	        case CSharpParser.OP_RANGE:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 34:
+	        case 35:
+	        case 38:
+	        case 42:
+	        case 45:
+	        case 48:
+	        case 49:
+	        case 51:
+	        case 55:
+	        case 58:
+	        case 60:
+	        case 61:
+	        case 63:
+	        case 64:
+	        case 66:
+	        case 67:
+	        case 68:
+	        case 69:
+	        case 71:
+	        case 75:
+	        case 80:
+	        case 81:
+	        case 83:
+	        case 85:
+	        case 86:
+	        case 87:
+	        case 88:
+	        case 91:
+	        case 94:
+	        case 96:
+	        case 98:
+	        case 99:
+	        case 100:
+	        case 101:
+	        case 102:
+	        case 104:
+	        case 106:
+	        case 110:
+	        case 111:
+	        case 113:
+	        case 114:
+	        case 115:
+	        case 116:
+	        case 117:
+	        case 118:
+	        case 119:
+	        case 120:
+	        case 121:
+	        case 122:
+	        case 123:
+	        case 124:
+	        case 129:
+	        case 135:
+	        case 136:
+	        case 137:
+	        case 140:
+	        case 142:
+	        case 143:
+	        case 144:
+	        case 151:
+	        case 152:
+	        case 171:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 2399;
 	            this.interpolated_string_expression();
 	            break;
-	        case CSharpParser.DOUBLE_CURLY_INSIDE:
+	        case 172:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 2400;
 	            this.match(CSharpParser.DOUBLE_CURLY_INSIDE);
 	            break;
-	        case CSharpParser.VERBATIUM_DOUBLE_QUOTE_INSIDE:
+	        case 175:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 2401;
 	            this.match(CSharpParser.VERBATIUM_DOUBLE_QUOTE_INSIDE);
 	            break;
-	        case CSharpParser.VERBATIUM_INSIDE_STRING:
+	        case 178:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 2402;
 	            this.match(CSharpParser.VERBATIUM_INSIDE_STRING);
@@ -12192,7 +12188,7 @@ export default class CSharpParser extends CSharpParserBase {
 	interpolated_string_expression() {
 	    let localctx = new Interpolated_string_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 394, CSharpParser.RULE_interpolated_string_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2405;
@@ -12200,7 +12196,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2410;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===CSharpParser.COMMA) {
+	        while(_la===132) {
 	            this.state = 2406;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 2407;
@@ -12212,7 +12208,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2419;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.COLON) {
+	        if(_la===133) {
 	            this.state = 2413;
 	            this.match(CSharpParser.COLON);
 	            this.state = 2415; 
@@ -12224,7 +12220,7 @@ export default class CSharpParser extends CSharpParserBase {
 	                this.state = 2417; 
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	            } while(_la===CSharpParser.FORMAT_STRING);
+	            } while(_la===180);
 	        }
 
 	    } catch (re) {
@@ -12246,12 +12242,12 @@ export default class CSharpParser extends CSharpParserBase {
 	keyword() {
 	    let localctx = new KeywordContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 396, CSharpParser.RULE_keyword);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2421;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ABSTRACT) | (1 << CSharpParser.AS) | (1 << CSharpParser.BASE) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BREAK) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CASE) | (1 << CSharpParser.CATCH) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.CHECKED) | (1 << CSharpParser.CLASS) | (1 << CSharpParser.CONST) | (1 << CSharpParser.CONTINUE) | (1 << CSharpParser.DECIMAL) | (1 << CSharpParser.DEFAULT) | (1 << CSharpParser.DELEGATE))) !== 0) || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (CSharpParser.DO - 33)) | (1 << (CSharpParser.DOUBLE - 33)) | (1 << (CSharpParser.ELSE - 33)) | (1 << (CSharpParser.ENUM - 33)) | (1 << (CSharpParser.EVENT - 33)) | (1 << (CSharpParser.EXPLICIT - 33)) | (1 << (CSharpParser.EXTERN - 33)) | (1 << (CSharpParser.FALSE - 33)) | (1 << (CSharpParser.FINALLY - 33)) | (1 << (CSharpParser.FIXED - 33)) | (1 << (CSharpParser.FLOAT - 33)) | (1 << (CSharpParser.FOR - 33)) | (1 << (CSharpParser.FOREACH - 33)) | (1 << (CSharpParser.GOTO - 33)) | (1 << (CSharpParser.IF - 33)) | (1 << (CSharpParser.IMPLICIT - 33)) | (1 << (CSharpParser.IN - 33)) | (1 << (CSharpParser.INT - 33)) | (1 << (CSharpParser.INTERFACE - 33)) | (1 << (CSharpParser.INTERNAL - 33)) | (1 << (CSharpParser.IS - 33)) | (1 << (CSharpParser.LOCK - 33)) | (1 << (CSharpParser.LONG - 33)))) !== 0) || ((((_la - 65)) & ~0x1f) == 0 && ((1 << (_la - 65)) & ((1 << (CSharpParser.NAMESPACE - 65)) | (1 << (CSharpParser.NEW - 65)) | (1 << (CSharpParser.NULL_ - 65)) | (1 << (CSharpParser.OBJECT - 65)) | (1 << (CSharpParser.OPERATOR - 65)) | (1 << (CSharpParser.OUT - 65)) | (1 << (CSharpParser.OVERRIDE - 65)) | (1 << (CSharpParser.PARAMS - 65)) | (1 << (CSharpParser.PRIVATE - 65)) | (1 << (CSharpParser.PROTECTED - 65)) | (1 << (CSharpParser.PUBLIC - 65)) | (1 << (CSharpParser.READONLY - 65)) | (1 << (CSharpParser.REF - 65)) | (1 << (CSharpParser.RETURN - 65)) | (1 << (CSharpParser.SBYTE - 65)) | (1 << (CSharpParser.SEALED - 65)) | (1 << (CSharpParser.SHORT - 65)) | (1 << (CSharpParser.SIZEOF - 65)) | (1 << (CSharpParser.STACKALLOC - 65)) | (1 << (CSharpParser.STATIC - 65)) | (1 << (CSharpParser.STRING - 65)) | (1 << (CSharpParser.STRUCT - 65)) | (1 << (CSharpParser.SWITCH - 65)) | (1 << (CSharpParser.THIS - 65)) | (1 << (CSharpParser.THROW - 65)) | (1 << (CSharpParser.TRUE - 65)))) !== 0) || ((((_la - 97)) & ~0x1f) == 0 && ((1 << (_la - 97)) & ((1 << (CSharpParser.TRY - 97)) | (1 << (CSharpParser.TYPEOF - 97)) | (1 << (CSharpParser.UINT - 97)) | (1 << (CSharpParser.ULONG - 97)) | (1 << (CSharpParser.UNCHECKED - 97)) | (1 << (CSharpParser.UNMANAGED - 97)) | (1 << (CSharpParser.UNSAFE - 97)) | (1 << (CSharpParser.USHORT - 97)) | (1 << (CSharpParser.USING - 97)) | (1 << (CSharpParser.VIRTUAL - 97)) | (1 << (CSharpParser.VOID - 97)) | (1 << (CSharpParser.VOLATILE - 97)) | (1 << (CSharpParser.WHILE - 97)))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4293796352) !== 0) || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 1710915547) !== 0) || ((((_la - 65)) & ~0x1f) === 0 && ((1 << (_la - 65)) & 4291754927) !== 0) || ((((_la - 97)) & ~0x1f) === 0 && ((1 << (_la - 97)) & 40447) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -12277,7 +12273,7 @@ export default class CSharpParser extends CSharpParserBase {
 	class_definition() {
 	    let localctx = new Class_definitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 398, CSharpParser.RULE_class_definition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2423;
@@ -12287,7 +12283,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2426;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.LT) {
+	        if(_la===146) {
 	            this.state = 2425;
 	            this.type_parameter_list();
 	        }
@@ -12295,7 +12291,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2429;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.COLON) {
+	        if(_la===133) {
 	            this.state = 2428;
 	            this.class_base();
 	        }
@@ -12303,7 +12299,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2432;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.WHERE) {
+	        if(_la===111) {
 	            this.state = 2431;
 	            this.type_parameter_constraints_clauses();
 	        }
@@ -12313,7 +12309,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2436;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.SEMICOLON) {
+	        if(_la===134) {
 	            this.state = 2435;
 	            this.match(CSharpParser.SEMICOLON);
 	        }
@@ -12337,16 +12333,16 @@ export default class CSharpParser extends CSharpParserBase {
 	struct_definition() {
 	    let localctx = new Struct_definitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 400, CSharpParser.RULE_struct_definition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2439;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.READONLY || _la===CSharpParser.REF) {
+	        if(_la===79 || _la===80) {
 	            this.state = 2438;
 	            _la = this._input.LA(1);
-	            if(!(_la===CSharpParser.READONLY || _la===CSharpParser.REF)) {
+	            if(!(_la===79 || _la===80)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -12362,7 +12358,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2444;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.LT) {
+	        if(_la===146) {
 	            this.state = 2443;
 	            this.type_parameter_list();
 	        }
@@ -12370,7 +12366,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2447;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.COLON) {
+	        if(_la===133) {
 	            this.state = 2446;
 	            this.struct_interfaces();
 	        }
@@ -12378,7 +12374,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2450;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.WHERE) {
+	        if(_la===111) {
 	            this.state = 2449;
 	            this.type_parameter_constraints_clauses();
 	        }
@@ -12388,7 +12384,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2454;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.SEMICOLON) {
+	        if(_la===134) {
 	            this.state = 2453;
 	            this.match(CSharpParser.SEMICOLON);
 	        }
@@ -12412,7 +12408,7 @@ export default class CSharpParser extends CSharpParserBase {
 	interface_definition() {
 	    let localctx = new Interface_definitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 402, CSharpParser.RULE_interface_definition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2456;
@@ -12422,7 +12418,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2459;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.LT) {
+	        if(_la===146) {
 	            this.state = 2458;
 	            this.variant_type_parameter_list();
 	        }
@@ -12430,7 +12426,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2462;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.COLON) {
+	        if(_la===133) {
 	            this.state = 2461;
 	            this.interface_base();
 	        }
@@ -12438,7 +12434,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2465;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.WHERE) {
+	        if(_la===111) {
 	            this.state = 2464;
 	            this.type_parameter_constraints_clauses();
 	        }
@@ -12448,7 +12444,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2469;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.SEMICOLON) {
+	        if(_la===134) {
 	            this.state = 2468;
 	            this.match(CSharpParser.SEMICOLON);
 	        }
@@ -12472,7 +12468,7 @@ export default class CSharpParser extends CSharpParserBase {
 	enum_definition() {
 	    let localctx = new Enum_definitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 404, CSharpParser.RULE_enum_definition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2471;
@@ -12482,7 +12478,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2474;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.COLON) {
+	        if(_la===133) {
 	            this.state = 2473;
 	            this.enum_base();
 	        }
@@ -12492,7 +12488,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2478;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.SEMICOLON) {
+	        if(_la===134) {
 	            this.state = 2477;
 	            this.match(CSharpParser.SEMICOLON);
 	        }
@@ -12516,7 +12512,7 @@ export default class CSharpParser extends CSharpParserBase {
 	delegate_definition() {
 	    let localctx = new Delegate_definitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 406, CSharpParser.RULE_delegate_definition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2480;
@@ -12528,7 +12524,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2484;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.LT) {
+	        if(_la===146) {
 	            this.state = 2483;
 	            this.variant_type_parameter_list();
 	        }
@@ -12538,7 +12534,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2488;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.DECIMAL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.IN - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.OUT - 64)) | (1 << (CSharpParser.PARAMS - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.STRING - 64)) | (1 << (CSharpParser.THIS - 64)))) !== 0) || ((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (CSharpParser.UINT - 99)) | (1 << (CSharpParser.ULONG - 99)) | (1 << (CSharpParser.UNMANAGED - 99)) | (1 << (CSharpParser.USHORT - 99)) | (1 << (CSharpParser.VAR - 99)) | (1 << (CSharpParser.VOID - 99)) | (1 << (CSharpParser.WHEN - 99)) | (1 << (CSharpParser.WHERE - 99)) | (1 << (CSharpParser.YIELD - 99)) | (1 << (CSharpParser.IDENTIFIER - 99)) | (1 << (CSharpParser.OPEN_BRACKET - 99)) | (1 << (CSharpParser.OPEN_PARENS - 99)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 557177856) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3033210957) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 1223364017) !== 0) || ((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 1342233259) !== 0)) {
 	            this.state = 2487;
 	            this.formal_parameter_list();
 	        }
@@ -12548,7 +12544,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2492;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.WHERE) {
+	        if(_la===111) {
 	            this.state = 2491;
 	            this.type_parameter_constraints_clauses();
 	        }
@@ -12647,7 +12643,7 @@ export default class CSharpParser extends CSharpParserBase {
 	property_declaration() {
 	    let localctx = new Property_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 412, CSharpParser.RULE_property_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2511;
@@ -12655,7 +12651,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2525;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.state = 2512;
 	            this.match(CSharpParser.OPEN_BRACE);
 	            this.state = 2513;
@@ -12665,7 +12661,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2519;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.ASSIGNMENT) {
+	            if(_la===145) {
 	                this.state = 2515;
 	                this.match(CSharpParser.ASSIGNMENT);
 	                this.state = 2516;
@@ -12675,7 +12671,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            }
 
 	            break;
-	        case CSharpParser.ASSIGNMENT:
+	        case 145:
 	            this.state = 2521;
 	            this.right_arrow();
 	            this.state = 2522;
@@ -12747,7 +12743,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2544;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.OPEN_BRACE:
+	        case 125:
 	            this.state = 2536;
 	            this.match(CSharpParser.OPEN_BRACE);
 	            this.state = 2537;
@@ -12755,7 +12751,7 @@ export default class CSharpParser extends CSharpParserBase {
 	            this.state = 2538;
 	            this.match(CSharpParser.CLOSE_BRACE);
 	            break;
-	        case CSharpParser.ASSIGNMENT:
+	        case 145:
 	            this.state = 2540;
 	            this.right_arrow();
 	            this.state = 2541;
@@ -12816,7 +12812,7 @@ export default class CSharpParser extends CSharpParserBase {
 	constructor_declaration() {
 	    let localctx = new Constructor_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 420, CSharpParser.RULE_constructor_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2552;
@@ -12826,7 +12822,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2555;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.DECIMAL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.IN - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.OUT - 64)) | (1 << (CSharpParser.PARAMS - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.STRING - 64)) | (1 << (CSharpParser.THIS - 64)))) !== 0) || ((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (CSharpParser.UINT - 99)) | (1 << (CSharpParser.ULONG - 99)) | (1 << (CSharpParser.UNMANAGED - 99)) | (1 << (CSharpParser.USHORT - 99)) | (1 << (CSharpParser.VAR - 99)) | (1 << (CSharpParser.VOID - 99)) | (1 << (CSharpParser.WHEN - 99)) | (1 << (CSharpParser.WHERE - 99)) | (1 << (CSharpParser.YIELD - 99)) | (1 << (CSharpParser.IDENTIFIER - 99)) | (1 << (CSharpParser.OPEN_BRACKET - 99)) | (1 << (CSharpParser.OPEN_PARENS - 99)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 557177856) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3033210957) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 1223364017) !== 0) || ((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 1342233259) !== 0)) {
 	            this.state = 2554;
 	            this.formal_parameter_list();
 	        }
@@ -12836,7 +12832,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2559;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.COLON) {
+	        if(_la===133) {
 	            this.state = 2558;
 	            this.constructor_initializer();
 	        }
@@ -12862,7 +12858,7 @@ export default class CSharpParser extends CSharpParserBase {
 	method_declaration() {
 	    let localctx = new Method_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 422, CSharpParser.RULE_method_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2563;
@@ -12870,7 +12866,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2565;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.LT) {
+	        if(_la===146) {
 	            this.state = 2564;
 	            this.type_parameter_list();
 	        }
@@ -12880,7 +12876,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2569;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BOOL) | (1 << CSharpParser.BY) | (1 << CSharpParser.BYTE) | (1 << CSharpParser.CHAR) | (1 << CSharpParser.DECIMAL))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DOUBLE - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FLOAT - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.IN - 32)) | (1 << (CSharpParser.INT - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)) | (1 << (CSharpParser.LONG - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.OBJECT - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.OUT - 64)) | (1 << (CSharpParser.PARAMS - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REF - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SBYTE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)) | (1 << (CSharpParser.SHORT - 64)) | (1 << (CSharpParser.STRING - 64)) | (1 << (CSharpParser.THIS - 64)))) !== 0) || ((((_la - 99)) & ~0x1f) == 0 && ((1 << (_la - 99)) & ((1 << (CSharpParser.UINT - 99)) | (1 << (CSharpParser.ULONG - 99)) | (1 << (CSharpParser.UNMANAGED - 99)) | (1 << (CSharpParser.USHORT - 99)) | (1 << (CSharpParser.VAR - 99)) | (1 << (CSharpParser.VOID - 99)) | (1 << (CSharpParser.WHEN - 99)) | (1 << (CSharpParser.WHERE - 99)) | (1 << (CSharpParser.YIELD - 99)) | (1 << (CSharpParser.IDENTIFIER - 99)) | (1 << (CSharpParser.OPEN_BRACKET - 99)) | (1 << (CSharpParser.OPEN_PARENS - 99)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 557177856) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 3033210957) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 1223364017) !== 0) || ((((_la - 99)) & ~0x1f) === 0 && ((1 << (_la - 99)) & 1342233259) !== 0)) {
 	            this.state = 2568;
 	            this.formal_parameter_list();
 	        }
@@ -12890,7 +12886,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2573;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.WHERE) {
+	        if(_la===111) {
 	            this.state = 2572;
 	            this.type_parameter_constraints_clauses();
 	        }
@@ -12898,12 +12894,12 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2580;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.OPEN_BRACE:
-	        case CSharpParser.SEMICOLON:
+	        case 125:
+	        case 134:
 	            this.state = 2575;
 	            this.method_body();
 	            break;
-	        case CSharpParser.ASSIGNMENT:
+	        case 145:
 	            this.state = 2576;
 	            this.right_arrow();
 	            this.state = 2577;
@@ -12933,7 +12929,7 @@ export default class CSharpParser extends CSharpParserBase {
 	method_member_name() {
 	    let localctx = new Method_member_nameContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 424, CSharpParser.RULE_method_member_name);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2587;
@@ -12963,7 +12959,7 @@ export default class CSharpParser extends CSharpParserBase {
 	                this.state = 2590;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if(_la===CSharpParser.LT) {
+	                if(_la===146) {
 	                    this.state = 2589;
 	                    this.type_argument_list();
 	                }
@@ -12997,7 +12993,7 @@ export default class CSharpParser extends CSharpParserBase {
 	operator_declaration() {
 	    let localctx = new Operator_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 426, CSharpParser.RULE_operator_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2599;
@@ -13009,7 +13005,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2603;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.IN) {
+	        if(_la===54) {
 	            this.state = 2602;
 	            this.match(CSharpParser.IN);
 	        }
@@ -13019,13 +13015,13 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2611;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.COMMA) {
+	        if(_la===132) {
 	            this.state = 2606;
 	            this.match(CSharpParser.COMMA);
 	            this.state = 2608;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===CSharpParser.IN) {
+	            if(_la===54) {
 	                this.state = 2607;
 	                this.match(CSharpParser.IN);
 	            }
@@ -13039,12 +13035,12 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2619;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case CSharpParser.OPEN_BRACE:
-	        case CSharpParser.SEMICOLON:
+	        case 125:
+	        case 134:
 	            this.state = 2614;
 	            this.body();
 	            break;
-	        case CSharpParser.ASSIGNMENT:
+	        case 145:
 	            this.state = 2615;
 	            this.right_arrow();
 	            this.state = 2616;
@@ -13074,7 +13070,7 @@ export default class CSharpParser extends CSharpParserBase {
 	arg_declaration() {
 	    let localctx = new Arg_declarationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 428, CSharpParser.RULE_arg_declaration);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2621;
@@ -13084,7 +13080,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2625;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===CSharpParser.ASSIGNMENT) {
+	        if(_la===145) {
 	            this.state = 2623;
 	            this.match(CSharpParser.ASSIGNMENT);
 	            this.state = 2624;
@@ -13110,7 +13106,7 @@ export default class CSharpParser extends CSharpParserBase {
 	method_invocation() {
 	    let localctx = new Method_invocationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 430, CSharpParser.RULE_method_invocation);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2627;
@@ -13118,7 +13114,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2629;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.IN - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)) | (1 << (CSharpParser.OUT - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 108)) & ~0x1f) == 0 && ((1 << (_la - 108)) & ((1 << (CSharpParser.VOID - 108)) | (1 << (CSharpParser.WHEN - 108)) | (1 << (CSharpParser.WHERE - 108)) | (1 << (CSharpParser.YIELD - 108)) | (1 << (CSharpParser.IDENTIFIER - 108)) | (1 << (CSharpParser.LITERAL_ACCESS - 108)) | (1 << (CSharpParser.INTEGER_LITERAL - 108)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 108)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 108)) | (1 << (CSharpParser.REAL_LITERAL - 108)) | (1 << (CSharpParser.CHARACTER_LITERAL - 108)) | (1 << (CSharpParser.REGULAR_STRING - 108)) | (1 << (CSharpParser.VERBATIUM_STRING - 108)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 108)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 108)) | (1 << (CSharpParser.OPEN_PARENS - 108)) | (1 << (CSharpParser.PLUS - 108)) | (1 << (CSharpParser.MINUS - 108)) | (1 << (CSharpParser.STAR - 108)))) !== 0) || ((((_la - 140)) & ~0x1f) == 0 && ((1 << (_la - 140)) & ((1 << (CSharpParser.AMP - 140)) | (1 << (CSharpParser.CARET - 140)) | (1 << (CSharpParser.BANG - 140)) | (1 << (CSharpParser.TILDE - 140)) | (1 << (CSharpParser.OP_INC - 140)) | (1 << (CSharpParser.OP_DEC - 140)) | (1 << (CSharpParser.OP_RANGE - 140)))) !== 0)) {
+	        if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 1869427401) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 2947104097) !== 0) || ((((_la - 108)) & ~0x1f) === 0 && ((1 << (_la - 108)) & 941752301) !== 0) || ((((_la - 140)) & ~0x1f) === 0 && ((1 << (_la - 140)) & 2147489821) !== 0)) {
 	            this.state = 2628;
 	            this.argument_list();
 	        }
@@ -13144,7 +13140,7 @@ export default class CSharpParser extends CSharpParserBase {
 	object_creation_expression() {
 	    let localctx = new Object_creation_expressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 432, CSharpParser.RULE_object_creation_expression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2633;
@@ -13152,7 +13148,7 @@ export default class CSharpParser extends CSharpParserBase {
 	        this.state = 2635;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 10)) & ~0x1f) == 0 && ((1 << (_la - 10)) & ((1 << (CSharpParser.ADD - 10)) | (1 << (CSharpParser.ALIAS - 10)) | (1 << (CSharpParser.ARGLIST - 10)) | (1 << (CSharpParser.ASCENDING - 10)) | (1 << (CSharpParser.ASYNC - 10)) | (1 << (CSharpParser.AWAIT - 10)) | (1 << (CSharpParser.BASE - 10)) | (1 << (CSharpParser.BOOL - 10)) | (1 << (CSharpParser.BY - 10)) | (1 << (CSharpParser.BYTE - 10)) | (1 << (CSharpParser.CHAR - 10)) | (1 << (CSharpParser.CHECKED - 10)) | (1 << (CSharpParser.DECIMAL - 10)) | (1 << (CSharpParser.DEFAULT - 10)) | (1 << (CSharpParser.DELEGATE - 10)) | (1 << (CSharpParser.DESCENDING - 10)) | (1 << (CSharpParser.DOUBLE - 10)) | (1 << (CSharpParser.DYNAMIC - 10)) | (1 << (CSharpParser.EQUALS - 10)))) !== 0) || ((((_la - 42)) & ~0x1f) == 0 && ((1 << (_la - 42)) & ((1 << (CSharpParser.FALSE - 42)) | (1 << (CSharpParser.FLOAT - 42)) | (1 << (CSharpParser.FROM - 42)) | (1 << (CSharpParser.GET - 42)) | (1 << (CSharpParser.GROUP - 42)) | (1 << (CSharpParser.IN - 42)) | (1 << (CSharpParser.INT - 42)) | (1 << (CSharpParser.INTO - 42)) | (1 << (CSharpParser.JOIN - 42)) | (1 << (CSharpParser.LET - 42)) | (1 << (CSharpParser.LONG - 42)) | (1 << (CSharpParser.NAMEOF - 42)) | (1 << (CSharpParser.NEW - 42)) | (1 << (CSharpParser.NULL_ - 42)) | (1 << (CSharpParser.OBJECT - 42)) | (1 << (CSharpParser.ON - 42)) | (1 << (CSharpParser.ORDERBY - 42)) | (1 << (CSharpParser.OUT - 42)))) !== 0) || ((((_la - 75)) & ~0x1f) == 0 && ((1 << (_la - 75)) & ((1 << (CSharpParser.PARTIAL - 75)) | (1 << (CSharpParser.REF - 75)) | (1 << (CSharpParser.REMOVE - 75)) | (1 << (CSharpParser.SBYTE - 75)) | (1 << (CSharpParser.SELECT - 75)) | (1 << (CSharpParser.SET - 75)) | (1 << (CSharpParser.SHORT - 75)) | (1 << (CSharpParser.SIZEOF - 75)) | (1 << (CSharpParser.STRING - 75)) | (1 << (CSharpParser.THIS - 75)) | (1 << (CSharpParser.TRUE - 75)) | (1 << (CSharpParser.TYPEOF - 75)) | (1 << (CSharpParser.UINT - 75)) | (1 << (CSharpParser.ULONG - 75)) | (1 << (CSharpParser.UNCHECKED - 75)) | (1 << (CSharpParser.UNMANAGED - 75)) | (1 << (CSharpParser.USHORT - 75)) | (1 << (CSharpParser.VAR - 75)))) !== 0) || ((((_la - 108)) & ~0x1f) == 0 && ((1 << (_la - 108)) & ((1 << (CSharpParser.VOID - 108)) | (1 << (CSharpParser.WHEN - 108)) | (1 << (CSharpParser.WHERE - 108)) | (1 << (CSharpParser.YIELD - 108)) | (1 << (CSharpParser.IDENTIFIER - 108)) | (1 << (CSharpParser.LITERAL_ACCESS - 108)) | (1 << (CSharpParser.INTEGER_LITERAL - 108)) | (1 << (CSharpParser.HEX_INTEGER_LITERAL - 108)) | (1 << (CSharpParser.BIN_INTEGER_LITERAL - 108)) | (1 << (CSharpParser.REAL_LITERAL - 108)) | (1 << (CSharpParser.CHARACTER_LITERAL - 108)) | (1 << (CSharpParser.REGULAR_STRING - 108)) | (1 << (CSharpParser.VERBATIUM_STRING - 108)) | (1 << (CSharpParser.INTERPOLATED_REGULAR_STRING_START - 108)) | (1 << (CSharpParser.INTERPOLATED_VERBATIUM_STRING_START - 108)) | (1 << (CSharpParser.OPEN_PARENS - 108)) | (1 << (CSharpParser.PLUS - 108)) | (1 << (CSharpParser.MINUS - 108)) | (1 << (CSharpParser.STAR - 108)))) !== 0) || ((((_la - 140)) & ~0x1f) == 0 && ((1 << (_la - 140)) & ((1 << (CSharpParser.AMP - 140)) | (1 << (CSharpParser.CARET - 140)) | (1 << (CSharpParser.BANG - 140)) | (1 << (CSharpParser.TILDE - 140)) | (1 << (CSharpParser.OP_INC - 140)) | (1 << (CSharpParser.OP_DEC - 140)) | (1 << (CSharpParser.OP_RANGE - 140)))) !== 0)) {
+	        if(((((_la - 10)) & ~0x1f) === 0 && ((1 << (_la - 10)) & 326684151) !== 0) || ((((_la - 42)) & ~0x1f) === 0 && ((1 << (_la - 42)) & 1869427401) !== 0) || ((((_la - 75)) & ~0x1f) === 0 && ((1 << (_la - 75)) & 2947104097) !== 0) || ((((_la - 108)) & ~0x1f) === 0 && ((1 << (_la - 108)) & 941752301) !== 0) || ((((_la - 140)) & ~0x1f) === 0 && ((1 << (_la - 140)) & 2147489821) !== 0)) {
 	            this.state = 2634;
 	            this.argument_list();
 	        }
@@ -13186,12 +13182,12 @@ export default class CSharpParser extends CSharpParserBase {
 	identifier() {
 	    let localctx = new IdentifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 434, CSharpParser.RULE_identifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 2641;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CSharpParser.ADD) | (1 << CSharpParser.ALIAS) | (1 << CSharpParser.ARGLIST) | (1 << CSharpParser.ASCENDING) | (1 << CSharpParser.ASYNC) | (1 << CSharpParser.AWAIT) | (1 << CSharpParser.BY))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (CSharpParser.DESCENDING - 32)) | (1 << (CSharpParser.DYNAMIC - 32)) | (1 << (CSharpParser.EQUALS - 32)) | (1 << (CSharpParser.FROM - 32)) | (1 << (CSharpParser.GET - 32)) | (1 << (CSharpParser.GROUP - 32)) | (1 << (CSharpParser.INTO - 32)) | (1 << (CSharpParser.JOIN - 32)) | (1 << (CSharpParser.LET - 32)))) !== 0) || ((((_la - 64)) & ~0x1f) == 0 && ((1 << (_la - 64)) & ((1 << (CSharpParser.NAMEOF - 64)) | (1 << (CSharpParser.ON - 64)) | (1 << (CSharpParser.ORDERBY - 64)) | (1 << (CSharpParser.PARTIAL - 64)) | (1 << (CSharpParser.REMOVE - 64)) | (1 << (CSharpParser.SELECT - 64)) | (1 << (CSharpParser.SET - 64)))) !== 0) || ((((_la - 102)) & ~0x1f) == 0 && ((1 << (_la - 102)) & ((1 << (CSharpParser.UNMANAGED - 102)) | (1 << (CSharpParser.VAR - 102)) | (1 << (CSharpParser.WHEN - 102)) | (1 << (CSharpParser.WHERE - 102)) | (1 << (CSharpParser.YIELD - 102)) | (1 << (CSharpParser.IDENTIFIER - 102)))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1170432) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 873136201) !== 0) || ((((_la - 64)) & ~0x1f) === 0 && ((1 << (_la - 64)) & 6424737) !== 0) || ((((_la - 102)) & ~0x1f) === 0 && ((1 << (_la - 102)) & 6929) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -14350,7 +14346,7 @@ class ArgumentContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CSharpParser.RULE_argument;
-        this.refout = null; // Token
+        this.refout = null;
     }
 
 	expression() {
@@ -15701,7 +15697,7 @@ class Primary_expressionContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CSharpParser.RULE_primary_expression;
-        this.pe = null; // Primary_expression_startContext
+        this.pe = null;
     }
 
 	primary_expression_start() {
@@ -17846,7 +17842,7 @@ class Explicit_anonymous_function_parameterContext extends antlr4.ParserRuleCont
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CSharpParser.RULE_explicit_anonymous_function_parameter;
-        this.refout = null; // Token
+        this.refout = null;
     }
 
 	type_() {
@@ -18403,7 +18399,7 @@ class OrderingContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CSharpParser.RULE_ordering;
-        this.dir = null; // Token
+        this.dir = null;
     }
 
 	expression() {
@@ -20724,7 +20720,7 @@ class Namespace_declarationContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CSharpParser.RULE_namespace_declaration;
-        this.qi = null; // Qualified_identifierContext
+        this.qi = null;
     }
 
 	NAMESPACE() {
@@ -22869,8 +22865,8 @@ class Accessor_declarationsContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CSharpParser.RULE_accessor_declarations;
-        this.attrs = null; // AttributesContext
-        this.mods = null; // Accessor_modifierContext
+        this.attrs = null;
+        this.mods = null;
     }
 
 	GET() {
@@ -25143,8 +25139,8 @@ class Right_arrowContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CSharpParser.RULE_right_arrow;
-        this.first = null; // Token
-        this.second = null; // Token
+        this.first = null;
+        this.second = null;
     }
 
 	ASSIGNMENT() {
@@ -25184,8 +25180,8 @@ class Right_shiftContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CSharpParser.RULE_right_shift;
-        this.first = null; // Token
-        this.second = null; // Token
+        this.first = null;
+        this.second = null;
     }
 
 	GT = function(i) {
@@ -25229,8 +25225,8 @@ class Right_shift_assignmentContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = CSharpParser.RULE_right_shift_assignment;
-        this.first = null; // Token
-        this.second = null; // Token
+        this.first = null;
+        this.second = null;
     }
 
 	GT() {
