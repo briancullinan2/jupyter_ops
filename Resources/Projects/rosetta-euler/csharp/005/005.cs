@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class Euler {
-    static public void Main() {
+    public void Main(object[] args) {
         List<List<ulong>> primeFactorLists = new List<List<ulong>>();
 
         for (ulong x = 1; x <= 20; x++) {
@@ -19,7 +19,7 @@ public class Euler {
         Console.WriteLine("{0}", factors.Aggregate((product, factor) => product * factor));
     }
 
-    static public List<ulong> Overlap(List<ulong> a, List<ulong> b) {
+    public List<ulong> Overlap(List<ulong> a, List<ulong> b) {
         for (int i = 0; i < b.Count; i++) {
             a.Remove(b[i]);
         }
@@ -29,7 +29,7 @@ public class Euler {
         return a;
     }
 
-    static public List<ulong> PrimeFactors(ulong n) {
+    public List<ulong> PrimeFactors(ulong n) {
         bool found = false;
 
         ulong v = 2;
