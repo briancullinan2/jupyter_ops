@@ -4,13 +4,14 @@
     <OutputType>Exe</OutputType>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <!--<TargetFramework>net481</TargetFramework>-->
-    <StartupObject>Euler</StartupObject>
+    <StartupObject>Rosetta.Euler</StartupObject>
     <TargetFrameworks>net9.0</TargetFrameworks>
     <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
     <BaseOutputPath>.</BaseOutputPath>
     <PackageOutputPath>.</PackageOutputPath>
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="005.cs">
