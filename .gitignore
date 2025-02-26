@@ -18,3 +18,5 @@ Analytics/.DS_Store
 Resources/Projects/rosetta-euler/csharp/005/Debug
 Resources/Projects/rosetta-euler/csharp/005/.vs
 indexdir
+.cache
+**/__pycache__
