@@ -9,6 +9,7 @@
         "import": "node --unhandled-rejections=throw --max-old-space-size=4096 --experimental-vm-modules -e \"var result = require('./Core').run()\"",
         "debug": "node --inspect-brk --max-old-space-size=4096 --experimental-vm-modules -e \"var result = require('./Core').run()\"",
         "interpret": "node -e \"console.info = () => {}; console.log(require('./Core').interpret(process.argv[1]))\"",
+        "python": "python -c \"__import__('Core').run()\"",
         "exec": "node -e \"console.log(require('./Core').import('spawn child process')(require('./Core').interpret(process.argv[1]).code))\"",
         "update:blog": "npm run import -- \"test google sheet resources\" \"['https://docs.google.com/spreadsheets/d/1GG2R2gYvFrLz4ZoBPA2hgCOrXaKCHavKdUn8j-jkAwQ/edit#gid=1092692488']\"",
         "update:resume": "npm run import -- \"test google sheet resources\" \"['https://docs.google.com/spreadsheets/d/1dAtBQyn5vwStM6ITn7iCpp996Sus26k0bJtbGNlCX2g/edit#gid=0']\"",
