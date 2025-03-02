@@ -1,0 +1,177 @@
+<p><strong>Summary of Code Changes</strong></p>
+<p>The file <code>Algorithms/ffmpeg commands.ipynb</code> has undergone the following changes:</p>
+<h3>Additions</h3>
+<ol>
+<li>A new cell was added with the following code:
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>ffmpeg -i http://192.168.4.22:8080/video -i http://192.168.4.22:8080/audio.wav -c:v libx264 -preset ultrafast -b:v 4500k -maxrate 4500k -bufsize 9000k -g 50 -c:a aac -b:a 128k -ar 44100 -f flv rtmp://a.rtmp.youtube.com/live2/dvqv-7eyf-72d5-vaw7-dvsb</p>
+<pre><code>   This code is a shell script that uses FFmpeg to stream video and audio from a specific IP address to YouTube.
+
+### Deletions
+
+1. The following code was deleted:
+   ```bash
+ffmpeg -i input.mp4 -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus output.webm
+</code></pre>
+<p>This code was used to convert an MP4 file to WebM format using FFmpeg.</p>
+<h3>Other Changes</h3>
+<ol>
+<li>The metadata of the file was updated to include a new kernel specification.</li>
+<li>The execution count of the cells was set to <code>null</code>, indicating that the cells have not been executed yet.<br />
+<strong>Summary of Code Changes</strong></li>
+</ol>
+<p>The code changes made to the <code>Algorithms/llama vision.ipynb</code> file are as follows:</p>
+<h3>Additions</h3>
+<ol>
+<li>An <code>async</code> function <code>doStableRequest</code> was added, which takes a <code>prompt</code> as input.</li>
+<li>Within the <code>doStableRequest</code> function, the following code was added:
+<ul>
+<li>The <code>width</code> variable is set to 1024, but changed to 2048 if the <code>prompt</code> includes the string 'View360'.</li>
+<li>The <code>height</code> variable is set to 1024, but can be overridden by a specific height specified in the <code>prompt</code> using the <code>--height</code> flag.</li>
+<li>The <code>prompt</code> is modified to remove any specific height or width flags.</li>
+<li>A <code>try</code> block is added to handle any potential errors.</li>
+<li>A <code>request</code> function is called with the updated <code>prompt</code> and other parameters, including the URL, method, headers, and data.</li>
+<li>The response from the <code>request</code> function is parsed to extract the seed value.</li>
+</ul></li>
+</ol>
+<h3>Deletions</h3>
+<ol>
+<li>The line <code>&quot; \&quot;height\&quot;: 1024,&quot;</code> was deleted, indicating that the height is now dynamically determined based on the <code>prompt</code> and other parameters.</li>
+</ol>
+<p>These changes suggest that the code is now more flexible and dynamic, allowing for different image sizes and parameters to be specified in the <code>prompt</code>.<br />
+Here are the code changes made to the file:</p>
+<p><strong>Additions:</strong></p>
+<ol>
+<li>A new function <code>trace_people(image_path)</code> was added to the <code>opencv.ipynb</code> file. This function takes an image path as input, loads the image, and returns the image with bounding boxes drawn around people.</li>
+<li>A new function <code>write_video()</code> was added to the <code>opencv.ipynb</code> file. This function takes a list of image files as input, reads them, and writes them to a video file using FFmpeg.</li>
+<li>A new function <code>stream_images(streamName)</code> was added to the <code>opencv.ipynb</code> file. This function takes a stream name as input, starts an FFmpeg process, and streams images to the process.</li>
+<li>A new function <code>live_stream()</code> was added to the <code>authorize youtube in python</code> notebook. This function creates a new live stream on YouTube using the YouTube API.</li>
+<li>A new function <code>authorize()</code> was added to the <code>authorize youtube in python</code> notebook. This function starts the OAuth 2.0 authorization flow for YouTube.</li>
+<li>A new function <code>oauth2callback()</code> was added to the <code>authorize youtube in python</code> notebook. This function handles the OAuth 2.0 authorization callback from YouTube.</li>
+<li>A new function <code>list_broadcasts()</code> was added to the <code>list broadcasts</code> notebook. This function lists all live broadcasts on YouTube using the YouTube API.</li>
+<li>A new function <code>create_livestream()</code> was added to the <code>create live stream</code> notebook. This function creates a new live stream on YouTube using the YouTube API.</li>
+<li>A new function <code>list_livestream()</code> was added to the <code>list live stream</code> notebook. This function lists all live streams on YouTube using the YouTube API.</li>
+<li>A new function <code>bind_stream_to_broadcast()</code> was added to the <code>bind youtube stream</code> notebook. This function binds a live stream to a live broadcast on YouTube using the YouTube API.</li>
+<li>A new function <code>transition_stream()</code> was added to the <code>transition live stream</code> notebook. This function transitions a live stream to a live broadcast on YouTube using the YouTube API.</li>
+</ol>
+<p><strong>Deletions:</strong></p>
+<ol>
+<li>The following lines were deleted from the <code>opencv.ipynb</code> file:</li>
+</ol>
+<pre><code class="language-python">image = get_image(image_path)
+image = trace_people(image_path)  # Random image example
+prev_frame = 0
+if(prev_frame):
+  image = diff_images(prev_frame, frame)
+</code></pre>
+<p>These lines were likely removed to simplify the code or to fix a bug.</p>
+<p><strong>Other changes:</strong></p>
+<ol>
+<li>The <code>opencv.ipynb</code> file now imports the <code>cv2</code> library and uses it to read and write images.</li>
+<li>The <code>authorize youtube in python</code> notebook now uses the <code>google-auth-oauthlib</code> library to handle OAuth 2.0 authorization.</li>
+<li>The <code>list broadcasts</code> notebook now uses the <code>google-api-python-client</code> library to interact with the YouTube API.</li>
+<li>The <code>create live stream</code> notebook now uses the <code>google-api-python-client</code> library to interact with the YouTube API.</li>
+<li>The <code>list live stream</code> notebook now uses the <code>google-api-python-client</code> library to interact with the YouTube API.</li>
+<li>The <code>bind youtube stream</code> notebook now uses the <code>google-api-python-client</code> library to interact with the YouTube API.</li>
+<li>The <code>transition live stream</code> notebook now uses the <code>google-api-python-client</code> library to interact with the YouTube API.<br />
+The provided code snippet appears to be a list of cache entries for a Jupyter notebook. The changes made to this file are additions and deletions of cache entries.</li>
+</ol>
+<p><strong>Additions:</strong></p>
+<ul>
+<li>17 new cache entries were added to the list, each representing a Jupyter notebook with its corresponding &quot;from&quot; and &quot;to&quot; cell numbers, as well as a list of questions associated with each notebook.</li>
+</ul>
+<p><strong>Deletions:</strong></p>
+<ul>
+<li>34 cache entries were deleted from the list, which were likely outdated or no longer relevant.</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<p>The changes made to this file are primarily additions of new cache entries, which suggests that new Jupyter notebooks were created or updated, and their cache entries were added to the list. The deletions of cache entries suggest that some notebooks were removed or updated, and their cache entries were deleted from the list.</p>
+<p>Here is a brief summary of the changes:</p>
+<ul>
+<li>17 new cache entries were added</li>
+<li>34 cache entries were deleted</li>
+<li>The list now contains a total of 43 cache entries</li>
+</ul>
+<p>It's worth noting that the exact nature of the changes is not clear without more context, and the deletions may have been intentional or unintentional.<br />
+<strong>Summary of Code Changes</strong></p>
+<p>The provided code snippet appears to be a part of a larger Python project, specifically the <code>Core/pyimport.ipynb</code> file. The changes made to this file include:</p>
+<p><strong>Additions:</strong></p>
+<ol>
+<li>Import of the <code>re</code> module for regular expression operations.</li>
+<li>Definition of a <code>safeurl</code> function to replace non-word characters in a string with underscores.</li>
+<li>Definition of an <code>import_notebook</code> function to import a notebook based on a query string.</li>
+<li>Definition of a <code>scan_directory</code> function to recursively scan a directory for notebooks and store extracted cells in a Whoosh index.</li>
+<li>Definition of a <code>run</code> function to execute a notebook based on a provided path and function arguments.</li>
+<li>Addition of the <code>__all__</code> variable to define the exported functions of the module.</li>
+</ol>
+<p><strong>Deletions:</strong></p>
+<ol>
+<li>Removal of the line <code>module = types.ModuleType(results[0][&quot;filename&quot;])</code> and the subsequent lines that create a module object.</li>
+<li>Removal of the line <code>return [{ &quot;filename&quot;: r[&quot;filename&quot;], &quot;code&quot;: r[&quot;code&quot;], &quot;language&quot;: r[&quot;language&quot;], &quot;markdown&quot;: r[&quot;markdown&quot;], &quot;questions&quot;: r[&quot;questions&quot;].split('\\n')} for r in results]</code> and the subsequent lines that return a list of results.</li>
+<li>Removal of the line <code>if len(sys.argv) &lt; 3:</code> and the subsequent lines that check the number of command-line arguments.</li>
+</ol>
+<p><strong>Other Changes:</strong></p>
+<ol>
+<li>The <code>import_notebook</code> function now checks if the retrieved code is in C, C++, or Objective-C and builds a dynamic library using the <code>build_dylib</code> function.</li>
+<li>The <code>import_notebook</code> function now executes the code using the <code>exec</code> function if the language is Python.</li>
+<li>The <code>run</code> function now checks the number of command-line arguments and prints an error message if it is less than 2.</li>
+</ol>
+<p>Overall, the changes made to this file appear to be related to the import and execution of notebooks, with a focus on supporting different programming languages and dynamic library building.<br />
+<strong>Summary of Code Changes</strong></p>
+<p>The provided code snippet appears to be a part of a Discord bot written in JavaScript, utilizing the Discord API and a large language model (LLM) for generating text and images. The changes made to the file <code>Frontends/discord imagine.ipynb</code> are as follows:</p>
+<p><strong>Additions:</strong></p>
+<ol>
+<li>An <code>async</code> function <code>doHallucinate</code> was added, which:
+<ul>
+<li>Imports an LLM session using <code>importer.import('create llm session')</code>.</li>
+<li>Prompts the LLM to generate a detailed and exotic scene based on the user's input.</li>
+<li>Triggers typing in the interaction channel.</li>
+<li>Checks if the generated scene is rated R or mature audiences, and if so, returns a message indicating that the bot will not proceed.</li>
+<li>Updates the interaction with a loading message.</li>
+<li>Uses the generated scene to make a stable diffusion request and returns the resulting image.</li>
+</ul></li>
+<li>An <code>async</code> function <code>doImagineProxy</code> was added, which:
+<ul>
+<li>Triggers typing in the interaction channel.</li>
+<li>Checks if the user's input is rated PG or safe for children, and if not, returns a message indicating that the bot will not proceed.</li>
+<li>Updates the interaction with a loading message.</li>
+<li>Uses the user's input to make a stable diffusion request and returns the resulting image.</li>
+</ul></li>
+</ol>
+<p><strong>Deletions:</strong></p>
+<p>Unfortunately, the deletions are not specified in the provided code snippet. If you could provide the deletions, I would be happy to summarize them as well.<br />
+<strong>Code Changes Summary</strong><br />
+=========================</p>
+<p>The code changes made to the <code>Languages/csharp.ipynb</code> file are as follows:</p>
+<h3>Additions</h3>
+<ul>
+<li>A new object with properties <code>typeName</code> and <code>methodName</code> was added to the code. The <code>typeName</code> property is set to <code>'Rosetta.Euler'</code> and the <code>methodName</code> property is set to <code>'RunEuler'</code>.</li>
+<li>A new <code>console.log</code> statement was added to call the <code>RunEuler</code> method with a promise and a callback function.</li>
+<li>The <code>Euler.Main()</code> method was commented out.</li>
+</ul>
+<h3>Deletions</h3>
+<ul>
+<li>The <code>console.log(await RunEuler())</code> statement was deleted.</li>
+<li>The <code>Euler.Main()</code> method was deleted.</li>
+</ul>
+<p>These changes suggest that the code is being modified to use the <code>RunEuler</code> method instead of the <code>Euler.Main()</code> method, and to use a promise to handle the method's return value.<br />
+Unfortunately, the provided information does not contain any code changes. It appears to be a JSON file containing conversation data, with additions and deletions of conversation entries.</p>
+<p>However, I can summarize the changes made to the conversation data:</p>
+<p><strong>Additions:</strong></p>
+<ul>
+<li>Three new conversation entries were added:
+<ol>
+<li>Entry 1740674277719: A user requests an image of a 360-degree panoramic view of a cat lying on clouds.</li>
+<li>Entry 1740674306729: A user responds to the previous entry, describing the image as breathtaking and evoking feelings of wonder and peace.</li>
+<li>Entry 1740675617818: A user responds to the previous entry, describing the image as a serene and enchanting scene that evokes feelings of peace and curiosity.</li>
+</ol></li>
+</ul>
+<p><strong>Deletions:</strong></p>
+<ul>
+<li>No deletions are mentioned in the provided information.</li>
+</ul>
+<p><strong>Other changes:</strong></p>
+<ul>
+<li>The conversation data appears to have been updated with new entries, but there are no code changes mentioned.</li>
+</ul>

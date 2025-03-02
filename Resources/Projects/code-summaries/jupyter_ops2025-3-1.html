@@ -1,0 +1,167 @@
+<p><strong>Llama Vision: A Glimpse into the Code</strong></p>
+<p>Hey there, fellow coders! Today, we're going to take a peek into the fascinating world of Llama Vision, a project that's all about generating stunning images using AI. In this post, we'll dive into the code and explore some of the interesting additions and deletions made to the <code>Algorithms/llama vision.ipynb</code> file.</p>
+<p><strong>Async Function Magic</strong></p>
+<p>Let's start with the <code>doStableRequest</code> function, which is an async function that makes a request to the <code>http://127.0.0.1:7860/sdapi/v1/txt2img</code> endpoint. This function takes a <code>prompt</code> parameter, which is the input text used to generate the image.</p>
+<pre><code class="language-javascript">async function doStableRequest(prompt) {
+  //...
+}
+</code></pre>
+<p>One of the interesting things about this function is that it checks if the <code>prompt</code> includes the string <code>'View360'</code>. If it does, the function sets the <code>width</code> variable to 2048, which is a higher resolution than the default 1024.</p>
+<pre><code class="language-javascript">if (prompt.includes('View360')) {
+  width = 2048;
+}
+</code></pre>
+<p><strong>Dynamic Image Size</strong></p>
+<p>Another cool feature of this function is that it allows the user to specify the image size using command-line arguments. For example, if the user passes the <code>--height=1280</code> argument, the function will set the <code>height</code> variable to 1280.</p>
+<pre><code class="language-javascript">let specificHeight = prompt.match(/--height=(\d+)/);
+if (specificHeight) {
+  height = parseInt(specificHeight);
+  prompt = prompt.replace(/--height=(\d+)/, '');
+}
+</code></pre>
+<p><strong>Deletions and Additions</strong></p>
+<p>As we mentioned earlier, the <code>Algorithms/llama vision.ipynb</code> file has undergone some changes. One of the deletions made was the removal of the line <code>\&quot;height\&quot;: 1024,</code>, which means that the default image height is no longer hardcoded to 1024.</p>
+<pre><code class="language-javascript">// Before
+\&quot;height\&quot;: 1024,
+
+// After
+\&quot;height\&quot;: height,
+</code></pre>
+<p>Overall, the <code>doStableRequest</code> function is a powerful tool that allows users to generate high-quality images using AI. With its dynamic image size and 360-degree view capabilities, it's no wonder that Llama Vision is a popular choice among artists and designers.</p>
+<p><strong>Stay tuned for more coding adventures!</strong><br />
+<strong>Streaming Live to YouTube with Python and FFmpeg</strong></p>
+<p>In this article, we'll explore how to create a live stream on YouTube using Python and FFmpeg. We'll cover the necessary steps to set up the YouTube API, create a live stream, bind it to a broadcast, and transition the stream to live.</p>
+<p><strong>Step 1: Set up the YouTube API</strong></p>
+<p>To use the YouTube API, you'll need to create a project in the Google Cloud Console and enable the YouTube Data API v3. You'll also need to install the <code>google-api-python-client</code> library using pip:</p>
+<pre><code class="language-bash">pip install google-api-python-client
+</code></pre>
+<p><strong>Step 2: Create a Live Stream</strong></p>
+<p>To create a live stream, you'll need to use the <code>youtube.liveStreams().insert()</code> method. This method takes a <code>snippet</code> object with the title and description of the stream, as well as a <code>cdn</code> object with the frame rate and resolution of the stream.</p>
+<pre><code class="language-python">def create_livestream(youtube):
+    credentials = youtube_authorize()
+    youtube = build(&quot;youtube&quot;, &quot;v3&quot;, credentials=credentials)
+    request = youtube.liveStreams().insert(
+        part=&quot;snippet,cdn,status&quot;,
+        body={
+            &quot;snippet&quot;: {
+                &quot;title&quot;: &quot;My Live Stream&quot;,
+                &quot;description&quot;: &quot;Streaming via API&quot;
+            },
+            &quot;cdn&quot;: {
+                &quot;frameRate&quot;: &quot;30fps&quot;,
+                &quot;resolution&quot;: &quot;1080p&quot;,
+                &quot;ingestionType&quot;: &quot;rtmp&quot;
+            },
+            &quot;status&quot;: {
+                &quot;streamStatus&quot;: &quot;active&quot;
+            }
+        }
+    )
+    response = request.execute()
+    return response['cdn']['ingestionInfo']['streamName']
+</code></pre>
+<p><strong>Step 3: Bind the Stream to a Broadcast</strong></p>
+<p>To bind the stream to a broadcast, you'll need to use the <code>youtube.liveBroadcasts().bind()</code> method. This method takes the ID of the broadcast and the ID of the stream.</p>
+<pre><code class="language-python">def bind_stream_to_broadcast():
+    credentials = youtube_authorize()
+    broadcast_id = list_broadcasts()[0]['id']
+    stream = list_livestream()
+    youtube = build(&quot;youtube&quot;, &quot;v3&quot;, credentials=credentials)
+    request = youtube.liveBroadcasts().bind(
+        id=broadcast_id,
+        part=&quot;id,contentDetails&quot;,
+        streamId=stream['id']
+    )
+    response = request.execute()
+    print(&quot;✅ Stream successfully bound to broadcast:&quot;, response)
+    return stream, broadcast_id
+</code></pre>
+<p><strong>Step 4: Transition the Stream to Live</strong></p>
+<p>To transition the stream to live, you'll need to use the <code>youtube.liveBroadcasts().transition()</code> method. This method takes the ID of the broadcast and sets its status to &quot;live&quot;.</p>
+<pre><code class="language-python">def transition_stream():
+    credentials = youtube_authorize()
+    youtube = build(&quot;youtube&quot;, &quot;v3&quot;, credentials=credentials)
+    stream, broadcast_id = bind_stream_to_broadcast()
+    args = [&quot;python&quot;, &quot;-c&quot;, &quot;__import__('Core').run()&quot;, &quot;python write images to ffmpeg stream&quot;, &quot;--streamName=&quot; + stream['cdn']['ingestionInfo']['streamName']]
+    process = subprocess.Popen(args)
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print(&quot;\nCTRL+C detected. Exiting...&quot;)
+    os.killpg(os.getpgid(process.pid), signal.SIGTERM)
+</code></pre>
+<p><strong>Conclusion</strong></p>
+<p>In this article, we've covered the necessary steps to create a live stream on YouTube using Python and FFmpeg. We've also covered how to bind the stream to a broadcast and transition the stream to live. With these steps, you should be able to create a live stream on YouTube using Python and FFmpeg.<br />
+<strong>Code Update: Importing Notebooks with a Twist</strong></p>
+<p>Hey there, fellow coders! Today we're going to dive into an updated code snippet that's all about importing notebooks with a bit of flair. Let's take a look at what's changed.</p>
+<p><strong>The Original Code</strong></p>
+<p>Before we get into the updates, let's take a quick look at the original code. We've got a function called <code>import_notebook</code> that's responsible for importing notebooks from a Whoosh index. Here's the relevant excerpt:</p>
+<pre><code class="language-python">if(results[0][&quot;filename&quot;] in modules):
+    return vars(modules[results[0][&quot;filename&quot;]])[&quot;__all__&quot;]
+module = types.ModuleType(results[0][&quot;filename&quot;])
+module.__file__ = results[0][&quot;filename&quot;]
+...
+</code></pre>
+<p>This code checks if the notebook's filename is already in the <code>modules</code> dictionary. If it is, it returns the notebook's contents. If not, it creates a new module and imports the notebook's code.</p>
+<p><strong>The Updates</strong></p>
+<p>Now, let's take a look at the updated code. We've got some new additions and deletions that change the way notebooks are imported. Here are the highlights:</p>
+<p><strong>Additions</strong></p>
+<ul>
+<li>We've added a new line to search for notebooks using the <code>search_whoosh</code> function: <code>results = search_whoosh(query_str)</code></li>
+<li>We've added a check to see if the search results are empty. If they are, we raise an <code>ImportError</code>: <code>if not results: raise ImportError(f&quot;No matching notebook found for query: {query_str}&quot;)</code></li>
+<li>We've added a new block of code to handle the case where the notebook's language is C, C++, or Objective-C. We build a dylib using the <code>build_dylib</code> function and then use <code>ctypes</code> to load the library: <code>result = ctypes.CDLL(os.path.join(BUILD_DIRECTORY, lib_name + '.dylib'))</code></li>
+</ul>
+<p><strong>Deletions</strong></p>
+<ul>
+<li>We've removed the original check for the notebook's filename in the <code>modules</code> dictionary: <code>if(results[0][&quot;filename&quot;] in modules):</code></li>
+<li>We've removed the original code that created a new module and imported the notebook's code: <code>module = types.ModuleType(results[0][&quot;filename&quot;])</code></li>
+</ul>
+<p><strong>The New Code</strong></p>
+<p>So, what does the updated code look like? Here's the relevant excerpt:</p>
+<pre><code class="language-python">results = search_whoosh(query_str)
+if not results:
+    raise ImportError(f&quot;No matching notebook found for query: {query_str}&quot;)
+filename = results[0][&quot;filename&quot;]
+fileid = results[0][&quot;id&quot;]
+...
+if(fileid in modules):
+    for name in vars(modules[fileid])[&quot;__all__&quot;]:
+        print(name)
+        ctx[name] = vars(modules[fileid])[&quot;__all__&quot;][name]
+        globals()[name] = vars(modules[fileid])[&quot;__all__&quot;][name]
+    return vars(modules[fileid])[&quot;__all__&quot;]
+...
+</code></pre>
+<p>As you can see, the updated code uses the <code>search_whoosh</code> function to find the notebook and then checks if the search results are empty. If they are, it raises an <code>ImportError</code>. Otherwise, it imports the notebook's code and makes it available in the <code>modules</code> dictionary.</p>
+<p>That's it for today's update! Let me know if you have any questions or if you'd like to see more code snippets.<br />
+<strong>Code Update: Adding a Dash of Imagination to Discord</strong></p>
+<p>Hey there, fellow coders! Today, we're going to dive into an exciting update to a Discord bot that's all about unleashing your creativity. We'll explore the new additions and deletions made to the code, and I'll give you a sneak peek into the magic behind it.</p>
+<p><strong>The Update: &quot;Imagine&quot;</strong></p>
+<p>The <code>doHallucinate</code> function is the star of the show here. It's designed to generate a vivid and detailed scene based on a user's input. Here's a code excerpt that shows how it works:</p>
+<pre><code class="language-javascript">async function doHallucinate(interaction) {
+  const {llmPrompt} = await importer.import('create llm session')
+  let a1 = await llmPrompt('Imagine a scene that is much more exotic, weird, bizarre and detailed with this topic:\\n' 
+    + interaction.data.options[0].value + '\\nFit as much detail as possible in to two or three sentences.')
+ ...
+}
+</code></pre>
+<p>The function uses the <code>llmPrompt</code> function to generate a response to the user's input. The response is then used to trigger a typing indicator and, if the user is in a guild, to check if the prompt is suitable for mature audiences. If it's not, the bot politely declines.</p>
+<p><strong>The &quot;Imagine Proxy&quot; Function</strong></p>
+<p>The <code>doImagineProxy</code> function is similar to <code>doHallucinate</code>, but with a twist. It's designed to generate a safe and child-friendly image based on the user's input. Here's a code excerpt that shows how it works:</p>
+<pre><code class="language-javascript">async function doImagineProxy(interaction) {
+  await triggerTyping(interaction.channel_id)
+  if(interaction.guild_id) {
+    const {llmPrompt} = await importer.import('create llm session')
+    let q2 = 'Would this prompt be considered to be rated PG or safe for children, answer Yes or No only?\\n' + interaction.data.options[0].value
+    let a2 = await llmPrompt(q2)
+    if(a2.includes('No')) {
+      return await updateInteraction({ content: 'I will not.' }, interaction.id, interaction.token)
+    }
+  }
+ ...
+}
+</code></pre>
+<p>The function uses the <code>llmPrompt</code> function to check if the user's input is suitable for children. If it's not, the bot declines. Otherwise, it generates an image based on the user's input and sends it back to the user.</p>
+<p><strong>The Verdict</strong></p>
+<p>The updated code adds a dash of imagination to the Discord bot, allowing users to generate vivid and detailed scenes based on their input. The &quot;Imagine Proxy&quot; function takes it a step further by generating safe and child-friendly images. Whether you're a seasoned coder or just starting out, this update is sure to inspire your creativity and spark new ideas.</p>
