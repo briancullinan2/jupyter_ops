@@ -4,6 +4,8 @@ import sys
 import types
 
 notebook_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'pyimport.ipynb'))
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 # Read and parse the notebook
 with open(notebook_path, 'r', encoding='utf-8') as f:
