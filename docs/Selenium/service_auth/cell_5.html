@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../service_auth/index.html">service auth</a>
-    <br /><br />
+    <h3><a href="../service_auth/index.html">service auth</a></h3>
     <a href="./Decrypt_passwords_json.html">Decrypt passwords.json</a>
 <br /><br />
 <a href="./Add_encrypted_to_passwords_json.html">Add encrypted to passwords.json</a>
@@ -61,11 +67,12 @@
 
   </nav>
   <header>
-    <a href="../service_auth/index.html">service auth</a> ${PREV} ${NEXT}
+    <a href="../service_auth/index.html">service auth</a> | <a href="./download_passwords_from_google.html">download passwords from google</a> | <a href="./log_in_to_Google_using_webdriver.html">log in to Google using webdriver</a>
   </header>
 
-  <p>Here is a two-sentence summary:</p>
-<p>This code imports a module and function using the <code>require</code> and <code>import</code> functions, and then uses the imported <code>runSeleniumCell</code> function to initiate an asynchronous operation to download passwords from Google. The code uses promise chaining with <code>then</code> and <code>catch</code> methods to handle the result and any errors that may occur during the operation.</p>
+  <p>This code imports a module and function using the <code>require</code> and <code>import</code> functions, and then uses the imported <code>runSeleniumCell</code> function to initiate an asynchronous operation to download passwords from Google. The code uses promise chaining with <code>then</code> and <code>catch</code> methods to handle the result and any errors that may occur during the operation.</p>
+<h1>Cell 5</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -87,6 +94,7 @@ runSeleniumCell('download passwords from google')
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

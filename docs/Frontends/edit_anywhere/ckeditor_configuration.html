@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../edit_anywhere/index.html">edit anywhere</a>
-    <br /><br />
+    <h3><a href="../edit_anywhere/index.html">edit anywhere</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./read_gist_files.html">read gist files</a>
@@ -71,10 +77,14 @@
 
   </nav>
   <header>
-    <a href="../edit_anywhere/index.html">edit anywhere</a> ${PREV} ${NEXT}
+    <a href="../edit_anywhere/index.html">edit anywhere</a> | <a href="./read_crawl_files.html">read crawl files</a> | <a href="./cell_12.html">Cell 12</a>
   </header>
 
   <p>This code implements real-time saving for editable content on a webpage using CKEditor 5 and a custom server-side endpoint to handle the saving process.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "ckeditor configuration"</code></pre><h1>ckeditor configuration</h1>
+
 
 
 <pre class="javascript"><code>function saveEdits(data) {
@@ -298,6 +308,7 @@ loadScript('https://code.jquery.com/jquery-3.5.1.min.js') //'https://code.jquery
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

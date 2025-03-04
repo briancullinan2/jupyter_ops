@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../documentation/index.html">documentation</a>
-    <br /><br />
+    <h3><a href="../documentation/index.html">documentation</a></h3>
     <a href="./convert_notebook_to_open_api.html">convert notebook to open api</a>
 <br /><br />
 <a href="./test_convert_notebook_api.html">test convert notebook api</a>
@@ -59,11 +65,14 @@
 
   </nav>
   <header>
-    <a href="../documentation/index.html">documentation</a> ${PREV} ${NEXT}
+    <a href="../documentation/index.html">documentation</a> | <a href="./highlight_js.html">highlight js</a> | 
   </header>
 
-  <p>Here's a 2 sentence summary of the HTML document breakdown:</p>
-<p>The basic structure of an HTML document includes the document type declaration, HTML tag, head section (with metadata, document title, viewport settings, stylesheet link, and inline styles), body section (with navigation bar, header section, and output section), and end of document tags. The document can be customized with variables and links to external stylesheets, and can be designed to be responsive with viewport settings.</p>
+  <p>The basic structure of an HTML document includes the document type declaration, HTML tag, head section (with metadata, document title, viewport settings, stylesheet link, and inline styles), body section (with navigation bar, header section, and output section), and end of document tags. The document can be customized with variables and links to external stylesheets, and can be designed to be responsive with viewport settings.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "javadoc template"</code></pre><h1>javadoc template</h1>
+
 
 
 <pre class="html"><code>&lt;!DOCTYPE html&gt;
@@ -76,6 +85,11 @@
   &lt;meta name='viewport' content='width=device-width, initial-scale=1'&gt;
   &lt;link rel='stylesheet' type='text/css' media='screen' href='main.css'&gt;
   &lt;style&gt;
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -88,10 +102,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -108,12 +124,11 @@
 
 &lt;body&gt;
   &lt;nav&gt;
-    ${PARENT}
-    &lt;br /&gt;&lt;br /&gt;
+    &lt;h3&gt;${PARENT}&lt;/h3&gt;
     ${CLASSES}
   &lt;/nav&gt;
   &lt;header&gt;
-    ${PARENT} ${PREV} ${NEXT}
+    ${PARENT} | ${PREV} | ${NEXT}
   &lt;/header&gt;
 
   ${OUTPUT}
@@ -129,6 +144,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

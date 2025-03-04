@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Analytics/index.html">Analytics</a>
-    <br /><br />
+    <h3><a href="../../Analytics/index.html">Analytics</a></h3>
     <a href="../budgeting/index.html">budgeting</a>
 <br /><br />
 <a href="../calculations_for_life/index.html">calculations for life</a>
@@ -61,19 +67,19 @@
 
   </nav>
   <header>
-    <a href="../../Analytics/index.html">Analytics</a> ${PREV} ${NEXT}
+    <a href="../../Analytics/index.html">Analytics</a> | <a href="../data_collection/index.html">data collection</a> | <a href="../parsing_email_addresses/index.html">parsing email addresses</a>
   </header>
 
-  <a href="./Find_cross_section_of_actors_and_movies.html">Find cross section of actors and movies</a>
+  <h1>movie database</h1>
+
+<a href="./Find_cross_section_of_actors_and_movies.html">Find cross section of actors and movies</a>
 <br /><br />
 <p>This code imports data from IMDb TSV files (principals, titles, and names) and stores it in a structured SQLite database.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here is a 2-sentence summary:</p>
 <p>This code provides a set of functions for interacting with a SQLite database containing movie information, including methods for searching by Levenshtein distance and retrieving actor and title data. The functions use a mix of synchronous and asynchronous programming, with prepared statements and promise chains to improve security, performance, and readability.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code:</p>
 <p>The code initializes a SQLite database and defines a function <code>dropTitles</code> to drop indices and a table from the database. It also prepares a query to count the number of rows in the <code>name</code> table, but the result is not utilized.</p>
 <a href="./use_elastic_search_from_node.html">use elastic search from node</a>
 <br /><br />

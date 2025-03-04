@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../import/index.html">import</a>
-    <br /><br />
+    <h3><a href="../import/index.html">import</a></h3>
     <a href="./import_notebook.html">import notebook</a>
 <br /><br />
 <a href="./how_does_node_module_require_work.html">how does node module require work</a>
@@ -73,11 +79,14 @@
 
   </nav>
   <header>
-    <a href="../import/index.html">import</a> ${PREV} ${NEXT}
+    <a href="../import/index.html">import</a> | <a href="./search_jupter_notebooks_for_questions_and_answers.html">search jupter notebooks for questions and answers</a> | <a href="./cell_9.html">Cell 9</a>
   </header>
 
-  <p>Here's a 1-2 sentence summary of the provided code:</p>
-<p>The code initializes a cache by retrieving and caching cells from specified notebooks and creating a database, then defines the <code>interpret</code> function to process queries by filtering local files, searching notebooks, and querying the database. The <code>interpret</code> function checks if the cache has already been initialized and processes the queries accordingly, storing the results in the <code>searchResults</code> variable.</p>
+  <p>The code initializes a cache by retrieving and caching cells from specified notebooks and creating a database, then defines the <code>interpret</code> function to process queries by filtering local files, searching notebooks, and querying the database. The <code>interpret</code> function checks if the cache has already been initialized and processes the queries accordingly, storing the results in the <code>searchResults</code> variable.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "search notebook questions"</code></pre><h1>search notebook questions</h1>
+
 
 
 <pre class="javascript"><code>var path = require('path')
@@ -171,6 +180,7 @@ module.exports.interpret = interpret;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

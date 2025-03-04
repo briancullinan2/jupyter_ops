@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../discord_tools/index.html">discord tools</a>
-    <br /><br />
+    <h3><a href="../discord_tools/index.html">discord tools</a></h3>
     <a href="./discord_pdf_converter.html">discord pdf converter</a>
 <br /><br />
 <a href="./discord_notebook_connector.html">discord notebook connector</a>
@@ -65,11 +71,14 @@
 
   </nav>
   <header>
-    <a href="../discord_tools/index.html">discord tools</a> ${PREV} ${NEXT}
+    <a href="../discord_tools/index.html">discord tools</a> | <a href="./discord_mesh_generator.html">discord mesh generator</a> | <a href="./sync_discord_llm_tools.html">sync discord llm tools</a>
   </header>
 
-  <p>Here is a 2-sentence summary of the code:</p>
-<p>The code defines an interaction module that exports three functions (<code>doInteraction</code>, <code>doMention</code>, and <code>doPrivate</code>) to handle different types of interactions with the bot, including greetings, mentions, and private messages. Each function uses a combination of imported modules and functions to generate responses, such as triggering typing, selecting models, and creating messages.</p>
+  <p>The code defines an interaction module that exports three functions (<code>doInteraction</code>, <code>doMention</code>, and <code>doPrivate</code>) to handle different types of interactions with the bot, including greetings, mentions, and private messages. Each function uses a combination of imported modules and functions to generate responses, such as triggering typing, selecting models, and creating messages.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "discord llm interactions"</code></pre><h1>discord llm interactions</h1>
+
 
 
 <pre class="javascript"><code>const {DEFAULT_MODEL} = importer.import('general chit chat')
@@ -137,6 +146,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frontends/index.html">Frontends</a>
-    <br /><br />
+    <h3><a href="../../Frontends/index.html">Frontends</a></h3>
     <a href="../blog/index.html">blog</a>
 <br /><br />
 <a href="../brians_resume/index.html">brians resume</a>
@@ -81,14 +87,15 @@
 
   </nav>
   <header>
-    <a href="../../Frontends/index.html">Frontends</a> ${PREV} ${NEXT}
+    <a href="../../Frontends/index.html">Frontends</a> | <a href="../discord_activities/index.html">discord activities</a> | <a href="../discord_imagine/index.html">discord imagine</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>discord games</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./discord_game_commands.html">discord game commands</a>
 <br /><br />
-<p>Here is a summary of the provided code breakdown in two sentences:</p>
 <p>The code imports functions from the Discord API module and defines an array of command names (<code>ALL_COMMANDS</code>) that will be synced with the Discord API. The <code>syncCommands</code> function retrieves the list of commands from the Discord API, registers or updates commands as needed, and repeats this process for each command in the <code>ALL_COMMANDS</code> array.</p>
 
 </body>

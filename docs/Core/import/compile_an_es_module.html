@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../import/index.html">import</a>
-    <br /><br />
+    <h3><a href="../import/index.html">import</a></h3>
     <a href="./import_notebook.html">import notebook</a>
 <br /><br />
 <a href="./how_does_node_module_require_work.html">how does node module require work</a>
@@ -73,11 +79,14 @@
 
   </nav>
   <header>
-    <a href="../import/index.html">import</a> ${PREV} ${NEXT}
+    <a href="../import/index.html">import</a> | <a href="./cell_2.html">Cell 2</a> | <a href="./compile_a_csharp_file_into_a_DLL.html">compile a csharp file into a DLL</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code breakdown:</p>
-<p>The code imports dependencies and defines an asynchronous <code>makeESModule</code> function that creates a virtual machine context and compiles code using the <code>vm</code> module. The function also defines a linker function that resolves and imports modules dynamically, allowing the code to be executed and exported as a virtual machine module.</p>
+  <p>The code imports dependencies and defines an asynchronous <code>makeESModule</code> function that creates a virtual machine context and compiles code using the <code>vm</code> module. The function also defines a linker function that resolves and imports modules dynamically, allowing the code to be executed and exported as a virtual machine module.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "compile an es module"</code></pre><h1>compile an es module</h1>
+
 
 
 <pre class="javascript"><code>const Module = require('module').Module
@@ -85,7 +94,8 @@ const path = require('path')
 const vm = require('vm')
 
 async function makeESModule(code, filename, context) {
-  var filepath = path.resolve(process.cwd(), filename);
+  const filepath = path.resolve(process.cwd(), filename);
+  const {CONSOLE} = require('../Core')
 
   if (typeof Module._cache[filepath] != 'undefined') {
     if (Module._cache[filepath].namespace.default) {
@@ -100,6 +110,7 @@ async function makeESModule(code, filename, context) {
     __dirname: path.dirname(filename),
     __filename: filename.split('[')[0],
     global: context,
+    console: CONSOLE,
   })
   const vmModule = new vm.SourceTextModule(code, {
       identifier: filename,
@@ -117,7 +128,7 @@ async function makeESModule(code, filename, context) {
   Module._cache[filepath].exports = {}
   
   if (!filename.includes('Core')) {
-    console.info(`compiling ES ${filename} with ${Object.keys(context)}`);
+    CONSOLE.info(`compiling ES ${filename} with ${Object.keys(context)}`);
   }
 
   const linker = async (specifier) =&gt; {
@@ -161,6 +172,7 @@ module.exports.makeESModule = makeESModule
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

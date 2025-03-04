@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../git/index.html">git</a>
-    <br /><br />
+    <h3><a href="../git/index.html">git</a></h3>
     <a href="./Rename_a_bunch_of_files_using_Git_and_renamer.html">Rename a bunch of files using Git and renamer</a>
 <br /><br />
 <a href="./test_github_renamer.html">test github renamer</a>
@@ -65,10 +71,14 @@
 
   </nav>
   <header>
-    <a href="../git/index.html">git</a> ${PREV} ${NEXT}
+    <a href="../git/index.html">git</a> | <a href="./source_tree.html">source tree</a> | <a href="./update_git.html">update git</a>
   </header>
 
   <p>This code defines a function that compares two specific Git commits within a project, outputs the differences to a directory, and utilizes Gulp and Promises for task management.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "Display graphs of different commands and scenarios using dry-run"</code></pre><h1>Display graphs of different commands and scenarios using dry-run</h1>
+
 
 
 <pre class="javascript"><code>var path = require('path');
@@ -113,6 +123,7 @@ if(typeof $ !== 'undefined') {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

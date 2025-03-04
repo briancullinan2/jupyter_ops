@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,18 +47,18 @@
 
 <body>
   <nav>
-    <a href="../svn_commands/index.html">svn commands</a>
-    <br /><br />
+    <h3><a href="../svn_commands/index.html">svn commands</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 
   </nav>
   <header>
-    <a href="../svn_commands/index.html">svn commands</a> ${PREV} ${NEXT}
+    <a href="../svn_commands/index.html">svn commands</a> |  | 
   </header>
 
-  <p>Here's a two-sentence summary:</p>
-<p>This Docker command runs an <code>svnserve</code> container with automatic restart, mapping the host directory <code>/Users/briancullinan/Documents/svn</code> to the container directory, and exposing port 3690 for version control operations. The command uses the <code>gcscaglia/docker-svnserve</code> image with the latest available version.</p>
+  <p>This Docker command runs an <code>svnserve</code> container with automatic restart, mapping the host directory <code>/Users/briancullinan/Documents/svn</code> to the container directory, and exposing port 3690 for version control operations. The command uses the <code>gcscaglia/docker-svnserve</code> image with the latest available version.</p>
+<h1>Cell 0</h1>
+
 
 
 <pre class="bash"><code>docker run \
@@ -68,6 +75,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

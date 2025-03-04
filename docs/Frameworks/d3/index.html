@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frameworks/index.html">Frameworks</a>
-    <br /><br />
+    <h3><a href="../../Frameworks/index.html">Frameworks</a></h3>
     <a href="../Angular_2/index.html">Angular 2</a>
 <br /><br />
 <a href="../Angular_components/index.html">Angular components</a>
@@ -105,10 +111,12 @@
 
   </nav>
   <header>
-    <a href="../../Frameworks/index.html">Frameworks</a> ${PREV} ${NEXT}
+    <a href="../../Frameworks/index.html">Frameworks</a> | <a href="../d3_dates/index.html">d3 dates</a> | <a href="../de-linting/index.html">de-linting</a>
   </header>
 
-  <a href="./Create_a_word-cloud.html">Create a word-cloud</a>
+  <h1>d3</h1>
+
+<a href="./Create_a_word-cloud.html">Create a word-cloud</a>
 <br /><br />
 <p>This code generates an SVG image of a word cloud by using D3.js and the <code>d3-cloud</code> library to layout and style words based on their frequency.  It takes an array of word objects as input and returns an SVG string representing the word cloud.</p>
 <a href="./d3_tiered_pie_chart.html">d3 tiered pie chart</a>
@@ -116,7 +124,6 @@
 <p>This code generates a tiered pie chart visualization using D3.js to represent hierarchical data, allowing for a clear visual representation of data structure and proportions.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here's a summary in one sentence:</p>
 <p>This code block includes conditional statements, asynchronous function calls, and error handling using the <code>$</code> object, which appears to be a utility or API object.</p>
 <a href="./d3_pie_chart.html">d3 pie chart</a>
 <br /><br />

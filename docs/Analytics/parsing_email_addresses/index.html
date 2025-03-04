@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Analytics/index.html">Analytics</a>
-    <br /><br />
+    <h3><a href="../../Analytics/index.html">Analytics</a></h3>
     <a href="../budgeting/index.html">budgeting</a>
 <br /><br />
 <a href="../calculations_for_life/index.html">calculations for life</a>
@@ -61,15 +67,16 @@
 
   </nav>
   <header>
-    <a href="../../Analytics/index.html">Analytics</a> ${PREV} ${NEXT}
+    <a href="../../Analytics/index.html">Analytics</a> | <a href="../movie_database/index.html">movie database</a> | <a href="../reconcile_timeline_data/index.html">reconcile timeline data</a>
   </header>
 
-  <a href="./__search_google_email_format.html">, search google email format</a>
+  <h1>parsing email addresses</h1>
+
+<a href="./__search_google_email_format.html">, search google email format</a>
 <br /><br />
 <p>This code provides a function <code>getEmailFormat</code> that searches the web for email address formats associated with a given query, combining results from both a specific site (rocketreach.co) and a general search. It extracts potential email addresses using a regular expression and returns a list of found formats.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>This JavaScript code stores a long list of institutions in a string variable, containing many duplicates and a mix of institutions from various types and locations. Potential use cases include data analysis, database population, and algorithmic decision-making, where the data may need to be cleaned, formatted, and analyzed.</p>
 
 </body>

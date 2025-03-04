@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../linkedin_connections/index.html">linkedin connections</a>
-    <br /><br />
+    <h3><a href="../linkedin_connections/index.html">linkedin connections</a></h3>
     <a href="./sync_linkedin_contacts_with_google_contacts.html">sync linkedin contacts with google contacts</a>
 <br /><br />
 <a href="./scrape_entire_linkedin_profile.html">scrape entire linkedin profile</a>
@@ -61,10 +67,14 @@
 
   </nav>
   <header>
-    <a href="../linkedin_connections/index.html">linkedin connections</a> ${PREV} ${NEXT}
+    <a href="../linkedin_connections/index.html">linkedin connections</a> | <a href="./sync_linkedin_contacts_with_google_contacts.html">sync linkedin contacts with google contacts</a> | <a href="./scrape_linkedin_contacts.html">scrape linkedin contacts</a>
   </header>
 
   <p>This code snippet uses Selenium to scrape comprehensive data from a LinkedIn profile, including basic information and details from various sections like experience, skills, and recommendations. It employs techniques to load all content, including hidden sections, to ensure complete data extraction.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "scrape entire linkedin profile"</code></pre><h1>scrape entire linkedin profile</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -165,6 +175,7 @@ module.exports = scrapeEntireLinkedInProfile;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

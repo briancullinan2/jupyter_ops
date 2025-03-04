@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../calculations_for_life/index.html">calculations for life</a>
-    <br /><br />
+    <h3><a href="../calculations_for_life/index.html">calculations for life</a></h3>
     <a href="./This_does_not_include_vacation_days_since_I_was_14_and_moved_away_from_Ohio__Maybe_1_week_every_3_ye.html">This does not include vacation days since I was 14 and moved away from Ohio. Maybe 1 week every 3 years average</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -53,11 +59,12 @@
 
   </nav>
   <header>
-    <a href="../calculations_for_life/index.html">calculations for life</a> ${PREV} ${NEXT}
+    <a href="../calculations_for_life/index.html">calculations for life</a> | <a href="./This_does_not_include_vacation_days_since_I_was_14_and_moved_away_from_Ohio__Maybe_1_week_every_3_ye.html">This does not include vacation days since I was 14 and moved away from Ohio. Maybe 1 week every 3 years average</a> | <a href="./cell_2.html">Cell 2</a>
   </header>
 
-  <p>Here is a summary of the provided code in two sentences:</p>
-<p>This JavaScript script calculates and logs various statistics related to life, including the percentage of life spent sleeping and masturbating, based on assumptions of 7 hours of sleep per night and 1 hour of masturbation per day. The output includes the percentage of life spent sleeping, the percentage of the year spent masturbating, and the percentage of life spent masturbating.</p>
+  <p>This JavaScript script calculates and logs various statistics related to life, including the percentage of life spent sleeping and masturbating, based on assumptions of 7 hours of sleep per night and 1 hour of masturbation per day. The output includes the percentage of life spent sleeping, the percentage of the year spent masturbating, and the percentage of life spent masturbating.</p>
+<h1>Cell 1</h1>
+
 
 
 <pre class="javascript"><code>// calculate exact age based on current date
@@ -101,6 +108,7 @@ console.log('Percent of life spent masturbating: ' + _percentOfLifeJerkingFormat
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

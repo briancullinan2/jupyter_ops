@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Analytics/index.html">Analytics</a>
-    <br /><br />
+    <h3><a href="../../Analytics/index.html">Analytics</a></h3>
     <a href="../budgeting/index.html">budgeting</a>
 <br /><br />
 <a href="../calculations_for_life/index.html">calculations for life</a>
@@ -61,54 +67,46 @@
 
   </nav>
   <header>
-    <a href="../../Analytics/index.html">Analytics</a> ${PREV} ${NEXT}
+    <a href="../../Analytics/index.html">Analytics</a> | <a href="../calculations_for_life/index.html">calculations for life</a> | <a href="../movie_database/index.html">movie database</a>
   </header>
 
-  <a href="./Crime_reports.html">Crime reports</a>
+  <h1>data collection</h1>
+
+<a href="./Crime_reports.html">Crime reports</a>
 <br /><br />
-<p>Here's a summary of the code in one sentence:</p>
 <p>This code defines a function <code>scrapeAlert</code> that fetches and saves data from a website based on a given ID, and exports it for use elsewhere.</p>
 <a href="./https___www_amazon_com_gp_yourstore_iyr_ref_pd_ys_iyr_nextie_UTF8_collection_watched_iyrGroup__maxIt.html">https://www.amazon.com/gp/yourstore/iyr/ref=pd_ys_iyr_nextie=UTF8&collection=watched&iyrGroup=&maxItem=616&minItem=600</a>
 <br /><br />
 <a href="./meta_search_all.html">meta search all</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>The <code>searchAll</code> function is a main exported function that retrieves search results from multiple search engines in parallel using the <code>multiCrawl</code> function, and saves the results to a JSON file in the user's <code>Collections/searches</code> directory. The function takes an optional <code>query</code> parameter and returns a promise that resolves to an object containing search results, with the file name constructed from the query string and the current date.</p>
 <a href="./schedule_search_all.html">schedule search all</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>The code imports necessary modules, defines an <code>options</code> object, and exports a <code>scheduleSearch</code> function that creates a new event on a Google Calendar with a customizable search query. The <code>scheduleSearch</code> function checks for authentication, creates a new event, and returns a Promise that can be resolved with the event's details.</p>
 <a href="./tell_joke.html">tell joke</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>The <code>getJoke</code> function imports required modules and makes a GET request to a web page to retrieve a list of jokes, extracting the questions and answers using regular expressions. It then returns a random joke from the list, or resolves with the existing joke data if it has already been loaded.</p>
 <a href="./multi_crawl.html">multi crawl</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code breakdown:</p>
 <p>The code imports necessary modules, defines constants for timeouts and connections, and implements two key functions: <code>deQueue</code> for recursively dequeuing tasks from an input queue and <code>multiCrawl</code> for parallel crawling using Selenium connections. The <code>multiCrawl</code> function uses <code>deQueue</code> to crawl through an input list and returns a promise with the crawl results.</p>
 <a href="./crawl_domain.html">crawl domain</a>
 <br /><br />
-<p>Here's a two-sentence summary of the <strong>Function Breakdown: crawlRecursive(url, depth, searches)</strong>:</p>
+<p>crawlRecursive(url, depth, searches)**:</p>
 <p>The <code>crawlRecursive</code> function is a recursive web crawler that starts at a specified initial URL, iteratively retrieves links from the crawled pages, and stores them in a cache, with the ability to manage recursion depth and cache updates. The function uses a series of steps, including crawling, cache management, link extraction, recursion, and termination, to fetch and process links from the web pages.</p>
 <a href="./domain_cache_tools.html">domain cache tools</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>This code snippet appears to be a Node.js module that handles caching web pages, importing various modules, and defining functions to cache and retrieve data based on URLs. The functions include caching file creation, searching for existing caches, checking cache validity, and storing cache data in files, with various options for cache restraint and URL sanitization.</p>
 <a href="./browser_crawler_tools.html">browser crawler tools</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>This code snippet relies on the <code>puppeteer</code> library and internal modules to extract information from web pages, including style URLs, links, and HTML content. It also includes utility functions to calculate expiration dates based on <code>Cache-Control</code> headers and extract URLs from CSS content using regular expressions.</p>
 <a href="./analyze_cache_file.html">analyze cache file</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the <code>analyzeCache</code> function:</p>
 <p>The <code>analyzeCache</code> function analyzes the cache file for a given URL, extracting statistics such as the number of cache objects, distinct domains, and repeated URLs. It returns an object with various statistics, including the count of pages, caches, and domains, as well as the URLs for the 10 largest objects and repeated URLs.</p>
 <a href="./schedule_crawl_domain.html">schedule crawl domain</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code:</p>
 <p>This JavaScript code imports the Google Calendar API and defines an <code>options</code> object with a calendar ID. It also exports a <code>scheduleSearch</code> function that takes a search parameter and schedules a new event on the specified calendar, using OAuth authentication if it is defined in the <code>options</code> object.</p>
 <a href="./collect_all_bookmarks.html">collect all bookmarks</a>
 <br /><br />
-<p>Here's a summary of the code in one sentence:</p>
 <p>This Node.js script uses various custom modules to scrape websites, save PDFs and screenshots, and collect bookmarks from Google Takeout, with error handling and logging in place.</p>
 <a href="./search_results_as_json.html">search results as json</a>
 <br /><br />

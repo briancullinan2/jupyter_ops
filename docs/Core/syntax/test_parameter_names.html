@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../syntax/index.html">syntax</a>
-    <br /><br />
+    <h3><a href="../syntax/index.html">syntax</a></h3>
     <a href="./get_requires.html">get requires</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -121,11 +127,14 @@
 
   </nav>
   <header>
-    <a href="../syntax/index.html">syntax</a> ${PREV} ${NEXT}
+    <a href="../syntax/index.html">syntax</a> | <a href="./get_parameter_names.html">get parameter names</a> | <a href="./get_imports_from_source.html">get imports from source</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code breakdown:</p>
-<p>The code imports a module named <code>importer</code> and a function <code>get parameter names</code> from it, assigns it to the <code>getParameters</code> variable, and defines a function to test it. However, the purpose of the code is unclear without more context, but it appears to be a test case for the <code>getParameters</code> function.</p>
+  <p>The code imports a module named <code>importer</code> and a function <code>get parameter names</code> from it, assigns it to the <code>getParameters</code> variable, and defines a function to test it. However, the purpose of the code is unclear without more context, but it appears to be a test case for the <code>getParameters</code> function.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "test parameter names"</code></pre><h1>test parameter names</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -160,6 +169,7 @@ if(typeof $ != 'undefined') {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

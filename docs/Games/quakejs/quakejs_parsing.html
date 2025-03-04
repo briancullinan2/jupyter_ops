@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../quakejs/index.html">quakejs</a>
-    <br /><br />
+    <h3><a href="../quakejs/index.html">quakejs</a></h3>
     <a href="./quakejs_web_master.html">quakejs web master</a>
 <br /><br />
 <a href="./quakejs_connection.html">quakejs connection</a>
@@ -55,10 +61,14 @@
 
   </nav>
   <header>
-    <a href="../quakejs/index.html">quakejs</a> ${PREV} ${NEXT}
+    <a href="../quakejs/index.html">quakejs</a> | <a href="./quakejs_connection.html">quakejs connection</a> | <a href="./quakejs_utilities.html">quakejs utilities</a>
   </header>
 
   <p>This code provides functions to parse various types of responses from a Quake 3 server, extracting information like server details, player lists, and game state.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "quakejs parsing"</code></pre><h1>quakejs parsing</h1>
+
 
 
 <pre class="javascript"><code>
@@ -172,6 +182,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

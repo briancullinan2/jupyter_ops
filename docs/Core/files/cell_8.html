@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../files/index.html">files</a>
-    <br /><br />
+    <h3><a href="../files/index.html">files</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./project_word-cloud.html">project word-cloud</a>
@@ -83,11 +89,12 @@
 
   </nav>
   <header>
-    <a href="../files/index.html">files</a> ${PREV} ${NEXT}
+    <a href="../files/index.html">files</a> | <a href="./List_all_projects_by_names.html">List all projects by names</a> | <a href="./fix_project_paths.html">fix project paths</a>
   </header>
 
-  <p>Here's a summary of the code in two sentences:</p>
-<p>This JavaScript code imports necessary modules, sets environment variables, and defines test suites and individual tests using Mocha, including test setup and conditional execution. The tests cover listing files in a project directory, ignoring hidden directories for better performance, and verifying the presence of specific projects.</p>
+  <p>This JavaScript code imports necessary modules, sets environment variables, and defines test suites and individual tests using Mocha, including test setup and conditional execution. The tests cover listing files in a project directory, ignoring hidden directories for better performance, and verifying the presence of specific projects.</p>
+<h1>Cell 8</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -129,6 +136,7 @@ if(typeof describe !== 'undefined') {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

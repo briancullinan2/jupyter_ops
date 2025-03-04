@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../notebook/index.html">notebook</a>
-    <br /><br />
+    <h3><a href="../notebook/index.html">notebook</a></h3>
     <a href="./readme_md.html">readme.md</a>
 <br /><br />
 <a href="./import_notebook__import_all_cell_modules.html">import notebook, import all cell modules</a>
@@ -77,10 +83,12 @@
 
   </nav>
   <header>
-    <a href="../notebook/index.html">notebook</a> ${PREV} ${NEXT}
+    <a href="../notebook/index.html">notebook</a> | <a href="./authoring_header_template.html">authoring header template</a> | 
   </header>
 
   <p>The code prints the value of the global object to the console using <code>console.log(global)</code>, which retrieves and displays the global scope in Node.js. The global object represents the global variables and functions.</p>
+<h1>Cell 15</h1>
+
 
 
 <pre class="javascript"><code>console.log(global)</code></pre>
@@ -93,6 +101,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

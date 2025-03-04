@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../opengl/index.html">opengl</a>
-    <br /><br />
+    <h3><a href="../opengl/index.html">opengl</a></h3>
     <a href="./opengl_context.html">opengl context</a>
 <br /><br />
 <a href="./test_opengl_renderer.html">test opengl renderer</a>
@@ -51,12 +57,15 @@
 
   </nav>
   <header>
-    <a href="../opengl/index.html">opengl</a> ${PREV} ${NEXT}
+    <a href="../opengl/index.html">opengl</a> |  | <a href="./test_opengl_renderer.html">test opengl renderer</a>
   </header>
 
-  <p>Here is a summary of the code breakdown in one sentence:</p>
-<p>The <code>createWindow</code> function initializes SDL and OpenGL, creates a window with the title &quot;C++ SDL2 Window | OpenGL&quot; and size 1000x800, and enables double buffering and a core profile, before returning the window ID.</p>
+  <p>The <code>createWindow</code> function initializes SDL and OpenGL, creates a window with the title &quot;C++ SDL2 Window | OpenGL&quot; and size 1000x800, and enables double buffering and a core profile, before returning the window ID.</p>
 <p>This function uses SDL functions such as <code>SDL_Init</code>, <code>SDL_GL_SetAttribute</code>, <code>SDL_GL_CreateContext</code>, <code>SDL_CreateWindow</code>, and <code>SDL_GL_SwapWindow</code> for event handling and window management.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "opengl context"</code></pre><h1>opengl context</h1>
+
 
 
 <pre class="cpp"><code>
@@ -133,6 +142,7 @@ int createWindow(void) {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Google/index.html">Google</a>
-    <br /><br />
+    <h3><a href="../../Google/index.html">Google</a></h3>
     <a href="../google_calendar_data/index.html">google calendar data</a>
 <br /><br />
 <a href="../google_calendar_graphs/index.html">google calendar graphs</a>
@@ -63,10 +69,12 @@
 
   </nav>
   <header>
-    <a href="../../Google/index.html">Google</a> ${PREV} ${NEXT}
+    <a href="../../Google/index.html">Google</a> |  | <a href="../google_calendar_graphs/index.html">google calendar graphs</a>
   </header>
 
-  <a href="./test_calendar_sum_all_hours_worked_on_study_sauce_since_september_2016.html">test calendar sum all hours worked on study sauce since september 2016</a>
+  <h1>google calendar data</h1>
+
+<a href="./test_calendar_sum_all_hours_worked_on_study_sauce_since_september_2016.html">test calendar sum all hours worked on study sauce since september 2016</a>
 <br /><br />
 <p>This code retrieves Google Calendar events matching a specific query (&quot;study sauce&quot;) between two dates and then summarizes those events, sending the result to a client.</p>
 <a href="./convert_chrome_date_to_calendar_date.html">convert chrome date to calendar date</a>

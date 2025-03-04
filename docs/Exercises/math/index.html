@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Exercises/index.html">Exercises</a>
-    <br /><br />
+    <h3><a href="../../Exercises/index.html">Exercises</a></h3>
     <a href="../falsey_javascript/index.html">falsey javascript</a>
 <br /><br />
 <a href="../fizz_buzz/index.html">fizz buzz</a>
@@ -53,12 +59,13 @@
 
   </nav>
   <header>
-    <a href="../../Exercises/index.html">Exercises</a> ${PREV} ${NEXT}
+    <a href="../../Exercises/index.html">Exercises</a> | <a href="../fizz_buzz/index.html">fizz buzz</a> | <a href="../python_codekatas_solutions/index.html">python codekatas solutions</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>math</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code breakdown:</p>
 <p>The code generates all possible permutations of an input array and combines them with operator combinations to create mathematical equations in both standard and nested formats. It uses functions such as <code>spliceClone</code>, <code>permute</code>, <code>solve</code>, and <code>reduce</code> to generate and evaluate these equations, storing the results in variables like <code>permutations</code>, <code>operators</code>, and <code>equations</code>.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />

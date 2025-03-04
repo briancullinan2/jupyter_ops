@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../caches/index.html">caches</a>
-    <br /><br />
+    <h3><a href="../caches/index.html">caches</a></h3>
     <a href="./cache_rpc_functions_with_llm_descriptions.html">cache rpc functions with llm descriptions</a>
 <br /><br />
 <a href="./cache_chat_history_with_llm_descriptions.html">cache chat history with llm descriptions</a>
@@ -49,10 +55,14 @@
 
   </nav>
   <header>
-    <a href="../caches/index.html">caches</a> ${PREV} ${NEXT}
+    <a href="../caches/index.html">caches</a> | <a href="./cache_rpc_functions_with_llm_descriptions.html">cache rpc functions with llm descriptions</a> | 
   </header>
 
   <p>This code creates a simple in-memory chat cache, storing chat-related data in an object that can be accessed by other parts of the application.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "cache chat history with llm descriptions"</code></pre><h1>cache chat history with llm descriptions</h1>
+
 
 
 <pre class="javascript"><code>
@@ -75,6 +85,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

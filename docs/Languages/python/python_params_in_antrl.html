@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../python/index.html">python</a>
-    <br /><br />
+    <h3><a href="../python/index.html">python</a></h3>
     <a href="./rosetta_euler_python_005.html">rosetta euler python 005</a>
 <br /><br />
 <a href="./list_c_functions_with_python.html">list c functions with python</a>
@@ -51,13 +57,16 @@
 
   </nav>
   <header>
-    <a href="../python/index.html">python</a> ${PREV} ${NEXT}
+    <a href="../python/index.html">python</a> | <a href="./list_c_functions_with_python.html">list c functions with python</a> | 
   </header>
 
-  <p>Here's a summary of the code in one sentence:</p>
-<p>The Node.js module provides a function <code>pythonParams</code> that uses the ANTLR4 tool to parse Python code and extract function parameters, returning them as an array of objects.</p>
+  <p>The Node.js module provides a function <code>pythonParams</code> that uses the ANTLR4 tool to parse Python code and extract function parameters, returning them as an array of objects.</p>
 <p>And here's a slightly expanded version in two sentences:</p>
 <p>This Node.js module uses the ANTLR4 tool to parse Python code and extract function parameters, which are then returned as an array of objects. The module exports a single function, <code>pythonParams</code>, which can be used to analyze Python code and extract function parameter information.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "python params in antrl"</code></pre><h1>python params in antrl</h1>
+
 
 
 <pre class="javascript"><code>const path = require('path')
@@ -121,6 +130,7 @@ module.exports = pythonParams
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

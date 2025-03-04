@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llama_vision/index.html">llama vision</a>
-    <br /><br />
+    <h3><a href="../llama_vision/index.html">llama vision</a></h3>
     <a href="./llama_vision.html">llama vision</a>
 <br /><br />
 <a href="./analyze_image_with_llm.html">analyze image with llm</a>
@@ -71,11 +77,14 @@
 
   </nav>
   <header>
-    <a href="../llama_vision/index.html">llama vision</a> ${PREV} ${NEXT}
+    <a href="../llama_vision/index.html">llama vision</a> | <a href="./llm_voice.html">llm voice</a> | <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a>
   </header>
 
-  <p>Here's a 2-sentence summary of the function:</p>
-<p>The <code>requestOllamaVision</code> function sends a POST request to the LLaMA Vision API with a base64-encoded image and a provided prompt, and returns the response message content. It handles various image input types, including URLs, file paths, and base64-encoded strings, and logs an error if no image is provided.</p>
+  <p>The <code>requestOllamaVision</code> function sends a POST request to the LLaMA Vision API with a base64-encoded image and a provided prompt, and returns the response message content. It handles various image input types, including URLs, file paths, and base64-encoded strings, and logs an error if no image is provided.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "ollama vision request"</code></pre><h1>ollama vision request</h1>
+
 
 
 <pre class="javascript"><code>const { request } = require('gaxios')
@@ -149,6 +158,7 @@ module.exports = requestOllamaVision
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

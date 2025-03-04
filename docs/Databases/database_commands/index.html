@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Databases/index.html">Databases</a>
-    <br /><br />
+    <h3><a href="../../Databases/index.html">Databases</a></h3>
     <a href="../active_directory/index.html">active directory</a>
 <br /><br />
 <a href="../caches/index.html">caches</a>
@@ -67,12 +73,13 @@
 
   </nav>
   <header>
-    <a href="../../Databases/index.html">Databases</a> ${PREV} ${NEXT}
+    <a href="../../Databases/index.html">Databases</a> | <a href="../caches/index.html">caches</a> | <a href="../docker_ghost/index.html">docker ghost</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>database commands</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
-<p>Here is a 2 sentence summary of the code:</p>
 <p>This shell script uses <code>awk</code> to transform a MySQL dump file into a format compatible with SQLite, while preserving MySQL <code>KEY</code> clauses as separate commands. The script can be used by piping the MySQL dump file to the script, then piping the output to <code>sqlite3</code>, as shown in the example usage section.</p>
 
 </body>

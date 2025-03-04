@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Selenium/index.html">Selenium</a>
-    <br /><br />
+    <h3><a href="../../Selenium/index.html">Selenium</a></h3>
     <a href="../What_is_Selenium/index.html">What is Selenium</a>
 <br /><br />
 <a href="../auth/index.html">auth</a>
@@ -99,10 +105,12 @@
 
   </nav>
   <header>
-    <a href="../../Selenium/index.html">Selenium</a> ${PREV} ${NEXT}
+    <a href="../../Selenium/index.html">Selenium</a> | <a href="../google_authorize/index.html">google authorize</a> | <a href="../google_timeline/index.html">google timeline</a>
   </header>
 
-  <a href="./download_google_takeout.html">download google takeout</a>
+  <h1>google takeout</h1>
+
+<a href="./download_google_takeout.html">download google takeout</a>
 <br /><br />
 <p>This code snippet automates the creation and download of a Google Takeout archive for a specified product, handling navigation, login, size selection, archive creation, and download completion.</p>
 <a href="./order_google_takeout.html">order google takeout</a>
@@ -110,7 +118,6 @@
 <p>This code snippet provides a function <code>googleTakeout</code> that automates the download of a Google Takeout archive for specified products, leveraging Selenium WebDriver for browser automation and custom commands for login and download initiation.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The code imports a module and a specific function, then calls the function with an argument to initiate a Google Takeout action. It also sets up asynchronous execution and error handling using a <code>.then</code> callback for successful results and a <code>.catch</code> callback for errors.</p>
 <a href="./d3_stream_my_chrome_history_by_category_and_site_sub-divided.html">d3 stream my chrome history by category and site sub-divided</a>
 <br /><br />

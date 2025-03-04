@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../aws/index.html">aws</a>
-    <br /><br />
+    <h3><a href="../aws/index.html">aws</a></h3>
     <a href="./aws_rpc_wrapper.html">aws rpc wrapper</a>
 <br /><br />
 <a href="./latest_s3_bucket.html">latest s3 bucket</a>
@@ -51,10 +57,14 @@
 
   </nav>
   <header>
-    <a href="../aws/index.html">aws</a> ${PREV} ${NEXT}
+    <a href="../aws/index.html">aws</a> | <a href="./aws_rpc_wrapper.html">aws rpc wrapper</a> | <a href="./cell_2.html">Cell 2</a>
   </header>
 
   <p>This code provides a function <code>latestS3</code> that retrieves the 5 most recently modified files from an S3 bucket, optionally filtering them based on a given pattern. It's designed to be used both as a server-side module and potentially in a client-side environment.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "latest s3 bucket"</code></pre><h1>latest s3 bucket</h1>
+
 
 
 <pre class="javascript"><code>var fs = require('fs');
@@ -117,6 +127,7 @@ if(typeof $ !== 'undefined') {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

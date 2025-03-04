@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Introduction/index.html">Introduction</a>
-    <br /><br />
+    <h3><a href="../../Introduction/index.html">Introduction</a></h3>
     <a href="../Untitled/index.html">Untitled</a>
 <br /><br />
 <a href="../Untitled1/index.html">Untitled1</a>
@@ -51,12 +57,13 @@
 
   </nav>
   <header>
-    <a href="../../Introduction/index.html">Introduction</a> ${PREV} ${NEXT}
+    <a href="../../Introduction/index.html">Introduction</a> | <a href="../windows/index.html">windows</a> | 
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>demo</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
-<p>Here is a two-sentence summary of the provided code:</p>
 <p>The code imports a module named <code>Core</code> from the current directory and uses it to import the <code>node express.ipynb</code> module from the <code>Frameworks</code> directory, assigning it to the variable <code>express</code>. It then calls a <code>sendResult</code> function on an object, passing the <code>express</code> module as an argument, likely to serve the results of executing the <code>node express.ipynb</code> file.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
@@ -64,7 +71,6 @@
 <p>The code imports a module named <code>Core</code> and calls its <code>evalNotebook</code> method to evaluate a Jupyter Notebook file named <code>file system.ipynb</code>, passing a custom argument <code>'memory-fs' || 1</code>.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here's a summary of the code in two sentences:</p>
 <p>This code imports the <code>Core</code> module, invokes its <code>interpret</code> function with a list of keywords, and assigns the result to a variable. The result is then passed to a function named <code>sendResult</code> on a global object <code>$</code>, but the purpose of this function is unclear without more context.</p>
 <a href="./cell_3.html">Cell 3</a>
 <br /><br />
@@ -77,7 +83,6 @@
 <br /><br />
 <a href="./cell_7.html">Cell 7</a>
 <br /><br />
-<p>Here is a summary of the server management function in one or two sentences:</p>
 <p>The <code>manage_server</code> function is a basic server management function that connects to a server, retrieves recent activity logs, costs explorer data, and instance information, and returns this data as a dictionary. It includes error handling to catch and print any exceptions that may occur during server management.</p>
 <a href="./use_Docker.html">use Docker</a>
 <br /><br />
@@ -87,7 +92,6 @@
 <p>This code defines a function <code>import</code> that returns another function, but the returned function is immediately invoked, making the entire block importable as a module.</p>
 <a href="./cell_10.html">Cell 10</a>
 <br /><br />
-<p>Here's a summary of the provided code breakdown in one sentence:</p>
 <p>This code enables exposing functions and search services as an Express HTTP service, allowing them to be accessed via HTTP requests, making API endpoints available for external usage.</p>
 <a href="./cell_11.html">Cell 11</a>
 <br /><br />
@@ -95,7 +99,6 @@
 <p>Pull the official Selenium Docker image, then run a container with the necessary port mapping and shared memory allocation. Alternatively, create an ECS cluster and service using Docker Compose and start the service with the AWS CLI.</p>
 <a href="./cell_12.html">Cell 12</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>To incorporate Angular components, identify the necessary components for your project and integrate them into your existing codebase, ensuring proper configuration and setup. Once integrated, test the components to ensure they function as expected and meet your UI/UX requirements.</p>
 <a href="./cell_13.html">Cell 13</a>
 <br /><br />

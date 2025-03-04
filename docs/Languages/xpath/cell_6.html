@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../xpath/index.html">xpath</a>
-    <br /><br />
+    <h3><a href="../xpath/index.html">xpath</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -59,10 +65,12 @@
 
   </nav>
   <header>
-    <a href="../xpath/index.html">xpath</a> ${PREV} ${NEXT}
+    <a href="../xpath/index.html">xpath</a> | <a href="./cell_5.html">Cell 5</a> | 
   </header>
 
-  
+  <h1>Cell 6</h1>
+
+
 
 <pre class="python"><code></code></pre>
 
@@ -74,6 +82,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

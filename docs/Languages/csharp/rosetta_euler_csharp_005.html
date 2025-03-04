@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../csharp/index.html">csharp</a>
-    <br /><br />
+    <h3><a href="../csharp/index.html">csharp</a></h3>
     <a href="./rosetta_euler_csharp_005.html">rosetta euler csharp 005</a>
 <br /><br />
 <a href="./test_edge_js.html">test edge.js</a>
@@ -55,10 +61,14 @@
 
   </nav>
   <header>
-    <a href="../csharp/index.html">csharp</a> ${PREV} ${NEXT}
+    <a href="../csharp/index.html">csharp</a> |  | <a href="./test_edge_js.html">test edge.js</a>
   </header>
 
   <p>The code defines a class <code>Euler</code> within the <code>Rosetta</code> namespace, containing methods for calculating the product of common prime factors of numbers from 1 to 20, with several issues and room for optimization. The code can be improved by fixing the bugs in the <code>PrimeFactors</code> and <code>Overlap</code> methods, and using more efficient algorithms and data structures for prime factorization.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "rosetta euler csharp 005"</code></pre><h1>rosetta euler csharp 005</h1>
+
 
 
 <pre class="csharp"><code>using System;
@@ -158,6 +168,7 @@ namespace Rosetta
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

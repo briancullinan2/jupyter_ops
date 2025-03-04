@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../gulp/index.html">gulp</a>
-    <br /><br />
+    <h3><a href="../gulp/index.html">gulp</a></h3>
     <a href="./use_gulp.html">use gulp</a>
 <br /><br />
 <a href="./use_a_Promise_as_a_gulp_task.html">use a Promise as a gulp task</a>
@@ -59,11 +65,12 @@
 
   </nav>
   <header>
-    <a href="../gulp/index.html">gulp</a> ${PREV} ${NEXT}
+    <a href="../gulp/index.html">gulp</a> | <a href="./use_a_Promise_as_a_gulp_task.html">use a Promise as a gulp task</a> | <a href="./Apply_universal_to_angular_project.html">Apply universal to angular project</a>
   </header>
 
-  <p>Here is a summary of the code in one or two sentences:</p>
-<p>This Gulp script is a build script for an Angular project that automates tasks such as code replacement, file copying, and dependency resolution using various modules and functions. The script defines several Gulp tasks, including project relatives and server module, and uses the <code>gulp-replace</code> module to replace specific code patterns in JavaScript files.</p>
+  <p>This Gulp script is a build script for an Angular project that automates tasks such as code replacement, file copying, and dependency resolution using various modules and functions. The script defines several Gulp tasks, including project relatives and server module, and uses the <code>gulp-replace</code> module to replace specific code patterns in JavaScript files.</p>
+<h1>Cell 2</h1>
+
 
 
 <pre class="javascript"><code>var fs = require('fs');
@@ -193,6 +200,7 @@ applyUniversal;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

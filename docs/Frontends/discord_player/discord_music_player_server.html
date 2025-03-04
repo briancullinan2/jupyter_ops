@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../discord_player/index.html">discord player</a>
-    <br /><br />
+    <h3><a href="../discord_player/index.html">discord player</a></h3>
     <a href="./discord_music_player.html">discord music player</a>
 <br /><br />
 <a href="./discord_music_player_server.html">discord music player server</a>
@@ -49,11 +55,14 @@
 
   </nav>
   <header>
-    <a href="../discord_player/index.html">discord player</a> ${PREV} ${NEXT}
+    <a href="../discord_player/index.html">discord player</a> | <a href="./discord_music_player.html">discord music player</a> | 
   </header>
 
-  <p>Here is a 2-sentence summary of the provided code breakdown:</p>
-<p>The code sets up an Express app, importing necessary modules and variables, and defining several routes to handle requests, including token endpoint, root, and directory requests. The app also defines a <code>discordLogin</code> function to handle Discord login requests and generates HTML code using the <code>directoryToHtml</code> function, but does not start the server instance, which is stored in the <code>server</code> variable.</p>
+  <p>The code sets up an Express app, importing necessary modules and variables, and defining several routes to handle requests, including token endpoint, root, and directory requests. The app also defines a <code>discordLogin</code> function to handle Discord login requests and generates HTML code using the <code>directoryToHtml</code> function, but does not start the server instance, which is stored in the <code>server</code> variable.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "discord music player server"</code></pre><h1>discord music player server</h1>
+
 
 
 <pre class="javascript"><code>const {handleDirectory, BASE_DIRECTORY} = importer.import('node express directory handler')
@@ -172,6 +181,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

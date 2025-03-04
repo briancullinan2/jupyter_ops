@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_cloud_api/index.html">google cloud api</a>
-    <br /><br />
+    <h3><a href="../google_cloud_api/index.html">google cloud api</a></h3>
     <a href="./list_google_bucket_url_map.html">list google bucket url map</a>
 <br /><br />
 <a href="./test_list_url_map.html">test list url map</a>
@@ -67,11 +73,14 @@
 
   </nav>
   <header>
-    <a href="../google_cloud_api/index.html">google cloud api</a> ${PREV} ${NEXT}
+    <a href="../google_cloud_api/index.html">google cloud api</a> | <a href="./test_bucket_web_map.html">test bucket web map</a> | <a href="./test_check_dns.html">test check dns</a>
   </header>
 
-  <p>Here's a two-sentence summary of the code breakdown:</p>
-<p>The code requires several modules for DNS operations and uses custom functions from a module named <code>../Core</code> to perform tasks such as creating a Google Cloud DNS managed zone and inserting an address. The <code>createZone</code> function creates or retrieves a managed zone with a given subdomain, while the <code>insertAddress</code> function attempts to insert an address into the DNS managed zone.</p>
+  <p>The code requires several modules for DNS operations and uses custom functions from a module named <code>../Core</code> to perform tasks such as creating a Google Cloud DNS managed zone and inserting an address. The <code>createZone</code> function creates or retrieves a managed zone with a given subdomain, while the <code>insertAddress</code> function attempts to insert an address into the DNS managed zone.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "check dns"</code></pre><h1>check dns</h1>
+
 
 
 <pre class="javascript"><code>var dns = require('dns');
@@ -282,6 +291,7 @@ module.exports = addIP;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

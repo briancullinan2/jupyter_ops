@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../sqlite_node/index.html">sqlite node</a>
-    <br /><br />
+    <h3><a href="../sqlite_node/index.html">sqlite node</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -51,11 +57,12 @@
 
   </nav>
   <header>
-    <a href="../sqlite_node/index.html">sqlite node</a> ${PREV} ${NEXT}
+    <a href="../sqlite_node/index.html">sqlite node</a> |  | <a href="./cell_1.html">Cell 1</a>
   </header>
 
-  <p>Here's a two-sentence summary:</p>
-<p>The code imports Node.js modules for file system interactions (<code>fs</code>) and SQLite database interactions (<code>sqlite3</code>), and defines a database connection using a specified SQLite database file. It then reads and executes SQL commands from a separate file, passing the commands to the database instance for execution.</p>
+  <p>The code imports Node.js modules for file system interactions (<code>fs</code>) and SQLite database interactions (<code>sqlite3</code>), and defines a database connection using a specified SQLite database file. It then reads and executes SQL commands from a separate file, passing the commands to the database instance for execution.</p>
+<h1>Cell 0</h1>
+
 
 
 <pre class="javascript"><code>var fs = require('fs')
@@ -75,6 +82,7 @@ db.transaction(cmds).run()</code></pre>
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

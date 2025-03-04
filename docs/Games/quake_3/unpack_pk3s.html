@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../quake_3/index.html">quake 3</a>
-    <br /><br />
+    <h3><a href="../quake_3/index.html">quake 3</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./__find_pk3_files_in_zips.html">, find pk3 files in zips</a>
@@ -113,10 +119,14 @@
 
   </nav>
   <header>
-    <a href="../quake_3/index.html">quake 3</a> ${PREV} ${NEXT}
+    <a href="../quake_3/index.html">quake 3</a> | <a href="./list_bsps_in_a_pak.html">list bsps in a pak</a> | <a href="./cell_5.html">Cell 5</a>
   </header>
 
   <p>This code provides a utility for extracting files from Quake 3 game archives (<code>.pk3</code> and <code>.zip</code>) by defining functions to handle individual archive extraction (<code>readPak</code>) and recursive extraction of multiple archives within a directory (<code>extractPaks</code>).  This utility enables users to access Quake 3 game assets and resources.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "unpack pk3s"</code></pre><h1>unpack pk3s</h1>
+
 
 
 <pre class="javascript"><code>var StreamZip = require('node-stream-zip');
@@ -174,6 +184,7 @@ module.exports = extractPaks;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Languages/index.html">Languages</a>
-    <br /><br />
+    <h3><a href="../../Languages/index.html">Languages</a></h3>
     <a href="../antlr/index.html">antlr</a>
 <br /><br />
 <a href="../balanced/index.html">balanced</a>
@@ -63,10 +69,12 @@
 
   </nav>
   <header>
-    <a href="../../Languages/index.html">Languages</a> ${PREV} ${NEXT}
+    <a href="../../Languages/index.html">Languages</a> | <a href="../antlr/index.html">antlr</a> | <a href="../bison/index.html">bison</a>
   </header>
 
-  <a href="./balanced.html">balanced</a>
+  <h1>balanced</h1>
+
+<a href="./balanced.html">balanced</a>
 <br /><br />
 <p>The <code>balanced</code> function identifies and extracts a balanced substring within a given string, delimited by two specified markers, <code>a</code> and <code>b</code>. It handles potential nested delimiters and returns information about the balanced substring's position and content.</p>
 <a href="./cell_1.html">Cell 1</a>

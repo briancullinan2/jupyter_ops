@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../pyimport/index.html">pyimport</a>
-    <br /><br />
+    <h3><a href="../pyimport/index.html">pyimport</a></h3>
     <a href="./get_python_params.html">get python params</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -59,11 +65,14 @@
 
   </nav>
   <header>
-    <a href="../pyimport/index.html">pyimport</a> ${PREV} ${NEXT}
+    <a href="../pyimport/index.html">pyimport</a> | <a href="./cell_2.html">Cell 2</a> | <a href="./cell_4.html">Cell 4</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code breakdown:</p>
-<p>This module includes three functions: <code>get_questions</code> extracts questions from markdown and source code, <code>accumulate_markdown</code> accumulates markdown leading up to code cells in a Jupyter notebook, and <code>cache_cells</code> generates cache entries from a Jupyter notebook. The module also defines a dictionary <code>__all__</code> that specifies which functions are importable.</p>
+  <p>This module includes three functions: <code>get_questions</code> extracts questions from markdown and source code, <code>accumulate_markdown</code> accumulates markdown leading up to code cells in a Jupyter notebook, and <code>cache_cells</code> generates cache entries from a Jupyter notebook. The module also defines a dictionary <code>__all__</code> that specifies which functions are importable.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "questions = [re.sub(r'|\|+', '', q, flags=re.IGNORECASE).strip()"</code></pre><h1>questions = [re.sub(r'|\|+', '', q, flags=re.IGNORECASE).strip()</h1>
+
 
 
 <pre class="python"><code>import os
@@ -142,6 +151,7 @@ __all__ = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

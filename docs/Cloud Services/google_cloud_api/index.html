@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Cloud Services/index.html">Cloud Services</a>
-    <br /><br />
+    <h3><a href="../../Cloud Services/index.html">Cloud Services</a></h3>
     <a href="../aws/index.html">aws</a>
 <br /><br />
 <a href="../cloudflare/index.html">cloudflare</a>
@@ -59,42 +65,36 @@
 
   </nav>
   <header>
-    <a href="../../Cloud Services/index.html">Cloud Services</a> ${PREV} ${NEXT}
+    <a href="../../Cloud Services/index.html">Cloud Services</a> | <a href="../deploy_host/index.html">deploy host</a> | <a href="../google_cloud_commands/index.html">google cloud commands</a>
   </header>
 
-  <a href="./list_google_bucket_url_map.html">list google bucket url map</a>
+  <h1>google cloud api</h1>
+
+<a href="./list_google_bucket_url_map.html">list google bucket url map</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code:</p>
 <p>This code is a set of functions for interacting with Google Cloud's Compute Engine API, using the <code>google-auth-library</code> and <code>googleapis</code> libraries to authenticate and make requests to the API. The functions, including <code>listUrlMaps</code>, <code>listTargetProxies</code>, and <code>listGlobalForwards</code>, follow a common pattern to retrieve metadata from the API and return promises that resolve to objects with the desired data.</p>
 <a href="./test_list_url_map.html">test list url map</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in 2 sentences:</p>
 <p>This code is a test suite that uses various functions to list different resources (url maps, target proxies, global forwards, backend buckets) from a Google Cloud project, and asserts that each list is non-empty. The test suite uses functions such as <code>listUrlMaps</code>, <code>listTargetProxies</code>, <code>listGlobalForwards</code>, and <code>listBackendBuckets</code> to retrieve the lists of resources and logs the results to the console.</p>
 <a href="./wait_for_cloud_operation.html">wait for cloud operation</a>
 <br /><br />
-<p>Here's a summary of the <code>waitForOperation</code> function in one sentence:</p>
 <p>The <code>waitForOperation</code> function waits for a specified Google operation to complete and returns the target link when finished, using a recursive approach with a 500ms delay between checks.</p>
 <a href="./add_a_google_bucket_web_map.html">add a google bucket web map</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The code imports functions from a <code>Core</code> module and defines several functions to manage Google Cloud resources, including creating backend buckets and SSL certificates, and listing various Google Cloud items. However, the functions are not fully implemented and contain TODO comments, suggesting that the code is a partial implementation of a larger application.</p>
 <a href="./test_global_forward.html">test global forward</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one to two sentences:</p>
 <p>The code imports necessary modules and functions, defines variables, and sets up a test suite using Mocha to verify that the <code>listGlobalForwards</code> function correctly lists global forwards. The test case calls the function with <code>project</code> and <code>proxy</code> parameters, checks the result, and logs any errors or failures to the console.</p>
 <a href="./test_bucket_web_map.html">test bucket web map</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one sentence:</p>
 <p>The code defines a test suite with three test cases to add a subdomain to a load balancer, involving inserting a backend bucket, adding a frontend, and updating a URL map, with each test case having a 60-second timeout.</p>
 <p>Alternatively, you can summarize it in two sentences:</p>
 <p>The code is a test suite that adds a subdomain to a load balancer, consisting of three test cases to insert a backend bucket, add a frontend, and update a URL map. Each test case has a 60-second timeout and includes assertions to verify the returned values are not empty.</p>
 <a href="./check_dns.html">check dns</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The code requires several modules for DNS operations and uses custom functions from a module named <code>../Core</code> to perform tasks such as creating a Google Cloud DNS managed zone and inserting an address. The <code>createZone</code> function creates or retrieves a managed zone with a given subdomain, while the <code>insertAddress</code> function attempts to insert an address into the DNS managed zone.</p>
 <a href="./test_check_dns.html">test check dns</a>
 <br /><br />
-<p>Here's a 2-sentence summary:</p>
 <p>This code uses the Mocha testing framework to test the <code>addIP</code> function, which adds an external IP to a project and bucket, with error handling and a 60-second timeout. The code also utilizes a custom <code>importer</code> module and built-in Node.js <code>assert</code> module for assertions.</p>
 <a href="./invalidate_cdn_cache.html">invalidate cdn cache</a>
 <br /><br />
@@ -103,7 +103,6 @@
 <p>This JavaScript code authorizes access to Google APIs by resolving the path to a credentials file, using the Google Auth library to authenticate, and exporting a function to obtain a Google client instance. The authorization function returns a Google client instance with specific scopes.</p>
 <a href="./setup_sheet_backend.html">setup sheet backend</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code:</p>
 <p>The code imports various functions and modules, including <code>getSheet</code> for retrieving data from a Google Sheets API and <code>addIP</code> for performing a DNS lookup, and defines a <code>setupBackend</code> function that uses these functions to set up a Google Cloud Backend. The <code>setupBackend</code> function takes <code>link</code> and <code>domain</code> as arguments, performs a series of operations to set up the backend, and returns the <code>domain</code> value.</p>
 
 </body>

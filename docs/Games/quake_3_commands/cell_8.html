@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../quake_3_commands/index.html">quake 3 commands</a>
-    <br /><br />
+    <h3><a href="../quake_3_commands/index.html">quake 3 commands</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -79,13 +85,13 @@
 
   </nav>
   <header>
-    <a href="../quake_3_commands/index.html">quake 3 commands</a> ${PREV} ${NEXT}
+    <a href="../quake_3_commands/index.html">quake 3 commands</a> | <a href="./cell_7.html">Cell 7</a> | <a href="./cell_9.html">Cell 9</a>
   </header>
 
-  <p>Here is a one-sentence summary:</p>
-<p>This collection of batch scripts and commands is used to preprocess and convert Quake 2 maps, including converting <code>.bsp</code> and <code>.md2</code> files, normalizing vertices, and compiling hinted maps on both Windows and macOS platforms.</p>
-<p>Alternatively, if you'd like a two-sentence summary, here is one:</p>
+  <p>This collection of batch scripts and commands is used to preprocess and convert Quake 2 maps, including converting <code>.bsp</code> and <code>.md2</code> files, normalizing vertices, and compiling hinted maps on both Windows and macOS platforms.</p>
 <p>The provided code consists of a series of batch scripts and commands designed to preprocess and convert Quake 2 maps, including Windows and macOS versions. These scripts handle tasks such as converting <code>.bsp</code> and <code>.md2</code> files, normalizing vertices, and compiling hinted maps, all essential steps in preparing Quake 2 maps for use.</p>
+<h1>Cell 8</h1>
+
 
 
 <pre class="bash"><code>
@@ -150,6 +156,7 @@ popd
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

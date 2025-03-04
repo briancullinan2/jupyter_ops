@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../kernels/index.html">kernels</a>
-    <br /><br />
+    <h3><a href="../kernels/index.html">kernels</a></h3>
     <a href="./__get_kernel_json.html">, get kernel json</a>
 <br /><br />
 <a href="./test_notebook_kernel_json.html">test notebook kernel json</a>
@@ -101,11 +107,14 @@
 
   </nav>
   <header>
-    <a href="../kernels/index.html">kernels</a> ${PREV} ${NEXT}
+    <a href="../kernels/index.html">kernels</a> | <a href="./__get_kernel_json.html">, get kernel json</a> | <a href="./custom_kernel_json.html">custom kernel json</a>
   </header>
 
-  <p>Here's a 2-sentence summary of the given code breakdown:</p>
-<p>The code imports modules from the <code>Core</code> module using the <code>require</code> function and an <code>importer</code> object, and then uses the imported functions to create a JSON object and perform logging and interface output. The JSON object is created using the <code>wireJson</code> function and contains properties such as <code>display_name</code>, <code>argv</code>, and <code>language</code>, which are then logged to the console along with the result of an <code>interface</code> function call.</p>
+  <p>The code imports modules from the <code>Core</code> module using the <code>require</code> function and an <code>importer</code> object, and then uses the imported functions to create a JSON object and perform logging and interface output. The JSON object is created using the <code>wireJson</code> function and contains properties such as <code>display_name</code>, <code>argv</code>, and <code>language</code>, which are then logged to the console along with the result of an <code>interface</code> function call.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "test notebook kernel json"</code></pre><h1>test notebook kernel json</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -144,6 +153,7 @@ console.log(interface(json, jsonInterface));
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

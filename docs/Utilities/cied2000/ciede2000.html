@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../cied2000/index.html">cied2000</a>
-    <br /><br />
+    <h3><a href="../cied2000/index.html">cied2000</a></h3>
     <a href="./ciede2000.html">ciede2000</a>
 <br /><br />
 <a href="./rgb_2_lab.html">rgb 2 lab</a>
@@ -51,11 +57,14 @@
 
   </nav>
   <header>
-    <a href="../cied2000/index.html">cied2000</a> ${PREV} ${NEXT}
+    <a href="../cied2000/index.html">cied2000</a> |  | <a href="./rgb_2_lab.html">rgb 2 lab</a>
   </header>
 
-  <p>Here is a one or two sentence summary of the CIEDE2000 color difference calculation function:</p>
-<p>The CIEDE2000 color difference calculation function is a C++ function that determines the color difference between two colors by converting their coordinates to a new chromaticity space and then calculating the deltaLPrime, deltaCPrime, and deltahPrime values. The function returns the CIEDE2000 color difference value based on these calculated values.</p>
+  <p>The CIEDE2000 color difference calculation function is a C++ function that determines the color difference between two colors by converting their coordinates to a new chromaticity space and then calculating the deltaLPrime, deltaCPrime, and deltahPrime values. The function returns the CIEDE2000 color difference value based on these calculated values.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "ciede2000"</code></pre><h1>ciede2000</h1>
+
 
 
 <pre class="c"><code>#include &lt;math.h&gt;
@@ -206,6 +215,7 @@ double CIEDE2000(double l1, double a1, double b1, double l2, double a2, double b
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

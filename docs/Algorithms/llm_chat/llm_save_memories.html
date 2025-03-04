@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llm_chat/index.html">llm chat</a>
-    <br /><br />
+    <h3><a href="../llm_chat/index.html">llm chat</a></h3>
     <a href="./store_llm_response.html">store llm response</a>
 <br /><br />
 <a href="./general_chit_chat.html">general chit chat</a>
@@ -65,11 +71,14 @@
 
   </nav>
   <header>
-    <a href="../llm_chat/index.html">llm chat</a> ${PREV} ${NEXT}
+    <a href="../llm_chat/index.html">llm chat</a> | <a href="./llm_load_memories.html">llm load memories</a> | 
   </header>
 
-  <p>Here is a two-sentence summary of the code:</p>
-<p>The code imports necessary modules and constants, then defines an asynchronous function <code>manageMemories</code> that handles memory management, including loading and saving memories based on user input. The function uses regular expressions to match user responses to different memory functions, such as saving, removing, or listing memories, and performs the corresponding actions.</p>
+  <p>The code imports necessary modules and constants, then defines an asynchronous function <code>manageMemories</code> that handles memory management, including loading and saving memories based on user input. The function uses regular expressions to match user responses to different memory functions, such as saving, removing, or listing memories, and performs the corresponding actions.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "llm save memories"</code></pre><h1>llm save memories</h1>
+
 
 
 <pre class="javascript"><code>const fs = require('fs')
@@ -142,6 +151,7 @@ module.exports = manageMemories
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../linkedin_connections/index.html">linkedin connections</a>
-    <br /><br />
+    <h3><a href="../linkedin_connections/index.html">linkedin connections</a></h3>
     <a href="./sync_linkedin_contacts_with_google_contacts.html">sync linkedin contacts with google contacts</a>
 <br /><br />
 <a href="./scrape_entire_linkedin_profile.html">scrape entire linkedin profile</a>
@@ -61,11 +67,12 @@
 
   </nav>
   <header>
-    <a href="../linkedin_connections/index.html">linkedin connections</a> ${PREV} ${NEXT}
+    <a href="../linkedin_connections/index.html">linkedin connections</a> | <a href="./connect_add_friends_linkedin.html">connect add friends linkedin</a> | <a href="./cell_7.html">Cell 7</a>
   </header>
 
-  <p>Here is a 2-sentence summary:</p>
-<p>This code snippet imports a module, specifically the <code>addLinkedinConnections</code> function, and executes it asynchronously using the <code>$.async()</code> and <code>.then()</code>/.<code>catch()</code> methods. The <code>addLinkedinConnections</code> function is called with <code>null</code> and an empty string as arguments, and the result is sent using the <code>$.sendResult(r)</code> method, while any errors are sent using <code>$.sendError(e)</code>.</p>
+  <p>This code snippet imports a module, specifically the <code>addLinkedinConnections</code> function, and executes it asynchronously using the <code>$.async()</code> and <code>.then()</code>/.<code>catch()</code> methods. The <code>addLinkedinConnections</code> function is called with <code>null</code> and an empty string as arguments, and the result is sent using the <code>$.sendResult(r)</code> method, while any errors are sent using <code>$.sendError(e)</code>.</p>
+<h1>Cell 6</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -85,6 +92,7 @@ addLinkedinConnections(null, '')
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

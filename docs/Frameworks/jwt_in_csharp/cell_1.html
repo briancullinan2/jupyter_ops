@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../jwt_in_csharp/index.html">jwt in csharp</a>
-    <br /><br />
+    <h3><a href="../jwt_in_csharp/index.html">jwt in csharp</a></h3>
     <a href="./use_JSON_web_tokens_in_C.html">use JSON web tokens in C</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -49,10 +55,12 @@
 
   </nav>
   <header>
-    <a href="../jwt_in_csharp/index.html">jwt in csharp</a> ${PREV} ${NEXT}
+    <a href="../jwt_in_csharp/index.html">jwt in csharp</a> | <a href="./use_JSON_web_tokens_in_C.html">use JSON web tokens in C</a> | 
   </header>
 
-  
+  <h1>Cell 1</h1>
+
+
 
 <pre class="csharp"><code></code></pre>
 
@@ -64,6 +72,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

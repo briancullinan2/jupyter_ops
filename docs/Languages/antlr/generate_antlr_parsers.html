@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../antlr/index.html">antlr</a>
-    <br /><br />
+    <h3><a href="../antlr/index.html">antlr</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./select_antlr_tree.html">select antlr tree</a>
@@ -71,11 +77,14 @@
 
   </nav>
   <header>
-    <a href="../antlr/index.html">antlr</a> ${PREV} ${NEXT}
+    <a href="../antlr/index.html">antlr</a> | <a href="./ext_to_lang.html">ext to lang</a> | 
   </header>
 
-  <p>Here is a summary of the code breakdown in two sentences:</p>
-<p>The <code>generateAntlr</code> function is an asynchronous function that performs a series of tasks including globbing grammar files, compiling and transpiling them using different commands and tools, and handling potential errors. The function is exported as a module, allowing it to be imported and used in other parts of the application.</p>
+  <p>The <code>generateAntlr</code> function is an asynchronous function that performs a series of tasks including globbing grammar files, compiling and transpiling them using different commands and tools, and handling potential errors. The function is exported as a module, allowing it to be imported and used in other parts of the application.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "generate antlr parsers"</code></pre><h1>generate antlr parsers</h1>
+
 
 
 <pre class="javascript"><code>var path = require('path')
@@ -129,6 +138,7 @@ module.exports = generateAntlr
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

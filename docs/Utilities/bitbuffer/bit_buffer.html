@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,18 +47,20 @@
 
 <body>
   <nav>
-    <a href="../bitbuffer/index.html">bitbuffer</a>
-    <br /><br />
+    <h3><a href="../bitbuffer/index.html">bitbuffer</a></h3>
     <a href="./bit_buffer.html">bit buffer</a>
 <br /><br />
 
   </nav>
   <header>
-    <a href="../bitbuffer/index.html">bitbuffer</a> ${PREV} ${NEXT}
+    <a href="../bitbuffer/index.html">bitbuffer</a> |  | 
   </header>
 
-  <p>Here is a two-sentence summary of the provided code breakdown:</p>
-<p>The JavaScript <code>BitView</code> class provides a similar interface to <code>DataView</code> with support for bit-level reads and writes, allowing for manipulation of single bits within a specified byte offset. It offers methods to set a single bit, read a specified number of bits, and private properties for internal use, with dependencies on <code>ArrayBuffer</code> or <code>Buffer</code> objects and the <code>DataView</code> class.</p>
+  <p>The JavaScript <code>BitView</code> class provides a similar interface to <code>DataView</code> with support for bit-level reads and writes, allowing for manipulation of single bits within a specified byte offset. It offers methods to set a single bit, read a specified number of bits, and private properties for internal use, with dependencies on <code>ArrayBuffer</code> or <code>Buffer</code> objects and the <code>DataView</code> class.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "bit buffer"</code></pre><h1>bit buffer</h1>
+
 
 
 <pre class="javascript"><code>(function (root) {
@@ -566,6 +575,7 @@ else if (typeof module !== 'undefined' &amp;&amp; module.exports) {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

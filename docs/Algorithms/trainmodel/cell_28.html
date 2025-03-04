@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../trainmodel/index.html">trainmodel</a>
-    <br /><br />
+    <h3><a href="../trainmodel/index.html">trainmodel</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -109,11 +115,12 @@
 
   </nav>
   <header>
-    <a href="../trainmodel/index.html">trainmodel</a> ${PREV} ${NEXT}
+    <a href="../trainmodel/index.html">trainmodel</a> | <a href="./cell_27.html">Cell 27</a> | <a href="./cell_29.html">Cell 29</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code breakdown:</p>
-<p>The code appears to involve loading an image, preprocessing it using an unknown function <code>ef</code>, and passing it through a deep learning model <code>model</code> to make a prediction. The prediction is then printed, and the preprocessed image is reshaped and displayed using <code>matplotlib</code>.</p>
+  <p>The code appears to involve loading an image, preprocessing it using an unknown function <code>ef</code>, and passing it through a deep learning model <code>model</code> to make a prediction. The prediction is then printed, and the preprocessed image is reshaped and displayed using <code>matplotlib</code>.</p>
+<h1>Cell 28</h1>
+
 
 
 <pre class="python"><code>image = 'images/train/disgust/299.jpg'
@@ -132,6 +139,7 @@ plt.imshow(img.reshape(48,48),cmap='gray')</code></pre>
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

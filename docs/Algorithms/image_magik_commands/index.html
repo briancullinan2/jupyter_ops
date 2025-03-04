@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Algorithms/index.html">Algorithms</a>
-    <br /><br />
+    <h3><a href="../../Algorithms/index.html">Algorithms</a></h3>
     <a href="../audio/index.html">audio</a>
 <br /><br />
 <a href="../ffmpeg_commands/index.html">ffmpeg commands</a>
@@ -73,33 +79,29 @@
 
   </nav>
   <header>
-    <a href="../../Algorithms/index.html">Algorithms</a> ${PREV} ${NEXT}
+    <a href="../../Algorithms/index.html">Algorithms</a> | <a href="../ffmpeg_commands/index.html">ffmpeg commands</a> | <a href="../llama_vision/index.html">llama vision</a>
   </header>
 
-  <a href="./reduce_noise_from_images_after_resizing.html">reduce noise from images after resizing</a>
+  <h1>image magik commands</h1>
+
+<a href="./reduce_noise_from_images_after_resizing.html">reduce noise from images after resizing</a>
 <br /><br />
 <p>These ImageMagick commands process an input image, resizing, sharpening, and converting it to JPEG.  They also apply effects to create a glow and potentially reduce noise by compositing modified copies of the image onto the original.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code breakdown:</p>
 <p>This code uses ImageMagick commands to process and convert an image file, involving resizing, compressing, enhancing, and despeckling the image. The code consists of three ImageMagick commands and a final <code>echo</code> command that prints &quot;done&quot; to the console.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>The code is a pair of scripts, one for Windows and one for Unix/Linux, that use image conversion tools to process multiple image file types in bulk. The scripts convert images to various formats, resize and scale them, and apply enhancements to create final images with a consistent &quot;.jpg&quot; format.</p>
 <a href="./cell_3.html">Cell 3</a>
 <br /><br />
-<p>Here is a summary of the code in one sentence:</p>
 <p>This code uses ImageMagick's <code>convert</code> command to resize and enhance an input image, applying various filters and processing techniques, and saving the final output as a new image file.</p>
-<p>Alternatively, a two-sentence summary:</p>
 <p>The code resizes and enhances an input image using ImageMagick's <code>convert</code> command, applying techniques such as despeckling and alpha channel processing. The final output image is saved as a new file, with adjustable quality settings and a maximum width of 600 pixels.</p>
 <a href="./cell_4.html">Cell 4</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>This bash script searches for image files in a specified directory, enhances and converts them to JPEG format, and renames them by removing &quot;-final&quot; extensions and appending &quot;.jpg&quot; extensions. The script uses commands like <code>find</code>, <code>convert</code>, and <code>mv</code> to perform these operations, relying on ImageMagick and parameter expansion for file manipulation.</p>
 <a href="./cell_5.html">Cell 5</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the Image Processing Script Breakdown:</p>
 <p>The scripts use ImageMagick commands to process an input image, removing extra space, resizing, rotating, and adding a watermark, with the final result being output to a new file. The scripts are identical in their functionality, but differ in their file paths and line endings, suggesting a possible Windows version (Script 2) alongside a Unix-based version (Script 1).</p>
 
 </body>

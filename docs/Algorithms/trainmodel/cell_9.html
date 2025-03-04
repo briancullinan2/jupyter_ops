@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../trainmodel/index.html">trainmodel</a>
-    <br /><br />
+    <h3><a href="../trainmodel/index.html">trainmodel</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -109,11 +115,12 @@
 
   </nav>
   <header>
-    <a href="../trainmodel/index.html">trainmodel</a> ${PREV} ${NEXT}
+    <a href="../trainmodel/index.html">trainmodel</a> | <a href="./cell_8.html">Cell 8</a> | <a href="./cell_10.html">Cell 10</a>
   </header>
 
-  <p>Here is a 2-sentence summary:</p>
-<p>The <code>extract_features</code> function extracts features from an input image, taking the image data from the training dataset as input. It returns the extracted features from the input image, which are stored in the <code>train_features</code> variable.</p>
+  <p>The <code>extract_features</code> function extracts features from an input image, taking the image data from the training dataset as input. It returns the extracted features from the input image, which are stored in the <code>train_features</code> variable.</p>
+<h1>Cell 9</h1>
+
 
 
 <pre class="python"><code>train_features = extract_features(train['image']) </code></pre>
@@ -126,6 +133,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

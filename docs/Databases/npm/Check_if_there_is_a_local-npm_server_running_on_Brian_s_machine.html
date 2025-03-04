@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../npm/index.html">npm</a>
-    <br /><br />
+    <h3><a href="../npm/index.html">npm</a></h3>
     <a href="./Replace_package_json_latest_with_actual_latest_version_numbers.html">Replace package.json latest with actual latest version numbers</a>
 <br /><br />
 <a href="./Check_if_there_is_a_local-npm_server_running_on_Brian_s_machine.html">Check if there is a local-npm server running on Brian's machine</a>
@@ -53,10 +59,14 @@
 
   </nav>
   <header>
-    <a href="../npm/index.html">npm</a> ${PREV} ${NEXT}
+    <a href="../npm/index.html">npm</a> | <a href="./Replace_package_json_latest_with_actual_latest_version_numbers.html">Replace package.json latest with actual latest version numbers</a> | <a href="./Run_NPM_in_javscript_with_in-memory_file-system.html">Run NPM in javscript with in-memory file-system</a>
   </header>
 
   <p>This code checks if a local npm server is running by sending a request to a specified host and port and verifying the response status code.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "Check if there is a local-npm server running on Brian's machine"</code></pre><h1>Check if there is a local-npm server running on Brian's machine</h1>
+
 
 
 <pre class="javascript"><code>var http = require('http');
@@ -79,6 +89,7 @@ module.exports = checkLocalNPM;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

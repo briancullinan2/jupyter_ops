@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../windows/index.html">windows</a>
-    <br /><br />
+    <h3><a href="../windows/index.html">windows</a></h3>
     <a href="./list_window_handles.html">list window handles</a>
 <br /><br />
 <a href="./monitor_active_windows.html">monitor active windows</a>
@@ -59,13 +65,13 @@
 
   </nav>
   <header>
-    <a href="../windows/index.html">windows</a> ${PREV} ${NEXT}
+    <a href="../windows/index.html">windows</a> | <a href="./cell_2.html">Cell 2</a> | <a href="./cell_4.html">Cell 4</a>
   </header>
 
-  <p>Here is a summary of the.NET project file in one sentence:</p>
-<p>The.NET project file is a Visual Studio solution file in XML format that declares the project, imports external files, sets project properties, and specifies references and compilation settings.</p>
-<p>Alternatively, here is a two-sentence summary:</p>
+  <p>The.NET project file is a Visual Studio solution file in XML format that declares the project, imports external files, sets project properties, and specifies references and compilation settings.</p>
 <p>The.NET project file is a XML-based file that outlines the project's properties, references, and compilation settings. It includes sections for project declaration, importing external files, project properties, debug and release properties, references, and compilation items, providing a comprehensive description of the project's configuration.</p>
+<h1>Cell 3</h1>
+
 
 
 <pre class="xml"><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
@@ -131,6 +137,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

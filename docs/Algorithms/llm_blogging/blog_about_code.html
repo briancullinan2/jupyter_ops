@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llm_blogging/index.html">llm blogging</a>
-    <br /><br />
+    <h3><a href="../llm_blogging/index.html">llm blogging</a></h3>
     <a href="./blog_about_code.html">blog about code</a>
 <br /><br />
 <a href="./parse_patch_file.html">parse patch file</a>
@@ -51,11 +57,14 @@
 
   </nav>
   <header>
-    <a href="../llm_blogging/index.html">llm blogging</a> ${PREV} ${NEXT}
+    <a href="../llm_blogging/index.html">llm blogging</a> |  | <a href="./parse_patch_file.html">parse patch file</a>
   </header>
 
-  <p>Here's a summary of the code in two sentences:</p>
-<p>The <code>blogAboutCode</code> function takes a project directory path, timeframe, and model as inputs, and uses these to extract commit hashes, get the diff between commits, and parse the patch. The function involves several steps, including selecting a model, resolving the project path, checking project existence, getting commits, extracting commit hashes, getting the diff, and parsing the patch.</p>
+  <p>The <code>blogAboutCode</code> function takes a project directory path, timeframe, and model as inputs, and uses these to extract commit hashes, get the diff between commits, and parse the patch. The function involves several steps, including selecting a model, resolving the project path, checking project existence, getting commits, extracting commit hashes, getting the diff, and parsing the patch.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "blog about code"</code></pre><h1>blog about code</h1>
+
 
 
 <pre class="javascript"><code>const path = require('path')
@@ -72,6 +81,10 @@ const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'code-s
 
 
 async function blogAboutCode(project, timeframe = 3, promptModel = 'Meta') {
+
+  if(typeof project == 'undefined') {
+    project = path.basename(path.resolve(path.join(__dirname, '..')))
+  }
 
   if(typeof promptModel != 'function') {
     promptModel = await selectModel(promptModel)
@@ -136,16 +149,17 @@ async function blogAboutCode(project, timeframe = 3, promptModel = 'Meta') {
   summaryOutputs = []
   let files = Object.keys(summary.files)
   for(let i = 0; i &lt; files.length; i++) {
-    if(files[i].match('cache.ipynb')) {
+    if(files[i].match('cache')) {
       continue
     }
+    console.log('Working on: ' + files[i])
     let q1 = 'Summerize this code like you\'re writing for a fun coding blog, include code excerpts as context:\n'
       + files[i] + '\nAdditions that were made:\n' + summary.files[files[i]].additions.join('')
       + '\nDeletions that were made:\n' + summary.files[files[i]].deletions.join('')
     console.log('User: ' + q1)
     let a1 = await promptModel(q1)
     console.log('AI: ' + a1)
-    summaryOutputs.push(a1)
+    summaryOutputs.push('#' + files[i] + '\n\n' + a1)
   }
 
   const mdHtml = md.render(summaryOutputs.join('\n'))
@@ -167,6 +181,7 @@ module.exports = blogAboutCode
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

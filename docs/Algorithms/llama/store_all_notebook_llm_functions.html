@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llama/index.html">llama</a>
-    <br /><br />
+    <h3><a href="../llama/index.html">llama</a></h3>
     <a href="./search_llama.html">search llama</a>
 <br /><br />
 <a href="./ask_llm_about_categories.html">ask llm about categories</a>
@@ -67,11 +73,14 @@
 
   </nav>
   <header>
-    <a href="../llama/index.html">llama</a> ${PREV} ${NEXT}
+    <a href="../llama/index.html">llama</a> | <a href="./store_llama_function.html">store llama function</a> | <a href="./create_llm_session.html">create llm session</a>
   </header>
 
-  <p>Here's a summary of the code breakdown in two sentences:</p>
-<p>The code imports several modules and functions, including LLM functions to summarize and generalize code, and uses an async function <code>storeAllLlamaFunctions</code> to store all LLM functions. The <code>storeAllLlamaFunctions</code> function retrieves code from the cache, checks conditions, and updates the cache using LLM functions when necessary, while also performing operations on a <code>functionCache</code> object to store cached descriptions and summaries.</p>
+  <p>The code imports several modules and functions, including LLM functions to summarize and generalize code, and uses an async function <code>storeAllLlamaFunctions</code> to store all LLM functions. The <code>storeAllLlamaFunctions</code> function retrieves code from the cache, checks conditions, and updates the cache using LLM functions when necessary, while also performing operations on a <code>functionCache</code> object to store cached descriptions and summaries.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "store all notebook llm functions"</code></pre><h1>store all notebook llm functions</h1>
+
 
 
 <pre class="javascript"><code>const {askLlamaAboutCode} = importer.import('ask llm about code')
@@ -166,6 +175,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

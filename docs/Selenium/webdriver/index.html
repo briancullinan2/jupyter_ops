@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Selenium/index.html">Selenium</a>
-    <br /><br />
+    <h3><a href="../../Selenium/index.html">Selenium</a></h3>
     <a href="../What_is_Selenium/index.html">What is Selenium</a>
 <br /><br />
 <a href="../auth/index.html">auth</a>
@@ -99,75 +105,61 @@
 
   </nav>
   <header>
-    <a href="../../Selenium/index.html">Selenium</a> ${PREV} ${NEXT}
+    <a href="../../Selenium/index.html">Selenium</a> | <a href="../utilities/index.html">utilities</a> | <a href="../you_earned_it/index.html">you earned it</a>
   </header>
 
-  <a href="./selenium_client.html">selenium client</a>
+  <h1>webdriver</h1>
+
+<a href="./selenium_client.html">selenium client</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code:</p>
 <p>This Node.js script uses Selenium WebDriver to create a Chrome browser session, setting environment variables and defining Chrome profile paths based on the operating system. The <code>getClient</code> function creates a new Chrome browser session by setting Chrome profile paths, adding arguments, and returning a promise with the created client instance.</p>
 <a href="./selenium_session.html">selenium session</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code:</p>
 <p>The code is designed to manage sessions by reading and writing data to a <code>sessions.json</code> file, utilizing environment variables and file system modules. It exports two functions, <code>readSessions</code> and <code>updateOrAddSession</code>, which handle reading and updating the sessions array, respectively.</p>
 <a href="./webdriver_test.html">webdriver test</a>
 <br /><br />
 <p>The code defines an asynchronous function <code>testDriver</code> that imports a <code>getClient</code> module, sets up a web driver, navigates to Facebook, waits for 4 seconds, and then closes the driver. The function is exported as a module.</p>
 <a href="./close_all_windows.html">close all windows</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>The code imports necessary classes and functions from the <code>selenium-webdriver</code> module and defines a function <code>closeAllWindows</code> that closes all browser windows except the one specified by the <code>keep</code> argument. The function creates a new instance of <code>WebDriver</code>, gets an array of window handles, and iterates over them to close all windows except the one specified by <code>keep</code>.</p>
 <a href="./selenium_executor.html">selenium executor</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>The code defines a set of commands for interacting with a web browser using Selenium WebDriver, including launching apps, setting network conditions, and sending DevTools commands. The commands are configured using the <code>configureExecutor</code> function, which takes an executor instance and a vendor prefix as arguments to customize the command URLs for specific vendors.</p>
 <a href="./list_sessions.html">list sessions</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code breakdown:</p>
 <p>The code imports necessary modules for interacting with web browsers and defines constants and functions for managing Selenium sessions, including verifying individual sessions and retrieving active sessions. The <code>getSessions</code> function is exported as a module export, which can be used to retrieve and verify available Selenium sessions.</p>
 <a href="./selenium_select.html">selenium select</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The code imports three functions (<code>selectDom</code>, <code>evaluateDom</code>, and <code>walkTree</code>) from separate modules and uses them in an asynchronous function called <code>getAllXPath</code> to execute a script on a web page. The <code>getAllXPath</code> function takes three parameters and returns the result of calling the <code>selectDom</code> function after making the <code>evaluateDom</code> and <code>walkTree</code> functions available on the web page.</p>
 <a href="./selenium_query.html">selenium query</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The <code>getAllQuery</code> function is defined as an asynchronous function that executes a script in a browser context using the <code>driver.executeScript</code> method, which involves importing and utilizing external functions for querying and evaluating the DOM. The function takes three parameters - <code>driver</code>, <code>select</code>, and an optional <code>ctx</code> object - and returns the result of executing the <code>queryDom</code> function.</p>
 <a href="./cell_8.html">Cell 8</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code breakdown:</p>
 <p>The code requires two modules: <code>../Core</code> and <code>webdriverio</code>, and imports specific functions and constants from <code>../Core</code>. It defines a function <code>createWebdriverClient</code> that creates a WebdriverIO client configuration object with various settings and capabilities, including browser name, Chrome-specific options, and log level.</p>
 <a href="./cell_9.html">Cell 9</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the <code>connectSession</code> function:</p>
 <p>The <code>connectSession</code> function connects a client to a session by managing existing sessions, creating a new one if necessary, and configuring the client's connection retry timeout. It returns the client's session ID if successful, or throws an error if an issue occurs.</p>
 <a href="./cell_10.html">Cell 10</a>
 <br /><br />
-<p>Here's a brief summary:</p>
 <p>This code defines a module that reads session data from a JSON file at <code>SESSIONS_PATH</code> and returns an array of session data. It also includes error handling to reset the session array if an error occurs while reading the file.</p>
 <a href="./cell_11.html">Cell 11</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code:</p>
 <p>This Node.js module manages lock files and session data, providing functions to lock/unlock files and update or add sessions to a JSON file. The module uses the <code>lockfile</code>, <code>fs</code>, and <code>path</code> modules, as well as a custom <code>../Core</code> module, to perform its operations.</p>
 <a href="./cell_12.html">Cell 12</a>
 <br /><br />
-<p>Here is a two-sentence summary of the <code>getSessions</code> function:</p>
 <p>The <code>getSessions</code> function retrieves available sessions for a given client, filtering out inactive sessions based on the <code>lastActive</code> timestamp. It uses a multi-step process to verify sessions, including loading sessions, filtering, mapping, running promises, and deduplicating results.</p>
 <a href="./cell_13.html">Cell 13</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>This code imports necessary modules, sets variables, and defines two primary functions: <code>addPlugins</code> and <code>verifySession</code>. The <code>addPlugins</code> function attaches event listeners to a client object and locks/unlocks promises to update or add session data, while the <code>verifySession</code> function verifies a session by setting the session ID, adding plugins, and interacting with the client object's promise chain.</p>
 <a href="./cell_14.html">Cell 14</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code breakdown:</p>
 <p>This code checks if two variables, <code>client</code> and <code>$</code>, are defined, and if so, it creates a new Webdriver client instance and sends the result to the <code>$</code> function. The code also catches any errors that occur during client creation and sends them to the <code>$</code> function for handling.</p>
 <a href="./cell_15.html">Cell 15</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>The code checks if <code>client</code> and <code>$</code> are defined, and if so, executes a block of code. It also contains functions to execute an asynchronous method and handle client window handles, including sending results or errors through the <code>$</code> object.</p>
 <a href="./cell_16.html">Cell 16</a>
 <br /><br />
-<p>Here's a summary of the code snippet in two sentences:</p>
 <p>This JavaScript code checks if a <code>client</code> object exists and, if so, closes all connections to it by calling the <code>endAll()</code> method. If the <code>client</code> object does not exist, the code does nothing.</p>
 <a href="./cell_17.html">Cell 17</a>
 <br /><br />

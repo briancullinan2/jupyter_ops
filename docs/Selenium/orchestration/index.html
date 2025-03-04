@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Selenium/index.html">Selenium</a>
-    <br /><br />
+    <h3><a href="../../Selenium/index.html">Selenium</a></h3>
     <a href="../What_is_Selenium/index.html">What is Selenium</a>
 <br /><br />
 <a href="../auth/index.html">auth</a>
@@ -99,10 +105,12 @@
 
   </nav>
   <header>
-    <a href="../../Selenium/index.html">Selenium</a> ${PREV} ${NEXT}
+    <a href="../../Selenium/index.html">Selenium</a> | <a href="../linkedin_webdriver/index.html">linkedin webdriver</a> | <a href="../reddit/index.html">reddit</a>
   </header>
 
-  <a href="./resize_selenium_window.html">resize selenium window</a>
+  <h1>orchestration</h1>
+
+<a href="./resize_selenium_window.html">resize selenium window</a>
 <br /><br />
 <p>This code provides a function to resize and position a browser window into a grid layout, allowing for the management of multiple browser instances in a structured manner.  It uses a <code>client</code> object (likely Selenium) to interact with the browser and calculates window positions based on a specified grid structure.</p>
 <a href="./only_one_window.html">only one window</a>
@@ -122,7 +130,6 @@
 <p>The <code>sendFacebookThanks</code> function checks a Facebook thread for a &quot;dream&quot; related message and automatically sends a &quot;Are you living the dream?&quot; message if none is found.</p>
 <a href="./cell_6.html">Cell 6</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code:</p>
 <p>The code imports a module named <code>Core</code> and a function named <code>selenium cell</code> from it, which is used to interact with the Selenium cell. It also defines an array of Facebook message URLs and includes a TODO comment to replace the current implementation with RPC commands.</p>
 <a href="./clean_up_old_selenium_sessions.html">clean up old selenium sessions</a>
 <br /><br />

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frameworks/index.html">Frameworks</a>
-    <br /><br />
+    <h3><a href="../../Frameworks/index.html">Frameworks</a></h3>
     <a href="../Angular_2/index.html">Angular 2</a>
 <br /><br />
 <a href="../Angular_components/index.html">Angular components</a>
@@ -105,10 +111,12 @@
 
   </nav>
   <header>
-    <a href="../../Frameworks/index.html">Frameworks</a> ${PREV} ${NEXT}
+    <a href="../../Frameworks/index.html">Frameworks</a> | <a href="../Angular_components/index.html">Angular components</a> | <a href="../angular_render_service/index.html">angular render service</a>
   </header>
 
-  <a href="./Useful_list_of_material_and_core_modules.html">Useful list of material and core modules</a>
+  <h1>angular core modules</h1>
+
+<a href="./Useful_list_of_material_and_core_modules.html">Useful list of material and core modules</a>
 <br /><br />
 <p>This code establishes a shared Angular module (<code>SharedModule</code>) that provides commonly used components, directives, services, and modules to other parts of the application, enhancing code organization and reusability.</p>
 

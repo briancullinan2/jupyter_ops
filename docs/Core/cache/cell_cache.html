@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../cache/index.html">cache</a>
-    <br /><br />
+    <h3><a href="../cache/index.html">cache</a></h3>
     <a href="./cell_cache.html">cell cache</a>
 <br /><br />
 <a href="./cache_notebook.html">cache notebook</a>
@@ -79,10 +85,14 @@
 
   </nav>
   <header>
-    <a href="../cache/index.html">cache</a> ${PREV} ${NEXT}
+    <a href="../cache/index.html">cache</a> |  | <a href="./cache_notebook.html">cache notebook</a>
   </header>
 
   <p>This code defines a <code>cellCache</code> that stores metadata about Jupyter Notebook cells, including timestamps, file paths, and potentially associated questions or prompts. This cache likely serves purposes such as tracking cell execution or facilitating interactive code analysis.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "cell cache"</code></pre><h1>cell cache</h1>
+
 
 
 <pre class="javascript"><code>
@@ -346,7 +356,7 @@ var cellCache = [
         }
     ],
     [
-        1741059112038,
+        1741117766812,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb[0]",
         {
             "from": 0,
@@ -361,7 +371,7 @@ var cellCache = [
         }
     ],
     [
-        1741059112038,
+        1741117766812,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb[1]",
         {
             "from": 2,
@@ -373,7 +383,7 @@ var cellCache = [
         }
     ],
     [
-        1741059112038,
+        1741117766812,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb[10]",
         {
             "from": 20,
@@ -385,7 +395,7 @@ var cellCache = [
         }
     ],
     [
-        1741059112038,
+        1741117766812,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb[2]",
         {
             "from": 4,
@@ -397,7 +407,7 @@ var cellCache = [
         }
     ],
     [
-        1741059112038,
+        1741117766812,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb[3]",
         {
             "from": 6,
@@ -409,7 +419,7 @@ var cellCache = [
         }
     ],
     [
-        1741059112038,
+        1741117766812,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb[4]",
         {
             "from": 8,
@@ -421,7 +431,7 @@ var cellCache = [
         }
     ],
     [
-        1741059112038,
+        1741117766812,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb[5]",
         {
             "from": 10,
@@ -433,7 +443,7 @@ var cellCache = [
         }
     ],
     [
-        1741059112038,
+        1741117766812,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb[6]",
         {
             "from": 12,
@@ -445,7 +455,7 @@ var cellCache = [
         }
     ],
     [
-        1741059112038,
+        1741117766812,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb[7]",
         {
             "from": 14,
@@ -457,7 +467,7 @@ var cellCache = [
         }
     ],
     [
-        1741059112038,
+        1741117766812,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb[8]",
         {
             "from": 16,
@@ -469,7 +479,7 @@ var cellCache = [
         }
     ],
     [
-        1741059112038,
+        1741117766812,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb[9]",
         {
             "from": 18,
@@ -481,7 +491,7 @@ var cellCache = [
         }
     ],
     [
-        1740889175342,
+        1741116318292,
         "/Users/briancullinan/jupyter_ops/Algorithms/llm blogging.ipynb[0]",
         {
             "from": 0,
@@ -493,7 +503,7 @@ var cellCache = [
         }
     ],
     [
-        1740889175342,
+        1741116318292,
         "/Users/briancullinan/jupyter_ops/Algorithms/llm blogging.ipynb[1]",
         {
             "from": 2,
@@ -505,7 +515,7 @@ var cellCache = [
         }
     ],
     [
-        1740889175342,
+        1741116318292,
         "/Users/briancullinan/jupyter_ops/Algorithms/llm blogging.ipynb[2]",
         {
             "from": 4,
@@ -2284,7 +2294,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[0]",
         {
             "from": 0,
@@ -2296,7 +2306,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[1]",
         {
             "from": 5,
@@ -2312,7 +2322,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[10]",
         {
             "from": 25,
@@ -2324,7 +2334,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[11]",
         {
             "from": 28,
@@ -2336,7 +2346,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[12]",
         {
             "from": 30,
@@ -2348,7 +2358,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[13]",
         {
             "from": 32,
@@ -2360,7 +2370,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[14]",
         {
             "from": 34,
@@ -2371,7 +2381,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[15]",
         {
             "from": 36,
@@ -2382,7 +2392,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[16]",
         {
             "from": 38,
@@ -2393,7 +2403,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[2]",
         {
             "from": 7,
@@ -2405,7 +2415,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[3]",
         {
             "from": 9,
@@ -2420,7 +2430,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[4]",
         {
             "from": 11,
@@ -2432,7 +2442,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[5]",
         {
             "from": 14,
@@ -2444,7 +2454,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[6]",
         {
             "from": 16,
@@ -2456,7 +2466,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[7]",
         {
             "from": 18,
@@ -2468,7 +2478,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[8]",
         {
             "from": 21,
@@ -2481,7 +2491,7 @@ var cellCache = [
         }
     ],
     [
-        1741113046111,
+        1741119074056,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[9]",
         {
             "from": 23,
@@ -2762,7 +2772,7 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[0]",
         {
             "from": 0,
@@ -2778,7 +2788,7 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[1]",
         {
             "from": 5,
@@ -2793,7 +2803,7 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[10]",
         {
             "from": 33,
@@ -2805,7 +2815,7 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[11]",
         {
             "from": 37,
@@ -2817,7 +2827,7 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[12]",
         {
             "from": 40,
@@ -2829,7 +2839,7 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[13]",
         {
             "from": 43,
@@ -2840,21 +2850,21 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[2]",
         {
             "from": 10,
-            "to": 12,
+            "to": 11,
             "questions": [
                 ""
             ]
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[3]",
         {
-            "from": 13,
+            "from": 12,
             "to": 14,
             "questions": [
                 "compile an es module",
@@ -2863,7 +2873,7 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[4]",
         {
             "from": 15,
@@ -2875,7 +2885,7 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[5]",
         {
             "from": 18,
@@ -2887,7 +2897,7 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[6]",
         {
             "from": 21,
@@ -2899,7 +2909,7 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[7]",
         {
             "from": 24,
@@ -2912,7 +2922,7 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[8]",
         {
             "from": 29,
@@ -2924,7 +2934,7 @@ var cellCache = [
         }
     ],
     [
-        1741054574142,
+        1741116908920,
         "/Users/briancullinan/jupyter_ops/Core/import.ipynb[9]",
         {
             "from": 31,
@@ -8437,7 +8447,7 @@ var cellCache = [
         }
     ],
     [
-        1741113095049,
+        1741119293149,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[0]",
         {
             "from": 0,
@@ -8449,7 +8459,7 @@ var cellCache = [
         }
     ],
     [
-        1741113095049,
+        1741119293149,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[1]",
         {
             "from": 4,
@@ -8461,7 +8471,7 @@ var cellCache = [
         }
     ],
     [
-        1741113095049,
+        1741119293149,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[2]",
         {
             "from": 6,
@@ -8475,7 +8485,7 @@ var cellCache = [
         }
     ],
     [
-        1741113095049,
+        1741119293149,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[3]",
         {
             "from": 8,
@@ -8487,7 +8497,7 @@ var cellCache = [
         }
     ],
     [
-        1741113095049,
+        1741119293149,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[4]",
         {
             "from": 10,
@@ -8499,7 +8509,7 @@ var cellCache = [
         }
     ],
     [
-        1741113095049,
+        1741119293149,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[5]",
         {
             "from": 13,
@@ -8511,7 +8521,7 @@ var cellCache = [
         }
     ],
     [
-        1741113095049,
+        1741119293149,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[6]",
         {
             "from": 15,
@@ -14852,6 +14862,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

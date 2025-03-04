@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../syntax/index.html">syntax</a>
-    <br /><br />
+    <h3><a href="../syntax/index.html">syntax</a></h3>
     <a href="./get_requires.html">get requires</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -121,11 +127,12 @@
 
   </nav>
   <header>
-    <a href="../syntax/index.html">syntax</a> ${PREV} ${NEXT}
+    <a href="../syntax/index.html">syntax</a> | <a href="./html_to_tree.html">html to tree</a> | <a href="./cell_18.html">Cell 18</a>
   </header>
 
-  <p>Here is a summary of the code in one or two sentences:</p>
-<p>This code imports necessary modules, defines functions for parsing and converting JavaScript code into HTML, and exports the <code>testASTArray</code> function for use in other modules. It also includes functionality for encoding HTML entities and assumes the presence of specific functions and an object (<code>$</code>) in the execution environment.</p>
+  <p>This code imports necessary modules, defines functions for parsing and converting JavaScript code into HTML, and exports the <code>testASTArray</code> function for use in other modules. It also includes functionality for encoding HTML entities and assumes the presence of specific functions and an object (<code>$</code>) in the execution environment.</p>
+<h1>Cell 17</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -184,6 +191,7 @@ console.log()
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

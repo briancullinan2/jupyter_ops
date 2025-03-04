@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../files/index.html">files</a>
-    <br /><br />
+    <h3><a href="../files/index.html">files</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./project_word-cloud.html">project word-cloud</a>
@@ -83,10 +89,14 @@
 
   </nav>
   <header>
-    <a href="../files/index.html">files</a> ${PREV} ${NEXT}
+    <a href="../files/index.html">files</a> | <a href="./common_ignore_paths.html">common ignore paths</a> | <a href="./cell_8.html">Cell 8</a>
   </header>
 
   <p>This code automates the process of finding and listing projects within a directory by identifying common project configuration files.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "List all projects by names"</code></pre><h1>List all projects by names</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -115,6 +125,7 @@ module.exports = listProjects;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

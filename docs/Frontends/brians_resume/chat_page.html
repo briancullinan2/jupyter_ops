@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../brians_resume/index.html">brians resume</a>
-    <br /><br />
+    <h3><a href="../brians_resume/index.html">brians resume</a></h3>
     <a href="./_get_a_list_of_folder_topics_from_bookmarks.html">,get a list of folder topics from bookmarks</a>
 <br /><br />
 <a href="./update_insterests_resume_sheet.html">update insterests resume sheet</a>
@@ -71,11 +77,14 @@
 
   </nav>
   <header>
-    <a href="../brians_resume/index.html">brians resume</a> ${PREV} ${NEXT}
+    <a href="../brians_resume/index.html">brians resume</a> | <a href="./resume_chat_program.html">resume chat program</a> | <a href="./brians_resume_in_html.html">brians resume in html</a>
   </header>
 
-  <p>Here's a two-sentence summary of the provided CSS stylesheet for a chat application:</p>
-<p>This CSS stylesheet sets the basic styles for a chat application, including global styles, container styles, chat program styles, chat inner styles, messages styles, text entry styles, and drag and drop styles. It defines elements such as the container, chat inner, messages, text entry, and drag and drop areas with styles for layout, colors, and typography to create a visually cohesive chat interface.</p>
+  <p>This CSS stylesheet sets the basic styles for a chat application, including global styles, container styles, chat program styles, chat inner styles, messages styles, text entry styles, and drag and drop styles. It defines elements such as the container, chat inner, messages, text entry, and drag and drop areas with styles for layout, colors, and typography to create a visually cohesive chat interface.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "chat page"</code></pre><h1>chat page</h1>
+
 
 
 <pre class="html"><code>&lt;html&gt;
@@ -538,6 +547,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../child_process/index.html">child process</a>
-    <br /><br />
+    <h3><a href="../child_process/index.html">child process</a></h3>
     <a href="./spawn_child_process.html">spawn child process</a>
 <br /><br />
 <a href="./test_child_process.html">test child process</a>
@@ -51,11 +57,14 @@
 
   </nav>
   <header>
-    <a href="../child_process/index.html">child process</a> ${PREV} ${NEXT}
+    <a href="../child_process/index.html">child process</a> |  | <a href="./test_child_process.html">test child process</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code:</p>
-<p>The code utilizes the <code>child_process</code> and <code>importer</code> modules to execute external Bash commands and handle errors, with functions such as <code>bashToExec</code> and <code>execCmd</code> to prepare and run the commands. The <code>execCmd</code> function creates a promise that resolves with the output of the executed command and logs the command and its output if not in quiet mode.</p>
+  <p>The code utilizes the <code>child_process</code> and <code>importer</code> modules to execute external Bash commands and handle errors, with functions such as <code>bashToExec</code> and <code>execCmd</code> to prepare and run the commands. The <code>execCmd</code> function creates a promise that resolves with the output of the executed command and logs the command and its output if not in quiet mode.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "spawn child process"</code></pre><h1>spawn child process</h1>
+
 
 
 <pre class="javascript"><code>var {exec} = require('child_process');
@@ -125,6 +134,7 @@ module.exports = execCmd;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

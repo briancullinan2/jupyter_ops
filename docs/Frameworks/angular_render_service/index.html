@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frameworks/index.html">Frameworks</a>
-    <br /><br />
+    <h3><a href="../../Frameworks/index.html">Frameworks</a></h3>
     <a href="../Angular_2/index.html">Angular 2</a>
 <br /><br />
 <a href="../Angular_components/index.html">Angular components</a>
@@ -105,10 +111,12 @@
 
   </nav>
   <header>
-    <a href="../../Frameworks/index.html">Frameworks</a> ${PREV} ${NEXT}
+    <a href="../../Frameworks/index.html">Frameworks</a> | <a href="../angular_core_modules/index.html">angular core modules</a> | <a href="../angular-cli/index.html">angular-cli</a>
   </header>
 
-  <a href="./render_Angular_modules_instead_of_using_express.html">render Angular modules instead of using express</a>
+  <h1>angular render service</h1>
+
+<a href="./render_Angular_modules_instead_of_using_express.html">render Angular modules instead of using express</a>
 <br /><br />
 <p>This code implements a server-side rendering engine for Angular applications using Express, allowing for pre-rendered HTML to be sent to the client.  It leverages Angular's <code>platformDynamicServer</code> and <code>renderModuleFactory</code> to compile and render the application for a given URL.</p>
 <a href="./cell_1.html">Cell 1</a>

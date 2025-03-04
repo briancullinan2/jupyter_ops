@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../import/index.html">import</a>
-    <br /><br />
+    <h3><a href="../import/index.html">import</a></h3>
     <a href="./import_notebook.html">import notebook</a>
 <br /><br />
 <a href="./how_does_node_module_require_work.html">how does node module require work</a>
@@ -73,11 +79,14 @@
 
   </nav>
   <header>
-    <a href="../import/index.html">import</a> ${PREV} ${NEXT}
+    <a href="../import/index.html">import</a> | <a href="./run_all_promises_sequentially.html">run all promises sequentially</a> | <a href="./cell_13.html">Cell 13</a>
   </header>
 
-  <p>Here's a two-sentence summary of the provided code breakdown:</p>
-<p>The <code>getCells</code> function extracts cells from a Jupyter Notebook file, filtering and mapping cells based on specified types, and returns an array of extracted cells with additional metadata. The function is exported as a module using <code>module.exports.getCells = getCells;</code>, making it available for use in other Node.js applications.</p>
+  <p>The <code>getCells</code> function extracts cells from a Jupyter Notebook file, filtering and mapping cells based on specified types, and returns an array of extracted cells with additional metadata. The function is exported as a module using <code>module.exports.getCells = getCells;</code>, making it available for use in other Node.js applications.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "parse cells from a notebook"</code></pre><h1>parse cells from a notebook</h1>
+
 
 
 <pre class="javascript"><code>var path = require('path')
@@ -112,6 +121,7 @@ module.exports.getCells = getCells;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

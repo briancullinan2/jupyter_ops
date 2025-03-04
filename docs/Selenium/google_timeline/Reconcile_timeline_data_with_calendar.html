@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_timeline/index.html">google timeline</a>
-    <br /><br />
+    <h3><a href="../google_timeline/index.html">google timeline</a></h3>
     <a href="./Scrape_google_timeline.html">Scrape google timeline</a>
 <br /><br />
 <a href="./Read_single_google_timeline_page.html">Read single google timeline page</a>
@@ -59,10 +65,14 @@
 
   </nav>
   <header>
-    <a href="../google_timeline/index.html">google timeline</a> ${PREV} ${NEXT}
+    <a href="../google_timeline/index.html">google timeline</a> | <a href="./Find_the_average_latitute_and_longitude_at_each_destination.html">Find the average latitute and longitude at each destination</a> | <a href="./Load_location_export_data.html">Load location export data</a>
   </header>
 
   <p>This code snippet correlates Google Calendar events with nearby locations based on location names, event summaries, and event locations, likely for analyzing travel patterns or daily routines. It identifies matching events and locations, logging the results for further analysis.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "Reconcile timeline data with calendar"</code></pre><h1>Reconcile timeline data with calendar</h1>
+
 
 
 <pre class="javascript"><code>var unidecode = require('unidecode');
@@ -146,6 +156,7 @@ module.exports = reconcileTimelineLocations;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

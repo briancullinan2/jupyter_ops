@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../quake3_server_connector/index.html">quake3 server connector</a>
-    <br /><br />
+    <h3><a href="../quake3_server_connector/index.html">quake3 server connector</a></h3>
     undefined<a href="./index.html">index</a>
 <br /><br />
 <a href="./ssh_remote_wget.html">ssh remote wget</a>
@@ -57,11 +63,14 @@
 
   </nav>
   <header>
-    <a href="../quake3_server_connector/index.html">quake3 server connector</a> ${PREV} ${NEXT}
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a> | <a href="./cell_1.html">Cell 1</a> | <a href="./test_specific_channel.html">test specific channel</a>
   </header>
 
-  <p>Here is a summary of the code in two sentences:</p>
-<p>The code imports necessary modules and defines constants and functions for interpreting and reading commands from Discord channels. It includes functions for interpreting a single command and reading all commands from specified channels, which can be filtered by channel ID, username, or empty string.</p>
+  <p>The code imports necessary modules and defines constants and functions for interpreting and reading commands from Discord channels. It includes functions for interpreting a single command and reading all commands from specified channels, which can be filtered by channel ID, username, or empty string.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "respond discord commands"</code></pre><h1>respond discord commands</h1>
+
 
 
 <pre class="node"><code>var importer = require('../Core')
@@ -214,6 +223,7 @@ module.exports = respondCommand
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

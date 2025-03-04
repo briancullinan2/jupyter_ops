@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frameworks/index.html">Frameworks</a>
-    <br /><br />
+    <h3><a href="../../Frameworks/index.html">Frameworks</a></h3>
     <a href="../Angular_2/index.html">Angular 2</a>
 <br /><br />
 <a href="../Angular_components/index.html">Angular components</a>
@@ -105,10 +111,12 @@
 
   </nav>
   <header>
-    <a href="../../Frameworks/index.html">Frameworks</a> ${PREV} ${NEXT}
+    <a href="../../Frameworks/index.html">Frameworks</a> | <a href="../git_repos/index.html">git repos</a> | <a href="../identity_server/index.html">identity server</a>
   </header>
 
-  <a href="./use_gulp.html">use gulp</a>
+  <h1>gulp</h1>
+
+<a href="./use_gulp.html">use gulp</a>
 <br /><br />
 <p>This Gulp script automates the replacement of a specific string within project files, likely for build or deployment purposes, and handles asynchronous execution with error handling.</p>
 <a href="./use_a_Promise_as_a_gulp_task.html">use a Promise as a gulp task</a>
@@ -116,7 +124,6 @@
 <p>This code snippet provides a function <code>tasksToPromise</code> that allows you to run a series of Gulp tasks asynchronously and obtain a Promise that resolves when all tasks are finished.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here is a summary of the code in one or two sentences:</p>
 <p>This Gulp script is a build script for an Angular project that automates tasks such as code replacement, file copying, and dependency resolution using various modules and functions. The script defines several Gulp tasks, including project relatives and server module, and uses the <code>gulp-replace</code> module to replace specific code patterns in JavaScript files.</p>
 <a href="./Apply_universal_to_angular_project.html">Apply universal to angular project</a>
 <br /><br />
@@ -129,7 +136,6 @@
 <p>This code defines a function <code>searchNotebooks</code> that searches for text within Jupyter Notebook files in a project directory and returns a promise that resolves with an array of matching cells.</p>
 <a href="./cell_6.html">Cell 6</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>This code imports a module named <code>Core</code> to use its <code>importer</code> function, which imports another module named <code>search notebooks using gulp</code> to search for notebooks. The search result is then processed asynchronously, formatted as markdown, and sent to the user, with error handling if the search fails.</p>
 
 </body>

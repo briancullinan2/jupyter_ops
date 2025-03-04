@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Core/index.html">Core</a>
-    <br /><br />
+    <h3><a href="../../Core/index.html">Core</a></h3>
     <a href="../aspects/index.html">aspects</a>
 <br /><br />
 <a href="../cache/index.html">cache</a>
@@ -71,10 +77,12 @@
 
   </nav>
   <header>
-    <a href="../../Core/index.html">Core</a> ${PREV} ${NEXT}
+    <a href="../../Core/index.html">Core</a> | <a href="../compile/index.html">compile</a> | <a href="../import/index.html">import</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>files</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./project_word-cloud.html">project word-cloud</a>
 <br /><br />
@@ -87,7 +95,6 @@
 <p>This code implements a custom <code>glob</code> function that recursively searches a directory for files matching specified patterns, while also considering ignore rules.</p>
 <a href="./cell_4.html">Cell 4</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code:</p>
 <p>The code imports dependencies, defines a test function <code>testGlobFiles</code> to verify the <code>glob</code> function's behavior, and exports it as a module. The <code>testGlobFiles</code> function searches for files matching the pattern <code>**index**</code> in the current directory and asserts that it returns exactly one result.</p>
 <a href="./list_project_files.html">list project files</a>
 <br /><br />
@@ -100,7 +107,6 @@
 <p>This code automates the process of finding and listing projects within a directory by identifying common project configuration files.</p>
 <a href="./cell_8.html">Cell 8</a>
 <br /><br />
-<p>Here's a summary of the code in two sentences:</p>
 <p>This JavaScript code imports necessary modules, sets environment variables, and defines test suites and individual tests using Mocha, including test setup and conditional execution. The tests cover listing files in a project directory, ignoring hidden directories for better performance, and verifying the presence of specific projects.</p>
 <a href="./fix_project_paths.html">fix project paths</a>
 <br /><br />
@@ -112,7 +118,6 @@
 <p>This code analyzes source code files (JavaScript, TypeScript, or C#) within a project to identify and extract long functions, providing information about their location and content.  It uses regular expressions and file system operations to locate and process the code.</p>
 <a href="./cell_12.html">Cell 12</a>
 <br /><br />
-<p>Here is a summary of the code in one or two sentences:</p>
 <p>The code declares variables for a user's profile directory path and a project directory path, then calls an asynchronous function that searches for long functions in the project directory and sends the results or errors to <code>$().sendResult()</code> or <code>$().sendError()</code>.</p>
 <p>The purpose of <code>$().async()</code> and <code>$().sendResult()</code>/<code>$().sendError()</code> is unknown as it is not clearly documented.</p>
 <a href="./file_tools__match_filename.html">file tools, match filename</a>

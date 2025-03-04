@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../linkedin_webdriver/index.html">linkedin webdriver</a>
-    <br /><br />
+    <h3><a href="../linkedin_webdriver/index.html">linkedin webdriver</a></h3>
     <a href="./login_linkedin.html">login linkedin</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -49,11 +55,14 @@
 
   </nav>
   <header>
-    <a href="../linkedin_webdriver/index.html">linkedin webdriver</a> ${PREV} ${NEXT}
+    <a href="../linkedin_webdriver/index.html">linkedin webdriver</a> |  | <a href="./cell_1.html">Cell 1</a>
   </header>
 
-  <p>Here's a two-sentence summary:</p>
-<p>The <code>loginLinkedIn</code> function logs a user into LinkedIn using the <code>enterLinkedIn</code> function, which retrieves login credentials from a hardcoded JSON file and uses Selenium to fill in the login form. The <code>loginLinkedIn</code> function does not check if the login was successful, it only checks if the user is logged in, and the <code>enterLinkedIn</code> function does not handle errors robustly.</p>
+  <p>The <code>loginLinkedIn</code> function logs a user into LinkedIn using the <code>enterLinkedIn</code> function, which retrieves login credentials from a hardcoded JSON file and uses Selenium to fill in the login form. The <code>loginLinkedIn</code> function does not check if the login was successful, it only checks if the user is logged in, and the <code>enterLinkedIn</code> function does not handle errors robustly.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "login linkedin"</code></pre><h1>login linkedin</h1>
+
 
 
 <pre class="javascript"><code>
@@ -164,6 +173,7 @@ module.exports = loginLinkedIn
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../dylib/index.html">dylib</a>
-    <br /><br />
+    <h3><a href="../dylib/index.html">dylib</a></h3>
     <a href="./include_a_dynamic_lib.html">include a dynamic lib</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -65,11 +71,14 @@
 
   </nav>
   <header>
-    <a href="../dylib/index.html">dylib</a> ${PREV} ${NEXT}
+    <a href="../dylib/index.html">dylib</a> | <a href="./set_mouse_position.html">set mouse position</a> | <a href="./get_c_exports.html">get c exports</a>
   </header>
 
-  <p>Here's a 2-sentence summary:</p>
-<p>The <code>getParameters</code> function is an asynchronous function that extracts data from a provided C++ code string using the <code>select</code> function from the <code>antlr tree</code> package. It imports the <code>select</code> function using an <code>importer</code> object and returns the extracted data, which is then exported as a module.</p>
+  <p>The <code>getParameters</code> function is an asynchronous function that extracts data from a provided C++ code string using the <code>select</code> function from the <code>antlr tree</code> package. It imports the <code>select</code> function using an <code>importer</code> object and returns the extracted data, which is then exported as a module.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "get c parameters"</code></pre><h1>get c parameters</h1>
+
 
 
 <pre class="javascript"><code>
@@ -91,6 +100,7 @@ module.exports = getParameters
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

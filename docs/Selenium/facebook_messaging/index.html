@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Selenium/index.html">Selenium</a>
-    <br /><br />
+    <h3><a href="../../Selenium/index.html">Selenium</a></h3>
     <a href="../What_is_Selenium/index.html">What is Selenium</a>
 <br /><br />
 <a href="../auth/index.html">auth</a>
@@ -99,10 +105,12 @@
 
   </nav>
   <header>
-    <a href="../../Selenium/index.html">Selenium</a> ${PREV} ${NEXT}
+    <a href="../../Selenium/index.html">Selenium</a> | <a href="../facebook_data/index.html">facebook data</a> | <a href="../facebook_webdriver/index.html">facebook webdriver</a>
   </header>
 
-  <a href="./get_unread_threads_facebook.html">get unread threads facebook</a>
+  <h1>facebook messaging</h1>
+
+<a href="./get_unread_threads_facebook.html">get unread threads facebook</a>
 <br /><br />
 <p>This code automates the process of retrieving and reading unread Facebook threads by logging into the user's account, navigating to the unread messages page, listing the threads, and then reading the content of each thread.  It is designed to be used as a reusable function within a larger application.</p>
 <a href="./scan_commands_facebook.html">scan commands facebook</a>
@@ -119,7 +127,6 @@
 <p>This code extracts information about participants in Facebook message threads by navigating to each participant and scraping their profile data using web automation techniques.</p>
 <a href="./cell_5.html">Cell 5</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>The code imports a module from a file named <code>Core</code> and uses it to run a Selenium cell with the argument <code>'messages from facebook'</code>. The result of the Selenium cell is then processed through a series of promise chains and error handling blocks to ultimately send the result to the <code>$.</code> object.</p>
 <a href="./send_facebook_message.html">send facebook message</a>
 <br /><br />

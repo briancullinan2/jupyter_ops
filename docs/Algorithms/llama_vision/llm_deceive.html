@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llama_vision/index.html">llama vision</a>
-    <br /><br />
+    <h3><a href="../llama_vision/index.html">llama vision</a></h3>
     <a href="./llama_vision.html">llama vision</a>
 <br /><br />
 <a href="./analyze_image_with_llm.html">analyze image with llm</a>
@@ -71,13 +77,15 @@
 
   </nav>
   <header>
-    <a href="../llama_vision/index.html">llama vision</a> ${PREV} ${NEXT}
+    <a href="../llama_vision/index.html">llama vision</a> | <a href="./analyze_image_with_llm.html">analyze image with llm</a> | <a href="./cell_3.html">Cell 3</a>
   </header>
 
-  <p>Here is a summary of the <code>llmDeceive</code> function in one sentence:</p>
-<p>The <code>llmDeceive</code> function is an asynchronous function that interacts with an LLM session, sending a prompt and receiving a response while displaying the output in real-time, and handles session initialization, cleanup, and export.</p>
-<p>Alternatively, a two-sentence summary would be:</p>
+  <p>The <code>llmDeceive</code> function is an asynchronous function that interacts with an LLM session, sending a prompt and receiving a response while displaying the output in real-time, and handles session initialization, cleanup, and export.</p>
 <p>The <code>llmDeceive</code> function initializes an LLM session, sends a prompt, and receives a response from the LLM, displaying the output in real-time. It also handles session cleanup and export for further use in other applications.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "llm deceive"</code></pre><h1>llm deceive</h1>
+
 
 
 <pre class="javascript"><code>
@@ -122,6 +130,7 @@ module.exports = llmDeceive
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

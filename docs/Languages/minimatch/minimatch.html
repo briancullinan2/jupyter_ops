@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../minimatch/index.html">minimatch</a>
-    <br /><br />
+    <h3><a href="../minimatch/index.html">minimatch</a></h3>
     <a href="./__expand.html">, expand</a>
 <br /><br />
 <a href="./mini_parser.html">mini parser</a>
@@ -53,10 +59,14 @@
 
   </nav>
   <header>
-    <a href="../minimatch/index.html">minimatch</a> ${PREV} ${NEXT}
+    <a href="../minimatch/index.html">minimatch</a> | <a href="./mini_parser.html">mini parser</a> | <a href="./cell_3.html">Cell 3</a>
   </header>
 
   <p>This code provides a <code>minimatch</code> function that allows you to match filenames against simplified glob-like patterns by converting them into regular expressions. It handles brace expansions, splits patterns into segments, parses them into regexps, and efficiently tests filename matches against the resulting expression.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "minimatch"</code></pre><h1>minimatch</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core')
@@ -120,6 +130,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../discord_activities/index.html">discord activities</a>
-    <br /><br />
+    <h3><a href="../discord_activities/index.html">discord activities</a></h3>
     <a href="./discord_client_code.html">discord client code</a>
 <br /><br />
 <a href="./discord_client_auth_code.html">discord client auth code</a>
@@ -59,10 +65,14 @@
 
   </nav>
   <header>
-    <a href="../discord_activities/index.html">discord activities</a> ${PREV} ${NEXT}
+    <a href="../discord_activities/index.html">discord activities</a> | <a href="./discord_authenticate_instances.html">discord authenticate instances</a> | 
   </header>
 
   <p>The <code>getToken</code> function is an asynchronous handler that retrieves an access token for the Discord API using the client credentials flow, making a POST request to the <code>oauth2/token</code> endpoint and storing user information in the <code>INSTANCES</code> and <code>SESSIONS</code> objects. The function returns the access token data as a JSON response, setting various cookies for user authentication and storing a random nonce for future commands.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "discord express token endpoint"</code></pre><h1>discord express token endpoint</h1>
+
 
 
 <pre class="javascript"><code>const {INSTANCES, SESSIONS} = importer.import('discord gateway')
@@ -142,6 +152,7 @@ module.exports = getToken
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../quake_3_commands/index.html">quake 3 commands</a>
-    <br /><br />
+    <h3><a href="../quake_3_commands/index.html">quake 3 commands</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -79,11 +85,12 @@
 
   </nav>
   <header>
-    <a href="../quake_3_commands/index.html">quake 3 commands</a> ${PREV} ${NEXT}
+    <a href="../quake_3_commands/index.html">quake 3 commands</a> | <a href="./cell_14.html">Cell 14</a> | <a href="./cell_16.html">Cell 16</a>
   </header>
 
-  <p>Here is a summary of the command breakdown in two sentences:</p>
-<p>The command decompresses and extracts the contents of an archived shell script (<code>linuxq3ademo.gz.sh</code>) using the <code>tail</code>, <code>gzip</code>, and <code>tar</code> commands. The command assumes the presence of the <code>linuxq3ademo.gz.sh</code> file in the current directory and utilizes standard Linux toolset commands to perform the extraction.</p>
+  <p>The command decompresses and extracts the contents of an archived shell script (<code>linuxq3ademo.gz.sh</code>) using the <code>tail</code>, <code>gzip</code>, and <code>tar</code> commands. The command assumes the presence of the <code>linuxq3ademo.gz.sh</code> file in the current directory and utilizes standard Linux toolset commands to perform the extraction.</p>
+<h1>Cell 15</h1>
+
 
 
 <pre class="bash"><code>
@@ -98,6 +105,7 @@ tail -n +165 linuxq3ademo.gz.sh | gzip -cd | tar xf -
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

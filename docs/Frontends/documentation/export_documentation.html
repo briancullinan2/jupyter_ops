@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../documentation/index.html">documentation</a>
-    <br /><br />
+    <h3><a href="../documentation/index.html">documentation</a></h3>
     <a href="./convert_notebook_to_open_api.html">convert notebook to open api</a>
 <br /><br />
 <a href="./test_convert_notebook_api.html">test convert notebook api</a>
@@ -59,11 +65,14 @@
 
   </nav>
   <header>
-    <a href="../documentation/index.html">documentation</a> ${PREV} ${NEXT}
+    <a href="../documentation/index.html">documentation</a> | <a href="./discover_well-known_apis.html">discover well-known apis</a> | <a href="./highlight_js.html">highlight js</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code:</p>
-<p>This Node.js script exports documentation for a project in HTML format, utilizing various imports and functions to generate the documentation, including rendering Markdown to HTML using the <code>Remarkable</code> module. The script defines an asynchronous function <code>exportAll(query)</code> that iterates over notebooks in the project directory and generates HTML documentation for each.</p>
+  <p>This Node.js script exports documentation for a project in HTML format, utilizing various imports and functions to generate the documentation, including rendering Markdown to HTML using the <code>Remarkable</code> module. The script defines an asynchronous function <code>exportAll(query)</code> that iterates over notebooks in the project directory and generates HTML documentation for each.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "export documentation"</code></pre><h1>export documentation</h1>
+
 
 
 <pre class="javascript"><code>const fs = require('fs')
@@ -73,16 +82,16 @@ const { storeAllLlamaFunctions } = importer.import('store all notebook llm funct
 const { listInProject } = importer.import('list project files');
 const { askLlamaAboutCode } = importer.import('ask llm about code')
 const { askLlamaToSummerize, askLlamaToGeneralize } = importer.import('ask llm to summerize')
-const {cacheCells} = importer.import('cache notebook')
-const {safeurl} = importer.import('domain cache tools')
-const {Remarkable} = require('remarkable');
-const md = new Remarkable({html: true, xhtmlOut: true, breaks: true});
+const { cacheCells } = importer.import('cache notebook')
+const { safeurl } = importer.import('domain cache tools')
+const { Remarkable } = require('remarkable');
+const md = new Remarkable({ html: true, xhtmlOut: true, breaks: true });
 
 const PROJECT_PATH = path.resolve(path.join(path.dirname(__dirname), 'docs'))
 
 async function exportAll(query) {
   // await storeAllLlamaFunctions()
-  if(!fs.existsSync(PROJECT_PATH)) {
+  if (!fs.existsSync(PROJECT_PATH)) {
     fs.mkdirSync(PROJECT_PATH)
   }
 
@@ -100,23 +109,29 @@ async function exportAll(query) {
     output: '',
     indexOutput: '',
     title: 'Categories',
-    parent: ''
+    parent: '',
+    next: '',
+    prev: ''
   }
+  results[intro].output += '&lt;h1&gt;Categories&lt;/h1&gt;\n\n'
 
+  let prevCategory = ''
+  let prevIndex = ''
   let categories = []
   let namespaces = {}
   for (let i = 0; i &lt; notebooks.length; i++) {
     // TODO: output folders and pages for every namespace and notebook
     const relative = path.relative(path.resolve(__dirname, '../'), notebooks[i])
     let category = relative.split(path.sep)[0]
-    if(category.endsWith('.ipynb')) {
+    if (category.endsWith('.ipynb')) {
       category = 'Introduction'
     }
 
-    if(!categories.includes(category)) {
+    if (!categories.includes(category)) {
       categories.push(category)
-      results[intro].output += '&lt;a href="./' +  category + '/index.html"&gt;' + category + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
-      results[intro].indexOutput += '&lt;a href="../' +  category + '/index.html"&gt;' + category + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+      prevIndex = ''
+      results[intro].output += '&lt;a href="./' + category + '/index.html"&gt;' + category + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+      results[intro].indexOutput += '&lt;a href="../' + category + '/index.html"&gt;' + category + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
     }
 
     if (!fs.existsSync(path.join(PROJECT_PATH, category))) {
@@ -124,14 +139,23 @@ async function exportAll(query) {
     }
 
     const catpath = path.join(PROJECT_PATH, category, 'index.html')
-    if(typeof results[catpath] == 'undefined') {
+    if (typeof results[catpath] == 'undefined') {
       results[catpath] = {
         output: '',
         indexOutput: '',
-        title: category
+        title: category,
+        next: '',
+        prev: ''
       }
       results[catpath].index = intro
       results[catpath].parent = '&lt;a href="../index.html"&gt;Categories&lt;/a&gt;'
+      results[catpath].output += '&lt;h1&gt;' + category + '&lt;/h1&gt;\n\n'
+      results[catpath].link = '&lt;a href="../' + category + '/index.html"&gt;' + category + '&lt;/a&gt;'
+      if (i &gt; 0 &amp;&amp; prevCategory) {
+        results[prevCategory].next = results[catpath].link
+        results[catpath].prev = results[prevCategory].link
+      }
+      prevCategory = catpath
     }
 
 
@@ -141,24 +165,36 @@ async function exportAll(query) {
       fs.mkdirSync(fullpath)
     }
 
-    results[catpath].output += '&lt;a href="./' +  safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
-    results[catpath].indexOutput += '&lt;a href="../' +  safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+    results[catpath].output += '&lt;a href="./' + safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+    // used by the next level down
+    results[catpath].indexOutput += '&lt;a href="../' + safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
     let index = path.join(fullpath, 'index.html')
     results[index] = {
       output: '',
       indexOutput: '',
-      title: namespace
+      title: namespace,
+      next: '',
+      prev: ''
     }
     results[index].index = catpath
-    results[index].parent = '&lt;a href="../../' +  category + '/index.html"&gt;' + category + '&lt;/a&gt;'
+    results[index].parent = '&lt;a href="../../' + category + '/index.html"&gt;' + category + '&lt;/a&gt;'
+    results[index].output += '&lt;h1&gt;' + namespace + '&lt;/h1&gt;\n\n'
+    results[index].link = '&lt;a href="../' + safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;'
+    if (i &gt; 0 &amp;&amp; prevIndex) {
+      results[prevIndex].next = results[index].link
+      results[index].prev = results[prevIndex].link
+    }
+    prevIndex = index
 
     namespaces[relative] = []
 
     const newCache = cacheCells(notebooks[i])
 
-    for(let j = 0; j &lt; newCache.length; j++) {
+
+    let prevKey = ''
+    for (let j = 0; j &lt; newCache.length; j++) {
       let cellname = newCache[j].questions[0]
-      if(!cellname) {
+      if (!cellname) {
         cellname = 'cell_' + j
       } else {
         cellname = safeurl(cellname)
@@ -170,27 +206,41 @@ async function exportAll(query) {
       results[key].output += languageTemplate.code.replaceAll('${LANGUAGE}', newCache[j].language)
 
       let title = newCache[j].questions[0]
-      if(!title) {
+      if (!title) {
         title = 'Cell ' + j
       }
+      results[key].output = '&lt;h1&gt;' + title + '&lt;/h1&gt;\n\n' + results[key].output
+      if (newCache[j].questions[0])
+        results[key].output = '&lt;h2&gt;Run example&lt;/h2&gt;\n\n&lt;pre language="bash"&gt;&lt;code&gt;npm run import -- "' + newCache[j].questions[0] + '"&lt;/code&gt;&lt;/pre&gt;' + results[key].output
       results[key].index = index
       results[key].title = title
-      results[key].parent = '&lt;a href="../' +  safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;'
-      results[index].output += '&lt;a href="./' +  cellname + '.html"&gt;' + title + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
-      results[index].indexOutput += '&lt;a href="./' +  cellname + '.html"&gt;' + title + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+      results[key].link = '&lt;a href="./' + cellname + '.html"&gt;' + title + '&lt;/a&gt;'
+      if (j &gt; 0) {
+        results[prevKey].next = results[key].link
+        results[key].prev = results[prevKey].link
+      } else {
+        results[key].prev = ''
+      }
+      if (j == newCache.length - 1) {
+        results[key].next = ''
+      }
+      results[key].parent = '&lt;a href="../' + safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;'
+      results[index].output += '&lt;a href="./' + cellname + '.html"&gt;' + title + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+      results[index].indexOutput += '&lt;a href="./' + cellname + '.html"&gt;' + title + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+      prevKey = key
 
       const description = functionCache[notebooks[i] + '[' + j + ']']
-      if(!description) {
+      if (!description) {
         continue
       }
 
-      results[index].output += md.render(description.summary)
-      results[key].output = md.render(description.summary) + results[key].output
+      results[index].output += md.render(description.summary.replaceAll(/^.*?summary.*?:/gmi, ''))
+      results[key].output = md.render(description.summary.replaceAll(/^.*?summary.*?:/gmi, '')) + results[key].output
       results[key].output = results[key].output + md.render(description.description)
     }
 
     // TODO: generate parameter, return type descriptions
-    
+
 
   }
 
@@ -203,7 +253,9 @@ async function exportAll(query) {
     let output = javadocTemplate.code
     output = output.replaceAll('${TITLE}', results[paths[i]].title)
     output = output.replaceAll('${PARENT}', results[paths[i]].parent)
-    if(results[paths[i]].index)
+    output = output.replaceAll('${NEXT}', results[paths[i]].next)
+    output = output.replaceAll('${PREV}', results[paths[i]].prev)
+    if (results[paths[i]].index)
       output = output.replaceAll('${CLASSES}', results[results[paths[i]].index].indexOutput)
     else
       output = output.replaceAll('${CLASSES}', '')
@@ -225,6 +277,7 @@ module.exports = exportAll
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

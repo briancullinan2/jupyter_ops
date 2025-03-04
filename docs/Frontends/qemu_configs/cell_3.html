@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../qemu_configs/index.html">qemu configs</a>
-    <br /><br />
+    <h3><a href="../qemu_configs/index.html">qemu configs</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -63,13 +69,13 @@
 
   </nav>
   <header>
-    <a href="../qemu_configs/index.html">qemu configs</a> ${PREV} ${NEXT}
+    <a href="../qemu_configs/index.html">qemu configs</a> | <a href="./cell_2.html">Cell 2</a> | <a href="./cell_4.html">Cell 4</a>
   </header>
 
-  <p>Here's a summary of the QEMU and Spice Server command in one sentence:</p>
-<p>This command boots a virtual machine with QEMU, allocates 3 GB of RAM, and connects to it with a Spice server using the Spice client, while also configuring various settings such as CPU, graphics, network, and disk image.</p>
-<p>Alternatively, here's a brief summary in two sentences:</p>
+  <p>This command boots a virtual machine with QEMU, allocates 3 GB of RAM, and connects to it with a Spice server using the Spice client, while also configuring various settings such as CPU, graphics, network, and disk image.</p>
 <p>The command boots a virtual machine using <code>qemu-system-x86_64</code> with specified settings for CPU, memory, and graphics. It then connects to the VM using the Spice client, allowing remote access and managing the VM through a graphical interface.</p>
+<h1>Cell 3</h1>
+
 
 
 <pre class="bash"><code>qemu-system-x86_64 -smp 3 -cpu host -m 3G -vga qxl \
@@ -86,6 +92,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../cied2000/index.html">cied2000</a>
-    <br /><br />
+    <h3><a href="../cied2000/index.html">cied2000</a></h3>
     <a href="./ciede2000.html">ciede2000</a>
 <br /><br />
 <a href="./rgb_2_lab.html">rgb 2 lab</a>
@@ -51,11 +57,14 @@
 
   </nav>
   <header>
-    <a href="../cied2000/index.html">cied2000</a> ${PREV} ${NEXT}
+    <a href="../cied2000/index.html">cied2000</a> | <a href="./ciede2000.html">ciede2000</a> | <a href="./try_ciede2000.html">try ciede2000</a>
   </header>
 
-  <p>Here's a brief summary:</p>
-<p>This code provides functions for color space conversions, including <code>RGBtoXYZ</code>, <code>XYZtoLab</code>, and <code>rgb2lab</code>, which transform RGB values into L<em>a</em>b* color space according to CIE XYZ and Lab specifications. The code uses C programming language and assumes RGB values are in the range [0, 255] and XYZ values are in the range [0, 1].</p>
+  <p>This code provides functions for color space conversions, including <code>RGBtoXYZ</code>, <code>XYZtoLab</code>, and <code>rgb2lab</code>, which transform RGB values into L<em>a</em>b* color space according to CIE XYZ and Lab specifications. The code uses C programming language and assumes RGB values are in the range [0, 255] and XYZ values are in the range [0, 1].</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "rgb 2 lab"</code></pre><h1>rgb 2 lab</h1>
+
 
 
 <pre class="c"><code>#include &lt;math.h&gt;
@@ -127,6 +136,7 @@ double *rgb2lab(int R, int G, int B){
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

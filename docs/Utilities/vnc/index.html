@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Utilities/index.html">Utilities</a>
-    <br /><br />
+    <h3><a href="../../Utilities/index.html">Utilities</a></h3>
     <a href="../active_directory/index.html">active directory</a>
 <br /><br />
 <a href="../bash/index.html">bash</a>
@@ -101,17 +107,17 @@
 
   </nav>
   <header>
-    <a href="../../Utilities/index.html">Utilities</a> ${PREV} ${NEXT}
+    <a href="../../Utilities/index.html">Utilities</a> | <a href="../uuid/index.html">uuid</a> | <a href="../wget/index.html">wget</a>
   </header>
 
-  <a href="./What_is_VNC.html">What is VNC</a>
+  <h1>vnc</h1>
+
+<a href="./What_is_VNC.html">What is VNC</a>
 <br /><br />
 <p>This code snippet configures a Linux desktop for remote access using VNC by launching a window manager and starting a VNC server on port 5900.  This allows another computer to connect and control the Linux machine remotely.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here's a summary of the code breakdown in one sentence:</p>
 <p>This shell command executes a script (<code>../novnc/utils/launch.sh</code>) with VNC functionality enabled (<code>--vnc</code>) and connects to the VNC server at <code>localhost:5900</code>.</p>
-<p>Alternatively, here's a two-sentence summary:</p>
 <p>This command runs a script with VNC functionality enabled. The script is launched remotely using the VNC server at <code>localhost:5900</code>.</p>
 <a href="./VNC_HTML_client.html">VNC HTML client</a>
 <br /><br />

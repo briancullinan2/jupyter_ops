@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Utilities/index.html">Utilities</a>
-    <br /><br />
+    <h3><a href="../../Utilities/index.html">Utilities</a></h3>
     <a href="../active_directory/index.html">active directory</a>
 <br /><br />
 <a href="../bash/index.html">bash</a>
@@ -101,16 +107,16 @@
 
   </nav>
   <header>
-    <a href="../../Utilities/index.html">Utilities</a> ${PREV} ${NEXT}
+    <a href="../../Utilities/index.html">Utilities</a> | <a href="../qr_codes/index.html">qr codes</a> | <a href="../robot/index.html">robot</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>raspberry pi</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
-<p>Here is a summary in one sentence:</p>
 <p>This C code snippet is a driver for MaxDetect series sensors using the wiringPi library, providing two functions to wait for pin transitions and read bytes from the MaxDetect bus. The code is licensed under the LGPL version 3 or later and is specific to the MaxDetect series sensors and wiringPi library.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here's a summary of the file overview in one or two sentences:</p>
 <p>The <code>rht03.c</code> C program is a driver for the MaxDetect series RHT03 sensor, designed to run on a Raspberry Pi device, and it continuously reads and displays temperature and humidity values from the sensor. The program is distributed under the GNU Lesser General Public License (LGPL) version 3 or later, written by Gordon Henderson and part of the wiringPi project.</p>
 
 </body>

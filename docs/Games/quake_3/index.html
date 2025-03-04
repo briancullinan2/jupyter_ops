@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Games/index.html">Games</a>
-    <br /><br />
+    <h3><a href="../../Games/index.html">Games</a></h3>
     <a href="../quake_3_commands/index.html">quake 3 commands</a>
 <br /><br />
 <a href="../quake_3_model_conv/index.html">quake 3 model conv</a>
@@ -55,10 +61,12 @@
 
   </nav>
   <header>
-    <a href="../../Games/index.html">Games</a> ${PREV} ${NEXT}
+    <a href="../../Games/index.html">Games</a> | <a href="../quake_3_model_conv/index.html">quake 3 model conv</a> | <a href="../quake3_server_connector/index.html">quake3 server connector</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>quake 3</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./__find_pk3_files_in_zips.html">, find pk3 files in zips</a>
 <br /><br />

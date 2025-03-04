@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../vnc/index.html">vnc</a>
-    <br /><br />
+    <h3><a href="../vnc/index.html">vnc</a></h3>
     <a href="./What_is_VNC.html">What is VNC</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -63,10 +69,14 @@
 
   </nav>
   <header>
-    <a href="../vnc/index.html">vnc</a> ${PREV} ${NEXT}
+    <a href="../vnc/index.html">vnc</a> | <a href="./cell_1.html">Cell 1</a> | <a href="./Use_vnc_with_live-server.html">Use vnc with live-server</a>
   </header>
 
   <p>This code sets up a local copy of the noVNC project by creating a directory, checking if a &quot;master&quot; branch already exists, and cloning the repository from GitHub if necessary. It then lists the contents of the &quot;novnc&quot; directory and displays the current working directory.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "VNC HTML client"</code></pre><h1>VNC HTML client</h1>
+
 
 
 <pre class="bash"><code>mkdir -p novnc ; if git --work-tree=./novnc branch | grep master; then \
@@ -83,6 +93,7 @@ fi ; ls -la novnc ; pwd
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

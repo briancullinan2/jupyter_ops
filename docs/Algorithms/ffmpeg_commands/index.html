@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Algorithms/index.html">Algorithms</a>
-    <br /><br />
+    <h3><a href="../../Algorithms/index.html">Algorithms</a></h3>
     <a href="../audio/index.html">audio</a>
 <br /><br />
 <a href="../ffmpeg_commands/index.html">ffmpeg commands</a>
@@ -73,18 +79,17 @@
 
   </nav>
   <header>
-    <a href="../../Algorithms/index.html">Algorithms</a> ${PREV} ${NEXT}
+    <a href="../../Algorithms/index.html">Algorithms</a> | <a href="../audio/index.html">audio</a> | <a href="../image_magik_commands/index.html">image magik commands</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>ffmpeg commands</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
-<p>Here is a summary of the FFmpeg command in one sentence:</p>
 <p>The FFmpeg command converts an input <code>.mp4</code> video file to an output <code>.webm</code> file using VP9 video codec, Opus audio codec, and a constant rate factor of 30, with an automatically determined video bitrate and a fixed 128k audio bitrate.</p>
-<p>Alternatively, here is a two-sentence summary:</p>
 <p>To convert an input video file to a <code>.webm</code> file, the FFmpeg command is used with the following parameters: <code>ffmpeg -i input.mp4 -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus output.webm</code>. This command uses the VP9 video codec, Opus audio codec, and a constant rate factor of 30 to control the video quality.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the FFmpeg command:</p>
 <p>The FFmpeg command is used to stream video and audio from an RTMP source to YouTube Live, using the H.264 codec for video and the AAC codec for audio. The command sets various settings for video and audio encoding, including bitrate, frame rate, and sampling rate, and outputs the stream in FLV format at a specified URL.</p>
 
 </body>

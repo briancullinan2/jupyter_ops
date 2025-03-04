@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frontends/index.html">Frontends</a>
-    <br /><br />
+    <h3><a href="../../Frontends/index.html">Frontends</a></h3>
     <a href="../blog/index.html">blog</a>
 <br /><br />
 <a href="../brians_resume/index.html">brians resume</a>
@@ -81,16 +87,16 @@
 
   </nav>
   <header>
-    <a href="../../Frontends/index.html">Frontends</a> ${PREV} ${NEXT}
+    <a href="../../Frontends/index.html">Frontends</a> | <a href="../discord_imagine/index.html">discord imagine</a> | <a href="../discord_remote/index.html">discord remote</a>
   </header>
 
-  <a href="./discord_music_player.html">discord music player</a>
+  <h1>discord player</h1>
+
+<a href="./discord_music_player.html">discord music player</a>
 <br /><br />
-<p>Here is a summary of the code in one sentence:<br />
-The <code>playerCommands</code> function is a JavaScript module that manages Discord bot commands by registering, updating, and deleting commands, as well as removing unused commands, using various functions from imported Discord modules.</p>
+<p>The <code>playerCommands</code> function is a JavaScript module that manages Discord bot commands by registering, updating, and deleting commands, as well as removing unused commands, using various functions from imported Discord modules.</p>
 <a href="./discord_music_player_server.html">discord music player server</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the provided code breakdown:</p>
 <p>The code sets up an Express app, importing necessary modules and variables, and defining several routes to handle requests, including token endpoint, root, and directory requests. The app also defines a <code>discordLogin</code> function to handle Discord login requests and generates HTML code using the <code>directoryToHtml</code> function, but does not start the server instance, which is stored in the <code>server</code> variable.</p>
 
 </body>

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../vnc/index.html">vnc</a>
-    <br /><br />
+    <h3><a href="../vnc/index.html">vnc</a></h3>
     <a href="./What_is_VNC.html">What is VNC</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -63,10 +69,14 @@
 
   </nav>
   <header>
-    <a href="../vnc/index.html">vnc</a> ${PREV} ${NEXT}
+    <a href="../vnc/index.html">vnc</a> | <a href="./VNC_HTML_client.html">VNC HTML client</a> | <a href="./VNC_in_Docker.html">VNC in Docker</a>
   </header>
 
   <p>This code installs the <code>live-server</code> package globally and then starts a local web server serving the &quot;novnc&quot; project, typically opening a browser window to display the project's content.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "Use vnc with live-server"</code></pre><h1>Use vnc with live-server</h1>
+
 
 
 <pre class="bash"><code>npm i -g live-server
@@ -80,6 +90,7 @@ live-server novnc
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

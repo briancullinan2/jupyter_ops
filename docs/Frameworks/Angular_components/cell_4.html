@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../Angular_components/index.html">Angular components</a>
-    <br /><br />
+    <h3><a href="../Angular_components/index.html">Angular components</a></h3>
     <a href="./Display_search_notebook_component.html">Display search notebook component</a>
 <br /><br />
 <a href="./Search_notebook_service.html">Search notebook service</a>
@@ -59,11 +65,12 @@
 
   </nav>
   <header>
-    <a href="../Angular_components/index.html">Angular components</a> ${PREV} ${NEXT}
+    <a href="../Angular_components/index.html">Angular components</a> | <a href="./Sockify_search_notebook_provider.html">Sockify search notebook provider</a> | <a href="./Display_login_form.html">Display login form</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code:</p>
-<p>This code sets up a project environment by determining the user's home directory path, appending a project directory path, initializing a server, and establishing a connection to the server using Socket.IO. It then sends a &quot;close&quot; event to the server, likely to terminate the connection.</p>
+  <p>This code sets up a project environment by determining the user's home directory path, appending a project directory path, initializing a server, and establishing a connection to the server using Socket.IO. It then sends a &quot;close&quot; event to the server, likely to terminate the connection.</p>
+<h1>Cell 4</h1>
+
 
 
 <pre class="typescript"><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
@@ -81,6 +88,7 @@ client.emit('close');
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frameworks/index.html">Frameworks</a>
-    <br /><br />
+    <h3><a href="../../Frameworks/index.html">Frameworks</a></h3>
     <a href="../Angular_2/index.html">Angular 2</a>
 <br /><br />
 <a href="../Angular_components/index.html">Angular components</a>
@@ -105,10 +111,12 @@
 
   </nav>
   <header>
-    <a href="../../Frameworks/index.html">Frameworks</a> ${PREV} ${NEXT}
+    <a href="../../Frameworks/index.html">Frameworks</a> | <a href="../jwt_in_csharp/index.html">jwt in csharp</a> | <a href="../ngx-translate/index.html">ngx-translate</a>
   </header>
 
-  <a href="./Generate_a_bunch_of_spec_files.html">Generate a bunch of spec files</a>
+  <h1>karma template</h1>
+
+<a href="./Generate_a_bunch_of_spec_files.html">Generate a bunch of spec files</a>
 <br /><br />
 <p>This code automates the creation of Angular component test files by finding component <code>.ts</code> files, generating corresponding <code>.spec.ts</code> files using a template, and filling in component titles and import statements.</p>
 <a href="./cell_1.html">Cell 1</a>

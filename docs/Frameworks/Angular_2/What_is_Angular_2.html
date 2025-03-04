@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../Angular_2/index.html">Angular 2</a>
-    <br /><br />
+    <h3><a href="../Angular_2/index.html">Angular 2</a></h3>
     <a href="./What_is_Angular_2.html">What is Angular 2</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -57,10 +63,14 @@
 
   </nav>
   <header>
-    <a href="../Angular_2/index.html">Angular 2</a> ${PREV} ${NEXT}
+    <a href="../Angular_2/index.html">Angular 2</a> |  | <a href="./cell_1.html">Cell 1</a>
   </header>
 
   <p>This code snippet, executed in a Bash shell, uses the Angular CLI (<code>ng</code>) to start the development server for an Angular application.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "What is Angular 2"</code></pre><h1>What is Angular 2</h1>
+
 
 
 <pre class="typescript"><code>%%
@@ -77,6 +87,7 @@ start</code></pre>
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

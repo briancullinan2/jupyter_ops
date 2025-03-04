@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,17 +47,20 @@
 
 <body>
   <nav>
-    <a href="../qr_codes/index.html">qr codes</a>
-    <br /><br />
+    <h3><a href="../qr_codes/index.html">qr codes</a></h3>
     <a href="./generate_a_qr_code_using_google_APIs.html">generate a qr code using google APIs</a>
 <br /><br />
 
   </nav>
   <header>
-    <a href="../qr_codes/index.html">qr codes</a> ${PREV} ${NEXT}
+    <a href="../qr_codes/index.html">qr codes</a> |  | 
   </header>
 
   <p>This code generates a QR code image containing contact information encoded as a vCard and displays it using a custom framework or library.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "generate a qr code using google APIs"</code></pre><h1>generate a qr code using google APIs</h1>
+
 
 
 <pre class="javascript"><code>var util = require('util');
@@ -78,6 +88,7 @@ $.async(request(qr)
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

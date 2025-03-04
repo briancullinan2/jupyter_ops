@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frontends/index.html">Frontends</a>
-    <br /><br />
+    <h3><a href="../../Frontends/index.html">Frontends</a></h3>
     <a href="../blog/index.html">blog</a>
 <br /><br />
 <a href="../brians_resume/index.html">brians resume</a>
@@ -81,10 +87,12 @@
 
   </nav>
   <header>
-    <a href="../../Frontends/index.html">Frontends</a> ${PREV} ${NEXT}
+    <a href="../../Frontends/index.html">Frontends</a> | <a href="../documentation/index.html">documentation</a> | <a href="../marketing_scripts/index.html">marketing scripts</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>edit anywhere</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <p>This single line of code in a <code>readme.md</code> file contains a line comment indicating that the file is a placeholder or template, with <code>readme.md</code> being the file being commented on.</p>
 <a href="./read_gist_files.html">read gist files</a>
@@ -92,7 +100,6 @@
 <p>This code provides a reusable function to fetch a GitHub Gist by its ID using the Octokit library and handles both successful retrieval and potential errors.  It is designed to be used in other parts of an application.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>The code imports a module and a function (<code>getGist</code>) from it to read Gist files, and then uses conditional execution to call the <code>getGist</code> function with a specific Gist ID if a variable <code>$</code> is defined. The result of the <code>getGist</code> function is sent using the <code>$</code> object's <code>sendResult</code> method, and any errors are sent using the <code>sendError</code> method.</p>
 <a href="./write_gist_files.html">write gist files</a>
 <br /><br />

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frameworks/index.html">Frameworks</a>
-    <br /><br />
+    <h3><a href="../../Frameworks/index.html">Frameworks</a></h3>
     <a href="../Angular_2/index.html">Angular 2</a>
 <br /><br />
 <a href="../Angular_components/index.html">Angular components</a>
@@ -105,10 +111,12 @@
 
   </nav>
   <header>
-    <a href="../../Frameworks/index.html">Frameworks</a> ${PREV} ${NEXT}
+    <a href="../../Frameworks/index.html">Frameworks</a> |  | <a href="../Angular_components/index.html">Angular components</a>
   </header>
 
-  <a href="./What_is_Angular_2.html">What is Angular 2</a>
+  <h1>Angular 2</h1>
+
+<a href="./What_is_Angular_2.html">What is Angular 2</a>
 <br /><br />
 <p>This code snippet, executed in a Bash shell, uses the Angular CLI (<code>ng</code>) to start the development server for an Angular application.</p>
 <a href="./cell_1.html">Cell 1</a>
@@ -122,11 +130,9 @@
 <p>This code opens a new tab in the default browser with the specified URL (<code>https://material.angular.io/components/category/forms</code>) and sets the tab's height to 600 pixels and delays loading JavaScript by 2 seconds.</p>
 <a href="./cell_4.html">Cell 4</a>
 <br /><br />
-<p>Here is a 2-sentence summary:</p>
 <p>The <code>routing</code> constant is exported from the file, configuring the routing with the <code>RouterModule</code> from <code>@angular/router</code>. The routing configuration uses an array of routes and disables the use of the URL's hash for client-side routing.</p>
 <a href="./cell_5.html">Cell 5</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the CSS code breakdown:</p>
 <p>This CSS code defines two styles for HTML anchor tags, one using a direct hex code and the other using a CSS variable for a more scalable and maintainable design. The direct hex code sets the text color to <code>#fe5000</code>, while the variable assignment uses a CSS variable <code>@primary</code> to achieve the same result.</p>
 
 </body>

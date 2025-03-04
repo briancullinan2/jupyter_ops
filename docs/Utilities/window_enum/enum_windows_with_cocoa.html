@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../window_enum/index.html">window enum</a>
-    <br /><br />
+    <h3><a href="../window_enum/index.html">window enum</a></h3>
     <a href="./enum_windows_with_cocoa.html">enum windows with cocoa</a>
 <br /><br />
 <a href="./lookup_window_by.html">lookup window by</a>
@@ -49,11 +55,14 @@
 
   </nav>
   <header>
-    <a href="../window_enum/index.html">window enum</a> ${PREV} ${NEXT}
+    <a href="../window_enum/index.html">window enum</a> |  | <a href="./lookup_window_by.html">lookup window by</a>
   </header>
 
-  <p>Here's a two-sentence summary of the code:</p>
-<p>This macOS code retrieves a list of open windows and their titles, storing them in global variables and using two functions: <code>enumWindows</code> to get the list of windows and <code>getTitle</code> to retrieve the title of each window. The <code>main</code> function iterates over the list of windows, calling <code>getTitle</code> to print each title to the console.</p>
+  <p>This macOS code retrieves a list of open windows and their titles, storing them in global variables and using two functions: <code>enumWindows</code> to get the list of windows and <code>getTitle</code> to retrieve the title of each window. The <code>main</code> function iterates over the list of windows, calling <code>getTitle</code> to print each title to the console.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "enum windows with cocoa"</code></pre><h1>enum windows with cocoa</h1>
+
 
 
 <pre class="objective-c"><code>
@@ -118,6 +127,7 @@ int main(int argc, char *argv[])
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/objective-c.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

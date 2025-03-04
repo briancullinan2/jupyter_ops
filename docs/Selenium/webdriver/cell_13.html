@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../webdriver/index.html">webdriver</a>
-    <br /><br />
+    <h3><a href="../webdriver/index.html">webdriver</a></h3>
     <a href="./selenium_client.html">selenium client</a>
 <br /><br />
 <a href="./selenium_session.html">selenium session</a>
@@ -81,11 +87,12 @@
 
   </nav>
   <header>
-    <a href="../webdriver/index.html">webdriver</a> ${PREV} ${NEXT}
+    <a href="../webdriver/index.html">webdriver</a> | <a href="./cell_12.html">Cell 12</a> | <a href="./cell_14.html">Cell 14</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code:</p>
-<p>This code imports necessary modules, sets variables, and defines two primary functions: <code>addPlugins</code> and <code>verifySession</code>. The <code>addPlugins</code> function attaches event listeners to a client object and locks/unlocks promises to update or add session data, while the <code>verifySession</code> function verifies a session by setting the session ID, adding plugins, and interacting with the client object's promise chain.</p>
+  <p>This code imports necessary modules, sets variables, and defines two primary functions: <code>addPlugins</code> and <code>verifySession</code>. The <code>addPlugins</code> function attaches event listeners to a client object and locks/unlocks promises to update or add session data, while the <code>verifySession</code> function verifies a session by setting the session ID, adding plugins, and interacting with the client object's promise chain.</p>
+<h1>Cell 13</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -171,6 +178,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

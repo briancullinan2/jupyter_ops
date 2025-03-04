@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Utilities/index.html">Utilities</a>
-    <br /><br />
+    <h3><a href="../../Utilities/index.html">Utilities</a></h3>
     <a href="../active_directory/index.html">active directory</a>
 <br /><br />
 <a href="../bash/index.html">bash</a>
@@ -101,17 +107,17 @@
 
   </nav>
   <header>
-    <a href="../../Utilities/index.html">Utilities</a> ${PREV} ${NEXT}
+    <a href="../../Utilities/index.html">Utilities</a> | <a href="../nmap/index.html">nmap</a> | <a href="../packages/index.html">packages</a>
   </header>
 
-  <a href="./create_a_trusted_root_CA.html">create a trusted root CA</a>
+  <h1>openssl</h1>
+
+<a href="./create_a_trusted_root_CA.html">create a trusted root CA</a>
 <br /><br />
 <p>This code sets up a root Certificate Authority (CA) using OpenSSL, configuring directories, files, and policies for issuing and managing digital certificates.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here is a brief summary of the shell script in one sentence:</p>
 <p>This shell script creates a self-signed intermediate Certificate Authority (CA) using OpenSSL, generating a private key, CSR, and certificate, and creating a certificate chain with the root CA's certificate.</p>
-<p>Here is a two-sentence summary:</p>
 <p>This shell script creates a self-signed intermediate Certificate Authority (CA) using OpenSSL by generating a private key, CSR, and certificate. The script then creates a certificate chain by concatenating the intermediate CA's certificate and the root CA's certificate.</p>
 <a href="./generate_a_self-signed_cert.html">generate a self-signed cert</a>
 <br /><br />

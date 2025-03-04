@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Selenium/index.html">Selenium</a>
-    <br /><br />
+    <h3><a href="../../Selenium/index.html">Selenium</a></h3>
     <a href="../What_is_Selenium/index.html">What is Selenium</a>
 <br /><br />
 <a href="../auth/index.html">auth</a>
@@ -99,10 +105,12 @@
 
   </nav>
   <header>
-    <a href="../../Selenium/index.html">Selenium</a> ${PREV} ${NEXT}
+    <a href="../../Selenium/index.html">Selenium</a> | <a href="../facebook_connections/index.html">facebook connections</a> | <a href="../facebook_messaging/index.html">facebook messaging</a>
   </header>
 
-  <a href="./Log_in_to_facebook.html">Log in to facebook</a>
+  <h1>facebook data</h1>
+
+<a href="./Log_in_to_facebook.html">Log in to facebook</a>
 <br /><br />
 <p>This code automates Facebook login using Puppeteer. It first checks if the user is already logged in, and if not, it fills in the username and password, submits the form, and handles potential CAPTCHAs.</p>
 <a href="./Scrape_facebook_profile.html">Scrape facebook profile</a>
@@ -119,7 +127,6 @@
 <p>This code automates the scraping of Facebook event data from HTML files, extracts event URLs, and stores the scraped information in a JSON file.</p>
 <a href="./cell_5.html">Cell 5</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The code is designed to scrape Facebook events and send the result or error to a recipient, using a function <code>scrapeFacebookEvents()</code> that returns a promise and is called asynchronously. The code uses <code>then</code> and <code>catch</code> methods to handle the resolved promise and any errors that occur, respectively, and sends the result or error to a recipient using <code>sendResult(diff)</code> and <code>sendError(e)</code> functions.</p>
 <a href="./Scrape_facebook_friends.html">Scrape facebook friends</a>
 <br /><br />
@@ -129,18 +136,15 @@
 <p>This code tracks changes in a Facebook user's friend list by scraping their friend list from Facebook, comparing it to previous lists, and identifying new and removed friends.  It then exports this functionality for use in other parts of an application.</p>
 <a href="./cell_8.html">Cell 8</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>This JavaScript code retrieves the difference between a user's Facebook friends and LinkedIn connections and sends the result or error to the client using the <code>getFriendsDiff()</code> function, which returns a promise that is then handled by the <code>.then()</code> and <code>.catch()</code> methods. If an error occurs, the <code>$.sendError(e)</code> function is called to send an error message to the client, while successful results are sent to the client using the <code>$.sendResult(diff)</code> function.</p>
 <a href="./Unfollow_everyone_on_facebook.html">Unfollow everyone on facebook</a>
 <br /><br />
 <p>This code automates the process of unfollowing users on Facebook by identifying and clicking unfollow buttons on the user's &quot;Following&quot; page.  It uses a custom module and promises for efficient and concurrent unfollowing.</p>
 <a href="./cell_10.html">Cell 10</a>
 <br /><br />
-<p>Here is a summary of the code in one sentence:</p>
 <p>The code uses the <code>selenium cell</code> function to automate two tasks (<code>log in facebook</code> and <code>unfollow everyone facebook</code>) and handles their execution and errors using a series of <code>then</code> and <code>catch</code> blocks.</p>
 <a href="./cell_11.html">Cell 11</a>
 <br /><br />
-<p>Here is a summary of the provided functions in one sentence:</p>
 <p>The code defines three functions: <code>getUninvited</code>, <code>clickInvite</code>, and <code>clickConnect</code>, which together automate the process of inviting individuals to a fundraiser event by identifying uninvited participants and simulating clicks on them.</p>
 
 </body>

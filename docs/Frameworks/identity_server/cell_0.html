@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../identity_server/index.html">identity server</a>
-    <br /><br />
+    <h3><a href="../identity_server/index.html">identity server</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -57,11 +63,12 @@
 
   </nav>
   <header>
-    <a href="../identity_server/index.html">identity server</a> ${PREV} ${NEXT}
+    <a href="../identity_server/index.html">identity server</a> |  | <a href="./cell_1.html">Cell 1</a>
   </header>
 
-  <p>Here is a summary of the code breakdown in one or two sentences:</p>
-<p>The code imports necessary modules, sets environment variables and file paths, and defines a helper function <code>bashToRun</code> to process code. The main function <code>identityDockerfile</code> creates a Dockerfile with a VNC connection by processing commands using the <code>importer</code> module and saving the processed code to the Dockerfile.</p>
+  <p>The code imports necessary modules, sets environment variables and file paths, and defines a helper function <code>bashToRun</code> to process code. The main function <code>identityDockerfile</code> creates a Dockerfile with a VNC connection by processing commands using the <code>importer</code> module and saving the processed code to the Dockerfile.</p>
+<h1>Cell 0</h1>
+
 
 
 <pre class="javascript"><code>var path = require('path');
@@ -111,6 +118,7 @@ var identityDockerfile = (output) =&gt; {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

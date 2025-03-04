@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Core/index.html">Core</a>
-    <br /><br />
+    <h3><a href="../../Core/index.html">Core</a></h3>
     <a href="../aspects/index.html">aspects</a>
 <br /><br />
 <a href="../cache/index.html">cache</a>
@@ -71,97 +77,77 @@
 
   </nav>
   <header>
-    <a href="../../Core/index.html">Core</a> ${PREV} ${NEXT}
+    <a href="../../Core/index.html">Core</a> | <a href="../intent/index.html">intent</a> | <a href="../languages/index.html">languages</a>
   </header>
 
-  <a href="./__get_kernel_json.html">, get kernel json</a>
+  <h1>kernels</h1>
+
+<a href="./__get_kernel_json.html">, get kernel json</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>This code defines a Node.js module that exports a JSON interface object and two functions, <code>wireJson</code> and <code>pathJson</code>, which transform a <code>kernel_json</code> object into a new object that conforms to the JSON interface. The functions, <code>wireJson</code> and <code>pathJson</code>, modify the <code>argv</code> property of the <code>kernel_json</code> object to include specific elements, such as a connection file or a path, depending on their existence.</p>
 <a href="./test_notebook_kernel_json.html">test notebook kernel json</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the given code breakdown:</p>
 <p>The code imports modules from the <code>Core</code> module using the <code>require</code> function and an <code>importer</code> object, and then uses the imported functions to create a JSON object and perform logging and interface output. The JSON object is created using the <code>wireJson</code> function and contains properties such as <code>display_name</code>, <code>argv</code>, and <code>language</code>, which are then logged to the console along with the result of an <code>interface</code> function call.</p>
 <a href="./custom_kernel_json.html">custom kernel json</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code:</p>
 <p>This code exports a set of functions that generate JSON objects for different kernel types used in kernel communication, including Python, Node.js, Jupyter Notebook, Bash, and Processing. Each function combines a base configuration with user-provided kernel JSON data to create a complete JSON object for use in kernel communication.</p>
 <a href="./jupyter_meta_kernel.html">jupyter meta kernel</a>
 <br /><br />
-<p>Here is a summary of the code in one sentence:</p>
 <p>The <code>languageInterface</code> JavaScript object is defined with properties for mimetypes, names, file extensions, versions, and tool settings, then exported as a module using <code>module.exports</code>.</p>
 <a href="./kernel_info_interface.html">kernel info interface</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code breakdown:</p>
 <p>The code imports necessary modules and data, and defines the <code>kernelInfoInterface</code> object with various properties that provide information about a kernel. The <code>nativeKernelInfo</code> function takes a <code>kernel_info</code> object, extends it with additional information, and returns an object with language, kernel, and meta data.</p>
 <a href="./meta_kernel_interface.html">meta kernel interface</a>
 <br /><br />
-<p>Here is a 2-sentence summary:</p>
 <p>The code imports modules and interfaces from a parent folder and defines a <code>metaKernelInterface</code> object with various properties. This object is then exported as a module, providing an interface for interacting with a kernel in a programming environment.</p>
 <a href="./native_meta_kernel.html">native meta kernel</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>The code consists of two main functions, <code>reassignProperties</code> and <code>nativeMetaKernel</code>, which interact with a <code>meta_kernel</code> object to fill in properties, create a new kernel instance, and perform installation and initialization tasks. The code imports various modules and functions from the <code>../Core</code> directory, utilizing an <code>extend</code> function, <code>metaKernelInterface</code>, and <code>nativeMethods</code> to create a new kernel instance and perform additional tasks.</p>
 <a href="./native_meta_methods.html">native meta methods</a>
 <br /><br />
-<p>Here is a 2-sentence summary:</p>
 <p>This code defines a set of functions for a meta kernel that manages and interacts with other kernels, including initialization, installation, messaging, and execution handling. The module exports these functions, which depend on libraries such as <code>mkdirp</code>, <code>fs</code>, and <code>jupyter-kernelspec</code>, and can be used by other applications to interact with kernels.</p>
 <a href="./__socket_meta_kernel.html">, socket meta kernel</a>
 <br /><br />
 <p>This code defines a Node.js application with a socket-based kernel implementation, featuring meta-programming capabilities. It exports functions for initializing and responding to socket messages, and creates a new kernel instance from a provided meta_kernel object.</p>
 <a href="./process_meta_kernel.html">process meta kernel</a>
 <br /><br />
-<p>Here is a summary of the code in one sentence:</p>
 <p>The code is part of a Node.js application that interacts with a meta kernel, providing various functions to execute commands, inspect the system, and handle messages, while also managing subprocesses and enforcing an interface.</p>
-<p>Alternatively, if you would like a two-sentence summary:</p>
 <p>The code consists of several functions that interact with a meta kernel, including executing commands, inspecting the system, handling messages, and managing subprocesses. The code also enforces an interface and contains TODO comments suggesting it is still a work-in-progress.</p>
 <a href="./test_process_meta_kernel.html">test process meta kernel</a>
 <br /><br />
-<p>Here is a summary of the code in two sentences:</p>
 <p>The code imports dependencies from a <code>Core</code> module and defines a <code>testProcessKernel</code> function that creates a new kernel object, performs some operations on it, and resolves a Promise with the kernel object. The <code>testProcessKernel</code> function is exported as a module and can be integrated with an external <code>$</code> object, which is used to send its result or error to the outside.</p>
 <a href="./TODO__repl_process_kernel.html">TODO: repl process kernel</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code breakdown:</p>
 <p>This code imports modules and functions from a parent directory, sets up event listeners, and defines functions for initializing and responding to incoming messages in a meta kernel. The code exports the main functions (<code>replMetaKernal</code>, <code>do_respond</code>, and <code>do_init</code>) to be used elsewhere in the program.</p>
 <a href="./test_repl_process_using_bash.html">test repl process using bash</a>
 <br /><br />
-<p>Here is a two-sentence summary of the provided code:</p>
 <p>This JavaScript module exports a <code>testProcessKernel</code> function that creates a new kernel instance and tests its functionality by executing a message and shutting down the kernel. The function uses the <code>bashKernel</code> function to create a new kernel instance and sets up a custom <code>do_respond</code> function to simulate a response to executed messages.</p>
 <a href="./__jupyter_wire_interface.html">, jupyter wire interface</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code breakdown:</p>
 <p>The code defines a JavaScript object <code>wireKernelInterface</code> that extends the properties of <code>metaKernelInterface</code> and implements required and optional kernel interface methods, as well as custom reply and protocol methods. The object is then exported as a module using <code>module.exports</code>, making it available for use in other parts of the application.</p>
 <a href="./cell_14.html">Cell 14</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The code consists of four functions: <code>status</code>, <code>onError</code>, <code>onStdout</code>, and <code>onStderr</code>, which handle responses to kernel requests, error handling, and standard output and error messages, respectively. These functions utilize the <code>do_respond</code> and <code>respond</code> methods to send messages to the shell and iopub sockets, providing status updates, error notifications, and streaming data.</p>
 <a href="./cell_15.html">Cell 15</a>
 <br /><br />
-<p>Here is a summary of the code in one sentence:</p>
 <p>The provided code is a Node.js module for a Jupyter kernel that handles messages between the kernel and the front-end, including setting up sockets, sending responses, and handling incoming messages.</p>
 <p>Alternatively, you can break it down into two sentences:</p>
 <p>The code initializes the kernel by setting up sockets, binding them to the kernel, and sending an idle status message back to the front-end. It also handles incoming messages from the front-end, sending responses and handling different message types, including control, shell, and stdin messages.</p>
 <a href="./TODO_jupyter_wire_kernel.html">TODO jupyter wire kernel</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one to two sentences:</p>
 <p>The code imports various modules and functions, defines two helper functions <code>addCB</code> and <code>wireKernel</code>, and creates a <code>wireKernel</code> class that extends the kernel object with methods to handle requests. The <code>wireKernel</code> class and its interface are then exported as a module.</p>
 <a href="./TODO__wire_meta_kernel.html">TODO: wire meta kernel</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one sentence:</p>
 <p>This code imports a module, declares variables and functions, and defines four functions (<code>do_execute</code>, <code>do_display</code>, <code>do_shutdown</code>, <code>do_complete</code>) that handle different types of requests, increment a counter, store functions and send responses, and execute promise chains to perform tasks and send replies.</p>
-<p>Alternatively, here is a two-sentence summary:</p>
 <p>This code sets up a system to handle different types of requests, including execution, display, shutdown, and completion, and defines functions to send responses and execute tasks accordingly. The code also uses promise chains to manage asynchronous operations and send replies to the kernel.</p>
 <a href="./__node_meta_kernel.html">, node meta kernel</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code overview:</p>
 <p>This Node.js module exports a function <code>nodeMetaKernel</code> that returns a meta kernel for Node.js, which has methods for executing, checking, and initializing code. The meta kernel uses Babel for code transpilation and sandboxed execution with <code>vm.runInThisContext</code>, and is wrapped with the <code>socketMetaKernel</code> function.</p>
 <a href="./test_node_meta_kernel.html">test node meta kernel</a>
 <br /><br />
-<p>Here is a summary of the code in two sentences:</p>
 <p>The code imports custom modules from the <code>../Core</code> directory and uses them to test the functionality of a <code>nodeMetaKernel</code> module, including logging its output and that of its <code>do_message</code> method. The <code>testNodeMetaKernel</code> function is then exported as a module and run in a test environment where the <code>$</code> variable is defined.</p>
 <a href="./node_wire_kernel.html">node wire kernel</a>
 <br /><br />
-<p>Here's a summary of the code in two sentences:</p>
 <p>The code imports various modules and functions, including a utility function to parse version numbers, and defines a <code>nodeKernel</code> function that uses the imported modules to create a Node.js kernel. The <code>nodeKernel</code> function is then exported as a module, making it available for use in other parts of the application.</p>
 <a href="./cell_21.html">Cell 21</a>
 <br /><br />
@@ -169,15 +155,12 @@
 <br /><br />
 <a href="./https___pypi_org_search_q__o__c_Framework__3A_3A_IPython.html">https://pypi.org/search/q=&o=&c=Framework+%3A%3A+IPython</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>The <code>bashKernel</code> function creates a kernel for executing Bash code by initializing a kernel instance with a configuration that runs Bash code and echoes input, while the <code>bashLanguage</code> function defines a language interface object for Bash code with properties such as name, version, and file extension. The <code>bashLanguage</code> function uses <code>Object.assign</code> to merge the provided properties with a default <code>language_info</code> object.</p>
 <a href="./__decode_encode_ipython_zmq_protocol.html">, decode encode ipython zmq protocol</a>
 <br /><br />
-<p>Here is a summary of the module in one sentence:</p>
 <p>This module exports four functions (<code>parseMessage</code>, <code>hash</code>, <code>json</code>, and <code>collapseMessage</code>) and several variables for message processing, formatting, and cryptographic operations. The functions can be used for tasks such as parsing messages, generating hashes, JSON-stringifying data, and collapsing messages into a compact format.</p>
 <a href="./bind_wire_sockets.html">bind wire sockets</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code breakdown:</p>
 <p>The <code>setupSockets</code> function establishes multiple sockets based on a provided configuration and returns a promise resolving to an object with established sockets. A related <code>setupSocket</code> function creates a single socket connection, also returning a promise that resolves to the established socket object.</p>
 <a href="./cell_26.html">Cell 26</a>
 <br /><br />

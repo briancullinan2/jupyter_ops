@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_drive/index.html">google drive</a>
-    <br /><br />
+    <h3><a href="../google_drive/index.html">google drive</a></h3>
     <a href="./authorize_google_drive.html">authorize google drive</a>
 <br /><br />
 <a href="./test_list_google_drive.html">test list google drive</a>
@@ -69,11 +75,14 @@
 
   </nav>
   <header>
-    <a href="../google_drive/index.html">google drive</a> ${PREV} ${NEXT}
+    <a href="../google_drive/index.html">google drive</a> |  | <a href="./test_list_google_drive.html">test list google drive</a>
   </header>
 
-  <p>Here's a 2-sentence summary of the code breakdown:</p>
-<p>The code requires various modules and defines several variables for interacting with the Google API, specifically the Google Drive API. It includes a function called <code>authorizeDrive</code> that authenticates with the Google API using a credentials file and returns a client instance for the Google Drive API.</p>
+  <p>The code requires various modules and defines several variables for interacting with the Google API, specifically the Google Drive API. It includes a function called <code>authorizeDrive</code> that authenticates with the Google API using a credentials file and returns a client instance for the Google Drive API.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "authorize google drive"</code></pre><h1>authorize google drive</h1>
+
 
 
 <pre class="javascript"><code>var fs = require('fs');
@@ -112,6 +121,7 @@ module.exports = authorizeDrive;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

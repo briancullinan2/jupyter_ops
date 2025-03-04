@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llama_vision/index.html">llama vision</a>
-    <br /><br />
+    <h3><a href="../llama_vision/index.html">llama vision</a></h3>
     <a href="./llama_vision.html">llama vision</a>
 <br /><br />
 <a href="./analyze_image_with_llm.html">analyze image with llm</a>
@@ -71,11 +77,14 @@
 
   </nav>
   <header>
-    <a href="../llama_vision/index.html">llama vision</a> ${PREV} ${NEXT}
+    <a href="../llama_vision/index.html">llama vision</a> | <a href="./cell_4.html">Cell 4</a> | <a href="./ollama_vision_request.html">ollama vision request</a>
   </header>
 
-  <p>Here is a 2-sentence summary of the code breakdown:</p>
-<p>The code defines a function <code>llmSpeech</code> that generates speech from a given <code>prompt</code> using the <code>outetts</code> library, saving the output to a file named &quot;output.wav&quot;. The function is exported as a module attribute, allowing for external access, and takes a single parameter <code>prompt</code> with no return value.</p>
+  <p>The code defines a function <code>llmSpeech</code> that generates speech from a given <code>prompt</code> using the <code>outetts</code> library, saving the output to a file named &quot;output.wav&quot;. The function is exported as a module attribute, allowing for external access, and takes a single parameter <code>prompt</code> with no return value.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "llm voice"</code></pre><h1>llm voice</h1>
+
 
 
 <pre class="python"><code>import outetts
@@ -136,6 +145,7 @@ __all__ = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

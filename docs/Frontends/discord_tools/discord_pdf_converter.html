@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../discord_tools/index.html">discord tools</a>
-    <br /><br />
+    <h3><a href="../discord_tools/index.html">discord tools</a></h3>
     <a href="./discord_pdf_converter.html">discord pdf converter</a>
 <br /><br />
 <a href="./discord_notebook_connector.html">discord notebook connector</a>
@@ -65,11 +71,14 @@
 
   </nav>
   <header>
-    <a href="../discord_tools/index.html">discord tools</a> ${PREV} ${NEXT}
+    <a href="../discord_tools/index.html">discord tools</a> |  | <a href="./discord_notebook_connector.html">discord notebook connector</a>
   </header>
 
-  <p>Here is a 2-sentence summary of the code:</p>
-<p>The <code>doDiscordPdf</code> function is an asynchronous module that generates a temporary PDF, patches a Discord interaction's image attachment with the PDF, and updates the interaction with an error message if the PDF creation fails. It utilizes various external libraries and Node.js modules, including <code>discord api</code>, <code>collect all bookmarks</code>, <code>browser crawler tools</code>, and <code>domain cache tools</code>, to retrieve a cache, perform a browser request, and interact with the file system.</p>
+  <p>The <code>doDiscordPdf</code> function is an asynchronous module that generates a temporary PDF, patches a Discord interaction's image attachment with the PDF, and updates the interaction with an error message if the PDF creation fails. It utilizes various external libraries and Node.js modules, including <code>discord api</code>, <code>collect all bookmarks</code>, <code>browser crawler tools</code>, and <code>domain cache tools</code>, to retrieve a cache, perform a browser request, and interact with the file system.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "discord pdf converter"</code></pre><h1>discord pdf converter</h1>
+
 
 
 <pre class="javascript"><code>const os = require('os')
@@ -120,6 +129,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Selenium/index.html">Selenium</a>
-    <br /><br />
+    <h3><a href="../../Selenium/index.html">Selenium</a></h3>
     <a href="../What_is_Selenium/index.html">What is Selenium</a>
 <br /><br />
 <a href="../auth/index.html">auth</a>
@@ -99,35 +105,31 @@
 
   </nav>
   <header>
-    <a href="../../Selenium/index.html">Selenium</a> ${PREV} ${NEXT}
+    <a href="../../Selenium/index.html">Selenium</a> | <a href="../selenium_demo/index.html">selenium demo</a> | <a href="../send_social_message/index.html">send social message</a>
   </header>
 
-  <a href="./Start_a_selenium_http_express_server.html">Start a selenium http express server</a>
+  <h1>selenium server</h1>
+
+<a href="./Start_a_selenium_http_express_server.html">Start a selenium http express server</a>
 <br /><br />
 <p>This code sets up a REST API using Express.js to enable a web application to control a Selenium WebDriver instance running on a separate server, automating browser interactions. It uses Socket.IO for communication and a custom <code>importer</code> module to execute a Jupyter notebook containing Selenium server logic.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here is a two-sentence summary of the provided code breakdown:</p>
 <p>The code sets up routes for a WebdriverIO application using Express.js, defining handlers for GET and POST requests to various paths using route parameters and callback functions. Each route is associated with a callback that is called when the route is matched, and is likely being used by the WebdriverIO client to automate web browsers.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here's a two-sentence summary of the provided code overview:</p>
 <p>This code creates a REST API using Express for navigating and interacting with web pages in a Chrome browser instance, utilizing the Chrome Debugging Protocol. It provides functions for waiting for page loads and navigating to specific URLs, as well as API endpoints for retrieving and setting the current URL of the active tab.</p>
 <a href="./cell_3.html">Cell 3</a>
 <br /><br />
-<p>Here is a summary in one sentence:</p>
 <p>The <code>findElements</code> function uses the Chrome debugger API to find elements on a webpage based on an input selector, and is called by two express routes to handle POST requests. The function and express router are exported as part of the module, allowing it to be used in other applications.</p>
 <a href="./cell_4.html">Cell 4</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code breakdown:</p>
 <p>This code requires three external modules (<code>fs</code>, <code>path</code>, and <code>express</code>) and sets up environment variables and file paths to interact with a file system and create a web server. It defines several functions, including <code>deleteSession</code>, <code>createSession</code>, and <code>getSessionCapabilities</code>, and sets up an Express router with routes for creating, deleting, and retrieving session information.</p>
 <a href="./cell_5.html">Cell 5</a>
 <br /><br />
-<p>Here's a two-sentence summary of the provided code breakdown:</p>
 <p>The code defines a Node.js module that interacts with a ChromeDriver session using RESTful API endpoints and includes a function to retrieve window handles from the ChromeDriver. However, the code has several issues, including a function that doesn't use its intended parameter, a non-standard library that may require additional setup, and unimplemented routes in the Express router.</p>
 <a href="./cell_6.html">Cell 6</a>
 <br /><br />
-<p>Here's a 2-sentence summary:</p>
 <p>This code defines a <code>clickElement</code> function that simulates a mouse click on an element with a specified <code>id</code> using the Chrome debugger, and exports it along with an Express router instance that listens for POST requests to click elements. The <code>clickElement</code> function uses a sequence of Chrome debugger commands to resolve the element, evaluate a promise, and simulate a mouse click at the resolved coordinates.</p>
 
 </body>

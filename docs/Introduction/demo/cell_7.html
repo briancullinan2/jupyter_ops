@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../demo/index.html">demo</a>
-    <br /><br />
+    <h3><a href="../demo/index.html">demo</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -77,11 +83,12 @@
 
   </nav>
   <header>
-    <a href="../demo/index.html">demo</a> ${PREV} ${NEXT}
+    <a href="../demo/index.html">demo</a> | <a href="./cell_6.html">Cell 6</a> | <a href="./use_Docker.html">use Docker</a>
   </header>
 
-  <p>Here is a summary of the server management function in one or two sentences:</p>
-<p>The <code>manage_server</code> function is a basic server management function that connects to a server, retrieves recent activity logs, costs explorer data, and instance information, and returns this data as a dictionary. It includes error handling to catch and print any exceptions that may occur during server management.</p>
+  <p>The <code>manage_server</code> function is a basic server management function that connects to a server, retrieves recent activity logs, costs explorer data, and instance information, and returns this data as a dictionary. It includes error handling to catch and print any exceptions that may occur during server management.</p>
+<h1>Cell 7</h1>
+
 
 
 <pre class="javascript"><code>try and manage (i.e. show recent activity logs,
@@ -98,6 +105,7 @@ that server over there (i.e. the test cloud)
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

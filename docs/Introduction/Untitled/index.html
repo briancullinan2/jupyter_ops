@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Introduction/index.html">Introduction</a>
-    <br /><br />
+    <h3><a href="../../Introduction/index.html">Introduction</a></h3>
     <a href="../Untitled/index.html">Untitled</a>
 <br /><br />
 <a href="../Untitled1/index.html">Untitled1</a>
@@ -51,10 +57,12 @@
 
   </nav>
   <header>
-    <a href="../../Introduction/index.html">Introduction</a> ${PREV} ${NEXT}
+    <a href="../../Introduction/index.html">Introduction</a> |  | <a href="../Untitled1/index.html">Untitled1</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>Untitled</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <p>This Python code snippet <code>1 + 1</code> represents a simple arithmetic expression that adds two numbers together, resulting in <code>2</code>. The expression is executed using the <code>+</code> symbol to denote the addition operation.</p>
 <a href="./cell_1.html">Cell 1</a>

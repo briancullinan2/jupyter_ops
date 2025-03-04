@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../discord/index.html">discord</a>
-    <br /><br />
+    <h3><a href="../discord/index.html">discord</a></h3>
     <a href="./discord_request.html">discord request</a>
 <br /><br />
 <a href="./discord_gateway.html">discord gateway</a>
@@ -69,11 +75,14 @@
 
   </nav>
   <header>
-    <a href="../discord/index.html">discord</a> ${PREV} ${NEXT}
+    <a href="../discord/index.html">discord</a> | <a href="./discord_commands.html">discord commands</a> | <a href="./discord_threads.html">discord threads</a>
   </header>
 
-  <p>Here's a two-sentence summary:</p>
-<p>This code imports dependencies and exports three functions: <code>userGuilds</code>, <code>getGuildRoles</code>, and <code>userConnections</code>, which interact with the Discord API to retrieve user information, guild roles, and user connections, respectively. The functions are asynchronous and use the <code>request</code> function to make HTTP requests to the Discord API, with optional parameters for specifying user or guild IDs.</p>
+  <p>This code imports dependencies and exports three functions: <code>userGuilds</code>, <code>getGuildRoles</code>, and <code>userConnections</code>, which interact with the Discord API to retrieve user information, guild roles, and user connections, respectively. The functions are asynchronous and use the <code>request</code> function to make HTTP requests to the Discord API, with optional parameters for specifying user or guild IDs.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "discord guilds"</code></pre><h1>discord guilds</h1>
+
 
 
 <pre class="javascript"><code>var {DEFAULT_GUILD} = importer.import('discord configuration')
@@ -116,6 +125,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

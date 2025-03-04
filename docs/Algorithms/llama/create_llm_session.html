@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llama/index.html">llama</a>
-    <br /><br />
+    <h3><a href="../llama/index.html">llama</a></h3>
     <a href="./search_llama.html">search llama</a>
 <br /><br />
 <a href="./ask_llm_about_categories.html">ask llm about categories</a>
@@ -67,13 +73,16 @@
 
   </nav>
   <header>
-    <a href="../llama/index.html">llama</a> ${PREV} ${NEXT}
+    <a href="../llama/index.html">llama</a> | <a href="./store_all_notebook_llm_functions.html">store all notebook llm functions</a> | 
   </header>
 
-  <p>Here is a summary of the code in one sentence:</p>
-<p>The code initializes a chat session with the LLaMA model by importing necessary modules, defining variables and constants, and creating two asynchronous functions to initialize and create a new session.</p>
+  <p>The code initializes a chat session with the LLaMA model by importing necessary modules, defining variables and constants, and creating two asynchronous functions to initialize and create a new session.</p>
 <p>Or in two sentences:</p>
 <p>The code sets up a chat session with the LLaMA model by importing required modules and defining key variables and constants. Two asynchronous functions, <code>initSession</code> and <code>createSession</code>, are defined to handle the initialization and creation of new chat sessions.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "create llm session"</code></pre><h1>create llm session</h1>
+
 
 
 <pre class="javascript"><code>import path from "path"
@@ -196,6 +205,7 @@ export default {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

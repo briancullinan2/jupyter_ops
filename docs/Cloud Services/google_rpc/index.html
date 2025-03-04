@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Cloud Services/index.html">Cloud Services</a>
-    <br /><br />
+    <h3><a href="../../Cloud Services/index.html">Cloud Services</a></h3>
     <a href="../aws/index.html">aws</a>
 <br /><br />
 <a href="../cloudflare/index.html">cloudflare</a>
@@ -59,10 +65,12 @@
 
   </nav>
   <header>
-    <a href="../../Cloud Services/index.html">Cloud Services</a> ${PREV} ${NEXT}
+    <a href="../../Cloud Services/index.html">Cloud Services</a> | <a href="../google_cloud_commands/index.html">google cloud commands</a> | <a href="../google_storage_api/index.html">google storage api</a>
   </header>
 
-  <a href="./firebase_rpc_wrapper.html">firebase rpc wrapper</a>
+  <h1>google rpc</h1>
+
+<a href="./firebase_rpc_wrapper.html">firebase rpc wrapper</a>
 <br /><br />
 <p>This Firebase Cloud Function provides a remote procedure call (RPC) endpoint, allowing clients to execute functions defined elsewhere and receive results as JSON responses. It handles CORS requests, extracts function names from incoming data, and utilizes a custom <code>getResult</code> function to execute the requested logic.</p>
 <a href="./google_cloud_function_rpc_wrapper.html">google cloud function rpc wrapper</a>
@@ -76,7 +84,6 @@
 <p>This code provides a framework for creating cloud functions by defining a generic handler and a function to generate specialized handlers from code snippets.</p>
 <a href="./cell_4.html">Cell 4</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code breakdown:</p>
 <p>This code imports modules and functions from <code>Core.js</code> and uses them to import specific functions from other modules, such as <code>selectAst</code> and <code>makeHandler</code>. The code then uses these functions to create a handler for a function named <code>load ckeditor</code> and leaves some commented out code that appears to have been used for testing or logging purposes.</p>
 
 </body>

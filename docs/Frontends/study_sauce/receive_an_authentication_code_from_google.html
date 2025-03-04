@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../study_sauce/index.html">study sauce</a>
-    <br /><br />
+    <h3><a href="../study_sauce/index.html">study sauce</a></h3>
     <a href="./convert_anki_package_to_study_sauce.html">convert anki package to study sauce</a>
 <br /><br />
 <a href="./render_study_sauce_cards_page.html">render study sauce cards page</a>
@@ -61,11 +67,14 @@
 
   </nav>
   <header>
-    <a href="../study_sauce/index.html">study sauce</a> ${PREV} ${NEXT}
+    <a href="../study_sauce/index.html">study sauce</a> | <a href="./authorize_app_to_read_profile_info.html">authorize app to read profile info</a> | <a href="./create_a_study_sauce_user_directory.html">create a study sauce user directory</a>
   </header>
 
-  <p>Here is a 2-sentence summary of the provided code:</p>
-<p>This code utilizes oauth2Client to interact with Google services, generating unique IDs and extracting user profile data, which is then stored in a Google Sheets document. It consists of four main functions: <code>safeName</code> for string modification, <code>extractProfile</code> for user data extraction, <code>receiveCode</code> for handling OAuth authorization, and exports the <code>receiveCode</code> and <code>extractProfile</code> functions.</p>
+  <p>This code utilizes oauth2Client to interact with Google services, generating unique IDs and extracting user profile data, which is then stored in a Google Sheets document. It consists of four main functions: <code>safeName</code> for string modification, <code>extractProfile</code> for user data extraction, <code>receiveCode</code> for handling OAuth authorization, and exports the <code>receiveCode</code> and <code>extractProfile</code> functions.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "receive an authentication code from google"</code></pre><h1>receive an authentication code from google</h1>
+
 
 
 <pre class="javascript"><code>var uuid = require('uuid/v1');
@@ -127,6 +136,7 @@ module.exports.extractProfile = extractProfile
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

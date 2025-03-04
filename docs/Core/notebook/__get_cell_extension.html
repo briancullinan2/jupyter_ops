@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../notebook/index.html">notebook</a>
-    <br /><br />
+    <h3><a href="../notebook/index.html">notebook</a></h3>
     <a href="./readme_md.html">readme.md</a>
 <br /><br />
 <a href="./import_notebook__import_all_cell_modules.html">import notebook, import all cell modules</a>
@@ -77,10 +83,14 @@
 
   </nav>
   <header>
-    <a href="../notebook/index.html">notebook</a> ${PREV} ${NEXT}
+    <a href="../notebook/index.html">notebook</a> | <a href="./inject_cells_in_to_notebooks_when_built_with_webpack.html">inject cells in to notebooks when built with webpack</a> | <a href="./nice_name.html">nice name</a>
   </header>
 
   <p>The <code>getExtension</code> function determines the appropriate file extension for a code cell based on its language and type, such as <code>.js</code>, <code>.md</code>, or <code>.py</code>.  This function is designed to be used in a notebook environment for organizing and processing code.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- ", get cell extension"</code></pre><h1>, get cell extension</h1>
+
 
 
 <pre class="javascript"><code>// TODO: replace with a library?
@@ -132,6 +142,7 @@ module.exports = getExtension;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

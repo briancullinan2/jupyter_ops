@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../python_codekatas_solutions/index.html">python codekatas solutions</a>
-    <br /><br />
+    <h3><a href="../python_codekatas_solutions/index.html">python codekatas solutions</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -73,11 +79,12 @@
 
   </nav>
   <header>
-    <a href="../python_codekatas_solutions/index.html">python codekatas solutions</a> ${PREV} ${NEXT}
+    <a href="../python_codekatas_solutions/index.html">python codekatas solutions</a> | <a href="./cell_0.html">Cell 0</a> | <a href="./cell_2.html">Cell 2</a>
   </header>
 
-  <p>Here's a 2-sentence summary of the <code>merge(a, b)</code> function:</p>
-<p>The <code>merge(a, b)</code> function merges two sorted lists <code>a</code> and <code>b</code> in descending order into a single list, with a time complexity of O(n log n). It does this using a list comprehension that pops the largest element from either list at each iteration, as implemented by <code>return [max(a, b).pop(0) for _ in a+b]</code>.</p>
+  <p>The <code>merge(a, b)</code> function merges two sorted lists <code>a</code> and <code>b</code> in descending order into a single list, with a time complexity of O(n log n). It does this using a list comprehension that pops the largest element from either list at each iteration, as implemented by <code>return [max(a, b).pop(0) for _ in a+b]</code>.</p>
+<h1>Cell 1</h1>
+
 
 
 <pre class="python"><code>def merge(a, b):
@@ -97,6 +104,7 @@ print('All passed!')</code></pre>
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

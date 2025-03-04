@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../quake3_server_connector/index.html">quake3 server connector</a>
-    <br /><br />
+    <h3><a href="../quake3_server_connector/index.html">quake3 server connector</a></h3>
     undefined<a href="./index.html">index</a>
 <br /><br />
 <a href="./ssh_remote_wget.html">ssh remote wget</a>
@@ -57,11 +63,14 @@
 
   </nav>
   <header>
-    <a href="../quake3_server_connector/index.html">quake3 server connector</a> ${PREV} ${NEXT}
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a> | <a href="./challenge_discord_command.html">challenge discord command</a> | <a href="./quake_3_server_commands.html">quake 3 server commands</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code breakdown:</p>
-<p>The code is a Discord bot written in JavaScript using the Discord.js library, which imports various modules for interacting with the Discord API and performing specific bot functions. The bot defines regular expressions, arrays, and a configuration function that extracts command content and attachments, computes a filename, and creates a new file based on the command's content and attachments.</p>
+  <p>The code is a Discord bot written in JavaScript using the Discord.js library, which imports various modules for interacting with the Discord API and performing specific bot functions. The bot defines regular expressions, arrays, and a configuration function that extracts command content and attachments, computes a filename, and creates a new file based on the command's content and attachments.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "discord bot"</code></pre><h1>discord bot</h1>
+
 
 
 <pre class="node"><code>var ip6addr = require('ip6addr')
@@ -251,6 +260,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

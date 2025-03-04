@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_calendar_data/index.html">google calendar data</a>
-    <br /><br />
+    <h3><a href="../google_calendar_data/index.html">google calendar data</a></h3>
     <a href="./test_calendar_sum_all_hours_worked_on_study_sauce_since_september_2016.html">test calendar sum all hours worked on study sauce since september 2016</a>
 <br /><br />
 <a href="./convert_chrome_date_to_calendar_date.html">convert chrome date to calendar date</a>
@@ -63,10 +69,14 @@
 
   </nav>
   <header>
-    <a href="../google_calendar_data/index.html">google calendar data</a> ${PREV} ${NEXT}
+    <a href="../google_calendar_data/index.html">google calendar data</a> | <a href="./Parse_bookmarks_file.html">Parse bookmarks file</a> | <a href="./test_parse_bookmarks.html">test parse bookmarks</a>
   </header>
 
   <p>This code retrieves and processes today's browsing history from a Chrome SQLite database, likely for analysis or reporting.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "get bookmarks from local chrome database"</code></pre><h1>get bookmarks from local chrome database</h1>
+
 
 
 <pre class="javascript"><code>var sqlite3 = require('better-sqlite3');
@@ -101,6 +111,7 @@ if(typeof $ !== 'undefined') {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

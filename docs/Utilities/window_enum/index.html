@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Utilities/index.html">Utilities</a>
-    <br /><br />
+    <h3><a href="../../Utilities/index.html">Utilities</a></h3>
     <a href="../active_directory/index.html">active directory</a>
 <br /><br />
 <a href="../bash/index.html">bash</a>
@@ -101,18 +107,17 @@
 
   </nav>
   <header>
-    <a href="../../Utilities/index.html">Utilities</a> ${PREV} ${NEXT}
+    <a href="../../Utilities/index.html">Utilities</a> | <a href="../wget/index.html">wget</a> | <a href="../windows/index.html">windows</a>
   </header>
 
-  <a href="./enum_windows_with_cocoa.html">enum windows with cocoa</a>
+  <h1>window enum</h1>
+
+<a href="./enum_windows_with_cocoa.html">enum windows with cocoa</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>This macOS code retrieves a list of open windows and their titles, storing them in global variables and using two functions: <code>enumWindows</code> to get the list of windows and <code>getTitle</code> to retrieve the title of each window. The <code>main</code> function iterates over the list of windows, calling <code>getTitle</code> to print each title to the console.</p>
 <a href="./lookup_window_by.html">lookup window by</a>
 <br /><br />
-<p>Here's a summary of the <code>getTitle(int i)</code> function in one sentence:</p>
 <p>The <code>getTitle(int i)</code> function retrieves the title of a window with the specified layer index <code>i</code> by searching through an array of window dictionaries and constructing a string with the window's layer index and owner name.</p>
-<p>Alternatively, you can also condense the summary into two sentences:</p>
 <p>The <code>getTitle(int i)</code> function searches for a window with a matching layer index <code>i</code> in an array of window dictionaries.<br />
 If found, it constructs a string with the window's layer index and owner name, and returns a duplicate of this string as a C-style string.</p>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../image_magik_commands/index.html">image magik commands</a>
-    <br /><br />
+    <h3><a href="../image_magik_commands/index.html">image magik commands</a></h3>
     <a href="./reduce_noise_from_images_after_resizing.html">reduce noise from images after resizing</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -57,11 +63,12 @@
 
   </nav>
   <header>
-    <a href="../image_magik_commands/index.html">image magik commands</a> ${PREV} ${NEXT}
+    <a href="../image_magik_commands/index.html">image magik commands</a> | <a href="./cell_4.html">Cell 4</a> | 
   </header>
 
-  <p>Here is a 2-sentence summary of the Image Processing Script Breakdown:</p>
-<p>The scripts use ImageMagick commands to process an input image, removing extra space, resizing, rotating, and adding a watermark, with the final result being output to a new file. The scripts are identical in their functionality, but differ in their file paths and line endings, suggesting a possible Windows version (Script 2) alongside a Unix-based version (Script 1).</p>
+  <p>The scripts use ImageMagick commands to process an input image, removing extra space, resizing, rotating, and adding a watermark, with the final result being output to a new file. The scripts are identical in their functionality, but differ in their file paths and line endings, suggesting a possible Windows version (Script 2) alongside a Unix-based version (Script 1).</p>
+<h1>Cell 5</h1>
+
 
 
 <pre class="bash"><code>magick /Users/fred/desktop/PZImages/original/17201-33020@02.jpg -print "%f\n" \
@@ -87,6 +94,7 @@ magick path2originals\17201-33020@02.jpg -print "%f\n" -fuzz "10%" -trim +repage
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

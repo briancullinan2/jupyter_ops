@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Algorithms/index.html">Algorithms</a>
-    <br /><br />
+    <h3><a href="../../Algorithms/index.html">Algorithms</a></h3>
     <a href="../audio/index.html">audio</a>
 <br /><br />
 <a href="../ffmpeg_commands/index.html">ffmpeg commands</a>
@@ -73,33 +79,29 @@
 
   </nav>
   <header>
-    <a href="../../Algorithms/index.html">Algorithms</a> ${PREV} ${NEXT}
+    <a href="../../Algorithms/index.html">Algorithms</a> | <a href="../llm_tools/index.html">llm tools</a> | <a href="../opencv/index.html">opencv</a>
   </header>
 
-  <a href="./business_plan_llm.html">business plan llm</a>
+  <h1>llm writing</h1>
+
+<a href="./business_plan_llm.html">business plan llm</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>The <code>askLlamaToWriteBusinessPlan</code> function generates a business plan using a prompt model, taking in topic, name, and prompt model parameters, and processing user and AI responses to extract goals and Executive Summaries. The function is not fully completed, with the remaining code likely intended to sort responses based on the Hero's Journey framework.</p>
 <a href="./write_creatively_llm.html">write creatively llm</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>This code imports various functions and modules, including <code>selectModel</code>, <code>askLlamaForAChapterSynopsis</code>, and <code>Remarkable</code>, in order to generate content. It also defines a constant <code>APOTHEOSIS</code> with narrative descriptions and uses an <code>importer</code> to load various functions and modules from other files.</p>
 <a href="./argue_with_multiple_llms.html">argue with multiple llms</a>
 <br /><br />
 <p>The <code>arguelLlama</code> function is an asynchronous function that engages in a debate process with a Large Language Model (LLM) using two prompts, iterating 10 times to allow the LLM to respond to its own previous responses. It returns an array of responses from the LLM in the debate process, with optional additional processing or logging performed by a callback function.</p>
 <a href="./research_paper_llm.html">research paper llm</a>
 <br /><br />
-<p>Here is a summary of the code in one sentence:</p>
 <p>The <code>askLlamaWriteEssay</code> function uses LLM to generate an essay on a given topic by creating a chapter outline, selecting a random name, and writing long essay sections for each chapter.</p>
-<p>If you'd like a two-sentence summary, it would be:</p>
 <p>The <code>askLlamaWriteEssay</code> function uses LLM to generate an essay on a given topic by creating a chapter outline and writing long essay sections for each chapter. The function selects a random name for the essay and uses Markdown to format the chapter titles and descriptions.</p>
 <a href="./select_llm.html">select llm</a>
 <br /><br />
-<p>Here's a summary of the GGUF specifications and instructions in one or two sentences:</p>
 <p>The GGUF SPECIFICATIONS object contains a list of model names and their corresponding specifications, while the GGUF_INSTRUCTIONS object contains a list of model names and their corresponding instructions or behaviors. The instructions for specific models, such as 'Code', provide templates for the response, while others are set to 'void 0' indicating no specific instruction is defined.</p>
 <a href="./ask_llm_to_write_chapter_titles_and_descriptions.html">ask llm to write chapter titles and descriptions</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the function breakdown:</p>
 <p>The <code>askLlamaForAChapterSynopsis</code> function asynchronously generates a list of chapter or character synopses for a given topic by interacting with an LLM (Large Language Model), logging the user's prompt and the LLM's response, and parsing the response to extract the synopsis titles and descriptions. The function returns an object with key-value pairs representing the synopses, assuming the LLM's response contains a list of numbered titles followed by their descriptions.</p>
 <a href="./ask_llm_to_brainstorm.html">ask llm to brainstorm</a>
 <br /><br />
@@ -108,11 +110,9 @@
 <p>A TODO comment is a note indicating that the code requires modifications to a business plan and research plan, and it typically does not contain executable code. This section is for documentation purposes only.</p>
 <a href="./decode_xlsx_spreadsheet.html">decode xlsx spreadsheet</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>The <code>analyzeSpreadsheet</code> function reads an Excel file from a specified path (or a default location if not provided) and extracts cell values from a specified sheet and range. It returns an array of these cell values, with optional parameters for specifying the sheet name and range.</p>
 <a href="./elaborate_list_with_llm.html">elaborate list with llm</a>
 <br /><br />
-<p>Here's a summary of the code in two sentences:</p>
 <p>The <code>elaborateLlama</code> function analyzes an XLSX spreadsheet, creates prompt sequences from its data, and sends them to a Large Language Model (LLM) for responses, which are then logged and written to a temporary text file. The function is designed to handle asynchronous operations and can be exported as a module for use in other applications.</p>
 
 </body>

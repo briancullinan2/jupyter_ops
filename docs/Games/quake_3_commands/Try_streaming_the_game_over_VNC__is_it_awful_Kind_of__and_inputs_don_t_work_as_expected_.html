@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../quake_3_commands/index.html">quake 3 commands</a>
-    <br /><br />
+    <h3><a href="../quake_3_commands/index.html">quake 3 commands</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -79,11 +85,14 @@
 
   </nav>
   <header>
-    <a href="../quake_3_commands/index.html">quake 3 commands</a> ${PREV} ${NEXT}
+    <a href="../quake_3_commands/index.html">quake 3 commands</a> | <a href="./cell_2.html">Cell 2</a> | <a href="./cell_4.html">Cell 4</a>
   </header>
 
-  <p>Here is a 2-sentence summary of the Docker command breakdown:</p>
-<p>The <code>docker run</code> command starts a new container from an image, allowing interactive shell access, setting shared memory size, and mapping host ports to container ports. The command is used to run a Quake 3 game container with a bash shell, and remotely access it using a VNC key (VND7Z-M22AB-MQD7R-GAAKF-2B3EA).</p>
+  <p>The <code>docker run</code> command starts a new container from an image, allowing interactive shell access, setting shared memory size, and mapping host ports to container ports. The command is used to run a Quake 3 game container with a bash shell, and remotely access it using a VNC key (VND7Z-M22AB-MQD7R-GAAKF-2B3EA).</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "Try streaming the game over VNC, is it awful Kind of, and inputs don't work as expected."</code></pre><h1>Try streaming the game over VNC, is it awful Kind of, and inputs don't work as expected.</h1>
+
 
 
 <pre class="bash"><code>
@@ -101,6 +110,7 @@ docker run -it --shm-size=2g --name quake3 -d -p 5901:5900 quake3 bash
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

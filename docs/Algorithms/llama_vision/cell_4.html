@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llama_vision/index.html">llama vision</a>
-    <br /><br />
+    <h3><a href="../llama_vision/index.html">llama vision</a></h3>
     <a href="./llama_vision.html">llama vision</a>
 <br /><br />
 <a href="./analyze_image_with_llm.html">analyze image with llm</a>
@@ -71,11 +77,12 @@
 
   </nav>
   <header>
-    <a href="../llama_vision/index.html">llama vision</a> ${PREV} ${NEXT}
+    <a href="../llama_vision/index.html">llama vision</a> | <a href="./cell_3.html">Cell 3</a> | <a href="./llm_voice.html">llm voice</a>
   </header>
 
-  <p>Here's a summary of the code in two sentences:</p>
-<p>The code sets up a text-to-speech (TTS) system using the <code>outetts</code> library, importing necessary modules and environment variables, and defining a function <code>generateSpeech</code> that generates speech from a given prompt. The <code>generateSpeech</code> function creates a TTS interface instance, loads a default speaker, generates speech, and saves the output to a WAV file.</p>
+  <p>The code sets up a text-to-speech (TTS) system using the <code>outetts</code> library, importing necessary modules and environment variables, and defining a function <code>generateSpeech</code> that generates speech from a given prompt. The <code>generateSpeech</code> function creates a TTS interface instance, loads a default speaker, generates speech, and saves the output to a WAV file.</p>
+<h1>Cell 4</h1>
+
 
 
 <pre class="javascript"><code>import path from 'path'
@@ -132,6 +139,7 @@ export default generateSpeech
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

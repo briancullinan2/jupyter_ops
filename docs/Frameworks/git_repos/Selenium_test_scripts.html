@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../git_repos/index.html">git repos</a>
-    <br /><br />
+    <h3><a href="../git_repos/index.html">git repos</a></h3>
     <a href="./_test_repository.html">,test repository</a>
 <br /><br />
 <a href="./selenium_repository.html">selenium repository</a>
@@ -61,10 +67,14 @@
 
   </nav>
   <header>
-    <a href="../git_repos/index.html">git repos</a> ${PREV} ${NEXT}
+    <a href="../git_repos/index.html">git repos</a> | <a href="./run_the_Docker_image.html">run the Docker image</a> | 
   </header>
 
   <p>This command runs a Node.js test suite within a Docker container named &quot;selenium&quot; by executing the <code>test</code> script using npm.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "Selenium test scripts"</code></pre><h1>Selenium test scripts</h1>
+
 
 
 <pre class="bash"><code>docker exec -t selenium npm --prefix /home/seluser/selenium/test run test
@@ -77,6 +87,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

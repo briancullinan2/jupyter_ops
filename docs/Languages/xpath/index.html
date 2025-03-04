@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Languages/index.html">Languages</a>
-    <br /><br />
+    <h3><a href="../../Languages/index.html">Languages</a></h3>
     <a href="../antlr/index.html">antlr</a>
 <br /><br />
 <a href="../balanced/index.html">balanced</a>
@@ -63,24 +69,22 @@
 
   </nav>
   <header>
-    <a href="../../Languages/index.html">Languages</a> ${PREV} ${NEXT}
+    <a href="../../Languages/index.html">Languages</a> | <a href="../regexp/index.html">regexp</a> | 
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>xpath</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>This module is designed to build a lexer and parser for XPath expressions, importing and utilizing various libraries, including <code>ply</code> and <code>eulxml.xpath</code>. It defines custom lexing rules, utility functions, and exports the lexer, parser, and parsing and serialization functions for use in other modules.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>This Python module defines classes and functions for representing XPath expressions as Abstract Syntax Trees (ASTs) and serializing them into valid XPath expressions. The module includes classes for different types of expressions, such as unary and binary expressions, and functions for serializing the ASTs into strings.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>This code defines a lexer for XPath expressions using the <code>ply</code> module, specifying tokens and their corresponding regular expression patterns to recognize XPath operators, separators, and literal values. The lexer can be used as a foundation for building a parser that constructs an abstract syntax tree (AST) for further processing, making it a crucial component for XPath expression analysis.</p>
 <a href="./cell_3.html">Cell 3</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>This code is an implementation of an XPath parser using the <code>ply</code> module, which defines the rules for parsing XPath expressions and creates an abstract syntax tree (AST) representation of the parsed expressions. The parser is composed of multiple grammar rules for basic expressions, path expressions, and paths, which are used to construct an AST representation of the parsed expressions.</p>
 <a href="./cell_4.html">Cell 4</a>
 <br /><br />

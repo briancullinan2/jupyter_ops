@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frameworks/index.html">Frameworks</a>
-    <br /><br />
+    <h3><a href="../../Frameworks/index.html">Frameworks</a></h3>
     <a href="../Angular_2/index.html">Angular 2</a>
 <br /><br />
 <a href="../Angular_components/index.html">Angular components</a>
@@ -105,12 +111,13 @@
 
   </nav>
   <header>
-    <a href="../../Frameworks/index.html">Frameworks</a> ${PREV} ${NEXT}
+    <a href="../../Frameworks/index.html">Frameworks</a> | <a href="../karma_template/index.html">karma template</a> | <a href="../node_express/index.html">node express</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>ngx-translate</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>The Node.js module <code>getTranslations</code> extracts translation keys and values from HTML files in a specified project directory, returning an object with flat translation keys as properties and arrays of values as values. The function uses <code>glob</code> to find HTML files, regular expressions to extract translations, and reduces the results into a single object for ease of use.</p>
 <a href="./Find_unused_misplaced_translation_strings.html">Find unused/misplaced translation strings</a>
 <br /><br />

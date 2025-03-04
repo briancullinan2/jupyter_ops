@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../csharp/index.html">csharp</a>
-    <br /><br />
+    <h3><a href="../csharp/index.html">csharp</a></h3>
     <a href="./rosetta_euler_csharp_005.html">rosetta euler csharp 005</a>
 <br /><br />
 <a href="./test_edge_js.html">test edge.js</a>
@@ -55,11 +61,14 @@
 
   </nav>
   <header>
-    <a href="../csharp/index.html">csharp</a> ${PREV} ${NEXT}
+    <a href="../csharp/index.html">csharp</a> | <a href="./list_csharp_classes.html">list csharp classes</a> | 
   </header>
 
-  <p>Here is a two-sentence summary:</p>
-<p>The <code>getClassParams</code> function retrieves method parameters from a given C# code snippet using the <code>antlr</code> library's <code>select</code> function, and returns the results as an array of arrays containing method names and parameters. The function can optionally focus on a specific class, or extract parameters from all classes in the code if no class name is provided.</p>
+  <p>The <code>getClassParams</code> function retrieves method parameters from a given C# code snippet using the <code>antlr</code> library's <code>select</code> function, and returns the results as an array of arrays containing method names and parameters. The function can optionally focus on a specific class, or extract parameters from all classes in the code if no class name is provided.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "get csharp params"</code></pre><h1>get csharp params</h1>
+
 
 
 <pre class="javascript"><code>
@@ -103,6 +112,7 @@ module.exports = getClassParams
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

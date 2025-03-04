@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llama/index.html">llama</a>
-    <br /><br />
+    <h3><a href="../llama/index.html">llama</a></h3>
     <a href="./search_llama.html">search llama</a>
 <br /><br />
 <a href="./ask_llm_about_categories.html">ask llm about categories</a>
@@ -67,11 +73,14 @@
 
   </nav>
   <header>
-    <a href="../llama/index.html">llama</a> ${PREV} ${NEXT}
+    <a href="../llama/index.html">llama</a> |  | <a href="./ask_llm_about_categories.html">ask llm about categories</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code breakdown:</p>
-<p>The code imports necessary functions and variables, defines the <code>askLlamaMatchingFunction</code> function, and exports it for use in other modules. The <code>askLlamaMatchingFunction</code> function iteratively processes functions in the <code>cellCache</code> array, filtering and appending them to arrays based on categories and descriptions, and repeats this process until all functions have been processed.</p>
+  <p>The code imports necessary functions and variables, defines the <code>askLlamaMatchingFunction</code> function, and exports it for use in other modules. The <code>askLlamaMatchingFunction</code> function iteratively processes functions in the <code>cellCache</code> array, filtering and appending them to arrays based on categories and descriptions, and repeats this process until all functions have been processed.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "search llama"</code></pre><h1>search llama</h1>
+
 
 
 <pre class="javascript"><code>const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
@@ -142,6 +151,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

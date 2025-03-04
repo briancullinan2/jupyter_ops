@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llm_tools/index.html">llm tools</a>
-    <br /><br />
+    <h3><a href="../llm_tools/index.html">llm tools</a></h3>
     <a href="./scan_chat_logs.html">scan chat logs</a>
 <br /><br />
 <a href="./ask_llm_about_emotions.html">ask llm about emotions</a>
@@ -55,11 +61,14 @@
 
   </nav>
   <header>
-    <a href="../llm_tools/index.html">llm tools</a> ${PREV} ${NEXT}
+    <a href="../llm_tools/index.html">llm tools</a> | <a href="./scan_chat_logs.html">scan chat logs</a> | <a href="./cache_chat_logs.html">cache chat logs</a>
   </header>
 
-  <p>Here's a two-sentence summary:</p>
-<p>This code imports a module named <code>select llm</code> and assigns it to the <code>selectModel</code> constant. It also defines a constant array <code>EMOTIONS</code> containing 77 string values representing different emotions.</p>
+  <p>This code imports a module named <code>select llm</code> and assigns it to the <code>selectModel</code> constant. It also defines a constant array <code>EMOTIONS</code> containing 77 string values representing different emotions.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "ask llm about emotions"</code></pre><h1>ask llm about emotions</h1>
+
 
 
 <pre class="javascript"><code>const selectModel = importer.import('select llm')
@@ -317,6 +326,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

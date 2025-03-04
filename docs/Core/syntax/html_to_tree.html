@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../syntax/index.html">syntax</a>
-    <br /><br />
+    <h3><a href="../syntax/index.html">syntax</a></h3>
     <a href="./get_requires.html">get requires</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -121,13 +127,16 @@
 
   </nav>
   <header>
-    <a href="../syntax/index.html">syntax</a> ${PREV} ${NEXT}
+    <a href="../syntax/index.html">syntax</a> | <a href="./cell_15.html">Cell 15</a> | <a href="./cell_17.html">Cell 17</a>
   </header>
 
-  <p>Here is a summary of the code in one sentence:</p>
-<p>The <code>htmlToTree</code> function takes an HTML string or tree as input and returns the corresponding tree structure by parsing and recursively processing its child nodes using the <code>accumulateChildNodes</code> function.</p>
+  <p>The <code>htmlToTree</code> function takes an HTML string or tree as input and returns the corresponding tree structure by parsing and recursively processing its child nodes using the <code>accumulateChildNodes</code> function.</p>
 <p>Alternatively, you can also summarize it in two sentences:</p>
 <p>The <code>htmlToTree</code> function uses the <code>JSDOM</code> library to parse the input HTML and process its child nodes using the <code>accumulateChildNodes</code> function. It can handle HTML strings, arrays, and text nodes, and it recursively processes attribute objects to convert their attributes to properties.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "html to tree"</code></pre><h1>html to tree</h1>
+
 
 
 <pre class="javascript"><code>var {JSDOM} = require('jsdom');
@@ -220,6 +229,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

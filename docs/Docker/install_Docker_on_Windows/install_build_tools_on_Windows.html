@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../install_Docker_on_Windows/index.html">install Docker on Windows</a>
-    <br /><br />
+    <h3><a href="../install_Docker_on_Windows/index.html">install Docker on Windows</a></h3>
     <a href="./install_Docker_on_Windows.html">install Docker on Windows</a>
 <br /><br />
 <a href="./How_do_I_installed_elevated_from_the_command_line.html">How do I installed elevated from the command line</a>
@@ -55,10 +61,14 @@
 
   </nav>
   <header>
-    <a href="../install_Docker_on_Windows/index.html">install Docker on Windows</a> ${PREV} ${NEXT}
+    <a href="../install_Docker_on_Windows/index.html">install Docker on Windows</a> | <a href="./How_do_I_fix_the_firewall_for_Docker.html">How do I fix the firewall for Docker</a> | 
   </header>
 
   <p>This code installs NativeScript build tools on Windows using npm, leveraging elevated privileges and potentially making network configuration adjustments.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "install build tools on Windows"</code></pre><h1>install build tools on Windows</h1>
+
 
 
 <pre class="javascript"><code>var npmCmd = 'npm install --global --production --unsafe-perm nativescript windows-build-tools';
@@ -74,6 +84,7 @@ var firewall = exec(elevateExecLoc + ' powershell -c "' + npmCmd + ' ; ' + netwo
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

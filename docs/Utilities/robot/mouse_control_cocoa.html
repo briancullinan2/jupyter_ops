@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../robot/index.html">robot</a>
-    <br /><br />
+    <h3><a href="../robot/index.html">robot</a></h3>
     <a href="./node_screenshots.html">node screenshots</a>
 <br /><br />
 <a href="./node_window_screenshot.html">node window screenshot</a>
@@ -59,11 +65,14 @@
 
   </nav>
   <header>
-    <a href="../robot/index.html">robot</a> ${PREV} ${NEXT}
+    <a href="../robot/index.html">robot</a> | <a href="./send_keys.html">send keys</a> | 
   </header>
 
-  <p>Here is a two-sentence summary of the provided code breakdown:</p>
-<p>This code simulates mouse events using Core Graphics and Core Foundation frameworks, allowing for functions to set the mouse position, simulate mouse button clicks, and retrieve the current mouse position. It uses a combination of C-style includes and C++ code, suggesting it may be a wrapper around C code, to create a comprehensive mouse simulation tool.</p>
+  <p>This code simulates mouse events using Core Graphics and Core Foundation frameworks, allowing for functions to set the mouse position, simulate mouse button clicks, and retrieve the current mouse position. It uses a combination of C-style includes and C++ code, suggesting it may be a wrapper around C code, to create a comprehensive mouse simulation tool.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "mouse control cocoa"</code></pre><h1>mouse control cocoa</h1>
+
 
 
 <pre class="objective-c"><code>#include &lt;CoreFoundation/CoreFoundation.h&gt;
@@ -205,6 +214,7 @@ void MouseEndDrag(CGPoint position)
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/objective-c.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

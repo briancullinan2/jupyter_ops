@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Databases/index.html">Databases</a>
-    <br /><br />
+    <h3><a href="../../Databases/index.html">Databases</a></h3>
     <a href="../active_directory/index.html">active directory</a>
 <br /><br />
 <a href="../caches/index.html">caches</a>
@@ -67,10 +73,12 @@
 
   </nav>
   <header>
-    <a href="../../Databases/index.html">Databases</a> ${PREV} ${NEXT}
+    <a href="../../Databases/index.html">Databases</a> | <a href="../active_directory/index.html">active directory</a> | <a href="../database_commands/index.html">database commands</a>
   </header>
 
-  <a href="./cache_rpc_functions_with_llm_descriptions.html">cache rpc functions with llm descriptions</a>
+  <h1>caches</h1>
+
+<a href="./cache_rpc_functions_with_llm_descriptions.html">cache rpc functions with llm descriptions</a>
 <br /><br />
 <p>This code creates a cache to store metadata about Jupyter notebook cells, such as modification time, exported functions, and descriptions, for efficient retrieval and analysis.</p>
 <a href="./cache_chat_history_with_llm_descriptions.html">cache chat history with llm descriptions</a>

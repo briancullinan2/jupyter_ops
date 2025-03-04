@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_cloud_api/index.html">google cloud api</a>
-    <br /><br />
+    <h3><a href="../google_cloud_api/index.html">google cloud api</a></h3>
     <a href="./list_google_bucket_url_map.html">list google bucket url map</a>
 <br /><br />
 <a href="./test_list_url_map.html">test list url map</a>
@@ -67,11 +73,14 @@
 
   </nav>
   <header>
-    <a href="../google_cloud_api/index.html">google cloud api</a> ${PREV} ${NEXT}
+    <a href="../google_cloud_api/index.html">google cloud api</a> | <a href="./test_list_url_map.html">test list url map</a> | <a href="./add_a_google_bucket_web_map.html">add a google bucket web map</a>
   </header>
 
-  <p>Here's a summary of the <code>waitForOperation</code> function in one sentence:</p>
-<p>The <code>waitForOperation</code> function waits for a specified Google operation to complete and returns the target link when finished, using a recursive approach with a 500ms delay between checks.</p>
+  <p>The <code>waitForOperation</code> function waits for a specified Google operation to complete and returns the target link when finished, using a recursive approach with a 500ms delay between checks.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "wait for cloud operation"</code></pre><h1>wait for cloud operation</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -103,6 +112,7 @@ module.exports = waitForOperation;</code></pre>
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Utilities/index.html">Utilities</a>
-    <br /><br />
+    <h3><a href="../../Utilities/index.html">Utilities</a></h3>
     <a href="../active_directory/index.html">active directory</a>
 <br /><br />
 <a href="../bash/index.html">bash</a>
@@ -101,19 +107,19 @@
 
   </nav>
   <header>
-    <a href="../../Utilities/index.html">Utilities</a> ${PREV} ${NEXT}
+    <a href="../../Utilities/index.html">Utilities</a> | <a href="../levenshtein/index.html">levenshtein</a> | <a href="../nmap/index.html">nmap</a>
   </header>
 
-  <a href="./run_Mono_with_docker.html">run Mono with docker</a>
+  <h1>mono</h1>
+
+<a href="./run_Mono_with_docker.html">run Mono with docker</a>
 <br /><br />
 <p>This Dockerfile instruction sets the base image for a new Docker image to be the latest version of the official Mono runtime environment.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the shell script:</p>
 <p>This shell script configures a NuGet package source, restores packages in a.NET project, and builds the project using MSBuild. The script creates a configuration file, sets up symbolic links, updates the NuGet package source, and builds a specific project.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the Dockerfile:</p>
 <p>This Dockerfile builds two types of images: one based on Mono for running a.NET application, and another based on ASP.NET Core 1.1 for running an ASP.NET Core application. The images install necessary dependencies, copy files, set the working directory, and define entry points to run the applications using respective runtimes.</p>
 
 </body>

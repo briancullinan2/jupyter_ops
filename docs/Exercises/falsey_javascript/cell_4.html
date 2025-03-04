@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../falsey_javascript/index.html">falsey javascript</a>
-    <br /><br />
+    <h3><a href="../falsey_javascript/index.html">falsey javascript</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -59,11 +65,12 @@
 
   </nav>
   <header>
-    <a href="../falsey_javascript/index.html">falsey javascript</a> ${PREV} ${NEXT}
+    <a href="../falsey_javascript/index.html">falsey javascript</a> | <a href="./cell_3.html">Cell 3</a> | <a href="./cell_5.html">Cell 5</a>
   </header>
 
-  <p>Here is a 2-sentence summary:</p>
-<p>The provided code uses the logical OR operator (<code>||</code>) to return an object with a <code>default</code> property set to <code>true</code> if the left side (a <code>null</code> value) is falsy. In this case, the expression returns <code>{ default: true }</code> because <code>null</code> is considered falsy in JavaScript.</p>
+  <p>The provided code uses the logical OR operator (<code>||</code>) to return an object with a <code>default</code> property set to <code>true</code> if the left side (a <code>null</code> value) is falsy. In this case, the expression returns <code>{ default: true }</code> because <code>null</code> is considered falsy in JavaScript.</p>
+<h1>Cell 4</h1>
+
 
 
 <pre class="javascript"><code>console.log(null || {default: true})</code></pre>
@@ -76,6 +83,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

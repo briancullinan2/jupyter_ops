@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../quake_3_commands/index.html">quake 3 commands</a>
-    <br /><br />
+    <h3><a href="../quake_3_commands/index.html">quake 3 commands</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -79,10 +85,12 @@
 
   </nav>
   <header>
-    <a href="../quake_3_commands/index.html">quake 3 commands</a> ${PREV} ${NEXT}
+    <a href="../quake_3_commands/index.html">quake 3 commands</a> | <a href="./cell_4.html">Cell 4</a> | <a href="./https___quake_games_set_20name_20player_name.html">https://quake.games/set%20name%20player_name</a>
   </header>
 
   <p>Systemd service configuration files manage system services, including two specific services: <code>quake3-proxy</code> and <code>quake3-server</code>. These services are configured to restart automatically if they fail and are started when the system reaches the multi-user target.</p>
+<h1>Cell 5</h1>
+
 
 
 <pre class="bash"><code># quake3-proxy
@@ -119,6 +127,7 @@ WantedBy=multi-user.target
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

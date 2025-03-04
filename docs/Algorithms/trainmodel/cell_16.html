@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../trainmodel/index.html">trainmodel</a>
-    <br /><br />
+    <h3><a href="../trainmodel/index.html">trainmodel</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -109,11 +115,12 @@
 
   </nav>
   <header>
-    <a href="../trainmodel/index.html">trainmodel</a> ${PREV} ${NEXT}
+    <a href="../trainmodel/index.html">trainmodel</a> | <a href="./cell_15.html">Cell 15</a> | <a href="./cell_17.html">Cell 17</a>
   </header>
 
-  <p>Here's a summary of the Convolutional Neural Network (CNN) model architecture in two sentences:</p>
-<p>This CNN model architecture uses the Keras Sequential API and consists of multiple convolutional and pooling layers, followed by a flatten layer and fully connected layers to classify inputs into 7 categories. The model architecture includes 12 Conv2D layers with various filter sizes and ReLU activation, 4 Dropout layers for regularization, 3 Flatten layers, and 3 Dense layers with ReLU and softmax activation.</p>
+  <p>This CNN model architecture uses the Keras Sequential API and consists of multiple convolutional and pooling layers, followed by a flatten layer and fully connected layers to classify inputs into 7 categories. The model architecture includes 12 Conv2D layers with various filter sizes and ReLU activation, 4 Dropout layers for regularization, 3 Flatten layers, and 3 Dense layers with ReLU and softmax activation.</p>
+<h1>Cell 16</h1>
+
 
 
 <pre class="python"><code>model = Sequential()
@@ -151,6 +158,7 @@ model.add(Dense(7, activation='softmax'))</code></pre>
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

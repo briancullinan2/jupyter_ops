@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../avidbrain/index.html">avidbrain</a>
-    <br /><br />
+    <h3><a href="../avidbrain/index.html">avidbrain</a></h3>
     <a href="./Test_avidbrain.html">Test avidbrain</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -51,11 +57,12 @@
 
   </nav>
   <header>
-    <a href="../avidbrain/index.html">avidbrain</a> ${PREV} ${NEXT}
+    <a href="../avidbrain/index.html">avidbrain</a> | <a href="./Test_avidbrain.html">Test avidbrain</a> | <a href="./cell_2.html">Cell 2</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code:</p>
-<p>This code imports a module named <code>Core</code> and a function called <code>runSeleniumCell</code>, which is then used to execute a Selenium test with the argument <code>'test avidbrain'</code>. The test's result is handled asynchronously using <code>then()</code> and <code>catch()</code> methods, sending the outcome or any error that may occur as a result.</p>
+  <p>This code imports a module named <code>Core</code> and a function called <code>runSeleniumCell</code>, which is then used to execute a Selenium test with the argument <code>'test avidbrain'</code>. The test's result is handled asynchronously using <code>then()</code> and <code>catch()</code> methods, sending the outcome or any error that may occur as a result.</p>
+<h1>Cell 1</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -76,6 +83,7 @@ runSeleniumCell('test avidbrain')
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

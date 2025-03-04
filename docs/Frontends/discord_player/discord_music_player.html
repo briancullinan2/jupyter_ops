@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../discord_player/index.html">discord player</a>
-    <br /><br />
+    <h3><a href="../discord_player/index.html">discord player</a></h3>
     <a href="./discord_music_player.html">discord music player</a>
 <br /><br />
 <a href="./discord_music_player_server.html">discord music player server</a>
@@ -49,11 +55,14 @@
 
   </nav>
   <header>
-    <a href="../discord_player/index.html">discord player</a> ${PREV} ${NEXT}
+    <a href="../discord_player/index.html">discord player</a> |  | <a href="./discord_music_player_server.html">discord music player server</a>
   </header>
 
-  <p>Here is a summary of the code in one sentence:<br />
-The <code>playerCommands</code> function is a JavaScript module that manages Discord bot commands by registering, updating, and deleting commands, as well as removing unused commands, using various functions from imported Discord modules.</p>
+  <p>The <code>playerCommands</code> function is a JavaScript module that manages Discord bot commands by registering, updating, and deleting commands, as well as removing unused commands, using various functions from imported Discord modules.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "discord music player"</code></pre><h1>discord music player</h1>
+
 
 
 <pre class="javascript"><code>
@@ -115,6 +124,7 @@ module.exports = playerCommands
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

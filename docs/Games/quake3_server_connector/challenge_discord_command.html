@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../quake3_server_connector/index.html">quake3 server connector</a>
-    <br /><br />
+    <h3><a href="../quake3_server_connector/index.html">quake3 server connector</a></h3>
     undefined<a href="./index.html">index</a>
 <br /><br />
 <a href="./ssh_remote_wget.html">ssh remote wget</a>
@@ -57,11 +63,14 @@
 
   </nav>
   <header>
-    <a href="../quake3_server_connector/index.html">quake3 server connector</a> ${PREV} ${NEXT}
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a> | <a href="./test_specific_channel.html">test specific channel</a> | <a href="./discord_bot.html">discord bot</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code:</p>
-<p>The code is a Discord bot that responds to challenge commands, which trigger the launch of a Quake III Arena server with customized settings based on environment variables and command input. The bot uses regular expressions to parse challenge commands, connects to a Quake III Arena server via the <code>serverApi</code> module, and handles errors by displaying a message when no servers are available.</p>
+  <p>The code is a Discord bot that responds to challenge commands, which trigger the launch of a Quake III Arena server with customized settings based on environment variables and command input. The bot uses regular expressions to parse challenge commands, connects to a Quake III Arena server via the <code>serverApi</code> module, and handles errors by displaying a message when no servers are available.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "challenge discord command"</code></pre><h1>challenge discord command</h1>
+
 
 
 <pre class="node"><code>var importer = require('../Core')
@@ -132,6 +141,7 @@ module.exports = challengeCommand
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

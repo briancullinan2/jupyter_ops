@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../movie_database/index.html">movie database</a>
-    <br /><br />
+    <h3><a href="../movie_database/index.html">movie database</a></h3>
     <a href="./Find_cross_section_of_actors_and_movies.html">Find cross section of actors and movies</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -57,10 +63,14 @@
 
   </nav>
   <header>
-    <a href="../movie_database/index.html">movie database</a> ${PREV} ${NEXT}
+    <a href="../movie_database/index.html">movie database</a> | <a href="./cell_2.html">Cell 2</a> | <a href="./create_movie_database_tables.html">create movie database tables</a>
   </header>
 
   <p>This code searches for documents containing &quot;express js&quot; in the &quot;books&quot; index and &quot;book&quot; type within an Elasticsearch database.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "use elastic search from node"</code></pre><h1>use elastic search from node</h1>
+
 
 
 <pre class="javascript"><code>var elasticsearch = require('elasticsearch')
@@ -93,6 +103,7 @@ client.search({
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

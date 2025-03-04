@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Core/index.html">Core</a>
-    <br /><br />
+    <h3><a href="../../Core/index.html">Core</a></h3>
     <a href="../aspects/index.html">aspects</a>
 <br /><br />
 <a href="../cache/index.html">cache</a>
@@ -71,10 +77,12 @@
 
   </nav>
   <header>
-    <a href="../../Core/index.html">Core</a> ${PREV} ${NEXT}
+    <a href="../../Core/index.html">Core</a> | <a href="../languages/index.html">languages</a> | <a href="../patterns/index.html">patterns</a>
   </header>
 
-  <a href="./readme_md.html">readme.md</a>
+  <h1>notebook</h1>
+
+<a href="./readme_md.html">readme.md</a>
 <br /><br />
 <p>This code snippet is a placeholder comment reminding developers or users that a README file should be present in this location.  It serves as a note for documentation purposes and should be ignored as it doesn't contain executable code.</p>
 <a href="./import_notebook__import_all_cell_modules.html">import notebook, import all cell modules</a>
@@ -92,7 +100,6 @@
 <p>This code provides a function to statically replace dynamic imports in code by analyzing the Abstract Syntax Tree (AST) and substituting them with predefined templates.  It leverages a custom <code>importer</code> module and <code>transpile</code> function to achieve this transformation.</p>
 <a href="./cell_6.html">Cell 6</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code:</p>
 <p>The code imports specific functions from a <code>../Core</code> module and defines a string of JavaScript code, which is then used to replace imports using the imported <code>replaceCore</code> function. The replaced code is sent as a MIME message with a <code>text/plain</code> type, if the <code>$</code> object is defined and has the required properties.</p>
 <a href="./add_missing_imports.html">add missing imports</a>
 <br /><br />

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../opencv/index.html">opencv</a>
-    <br /><br />
+    <h3><a href="../opencv/index.html">opencv</a></h3>
     <a href="./detect_people.html">detect people</a>
 <br /><br />
 <a href="./motion_detection.html">motion detection</a>
@@ -67,11 +73,14 @@
 
   </nav>
   <header>
-    <a href="../opencv/index.html">opencv</a> ${PREV} ${NEXT}
+    <a href="../opencv/index.html">opencv</a> | <a href="./python_write_images_to_ffmpeg_stream.html">python write images to ffmpeg stream</a> | <a href="./authorize_youtube_in_python.html">authorize youtube in python</a>
   </header>
 
-  <p>Here's a two-sentence summary of the code breakdown:</p>
-<p>The code imports necessary libraries, loads credentials from a service account JSON file, and sets up a YouTube API client using the <code>googleapiclient</code> library. The <code>live_stream</code> function is defined to create a new live stream on YouTube, utilizing the API client and specifying parameters such as title, description, and scheduled start time.</p>
+  <p>The code imports necessary libraries, loads credentials from a service account JSON file, and sets up a YouTube API client using the <code>googleapiclient</code> library. The <code>live_stream</code> function is defined to create a new live stream on YouTube, utilizing the API client and specifying parameters such as title, description, and scheduled start time.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "create a live streaming request"</code></pre><h1>create a live streaming request</h1>
+
 
 
 <pre class="python"><code>import os
@@ -122,6 +131,7 @@ __all__ = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

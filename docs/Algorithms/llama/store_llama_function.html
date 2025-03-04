@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llama/index.html">llama</a>
-    <br /><br />
+    <h3><a href="../llama/index.html">llama</a></h3>
     <a href="./search_llama.html">search llama</a>
 <br /><br />
 <a href="./ask_llm_about_categories.html">ask llm about categories</a>
@@ -67,11 +73,14 @@
 
   </nav>
   <header>
-    <a href="../llama/index.html">llama</a> ${PREV} ${NEXT}
+    <a href="../llama/index.html">llama</a> | <a href="./ask_llm_to_summerize.html">ask llm to summerize</a> | <a href="./store_all_notebook_llm_functions.html">store all notebook llm functions</a>
   </header>
 
-  <p>Here's a two-sentence summary of the code breakdown:</p>
-<p>This code imports functions from the <code>importer</code> object, which includes <code>functionCache</code> for storing function metadata and <code>updateCode</code> for updating a code cell. The <code>storeLlamaFunction</code> function, which is then exported, takes 8 arguments and updates the <code>functionCache</code> object, generates a new JavaScript module, and updates a code cell with the new module code.</p>
+  <p>This code imports functions from the <code>importer</code> object, which includes <code>functionCache</code> for storing function metadata and <code>updateCode</code> for updating a code cell. The <code>storeLlamaFunction</code> function, which is then exported, takes 8 arguments and updates the <code>functionCache</code> object, generates a new JavaScript module, and updates a code cell with the new module code.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "store llama function"</code></pre><h1>store llama function</h1>
+
 
 
 <pre class="javascript"><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')
@@ -111,6 +120,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

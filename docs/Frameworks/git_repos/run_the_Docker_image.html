@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../git_repos/index.html">git repos</a>
-    <br /><br />
+    <h3><a href="../git_repos/index.html">git repos</a></h3>
     <a href="./_test_repository.html">,test repository</a>
 <br /><br />
 <a href="./selenium_repository.html">selenium repository</a>
@@ -61,10 +67,14 @@
 
   </nav>
   <header>
-    <a href="../git_repos/index.html">git repos</a> ${PREV} ${NEXT}
+    <a href="../git_repos/index.html">git repos</a> | <a href="./use_npm_cache_inside_of_docker.html">use npm cache inside of docker</a> | <a href="./Selenium_test_scripts.html">Selenium test scripts</a>
   </header>
 
   <p>This code snippet launches a Selenium container in the background, mapping necessary ports for access, and then displays a list of running containers.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "run the Docker image"</code></pre><h1>run the Docker image</h1>
+
 
 
 <pre class="bash"><code>docker run --shm-size=2g --name selenium -d -p 8888:8888 -p 6080:6080 -p 5900:5900 -p 4444:4444 -p 4200:4200 -p 3000:3000 selenium
@@ -78,6 +88,7 @@ docker ps
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

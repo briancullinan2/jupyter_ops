@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../antlr/index.html">antlr</a>
-    <br /><br />
+    <h3><a href="../antlr/index.html">antlr</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./select_antlr_tree.html">select antlr tree</a>
@@ -71,13 +77,15 @@
 
   </nav>
   <header>
-    <a href="../antlr/index.html">antlr</a> ${PREV} ${NEXT}
+    <a href="../antlr/index.html">antlr</a> | <a href="./cell_0.html">Cell 0</a> | <a href="./test_select_jison_on_some_quake_3_C_code.html">test select jison on some quake 3 C code</a>
   </header>
 
-  <p>Here is a summary of the code in one sentence:</p>
-<p>The <code>selectCode</code> function is an asynchronous function that detects the language of a file, parses it using ANTLR, transforms the parsed output into HTML, selects specific DOM elements, and returns the result as a string.</p>
-<p>Alternatively, here is a two-sentence summary:</p>
+  <p>The <code>selectCode</code> function is an asynchronous function that detects the language of a file, parses it using ANTLR, transforms the parsed output into HTML, selects specific DOM elements, and returns the result as a string.</p>
 <p>The <code>selectCode</code> function is an asynchronous function that performs language detection, ANTLR parsing, and HTML transformation on a given file. It catches any errors that occur during the parsing process and returns the result as a string, along with an error message if an error occurs.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "select antlr tree"</code></pre><h1>select antlr tree</h1>
+
 
 
 <pre class="javascript"><code>import fs from 'fs'
@@ -152,6 +160,7 @@ export default selectCode
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

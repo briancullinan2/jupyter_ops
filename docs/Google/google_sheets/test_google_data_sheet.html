@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_sheets/index.html">google sheets</a>
-    <br /><br />
+    <h3><a href="../google_sheets/index.html">google sheets</a></h3>
     <a href="./templates_google_doc.html">templates google doc</a>
 <br /><br />
 <a href="./test_templates_google_sheet.html">test templates google sheet</a>
@@ -67,10 +73,14 @@
 
   </nav>
   <header>
-    <a href="../google_sheets/index.html">google sheets</a> ${PREV} ${NEXT}
+    <a href="../google_sheets/index.html">google sheets</a> | <a href="./get_worksheet_rows.html">get worksheet rows</a> | <a href="./add_row_data_google_sheet.html">add row data google sheet</a>
   </header>
 
   <p>This code snippet is a unit test that verifies the ability to retrieve and process data from a specific Google Sheet using functions from a local module.  It asserts the existence of a data sheet and checks if the processed data array contains at least one element.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "test google data sheet"</code></pre><h1>test google data sheet</h1>
+
 
 
 <pre class="javascript"><code>var assert = require('assert');
@@ -108,6 +118,7 @@ describe('get data from data sheet', () =&gt; {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

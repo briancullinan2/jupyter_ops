@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Google/index.html">Google</a>
-    <br /><br />
+    <h3><a href="../../Google/index.html">Google</a></h3>
     <a href="../google_calendar_data/index.html">google calendar data</a>
 <br /><br />
 <a href="../google_calendar_graphs/index.html">google calendar graphs</a>
@@ -63,10 +69,12 @@
 
   </nav>
   <header>
-    <a href="../../Google/index.html">Google</a> ${PREV} ${NEXT}
+    <a href="../../Google/index.html">Google</a> | <a href="../google_maps/index.html">google maps</a> | <a href="../google_search_api/index.html">google search api</a>
   </header>
 
-  <a href="./space_out_purple_event.html">space out purple event</a>
+  <h1>google scheduling</h1>
+
+<a href="./space_out_purple_event.html">space out purple event</a>
 <br /><br />
 <p>This code snippet manages and visualizes Google Calendar events, allowing for batch retrieval, event time adjustments, and potential heatmap-based visualization.</p>
 <a href="./__schedule_study_time.html">, schedule study time</a>

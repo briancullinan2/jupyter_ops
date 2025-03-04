@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_cloud_api/index.html">google cloud api</a>
-    <br /><br />
+    <h3><a href="../google_cloud_api/index.html">google cloud api</a></h3>
     <a href="./list_google_bucket_url_map.html">list google bucket url map</a>
 <br /><br />
 <a href="./test_list_url_map.html">test list url map</a>
@@ -67,13 +73,16 @@
 
   </nav>
   <header>
-    <a href="../google_cloud_api/index.html">google cloud api</a> ${PREV} ${NEXT}
+    <a href="../google_cloud_api/index.html">google cloud api</a> | <a href="./test_global_forward.html">test global forward</a> | <a href="./check_dns.html">check dns</a>
   </header>
 
-  <p>Here is a summary of the code breakdown in one sentence:</p>
-<p>The code defines a test suite with three test cases to add a subdomain to a load balancer, involving inserting a backend bucket, adding a frontend, and updating a URL map, with each test case having a 60-second timeout.</p>
+  <p>The code defines a test suite with three test cases to add a subdomain to a load balancer, involving inserting a backend bucket, adding a frontend, and updating a URL map, with each test case having a 60-second timeout.</p>
 <p>Alternatively, you can summarize it in two sentences:</p>
 <p>The code is a test suite that adds a subdomain to a load balancer, consisting of three test cases to insert a backend bucket, add a frontend, and update a URL map. Each test case has a 60-second timeout and includes assertions to verify the returned values are not empty.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "test bucket web map"</code></pre><h1>test bucket web map</h1>
+
 
 
 <pre class="javascript"><code>var assert = require('assert');
@@ -122,6 +131,7 @@ describe('adding a subdomain to a load balancer', () =&gt; {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

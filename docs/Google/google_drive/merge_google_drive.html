@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_drive/index.html">google drive</a>
-    <br /><br />
+    <h3><a href="../google_drive/index.html">google drive</a></h3>
     <a href="./authorize_google_drive.html">authorize google drive</a>
 <br /><br />
 <a href="./test_list_google_drive.html">test list google drive</a>
@@ -69,11 +75,14 @@
 
   </nav>
   <header>
-    <a href="../google_drive/index.html">google drive</a> ${PREV} ${NEXT}
+    <a href="../google_drive/index.html">google drive</a> | <a href="./copy_a_file_on_google_drive.html">copy a file on google drive</a> | <a href="./download_all_docs_as_actual_data_files.html">download all docs as actual data files</a>
   </header>
 
-  <p>Here is a 2-sentence summary of the code:</p>
-<p>The code imports dependencies and creates a <code>google</code> object to simplify access to Google APIs, then defines two functions: <code>listDriveFiles</code> to list files in a specified Google Drive folder, and <code>listDrive</code> to list files in the root folder. The <code>listDrive</code> function is exported, and an optional section allows it to be executed using a <code>$.sendResult</code> method in a testing or debugging context.</p>
+  <p>The code imports dependencies and creates a <code>google</code> object to simplify access to Google APIs, then defines two functions: <code>listDriveFiles</code> to list files in a specified Google Drive folder, and <code>listDrive</code> to list files in the root folder. The <code>listDrive</code> function is exported, and an optional section allows it to be executed using a <code>$.sendResult</code> method in a testing or debugging context.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "merge google drive"</code></pre><h1>merge google drive</h1>
+
 
 
 <pre class="javascript"><code>var fs = require('fs');
@@ -143,6 +152,7 @@ if(typeof $ != 'undefined') {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

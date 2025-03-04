@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llama/index.html">llama</a>
-    <br /><br />
+    <h3><a href="../llama/index.html">llama</a></h3>
     <a href="./search_llama.html">search llama</a>
 <br /><br />
 <a href="./ask_llm_about_categories.html">ask llm about categories</a>
@@ -67,11 +73,14 @@
 
   </nav>
   <header>
-    <a href="../llama/index.html">llama</a> ${PREV} ${NEXT}
+    <a href="../llama/index.html">llama</a> | <a href="./ask_llm_about_categories.html">ask llm about categories</a> | <a href="./ask_llm_for_a_shorter_list_of_categories.html">ask llm for a shorter list of categories</a>
   </header>
 
-  <p>Here is a two-sentence summary:</p>
-<p>The <code>askLlamaGeneralizeCategories</code> function takes an optional list of categories as input, generates a shorter list by asking the LLM to generalize, and recursively optimizes the list to a maximum of 100 items. The function also updates the <code>functionCache</code> object by asking the LLM to generalize categories for each function in the cache, if the <code>update</code> flag is set.</p>
+  <p>The <code>askLlamaGeneralizeCategories</code> function takes an optional list of categories as input, generates a shorter list by asking the LLM to generalize, and recursively optimizes the list to a maximum of 100 items. The function also updates the <code>functionCache</code> object by asking the LLM to generalize categories for each function in the cache, if the <code>update</code> flag is set.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "ask llm to generalize categories"</code></pre><h1>ask llm to generalize categories</h1>
+
 
 
 <pre class="javascript"><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')
@@ -130,6 +139,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

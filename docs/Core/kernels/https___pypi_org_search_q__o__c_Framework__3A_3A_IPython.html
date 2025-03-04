@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../kernels/index.html">kernels</a>
-    <br /><br />
+    <h3><a href="../kernels/index.html">kernels</a></h3>
     <a href="./__get_kernel_json.html">, get kernel json</a>
 <br /><br />
 <a href="./test_notebook_kernel_json.html">test notebook kernel json</a>
@@ -101,11 +107,14 @@
 
   </nav>
   <header>
-    <a href="../kernels/index.html">kernels</a> ${PREV} ${NEXT}
+    <a href="../kernels/index.html">kernels</a> | <a href="./cell_22.html">Cell 22</a> | <a href="./__decode_encode_ipython_zmq_protocol.html">, decode encode ipython zmq protocol</a>
   </header>
 
-  <p>Here is a two-sentence summary:</p>
-<p>The <code>bashKernel</code> function creates a kernel for executing Bash code by initializing a kernel instance with a configuration that runs Bash code and echoes input, while the <code>bashLanguage</code> function defines a language interface object for Bash code with properties such as name, version, and file extension. The <code>bashLanguage</code> function uses <code>Object.assign</code> to merge the provided properties with a default <code>language_info</code> object.</p>
+  <p>The <code>bashKernel</code> function creates a kernel for executing Bash code by initializing a kernel instance with a configuration that runs Bash code and echoes input, while the <code>bashLanguage</code> function defines a language interface object for Bash code with properties such as name, version, and file extension. The <code>bashLanguage</code> function uses <code>Object.assign</code> to merge the provided properties with a default <code>language_info</code> object.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "https://pypi.org/search/q=&o=&c=Framework+%3A%3A+IPython"</code></pre><h1>https://pypi.org/search/q=&o=&c=Framework+%3A%3A+IPython</h1>
+
 
 
 <pre class="javascript"><code>
@@ -161,6 +170,7 @@ bash --version | grep "bash" | cut -f 4 -d " " | cut -d "-" -f 1  | cut -d "(" -
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

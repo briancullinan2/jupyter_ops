@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a>
-    <br /><br />
+    <h3><a href="../convert_spreadsheet/index.html">convert spreadsheet</a></h3>
     <a href="./readme_md.html">readme.md</a>
 <br /><br />
 <a href="./get_sheet_purchases.html">get sheet purchases</a>
@@ -71,11 +77,14 @@
 
   </nav>
   <header>
-    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a> ${PREV} ${NEXT}
+    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a> | <a href="./output_google_sheet_template.html">output google sheet template</a> | <a href="./collect_external_content_and_resources.html">collect external content and resources</a>
   </header>
 
-  <p>Here's a two-sentence summary of the code:</p>
-<p>The code is a JavaScript function named <code>collectRoutes</code> that collects and processes URL paths as part of a routing mechanism, using functions from the <code>../Core</code> module to generate Google Sheets templates. The function iterates over the URL paths, removes duplicates, and creates new templates associated with each link, returning a promise that resolves when all links have been processed.</p>
+  <p>The code is a JavaScript function named <code>collectRoutes</code> that collects and processes URL paths as part of a routing mechanism, using functions from the <code>../Core</code> module to generate Google Sheets templates. The function iterates over the URL paths, removes duplicates, and creates new templates associated with each link, returning a promise that resolves when all links have been processed.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "find known routes to sheets"</code></pre><h1>find known routes to sheets</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core')
@@ -144,6 +153,7 @@ module.exports = collectRoutes;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

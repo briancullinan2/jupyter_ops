@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../windows/index.html">windows</a>
-    <br /><br />
+    <h3><a href="../windows/index.html">windows</a></h3>
     <a href="./list_window_handles.html">list window handles</a>
 <br /><br />
 <a href="./monitor_active_windows.html">monitor active windows</a>
@@ -59,11 +65,14 @@
 
   </nav>
   <header>
-    <a href="../windows/index.html">windows</a> ${PREV} ${NEXT}
+    <a href="../windows/index.html">windows</a> | <a href="./list_window_handles.html">list window handles</a> | <a href="./cell_2.html">Cell 2</a>
   </header>
 
-  <p>Here's a two-sentence summary of the provided code:</p>
-<p>The C# code, located within the <code>window_tracker</code> namespace, retrieves a list of windows that meet certain conditions (e.g., non-zero height, non-empty title, matching process title) using the <code>FindWindows</code> method from the <code>ProgramExtensions</code> class. The filtered window details, including their titles, process names, and foreground status, are then printed to the console.</p>
+  <p>The C# code, located within the <code>window_tracker</code> namespace, retrieves a list of windows that meet certain conditions (e.g., non-zero height, non-empty title, matching process title) using the <code>FindWindows</code> method from the <code>ProgramExtensions</code> class. The filtered window details, including their titles, process names, and foreground status, are then printed to the console.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "monitor active windows"</code></pre><h1>monitor active windows</h1>
+
 
 
 <pre class="csharp"><code>using System;
@@ -98,6 +107,7 @@ namespace window_tracker
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

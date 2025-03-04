@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a>
-    <br /><br />
+    <h3><a href="../convert_spreadsheet/index.html">convert spreadsheet</a></h3>
     <a href="./readme_md.html">readme.md</a>
 <br /><br />
 <a href="./get_sheet_purchases.html">get sheet purchases</a>
@@ -71,11 +77,14 @@
 
   </nav>
   <header>
-    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a> ${PREV} ${NEXT}
+    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a> | <a href="./filter_data_sheet_based_on_url.html">filter data sheet based on url</a> | <a href="./google_sheet_layout_template.html">google sheet layout template</a>
   </header>
 
-  <p>Here is a 2-sentence summary of the provided code breakdown:</p>
-<p>The provided code appears to be part of a template rendering engine that processes Google Sheets data, utilizing functions from the <code>importer</code> object to load, process, and render templates. It includes functions like <code>getTemplateProperties</code> and <code>matchSections</code> that recursively process template properties and sections, respectively.</p>
+  <p>The provided code appears to be part of a template rendering engine that processes Google Sheets data, utilizing functions from the <code>importer</code> object to load, process, and render templates. It includes functions like <code>getTemplateProperties</code> and <code>matchSections</code> that recursively process template properties and sections, respectively.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "google sheet template properties"</code></pre><h1>google sheet template properties</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -156,6 +165,7 @@ module.exports = getTemplateProperties;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

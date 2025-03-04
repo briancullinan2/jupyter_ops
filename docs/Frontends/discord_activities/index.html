@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frontends/index.html">Frontends</a>
-    <br /><br />
+    <h3><a href="../../Frontends/index.html">Frontends</a></h3>
     <a href="../blog/index.html">blog</a>
 <br /><br />
 <a href="../brians_resume/index.html">brians resume</a>
@@ -81,33 +87,29 @@
 
   </nav>
   <header>
-    <a href="../../Frontends/index.html">Frontends</a> ${PREV} ${NEXT}
+    <a href="../../Frontends/index.html">Frontends</a> | <a href="../convert_spreadsheet/index.html">convert spreadsheet</a> | <a href="../discord_games/index.html">discord games</a>
   </header>
 
-  <a href="./discord_client_code.html">discord client code</a>
+  <h1>discord activities</h1>
+
+<a href="./discord_client_code.html">discord client code</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>This code appears to be a JavaScript snippet that handles events and requests when certain elements are clicked, and also fetches query parameters from the URL. However, it contains unused variables, potential mistakes in event listeners, and debugging statements that can be removed in production code.</p>
 <a href="./discord_client_auth_code.html">discord client auth code</a>
 <br /><br />
-<p>Here is a two-sentence summary of the JavaScript code:</p>
 <p>This code manages the Discord OAuth flow by exchanging a handshake message, authorizing the user, and fetching an access token to authenticate with the Discord API. It uses event listeners to respond to messages from the parent window, sending POST requests and authentication messages to complete the OAuth flow.</p>
 <a href="./start_activity_server.html">start activity server</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one sentence:</p>
 <p>The code imports Discord API modules, defines constants, and an asynchronous <code>activityCommands</code> function that manages bot commands for a specific guild, including registering, updating, and deleting commands.</p>
 <p>This function is then exported as a module.</p>
 <a href="./check_discord_commands.html">check discord commands</a>
 <br /><br />
-<p>Here's a 2-sentence summary:</p>
 <p>The <code>getCommands</code> function from the <code>discord api</code> package is imported and stored in the current scope using destructuring, allowing it to be utilized in the script. The <code>getCommands</code> function is then exported as a module, making it available for use in other JavaScript files.</p>
 <a href="./start_a_bunch_of_discord_services.html">start a bunch of discord services</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code:</p>
 <p>This Node.js script manages a collection of Discord bots by launching and running multiple instances of a bot service, each with its own configuration and environment settings. The <code>launchDiscord</code> function allows users to specify which bot to launch by providing an index in the <code>DISCORD_SERVICES</code> array.</p>
 <a href="./discord_authenticate_instances.html">discord authenticate instances</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The code imports dependencies from a 'discord gateway' module and defines allowed user IDs, authenticates routes using a session-based system, and handles unauthenticated requests. The <code>authenticateRoute</code> function checks for a valid session and user ID, and exports the authentication function, as well as the <code>INSTANCES</code> and <code>SESSIONS</code> variables, from the current module.</p>
 <a href="./discord_express_token_endpoint.html">discord express token endpoint</a>
 <br /><br />

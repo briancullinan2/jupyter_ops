@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../import/index.html">import</a>
-    <br /><br />
+    <h3><a href="../import/index.html">import</a></h3>
     <a href="./import_notebook.html">import notebook</a>
 <br /><br />
 <a href="./how_does_node_module_require_work.html">how does node module require work</a>
@@ -73,11 +79,14 @@
 
   </nav>
   <header>
-    <a href="../import/index.html">import</a> ${PREV} ${NEXT}
+    <a href="../import/index.html">import</a> | <a href="./compile_a_dylib_from_source_cell.html">compile a dylib from source cell</a> | <a href="./search_jupter_notebooks_for_questions_and_answers.html">search jupter notebooks for questions and answers</a>
   </header>
 
-  <p>Here is a summary of the code in one or two sentences:</p>
-<p>The code consists of two functions, <code>resultMarkdown</code> and <code>displayCell</code>, which convert arrays of results into strings in Markdown format. The <code>displayCell</code> function handles both single-cell and multi-cell results, reducing them into a single string using the <code>resultMarkdown</code> function.</p>
+  <p>The code consists of two functions, <code>resultMarkdown</code> and <code>displayCell</code>, which convert arrays of results into strings in Markdown format. The <code>displayCell</code> function handles both single-cell and multi-cell results, reducing them into a single string using the <code>resultMarkdown</code> function.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "display interpreted results in markdown"</code></pre><h1>display interpreted results in markdown</h1>
+
 
 
 <pre class="javascript"><code>function resultMarkdown(res) {
@@ -110,6 +119,7 @@ module.exports.displayCell = displayCell
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

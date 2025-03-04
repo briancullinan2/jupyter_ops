@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../brians_resume/index.html">brians resume</a>
-    <br /><br />
+    <h3><a href="../brians_resume/index.html">brians resume</a></h3>
     <a href="./_get_a_list_of_folder_topics_from_bookmarks.html">,get a list of folder topics from bookmarks</a>
 <br /><br />
 <a href="./update_insterests_resume_sheet.html">update insterests resume sheet</a>
@@ -71,11 +77,14 @@
 
   </nav>
   <header>
-    <a href="../brians_resume/index.html">brians resume</a> ${PREV} ${NEXT}
+    <a href="../brians_resume/index.html">brians resume</a> | <a href="./chat_page.html">chat page</a> | 
   </header>
 
-  <p>Here's a two-sentence summary:</p>
-<p>This HTML-written resume, belonging to Brian Cullinan, highlights his contact information, personal details, and skills aimed at securing a full-time position as a residential field agent with the FBI. With over 24 years of programming experience, language skills, and business experience, Brian emphasizes his fast context switching, quick learning ability, and compassion in his resume summary.</p>
+  <p>This HTML-written resume, belonging to Brian Cullinan, highlights his contact information, personal details, and skills aimed at securing a full-time position as a residential field agent with the FBI. With over 24 years of programming experience, language skills, and business experience, Brian emphasizes his fast context switching, quick learning ability, and compassion in his resume summary.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "brians resume in html"</code></pre><h1>brians resume in html</h1>
+
 
 
 <pre class="html"><code>&lt;h2 style="text-align: center;"&gt;Brian Cullinan&lt;/h2&gt;
@@ -747,6 +756,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

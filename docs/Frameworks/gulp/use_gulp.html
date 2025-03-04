@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../gulp/index.html">gulp</a>
-    <br /><br />
+    <h3><a href="../gulp/index.html">gulp</a></h3>
     <a href="./use_gulp.html">use gulp</a>
 <br /><br />
 <a href="./use_a_Promise_as_a_gulp_task.html">use a Promise as a gulp task</a>
@@ -59,10 +65,14 @@
 
   </nav>
   <header>
-    <a href="../gulp/index.html">gulp</a> ${PREV} ${NEXT}
+    <a href="../gulp/index.html">gulp</a> |  | <a href="./use_a_Promise_as_a_gulp_task.html">use a Promise as a gulp task</a>
   </header>
 
   <p>This Gulp script automates the replacement of a specific string within project files, likely for build or deployment purposes, and handles asynchronous execution with error handling.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "use gulp"</code></pre><h1>use gulp</h1>
+
 
 
 <pre class="javascript"><code>var gulp = require('gulp');
@@ -102,6 +112,7 @@ try {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

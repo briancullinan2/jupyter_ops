@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../scraping/index.html">scraping</a>
-    <br /><br />
+    <h3><a href="../scraping/index.html">scraping</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./google_maps_data_list.html">google maps data list</a>
@@ -53,11 +59,12 @@
 
   </nav>
   <header>
-    <a href="../scraping/index.html">scraping</a> ${PREV} ${NEXT}
+    <a href="../scraping/index.html">scraping</a> |  | <a href="./google_maps_data_list.html">google maps data list</a>
   </header>
 
-  <p>Here is a summary of the code breakdown in one or two sentences:</p>
-<p>This JavaScript code imports various modules and sets constants for a project directory, then defines two functions, <code>getLocations</code> and <code>getLocation</code>, which respectively retrieve a list of locations and extract specific data from each location's webpage. The <code>getLocation</code> function makes a GET request to a URL, extracts XPath expressions for elements containing day names, times, and deals, and then maps the results to an object with <code>dotw</code>, <code>time</code>, and <code>deals</code> properties.</p>
+  <p>This JavaScript code imports various modules and sets constants for a project directory, then defines two functions, <code>getLocations</code> and <code>getLocation</code>, which respectively retrieve a list of locations and extract specific data from each location's webpage. The <code>getLocation</code> function makes a GET request to a URL, extracts XPath expressions for elements containing day names, times, and deals, and then maps the results to an object with <code>dotw</code>, <code>time</code>, and <code>deals</code> properties.</p>
+<h1>Cell 0</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -140,6 +147,7 @@ getLocations()
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

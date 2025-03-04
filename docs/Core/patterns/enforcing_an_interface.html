@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../patterns/index.html">patterns</a>
-    <br /><br />
+    <h3><a href="../patterns/index.html">patterns</a></h3>
     <a href="./__walk_tree.html">, walk tree</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -71,13 +77,15 @@
 
   </nav>
   <header>
-    <a href="../patterns/index.html">patterns</a> ${PREV} ${NEXT}
+    <a href="../patterns/index.html">patterns</a> | <a href="./extend_prototype_class.html">extend prototype class</a> | <a href="./test_enforcing_an_interface_with_prototype.html">test enforcing an interface with prototype</a>
   </header>
 
-  <p>Here is a summary of the code breakdown in one sentence:</p>
-<p>This code provides a collection of functions (<code>typeErrorTemplate</code>, <code>standardCompare</code>, <code>arrayCompare</code>, <code>objectCompare</code>, and <code>interface</code>) for comparing and validating values against expected structures, with the ability to handle type mismatches and loose comparisons.</p>
-<p>Alternatively, a two-sentence summary could be:</p>
+  <p>This code provides a collection of functions (<code>typeErrorTemplate</code>, <code>standardCompare</code>, <code>arrayCompare</code>, <code>objectCompare</code>, and <code>interface</code>) for comparing and validating values against expected structures, with the ability to handle type mismatches and loose comparisons.</p>
 <p>The code includes several functions for comparing and validating values, including <code>standardCompare</code>, <code>arrayCompare</code>, and <code>objectCompare</code>, which compare arrays and objects against expected structures. The <code>typeErrorTemplate</code> function is used to create custom error messages for type mismatches, and the <code>interface</code> function provides a general-purpose comparison function.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "enforcing an interface"</code></pre><h1>enforcing an interface</h1>
+
 
 
 <pre class="javascript"><code>
@@ -209,6 +217,7 @@ if(typeof $ !== 'undefined') {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

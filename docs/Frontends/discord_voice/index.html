@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frontends/index.html">Frontends</a>
-    <br /><br />
+    <h3><a href="../../Frontends/index.html">Frontends</a></h3>
     <a href="../blog/index.html">blog</a>
 <br /><br />
 <a href="../brians_resume/index.html">brians resume</a>
@@ -81,14 +87,14 @@
 
   </nav>
   <header>
-    <a href="../../Frontends/index.html">Frontends</a> ${PREV} ${NEXT}
+    <a href="../../Frontends/index.html">Frontends</a> | <a href="../discord_tools/index.html">discord tools</a> | <a href="../discord/index.html">discord</a>
   </header>
 
-  <a href="./send_voice_on_discord.html">send voice on discord</a>
+  <h1>discord voice</h1>
+
+<a href="./send_voice_on_discord.html">send voice on discord</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one sentence:</p>
 <p>The code initializes a Discord bot, connects to a voice channel, and plays text-to-speech audio using the <code>outetts</code> library and FFmpeg, leveraging asynchronous programming for efficient execution.</p>
-<p>Alternatively, here is a two-sentence summary:</p>
 <p>The code sets up a Discord bot, connects to a voice channel, and utilizes FFmpeg for audio processing, allowing for text-to-speech functionality. It follows best practices for coding and documentation, utilizing modular and reusable design principles.</p>
 
 </body>

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Google/index.html">Google</a>
-    <br /><br />
+    <h3><a href="../../Google/index.html">Google</a></h3>
     <a href="../google_calendar_data/index.html">google calendar data</a>
 <br /><br />
 <a href="../google_calendar_graphs/index.html">google calendar graphs</a>
@@ -63,56 +69,46 @@
 
   </nav>
   <header>
-    <a href="../../Google/index.html">Google</a> ${PREV} ${NEXT}
+    <a href="../../Google/index.html">Google</a> | <a href="../google_contacts/index.html">google contacts</a> | <a href="../google_maps/index.html">google maps</a>
   </header>
 
-  <a href="./authorize_google_drive.html">authorize google drive</a>
+  <h1>google drive</h1>
+
+<a href="./authorize_google_drive.html">authorize google drive</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code breakdown:</p>
 <p>The code requires various modules and defines several variables for interacting with the Google API, specifically the Google Drive API. It includes a function called <code>authorizeDrive</code> that authenticates with the Google API using a credentials file and returns a client instance for the Google Drive API.</p>
 <a href="./test_list_google_drive.html">test list google drive</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>This JavaScript code uses the Mocha testing framework to test two functions, <code>listDrive</code> and <code>insertPermission</code>, which interact with the Google Drive API. The test calls <code>listDrive</code> to retrieve files, filters the result to include only &quot;Untitled&quot; files, and then concurrently calls <code>insertPermission</code> for each of these files with a specific email address.</p>
 <a href="./list_google_drive_files.html">list google drive files</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code:</p>
 <p>The <code>listDrive</code> function is a Node.js module that exports a single function, which returns a list of files from Google Drive after authenticating with Google Drive using the <code>authorizeDrive</code> function. The function retrieves the list of files using the <code>files.list</code> method and returns an empty array if no files are found.</p>
 <a href="./insert_google_drive_permissions.html">insert google drive permissions</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>The <code>insertPermission</code> function, located in a Node.js module, takes a file ID and a user's email address as input and returns a promise that resolves to the ID of a newly created permission. The function authorizes access to Google Drive, creates a new permission on the specified file, and extracts the permission ID from the response before exporting it as a module for use elsewhere.</p>
 <a href="./create_a_sheet_in_google_drive.html">create a sheet in google drive</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one sentence:</p>
 <p>The <code>createSheet(email)</code> function creates a Google Sheets document, inserts permissions for two emails, and exports it as a module, using the <code>authorizeSheets</code> and <code>insertPermission</code> modules to handle authorization and permission insertion.</p>
 <a href="./test_google_sheet_create.html">test google sheet create</a>
 <br /><br />
-<p>Here is a summary of the code in one sentence:</p>
 <p>The code imports a function <code>createSheet</code> from a <code>Core</code> module to create a Google Drive sheet, and then writes a unit test to verify that the function successfully creates a sheet with a given email address.</p>
 <a href="./copy_a_file_on_google_drive.html">copy a file on google drive</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the <code>copyFile</code> function:</p>
 <p>The <code>copyFile</code> function copies a file in Google Drive by its ID and assigns a new title, and returns the ID of the copied file. It uses the <code>drive.files.copy</code> method and the <code>authorizeGoogleDrive</code> function to authenticate and perform the file copy operation.</p>
 <a href="./merge_google_drive.html">merge google drive</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code:</p>
 <p>The code imports dependencies and creates a <code>google</code> object to simplify access to Google APIs, then defines two functions: <code>listDriveFiles</code> to list files in a specified Google Drive folder, and <code>listDrive</code> to list files in the root folder. The <code>listDrive</code> function is exported, and an optional section allows it to be executed using a <code>$.sendResult</code> method in a testing or debugging context.</p>
 <a href="./download_all_docs_as_actual_data_files.html">download all docs as actual data files</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>The code imports necessary dependencies, sets up constants for Google Drive authentication and file paths, and defines two asynchronous functions: <code>convertGoogleDoc</code> to convert Google Docs to various output types and <code>downloadDocs</code> to download Google Docs from a specified folder. The code uses Node.js modules such as <code>path</code>, <code>fs</code>, and <code>google-auth</code> to perform tasks, and includes error handling mechanisms to prevent file corruption or security issues.</p>
 <a href="./sign_a_file_url_for_uploading_to_google_storage.html">sign a file url for uploading to google storage</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code:</p>
 <p>This code defines an HTTP function named <code>getSignedUrl</code> that generates a signed URL for a file in Google Cloud Storage, allowing a user to upload a file to the specified bucket and file name. The function takes a POST request, retrieves the user's authorization (TODO), and creates a temporary upload URL with a 5-minute expiration time.</p>
 <a href="./create_a_copy_of_study_sauce_template.html">create a copy of study sauce template</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>The <code>copyStudy</code> function duplicates a Google Drive file named &quot;Study sauce template&quot; and grants permissions for a specified email address. It achieves this by listing files, copying the file, inserting permissions, and retrieving a sheet identifier, before returning the new file ID.</p>
 <a href="./create_a_sheet_handler.html">create a sheet handler</a>
 <br /><br />
-<p>Here is a 2-sentence summary:</p>
 <p>The code imports necessary modules and defines a <code>copyMarketing</code> function to copy a Google Drive file named &quot;Marketing site&quot; and grant permissions to a specified email address. The function executes a sequential workflow of listing Google Drive files, copying the file, inserting permissions, and retrieving a sheet identifier (although the latter's purpose is unclear).</p>
 
 </body>

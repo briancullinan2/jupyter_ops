@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../quake3_server_connector/index.html">quake3 server connector</a>
-    <br /><br />
+    <h3><a href="../quake3_server_connector/index.html">quake3 server connector</a></h3>
     undefined<a href="./index.html">index</a>
 <br /><br />
 <a href="./ssh_remote_wget.html">ssh remote wget</a>
@@ -57,11 +63,14 @@
 
   </nav>
   <header>
-    <a href="../quake3_server_connector/index.html">quake3 server connector</a> ${PREV} ${NEXT}
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a> | <a href="./monitor_q3_servers.html">monitor q3 servers</a> | <a href="../quakejs/index.html">quakejs</a>
   </header>
 
-  <p>Here is a summary of the code breakdown in two sentences:</p>
-<p>The code imports necessary modules, sets a default value for the <code>DEFAULT_CHANNEL</code> variable, and defines a list of server addresses to monitor. It then iterates over the server list, calls the <code>monitorServer</code> function for each server, and defines a <code>startResponder</code> function to start a command responder with a 1-second interval to respond to user commands.</p>
+  <p>The code imports necessary modules, sets a default value for the <code>DEFAULT_CHANNEL</code> variable, and defines a list of server addresses to monitor. It then iterates over the server list, calls the <code>monitorServer</code> function for each server, and defines a <code>startResponder</code> function to start a command responder with a 1-second interval to respond to user commands.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "index"</code></pre><h1>index</h1>
+
 
 
 <pre class="node"><code>var importer = require('../Core')
@@ -170,12 +179,12 @@ module.exports = startResponder
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 
 <a href="./index.html">index</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in two sentences:</p>
 <p>The code imports necessary modules, sets a default value for the <code>DEFAULT_CHANNEL</code> variable, and defines a list of server addresses to monitor. It then iterates over the server list, calls the <code>monitorServer</code> function for each server, and defines a <code>startResponder</code> function to start a command responder with a 1-second interval to respond to user commands.</p>
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
@@ -210,23 +219,18 @@ module.exports = startResponder
 <p>This function sets the <code>stillRunning</code> variable to <code>true</code> and starts an interval using the <code>setInterval</code> function. The interval will call an asynchronous function every 1 second to respond to user commands.</p>
 <a href="./ssh_remote_wget.html">ssh remote wget</a>
 <br /><br />
-<p>Here is a summary of the code in one or two sentences:</p>
 <p>This code is a Node.js script that establishes an SSH connection to a remote server, downloads a URL using <code>wget</code>, and modifies a file on the server by appending a specific format to the end of the file. The script also includes error handling and exports the <code>remoteGet</code> function for use in other modules.</p>
 <a href="./dns_lookup.html">dns lookup</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the DNS Lookup Function:</p>
 <p>The <code>lookupDNS</code> function, a JavaScript module, performs a DNS lookup on a given IP address and caches the result for subsequent lookups. It uses the <code>dns</code> module to asynchronously retrieve the DNS information, and returns the cached or newly looked-up result as a promise.</p>
 <a href="./remove_ctrl_characters.html">remove ctrl characters</a>
 <br /><br />
-<p>Here is a summary of the function in two sentences:</p>
 <p>The <code>removeCtrlChars</code> function removes control characters and trims whitespace from a given string, returning the processed string. It uses regular expressions to match and remove control characters in specific formats, and is exported as a module for use in other parts of the application.</p>
 <a href="./quake3_server_status.html">quake3 server status</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the provided code:</p>
 <p>The code is a Quake 3 server management tool that queries server status, captures all stats, and logs chat messages. It uses various modules and functions to interact with the server, including the <code>gamedig</code> module for querying server status and the <code>sendRcon</code> function for sending RCON commands to the server.</p>
 <a href="./spectate_q3_server.html">spectate q3 server</a>
 <br /><br />
-<p>Here's a 1-2 sentence summary of the code:</p>
 <p>The <code>spectateServer</code> function is an asynchronous function that establishes a connection with a Quake 3 server, retrieves game state and team information, and sets up a chat listener to forward messages to Discord. The function uses various imported modules to interact with the Quake 3 server, Discord API, and Discord gateway.</p>
 
 </body>

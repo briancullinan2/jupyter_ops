@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../image_magik_commands/index.html">image magik commands</a>
-    <br /><br />
+    <h3><a href="../image_magik_commands/index.html">image magik commands</a></h3>
     <a href="./reduce_noise_from_images_after_resizing.html">reduce noise from images after resizing</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -57,11 +63,12 @@
 
   </nav>
   <header>
-    <a href="../image_magik_commands/index.html">image magik commands</a> ${PREV} ${NEXT}
+    <a href="../image_magik_commands/index.html">image magik commands</a> | <a href="./reduce_noise_from_images_after_resizing.html">reduce noise from images after resizing</a> | <a href="./cell_2.html">Cell 2</a>
   </header>
 
-  <p>Here's a two-sentence summary of the code breakdown:</p>
-<p>This code uses ImageMagick commands to process and convert an image file, involving resizing, compressing, enhancing, and despeckling the image. The code consists of three ImageMagick commands and a final <code>echo</code> command that prints &quot;done&quot; to the console.</p>
+  <p>This code uses ImageMagick commands to process and convert an image file, involving resizing, compressing, enhancing, and despeckling the image. The code consists of three ImageMagick commands and a final <code>echo</code> command that prints &quot;done&quot; to the console.</p>
+<h1>Cell 1</h1>
+
 
 
 <pre class="bash"><code>
@@ -80,6 +87,7 @@ echo "done"</code></pre>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

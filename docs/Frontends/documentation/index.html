@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frontends/index.html">Frontends</a>
-    <br /><br />
+    <h3><a href="../../Frontends/index.html">Frontends</a></h3>
     <a href="../blog/index.html">blog</a>
 <br /><br />
 <a href="../brians_resume/index.html">brians resume</a>
@@ -81,16 +87,16 @@
 
   </nav>
   <header>
-    <a href="../../Frontends/index.html">Frontends</a> ${PREV} ${NEXT}
+    <a href="../../Frontends/index.html">Frontends</a> | <a href="../discord/index.html">discord</a> | <a href="../edit_anywhere/index.html">edit anywhere</a>
   </header>
 
-  <a href="./convert_notebook_to_open_api.html">convert notebook to open api</a>
+  <h1>documentation</h1>
+
+<a href="./convert_notebook_to_open_api.html">convert notebook to open api</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>The code imports various modules and defines custom functions, including <code>getTail()</code> for recursively traversing objects and <code>getPathId()</code> for normalizing path IDs, to generate an RPC specification. The main entry point function <code>getRpcSpecFromCells()</code> is exported as a module, allowing it to be used in other parts of the application.</p>
 <a href="./test_convert_notebook_api.html">test convert notebook api</a>
 <br /><br />
-<p>Here is a summary of the code in one sentence:</p>
 <p>The code imports functions from a <code>Core</code> module, sets the environment, and conditionally executes a series of function calls to obtain an RPC specification and permissions, using a global object <code>$</code> to send the results or errors.</p>
 <a href="./convert_google_discovery_to_documentation.html">convert google discovery to documentation</a>
 <br /><br />
@@ -98,17 +104,13 @@
 <br /><br />
 <a href="./export_documentation.html">export documentation</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>This Node.js script exports documentation for a project in HTML format, utilizing various imports and functions to generate the documentation, including rendering Markdown to HTML using the <code>Remarkable</code> module. The script defines an asynchronous function <code>exportAll(query)</code> that iterates over notebooks in the project directory and generates HTML documentation for each.</p>
 <a href="./highlight_js.html">highlight js</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one sentence:</p>
 <p>The HTML document links to external style sheets and a JavaScript file from the Highlight.js library, and initializes the library to highlight code elements on the page.</p>
-<p>Alternatively, here is a two-sentence summary:</p>
 <p>The HTML document includes external style sheets and a JavaScript file from the Highlight.js library, which is used to highlight code elements on the page. The library is initialized using <code>hljs.highlightAll()</code> to automatically highlight all code elements on the page.</p>
 <a href="./javadoc_template.html">javadoc template</a>
 <br /><br />
-<p>Here's a 2 sentence summary of the HTML document breakdown:</p>
 <p>The basic structure of an HTML document includes the document type declaration, HTML tag, head section (with metadata, document title, viewport settings, stylesheet link, and inline styles), body section (with navigation bar, header section, and output section), and end of document tags. The document can be customized with variables and links to external stylesheets, and can be designed to be responsive with viewport settings.</p>
 
 </body>

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../discord_tools/index.html">discord tools</a>
-    <br /><br />
+    <h3><a href="../discord_tools/index.html">discord tools</a></h3>
     <a href="./discord_pdf_converter.html">discord pdf converter</a>
 <br /><br />
 <a href="./discord_notebook_connector.html">discord notebook connector</a>
@@ -65,11 +71,14 @@
 
   </nav>
   <header>
-    <a href="../discord_tools/index.html">discord tools</a> ${PREV} ${NEXT}
+    <a href="../discord_tools/index.html">discord tools</a> | <a href="./discord_writing_llms.html">discord writing llms</a> | <a href="./discord_llm_interactions.html">discord llm interactions</a>
   </header>
 
-  <p>Here's a summary in two sentences:</p>
-<p>The <code>doMesh</code> function is a Node.js module that exports an asynchronous function for a Discord bot, generating an OBJ model and posting an image attachment to a channel. It selects a &quot;Mesh&quot; model, generates the OBJ model, extracts the data, and posts the image attachment after sending a typing indicator and updating the interaction.</p>
+  <p>The <code>doMesh</code> function is a Node.js module that exports an asynchronous function for a Discord bot, generating an OBJ model and posting an image attachment to a channel. It selects a &quot;Mesh&quot; model, generates the OBJ model, extracts the data, and posts the image attachment after sending a typing indicator and updating the interaction.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "discord mesh generator"</code></pre><h1>discord mesh generator</h1>
+
 
 
 <pre class="javascript"><code>const {postMessageImageAttachment} = importer.import('create message image attachments')
@@ -97,6 +106,7 @@ module.exports = doMesh
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

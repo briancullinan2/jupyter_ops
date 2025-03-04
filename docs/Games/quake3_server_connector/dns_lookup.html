@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../quake3_server_connector/index.html">quake3 server connector</a>
-    <br /><br />
+    <h3><a href="../quake3_server_connector/index.html">quake3 server connector</a></h3>
     undefined<a href="./index.html">index</a>
 <br /><br />
 <a href="./ssh_remote_wget.html">ssh remote wget</a>
@@ -57,11 +63,14 @@
 
   </nav>
   <header>
-    <a href="../quake3_server_connector/index.html">quake3 server connector</a> ${PREV} ${NEXT}
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a> | <a href="./ssh_remote_wget.html">ssh remote wget</a> | <a href="./remove_ctrl_characters.html">remove ctrl characters</a>
   </header>
 
-  <p>Here's a 2-sentence summary of the DNS Lookup Function:</p>
-<p>The <code>lookupDNS</code> function, a JavaScript module, performs a DNS lookup on a given IP address and caches the result for subsequent lookups. It uses the <code>dns</code> module to asynchronously retrieve the DNS information, and returns the cached or newly looked-up result as a promise.</p>
+  <p>The <code>lookupDNS</code> function, a JavaScript module, performs a DNS lookup on a given IP address and caches the result for subsequent lookups. It uses the <code>dns</code> module to asynchronously retrieve the DNS information, and returns the cached or newly looked-up result as a promise.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "dns lookup"</code></pre><h1>dns lookup</h1>
+
 
 
 <pre class="node"><code>var dns = require('dns')
@@ -90,6 +99,7 @@ module.exports = lookupDNS
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

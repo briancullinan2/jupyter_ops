@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Databases/index.html">Databases</a>
-    <br /><br />
+    <h3><a href="../../Databases/index.html">Databases</a></h3>
     <a href="../active_directory/index.html">active directory</a>
 <br /><br />
 <a href="../caches/index.html">caches</a>
@@ -67,10 +73,12 @@
 
   </nav>
   <header>
-    <a href="../../Databases/index.html">Databases</a> ${PREV} ${NEXT}
+    <a href="../../Databases/index.html">Databases</a> | <a href="../git/index.html">git</a> | <a href="../raid/index.html">raid</a>
   </header>
 
-  <a href="./Replace_package_json_latest_with_actual_latest_version_numbers.html">Replace package.json latest with actual latest version numbers</a>
+  <h1>npm</h1>
+
+<a href="./Replace_package_json_latest_with_actual_latest_version_numbers.html">Replace package.json latest with actual latest version numbers</a>
 <br /><br />
 <p>This code updates dependency versions in a project's <code>package.json</code> file to match the versions actually installed, using information from <code>npm list</code>.</p>
 <a href="./Check_if_there_is_a_local-npm_server_running_on_Brian_s_machine.html">Check if there is a local-npm server running on Brian's machine</a>

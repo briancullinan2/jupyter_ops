@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Algorithms/index.html">Algorithms</a>
-    <br /><br />
+    <h3><a href="../../Algorithms/index.html">Algorithms</a></h3>
     <a href="../audio/index.html">audio</a>
 <br /><br />
 <a href="../ffmpeg_commands/index.html">ffmpeg commands</a>
@@ -73,30 +79,27 @@
 
   </nav>
   <header>
-    <a href="../../Algorithms/index.html">Algorithms</a> ${PREV} ${NEXT}
+    <a href="../../Algorithms/index.html">Algorithms</a> | <a href="../llm_scaffold/index.html">llm scaffold</a> | <a href="../llm_writing/index.html">llm writing</a>
   </header>
 
-  <a href="./scan_chat_logs.html">scan chat logs</a>
+  <h1>llm tools</h1>
+
+<a href="./scan_chat_logs.html">scan chat logs</a>
 <br /><br />
-<p>Here is a summary of the code in two sentences:</p>
 <p>The code imports necessary modules and functions, defines constants for file system paths and regular expression patterns, and defines a function <code>cellNeedsTidying</code> to check if a cell in a chat log needs tidying. The <code>cellNeedsTidying</code> function checks five conditions, including the existence of certain properties like <code>emotions</code>, <code>date</code>, and <code>dat</code>, to determine if the cell needs tidying.</p>
 <a href="./ask_llm_about_emotions.html">ask llm about emotions</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>This code imports a module named <code>select llm</code> and assigns it to the <code>selectModel</code> constant. It also defines a constant array <code>EMOTIONS</code> containing 77 string values representing different emotions.</p>
 <a href="./cache_chat_logs.html">cache chat logs</a>
 <br /><br />
-<p>Here's a summary of the code breakdown in one sentence:</p>
 <p>The code defines a <code>storeChatHistory</code> function that stores chat history data in a JSON file using Node.js's built-in <code>fs</code> and <code>path</code> modules, and exports it as a module.</p>
 <p>Alternatively, you can condense it into two sentences:</p>
 <p>The code uses Node.js's built-in modules to interact with files and paths, and defines a <code>storeChatHistory</code> function that stores chat history data in a JSON file. This function is then exported as a module for use in other parts of the application.</p>
 <a href="./ask_llm_about_chat_conversations.html">ask llm about chat conversations</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code:</p>
 <p>The code consists of two asynchronous functions, <code>askLlamaAboutConversation</code> and <code>askLlamaAboutCategory</code>, which interact with a Large Language Model (LLM) to gather information about a conversation and categorize it based on the conversation. Both functions import the LLM prompt function from a separate module, prompt the LLM with a user-defined question, and return the LLM's response after processing it for whitespace, punctuation, and special characters.</p>
 <a href="./llm_respond_like_a_personality.html">llm respond like a personality</a>
 <br /><br />
-<p>Here's a summary of the code in two sentences:</p>
 <p>The code imports various modules and functions, defines two functions <code>getChatHistory</code> and <code>askLlamaToRespondLike</code>, and utilizes file system operations to read and write chat log files. The code has some areas for improvement, including inconsistent use of <code>async/await</code>, blocking file reads, and legacy syntax.</p>
 
 </body>

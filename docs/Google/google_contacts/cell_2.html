@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_contacts/index.html">google contacts</a>
-    <br /><br />
+    <h3><a href="../google_contacts/index.html">google contacts</a></h3>
     <a href="./list_google_contact.html">list google contact</a>
 <br /><br />
 <a href="./google_contact_settings.html">google contact settings</a>
@@ -53,11 +59,12 @@
 
   </nav>
   <header>
-    <a href="../google_contacts/index.html">google contacts</a> ${PREV} ${NEXT}
+    <a href="../google_contacts/index.html">google contacts</a> | <a href="./google_contact_settings.html">google contact settings</a> | <a href="./cell_3.html">Cell 3</a>
   </header>
 
-  <p>Here's a two-sentence summary:</p>
-<p>The code imports modules from a main module, initiates an asynchronous execution context, and uses promise handling to execute and process results from a <code>getSettings</code> function. The <code>getSettings</code> function is called with an email address and returns a promise that is handled with <code>.then</code> for successful results and <code>.catch</code> for errors.</p>
+  <p>The code imports modules from a main module, initiates an asynchronous execution context, and uses promise handling to execute and process results from a <code>getSettings</code> function. The <code>getSettings</code> function is called with an email address and returns a promise that is handled with <code>.then</code> for successful results and <code>.catch</code> for errors.</p>
+<h1>Cell 2</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -77,6 +84,7 @@ getSettings('megamindbrian@gmail.com')
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../build_Angular_components/index.html">build Angular components</a>
-    <br /><br />
+    <h3><a href="../build_Angular_components/index.html">build Angular components</a></h3>
     <a href="./Run_angular-cli_commands_from_nodejs.html">Run angular-cli commands from nodejs</a>
 <br /><br />
 <a href="./Compile_the_project_using_webpack.html">Compile the project using webpack</a>
@@ -53,11 +59,12 @@
 
   </nav>
   <header>
-    <a href="../build_Angular_components/index.html">build Angular components</a> ${PREV} ${NEXT}
+    <a href="../build_Angular_components/index.html">build Angular components</a> | <a href="./Compile_the_project_using_webpack.html">Compile the project using webpack</a> | <a href="./Set_angular_theme_colors.html">Set angular theme colors</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code breakdown:</p>
-<p>This code creates a new Angular project called &quot;new-portal&quot; using <code>@angular/cli</code>, generates an &quot;AppServer&quot; module, and prepares the project for building and serving. The code also outlines missing functionality, including building in memory, integrating a sockify server, accepting logins and encrypting passwords, and sending mock responses to test interfaces.</p>
+  <p>This code creates a new Angular project called &quot;new-portal&quot; using <code>@angular/cli</code>, generates an &quot;AppServer&quot; module, and prepares the project for building and serving. The code also outlines missing functionality, including building in memory, integrating a sockify server, accepting logins and encrypting passwords, and sending mock responses to test interfaces.</p>
+<h1>Cell 2</h1>
+
 
 
 <pre class="javascript"><code>//ng(path.dirname(project), ['new', '--skip-git', '--skip-install', 'new-portal'])
@@ -93,6 +100,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

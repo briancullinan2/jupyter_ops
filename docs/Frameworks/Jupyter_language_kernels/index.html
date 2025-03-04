@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frameworks/index.html">Frameworks</a>
-    <br /><br />
+    <h3><a href="../../Frameworks/index.html">Frameworks</a></h3>
     <a href="../Angular_2/index.html">Angular 2</a>
 <br /><br />
 <a href="../Angular_components/index.html">Angular components</a>
@@ -105,10 +111,12 @@
 
   </nav>
   <header>
-    <a href="../../Frameworks/index.html">Frameworks</a> ${PREV} ${NEXT}
+    <a href="../../Frameworks/index.html">Frameworks</a> | <a href="../How_code_should_look/index.html">How code should look</a> | <a href="../autorewire/index.html">autorewire</a>
   </header>
 
-  <a href="./install_bash_kernel.html">install bash kernel</a>
+  <h1>Jupyter language kernels</h1>
+
+<a href="./install_bash_kernel.html">install bash kernel</a>
 <br /><br />
 <p>This code snippet installs and configures a Bash kernel for Jupyter Notebook, enabling users to run Bash commands within their notebooks.</p>
 <a href="./install_ipython_kernel.html">install ipython kernel</a>
@@ -119,11 +127,9 @@
 <p>This code snippet provides instructions for setting up and installing the <code>icsharp</code> project on a Mac, requiring the user to first install Mono and then clone, build, and install the project using provided scripts.</p>
 <a href="./cell_3.html">Cell 3</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in two sentences:</p>
 <p>This code breakdown lists four commands for navigating and running scripts in a Unix-like system, including changing directories, compiling C# code, running the Bash shell, and executing a shell script named <code>build.sh</code>. The commands assume a Unix-like system, such as Linux or macOS, and that the <code>build.sh</code> script is executable and located in the same directory.</p>
 <a href="./cell_4.html">Cell 4</a>
 <br /><br />
-<p>Here's a 1-2 sentence summary of the code breakdown:</p>
 <p>The <code>grep</code> command-line utility is used to search for strings, with options such as <code>-r</code> for recursive search, <code>/</code> for file path separation, and <code>--e</code>/<code>-e</code> for specifying a search pattern. In this case, it searches for files containing the string <code>'xunit.runners'</code>.</p>
 <a href="./install_ruby.html">install ruby</a>
 <br /><br />
@@ -133,7 +139,6 @@
 <p>This code installs Jupyter Notebook and JupyterLab, enabling Python kernel support and configuring them for use.</p>
 <a href="./cell_7.html">Cell 7</a>
 <br /><br />
-<p>Here is a summary of the TypeScript installation process in two sentences:</p>
 <p>To install TypeScript, you need to have Node.js and npm installed on your system, and then run the command <code>npm install -g typescript</code> to install the TypeScript compiler globally. To verify the installation, run the command <code>tsc -v</code> to check the version number of the installed TypeScript compiler.</p>
 <a href="./cell_8.html">Cell 8</a>
 <br /><br />

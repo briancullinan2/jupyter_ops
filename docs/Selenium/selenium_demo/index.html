@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Selenium/index.html">Selenium</a>
-    <br /><br />
+    <h3><a href="../../Selenium/index.html">Selenium</a></h3>
     <a href="../What_is_Selenium/index.html">What is Selenium</a>
 <br /><br />
 <a href="../auth/index.html">auth</a>
@@ -99,10 +105,12 @@
 
   </nav>
   <header>
-    <a href="../../Selenium/index.html">Selenium</a> ${PREV} ${NEXT}
+    <a href="../../Selenium/index.html">Selenium</a> | <a href="../selenium_commands/index.html">selenium commands</a> | <a href="../selenium_server/index.html">selenium server</a>
   </header>
 
-  <a href="./Start_the_selenium_server_and_crawl_16_search_results_at_once.html">Start the selenium server and crawl 16 search results at once</a>
+  <h1>selenium demo</h1>
+
+<a href="./Start_the_selenium_server_and_crawl_16_search_results_at_once.html">Start the selenium server and crawl 16 search results at once</a>
 <br /><br />
 <p>This code imports the <code>exec</code> function, which enables Node.js to execute shell commands and interact with the spawned processes.</p>
 <a href="./cell_1.html">Cell 1</a>

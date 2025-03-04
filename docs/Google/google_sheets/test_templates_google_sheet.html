@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_sheets/index.html">google sheets</a>
-    <br /><br />
+    <h3><a href="../google_sheets/index.html">google sheets</a></h3>
     <a href="./templates_google_doc.html">templates google doc</a>
 <br /><br />
 <a href="./test_templates_google_sheet.html">test templates google sheet</a>
@@ -67,10 +73,14 @@
 
   </nav>
   <header>
-    <a href="../google_sheets/index.html">google sheets</a> ${PREV} ${NEXT}
+    <a href="../google_sheets/index.html">google sheets</a> | <a href="./templates_google_doc.html">templates google doc</a> | <a href="./get_google_sheet_info.html">get google sheet info</a>
   </header>
 
   <p>This code snippet is a unit test that verifies if a function called <code>getTemplates</code> successfully retrieves at least one template from a specified Google Sheet.  It uses assertions to check the result and includes optional logging for debugging.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "test templates google sheet"</code></pre><h1>test templates google sheet</h1>
+
 
 
 <pre class="javascript"><code>var assert = require('assert');
@@ -104,6 +114,7 @@ describe('get templates from sheet', () =&gt; {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

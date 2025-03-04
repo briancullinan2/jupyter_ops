@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../brians_resume/index.html">brians resume</a>
-    <br /><br />
+    <h3><a href="../brians_resume/index.html">brians resume</a></h3>
     <a href="./_get_a_list_of_folder_topics_from_bookmarks.html">,get a list of folder topics from bookmarks</a>
 <br /><br />
 <a href="./update_insterests_resume_sheet.html">update insterests resume sheet</a>
@@ -71,13 +77,15 @@
 
   </nav>
   <header>
-    <a href="../brians_resume/index.html">brians resume</a> ${PREV} ${NEXT}
+    <a href="../brians_resume/index.html">brians resume</a> | <a href="./file_system_access.html">file system access</a> | <a href="./ask_another_llm_for_help.html">ask another llm for help</a>
   </header>
 
-  <p>Here is a summary of the code in one sentence:</p>
-<p>The code defines a function <code>accessInternet</code> that uses Selenium to extract articles from websites or search for knowledge on the internet based on user input, and summarizes the results using the <code>summarizeArticle</code> function.</p>
-<p>Or, if you prefer a two-sentence summary:</p>
+  <p>The code defines a function <code>accessInternet</code> that uses Selenium to extract articles from websites or search for knowledge on the internet based on user input, and summarizes the results using the <code>summarizeArticle</code> function.</p>
 <p>The <code>accessInternet</code> function is an asynchronous function that takes a prompt model, session object, and prompt string as input and performs various tasks based on user input. These tasks include extracting articles from websites, searching for knowledge on the internet, and summarizing the results using the <code>summarizeArticle</code> function.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "access web information"</code></pre><h1>access web information</h1>
+
 
 
 <pre class="javascript"><code>const extractArticle = importer.import('extract llm article')
@@ -151,6 +159,7 @@ module.exports = accessInternet
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

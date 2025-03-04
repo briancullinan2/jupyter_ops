@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_timeline/index.html">google timeline</a>
-    <br /><br />
+    <h3><a href="../google_timeline/index.html">google timeline</a></h3>
     <a href="./Scrape_google_timeline.html">Scrape google timeline</a>
 <br /><br />
 <a href="./Read_single_google_timeline_page.html">Read single google timeline page</a>
@@ -59,10 +65,14 @@
 
   </nav>
   <header>
-    <a href="../google_timeline/index.html">google timeline</a> ${PREV} ${NEXT}
+    <a href="../google_timeline/index.html">google timeline</a> | <a href="./reconcile_timeline.html">reconcile timeline</a> | 
   </header>
 
   <p>This code snippet provides a function <code>timelineEvents</code> that retrieves timeline event data for a specified date from a JSON file stored in a user-specific directory.  It handles both date object and string inputs and constructs a unique file path based on the date.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "search timeline events"</code></pre><h1>search timeline events</h1>
+
 
 
 <pre class="javascript"><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
@@ -91,6 +101,7 @@ module.exports = timelineEvents;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

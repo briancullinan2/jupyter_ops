@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llm_chat/index.html">llm chat</a>
-    <br /><br />
+    <h3><a href="../llm_chat/index.html">llm chat</a></h3>
     <a href="./store_llm_response.html">store llm response</a>
 <br /><br />
 <a href="./general_chit_chat.html">general chit chat</a>
@@ -65,11 +71,14 @@
 
   </nav>
   <header>
-    <a href="../llm_chat/index.html">llm chat</a> ${PREV} ${NEXT}
+    <a href="../llm_chat/index.html">llm chat</a> | <a href="./store_llm_response.html">store llm response</a> | <a href="./relevant_llm_history.html">relevant llm history</a>
   </header>
 
-  <p>Here's a 2-sentence summary:</p>
-<p>This code is a Node.js module that imports necessary modules and variables, defines functions for retrieving recent messages from conversations, and implements file system operations for loading and storing conversation data. The module exports the <code>messageRecents</code> function, along with other variables and constants, allowing it to be used in other applications.</p>
+  <p>This code is a Node.js module that imports necessary modules and variables, defines functions for retrieving recent messages from conversations, and implements file system operations for loading and storing conversation data. The module exports the <code>messageRecents</code> function, along with other variables and constants, allowing it to be used in other applications.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "general chit chat"</code></pre><h1>general chit chat</h1>
+
 
 
 <pre class="javascript"><code>const path = require('path')
@@ -144,6 +153,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../service_auth/index.html">service auth</a>
-    <br /><br />
+    <h3><a href="../service_auth/index.html">service auth</a></h3>
     <a href="./Decrypt_passwords_json.html">Decrypt passwords.json</a>
 <br /><br />
 <a href="./Add_encrypted_to_passwords_json.html">Add encrypted to passwords.json</a>
@@ -61,10 +67,14 @@
 
   </nav>
   <header>
-    <a href="../service_auth/index.html">service auth</a> ${PREV} ${NEXT}
+    <a href="../service_auth/index.html">service auth</a> | <a href="./cell_5.html">Cell 5</a> | <a href="./Automatically_fill_any_type_of_login_form_using_various_algorithms.html">Automatically fill any type of login form using various algorithms</a>
   </header>
 
   <p>This code automates the Google sign-in process using Selenium, handling both username and password entry, and includes logic to select an account from multiple options if necessary.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "log in to Google using webdriver"</code></pre><h1>log in to Google using webdriver</h1>
+
 
 
 <pre class="javascript"><code>var matchUsername = 'input[name="Email"], input[autocomplete="username"]';
@@ -154,6 +164,7 @@ module.exports = loginGoogle;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

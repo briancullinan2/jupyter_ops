@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../fizz_buzz/index.html">fizz buzz</a>
-    <br /><br />
+    <h3><a href="../fizz_buzz/index.html">fizz buzz</a></h3>
     <a href="./http___wiki_c2_com_FizzBuzzTest.html">http://wiki.c2.com/FizzBuzzTest</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -53,11 +59,12 @@
 
   </nav>
   <header>
-    <a href="../fizz_buzz/index.html">fizz buzz</a> ${PREV} ${NEXT}
+    <a href="../fizz_buzz/index.html">fizz buzz</a> | <a href="./http___wiki_c2_com_FizzBuzzTest.html">http://wiki.c2.com/FizzBuzzTest</a> | <a href="./cell_2.html">Cell 2</a>
   </header>
 
-  <p>Here is a two-sentence summary of the <code>isFib</code> function:<br />
-The <code>isFib</code> function checks if a given number is a Fibonacci number by generating Fibonacci numbers until it finds a match or exceeds the input number. It returns <code>true</code> if the number is a Fibonacci number and <code>false</code> otherwise, as demonstrated in the provided example usage.</p>
+  <p>The <code>isFib</code> function checks if a given number is a Fibonacci number by generating Fibonacci numbers until it finds a match or exceeds the input number. It returns <code>true</code> if the number is a Fibonacci number and <code>false</code> otherwise, as demonstrated in the provided example usage.</p>
+<h1>Cell 1</h1>
+
 
 
 <pre class="javascript"><code>function isFib(num) {
@@ -90,6 +97,7 @@ isFib(4);
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

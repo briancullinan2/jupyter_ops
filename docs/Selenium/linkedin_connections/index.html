@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Selenium/index.html">Selenium</a>
-    <br /><br />
+    <h3><a href="../../Selenium/index.html">Selenium</a></h3>
     <a href="../What_is_Selenium/index.html">What is Selenium</a>
 <br /><br />
 <a href="../auth/index.html">auth</a>
@@ -99,10 +105,12 @@
 
   </nav>
   <header>
-    <a href="../../Selenium/index.html">Selenium</a> ${PREV} ${NEXT}
+    <a href="../../Selenium/index.html">Selenium</a> | <a href="../google_timeline/index.html">google timeline</a> | <a href="../linkedin_messages/index.html">linkedin messages</a>
   </header>
 
-  <a href="./sync_linkedin_contacts_with_google_contacts.html">sync linkedin contacts with google contacts</a>
+  <h1>linkedin connections</h1>
+
+<a href="./sync_linkedin_contacts_with_google_contacts.html">sync linkedin contacts with google contacts</a>
 <br /><br />
 <p>This code snippet synchronizes LinkedIn contact data with a local storage directory by scraping new contacts from LinkedIn and comparing them to existing data. It uses Selenium to automate the web scraping process and identifies new contacts for storage.</p>
 <a href="./scrape_entire_linkedin_profile.html">scrape entire linkedin profile</a>
@@ -113,7 +121,6 @@
 <p>This code fetches a list of LinkedIn connections, prioritizing loading from a cached file if it's recent, otherwise scraping the data from LinkedIn and saving it to a local file.  It uses Selenium to automate the web scraping process.</p>
 <a href="./cell_3.html">Cell 3</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code breakdown:</p>
 <p>The code imports a module and a function from it, then uses asynchronous execution to call the function, which returns a promise. The promise is handled with <code>.then</code> for success and <code>.catch</code> for errors, sending the result or error to the <code>$.sendResult</code> or <code>$.sendError</code> functions, respectively.</p>
 <a href="./connect_on_linkedin.html">connect on linkedin</a>
 <br /><br />
@@ -123,7 +130,6 @@
 <p>This code automates the process of connecting with LinkedIn contacts using Selenium to control a web browser. It takes a list of connections or a single connection as input and attempts to connect with a random subset of them.</p>
 <a href="./cell_6.html">Cell 6</a>
 <br /><br />
-<p>Here is a 2-sentence summary:</p>
 <p>This code snippet imports a module, specifically the <code>addLinkedinConnections</code> function, and executes it asynchronously using the <code>$.async()</code> and <code>.then()</code>/.<code>catch()</code> methods. The <code>addLinkedinConnections</code> function is called with <code>null</code> and an empty string as arguments, and the result is sent using the <code>$.sendResult(r)</code> method, while any errors are sent using <code>$.sendError(e)</code>.</p>
 <a href="./cell_7.html">Cell 7</a>
 <br /><br />

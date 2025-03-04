@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_search_api/index.html">google search api</a>
-    <br /><br />
+    <h3><a href="../google_search_api/index.html">google search api</a></h3>
     <a href="./search_the_web.html">search the web</a>
 <br /><br />
 <a href="./test_custom_search.html">test custom search</a>
@@ -51,10 +57,14 @@
 
   </nav>
   <header>
-    <a href="../google_search_api/index.html">google search api</a> ${PREV} ${NEXT}
+    <a href="../google_search_api/index.html">google search api</a> | <a href="./test_custom_search.html">test custom search</a> | 
   </header>
 
   <p>This code configures authentication with the Google Custom Search Engine API by locating credentials and defining the necessary scope, providing a function to obtain an authorized client for API requests.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "authorize custom search"</code></pre><h1>authorize custom search</h1>
+
 
 
 <pre class="javascript"><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
@@ -88,6 +98,7 @@ module.exports = authorizeSearch;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

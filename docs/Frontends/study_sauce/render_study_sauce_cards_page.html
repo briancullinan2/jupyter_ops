@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../study_sauce/index.html">study sauce</a>
-    <br /><br />
+    <h3><a href="../study_sauce/index.html">study sauce</a></h3>
     <a href="./convert_anki_package_to_study_sauce.html">convert anki package to study sauce</a>
 <br /><br />
 <a href="./render_study_sauce_cards_page.html">render study sauce cards page</a>
@@ -61,11 +67,14 @@
 
   </nav>
   <header>
-    <a href="../study_sauce/index.html">study sauce</a> ${PREV} ${NEXT}
+    <a href="../study_sauce/index.html">study sauce</a> | <a href="./convert_anki_package_to_study_sauce.html">convert anki package to study sauce</a> | <a href="./authorize_app_to_read_profile_info.html">authorize app to read profile info</a>
   </header>
 
-  <p>Here is a 2-sentence summary of the provided code breakdown:</p>
-<p>The code is a Node.js module for rendering and templating card data in a Google Sheets integration, utilizing ES6 syntax and promises for asynchronous operations. It consists of parsing card data, rendering cards with a unique document name, template data, and resources, and relies on external modules and functions for its functionality.</p>
+  <p>The code is a Node.js module for rendering and templating card data in a Google Sheets integration, utilizing ES6 syntax and promises for asynchronous operations. It consists of parsing card data, rendering cards with a unique document name, template data, and resources, and relies on external modules and functions for its functionality.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "render study sauce cards page"</code></pre><h1>render study sauce cards page</h1>
+
 
 
 <pre class="javascript"><code>var uuid = require('uuid/v1');
@@ -134,6 +143,7 @@ module.exports = renderCards;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

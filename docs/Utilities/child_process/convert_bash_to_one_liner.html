@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../child_process/index.html">child process</a>
-    <br /><br />
+    <h3><a href="../child_process/index.html">child process</a></h3>
     <a href="./spawn_child_process.html">spawn child process</a>
 <br /><br />
 <a href="./test_child_process.html">test child process</a>
@@ -51,11 +57,14 @@
 
   </nav>
   <header>
-    <a href="../child_process/index.html">child process</a> ${PREV} ${NEXT}
+    <a href="../child_process/index.html">child process</a> | <a href="./test_child_process.html">test child process</a> | 
   </header>
 
-  <p>Here is a 2-sentence summary of the <code>bashToOne</code> function:</p>
-<p>The <code>bashToOne</code> function maps Bash shell script code to a single executable command, handling platform-specific line endings and command separators. It does this by splitting, modifying, and joining the input code according to the detected platform (Windows or Unix-like).</p>
+  <p>The <code>bashToOne</code> function maps Bash shell script code to a single executable command, handling platform-specific line endings and command separators. It does this by splitting, modifying, and joining the input code according to the detected platform (Windows or Unix-like).</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "convert bash to one liner"</code></pre><h1>convert bash to one liner</h1>
+
 
 
 <pre class="javascript"><code>// read cmd template and execute each line?
@@ -84,6 +93,7 @@ module.exports = bashToOne;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

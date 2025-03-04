@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../kernels/index.html">kernels</a>
-    <br /><br />
+    <h3><a href="../kernels/index.html">kernels</a></h3>
     <a href="./__get_kernel_json.html">, get kernel json</a>
 <br /><br />
 <a href="./test_notebook_kernel_json.html">test notebook kernel json</a>
@@ -101,11 +107,12 @@
 
   </nav>
   <header>
-    <a href="../kernels/index.html">kernels</a> ${PREV} ${NEXT}
+    <a href="../kernels/index.html">kernels</a> | <a href="./__jupyter_wire_interface.html">, jupyter wire interface</a> | <a href="./cell_15.html">Cell 15</a>
   </header>
 
-  <p>Here's a two-sentence summary of the code breakdown:</p>
-<p>The code consists of four functions: <code>status</code>, <code>onError</code>, <code>onStdout</code>, and <code>onStderr</code>, which handle responses to kernel requests, error handling, and standard output and error messages, respectively. These functions utilize the <code>do_respond</code> and <code>respond</code> methods to send messages to the shell and iopub sockets, providing status updates, error notifications, and streaming data.</p>
+  <p>The code consists of four functions: <code>status</code>, <code>onError</code>, <code>onStdout</code>, and <code>onStderr</code>, which handle responses to kernel requests, error handling, and standard output and error messages, respectively. These functions utilize the <code>do_respond</code> and <code>respond</code> methods to send messages to the shell and iopub sockets, providing status updates, error notifications, and streaming data.</p>
+<h1>Cell 14</h1>
+
 
 
 <pre class="javascript"><code>    status: (kernel, request) =&gt; kernel.do_respond({
@@ -165,6 +172,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

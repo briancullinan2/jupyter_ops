@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frameworks/index.html">Frameworks</a>
-    <br /><br />
+    <h3><a href="../../Frameworks/index.html">Frameworks</a></h3>
     <a href="../Angular_2/index.html">Angular 2</a>
 <br /><br />
 <a href="../Angular_components/index.html">Angular components</a>
@@ -105,10 +111,12 @@
 
   </nav>
   <header>
-    <a href="../../Frameworks/index.html">Frameworks</a> ${PREV} ${NEXT}
+    <a href="../../Frameworks/index.html">Frameworks</a> | <a href="../node_express/index.html">node express</a> | <a href="../notebook_extensions/index.html">notebook extensions</a>
   </header>
 
-  <a href="./node_imap_client.html">node imap client</a>
+  <h1>node simple-imap</h1>
+
+<a href="./node_imap_client.html">node imap client</a>
 <br /><br />
 <p>This code establishes a secure connection to a Gmail inbox using OAuth 2.0 authentication and the IMAP protocol.</p>
 <a href="./search_for_messages_using_simple-imap.html">search for messages using simple-imap</a>
@@ -131,7 +139,6 @@
 <p>This code defines a reusable function <code>sendEmail</code> that sends emails via Gmail using Nodemailer, securely retrieving credentials and handling email sending asynchronously.</p>
 <a href="./cell_7.html">Cell 7</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>This code uses the <code>imap-simple</code> library to connect to an IMAP server and append a new email to the 'Drafts' mailbox. It requires the user's email address, password, and IMAP server hostname, and uses Transport Layer Security (TLS) encryption to establish a secure connection.</p>
 
 </body>

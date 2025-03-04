@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llm_chat/index.html">llm chat</a>
-    <br /><br />
+    <h3><a href="../llm_chat/index.html">llm chat</a></h3>
     <a href="./store_llm_response.html">store llm response</a>
 <br /><br />
 <a href="./general_chit_chat.html">general chit chat</a>
@@ -65,11 +71,14 @@
 
   </nav>
   <header>
-    <a href="../llm_chat/index.html">llm chat</a> ${PREV} ${NEXT}
+    <a href="../llm_chat/index.html">llm chat</a> | <a href="./relevant_chat_keywords.html">relevant chat keywords</a> | <a href="./classify_llm_prompt.html">classify llm prompt</a>
   </header>
 
-  <p>Here is a summary of the code breakdown in two sentences:</p>
-<p>The code imports constants and uses two functions, <code>askLlamaMatchTimestamps</code> and <code>matchingTimestamps</code>, to process timestamps and generate responses based on keywords and prompts. The <code>matchingTimestamps</code> function iterates over conversations, generates messages, and calls the <code>askLlamaMatchTimestamps</code> function to match timestamps with the generated responses, returning an array of matching timestamps.</p>
+  <p>The code imports constants and uses two functions, <code>askLlamaMatchTimestamps</code> and <code>matchingTimestamps</code>, to process timestamps and generate responses based on keywords and prompts. The <code>matchingTimestamps</code> function iterates over conversations, generates messages, and calls the <code>askLlamaMatchTimestamps</code> function to match timestamps with the generated responses, returning an array of matching timestamps.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "relevant history timestamps"</code></pre><h1>relevant history timestamps</h1>
+
 
 
 <pre class="javascript"><code>const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
@@ -143,6 +152,7 @@ module.exports = matchingTimestamps
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

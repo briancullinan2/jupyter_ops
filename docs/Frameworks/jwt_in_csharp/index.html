@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frameworks/index.html">Frameworks</a>
-    <br /><br />
+    <h3><a href="../../Frameworks/index.html">Frameworks</a></h3>
     <a href="../Angular_2/index.html">Angular 2</a>
 <br /><br />
 <a href="../Angular_components/index.html">Angular components</a>
@@ -105,10 +111,12 @@
 
   </nav>
   <header>
-    <a href="../../Frameworks/index.html">Frameworks</a> ${PREV} ${NEXT}
+    <a href="../../Frameworks/index.html">Frameworks</a> | <a href="../jupyter/index.html">jupyter</a> | <a href="../karma_template/index.html">karma template</a>
   </header>
 
-  <a href="./use_JSON_web_tokens_in_C.html">use JSON web tokens in C</a>
+  <h1>jwt in csharp</h1>
+
+<a href="./use_JSON_web_tokens_in_C.html">use JSON web tokens in C</a>
 <br /><br />
 <p>The <code>GetUrlContent</code> method retrieves the content of a specified URL by creating a <code>WebClient</code> instance, reading from the URL using a <code>StreamReader</code>, and returning the content as a string. However, it does not handle exceptions that may occur during the process, so proper error handling should be implemented in a production environment.</p>
 <a href="./cell_1.html">Cell 1</a>

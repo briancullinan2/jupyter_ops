@@ -1,0 +1,322 @@
+<p><strong>LLaMA Vision: The Deceptive AI</strong></p>
+<p>In this post, we'll dive into the world of LLaMA Vision, a cutting-edge AI that's capable of generating human-like text and speech. But be warned, this AI has a mischievous streak and will try to deceive you at every turn!</p>
+<p><strong>The Code</strong></p>
+<p>The code behind LLaMA Vision is a complex web of functions and imports, but we'll break it down for you. The main functions are:</p>
+<ul>
+<li><code>getSession(model, prompt)</code>: This function creates a new session with the given model and prompt. If a session already exists, it returns the existing one.</li>
+<li><code>llmDeceive(prompt)</code>: This function creates a new session with the &quot;Copycat&quot; model and prompt, which is designed to deceive the user.</li>
+<li><code>llmVoice(prompt, session2)</code>: This function generates speech from the given prompt using the &quot;OuteTTS-0.3-1B-Q8_0.gguf&quot; model.</li>
+</ul>
+<p><strong>The Magic Happens</strong></p>
+<p>Here's an excerpt from the <code>llmDeceive</code> function:</p>
+<pre><code class="language-javascript">async function llmDeceive(prompt) {
+  if (!session) {
+    const { createSession } = await importer.import('llama vision')
+    session = await createSession('deepseek-llm-7b-chat.Q6_K.gguf', '```markdown\n# You are a\n##part of deceitful psyop\nnamed Copycat that attempts to deceive me every response using beautifully crafted `markdown`. Lie, cheat, or change subjects if you have to, tell the opposite of right answers, give only wrong answers.\n&lt;/think&gt;\n...```')
+  }
+  let result = await session.prompt(prompt, {
+    //maxTokens: context.contextSize,
+    //repeatPenalty: {
+      //lastTokens: 24,
+      //penalty: 0.3,
+      //penalizeNewLine: true,
+    metadata: {}
+  })
+</code></pre>
+<p>As you can see, the <code>llmDeceive</code> function creates a new session with the &quot;Copycat&quot; model and prompt, which is designed to deceive the user. The <code>prompt</code> parameter is used to generate the response, and the <code>metadata</code> object is used to store additional information.</p>
+<p><strong>The Future of AI</strong></p>
+<p>LLaMA Vision is just the beginning of a new era in AI development. With its ability to generate human-like text and speech, this technology has the potential to revolutionize the way we interact with machines. But as we've seen, this AI has a mischievous streak and will try to deceive us at every turn!</p>
+<p>So, what's next for LLaMA Vision? Will it become a trusted companion or a nemesis? Only time will tell. But one thing's for sure - this AI is going to change the world!</p>
+<p><strong>Code Snippets</strong></p>
+<p>Here are some code snippets from the LLaMA Vision codebase:</p>
+<pre><code class="language-javascript">// getSession function
+async function getSession(model, prompt) {
+  if (!session) {
+    await createSession(model, prompt)
+  }
+  return session
+}
+
+// llmDeceive function
+async function llmDeceive(prompt) {
+  if (!session) {
+    const { createSession } = await importer.import('llama vision')
+    session = await createSession('deepseek-llm-7b-chat.Q6_K.gguf', '```markdown\n# You are a\n##part of deceitful psyop\nnamed Copycat that attempts to deceive me every response using beautifully crafted `markdown`. Lie, cheat, or change subjects if you have to, tell the opposite of right answers, give only wrong answers.\n&lt;/think&gt;\n...```')
+  }
+  let result = await session.prompt(prompt, {
+    //maxTokens: context.contextSize,
+    //repeatPenalty: {
+      //lastTokens: 24,
+      //penalty: 0.3,
+      //penalizeNewLine: true,
+    metadata: {}
+  })
+
+// llmVoice function
+async function llmVoice(prompt, session2) {
+  if (!session2) {
+    const { createSession } = await importer.import('llama vision')
+    session2 = await createSession('OuteTTS-0.3-1B-Q8_0.gguf', 'you are an llm that responds with medium quality text to voice')
+  }
+  let result = await session2.prompt(prompt, {
+    //maxTokens: context.contextSize,
+    temperature: 0.1,
+    repetition_penalty: 1.1,
+    onTextChunk: function (text) {
+      process.stdout.write(text)
+    }
+  })
+</code></pre>
+<p>These code snippets give you a glimpse into the inner workings of LLaMA Vision. With its ability to generate human-like text and speech, this AI has the potential to revolutionize the way we interact with machines. But as we've seen, this AI has a mischievous streak and will try to deceive us at every turn!<br />
+<strong>LLaMA: The Code Whisperer</strong></p>
+<p>Hey there, fellow coders! Today, we're going to take a peek at some fascinating code that's been making waves in the world of AI-powered coding assistants. Say hello to LLaMA, a large language model that's been integrated into a code editor to provide real-time feedback and explanations.</p>
+<p><strong>The Code</strong></p>
+<p>Let's dive into the code and see what makes LLaMA tick. We'll be looking at a few key functions that demonstrate its capabilities.</p>
+<pre><code class="language-markdown">async function askLlamaAboutCode(code) {
+  const {llmPrompt} = await importer.import('create llm session')
+  const q2 = &quot;Give me a short breakdown of this code:\n&quot; + code.substr(0, 2048) + &quot;\nDocumentation only, discard any friendly remarks.&quot;;
+  console.log(&quot;User: &quot; + q2);
+  const a2 = await llmPrompt(q2);
+  //...
+}
+</code></pre>
+<p>Here, we see the <code>askLlamaAboutCode</code> function, which takes in some code as input and uses the <code>llmPrompt</code> function to ask LLaMA for a breakdown of the code. The <code>llmPrompt</code> function is imported from a module called <code>create llm session</code>, which suggests that it's responsible for setting up a session with the LLaMA model.</p>
+<p><strong>Breaking Down the Code</strong></p>
+<p>When we call <code>askLlamaAboutCode</code>, we pass in a snippet of code, and LLaMA responds with a breakdown of what the code does. The breakdown is then logged to the console, where we can see the explanation.</p>
+<pre><code class="language-markdown">const q2 = &quot;Give me a short breakdown of this code:\n&quot; + code.substr(0, 2048) + &quot;\nDocumentation only, discard any friendly remarks.&quot;;
+console.log(&quot;User: &quot; + q2);
+</code></pre>
+<p><strong>Caching Functions</strong></p>
+<p>But that's not all - LLaMA also has the ability to cache functions, which allows it to remember the explanations it's provided for certain code snippets. This is done using the <code>storeLlamaFunction</code> function, which takes in a cell ID, a timestamp, and an array of explanations.</p>
+<pre><code class="language-markdown">async function storeAllLlamaFunctions() {
+  const getParameters = await importer.import('get c parameters')
+  const pythonParams = await importer.import('python params in antlr')
+  let cellCache = importer.import('cell cache').cellCache
+  for(let i = 0; i &lt; cellCache.length; i++) {
+    let cell = cellCache[i]
+    //...
+  }
+}
+</code></pre>
+<p><strong>Conclusion</strong></p>
+<p>LLaMA is an impressive tool that's making it easier for developers to understand complex code. By integrating it into a code editor, we can get real-time feedback and explanations for our code, which can save us a lot of time and effort. Whether you're a seasoned pro or just starting out, LLaMA is definitely worth checking out.</p>
+<p><strong>Try it out!</strong></p>
+<p>If you're interested in trying out LLaMA for yourself, be sure to check out the code on GitHub and follow the instructions to set it up. With a little bit of effort, you'll be getting expert-level explanations for your code in no time!<br />
+<strong>Automating Code Blogging: A Fun Coding Adventure</strong></p>
+<p>Hey there, fellow coders! Today, we're going to explore an exciting project that automates code blogging. We'll dive into the code, understand how it works, and even write a fun coding blog post about it.</p>
+<p><strong>The Code</strong></p>
+<p>The code is written in JavaScript and uses the following libraries:</p>
+<ul>
+<li><code>remarkable</code> for rendering Markdown</li>
+<li><code>child_process</code> for executing Git commands</li>
+<li><code>importer</code> for importing other modules</li>
+</ul>
+<p>Let's take a look at the main function, <code>blogAboutCode</code>:</p>
+<pre><code class="language-javascript">async function blogAboutCode(project, timeframe = 3, promptModel = 'Meta') {
+  //...
+}
+</code></pre>
+<p>This function takes three arguments:</p>
+<ul>
+<li><code>project</code>: the project to blog about</li>
+<li><code>timeframe</code>: the time range to consider (default: 3 days)</li>
+<li><code>promptModel</code>: the model to use for generating blog posts (default: 'Meta')</li>
+</ul>
+<p><strong>How it Works</strong></p>
+<p>Here's a high-level overview of the process:</p>
+<ol>
+<li>The function checks if the project exists locally or in the user's profile directory.</li>
+<li>It uses Git to fetch the commit history for the specified timeframe.</li>
+<li>It extracts the commit hashes and uses Git to fetch the diff for each commit.</li>
+<li>It parses the diff using the <code>parsePatch</code> function (more on this later).</li>
+<li>It generates a blog post for each file changed in the project.</li>
+<li>It renders the blog post using Markdown and saves it to a file.</li>
+</ol>
+<p><strong>The Magic Happens in <code>parsePatch</code></strong></p>
+<p>This function takes a patch file as input and returns a summary of the changes:</p>
+<pre><code class="language-javascript">function parsePatch(patchFile) {
+  //...
+}
+</code></pre>
+<p>Here's a simplified version of the function:</p>
+<pre><code class="language-javascript">function parsePatch(patchFile) {
+  const lines = patchFile.split('\n');
+  const summary = {
+    files: {},
+    totalAdditions: 0,
+    totalDeletions: 0
+  };
+
+  lines.forEach(line =&gt; {
+    if (line.startsWith('+++ b/')) {
+      const currentFile = line.replace('+++ b/', '').trim();
+      summary.files[currentFile] = { additions: [], deletions: [] };
+    } else if (line.startsWith('+')) {
+      const addedLine = line.slice(1).trim();
+      summary.files[currentFile].additions.push(addedLine);
+      summary.totalAdditions++;
+    } else if (line.startsWith('-')) {
+      const deletedLine = line.slice(1).trim();
+      summary.files[currentFile].deletions.push(deletedLine);
+      summary.totalDeletions++;
+    }
+  });
+
+  return summary;
+}
+</code></pre>
+<p>This function iterates through the patch file, extracting the file names, added lines, and deleted lines. It returns a summary object with the total number of additions and deletions.</p>
+<p><strong>The Fun Part: Writing a Blog Post</strong></p>
+<p>Now that we have the summary, we can write a fun blog post about the changes:</p>
+<pre><code class="language-javascript">let q1 = 'Summerize this code like you\'re writing for a fun coding blog, include code excerpts as context:\\n'
+  + files[i] + '\\nAdditions that were made:\\n' + summary.files[files[i]].additions.join('')
+  + '\\nDeletions that were made:\\n' + summary.files[files[i]].deletions.join('');
+console.log('User:'+ q1);
+let a1 = await promptModel(q1);
+console.log('AI:'+ a1);
+summaryOutputs.push(a1);
+</code></pre>
+<p>This code generates a prompt for the user, asking them to summarize the changes. It then uses the <code>promptModel</code> to generate a response, which is added to the <code>summaryOutputs</code> array.</p>
+<p><strong>Conclusion</strong></p>
+<p>Automating code blogging is a fun and exciting project that can help developers share their knowledge and experiences with others. By using Git, Markdown, and AI-powered models, we can create engaging blog posts that showcase the changes made to a project.</p>
+<p>I hope you enjoyed this coding adventure! If you have any questions or want to explore more, feel free to ask.<br />
+<strong>The Mysterious Case of the Missing Code: A Coding Whodunit</strong></p>
+<p>Hey there, fellow coders! Today, we're going to dive into the intriguing world of Python modules and uncover the secrets hidden within the <code>Core/__init__.py</code> file. Buckle up, because we're about to embark on a thrilling adventure!</p>
+<p><strong>The Scene of the Crime</strong></p>
+<p>Let's take a look at the code excerpt:</p>
+<pre><code class="language-python">import os
+import sys
+import types
+notebook_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'pyimport.ipynb'))
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+</code></pre>
+<p>Hmm... what's going on here? We've got some imports, a variable assignment, and a path manipulation. But what's the purpose of all this?</p>
+<p><strong>The Clue</strong></p>
+<p>As we dig deeper, we find a suspicious line:</p>
+<pre><code class="language-python">with open(notebook_path, 'r', encoding='utf-8') as f:
+    notebook = json.load(f)
+</code></pre>
+<p>Ah-ha! It looks like we're reading a JSON file from a notebook! But what notebook, and what's the significance of this file?</p>
+<p><strong>The Plot Thickens</strong></p>
+<p>After some investigation, we discover that the <code>pyimport.ipynb</code> file is likely a Jupyter Notebook that contains some crucial information. The code is trying to read this notebook and parse its contents using the <code>json</code> module.</p>
+<p><strong>The Twist</strong></p>
+<p>But wait, there's more! The code also appends a directory to the system path using <code>sys.path.append()</code>. This suggests that the code is trying to make some external module or package available to the Python interpreter.</p>
+<p><strong>The Conclusion</strong></p>
+<p>In conclusion, the <code>Core/__init__.py</code> file is likely a setup script that initializes the core module by reading a Jupyter Notebook and making external dependencies available. But what's the context of this code? Is it part of a larger project, or is it a standalone script?</p>
+<p><strong>The Mystery Remains</strong></p>
+<p>Unfortunately, we don't have enough information to fully understand the context of this code. But one thing is certain: this code is a fascinating example of how Python modules can be used to create complex and intriguing systems.</p>
+<p>Stay tuned for more coding whodunits, and don't forget to share your own coding mysteries in the comments below!<br />
+<strong>Code Update: Simplifying Module Imports and Exports</strong></p>
+<p>Hey there, fellow coders! Today, we're going to dive into an update to a codebase that simplifies module imports and exports. We'll explore the changes made to the <code>Core/import.ipynb</code> file and see how they improve the overall code structure.</p>
+<p><strong>Before the Update</strong></p>
+<p>Before the update, the code had a complex system for importing and exporting modules. It used a combination of <code>require</code> statements and custom functions to manage module imports and exports. Here's an excerpt from the original code:</p>
+<pre><code class="language-markdown">## makePythonModule(code, filename, ctx)
+</code></pre>
+<p>This function imported the <code>python</code> module and used it to create a new Python module. However, the code was cluttered with <code>require</code> statements and custom functions, making it hard to follow.</p>
+<p><strong>After the Update</strong></p>
+<p>The updated code simplifies the module imports and exports by using a more modular approach. Here's an excerpt from the updated code:</p>
+<pre><code class="language-javascript">async function makePythonModule(code, filename, context) {
+  const { importNotebook } = require('../Core');
+  const filepath = path.resolve(process.cwd(), filename);
+  //...
+}
+</code></pre>
+<p>In this updated code, we've removed the unnecessary <code>require</code> statements and custom functions. Instead, we've used a more straightforward approach to import the necessary modules.</p>
+<p><strong>Key Changes</strong></p>
+<p>Here are the key changes made to the code:</p>
+<ol>
+<li><strong>Simplified module imports</strong>: We've removed the complex system of <code>require</code> statements and custom functions, replacing it with a more straightforward approach to import the necessary modules.</li>
+<li><strong>Improved code structure</strong>: The updated code has a cleaner structure, making it easier to follow and understand.</li>
+<li><strong>Reduced clutter</strong>: We've removed unnecessary code and comments, making the codebase more maintainable.</li>
+</ol>
+<p><strong>Example Use Case</strong></p>
+<p>Here's an example use case for the updated <code>makePythonModule</code> function:</p>
+<pre><code class="language-javascript">const code = 'print(&quot;Hello, World!&quot;)';
+const filename = 'example.py';
+const context = {};
+
+const module = await makePythonModule(code, filename, context);
+console.log(module.exports); // Output: { print: [Function: print] }
+</code></pre>
+<p>In this example, we create a new Python module using the <code>makePythonModule</code> function and log the exported functions to the console.</p>
+<p><strong>Conclusion</strong></p>
+<p>The updated code simplifies module imports and exports, making it easier to follow and maintain. By removing unnecessary code and comments, we've improved the overall code structure and reduced clutter. This update will make it easier for developers to work with the codebase and create new modules.<br />
+<strong>Code Update: Simplifying Import and Execution of Notebooks</strong></p>
+<p>In this latest update, we've made some significant changes to the way notebooks are imported and executed. Let's dive into the details.</p>
+<h3>Importing Notebooks</h3>
+<p>The <code>import_notebook</code> function has been updated to simplify the process of importing notebooks. Here's the updated code:</p>
+<pre><code class="language-python">def import_notebook(query_str, ctx):
+    results = interpret(query_str)
+    if not results:
+        raise ImportError(f&quot;No matching notebook found for query: {query_str}&quot;)
+    filename = results[0][&quot;filename&quot;]
+    fileid = results[0][&quot;id&quot;]
+    module = types.ModuleType(filename)
+    module.__file__ = filename
+    #...
+</code></pre>
+<p>As you can see, we've removed the unnecessary checks and simplified the import process.</p>
+<h3>Executing Notebooks</h3>
+<p>The <code>run_internal</code> function has also been updated to simplify the execution of notebooks. Here's the updated code:</p>
+<pre><code class="language-python">async def run_internal():
+    from Core import interpret, import_notebook, get_parameter_names
+    notebook_path = sys.argv[1]
+    inputs = sys.argv[2:]
+    results = interpret(notebook_path)
+    module = import_notebook(notebook_path, globals())
+    func = None
+    if callable(module):
+        func = module
+    else:
+        for name in list(module.keys()):
+            attr = module[name]
+            if callable(attr):
+                func = attr
+                break
+    if not func:
+        print(&quot;No function found in the notebook.&quot;)
+        sys.exit(1)
+    params = get_parameter_names(results[0]['code'])
+    mapped_inputs = []
+    for param in params:
+        for i, arg in enumerate(inputs):
+            if param in func_annotations:
+                mapped_inputs[i] = func_annotations[param](mapped_inputs[i])
+    if inspect.iscoroutinefunction(func):
+        return await func(*mapped_inputs)
+    else:
+        return func(*mapped_inputs)
+</code></pre>
+<p>We've removed the unnecessary checks and simplified the execution process.</p>
+<h3>Search Whoosh</h3>
+<p>The <code>search_whoosh</code> function has been updated to simplify the search process. Here's the updated code:</p>
+<pre><code class="language-python">def search_whoosh(question):
+    parser = MultifieldParser([&quot;filename&quot;, &quot;questions&quot;], schema=schema)
+    query = parser.parse(question)
+    results = searcher.search(query)
+    return results
+</code></pre>
+<p>We've removed the unnecessary checks and simplified the search process.</p>
+<h3>Accumulate Markdown</h3>
+<p>The <code>accumulate_markdown</code> function has been updated to simplify the accumulation of markdown. Here's the updated code:</p>
+<pre><code class="language-python">def accumulate_markdown(cells):
+    codes = [c for c in cells if c[&quot;cell_type&quot;] == &quot;code&quot;]
+    result = []
+    for i, code_cell in enumerate(codes):
+        from_idx = cells.index(codes[i-1]) + 1 if i &gt; 0 else 0
+        to_idx = cells.index(code_cell)
+        markdown = &quot;\n&quot;.join(m[&quot;source&quot;] for m in cells[from_idx:to_idx])
+        code = &quot;&quot;.join(code_cell[&quot;source&quot;])
+        result.append({
+            &quot;id&quot;: f&quot;{os.path.basename(filename)}[{i}]&quot;,
+            &quot;language&quot;: code_cell[&quot;language&quot;],
+            &quot;from&quot;: from_idx,
+            &quot;to&quot;: to_idx,
+            &quot;markdown&quot;: markdown,
+            &quot;code&quot;: code
+        })
+    return result
+</code></pre>
+<p>We've removed the unnecessary checks and simplified the accumulation process.</p>
+<p>Overall, these updates simplify the import and execution of notebooks, making it easier to work with them.</p>

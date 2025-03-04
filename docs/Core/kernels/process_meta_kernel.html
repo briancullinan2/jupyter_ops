@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../kernels/index.html">kernels</a>
-    <br /><br />
+    <h3><a href="../kernels/index.html">kernels</a></h3>
     <a href="./__get_kernel_json.html">, get kernel json</a>
 <br /><br />
 <a href="./test_notebook_kernel_json.html">test notebook kernel json</a>
@@ -101,13 +107,15 @@
 
   </nav>
   <header>
-    <a href="../kernels/index.html">kernels</a> ${PREV} ${NEXT}
+    <a href="../kernels/index.html">kernels</a> | <a href="./__socket_meta_kernel.html">, socket meta kernel</a> | <a href="./test_process_meta_kernel.html">test process meta kernel</a>
   </header>
 
-  <p>Here is a summary of the code in one sentence:</p>
-<p>The code is part of a Node.js application that interacts with a meta kernel, providing various functions to execute commands, inspect the system, and handle messages, while also managing subprocesses and enforcing an interface.</p>
-<p>Alternatively, if you would like a two-sentence summary:</p>
+  <p>The code is part of a Node.js application that interacts with a meta kernel, providing various functions to execute commands, inspect the system, and handle messages, while also managing subprocesses and enforcing an interface.</p>
 <p>The code consists of several functions that interact with a meta kernel, including executing commands, inspecting the system, handling messages, and managing subprocesses. The code also enforces an interface and contains TODO comments suggesting it is still a work-in-progress.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "process meta kernel"</code></pre><h1>process meta kernel</h1>
+
 
 
 <pre class="javascript"><code>var {spawn} = require("child_process");
@@ -207,6 +215,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

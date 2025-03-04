@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../selenium_server/index.html">selenium server</a>
-    <br /><br />
+    <h3><a href="../selenium_server/index.html">selenium server</a></h3>
     <a href="./Start_a_selenium_http_express_server.html">Start a selenium http express server</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -59,11 +65,12 @@
 
   </nav>
   <header>
-    <a href="../selenium_server/index.html">selenium server</a> ${PREV} ${NEXT}
+    <a href="../selenium_server/index.html">selenium server</a> | <a href="./cell_4.html">Cell 4</a> | <a href="./cell_6.html">Cell 6</a>
   </header>
 
-  <p>Here's a two-sentence summary of the provided code breakdown:</p>
-<p>The code defines a Node.js module that interacts with a ChromeDriver session using RESTful API endpoints and includes a function to retrieve window handles from the ChromeDriver. However, the code has several issues, including a function that doesn't use its intended parameter, a non-standard library that may require additional setup, and unimplemented routes in the Express router.</p>
+  <p>The code defines a Node.js module that interacts with a ChromeDriver session using RESTful API endpoints and includes a function to retrieve window handles from the ChromeDriver. However, the code has several issues, including a function that doesn't use its intended parameter, a non-standard library that may require additional setup, and unimplemented routes in the Express router.</p>
+<h1>Cell 5</h1>
+
 
 
 <pre class="javascript"><code>var fs = require('fs');
@@ -107,6 +114,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

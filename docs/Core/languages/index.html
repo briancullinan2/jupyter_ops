@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Core/index.html">Core</a>
-    <br /><br />
+    <h3><a href="../../Core/index.html">Core</a></h3>
     <a href="../aspects/index.html">aspects</a>
 <br /><br />
 <a href="../cache/index.html">cache</a>
@@ -71,57 +77,49 @@
 
   </nav>
   <header>
-    <a href="../../Core/index.html">Core</a> ${PREV} ${NEXT}
+    <a href="../../Core/index.html">Core</a> | <a href="../kernels/index.html">kernels</a> | <a href="../notebook/index.html">notebook</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>languages</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one sentence:</p>
 <p>This is a MATLAB code snippet that contains a comment in Markdown format, indicating it is a sample definition for MATLAB.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the Node.js environment:</p>
 <p>The Node.js environment is defined by a set of global objects and modules, including <code>process</code>, <code>require</code>, <code>module</code>, and <code>exports</code>, which provide essential functionality for building applications. Core modules such as <code>http</code>, <code>fs</code>, and <code>path</code> offer additional capabilities, while tools like <code>node</code> and <code>npm</code> enable developers to run and manage their projects.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here is a two-sentence summary of the provided code:</p>
 <p>The code defines a transpiler composition function that loads user input into a tree data structure and generates code using a visitor and generator. It then exports composed transpilers for JavaScript to Java and JavaScript to Python, making it possible to translate JavaScript code into these languages.</p>
 <a href="./transpile_code.html">transpile code</a>
 <br /><br />
 <p>This code offers functions for manipulating code represented as an Abstract Syntax Tree (AST), including adding, replacing, and removing nodes, with a focus on the <code>transpile</code> function for modifying the AST structure.</p>
 <a href="./cell_4.html">Cell 4</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code:</p>
 <p>This code imports modules and functions from a <code>Core</code> file, and uses a <code>replaceCore</code> function to manipulate a JavaScript code string. The manipulated code is then conditionally executed using the <code>mime</code> function on a global variable <code>$</code>, if it is defined.</p>
 <a href="./cell_5.html">Cell 5</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one sentence:</p>
 <p>The code is using a CSS selector and the Cheerio library to parse HTML and select specific elements, specifically targeting an element named &quot;importer&quot; that is a direct child of an element with a type attribute containing &quot;StaticMemberExpression&quot;.</p>
 <p>Additionally, it loads an HTML document or string into a Cheerio object using the <code>cheerio.load()</code> function.</p>
 <a href="./cell_6.html">Cell 6</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one sentence:</p>
 <p>A variable named <code>keywords</code> is declared and assigned an array of 10 string values, including common programming concepts such as variable types and function calls.</p>
 <a href="./cell_7.html">Cell 7</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>This code reads an HTML file, parses it, serializes it to XHTML, and then parses the XHTML string as an XML document using various Node.js modules. It then uses an XPath expression to select specific nodes from the XML document and logs the selected nodes to the console.</p>
 <a href="./babel_transpiler.html">babel transpiler</a>
 <br /><br />
 <p>This code provides a Babel plugin that modifies notebook code before transpilation, likely for a specific environment, by applying a series of transformations to the code.</p>
 <a href="./cell_9.html">Cell 9</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The code imports the Babel compiler and a custom importer module, then uses the importer to specify a preset for Babel transpilation. A test code string with a missing import statement is transpiled using Babel, and the resulting code is logged to the console, where it is equivalent to a completed import statement.</p>
 <a href="./cell_10.html">Cell 10</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>The given code creates a mapping between PHP and JavaScript functions using two main objects, <code>fromPhpToJavascript</code> and <code>fromJavascriptToPhp</code>, which contain key-value pairs of function names and their corresponding implementations in the other language. The <code>phpToJs</code> array maps PHP functions to their JavaScript equivalents, and the <code>jsToPhp</code> array is created by reversing the elements of each inner array in <code>phpToJs</code> for the inverse mapping.</p>
 <a href="./cell_11.html">Cell 11</a>
 <br /><br />
 <a href="./cell_12.html">Cell 12</a>
 <br /><br />
-<p>Here's a summary of the code in two sentences:</p>
 <p>This JavaScript code defines a collection of 19 custom functions that mimic various PHP functions, allowing for PHP-like behavior in a JavaScript environment. The functions include array manipulation, string handling, and number processing, among others, with some notes on potential caveats and jQuery-specific functionality.</p>
 <a href="./cell_13.html">Cell 13</a>
 <br /><br />

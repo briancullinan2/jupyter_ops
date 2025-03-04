@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Cloud Services/index.html">Cloud Services</a>
-    <br /><br />
+    <h3><a href="../../Cloud Services/index.html">Cloud Services</a></h3>
     <a href="../aws/index.html">aws</a>
 <br /><br />
 <a href="../cloudflare/index.html">cloudflare</a>
@@ -59,10 +65,12 @@
 
   </nav>
   <header>
-    <a href="../../Cloud Services/index.html">Cloud Services</a> ${PREV} ${NEXT}
+    <a href="../../Cloud Services/index.html">Cloud Services</a> | <a href="../google_rpc/index.html">google rpc</a> | 
   </header>
 
-  <a href="./create_a_bucket.html">create a bucket</a>
+  <h1>google storage api</h1>
+
+<a href="./create_a_bucket.html">create a bucket</a>
 <br /><br />
 <p>This code defines functions for managing Google Cloud Storage buckets, including listing existing buckets, creating new ones, and setting public access.</p>
 <a href="./test_create_bucket.html">test create bucket</a>

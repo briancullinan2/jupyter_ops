@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../import/index.html">import</a>
-    <br /><br />
+    <h3><a href="../import/index.html">import</a></h3>
     <a href="./import_notebook.html">import notebook</a>
 <br /><br />
 <a href="./how_does_node_module_require_work.html">how does node module require work</a>
@@ -73,11 +79,14 @@
 
   </nav>
   <header>
-    <a href="../import/index.html">import</a> ${PREV} ${NEXT}
+    <a href="../import/index.html">import</a> | <a href="./import_notebook.html">import notebook</a> | <a href="./cell_2.html">Cell 2</a>
   </header>
 
-  <p>Here's a 2-sentence summary of the code breakdown:</p>
-<p>The <code>getCached</code> function checks if a cached version of a module exists at a given filepath and returns it if it's newer than the current file's modification time. The <code>makeModule</code> function creates or retrieves a module based on the given path and global context, using caching to reuse existing modules and store new ones for future use.</p>
+  <p>The <code>getCached</code> function checks if a cached version of a module exists at a given filepath and returns it if it's newer than the current file's modification time. The <code>makeModule</code> function creates or retrieves a module based on the given path and global context, using caching to reuse existing modules and store new ones for future use.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "how does node module require work"</code></pre><h1>how does node module require work</h1>
+
 
 
 <pre class="javascript"><code>const Module = require('module').Module
@@ -98,6 +107,7 @@ function getCached(filepath) {
 }
 
 function makeModule(code, pathToCode, ctxGlobal) {
+    const {CONSOLE} = require('../Core')
     var filepath = path.resolve(process.cwd(), pathToCode);
 
     ctxGlobal = ctxGlobal || {}
@@ -123,7 +133,7 @@ function makeModule(code, pathToCode, ctxGlobal) {
         __dirname: path.dirname(pathToCode),
         __filename: pathToCode.split('[')[0],
         $: void 0,
-        console: console,
+        console: CONSOLE,
         global: ctxGlobal,
         //require: require,
     })
@@ -143,7 +153,7 @@ function makeModule(code, pathToCode, ctxGlobal) {
         .join(',');
 
     if (!pathToCode.includes('Core')) {
-        console.info(`compiling ${pathToCode} with ${validVars}`);
+        CONSOLE.info(`compiling ${pathToCode} with ${validVars}`);
     }
 
     // TODO: use the transpiler or kernels here
@@ -163,7 +173,7 @@ function makeModule(code, pathToCode, ctxGlobal) {
     } catch (err) {
         if (err.code === 'ERR_REQUIRE_ESM') {
             const { makeESModule } = require('../Core')
-            console.error('ES module required', err)
+            CONSOLE.error('ES module required', err)
             return makeESModule(code, filepath, ctxGlobal)
         } else {
             throw err
@@ -182,6 +192,7 @@ module.exports.makeModule = makeModule;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

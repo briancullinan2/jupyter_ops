@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../trainmodel/index.html">trainmodel</a>
-    <br /><br />
+    <h3><a href="../trainmodel/index.html">trainmodel</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -109,13 +115,14 @@
 
   </nav>
   <header>
-    <a href="../trainmodel/index.html">trainmodel</a> ${PREV} ${NEXT}
+    <a href="../trainmodel/index.html">trainmodel</a> | <a href="./cell_5.html">Cell 5</a> | <a href="./cell_7.html">Cell 7</a>
   </header>
 
-  <p>Here's a summary of the code breakdown in one sentence:</p>
-<p>This code block prints the value of the variable <code>test</code> and its <code>'image'</code> key, assuming <code>test</code> is a dictionary with the key <code>'image'</code>.</p>
+  <p>This code block prints the value of the variable <code>test</code> and its <code>'image'</code> key, assuming <code>test</code> is a dictionary with the key <code>'image'</code>.</p>
 <p>Alternatively, in two sentences:</p>
 <p>This code block is designed to print two values from an object called <code>test</code>: the object itself and its <code>'image'</code> key.</p>
+<h1>Cell 6</h1>
+
 
 
 <pre class="python"><code>print(test)
@@ -129,6 +136,7 @@ print(test['image'])</code></pre>
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

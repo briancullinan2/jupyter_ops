@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../you_earned_it/index.html">you earned it</a>
-    <br /><br />
+    <h3><a href="../you_earned_it/index.html">you earned it</a></h3>
     <a href="./high_five_people_in_YouEarnedIt.html">high five people in YouEarnedIt</a>
 <br /><br />
 <a href="./automate_YouEarnedIt.html">automate YouEarnedIt</a>
@@ -53,10 +59,14 @@
 
   </nav>
   <header>
-    <a href="../you_earned_it/index.html">you earned it</a> ${PREV} ${NEXT}
+    <a href="../you_earned_it/index.html">you earned it</a> |  | <a href="./automate_YouEarnedIt.html">automate YouEarnedIt</a>
   </header>
 
   <p>This code automates interactions on a &quot;YouEarnedIt&quot; website, including logging in and simulating &quot;High-Five&quot; button clicks.  It uses functions to handle each step of the process, making it modular and reusable.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "high five people in YouEarnedIt"</code></pre><h1>high five people in YouEarnedIt</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -117,6 +127,7 @@ module.exports = highFive;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

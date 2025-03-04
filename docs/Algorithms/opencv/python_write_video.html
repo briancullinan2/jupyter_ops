@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../opencv/index.html">opencv</a>
-    <br /><br />
+    <h3><a href="../opencv/index.html">opencv</a></h3>
     <a href="./detect_people.html">detect people</a>
 <br /><br />
 <a href="./motion_detection.html">motion detection</a>
@@ -67,11 +73,14 @@
 
   </nav>
   <header>
-    <a href="../opencv/index.html">opencv</a> ${PREV} ${NEXT}
+    <a href="../opencv/index.html">opencv</a> | <a href="./motion_detection.html">motion detection</a> | <a href="./python_write_images_to_ffmpeg_stream.html">python write images to ffmpeg stream</a>
   </header>
 
-  <p>Here is a summary in two sentences:</p>
-<p>The code imports OpenCV and glob libraries, sets output video properties, and defines a <code>write_video</code> function that creates an output video from a list of images. The function gets the list of images, defines a <code>VideoWriter</code> object, writes each image to the video, and releases the object after cleanup.</p>
+  <p>The code imports OpenCV and glob libraries, sets output video properties, and defines a <code>write_video</code> function that creates an output video from a list of images. The function gets the list of images, defines a <code>VideoWriter</code> object, writes each image to the video, and releases the object after cleanup.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "python write video"</code></pre><h1>python write video</h1>
+
 
 
 <pre class="python"><code>import cv2
@@ -115,6 +124,7 @@ __all__ = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

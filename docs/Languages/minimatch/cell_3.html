@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../minimatch/index.html">minimatch</a>
-    <br /><br />
+    <h3><a href="../minimatch/index.html">minimatch</a></h3>
     <a href="./__expand.html">, expand</a>
 <br /><br />
 <a href="./mini_parser.html">mini parser</a>
@@ -53,11 +59,12 @@
 
   </nav>
   <header>
-    <a href="../minimatch/index.html">minimatch</a> ${PREV} ${NEXT}
+    <a href="../minimatch/index.html">minimatch</a> | <a href="./minimatch.html">minimatch</a> | 
   </header>
 
-  <p>Here's a two-sentence summary:<br />
-The code imports the'minimatch' module, a third-party pattern matching library, using a custom 'import' function and tests two paths against specified patterns. The results of these tests are then output, indicating that both paths match their respective patterns.</p>
+  <p>The code imports the'minimatch' module, a third-party pattern matching library, using a custom 'import' function and tests two paths against specified patterns. The results of these tests are then output, indicating that both paths match their respective patterns.</p>
+<h1>Cell 3</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core')
@@ -84,6 +91,7 @@ true
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

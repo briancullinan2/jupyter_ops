@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_calendar_graphs/index.html">google calendar graphs</a>
-    <br /><br />
+    <h3><a href="../google_calendar_graphs/index.html">google calendar graphs</a></h3>
     <a href="./test_calendar_api_graph_Iga_s_cycle_for_as_long_as_there_are_valid_dates.html">test calendar api graph Iga's cycle for as long as there are valid dates</a>
 <br /><br />
 <a href="./test_google_calendar_search_heatmap.html">test google calendar search heatmap</a>
@@ -55,10 +61,14 @@
 
   </nav>
   <header>
-    <a href="../google_calendar_graphs/index.html">google calendar graphs</a> ${PREV} ${NEXT}
+    <a href="../google_calendar_graphs/index.html">google calendar graphs</a> |  | <a href="./test_google_calendar_search_heatmap.html">test google calendar search heatmap</a>
   </header>
 
   <p>This code retrieves events from a Google Calendar, filters them based on a query, and creates a line graph visualizing the dates and durations of the filtered events.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "test calendar api graph Iga's cycle for as long as there are valid dates"</code></pre><h1>test calendar api graph Iga's cycle for as long as there are valid dates</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -97,6 +107,7 @@ listEvents({
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

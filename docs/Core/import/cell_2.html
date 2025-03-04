@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../import/index.html">import</a>
-    <br /><br />
+    <h3><a href="../import/index.html">import</a></h3>
     <a href="./import_notebook.html">import notebook</a>
 <br /><br />
 <a href="./how_does_node_module_require_work.html">how does node module require work</a>
@@ -73,11 +79,12 @@
 
   </nav>
   <header>
-    <a href="../import/index.html">import</a> ${PREV} ${NEXT}
+    <a href="../import/index.html">import</a> | <a href="./how_does_node_module_require_work.html">how does node module require work</a> | <a href="./compile_an_es_module.html">compile an es module</a>
   </header>
 
-  <p>Here is a two-sentence summary:</p>
-<p>The <code>runPythonModule</code> function runs a Python module with given parameters, while the <code>makePythonModule</code> function creates and executes a Python module from provided code. A cache is used to store compiled Python modules and avoid recompilation, and notebook parameters are imported using the <code>importNotebook</code> function.</p>
+  <p>The <code>runPythonModule</code> function runs a Python module with given parameters, while the <code>makePythonModule</code> function creates and executes a Python module from provided code. A cache is used to store compiled Python modules and avoid recompilation, and notebook parameters are imported using the <code>importNotebook</code> function.</p>
+<h1>Cell 2</h1>
+
 
 
 <pre class="javascript"><code>const Module = require('module').Module
@@ -85,9 +92,10 @@ const path = require('path')
 const {spawn} = require('child_process')
 
 async function runPythonModule(isOne, cellId, signature, ...args) {
+  const {CONSOLE} = require('../Core')
   let params = signature.parameters.map((p, i) =&gt; '--' + p + '=' + String(args[i]))
-  console.log(params)
-  console.log(path.resolve(path.dirname(__dirname)))
+  //console.log(params)
+  //console.log(path.resolve(path.dirname(__dirname)))
   result = spawn('python3', ['-u', '-c', '__import__(\'Core\').run()', cellId].concat(params), {
     cwd: path.resolve(path.dirname(__dirname)),
     env: {
@@ -97,18 +105,18 @@ async function runPythonModule(isOne, cellId, signature, ...args) {
     stdio: ['pipe', 'pipe', 'pipe']
   })
   if (result.error) {
-    console.error('Failed to execute:', result.error)
+    CONSOLE.error('Failed to execute:', result.error)
     return
   }
 
   let lines = []
   result.stdout.on('data', (data) =&gt; {
     lines.push(data)
-    console.log(`stdout: ${data.toString().trim()}`);
+    CONSOLE.log(`stdout: ${data.toString().trim()}`);
   });
   
   result.stderr.on('data', (data) =&gt; {
-    console.error(`stderr: ${data.toString().trim()}`);
+    CONSOLE.error(`stderr: ${data.toString().trim()}`);
   });
   
   await new Promise((resolve, reject) =&gt; result.on('close', (code) =&gt; {
@@ -127,16 +135,16 @@ async function runPythonModule(isOne, cellId, signature, ...args) {
 
 
 async function makePythonModule(code, filename, context) {
-  var { importNotebook } = require('../Core')
-  var filepath = path.resolve(process.cwd(), filename);
+  const { importNotebook, CONSOLE } = require('../Core')
+  let filepath = path.resolve(process.cwd(), filename);
   if (typeof Module._cache[filepath] != 'undefined') {
     return Module._cache[filepath].exports
   }
 
   let pythonParams = await importNotebook('python params in antlr')
-  console.log(pythonParams)
+  CONSOLE.log(pythonParams)
   let params = await pythonParams(code)
-  console.log(params)
+  CONSOLE.log(params)
 
   let cellExportsOne = false
   if(typeof params.function != 'undefined') {
@@ -167,6 +175,7 @@ module.exports.makePythonModule = makePythonModule
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

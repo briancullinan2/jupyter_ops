@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a>
-    <br /><br />
+    <h3><a href="../convert_spreadsheet/index.html">convert spreadsheet</a></h3>
     <a href="./readme_md.html">readme.md</a>
 <br /><br />
 <a href="./get_sheet_purchases.html">get sheet purchases</a>
@@ -71,11 +77,14 @@
 
   </nav>
   <header>
-    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a> ${PREV} ${NEXT}
+    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a> | <a href="./sheet_to_web.html">sheet to web</a> | <a href="./package_json.html">package.json</a>
   </header>
 
-  <p>Here is a summary of the code in two sentences:</p>
-<p>The <code>getTemplateByUrl</code> function resolves a template for a given URL path by filtering a <code>templates</code> object based on the path segments, whereas the <code>getEntryTemplate</code> function resolves the entry template from the <code>templates</code> object by filtering for keys with a <code>template</code> property. The <code>getTemplateByUrl</code> function is exported as a module for use in other parts of the code.</p>
+  <p>The <code>getTemplateByUrl</code> function resolves a template for a given URL path by filtering a <code>templates</code> object based on the path segments, whereas the <code>getEntryTemplate</code> function resolves the entry template from the <code>templates</code> object by filtering for keys with a <code>template</code> property. The <code>getTemplateByUrl</code> function is exported as a module for use in other parts of the code.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "convert sheet helper functions"</code></pre><h1>convert sheet helper functions</h1>
+
 
 
 <pre class="javascript"><code>
@@ -101,6 +110,7 @@ module.exports = getTemplateByUrl;</code></pre>
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

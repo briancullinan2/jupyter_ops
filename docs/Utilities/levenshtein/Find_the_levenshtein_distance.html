@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../levenshtein/index.html">levenshtein</a>
-    <br /><br />
+    <h3><a href="../levenshtein/index.html">levenshtein</a></h3>
     <a href="./Find_the_levenshtein_distance.html">Find the levenshtein distance</a>
 <br /><br />
 <a href="./Sort_by_levenshtein_distance.html">Sort by levenshtein distance</a>
@@ -51,10 +57,14 @@
 
   </nav>
   <header>
-    <a href="../levenshtein/index.html">levenshtein</a> ${PREV} ${NEXT}
+    <a href="../levenshtein/index.html">levenshtein</a> |  | <a href="./Sort_by_levenshtein_distance.html">Sort by levenshtein distance</a>
   </header>
 
   <p>This code calculates the Levenshtein distance between two strings, which represents the minimum number of edits (insertions, deletions, or substitutions) needed to transform one string into the other. It uses a dynamic programming approach to efficiently compute this distance.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "Find the levenshtein distance"</code></pre><h1>Find the levenshtein distance</h1>
+
 
 
 <pre class="javascript"><code>function levDist(s, t) {
@@ -118,6 +128,7 @@ module.exports = levDist;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

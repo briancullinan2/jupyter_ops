@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../demo/index.html">demo</a>
-    <br /><br />
+    <h3><a href="../demo/index.html">demo</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -77,10 +83,12 @@
 
   </nav>
   <header>
-    <a href="../demo/index.html">demo</a> ${PREV} ${NEXT}
+    <a href="../demo/index.html">demo</a> | <a href="./cell_12.html">Cell 12</a> | <a href="./Install_build_stack_on_colab.html">Install build stack on colab</a>
   </header>
 
   <p>The code utilizes various tools and features to enhance development, including automatic GitHub branching, real-time deployment, and monitoring of external file changes. It generates word clouds for <code>import</code> and <code>require</code> statements, as well as notebooks, and focuses on documentation detailing tools and features used.</p>
+<h1>Cell 13</h1>
+
 
 
 <pre class="javascript"><code>// CodeOps. Automatic github feature branching and squashing in separate environments so the tree that looks right can be chosen. Linting, line-numbers on notebooks.  Automatic deploys for angular components with real HMR not this BS: https://webpack.github.io/docs/hot-module-replacement.html.  Monitor for files that change outside of project scope and automatically build the git index for the changes in that branch instead.
@@ -99,6 +107,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

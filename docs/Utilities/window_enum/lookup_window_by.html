@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../window_enum/index.html">window enum</a>
-    <br /><br />
+    <h3><a href="../window_enum/index.html">window enum</a></h3>
     <a href="./enum_windows_with_cocoa.html">enum windows with cocoa</a>
 <br /><br />
 <a href="./lookup_window_by.html">lookup window by</a>
@@ -49,14 +55,16 @@
 
   </nav>
   <header>
-    <a href="../window_enum/index.html">window enum</a> ${PREV} ${NEXT}
+    <a href="../window_enum/index.html">window enum</a> | <a href="./enum_windows_with_cocoa.html">enum windows with cocoa</a> | 
   </header>
 
-  <p>Here's a summary of the <code>getTitle(int i)</code> function in one sentence:</p>
-<p>The <code>getTitle(int i)</code> function retrieves the title of a window with the specified layer index <code>i</code> by searching through an array of window dictionaries and constructing a string with the window's layer index and owner name.</p>
-<p>Alternatively, you can also condense the summary into two sentences:</p>
+  <p>The <code>getTitle(int i)</code> function retrieves the title of a window with the specified layer index <code>i</code> by searching through an array of window dictionaries and constructing a string with the window's layer index and owner name.</p>
 <p>The <code>getTitle(int i)</code> function searches for a window with a matching layer index <code>i</code> in an array of window dictionaries.<br />
 If found, it constructs a string with the window's layer index and owner name, and returns a duplicate of this string as a C-style string.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "lookup window by"</code></pre><h1>lookup window by</h1>
+
 
 
 <pre class="objective-c"><code>__attribute__((visibility("default")))
@@ -95,6 +103,7 @@ const char* getTitle(int i) {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/objective-c.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

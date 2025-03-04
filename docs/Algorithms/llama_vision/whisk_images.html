@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llama_vision/index.html">llama vision</a>
-    <br /><br />
+    <h3><a href="../llama_vision/index.html">llama vision</a></h3>
     <a href="./llama_vision.html">llama vision</a>
 <br /><br />
 <a href="./analyze_image_with_llm.html">analyze image with llm</a>
@@ -71,11 +77,14 @@
 
   </nav>
   <header>
-    <a href="../llama_vision/index.html">llama vision</a> ${PREV} ${NEXT}
+    <a href="../llama_vision/index.html">llama vision</a> | <a href="./image_2_image.html">image 2 image</a> | 
   </header>
 
-  <p>Here is a summary of the <code>whiskImages</code> function in two sentences:</p>
-<p>The <code>whiskImages</code> function is an asynchronous function that takes four parameters (<code>subject</code>, <code>scene</code>, <code>style</code>, and <code>short</code>) and processes them to return an object with the processed parameters. It handles base64-encoded images, URLs, and file paths, and uses various modules such as <code>gaxios</code> and <code>fs</code> to make HTTP requests and interact with files.</p>
+  <p>The <code>whiskImages</code> function is an asynchronous function that takes four parameters (<code>subject</code>, <code>scene</code>, <code>style</code>, and <code>short</code>) and processes them to return an object with the processed parameters. It handles base64-encoded images, URLs, and file paths, and uses various modules such as <code>gaxios</code> and <code>fs</code> to make HTTP requests and interact with files.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "whisk images"</code></pre><h1>whisk images</h1>
+
 
 
 <pre class="javascript"><code>const fs = require('fs')
@@ -250,6 +259,7 @@ module.exports = whiskImages
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

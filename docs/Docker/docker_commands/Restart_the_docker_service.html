@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../docker_commands/index.html">docker commands</a>
-    <br /><br />
+    <h3><a href="../docker_commands/index.html">docker commands</a></h3>
     <a href="./use_Docker.html">use Docker</a>
 <br /><br />
 <a href="./Restart_the_docker_service.html">Restart the docker service</a>
@@ -65,10 +71,14 @@
 
   </nav>
   <header>
-    <a href="../docker_commands/index.html">docker commands</a> ${PREV} ${NEXT}
+    <a href="../docker_commands/index.html">docker commands</a> | <a href="./use_Docker.html">use Docker</a> | <a href="./Actually_delete_everything.html">Actually delete everything</a>
   </header>
 
   <p>This code checks for a running Docker container by name and, if found, stops and removes it.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "Restart the docker service"</code></pre><h1>Restart the docker service</h1>
+
 
 
 <pre class="bash"><code>if docker ps | grep "{name}" then; \
@@ -84,6 +94,7 @@ fi
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

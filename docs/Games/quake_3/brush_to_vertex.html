@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../quake_3/index.html">quake 3</a>
-    <br /><br />
+    <h3><a href="../quake_3/index.html">quake 3</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./__find_pk3_files_in_zips.html">, find pk3 files in zips</a>
@@ -113,10 +119,14 @@
 
   </nav>
   <header>
-    <a href="../quake_3/index.html">quake 3</a> ${PREV} ${NEXT}
+    <a href="../quake_3/index.html">quake 3</a> | <a href="./split_map_hints.html">split map hints</a> | <a href="./cell_27.html">Cell 27</a>
   </header>
 
   <p>This code determines if a point is inside a polygon by checking if any ray originating from the point intersects the polygon's edges.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "brush to vertex"</code></pre><h1>brush to vertex</h1>
+
 
 
 <pre class="javascript"><code>  
@@ -227,6 +237,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../facebook_connections/index.html">facebook connections</a>
-    <br /><br />
+    <h3><a href="../facebook_connections/index.html">facebook connections</a></h3>
     <a href="./collect_facebook_profiles.html">collect facebook profiles</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -57,11 +63,12 @@
 
   </nav>
   <header>
-    <a href="../facebook_connections/index.html">facebook connections</a> ${PREV} ${NEXT}
+    <a href="../facebook_connections/index.html">facebook connections</a> | <a href="./connect_add_friends_facebook.html">connect add friends facebook</a> | 
   </header>
 
-  <p>Here is a two-sentence summary of the code breakdown:</p>
-<p>The code is a JavaScript function that uses the <code>async/await</code> syntax to handle asynchronous operations by calling the <code>addFacebookFriends</code> function and handling its result or error using the <code>then</code> and <code>catch</code> methods. The <code>addFacebookFriends</code> function returns a promise that is resolved by sending the result with <code>$.sendResult(r)</code> or rejected by sending the error with <code>$.sendError(e)</code>.</p>
+  <p>The code is a JavaScript function that uses the <code>async/await</code> syntax to handle asynchronous operations by calling the <code>addFacebookFriends</code> function and handling its result or error using the <code>then</code> and <code>catch</code> methods. The <code>addFacebookFriends</code> function returns a promise that is resolved by sending the result with <code>$.sendResult(r)</code> or rejected by sending the error with <code>$.sendError(e)</code>.</p>
+<h1>Cell 5</h1>
+
 
 
 <pre class="javascript"><code>$.async();
@@ -78,6 +85,7 @@ addFacebookFriends()
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

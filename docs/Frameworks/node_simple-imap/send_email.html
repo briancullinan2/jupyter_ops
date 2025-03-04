@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../node_simple-imap/index.html">node simple-imap</a>
-    <br /><br />
+    <h3><a href="../node_simple-imap/index.html">node simple-imap</a></h3>
     <a href="./node_imap_client.html">node imap client</a>
 <br /><br />
 <a href="./search_for_messages_using_simple-imap.html">search for messages using simple-imap</a>
@@ -61,10 +67,14 @@
 
   </nav>
   <header>
-    <a href="../node_simple-imap/index.html">node simple-imap</a> ${PREV} ${NEXT}
+    <a href="../node_simple-imap/index.html">node simple-imap</a> | <a href="./get_attachments_using_simple-imap.html">get attachments using simple-imap</a> | <a href="./cell_7.html">Cell 7</a>
   </header>
 
   <p>This code defines a reusable function <code>sendEmail</code> that sends emails via Gmail using Nodemailer, securely retrieving credentials and handling email sending asynchronously.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "send email"</code></pre><h1>send email</h1>
+
 
 
 <pre class="javascript"><code>var nodemailer = require('nodemailer')
@@ -118,6 +128,7 @@ module.exports = sendEmail;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

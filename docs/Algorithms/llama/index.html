@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Algorithms/index.html">Algorithms</a>
-    <br /><br />
+    <h3><a href="../../Algorithms/index.html">Algorithms</a></h3>
     <a href="../audio/index.html">audio</a>
 <br /><br />
 <a href="../ffmpeg_commands/index.html">ffmpeg commands</a>
@@ -73,54 +79,44 @@
 
   </nav>
   <header>
-    <a href="../../Algorithms/index.html">Algorithms</a> ${PREV} ${NEXT}
+    <a href="../../Algorithms/index.html">Algorithms</a> | <a href="../llama_vision/index.html">llama vision</a> | <a href="../llm_blogging/index.html">llm blogging</a>
   </header>
 
-  <a href="./search_llama.html">search llama</a>
+  <h1>llama</h1>
+
+<a href="./search_llama.html">search llama</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The code imports necessary functions and variables, defines the <code>askLlamaMatchingFunction</code> function, and exports it for use in other modules. The <code>askLlamaMatchingFunction</code> function iteratively processes functions in the <code>cellCache</code> array, filtering and appending them to arrays based on categories and descriptions, and repeats this process until all functions have been processed.</p>
 <a href="./ask_llm_about_categories.html">ask llm about categories</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The <code>askLlamaAboutCategories</code> function is an asynchronous function that extracts categories from a cache object, asks the LLM about these categories in batches, and returns notebook filenames that contain matching categories. The function consists of three main steps: extracting categories, asking the LLM about the categories, and returning matching notebook filenames based on the LLM's responses.</p>
 <a href="./ask_llm_to_generalize_categories.html">ask llm to generalize categories</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>The <code>askLlamaGeneralizeCategories</code> function takes an optional list of categories as input, generates a shorter list by asking the LLM to generalize, and recursively optimizes the list to a maximum of 100 items. The function also updates the <code>functionCache</code> object by asking the LLM to generalize categories for each function in the cache, if the <code>update</code> flag is set.</p>
 <a href="./ask_llm_for_a_shorter_list_of_categories.html">ask llm for a shorter list of categories</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code breakdown:</p>
 <p>The <code>askLlamaToGeneralize</code> function uses a large language model to shorten a list of categories by sending a prompt question to the LLM and splitting the response into an array of unique values. The <code>askLlamaToGeneralizeAll</code> function extends this functionality to handle large lists by dividing them into smaller groups and generalizing each group using <code>askLlamaToGeneralize</code>.</p>
 <a href="./ask_llm_about_functions.html">ask llm about functions</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>The <code>askLlamaAboutFunctions</code> function sends a query to a language model to match a given function name against an array of functions, and returns the matched function name. It uses an <code>llmPrompt</code> function to interact with the language model, logs the query and response to the console, and exports the function as part of a module.</p>
 <a href="./ask_llm_about_code.html">ask llm about code</a>
 <br /><br />
-<p>Here's a summary of the function in one sentence:</p>
 <p>The <code>askLlamaAboutCode</code> function sends a code snippet to the Llama model and returns a breakdown of the code in a string format, facilitating analysis and understanding of the provided code.</p>
-<p>Alternatively, a two-sentence summary can be provided as follows:</p>
 <p>The <code>askLlamaAboutCode</code> function is designed to analyze code snippets by sending them to the Llama model for a breakdown. It takes a code snippet as input, sends it to the Llama model, and returns a string containing the breakdown of the code.</p>
 <a href="./ask_llm_about_notebooks.html">ask llm about notebooks</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the code:</p>
 <p>This JavaScript code defines a function <code>askLlamaAboutNotebooks</code> that searches for Jupyter Notebook files in a directory, extracts information about them, and asks a Large Language Model (LLM) about these notebooks. The function is designed to interact with an LLM, sending queries and receiving results in batches of up to 20 queries at a time.</p>
 <a href="./ask_llm_to_summerize.html">ask llm to summerize</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>The code defines two asynchronous functions, <code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code>, which interact with a Large Language Model (LLM) to summarize and categorize input queries. These functions create an LLM session, prepend a prompt to the input query, log the user query and AI response, and return the LLM's response as a trimmed string.</p>
 <a href="./store_llama_function.html">store llama function</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code breakdown:</p>
 <p>This code imports functions from the <code>importer</code> object, which includes <code>functionCache</code> for storing function metadata and <code>updateCode</code> for updating a code cell. The <code>storeLlamaFunction</code> function, which is then exported, takes 8 arguments and updates the <code>functionCache</code> object, generates a new JavaScript module, and updates a code cell with the new module code.</p>
 <a href="./store_all_notebook_llm_functions.html">store all notebook llm functions</a>
 <br /><br />
-<p>Here's a summary of the code breakdown in two sentences:</p>
 <p>The code imports several modules and functions, including LLM functions to summarize and generalize code, and uses an async function <code>storeAllLlamaFunctions</code> to store all LLM functions. The <code>storeAllLlamaFunctions</code> function retrieves code from the cache, checks conditions, and updates the cache using LLM functions when necessary, while also performing operations on a <code>functionCache</code> object to store cached descriptions and summaries.</p>
 <a href="./create_llm_session.html">create llm session</a>
 <br /><br />
-<p>Here is a summary of the code in one sentence:</p>
 <p>The code initializes a chat session with the LLaMA model by importing necessary modules, defining variables and constants, and creating two asynchronous functions to initialize and create a new session.</p>
 <p>Or in two sentences:</p>
 <p>The code sets up a chat session with the LLaMA model by importing required modules and defining key variables and constants. Two asynchronous functions, <code>initSession</code> and <code>createSession</code>, are defined to handle the initialization and creation of new chat sessions.</p>

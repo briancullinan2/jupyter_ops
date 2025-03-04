@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../utilities/index.html">utilities</a>
-    <br /><br />
+    <h3><a href="../utilities/index.html">utilities</a></h3>
     <a href="./Scroll_a_specific_element.html">Scroll a specific element</a>
 <br /><br />
 <a href="./all_elements_until.html">all elements until</a>
@@ -57,10 +63,14 @@
 
   </nav>
   <header>
-    <a href="../utilities/index.html">utilities</a> ${PREV} ${NEXT}
+    <a href="../utilities/index.html">utilities</a> | <a href="./click_spa_link.html">click spa link</a> | <a href="./verify_human.html">verify human</a>
   </header>
 
-  
+  <h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "https://www.mathworks.com/help/vision/examples/automatically-detect-and-recognize-text-in-natural-images.htmls_tid=gn_loc_drop"</code></pre><h1>https://www.mathworks.com/help/vision/examples/automatically-detect-and-recognize-text-in-natural-images.htmls_tid=gn_loc_drop</h1>
+
+
 
 <pre class="javascript"><code>
 
@@ -74,6 +84,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

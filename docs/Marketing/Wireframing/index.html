@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Marketing/index.html">Marketing</a>
-    <br /><br />
+    <h3><a href="../../Marketing/index.html">Marketing</a></h3>
     <a href="../2017_Update/index.html">2017 Update</a>
 <br /><br />
 <a href="../ECommerce/index.html">ECommerce</a>
@@ -55,67 +61,54 @@
 
   </nav>
   <header>
-    <a href="../../Marketing/index.html">Marketing</a> ${PREV} ${NEXT}
+    <a href="../../Marketing/index.html">Marketing</a> | <a href="../Landing_Pages/index.html">Landing Pages</a> | 
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>Wireframing</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>The code provides instructions for cloning a GitHub repository, building a Docker image, and running a Docker container to run a Jupyter notebook environment. The Docker container is run with interactive shell access, mapping port 8888 and mounting a directory to share files between the host machine and the container.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one sentence:</p>
 <p>The code imports the Node.js <code>os</code> module and uses its <code>hostname()</code> function to retrieve the hostname of the system.</p>
-<p>Alternatively, if you want a two-sentence summary, here it is:</p>
 <p>The code imports the Node.js <code>os</code> module, which provides information about the operating system. It then uses the <code>hostname()</code> function on the <code>os</code> object to retrieve the hostname of the system.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here is a one or two sentence summary:</p>
 <p>The code uses the <code>console.log()</code> function to print the string 'Hello NodeJS' to the console. This is achieved by passing the string as an argument to the <code>console.log()</code> function.</p>
 <a href="./cell_3.html">Cell 3</a>
 <br /><br />
-<p>Here's a two-sentence summary of the <code>npmls</code> function:</p>
 <p>The <code>npmls</code> function executes the <code>npm ls --json</code> command and logs the result as a JSON object. It takes a callback function as a parameter, which is executed when the command finishes, returning an error object if the command fails, or the output as a JSON string if it succeeds.</p>
 <a href="./cell_4.html">Cell 4</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>The code imports the <code>exec</code> function to run a command in a new shell and uses it to execute <code>npm install nodegit</code>. The error and output streams of the executed command are redirected to the system's error and output streams for display in the console.</p>
 <a href="./cell_5.html">Cell 5</a>
 <br /><br />
-<p>Here is a summary of the code in one or two sentences:</p>
 <p>This code clones a Git repository from a specified URL to a local directory, checks out a specific branch, and logs the resulting repository object to the console. It uses the Nodegit library to clone the repository and handles errors that may occur during the process.</p>
 <a href="./cell_6.html">Cell 6</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code:</p>
 <p>The code imports the <code>exec</code> function from Node.js's <code>child_process</code> module and uses it to execute a shell command that changes the directory, installs packages using npm, and redirects the child process's error and output streams to the parent process's standard error and standard output streams. The code also contains commented-out code that appears to be a remnant from a previous version of the script.</p>
 <a href="./cell_7.html">Cell 7</a>
 <br /><br />
 <p>The code accesses the <code>HOME</code> environment variable using <code>process.env.HOME</code>. It returns the value of the <code>HOME</code> variable, which can be logged to the console as shown in the example.</p>
 <a href="./cell_8.html">Cell 8</a>
 <br /><br />
-<p>Here's a 2 sentence summary:</p>
 <p>This JavaScript code snippet uses the <code>child_process</code> module to execute a shell command in a child process and capture its output and error streams. The command compiles a project using Webpack with specific flags, and the output and error messages are redirected to the parent process's console.</p>
 <a href="./cell_9.html">Cell 9</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>This code reads three JavaScript files synchronously from the file system using Node.js's <code>fs</code> module and stores their contents in variables. An HTML string is then created that includes the script elements, which decode and execute the base64-encoded JavaScript code from the three files using <code>eval()</code> and <code>atob()</code>.</p>
 <a href="./cell_10.html">Cell 10</a>
 <br /><br />
-<p>Here's a 1 or 2 sentence summary:</p>
 <p>This code is a script that dynamically updates a file, rebuilds a project using Webpack, and generates an HTML page with an iframe pointing to the updated index.html file. However, the code has some unused variables and features that are not logged or handled, suggesting it may be a partial or outdated implementation.</p>
 <a href="./cell_11.html">Cell 11</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The code initializes a process to convert a webpage to an image using the <code>wkhtmltoimage</code> command, with options such as quality and format, and logs the command-line arguments used. The process's output is then piped through a base64 encoder and logged, with the encoded output being passed to the <code>$TS.jpg()</code> function when complete.</p>
 <a href="./cell_12.html">Cell 12</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The code uses the <code>map</code> function to apply an anonymous function to each element in a vector, adding 23 to each number. The resulting new sequence is <code>[24 25 26]</code>.</p>
 <a href="./cell_13.html">Cell 13</a>
 <br /><br />
-<p>Here is a summary of the Graphviz code breakdown in one sentence:</p>
 <p>The provided Graphviz code is a directed graph written in DOT language, defining a process flow diagram with nodes and edges that represent stages and transitions in the process, and specifying various properties such as layout direction, font, and color.</p>
-<p>Alternatively, a two-sentence summary could be:</p>
 <p>The Graphviz code defines a directed graph with a specific layout direction and font properties, and it outlines a process flow diagram with nodes and edges representing various stages and transitions. The code also specifies default properties for nodes and edges, allowing for customization of the graph's appearance.</p>
 <a href="./cell_14.html">Cell 14</a>
 <br /><br />

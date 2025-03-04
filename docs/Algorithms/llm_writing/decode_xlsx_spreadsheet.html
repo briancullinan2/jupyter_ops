@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llm_writing/index.html">llm writing</a>
-    <br /><br />
+    <h3><a href="../llm_writing/index.html">llm writing</a></h3>
     <a href="./business_plan_llm.html">business plan llm</a>
 <br /><br />
 <a href="./write_creatively_llm.html">write creatively llm</a>
@@ -65,11 +71,14 @@
 
   </nav>
   <header>
-    <a href="../llm_writing/index.html">llm writing</a> ${PREV} ${NEXT}
+    <a href="../llm_writing/index.html">llm writing</a> | <a href="./write_a_grant_proposal_with_llm.html">write a grant proposal with llm</a> | <a href="./elaborate_list_with_llm.html">elaborate list with llm</a>
   </header>
 
-  <p>Here's a two-sentence summary of the code:</p>
-<p>The <code>analyzeSpreadsheet</code> function reads an Excel file from a specified path (or a default location if not provided) and extracts cell values from a specified sheet and range. It returns an array of these cell values, with optional parameters for specifying the sheet name and range.</p>
+  <p>The <code>analyzeSpreadsheet</code> function reads an Excel file from a specified path (or a default location if not provided) and extracts cell values from a specified sheet and range. It returns an array of these cell values, with optional parameters for specifying the sheet name and range.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "decode xlsx spreadsheet"</code></pre><h1>decode xlsx spreadsheet</h1>
+
 
 
 <pre class="javascript"><code>const fs = require('fs')
@@ -147,6 +156,7 @@ module.exports = analyzeSpreadsheet
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../webdriver/index.html">webdriver</a>
-    <br /><br />
+    <h3><a href="../webdriver/index.html">webdriver</a></h3>
     <a href="./selenium_client.html">selenium client</a>
 <br /><br />
 <a href="./selenium_session.html">selenium session</a>
@@ -81,11 +87,14 @@
 
   </nav>
   <header>
-    <a href="../webdriver/index.html">webdriver</a> ${PREV} ${NEXT}
+    <a href="../webdriver/index.html">webdriver</a> | <a href="./selenium_select.html">selenium select</a> | <a href="./cell_8.html">Cell 8</a>
   </header>
 
-  <p>Here's a two-sentence summary of the code breakdown:</p>
-<p>The <code>getAllQuery</code> function is defined as an asynchronous function that executes a script in a browser context using the <code>driver.executeScript</code> method, which involves importing and utilizing external functions for querying and evaluating the DOM. The function takes three parameters - <code>driver</code>, <code>select</code>, and an optional <code>ctx</code> object - and returns the result of executing the <code>queryDom</code> function.</p>
+  <p>The <code>getAllQuery</code> function is defined as an asynchronous function that executes a script in a browser context using the <code>driver.executeScript</code> method, which involves importing and utilizing external functions for querying and evaluating the DOM. The function takes three parameters - <code>driver</code>, <code>select</code>, and an optional <code>ctx</code> object - and returns the result of executing the <code>queryDom</code> function.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "selenium query"</code></pre><h1>selenium query</h1>
+
 
 
 <pre class="javascript"><code>
@@ -117,6 +126,7 @@ module.exports = getAllQuery
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

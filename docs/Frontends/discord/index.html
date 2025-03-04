@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frontends/index.html">Frontends</a>
-    <br /><br />
+    <h3><a href="../../Frontends/index.html">Frontends</a></h3>
     <a href="../blog/index.html">blog</a>
 <br /><br />
 <a href="../brians_resume/index.html">brians resume</a>
@@ -81,55 +87,46 @@
 
   </nav>
   <header>
-    <a href="../../Frontends/index.html">Frontends</a> ${PREV} ${NEXT}
+    <a href="../../Frontends/index.html">Frontends</a> | <a href="../discord_voice/index.html">discord voice</a> | <a href="../documentation/index.html">documentation</a>
   </header>
 
-  <a href="./discord_request.html">discord request</a>
+  <h1>discord</h1>
+
+<a href="./discord_request.html">discord request</a>
 <br /><br />
-<p>Here is a two-sentence summary of the provided code breakdown:</p>
 <p>The code establishes and manages a WebSocket connection to Discord, handling events such as connection opening, message receiving, and connection closing, with functions like <code>authorizeGateway()</code> and <code>closeGateway()</code>. It also includes functions like <code>requestAuthQ()</code> for making requests to the Discord API, although this function appears to be incomplete and intended to handle a queue of requests.</p>
 <a href="./discord_gateway.html">discord gateway</a>
 <br /><br />
-<p>Here is a summary of the code in one or two sentences:</p>
 <p>The code is a Discord bot implementation that initializes variables and functions for handling WebSocket connections, sending heartbeats, and processing gateway messages. The <code>gatewayMessage</code> function is the main entry point for processing messages from the WebSocket server, and it updates the sequence number, logs messages, and performs different actions based on the <code>op</code> value of the gateway message.</p>
 <a href="./discord_bot_configuration.html">discord bot configuration</a>
 <br /><br />
 <p>This module exports various constants and variables used in a Discord bot application, including environment variables, local filepaths, and token and secret retrieval. The module provides default values for these variables, and can be accessed by importing the module.</p>
 <a href="./discord_api.html">discord api</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code:</p>
 <p>The code imports various Discord API modules and variables, then defines a <code>triggerTyping</code> function to send a POST request to a specified channel. Finally, it exports a comprehensive set of Discord-related functions and variables, including authorization, request, channel, guild, message, command, thread, and user functions.</p>
 <a href="./discord_messages.html">discord messages</a>
 <br /><br />
-<p>Here is a summary of the Discord API functions in one or two sentences:</p>
 <p>The Discord API functions provided allow you to send messages, delete messages, update messages, get pinned messages, pin and unpin messages, and provide a convenient interface for authenticated requests to the Discord API. The functions are available for import and use in other parts of the application through the <code>module.exports</code> object.</p>
 <a href="./discord_channels.html">discord channels</a>
 <br /><br />
-<p>Here's a two-sentence summary of the provided code:</p>
 <p>This module provides a set of functions for interacting with Discord channels, including retrieving user and guild channels, fetching messages from a channel with pagination, deleting a channel, and exporting these functions for use in other modules. The functions utilize a request authentication function <code>requestAuthQ</code> and configuration variables imported from separate modules to perform their respective operations.</p>
 <a href="./discord_commands.html">discord commands</a>
 <br /><br />
-<p>Here is a two-sentence summary of the provided code breakdown:</p>
 <p>This code utilizes several functions to interact with the Discord API, including registering and retrieving commands, updating interactions and commands, and requesting authentication. These functions, such as <code>registerCommand</code>, <code>getCommands</code>, and <code>requestAuthQ</code>, send HTTP requests (GET, POST, PATCH) to the Discord API to perform their respective operations.</p>
 <a href="./discord_guilds.html">discord guilds</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>This code imports dependencies and exports three functions: <code>userGuilds</code>, <code>getGuildRoles</code>, and <code>userConnections</code>, which interact with the Discord API to retrieve user information, guild roles, and user connections, respectively. The functions are asynchronous and use the <code>request</code> function to make HTTP requests to the Discord API, with optional parameters for specifying user or guild IDs.</p>
 <a href="./discord_threads.html">discord threads</a>
 <br /><br />
-<p>Here is a summary of the code in one or two sentences:</p>
 <p>This JavaScript module provides four Discord-related functions: <code>createThread</code>, <code>archivedThreads</code>, <code>activeThreads</code>, and <code>addThreadMember</code>, which can be used to interact with threads in a Discord channel. The functions are exported as a single object and can be imported and used in other modules.</p>
 <a href="./discord_users.html">discord users</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the code breakdown:</p>
 <p>The code imports an authenticated HTTP request client <code>requestAuthQ</code> from the <code>'discord request'</code> module and defines an <code>async</code> function <code>getUser</code> that retrieves a user's details from the Discord API. The <code>getUser</code> function is exported as a module, allowing it to be imported and used in other JavaScript files.</p>
 <a href="./discord_utilities.html">discord utilities</a>
 <br /><br />
-<p>Here's a summary of the code in two sentences:</p>
 <p>This code implements a timer system that stores and manages multiple timers with their corresponding expiration times, allowing for functions to be executed at specified intervals. The system exports three functions: <code>timeout</code> for creating promises that resolve after a delay, <code>delay</code> for waiting for a specified time, and <code>wait</code> for conditional waiting.</p>
 <a href="./delete_all_commands.html">delete all commands</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The code imports dependencies from discord API and utilities, and defines a <code>deleteCommands</code> function that retrieves a list of commands for a specified guild, skips exceptions, and deletes each command after a 3-second timeout. The <code>deleteCommands</code> function is then exported as a module for use in other applications.</p>
 
 </body>

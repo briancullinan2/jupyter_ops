@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../child_process/index.html">child process</a>
-    <br /><br />
+    <h3><a href="../child_process/index.html">child process</a></h3>
     <a href="./spawn_child_process.html">spawn child process</a>
 <br /><br />
 <a href="./test_child_process.html">test child process</a>
@@ -51,13 +57,16 @@
 
   </nav>
   <header>
-    <a href="../child_process/index.html">child process</a> ${PREV} ${NEXT}
+    <a href="../child_process/index.html">child process</a> | <a href="./spawn_child_process.html">spawn child process</a> | <a href="./convert_bash_to_one_liner.html">convert bash to one liner</a>
   </header>
 
-  <p>Here is a summary of the code in one sentence:</p>
-<p>The code combines asynchronous operations with error handling in Node.js, initiating a test suite, executing a shell command, and handling the result or error through custom functions.</p>
+  <p>The code combines asynchronous operations with error handling in Node.js, initiating a test suite, executing a shell command, and handling the result or error through custom functions.</p>
 <p>However, for brevity I could remove the Node.js and shell command execution to just convey that it's asynchronous and has error-handling in one sentence.</p>
 <p>The code is asynchronous, with error handling and uses a test suite.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "test child process"</code></pre><h1>test child process</h1>
+
 
 
 <pre class="javascript"><code>$.async();
@@ -78,6 +87,7 @@ execCmd(`ps -a`)
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../import/index.html">import</a>
-    <br /><br />
+    <h3><a href="../import/index.html">import</a></h3>
     <a href="./import_notebook.html">import notebook</a>
 <br /><br />
 <a href="./how_does_node_module_require_work.html">how does node module require work</a>
@@ -73,11 +79,12 @@
 
   </nav>
   <header>
-    <a href="../import/index.html">import</a> ${PREV} ${NEXT}
+    <a href="../import/index.html">import</a> | <a href="./search_notebook_questions.html">search notebook questions</a> | <a href="./convert_regexp_matches_to_an_array.html">convert regexp matches to an array</a>
   </header>
 
-  <p>Here is a two-sentence summary:</p>
-<p>This code provides four functions for filtering and searching Jupyter Notebook files (.ipynb) in a local environment, allowing users to search by filename, cell number, or query. The functions include <code>filterLocal</code>, <code>filterFilename</code>, <code>searchFiles</code>, and <code>searchQueryFiles</code>, which are exported as module exports for use in other applications.</p>
+  <p>This code provides four functions for filtering and searching Jupyter Notebook files (.ipynb) in a local environment, allowing users to search by filename, cell number, or query. The functions include <code>filterLocal</code>, <code>filterFilename</code>, <code>searchFiles</code>, and <code>searchQueryFiles</code>, which are exported as module exports for use in other applications.</p>
+<h1>Cell 9</h1>
+
 
 
 <pre class="javascript"><code>var fs = require('fs')
@@ -136,6 +143,7 @@ module.exports.searchQueryFiles = searchQueryFiles
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

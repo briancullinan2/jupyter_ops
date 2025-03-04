@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Exercises/index.html">Exercises</a>
-    <br /><br />
+    <h3><a href="../../Exercises/index.html">Exercises</a></h3>
     <a href="../falsey_javascript/index.html">falsey javascript</a>
 <br /><br />
 <a href="../fizz_buzz/index.html">fizz buzz</a>
@@ -53,30 +59,28 @@
 
   </nav>
   <header>
-    <a href="../../Exercises/index.html">Exercises</a> ${PREV} ${NEXT}
+    <a href="../../Exercises/index.html">Exercises</a> |  | <a href="../fizz_buzz/index.html">fizz buzz</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>falsey javascript</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <p>In JavaScript, an empty array <code>[]</code> is considered a truthy value, meaning it's treated as <code>true</code> in a boolean context, resulting in unexpected comparisons when using the loose equality operator <code>==</code>. This leads to <code>[] == true</code> returning <code>true</code> and <code>[] == false</code> returning <code>false</code>.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here's a 2-sentence summary:</p>
 <p>In the given code breakdown, <code>console.log()</code> prints output to the console, while the OR operator (<code>||</code>) returns the first truthy value from its operands. In JavaScript, empty arrays (<code>[]</code>) are considered falsy values, whereas non-empty arrays (<code>['not falsey enough']</code>) are considered truthy values.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here's a summary of the code breakdown in two sentences:</p>
 <p>This line of code uses the logical OR operator (<code>||</code>) to evaluate two expressions, an empty string (<code>''</code>) and a non-empty string (<code>'unempty strings'</code>). Due to how JavaScript handles falsy values, it will always log <code>'unempty strings'</code> to the console, regardless of the value of the first expression.</p>
 <a href="./cell_3.html">Cell 3</a>
 <br /><br />
 <p>The JavaScript code <code>console.log(0 || 1)</code> logs the result of the conditional expression <code>0 || 1</code> to the console, which evaluates to <code>1</code> because <code>1</code> is the first &quot;truthy&quot; value encountered. This is due to the <code>||</code> operator's behavior of returning the first truthy value it encounters.</p>
 <a href="./cell_4.html">Cell 4</a>
 <br /><br />
-<p>Here is a 2-sentence summary:</p>
 <p>The provided code uses the logical OR operator (<code>||</code>) to return an object with a <code>default</code> property set to <code>true</code> if the left side (a <code>null</code> value) is falsy. In this case, the expression returns <code>{ default: true }</code> because <code>null</code> is considered falsy in JavaScript.</p>
 <a href="./cell_5.html">Cell 5</a>
 <br /><br />
-<p>Here's a summary in two sentences:</p>
 <p>The JavaScript code attempts to log the type of an undefined variable <code>undef</code> to the console, but throws a ReferenceError instead. When trying to log the result of the expression <code>undef || {&quot;too much&quot;: false}</code>, it returns the object literal <code>{&quot;too much&quot;: false}</code> to the console due to the undefined value of <code>undef</code>.</p>
 <a href="./cell_6.html">Cell 6</a>
 <br /><br />

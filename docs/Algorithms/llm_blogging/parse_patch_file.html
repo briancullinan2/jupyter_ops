@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../llm_blogging/index.html">llm blogging</a>
-    <br /><br />
+    <h3><a href="../llm_blogging/index.html">llm blogging</a></h3>
     <a href="./blog_about_code.html">blog about code</a>
 <br /><br />
 <a href="./parse_patch_file.html">parse patch file</a>
@@ -51,10 +57,14 @@
 
   </nav>
   <header>
-    <a href="../llm_blogging/index.html">llm blogging</a> ${PREV} ${NEXT}
+    <a href="../llm_blogging/index.html">llm blogging</a> | <a href="./blog_about_code.html">blog about code</a> | <a href="./TODO__summerize_file_changes__downloads_try_to_infer_purpose__use_file_watcher_install_time_machine_.html">TODO: summerize file changes, downloads try to infer purpose, use file watcher install time machine  i version my entire disk</a>
   </header>
 
   <p>The <code>parsePatch</code> function takes a patch file as input, parses its content, and returns an object containing information about added and deleted lines across all files, along with the total number of additions and deletions. The function uses line type checks to determine the type of each line and update the corresponding object accordingly.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "parse patch file"</code></pre><h1>parse patch file</h1>
+
 
 
 <pre class="javascript"><code>const fs = require("fs");
@@ -114,6 +124,7 @@ module.exports = parsePatch
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

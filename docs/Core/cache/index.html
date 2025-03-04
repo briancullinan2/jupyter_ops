@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Core/index.html">Core</a>
-    <br /><br />
+    <h3><a href="../../Core/index.html">Core</a></h3>
     <a href="../aspects/index.html">aspects</a>
 <br /><br />
 <a href="../cache/index.html">cache</a>
@@ -71,10 +77,12 @@
 
   </nav>
   <header>
-    <a href="../../Core/index.html">Core</a> ${PREV} ${NEXT}
+    <a href="../../Core/index.html">Core</a> | <a href="../aspects/index.html">aspects</a> | <a href="../compile/index.html">compile</a>
   </header>
 
-  <a href="./cell_cache.html">cell cache</a>
+  <h1>cache</h1>
+
+<a href="./cell_cache.html">cell cache</a>
 <br /><br />
 <p>This code defines a <code>cellCache</code> that stores metadata about Jupyter Notebook cells, including timestamps, file paths, and potentially associated questions or prompts. This cache likely serves purposes such as tracking cell execution or facilitating interactive code analysis.</p>
 <a href="./cache_notebook.html">cache notebook</a>

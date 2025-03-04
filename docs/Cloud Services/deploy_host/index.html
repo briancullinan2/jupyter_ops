@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Cloud Services/index.html">Cloud Services</a>
-    <br /><br />
+    <h3><a href="../../Cloud Services/index.html">Cloud Services</a></h3>
     <a href="../aws/index.html">aws</a>
 <br /><br />
 <a href="../cloudflare/index.html">cloudflare</a>
@@ -59,23 +65,22 @@
 
   </nav>
   <header>
-    <a href="../../Cloud Services/index.html">Cloud Services</a> ${PREV} ${NEXT}
+    <a href="../../Cloud Services/index.html">Cloud Services</a> | <a href="../cloudflare/index.html">cloudflare</a> | <a href="../google_cloud_api/index.html">google cloud api</a>
   </header>
 
-  <a href="./deploy_aws.html">deploy aws</a>
+  <h1>deploy host</h1>
+
+<a href="./deploy_aws.html">deploy aws</a>
 <br /><br />
 <p>The <code>deployAws</code> function packages project files into a zip archive and deploys them to the AWS Lambda function <code>eloqua_test</code> in the us-west-2 region.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The <code>powershell.exe</code> command launches the PowerShell command-line interface and allows for various switches to customize its behavior. The main command, <code>&amp; {... }</code>, executes a script block that imports a namespace, creates an array, and uses the <code>Compress-Archive</code> cmdlet to compress a file into an archive named <code>index.zip</code>.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here is a two-sentence summary of the configuration objects:</p>
 <p>The code defines two configuration objects, <code>zuoraConfig</code> and <code>eloquaConfig</code>, which contain settings for Zuora and Eloqua APIs, respectively, and are populated using environment variables. Each object contains properties that store authentication credentials, API URLs, and other configuration settings necessary for making API requests.</p>
 <a href="./cell_3.html">Cell 3</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>The provided code snippet contains environment variables stored in a JSON object, which include credentials and URLs for both Zuora and Eloqua APIs. These variables include sensitive information such as API keys, passwords, and client secrets.</p>
 
 </body>

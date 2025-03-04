@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../discord_remote/index.html">discord remote</a>
-    <br /><br />
+    <h3><a href="../discord_remote/index.html">discord remote</a></h3>
     <a href="./discord_remote_control.html">discord remote control</a>
 <br /><br />
 <a href="./discord_remote_proxy_server.html">discord remote proxy server</a>
@@ -55,11 +61,14 @@
 
   </nav>
   <header>
-    <a href="../discord_remote/index.html">discord remote</a> ${PREV} ${NEXT}
+    <a href="../discord_remote/index.html">discord remote</a> | <a href="./remote_desktop_client.html">remote desktop client</a> | 
   </header>
 
-  <p>Here is a two-sentence summary of the provided code:</p>
-<p>This code adds event listeners to various elements on a web page to capture user interactions, including clicks, key presses, and button clicks, and sends POST requests to a server with session IDs and relevant data. The code also parses query parameters from the URL and sets the session ID property, and defines a function to retrieve checked input values from elements with the class &quot;container&quot;.</p>
+  <p>This code adds event listeners to various elements on a web page to capture user interactions, including clicks, key presses, and button clicks, and sends POST requests to a server with session IDs and relevant data. The code also parses query parameters from the URL and sets the session ID property, and defines a function to retrieve checked input values from elements with the class &quot;container&quot;.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "client input remote code"</code></pre><h1>client input remote code</h1>
+
 
 
 <pre class="javascript"><code>
@@ -182,6 +191,7 @@ document.addEventListener('DOMContentLoaded', (evt) =&gt; {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

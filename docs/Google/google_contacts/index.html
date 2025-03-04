@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Google/index.html">Google</a>
-    <br /><br />
+    <h3><a href="../../Google/index.html">Google</a></h3>
     <a href="../google_calendar_data/index.html">google calendar data</a>
 <br /><br />
 <a href="../google_calendar_graphs/index.html">google calendar graphs</a>
@@ -63,10 +69,12 @@
 
   </nav>
   <header>
-    <a href="../../Google/index.html">Google</a> ${PREV} ${NEXT}
+    <a href="../../Google/index.html">Google</a> | <a href="../google_calendar/index.html">google calendar</a> | <a href="../google_drive/index.html">google drive</a>
   </header>
 
-  <a href="./list_google_contact.html">list google contact</a>
+  <h1>google contacts</h1>
+
+<a href="./list_google_contact.html">list google contact</a>
 <br /><br />
 <p>This code fetches contacts from Google Contacts using the Google People API and provides a way to search for specific contacts by name or email address.</p>
 <a href="./google_contact_settings.html">google contact settings</a>
@@ -74,7 +82,6 @@
 <p>This code analyzes a user's Google Contacts to categorize them based on their membership in various contact groups, determining both contact frequency and group affiliations.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>The code imports modules from a main module, initiates an asynchronous execution context, and uses promise handling to execute and process results from a <code>getSettings</code> function. The <code>getSettings</code> function is called with an email address and returns a promise that is handled with <code>.then</code> for successful results and <code>.catch</code> for errors.</p>
 <a href="./cell_3.html">Cell 3</a>
 <br /><br />

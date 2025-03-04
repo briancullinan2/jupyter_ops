@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../discord_remote/index.html">discord remote</a>
-    <br /><br />
+    <h3><a href="../discord_remote/index.html">discord remote</a></h3>
     <a href="./discord_remote_control.html">discord remote control</a>
 <br /><br />
 <a href="./discord_remote_proxy_server.html">discord remote proxy server</a>
@@ -55,11 +61,14 @@
 
   </nav>
   <header>
-    <a href="../discord_remote/index.html">discord remote</a> ${PREV} ${NEXT}
+    <a href="../discord_remote/index.html">discord remote</a> | <a href="./express_automation_routes.html">express automation routes</a> | <a href="./client_input_remote_code.html">client input remote code</a>
   </header>
 
-  <p>Here is a summary of the HTML and CSS code breakdown in two sentences:</p>
-<p>The HTML document has a standard structure with a <code>&lt;head&gt;</code> for metadata and external links, and a <code>&lt;body&gt;</code> for content, and is secured by a Content Security Policy (CSP) that specifies allowed sources for content execution. The CSS styles define the layout and appearance of the HTML elements, applying various properties to elements such as <code>.container</code>, <code>.livedev</code>, and specific HTML tags like <code>h1</code>, <code>h2</code>, <code>img</code>, and <code>iframe</code>.</p>
+  <p>The HTML document has a standard structure with a <code>&lt;head&gt;</code> for metadata and external links, and a <code>&lt;body&gt;</code> for content, and is secured by a Content Security Policy (CSP) that specifies allowed sources for content execution. The CSS styles define the layout and appearance of the HTML elements, applying various properties to elements such as <code>.container</code>, <code>.livedev</code>, and specific HTML tags like <code>h1</code>, <code>h2</code>, <code>img</code>, and <code>iframe</code>.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "remote desktop client"</code></pre><h1>remote desktop client</h1>
+
 
 
 <pre class="html"><code>&lt;html&gt;
@@ -242,6 +251,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

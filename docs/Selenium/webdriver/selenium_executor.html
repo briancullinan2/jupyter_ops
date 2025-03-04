@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../webdriver/index.html">webdriver</a>
-    <br /><br />
+    <h3><a href="../webdriver/index.html">webdriver</a></h3>
     <a href="./selenium_client.html">selenium client</a>
 <br /><br />
 <a href="./selenium_session.html">selenium session</a>
@@ -81,11 +87,14 @@
 
   </nav>
   <header>
-    <a href="../webdriver/index.html">webdriver</a> ${PREV} ${NEXT}
+    <a href="../webdriver/index.html">webdriver</a> | <a href="./close_all_windows.html">close all windows</a> | <a href="./list_sessions.html">list sessions</a>
   </header>
 
-  <p>Here is a two-sentence summary of the code:</p>
-<p>The code defines a set of commands for interacting with a web browser using Selenium WebDriver, including launching apps, setting network conditions, and sending DevTools commands. The commands are configured using the <code>configureExecutor</code> function, which takes an executor instance and a vendor prefix as arguments to customize the command URLs for specific vendors.</p>
+  <p>The code defines a set of commands for interacting with a web browser using Selenium WebDriver, including launching apps, setting network conditions, and sending DevTools commands. The commands are configured using the <code>configureExecutor</code> function, which takes an executor instance and a vendor prefix as arguments to customize the command URLs for specific vendors.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "selenium executor"</code></pre><h1>selenium executor</h1>
+
 
 
 <pre class="javascript"><code>const _http = require('selenium-webdriver/http');
@@ -161,6 +170,7 @@ module.exports = createExecutor
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

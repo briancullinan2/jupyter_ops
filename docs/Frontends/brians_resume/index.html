@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frontends/index.html">Frontends</a>
-    <br /><br />
+    <h3><a href="../../Frontends/index.html">Frontends</a></h3>
     <a href="../blog/index.html">blog</a>
 <br /><br />
 <a href="../brians_resume/index.html">brians resume</a>
@@ -81,63 +87,51 @@
 
   </nav>
   <header>
-    <a href="../../Frontends/index.html">Frontends</a> ${PREV} ${NEXT}
+    <a href="../../Frontends/index.html">Frontends</a> | <a href="../blog/index.html">blog</a> | <a href="../convert_spreadsheet/index.html">convert spreadsheet</a>
   </header>
 
-  <a href="./_get_a_list_of_folder_topics_from_bookmarks.html">,get a list of folder topics from bookmarks</a>
+  <h1>brians resume</h1>
+
+<a href="./_get_a_list_of_folder_topics_from_bookmarks.html">,get a list of folder topics from bookmarks</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the provided code:</p>
 <p>The <code>getBookmarkFolders</code> function retrieves bookmarks from Takeout, groups them by half-hour interval, reduces the grouped bookmarks to an array of unique folder names, and filters out duplicates. The function is exported as a module and executed asynchronously, with error handling, when a global object <code>$</code> is defined.</p>
 <a href="./update_insterests_resume_sheet.html">update insterests resume sheet</a>
 <br /><br />
-<p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The <code>updateInterestPage</code> function updates a Google Sheets document's &quot;Interests&quot; page by retrieving bookmarks, filtering them by categories, and updating the document's rows with the formatted data. This function is exported as a module and, if a <code>$</code> object is defined, it is executed asynchronously, with results sent to <code>$.sendResult</code> and errors sent to <code>$.sendError</code>.</p>
 <a href="./load_message_history.html">load message history</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>The <code>messageHistory</code> function is an asynchronous function that retrieves relevant history files, extracts keywords and timestamps, loads conversations, and asks the user for input to filter matching timestamps. It then logs the filtered matching timestamps, providing a list of related and unique timestamps that closely match the subject.</p>
 <a href="./brians_resume.html">brians resume</a>
 <br /><br />
-<p>Here's a 2-sentence summary of the <code>messageResume</code> function:</p>
 <p>The <code>messageResume</code> function breaks down a large HTML resume into smaller sections, prompting the user for a short summary and related answers. It extracts text from the HTML, iterates over it in chunks, and returns an array of user responses joined by newline characters.</p>
 <a href="./file_system_access.html">file system access</a>
 <br /><br />
-<p>Here's a two-sentence summary of the <code>messageFilesystem</code> function:</p>
 <p>The <code>messageFilesystem</code> function is an asynchronous function that retrieves information about available projects and their related files by interacting with the file system and user input. It generates a prompt, filters related projects and files, and logs user responses and project information, although it has some potential performance and logging issues that should be addressed.</p>
 <a href="./access_web_information.html">access web information</a>
 <br /><br />
-<p>Here is a summary of the code in one sentence:</p>
 <p>The code defines a function <code>accessInternet</code> that uses Selenium to extract articles from websites or search for knowledge on the internet based on user input, and summarizes the results using the <code>summarizeArticle</code> function.</p>
-<p>Or, if you prefer a two-sentence summary:</p>
 <p>The <code>accessInternet</code> function is an asynchronous function that takes a prompt model, session object, and prompt string as input and performs various tasks based on user input. These tasks include extracting articles from websites, searching for knowledge on the internet, and summarizing the results using the <code>summarizeArticle</code> function.</p>
 <a href="./ask_another_llm_for_help.html">ask another llm for help</a>
 <br /><br />
 <p>The <code>askOtherLLMs</code> function allows you to asynchronously ask other Large Language Models (LLMs) a question by specifying the model, session, and prompt. It currently returns an undefined asynchronous value.</p>
 <a href="./render_message_history.html">render message history</a>
 <br /><br />
-<p>Here's a two-sentence summary of the <code>renderMessages(req, res)</code> function:</p>
 <p>The <code>renderMessages(req, res)</code> function is responsible for rendering a set of messages for a specific conversation based on user query parameters, by parsing dates, loading conversation files, filtering messages, and rendering them in a formatted format. It utilizes Markdown rendering with the <code>remarkable</code> library to format AI-generated messages, and limits the number of rendered messages to 25.</p>
 <a href="./resume_express_chat_service.html">resume express chat service</a>
 <br /><br />
-<p>Here is a two-sentence summary of the code:</p>
 <p>The code sets up an Express.js server that handles various routes for a chat application, including handling conversations, rendering messages, and serving static files. The <code>startServer</code> function is exported as a module, allowing it to be used in other parts of the application to start the server.</p>
 <a href="./render_history_navigation.html">render history navigation</a>
 <br /><br />
-<p>Here is a 2-sentence summary of the <code>renderHistory</code> function:</p>
 <p>The <code>renderHistory</code> function retrieves and processes conversation history files from a specified project path, sorting and grouping the data by hour and identifying missing conversation summaries. It achieves this through file system operations, JSON parsing, and data grouping, but requires additional logic to be implemented for extracting time frames and creating date ranges.</p>
 <a href="./resume_chat_program.html">resume chat program</a>
 <br /><br />
-<p>Here's a summary of the HTML structure for a chat interface in one sentence:</p>
 <p>The chat interface consists of a container element, off-the-record option, text entry section, and message display section, with a button to submit text and a link to scroll to a specific section.</p>
-<p>Alternatively, here's a two-sentence summary:</p>
 <p>The chat interface HTML structure includes a container element for the chat interface, a text entry section with a text area and send button, and a message display section. The interface also includes an off-the-record option and a link to scroll to a specific section when clicked.</p>
 <a href="./chat_page.html">chat page</a>
 <br /><br />
-<p>Here's a two-sentence summary of the provided CSS stylesheet for a chat application:</p>
 <p>This CSS stylesheet sets the basic styles for a chat application, including global styles, container styles, chat program styles, chat inner styles, messages styles, text entry styles, and drag and drop styles. It defines elements such as the container, chat inner, messages, text entry, and drag and drop areas with styles for layout, colors, and typography to create a visually cohesive chat interface.</p>
 <a href="./brians_resume_in_html.html">brians resume in html</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>This HTML-written resume, belonging to Brian Cullinan, highlights his contact information, personal details, and skills aimed at securing a full-time position as a residential field agent with the FBI. With over 24 years of programming experience, language skills, and business experience, Brian emphasizes his fast context switching, quick learning ability, and compassion in his resume summary.</p>
 
 </body>

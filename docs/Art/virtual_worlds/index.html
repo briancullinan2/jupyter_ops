@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Art/index.html">Art</a>
-    <br /><br />
+    <h3><a href="../../Art/index.html">Art</a></h3>
     <a href="../stable_diffusion/index.html">stable diffusion</a>
 <br /><br />
 <a href="../virtual_worlds/index.html">virtual worlds</a>
@@ -49,10 +55,12 @@
 
   </nav>
   <header>
-    <a href="../../Art/index.html">Art</a> ${PREV} ${NEXT}
+    <a href="../../Art/index.html">Art</a> | <a href="../stable_diffusion/index.html">stable diffusion</a> | 
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>virtual worlds</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
 
 </body>

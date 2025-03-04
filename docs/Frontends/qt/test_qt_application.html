@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../qt/index.html">qt</a>
-    <br /><br />
+    <h3><a href="../qt/index.html">qt</a></h3>
     <a href="./qt_application.html">qt application</a>
 <br /><br />
 <a href="./test_qt_application.html">test qt application</a>
@@ -53,11 +59,14 @@
 
   </nav>
   <header>
-    <a href="../qt/index.html">qt</a> ${PREV} ${NEXT}
+    <a href="../qt/index.html">qt</a> | <a href="./qt_application.html">qt application</a> | <a href="./qt_qml_widget.html">qt qml widget</a>
   </header>
 
-  <p>Here is a 1-2 sentence summary of the code:</p>
-<p>The <code>textQtApp</code> function asynchronously imports the 'qt qml widget' module and calls its <code>main</code> function with arguments <code>0</code> and an empty string. This function is then exported as a module, relying on the <code>importer</code> object to handle module imports.</p>
+  <p>The <code>textQtApp</code> function asynchronously imports the 'qt qml widget' module and calls its <code>main</code> function with arguments <code>0</code> and an empty string. This function is then exported as a module, relying on the <code>importer</code> object to handle module imports.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "test qt application"</code></pre><h1>test qt application</h1>
+
 
 
 <pre class="javascript"><code>
@@ -78,6 +87,7 @@ module.exports = textQtApp
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

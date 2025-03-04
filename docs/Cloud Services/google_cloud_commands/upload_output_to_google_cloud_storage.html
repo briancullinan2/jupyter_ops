@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../google_cloud_commands/index.html">google cloud commands</a>
-    <br /><br />
+    <h3><a href="../google_cloud_commands/index.html">google cloud commands</a></h3>
     <a href="./upload_output_to_google_cloud_storage.html">upload output to google cloud storage</a>
 <br /><br />
 <a href="./add_public_permissions_to_google_cloud_storage.html">add public permissions to google cloud storage</a>
@@ -55,10 +61,14 @@
 
   </nav>
   <header>
-    <a href="../google_cloud_commands/index.html">google cloud commands</a> ${PREV} ${NEXT}
+    <a href="../google_cloud_commands/index.html">google cloud commands</a> |  | <a href="./add_public_permissions_to_google_cloud_storage.html">add public permissions to google cloud storage</a>
   </header>
 
   <p>This script synchronizes a local directory with a Google Cloud Storage bucket, but only if a directory path is provided as input.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "upload output to google cloud storage"</code></pre><h1>upload output to google cloud storage</h1>
+
 
 
 <pre class="bash"><code>if [[ -n $1 ]]; \
@@ -73,6 +83,7 @@ fi;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 <!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>

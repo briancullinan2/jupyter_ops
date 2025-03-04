@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Databases/index.html">Databases</a>
-    <br /><br />
+    <h3><a href="../../Databases/index.html">Databases</a></h3>
     <a href="../active_directory/index.html">active directory</a>
 <br /><br />
 <a href="../caches/index.html">caches</a>
@@ -67,12 +73,13 @@
 
   </nav>
   <header>
-    <a href="../../Databases/index.html">Databases</a> ${PREV} ${NEXT}
+    <a href="../../Databases/index.html">Databases</a> | <a href="../raid/index.html">raid</a> | <a href="../sql_to_json/index.html">sql to json</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>registry</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
-<p>Here is a summary of the code breakdown in one sentence:</p>
 <p>The code queries the registry for the <code>MSBuildToolsPath</code> value in two versions (4.0 and 14.0) of the MSBuild tools path using the <code>reg.exe</code> command.</p>
 <p>Alternatively, in two sentences:</p>
 <p>The code uses the <code>reg.exe</code> command to query the registry for the <code>MSBuildToolsPath</code> value in two versions (4.0 and 14.0) of the MSBuild tools path. The expected output is the value of <code>MSBuildToolsPath</code> for each specified registry path.</p>

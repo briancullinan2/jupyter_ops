@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../dylib/index.html">dylib</a>
-    <br /><br />
+    <h3><a href="../dylib/index.html">dylib</a></h3>
     <a href="./include_a_dynamic_lib.html">include a dynamic lib</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -65,11 +71,14 @@
 
   </nav>
   <header>
-    <a href="../dylib/index.html">dylib</a> ${PREV} ${NEXT}
+    <a href="../dylib/index.html">dylib</a> | <a href="./get_c_types.html">get c types</a> | <a href="./build_dylib.html">build dylib</a>
   </header>
 
-  <p>Here's a summary of the code in one sentence:</p>
-<p>The <code>typeToDataType</code> function takes in parameters <code>returnLength</code>, <code>returnType</code>, and <code>dataType</code> and returns an object compatible with the <code>ffi-rs</code> library, handling different data types through switch statements.</p>
+  <p>The <code>typeToDataType</code> function takes in parameters <code>returnLength</code>, <code>returnType</code>, and <code>dataType</code> and returns an object compatible with the <code>ffi-rs</code> library, handling different data types through switch statements.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "c type to data type"</code></pre><h1>c type to data type</h1>
+
 
 
 <pre class="javascript"><code>const { open, load, close, DataType, arrayConstructor } = require('ffi-rs')
@@ -119,6 +128,7 @@ module.exports = typeToDataType</code></pre>
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

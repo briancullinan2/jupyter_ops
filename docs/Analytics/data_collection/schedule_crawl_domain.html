@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../data_collection/index.html">data collection</a>
-    <br /><br />
+    <h3><a href="../data_collection/index.html">data collection</a></h3>
     <a href="./Crime_reports.html">Crime reports</a>
 <br /><br />
 <a href="./https___www_amazon_com_gp_yourstore_iyr_ref_pd_ys_iyr_nextie_UTF8_collection_watched_iyrGroup__maxIt.html">https://www.amazon.com/gp/yourstore/iyr/ref=pd_ys_iyr_nextie=UTF8&collection=watched&iyrGroup=&maxItem=616&minItem=600</a>
@@ -71,11 +77,14 @@
 
   </nav>
   <header>
-    <a href="../data_collection/index.html">data collection</a> ${PREV} ${NEXT}
+    <a href="../data_collection/index.html">data collection</a> | <a href="./analyze_cache_file.html">analyze cache file</a> | <a href="./collect_all_bookmarks.html">collect all bookmarks</a>
   </header>
 
-  <p>Here is a 2-sentence summary of the code:</p>
-<p>This JavaScript code imports the Google Calendar API and defines an <code>options</code> object with a calendar ID. It also exports a <code>scheduleSearch</code> function that takes a search parameter and schedules a new event on the specified calendar, using OAuth authentication if it is defined in the <code>options</code> object.</p>
+  <p>This JavaScript code imports the Google Calendar API and defines an <code>options</code> object with a calendar ID. It also exports a <code>scheduleSearch</code> function that takes a search parameter and schedules a new event on the specified calendar, using OAuth authentication if it is defined in the <code>options</code> object.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "schedule crawl domain"</code></pre><h1>schedule crawl domain</h1>
+
 
 
 <pre class="javascript"><code>var google = require('googleapis');
@@ -115,6 +124,7 @@ module.exports = scheduleSearch;
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

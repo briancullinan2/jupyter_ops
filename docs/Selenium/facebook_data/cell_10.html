@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../facebook_data/index.html">facebook data</a>
-    <br /><br />
+    <h3><a href="../facebook_data/index.html">facebook data</a></h3>
     <a href="./Log_in_to_facebook.html">Log in to facebook</a>
 <br /><br />
 <a href="./Scrape_facebook_profile.html">Scrape facebook profile</a>
@@ -69,11 +75,12 @@
 
   </nav>
   <header>
-    <a href="../facebook_data/index.html">facebook data</a> ${PREV} ${NEXT}
+    <a href="../facebook_data/index.html">facebook data</a> | <a href="./Unfollow_everyone_on_facebook.html">Unfollow everyone on facebook</a> | <a href="./cell_11.html">Cell 11</a>
   </header>
 
-  <p>Here is a summary of the code in one sentence:</p>
-<p>The code uses the <code>selenium cell</code> function to automate two tasks (<code>log in facebook</code> and <code>unfollow everyone facebook</code>) and handles their execution and errors using a series of <code>then</code> and <code>catch</code> blocks.</p>
+  <p>The code uses the <code>selenium cell</code> function to automate two tasks (<code>log in facebook</code> and <code>unfollow everyone facebook</code>) and handles their execution and errors using a series of <code>then</code> and <code>catch</code> blocks.</p>
+<h1>Cell 10</h1>
+
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -105,6 +112,7 @@ runSeleniumCell([
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

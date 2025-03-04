@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Selenium/index.html">Selenium</a>
-    <br /><br />
+    <h3><a href="../../Selenium/index.html">Selenium</a></h3>
     <a href="../What_is_Selenium/index.html">What is Selenium</a>
 <br /><br />
 <a href="../auth/index.html">auth</a>
@@ -99,23 +105,22 @@
 
   </nav>
   <header>
-    <a href="../../Selenium/index.html">Selenium</a> ${PREV} ${NEXT}
+    <a href="../../Selenium/index.html">Selenium</a> | <a href="../scraping/index.html">scraping</a> | <a href="../selenium_demo/index.html">selenium demo</a>
   </header>
 
-  <a href="./What_is_Selenium.html">What is Selenium</a>
+  <h1>selenium commands</h1>
+
+<a href="./What_is_Selenium.html">What is Selenium</a>
 <br /><br />
 <p>The Xvfb command starts a virtual display server with specified characteristics, including resolution, color depth, and extensions. The command <code>Xvfb :0 -ac -screen 0 1024x768x24 +extension RANDR</code> is used to start a specific virtual display server with 1024x768 resolution, true color, and RANDR extension enabled.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>To start a Selenium server with Chrome browser in headless mode, the code sets the DISPLAY environment variable, runs the Java Virtual Machine, and specifies the path to the Selenium standalone JAR file. The command also sets JVM system properties to customize the Chrome browser's behavior, including running in full-screen, disabling sandboxing, and running in incognito mode.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
-<p>Here is a two-sentence summary:</p>
 <p>This code exports the <code>DISPLAY</code> environment variable to redirect the display to the first display, then launches Google Chrome in full-screen mode to open a development server at <code>http://localhost:4200</code>. It appears to be a Linux-specific script used for testing or demonstration purposes.</p>
 <a href="./Run_selenium_inside_of_docker.html">Run selenium inside of docker</a>
 <br /><br />
-<p>Here's a two-sentence summary of the Dockerfile breakdown:</p>
 <p>This Dockerfile uses the selenium standalone chrome debug image as its base, exposes ports 4200, 4444, and 3000, and sets up directories and environment variables for a Chrome browser testing environment. It also modifies the entry_point.sh script to modify Chrome preferences and change the exit behavior to report a cleaner shutdown.</p>
 
 </body>

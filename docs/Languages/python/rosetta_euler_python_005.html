@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../python/index.html">python</a>
-    <br /><br />
+    <h3><a href="../python/index.html">python</a></h3>
     <a href="./rosetta_euler_python_005.html">rosetta euler python 005</a>
 <br /><br />
 <a href="./list_c_functions_with_python.html">list c functions with python</a>
@@ -51,11 +57,14 @@
 
   </nav>
   <header>
-    <a href="../python/index.html">python</a> ${PREV} ${NEXT}
+    <a href="../python/index.html">python</a> |  | <a href="./list_c_functions_with_python.html">list c functions with python</a>
   </header>
 
-  <p>Here's a summary of the code in two sentences:</p>
-<p>This code defines three functions: <code>prime_factors</code> to calculate the unique prime factors of a number, <code>overlap</code> to remove duplicate elements from two lists, and uses these functions to calculate the product of unique prime factors of numbers from 1 to 20. The functions are then exported as part of the module, making them available for import by other modules.</p>
+  <p>This code defines three functions: <code>prime_factors</code> to calculate the unique prime factors of a number, <code>overlap</code> to remove duplicate elements from two lists, and uses these functions to calculate the product of unique prime factors of numbers from 1 to 20. The functions are then exported as part of the module, making them available for import by other modules.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "rosetta euler python 005"</code></pre><h1>rosetta euler python 005</h1>
+
 
 
 <pre class="python"><code>from operator import mul
@@ -116,6 +125,7 @@ __all__ = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

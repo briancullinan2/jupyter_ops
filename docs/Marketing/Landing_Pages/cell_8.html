@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../Landing_Pages/index.html">Landing Pages</a>
-    <br /><br />
+    <h3><a href="../Landing_Pages/index.html">Landing Pages</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -87,11 +93,12 @@
 
   </nav>
   <header>
-    <a href="../Landing_Pages/index.html">Landing Pages</a> ${PREV} ${NEXT}
+    <a href="../Landing_Pages/index.html">Landing Pages</a> | <a href="./cell_7.html">Cell 7</a> | <a href="./cell_9.html">Cell 9</a>
   </header>
 
-  <p>Here is a summary of the code in one sentence:</p>
-<p>The code uses the <code>$TS</code> object to open the URL <code>act.com/nl-nl/producten/act-pro</code> in a new window with specific settings, including a zoom level of 50% and a size of 680x400 pixels.</p>
+  <p>The code uses the <code>$TS</code> object to open the URL <code>act.com/nl-nl/producten/act-pro</code> in a new window with specific settings, including a zoom level of 50% and a size of 680x400 pixels.</p>
+<h1>Cell 8</h1>
+
 
 
 <pre class="typescript"><code>$TS.screen('act.com/nl-nl/producten/act-pro', {zoom: .5, width: 680, 'crop-h': 400});</code></pre>
@@ -104,6 +111,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

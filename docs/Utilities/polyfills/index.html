@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Utilities/index.html">Utilities</a>
-    <br /><br />
+    <h3><a href="../../Utilities/index.html">Utilities</a></h3>
     <a href="../active_directory/index.html">active directory</a>
 <br /><br />
 <a href="../bash/index.html">bash</a>
@@ -101,10 +107,12 @@
 
   </nav>
   <header>
-    <a href="../../Utilities/index.html">Utilities</a> ${PREV} ${NEXT}
+    <a href="../../Utilities/index.html">Utilities</a> | <a href="../parse/index.html">parse</a> | <a href="../qr_codes/index.html">qr codes</a>
   </header>
 
-  <a href="./https_request.html">https request</a>
+  <h1>polyfills</h1>
+
+<a href="./https_request.html">https request</a>
 <br /><br />
 <p>This code defines a <code>httpRequest</code> function that makes HTTP requests using either the <code>request</code> module (if available) or a custom implementation based on the <code>http</code> and <code>https</code> modules.</p>
 <a href="./cell_1.html">Cell 1</a>

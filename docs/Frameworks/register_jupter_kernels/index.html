@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frameworks/index.html">Frameworks</a>
-    <br /><br />
+    <h3><a href="../../Frameworks/index.html">Frameworks</a></h3>
     <a href="../Angular_2/index.html">Angular 2</a>
 <br /><br />
 <a href="../Angular_components/index.html">Angular components</a>
@@ -105,10 +111,12 @@
 
   </nav>
   <header>
-    <a href="../../Frameworks/index.html">Frameworks</a> ${PREV} ${NEXT}
+    <a href="../../Frameworks/index.html">Frameworks</a> | <a href="../promisify_automock_socketio/index.html">promisify automock socketio</a> | <a href="../svn_commands/index.html">svn commands</a>
   </header>
 
-  <a href="./install_a_kernel_from_just_the_spec.html">install a kernel from just the spec</a>
+  <h1>register jupter kernels</h1>
+
+<a href="./install_a_kernel_from_just_the_spec.html">install a kernel from just the spec</a>
 <br /><br />
 <p>This script installs a C# kernel for Jupyter Notebook, allowing users to execute C# code within the Jupyter environment.  It takes command-line options to specify user or system-wide installation and an optional prefix directory.</p>
 

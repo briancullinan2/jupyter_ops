@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../patterns/index.html">patterns</a>
-    <br /><br />
+    <h3><a href="../patterns/index.html">patterns</a></h3>
     <a href="./__walk_tree.html">, walk tree</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -71,10 +77,12 @@
 
   </nav>
   <header>
-    <a href="../patterns/index.html">patterns</a> ${PREV} ${NEXT}
+    <a href="../patterns/index.html">patterns</a> | <a href="./test_enforcing_an_interface_with_prototype.html">test enforcing an interface with prototype</a> | <a href="./cell_12.html">Cell 12</a>
   </header>
 
-  
+  <h1>Cell 11</h1>
+
+
 
 <pre class="javascript"><code></code></pre>
 
@@ -86,6 +94,7 @@
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

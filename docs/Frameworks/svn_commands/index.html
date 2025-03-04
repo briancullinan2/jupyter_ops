@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Frameworks/index.html">Frameworks</a>
-    <br /><br />
+    <h3><a href="../../Frameworks/index.html">Frameworks</a></h3>
     <a href="../Angular_2/index.html">Angular 2</a>
 <br /><br />
 <a href="../Angular_components/index.html">Angular components</a>
@@ -105,12 +111,13 @@
 
   </nav>
   <header>
-    <a href="../../Frameworks/index.html">Frameworks</a> ${PREV} ${NEXT}
+    <a href="../../Frameworks/index.html">Frameworks</a> | <a href="../register_jupter_kernels/index.html">register jupter kernels</a> | <a href="../test_runner/index.html">test runner</a>
   </header>
 
-  <a href="./cell_0.html">Cell 0</a>
+  <h1>svn commands</h1>
+
+<a href="./cell_0.html">Cell 0</a>
 <br /><br />
-<p>Here's a two-sentence summary:</p>
 <p>This Docker command runs an <code>svnserve</code> container with automatic restart, mapping the host directory <code>/Users/briancullinan/Documents/svn</code> to the container directory, and exposing port 3690 for version control operations. The command uses the <code>gcscaglia/docker-svnserve</code> image with the latest available version.</p>
 
 </body>

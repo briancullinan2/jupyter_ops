@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../dylib/index.html">dylib</a>
-    <br /><br />
+    <h3><a href="../dylib/index.html">dylib</a></h3>
     <a href="./include_a_dynamic_lib.html">include a dynamic lib</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -65,11 +71,12 @@
 
   </nav>
   <header>
-    <a href="../dylib/index.html">dylib</a> ${PREV} ${NEXT}
+    <a href="../dylib/index.html">dylib</a> | <a href="./cell_1.html">Cell 1</a> | <a href="./test_a_csharp_dylib.html">test a csharp dylib</a>
   </header>
 
-  <p>Here's a two-sentence summary of the code breakdown:</p>
-<p>This Node.js module exports a <code>moveMouse</code> function that moves the mouse cursor to a specified position <code>(x, y)</code> by interacting with a dynamic library file. The module determines the platform-specific path to the dynamic library file and loads a <code>SetMousePosition</code> function from it, which is then called with the provided coordinates.</p>
+  <p>This Node.js module exports a <code>moveMouse</code> function that moves the mouse cursor to a specified position <code>(x, y)</code> by interacting with a dynamic library file. The module determines the platform-specific path to the dynamic library file and loads a <code>SetMousePosition</code> function from it, which is then called with the provided coordinates.</p>
+<h1>Cell 2</h1>
+
 
 
 <pre class="javascript"><code>const {
@@ -115,6 +122,7 @@ module.exports = moveMouse
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

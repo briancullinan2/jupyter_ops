@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../../Google/index.html">Google</a>
-    <br /><br />
+    <h3><a href="../../Google/index.html">Google</a></h3>
     <a href="../google_calendar_data/index.html">google calendar data</a>
 <br /><br />
 <a href="../google_calendar_graphs/index.html">google calendar graphs</a>
@@ -63,10 +69,12 @@
 
   </nav>
   <header>
-    <a href="../../Google/index.html">Google</a> ${PREV} ${NEXT}
+    <a href="../../Google/index.html">Google</a> | <a href="../google_search_api/index.html">google search api</a> | 
   </header>
 
-  <a href="./templates_google_doc.html">templates google doc</a>
+  <h1>google sheets</h1>
+
+<a href="./templates_google_doc.html">templates google doc</a>
 <br /><br />
 <p>This code analyzes a Google Sheet document to identify and categorize its sheets as either templates or data sheets based on their titles. It then returns an organized object containing these categorized sheets.</p>
 <a href="./test_templates_google_sheet.html">test templates google sheet</a>

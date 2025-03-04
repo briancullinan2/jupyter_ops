@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../math/index.html">math</a>
-    <br /><br />
+    <h3><a href="../math/index.html">math</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -49,11 +55,12 @@
 
   </nav>
   <header>
-    <a href="../math/index.html">math</a> ${PREV} ${NEXT}
+    <a href="../math/index.html">math</a> |  | <a href="./cell_1.html">Cell 1</a>
   </header>
 
-  <p>Here's a 2-sentence summary of the code breakdown:</p>
-<p>The code generates all possible permutations of an input array and combines them with operator combinations to create mathematical equations in both standard and nested formats. It uses functions such as <code>spliceClone</code>, <code>permute</code>, <code>solve</code>, and <code>reduce</code> to generate and evaluate these equations, storing the results in variables like <code>permutations</code>, <code>operators</code>, and <code>equations</code>.</p>
+  <p>The code generates all possible permutations of an input array and combines them with operator combinations to create mathematical equations in both standard and nested formats. It uses functions such as <code>spliceClone</code>, <code>permute</code>, <code>solve</code>, and <code>reduce</code> to generate and evaluate these equations, storing the results in variables like <code>permutations</code>, <code>operators</code>, and <code>equations</code>.</p>
+<h1>Cell 0</h1>
+
 
 
 <pre class="javascript"><code>// permutation
@@ -143,6 +150,7 @@ for(var e of equations) { // .filter(e =&gt; e[12] === 24)) {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

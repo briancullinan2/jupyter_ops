@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../data_collection/index.html">data collection</a>
-    <br /><br />
+    <h3><a href="../data_collection/index.html">data collection</a></h3>
     <a href="./Crime_reports.html">Crime reports</a>
 <br /><br />
 <a href="./https___www_amazon_com_gp_yourstore_iyr_ref_pd_ys_iyr_nextie_UTF8_collection_watched_iyrGroup__maxIt.html">https://www.amazon.com/gp/yourstore/iyr/ref=pd_ys_iyr_nextie=UTF8&collection=watched&iyrGroup=&maxItem=616&minItem=600</a>
@@ -71,11 +77,14 @@
 
   </nav>
   <header>
-    <a href="../data_collection/index.html">data collection</a> ${PREV} ${NEXT}
+    <a href="../data_collection/index.html">data collection</a> | <a href="./crawl_domain.html">crawl domain</a> | <a href="./browser_crawler_tools.html">browser crawler tools</a>
   </header>
 
-  <p>Here is a two-sentence summary:</p>
-<p>This code snippet appears to be a Node.js module that handles caching web pages, importing various modules, and defining functions to cache and retrieve data based on URLs. The functions include caching file creation, searching for existing caches, checking cache validity, and storing cache data in files, with various options for cache restraint and URL sanitization.</p>
+  <p>This code snippet appears to be a Node.js module that handles caching web pages, importing various modules, and defining functions to cache and retrieve data based on URLs. The functions include caching file creation, searching for existing caches, checking cache validity, and storing cache data in files, with various options for cache restraint and URL sanitization.</p>
+<h2>Run example</h2>
+
+<pre language="bash"><code>npm run import -- "domain cache tools"</code></pre><h1>domain cache tools</h1>
+
 
 
 <pre class="javascript"><code>var {URL} = require('url')
@@ -241,6 +250,7 @@ module.exports = {
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 

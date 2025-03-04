@@ -8,6 +8,11 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     nav {
       position: fixed;
       overflow: auto;
@@ -20,10 +25,12 @@
 
     header {
       background-color: #EEE;
+      padding: 10px;
     }
 
     body {
-      padding-left: 200px;
+      padding: 0 0 0 200px;
+      margin: 0;
     }
 
     @media screen and (max-width: 600px) {
@@ -40,8 +47,7 @@
 
 <body>
   <nav>
-    <a href="../falsey_javascript/index.html">falsey javascript</a>
-    <br /><br />
+    <h3><a href="../falsey_javascript/index.html">falsey javascript</a></h3>
     <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <a href="./cell_1.html">Cell 1</a>
@@ -59,10 +65,12 @@
 
   </nav>
   <header>
-    <a href="../falsey_javascript/index.html">falsey javascript</a> ${PREV} ${NEXT}
+    <a href="../falsey_javascript/index.html">falsey javascript</a> |  | <a href="./cell_1.html">Cell 1</a>
   </header>
 
   <p>In JavaScript, an empty array <code>[]</code> is considered a truthy value, meaning it's treated as <code>true</code> in a boolean context, resulting in unexpected comparisons when using the loose equality operator <code>==</code>. This leads to <code>[] == true</code> returning <code>true</code> and <code>[] == false</code> returning <code>false</code>.</p>
+<h1>Cell 0</h1>
+
 
 
 <pre class="javascript"><code>console.log([] == true)
@@ -76,6 +84,7 @@ console.log([] == false)</code></pre>
 
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 
 <script>hljs.highlightAll();</script>
 
