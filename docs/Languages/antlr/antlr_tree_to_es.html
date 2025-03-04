@@ -89,8 +89,7 @@
 
 <pre class="javascript"><code>var assert = require('assert')
 var importer= require('../Core')
-var {treeToHtml, htmlToTree} = importer.import("<a href="../../Core/syntax/tree_to_html.html">tree to html</a>"
-,<br />
+var {treeToHtml, htmlToTree} = importer.import("<a href="../../Core/syntax/tree_to_html.html">tree to html</a>",
 "<a href="../../Core/syntax/html_to_tree.html">html to tree</a>")
 var {selectDom} = importer.import("<a href="../../Core/patterns/select_tree.html">select tree</a>")
 var {transpile, replace} = importer.import("<a href="../../Core/languages/transpile_code.html">transpile code</a>")

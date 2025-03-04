@@ -140,10 +140,8 @@
 <pre class="javascript"><code>var esprima = require('esprima'); 
 var assert = require('assert');
 var importer = require('../Core');
-var {selectAst, makeXpaths, htmlToTree} = importer.import("<a href="../../Core/syntax/select_ast.html">select code tree</a>"
-,<br />
-"<a href="../../Core/syntax/__make_xpaths.html">make xpaths</a>"
-,<br />
+var {selectAst, makeXpaths, htmlToTree} = importer.import("<a href="../../Core/syntax/select_ast.html">select code tree</a>",
+"<a href="../../Core/syntax/__make_xpaths.html">make xpaths</a>",
 "<a href="../../Core/syntax/html_to_tree.html">html to tree</a>")
 
 var code = `

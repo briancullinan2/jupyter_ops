@@ -96,12 +96,9 @@ function unzip(file) {
 
 var {
     googleTakeout, syncChromeHistory, syncChromeBookmarks, execCmd
-} = importer.import("<a href="../../Selenium/google_takeout/order_google_takeout.html">order google takeout</a>"
-,<br />
-"<a href="../../Google/google_calendar_data/sync_chrome_history.html">sync chrome history</a>"
-,<br />
-"<a href="../../Google/google_calendar_data/sync_chrome_bookmarks.html">sync chrome bookmarks</a>"
-,<br />
+} = importer.import("<a href="../../Selenium/google_takeout/order_google_takeout.html">order google takeout</a>",
+"<a href="../../Google/google_calendar_data/sync_chrome_history.html">sync chrome history</a>",
+"<a href="../../Google/google_calendar_data/sync_chrome_bookmarks.html">sync chrome bookmarks</a>",
 "<a href="../../Utilities/child_process/spawn_child_process.html">spawn child process</a>");
 function syncChrome() {
     if(fs.existsSync(DOWNLOADS_PATH + '/Takeout')) {

@@ -99,10 +99,8 @@ function deQueue(inputQueue, searchCallback, ctx) {
     console.log(ctx.client.requestHandler.sessionID);
     const callback = typeof searchCallback === 'function'
         ? searchCallback
-        : importer.import("<a href="../../Algorithms/llama/search_llama.html">searchCallback</a>"
-,<br />
-"<a href="../../Analytics/data_collection/meta_search_all.html">Object.assign({useCache: false}</a>"
-,<br />
+        : importer.import("<a href="../../Algorithms/llama/search_llama.html">searchCallback</a>",
+"<a href="../../Analytics/data_collection/meta_search_all.html">Object.assign({useCache: false}</a>",
 "<a href="../../Algorithms/audio/.html">ctx</a>"));
     if(inputQueue.length &gt; 0) {
         const item = inputQueue.shift();

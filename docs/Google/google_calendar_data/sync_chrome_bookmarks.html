@@ -85,14 +85,10 @@ var _ = require('lodash');
 var offset = (new Date()).getTimezoneOffset() * 60 * 1000;
 var {
     ISODateString, updateEvent, correctCalendarId, getBookmarksFromTakeout
-} = importer.import("<a href="../../Google/google_calendar/use_Google_calendar_API.html">import google calendar api</a>"
-,<br />
-"<a href="../../Utilities/window_enum/lookup_window_by.html">lookup calendar name</a>"
-,<br />
-"<a href="../../Games/quake_3/convert_nonalpha.html">convert date iso</a>"
-,<br />
-"<a href="../../Google/google_calendar/Update_create_merge_delete_event.html">update create merge event</a>"
-,<br />
+} = importer.import("<a href="../../Google/google_calendar/use_Google_calendar_API.html">import google calendar api</a>",
+"<a href="../../Utilities/window_enum/lookup_window_by.html">lookup calendar name</a>",
+"<a href="../../Games/quake_3/convert_nonalpha.html">convert date iso</a>",
+"<a href="../../Google/google_calendar/Update_create_merge_delete_event.html">update create merge event</a>",
 "<a href="../../Google/google_calendar_data/Parse_bookmarks_file.html">parse bookmarks file</a>");
 var options = {
     calendarId: 'Bookmarks'

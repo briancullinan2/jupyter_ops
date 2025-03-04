@@ -137,10 +137,8 @@
 
 <pre class="javascript"><code>var assert = require('assert');
 var importer = require('../Core');
-var {selectAst, makeXpaths, htmlToTree} = importer.import("<a href="../../Core/patterns/select_tree.html">select tree</a>"
-,<br />
-"<a href="../../Core/syntax/__make_xpaths.html">make xpaths</a>"
-,<br />
+var {selectAst, makeXpaths, htmlToTree} = importer.import("<a href="../../Core/patterns/select_tree.html">select tree</a>",
+"<a href="../../Core/syntax/__make_xpaths.html">make xpaths</a>",
 "<a href="../../Core/syntax/html_to_tree.html">html to tree</a>")
 
 var code = `

@@ -79,12 +79,9 @@
 var {
     loadLocations, averageDestinations, reconcileTimelineLocations,
     runSeleniumCell
-} = importer.import("<a href="../../Selenium/google_timeline/Load_location_export_data.html">load locations export data</a>"
-,<br />
-"<a href="../../Frameworks/d3/Create_a_word-cloud.html">average latitude longitude</a>"
-,<br />
-"<a href="../../Selenium/google_timeline/reconcile_timeline.html">reconcile timeline calendar</a>"
-,<br />
+} = importer.import("<a href="../../Selenium/google_timeline/Load_location_export_data.html">load locations export data</a>",
+"<a href="../../Frameworks/d3/Create_a_word-cloud.html">average latitude longitude</a>",
+"<a href="../../Selenium/google_timeline/reconcile_timeline.html">reconcile timeline calendar</a>",
 "<a href="../../Selenium/webdriver/selenium_client.html">selenium cell</a>")
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;

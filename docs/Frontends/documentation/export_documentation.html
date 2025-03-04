@@ -233,7 +233,7 @@ async function exportAll(query) {
                 + '/' + safeurl(cell.questions[0]) + '.html"&gt;' + searches[k] + '&lt;/a&gt;"')
             } catch(e) {}
           }
-          return args[0] + '(' + links.join('\n,&lt;br /&gt;\n') + ')'
+          return args[0] + '(' + links.join(',\n') + ')'
         }) + '&lt;/code&gt;&lt;/pre&gt;\n\n'
       }
       results[key].output += languageTemplate.code.replaceAll('${LANGUAGE}', newCache[j].language)

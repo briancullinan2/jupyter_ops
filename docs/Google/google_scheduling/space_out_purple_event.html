@@ -82,12 +82,9 @@ var {google} = require('googleapis')
 var util = require('util')
 var {
     correctCalendarId, authorizeCalendar, getDaysEvents, d3Heatmap
-} = importer.import("<a href="../../Utilities/window_enum/lookup_window_by.html">lookup calendar name</a>"
-,<br />
-"<a href="../../Google/google_calendar/use_Google_calendar_API.html">authorize google calendar</a>"
-,<br />
-"<a href="../../Google/google_calendar/days_events.html">days events</a>"
-,<br />
+} = importer.import("<a href="../../Utilities/window_enum/lookup_window_by.html">lookup calendar name</a>",
+"<a href="../../Google/google_calendar/use_Google_calendar_API.html">authorize google calendar</a>",
+"<a href="../../Google/google_calendar/days_events.html">days events</a>",
 "<a href="../../Frameworks/d3_dates/d3_calendar.html">d3 calendar</a>")
 
 var DAYS = 1200 // plus or minus

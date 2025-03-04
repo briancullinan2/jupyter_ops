@@ -86,24 +86,20 @@ namespace window_tracker
     public static class ProgramExtensions
     {
 
-        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>"
-,<br />
+        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>",
 "<a href="../../Core/syntax/select_acorn_tree.html">SetLastError = true</a>")]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
 
-        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>"
-,<br />
+        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>",
 "<a href="../../Core/syntax/select_acorn_tree.html">SetLastError = true</a>")]
         private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
-        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>"
-,<br />
+        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>",
 "<a href="../../Selenium/scraping/extract_llm_article.html">CharSet = CharSet.Unicode</a>")]
         private static extern int GetWindowText(IntPtr hWnd, StringBuilder strText, int maxCount);
 
-        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>"
-,<br />
+        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>",
 "<a href="../../Selenium/scraping/extract_llm_article.html">CharSet = CharSet.Unicode</a>")]
         private static extern int GetWindowTextLength(IntPtr hWnd);
 

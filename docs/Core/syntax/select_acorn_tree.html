@@ -139,8 +139,7 @@
 
 <pre class="javascript"><code>var acorn = require("acorn")
 var importer = require('../Core')
-var {selectAst, htmlToTree} = importer.import("<a href="../../Core/syntax/select_ast.html">select code tree</a>"
-,<br />
+var {selectAst, htmlToTree} = importer.import("<a href="../../Core/syntax/select_ast.html">select code tree</a>",
 "<a href="../../Core/syntax/html_to_tree.html">html to tree</a>")
 
 function selectAcorn(descriptor, code) {

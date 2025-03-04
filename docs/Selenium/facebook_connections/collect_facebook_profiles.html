@@ -127,12 +127,10 @@ function collectFacebookProfiles() {
         .then(doc =&gt; {
             // call script to get all Facebook friends
             var dom = new JSDOM(doc);
-            getAllXPath = importer.import("<a href="../../Selenium/utilities/all_elements_until.html">all elements xpath</a>"
-,<br />
+            getAllXPath = importer.import("<a href="../../Selenium/utilities/all_elements_until.html">all elements xpath</a>",
 "<a href="../../Google/google_calendar_graphs/test_google_calendar_search_pie_chart.html">{
                 client: {
-                    execute: (func</a>"
-,<br />
+                    execute: (func</a>",
 "<a href="../../Core/files/mkdirp.html">...args</a>") =&gt; Promise.resolve({
                         value: func.apply(dom.window.document, args)
                     }),

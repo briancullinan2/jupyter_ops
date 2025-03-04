@@ -88,10 +88,8 @@ var getDaysEvents = importer.import("<a href="../../Google/google_calendar/days_
 
 var {
     authorizeCalendar, ISODateString, correctCalendarId
-} = importer.import("<a href="../../Google/google_calendar/use_Google_calendar_API.html">authorize google calendar</a>"
-,<br />
-"<a href="../../Games/quake_3/convert_nonalpha.html">convert date iso</a>"
-,<br />
+} = importer.import("<a href="../../Google/google_calendar/use_Google_calendar_API.html">authorize google calendar</a>",
+"<a href="../../Games/quake_3/convert_nonalpha.html">convert date iso</a>",
 "<a href="../../Utilities/window_enum/lookup_window_by.html">lookup calendar name</a>")
 
 function updateEvent(event, options) {
