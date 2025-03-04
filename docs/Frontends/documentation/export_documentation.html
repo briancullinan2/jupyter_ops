@@ -65,7 +65,7 @@
 
   </nav>
   <header>
-    <a href="../documentation/index.html">documentation</a> | <a href="./discover_well-known_apis.html">discover well-known apis</a> | <a href="./highlight_js.html">highlight js</a>
+    <a href="../documentation/index.html">documentation</a> | <a href="./discover_well-known_apis.html">discover well-known apis</a> | <a href="./highlight_js.html">highlight js</a> | <a href="../../search.html">Search</a>
   </header>
 
   <p>This Node.js script exports documentation for a project in HTML format, utilizing various imports and functions to generate the documentation, including rendering Markdown to HTML using the <code>Remarkable</code> module. The script defines an asynchronous function <code>exportAll(query)</code> that iterates over notebooks in the project directory and generates HTML documentation for each.</p>
@@ -104,6 +104,17 @@ async function exportAll(query) {
   // TODO: generate an index page that describes the index.js and __init__.py loaders
 
   let results = {}
+  const search = path.join(PROJECT_PATH, 'search.html')
+  results[search] = {
+    output: '',
+    indexOutput: '',
+    title: 'Search',
+    parent: '&lt;a href="./index.html"&gt;Home&lt;/a&gt;',
+    next: '',
+    prev: ''
+  }
+  results[search].index = search
+  results[search].output += '&lt;h1&gt;Search&lt;/h1&gt;\n\n'
   const intro = path.join(PROJECT_PATH, 'index.html')
   results[intro] = {
     output: '',
@@ -117,7 +128,6 @@ async function exportAll(query) {
 
   let prevCategory = ''
   let prevIndex = ''
-  let categories = []
   let namespaces = {}
   for (let i = 0; i &lt; notebooks.length; i++) {
     // TODO: output folders and pages for every namespace and notebook
@@ -127,19 +137,16 @@ async function exportAll(query) {
       category = 'Introduction'
     }
 
-    if (!categories.includes(category)) {
-      categories.push(category)
-      prevIndex = ''
-      results[intro].output += '&lt;a href="./' + category + '/index.html"&gt;' + category + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
-      results[intro].indexOutput += '&lt;a href="../' + category + '/index.html"&gt;' + category + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
-    }
-
     if (!fs.existsSync(path.join(PROJECT_PATH, category))) {
       fs.mkdirSync(path.join(PROJECT_PATH, category))
     }
 
     const catpath = path.join(PROJECT_PATH, category, 'index.html')
     if (typeof results[catpath] == 'undefined') {
+      prevIndex = '' // start fresh with nav
+      results[intro].output += '&lt;a href="./' + category + '/index.html"&gt;' + category + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+      results[intro].indexOutput += '&lt;a href="../' + category + '/index.html"&gt;' + category + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+      results[search].indexOutput += '&lt;h3&gt;&lt;a href="./' + category + '/index.html"&gt;' + category + '&lt;/a&gt;&lt;/h3&gt;'
       results[catpath] = {
         output: '',
         indexOutput: '',
@@ -150,6 +157,7 @@ async function exportAll(query) {
       results[catpath].index = intro
       results[catpath].parent = '&lt;a href="../index.html"&gt;Categories&lt;/a&gt;'
       results[catpath].output += '&lt;h1&gt;' + category + '&lt;/h1&gt;\n\n'
+      results[search].output += '&lt;h2&gt;' + category + '&lt;/h2&gt;\n\n'
       results[catpath].link = '&lt;a href="../' + category + '/index.html"&gt;' + category + '&lt;/a&gt;'
       if (i &gt; 0 &amp;&amp; prevCategory) {
         results[prevCategory].next = results[catpath].link
@@ -168,7 +176,7 @@ async function exportAll(query) {
     results[catpath].output += '&lt;a href="./' + safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
     // used by the next level down
     results[catpath].indexOutput += '&lt;a href="../' + safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
-    let index = path.join(fullpath, 'index.html')
+    const index = path.join(fullpath, 'index.html')
     results[index] = {
       output: '',
       indexOutput: '',
@@ -179,6 +187,8 @@ async function exportAll(query) {
     results[index].index = catpath
     results[index].parent = '&lt;a href="../../' + category + '/index.html"&gt;' + category + '&lt;/a&gt;'
     results[index].output += '&lt;h1&gt;' + namespace + '&lt;/h1&gt;\n\n'
+    results[search].output += '&lt;h3&gt;' + namespace + '&lt;/h3&gt;\n\n'
+    results[search].indexOutput += '&lt;h4&gt;&lt;a href="./' + category + '/' + safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;&lt;/h4&gt;'
     results[index].link = '&lt;a href="../' + safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;'
     if (i &gt; 0 &amp;&amp; prevIndex) {
       results[prevIndex].next = results[index].link
@@ -199,7 +209,7 @@ async function exportAll(query) {
       } else {
         cellname = safeurl(cellname)
       }
-      let key = path.join(fullpath, cellname + '.html')
+      const key = path.join(fullpath, cellname + '.html')
       results[key] = {
         output: '\n\n&lt;pre class="' + newCache[j].language + '"&gt;&lt;code&gt;' + newCache[j].code.replaceAll('&amp;', '&amp;amp;').replaceAll('&lt;', '&amp;lt;').replaceAll('&gt;', '&amp;gt;') + '&lt;/code&gt;&lt;/pre&gt;\n\n'
       }
@@ -225,6 +235,8 @@ async function exportAll(query) {
         results[key].next = ''
       }
       results[key].parent = '&lt;a href="../' + safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;'
+      results[search].output += '&lt;a href="./' + category + '/' + safeurl(namespace) + '/' + cellname + '.html"&gt;' + title + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+      results[search].indexOutput += '&lt;a href="./' + category + '/' + safeurl(namespace) + '/' + cellname + '.html"&gt;' + title + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
       results[index].output += '&lt;a href="./' + cellname + '.html"&gt;' + title + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
       results[index].indexOutput += '&lt;a href="./' + cellname + '.html"&gt;' + title + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
       prevKey = key
@@ -234,6 +246,7 @@ async function exportAll(query) {
         continue
       }
 
+      results[search].output += md.render(description.summary.replaceAll(/^.*?summary.*?:/gmi, ''))
       results[index].output += md.render(description.summary.replaceAll(/^.*?summary.*?:/gmi, ''))
       results[key].output = md.render(description.summary.replaceAll(/^.*?summary.*?:/gmi, '')) + results[key].output
       results[key].output = results[key].output + md.render(description.description)
@@ -255,6 +268,9 @@ async function exportAll(query) {
     output = output.replaceAll('${PARENT}', results[paths[i]].parent)
     output = output.replaceAll('${NEXT}', results[paths[i]].next)
     output = output.replaceAll('${PREV}', results[paths[i]].prev)
+    const relative = path.relative(path.resolve(__dirname, '../docs'), paths[i])
+    const searchRelative = path.relative(path.dirname(relative), 'search.html')
+    output = output.replaceAll('${SEARCH}', '&lt;a href="' + searchRelative + '"&gt;Search&lt;/a&gt;')
     if (results[paths[i]].index)
       output = output.replaceAll('${CLASSES}', results[results[paths[i]].index].indexOutput)
     else
