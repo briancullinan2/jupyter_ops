@@ -102,7 +102,6 @@ async function exportAll(query) {
     title: 'Categories',
     parent: ''
   }
-  results[intro].index = intro
 
   let categories = []
   let namespaces = {}
@@ -116,8 +115,8 @@ async function exportAll(query) {
 
     if(!categories.includes(category)) {
       categories.push(category)
-      results[intro].output += '<a href="./' +  safeurl(category) + '/index.html">' + category + '</a>' + '\n<br /><br />\n'
-      results[intro].indexOutput += '<a href="./' +  safeurl(category) + '/index.html">' + category + '</a>' + '\n<br /><br />\n'
+      results[intro].output += '<a href="./' +  category + '/index.html">' + category + '</a>' + '\n<br /><br />\n'
+      results[intro].indexOutput += '<a href="../' +  category + '/index.html">' + category + '</a>' + '\n<br /><br />\n'
     }
 
     if (!fs.existsSync(path.join(PROJECT_PATH, category))) {
@@ -143,7 +142,7 @@ async function exportAll(query) {
     }
 
     results[catpath].output += '<a href="./' +  safeurl(namespace) + '/index.html">' + namespace + '</a>' + '\n<br /><br />\n'
-    results[catpath].indexOutput += '<a href="./' +  safeurl(namespace) + '/index.html">' + namespace + '</a>' + '\n<br /><br />\n'
+    results[catpath].indexOutput += '<a href="../' +  safeurl(namespace) + '/index.html">' + namespace + '</a>' + '\n<br /><br />\n'
     let index = path.join(fullpath, 'index.html')
     results[index] = {
       output: '',
@@ -151,7 +150,7 @@ async function exportAll(query) {
       title: namespace
     }
     results[index].index = catpath
-    results[index].parent = '<a href="../../' +  safeurl(category) + '/index.html">' + category + '</a>'
+    results[index].parent = '<a href="../../' +  category + '/index.html">' + category + '</a>'
 
     namespaces[relative] = []
 
@@ -220,6 +219,22 @@ async function exportAll(query) {
 <a href="./javadoc_template.html">javadoc template</a>
 <br /><br />
 ', results[results[paths[i]].index].indexOutput)
+    else
+      output = output.replaceAll('<a href="./convert_notebook_to_open_api.html">convert notebook to open api</a>
+<br /><br />
+<a href="./test_convert_notebook_api.html">test convert notebook api</a>
+<br /><br />
+<a href="./convert_google_discovery_to_documentation.html">convert google discovery to documentation</a>
+<br /><br />
+<a href="./discover_well-known_apis.html">discover well-known apis</a>
+<br /><br />
+<a href="./export_documentation.html">export documentation</a>
+<br /><br />
+<a href="./highlight_js.html">highlight js</a>
+<br /><br />
+<a href="./javadoc_template.html">javadoc template</a>
+<br /><br />
+', '')
     fs.writeFileSync(paths[i], output)
   }
 
