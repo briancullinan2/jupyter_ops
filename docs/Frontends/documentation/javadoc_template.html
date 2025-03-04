@@ -62,7 +62,9 @@
     <a href="../documentation/index.html">documentation</a> ${PREV} ${NEXT}
   </header>
 
-  
+  <p>Here's a 2 sentence summary of the HTML document breakdown:</p>
+<p>The basic structure of an HTML document includes the document type declaration, HTML tag, head section (with metadata, document title, viewport settings, stylesheet link, and inline styles), body section (with navigation bar, header section, and output section), and end of document tags. The document can be customized with variables and links to external stylesheets, and can be designed to be responsive with viewport settings.</p>
+
 
 <pre class="html"><code><!DOCTYPE html>
 <html>
@@ -130,6 +132,68 @@
 
 <script>hljs.highlightAll();</script>
 
+<p><strong>HTML Document Breakdown</strong></p>
+<h3>Document Type Declaration</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+</code></pre>
+<p>Declares the document type as HTML.</p>
+<h3>HTML Tag</h3>
+<pre><code class="language-html">&lt;html&gt;
+</code></pre>
+<p>The root element of the document.</p>
+<h3>Head Section</h3>
+<p>Defines metadata about the document.</p>
+<h4>Character Encoding</h4>
+<pre><code class="language-html">&lt;meta charset='utf-8'&gt;
+</code></pre>
+<p>Specifies the character encoding of the document as UTF-8.</p>
+<h4>Internet Explorer Compatibility</h4>
+<pre><code class="language-html">&lt;meta http-equiv='X-UA-Compatible' content='IE=edge'&gt;
+</code></pre>
+<p>Instructs Internet Explorer to render the document in its highest mode.</p>
+<h4>Document Title</h4>
+<pre><code class="language-html">&lt;title&gt;${TITLE}&lt;/title&gt;
+</code></pre>
+<p>Sets the title of the document, where <code>${TITLE}</code> is a variable.</p>
+<h4>Viewport Settings</h4>
+<pre><code class="language-html">&lt;meta name='viewport' content='width=device-width, initial-scale=1'&gt;
+</code></pre>
+<p>Sets the viewport settings for responsive design.</p>
+<h4>Stylesheet Link</h4>
+<pre><code class="language-html">&lt;link rel='stylesheet' type='text/css' media='screen' href='main.css'&gt;
+</code></pre>
+<p>Links an external stylesheet named <code>main.css</code>.</p>
+<h4>Inline Styles</h4>
+<pre><code class="language-html">&lt;style&gt;
+ ...
+&lt;/style&gt;
+</code></pre>
+<p>Defines inline styles for the document.</p>
+<h3>Body Section</h3>
+<p>Contains the content of the document.</p>
+<h4>Navigation Bar</h4>
+<pre><code class="language-html">&lt;nav&gt;
+  ${PARENT}
+  &lt;br /&gt;&lt;br /&gt;
+  ${CLASSES}
+&lt;/nav&gt;
+</code></pre>
+<p>Defines a navigation bar with variables <code>${PARENT}</code> and <code>${CLASSES}</code>.</p>
+<h4>Header Section</h4>
+<pre><code class="language-html">&lt;header&gt;
+  ${PARENT} ${PREV} ${NEXT}
+&lt;/header&gt;
+</code></pre>
+<p>Defines a header section with variables <code>${PARENT}</code>, <code>${PREV}</code>, and <code>${NEXT}</code>.</p>
+<h4>Output Section</h4>
+<pre><code class="language-html">${OUTPUT}
+</code></pre>
+<p>Replaces with the output variable.</p>
+<h3>End of Document</h3>
+<pre><code class="language-html">&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Closes the body and root elements of the document.</p>
 
 </body>
 

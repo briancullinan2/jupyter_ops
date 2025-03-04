@@ -92,10 +92,8 @@
     <a href="../languages/index.html">languages</a> ${PREV} ${NEXT}
   </header>
 
-  <p>Here is a summary of the code breakdown in one sentence:</p>
-<p>The code provides a mapping between PHP and JavaScript functions, enabling conversion between the two languages, and defines various function mappings and a shorthand notation for mapping multiple PHP functions to their corresponding JavaScript functions.</p>
-<p>Additionally, here is a brief overview of the code's key data structures and mappings:</p>
-<p>The code uses objects <code>fromPhpToJavascript</code> and <code>fromJavascriptToPhp</code> to store function mappings, and an array <code>phpToJs</code> to store pairs of PHP and JavaScript functions, which can be reversed to create a <code>jsToPhp</code> mapping.</p>
+  <p>Here's a two-sentence summary:</p>
+<p>The given code creates a mapping between PHP and JavaScript functions using two main objects, <code>fromPhpToJavascript</code> and <code>fromJavascriptToPhp</code>, which contain key-value pairs of function names and their corresponding implementations in the other language. The <code>phpToJs</code> array maps PHP functions to their JavaScript equivalents, and the <code>jsToPhp</code> array is created by reversing the elements of each inner array in <code>phpToJs</code> for the inverse mapping.</p>
 
 
 <pre class="javascript"><code>
@@ -147,37 +145,32 @@ var jsToPhp = phpToJs.map(d => [d[1], d[0]])
 
 <script>hljs.highlightAll();</script>
 
-<h3>Code Breakdown</h3>
-<h4>Overview</h4>
-<p>The code provides a mapping between PHP and JavaScript functions, allowing for conversion between the two languages.</p>
-<h4>Data Structures</h4>
+<p><strong>Code Breakdown</strong></p>
+<h3>Overview</h3>
+<p>The code is a mapping between PHP and JavaScript functions. It consists of two main objects, <code>fromPhpToJavascript</code> and <code>fromJavascriptToPhp</code>, which contain key-value pairs of function names and their corresponding implementations in the other language.</p>
+<h3>Mapping Variables</h3>
 <ul>
-<li><code>fromPhpToJavascript</code> and <code>fromJavascriptToPhp</code>: Objects that store function mappings, with PHP functions as keys and JavaScript functions as values.</li>
-<li><code>phpToJs</code>: An array of arrays, where each inner array contains a PHP function and its corresponding JavaScript function.</li>
-<li><code>jsToPhp</code>: A mapping of JavaScript functions to their corresponding PHP functions, created by reversing the <code>phpToJs</code> array.</li>
-</ul>
-<h4>Function Mappings</h4>
-<p>The code defines several function mappings between PHP and JavaScript:</p>
+<li><code>fromPhpToJavascript</code>: An object that maps PHP function names to their JavaScript equivalents.</li>
+<li><code>fromJavascriptToPhp</code>: An empty object (no implementation provided).</li>
+<li><code>phpToJs</code>: An array of arrays, where each inner array contains two elements:
 <ul>
-<li><code>array_shift</code> (PHP) to <code>arr.shift()</code> (JavaScript)</li>
-<li><code>strpos</code> (PHP) to a custom implementation in JavaScript</li>
-<li><code>substr</code> (PHP) to <code>str.substr()</code> (JavaScript)</li>
-<li><code>is_numeric</code> (PHP) to a custom implementation in JavaScript</li>
-<li><code>abs</code> (PHP) to <code>Math.abs()</code> (JavaScript)</li>
+<li>A PHP function (as a string or a function expression) that takes an array of arguments.</li>
+<li>The corresponding JavaScript function that takes an array of arguments.</li>
+</ul></li>
+<li><code>jsToPhp</code>: A new array created by mapping the <code>phpToJs</code> array, but with the elements swapped (JavaScript function comes first, PHP function comes second).</li>
 </ul>
-<p>The custom implementation for <code>strpos</code> and <code>is_numeric</code> are because the PHP functions have parameters that are not directly supported in JavaScript.</p>
-<h4>Shorthand Notation</h4>
-<p>The code also uses a shorthand notation to map multiple PHP functions to their corresponding JavaScript functions:</p>
-<pre><code class="language-javascript">[['abs','sin', 'cos', 'pow', 'floor', 'ceil', 'round','max','min'], {
-    '//*[contains(@type, &quot;Call&quot;)': (id) =&gt; Math.id(), // optional ()
-}]
-</code></pre>
-<p>This shorthand is equivalent to the following code:</p>
-<pre><code class="language-javascript">(id = ['abs','sin', 'cos', 'pow', 'floor', 'ceil', 'round','max','min']) =&gt; id(), {
-    '//*[contains(@type, &quot;Call&quot;)': (id) =&gt; Math.id(), // optional ()
-}
-</code></pre>
-<p>However, this shorthand notation is not used in the final <code>jsToPhp</code> mapping.</p>
+<h3>Example Mappings</h3>
+<p>Some examples from the <code>phpToJs</code> array:</p>
+<ul>
+<li><code>array_shift(arr)</code> in PHP is equivalent to <code>arr.shift()</code> in JavaScript.</li>
+<li><code>strpos(str, match)</code> in PHP is equivalent to <code>str.indexOf(match) &gt; -1? str.indexOf(match) : false</code> in JavaScript.</li>
+<li><code>abs()</code> in PHP is equivalent to <code>Math.abs()</code> in JavaScript.</li>
+</ul>
+<h3>Additional Notes</h3>
+<ul>
+<li>The code assumes that PHP syntax is represented as a string or a function expression, which can be parsed or executed to get the corresponding JavaScript function.</li>
+<li>The <code>jsToPhp</code> array is created by reversing the elements of each inner array in <code>phpToJs</code>, so it's essentially the inverse mapping.</li>
+</ul>
 
 </body>
 

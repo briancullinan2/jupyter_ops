@@ -82,7 +82,8 @@
 <p>This code imports necessary libraries, including Keras for building neural networks, and additional libraries like Pandas for data manipulation and NumPy for numerical computation, as well as the os module for operating system functions. The imported libraries are used for tasks such as image processing, data analysis, and neural network model creation.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
-<p>Two directory variables, <code>TRAIN_DIR</code> and <code>TEST_DIR</code>, are defined to store paths to the training and testing image directories, respectively. The <code>TRAIN_DIR</code> points to 'images/train' and the <code>TEST_DIR</code> points to 'images/test'.</p>
+<p>Here is a summary of the given code in one sentence:</p>
+<p>The <code>TRAIN_DIR</code> and <code>TEST_DIR</code> variables define the paths to the directories containing training and test images, respectively.</p>
 <a href="./cell_2.html">Cell 2</a>
 <br /><br />
 <p>The <code>createdataframe</code> function takes a directory path as input and returns two lists: <code>image_paths</code> and <code>labels</code>, containing the paths to images and their corresponding labels, respectively. It traverses the directory structure to extract this information.</p>
@@ -105,10 +106,8 @@
 <p>This code block is designed to print two values from an object called <code>test</code>: the object itself and its <code>'image'</code> key.</p>
 <a href="./cell_7.html">Cell 7</a>
 <br /><br />
-<p>You can import the <code>tqdm</code> library from the notebook module using the following code:</p>
-<pre><code class="language-markdown">from tqdm.notebook import tqdm
-</code></pre>
-<p>This allows you to use <code>tqdm</code> in Jupyter notebooks for real-time progress tracking.</p>
+<p>Here's a two-sentence summary:</p>
+<p>The <code>tqdm</code> library can be imported in Jupyter notebooks using the line <code>from tqdm.notebook import tqdm</code>. This imports the <code>tqdm</code> function from the <code>tqdm.notebook</code> module, enabling the use of progress bars in Jupyter notebooks.</p>
 <a href="./cell_8.html">Cell 8</a>
 <br /><br />
 <p>The <code>extract_features</code> function extracts features from a list of images and returns a 4D numpy array containing the features. It assumes images are loaded as grayscale arrays and does not perform any preprocessing or feature extraction.</p>
@@ -125,13 +124,12 @@
 <p>This code normalizes feature values in training and testing datasets by dividing them by 255.0, effectively converting pixel values from a range of [0, 255] to [0, 1]. This is a common normalization technique in deep learning, suitable for image classification problems.</p>
 <a href="./cell_12.html">Cell 12</a>
 <br /><br />
-<p>To use the LabelEncoder from scikit-learn, import it as follows:</p>
-<pre><code class="language-python">from sklearn.preprocessing import LabelEncoder
-</code></pre>
+<p>Here is a 2-sentence summary of the LabelEncoder class from scikit-learn:</p>
+<p>The <code>LabelEncoder</code> class from scikit-learn's <code>preprocessing</code> module converts non-numerical labels into numerical labels. It provides three key methods: <code>fit()</code>, <code>transform()</code>, and <code>inverse_transform()</code>, which are used to encode, transform, and decode labels respectively.</p>
 <a href="./cell_13.html">Cell 13</a>
 <br /><br />
-<p>Here is a summary of Label Encoding in one sentence:</p>
-<p>Label Encoding is a process used in machine learning to transform categorical labels into numerical labels using the <code>LabelEncoder()</code> class from scikit-learn, allowing for numerical computation and comparison.</p>
+<p>Here is a summary of the code breakdown in one sentence:</p>
+<p>The code creates a <code>LabelEncoder</code> instance, fits it to the 'label' column of the <code>train</code> dataset, and uses it to encode categorical labels into numerical values. This is a typical preprocessing step in machine learning pipelines.</p>
 <a href="./cell_14.html">Cell 14</a>
 <br /><br />
 <p>Here is a two-sentence summary:</p>

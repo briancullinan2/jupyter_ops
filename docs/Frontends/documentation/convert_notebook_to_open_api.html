@@ -62,8 +62,8 @@
     <a href="../documentation/index.html">documentation</a> ${PREV} ${NEXT}
   </header>
 
-  <p>Here is a 2-sentence summary of the code:</p>
-<p>The code imports required modules and defines utility functions to process Jupyter notebook cells and generate a JSON representation of a REST API specification. The <code>getRpcSpecFromCells</code> function groups cells by permission, extracts relevant information, and creates a nested object structure to represent the API specification.</p>
+  <p>Here is a two-sentence summary of the code:</p>
+<p>The code imports various modules and defines custom functions, including <code>getTail()</code> for recursively traversing objects and <code>getPathId()</code> for normalizing path IDs, to generate an RPC specification. The main entry point function <code>getRpcSpecFromCells()</code> is exported as a module, allowing it to be used in other parts of the application.</p>
 
 
 <pre class="javascript"><code>var path = require('path')
@@ -142,50 +142,51 @@ module.exports = getRpcSpecFromCells;
 
 <script>hljs.highlightAll();</script>
 
-<p>Here's a breakdown of the provided code:</p>
-<h3>Dependencies and Imports</h3>
-<ul>
-<li>The code starts by importing required modules:
-<ul>
-<li><code>path</code>: for manipulating file paths</li>
-<li><code>package</code>: the contents of the <code>package.json</code> file</li>
-<li><code>importer</code>: a custom module containing various utility functions</li>
-</ul></li>
-<li>Specific functions are imported from the <code>importer</code> module:
-<ul>
-<li><code>getRpcFromSpec</code></li>
-<li><code>getPermissions</code></li>
-<li><code>groupPermissions</code></li>
-<li><code>getParameters</code></li>
-</ul></li>
-</ul>
-<h3>Utility Functions</h3>
-<ul>
-<li><code>getTail(path, ctx)</code>: a recursive function that creates a nested object structure from a string representing a path.</li>
-<li><code>getPathId(cell)</code>: extracts a unique identifier from a cell's filename.</li>
-</ul>
-<h3><code>getRpcSpecFromCells(search)</code> Function</h3>
-<ul>
-<li>This function generates a JSON object representing a REST API specification based on Jupyter notebook cells.</li>
-<li>It takes a <code>search</code> parameter, which is not used within the function.</li>
-<li>The function:
-<ul>
-<li>Groups Jupyter notebook cells by their permission type using <code>groupPermissions</code>.</li>
-<li>Iterates over each cell, extracting its:
-<ul>
-<li>Path ID using <code>getPathId</code>.</li>
-<li>Parameters using <code>getParameters</code>.</li>
-<li>Function name and description.</li>
-<li>Permission scopes.</li>
-</ul></li>
-<li>Creates a nested object structure for each cell, containing its method, description, scopes, ID, and parameters.</li>
-</ul></li>
-<li>The function returns an object representing the API specification, including metadata (title, name, description) and the generated resources.</li>
-</ul>
-<h3>Module Exports</h3>
-<ul>
-<li>The code exports the <code>getRpcSpecFromCells</code> function.</li>
-</ul>
+<p><strong>Breakdown of the Code</strong></p>
+<h3>Importing Modules</h3>
+<p>The code starts by importing several modules:</p>
+<pre><code class="language-javascript">var path = require('path')
+var package = require('../package.json')
+var importer = require('../Core')
+var getRpcFromSpec = importer.import('get rpc from spec')
+var getPermissions = importer.import('rpc permissions')
+var groupPermissions = importer.import('test rpc permissions')
+var getParameters = importer.import('get parameters')
+</code></pre>
+<h3>Custom Functions</h3>
+<p>The code defines several custom functions:</p>
+<h4><code>getTail()</code></h4>
+<pre><code class="language-javascript">function getTail(path, ctx) {
+    var cur = path.split('.')[0]
+    if(!cur) return ctx
+    if(typeof ctx[cur] === 'undefined') ctx[cur] = {}
+    return getTail(path.split('.').slice(1).join('.'), ctx[cur])
+}
+</code></pre>
+<p>This function recursively traverses an object and extracts the specified path.</p>
+<h4><code>getPathId()</code></h4>
+<pre><code class="language-javascript">function getPathId(cell) {
+    return path
+       .relative('../', cell.filename)
+       .replace(/\.ipynb|\s+/ig, '')
+       .replace(/[^a-z0-9_\/]/ig, '')
+       .replace(/\//ig, '.resources.')
+       .toLowerCase()
+}
+</code></pre>
+<p>This function takes a <code>cell</code> object and returns a normalized path ID.</p>
+<h4><code>getRpcSpecFromCells()</code></h4>
+<pre><code class="language-javascript">function getRpcSpecFromCells(search) {
+    //...
+}
+</code></pre>
+<p>This function is the main entry point of the code. It generates an RPC specification based on the provided <code>search</code> parameter.</p>
+<h3>Exporting the Module</h3>
+<p>The code exports the <code>getRpcSpecFromCells()</code> function:</p>
+<pre><code class="language-javascript">module.exports =
+    getRpcSpecFromCells
+</code></pre>
+<p>This allows the function to be imported and used in other parts of the application.</p>
 
 </body>
 

@@ -90,8 +90,8 @@
 <p>The <code>askLlamaGeneralizeCategories</code> function takes an optional list of categories as input, generates a shorter list by asking the LLM to generalize, and recursively optimizes the list to a maximum of 100 items. The function also updates the <code>functionCache</code> object by asking the LLM to generalize categories for each function in the cache, if the <code>update</code> flag is set.</p>
 <a href="./ask_llm_for_a_shorter_list_of_categories.html">ask llm for a shorter list of categories</a>
 <br /><br />
-<p>Here's a summary of the code in two sentences:</p>
-<p>The code utilizes a Large Language Model (LLM) to generalize lists of categories by breaking them down into smaller groups and sending each group to the LLM for processing. It exports two functions, <code>askLlamaToGeneralize</code> and <code>askLlamaToGeneralizeAll</code>, which can be used to generalize lists of categories, with the latter function handling larger lists by dividing them into smaller groups.</p>
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>The <code>askLlamaToGeneralize</code> function uses a large language model to shorten a list of categories by sending a prompt question to the LLM and splitting the response into an array of unique values. The <code>askLlamaToGeneralizeAll</code> function extends this functionality to handle large lists by dividing them into smaller groups and generalizing each group using <code>askLlamaToGeneralize</code>.</p>
 <a href="./ask_llm_about_functions.html">ask llm about functions</a>
 <br /><br />
 <p>Here's a two-sentence summary:</p>

@@ -78,7 +78,7 @@
     <a href="../Wireframing/index.html">Wireframing</a> ${PREV} ${NEXT}
   </header>
 
-  <p>The <code>process.env.HOME</code> line retrieves the value of the <code>HOME</code> environment variable, which typically points to the user's home directory in most operating systems.</p>
+  <p>The code accesses the <code>HOME</code> environment variable using <code>process.env.HOME</code>. It returns the value of the <code>HOME</code> variable, which can be logged to the console as shown in the example.</p>
 
 
 <pre class="typescript"><code>process.env.HOME</code></pre>
@@ -94,11 +94,22 @@
 
 <script>hljs.highlightAll();</script>
 
-<p><code>process.env.HOME</code></p>
+<h3>Code Breakdown</h3>
+<h4>Description</h4>
+<p>The code accesses an environment variable named <code>HOME</code>.</p>
+<h4>Code Fragment</h4>
+<pre><code class="language-markdown">process.env.HOME
+</code></pre>
+<h4>Explanation</h4>
 <ul>
-<li>This line retrieves the value of the <code>HOME</code> environment variable.</li>
-<li>In most operating systems, <code>HOME</code> is a predefined environment variable that points to the user's home directory.</li>
+<li><code>process</code> is an object in Node.js that provides information about the current process.</li>
+<li><code>env</code> is a property of the <code>process</code> object that contains an object with the current environment variables.</li>
+<li><code>HOME</code> is the name of the environment variable being accessed.</li>
 </ul>
+<h4>Example Use Case</h4>
+<pre><code class="language-javascript">const homeDir = process.env.HOME;
+console.log(homeDir);
+</code></pre>
 
 </body>
 

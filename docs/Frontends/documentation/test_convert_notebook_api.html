@@ -62,8 +62,8 @@
     <a href="../documentation/index.html">documentation</a> ${PREV} ${NEXT}
   </header>
 
-  <p>Here is a summary of the code in 2 sentences:</p>
-<p>The code imports various functions from a Core module, initializes an environment, and checks if a global object $ is defined. If $ is defined, it executes a series of calls to the imported functions to convert notebooks to OpenAPI specifications, generate RPC models, and call a permissions RPC operation, sending the result or error to $ accordingly.</p>
+  <p>Here is a summary of the code in one sentence:</p>
+<p>The code imports functions from a <code>Core</code> module, sets the environment, and conditionally executes a series of function calls to obtain an RPC specification and permissions, using a global object <code>$</code> to send the results or errors.</p>
 
 
 <pre class="javascript"><code>var importer = require('../Core');
@@ -98,66 +98,42 @@ if(typeof $ !== 'undefined') {
 
 <script>hljs.highlightAll();</script>
 
-<p><strong>Code Breakdown</strong></p>
-<h3>Importing Modules</h3>
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 </code></pre>
-<ul>
-<li>Loads the <code>Core</code> module from the parent directory (<code>../</code>).</li>
-<li>Assigns it to the <code>importer</code> variable for later use.</li>
-</ul>
-<h3>Importing Specific Functions</h3>
+<p>Imports a module named <code>Core</code> from a parent directory and assigns it to the <code>importer</code> variable.</p>
 <pre><code class="language-javascript">var getRpcSpecFromCells = importer.import('convert notebook to open api');
 var getRpcFromSpec = importer.import('get rpc from spec');
 var getEnvironment = importer.import('get environment');
 var groupPermissions = importer.import('test get permissions');
 </code></pre>
+<p>Imports four functions from the <code>Core</code> module:</p>
 <ul>
-<li>Uses the <code>importer</code> object to import specific functions from the loaded <code>Core</code> module:
-<ul>
-<li><code>getRpcSpecFromCells</code>: converts notebooks to OpenAPI specifications.</li>
-<li><code>getRpcFromSpec</code>: generates RPC models from OpenAPI specifications.</li>
-<li><code>getEnvironment</code>: returns an environment object.</li>
-<li><code>groupPermissions</code>: (not used in this code snippet).</li>
-</ul></li>
-<li>Assigns each imported function to a separate variable for later use.</li>
+<li><code>getRpcSpecFromCells</code></li>
+<li><code>getRpcFromSpec</code></li>
+<li><code>getEnvironment</code></li>
+<li><code>groupPermissions</code></li>
 </ul>
-<h3>Initializing Environment</h3>
+<p>Each function is assigned to a variable with the same name as the function.</p>
+<h4>Setting Environment</h4>
 <pre><code class="language-javascript">getEnvironment('STUDY_LOCAL')
 </code></pre>
-<ul>
-<li>Calls the <code>getEnvironment</code> function with the argument <code>'STUDY_LOCAL'</code>, which likely sets up a specific environment for the application.</li>
-</ul>
-<h3>Checking for $ Variable</h3>
-<pre><code class="language-javascript">if (typeof $!== 'undefined') {
+<p>Calls the <code>getEnvironment</code> function with the argument <code>'STUDY_LOCAL'</code>, which likely sets the environment to a specific configuration.</p>
+<h4>Conditional Execution</h4>
+<pre><code class="language-javascript">if(typeof $!== 'undefined') {
+    $.async()
    ...
 }
 </code></pre>
+<p>Checks if the global object <code>$</code> is defined. If it is, the following code is executed:</p>
 <ul>
-<li>Checks if the global object <code>$</code> is defined and not <code>undefined</code>.</li>
-<li>If it is defined, the code inside the <code>if</code> block is executed.</li>
+<li><code>$.async()</code> is called, which likely starts an asynchronous execution context.</li>
+<li>The <code>getRpcSpecFromCells</code> function is called with an array of notebook file paths (<code>['study sauce.ipynb', 'rpc.ipynb']</code>) that returns an RPC specification.</li>
+<li>The <code>getRpcFromSpec</code> function is called with the RPC specification as an argument, which returns an object containing RPC operations.</li>
+<li>The <code>juypter_ops.core.rpc.getPermissions</code> method is called with an object containing a search parameter set to <code>null</code>. The result is sent using the <code>$.sendResult</code> method, and any errors are sent using the <code>$.sendError</code> method.</li>
 </ul>
-<h3>Executing Code with $ Defined</h3>
-<pre><code class="language-javascript">$
-var spec = getRpcSpecFromCells(['study sauce.ipynb', 'rpc.ipynb'])
-//   var spec = getRpcSpecFromCells('study sauce.ipynb');
-console.log(spec)
-var juypter_ops = getRpcFromSpec(spec)
-console.log(juypter_ops)
-juypter_ops.core.rpc.getPermissions({search: null})
-   .then(r =&gt; $.sendResult(r))
-   .catch(e =&gt; $.sendError(e))
-</code></pre>
-<ul>
-<li>Executes the code inside the <code>if</code> block when <code>$</code> is defined.</li>
-<li>Calls <code>getRpcSpecFromCells</code> with an array of notebook files and logs the resulting OpenAPI specification.</li>
-<li>Calls <code>getRpcFromSpec</code> with the obtained specification and logs the resulting RPC operations.</li>
-<li>Calls the <code>getPermissions</code> RPC operation on the <code>core.rpc</code> object and:
-<ul>
-<li>Sends the result to <code>$</code> using <code>sendResult</code> when the promise resolves.</li>
-<li>Sends an error to <code>$</code> using <code>sendError</code> when the promise rejects.</li>
-</ul></li>
-</ul>
+<p>Note that some parts of the code are commented out, which means they are not executed.</p>
 
 </body>
 

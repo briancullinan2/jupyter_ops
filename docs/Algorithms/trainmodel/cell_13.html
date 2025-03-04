@@ -112,8 +112,8 @@
     <a href="../trainmodel/index.html">trainmodel</a> ${PREV} ${NEXT}
   </header>
 
-  <p>Here is a summary of Label Encoding in one sentence:</p>
-<p>Label Encoding is a process used in machine learning to transform categorical labels into numerical labels using the <code>LabelEncoder()</code> class from scikit-learn, allowing for numerical computation and comparison.</p>
+  <p>Here is a summary of the code breakdown in one sentence:</p>
+<p>The code creates a <code>LabelEncoder</code> instance, fits it to the 'label' column of the <code>train</code> dataset, and uses it to encode categorical labels into numerical values. This is a typical preprocessing step in machine learning pipelines.</p>
 
 
 <pre class="python"><code>le = LabelEncoder()
@@ -130,11 +130,19 @@ le.fit(train['label'])</code></pre>
 
 <script>hljs.highlightAll();</script>
 
-<p><strong>Label Encoding</strong></p>
-<ul>
-<li><code>le = LabelEncoder()</code>: Initializes a LabelEncoder object.</li>
-<li><code>le.fit(train['label'])</code>: Fits the LabelEncoder to the 'label' column of the <code>train</code> DataFrame, transforming categorical labels into numerical labels.</li>
-</ul>
+<h2>Code Breakdown</h2>
+<h3>Importing Libraries</h3>
+<p>No explicit import statement is given, but it's assumed that <code>LabelEncoder</code> is from the <code>sklearn.preprocessing</code> module.</p>
+<h3>Creating a Label Encoder</h3>
+<p>The code creates an instance of the <code>LabelEncoder</code> class:</p>
+<pre><code class="language-python">le = LabelEncoder()
+</code></pre>
+<h3>Fitting the Label Encoder to the Data</h3>
+<p>The <code>fit</code> method is called on the label encoder instance, passing in the 'label' column of the <code>train</code> dataset:</p>
+<pre><code class="language-python">le.fit(train['label'])
+</code></pre>
+<h3>Purpose of the Code</h3>
+<p>The purpose of this code is to encode the categorical labels in the 'label' column of the <code>train</code> dataset into numerical values. This is a common preprocessing step in machine learning pipelines.</p>
 
 </body>
 

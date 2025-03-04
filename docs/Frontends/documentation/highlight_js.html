@@ -62,7 +62,11 @@
     <a href="../documentation/index.html">documentation</a> ${PREV} ${NEXT}
   </header>
 
-  
+  <p>Here is a summary of the code breakdown in one sentence:</p>
+<p>The HTML document links to external style sheets and a JavaScript file from the Highlight.js library, and initializes the library to highlight code elements on the page.</p>
+<p>Alternatively, here is a two-sentence summary:</p>
+<p>The HTML document includes external style sheets and a JavaScript file from the Highlight.js library, which is used to highlight code elements on the page. The library is initialized using <code>hljs.highlightAll()</code> to automatically highlight all code elements on the page.</p>
+
 
 <pre class="html"><code><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
@@ -88,6 +92,27 @@
 
 <script>hljs.highlightAll();</script>
 
+<h2>Code Breakdown</h2>
+<h3>External Style Sheets</h3>
+<ul>
+<li>Two external CSS style sheets are linked to the HTML document:
+<ul>
+<li><code>default.min.css</code> from the Highlight.js library</li>
+<li><code>github-dark.css</code> from the Highlight.js library</li>
+</ul></li>
+</ul>
+<h3>External JavaScript File</h3>
+<ul>
+<li>The <code>highlight.min.js</code> file from the Highlight.js library is linked to the HTML document.</li>
+</ul>
+<h3>Optional Language Scripts</h3>
+<ul>
+<li>A script is included to dynamically load a language-specific file from the Highlight.js library, using the <code>LANGUAGE</code> variable.</li>
+</ul>
+<h3>Initialization of Highlight.js</h3>
+<ul>
+<li>A script is executed to initialize the Highlight.js library, highlighting all code elements on the page with <code>hljs.highlightAll()</code>.</li>
+</ul>
 
 </body>
 

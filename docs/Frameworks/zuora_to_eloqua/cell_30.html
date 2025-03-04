@@ -114,8 +114,8 @@
     <a href="../zuora_to_eloqua/index.html">zuora to eloqua</a> ${PREV} ${NEXT}
   </header>
 
-  <p>Here is a two-sentence summary:</p>
-<p>The code retrieves an OAuth token and uses it to fetch data from Eloqua, then logs the result to the console and sends it to a component named <code>$</code>. The code also includes error handling to catch any errors that occur during the promise chain and sends an error message to the <code>$</code> component.</p>
+  <p>Here is a two-sentence summary of the code breakdown:</p>
+<p>This code is a JavaScript program that performs conditional logic, retrieves configuration and token data from a JSON file, and makes API calls to Eloqua using OAuth authentication. The program handles both successful and error scenarios, logging responses or sending errors to the client as needed.</p>
 
 
 <pre class="javascript"><code>
@@ -168,38 +168,67 @@ if(typeof $ !== 'undefined') {
 <script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
-<h3>Conditional Statement</h3>
+<h3>Conditional Block</h3>
+<pre><code class="language-javascript">if (typeof $!== 'undefined') {
+    //...
+}
+</code></pre>
 <ul>
-<li>The code checks if a variable <code>$</code> is defined in the current scope using <code>typeof $!== 'undefined'</code>.</li>
-<li>If <code>$</code> is defined, the code inside the <code>if</code> statement is executed.</li>
+<li>Checks if the <code>$</code> object ( likely a global object ) is defined and not null or undefined.</li>
 </ul>
-<h3>Initialization</h3>
+<h3>Token and Configuration Retrieval</h3>
+<pre><code class="language-javascript">var eloquaToken, eloquaConfig = JSON.parse(fs.readFileSync(PROFILE_PATH + '/.credentials/eloqua_production.json').toString().trim());
+</code></pre>
 <ul>
-<li>The code reads a JSON file from the <code>PROFILE_PATH</code> directory named <code>eloqua_production.json</code>.</li>
-<li>The file's contents are parsed into a JavaScript object using <code>JSON.parse</code>.</li>
-<li>The resulting object is stored in a variable <code>eloquaConfig</code>.</li>
+<li>Reads a JSON file named <code>eloqua_production.json</code> from a file system path specified by <code>PROFILE_PATH + '/.credentials/'</code>.</li>
+<li>Parses the contents of the file into a JavaScript object.</li>
+<li>Assigns the result to <code>eloquaConfig</code> and initializes <code>eloquaToken</code> as <code>undefined</code>.</li>
 </ul>
-<h3>OAuth Token Acquisition</h3>
+<h3>OAuth and API Call</h3>
+<pre><code class="language-javascript">eloquaOauth(eloquaConfig)
+   .then(r =&gt; {
+        eloquaToken = r;
+        return getEloquaExistingImport(eloquaToken, eloquaConfig)
+    })
+</code></pre>
 <ul>
-<li>The code calls the <code>eloquaOauth</code> function, passing <code>eloquaConfig</code> as an argument.</li>
-<li>The <code>eloquaOauth</code> function returns a promise that resolves to an object <code>eloquaToken</code>.</li>
-<li>The resolved <code>eloquaToken</code> is stored in a variable.</li>
+<li>Calls the <code>eloquaOauth</code> function with <code>eloquaConfig</code> as an argument.</li>
+<li>Upon success, extracts the token from the response and assigns it to <code>eloquaToken</code>.</li>
+<li>Calls the <code>getEloquaExistingImport</code> function with <code>eloquaToken</code> and <code>eloquaConfig</code> as arguments.</li>
 </ul>
-<h3>Subsequent Operations</h3>
+<h3>API Call ( commented out )</h3>
+<pre><code class="language-javascript">/*
+.then(r =&gt; {
+    // delete import definitions
+    const imports = JSON.parse(r.body).items;
+    return importer.runAllPromises(imports.map(r =&gt; resolve =&gt; {
+        return request({
+            //...
+        }).then(r =&gt; resolve(r)).catch(e =&gt; resolve(e))
+    }))
+})
+*/
+</code></pre>
 <ul>
-<li>The code calls the <code>getEloquaExistingImport</code> function, passing <code>eloquaToken</code> and <code>eloquaConfig</code> as arguments.</li>
-<li>The <code>getEloquaExistingImport</code> function returns a promise that is chained to the <code>eloquaOauth</code> promise.</li>
-<li>The resolved result of <code>getEloquaExistingImport</code> is logged to the console using <code>console.log</code>.</li>
-<li>The result is also sent to a component or function named <code>$</code> using <code>$.mime</code>.</li>
+<li>This block is currently commented out.</li>
+<li>If uncommented, it would:
+<ul>
+<li>Parse the response body as JSON.</li>
+<li>Extract the import definitions.</li>
+<li>Map over the import definitions and make a request to delete each one.</li>
+<li>Run the deletion requests in parallel using <code>importer.runAllPromises</code>.</li>
+</ul></li>
 </ul>
-<h3>Error Handling</h3>
+<h3>Success and Error Handling</h3>
+<pre><code class="language-javascript">.then(r =&gt; {
+    console.log(r);
+    $.mime({'text/html': '&lt;pre&gt;' + JSON.stringify(r, null, 4) + '&lt;/pre&gt;'});
+})
+.catch(e =&gt; $.sendError(e))
+</code></pre>
 <ul>
-<li>The code catches any errors that occur during the execution of the promise chain and sends an error message to a component or function named <code>$</code> using <code>$.sendError</code>.</li>
-</ul>
-<h3>Commented Out Code</h3>
-<ul>
-<li>There is a commented out section of code that appears to delete existing import definitions using the <code>importer</code> object.</li>
-<li>This code is not executed due to the <code>//</code> comment at the beginning of the line.</li>
+<li>Upon successful completion, logs the response to the console and sends the response as HTML with a pretty-printed JSON representation.</li>
+<li>Upon error, sends the error to the client using the <code>$.sendError</code> function.</li>
 </ul>
 
 </body>

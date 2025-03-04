@@ -90,8 +90,8 @@
     <a href="../Landing_Pages/index.html">Landing Pages</a> ${PREV} ${NEXT}
   </header>
 
-  <p>Here is a summary of the code in two sentences:</p>
-<p>This code uses the <code>$TS</code> object to display a web page at <code>act.com/de-de</code> in a popup with a zoom level of 50% and a fixed width of 680 pixels. The height of the popup is cropped to 400 pixels, ensuring only the vertical space of the web page is visible.</p>
+  <p>Here is a one-sentence summary:</p>
+<p>This code loads a webpage into the browser's viewport using the <code>$TS</code> object, specifying a URL and initial rendering settings, including zoom, width, and height. The initial settings are set to 50% zoom, 680 pixels in width, and 400 pixels in height, with content cropping if necessary.</p>
 
 
 <pre class="typescript"><code>$TS.screen('act.com/de-de', {zoom: .5, width: 680, 'crop-h': 400});</code></pre>
@@ -107,11 +107,17 @@
 
 <script>hljs.highlightAll();</script>
 
-<p>This code uses the <code>$TS</code> object to show a web page at the specified URL (<code>act.com/de-de</code>) in a popup screen with the following settings:</p>
+<h3>Code Breakdown</h3>
+<p>This code uses the <code>$TS</code> object to load a webpage into the browser's viewport.</p>
+<h4>Parameters</h4>
 <ul>
-<li>Zoom level: 0.5 (50% of original size)</li>
-<li>Width: 680 pixels</li>
-<li>Height: cropped to 400 pixels ( vertical space only)</li>
+<li><code>act.com/de-de</code>: The URL of the webpage to load.</li>
+<li><code>{zoom:.5, width: 680, 'crop-h': 400}</code>: An options object that defines the initial rendering settings:
+<ul>
+<li><code>zoom:.5</code>: Zooms the webpage to 50% of its original size.</li>
+<li><code>width: 680</code>: Sets the width of the rendered webpage to 680 pixels.</li>
+<li><code>'crop-h': 400</code>: Sets the height of the rendered webpage to 400 pixels, cropping the content if necessary.</li>
+</ul></li>
 </ul>
 
 </body>
