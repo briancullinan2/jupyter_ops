@@ -1,10 +1,92 @@
-<p>The code snippet highlights the importance of choosing the right method for handling multiple asynchronous operations in JavaScript. While <code>Promise.all</code> works, the recommended approach using <code>runAllPromises</code> likely offers more efficient and flexible management of asynchronous tasks.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>use Docker</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../demo/index.html">demo</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./use_Docker.html">use Docker</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+<a href="./Install_build_stack_on_colab.html">Install build stack on colab</a>
+<br /><br />
+<a href="./update_notebook_repo_on_colab.html">update notebook repo on colab</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../demo/index.html">demo</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The code snippet highlights the importance of choosing the right method for handling multiple asynchronous operations in JavaScript. While <code>Promise.all</code> works, the recommended approach using <code>runAllPromises</code> likely offers more efficient and flexible management of asynchronous tasks.</p>
 
 
-<pre><code>/*
+<pre class="javascript"><code>/*
 var importer = require('./Core')));
 
-$$.async();
+$.async();
 
 // don't do this
 Promise.all([
@@ -21,6 +103,17 @@ runAllPromises([
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet demonstrates the correct way to handle multiple asynchronous operations using promises in JavaScript.</p>
 <p><strong>Problem:</strong></p>
 <p>The commented-out code uses <code>Promise.all</code> to run multiple <code>importer.importNotebook</code> calls concurrently. While this works, it's not ideal because it waits for <em>all</em> promises to resolve before proceeding.</p>
@@ -33,3 +126,7 @@ runAllPromises([
 <li><strong><code>Promise.all</code>:</strong> This method waits for all provided promises to resolve before returning a new promise that resolves with an array of results.</li>
 <li><strong><code>runAllPromises</code>:</strong> This custom function likely provides a more tailored approach to managing multiple asynchronous operations, potentially offering features like parallel execution, error handling, and progress tracking.</li>
 </ul>
+
+</body>
+
+</html>

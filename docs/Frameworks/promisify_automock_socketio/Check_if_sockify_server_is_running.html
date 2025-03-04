@@ -1,7 +1,69 @@
-<p>This code sets up a Socket.IO server and client for testing, handling potential port conflicts by retrying server startup if necessary.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Check if sockify server is running</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../promisify_automock_socketio/index.html">promisify automock socketio</a>
+    <br /><br />
+    <a href="./mock_and_pass_through.html">mock and pass through</a>
+<br /><br />
+<a href="./Create_an_RPC_socker_io_server_for_any_module_using_promisify.html">Create an RPC socker.io server for any module using promisify</a>
+<br /><br />
+<a href="./Mock_any_module_with_promisify_and_socket_io-client.html">Mock any module with promisify and socket.io-client</a>
+<br /><br />
+<a href="./Check_if_sockify_server_is_running.html">Check if sockify server is running</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../promisify_automock_socketio/index.html">promisify automock socketio</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code sets up a Socket.IO server and client for testing, handling potential port conflicts by retrying server startup if necessary.</p>
 
 
-<pre><code>var tryReset = false;
+<pre class="javascript"><code>var tryReset = false;
 try {
     var io = sockifyServer(8098);
 } catch (e) {
@@ -17,6 +79,17 @@ if (tryReset) {
     var io = sockifyServer(8098);
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet sets up a mock Socket.IO server and client for testing purposes.</p>
 <p>Here's a breakdown:</p>
@@ -38,3 +111,7 @@ if (tryReset) {
 </ol>
 <p><strong>In essence:</strong></p>
 <p>This code aims to create a reliable test environment by handling potential port conflicts and ensuring a working Socket.IO server and client for testing purposes.</p>
+
+</body>
+
+</html>

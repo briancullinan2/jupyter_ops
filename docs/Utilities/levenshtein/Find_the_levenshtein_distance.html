@@ -1,7 +1,63 @@
-<p>This code calculates the Levenshtein distance between two strings, which represents the minimum number of edits (insertions, deletions, or substitutions) needed to transform one string into the other. It uses a dynamic programming approach to efficiently compute this distance.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Find the levenshtein distance</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../levenshtein/index.html">levenshtein</a>
+    <br /><br />
+    <a href="./Find_the_levenshtein_distance.html">Find the levenshtein distance</a>
+<br /><br />
+<a href="./Sort_by_levenshtein_distance.html">Sort by levenshtein distance</a>
+<br /><br />
+<a href="./search_levenshtein_distance.html">search levenshtein distance</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../levenshtein/index.html">levenshtein</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code calculates the Levenshtein distance between two strings, which represents the minimum number of edits (insertions, deletions, or substitutions) needed to transform one string into the other. It uses a dynamic programming approach to efficiently compute this distance.</p>
 
 
-<pre><code>function levDist(s, t) {
+<pre class="javascript"><code>function levDist(s, t) {
     var d = []; //2d matrix
 
     // Step 1
@@ -54,6 +110,17 @@
 module.exports = levDist;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code implements the Levenshtein distance algorithm, which calculates the minimum number of edits (insertions, deletions, or substitutions) needed to transform one string into another.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -85,3 +152,7 @@ module.exports = levDist;
 <li>Finally, the function returns the value in <code>d[n][m]</code>, which represents the Levenshtein distance between the entire strings <code>s</code> and <code>t</code>.</li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

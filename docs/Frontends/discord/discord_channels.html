@@ -1,8 +1,82 @@
-<p>Here's a two-sentence summary of the provided code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>discord channels</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord/index.html">discord</a>
+    <br /><br />
+    <a href="./discord_request.html">discord request</a>
+<br /><br />
+<a href="./discord_gateway.html">discord gateway</a>
+<br /><br />
+<a href="./discord_bot_configuration.html">discord bot configuration</a>
+<br /><br />
+<a href="./discord_api.html">discord api</a>
+<br /><br />
+<a href="./discord_messages.html">discord messages</a>
+<br /><br />
+<a href="./discord_channels.html">discord channels</a>
+<br /><br />
+<a href="./discord_commands.html">discord commands</a>
+<br /><br />
+<a href="./discord_guilds.html">discord guilds</a>
+<br /><br />
+<a href="./discord_threads.html">discord threads</a>
+<br /><br />
+<a href="./discord_users.html">discord users</a>
+<br /><br />
+<a href="./discord_utilities.html">discord utilities</a>
+<br /><br />
+<a href="./delete_all_commands.html">delete all commands</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord/index.html">discord</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the provided code:</p>
 <p>This module provides a set of functions for interacting with Discord channels, including retrieving user and guild channels, fetching messages from a channel with pagination, deleting a channel, and exporting these functions for use in other modules. The functions utilize a request authentication function <code>requestAuthQ</code> and configuration variables imported from separate modules to perform their respective operations.</p>
 
 
-<pre><code>var {
+<pre class="javascript"><code>var {
   DEFAULT_GUILD, DEFAULT_CHANNEL, MESSAGE_TIME,
   MESSAGES_START, 
 } = importer.import('discord configuration')
@@ -69,6 +143,17 @@ module.exports = {
 }
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Configuration and Requests</h3>
@@ -151,3 +236,7 @@ const {requestAuthQ} = importer.import('discord request')
 }
 </code></pre>
 <p>Exports the functions for use in other modules.</p>
+
+</body>
+
+</html>

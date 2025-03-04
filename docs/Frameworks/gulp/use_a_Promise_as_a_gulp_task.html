@@ -1,7 +1,71 @@
-<p>This code snippet provides a function <code>tasksToPromise</code> that allows you to run a series of Gulp tasks asynchronously and obtain a Promise that resolves when all tasks are finished.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>use a Promise as a gulp task</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../gulp/index.html">gulp</a>
+    <br /><br />
+    <a href="./use_gulp.html">use gulp</a>
+<br /><br />
+<a href="./use_a_Promise_as_a_gulp_task.html">use a Promise as a gulp task</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./Apply_universal_to_angular_project.html">Apply universal to angular project</a>
+<br /><br />
+<a href="./Fix_project_relatives_as_a_service_for_updating_files_when_they_change.html">Fix project relatives as a service for updating files when they change</a>
+<br /><br />
+<a href="./search_notebooks_gulp.html">search notebooks gulp</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../gulp/index.html">gulp</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code snippet provides a function <code>tasksToPromise</code> that allows you to run a series of Gulp tasks asynchronously and obtain a Promise that resolves when all tasks are finished.</p>
 
 
-<pre><code>var gulp = require('gulp');
+<pre class="javascript"><code>var gulp = require('gulp');
 
 // I wish Linus Torvolds had absolute power over everything javascript(+derivatives) and he could just do a massive purge of all the bullshit.
 function tasksToPromise(tasks) {
@@ -15,6 +79,17 @@ function tasksToPromise(tasks) {
 module.exports = tasksToPromise;
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet defines a function called <code>tasksToPromise</code> that converts a list of Gulp tasks into a Promise.</p>
 <p>Here's a breakdown:</p>
@@ -30,3 +105,7 @@ module.exports = tasksToPromise;
 <li><p><strong><code>module.exports = tasksToPromise;</code></strong>: Exports the <code>tasksToPromise</code> function so it can be used in other parts of the project.</p></li>
 </ol>
 <p>In essence, this code provides a way to run a series of Gulp tasks asynchronously and get a Promise that resolves when all tasks are complete. This can be useful for integrating Gulp tasks into larger asynchronous workflows.</p>
+
+</body>
+
+</html>

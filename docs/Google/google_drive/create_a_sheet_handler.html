@@ -1,8 +1,82 @@
-<p>Here is a 2-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>create a sheet handler</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_drive/index.html">google drive</a>
+    <br /><br />
+    <a href="./authorize_google_drive.html">authorize google drive</a>
+<br /><br />
+<a href="./test_list_google_drive.html">test list google drive</a>
+<br /><br />
+<a href="./list_google_drive_files.html">list google drive files</a>
+<br /><br />
+<a href="./insert_google_drive_permissions.html">insert google drive permissions</a>
+<br /><br />
+<a href="./create_a_sheet_in_google_drive.html">create a sheet in google drive</a>
+<br /><br />
+<a href="./test_google_sheet_create.html">test google sheet create</a>
+<br /><br />
+<a href="./copy_a_file_on_google_drive.html">copy a file on google drive</a>
+<br /><br />
+<a href="./merge_google_drive.html">merge google drive</a>
+<br /><br />
+<a href="./download_all_docs_as_actual_data_files.html">download all docs as actual data files</a>
+<br /><br />
+<a href="./sign_a_file_url_for_uploading_to_google_storage.html">sign a file url for uploading to google storage</a>
+<br /><br />
+<a href="./create_a_copy_of_study_sauce_template.html">create a copy of study sauce template</a>
+<br /><br />
+<a href="./create_a_sheet_handler.html">create a sheet handler</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_drive/index.html">google drive</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary:</p>
 <p>The code imports necessary modules and defines a <code>copyMarketing</code> function to copy a Google Drive file named &quot;Marketing site&quot; and grant permissions to a specified email address. The function executes a sequential workflow of listing Google Drive files, copying the file, inserting permissions, and retrieving a sheet identifier (although the latter's purpose is unclear).</p>
 
 
-<pre><code>var uuid = require('uuid/v1');
+<pre class="javascript"><code>var uuid = require('uuid/v1');
 var importer = require('../Core');
 var getSheet = importer.import('get sheet identifier');
 var copyFile = importer.import('copy a file on google drive');
@@ -22,6 +96,17 @@ function copyMarketing(email) {
 module.exports = copyMarketing;
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
@@ -53,3 +138,7 @@ module.exports = copyMarketing;
 <h3>Exporting <code>copyMarketing</code> Function</h3>
 <p>The <code>copyMarketing</code> function is exported as a module.</p>
 <p><strong>Note</strong>: The purpose of the <code>getSheet</code> function in step 4 is unclear, as it is not used in the rest of the code.</p>
+
+</body>
+
+</html>

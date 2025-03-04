@@ -1,10 +1,80 @@
-<p>Here is a summary of the code in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>research paper llm</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../llm_writing/index.html">llm writing</a>
+    <br /><br />
+    <a href="./business_plan_llm.html">business plan llm</a>
+<br /><br />
+<a href="./write_creatively_llm.html">write creatively llm</a>
+<br /><br />
+<a href="./argue_with_multiple_llms.html">argue with multiple llms</a>
+<br /><br />
+<a href="./research_paper_llm.html">research paper llm</a>
+<br /><br />
+<a href="./select_llm.html">select llm</a>
+<br /><br />
+<a href="./ask_llm_to_write_chapter_titles_and_descriptions.html">ask llm to write chapter titles and descriptions</a>
+<br /><br />
+<a href="./ask_llm_to_brainstorm.html">ask llm to brainstorm</a>
+<br /><br />
+<a href="./write_a_grant_proposal_with_llm.html">write a grant proposal with llm</a>
+<br /><br />
+<a href="./decode_xlsx_spreadsheet.html">decode xlsx spreadsheet</a>
+<br /><br />
+<a href="./elaborate_list_with_llm.html">elaborate list with llm</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../llm_writing/index.html">llm writing</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in one sentence:</p>
 <p>The <code>askLlamaWriteEssay</code> function uses LLM to generate an essay on a given topic by creating a chapter outline, selecting a random name, and writing long essay sections for each chapter.</p>
 <p>If you'd like a two-sentence summary, it would be:</p>
 <p>The <code>askLlamaWriteEssay</code> function uses LLM to generate an essay on a given topic by creating a chapter outline and writing long essay sections for each chapter. The function selects a random name for the essay and uses Markdown to format the chapter titles and descriptions.</p>
 
 
-<pre><code>const fs = require('fs')
+<pre class="javascript"><code>const fs = require('fs')
 const {Remarkable} = require('remarkable');
 const md = new Remarkable({html: true, xhtmlOut: true, breaks: true});
 const {safeurl} = importer.import('domain cache tools')
@@ -73,6 +143,17 @@ module.exports = askLlamaWriteEssay
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code starts by importing various modules:</p>
@@ -112,3 +193,7 @@ module.exports = askLlamaWriteEssay
 <li>The <code>selectModel</code> function is not shown, but it is likely responsible for selecting a suitable model for generating prompts.</li>
 <li>The <code>promptModel</code> function is not shown, but it is likely responsible for generating prompts based on the topic and chapter outline.</li>
 </ul>
+
+</body>
+
+</html>

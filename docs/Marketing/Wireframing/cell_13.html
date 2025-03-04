@@ -1,10 +1,90 @@
-<p>Here is a summary of the Graphviz code breakdown in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 13</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../Wireframing/index.html">Wireframing</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+<a href="./cell_14.html">Cell 14</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../Wireframing/index.html">Wireframing</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the Graphviz code breakdown in one sentence:</p>
 <p>The provided Graphviz code is a directed graph written in DOT language, defining a process flow diagram with nodes and edges that represent stages and transitions in the process, and specifying various properties such as layout direction, font, and color.</p>
 <p>Alternatively, a two-sentence summary could be:</p>
 <p>The Graphviz code defines a directed graph with a specific layout direction and font properties, and it outlines a process flow diagram with nodes and edges representing various stages and transitions. The code also specifies default properties for nodes and edges, allowing for customization of the graph's appearance.</p>
 
 
-<pre><code>%%
+<pre class="typescript"><code>%%
 dot
 
 digraph
@@ -65,6 +145,17 @@ apply
     facaccept -> letter
 }</code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Graphviz Code Breakdown</strong></p>
 <p>This is a Graphviz code written in DOT language, which is used to create directed graphs.</p>
 <h3>Graph Definition</h3>
@@ -124,3 +215,7 @@ complete -&gt; min        [headlabel = 'yes']
 <li><code>headlabel = 'no'</code> and <code>headlabel = 'yes'</code> specify labels for the edges, which are used to indicate the direction of the flow (e.g., &quot;no&quot; indicates that the process should not proceed, while &quot;yes&quot; indicates that it should proceed).</li>
 </ul>
 <p>This code can be used to create a process flow diagram using Graphviz tools.</p>
+
+</body>
+
+</html>

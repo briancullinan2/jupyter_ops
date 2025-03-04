@@ -1,8 +1,70 @@
-<p>Here is a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a>
+    <br /><br />
+    undefined<a href="./index.html">index</a>
+<br /><br />
+<a href="./ssh_remote_wget.html">ssh remote wget</a>
+<br /><br />
+<a href="./dns_lookup.html">dns lookup</a>
+<br /><br />
+<a href="./remove_ctrl_characters.html">remove ctrl characters</a>
+<br /><br />
+<a href="./quake3_server_status.html">quake3 server status</a>
+<br /><br />
+<a href="./spectate_q3_server.html">spectate q3 server</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code:</p>
 <p>The code imports necessary functions from custom modules, then defines an asynchronous function <code>syncCommands</code> that synchronizes Discord commands by authorizing the gateway, retrieving existing commands, and registering or deleting specific commands based on their presence. The function uses functions like <code>authorizeGateway</code>, <code>getCommands</code>, <code>registerCommand</code>, and <code>deleteCommand</code> to perform these tasks.</p>
 
 
-<pre><code>var importer = require('../Core')
+<pre class="node"><code>var importer = require('../Core')
 var {authorizeGateway} = importer.import('authorize discord')
 var {registerCommand, getCommands, deleteCommand} = importer.import('discord api')
 
@@ -99,6 +161,17 @@ async function syncCommands() {
 module.exports = syncCommands
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">var importer = require('../Core')
@@ -144,3 +217,7 @@ if(!commands.includes('hello'))
 <li>The code repeats this process for the commands <code>challenge</code> and <code>connect</code>, registering them if they don't exist.</li>
 <li>Finally, it registers a command named <code>rcon</code> with an array of options.</li>
 </ul>
+
+</body>
+
+</html>

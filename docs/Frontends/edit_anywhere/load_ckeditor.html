@@ -1,7 +1,83 @@
-<p>This code creates a dynamic web page that integrates web scraping, Git file access, and HTML manipulation, likely for web development or content management purposes.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>load ckeditor</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../edit_anywhere/index.html">edit anywhere</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./read_gist_files.html">read gist files</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./write_gist_files.html">write gist files</a>
+<br /><br />
+<a href="./save_git.html">save git</a>
+<br /><br />
+<a href="./git_file_tree.html">git file tree</a>
+<br /><br />
+<a href="./apply_acl_to_html.html">apply acl to html</a>
+<br /><br />
+<a href="./load_ckeditor.html">load ckeditor</a>
+<br /><br />
+<a href="./scope_css.html">scope css</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./read_crawl_files.html">read crawl files</a>
+<br /><br />
+<a href="./ckeditor_configuration.html">ckeditor configuration</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../edit_anywhere/index.html">edit anywhere</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code creates a dynamic web page that integrates web scraping, Git file access, and HTML manipulation, likely for web development or content management purposes.</p>
 
 
-<pre><code>var {URL} = require('url')
+<pre class="javascript"><code>var {URL} = require('url')
 var importer = require('../Core')
 var loadScraped = importer.import('get scraped page')
 var getGist = importer.import('read gist files')
@@ -52,13 +128,24 @@ async function gitEditor(url, gist, xpath) {
 
 module.exports = gitEditor
 
-if(typeof $$ !== 'undefined') {
-    $$.async();
+if(typeof $ !== 'undefined') {
+    $.async();
     gitEditor('https://www.google.com')
-        .then(r => $$.mime({'text/html': r}))
-        .catch(e => $$.sendError(e))
+        .then(r => $.mime({'text/html': r}))
+        .catch(e => $.sendError(e))
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code defines a function <code>gitEditor</code> that combines web scraping, Git interaction, and HTML manipulation to create a dynamic web page.</p>
 <p>Here's a breakdown:</p>
@@ -83,8 +170,12 @@ if(typeof $$ !== 'undefined') {
 <li><p><strong>Module Export and Execution:</strong></p>
 <ul>
 <li>The <code>gitEditor</code> function is exported as a module.</li>
-<li>If a variable <code>$$</code> is defined (likely indicating a web framework or environment), it executes <code>gitEditor</code> with the Google homepage URL, converts the result to HTML, and sends it as a response.</li>
+<li>If a variable <code>$</code> is defined (likely indicating a web framework or environment), it executes <code>gitEditor</code> with the Google homepage URL, converts the result to HTML, and sends it as a response.</li>
 </ul></li>
 </ol>
 <p><strong>Overall Purpose:</strong></p>
 <p>This code creates a dynamic web page that combines scraped content, Git file information, and a code editor. It likely serves as a tool for web development or content management, allowing users to interact with web pages, Git repositories, and code snippets within a single interface.</p>
+
+</body>
+
+</html>

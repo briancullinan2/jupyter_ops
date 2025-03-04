@@ -1,8 +1,82 @@
-<p>Here's a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>download all docs as actual data files</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_drive/index.html">google drive</a>
+    <br /><br />
+    <a href="./authorize_google_drive.html">authorize google drive</a>
+<br /><br />
+<a href="./test_list_google_drive.html">test list google drive</a>
+<br /><br />
+<a href="./list_google_drive_files.html">list google drive files</a>
+<br /><br />
+<a href="./insert_google_drive_permissions.html">insert google drive permissions</a>
+<br /><br />
+<a href="./create_a_sheet_in_google_drive.html">create a sheet in google drive</a>
+<br /><br />
+<a href="./test_google_sheet_create.html">test google sheet create</a>
+<br /><br />
+<a href="./copy_a_file_on_google_drive.html">copy a file on google drive</a>
+<br /><br />
+<a href="./merge_google_drive.html">merge google drive</a>
+<br /><br />
+<a href="./download_all_docs_as_actual_data_files.html">download all docs as actual data files</a>
+<br /><br />
+<a href="./sign_a_file_url_for_uploading_to_google_storage.html">sign a file url for uploading to google storage</a>
+<br /><br />
+<a href="./create_a_copy_of_study_sauce_template.html">create a copy of study sauce template</a>
+<br /><br />
+<a href="./create_a_sheet_handler.html">create a sheet handler</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_drive/index.html">google drive</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code:</p>
 <p>The code imports necessary dependencies, sets up constants for Google Drive authentication and file paths, and defines two asynchronous functions: <code>convertGoogleDoc</code> to convert Google Docs to various output types and <code>downloadDocs</code> to download Google Docs from a specified folder. The code uses Node.js modules such as <code>path</code>, <code>fs</code>, and <code>google-auth</code> to perform tasks, and includes error handling mechanisms to prevent file corruption or security issues.</p>
 
 
-<pre><code>const listDrive = importer.import('merge google drive')
+<pre class="javascript"><code>const listDrive = importer.import('merge google drive')
 const getRpcFromSpec = importer.import('get rpc from spec')
 const authorize = importer.import('google oauth token client')
 const google = {drive: ({version, auth}) => getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/drive.${version}.json`)), auth)}
@@ -61,6 +135,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Breakdown of the Code</strong></p>
 <h3>Importing Dependencies</h3>
 <p>The code starts by importing various dependencies using the <code>importer.import</code> function. These dependencies include:</p>
@@ -99,3 +184,7 @@ module.exports = {
 <li>The <code>safeurl</code> function is used to sanitize the filename by removing any invalid characters, which is a good practice to prevent file corruption or security issues.</li>
 <li>The <code>try</code>-<code>catch</code> blocks are used to handle any errors that may occur during the file export or writing process.</li>
 </ul>
+
+</body>
+
+</html>

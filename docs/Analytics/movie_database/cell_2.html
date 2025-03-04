@@ -1,8 +1,70 @@
-<p>Here's a 2-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../movie_database/index.html">movie database</a>
+    <br /><br />
+    <a href="./Find_cross_section_of_actors_and_movies.html">Find cross section of actors and movies</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./use_elastic_search_from_node.html">use elastic search from node</a>
+<br /><br />
+<a href="./create_movie_database_tables.html">create movie database tables</a>
+<br /><br />
+<a href="./Or_use_ZMQ_interface_like_ijupyter.html">Or use ZMQ interface like ijupyter</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../movie_database/index.html">movie database</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 2-sentence summary of the code:</p>
 <p>The code initializes a SQLite database and defines a function <code>dropTitles</code> to drop indices and a table from the database. It also prepares a query to count the number of rows in the <code>name</code> table, but the result is not utilized.</p>
 
 
-<pre><code>var sqlite3 = require('better-sqlite3');
+<pre class="javascript"><code>var sqlite3 = require('better-sqlite3');
 var movies = './movies.sqlite.db';
 var db = new sqlite3(movies, {});
 
@@ -14,6 +76,17 @@ function dropTitles() {
 
 db.prepare(`SELECT COUNT(*) FROM name`).get();
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Dependencies and Initialization</h4>
@@ -52,3 +125,7 @@ var db = new sqlite3(movies, {});
 <li>However, the result of this query is not stored or utilized in the provided code.</li>
 </ul></li>
 </ul>
+
+</body>
+
+</html>

@@ -1,8 +1,72 @@
-<p>Here is a summary of the code in one or two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>get python params</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../pyimport/index.html">pyimport</a>
+    <br /><br />
+    <a href="./get_python_params.html">get python params</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./questions____re_sub_r____________q__flags_re_IGNORECASE__strip__.html">questions = [re.sub(r'|\|+', '', q, flags=re.IGNORECASE).strip()</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./run_python_cells.html">run python cells</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../pyimport/index.html">pyimport</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in one or two sentences:</p>
 <p>This code defines a module that provides a function called <code>get_parameter_names</code>, which takes a string of source code as input and returns a list of parameter names as strings. The function uses the <code>ast</code> module to parse the source code and extract the parameter names from the first function definition it finds.</p>
 
 
-<pre><code>import ast
+<pre class="python"><code>import ast
 # import inspect
 
 
@@ -30,6 +94,17 @@ __all__ = {
   "get_parameter_names": get_parameter_names,
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Import Statements</h4>
@@ -84,3 +159,7 @@ else:
 <li>The <code>__all__</code> variable is used to specify the functions and variables that will be exported when the module is imported using the <code>from module import *</code> syntax.</li>
 <li>In this case, only the <code>get_parameter_names</code> function is exported.</li>
 </ul>
+
+</body>
+
+</html>

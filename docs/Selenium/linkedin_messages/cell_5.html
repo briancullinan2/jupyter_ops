@@ -1,15 +1,90 @@
-<p>Here is a summary of the code in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 5</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../linkedin_messages/index.html">linkedin messages</a>
+    <br /><br />
+    <a href="./Log_in_to_LinkedIn.html">Log in to LinkedIn</a>
+<br /><br />
+<a href="./Scrape_LinkedIn_profile.html">Scrape LinkedIn profile</a>
+<br /><br />
+<a href="./List_LinkedIn_threads.html">List LinkedIn threads</a>
+<br /><br />
+<a href="./Read_messages_LinkedIn_thread.html">Read messages LinkedIn thread</a>
+<br /><br />
+<a href="./scrape_linkedin_threads.html">scrape linkedin threads</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./scan_for_commands_linkedin.html">scan for commands linkedin</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../linkedin_messages/index.html">linkedin messages</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in two sentences:</p>
 <p>The code imports a module and a specific function named <code>scrapeLinkedInThreads</code>, and then executes this function asynchronously using a promise chain to handle both successful and failed results. The <code>scrapeLinkedInThreads</code> function returns a promise that is resolved either by sending the result with <code>sendResult</code> or by sending an error with <code>sendError</code> if it fails.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var scrapeLinkedInThreads = importer.import('scrape linkedin threads')
 
-$$.async()
+$.async()
 scrapeLinkedInThreads()
-    .then(r => $$.sendResult(r))
-    .catch(e => $$.sendError(e));
+    .then(r => $.sendResult(r))
+    .catch(e => $.sendError(e));
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
@@ -19,8 +94,12 @@ scrapeLinkedInThreads()
 </ul>
 <h3>Executing the <code>scrapeLinkedInThreads</code> Function</h3>
 <ul>
-<li><code>$$.async()</code>: Starts an asynchronous operation (purpose unclear without context).</li>
+<li><code>$.async()</code>: Starts an asynchronous operation (purpose unclear without context).</li>
 <li><code>scrapeLinkedInThreads()</code>: Executes the <code>scrapeLinkedInThreads</code> function, which is expected to return a promise.</li>
-<li><code>.then(r =&gt; $$.sendResult(r))</code>: If the promise is resolved, calls the <code>sendResult</code> function with the resolved result (<code>r</code>) as an argument.</li>
-<li><code>.catch(e =&gt; $$.sendError(e))</code>: If the promise is rejected, calls the <code>sendError</code> function with the rejected error (<code>e</code>) as an argument.</li>
+<li><code>.then(r =&gt; $.sendResult(r))</code>: If the promise is resolved, calls the <code>sendResult</code> function with the resolved result (<code>r</code>) as an argument.</li>
+<li><code>.catch(e =&gt; $.sendError(e))</code>: If the promise is rejected, calls the <code>sendError</code> function with the rejected error (<code>e</code>) as an argument.</li>
 </ul>
+
+</body>
+
+</html>

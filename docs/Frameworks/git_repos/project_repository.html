@@ -1,13 +1,90 @@
-<p>This script clones a GitHub repository named &quot;repository&quot; into a local &quot;project&quot; directory, only if the &quot;master&quot; branch doesn't already exist locally.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>project repository</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../git_repos/index.html">git repos</a>
+    <br /><br />
+    <a href="./_test_repository.html">,test repository</a>
+<br /><br />
+<a href="./selenium_repository.html">selenium repository</a>
+<br /><br />
+<a href="./project_repository.html">project repository</a>
+<br /><br />
+<a href="./_Setup_git_credentials_in_docker.html">,Setup git credentials in docker</a>
+<br /><br />
+<a href="./use_in_Docker.html">use in Docker</a>
+<br /><br />
+<a href="./use_npm_cache_inside_of_docker.html">use npm cache inside of docker</a>
+<br /><br />
+<a href="./run_the_Docker_image.html">run the Docker image</a>
+<br /><br />
+<a href="./Selenium_test_scripts.html">Selenium test scripts</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../git_repos/index.html">git repos</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This script clones a GitHub repository named &quot;repository&quot; into a local &quot;project&quot; directory, only if the &quot;master&quot; branch doesn't already exist locally.</p>
 
 
-<pre><code>mkdir -p project ; \
+<pre class="bash"><code>mkdir -p project ; \
 if git --work-tree=./project branch | grep 'master'; \
 then echo \"Already checked out project\"; \
 else git clone https://{username}@github.com/username/repository ./project ; \
 fi ; ls -la project ; \
 pwd
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet checks out a Git repository named &quot;repository&quot; from GitHub into a local directory named &quot;project&quot;.</p>
 <p>Here's a breakdown:</p>
@@ -42,3 +119,7 @@ pwd
 </ul></li>
 </ol>
 <p>In essence, this script checks if a local &quot;project&quot; directory exists and if it contains the &quot;master&quot; branch. If not, it clones the repository from GitHub into the &quot;project&quot; directory.</p>
+
+</body>
+
+</html>

@@ -1,8 +1,60 @@
-<p>Here is a 2 sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 0</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../database_commands/index.html">database commands</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../database_commands/index.html">database commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2 sentence summary of the code:</p>
 <p>This shell script uses <code>awk</code> to transform a MySQL dump file into a format compatible with SQLite, while preserving MySQL <code>KEY</code> clauses as separate commands. The script can be used by piping the MySQL dump file to the script, then piping the output to <code>sqlite3</code>, as shown in the example usage section.</p>
 
 
-<pre><code>#!/bin/sh
+<pre class="bash"><code>#!/bin/sh
 
 # Converts a mysqldump file into a Sqlite 3 compatible file. It also extracts the MySQL `KEY xxxxx` from the
 # CREATE block and create them in separate commands _after_ all the INSERTs.
@@ -103,6 +155,17 @@ END {
 '
 exit 0</code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Breakdown of the Code</strong></p>
 <h3>Overview</h3>
 <p>This is a shell script that utilizes <code>awk</code> to transform a MySQL dump file into a format compatible with SQLite. The script also extracts the MySQL <code>KEY</code> clauses and creates them as separate commands.</p>
@@ -134,3 +197,7 @@ exit 0</code></pre>
 <pre><code class="language-bash">./mysql2sqlite mysqldump-opts db-name | sqlite3 database.sqlite
 </code></pre>
 <p>This will transform the MySQL dump file into a format compatible with SQLite and import it into the specified database.</p>
+
+</body>
+
+</html>

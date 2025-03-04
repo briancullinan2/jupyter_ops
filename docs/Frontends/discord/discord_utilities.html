@@ -1,8 +1,82 @@
-<p>Here's a summary of the code in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>discord utilities</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord/index.html">discord</a>
+    <br /><br />
+    <a href="./discord_request.html">discord request</a>
+<br /><br />
+<a href="./discord_gateway.html">discord gateway</a>
+<br /><br />
+<a href="./discord_bot_configuration.html">discord bot configuration</a>
+<br /><br />
+<a href="./discord_api.html">discord api</a>
+<br /><br />
+<a href="./discord_messages.html">discord messages</a>
+<br /><br />
+<a href="./discord_channels.html">discord channels</a>
+<br /><br />
+<a href="./discord_commands.html">discord commands</a>
+<br /><br />
+<a href="./discord_guilds.html">discord guilds</a>
+<br /><br />
+<a href="./discord_threads.html">discord threads</a>
+<br /><br />
+<a href="./discord_users.html">discord users</a>
+<br /><br />
+<a href="./discord_utilities.html">discord utilities</a>
+<br /><br />
+<a href="./delete_all_commands.html">delete all commands</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord/index.html">discord</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the code in two sentences:</p>
 <p>This code implements a timer system that stores and manages multiple timers with their corresponding expiration times, allowing for functions to be executed at specified intervals. The system exports three functions: <code>timeout</code> for creating promises that resolve after a delay, <code>delay</code> for waiting for a specified time, and <code>wait</code> for conditional waiting.</p>
 
 
-<pre><code>var timers = {}
+<pre class="javascript"><code>var timers = {}
 var mainTimer = setInterval(callResolve, 20)
 
 function callResolve() {
@@ -62,6 +136,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h3>Code Breakdown</h3>
 <h4>Variables and Timers</h4>
 <ul>
@@ -96,3 +181,7 @@ module.exports = {
 <ul>
 <li>The code exports three functions: <code>timeout</code>, <code>delay</code>, and <code>wait</code>.</li>
 </ul>
+
+</body>
+
+</html>

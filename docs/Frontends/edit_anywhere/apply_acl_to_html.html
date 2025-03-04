@@ -1,7 +1,83 @@
-<p>The <code>applyAcl</code> function takes an ACL and an HTML document, makes elements matching the ACL selectors editable, and returns the modified HTML.  This is likely used to control which parts of a webpage users can edit.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>apply acl to html</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../edit_anywhere/index.html">edit anywhere</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./read_gist_files.html">read gist files</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./write_gist_files.html">write gist files</a>
+<br /><br />
+<a href="./save_git.html">save git</a>
+<br /><br />
+<a href="./git_file_tree.html">git file tree</a>
+<br /><br />
+<a href="./apply_acl_to_html.html">apply acl to html</a>
+<br /><br />
+<a href="./load_ckeditor.html">load ckeditor</a>
+<br /><br />
+<a href="./scope_css.html">scope css</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./read_crawl_files.html">read crawl files</a>
+<br /><br />
+<a href="./ckeditor_configuration.html">ckeditor configuration</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../edit_anywhere/index.html">edit anywhere</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>applyAcl</code> function takes an ACL and an HTML document, makes elements matching the ACL selectors editable, and returns the modified HTML.  This is likely used to control which parts of a webpage users can edit.</p>
 
 
-<pre><code>var importer = require('../Core')
+<pre class="javascript"><code>var importer = require('../Core')
 var {selectDom} = importer.import('select tree')
 // scan using an acl list, similar to easylist?
 // TODO: accept formats:
@@ -37,6 +113,17 @@ function applyAcl(acl, doc) {
 module.exports = applyAcl
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a function <code>applyAcl</code> that takes an ACL (Access Control List) and an HTML document as input.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -62,3 +149,7 @@ module.exports = applyAcl
 <p><strong>Purpose:</strong></p>
 <p>The code essentially aims to make specific elements within an HTML document editable based on a predefined ACL. This could be used in a web application where you want to allow users to modify certain parts of the content while restricting editing in other areas.</p>
 <p>Let me know if you have any more questions.</p>
+
+</body>
+
+</html>

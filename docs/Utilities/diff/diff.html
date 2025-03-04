@@ -1,7 +1,63 @@
-<p>This code snippet compares two code snippets, calculates their differences, and presents the results as a visually highlighted HTML diff using Prism.js for syntax highlighting.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>diff</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../diff/index.html">diff</a>
+    <br /><br />
+    <a href="./diff.html">diff</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../diff/index.html">diff</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code snippet compares two code snippets, calculates their differences, and presents the results as a visually highlighted HTML diff using Prism.js for syntax highlighting.</p>
 
 
-<pre><code>// npm install diff --save
+<pre class="javascript"><code>// npm install diff --save
 var fs = require('fs');
 var {JSDOM} = require('jsdom');
 var JsDiff = require('diff');
@@ -133,6 +189,17 @@ diffTwoTexts;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet focuses on comparing and highlighting code diffs using D3.js and Prism.js.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -151,3 +218,7 @@ diffTwoTexts;
 </ul></li>
 </ol>
 <p><strong>In essence, this code snippet provides a way to compare two code snippets, highlight the differences, and present them in a visually understandable format using HTML and CSS.</strong></p>
+
+</body>
+
+</html>

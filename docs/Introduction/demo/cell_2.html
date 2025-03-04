@@ -1,8 +1,90 @@
-<p>Here's a summary of the code in two sentences:</p>
-<p>This code imports the <code>Core</code> module, invokes its <code>interpret</code> function with a list of keywords, and assigns the result to a variable. The result is then passed to a function named <code>sendResult</code> on a global object <code>$$</code>, but the purpose of this function is unclear without more context.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../demo/index.html">demo</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./use_Docker.html">use Docker</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+<a href="./Install_build_stack_on_colab.html">Install build stack on colab</a>
+<br /><br />
+<a href="./update_notebook_repo_on_colab.html">update notebook repo on colab</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../demo/index.html">demo</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the code in two sentences:</p>
+<p>This code imports the <code>Core</code> module, invokes its <code>interpret</code> function with a list of keywords, and assigns the result to a variable. The result is then passed to a function named <code>sendResult</code> on a global object <code>$</code>, but the purpose of this function is unclear without more context.</p>
 
 
-<pre><code>var importer = require('./Core');
+<pre class="javascript"><code>var importer = require('./Core');
 
 // search notebooks for keywords, return the top search result and the contextual markdown and code cells?
 
@@ -11,9 +93,20 @@ var interpret = importer.interpret([
     'docker vnc'
 ]); // store loaded functions for later use
 
-$$.sendResult(interpret);
+$.sendResult(interpret);
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
@@ -37,10 +130,14 @@ $$.sendResult(interpret);
 <h3>Functionality</h3>
 <p>The <code>interpret</code> function appears to be used for searching notebooks for specific keywords. However, without more context, it's unclear what this function does exactly.</p>
 <h3>Sending Results</h3>
-<pre><code class="language-javascript">$$.sendResult(interpret);
+<pre><code class="language-javascript">$.sendResult(interpret);
 </code></pre>
 <ul>
-<li>Invokes a function named <code>sendResult</code> on an object referred to by the global variable <code>$$</code>.</li>
+<li>Invokes a function named <code>sendResult</code> on an object referred to by the global variable <code>$</code>.</li>
 <li>Passes the result of the <code>interpret</code> function as an argument to <code>sendResult</code>.</li>
 <li>The purpose of <code>sendResult</code> is unknown without more context.</li>
 </ul>
+
+</body>
+
+</html>

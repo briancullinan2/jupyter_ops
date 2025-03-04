@@ -1,8 +1,68 @@
-<p>Here's a summary of the Node.js module in 2 sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>express automation routes</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_remote/index.html">discord remote</a>
+    <br /><br />
+    <a href="./discord_remote_control.html">discord remote control</a>
+<br /><br />
+<a href="./discord_remote_proxy_server.html">discord remote proxy server</a>
+<br /><br />
+<a href="./express_automation_routes.html">express automation routes</a>
+<br /><br />
+<a href="./remote_desktop_client.html">remote desktop client</a>
+<br /><br />
+<a href="./client_input_remote_code.html">client input remote code</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_remote/index.html">discord remote</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the Node.js module in 2 sentences:</p>
 <p>This Node.js module exports four functions for a remote desktop client: <code>getMonitor</code>, <code>doClick</code>, <code>doKeys</code>, and <code>serveHomepage</code>, which handle screenshot retrieval, mouse and keyboard interactions, and client homepage serving. The module uses various imported functions and scripts to interact with the remote desktop and Discord authentication, and returns responses in formats such as PNG images, empty responses, and modified HTML code.</p>
 
 
-<pre><code>const {DEFAULT_APPLICATION} = importer.import('discord configuration')
+<pre class="javascript"><code>const {DEFAULT_APPLICATION} = importer.import('discord configuration')
 const screenshotMonitor = importer.import('node screenshots')
 const mouseMove = importer.import('mouse move')
 const mouseClick = importer.import('mouse click')
@@ -77,6 +137,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Overview</h2>
 <p>The code is a Node.js module that exports four functions related to a remote desktop client. The functions are:</p>
 <ol>
@@ -125,3 +196,7 @@ module.exports = {
 <li><code>send keys</code>: Provides the <code>sendKeys</code> function.</li>
 <li><code>discord client auth code</code>, <code>client input remote code</code>, and <code>remote desktop client</code>: Provide script code for the remote desktop client.</li>
 </ul>
+
+</body>
+
+</html>

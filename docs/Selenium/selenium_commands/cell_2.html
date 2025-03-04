@@ -1,11 +1,80 @@
-<p>Here is a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../selenium_commands/index.html">selenium commands</a>
+    <br /><br />
+    <a href="./What_is_Selenium.html">What is Selenium</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./Run_selenium_inside_of_docker.html">Run selenium inside of docker</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../selenium_commands/index.html">selenium commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary:</p>
 <p>This code exports the <code>DISPLAY</code> environment variable to redirect the display to the first display, then launches Google Chrome in full-screen mode to open a development server at <code>http://localhost:4200</code>. It appears to be a Linux-specific script used for testing or demonstration purposes.</p>
 
 
-<pre><code>export DISPLAY=:0
+<pre class="bash"><code>export DISPLAY=:0
 google-chrome http://localhost:4200 --no-sandbox --start-fullscreen
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Export Environment Variable</h3>
@@ -28,3 +97,7 @@ google-chrome http://localhost:4200 --no-sandbox --start-fullscreen
 <li>This code is likely being run on a Linux system, given the use of the <code>export</code> command and the presence of the <code>DISPLAY</code> variable.</li>
 <li>It's being used to launch a development server (<code>http://localhost:4200</code>) in a browser, possibly for testing or demonstration purposes.</li>
 </ul>
+
+</body>
+
+</html>

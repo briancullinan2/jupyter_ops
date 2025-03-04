@@ -1,8 +1,80 @@
-<p>Here's a summary of the code breakdown in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>python write images to ffmpeg stream</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../opencv/index.html">opencv</a>
+    <br /><br />
+    <a href="./detect_people.html">detect people</a>
+<br /><br />
+<a href="./motion_detection.html">motion detection</a>
+<br /><br />
+<a href="./python_write_video.html">python write video</a>
+<br /><br />
+<a href="./python_write_images_to_ffmpeg_stream.html">python write images to ffmpeg stream</a>
+<br /><br />
+<a href="./create_a_live_streaming_request.html">create a live streaming request</a>
+<br /><br />
+<a href="./authorize_youtube_in_python.html">authorize youtube in python</a>
+<br /><br />
+<a href="./list_broadcasts.html">list broadcasts</a>
+<br /><br />
+<a href="./create_live_stream.html">create live stream</a>
+<br /><br />
+<a href="./list_live_stream.html">list live stream</a>
+<br /><br />
+<a href="./bind_youtube_stream.html">bind youtube stream</a>
+<br /><br />
+<a href="./transition_live_stream.html">transition live stream</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../opencv/index.html">opencv</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the code breakdown in two sentences:</p>
 <p>The code imports various libraries and takes a screenshot using <code>pyautogui</code> before defining an FFmpeg command to encode and save a video. The <code>stream_images</code> function uses the FFmpeg command to start a stream, taking a screenshot, encoding it as a JPEG image, and writing the encoded image to the subprocess's <code>stdin</code> 15 times with a 1/30 second interval.</p>
 
 
-<pre><code>import os
+<pre class="python"><code>import os
 import cv2
 import subprocess
 import time
@@ -97,6 +169,17 @@ __all__ = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Libraries</h3>
 <p>The code starts by importing various libraries:</p>
@@ -134,3 +217,7 @@ __all__ = {
 <li>Getting a frame from the camera</li>
 </ul>
 <p>These code blocks are not used in the current implementation.</p>
+
+</body>
+
+</html>

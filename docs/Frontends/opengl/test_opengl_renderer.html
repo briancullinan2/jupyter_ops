@@ -1,8 +1,64 @@
-<p>Here's a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>test opengl renderer</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../opengl/index.html">opengl</a>
+    <br /><br />
+    <a href="./opengl_context.html">opengl context</a>
+<br /><br />
+<a href="./test_opengl_renderer.html">test opengl renderer</a>
+<br /><br />
+<a href="./opengl_frame.html">opengl frame</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../opengl/index.html">opengl</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary:</p>
 <p>The code defines an asynchronous <code>doFrame</code> function that initializes and calls OpenGL functions, and an asynchronous <code>testOpenGL</code> function that creates a window and sets an interval to repeatedly call <code>doFrame</code> with the window object. The <code>testOpenGL</code> function is exported as a module.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 
 let beginFrame, endFrame
 async function doFrame(window) {
@@ -27,6 +83,17 @@ async function testOpenGL() {
 module.exports = testOpenGL
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <h3>Variables</h3>
 <ul>
@@ -50,3 +117,7 @@ module.exports = testOpenGL
 <ul>
 <li>The <code>testOpenGL</code> function is exported as a module.</li>
 </ul>
+
+</body>
+
+</html>

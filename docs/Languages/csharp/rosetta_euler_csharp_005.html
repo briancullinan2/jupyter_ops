@@ -1,7 +1,67 @@
-<p>The code defines a class <code>Euler</code> within the <code>Rosetta</code> namespace, containing methods for calculating the product of common prime factors of numbers from 1 to 20, with several issues and room for optimization. The code can be improved by fixing the bugs in the <code>PrimeFactors</code> and <code>Overlap</code> methods, and using more efficient algorithms and data structures for prime factorization.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>rosetta euler csharp 005</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../csharp/index.html">csharp</a>
+    <br /><br />
+    <a href="./rosetta_euler_csharp_005.html">rosetta euler csharp 005</a>
+<br /><br />
+<a href="./test_edge_js.html">test edge.js</a>
+<br /><br />
+<a href="./list_csharp_namespaces.html">list csharp namespaces</a>
+<br /><br />
+<a href="./list_csharp_classes.html">list csharp classes</a>
+<br /><br />
+<a href="./get_csharp_params.html">get csharp params</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../csharp/index.html">csharp</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The code defines a class <code>Euler</code> within the <code>Rosetta</code> namespace, containing methods for calculating the product of common prime factors of numbers from 1 to 20, with several issues and room for optimization. The code can be improved by fixing the bugs in the <code>PrimeFactors</code> and <code>Overlap</code> methods, and using more efficient algorithms and data structures for prime factorization.</p>
 
 
-<pre><code>using System;
+<pre class="csharp"><code>using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -90,6 +150,17 @@ namespace Rosetta
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <h3>Namespaces and Class</h3>
 <p>The code uses the <code>System</code> namespace and defines a class <code>Euler</code> within a namespace <code>Rosetta</code>.</p>
@@ -128,3 +199,7 @@ namespace Rosetta
 <li>The code can be optimized by using a more efficient prime factorization algorithm, such as the Sieve of Eratosthenes.</li>
 <li>The code can be further optimized by using a more efficient data structure, such as a HashSet, to store prime factors.</li>
 </ul>
+
+</body>
+
+</html>

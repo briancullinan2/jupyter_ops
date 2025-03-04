@@ -1,8 +1,72 @@
-<p>Here is a 2-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>summarize llm article</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../scraping/index.html">scraping</a>
+    <br /><br />
+    <a href="./extract_llm_article.html">extract llm article</a>
+<br /><br />
+<a href="./test_article_extract.html">test article extract</a>
+<br /><br />
+<a href="./summarize_llm_article.html">summarize llm article</a>
+<br /><br />
+<a href="./test_article_summarizer.html">test article summarizer</a>
+<br /><br />
+<a href="./summarize_all_articles.html">summarize all articles</a>
+<br /><br />
+<a href="./convert_summaries.html">convert summaries</a>
+<br /><br />
+<a href="./default_link_collector.html">default link collector</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../scraping/index.html">scraping</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary:</p>
 <p>The <code>summerizeArticle</code> function is an asynchronous function that summarizes an article in two ways: a detailed summary and a single sentence summary. It creates an LLM session, sends prompts for both types of summaries, and returns the results as an array.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 // TODO: prompt llm, in one sentence summarize this article. in a whole paragraph summarize this article.
 
 async function summerizeArticle(article, funny) {
@@ -29,6 +93,17 @@ async function summerizeArticle(article, funny) {
 
 module.exports = summerizeArticle
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Function Definition</h3>
 <p><code>summerizeArticle</code> is an asynchronous function that summarizes an article in two ways:</p>
@@ -60,3 +135,7 @@ module.exports = summerizeArticle
 </ol>
 <h3>Export</h3>
 <p>The function is exported as a module using <code>module.exports = summerizeArticle</code>.</p>
+
+</body>
+
+</html>

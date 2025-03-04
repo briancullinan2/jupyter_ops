@@ -1,11 +1,84 @@
-<p>Here is a summary of the code in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 3</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../image_magik_commands/index.html">image magik commands</a>
+    <br /><br />
+    <a href="./reduce_noise_from_images_after_resizing.html">reduce noise from images after resizing</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../image_magik_commands/index.html">image magik commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in one sentence:</p>
 <p>This code uses ImageMagick's <code>convert</code> command to resize and enhance an input image, applying various filters and processing techniques, and saving the final output as a new image file.</p>
 <p>Alternatively, a two-sentence summary:</p>
 <p>The code resizes and enhances an input image using ImageMagick's <code>convert</code> command, applying techniques such as despeckling and alpha channel processing. The final output image is saved as a new file, with adjustable quality settings and a maximum width of 600 pixels.</p>
 
 
-<pre><code>convert -density 600 "./.output/IMG_1587.JPG" -resize "600^<" -scale 50% "./.output/IMG_1587-final.jpg" || true && \
+<pre class="bash"><code>convert -density 600 "./.output/IMG_1587.JPG" -resize "600^<" -scale 50% "./.output/IMG_1587-final.jpg" || true && \
     convert "./.output/IMG_1587-final.jpg" +clone -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite -quality </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Purpose</h3>
@@ -40,3 +113,7 @@
 <li><code>./.output/IMG_1587.JPG</code>: The input image file.</li>
 <li><code>./.output/IMG_1587-final.jpg</code>: The output image file.</li>
 </ol>
+
+</body>
+
+</html>

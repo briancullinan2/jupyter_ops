@@ -1,8 +1,70 @@
-<p>Here's a summary in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Scroll a specific element</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../utilities/index.html">utilities</a>
+    <br /><br />
+    <a href="./Scroll_a_specific_element.html">Scroll a specific element</a>
+<br /><br />
+<a href="./all_elements_until.html">all elements until</a>
+<br /><br />
+<a href="./click_spa_link.html">click spa link</a>
+<br /><br />
+<a href="./https___www_mathworks_com_help_vision_examples_automatically-detect-and-recognize-text-in-natural-im.html">https://www.mathworks.com/help/vision/examples/automatically-detect-and-recognize-text-in-natural-images.htmls_tid=gn_loc_drop</a>
+<br /><br />
+<a href="./verify_human.html">verify human</a>
+<br /><br />
+<a href="./test_verify_human.html">test verify human</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../utilities/index.html">utilities</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary in two sentences:</p>
 <p>The <code>scrollClient</code> function is an asynchronous function that scrolls a webpage to a specific position based on a given CSS selector, or to the top or bottom of the page if no selector is provided. It uses various functions such as <code>selectDom</code> and <code>evaluateDom</code> to dynamically import and evaluate code on the client-side to achieve the desired scroll position.</p>
 
 
-<pre><code>const {selectDom, evaluateDom} = importer.import('select tree')
+<pre class="javascript"><code>const {selectDom, evaluateDom} = importer.import('select tree')
 const {walkTree} = importer.import('walk tree')
 
 async function scrollClient(driver, selector, up = false) {
@@ -28,6 +90,17 @@ module.exports = scrollClient
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>scrollClient Function Breakdown</strong></p>
 <h3>Overview</h3>
 <p>The <code>scrollClient</code> function is an asynchronous function that scrolls a webpage to a specific position based on a given selector.</p>
@@ -46,3 +119,7 @@ module.exports = scrollClient
 </ol>
 <h3>Export</h3>
 <p>The <code>scrollClient</code> function is exported as a module.</p>
+
+</body>
+
+</html>

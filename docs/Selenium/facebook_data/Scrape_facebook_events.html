@@ -1,7 +1,81 @@
-<p>This code automates the scraping of Facebook event data from HTML files, extracts event URLs, and stores the scraped information in a JSON file.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Scrape facebook events</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../facebook_data/index.html">facebook data</a>
+    <br /><br />
+    <a href="./Log_in_to_facebook.html">Log in to facebook</a>
+<br /><br />
+<a href="./Scrape_facebook_profile.html">Scrape facebook profile</a>
+<br /><br />
+<a href="./Like_all_facebook_posts.html">Like all facebook posts</a>
+<br /><br />
+<a href="./Scrape_facebook_event.html">Scrape facebook event</a>
+<br /><br />
+<a href="./Scrape_facebook_events.html">Scrape facebook events</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./Scrape_facebook_friends.html">Scrape facebook friends</a>
+<br /><br />
+<a href="./Automatically_diff_facebook_friends.html">Automatically diff facebook friends</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+<a href="./Unfollow_everyone_on_facebook.html">Unfollow everyone on facebook</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../facebook_data/index.html">facebook data</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code automates the scraping of Facebook event data from HTML files, extracts event URLs, and stores the scraped information in a JSON file.</p>
 
 
-<pre><code>var glob = require('glob');
+<pre class="javascript"><code>var glob = require('glob');
 var fs = require('fs');
 var path = require('path');
 var importer = require('../Core');
@@ -55,6 +129,17 @@ function scrapeFacebookEvents() {
 module.exports = scrapeFacebookEvents;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet is designed to scrape Facebook event data from a set of HTML files and store the results in a JSON file. Here's a breakdown:</p>
 <p><strong>Dependencies:</strong></p>
 <ul>
@@ -96,3 +181,7 @@ module.exports = scrapeFacebookEvents;
 <p><strong>Purpose:</strong></p>
 <p>This code automates the process of scraping Facebook event data from a set of HTML files, storing the results in a structured JSON format. It relies on Selenium for browser automation and custom modules for file handling and utility functions.</p>
 <p>Let me know if you have any other questions.</p>
+
+</body>
+
+</html>

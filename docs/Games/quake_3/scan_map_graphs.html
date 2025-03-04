@@ -1,7 +1,125 @@
-<p>This code analyzes Quake game maps stored in JSON format, identifying and logging any missing textures for each map.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>scan map graphs</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quake_3/index.html">quake 3</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./__find_pk3_files_in_zips.html">, find pk3 files in zips</a>
+<br /><br />
+<a href="./find_only_bsps_in_map_paks.html">find only bsps in map paks</a>
+<br /><br />
+<a href="./list_bsps_in_a_pak.html">list bsps in a pak</a>
+<br /><br />
+<a href="./unpack_pk3s.html">unpack pk3s</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./make_pk3_indexes.html">make pk3 indexes</a>
+<br /><br />
+<a href="./md4_checksum.html">md4 checksum</a>
+<br /><br />
+<a href="./crc_checksum_file.html">crc checksum file</a>
+<br /><br />
+<a href="./test_crc_file.html">test crc file</a>
+<br /><br />
+<a href="./scan_map_graphs.html">scan map graphs</a>
+<br /><br />
+<a href="./convert_nonalpha.html">convert nonalpha</a>
+<br /><br />
+<a href="./convert_quake_3_audio.html">convert quake 3 audio</a>
+<br /><br />
+<a href="./copy_quake_3_script_files.html">copy quake 3 script files</a>
+<br /><br />
+<a href="./quake_3_file_whitelist.html">quake 3 file whitelist</a>
+<br /><br />
+<a href="./quake_3_menu_image_list.html">quake 3 menu image list</a>
+<br /><br />
+<a href="./Does_TrenchBroom_really_require_everything_be_in_1_folder.html">Does TrenchBroom really require everything be in 1 folder</a>
+<br /><br />
+<a href="./convert_quake_2_map_to_quake_3.html">convert quake 2 map to quake 3</a>
+<br /><br />
+<a href="./scale_quake_map.html">scale quake map</a>
+<br /><br />
+<a href="./translate_quake_map.html">translate quake map</a>
+<br /><br />
+<a href="./replace_common_textures_in_map.html">replace common textures in map</a>
+<br /><br />
+<a href="./replace_known_classes_in_map.html">replace known classes in map</a>
+<br /><br />
+<a href="./replace_entities_in_map.html">replace entities in map</a>
+<br /><br />
+<a href="./add_skybox_to_map.html">add skybox to map</a>
+<br /><br />
+<a href="./draw_hints_in_map.html">draw hints in map</a>
+<br /><br />
+<a href="./split_map_hints.html">split map hints</a>
+<br /><br />
+<a href="./brush_to_vertex.html">brush to vertex</a>
+<br /><br />
+<a href="./cell_27.html">Cell 27</a>
+<br /><br />
+<a href="./list_noises_in_a_quake_3_map.html">list noises in a quake 3 map</a>
+<br /><br />
+<a href="./list_textures_in_quake_3_map.html">list textures in quake 3 map</a>
+<br /><br />
+<a href="./list_shaders_in_quake_3_shader.html">list shaders in quake 3 shader</a>
+<br /><br />
+<a href="./find_all_shaders.html">find all shaders</a>
+<br /><br />
+<a href="./search_textures_directory_for_paths.html">search textures directory for paths</a>
+<br /><br />
+<a href="./__disassemble_all_QVMs.html">, disassemble all QVMs</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quake_3/index.html">quake 3</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code analyzes Quake game maps stored in JSON format, identifying and logging any missing textures for each map.</p>
 
 
-<pre><code>var path = require('path')
+<pre class="javascript"><code>var path = require('path')
 var fs = require('fs')
 var glob = require('glob')
 var os = require('os')
@@ -24,6 +142,17 @@ async function findMissingTextures() {
 
 module.exports = findMissingTextures
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet analyzes Quake game maps for missing textures.</p>
 <p>Here's a breakdown:</p>
@@ -57,3 +186,7 @@ module.exports = findMissingTextures
 </ul></li>
 </ol>
 <p>Let me know if you have any more questions!</p>
+
+</body>
+
+</html>

@@ -1,8 +1,72 @@
-<p>Here is a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../xpath/index.html">xpath</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../xpath/index.html">xpath</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code:</p>
 <p>This code defines a lexer for XPath expressions using the <code>ply</code> module, specifying tokens and their corresponding regular expression patterns to recognize XPath operators, separators, and literal values. The lexer can be used as a foundation for building a parser that constructs an abstract syntax tree (AST) for further processing, making it a crucial component for XPath expression analysis.</p>
 
 
-<pre><code>"""XPath lexing rules.
+<pre class="python"><code>"""XPath lexing rules.
 
 To understand how this module works, it is valuable to have a strong
 understanding of the `ply <http://www.dabeaz.com/ply/>` module.
@@ -64,7 +128,10 @@ t_PLUS_OP = r'\+'
 t_MINUS_OP = r'-'
 t_COMMA = r','
 t_COLON = r':'
-t_DOLLAR = r'\$'
+t_DOLLAR = r'\
+</body>
+
+</html>
 t_STAR_OP = r'\*'
 
 t_ignore = ' \t\r\n'
@@ -129,6 +196,17 @@ def t_INTEGER(t):
 def t_error(t):
     raise TypeError("Unknown text '%s'" % (t.value,))</code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Overview of the Code</strong></p>
 <p>This code is a lexer definition for XPath using the <code>ply</code> module. It defines a set of tokens and their corresponding regular expression patterns.</p>
 <p><strong>Structure</strong></p>
@@ -149,3 +227,7 @@ def t_error(t):
 </ul>
 <p><strong>Example Use Case</strong></p>
 <p>This code would be used as a foundation for building a parser that can understand XPath expressions. The parser would use the definitions in this code to recognize the tokens in the XPath expression and construct an abstract syntax tree (AST) that can be used for further processing.</p>
+
+</body>
+
+</html>

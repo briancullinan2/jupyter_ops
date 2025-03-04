@@ -1,7 +1,83 @@
-<p>This code provides a function <code>updateGist</code> that allows you to update the content of a GitHub Gist using the Octokit library.  It handles authentication (currently commented out) and updates the specified Gist with the provided file changes.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>write gist files</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../edit_anywhere/index.html">edit anywhere</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./read_gist_files.html">read gist files</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./write_gist_files.html">write gist files</a>
+<br /><br />
+<a href="./save_git.html">save git</a>
+<br /><br />
+<a href="./git_file_tree.html">git file tree</a>
+<br /><br />
+<a href="./apply_acl_to_html.html">apply acl to html</a>
+<br /><br />
+<a href="./load_ckeditor.html">load ckeditor</a>
+<br /><br />
+<a href="./scope_css.html">scope css</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./read_crawl_files.html">read crawl files</a>
+<br /><br />
+<a href="./ckeditor_configuration.html">ckeditor configuration</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../edit_anywhere/index.html">edit anywhere</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a function <code>updateGist</code> that allows you to update the content of a GitHub Gist using the Octokit library.  It handles authentication (currently commented out) and updates the specified Gist with the provided file changes.</p>
 
 
-<pre><code>var Octokit = require('@octokit/rest');
+<pre class="javascript"><code>var Octokit = require('@octokit/rest');
 
 // commit changes to github
 async function updateGist(gist, files) {
@@ -28,6 +104,17 @@ async function updateGist(gist, files) {
 module.exports = updateGist
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a function <code>updateGist</code> that commits changes to a GitHub Gist.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -53,3 +140,7 @@ module.exports = updateGist
 <li>The <code>updateGist</code> function is exported as a module, making it available for use in other parts of the application.</li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

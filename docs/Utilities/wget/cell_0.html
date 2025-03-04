@@ -1,8 +1,68 @@
-<p>Here's a 2-sentence summary of the <code>wget</code> command breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 0</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../wget/index.html">wget</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../wget/index.html">wget</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 2-sentence summary of the <code>wget</code> command breakdown:</p>
 <p>The provided <code>wget</code> command downloads a website's contents with various options to customize the download process, including speed limits, downloading linked pages, and converting file references. The command options include settings for download speed, user agent, recursive downloading, and ignoring the robots.txt file to access the website's contents.</p>
 
 
-<pre><code>wget --wait=2 \
+<pre class="bash"><code>wget --wait=2 \
      --level=inf \
 	 --limit-rate=20K \
 	 --recursive \
@@ -15,6 +75,17 @@
 	 -e robots=off \
 	 https://example.com
      </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>wget Command Breakdown</strong></p>
 <p>The provided code is a <code>wget</code> command used to download a website's contents. Here's a breakdown of the options used:</p>
@@ -32,3 +103,7 @@
 <li><code>-e robots=off</code>: Disregards the robots.txt file, which is used to control access to a website.</li>
 <li><code>https://example.com</code>: The URL of the website to be downloaded.</li>
 </ul>
+
+</body>
+
+</html>

@@ -1,11 +1,73 @@
-<p>Here is a summary of the code in two sentences:</p>
-<p>This JavaScript code initializes asynchronous execution using the <code>$$.async()</code> function and then runs a series of Selenium tasks, specifically logging into Facebook and liking all Facebook posts. The code handles task results by extracting functions from the result object and calling them, and also handles errors by sending them to an unknown object <code>$$.</code>.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../facebook_connections/index.html">facebook connections</a>
+    <br /><br />
+    <a href="./collect_facebook_profiles.html">collect facebook profiles</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./_connect_on_facebook.html">,connect on facebook</a>
+<br /><br />
+<a href="./connect_add_friends_facebook.html">connect add friends facebook</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../facebook_connections/index.html">facebook connections</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in two sentences:</p>
+<p>This JavaScript code initializes asynchronous execution using the <code>$.async()</code> function and then runs a series of Selenium tasks, specifically logging into Facebook and liking all Facebook posts. The code handles task results by extracting functions from the result object and calling them, and also handles errors by sending them to an unknown object <code>$.</code>.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var runSeleniumCell = importer.import('selenium cell');
 
-$$.async();
+$.async();
 var loginFacebook, likeAllPosts;
 runSeleniumCell([
     'log in facebook',
@@ -18,9 +80,20 @@ runSeleniumCell([
         } = r);
         return likeAllPosts('https://www.facebook.com/megamindbc', true);
     })
-    .then(r => $$.sendResult(r))
-    .catch(e => $$.sendError(e))
+    .then(r => $.sendResult(r))
+    .catch(e => $.sendError(e))
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
@@ -32,10 +105,10 @@ var runSeleniumCell = importer.import('selenium cell');
 <li>It then imports a function named <code>selenium cell</code> from the imported <code>Core</code> module and assigns it to a variable named <code>runSeleniumCell</code>.</li>
 </ul>
 <h3>Initializing Async Execution</h3>
-<pre><code class="language-javascript">$$.async();
+<pre><code class="language-javascript">$.async();
 </code></pre>
 <ul>
-<li>The code calls a function named <code>async</code> on an object <code>$$.</code></li>
+<li>The code calls a function named <code>async</code> on an object <code>$.</code></li>
 <li>The purpose of this function call is not explicitly stated in the given code, so it's assumed to be some form of asynchronous execution initialization.</li>
 </ul>
 <h3>Running Selenium Tasks</h3>
@@ -66,12 +139,16 @@ var runSeleniumCell = importer.import('selenium cell');
 <li>It then calls the <code>likeAllPosts</code> function with two arguments: <code>'https://www.facebook.com/megamindbc'</code> and <code>true</code>.</li>
 </ul>
 <h3>Handling Result and Error</h3>
-<pre><code class="language-javascript">.then(r =&gt; $$.sendResult(r))
-.catch(e =&gt; $$.sendError(e))
+<pre><code class="language-javascript">.then(r =&gt; $.sendResult(r))
+.catch(e =&gt; $.sendError(e))
 </code></pre>
 <ul>
 <li>The code uses the <code>then</code> method to handle the result of the <code>likeAllPosts</code> function call.</li>
-<li>It sends the result to an unknown object <code>$$.</code> using the <code>sendResult</code> function.</li>
+<li>It sends the result to an unknown object <code>$.</code> using the <code>sendResult</code> function.</li>
 <li>If an error occurs, the <code>catch</code> method is called to handle the error.</li>
-<li>The error is sent to the unknown object <code>$$.</code> using the <code>sendError</code> function.</li>
+<li>The error is sent to the unknown object <code>$.</code> using the <code>sendError</code> function.</li>
 </ul>
+
+</body>
+
+</html>

@@ -1,8 +1,82 @@
-<p>Here is a 2-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>use nodejs express</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../node_express/index.html">node express</a>
+    <br /><br />
+    <a href="./use_nodejs_express.html">use nodejs express</a>
+<br /><br />
+<a href="./start_a_proxy_on__port_.html">start a proxy on {port}</a>
+<br /><br />
+<a href="./display_the_output_from_express.html">display the output from express</a>
+<br /><br />
+<a href="./run_a_DOM_query_on_a_remote_HTML_page.html">run a DOM query on a remote HTML page</a>
+<br /><br />
+<a href="./save_a_list_of_image_elements.html">save a list of image elements</a>
+<br /><br />
+<a href="./stop_express_server.html">stop express server</a>
+<br /><br />
+<a href="./express_rpc_wrapper.html">express rpc wrapper</a>
+<br /><br />
+<a href="./zuora_eloqua_express_mock.html">zuora eloqua express mock</a>
+<br /><br />
+<a href="./directory_to_html.html">directory to html</a>
+<br /><br />
+<a href="./node_express_directory_handler.html">node express directory handler</a>
+<br /><br />
+<a href="./html_music_player.html">html music player</a>
+<br /><br />
+<a href="./html_image_viewer.html">html image viewer</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../node_express/index.html">node express</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary:</p>
 <p>This Node.js code requires and imports several modules, including <code>express</code>, <code>mime</code>, and <code>jsdom</code>, to create a web server and interact with file systems and HTML documents. It also defines variables for output directories, port numbers, hostnames, and CSS queries, and logs a message to the console indicating that Express is ready.</p>
 
 
-<pre><code>var exec = require('child_process').execSync;
+<pre class="javascript"><code>var exec = require('child_process').execSync;
 var fs = require('fs');
 var sourceCmd = exec('npm install jsdom express request mime', {stdio: [0, 1, 2]});
 var express = require('express');
@@ -16,7 +90,18 @@ var port = process.env.PORT || 3000;
 var host = 'localhost';
 var query = '.w-gallery-list img';
 
-$$.done('express is ready');</code></pre>
+$.done('express is ready');</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Requires</h3>
@@ -64,6 +149,10 @@ var query = '.w-gallery-list img';
 <li><code>query</code>: a CSS query to select images with the class <code>.w-gallery-list</code></li>
 </ul>
 <h3>Expression</h3>
-<pre><code class="language-javascript">$$.done('express is ready');
+<pre><code class="language-javascript">$.done('express is ready');
 </code></pre>
-<p>Note: The <code>$$.done</code> function is not a standard Node.js or Express.js function. It is likely a custom function or a function from a third-party library. The line logs a message to the console indicating that Express is ready.</p>
+<p>Note: The <code>$.done</code> function is not a standard Node.js or Express.js function. It is likely a custom function or a function from a third-party library. The line logs a message to the console indicating that Express is ready.</p>
+
+</body>
+
+</html>

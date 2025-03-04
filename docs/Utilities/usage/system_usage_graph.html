@@ -1,8 +1,64 @@
-<p>Here is a 2-sentence summary of the provided code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>system usage graph</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../usage/index.html">usage</a>
+    <br /><br />
+    <a href="./system_usage_report.html">system usage report</a>
+<br /><br />
+<a href="./system_usage_graph.html">system usage graph</a>
+<br /><br />
+<a href="./system_usage_png_buffer.html">system usage png buffer</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../usage/index.html">usage</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary of the provided code:</p>
 <p>The code uses the D3.js library to create a graph that displays system usage data over time, with the option to use a fallback data source if the primary data is missing. The graph is customized with a color palette and axis labels, and it displays a line for each group in the data.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 import { D3Node } from 'd3-node'
 const systemUsage = importer.import('system usage report')
 
@@ -87,6 +143,17 @@ export default graphUsage
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h3>Code Breakdown</h3>
 <h4>Importing Modules and Data</h4>
 <pre><code class="language-javascript">import { D3Node } from 'd3-node'
@@ -160,3 +227,7 @@ svg.selectAll(&quot;.line&quot;)
 <p>The code groups the data by the <code>name</code> property and sets up the X and Y axes. It defines a color palette and draws a line for each group in the data.</p>
 <h4>Note</h4>
 <p>The last part of the code is incomplete and contains a typo. The variable <code>sumsta</code> should be <code>sumstat</code>.</p>
+
+</body>
+
+</html>

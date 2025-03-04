@@ -1,8 +1,76 @@
-<p>Here is a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 5</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../qemu_configs/index.html">qemu configs</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../qemu_configs/index.html">qemu configs</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The provided code snippet contains two identical QEMU sessions with the same parameters, but the second session has an added option <code>-cpu host</code> which specifies that the virtual machine should use the host CPU. This option is the only difference between the two sessions, and it allows the virtual machine to utilize the same CPU model as the physical machine running the QEMU session.</p>
 
 
-<pre><code>qemu-system-x86_64 --enable-kvm \ 
+<pre class="bash"><code>qemu-system-x86_64 --enable-kvm \ 
 -drive file=./win10.img,if=virtio \
 -smp 4 -m 4096 -vga qxl \
 -net nic,model=virtio -net user \
@@ -14,6 +82,17 @@ qemu-system-x86_64 --enable-kvm \
 -net nic,model=virtio -net user \
 -soundhw hda
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Two QEMU Sessions</h4>
@@ -56,3 +135,7 @@ qemu-system-x86_64 --enable-kvm \
 <pre><code class="language-bash">-cpu host
 </code></pre>
 <p>This option specifies that the virtual machine should use the host CPU, which means it will use the same CPU model as the physical machine running the QEMU session.</p>
+
+</body>
+
+</html>

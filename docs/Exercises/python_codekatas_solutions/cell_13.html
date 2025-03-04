@@ -1,7 +1,85 @@
-<p>The <code>shortest_path</code> function finds the shortest path between two nodes (<code>u</code> and <code>v</code>) in a graph <code>g</code> by performing a breadth-first search (BFS) traversal. It returns the path as a list of nodes if found, otherwise returns -1.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 13</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../python_codekatas_solutions/index.html">python codekatas solutions</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../python_codekatas_solutions/index.html">python codekatas solutions</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>shortest_path</code> function finds the shortest path between two nodes (<code>u</code> and <code>v</code>) in a graph <code>g</code> by performing a breadth-first search (BFS) traversal. It returns the path as a list of nodes if found, otherwise returns -1.</p>
 
 
-<pre><code>def shortest_path(g, u, v):
+<pre class="python"><code>def shortest_path(g, u, v):
     """Find shortest path between u and v in g."""
     visited = set()
     from queue import Queue
@@ -25,6 +103,17 @@ start = 'a'
 end = 'g'
 assert len(shortest_path(graph, start, end)) == 5
 print('All passed!')</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Function: <code>shortest_path</code></h3>
@@ -64,3 +153,7 @@ print('All passed!')</code></pre>
 <li>A graph with no connections between nodes 'a' and 'b'.</li>
 <li>A graph with multiple nodes and connections, and a path from 'a' to 'g' with a length of 5.</li>
 </ol>
+
+</body>
+
+</html>

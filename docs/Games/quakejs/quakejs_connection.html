@@ -1,7 +1,67 @@
-<p>This code provides a module for interacting with Quake 3 servers, allowing you to connect to master servers to find available game servers and retrieve detailed information about specific servers.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>quakejs connection</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quakejs/index.html">quakejs</a>
+    <br /><br />
+    <a href="./quakejs_web_master.html">quakejs web master</a>
+<br /><br />
+<a href="./quakejs_connection.html">quakejs connection</a>
+<br /><br />
+<a href="./quakejs_parsing.html">quakejs parsing</a>
+<br /><br />
+<a href="./quakejs_utilities.html">quakejs utilities</a>
+<br /><br />
+<a href="./test_quakejs_master.html">test quakejs master</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quakejs/index.html">quakejs</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a module for interacting with Quake 3 servers, allowing you to connect to master servers to find available game servers and retrieve detailed information about specific servers.</p>
 
 
-<pre><code>var importer = require('../Core')
+<pre class="javascript"><code>var importer = require('../Core')
 var WebSocket = require('ws')
 var {_formatOOB, _stripOOB} = importer.import('quakejs utilities')
 var {_parseServers, _parseInfoResponse} = importer.import('quakejs parsing')
@@ -91,6 +151,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a module for interacting with Quake 3 servers using WebSockets.</p>
 <p>Here's a breakdown:</p>
 <p><strong>Core Functionality:</strong></p>
@@ -114,3 +185,7 @@ module.exports = {
 <li>The module exports the <code>connect</code> and <code>scanServer</code> functions, making them available for use in other parts of the application.</li>
 </ul>
 <p>Let me know if you have any other code snippets you'd like me to explain!</p>
+
+</body>
+
+</html>

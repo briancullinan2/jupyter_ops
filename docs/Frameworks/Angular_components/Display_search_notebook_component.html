@@ -1,7 +1,71 @@
-<p>This code defines an Angular component for a search bar, including its template, styling, search functionality, and routing configuration, along with a module to encapsulate and share it.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Display search notebook component</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../Angular_components/index.html">Angular components</a>
+    <br /><br />
+    <a href="./Display_search_notebook_component.html">Display search notebook component</a>
+<br /><br />
+<a href="./Search_notebook_service.html">Search notebook service</a>
+<br /><br />
+<a href="./Display_code_results.html">Display code results</a>
+<br /><br />
+<a href="./Sockify_search_notebook_provider.html">Sockify search notebook provider</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./Display_login_form.html">Display login form</a>
+<br /><br />
+<a href="./Authentication_service.html">Authentication service</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../Angular_components/index.html">Angular components</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code defines an Angular component for a search bar, including its template, styling, search functionality, and routing configuration, along with a module to encapsulate and share it.</p>
 
 
-<pre><code>import {Component, ModuleWithProviders, NgModule} from '@angular/core';
+<pre class="typescript"><code>import {Component, ModuleWithProviders, NgModule} from '@angular/core';
 import {COMMON_MODULES} from '../../../imports/core.module';
 import {RouterModule, Routes} from '@angular/router';
 import {SearchService} from '../../../imports/search.service';
@@ -62,6 +126,17 @@ export class SearchModule {
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines an Angular component for a search bar and its associated module.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -98,3 +173,7 @@ export class SearchModule {
 </ul></li>
 </ol>
 <p>In essence, this code defines a reusable Angular component for a search bar, including its template, styles, logic, and routing configuration.</p>
+
+</body>
+
+</html>

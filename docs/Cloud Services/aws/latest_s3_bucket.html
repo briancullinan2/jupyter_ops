@@ -1,7 +1,63 @@
-<p>This code provides a function <code>latestS3</code> that retrieves the 5 most recently modified files from an S3 bucket, optionally filtering them based on a given pattern. It's designed to be used both as a server-side module and potentially in a client-side environment.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>latest s3 bucket</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../aws/index.html">aws</a>
+    <br /><br />
+    <a href="./aws_rpc_wrapper.html">aws rpc wrapper</a>
+<br /><br />
+<a href="./latest_s3_bucket.html">latest s3 bucket</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../aws/index.html">aws</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a function <code>latestS3</code> that retrieves the 5 most recently modified files from an S3 bucket, optionally filtering them based on a given pattern. It's designed to be used both as a server-side module and potentially in a client-side environment.</p>
 
 
-<pre><code>var fs = require('fs');
+<pre class="javascript"><code>var fs = require('fs');
 var path = require('path');
 var minimatch = require("minimatch")
 var AWS = require('aws-sdk');
@@ -45,13 +101,24 @@ function latestS3(match, bucket) {
 }
 module.exports = latestS3;
 
-if(typeof $$ !== 'undefined') {
-    $$.async();
+if(typeof $ !== 'undefined') {
+    $.async();
     latestS3()
-        .then(r => $$.sendResult(r))
-        .catch(e => $$.sendError(e))
+        .then(r => $.sendResult(r))
+        .catch(e => $.sendError(e))
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code defines a function <code>latestS3</code> that retrieves the 5 most recently modified files from an S3 bucket that match a given pattern.</p>
 <p>Here's a breakdown:</p>
@@ -90,7 +157,11 @@ if(typeof $$ !== 'undefined') {
 <li><p><strong>Client-Side Execution (Conditional):</strong></p>
 <ul>
 <li>The code includes a conditional block that appears to be for client-side execution (likely in a browser environment).</li>
-<li>It calls <code>latestS3</code> and sends the result or error to a client-side function (<code>$$.sendResult</code> and <code>$$.sendError</code>).</li>
+<li>It calls <code>latestS3</code> and sends the result or error to a client-side function (<code>$.sendResult</code> and <code>$.sendError</code>).</li>
 </ul></li>
 </ol>
 <p>Let me know if you have any more questions!</p>
+
+</body>
+
+</html>

@@ -1,10 +1,94 @@
-<p>Here is a one-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 8</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quake_3_commands/index.html">quake 3 commands</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./Try_streaming_the_game_over_VNC__is_it_awful_Kind_of__and_inputs_don_t_work_as_expected_.html">Try streaming the game over VNC, is it awful Kind of, and inputs don't work as expected.</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./https___quake_games_set_20name_20player_name.html">https://quake.games/set%20name%20player_name</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+<a href="./cell_14.html">Cell 14</a>
+<br /><br />
+<a href="./cell_15.html">Cell 15</a>
+<br /><br />
+<a href="./cell_16.html">Cell 16</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quake_3_commands/index.html">quake 3 commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a one-sentence summary:</p>
 <p>This collection of batch scripts and commands is used to preprocess and convert Quake 2 maps, including converting <code>.bsp</code> and <code>.md2</code> files, normalizing vertices, and compiling hinted maps on both Windows and macOS platforms.</p>
 <p>Alternatively, if you'd like a two-sentence summary, here is one:</p>
 <p>The provided code consists of a series of batch scripts and commands designed to preprocess and convert Quake 2 maps, including Windows and macOS versions. These scripts handle tasks such as converting <code>.bsp</code> and <code>.md2</code> files, normalizing vertices, and compiling hinted maps, all essential steps in preparing Quake 2 maps for use.</p>
 
 
-<pre><code>
+<pre class="bash"><code>
 
 Z:\Downloads\netradiant-custom-win64\netradiant-custom-20190705\mbspc.exe -bsp2map Z:\.quake2\baseq2\pak0.pak\maps\base1.bsp
 
@@ -58,6 +142,17 @@ popd
 
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Overview</h3>
@@ -135,3 +230,7 @@ npm run import &quot;split map hints&quot; -- &quot;['${i%.</em>}_converted.map'
 /Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -meta _keeplights &quot;${i%.*}-a.map&quot;;
 </code></pre>
 <p>This command compiles a hinted map.</p>
+
+</body>
+
+</html>

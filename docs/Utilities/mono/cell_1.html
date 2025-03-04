@@ -1,8 +1,64 @@
-<p>Here is a 2-sentence summary of the shell script:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../mono/index.html">mono</a>
+    <br /><br />
+    <a href="./run_Mono_with_docker.html">run Mono with docker</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../mono/index.html">mono</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary of the shell script:</p>
 <p>This shell script configures a NuGet package source, restores packages in a.NET project, and builds the project using MSBuild. The script creates a configuration file, sets up symbolic links, updates the NuGet package source, and builds a specific project.</p>
 
 
-<pre><code>echo
+<pre class="javascript"><code>echo
 '<configuration> \
    <packageRestore> \
        <add key="enabled" value="True" /> \
@@ -39,6 +95,17 @@ msbuild
 Subscription.IdentityManagement.csproj
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <p>This is a shell script that appears to be configuring a NuGet package source and restoring packages in a.NET project.</p>
 <h3>Section 1: Configuration File</h3>
@@ -73,3 +140,7 @@ nuget update /act.subscription.management /act.subscription.management.sln
 <pre><code class="language-bash">msbuild Subscription.IdentityManagement.csproj
 </code></pre>
 <p>Note that the script assumes the presence of certain files and directories, such as <code>subscription.myact</code>, <code>subscription.core</code>, etc. It also requires a <code>NuGet.Config</code> file in the current working directory.</p>
+
+</body>
+
+</html>

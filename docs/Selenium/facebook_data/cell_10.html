@@ -1,14 +1,88 @@
-<p>Here is a summary of the code in two sentences:</p>
-<p>This code imports dependencies and defines Selenium cell tasks to log in and unfollow everyone on Facebook using the <code>runSeleniumCell</code> function, which is executed asynchronously. The tasks are then executed sequentially using a promise chain, with the results sent to the <code>$$.sendResult</code> function and any errors sent to the <code>$$.sendError</code> function.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 10</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../facebook_data/index.html">facebook data</a>
+    <br /><br />
+    <a href="./Log_in_to_facebook.html">Log in to facebook</a>
+<br /><br />
+<a href="./Scrape_facebook_profile.html">Scrape facebook profile</a>
+<br /><br />
+<a href="./Like_all_facebook_posts.html">Like all facebook posts</a>
+<br /><br />
+<a href="./Scrape_facebook_event.html">Scrape facebook event</a>
+<br /><br />
+<a href="./Scrape_facebook_events.html">Scrape facebook events</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./Scrape_facebook_friends.html">Scrape facebook friends</a>
+<br /><br />
+<a href="./Automatically_diff_facebook_friends.html">Automatically diff facebook friends</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+<a href="./Unfollow_everyone_on_facebook.html">Unfollow everyone on facebook</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../facebook_data/index.html">facebook data</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in two sentences:</p>
+<p>This code imports dependencies and defines Selenium cell tasks to log in and unfollow everyone on Facebook using the <code>runSeleniumCell</code> function, which is executed asynchronously. The tasks are then executed sequentially using a promise chain, with the results sent to the <code>$.sendResult</code> function and any errors sent to the <code>$.sendError</code> function.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var runSeleniumCell = importer.import('selenium cell');
 // Unfollow everyone on facebook?
 
 // https://www.facebook.com/me/following
 var loginFacebook, unfollowFacebook;
-$$.async();
+$.async();
 runSeleniumCell([
     'log in facebook',
     'unfollow everyone facebook'
@@ -19,9 +93,20 @@ runSeleniumCell([
         return loginFacebook();
     })
     .then(() => unfollowFacebook())
-    .then(r => $$.sendResult(r))
-    .catch(e => $$.sendError(e));
+    .then(r => $.sendResult(r))
+    .catch(e => $.sendError(e));
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Dependencies</h3>
@@ -38,7 +123,7 @@ var runSeleniumCell = importer.import('selenium cell');
 
 // https://www.facebook.com/me/following
 var loginFacebook, unfollowFacebook;
-$$.async();
+$.async();
 runSeleniumCell([
     'log in facebook',
     'unfollow everyone facebook'
@@ -46,7 +131,7 @@ runSeleniumCell([
 </code></pre>
 <ul>
 <li>Two variables, <code>loginFacebook</code> and <code>unfollowFacebook</code>, are declared but not initialized.</li>
-<li>The asynchronous functionality is enabled using <code>$$.async()</code>.</li>
+<li>The asynchronous functionality is enabled using <code>$.async()</code>.</li>
 <li>A list of Selenium cell tasks is defined using <code>runSeleniumCell([... ])</code>, where each task is represented by a string:
 <ul>
 <li><code>'log in facebook'</code></li>
@@ -60,8 +145,8 @@ runSeleniumCell([
     return loginFacebook();
 })
 .then(() =&gt; unfollowFacebook())
-.then(r =&gt; $$.sendResult(r))
-.catch(e =&gt; $$.sendError(e));
+.then(r =&gt; $.sendResult(r))
+.catch(e =&gt; $.sendError(e));
 </code></pre>
 <ul>
 <li>The code utilizes the promise chain to execute the Selenium cell tasks sequentially.</li>
@@ -75,7 +160,11 @@ runSeleniumCell([
 <li>In the second <code>then</code> block, the <code>unfollowFacebook</code> function is executed by calling it with <code>unfollowFacebook()</code>.</li>
 <li>In the final <code>then</code> block:
 <ul>
-<li>The result of executing the <code>unfollowFacebook</code> function is passed to the <code>$$.sendResult</code> function.</li>
+<li>The result of executing the <code>unfollowFacebook</code> function is passed to the <code>$.sendResult</code> function.</li>
 </ul></li>
-<li>The <code>catch</code> block is used to handle any errors that may occur during the execution of the Selenium cell tasks. If an error occurs, it is passed to the <code>$$.sendError</code> function.</li>
+<li>The <code>catch</code> block is used to handle any errors that may occur during the execution of the Selenium cell tasks. If an error occurs, it is passed to the <code>$.sendError</code> function.</li>
 </ul>
+
+</body>
+
+</html>

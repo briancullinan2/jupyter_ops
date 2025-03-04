@@ -1,7 +1,67 @@
-<p>This code acts as a Quake 3 server browser, connecting to a master server to retrieve a list of servers and then scanning each server for detailed information.  It logs the server details and scanned information, and handles connection errors by attempting to reconnect.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>test quakejs master</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quakejs/index.html">quakejs</a>
+    <br /><br />
+    <a href="./quakejs_web_master.html">quakejs web master</a>
+<br /><br />
+<a href="./quakejs_connection.html">quakejs connection</a>
+<br /><br />
+<a href="./quakejs_parsing.html">quakejs parsing</a>
+<br /><br />
+<a href="./quakejs_utilities.html">quakejs utilities</a>
+<br /><br />
+<a href="./test_quakejs_master.html">test quakejs master</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quakejs/index.html">quakejs</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code acts as a Quake 3 server browser, connecting to a master server to retrieve a list of servers and then scanning each server for detailed information.  It logs the server details and scanned information, and handles connection errors by attempting to reconnect.</p>
 
 
-<pre><code>var importer = require('../Core')
+<pre class="javascript"><code>var importer = require('../Core')
 var master = importer.import('quakejs connection')
 
 var host = 'local.games' //'master.quakejs.com'
@@ -37,6 +97,17 @@ function testServers() {
 module.exports = testServers
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code fetches and scans information about Quake 3 servers.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -62,3 +133,7 @@ module.exports = testServers
 </ul></li>
 </ol>
 <p>In essence, this code acts as a simple Quake 3 server browser, connecting to a master server, retrieving a list of servers, and then scanning each server for details.</p>
+
+</body>
+
+</html>

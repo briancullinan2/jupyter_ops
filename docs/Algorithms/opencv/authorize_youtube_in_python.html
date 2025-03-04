@@ -1,10 +1,82 @@
-<p>Here's a summary of the code breakdown in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>authorize youtube in python</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../opencv/index.html">opencv</a>
+    <br /><br />
+    <a href="./detect_people.html">detect people</a>
+<br /><br />
+<a href="./motion_detection.html">motion detection</a>
+<br /><br />
+<a href="./python_write_video.html">python write video</a>
+<br /><br />
+<a href="./python_write_images_to_ffmpeg_stream.html">python write images to ffmpeg stream</a>
+<br /><br />
+<a href="./create_a_live_streaming_request.html">create a live streaming request</a>
+<br /><br />
+<a href="./authorize_youtube_in_python.html">authorize youtube in python</a>
+<br /><br />
+<a href="./list_broadcasts.html">list broadcasts</a>
+<br /><br />
+<a href="./create_live_stream.html">create live stream</a>
+<br /><br />
+<a href="./list_live_stream.html">list live stream</a>
+<br /><br />
+<a href="./bind_youtube_stream.html">bind youtube stream</a>
+<br /><br />
+<a href="./transition_live_stream.html">transition live stream</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../opencv/index.html">opencv</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the code breakdown in one sentence:</p>
 <p>This Python script uses the Flask web framework and Google API Client Library to create a simple web application that authenticates users with Google and authorizes them to access the YouTube API using OAuth 2.0 authentication.</p>
 <p>Alternatively, here's a two-sentence summary:</p>
 <p>The script imports necessary libraries and sets environment variables for Google API authentication, then creates a Flask application instance. It defines a single route, <code>/authorize</code>, which handles the OAuth 2.0 authorization flow, generating a URL to redirect users to the Google authorization page for consent and offline access.</p>
 
 
-<pre><code>
+<pre class="python"><code>
 import os
 import sys
 import flask
@@ -123,6 +195,17 @@ __all__ = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <p>This is a Python script that uses the Flask web framework and the Google API Client Library to create a simple web application that authenticates users with Google and authorizes them to access the YouTube API.</p>
 <h3>Importing Libraries</h3>
@@ -158,3 +241,7 @@ def authorize():
    ...
 </code></pre>
 <p>This route creates a <code>Flow</code> instance from the client secrets file and sets the redirect URI to <code>https://localhost:8080</code>. The <code>authorization_url</code> method is called to generate a URL that will redirect the user to the Google authorization page. The <code>prompt</code> parameter is set to <code>'consent'</code> to enable user consent, and <code>access_type</code> is set to <code>'offline'</code> to enable offline access.</p>
+
+</body>
+
+</html>

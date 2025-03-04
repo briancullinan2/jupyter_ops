@@ -1,10 +1,89 @@
-<p>This code snippet configures a Linux desktop for remote access using VNC by launching a window manager and starting a VNC server on port 5900.  This allows another computer to connect and control the Linux machine remotely.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>What is VNC</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../vnc/index.html">vnc</a>
+    <br /><br />
+    <a href="./What_is_VNC.html">What is VNC</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./VNC_HTML_client.html">VNC HTML client</a>
+<br /><br />
+<a href="./Use_vnc_with_live-server.html">Use vnc with live-server</a>
+<br /><br />
+<a href="./VNC_in_Docker.html">VNC in Docker</a>
+<br /><br />
+<a href="./selenium_vnc_server.html">selenium vnc server</a>
+<br /><br />
+<a href="./vnc_entry_point.html">vnc entry point</a>
+<br /><br />
+<a href="./install_vnc_entry.html">install vnc entry</a>
+<br /><br />
+<a href="./install_aws_vnc_selenium.html">install aws vnc selenium</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../vnc/index.html">vnc</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code snippet configures a Linux desktop for remote access using VNC by launching a window manager and starting a VNC server on port 5900.  This allows another computer to connect and control the Linux machine remotely.</p>
 
 
-<pre><code>fluxbox -display :0
+<pre class="bash"><code>fluxbox -display :0
 x11vnc -forever -nopw -shared -rfbport -ncache 5900 -display :0
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet starts two processes to enable remote access to a Linux desktop using VNC.</p>
 <ol>
@@ -24,3 +103,7 @@ x11vnc -forever -nopw -shared -rfbport -ncache 5900 -display :0
 </ol>
 <p><strong>Purpose:</strong></p>
 <p>This command sequence sets up a remote desktop session using VNC, allowing you to control the Linux machine from another computer over a network.</p>
+
+</body>
+
+</html>

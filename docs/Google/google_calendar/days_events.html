@@ -1,7 +1,75 @@
-<p>The <code>getDaysEvents</code> function retrieves events from a specified Google Calendar for a given day, utilizing a cache to improve performance and efficiency. It parses the input date, constructs the date range, fetches events from the API, and returns a filtered list of non-deleted events.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>days events</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_calendar/index.html">google calendar</a>
+    <br /><br />
+    <a href="./use_Google_calendar_API.html">use Google calendar API</a>
+<br /><br />
+<a href="./list_events.html">list events</a>
+<br /><br />
+<a href="./Run_todays_calendar_events.html">Run todays calendar events</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./Correct_calendar_dates_for_timeMax_and_timeMin.html">Correct calendar dates for timeMax and timeMin</a>
+<br /><br />
+<a href="./Lookup_calendar_id_by_name_or_id.html">Lookup calendar id by name or id</a>
+<br /><br />
+<a href="./days_events.html">days events</a>
+<br /><br />
+<a href="./Update_create_merge_delete_event.html">Update create merge delete event</a>
+<br /><br />
+<a href="./create_new_calendar_event.html">create new calendar event</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_calendar/index.html">google calendar</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>getDaysEvents</code> function retrieves events from a specified Google Calendar for a given day, utilizing a cache to improve performance and efficiency. It parses the input date, constructs the date range, fetches events from the API, and returns a filtered list of non-deleted events.</p>
 
 
-<pre><code>var chrono = require('chrono-node');
+<pre class="javascript"><code>var chrono = require('chrono-node');
 var assert = require('assert');
 var importer = require('../Core');
 var {
@@ -48,6 +116,17 @@ function getDaysEvents(startDate, options) {
 module.exports = getDaysEvents;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a function <code>getDaysEvents</code> that fetches events from a Google Calendar for a specific day.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -79,3 +158,7 @@ module.exports = getDaysEvents;
 </ul></li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

@@ -1,8 +1,72 @@
-<p>Here is a summary of the code in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>default link collector</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../scraping/index.html">scraping</a>
+    <br /><br />
+    <a href="./extract_llm_article.html">extract llm article</a>
+<br /><br />
+<a href="./test_article_extract.html">test article extract</a>
+<br /><br />
+<a href="./summarize_llm_article.html">summarize llm article</a>
+<br /><br />
+<a href="./test_article_summarizer.html">test article summarizer</a>
+<br /><br />
+<a href="./summarize_all_articles.html">summarize all articles</a>
+<br /><br />
+<a href="./convert_summaries.html">convert summaries</a>
+<br /><br />
+<a href="./default_link_collector.html">default link collector</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../scraping/index.html">scraping</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in one sentence:</p>
 <p>This JavaScript module imports required modules and functions, defines constants and functions for file operations, URL manipulation, and data collection, and exports these functions for use in other parts of the application.</p>
 
 
-<pre><code>const fs = require('fs')
+<pre class="javascript"><code>const fs = require('fs')
 const path = require('path')
 const {safeurl} = importer.import('domain cache tools')
 
@@ -54,6 +118,17 @@ module.exports = {
   persistSummaries,
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Requires and Imports</h3>
@@ -145,3 +220,7 @@ const { safeurl } = importer.import('domain cache tools'); // Import a function 
 <ul>
 <li>The functions <code>defaultCollector</code>, <code>getNearestSunday</code>, and <code>persistSummaries</code> are exported from this module.</li>
 </ul>
+
+</body>
+
+</html>

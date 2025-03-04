@@ -1,9 +1,86 @@
-<p>This code snippet launches a Selenium container in the background, mapping necessary ports for access, and then displays a list of running containers.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>run the Docker image</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../git_repos/index.html">git repos</a>
+    <br /><br />
+    <a href="./_test_repository.html">,test repository</a>
+<br /><br />
+<a href="./selenium_repository.html">selenium repository</a>
+<br /><br />
+<a href="./project_repository.html">project repository</a>
+<br /><br />
+<a href="./_Setup_git_credentials_in_docker.html">,Setup git credentials in docker</a>
+<br /><br />
+<a href="./use_in_Docker.html">use in Docker</a>
+<br /><br />
+<a href="./use_npm_cache_inside_of_docker.html">use npm cache inside of docker</a>
+<br /><br />
+<a href="./run_the_Docker_image.html">run the Docker image</a>
+<br /><br />
+<a href="./Selenium_test_scripts.html">Selenium test scripts</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../git_repos/index.html">git repos</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code snippet launches a Selenium container in the background, mapping necessary ports for access, and then displays a list of running containers.</p>
 
 
-<pre><code>docker run --shm-size=2g --name selenium -d -p 8888:8888 -p 6080:6080 -p 5900:5900 -p 4444:4444 -p 4200:4200 -p 3000:3000 selenium
+<pre class="bash"><code>docker run --shm-size=2g --name selenium -d -p 8888:8888 -p 6080:6080 -p 5900:5900 -p 4444:4444 -p 4200:4200 -p 3000:3000 selenium
 docker ps
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet starts and manages a Selenium Docker container.</p>
 <p>Here's a breakdown:</p>
@@ -20,3 +97,7 @@ docker ps
 <li><p><strong><code>docker ps</code></strong>: Lists all running Docker containers, including the &quot;selenium&quot; container you just started.</p></li>
 </ul>
 <p>Let me know if you'd like more details on any specific part of the code!</p>
+
+</body>
+
+</html>

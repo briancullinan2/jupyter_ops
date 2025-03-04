@@ -1,7 +1,67 @@
-<p>This code analyzes Google Calendar events based on provided search queries, calculates the frequency of events for each query, and visualizes the results as a pie chart.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>test google calendar search pie chart</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_calendar_graphs/index.html">google calendar graphs</a>
+    <br /><br />
+    <a href="./test_calendar_api_graph_Iga_s_cycle_for_as_long_as_there_are_valid_dates.html">test calendar api graph Iga's cycle for as long as there are valid dates</a>
+<br /><br />
+<a href="./test_google_calendar_search_heatmap.html">test google calendar search heatmap</a>
+<br /><br />
+<a href="./test_google_calendar_search_swimlane.html">test google calendar search swimlane</a>
+<br /><br />
+<a href="./test_google_calendar_search_pie_chart.html">test google calendar search pie chart</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_calendar_graphs/index.html">google calendar graphs</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code analyzes Google Calendar events based on provided search queries, calculates the frequency of events for each query, and visualizes the results as a pie chart.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 
 var options = {};
 var {
@@ -29,7 +89,7 @@ function calendarSearchToPieChart(searches) {
         .catch(e => console.log(e))
 }
 
-$$.async();
+$.async();
 calendarSearchToPieChart([
     'study sauce',
     'portal',
@@ -44,10 +104,21 @@ calendarSearchToPieChart([
     '"c#"',
     'docker'
 ])
-    .then(r => $$.svg(r))
-    .catch(e => $$.sendError(e))
+    .then(r => $.svg(r))
+    .catch(e => $.sendError(e))
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet fetches data from a Google Calendar API, summarizes events based on search queries, and generates a pie chart visualizing the results.</p>
 <p>Here's a breakdown:</p>
@@ -74,3 +145,7 @@ calendarSearchToPieChart([
 </ul></li>
 </ol>
 <p>Let me know if you have any other code snippets you'd like me to explain!</p>
+
+</body>
+
+</html>

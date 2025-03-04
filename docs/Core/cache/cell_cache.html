@@ -1,7 +1,91 @@
-<p>This code defines a <code>cellCache</code> that stores metadata about Jupyter Notebook cells, including timestamps, file paths, and potentially associated questions or prompts. This cache likely serves purposes such as tracking cell execution or facilitating interactive code analysis.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>cell cache</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../cache/index.html">cache</a>
+    <br /><br />
+    <a href="./cell_cache.html">cell cache</a>
+<br /><br />
+<a href="./cache_notebook.html">cache notebook</a>
+<br /><br />
+<a href="./test_cache_notebook.html">test cache notebook</a>
+<br /><br />
+<a href="./cache_all.html">cache all</a>
+<br /><br />
+<a href="./imports_cache.html">imports cache</a>
+<br /><br />
+<a href="./create_import_cache.html">create import cache</a>
+<br /><br />
+<a href="./test_import_cache.html">test import cache</a>
+<br /><br />
+<a href="./exports_cache.html">exports cache</a>
+<br /><br />
+<a href="./create_cell_cache.html">create cell cache</a>
+<br /><br />
+<a href="./test_export_cache.html">test export cache</a>
+<br /><br />
+<a href="./__update_code_cell.html">, update code cell</a>
+<br /><br />
+<a href="./update_regular_cache.html">update regular cache</a>
+<br /><br />
+<a href="./memory_safe_async.html">memory safe async</a>
+<br /><br />
+<a href="./refresh_regular_cache.html">refresh regular cache</a>
+<br /><br />
+<a href="./cell_14.html">Cell 14</a>
+<br /><br />
+<a href="./cell_15.html">Cell 15</a>
+<br /><br />
+<a href="./cell_16.html">Cell 16</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../cache/index.html">cache</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code defines a <code>cellCache</code> that stores metadata about Jupyter Notebook cells, including timestamps, file paths, and potentially associated questions or prompts. This cache likely serves purposes such as tracking cell execution or facilitating interactive code analysis.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 // cell cache automatically replaced
 var cellCache = [
     [
@@ -2200,7 +2284,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[0]",
         {
             "from": 0,
@@ -2212,7 +2296,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[1]",
         {
             "from": 5,
@@ -2228,7 +2312,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[10]",
         {
             "from": 25,
@@ -2240,7 +2324,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[11]",
         {
             "from": 28,
@@ -2252,7 +2336,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[12]",
         {
             "from": 30,
@@ -2264,7 +2348,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[13]",
         {
             "from": 32,
@@ -2276,7 +2360,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[14]",
         {
             "from": 34,
@@ -2287,7 +2371,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[15]",
         {
             "from": 36,
@@ -2298,7 +2382,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[16]",
         {
             "from": 38,
@@ -2309,7 +2393,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[2]",
         {
             "from": 7,
@@ -2321,7 +2405,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[3]",
         {
             "from": 9,
@@ -2336,7 +2420,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[4]",
         {
             "from": 11,
@@ -2348,7 +2432,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[5]",
         {
             "from": 14,
@@ -2360,7 +2444,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[6]",
         {
             "from": 16,
@@ -2372,7 +2456,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[7]",
         {
             "from": 18,
@@ -2384,7 +2468,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[8]",
         {
             "from": 21,
@@ -2397,7 +2481,7 @@ var cellCache = [
         }
     ],
     [
-        1741059115593,
+        1741109882392,
         "/Users/briancullinan/jupyter_ops/Core/cache.ipynb[9]",
         {
             "from": 23,
@@ -8353,7 +8437,7 @@ var cellCache = [
         }
     ],
     [
-        1741059754632,
+        1741109917543,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[0]",
         {
             "from": 0,
@@ -8365,7 +8449,7 @@ var cellCache = [
         }
     ],
     [
-        1741059754632,
+        1741109917543,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[1]",
         {
             "from": 4,
@@ -8377,7 +8461,7 @@ var cellCache = [
         }
     ],
     [
-        1741059754632,
+        1741109917543,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[2]",
         {
             "from": 6,
@@ -8391,7 +8475,7 @@ var cellCache = [
         }
     ],
     [
-        1741059754632,
+        1741109917543,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[3]",
         {
             "from": 8,
@@ -8403,7 +8487,7 @@ var cellCache = [
         }
     ],
     [
-        1741059754632,
+        1741109917543,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[4]",
         {
             "from": 10,
@@ -8411,6 +8495,30 @@ var cellCache = [
             "questions": [
                 "export documentation",
                 "export documentation"
+            ]
+        }
+    ],
+    [
+        1741109917543,
+        "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[5]",
+        {
+            "from": 13,
+            "to": 14,
+            "questions": [
+                "highlight js",
+                "highlight js"
+            ]
+        }
+    ],
+    [
+        1741109917543,
+        "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb[6]",
+        {
+            "from": 15,
+            "to": 16,
+            "questions": [
+                "javadoc template",
+                "javadoc template"
             ]
         }
     ],
@@ -14736,6 +14844,17 @@ module.exports = {
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a <code>cellCache</code> variable, which appears to store information about Jupyter Notebook cells.</p>
 <p>Here's a breakdown:</p>
 <ul>
@@ -14758,3 +14877,7 @@ module.exports = {
 <li>The <code>cellCache</code> likely stores metadata about Jupyter Notebook cells, possibly for tracking cell execution, associating questions with cells, or other purposes related to interactive code execution and analysis.</li>
 </ul></li>
 </ul>
+
+</body>
+
+</html>

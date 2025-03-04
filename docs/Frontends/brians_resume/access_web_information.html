@@ -1,10 +1,86 @@
-<p>Here is a summary of the code in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>access web information</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../brians_resume/index.html">brians resume</a>
+    <br /><br />
+    <a href="./_get_a_list_of_folder_topics_from_bookmarks.html">,get a list of folder topics from bookmarks</a>
+<br /><br />
+<a href="./update_insterests_resume_sheet.html">update insterests resume sheet</a>
+<br /><br />
+<a href="./load_message_history.html">load message history</a>
+<br /><br />
+<a href="./brians_resume.html">brians resume</a>
+<br /><br />
+<a href="./file_system_access.html">file system access</a>
+<br /><br />
+<a href="./access_web_information.html">access web information</a>
+<br /><br />
+<a href="./ask_another_llm_for_help.html">ask another llm for help</a>
+<br /><br />
+<a href="./render_message_history.html">render message history</a>
+<br /><br />
+<a href="./resume_express_chat_service.html">resume express chat service</a>
+<br /><br />
+<a href="./render_history_navigation.html">render history navigation</a>
+<br /><br />
+<a href="./resume_chat_program.html">resume chat program</a>
+<br /><br />
+<a href="./chat_page.html">chat page</a>
+<br /><br />
+<a href="./brians_resume_in_html.html">brians resume in html</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../brians_resume/index.html">brians resume</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in one sentence:</p>
 <p>The code defines a function <code>accessInternet</code> that uses Selenium to extract articles from websites or search for knowledge on the internet based on user input, and summarizes the results using the <code>summarizeArticle</code> function.</p>
 <p>Or, if you prefer a two-sentence summary:</p>
 <p>The <code>accessInternet</code> function is an asynchronous function that takes a prompt model, session object, and prompt string as input and performs various tasks based on user input. These tasks include extracting articles from websites, searching for knowledge on the internet, and summarizing the results using the <code>summarizeArticle</code> function.</p>
 
 
-<pre><code>const extractArticle = importer.import('extract llm article')
+<pre class="javascript"><code>const extractArticle = importer.import('extract llm article')
 const getClient = importer.import('selenium client')
 const summerizeArticle = importer.import('summarize llm article')
 
@@ -67,6 +143,17 @@ async function accessInternet(promptModel, session, prompt) {
 module.exports = accessInternet
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code imports three modules:</p>
@@ -113,3 +200,7 @@ module.exports = accessInternet
 <li>The code uses <code>exec</code> to extract the HTTPS link from the prompt.</li>
 <li>The code uses template literals to format the summary strings.</li>
 </ul>
+
+</body>
+
+</html>

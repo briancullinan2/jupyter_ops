@@ -1,10 +1,85 @@
-<p>These two Git commands apply staged changes to a repository, but the second command additionally resets the working directory and index before allowing for selective staging of changes.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>git discard whitespace</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../git_commands/index.html">git commands</a>
+    <br /><br />
+    <a href="./git_discard_whitespace.html">git discard whitespace</a>
+<br /><br />
+<a href="./compare_git_branches.html">compare git branches</a>
+<br /><br />
+<a href="./interesting_git_commands.html">interesting git commands</a>
+<br /><br />
+<a href="./cache_git_credentials.html">cache git credentials</a>
+<br /><br />
+<a href="./git_auto_commit.html">git auto commit</a>
+<br /><br />
+<a href="./git_auto_rebase.html">git auto rebase</a>
+<br /><br />
+<a href="./git_add_submodule.html">git add submodule</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../git_commands/index.html">git commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>These two Git commands apply staged changes to a repository, but the second command additionally resets the working directory and index before allowing for selective staging of changes.</p>
 
 
-<pre><code>git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -
+<pre class="bash"><code>git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -
 
 git diff -w --no-color | git apply --cached --ignore-whitespace && git checkout -- . && git reset && git add -p
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>These are two commands used for applying changes to a Git repository, but they handle the process differently.</p>
 <p><strong>Command 1:</strong></p>
@@ -31,3 +106,7 @@ git diff -w --no-color | git apply --cached --ignore-whitespace && git checkout 
 <li><strong><code>&amp;&amp; git add -p</code>:</strong>  Allows you to selectively stage changes in the working directory.</li>
 </ul>
 <p><strong>This command applies staged changes, resets the working directory and index, and then allows you to stage changes individually.</strong></p>
+
+</body>
+
+</html>

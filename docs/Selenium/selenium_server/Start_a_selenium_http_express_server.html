@@ -1,7 +1,71 @@
-<p>This code sets up a REST API using Express.js to enable a web application to control a Selenium WebDriver instance running on a separate server, automating browser interactions. It uses Socket.IO for communication and a custom <code>importer</code> module to execute a Jupyter notebook containing Selenium server logic.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Start a selenium http express server</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../selenium_server/index.html">selenium server</a>
+    <br /><br />
+    <a href="./Start_a_selenium_http_express_server.html">Start a selenium http express server</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../selenium_server/index.html">selenium server</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code sets up a REST API using Express.js to enable a web application to control a Selenium WebDriver instance running on a separate server, automating browser interactions. It uses Socket.IO for communication and a custom <code>importer</code> module to execute a Jupyter notebook containing Selenium server logic.</p>
 
 
-<pre><code>var importer = require('../Core')
+<pre class="javascript"><code>var importer = require('../Core')
 var bodyParser = require('body-parser');
 var express = require('express');
 var io = require('socket.io-client');
@@ -81,6 +145,17 @@ function seleniumServer() {
 module.exports = seleniumServer;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code sets up a basic REST API server using Express.js to interact with a Selenium WebDriver instance running on a separate server.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -115,3 +190,7 @@ module.exports = seleniumServer;
 </ol>
 <p><strong>Purpose:</strong></p>
 <p>This code likely forms part of a larger system where a web application interacts with a Selenium server to automate browser interactions. The API server acts as a bridge between the web application and the Selenium server, allowing the application to send commands to the server and receive results.</p>
+
+</body>
+
+</html>

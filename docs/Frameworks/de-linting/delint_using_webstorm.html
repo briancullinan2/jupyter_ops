@@ -1,7 +1,65 @@
-<p>This code provides a function to format code within a project directory using WebStorm and potentially import project settings from a <code>.idea</code> directory.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>delint using webstorm</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../de-linting/index.html">de-linting</a>
+    <br /><br />
+    <a href="./delint_notebooks.html">delint notebooks</a>
+<br /><br />
+<a href="./delint_specific_cells.html">delint specific cells</a>
+<br /><br />
+<a href="./test_de-linting_service.html">test de-linting service</a>
+<br /><br />
+<a href="./delint_using_webstorm.html">delint using webstorm</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../de-linting/index.html">de-linting</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a function to format code within a project directory using WebStorm and potentially import project settings from a <code>.idea</code> directory.</p>
 
 
-<pre><code>// TODO: display a tree of require dependencies and make sure it all still compiles properly
+<pre class="javascript"><code>// TODO: display a tree of require dependencies and make sure it all still compiles properly
 var path = require('path');
 var {ncp} = require('ncp');
 var importer = require('../Core');
@@ -23,6 +81,17 @@ function delint(project) {
 module.exports = delint;
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code sets up a function <code>delint</code> that performs code formatting and potentially imports project settings from a <code>.idea</code> directory.</p>
 <p>Here's a breakdown:</p>
@@ -55,3 +124,7 @@ module.exports = delint;
 </ul></li>
 </ol>
 <p>In essence, this code aims to format code within a project directory using WebStorm and potentially import project-specific settings from a <code>.idea</code> directory.</p>
+
+</body>
+
+</html>

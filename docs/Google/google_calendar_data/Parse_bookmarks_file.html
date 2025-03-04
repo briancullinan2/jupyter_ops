@@ -1,7 +1,75 @@
-<p>This code extracts structured bookmark data from Chrome's exported HTML files found in Google Takeout, enabling programmatic access and manipulation of the bookmarks. It uses a custom DOM parsing function to navigate the HTML structure and retrieve relevant information about each bookmark.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Parse bookmarks file</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_calendar_data/index.html">google calendar data</a>
+    <br /><br />
+    <a href="./test_calendar_sum_all_hours_worked_on_study_sauce_since_september_2016.html">test calendar sum all hours worked on study sauce since september 2016</a>
+<br /><br />
+<a href="./convert_chrome_date_to_calendar_date.html">convert chrome date to calendar date</a>
+<br /><br />
+<a href="./Parse_bookmarks_file.html">Parse bookmarks file</a>
+<br /><br />
+<a href="./get_bookmarks_from_local_chrome_database.html">get bookmarks from local chrome database</a>
+<br /><br />
+<a href="./test_parse_bookmarks.html">test parse bookmarks</a>
+<br /><br />
+<a href="./sync_chrome_bookmarks.html">sync chrome bookmarks</a>
+<br /><br />
+<a href="./sync_chrome_history.html">sync chrome history</a>
+<br /><br />
+<a href="./sync_chrome_data.html">sync chrome data</a>
+<br /><br />
+<a href="./test_syn_chrome_data.html">test syn chrome data</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_calendar_data/index.html">google calendar data</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code extracts structured bookmark data from Chrome's exported HTML files found in Google Takeout, enabling programmatic access and manipulation of the bookmarks. It uses a custom DOM parsing function to navigate the HTML structure and retrieve relevant information about each bookmark.</p>
 
 
-<pre><code>var path = require('path');
+<pre class="javascript"><code>var path = require('path');
 var fs = require('fs');
 var glob = require('glob');
 var importer = require('../Core');
@@ -48,6 +116,17 @@ module.exports = getBookmarksFromTakeout;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code parses Chrome bookmarks exported from Google Takeout and extracts a structured representation of the bookmarks.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -77,3 +156,7 @@ module.exports = getBookmarksFromTakeout;
 </ul></li>
 </ol>
 <p><strong>In essence, this code provides a way to programmatically access and process Chrome bookmarks exported from Google Takeout, allowing for further analysis, manipulation, or integration with other systems.</strong></p>
+
+</body>
+
+</html>

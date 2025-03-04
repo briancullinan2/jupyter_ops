@@ -1,8 +1,72 @@
-<p>Here is a summary of the provided code breakdown in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>export documentation</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../documentation/index.html">documentation</a>
+    <br /><br />
+    <a href="./convert_notebook_to_open_api.html">convert notebook to open api</a>
+<br /><br />
+<a href="./test_convert_notebook_api.html">test convert notebook api</a>
+<br /><br />
+<a href="./convert_google_discovery_to_documentation.html">convert google discovery to documentation</a>
+<br /><br />
+<a href="./discover_well-known_apis.html">discover well-known apis</a>
+<br /><br />
+<a href="./export_documentation.html">export documentation</a>
+<br /><br />
+<a href="./highlight_js.html">highlight js</a>
+<br /><br />
+<a href="./javadoc_template.html">javadoc template</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../documentation/index.html">documentation</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the provided code breakdown in two sentences:</p>
 <p>The code requires several modules for file system interactions, path manipulation, importing functions, and Markdown rendering, and defines constants and functions for exporting content from Jupyter notebooks. It appears to be part of a larger project for generating documentation from notebooks, but has several TODOs and unclear sections that need implementation and clarification.</p>
 
 
-<pre><code>const fs = require('fs')
+<pre class="javascript"><code>const fs = require('fs')
 const path = require('path')
 const { functionCache } = importer.import('cache rpc functions with llm descriptions')
 const { storeAllLlamaFunctions } = importer.import('store all notebook llm functions')
@@ -25,13 +89,21 @@ async function exportAll(query) {
   // TODO: get a list of all notebooks
   let notebooks = listInProject(path.resolve(__dirname, '../'), '{,*,*/,*/*/*,*/*/*/*}*.ipynb')
 
+  let languageTemplate = importer.interpret('highlight js')
+  let javadocTemplate = importer.interpret('javadoc template')
+
   // TODO: generate an index page that describes the index.js and __init__.py loaders
 
   let results = {}
   const intro = path.join(PROJECT_PATH, 'index.html')
   results[intro] = {
-    output: ''
+    output: '',
+    indexOutput: '',
+    title: 'Categories',
+    parent: ''
   }
+  results[intro].index = intro
+
   let categories = []
   let namespaces = {}
   for (let i = 0; i < notebooks.length; i++) {
@@ -45,6 +117,7 @@ async function exportAll(query) {
     if(!categories.includes(category)) {
       categories.push(category)
       results[intro].output += '<a href="./' +  safeurl(category) + '/index.html">' + category + '</a>' + '\n<br /><br />\n'
+      results[intro].indexOutput += '<a href="./' +  safeurl(category) + '/index.html">' + category + '</a>' + '\n<br /><br />\n'
     }
 
     if (!fs.existsSync(path.join(PROJECT_PATH, category))) {
@@ -54,8 +127,12 @@ async function exportAll(query) {
     const catpath = path.join(PROJECT_PATH, category, 'index.html')
     if(typeof results[catpath] == 'undefined') {
       results[catpath] = {
-        output: ''
+        output: '',
+        indexOutput: '',
+        title: category
       }
+      results[catpath].index = intro
+      results[catpath].parent = '<a href="../index.html">Categories</a>'
     }
 
 
@@ -66,11 +143,15 @@ async function exportAll(query) {
     }
 
     results[catpath].output += '<a href="./' +  safeurl(namespace) + '/index.html">' + namespace + '</a>' + '\n<br /><br />\n'
+    results[catpath].indexOutput += '<a href="./' +  safeurl(namespace) + '/index.html">' + namespace + '</a>' + '\n<br /><br />\n'
     let index = path.join(fullpath, 'index.html')
     results[index] = {
-      output: ''
+      output: '',
+      indexOutput: '',
+      title: namespace
     }
-
+    results[index].index = catpath
+    results[index].parent = '<a href="../../' +  safeurl(category) + '/index.html">' + category + '</a>'
 
     namespaces[relative] = []
 
@@ -85,15 +166,19 @@ async function exportAll(query) {
       }
       let key = path.join(fullpath, cellname + '.html')
       results[key] = {
-        output: '\n\n<pre><code>' + newCache[j].code + '</code></pre>\n\n'
+        output: '\n\n<pre class="' + newCache[j].language + '"><code>' + newCache[j].code + '</code></pre>\n\n'
       }
+      results[key].output += languageTemplate.code.replaceAll('${LANGUAGE}', newCache[j].language)
 
       let title = newCache[j].questions[0]
       if(!title) {
         title = 'Cell ' + j
       }
-
+      results[key].index = index
+      results[key].title = title
+      results[key].parent = '<a href="../' +  safeurl(namespace) + '/index.html">' + namespace + '</a>'
       results[index].output += '<a href="./' +  cellname + '.html">' + title + '</a>' + '\n<br /><br />\n'
+      results[index].indexOutput += '<a href="./' +  cellname + '.html">' + title + '</a>' + '\n<br /><br />\n'
 
       const description = functionCache[notebooks[i] + '[' + j + ']']
       if(!description) {
@@ -103,7 +188,6 @@ async function exportAll(query) {
       results[index].output += md.render(description.summary)
       results[key].output = md.render(description.summary) + results[key].output
       results[key].output = results[key].output + md.render(description.description)
-      
     }
 
     // TODO: generate parameter, return type descriptions
@@ -117,13 +201,43 @@ async function exportAll(query) {
   const paths = Object.keys(results)
   for (let i = 0; i < paths.length; i++) {
     // TODO: add navigation and full template
-    fs.writeFileSync(paths[i], results[paths[i]].output)
+    let output = javadocTemplate.code.replaceAll('${OUTPUT}', results[paths[i]].output)
+    output = output.replaceAll('export documentation', results[paths[i]].title)
+    output = output.replaceAll('<a href="../documentation/index.html">documentation</a>', results[paths[i]].parent)
+    if(results[paths[i]].index)
+      output = output.replaceAll('<a href="./convert_notebook_to_open_api.html">convert notebook to open api</a>
+<br /><br />
+<a href="./test_convert_notebook_api.html">test convert notebook api</a>
+<br /><br />
+<a href="./convert_google_discovery_to_documentation.html">convert google discovery to documentation</a>
+<br /><br />
+<a href="./discover_well-known_apis.html">discover well-known apis</a>
+<br /><br />
+<a href="./export_documentation.html">export documentation</a>
+<br /><br />
+<a href="./highlight_js.html">highlight js</a>
+<br /><br />
+<a href="./javadoc_template.html">javadoc template</a>
+<br /><br />
+', results[results[paths[i]].index].indexOutput)
+    fs.writeFileSync(paths[i], output)
   }
 
 }
 
 module.exports = exportAll
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Requires and Imports</h3>
@@ -166,3 +280,7 @@ module.exports = exportAll
 <li>Unclear how the <code>cacheCells</code> and <code>safeurl</code> functions are used.</li>
 </ul>
 <p>Overall, the code appears to be part of a larger project for generating documentation from Jupyter notebooks.</p>
+
+</body>
+
+</html>

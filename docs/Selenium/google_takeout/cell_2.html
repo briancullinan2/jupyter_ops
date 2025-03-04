@@ -1,16 +1,87 @@
-<p>Here is a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_takeout/index.html">google takeout</a>
+    <br /><br />
+    <a href="./download_google_takeout.html">download google takeout</a>
+<br /><br />
+<a href="./order_google_takeout.html">order google takeout</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./d3_stream_my_chrome_history_by_category_and_site_sub-divided.html">d3 stream my chrome history by category and site sub-divided</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_takeout/index.html">google takeout</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The code imports a module and a specific function, then calls the function with an argument to initiate a Google Takeout action. It also sets up asynchronous execution and error handling using a <code>.then</code> callback for successful results and a <code>.catch</code> callback for errors.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var googleTakeout = importer.import('order google takeout');
 
-$$.async();
+$.async();
 googleTakeout('chrome')
-    .then(r => $$.sendResult(r))
-    .catch(e => $$.sendError(e));
+    .then(r => $.sendResult(r))
+    .catch(e => $.sendError(e));
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
@@ -29,7 +100,7 @@ googleTakeout('chrome')
 </ul>
 <h3>Asynchronous Execution</h3>
 <ul>
-<li><code>$$.async();</code>
+<li><code>$.async();</code>
 <ul>
 <li>Calls an asynchronous function ( likely to manage asynchronous operations in the application) to execute in the background.</li>
 </ul></li>
@@ -43,12 +114,16 @@ googleTakeout('chrome')
 </ul>
 <h3>Handling Results and Errors</h3>
 <ul>
-<li><p><code>.then(r =&gt; $$.sendResult(r))</code></p>
+<li><p><code>.then(r =&gt; $.sendResult(r))</code></p>
 <ul>
-<li>Sets up a callback function to execute when the <code>googleTakeout</code> function resolves successfully. Passes the result to <code>$$.sendResult</code> for further processing.</li>
+<li>Sets up a callback function to execute when the <code>googleTakeout</code> function resolves successfully. Passes the result to <code>$.sendResult</code> for further processing.</li>
 </ul></li>
-<li><p><code>.catch(e =&gt; $$.sendError(e))</code></p>
+<li><p><code>.catch(e =&gt; $.sendError(e))</code></p>
 <ul>
-<li>Sets up a callback function to execute when the <code>googleTakeout</code> function rejects with an error. Passes the error to <code>$$.sendError</code> for further processing.</li>
+<li>Sets up a callback function to execute when the <code>googleTakeout</code> function rejects with an error. Passes the error to <code>$.sendError</code> for further processing.</li>
 </ul></li>
 </ul>
+
+</body>
+
+</html>

@@ -1,7 +1,75 @@
-<p>The QEMU system emulation command utilizes the <code>qemu-system-x86_64</code> emulator to create a virtual x86_64 system with various hardware components, including a graphics card, network interfaces, storage devices, and USB controllers. The command enables acceleration and allocates 3 GB of RAM to the emulated system.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../qemu_configs/index.html">qemu configs</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../qemu_configs/index.html">qemu configs</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The QEMU system emulation command utilizes the <code>qemu-system-x86_64</code> emulator to create a virtual x86_64 system with various hardware components, including a graphics card, network interfaces, storage devices, and USB controllers. The command enables acceleration and allocates 3 GB of RAM to the emulated system.</p>
 
 
-<pre><code>qemu-system-x86_64 -monitor stdio \
+<pre class="bash"><code>qemu-system-x86_64 -monitor stdio \
     -device ati-vga \
     -enable-kvm -accel hvf \
     -smp 2 \
@@ -14,6 +82,17 @@
     -device piix3-usb-uhci \
     -drive id=freeagent,file=/dev/disk2,if=none,format=raw \
     -device usb-storage,drive=freeagent</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>QEMU System Emulation Command</h2>
 <h3>Overview</h3>
@@ -36,3 +115,7 @@
 <li><code>-drive id=freeagent,file=/dev/disk2,if=none,format=raw</code>: Specifies the raw disk file for the FreeAgent system.</li>
 <li><code>-device usb-storage,drive=freeagent</code>: Specifies the USB storage device for the FreeAgent system.</li>
 </ul>
+
+</body>
+
+</html>

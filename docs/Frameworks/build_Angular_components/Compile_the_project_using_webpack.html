@@ -1,7 +1,65 @@
-<p>This code provides a function to build an Angular application for server-side deployment using Webpack, incorporating project-specific configurations and gulp helpers.  It automates the compilation process and returns the compiled server-side JavaScript code.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Compile the project using webpack</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../build_Angular_components/index.html">build Angular components</a>
+    <br /><br />
+    <a href="./Run_angular-cli_commands_from_nodejs.html">Run angular-cli commands from nodejs</a>
+<br /><br />
+<a href="./Compile_the_project_using_webpack.html">Compile the project using webpack</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./Set_angular_theme_colors.html">Set angular theme colors</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../build_Angular_components/index.html">build Angular components</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a function to build an Angular application for server-side deployment using Webpack, incorporating project-specific configurations and gulp helpers.  It automates the compilation process and returns the compiled server-side JavaScript code.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 // source https://github.com/christianalfoni/webpack-bin/issues/106
 function webpackAngularProject(project) {
     // set up project path
@@ -38,6 +96,17 @@ function webpackAngularProject(project) {
 webpackAngularProject;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a function <code>webpackAngularProject</code> that builds an Angular application for the server environment using Webpack.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -69,3 +138,7 @@ webpackAngularProject;
 </ul></li>
 </ol>
 <p><strong>In essence, this code automates the process of building an Angular application for the server using Webpack, leveraging project-specific configurations and gulp helpers.</strong></p>
+
+</body>
+
+</html>

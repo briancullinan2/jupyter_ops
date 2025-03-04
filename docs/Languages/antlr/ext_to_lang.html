@@ -1,10 +1,86 @@
-<p>Here's a summary of the code breakdown in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>ext to lang</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../antlr/index.html">antlr</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./select_antlr_tree.html">select antlr tree</a>
+<br /><br />
+<a href="./test_select_jison_on_some_quake_3_C_code.html">test select jison on some quake 3 C code</a>
+<br /><br />
+<a href="./get_antlr_tool.html">get antlr tool</a>
+<br /><br />
+<a href="./antlr_to_html.html">antlr to html</a>
+<br /><br />
+<a href="./antlr_tree_visitor.html">antlr tree visitor</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./antlr_tree_to_es.html">antlr tree to es</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./ext_to_lang.html">ext to lang</a>
+<br /><br />
+<a href="./generate_antlr_parsers.html">generate antlr parsers</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../antlr/index.html">antlr</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the code breakdown in one sentence:</p>
 <p>The <code>ext_to_lang</code> object is a lookup table that maps file extensions to their corresponding programming languages, with 61 entries defined.</p>
 <p>Alternatively, here's a two-sentence summary:</p>
 <p>The <code>ext_to_lang</code> object is a data structure that contains a list of key-value pairs, mapping file extensions to programming languages. With 61 entries, this object can be used as a lookup table to identify the language of a file based on its extension.</p>
 
 
-<pre><code>import path from 'path'
+<pre class="javascript"><code>import path from 'path'
 
 var ext_to_lang = {
     // extension:language
@@ -436,6 +512,17 @@ function extToLang(filename) {
 export default extToLang
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <p>This code defines an object <code>ext_to_lang</code> that maps file extensions to their corresponding programming languages.</p>
 <h3>Key Points</h3>
@@ -453,3 +540,7 @@ export default extToLang
 </ul>
 <h3>Purpose</h3>
 <p>The purpose of this code is likely to provide a lookup table for identifying the language of a file based on its extension. This can be useful in various scenarios, such as in an Integrated Development Environment (IDE), a version control system, or a file manager.</p>
+
+</body>
+
+</html>

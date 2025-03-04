@@ -1,13 +1,86 @@
-<p>These ImageMagick commands process an input image, resizing, sharpening, and converting it to JPEG.  They also apply effects to create a glow and potentially reduce noise by compositing modified copies of the image onto the original.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>reduce noise from images after resizing</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../image_magik_commands/index.html">image magik commands</a>
+    <br /><br />
+    <a href="./reduce_noise_from_images_after_resizing.html">reduce noise from images after resizing</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../image_magik_commands/index.html">image magik commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>These ImageMagick commands process an input image, resizing, sharpening, and converting it to JPEG.  They also apply effects to create a glow and potentially reduce noise by compositing modified copies of the image onto the original.</p>
 
 
-<pre><code>convert in.jpg -filter Box -resize 320x320+0+0 -unsharp 0x1+0.25+0 -quality 86% -sampling-factor 1x1 -write out.png out.jpg
+<pre class="bash"><code>convert in.jpg -filter Box -resize 320x320+0+0 -unsharp 0x1+0.25+0 -quality 86% -sampling-factor 1x1 -write out.png out.jpg
 
 
 convert input.jpg ( +clone -enhance -alpha on -channel alpha -evaluate multiply 0.25 ) -composite output.jpg
 
 convert input.jpg ( +clone -despeckle -alpha on -channel alpha -evaluate multiply 0.25 ) -composite output.jpg
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>Let's break down these ImageMagick commands:</p>
 <p><strong>Command 1: Image Resizing, Sharpening, and Conversion</strong></p>
@@ -54,3 +127,7 @@ convert input.jpg ( +clone -despeckle -alpha on -channel alpha -evaluate multipl
 <li><strong><code>-composite output.jpg</code>:</strong>  Composites (layers) the modified copy onto the original image, potentially reducing noise while adding a subtle glow effect.</li>
 </ul>
 <p>Let me know if you have any more questions!</p>
+
+</body>
+
+</html>

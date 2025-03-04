@@ -1,10 +1,68 @@
-<p>Here is a brief summary of the shell script in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../openssl/index.html">openssl</a>
+    <br /><br />
+    <a href="./create_a_trusted_root_CA.html">create a trusted root CA</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./generate_a_self-signed_cert.html">generate a self-signed cert</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../openssl/index.html">openssl</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a brief summary of the shell script in one sentence:</p>
 <p>This shell script creates a self-signed intermediate Certificate Authority (CA) using OpenSSL, generating a private key, CSR, and certificate, and creating a certificate chain with the root CA's certificate.</p>
 <p>Here is a two-sentence summary:</p>
 <p>This shell script creates a self-signed intermediate Certificate Authority (CA) using OpenSSL by generating a private key, CSR, and certificate. The script then creates a certificate chain by concatenating the intermediate CA's certificate and the root CA's certificate.</p>
 
 
-<pre><code>ROOT=/Users/briancullinan/jupytangular2/Utilities/ca
+<pre class="bash"><code>ROOT=/Users/briancullinan/jupytangular2/Utilities/ca
 
 # prepare intermediate CA
 mkdir $ROOT/intermediate
@@ -62,6 +120,17 @@ chmod 744 intermediate/certs/ca-chain.cert.pem
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <p>This shell script creates a self-signed intermediate Certificate Authority (CA) using OpenSSL. The script consists of the following sections:</p>
 <h3>1. Directory Setup</h3>
@@ -103,3 +172,7 @@ chmod 744 intermediate/certs/ca-chain.cert.pem
 <li><code>openssl</code>: Runs OpenSSL commands for key and certificate generation and signing.</li>
 </ul>
 <p>The script assumes that the OpenSSL configuration file <code>openssl.cnf</code> is present in the root CA directory and that the root CA's private key and certificate are available in the <code>certs</code> directory.</p>
+
+</body>
+
+</html>

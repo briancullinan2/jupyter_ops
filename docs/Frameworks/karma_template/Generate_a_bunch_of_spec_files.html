@@ -1,7 +1,61 @@
-<p>This code automates the creation of Angular component test files by finding component <code>.ts</code> files, generating corresponding <code>.spec.ts</code> files using a template, and filling in component titles and import statements.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Generate a bunch of spec files</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../karma_template/index.html">karma template</a>
+    <br /><br />
+    <a href="./Generate_a_bunch_of_spec_files.html">Generate a bunch of spec files</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../karma_template/index.html">karma template</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code automates the creation of Angular component test files by finding component <code>.ts</code> files, generating corresponding <code>.spec.ts</code> files using a template, and filling in component titles and import statements.</p>
 
 
-<pre><code>var execSync = require('child_process').execSync;
+<pre class="javascript"><code>var execSync = require('child_process').execSync;
 try {
     require.resolve('glob');
 } catch (e) {
@@ -77,6 +131,17 @@ titles.forEach((t, i) => {
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code generates Angular component test files using a template.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -114,3 +179,7 @@ titles.forEach((t, i) => {
 </ul></li>
 </ol>
 <p>In essence, this script automates the creation of Angular component test files based on a template and the existing component files in a directory.</p>
+
+</body>
+
+</html>

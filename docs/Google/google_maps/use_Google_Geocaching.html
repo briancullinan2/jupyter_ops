@@ -1,7 +1,71 @@
-<p>This code uses the Google Maps Geocoding API to convert an address (&quot;Kazimierz World Wine Bar&quot;) into geographic coordinates (latitude and longitude). It then handles the API response, likely sending the results to a user interface or another part of the application.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>use Google Geocaching</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_maps/index.html">google maps</a>
+    <br /><br />
+    <a href="./use_places_nearby_API.html">use places nearby API</a>
+<br /><br />
+<a href="./place_details_google_maps.html">place details google maps</a>
+<br /><br />
+<a href="./use_Google_Geocaching.html">use Google Geocaching</a>
+<br /><br />
+<a href="./cache_locations_nearby.html">cache locations nearby</a>
+<br /><br />
+<a href="./extract_depth_maps.html">extract depth maps</a>
+<br /><br />
+<a href="./load_google_panorama.html">load google panorama</a>
+<br /><br />
+<a href="./test_google_depth_maps.html">test google depth maps</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_maps/index.html">google maps</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code uses the Google Maps Geocoding API to convert an address (&quot;Kazimierz World Wine Bar&quot;) into geographic coordinates (latitude and longitude). It then handles the API response, likely sending the results to a user interface or another part of the application.</p>
 
 
-<pre><code>var util = require('util');
+<pre class="javascript"><code>var util = require('util');
 var request = util.promisify(require('request'));
 
 function googleGeocodeAddress(address) {
@@ -9,14 +73,25 @@ function googleGeocodeAddress(address) {
         .then(r => JSON.parse(r.body).results)
 }
 
-if(typeof $$ !== 'undefined') {
-    $$.async();
+if(typeof $ !== 'undefined') {
+    $.async();
     googleGeocodeAddress('Kazimierz World Wine Bar')
-        .then(r => $$.sendResult(r))
-        .catch(e => $$.sendError(e))
+        .then(r => $.sendResult(r))
+        .catch(e => $.sendError(e))
 }
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet demonstrates how to geocode an address using the Google Maps Geocoding API.</p>
 <p>Here's a breakdown:</p>
@@ -39,8 +114,12 @@ if(typeof $$ !== 'undefined') {
 </ul></li>
 <li><p><strong>Execution:</strong></p>
 <ul>
-<li>The <code>if</code> block checks if a special <code>$$</code> object is available (likely part of a testing or server-side framework).</li>
-<li>If available, it calls <code>googleGeocodeAddress</code> with the address &quot;Kazimierz World Wine Bar&quot; and handles the result using <code>$$.sendResult</code> for success and <code>$$.sendError</code> for any errors.</li>
+<li>The <code>if</code> block checks if a special <code>$</code> object is available (likely part of a testing or server-side framework).</li>
+<li>If available, it calls <code>googleGeocodeAddress</code> with the address &quot;Kazimierz World Wine Bar&quot; and handles the result using <code>$.sendResult</code> for success and <code>$.sendError</code> for any errors.</li>
 </ul></li>
 </ol>
 <p>Let me know if you have any other code snippets you'd like me to explain!</p>
+
+</body>
+
+</html>

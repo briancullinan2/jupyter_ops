@@ -1,8 +1,72 @@
-<p>Here's a summary of the <code>extractArticle</code> function in one to two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>extract llm article</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../scraping/index.html">scraping</a>
+    <br /><br />
+    <a href="./extract_llm_article.html">extract llm article</a>
+<br /><br />
+<a href="./test_article_extract.html">test article extract</a>
+<br /><br />
+<a href="./summarize_llm_article.html">summarize llm article</a>
+<br /><br />
+<a href="./test_article_summarizer.html">test article summarizer</a>
+<br /><br />
+<a href="./summarize_all_articles.html">summarize all articles</a>
+<br /><br />
+<a href="./convert_summaries.html">convert summaries</a>
+<br /><br />
+<a href="./default_link_collector.html">default link collector</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../scraping/index.html">scraping</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the <code>extractArticle</code> function in one to two sentences:</p>
 <p>The <code>extractArticle</code> function extracts the article content from a given HTML page in plain text, retrying if the page crashes, and returns the extracted content as a single string. It uses Selenium WebDriver to load the page, select text elements, and handle errors such as stale element references and page crashes.</p>
 
 
-<pre><code>const getClient = importer.import('selenium client')
+<pre class="javascript"><code>const getClient = importer.import('selenium client')
 const selectDom = importer.import('selenium select')
 
 // TODO: help me extract this article from html, only return the article in plain text and remove the html:
@@ -60,6 +124,17 @@ async function extractArticle(driver, startPage, retry) {
 module.exports = extractArticle
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Function Breakdown: <code>extractArticle</code></strong></p>
 <h3>Purpose</h3>
 <p>Extracts the article content from a given HTML page in plain text.</p>
@@ -89,3 +164,7 @@ module.exports = extractArticle
 <li>If a page crash error occurs and <code>retry</code> is <code>true</code>, the function tries to extract the article again.</li>
 <li>If any other error occurs, the function throws the error after quitting the driver instance.</li>
 </ul>
+
+</body>
+
+</html>

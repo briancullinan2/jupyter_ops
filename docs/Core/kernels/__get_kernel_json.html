@@ -1,8 +1,114 @@
-<p>Here's a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>, get kernel json</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../kernels/index.html">kernels</a>
+    <br /><br />
+    <a href="./__get_kernel_json.html">, get kernel json</a>
+<br /><br />
+<a href="./test_notebook_kernel_json.html">test notebook kernel json</a>
+<br /><br />
+<a href="./custom_kernel_json.html">custom kernel json</a>
+<br /><br />
+<a href="./jupyter_meta_kernel.html">jupyter meta kernel</a>
+<br /><br />
+<a href="./kernel_info_interface.html">kernel info interface</a>
+<br /><br />
+<a href="./meta_kernel_interface.html">meta kernel interface</a>
+<br /><br />
+<a href="./native_meta_kernel.html">native meta kernel</a>
+<br /><br />
+<a href="./native_meta_methods.html">native meta methods</a>
+<br /><br />
+<a href="./__socket_meta_kernel.html">, socket meta kernel</a>
+<br /><br />
+<a href="./process_meta_kernel.html">process meta kernel</a>
+<br /><br />
+<a href="./test_process_meta_kernel.html">test process meta kernel</a>
+<br /><br />
+<a href="./TODO__repl_process_kernel.html">TODO: repl process kernel</a>
+<br /><br />
+<a href="./test_repl_process_using_bash.html">test repl process using bash</a>
+<br /><br />
+<a href="./__jupyter_wire_interface.html">, jupyter wire interface</a>
+<br /><br />
+<a href="./cell_14.html">Cell 14</a>
+<br /><br />
+<a href="./cell_15.html">Cell 15</a>
+<br /><br />
+<a href="./TODO_jupyter_wire_kernel.html">TODO jupyter wire kernel</a>
+<br /><br />
+<a href="./TODO__wire_meta_kernel.html">TODO: wire meta kernel</a>
+<br /><br />
+<a href="./__node_meta_kernel.html">, node meta kernel</a>
+<br /><br />
+<a href="./test_node_meta_kernel.html">test node meta kernel</a>
+<br /><br />
+<a href="./node_wire_kernel.html">node wire kernel</a>
+<br /><br />
+<a href="./cell_21.html">Cell 21</a>
+<br /><br />
+<a href="./cell_22.html">Cell 22</a>
+<br /><br />
+<a href="./https___pypi_org_search_q__o__c_Framework__3A_3A_IPython.html">https://pypi.org/search/q=&o=&c=Framework+%3A%3A+IPython</a>
+<br /><br />
+<a href="./__decode_encode_ipython_zmq_protocol.html">, decode encode ipython zmq protocol</a>
+<br /><br />
+<a href="./bind_wire_sockets.html">bind wire sockets</a>
+<br /><br />
+<a href="./cell_26.html">Cell 26</a>
+<br /><br />
+<a href="./cell_27.html">Cell 27</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../kernels/index.html">kernels</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary:</p>
 <p>This code defines a Node.js module that exports a JSON interface object and two functions, <code>wireJson</code> and <code>pathJson</code>, which transform a <code>kernel_json</code> object into a new object that conforms to the JSON interface. The functions, <code>wireJson</code> and <code>pathJson</code>, modify the <code>argv</code> property of the <code>kernel_json</code> object to include specific elements, such as a connection file or a path, depending on their existence.</p>
 
 
-<pre><code>var path = require('path');
+<pre class="javascript"><code>var path = require('path');
 var importer = require('../Core');
 var interface = importer.import('enforcing an interface');
 
@@ -43,6 +149,17 @@ module.exports = {
 };
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h3>Code Breakdown</h3>
 <h4>Variables and Modules</h4>
 <ul>
@@ -75,3 +192,7 @@ module.exports = {
 var wireJsonObject = wireJson(kernelJson);
 var pathJsonObject = pathJson(kernelJson);
 </code></pre>
+
+</body>
+
+</html>

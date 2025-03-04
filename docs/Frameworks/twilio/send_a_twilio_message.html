@@ -1,7 +1,65 @@
-<p>This code defines a function <code>sendTwilio</code> that uses your Twilio account credentials to send text messages to a specified phone number.  It takes the recipient's phone number and the message content as input and returns the unique identifier of the sent message.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>send a twilio message</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../twilio/index.html">twilio</a>
+    <br /><br />
+    <a href="./accept_incoming_twilio_message.html">accept incoming twilio message</a>
+<br /><br />
+<a href="./twilio_reminder.html">twilio reminder</a>
+<br /><br />
+<a href="./send_a_twilio_message.html">send a twilio message</a>
+<br /><br />
+<a href="./make_a_twilio_call.html">make a twilio call</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../twilio/index.html">twilio</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code defines a function <code>sendTwilio</code> that uses your Twilio account credentials to send text messages to a specified phone number.  It takes the recipient's phone number and the message content as input and returns the unique identifier of the sent message.</p>
 
 
-<pre><code>var accountSid = 'SKb0edec7c2a729ae2cb2ae0561bc0ed33'; // Your Account SID from www.twilio.com/console
+<pre class="javascript"><code>var accountSid = 'SKb0edec7c2a729ae2cb2ae0561bc0ed33'; // Your Account SID from www.twilio.com/console
 var authToken = 'V53NuXy1ZJcwBXwmo6or35E7X5gNPnSY';   // Your Auth Token from www.twilio.com/console
 
 var twilio = require('twilio');
@@ -16,6 +74,17 @@ function sendTwilio(to, message) {
 }
 module.exports = sendTwilio;
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code sets up a function to send text messages using the Twilio API.</p>
 <p>Here's a breakdown:</p>
@@ -45,3 +114,7 @@ module.exports = sendTwilio;
 </ul></li>
 </ol>
 <p>Essentially, this code provides a reusable way to send text messages using your Twilio account.</p>
+
+</body>
+
+</html>

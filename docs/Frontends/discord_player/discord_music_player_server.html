@@ -1,8 +1,62 @@
-<p>Here is a 2-sentence summary of the provided code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>discord music player server</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_player/index.html">discord player</a>
+    <br /><br />
+    <a href="./discord_music_player.html">discord music player</a>
+<br /><br />
+<a href="./discord_music_player_server.html">discord music player server</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_player/index.html">discord player</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary of the provided code breakdown:</p>
 <p>The code sets up an Express app, importing necessary modules and variables, and defining several routes to handle requests, including token endpoint, root, and directory requests. The app also defines a <code>discordLogin</code> function to handle Discord login requests and generates HTML code using the <code>directoryToHtml</code> function, but does not start the server instance, which is stored in the <code>server</code> variable.</p>
 
 
-<pre><code>const {handleDirectory, BASE_DIRECTORY} = importer.import('node express directory handler')
+<pre class="javascript"><code>const {handleDirectory, BASE_DIRECTORY} = importer.import('node express directory handler')
 const {DEFAULT_APPLICATION} = importer.import('discord configuration')
 const getToken = importer.import('discord express token endpoint')
 const path = require('path')
@@ -110,6 +164,17 @@ module.exports = {
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules and Variables</h3>
 <p>The code starts by importing various modules and variables using the <code>importer</code> module. The imported modules and variables include:</p>
@@ -149,3 +214,7 @@ module.exports = {
 <p>The code creates an instance of the Express server but does not start it. The server instance is stored in the <code>server</code> variable.</p>
 <h3>Note</h3>
 <p>The code has several TODO comments indicating areas that need to be implemented, such as sharing files with logged-in users.</p>
+
+</body>
+
+</html>

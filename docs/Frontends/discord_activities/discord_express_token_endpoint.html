@@ -1,7 +1,71 @@
-<p>The <code>getToken</code> function is an asynchronous handler that retrieves an access token for the Discord API using the client credentials flow, making a POST request to the <code>oauth2/token</code> endpoint and storing user information in the <code>INSTANCES</code> and <code>SESSIONS</code> objects. The function returns the access token data as a JSON response, setting various cookies for user authentication and storing a random nonce for future commands.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>discord express token endpoint</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_activities/index.html">discord activities</a>
+    <br /><br />
+    <a href="./discord_client_code.html">discord client code</a>
+<br /><br />
+<a href="./discord_client_auth_code.html">discord client auth code</a>
+<br /><br />
+<a href="./start_activity_server.html">start activity server</a>
+<br /><br />
+<a href="./check_discord_commands.html">check discord commands</a>
+<br /><br />
+<a href="./start_a_bunch_of_discord_services.html">start a bunch of discord services</a>
+<br /><br />
+<a href="./discord_authenticate_instances.html">discord authenticate instances</a>
+<br /><br />
+<a href="./discord_express_token_endpoint.html">discord express token endpoint</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_activities/index.html">discord activities</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>getToken</code> function is an asynchronous handler that retrieves an access token for the Discord API using the client credentials flow, making a POST request to the <code>oauth2/token</code> endpoint and storing user information in the <code>INSTANCES</code> and <code>SESSIONS</code> objects. The function returns the access token data as a JSON response, setting various cookies for user authentication and storing a random nonce for future commands.</p>
 
 
-<pre><code>const {INSTANCES, SESSIONS} = importer.import('discord gateway')
+<pre class="javascript"><code>const {INSTANCES, SESSIONS} = importer.import('discord gateway')
 const {request} = require('gaxios')
 const qs = require('qs');
 const {DEFAULT_API, SECRET, TOKEN, DEFAULT_APPLICATION} = importer.import('discord configuration')
@@ -70,6 +134,17 @@ async function getToken(req, res, next) {
 module.exports = getToken
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Function Breakdown: <code>getToken</code></strong></p>
 <h3>Function Purpose</h3>
 <p>The <code>getToken</code> function is an asynchronous handler that retrieves an access token for Discord API using the client credentials flow.</p>
@@ -120,3 +195,7 @@ module.exports = getToken
 <li>The <code>crypto</code> library is used to generate a random nonce</li>
 <li>The <code>importer</code> library is used to import external configuration and data</li>
 </ul>
+
+</body>
+
+</html>

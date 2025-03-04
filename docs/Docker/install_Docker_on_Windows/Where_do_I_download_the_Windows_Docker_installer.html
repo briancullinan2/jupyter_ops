@@ -1,22 +1,93 @@
-<p>This code downloads the Docker installer from the Docker website and saves it to the current working directory, notifying a task manager upon completion.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Where do I download the Windows Docker installer</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../install_Docker_on_Windows/index.html">install Docker on Windows</a>
+    <br /><br />
+    <a href="./install_Docker_on_Windows.html">install Docker on Windows</a>
+<br /><br />
+<a href="./How_do_I_installed_elevated_from_the_command_line.html">How do I installed elevated from the command line</a>
+<br /><br />
+<a href="./Where_do_I_download_the_Windows_Docker_installer.html">Where do I download the Windows Docker installer</a>
+<br /><br />
+<a href="./How_do_I_fix_the_firewall_for_Docker.html">How do I fix the firewall for Docker</a>
+<br /><br />
+<a href="./install_build_tools_on_Windows.html">install build tools on Windows</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../install_Docker_on_Windows/index.html">install Docker on Windows</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code downloads the Docker installer from the Docker website and saves it to the current working directory, notifying a task manager upon completion.</p>
 
 
-<pre><code>$$.async();
+<pre class="javascript"><code>$.async();
 var exec = require('child_process').exec;
 var http = require('https');
 var fs = require('fs');
 var dockerLoc = path.join(process.cwd(), 'InstallDocker.msi');
 var downloads = http.get('https://download.docker.com/win/stable/InstallDocker.msi', (r) => {
     r.pipe(fs.createWriteStream(dockerLoc)).on('finish', () => {
-        $$.done('downloaded InstallDocker.msi');
+        $.done('downloaded InstallDocker.msi');
     });
 });
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code downloads the Docker installer (InstallDocker.msi) from the official Docker website and saves it to the current working directory.</p>
 <p>Here's a breakdown:</p>
 <ol>
-<li><p><strong><code>$$.async();</code>:</strong></p>
+<li><p><strong><code>$.async();</code>:</strong></p>
 <ul>
 <li>This line likely initializes an asynchronous operation, possibly related to a task runner or workflow manager.</li>
 </ul></li>
@@ -46,9 +117,13 @@ var downloads = http.get('https://download.docker.com/win/stable/InstallDocker.m
 <li>Pipes the downloaded data from the response object (<code>r</code>) to a write stream created for the specified file location (<code>dockerLoc</code>).</li>
 <li>The <code>on('finish', () =&gt; { ... })</code> event listener is triggered when the writing process is complete.</li>
 </ul></li>
-<li><p><strong><code>$$.done('downloaded InstallDocker.msi');</code>:</strong></p>
+<li><p><strong><code>$.done('downloaded InstallDocker.msi');</code>:</strong></p>
 <ul>
 <li>Signals the completion of the download task, likely to the task runner or workflow manager.</li>
 </ul></li>
 </ol>
 <p>In essence, this code downloads the Docker installer from the internet and saves it to the current working directory, indicating successful completion.</p>
+
+</body>
+
+</html>

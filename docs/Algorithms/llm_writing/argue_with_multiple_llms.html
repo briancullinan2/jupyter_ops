@@ -1,7 +1,77 @@
-<p>The <code>arguelLlama</code> function is an asynchronous function that engages in a debate process with a Large Language Model (LLM) using two prompts, iterating 10 times to allow the LLM to respond to its own previous responses. It returns an array of responses from the LLM in the debate process, with optional additional processing or logging performed by a callback function.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>argue with multiple llms</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../llm_writing/index.html">llm writing</a>
+    <br /><br />
+    <a href="./business_plan_llm.html">business plan llm</a>
+<br /><br />
+<a href="./write_creatively_llm.html">write creatively llm</a>
+<br /><br />
+<a href="./argue_with_multiple_llms.html">argue with multiple llms</a>
+<br /><br />
+<a href="./research_paper_llm.html">research paper llm</a>
+<br /><br />
+<a href="./select_llm.html">select llm</a>
+<br /><br />
+<a href="./ask_llm_to_write_chapter_titles_and_descriptions.html">ask llm to write chapter titles and descriptions</a>
+<br /><br />
+<a href="./ask_llm_to_brainstorm.html">ask llm to brainstorm</a>
+<br /><br />
+<a href="./write_a_grant_proposal_with_llm.html">write a grant proposal with llm</a>
+<br /><br />
+<a href="./decode_xlsx_spreadsheet.html">decode xlsx spreadsheet</a>
+<br /><br />
+<a href="./elaborate_list_with_llm.html">elaborate list with llm</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../llm_writing/index.html">llm writing</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>arguelLlama</code> function is an asynchronous function that engages in a debate process with a Large Language Model (LLM) using two prompts, iterating 10 times to allow the LLM to respond to its own previous responses. It returns an array of responses from the LLM in the debate process, with optional additional processing or logging performed by a callback function.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 
 async function argueLlama(prompt, callback) {
   const {llmPrompt} = await importer.import('create llm session')
@@ -30,6 +100,17 @@ async function argueLlama(prompt, callback) {
 module.exports = argueLlama
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>arguelLlama Function</h2>
 <h3>Description</h3>
 <p>The <code>arguelLlama</code> function is an asynchronous function that engages in a debate process with a Large Language Model (LLM) using two prompts:</p>
@@ -52,3 +133,7 @@ module.exports = argueLlama
 <li>The <code>importer.import</code> function is used to dynamically import the <code>llmPrompt</code> and <code>llmDeceive</code> functions.</li>
 <li>The <code>llmDeceive</code> function is used to force the LLM to argue against its previous response, regardless of its training data.</li>
 </ul>
+
+</body>
+
+</html>

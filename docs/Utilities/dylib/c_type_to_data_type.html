@@ -1,8 +1,78 @@
-<p>Here's a summary of the code in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>c type to data type</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../dylib/index.html">dylib</a>
+    <br /><br />
+    <a href="./include_a_dynamic_lib.html">include a dynamic lib</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./test_a_csharp_dylib.html">test a csharp dylib</a>
+<br /><br />
+<a href="./set_mouse_position.html">set mouse position</a>
+<br /><br />
+<a href="./get_c_parameters.html">get c parameters</a>
+<br /><br />
+<a href="./get_c_exports.html">get c exports</a>
+<br /><br />
+<a href="./get_c_types.html">get c types</a>
+<br /><br />
+<a href="./c_type_to_data_type.html">c type to data type</a>
+<br /><br />
+<a href="./build_dylib.html">build dylib</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../dylib/index.html">dylib</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the code in one sentence:</p>
 <p>The <code>typeToDataType</code> function takes in parameters <code>returnLength</code>, <code>returnType</code>, and <code>dataType</code> and returns an object compatible with the <code>ffi-rs</code> library, handling different data types through switch statements.</p>
 
 
-<pre><code>const { open, load, close, DataType, arrayConstructor } = require('ffi-rs')
+<pre class="javascript"><code>const { open, load, close, DataType, arrayConstructor } = require('ffi-rs')
 
 function typeToDataType(returnLength, returnType, dataType) {
   if(returnLength > 1) {
@@ -41,6 +111,17 @@ function typeToDataType(returnLength, returnType, dataType) {
 
 module.exports = typeToDataType</code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h3>Breakdown of the Code</h3>
 <h4>Overview</h4>
 <p>The code exports a function <code>typeToDataType</code> which takes three parameters: <code>returnLength</code>, <code>returnType</code>, and <code>dataType</code>. It is designed to convert these parameters into an object compatible with the <code>ffi-rs</code> library.</p>
@@ -66,3 +147,7 @@ const dataType = typeToDataType(2, 'double', DataType.Double);
 console.log(dataType); // Output: { type: 1, length: 2 }
 </code></pre>
 <p>In this example, <code>typeToDataType</code> is called with <code>returnLength</code> set to 2, <code>returnType</code> set to 'double', and <code>dataType</code> set to DataType.Double. The function returns an object with <code>type</code> set to 1 (representing <code>DataType.Double</code>) and <code>length</code> set to 2.</p>
+
+</body>
+
+</html>

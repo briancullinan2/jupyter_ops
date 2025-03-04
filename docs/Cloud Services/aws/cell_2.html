@@ -1,8 +1,64 @@
-<p>Here's a 2-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../aws/index.html">aws</a>
+    <br /><br />
+    <a href="./aws_rpc_wrapper.html">aws rpc wrapper</a>
+<br /><br />
+<a href="./latest_s3_bucket.html">latest s3 bucket</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../aws/index.html">aws</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 2-sentence summary:</p>
 <p>To interact with AWS Lambda using the AWS SDK in JavaScript, you can import the SDK, initialize an AWS Lambda client, and invoke a Lambda function with a custom payload. The AWS Lambda client handles potential errors and success cases by calling <code>context.done</code> in case of an error and <code>context.succeed</code> with the payload in case of a successful function call.</p>
 
 
-<pre><code>var aws = require('aws-sdk');
+<pre class="javascript"><code>var aws = require('aws-sdk');
 var lambda = new aws.Lambda({
   region: 'us-west-2' //change to your region
 });
@@ -18,6 +74,17 @@ lambda.invoke({
    context.succeed(data.Payload)
   }
 });</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing AWS SDK</h3>
@@ -52,3 +119,7 @@ if (data.Payload) {
 <li>If an error occurs, it calls <code>context.done</code> with an error message and the error object.</li>
 <li>If the function call is successful and returns a payload, it calls <code>context.succeed</code> with the payload.</li>
 </ul>
+
+</body>
+
+</html>

@@ -1,8 +1,64 @@
-<p>Here is a one or two sentence summary of the CIEDE2000 color difference calculation function:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>ciede2000</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../cied2000/index.html">cied2000</a>
+    <br /><br />
+    <a href="./ciede2000.html">ciede2000</a>
+<br /><br />
+<a href="./rgb_2_lab.html">rgb 2 lab</a>
+<br /><br />
+<a href="./try_ciede2000.html">try ciede2000</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../cied2000/index.html">cied2000</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a one or two sentence summary of the CIEDE2000 color difference calculation function:</p>
 <p>The CIEDE2000 color difference calculation function is a C++ function that determines the color difference between two colors by converting their coordinates to a new chromaticity space and then calculating the deltaLPrime, deltaCPrime, and deltahPrime values. The function returns the CIEDE2000 color difference value based on these calculated values.</p>
 
 
-<pre><code>#include <math.h>
+<pre class="c"><code>#include <math.h>
 
 double deg2Rad(const double deg)
 {
@@ -142,6 +198,17 @@ double CIEDE2000(double l1, double a1, double b1, double l2, double a2, double b
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>CIEDE2000 Color Difference Calculation Function</strong></p>
 <p>This is a C++ function that calculates the CIEDE2000 color difference between two colors. The function takes six input parameters:</p>
 <ul>
@@ -177,3 +244,7 @@ double CIEDE2000(double l1, double a1, double b1, double l2, double a2, double b
 <li><code>M_PI</code>: Constant representing pi</li>
 <li><code>pow25To7</code>: Constant representing the result of pow(25, 7)</li>
 </ul>
+
+</body>
+
+</html>

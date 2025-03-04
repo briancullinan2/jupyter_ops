@@ -1,39 +1,116 @@
-<p>Here is a two-sentence summary of the code breakdown:</p>
-<p>The code is a JavaScript function that uses the <code>async/await</code> syntax to handle asynchronous operations by calling the <code>addFacebookFriends</code> function and handling its result or error using the <code>then</code> and <code>catch</code> methods. The <code>addFacebookFriends</code> function returns a promise that is resolved by sending the result with <code>$$.sendResult(r)</code> or rejected by sending the error with <code>$$.sendError(e)</code>.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 5</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../facebook_connections/index.html">facebook connections</a>
+    <br /><br />
+    <a href="./collect_facebook_profiles.html">collect facebook profiles</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./_connect_on_facebook.html">,connect on facebook</a>
+<br /><br />
+<a href="./connect_add_friends_facebook.html">connect add friends facebook</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../facebook_connections/index.html">facebook connections</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code is a JavaScript function that uses the <code>async/await</code> syntax to handle asynchronous operations by calling the <code>addFacebookFriends</code> function and handling its result or error using the <code>then</code> and <code>catch</code> methods. The <code>addFacebookFriends</code> function returns a promise that is resolved by sending the result with <code>$.sendResult(r)</code> or rejected by sending the error with <code>$.sendError(e)</code>.</p>
 
 
-<pre><code>$$.async();
+<pre class="javascript"><code>$.async();
 addFacebookFriends()
-    .then(r => $$.sendResult(r))
-    .catch(e => $$.sendError(e))
+    .then(r => $.sendResult(r))
+    .catch(e => $.sendError(e))
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Overview</h4>
 <p>The code appears to be a JavaScript function that uses the <code>async/await</code> syntax to handle asynchronous operations. It calls a function <code>addFacebookFriends</code> and handles its result or error using the <code>then</code> and <code>catch</code> methods.</p>
 <h4>Breakdown</h4>
-<pre><code class="language-javascript">$$.async();
+<pre><code class="language-javascript">$.async();
 </code></pre>
 <ul>
 <li><code>$</code> is likely a shortcut for a jQuery object.</li>
 <li><code>async</code> is a method that initializes the async functionality.</li>
 </ul>
 <pre><code class="language-javascript">addFacebookFriends()
-   .then(r =&gt; $$.sendResult(r))
-   .catch(e =&gt; $$.sendError(e))
+   .then(r =&gt; $.sendResult(r))
+   .catch(e =&gt; $.sendError(e))
 </code></pre>
 <ul>
 <li><code>addFacebookFriends</code> is a function that returns a promise.</li>
-<li><code>.then(r =&gt; $$.sendResult(r))</code>:
+<li><code>.then(r =&gt; $.sendResult(r))</code>:
 <ul>
 <li><code>then</code> is a method that is called when the promise is resolved.</li>
 <li><code>r</code> is the resolved value.</li>
-<li><code>$$.sendResult(r)</code> sends the result to somewhere ( likely a server or UI component).</li>
+<li><code>$.sendResult(r)</code> sends the result to somewhere ( likely a server or UI component).</li>
 </ul></li>
-<li><code>.catch(e =&gt; $$.sendError(e))</code>:
+<li><code>.catch(e =&gt; $.sendError(e))</code>:
 <ul>
 <li><code>catch</code> is a method that is called when the promise is rejected.</li>
 <li><code>e</code> is the error value.</li>
-<li><code>$$.sendError(e)</code> sends the error to somewhere ( likely a server or UI component).</li>
+<li><code>$.sendError(e)</code> sends the error to somewhere ( likely a server or UI component).</li>
 </ul></li>
 </ul>
+
+</body>
+
+</html>

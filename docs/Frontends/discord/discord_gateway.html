@@ -1,8 +1,82 @@
-<p>Here is a summary of the code in one or two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>discord gateway</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord/index.html">discord</a>
+    <br /><br />
+    <a href="./discord_request.html">discord request</a>
+<br /><br />
+<a href="./discord_gateway.html">discord gateway</a>
+<br /><br />
+<a href="./discord_bot_configuration.html">discord bot configuration</a>
+<br /><br />
+<a href="./discord_api.html">discord api</a>
+<br /><br />
+<a href="./discord_messages.html">discord messages</a>
+<br /><br />
+<a href="./discord_channels.html">discord channels</a>
+<br /><br />
+<a href="./discord_commands.html">discord commands</a>
+<br /><br />
+<a href="./discord_guilds.html">discord guilds</a>
+<br /><br />
+<a href="./discord_threads.html">discord threads</a>
+<br /><br />
+<a href="./discord_users.html">discord users</a>
+<br /><br />
+<a href="./discord_utilities.html">discord utilities</a>
+<br /><br />
+<a href="./delete_all_commands.html">delete all commands</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord/index.html">discord</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in one or two sentences:</p>
 <p>The code is a Discord bot implementation that initializes variables and functions for handling WebSocket connections, sending heartbeats, and processing gateway messages. The <code>gatewayMessage</code> function is the main entry point for processing messages from the WebSocket server, and it updates the sequence number, logs messages, and performs different actions based on the <code>op</code> value of the gateway message.</p>
 
 
-<pre><code>const {TOKEN, DEFAULT_APPLICATION} = importer.import('discord configuration')
+<pre class="javascript"><code>const {TOKEN, DEFAULT_APPLICATION} = importer.import('discord configuration')
 const systemUsage = importer.import('system usage report')
 
 const INSTANCES = {}
@@ -141,6 +215,17 @@ module.exports = {
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Breakdown of the Code</strong></p>
 <h3>Importing Configuration and Functionality</h3>
 <pre><code class="language-javascript">const {TOKEN, DEFAULT_APPLICATION} = importer.import('discord configuration')
@@ -251,3 +336,7 @@ var seq = 0
 <li>If <code>op</code> is 0 or 9 and the message type is 'MESSAGE_CREATE', the function checks if the guild ID is null (indicating a personal message). If the guild ID is not null, the function does nothing.</li>
 </ul></li>
 </ul>
+
+</body>
+
+</html>

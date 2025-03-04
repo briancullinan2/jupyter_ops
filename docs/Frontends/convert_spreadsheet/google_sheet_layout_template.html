@@ -1,14 +1,90 @@
-<p>Here's a summary of the functions in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>google sheet layout template</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a>
+    <br /><br />
+    <a href="./readme_md.html">readme.md</a>
+<br /><br />
+<a href="./get_sheet_purchases.html">get sheet purchases</a>
+<br /><br />
+<a href="./sheet_marketing_import.html">sheet marketing import</a>
+<br /><br />
+<a href="./filter_data_sheet_based_on_url.html">filter data sheet based on url</a>
+<br /><br />
+<a href="./google_sheet_template_properties.html">google sheet template properties</a>
+<br /><br />
+<a href="./google_sheet_layout_template.html">google sheet layout template</a>
+<br /><br />
+<a href="./output_google_sheet_template.html">output google sheet template</a>
+<br /><br />
+<a href="./find_known_routes_to_sheets.html">find known routes to sheets</a>
+<br /><br />
+<a href="./collect_external_content_and_resources.html">collect external content and resources</a>
+<br /><br />
+<a href="./collect_google_sheets_resources.html">collect google sheets resources</a>
+<br /><br />
+<a href="./sheet_to_web.html">sheet to web</a>
+<br /><br />
+<a href="./convert_sheet_helper_functions.html">convert sheet helper functions</a>
+<br /><br />
+<a href="./package_json.html">package.json</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the functions in two sentences:</p>
 <p>This module contains several utility functions that aid in data processing and rendering, including string manipulation, class extraction, dynamic property definition, and table row rendering. These functions provide functionality for tasks such as escaping special characters, defining properties, and rendering HTML tables with dynamic classes.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 function safeName(name) {
     return name.replace(/\//ig, ' ').replace(/[^a-z0-9\- ]/ig, '-').substr(0, 40);
 }
 
 function escape(s) {
-    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\${OUTPUT}');
 }
 
 function getDataClasses(c, data) {
@@ -76,6 +152,17 @@ module.exports = renderRows;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Function Breakdown</strong></p>
 <h3><code>safeName(name)</code></h3>
 <ul>
@@ -103,3 +190,7 @@ module.exports = renderRows;
 <li>Iterates over each row and column, using the <code>defineProperty</code> function to set object properties for Mustache template rendering.</li>
 <li>Renders HTML for each column, applying classes based on data classes and section classes.</li>
 </ul>
+
+</body>
+
+</html>

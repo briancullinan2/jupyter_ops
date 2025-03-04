@@ -1,7 +1,71 @@
-<p>This code fetches and assembles a panoramic image from Google Street View, allowing for dynamic display and manipulation of street-level imagery.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>load google panorama</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_maps/index.html">google maps</a>
+    <br /><br />
+    <a href="./use_places_nearby_API.html">use places nearby API</a>
+<br /><br />
+<a href="./place_details_google_maps.html">place details google maps</a>
+<br /><br />
+<a href="./use_Google_Geocaching.html">use Google Geocaching</a>
+<br /><br />
+<a href="./cache_locations_nearby.html">cache locations nearby</a>
+<br /><br />
+<a href="./extract_depth_maps.html">extract depth maps</a>
+<br /><br />
+<a href="./load_google_panorama.html">load google panorama</a>
+<br /><br />
+<a href="./test_google_depth_maps.html">test google depth maps</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_maps/index.html">google maps</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code fetches and assembles a panoramic image from Google Street View, allowing for dynamic display and manipulation of street-level imagery.</p>
 
 
-<pre><code>// FROM: https://github.com/sidequestlegend/GSVPanoDepth.js/blob/master/examples/js/GSVPano.js
+<pre class="javascript"><code>// FROM: https://github.com/sidequestlegend/GSVPanoDepth.js/blob/master/examples/js/GSVPano.js
 var path = require('path')
 var fs = require('fs')
 var {GoogleAuth} = require('google-auth-library');
@@ -144,6 +208,17 @@ module.exports = {
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet is designed to load and compose a panoramic image from Google Street View using the Google Maps Platform API.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -178,3 +253,7 @@ module.exports = {
 </ol>
 <p><strong>Purpose:</strong></p>
 <p>This code snippet demonstrates how to fetch and assemble a panoramic image from Google Street View programmatically, allowing for dynamic display and manipulation of street-level imagery.</p>
+
+</body>
+
+</html>

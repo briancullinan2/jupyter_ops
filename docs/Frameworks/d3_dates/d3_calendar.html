@@ -1,7 +1,61 @@
-<p>This code creates an interactive heatmap visualization that displays time-series data, grouping it by day and coloring each day based on the total time spent. It uses D3.js to generate the SVG elements and apply the color scale.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>d3 calendar</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../d3_dates/index.html">d3 dates</a>
+    <br /><br />
+    <a href="./d3_swimlane.html">d3 swimlane</a>
+<br /><br />
+<a href="./d3_calendar.html">d3 calendar</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../d3_dates/index.html">d3 dates</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code creates an interactive heatmap visualization that displays time-series data, grouping it by day and coloring each day based on the total time spent. It uses D3.js to generate the SVG elements and apply the color scale.</p>
 
 
-<pre><code>var D3Node = require('d3-node');
+<pre class="javascript"><code>var D3Node = require('d3-node');
 var moment = require('moment');
 var d3n = new D3Node();
 var d3 = d3n.d3;
@@ -69,7 +123,10 @@ function d3Heatmap(data) {
             .attr('fill', (d) => {
                 const t = Math.round(d.getTime() / dayLength / 1000) * dayLength;
                 // 12 hours of work is too much!
-                const normalDay = nestedData['$'+t] / 1000 / (dayLength / 2);
+                const normalDay = nestedData['
+</body>
+
+</html>+t] / 1000 / (dayLength / 2);
                 return isNaN(normalDay) ? 'white' : colour(normalDay);
             })
             .attr('class', 'day')
@@ -137,6 +194,17 @@ function d3Heatmap(data) {
 module.exports = d3Heatmap;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code generates a heatmap visualization of time-series data using D3.js.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -166,3 +234,7 @@ module.exports = d3Heatmap;
 </ul></li>
 </ol>
 <p>Let me know if you have any more questions.</p>
+
+</body>
+
+</html>

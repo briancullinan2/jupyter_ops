@@ -1,12 +1,70 @@
-<p>This code provides a <code>minimatch</code> function that allows you to match filenames against simplified glob-like patterns by converting them into regular expressions. It handles brace expansions, splits patterns into segments, parses them into regexps, and efficiently tests filename matches against the resulting expression.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>minimatch</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../minimatch/index.html">minimatch</a>
+    <br /><br />
+    <a href="./__expand.html">, expand</a>
+<br /><br />
+<a href="./mini_parser.html">mini parser</a>
+<br /><br />
+<a href="./minimatch.html">minimatch</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../minimatch/index.html">minimatch</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a <code>minimatch</code> function that allows you to match filenames against simplified glob-like patterns by converting them into regular expressions. It handles brace expansions, splits patterns into segments, parses them into regexps, and efficiently tests filename matches against the resulting expression.</p>
 
 
-<pre><code>var importer = require('../Core')
+<pre class="javascript"><code>var importer = require('../Core')
 var expand = importer.import('expand')
 var parse = importer.import('mini parser')
 
 function regExpEscape (s) {
-  return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
+  return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\${OUTPUT}')
 }
 
 // convert minimatch expression to regular expression
@@ -39,7 +97,10 @@ function minimatch (filename, pattern) {
             }).join('\\\/')
         }).join('|')
     try {
-        var re = new RegExp('^(?:' + set + ')$', 'i')
+        var re = new RegExp('^(?:' + set + ')
+</body>
+
+</html>, 'i')
         return filename.match(re) !== null
     } catch (ex) {
         throw ex
@@ -50,6 +111,17 @@ module.exports = {
     minimatch
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code implements a <code>minimatch</code> function that performs pattern matching on filenames using a simplified glob-like syntax.</p>
 <p>Here's a breakdown:</p>
@@ -82,3 +154,7 @@ module.exports = {
 <li>Exports the <code>minimatch</code> function for use in other parts of the application.</li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

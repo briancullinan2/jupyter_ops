@@ -1,11 +1,88 @@
-<p>This code snippet configures npm to use a specified proxy server for package downloads and registry access, while also disabling strict SSL certificate validation.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>use npm cache inside of docker</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../git_repos/index.html">git repos</a>
+    <br /><br />
+    <a href="./_test_repository.html">,test repository</a>
+<br /><br />
+<a href="./selenium_repository.html">selenium repository</a>
+<br /><br />
+<a href="./project_repository.html">project repository</a>
+<br /><br />
+<a href="./_Setup_git_credentials_in_docker.html">,Setup git credentials in docker</a>
+<br /><br />
+<a href="./use_in_Docker.html">use in Docker</a>
+<br /><br />
+<a href="./use_npm_cache_inside_of_docker.html">use npm cache inside of docker</a>
+<br /><br />
+<a href="./run_the_Docker_image.html">run the Docker image</a>
+<br /><br />
+<a href="./Selenium_test_scripts.html">Selenium test scripts</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../git_repos/index.html">git repos</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code snippet configures npm to use a specified proxy server for package downloads and registry access, while also disabling strict SSL certificate validation.</p>
 
 
-<pre><code>RUN npm config set proxy http://{host}:8050
+<pre class="bash"><code>RUN npm config set proxy http://{host}:8050
 RUN npm config set proxy http://{host}:8050
 RUN npm config set registry http://{host}:5080
 RUN npm config set strict-ssl false
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet configures npm, the Node.js package manager, to use a proxy server for network requests.</p>
 <p>Here's a breakdown:</p>
@@ -15,3 +92,7 @@ RUN npm config set strict-ssl false
 <li><p><strong><code>RUN npm config set strict-ssl false</code></strong>: This command disables strict SSL certificate validation for npm. This is generally not recommended for security reasons, but it might be necessary if the proxy server or registry uses a self-signed certificate.</p></li>
 </ol>
 <p>In essence, this code snippet configures npm to use a specific proxy server for both package downloads and registry access, and disables strict SSL validation.</p>
+
+</body>
+
+</html>

@@ -1,14 +1,139 @@
-<p>Here is a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 28</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../trainmodel/index.html">trainmodel</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+<a href="./cell_14.html">Cell 14</a>
+<br /><br />
+<a href="./cell_15.html">Cell 15</a>
+<br /><br />
+<a href="./cell_16.html">Cell 16</a>
+<br /><br />
+<a href="./cell_17.html">Cell 17</a>
+<br /><br />
+<a href="./cell_18.html">Cell 18</a>
+<br /><br />
+<a href="./cell_19.html">Cell 19</a>
+<br /><br />
+<a href="./cell_20.html">Cell 20</a>
+<br /><br />
+<a href="./cell_21.html">Cell 21</a>
+<br /><br />
+<a href="./cell_22.html">Cell 22</a>
+<br /><br />
+<a href="./cell_23.html">Cell 23</a>
+<br /><br />
+<a href="./cell_24.html">Cell 24</a>
+<br /><br />
+<a href="./cell_25.html">Cell 25</a>
+<br /><br />
+<a href="./cell_26.html">Cell 26</a>
+<br /><br />
+<a href="./cell_27.html">Cell 27</a>
+<br /><br />
+<a href="./cell_28.html">Cell 28</a>
+<br /><br />
+<a href="./cell_29.html">Cell 29</a>
+<br /><br />
+<a href="./cell_30.html">Cell 30</a>
+<br /><br />
+<a href="./cell_31.html">Cell 31</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../trainmodel/index.html">trainmodel</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The code appears to involve loading an image, preprocessing it using an unknown function <code>ef</code>, and passing it through a deep learning model <code>model</code> to make a prediction. The prediction is then printed, and the preprocessed image is reshaped and displayed using <code>matplotlib</code>.</p>
 
 
-<pre><code>image = 'images/train/disgust/299.jpg'
+<pre class="python"><code>image = 'images/train/disgust/299.jpg'
 print("original image is of disgust")
 img = ef(image)
 pred = model.predict(img)
 pred_label = label[pred.argmax()]
 print("model prediction is ",pred_label)
 plt.imshow(img.reshape(48,48),cmap='gray')</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Libraries</h4>
@@ -38,3 +163,7 @@ plt.imshow(img.reshape(48,48),cmap='gray')</code></pre>
 <li>Print the predicted label.</li>
 <li>Reshape the preprocessed image to a 48x48 grayscale image and display it using <code>matplotlib</code>.</li>
 </ol>
+
+</body>
+
+</html>

@@ -1,14 +1,74 @@
-<p>This code installs Docker on a Windows system, handling the installation process and configuring necessary firewall and network settings using elevated privileges.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>How do I fix the firewall for Docker</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../install_Docker_on_Windows/index.html">install Docker on Windows</a>
+    <br /><br />
+    <a href="./install_Docker_on_Windows.html">install Docker on Windows</a>
+<br /><br />
+<a href="./How_do_I_installed_elevated_from_the_command_line.html">How do I installed elevated from the command line</a>
+<br /><br />
+<a href="./Where_do_I_download_the_Windows_Docker_installer.html">Where do I download the Windows Docker installer</a>
+<br /><br />
+<a href="./How_do_I_fix_the_firewall_for_Docker.html">How do I fix the firewall for Docker</a>
+<br /><br />
+<a href="./install_build_tools_on_Windows.html">install build tools on Windows</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../install_Docker_on_Windows/index.html">install Docker on Windows</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code installs Docker on a Windows system, handling the installation process and configuring necessary firewall and network settings using elevated privileges.</p>
 
 
-<pre><code>$$.async();
+<pre class="javascript"><code>$.async();
 var elevateExecLoc = path.join(process.cwd(), 'elevate', 'bin', 'x86', 'Release', 'elevate.exe');
 var firewallCmd = 'New-NetFirewallRule -DisplayName \\"docker engine\\" -Direction Inbound -Action Allow -Protocol tcp -LocalPort 2375';
 var networkCmd = 'Set-NetConnectionProfile -InterfaceAlias \\"vEthernet (DockerNAT)\\" -NetworkCategory Private';
 var exec = require('child_process').exec;
 var install = exec(elevateExecLoc + ' msiexec /i ' + dockerLoc + ' /qn /L*V! ' + logLoc, () => {
     var firewall = exec(elevateExecLoc + ' powershell -c "' + firewallCmd + ' ; ' + networkCmd + '"', () => {
-        $$.done('installed Docker');
+        $.done('installed Docker');
     });
     install.stdout.on('data', (d) => console.log(d));
     install.stderr.on('data', (d) => console.log(d));
@@ -23,6 +83,17 @@ IN('docker-machine env default')
 DO
 @%
 i</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet installs Docker on a Windows system using the <code>elevate</code> tool to run commands with elevated privileges.</p>
 <p>Here's a breakdown:</p>
@@ -47,7 +118,11 @@ i</code></pre>
 </ul></li>
 <li><p><strong>Completion:</strong></p>
 <ul>
-<li>Once both installation and configuration are complete, it signals the completion of the process to the asynchronous context (<code>$$.done('installed Docker')</code>).</li>
+<li>Once both installation and configuration are complete, it signals the completion of the process to the asynchronous context (<code>$.done('installed Docker')</code>).</li>
 </ul></li>
 </ol>
 <p>Let me know if you have any other code snippets you'd like me to explain!</p>
+
+</body>
+
+</html>

@@ -1,8 +1,92 @@
-<p>Here is a 2-sentence summary of the provided scripts:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 14</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quake_3_commands/index.html">quake 3 commands</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./Try_streaming_the_game_over_VNC__is_it_awful_Kind_of__and_inputs_don_t_work_as_expected_.html">Try streaming the game over VNC, is it awful Kind of, and inputs don't work as expected.</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./https___quake_games_set_20name_20player_name.html">https://quake.games/set%20name%20player_name</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+<a href="./cell_14.html">Cell 14</a>
+<br /><br />
+<a href="./cell_15.html">Cell 15</a>
+<br /><br />
+<a href="./cell_16.html">Cell 16</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quake_3_commands/index.html">quake 3 commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary of the provided scripts:</p>
 <p>This document outlines three scripts: a CMake build script, an emcc compiler script, and a dpmaster script, which are used to build and compile various projects, including a C file and a Quake3Arena file. Each script utilizes specific flags and options to generate different output types, such as Unix Makefiles, WebAssembly code, and JavaScript files.</p>
 
 
-<pre><code>cmake -G "Unix Makefiles" -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/local/bin/gcc-9 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-9
+<pre class="bash"><code>cmake -G "Unix Makefiles" -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/local/bin/gcc-9 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-9
 
 ./code/xquakejs/lib/emsdk/upstream/emscripten/emcc -O1 -s STANDALONE_WASM -s EXPORTED_FUNCTIONS="['_MSG_initHuffman', '_Huff_Decompress', '_Huff_Compress']" -s EXPORT_NAME="huffman" ./code/xquakejs/lib/huffman.c -o ./code/xquakejs/lib/huffman.js
 
@@ -11,6 +95,17 @@
 ./dpmaster -L --log-file /Users/briancullinan/Downloads/dpmaster-2.2/dpmaster.log -v -g Quake3Arena options=send-empty-servers
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h1><strong>CMake Build Script</strong></h1>
 <p>The first command is a CMake build script:</p>
@@ -52,3 +147,7 @@
 <li>Generates a Quake3Arena file (<code>-g Quake3Arena</code>)</li>
 <li>Specifies options (<code>options=send-empty-servers</code>)</li>
 </ul>
+
+</body>
+
+</html>

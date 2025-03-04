@@ -1,8 +1,134 @@
-<p>Here's a summary of the code breakdown in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 12</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../syntax/index.html">syntax</a>
+    <br /><br />
+    <a href="./get_requires.html">get requires</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./builtin_and_local_modules.html">builtin and local modules</a>
+<br /><br />
+<a href="./core_dependencies.html">core dependencies</a>
+<br /><br />
+<a href="./test_core_dependencies.html">test core dependencies</a>
+<br /><br />
+<a href="./get_exports_from_source.html">get exports from source</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./get_parameter_names.html">get parameter names</a>
+<br /><br />
+<a href="./test_parameter_names.html">test parameter names</a>
+<br /><br />
+<a href="./get_imports_from_source.html">get imports from source</a>
+<br /><br />
+<a href="./test_get_imports.html">test get imports</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+<a href="./tree_to_html.html">tree to html</a>
+<br /><br />
+<a href="./cell_15.html">Cell 15</a>
+<br /><br />
+<a href="./html_to_tree.html">html to tree</a>
+<br /><br />
+<a href="./cell_17.html">Cell 17</a>
+<br /><br />
+<a href="./cell_18.html">Cell 18</a>
+<br /><br />
+<a href="./select_ast.html">select ast</a>
+<br /><br />
+<a href="./cell_20.html">Cell 20</a>
+<br /><br />
+<a href="./select_acorn_tree.html">select acorn tree</a>
+<br /><br />
+<a href="./__make_xpaths.html">, make xpaths</a>
+<br /><br />
+<a href="./generate_css_selectors_from_code.html">generate css selectors from code</a>
+<br /><br />
+<a href="./minimize_xpath.html">minimize xpath</a>
+<br /><br />
+<a href="./cell_25.html">Cell 25</a>
+<br /><br />
+<a href="./select_from_code.html">select from code</a>
+<br /><br />
+<a href="./cell_27.html">Cell 27</a>
+<br /><br />
+<a href="./test_expression_on_notebook_code.html">test expression on notebook code</a>
+<br /><br />
+<a href="./cell_29.html">Cell 29</a>
+<br /><br />
+<a href="./Generate_unit_test_from_logic_branching.html">Generate unit test from logic branching</a>
+<br /><br />
+<a href="./cell_31.html">Cell 31</a>
+<br /><br />
+<a href="./cell_32.html">Cell 32</a>
+<br /><br />
+<a href="./generate_unit_test.html">generate unit test</a>
+<br /><br />
+<a href="./cell_34.html">Cell 34</a>
+<br /><br />
+<a href="./cell_35.html">Cell 35</a>
+<br /><br />
+<a href="./cell_36.html">Cell 36</a>
+<br /><br />
+<a href="./cell_37.html">Cell 37</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../syntax/index.html">syntax</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the code breakdown in two sentences:</p>
 <p>The <code>wireKernelInterface</code> object is a JavaScript implementation of the Meta Kernel protocol, defining properties and methods for handling various requests and replies, such as execution, inspection, and communication. The object is exported as a module using <code>module.exports</code>, allowing other JavaScript files to import and use it.</p>
 
 
-<pre><code>/*
+<pre class="javascript"><code>/*
 var wireKernelInterface = {
     ...metaKernelInterface,
     // implement all requests, these are required by the meta kernel
@@ -27,6 +153,17 @@ var wireKernelInterface = {
 module.exports = wireKernelInterface;
 */
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <p>This JavaScript code defines an object <code>wireKernelInterface</code> that implements the interface for a kernel in the Meta Kernel protocol.</p>
@@ -79,3 +216,7 @@ module.exports = wireKernelInterface;
 </ol>
 <h4>Export</h4>
 <p>The <code>wireKernelInterface</code> object is exported as a module using <code>module.exports</code>. This allows other JavaScript files to import and use this object.</p>
+
+</body>
+
+</html>

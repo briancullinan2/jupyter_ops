@@ -1,7 +1,63 @@
-<p>This code provides a utility for extracting specific parts of a JSON file based on a given selection criteria, but its functionality is incomplete due to an unfinished <code>walkJson</code> function.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>select json</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../json/index.html">json</a>
+    <br /><br />
+    <a href="./select_json.html">select json</a>
+<br /><br />
+<a href="./test_stream_by_creating_a_slow_stream.html">test stream by creating a slow stream</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../json/index.html">json</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a utility for extracting specific parts of a JSON file based on a given selection criteria, but its functionality is incomplete due to an unfinished <code>walkJson</code> function.</p>
 
 
-<pre><code>var {Buffer} = require('buffer')
+<pre class="javascript"><code>var {Buffer} = require('buffer')
 
 // replace json path with this
 function walkJson(select, ctx, evaluate) {
@@ -50,6 +106,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a utility for selecting specific parts of a JSON file based on a provided selection criteria.</p>
 <p>Here's a breakdown:</p>
 <ul>
@@ -66,3 +133,7 @@ module.exports = {
 <li><p><strong>Exports:</strong> The module exports the <code>selectJson</code> function, making it available for use in other parts of the system.</p></li>
 </ul>
 <p>In essence, this code aims to provide a way to query and extract specific parts of a JSON file based on a selection criteria, but the <code>walkJson</code> function needs further development to handle JSON parsing and selection logic.</p>
+
+</body>
+
+</html>

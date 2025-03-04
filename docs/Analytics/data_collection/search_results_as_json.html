@@ -1,7 +1,83 @@
-<p>The <code>searchResultsToJson(url)</code> function extracts search results from a given URL and returns them in JSON format, containing the URL, query, and results. It logs the URL and session ID, sends a request, extracts the search query and results, maps them to a desired format, and catches any errors that occur during the process.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>search results as json</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../data_collection/index.html">data collection</a>
+    <br /><br />
+    <a href="./Crime_reports.html">Crime reports</a>
+<br /><br />
+<a href="./https___www_amazon_com_gp_yourstore_iyr_ref_pd_ys_iyr_nextie_UTF8_collection_watched_iyrGroup__maxIt.html">https://www.amazon.com/gp/yourstore/iyr/ref=pd_ys_iyr_nextie=UTF8&collection=watched&iyrGroup=&maxItem=616&minItem=600</a>
+<br /><br />
+<a href="./meta_search_all.html">meta search all</a>
+<br /><br />
+<a href="./schedule_search_all.html">schedule search all</a>
+<br /><br />
+<a href="./tell_joke.html">tell joke</a>
+<br /><br />
+<a href="./multi_crawl.html">multi crawl</a>
+<br /><br />
+<a href="./crawl_domain.html">crawl domain</a>
+<br /><br />
+<a href="./domain_cache_tools.html">domain cache tools</a>
+<br /><br />
+<a href="./browser_crawler_tools.html">browser crawler tools</a>
+<br /><br />
+<a href="./analyze_cache_file.html">analyze cache file</a>
+<br /><br />
+<a href="./schedule_crawl_domain.html">schedule crawl domain</a>
+<br /><br />
+<a href="./collect_all_bookmarks.html">collect all bookmarks</a>
+<br /><br />
+<a href="./search_results_as_json.html">search results as json</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../data_collection/index.html">data collection</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>searchResultsToJson(url)</code> function extracts search results from a given URL and returns them in JSON format, containing the URL, query, and results. It logs the URL and session ID, sends a request, extracts the search query and results, maps them to a desired format, and catches any errors that occur during the process.</p>
 
 
-<pre><code>function searchResultsToJson(url) {
+<pre class="javascript"><code>function searchResultsToJson(url) {
     console.log(url + ' - ' + client.requestHandler.sessionID);
     return client
         .url(url)
@@ -61,6 +137,17 @@
 module.exports = searchResultsToJson;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h3>Function: <code>searchResultsToJson(url)</code></h3>
 <h4>Description</h4>
 <p>Extracts search results from a given URL and returns them in JSON format.</p>
@@ -79,3 +166,7 @@ module.exports = searchResultsToJson;
 <li>Returns the URL, query, and results as a JSON object.</li>
 <li>Catches any errors that occur during the process and returns an empty results array.</li>
 </ol>
+
+</body>
+
+</html>

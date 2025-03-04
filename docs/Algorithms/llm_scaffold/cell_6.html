@@ -1,8 +1,72 @@
-<p>Here is a two-sentence summary of the <code>decodeJupyterNotebook</code> function:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 6</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../llm_scaffold/index.html">llm scaffold</a>
+    <br /><br />
+    <a href="./llm_scaffold.html">llm scaffold</a>
+<br /><br />
+<a href="./bash_project_files.html">bash project files</a>
+<br /><br />
+<a href="./generate_code.html">generate code</a>
+<br /><br />
+<a href="./make_code_file_with_llm.html">make code file with llm</a>
+<br /><br />
+<a href="./edit_code_cell_in_notebook.html">edit code cell in notebook</a>
+<br /><br />
+<a href="./add_llm_code_cell.html">add llm code cell</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../llm_scaffold/index.html">llm scaffold</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the <code>decodeJupyterNotebook</code> function:</p>
 <p>The <code>decodeJupyterNotebook</code> function decodes the content of a Jupyter Notebook file by reading it into a string, parsing it as JSON, and logging the content of code cells. It takes a single argument, <code>filePath</code>, which is the path to the Jupyter Notebook file, and raises an error if there are any issues with file reading or parsing.</p>
 
 
-<pre><code>const fs = require('fs');
+<pre class="javascript"><code>const fs = require('fs');
 
 function decodeJupyterNotebook(filePath) {
     fs.readFile(filePath, 'utf8', (err, data) => {
@@ -33,6 +97,17 @@ decodeJupyterNotebook('Untitled.ipynb');
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Function: decodeJupyterNotebook</h2>
 <h3>Description</h3>
 <p>Decodes the content of a Jupyter Notebook file.</p>
@@ -57,3 +132,7 @@ decodeJupyterNotebook('Untitled.ipynb');
 <h3>Example</h3>
 <pre><code class="language-javascript">decodeJupyterNotebook('Untitled.ipynb');
 </code></pre>
+
+</body>
+
+</html>

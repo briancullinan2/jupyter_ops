@@ -1,10 +1,83 @@
-<p>Here is a 2-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 4</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../Angular_2/index.html">Angular 2</a>
+    <br /><br />
+    <a href="./What_is_Angular_2.html">What is Angular 2</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../Angular_2/index.html">Angular 2</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary:</p>
 <p>The <code>routing</code> constant is exported from the file, configuring the routing with the <code>RouterModule</code> from <code>@angular/router</code>. The routing configuration uses an array of routes and disables the use of the URL's hash for client-side routing.</p>
 
 
-<pre><code>export const routing = RouterModule.forRoot(routes, {useHash: false});
+<pre class="typescript"><code>export const routing = RouterModule.forRoot(routes, {useHash: false});
  
  </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Module Import and Routing Configuration</strong></p>
 <pre><code class="language-markdown">### Code Breakdown
@@ -13,3 +86,7 @@
 * `RouterModule.forRoot(...)`: Imports the `RouterModule` from `@angular/router` and uses its `forRoot` method to configure the routing.
 * `routes`: An array of route configurations that is not shown in this snippet.
 * `{useHash: false}`: An options object that disables the use of the URL's hash (also known as the fragment identifier) for client-side routing.</code></pre>
+
+</body>
+
+</html>

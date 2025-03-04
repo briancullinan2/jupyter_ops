@@ -1,8 +1,78 @@
-<p>Here is a two-sentence summary of the <code>getTypes</code> function:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>get c types</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../dylib/index.html">dylib</a>
+    <br /><br />
+    <a href="./include_a_dynamic_lib.html">include a dynamic lib</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./test_a_csharp_dylib.html">test a csharp dylib</a>
+<br /><br />
+<a href="./set_mouse_position.html">set mouse position</a>
+<br /><br />
+<a href="./get_c_parameters.html">get c parameters</a>
+<br /><br />
+<a href="./get_c_exports.html">get c exports</a>
+<br /><br />
+<a href="./get_c_types.html">get c types</a>
+<br /><br />
+<a href="./c_type_to_data_type.html">c type to data type</a>
+<br /><br />
+<a href="./build_dylib.html">build dylib</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../dylib/index.html">dylib</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the <code>getTypes</code> function:</p>
 <p>The <code>getTypes</code> function is an asynchronous function that retrieves function types from a given C++ code snippet, optionally specifying a function name to retrieve the type for. It uses an XPath expression to parse the code and extract the function types, and is exported as a module for use in other parts of the application.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 let selectCode
 
 async function getTypes(code, functionName) {
@@ -22,6 +92,17 @@ module.exports = getTypes
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h3>Code Breakdown</h3>
 <h4>Function Overview</h4>
 <p>The <code>getTypes</code> function is an asynchronous function that retrieves function types from a given code snippet in C++.</p>
@@ -40,3 +121,7 @@ module.exports = getTypes
 </ol>
 <h4>Export</h4>
 <p>The <code>getTypes</code> function is exported as a module, making it available for use in other parts of the application.</p>
+
+</body>
+
+</html>

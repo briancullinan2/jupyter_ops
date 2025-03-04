@@ -1,8 +1,70 @@
-<p>Here is a 2-sentence summary of the provided code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>, decode client messages</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a>
+    <br /><br />
+    undefined<a href="./index.html">index</a>
+<br /><br />
+<a href="./ssh_remote_wget.html">ssh remote wget</a>
+<br /><br />
+<a href="./dns_lookup.html">dns lookup</a>
+<br /><br />
+<a href="./remove_ctrl_characters.html">remove ctrl characters</a>
+<br /><br />
+<a href="./quake3_server_status.html">quake3 server status</a>
+<br /><br />
+<a href="./spectate_q3_server.html">spectate q3 server</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary of the provided code breakdown:</p>
 <p>This JavaScript code is a Quake 3 server client parser that defines constants, functions, and variables related to the Quake 3 network protocol. It includes functions for parsing messages, generating checksums, and reading strings, as well as variables for entity states and other game engine-related data structures.</p>
 
 
-<pre><code>var {readBits} = importer.import('huffman decode')
+<pre class="node"><code>var {readBits} = importer.import('huffman decode')
 var {parseConfigStr} = importer.import('quake 3 server responses')
 
 var BIG_INFO_STRING = 8192
@@ -406,6 +468,17 @@ async function decodeClientMessage(message, channel) {
 module.exports = decodeClientMessage
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <p>This is a JavaScript code that appears to be a Quake 3 server client parser. It defines several constants, functions, and variables related to Quake 3 network protocol.</p>
 <h3>Constants</h3>
@@ -443,3 +516,7 @@ module.exports = decodeClientMessage
 <li>The code appears to be written in a style that is specific to the Quake 3 game engine, with references to specific constants and data structures that are not widely known.</li>
 <li>The code is likely intended for use in a specific game engine or client implementation, rather than as standalone code.</li>
 </ul>
+
+</body>
+
+</html>

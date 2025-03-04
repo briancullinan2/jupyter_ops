@@ -1,8 +1,72 @@
-<p>Here's a summary of the code in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 5</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../pyimport/index.html">pyimport</a>
+    <br /><br />
+    <a href="./get_python_params.html">get python params</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./questions____re_sub_r____________q__flags_re_IGNORECASE__strip__.html">questions = [re.sub(r'|\|+', '', q, flags=re.IGNORECASE).strip()</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./run_python_cells.html">run python cells</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../pyimport/index.html">pyimport</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the code in two sentences:</p>
 <p>The <code>get_cells</code> function imports a Jupyter Notebook file, extracts cell metadata, and formats it into a list of dictionaries with language, filename, and unique ID information. The function takes two parameters: the notebook path and a list of cell types to extract, and returns the formatted list of cells.</p>
 
 
-<pre><code>import json
+<pre class="python"><code>import json
 import os
 
 def get_cells(notebook_path, types=['*', 'code']):
@@ -33,6 +97,17 @@ __all__ = {
   "get_cells": get_cells
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Libraries</h4>
@@ -95,3 +170,7 @@ with open(notebook_path, 'r', encoding='utf-8') as f:
 }
 </code></pre>
 <p>This line makes the <code>get_cells</code> function available for import using <code>from module import get_cells</code>.</p>
+
+</body>
+
+</html>

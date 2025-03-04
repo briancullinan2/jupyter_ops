@@ -1,29 +1,102 @@
-<p>Here's a summary of the code breakdown in one sentence:</p>
-<p>The JavaScript code snippet initiates an asynchronous operation with <code>$$.async()</code> and handles the result or error using the <code>.then()</code> and <code>.catch()</code> methods, passing the result to <code>$$.sendResult()</code> or the error to <code>$$.sendError()</code>.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../you_earned_it/index.html">you earned it</a>
+    <br /><br />
+    <a href="./high_five_people_in_YouEarnedIt.html">high five people in YouEarnedIt</a>
+<br /><br />
+<a href="./automate_YouEarnedIt.html">automate YouEarnedIt</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../you_earned_it/index.html">you earned it</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the code breakdown in one sentence:</p>
+<p>The JavaScript code snippet initiates an asynchronous operation with <code>$.async()</code> and handles the result or error using the <code>.then()</code> and <code>.catch()</code> methods, passing the result to <code>$.sendResult()</code> or the error to <code>$.sendError()</code>.</p>
 <p>Alternatively, here's a two-sentence summary:</p>
-<p>The code starts with <code>$$.async()</code> to initiate an asynchronous operation and continues with a promise resolution and error handling using <code>.then()</code> and <code>.catch()</code>. The result or error is then passed to specific functions within a framework or library, indicated by the <code>$.$$</code> namespace.</p>
+<p>The code starts with <code>$.async()</code> to initiate an asynchronous operation and continues with a promise resolution and error handling using <code>.then()</code> and <code>.catch()</code>. The result or error is then passed to specific functions within a framework or library, indicated by the <code>$.$</code> namespace.</p>
 
 
-<pre><code>$$.async()
+<pre class="javascript"><code>$.async()
 runHighFiver()
-    .then(r => $$.sendResult(r))
-    .catch(e => $$.sendError(e))</code></pre>
+    .then(r => $.sendResult(r))
+    .catch(e => $.sendError(e))</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Overview</h3>
 <p>This is a JavaScript code snippet that appears to be part of a larger framework or library.</p>
 <h3>Code Structure</h3>
 <ul>
-<li>The code starts with <code>$$.async()</code>, which likely initiates an asynchronous operation.</li>
+<li>The code starts with <code>$.async()</code>, which likely initiates an asynchronous operation.</li>
 <li>The <code>runHighFiver()</code> function is called next, which returns a promise.</li>
 <li>The promise is then handled using the <code>.then()</code> and <code>.catch()</code> methods:
 <ul>
-<li><code>.then(r =&gt; $$.sendResult(r))</code>: If the promise resolves successfully, the result (<code>r</code>) is passed to the <code>$$.sendResult()</code> function.</li>
-<li><code>.catch(e =&gt; $$.sendError(e))</code>: If the promise rejects, the error (<code>e</code>) is passed to the <code>$$.sendError()</code> function.</li>
+<li><code>.then(r =&gt; $.sendResult(r))</code>: If the promise resolves successfully, the result (<code>r</code>) is passed to the <code>$.sendResult()</code> function.</li>
+<li><code>.catch(e =&gt; $.sendError(e))</code>: If the promise rejects, the error (<code>e</code>) is passed to the <code>$.sendError()</code> function.</li>
 </ul></li>
 </ul>
 <h3>Assumptions</h3>
 <ul>
-<li><code>$$.async()</code>, <code>runHighFiver()</code>, <code>$$.sendResult()</code>, and <code>$$.sendError()</code> are functions or methods within the framework or library being used.</li>
-<li>The <code>$.$$</code> syntax suggests a namespace or alias for an object or library.</li>
+<li><code>$.async()</code>, <code>runHighFiver()</code>, <code>$.sendResult()</code>, and <code>$.sendError()</code> are functions or methods within the framework or library being used.</li>
+<li>The <code>$.$</code> syntax suggests a namespace or alias for an object or library.</li>
 </ul>
+
+</body>
+
+</html>

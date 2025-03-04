@@ -1,8 +1,88 @@
-<p>Here's a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 11</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../Wireframing/index.html">Wireframing</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+<a href="./cell_14.html">Cell 14</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../Wireframing/index.html">Wireframing</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The code initializes a process to convert a webpage to an image using the <code>wkhtmltoimage</code> command, with options such as quality and format, and logs the command-line arguments used. The process's output is then piped through a base64 encoder and logged, with the encoded output being passed to the <code>$TS.jpg()</code> function when complete.</p>
 
 
-<pre><code>$$.async();
+<pre class="typescript"><code>$.async();
 const url = 'act.com';
 const options = {zoom: .5, width: 680, 'crop-h': 400, 'javascript-delay': 1000};
 const encode = require('base64-stream').encode();
@@ -15,10 +95,21 @@ var out = '';
 wk.stderr.on('data', (d) => console.log(d));
 wk.stdout.pipe(encode).on('data', d => out += d.toString()).on('finish', () => $TS.jpg(out));</code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <h3>Initialization</h3>
 <ul>
-<li><code>$$.async();</code>: Not a standard JavaScript function, likely a custom function for asynchronous operations.</li>
+<li><code>$.async();</code>: Not a standard JavaScript function, likely a custom function for asynchronous operations.</li>
 <li><code>const url = 'act.com';</code>: Sets the target URL for the operation.</li>
 <li><code>const options = {... };</code>: Defines an object with options for the <code>wkhtmltoimage</code> command.</li>
 <li><code>const encode = require('base64-stream').encode();</code>: Imports and initializes a base64 stream encoder.</li>
@@ -39,3 +130,7 @@ wk.stdout.pipe(encode).on('data', d => out += d.toString()).on('finish', () => $
 <li><code>wk.stderr.on('data', (d) =&gt; console.log(d));</code>: Logs any error messages from the process.</li>
 <li><code>wk.stdout.pipe(encode).on('data', d =&gt; out += d.toString()).on('finish', () =&gt; $TS.jpg(out));</code>: Pipes the output of the process through the base64 encoder, and when the encoding is complete, calls the <code>$TS.jpg()</code> function with the encoded output.</li>
 </ul>
+
+</body>
+
+</html>

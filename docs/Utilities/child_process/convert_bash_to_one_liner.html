@@ -1,8 +1,64 @@
-<p>Here is a 2-sentence summary of the <code>bashToOne</code> function:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>convert bash to one liner</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../child_process/index.html">child process</a>
+    <br /><br />
+    <a href="./spawn_child_process.html">spawn child process</a>
+<br /><br />
+<a href="./test_child_process.html">test child process</a>
+<br /><br />
+<a href="./convert_bash_to_one_liner.html">convert bash to one liner</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../child_process/index.html">child process</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary of the <code>bashToOne</code> function:</p>
 <p>The <code>bashToOne</code> function maps Bash shell script code to a single executable command, handling platform-specific line endings and command separators. It does this by splitting, modifying, and joining the input code according to the detected platform (Windows or Unix-like).</p>
 
 
-<pre><code>// read cmd template and execute each line?
+<pre class="javascript"><code>// read cmd template and execute each line?
 var multiline = process.platform === 'win32' ? '^\n ' : '\\\n ';
 var multicmd = process.platform === 'win32' ? ' ^\n; ' : ' \\\n&& ';
 
@@ -19,6 +75,17 @@ function bashToOne(code) {
 }
 module.exports = bashToOne;
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Function: <code>bashToOne</code></strong></p>
 <h3>Description</h3>
@@ -44,3 +111,7 @@ module.exports = bashToOne;
 <li><code>process.platform === 'win32'</code>: Windows platform</li>
 <li><code>process.platform!== 'win32'</code>: Unix-like platform</li>
 </ul>
+
+</body>
+
+</html>

@@ -1,8 +1,68 @@
-<p>Here is a two-sentence summary of the provided code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>client input remote code</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_remote/index.html">discord remote</a>
+    <br /><br />
+    <a href="./discord_remote_control.html">discord remote control</a>
+<br /><br />
+<a href="./discord_remote_proxy_server.html">discord remote proxy server</a>
+<br /><br />
+<a href="./express_automation_routes.html">express automation routes</a>
+<br /><br />
+<a href="./remote_desktop_client.html">remote desktop client</a>
+<br /><br />
+<a href="./client_input_remote_code.html">client input remote code</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_remote/index.html">discord remote</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the provided code:</p>
 <p>This code adds event listeners to various elements on a web page to capture user interactions, including clicks, key presses, and button clicks, and sends POST requests to a server with session IDs and relevant data. The code also parses query parameters from the URL and sets the session ID property, and defines a function to retrieve checked input values from elements with the class &quot;container&quot;.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 document.addEventListener('DOMContentLoaded', (evt) => {
 
   let queryParams = {}
@@ -114,6 +174,17 @@ document.addEventListener('DOMContentLoaded', (evt) => {
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <h3>Event Listener for DOM Content Loaded</h3>
 <p>The code starts by adding an event listener to the <code>document</code> object when the DOM content is loaded. This event listener is used to execute a function when the DOM is fully loaded.</p>
@@ -203,3 +274,7 @@ for(let i = 0; i &lt; buttons.length; i++) {
   })
 }
 </code></pre>
+
+</body>
+
+</html>

@@ -1,4 +1,72 @@
-<a href="./search_the_web.html">search the web</a>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>google search api</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../../Google/index.html">Google</a>
+    <br /><br />
+    <a href="./google_calendar_data/index.html">google calendar data</a>
+<br /><br />
+<a href="./google_calendar_graphs/index.html">google calendar graphs</a>
+<br /><br />
+<a href="./google_calendar/index.html">google calendar</a>
+<br /><br />
+<a href="./google_contacts/index.html">google contacts</a>
+<br /><br />
+<a href="./google_drive/index.html">google drive</a>
+<br /><br />
+<a href="./google_maps/index.html">google maps</a>
+<br /><br />
+<a href="./google_scheduling/index.html">google scheduling</a>
+<br /><br />
+<a href="./google_search_api/index.html">google search api</a>
+<br /><br />
+<a href="./google_sheets/index.html">google sheets</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../../Google/index.html">Google</a> ${PREV} ${NEXT}
+  </header>
+
+  <a href="./search_the_web.html">search the web</a>
 <br /><br />
 <p>This code defines a function that performs custom Google searches using the Google Custom Search Engine API, handling authentication and returning the search results data.  It's designed to be reusable in other parts of an application.</p>
 <a href="./test_custom_search.html">test custom search</a>
@@ -7,3 +75,7 @@
 <a href="./authorize_custom_search.html">authorize custom search</a>
 <br /><br />
 <p>This code configures authentication with the Google Custom Search Engine API by locating credentials and defining the necessary scope, providing a function to obtain an authorized client for API requests.</p>
+
+</body>
+
+</html>

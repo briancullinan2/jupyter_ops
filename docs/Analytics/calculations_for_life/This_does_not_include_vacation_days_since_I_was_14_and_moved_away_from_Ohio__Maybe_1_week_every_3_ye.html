@@ -1,7 +1,65 @@
-<p>This code determines the proportion of the author's life spent with a friend named Jim, factoring in years of friendship, visit frequency, vacation duration, and life expectancy.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>This does not include vacation days since I was 14 and moved away from Ohio. Maybe 1 week every 3 years average</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../calculations_for_life/index.html">calculations for life</a>
+    <br /><br />
+    <a href="./This_does_not_include_vacation_days_since_I_was_14_and_moved_away_from_Ohio__Maybe_1_week_every_3_ye.html">This does not include vacation days since I was 14 and moved away from Ohio. Maybe 1 week every 3 years average</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../calculations_for_life/index.html">calculations for life</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code determines the proportion of the author's life spent with a friend named Jim, factoring in years of friendship, visit frequency, vacation duration, and life expectancy.</p>
 
 
-<pre><code>var _3daysPer14 = 3/14; // 3 days out of every 14 spent with Jim
+<pre class="javascript"><code>var _3daysPer14 = 3/14; // 3 days out of every 14 spent with Jim
 var _12yearsInOhio = 12; // number of years in Ohio consistently visiting Jim every other weekend
 var _2yearsInVienna = 2; // number of years moved to Vienna
 var _2yearsInOhioNotWithJim = 2; // number of years in Ohio that I didn't feel like visiting every other week
@@ -45,6 +103,17 @@ console.log('Percent of Brian\'s life spent with Jim: ' + _percentOfLifeFormatte
 console.log('Percent of Jim\'s life spent with his only son: ' + _percentOfJimsLifeSpentWithBrianFormatted)
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code calculates the percentage of the author's life spent with a friend named Jim, taking into account various factors like the number of years they've known each other, how often they visited, and the length of vacations.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -78,3 +147,7 @@ console.log('Percent of Jim\'s life spent with his only son: ' + _percentOfJimsL
 </ul></li>
 </ol>
 <p>Let me know if you have any more questions!</p>
+
+</body>
+
+</html>

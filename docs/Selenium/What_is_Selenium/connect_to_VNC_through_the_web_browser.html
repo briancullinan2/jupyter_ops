@@ -1,8 +1,68 @@
-<p>This code provides a function <code>vncIframe</code> that generates an HTML snippet embedding a VNC viewer iframe, allowing you to easily integrate VNC viewing into your web application. It takes optional connection parameters and dynamically constructs the iframe's source URL with encoded options.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>connect to VNC through the web browser</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../What_is_Selenium/index.html">What is Selenium</a>
+    <br /><br />
+    <a href="./What_is_Selenium.html">What is Selenium</a>
+<br /><br />
+<a href="./connect_to_VNC_through_the_web_browser.html">connect to VNC through the web browser</a>
+<br /><br />
+<a href="./run_a_selenium_cell_on_the_Docker_machine.html">run a selenium cell on the Docker machine</a>
+<br /><br />
+<a href="./Test_docker_selenium.html">Test docker selenium</a>
+<br /><br />
+<a href="./Transfer_login_state_to_current_browser.html">Transfer login state to current browser</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../What_is_Selenium/index.html">What is Selenium</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a function <code>vncIframe</code> that generates an HTML snippet embedding a VNC viewer iframe, allowing you to easily integrate VNC viewing into your web application. It takes optional connection parameters and dynamically constructs the iframe's source URL with encoded options.</p>
 <p>The <code>vncIframe</code> function generates an HTML snippet embedding a VNC viewer iframe, dynamically constructing the iframe's source URL based on provided connection parameters and encoding them for URL safety.</p>
 
 
-<pre><code>function urlEncode(obj) {
+<pre class="javascript"><code>function urlEncode(obj) {
     return Object.keys(obj).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])).join('&');
 }
 
@@ -25,10 +85,21 @@ src="//localhost:6080/vnc.html?${urlEncode(options)}"></iframe></div>
 }
 module.exports = vncIframe;
 
-if(typeof $$ !== 'undefined') {
-    $$.mime({'text/html': vncIframe()});
+if(typeof $ !== 'undefined') {
+    $.mime({'text/html': vncIframe()});
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code defines a function <code>vncIframe</code> that generates an HTML snippet embedding a VNC viewer iframe.</p>
 <p>Here's a breakdown:</p>
@@ -55,7 +126,11 @@ if(typeof $$ !== 'undefined') {
 </ul></li>
 <li><p><strong>Conditional Execution:</strong></p>
 <ul>
-<li>Checks if a global variable <code>$$</code> exists (likely a framework or library).</li>
-<li>If it exists, it calls <code>$$.mime</code> to register the <code>vncIframe</code> function as a MIME type handler for HTML content.</li>
+<li>Checks if a global variable <code>$</code> exists (likely a framework or library).</li>
+<li>If it exists, it calls <code>$.mime</code> to register the <code>vncIframe</code> function as a MIME type handler for HTML content.</li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

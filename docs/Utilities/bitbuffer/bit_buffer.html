@@ -1,8 +1,60 @@
-<p>Here is a two-sentence summary of the provided code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>bit buffer</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../bitbuffer/index.html">bitbuffer</a>
+    <br /><br />
+    <a href="./bit_buffer.html">bit buffer</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../bitbuffer/index.html">bitbuffer</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the provided code breakdown:</p>
 <p>The JavaScript <code>BitView</code> class provides a similar interface to <code>DataView</code> with support for bit-level reads and writes, allowing for manipulation of single bits within a specified byte offset. It offers methods to set a single bit, read a specified number of bits, and private properties for internal use, with dependencies on <code>ArrayBuffer</code> or <code>Buffer</code> objects and the <code>DataView</code> class.</p>
 
 
-<pre><code>(function (root) {
+<pre class="javascript"><code>(function (root) {
 
 /**********************************************************
  *
@@ -506,6 +558,17 @@ else if (typeof module !== 'undefined' && module.exports) {
 }(this));
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Overview</h3>
 <p>This code defines a JavaScript class named <code>BitView</code> which provides a similar interface to <code>DataView</code> but with support for bit-level reads and writes.</p>
@@ -538,3 +601,7 @@ else if (typeof module !== 'undefined' && module.exports) {
 <li>The code has a dependency on the <code>Buffer</code> object, which is a Node.js module.</li>
 <li>The code has a private property <code>_scratch</code> that is used for internal purposes.</li>
 </ul>
+
+</body>
+
+</html>

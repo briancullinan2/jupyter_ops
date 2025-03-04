@@ -1,10 +1,81 @@
-<p>Here is a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../ECommerce/index.html">ECommerce</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../ECommerce/index.html">ECommerce</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary:</p>
 <p>The code is written in JavaScript and sets the <code>auto_scroll_threshold</code> property of <code>IPython.OutputArea</code> to 9999, effectively disabling auto-scrolling in an IPython environment. This is done by setting a large value (9999) that is unlikely to be reached, preventing unnecessary scrolling.</p>
 
 
-<pre><code>%%
+<pre class="python"><code>%%
 javascript
 IPython.OutputArea.auto_scroll_threshold = 9999;</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Language</h4>
@@ -17,3 +88,7 @@ IPython.OutputArea.auto_scroll_threshold = 9999;</code></pre>
 <li><code>auto_scroll_threshold</code> is a property that determines when the output area should automatically scroll to display new output.</li>
 <li>By setting this property to 9999, it effectively disables auto-scrolling, as 9999 is a very large number that is unlikely to be reached by the output area.</li>
 </ul>
+
+</body>
+
+</html>

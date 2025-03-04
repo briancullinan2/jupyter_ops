@@ -1,7 +1,89 @@
-<p>This code provides a function, <code>addImports</code>, that automatically inserts import statements into code based on the identification of global function calls. It leverages an AST parser, a cache of exports, and a transpiling function to achieve this.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>add missing imports</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../notebook/index.html">notebook</a>
+    <br /><br />
+    <a href="./readme_md.html">readme.md</a>
+<br /><br />
+<a href="./import_notebook__import_all_cell_modules.html">import notebook, import all cell modules</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./__replace_core_requirement.html">, replace core requirement</a>
+<br /><br />
+<a href="./replace_notebook_import.html">replace notebook import</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./add_missing_imports.html">add missing imports</a>
+<br /><br />
+<a href="./test_add_missing_imports.html">test add missing imports</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./export_notebook.html">export notebook</a>
+<br /><br />
+<a href="./inject_cells_in_to_notebooks_when_built_with_webpack.html">inject cells in to notebooks when built with webpack</a>
+<br /><br />
+<a href="./__get_cell_extension.html">, get cell extension</a>
+<br /><br />
+<a href="./nice_name.html">nice name</a>
+<br /><br />
+<a href="./authoring_header_template.html">authoring header template</a>
+<br /><br />
+<a href="./cell_15.html">Cell 15</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../notebook/index.html">notebook</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a function, <code>addImports</code>, that automatically inserts import statements into code based on the identification of global function calls. It leverages an AST parser, a cache of exports, and a transpiling function to achieve this.</p>
 
 
-<pre><code>var importer = require('../Core')
+<pre class="javascript"><code>var importer = require('../Core')
 var {transpile} = importer.import('transpile code')
 var {selectAst} = importer.import('select code tree')
 var niceName = importer.import('rename cell to nice name')
@@ -45,6 +127,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a function to automatically add imports to a code snippet based on global function calls.</p>
 <p>Here's a breakdown:</p>
 <ul>
@@ -54,3 +147,7 @@ module.exports = {
 <li><strong><code>addImports</code> Function:</strong> This function takes a code snippet as input, transpiles it using the imported <code>transpile</code> function, and applies the <code>addImport</code> function to the AST to add the necessary imports.</li>
 <li><strong>Exports:</strong> The module exports the <code>addImports</code> function, making it available for use in other parts of the project.</li>
 </ul>
+
+</body>
+
+</html>

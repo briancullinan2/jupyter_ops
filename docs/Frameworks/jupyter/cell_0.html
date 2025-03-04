@@ -1,8 +1,60 @@
-<p>Here is a summary of the CSS code in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 0</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../jupyter/index.html">jupyter</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../jupyter/index.html">jupyter</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the CSS code in two sentences:</p>
 <p>The CSS code sets font styles for text and code cells, using 'Roboto' as the primary font for text cells and 'Roboto Mono' for code cells, both with a font size and line height of 18 pixels. This overrides any other line height styles to maintain consistency across the cells.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 div.text_cell,
 div.text_cell_render pre,
 div.text_cell_render {
@@ -23,6 +75,17 @@ div.terminal-app .terminal {
 }
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Breakdown of CSS Code</h3>
 <h4>Font Styles for Text Cells</h4>
@@ -56,3 +119,7 @@ div.terminal-app.terminal {
 <li>Sets the font size to 18 pixels.</li>
 <li>Sets the line height to 18 pixels, overriding any other line height styles.</li>
 </ul>
+
+</body>
+
+</html>

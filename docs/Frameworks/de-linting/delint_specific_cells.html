@@ -1,7 +1,65 @@
-<p>The <code>delintCell</code> function takes code as input and uses the <code>delint</code> library to analyze it for potential errors or style issues. It then returns the results of this analysis.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>delint specific cells</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../de-linting/index.html">de-linting</a>
+    <br /><br />
+    <a href="./delint_notebooks.html">delint notebooks</a>
+<br /><br />
+<a href="./delint_specific_cells.html">delint specific cells</a>
+<br /><br />
+<a href="./test_de-linting_service.html">test de-linting service</a>
+<br /><br />
+<a href="./delint_using_webstorm.html">delint using webstorm</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../de-linting/index.html">de-linting</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>delintCell</code> function takes code as input and uses the <code>delint</code> library to analyze it for potential errors or style issues. It then returns the results of this analysis.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var delintCode = importer.import('delint notebooks');
 
 function delintCell(search) {
@@ -17,6 +75,17 @@ function delintCell(search) {
 module.exports = delintCell;
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code defines a function <code>delintCell</code> that leverages an external library (<code>delint</code>) to perform code linting on a given input.</p>
 <p>Here's a breakdown:</p>
@@ -42,3 +111,7 @@ module.exports = delintCell;
 </ul></li>
 </ol>
 <p>Let me know if you have any more questions.</p>
+
+</body>
+
+</html>

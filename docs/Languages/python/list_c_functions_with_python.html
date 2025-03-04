@@ -1,8 +1,64 @@
-<p>Here's a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>list c functions with python</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../python/index.html">python</a>
+    <br /><br />
+    <a href="./rosetta_euler_python_005.html">rosetta euler python 005</a>
+<br /><br />
+<a href="./list_c_functions_with_python.html">list c functions with python</a>
+<br /><br />
+<a href="./python_params_in_antrl.html">python params in antrl</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../python/index.html">python</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary:</p>
 <p>The code imports necessary libraries and sets up ANTLR directory to parse C language code, and defines a custom <code>FunctionExtractor</code> class to extract function names from the parsed code. A <code>get_functions</code> function is then defined to take a code string as input, parse it using ANTLR, and extract function names using the <code>FunctionExtractor</code> class.</p>
 
 
-<pre><code>import os
+<pre class="python"><code>import os
 from antlr4 import *
 ANTLR_DIRECTORY = os.path.join(os.path.dirname(__file__), "../Resources/Parsers/c")
 import sys
@@ -35,6 +91,17 @@ __all__ = {
   "get_functions": get_functions
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Libraries</h3>
@@ -87,3 +154,7 @@ from CListener import CListener  # ANTLR-generated listener class
 }
 </code></pre>
 <p>This allows the function to be imported and used by other modules.</p>
+
+</body>
+
+</html>

@@ -1,8 +1,70 @@
-<p>Here's a 2-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 3</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../2017_Update/index.html">2017 Update</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../2017_Update/index.html">2017 Update</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 2-sentence summary of the code:</p>
 <p>This Graphviz code creates a directed graph representing a purchase funnel flow with multiple stages, including a landing site, trial flow, and purchase funnel. The graph consists of four main clusters with nodes (represented by shapes) and edges (lines) that indicate the flow of customers between stages, including decision points and conditional labels.</p>
 
 
-<pre><code>%%
+<pre class="python"><code>%%
 dot
 
 digraph
@@ -109,6 +171,17 @@ apply
 
 }</code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code is written in Graphviz language, used to create directed graphs.</p>
 <p>Here's a short breakdown:</p>
 <ul>
@@ -134,3 +207,7 @@ apply
 <li><code>start:s -&gt; hasaccount</code>: defines an edge from the <code>start</code> node to the <code>hasaccount</code> node.</li>
 <li><code>hasaccount:e -&gt; upgrade</code>: defines an edge from the <code>hasaccount</code> node to the <code>upgrade</code> node.</li>
 </ul>
+
+</body>
+
+</html>

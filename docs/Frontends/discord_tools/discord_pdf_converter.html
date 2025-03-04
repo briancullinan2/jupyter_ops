@@ -1,8 +1,78 @@
-<p>Here is a 2-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>discord pdf converter</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_tools/index.html">discord tools</a>
+    <br /><br />
+    <a href="./discord_pdf_converter.html">discord pdf converter</a>
+<br /><br />
+<a href="./discord_notebook_connector.html">discord notebook connector</a>
+<br /><br />
+<a href="./discord_llm_connector.html">discord llm connector</a>
+<br /><br />
+<a href="./discord_writing_llms.html">discord writing llms</a>
+<br /><br />
+<a href="./discord_mesh_generator.html">discord mesh generator</a>
+<br /><br />
+<a href="./discord_llm_interactions.html">discord llm interactions</a>
+<br /><br />
+<a href="./sync_discord_llm_tools.html">sync discord llm tools</a>
+<br /><br />
+<a href="./sync_deceptive_chat.html">sync deceptive chat</a>
+<br /><br />
+<a href="./discord_handy_tools.html">discord handy tools</a>
+<br /><br />
+<a href="./create_discord_message_with_attachments.html">create discord message with attachments</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_tools/index.html">discord tools</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary of the code:</p>
 <p>The <code>doDiscordPdf</code> function is an asynchronous module that generates a temporary PDF, patches a Discord interaction's image attachment with the PDF, and updates the interaction with an error message if the PDF creation fails. It utilizes various external libraries and Node.js modules, including <code>discord api</code>, <code>collect all bookmarks</code>, <code>browser crawler tools</code>, and <code>domain cache tools</code>, to retrieve a cache, perform a browser request, and interact with the file system.</p>
 
 
-<pre><code>const os = require('os')
+<pre class="javascript"><code>const os = require('os')
 const fs = require('fs')
 const {updateInteraction} = importer.import('discord api')
 const {savePdf} = importer.import('collect all bookmarks')
@@ -41,6 +111,17 @@ module.exports = {
 }
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
@@ -96,3 +177,7 @@ const {
 <li>The <code>safeurl</code> function is not used in this code snippet.</li>
 <li>The code uses the <code>fs</code> module to interact with the file system and the <code>os</code> module to access the system's temporary directory.</li>
 </ul>
+
+</body>
+
+</html>

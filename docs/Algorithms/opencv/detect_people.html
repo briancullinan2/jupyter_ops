@@ -1,8 +1,80 @@
-<p>Here's a two-sentence summary of the provided code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>detect people</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../opencv/index.html">opencv</a>
+    <br /><br />
+    <a href="./detect_people.html">detect people</a>
+<br /><br />
+<a href="./motion_detection.html">motion detection</a>
+<br /><br />
+<a href="./python_write_video.html">python write video</a>
+<br /><br />
+<a href="./python_write_images_to_ffmpeg_stream.html">python write images to ffmpeg stream</a>
+<br /><br />
+<a href="./create_a_live_streaming_request.html">create a live streaming request</a>
+<br /><br />
+<a href="./authorize_youtube_in_python.html">authorize youtube in python</a>
+<br /><br />
+<a href="./list_broadcasts.html">list broadcasts</a>
+<br /><br />
+<a href="./create_live_stream.html">create live stream</a>
+<br /><br />
+<a href="./list_live_stream.html">list live stream</a>
+<br /><br />
+<a href="./bind_youtube_stream.html">bind youtube stream</a>
+<br /><br />
+<a href="./transition_live_stream.html">transition live stream</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../opencv/index.html">opencv</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the provided code:</p>
 <p>This code utilizes OpenCV and other libraries to detect people in images, track motion, and draw bounding boxes around detected individuals. The code consists of several functions, including image loading, motion detection, and person tracking, with a TODO comment indicating the need to implement video recording and uploading functionality.</p>
 
 
-<pre><code>import os
+<pre class="python"><code>import os
 import requests
 import cv2
 import numpy as np
@@ -97,6 +169,17 @@ __all__ = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <h3>Importing Libraries</h3>
 <pre><code class="language-python">import os
@@ -150,3 +233,7 @@ hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 <pre><code class="language-python"># TODO: if motion is &gt; 1.0 start recording and compile a video and upload to youtube
 </code></pre>
 <p>This is a TODO comment indicating that when the motion percentage exceeds 1.0, the code should start recording a video and upload it to YouTube. However, this code is not implemented in the provided snippet.</p>
+
+</body>
+
+</html>

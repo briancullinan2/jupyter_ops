@@ -1,7 +1,69 @@
-<p>This code automates the login process to multiple websites defined in a JSON file, likely for the purpose of web scraping or further interaction, using a custom <code>multiCrawl</code> function. It reads credentials from a local file and executes the logins asynchronously, sending results and handling errors through a testing framework.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>test sites logins</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../forms/index.html">forms</a>
+    <br /><br />
+    <a href="./form_utilities.html">form utilities</a>
+<br /><br />
+<a href="./fill_select_dropdown.html">fill select dropdown</a>
+<br /><br />
+<a href="./map_object_to_form.html">map object to form</a>
+<br /><br />
+<a href="./log_in_to_multiple_sites.html">log in to multiple sites</a>
+<br /><br />
+<a href="./test_sites_logins.html">test sites logins</a>
+<br /><br />
+<a href="./get_all_links_html.html">get all links html</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../forms/index.html">forms</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code automates the login process to multiple websites defined in a JSON file, likely for the purpose of web scraping or further interaction, using a custom <code>multiCrawl</code> function. It reads credentials from a local file and executes the logins asynchronously, sending results and handling errors through a testing framework.</p>
 
 
-<pre><code>var fs = require('fs');
+<pre class="javascript"><code>var fs = require('fs');
 var path = require('path');
 var importer = require('../Core');
 var multiCrawl = importer.import('multi crawl');
@@ -28,14 +90,25 @@ function testLogins() {
 }
 module.exports = testLogins;
 
-if(typeof $$ !== 'undefined') {
-    $$.async();
+if(typeof $ !== 'undefined') {
+    $.async();
     testLogins()
-        .then(r => $$.sendResult(r))
-        .catch(e => $$.sendError(e))
+        .then(r => $.sendResult(r))
+        .catch(e => $.sendError(e))
 }
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet is designed to automate the login process to multiple websites and potentially scrape or interact with them. Here's a breakdown:</p>
 <p><strong>Dependencies:</strong></p>
@@ -66,7 +139,11 @@ if(typeof $$ !== 'undefined') {
 </ul>
 <p><strong>Execution:</strong></p>
 <ul>
-<li>The <code>if(typeof $$ !== 'undefined')</code> block appears to be a conditional statement for running the code in a specific environment (possibly a testing framework).</li>
-<li>If the environment supports <code>$$</code>, it executes <code>testLogins()</code> asynchronously, sends the results to <code>$$.sendResult</code>, and handles potential errors using <code>$$.sendError</code>.</li>
+<li>The <code>if(typeof $ !== 'undefined')</code> block appears to be a conditional statement for running the code in a specific environment (possibly a testing framework).</li>
+<li>If the environment supports <code>$</code>, it executes <code>testLogins()</code> asynchronously, sends the results to <code>$.sendResult</code>, and handles potential errors using <code>$.sendError</code>.</li>
 </ul>
 <p>Let me know if you have any other questions.</p>
+
+</body>
+
+</html>

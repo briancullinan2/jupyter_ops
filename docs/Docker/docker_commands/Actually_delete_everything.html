@@ -1,8 +1,89 @@
-<p>This code cleans up a Docker system by removing all unused images, containers, networks, volumes, and build caches.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Actually delete everything</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../docker_commands/index.html">docker commands</a>
+    <br /><br />
+    <a href="./use_Docker.html">use Docker</a>
+<br /><br />
+<a href="./Restart_the_docker_service.html">Restart the docker service</a>
+<br /><br />
+<a href="./Actually_delete_everything.html">Actually delete everything</a>
+<br /><br />
+<a href="./Delete_all_containers.html">Delete all containers</a>
+<br /><br />
+<a href="./Delete_all_images.html">Delete all images</a>
+<br /><br />
+<a href="./Delete_all_images_in_Powershell.html">Delete all images in Powershell</a>
+<br /><br />
+<a href="./Delete_containers_in_cmd.html">Delete containers in cmd</a>
+<br /><br />
+<a href="./Delete_images_in_cmd.html">Delete images in cmd</a>
+<br /><br />
+<a href="./Delete_danglings_images_in_cmd.html">Delete danglings images in cmd</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../docker_commands/index.html">docker commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code cleans up a Docker system by removing all unused images, containers, networks, volumes, and build caches.</p>
 
 
-<pre><code>docker system prune -a
+<pre class="bash"><code>docker system prune -a
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet uses the <code>docker system prune</code> command with the <code>-a</code> flag to remove all unused Docker images, containers, networks, volumes, and build caches.</p>
 <p>Here's a breakdown:</p>
@@ -17,3 +98,7 @@
 </ul></li>
 </ol>
 <p>In essence, this command cleans up your Docker system by removing any resources that are no longer in use.</p>
+
+</body>
+
+</html>

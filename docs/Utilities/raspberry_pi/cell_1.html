@@ -1,8 +1,62 @@
-<p>Here's a summary of the file overview in one or two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../raspberry_pi/index.html">raspberry pi</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../raspberry_pi/index.html">raspberry pi</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the file overview in one or two sentences:</p>
 <p>The <code>rht03.c</code> C program is a driver for the MaxDetect series RHT03 sensor, designed to run on a Raspberry Pi device, and it continuously reads and displays temperature and humidity values from the sensor. The program is distributed under the GNU Lesser General Public License (LGPL) version 3 or later, written by Gordon Henderson and part of the wiringPi project.</p>
 
 
-<pre><code>/*
+<pre class="c"><code>/*
  * rht03.c:
  *      Driver for the MaxDetect series sensors
  *
@@ -77,6 +131,17 @@ int main (void)
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h3>File Overview</h3>
 <p>This is a C program named <code>rht03.c</code> that serves as a driver for the MaxDetect series sensors, specifically the RHT03 sensor. The program is designed to run on a Raspberry Pi device.</p>
 <h3>Includes and Definitions</h3>
@@ -108,3 +173,7 @@ int main (void)
 </ol>
 <h3>License and Copyright</h3>
 <p>The program is distributed under the GNU Lesser General Public License (LGPL) version 3 or later. The copyright notice indicates that the program was written by Gordon Henderson and is part of the wiringPi project.</p>
+
+</body>
+
+</html>

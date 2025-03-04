@@ -1,33 +1,104 @@
-<p>Here is a summary of the code in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>test child process</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../child_process/index.html">child process</a>
+    <br /><br />
+    <a href="./spawn_child_process.html">spawn child process</a>
+<br /><br />
+<a href="./test_child_process.html">test child process</a>
+<br /><br />
+<a href="./convert_bash_to_one_liner.html">convert bash to one liner</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../child_process/index.html">child process</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in one sentence:</p>
 <p>The code combines asynchronous operations with error handling in Node.js, initiating a test suite, executing a shell command, and handling the result or error through custom functions.</p>
 <p>However, for brevity I could remove the Node.js and shell command execution to just convey that it's asynchronous and has error-handling in one sentence.</p>
 <p>The code is asynchronous, with error handling and uses a test suite.</p>
 
 
-<pre><code>$$.async();
+<pre class="javascript"><code>$.async();
 describe(() => {
     
 })
 execCmd(`ps -a`)
-    .then(r => $$.sendResult(r))
-    .catch(e => $$.sendError(e));
+    .then(r => $.sendResult(r))
+    .catch(e => $.sendError(e));
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Overview</h4>
 <p>The code appears to be a combination of asynchronous operations and error handling in a Node.js environment.</p>
 <h4>Breakdown</h4>
 <ul>
-<li><code>$$.async()</code>: This line initiates an asynchronous operation.</li>
+<li><code>$.async()</code>: This line initiates an asynchronous operation.</li>
 <li><code>describe(() =&gt; {... })</code>: This line is a part of a test suite ( likely using a testing framework like Jest) which is not executed due to the asynchronous operation initiation.</li>
 <li><code>execCmd('ps -a')</code>: This line executes a command in the shell, specifically <code>ps -a</code> which lists all processes.</li>
-<li><code>.then(r =&gt; $$.sendResult(r))</code>: If the command execution is successful, this line sends the result to a function named <code>$$.sendResult</code>.</li>
-<li><code>.catch(e =&gt; $$.sendError(e))</code>: If the command execution fails, this line sends the error to a function named <code>$$.sendError</code>.</li>
+<li><code>.then(r =&gt; $.sendResult(r))</code>: If the command execution is successful, this line sends the result to a function named <code>$.sendResult</code>.</li>
+<li><code>.catch(e =&gt; $.sendError(e))</code>: If the command execution fails, this line sends the error to a function named <code>$.sendError</code>.</li>
 </ul>
 <h4>Assumptions</h4>
 <ul>
-<li><code>$$.async()</code>, <code>$$.sendResult</code>, and <code>$$.sendError</code> are likely methods of a class or object, and their implementation is not provided in this code snippet.</li>
+<li><code>$.async()</code>, <code>$.sendResult</code>, and <code>$.sendError</code> are likely methods of a class or object, and their implementation is not provided in this code snippet.</li>
 <li><code>execCmd</code> is assumed to be a function that executes a shell command and returns a promise.</li>
 <li>The testing framework used is likely Jest, as inferred from the <code>describe</code> function.</li>
 </ul>
+
+</body>
+
+</html>

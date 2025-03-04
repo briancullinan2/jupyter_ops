@@ -1,16 +1,91 @@
-<p>Here is a two-sentence summary of the code:</p>
-<p>The code imports a module from a file named <code>Core</code> and uses it to run a Selenium cell with the argument <code>'messages from facebook'</code>. The result of the Selenium cell is then processed through a series of promise chains and error handling blocks to ultimately send the result to the <code>$$.</code> object.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 5</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../facebook_messaging/index.html">facebook messaging</a>
+    <br /><br />
+    <a href="./get_unread_threads_facebook.html">get unread threads facebook</a>
+<br /><br />
+<a href="./scan_commands_facebook.html">scan commands facebook</a>
+<br /><br />
+<a href="./sync_facebook_threads.html">sync facebook threads</a>
+<br /><br />
+<a href="./List_Facebook_threads.html">List Facebook threads</a>
+<br /><br />
+<a href="./Get_messages_from_facebook.html">Get messages from facebook</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./send_facebook_message.html">send facebook message</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../facebook_messaging/index.html">facebook messaging</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code:</p>
+<p>The code imports a module from a file named <code>Core</code> and uses it to run a Selenium cell with the argument <code>'messages from facebook'</code>. The result of the Selenium cell is then processed through a series of promise chains and error handling blocks to ultimately send the result to the <code>$.</code> object.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var runSeleniumCell = importer.import('run selenium cell');
 
-$$.async();
+$.async();
 runSeleniumCell('messages from facebook')
     .then(func => func('https://www.facebook.com/messages/t/jaimeneufer'))
-    .then(r => $$.sendResult(r))
-    .catch(e => $$.sendError(e))
+    .then(r => $.sendResult(r))
+    .catch(e => $.sendError(e))
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
@@ -23,21 +98,25 @@ var runSeleniumCell = importer.import('run selenium cell');
 <li>The <code>importer</code> variable is used to import a function named <code>runSeleniumCell</code> from the <code>Core</code> module.</li>
 </ul>
 <h4>Initializing and Running the Code</h4>
-<pre><code class="language-javascript">$$.async();
+<pre><code class="language-javascript">$.async();
 runSeleniumCell('messages from facebook')
    .then(func =&gt; func('https://www.facebook.com/messages/t/jaimeneufer'))
-   .then(r =&gt; $$.sendResult(r))
-   .catch(e =&gt; $$.sendError(e))
+   .then(r =&gt; $.sendResult(r))
+   .catch(e =&gt; $.sendError(e))
 </code></pre>
 <ul>
-<li>The code calls the <code>async</code> function on an object named <code>$$.</code></li>
+<li>The code calls the <code>async</code> function on an object named <code>$.</code></li>
 <li>It runs the <code>runSeleniumCell</code> function with the argument <code>'messages from facebook'</code>.</li>
 <li>The <code>runSeleniumCell</code> function returns a promise, which is then chained with <code>then</code> blocks.
 <ul>
 <li>The first <code>then</code> block takes the resolved value from the promise and passes it as an argument to a function returned by the promise.</li>
 <li>This function takes a URL <code>'https://www.facebook.com/messages/t/jaimeneufer'</code> as an argument.</li>
 <li>The resolved value from the function call is passed to the next <code>then</code> block.</li>
-<li>The second <code>then</code> block calls the <code>sendResult</code> function on the <code>$$.</code> object with the resolved value.</li>
+<li>The second <code>then</code> block calls the <code>sendResult</code> function on the <code>$.</code> object with the resolved value.</li>
 </ul></li>
-<li>The final <code>catch</code> block catches any errors that occurred during the execution and passes them to the <code>sendError</code> function on the <code>$$.</code> object.</li>
+<li>The final <code>catch</code> block catches any errors that occurred during the execution and passes them to the <code>sendError</code> function on the <code>$.</code> object.</li>
 </ul>
+
+</body>
+
+</html>

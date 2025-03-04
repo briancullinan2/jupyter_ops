@@ -1,8 +1,64 @@
-<p>Here's a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>system usage png buffer</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../usage/index.html">usage</a>
+    <br /><br />
+    <a href="./system_usage_report.html">system usage report</a>
+<br /><br />
+<a href="./system_usage_graph.html">system usage graph</a>
+<br /><br />
+<a href="./system_usage_png_buffer.html">system usage png buffer</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../usage/index.html">usage</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The code requires dependencies on <code>fs</code>, <code>path</code>, <code>os</code>, and <code>child_process</code> to interact with the file system, work with file paths, and execute system commands. The <code>systemBuffer</code> function generates a graph usage PNG image from a given data parameter, writing and converting an SVG to a PNG before returning the PNG image as a buffer.</p>
 
 
-<pre><code>const fs = require('fs')
+<pre class="javascript"><code>const fs = require('fs')
 const path = require('path')
 const TEMP_DIR = os.tmpdir();
 const {spawnSync} = require('child_process')
@@ -26,6 +82,17 @@ async function systemBuffer(data) {
 
 module.exports = systemBuffer
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Dependencies and Variables</h3>
@@ -64,3 +131,7 @@ module.exports = systemBuffer
 <li>The function uses a counter to generate unique file names, which may not be necessary if the file names are not critical</li>
 <li>The <code>timeout</code> option in the <code>spawnSync</code> function is set to 3000 (3 seconds), which means the function will timeout if the <code>convert</code> command takes longer than 3 seconds to complete.</li>
 </ul>
+
+</body>
+
+</html>

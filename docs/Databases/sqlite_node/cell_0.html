@@ -1,8 +1,64 @@
-<p>Here's a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 0</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../sqlite_node/index.html">sqlite node</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../sqlite_node/index.html">sqlite node</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary:</p>
 <p>The code imports Node.js modules for file system interactions (<code>fs</code>) and SQLite database interactions (<code>sqlite3</code>), and defines a database connection using a specified SQLite database file. It then reads and executes SQL commands from a separate file, passing the commands to the database instance for execution.</p>
 
 
-<pre><code>var fs = require('fs')
+<pre class="javascript"><code>var fs = require('fs')
 var path = require('path')
 var sqlite3 = require('better-sqlite3')
 var sauce = '/Users/briancullinan/Documents/studysauce3/db/studysauce.db'
@@ -10,6 +66,17 @@ var db = new sqlite3(sauce, {})
 var cmds = fs.readFileSync('/Users/briancullinan/Documents/studysauce3/db/studysauce.sqlite')
     .toString()
 db.transaction(cmds).run()</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Node.js Modules</h4>
@@ -39,3 +106,7 @@ db.transaction(cmds).run()
 <li>Assigns the resulting string to the <code>cmds</code> variable.</li>
 <li>Calls the <code>transaction</code> method on the database instance, passing the <code>cmds</code> string as an argument, and then calls the <code>run</code> method to execute the SQL commands.</li>
 </ul>
+
+</body>
+
+</html>

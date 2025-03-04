@@ -1,7 +1,71 @@
-<p>A Microsoft Visual Studio solution file, specifically a <code>.sln</code> file, contains metadata and configuration information for a Visual Studio solution, including project references, solution configurations, and extensibility settings. The file is divided into several sections, including global information, project references, and extensibility settings.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 5</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../windows/index.html">windows</a>
+    <br /><br />
+    <a href="./list_window_handles.html">list window handles</a>
+<br /><br />
+<a href="./monitor_active_windows.html">monitor active windows</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../windows/index.html">windows</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>A Microsoft Visual Studio solution file, specifically a <code>.sln</code> file, contains metadata and configuration information for a Visual Studio solution, including project references, solution configurations, and extensibility settings. The file is divided into several sections, including global information, project references, and extensibility settings.</p>
 
 
-<pre><code>
+<pre class="csharp"><code>
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
@@ -28,6 +92,17 @@ Global
 EndGlobal
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Microsoft Visual Studio Solution File Breakdown</strong></p>
 <p>This is a Microsoft Visual Studio solution file, specifically a <code>.sln</code> file. It contains metadata and configuration information for a Visual Studio solution.</p>
 <h3>Key Components</h3>
@@ -47,3 +122,7 @@ EndGlobal
 <li><strong>EndProject</strong>: Closes the project reference.</li>
 <li><strong>EndGlobal</strong>: Closes the global sections.</li>
 </ul>
+
+</body>
+
+</html>

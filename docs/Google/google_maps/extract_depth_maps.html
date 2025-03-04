@@ -1,7 +1,71 @@
-<p>This code fetches and processes depth map data for a given Google Street View panorama, enabling applications to access 3D information about the captured environment.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>extract depth maps</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_maps/index.html">google maps</a>
+    <br /><br />
+    <a href="./use_places_nearby_API.html">use places nearby API</a>
+<br /><br />
+<a href="./place_details_google_maps.html">place details google maps</a>
+<br /><br />
+<a href="./use_Google_Geocaching.html">use Google Geocaching</a>
+<br /><br />
+<a href="./cache_locations_nearby.html">cache locations nearby</a>
+<br /><br />
+<a href="./extract_depth_maps.html">extract depth maps</a>
+<br /><br />
+<a href="./load_google_panorama.html">load google panorama</a>
+<br /><br />
+<a href="./test_google_depth_maps.html">test google depth maps</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_maps/index.html">google maps</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code fetches and processes depth map data for a given Google Street View panorama, enabling applications to access 3D information about the captured environment.</p>
 
 
-<pre><code>// FROM: https://github.com/sidequestlegend/GSVPanoDepth.js/blob/master/src/GSVPanoDepth.js
+<pre class="javascript"><code>// FROM: https://github.com/sidequestlegend/GSVPanoDepth.js/blob/master/src/GSVPanoDepth.js
 var importer = require('../Core')
 var {request} = importer.import('http request')
 
@@ -180,6 +244,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet defines an asynchronous function <code>loadDepthMap</code> that retrieves and processes depth map data for a given Google Street View panorama ID.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -200,3 +275,7 @@ module.exports = {
 </ol>
 <p><strong>Purpose:</strong></p>
 <p>This function retrieves and processes depth map data for a Google Street View panorama, likely used for applications that require 3D information about the environment captured in the panorama.</p>
+
+</body>
+
+</html>

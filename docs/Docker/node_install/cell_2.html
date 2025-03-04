@@ -1,8 +1,64 @@
-<p>Here's a two-sentence summary of the Dockerfile:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../node_install/index.html">node install</a>
+    <br /><br />
+    <a href="./use_nodejs.html">use nodejs</a>
+<br /><br />
+<a href="./Install_dev_tools_on_Linux.html">Install dev tools on Linux</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../node_install/index.html">node install</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the Dockerfile:</p>
 <p>This Dockerfile builds a PHP 7.0 Apache image with additional dependencies and configurations, including installing Composer, configuring Apache, and generating a self-signed SSL certificate. It also sets environment variables and copies web content and configuration files to the image, ultimately creating a customized PHP development environment.</p>
 
 
-<pre><code>FROM php:7.0-apache
+<pre class="bash"><code>FROM php:7.0-apache
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
@@ -42,6 +98,17 @@ RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR
 
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Dockerfile Breakdown</strong></p>
 <p>The provided code is a Dockerfile that builds a PHP 7.0 Apache image with additional dependencies and configurations.</p>
@@ -103,3 +170,7 @@ RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR
 <li>Add ServerName directive to Apache configuration: <code>RUN echo &quot;ServerName SCO-100001269.ad.swiftpage.com&quot; &gt;&gt; /etc/apache2/apache2.conf</code></li>
 <li>Create directories for Apache: <code>RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR</code></li>
 </ul>
+
+</body>
+
+</html>

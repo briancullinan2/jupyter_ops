@@ -1,10 +1,82 @@
-<p>Here's a summary of the function in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>ask llm about code</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../llama/index.html">llama</a>
+    <br /><br />
+    <a href="./search_llama.html">search llama</a>
+<br /><br />
+<a href="./ask_llm_about_categories.html">ask llm about categories</a>
+<br /><br />
+<a href="./ask_llm_to_generalize_categories.html">ask llm to generalize categories</a>
+<br /><br />
+<a href="./ask_llm_for_a_shorter_list_of_categories.html">ask llm for a shorter list of categories</a>
+<br /><br />
+<a href="./ask_llm_about_functions.html">ask llm about functions</a>
+<br /><br />
+<a href="./ask_llm_about_code.html">ask llm about code</a>
+<br /><br />
+<a href="./ask_llm_about_notebooks.html">ask llm about notebooks</a>
+<br /><br />
+<a href="./ask_llm_to_summerize.html">ask llm to summerize</a>
+<br /><br />
+<a href="./store_llama_function.html">store llama function</a>
+<br /><br />
+<a href="./store_all_notebook_llm_functions.html">store all notebook llm functions</a>
+<br /><br />
+<a href="./create_llm_session.html">create llm session</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../llama/index.html">llama</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the function in one sentence:</p>
 <p>The <code>askLlamaAboutCode</code> function sends a code snippet to the Llama model and returns a breakdown of the code in a string format, facilitating analysis and understanding of the provided code.</p>
 <p>Alternatively, a two-sentence summary can be provided as follows:</p>
 <p>The <code>askLlamaAboutCode</code> function is designed to analyze code snippets by sending them to the Llama model for a breakdown. It takes a code snippet as input, sends it to the Llama model, and returns a string containing the breakdown of the code.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 
 async function askLlamaAboutCode(code) {
   const {llmPrompt} = await importer.import('create llm session')
@@ -22,6 +94,17 @@ module.exports = {
   askLlamaAboutCode,
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Function: <code>askLlamaAboutCode</code></h3>
@@ -53,3 +136,7 @@ const breakdown = await askLlamaAboutCode(code);
 console.log(breakdown);
 </code></pre>
 <p>This example sends a simple function to the Llama model and receives a breakdown of the code, which can then be logged to the console.</p>
+
+</body>
+
+</html>

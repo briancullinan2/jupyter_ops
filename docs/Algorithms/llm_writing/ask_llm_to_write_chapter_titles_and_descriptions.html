@@ -1,8 +1,78 @@
-<p>Here is a 2-sentence summary of the function breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>ask llm to write chapter titles and descriptions</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../llm_writing/index.html">llm writing</a>
+    <br /><br />
+    <a href="./business_plan_llm.html">business plan llm</a>
+<br /><br />
+<a href="./write_creatively_llm.html">write creatively llm</a>
+<br /><br />
+<a href="./argue_with_multiple_llms.html">argue with multiple llms</a>
+<br /><br />
+<a href="./research_paper_llm.html">research paper llm</a>
+<br /><br />
+<a href="./select_llm.html">select llm</a>
+<br /><br />
+<a href="./ask_llm_to_write_chapter_titles_and_descriptions.html">ask llm to write chapter titles and descriptions</a>
+<br /><br />
+<a href="./ask_llm_to_brainstorm.html">ask llm to brainstorm</a>
+<br /><br />
+<a href="./write_a_grant_proposal_with_llm.html">write a grant proposal with llm</a>
+<br /><br />
+<a href="./decode_xlsx_spreadsheet.html">decode xlsx spreadsheet</a>
+<br /><br />
+<a href="./elaborate_list_with_llm.html">elaborate list with llm</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../llm_writing/index.html">llm writing</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary of the function breakdown:</p>
 <p>The <code>askLlamaForAChapterSynopsis</code> function asynchronously generates a list of chapter or character synopses for a given topic by interacting with an LLM (Large Language Model), logging the user's prompt and the LLM's response, and parsing the response to extract the synopsis titles and descriptions. The function returns an object with key-value pairs representing the synopses, assuming the LLM's response contains a list of numbered titles followed by their descriptions.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 
 // TODO: parse title from descriptions and return in a nicely formatted object array
 async function askLlamaForAChapterSynopsis(topic, chapterOrCharacterOrSections = 'chapters') {
@@ -35,6 +105,17 @@ async function askLlamaForAChapterSynopsis(topic, chapterOrCharacterOrSections =
 module.exports = askLlamaForAChapterSynopsis
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Function Breakdown</h2>
 <h3><code>askLlamaForAChapterSynopsis(topic, chapterOrCharacterOrSections = 'chapters')</code></h3>
 <ul>
@@ -61,3 +142,7 @@ module.exports = askLlamaForAChapterSynopsis
 <li>The function uses several regular expressions to parse the LLM's response and extract the synopsis titles and descriptions.</li>
 <li>The function assumes that the LLM's response contains a list of numbered titles followed by their descriptions.</li>
 </ul>
+
+</body>
+
+</html>

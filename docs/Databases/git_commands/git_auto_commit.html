@@ -1,10 +1,85 @@
-<p>This code automates the process of committing and pushing all changes in your Git repository to both GitHub (the default remote) and Bitbucket, even if there are errors pushing to Bitbucket.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>git auto commit</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../git_commands/index.html">git commands</a>
+    <br /><br />
+    <a href="./git_discard_whitespace.html">git discard whitespace</a>
+<br /><br />
+<a href="./compare_git_branches.html">compare git branches</a>
+<br /><br />
+<a href="./interesting_git_commands.html">interesting git commands</a>
+<br /><br />
+<a href="./cache_git_credentials.html">cache git credentials</a>
+<br /><br />
+<a href="./git_auto_commit.html">git auto commit</a>
+<br /><br />
+<a href="./git_auto_rebase.html">git auto rebase</a>
+<br /><br />
+<a href="./git_add_submodule.html">git add submodule</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../git_commands/index.html">git commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code automates the process of committing and pushing all changes in your Git repository to both GitHub (the default remote) and Bitbucket, even if there are errors pushing to Bitbucket.</p>
 
 
-<pre><code>git add -A \
+<pre class="bash"><code>git add -A \
    && git commit -m \"auto-commit\" \
    && git push origin \
    && git push bitbucket || true</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet automates a series of Git commands to stage, commit, and push changes to both GitHub and Bitbucket. Let's break it down:</p>
 <p><strong>1. <code>git add -A</code></strong></p>
@@ -31,3 +106,7 @@
 <p><strong>In summary:</strong></p>
 <p>This code snippet automates the process of staging all changes, creating a commit with a specific message, and pushing those changes to both the default remote repository (likely GitHub) and a separate repository named &quot;bitbucket&quot;. The <code>|| true</code> part ensures that the script continues to run even if there are issues pushing to bitbucket.</p>
 <p>Let me know if you have any other code snippets you'd like me to explain!</p>
+
+</body>
+
+</html>

@@ -1,7 +1,61 @@
-<p>This code defines a <code>httpRequest</code> function that makes HTTP requests using either the <code>request</code> module (if available) or a custom implementation based on the <code>http</code> and <code>https</code> modules.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>https request</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../polyfills/index.html">polyfills</a>
+    <br /><br />
+    <a href="./https_request.html">https request</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../polyfills/index.html">polyfills</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code defines a <code>httpRequest</code> function that makes HTTP requests using either the <code>request</code> module (if available) or a custom implementation based on the <code>http</code> and <code>https</code> modules.</p>
 
 
-<pre><code>var promisify
+<pre class="javascript"><code>var promisify
 try {
     promisify = require('util').promisify
 } catch (e) {
@@ -98,6 +152,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet aims to provide a promisified <code>httpRequest</code> function for making HTTP requests, handling potential errors gracefully and falling back to a custom implementation if the <code>util.promisify</code> or <code>bluebird</code> libraries are not available.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -122,3 +187,7 @@ module.exports = {
 </ul></li>
 </ol>
 <p>In essence, this code provides a robust and flexible way to make HTTP requests in a Promise-based manner, gracefully handling potential dependency issues.</p>
+
+</body>
+
+</html>

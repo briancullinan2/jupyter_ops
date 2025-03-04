@@ -1,10 +1,72 @@
-<p>These are four functions used to extract and parse information from server-related input strings:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>quake 3 server responses</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a>
+    <br /><br />
+    undefined<a href="./index.html">index</a>
+<br /><br />
+<a href="./ssh_remote_wget.html">ssh remote wget</a>
+<br /><br />
+<a href="./dns_lookup.html">dns lookup</a>
+<br /><br />
+<a href="./remove_ctrl_characters.html">remove ctrl characters</a>
+<br /><br />
+<a href="./quake3_server_status.html">quake3 server status</a>
+<br /><br />
+<a href="./spectate_q3_server.html">spectate q3 server</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>These are four functions used to extract and parse information from server-related input strings:</p>
 <ul>
 <li>Functions <code>getServersResponse</code> and <code>statusResponse</code> extract server information, while <code>infoResponse</code> extracts server information in a simplified format. The function <code>parseConfigStr</code> parses configuration strings into objects.</li>
 </ul>
 
 
-<pre><code>
+<pre class="node"><code>
 function getServersResponse(m) {
     var masters = []
     m = m.slice('getserversResponse'.length)
@@ -69,6 +131,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h3>Functions</h3>
 <h4>getServersResponse(m)</h4>
 <ul>
@@ -125,3 +198,7 @@ module.exports = {
 </ul>
 <h3>Module Exports</h3>
 <p>The functions <code>getServersResponse</code>, <code>statusResponse</code>, <code>infoResponse</code>, and <code>parseConfigStr</code> are exported as a module.</p>
+
+</body>
+
+</html>

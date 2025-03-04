@@ -1,7 +1,75 @@
-<p>This code defines a function that converts a Chrome-specific date format (microseconds since a specific epoch) into a standard JavaScript Date object.  It's designed to make working with Chrome's date representation easier within a JavaScript application.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>convert chrome date to calendar date</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_calendar_data/index.html">google calendar data</a>
+    <br /><br />
+    <a href="./test_calendar_sum_all_hours_worked_on_study_sauce_since_september_2016.html">test calendar sum all hours worked on study sauce since september 2016</a>
+<br /><br />
+<a href="./convert_chrome_date_to_calendar_date.html">convert chrome date to calendar date</a>
+<br /><br />
+<a href="./Parse_bookmarks_file.html">Parse bookmarks file</a>
+<br /><br />
+<a href="./get_bookmarks_from_local_chrome_database.html">get bookmarks from local chrome database</a>
+<br /><br />
+<a href="./test_parse_bookmarks.html">test parse bookmarks</a>
+<br /><br />
+<a href="./sync_chrome_bookmarks.html">sync chrome bookmarks</a>
+<br /><br />
+<a href="./sync_chrome_history.html">sync chrome history</a>
+<br /><br />
+<a href="./sync_chrome_data.html">sync chrome data</a>
+<br /><br />
+<a href="./test_syn_chrome_data.html">test syn chrome data</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_calendar_data/index.html">google calendar data</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code defines a function that converts a Chrome-specific date format (microseconds since a specific epoch) into a standard JavaScript Date object.  It's designed to make working with Chrome's date representation easier within a JavaScript application.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 function chromeDtToDate(st_dt) {
    var microseconds = parseInt(st_dt, 10);
    var millis = microseconds / 1000;
@@ -11,6 +79,17 @@ function chromeDtToDate(st_dt) {
 
 module.exports = chromeDtToDate;
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet defines a function <code>chromeDtToDate</code> that converts a Chrome-specific date representation (a number representing microseconds since a specific epoch) into a standard JavaScript Date object.</p>
 <p>Here's a breakdown:</p>
@@ -38,3 +117,7 @@ module.exports = chromeDtToDate;
 </ul></li>
 </ol>
 <p>In essence, this code provides a utility function to convert a specific date format used by Chrome into a more common JavaScript Date object, allowing for easier manipulation and use within other parts of the application.</p>
+
+</body>
+
+</html>

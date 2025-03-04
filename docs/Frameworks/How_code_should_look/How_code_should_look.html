@@ -1,24 +1,87 @@
-<p>This code defines a function that checks if a user input contains the word &quot;attachments&quot; and logs the entire input if it does, suggesting a basic command interpretation system.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>How code should look</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../How_code_should_look/index.html">How code should look</a>
+    <br /><br />
+    <a href="./How_code_should_look.html">How code should look</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../How_code_should_look/index.html">How code should look</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code defines a function that checks if a user input contains the word &quot;attachments&quot; and logs the entire input if it does, suggesting a basic command interpretation system.</p>
 
 
-<pre><code>$$.interpret = (statement) => {
+<pre class="javascript"><code>$.interpret = (statement) => {
     if (statement.indexOf('attachments') > -1) {
         console.log(statement);
     }
 };
-$$.interpret('attachments from michelle@thesosmethod.com last 7 days');
-$$.interpret('save attachments to sosmethod assets');
-$$.interpret('save sosmethod.org #kinder img to sosmethod assets');
-$$.interpret('save sosmethod.org .w-gallery img to sosmethod assets');
+$.interpret('attachments from michelle@thesosmethod.com last 7 days');
+$.interpret('save attachments to sosmethod assets');
+$.interpret('save sosmethod.org #kinder img to sosmethod assets');
+$.interpret('save sosmethod.org .w-gallery img to sosmethod assets');
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet defines a simple interpretation function called <code>interpret</code> within an object likely representing a chatbot or a command interpreter.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Function Definition:</strong></p>
 <ul>
-<li><code>$$.interpret = (statement) =&gt; { ... }</code>: Defines a function named <code>interpret</code> that takes a single argument <code>statement</code>, which presumably represents a user input or command.</li>
+<li><code>$.interpret = (statement) =&gt; { ... }</code>: Defines a function named <code>interpret</code> that takes a single argument <code>statement</code>, which presumably represents a user input or command.</li>
 </ul></li>
 <li><p><strong>Conditional Check:</strong></p>
 <ul>
@@ -34,3 +97,7 @@ $$.interpret('save sosmethod.org .w-gallery img to sosmethod assets');
 </ul></li>
 </ol>
 <p>In essence, this code snippet demonstrates a basic pattern for interpreting user input and responding based on keywords. It's likely part of a larger system that processes user commands and performs actions accordingly.</p>
+
+</body>
+
+</html>

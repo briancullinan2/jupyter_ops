@@ -1,7 +1,71 @@
-<p>This code prepares data and sets up the structure for a D3.js visualization of a hierarchical tree, likely representing a file system or organizational chart, but lacks the code to render the visual elements.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Display d3 tree</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../d3/index.html">d3</a>
+    <br /><br />
+    <a href="./Create_a_word-cloud.html">Create a word-cloud</a>
+<br /><br />
+<a href="./d3_tiered_pie_chart.html">d3 tiered pie chart</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./d3_pie_chart.html">d3 pie chart</a>
+<br /><br />
+<a href="./Format_d3_tree.html">Format d3 tree</a>
+<br /><br />
+<a href="./Display_d3_tree.html">Display d3 tree</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../d3/index.html">d3</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code prepares data and sets up the structure for a D3.js visualization of a hierarchical tree, likely representing a file system or organizational chart, but lacks the code to render the visual elements.</p>
 
 
-<pre><code>var D3Node = require('d3-node');
+<pre class="javascript"><code>var D3Node = require('d3-node');
 
 var margin = {top: 25, right: 25, bottom: 25, left: 25},
     width = 960 - margin.left - margin.right,
@@ -124,6 +188,17 @@ module.exports = displayBranches;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code generates a D3.js visualization of a hierarchical tree structure, likely representing a file system or organizational hierarchy.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -158,3 +233,7 @@ module.exports = displayBranches;
 </ul></li>
 </ol>
 <p>In essence, this code sets up the foundation for a D3.js hierarchical tree visualization, defining scales, axes, and the basic structure of the chart. It's missing the code to actually draw the nodes, links, and other visual elements.</p>
+
+</body>
+
+</html>

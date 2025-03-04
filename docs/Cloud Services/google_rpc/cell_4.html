@@ -1,8 +1,68 @@
-<p>Here's a 2-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 4</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_rpc/index.html">google rpc</a>
+    <br /><br />
+    <a href="./firebase_rpc_wrapper.html">firebase rpc wrapper</a>
+<br /><br />
+<a href="./google_cloud_function_rpc_wrapper.html">google cloud function rpc wrapper</a>
+<br /><br />
+<a href="./test_google_express_rpc_handler.html">test google express rpc handler</a>
+<br /><br />
+<a href="./generic_gcloud_function_handler.html">generic gcloud function handler</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_rpc/index.html">google rpc</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 2-sentence summary of the code breakdown:</p>
 <p>This code imports modules and functions from <code>Core.js</code> and uses them to import specific functions from other modules, such as <code>selectAst</code> and <code>makeHandler</code>. The code then uses these functions to create a handler for a function named <code>load ckeditor</code> and leaves some commented out code that appears to have been used for testing or logging purposes.</p>
 
 
-<pre><code>var importer = require('../Core')
+<pre class="javascript"><code>var importer = require('../Core')
 var {selectAst} = importer.import('select code tree')
 var {handler, makeHandler} = importer.import('generic gcloud function handler')
 
@@ -14,6 +74,17 @@ makeHandler('load ckeditor')
 
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
@@ -48,3 +119,7 @@ var {handler, makeHandler} = importer.import('generic gcloud function handler')
 <ul>
 <li>This line creates a handler for a function named <code>load ckeditor</code> using the <code>makeHandler</code> function imported earlier.</li>
 </ul>
+
+</body>
+
+</html>

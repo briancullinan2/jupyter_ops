@@ -1,8 +1,70 @@
-<p>Here is a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>discord bot</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a>
+    <br /><br />
+    undefined<a href="./index.html">index</a>
+<br /><br />
+<a href="./ssh_remote_wget.html">ssh remote wget</a>
+<br /><br />
+<a href="./dns_lookup.html">dns lookup</a>
+<br /><br />
+<a href="./remove_ctrl_characters.html">remove ctrl characters</a>
+<br /><br />
+<a href="./quake3_server_status.html">quake3 server status</a>
+<br /><br />
+<a href="./spectate_q3_server.html">spectate q3 server</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The code is a Discord bot written in JavaScript using the Discord.js library, which imports various modules for interacting with the Discord API and performing specific bot functions. The bot defines regular expressions, arrays, and a configuration function that extracts command content and attachments, computes a filename, and creates a new file based on the command's content and attachments.</p>
 
 
-<pre><code>var ip6addr = require('ip6addr')
+<pre class="node"><code>var ip6addr = require('ip6addr')
 var importer = require('../Core')
 var challengeCommand = importer.import('challenge discord command')
 var discordApi = importer.import('discord api')
@@ -181,6 +243,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <p>The code is written in JavaScript and appears to be a Discord bot using the Discord.js library. It consists of the following sections:</p>
 <h3>Importing Modules</h3>
@@ -217,3 +290,7 @@ module.exports = {
 </ol></li>
 </ul>
 <p>The function uses several variables and functions imported from other modules, including <code>discordApi</code>, <code>getInfo</code>, and <code>nextInfoResponse</code>.</p>
+
+</body>
+
+</html>

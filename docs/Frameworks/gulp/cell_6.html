@@ -1,16 +1,91 @@
-<p>Here's a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 6</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../gulp/index.html">gulp</a>
+    <br /><br />
+    <a href="./use_gulp.html">use gulp</a>
+<br /><br />
+<a href="./use_a_Promise_as_a_gulp_task.html">use a Promise as a gulp task</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./Apply_universal_to_angular_project.html">Apply universal to angular project</a>
+<br /><br />
+<a href="./Fix_project_relatives_as_a_service_for_updating_files_when_they_change.html">Fix project relatives as a service for updating files when they change</a>
+<br /><br />
+<a href="./search_notebooks_gulp.html">search notebooks gulp</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../gulp/index.html">gulp</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code:</p>
 <p>This code imports a module named <code>Core</code> to use its <code>importer</code> function, which imports another module named <code>search notebooks using gulp</code> to search for notebooks. The search result is then processed asynchronously, formatted as markdown, and sent to the user, with error handling if the search fails.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var searchNotebooks = importer.import('search notebooks using gulp');
 var searchRegexp = 'permissions';
 
-$$.async();
+$.async();
 searchNotebooks(searchRegexp)
-    .then(r => $$.mime({'text/markdown': '```\n' + r.map(c => c.code).join('') + '\n```\n-------------\n'}))
-    .catch(e => $$.sendError(e));
+    .then(r => $.mime({'text/markdown': '```\n' + r.map(c => c.code).join('') + '\n```\n-------------\n'}))
+    .catch(e => $.sendError(e));
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
@@ -23,24 +98,28 @@ var searchNotebooks = importer.import('search notebooks using gulp');
 </ul>
 <h4>Searching Notebooks</h4>
 <pre><code class="language-javascript">var searchRegexp = 'permissions';
-$$.async();
+$.async();
 searchNotebooks(searchRegexp)
-   .then(r =&gt; $$.mime({'text/markdown': '```\n' + r.map(c =&gt; c.code).join('') + '\n```\n-------------\n'}))
-   .catch(e =&gt; $$.sendError(e));
+   .then(r =&gt; $.mime({'text/markdown': '```\n' + r.map(c =&gt; c.code).join('') + '\n```\n-------------\n'}))
+   .catch(e =&gt; $.sendError(e));
 </code></pre>
 <ul>
 <li>A string <code>permissions</code> is assigned to the <code>searchRegexp</code> variable.</li>
-<li>The <code>$$.async()</code> function is called, which is likely used to begin an asynchronous operation.</li>
+<li>The <code>$.async()</code> function is called, which is likely used to begin an asynchronous operation.</li>
 <li>The <code>searchNotebooks</code> function is called with the <code>searchRegexp</code> variable as an argument.
 <ul>
 <li>If the function call is successful, the <code>then</code> method is executed.
 <ul>
 <li>The <code>r</code> variable represents the result of the function call.</li>
-<li>The <code>$$.mime()</code> function is called with an object containing a <code>text/markdown</code> key and a value that represents the result in markdown format.</li>
+<li>The <code>$.mime()</code> function is called with an object containing a <code>text/markdown</code> key and a value that represents the result in markdown format.</li>
 </ul></li>
 <li>If the function call fails, the <code>catch</code> method is executed.
 <ul>
-<li>The <code>$$.sendError()</code> function is called with the error object as an argument to handle the error.</li>
+<li>The <code>$.sendError()</code> function is called with the error object as an argument to handle the error.</li>
 </ul></li>
 </ul></li>
 </ul>
+
+</body>
+
+</html>

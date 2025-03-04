@@ -1,8 +1,60 @@
-<p>Here is a 1-2 sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>convert a model using python and blender</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quake_3_model_conv/index.html">quake 3 model conv</a>
+    <br /><br />
+    <a href="./convert_a_model_using_python_and_blender.html">convert a model using python and blender</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quake_3_model_conv/index.html">quake 3 model conv</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 1-2 sentence summary:</p>
 <p>This Python script uses the Blender API to import 3D models from various formats (e.g.,.map,.bsp,.obj) and export them as MD3 files, with the option to scale the model down by 50% and export it with a &quot;-half&quot; suffix. The script performs these tasks using the Blender API's import and export operators, with some error handling for specific exceptions.</p>
 
 
-<pre><code>
+<pre class="python"><code>
 import bpy
 # from import_bsp import MD3
 import sys
@@ -154,6 +206,17 @@ sys.exit()
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Overview</strong></p>
 <p>This is a Python script that utilizes the Blender API (bpy) to import 3D models in various formats and export them as MD3 files. The script takes a file path as an argument and performs the following tasks:</p>
 <ol>
@@ -189,3 +252,7 @@ sys.exit()
 <li>The script assumes that the Blender API is installed and available.</li>
 <li>The script does not contain any error handling for the file import or export operations.</li>
 </ul>
+
+</body>
+
+</html>

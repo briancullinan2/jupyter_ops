@@ -1,15 +1,94 @@
-<p>Here's a summary of the QEMU and Spice Server command in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 3</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../qemu_configs/index.html">qemu configs</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../qemu_configs/index.html">qemu configs</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the QEMU and Spice Server command in one sentence:</p>
 <p>This command boots a virtual machine with QEMU, allocates 3 GB of RAM, and connects to it with a Spice server using the Spice client, while also configuring various settings such as CPU, graphics, network, and disk image.</p>
 <p>Alternatively, here's a brief summary in two sentences:</p>
 <p>The command boots a virtual machine using <code>qemu-system-x86_64</code> with specified settings for CPU, memory, and graphics. It then connects to the VM using the Spice client, allowing remote access and managing the VM through a graphical interface.</p>
 
 
-<pre><code>qemu-system-x86_64 -smp 3 -cpu host -m 3G -vga qxl \
+<pre class="bash"><code>qemu-system-x86_64 -smp 3 -cpu host -m 3G -vga qxl \
     -spice port=5924,disable-ticketing \
     -drive file=/Users/briancullinan/VirtualBox\ VMs/Ubuntu/Ubuntu.vmdk,if=virtio \
     -net nic,model=virtio -net user,hostname=ubuntuvm \
     -monitor stdio -name "Ubuntu" \
 && spicy --title Ubuntu 127.0.0.1 -p 5924</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>QEMU and Spice Server Command</h2>
 <p>This code is a command that boots a virtual machine (VM) using <code>qemu-system-x86_64</code> and connects to it with a Spice server.</p>
@@ -44,3 +123,7 @@
 <li><code>127.0.0.1</code>: The IP address of the host machine.</li>
 <li><code>-p 5924</code>: Connects to the Spice server on port 5924.</li>
 </ul>
+
+</body>
+
+</html>

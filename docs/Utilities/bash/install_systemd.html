@@ -1,8 +1,76 @@
-<p>Here's a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>install systemd</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../bash/index.html">bash</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./node_webdriver_support.html">node webdriver support</a>
+<br /><br />
+<a href="./install_node.html">install node</a>
+<br /><br />
+<a href="./install_notebooks.html">install notebooks</a>
+<br /><br />
+<a href="./install_systemd.html">install systemd</a>
+<br /><br />
+<a href="./install_launchd.html">install launchd</a>
+<br /><br />
+<a href="./copy_credentials.html">copy credentials</a>
+<br /><br />
+<a href="./run_the_same_command.html">run the same command</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../bash/index.html">bash</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary:</p>
 <p>This shell script configures systemd services on a Linux system by copying service files to <code>/etc/systemd/system</code> and enabling them to start at boot time. It reloads the systemd daemon, enables and starts services for Jupyter Notebook and Selenium, ensuring they run automatically when the system boots up.</p>
 
 
-<pre><code>cd ~/jupytangular \
+<pre class="bash"><code>cd ~/jupytangular \
    && cp ./jupyter.service /etc/systemd/system \
    && cp ./jupyter.timer /etc/systemd/system \
    && systemctl daemon-reload \
@@ -14,6 +82,17 @@
    && systemctl daemon-reload \
    && systemctl enable selenium \
    && systemctl start selenium.service</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Systemd Configuration Script Breakdown</strong></p>
 <p>This is a shell script that configures systemd services on a Linux system. Here's a step-by-step explanation:</p>
@@ -32,3 +111,7 @@
 <li><code>systemctl enable selenium</code> and <code>systemctl start selenium.service</code>: Enables the <code>selenium</code> service to start at boot time and starts it.</li>
 </ol>
 <p>These commands configure systemd to run Jupyter Notebook and Selenium services at boot time and start them immediately.</p>
+
+</body>
+
+</html>

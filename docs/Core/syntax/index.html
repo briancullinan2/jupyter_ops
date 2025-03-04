@@ -1,11 +1,87 @@
-<a href="./get_requires.html">get requires</a>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>syntax</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../../Core/index.html">Core</a>
+    <br /><br />
+    <a href="./aspects/index.html">aspects</a>
+<br /><br />
+<a href="./cache/index.html">cache</a>
+<br /><br />
+<a href="./compile/index.html">compile</a>
+<br /><br />
+<a href="./files/index.html">files</a>
+<br /><br />
+<a href="./import/index.html">import</a>
+<br /><br />
+<a href="./intent/index.html">intent</a>
+<br /><br />
+<a href="./kernels/index.html">kernels</a>
+<br /><br />
+<a href="./languages/index.html">languages</a>
+<br /><br />
+<a href="./notebook/index.html">notebook</a>
+<br /><br />
+<a href="./patterns/index.html">patterns</a>
+<br /><br />
+<a href="./pyimport/index.html">pyimport</a>
+<br /><br />
+<a href="./rpc/index.html">rpc</a>
+<br /><br />
+<a href="./syntax/index.html">syntax</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../../Core/index.html">Core</a> ${PREV} ${NEXT}
+  </header>
+
+  <a href="./get_requires.html">get requires</a>
 <br /><br />
 <p>Here's a two-sentence summary:</p>
 <p>The code imports dependencies, including a <code>selectAst</code> function, and uses it to define a <code>getRequires</code> function that extracts require statements from JavaScript code. The <code>getRequires</code> function is then exported as a module, making it available for use in other parts of the application.</p>
 <a href="./cell_1.html">Cell 1</a>
 <br /><br />
 <p>Here is a two-sentence summary:</p>
-<p>This code imports a <code>getRequires</code> function from a module, uses it to extract required modules from a JavaScript code string, and exports the result as a module. The code is conditionally executed when a variable <code>$$</code> is defined in the global scope, printing the expected output: <code>../Core</code>, <code>glob</code>, and <code>path</code>.</p>
+<p>This code imports a <code>getRequires</code> function from a module, uses it to extract required modules from a JavaScript code string, and exports the result as a module. The code is conditionally executed when a variable <code>$</code> is defined in the global scope, printing the expected output: <code>../Core</code>, <code>glob</code>, and <code>path</code>.</p>
 <a href="./builtin_and_local_modules.html">builtin and local modules</a>
 <br /><br />
 <p>Here's a two-sentence summary of the <code>relativeImports</code> function:</p>
@@ -66,11 +142,11 @@
 <a href="./cell_17.html">Cell 17</a>
 <br /><br />
 <p>Here is a summary of the code in one or two sentences:</p>
-<p>This code imports necessary modules, defines functions for parsing and converting JavaScript code into HTML, and exports the <code>testASTArray</code> function for use in other modules. It also includes functionality for encoding HTML entities and assumes the presence of specific functions and an object (<code>$$</code>) in the execution environment.</p>
+<p>This code imports necessary modules, defines functions for parsing and converting JavaScript code into HTML, and exports the <code>testASTArray</code> function for use in other modules. It also includes functionality for encoding HTML entities and assumes the presence of specific functions and an object (<code>$</code>) in the execution environment.</p>
 <a href="./cell_18.html">Cell 18</a>
 <br /><br />
 <p>Here is a two-sentence summary of the code breakdown:</p>
-<p>The code imports modules and functions from a parent directory, defines a function <code>testHtmlTree</code> to translate HTML into a tree-like structure using the <code>htmlToTree</code> function, and provides an example usage of the function by parsing HTML from a Google search page and logging the result to the console. The code also includes a conditional statement to check if the <code>$$</code> variable is defined, but no code is executed within the block.</p>
+<p>The code imports modules and functions from a parent directory, defines a function <code>testHtmlTree</code> to translate HTML into a tree-like structure using the <code>htmlToTree</code> function, and provides an example usage of the function by parsing HTML from a Google search page and logging the result to the console. The code also includes a conditional statement to check if the <code>$</code> variable is defined, but no code is executed within the block.</p>
 <a href="./select_ast.html">select ast</a>
 <br /><br />
 <p>Here is a two-sentence summary of the code breakdown:</p>
@@ -90,7 +166,7 @@
 <a href="./generate_css_selectors_from_code.html">generate css selectors from code</a>
 <br /><br />
 <p>Here is a summary of the code breakdown in 2 sentences:</p>
-<p>The code requires several modules and defines a function <code>testMakeXpaths</code> that tests the functionality of the <code>makeXpaths</code> function by generating XPath expressions for a function declaration node and asserting that its parent has an expected attribute. The function also logs the result, including an HTML representation of the tree structure if the <code>$$</code> variable is defined.</p>
+<p>The code requires several modules and defines a function <code>testMakeXpaths</code> that tests the functionality of the <code>makeXpaths</code> function by generating XPath expressions for a function declaration node and asserting that its parent has an expected attribute. The function also logs the result, including an HTML representation of the tree structure if the <code>$</code> variable is defined.</p>
 <a href="./minimize_xpath.html">minimize xpath</a>
 <br /><br />
 <p>The <code>minXpath</code> function takes an array of XPath expressions and a context object, filters them to match exactly one DOM element, sorts them by length, and returns the shortest one. It is exported as a module named <code>minXpath</code> for use in other parts of the application.</p>
@@ -108,7 +184,7 @@
 <a href="./test_expression_on_notebook_code.html">test expression on notebook code</a>
 <br /><br />
 <p>Here is a 2-sentence summary of the code:</p>
-<p>The code is a Node.js module that exports a function <code>testExpressions</code>, which generates an XPath expression from the <code>findImport</code> function and searches for cells in the <code>cellCache</code> array that match the expression. If the <code>$$</code> variable is defined, the function is called and its result is sent to the <code>$$</code> object using the <code>sendResult</code> method.</p>
+<p>The code is a Node.js module that exports a function <code>testExpressions</code>, which generates an XPath expression from the <code>findImport</code> function and searches for cells in the <code>cellCache</code> array that match the expression. If the <code>$</code> variable is defined, the function is called and its result is sent to the <code>$</code> object using the <code>sendResult</code> method.</p>
 <a href="./cell_29.html">Cell 29</a>
 <br /><br />
 <a href="./Generate_unit_test_from_logic_branching.html">Generate unit test from logic branching</a>
@@ -133,3 +209,7 @@
 <br /><br />
 <a href="./cell_37.html">Cell 37</a>
 <br /><br />
+
+</body>
+
+</html>

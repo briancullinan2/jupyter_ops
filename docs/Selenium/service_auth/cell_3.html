@@ -1,10 +1,76 @@
-<p>Here is a summary of the <code>readPasswordsHtm</code> function in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 3</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../service_auth/index.html">service auth</a>
+    <br /><br />
+    <a href="./Decrypt_passwords_json.html">Decrypt passwords.json</a>
+<br /><br />
+<a href="./Add_encrypted_to_passwords_json.html">Add encrypted to passwords.json</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./download_passwords_from_google.html">download passwords from google</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./log_in_to_Google_using_webdriver.html">log in to Google using webdriver</a>
+<br /><br />
+<a href="./Automatically_fill_any_type_of_login_form_using_various_algorithms.html">Automatically fill any type of login form using various algorithms</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../service_auth/index.html">service auth</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the <code>readPasswordsHtm</code> function in one sentence:</p>
 <p>The <code>readPasswordsHtm</code> function reads an HTML file (<code>passwords.htm</code>), extracts host and credential information from each table row, and saves the encrypted credentials to a JSON file.</p>
 <p>Alternatively, you can also have a two-sentence summary:</p>
 <p>The <code>readPasswordsHtm</code> function reads an HTML file (<code>passwords.htm</code>), extracts host and credential information from each table row using regular expressions. The extracted credentials are then saved to a JSON file in an encrypted format using the <code>saveCredentials</code> function.</p>
 
 
-<pre><code>// add all passwords from passwords.html?
+<pre class="javascript"><code>// add all passwords from passwords.html?
 var importer = require('../Core');
 var fs = require('fs');
 var saveCredentials = importer.import('add encrypted passwords.json');
@@ -41,6 +107,17 @@ module.exports = readPasswordsHtm;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Function Description</strong></p>
 <p>The <code>readPasswordsHtm</code> function reads passwords from an HTML file (<code>passwords.htm</code>) and extracts host and credential information from each table row.</p>
 <p><strong>Variables and Functions</strong></p>
@@ -66,3 +143,7 @@ module.exports = readPasswordsHtm;
 </ol>
 <p><strong>Export</strong></p>
 <p>The function is exported as a module using <code>module.exports = readPasswordsHtm;</code>.</p>
+
+</body>
+
+</html>

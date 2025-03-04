@@ -1,8 +1,74 @@
-<p>Here is a 2-sentence summary of the provided code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>render study sauce cards page</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../study_sauce/index.html">study sauce</a>
+    <br /><br />
+    <a href="./convert_anki_package_to_study_sauce.html">convert anki package to study sauce</a>
+<br /><br />
+<a href="./render_study_sauce_cards_page.html">render study sauce cards page</a>
+<br /><br />
+<a href="./authorize_app_to_read_profile_info.html">authorize app to read profile info</a>
+<br /><br />
+<a href="./receive_an_authentication_code_from_google.html">receive an authentication code from google</a>
+<br /><br />
+<a href="./create_a_study_sauce_user_directory.html">create a study sauce user directory</a>
+<br /><br />
+<a href="./package_json.html">package.json</a>
+<br /><br />
+<a href="./study-demo_js.html">study-demo.js</a>
+<br /><br />
+<a href="./study_sauce_express_service.html">study sauce express service</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../study_sauce/index.html">study sauce</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary of the provided code breakdown:</p>
 <p>The code is a Node.js module for rendering and templating card data in a Google Sheets integration, utilizing ES6 syntax and promises for asynchronous operations. It consists of parsing card data, rendering cards with a unique document name, template data, and resources, and relies on external modules and functions for its functionality.</p>
 
 
-<pre><code>var uuid = require('uuid/v1');
+<pre class="javascript"><code>var uuid = require('uuid/v1');
 var {Readable} = require('stream');
 var importer = require('../Core');
 var getTemplates = importer.import('templates google sheet');
@@ -60,6 +126,17 @@ module.exports = renderCards;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <p>The provided code appears to be a Node.js module that handles card data rendering and templating for a Google Sheets integration. It consists of the following main components:</p>
 <h3>Importing Dependencies</h3>
@@ -93,3 +170,7 @@ module.exports = renderCards;
 <li>The <code>TODO</code> comments suggest areas for improvement, such as making the code generic for user-related packs and state changes.</li>
 <li>The code relies on external modules and functions, so its behavior may vary depending on the implementation of those modules.</li>
 </ul>
+
+</body>
+
+</html>

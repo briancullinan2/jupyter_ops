@@ -1,7 +1,83 @@
-<p>This code appears to be a function that evaluates templates or expressions and returns an array of results, which can be either plain results or objects with an <code>evaluate</code> method, depending on the input settings. The function takes an array of strings or an object with settings as input and returns an array of results based on the provided settings.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../patterns/index.html">patterns</a>
+    <br /><br />
+    <a href="./__walk_tree.html">, walk tree</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./select_tree.html">select tree</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./__resolve_a_promise_property.html">, resolve a promise property</a>
+<br /><br />
+<a href="./__making_a_class_the_normal_way.html">, making a class the normal way</a>
+<br /><br />
+<a href="./extend_prototype_class.html">extend prototype class</a>
+<br /><br />
+<a href="./enforcing_an_interface.html">enforcing an interface</a>
+<br /><br />
+<a href="./test_enforcing_an_interface_with_prototype.html">test enforcing an interface with prototype</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../patterns/index.html">patterns</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code appears to be a function that evaluates templates or expressions and returns an array of results, which can be either plain results or objects with an <code>evaluate</code> method, depending on the input settings. The function takes an array of strings or an object with settings as input and returns an array of results based on the provided settings.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 /*
 
 input:
@@ -25,6 +101,17 @@ result using the result as the new context for the object evaluation
 */
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Functionality</h4>
@@ -61,3 +148,7 @@ result using the result as the new context for the object evaluation
 <li>Output: an array of objects with an <code>evaluate</code> method called on each result</li>
 </ul></li>
 </ul>
+
+</body>
+
+</html>

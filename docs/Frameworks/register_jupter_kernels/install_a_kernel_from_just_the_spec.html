@@ -1,7 +1,59 @@
-<p>This script installs a C# kernel for Jupyter Notebook, allowing users to execute C# code within the Jupyter environment.  It takes command-line options to specify user or system-wide installation and an optional prefix directory.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>install a kernel from just the spec</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../register_jupter_kernels/index.html">register jupter kernels</a>
+    <br /><br />
+    <a href="./install_a_kernel_from_just_the_spec.html">install a kernel from just the spec</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../register_jupter_kernels/index.html">register jupter kernels</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This script installs a C# kernel for Jupyter Notebook, allowing users to execute C# code within the Jupyter environment.  It takes command-line options to specify user or system-wide installation and an optional prefix directory.</p>
 
 
-<pre><code>import json
+<pre class="python"><code>import json
 import os
 import sys
 import getopt
@@ -26,7 +78,10 @@ kernel_json = {
     'display_name': 'C#',
     'language': 'csharp',
     'codemirror_mode': 'shell',
-    'env': {'PS1': '$'}
+    'env': {'PS1': '
+</body>
+
+</html>}
 }
 
 def
@@ -90,6 +145,17 @@ if __name__ == '__main__':
 main(argv = sys.argv)
     </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code installs a custom Jupyter kernel for C# code.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -128,3 +194,7 @@ main(argv = sys.argv)
 <li>Runs the <code>main</code> function when the script is executed.</li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

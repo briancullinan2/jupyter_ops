@@ -1,9 +1,90 @@
-<p>This Windows batch script removes all Docker images by iterating through a list of image IDs obtained from <code>docker images -q</code> and using <code>docker rmi</code> to delete each one.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Delete images in cmd</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../docker_commands/index.html">docker commands</a>
+    <br /><br />
+    <a href="./use_Docker.html">use Docker</a>
+<br /><br />
+<a href="./Restart_the_docker_service.html">Restart the docker service</a>
+<br /><br />
+<a href="./Actually_delete_everything.html">Actually delete everything</a>
+<br /><br />
+<a href="./Delete_all_containers.html">Delete all containers</a>
+<br /><br />
+<a href="./Delete_all_images.html">Delete all images</a>
+<br /><br />
+<a href="./Delete_all_images_in_Powershell.html">Delete all images in Powershell</a>
+<br /><br />
+<a href="./Delete_containers_in_cmd.html">Delete containers in cmd</a>
+<br /><br />
+<a href="./Delete_images_in_cmd.html">Delete images in cmd</a>
+<br /><br />
+<a href="./Delete_danglings_images_in_cmd.html">Delete danglings images in cmd</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../docker_commands/index.html">docker commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This Windows batch script removes all Docker images by iterating through a list of image IDs obtained from <code>docker images -q</code> and using <code>docker rmi</code> to delete each one.</p>
 
 
-<pre><code>FOR /f "tokens=*" %i IN ('docker images -q') DO docker rmi %i
+<pre class="bash"><code>FOR /f "tokens=*" %i IN ('docker images -q') DO docker rmi %i
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet removes all Docker images from your system.</p>
 <p>Here's a breakdown:</p>
@@ -27,3 +108,7 @@
 </ul></li>
 </ol>
 <p>In essence, this batch script efficiently iterates through all Docker images and removes them one by one.</p>
+
+</body>
+
+</html>

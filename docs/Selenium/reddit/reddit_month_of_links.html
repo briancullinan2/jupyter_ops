@@ -1,8 +1,72 @@
-<p>Here's a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>reddit month of links</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../reddit/index.html">reddit</a>
+    <br /><br />
+    <a href="./reddit_login.html">reddit login</a>
+<br /><br />
+<a href="./reddit_post.html">reddit post</a>
+<br /><br />
+<a href="./test_reddit_post.html">test reddit post</a>
+<br /><br />
+<a href="./reddit_weekly.html">reddit weekly</a>
+<br /><br />
+<a href="./reddit_month_of_links.html">reddit month of links</a>
+<br /><br />
+<a href="./reddit_scraper.html">reddit scraper</a>
+<br /><br />
+<a href="./test_reddit_scraper.html">test reddit scraper</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../reddit/index.html">reddit</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code:</p>
 <p>The <code>redditList</code> function is an asynchronous function that retrieves a list of Reddit posts from a specified subreddit, handling parameters such as the start page and time span. It iteratively retrieves posts using the <code>redditLinks</code> function, checks for posts older than the specified time span, and introduces a delay between iterations to prevent infinite loops.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 const redditLinks = importer.import('reddit scraper')
 const getClient = importer.import('selenium client')
 
@@ -66,6 +130,17 @@ module.exports = redditList
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Overview</h3>
 <p>The code defines an asynchronous function <code>redditList</code> that retrieves a list of Reddit posts from a specified subreddit.</p>
@@ -92,3 +167,7 @@ module.exports = redditList
 <li>The <code>beforeTimeSpan</code> variable is used to check if there are any posts that are older than the specified <code>timeSpan</code>.</li>
 <li>The <code>Promise</code> constructor is used to introduce a delay of 1 second between iterations of the loop.</li>
 </ul>
+
+</body>
+
+</html>

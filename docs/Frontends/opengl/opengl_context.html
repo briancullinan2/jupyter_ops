@@ -1,9 +1,65 @@
-<p>Here is a summary of the code breakdown in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>opengl context</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../opengl/index.html">opengl</a>
+    <br /><br />
+    <a href="./opengl_context.html">opengl context</a>
+<br /><br />
+<a href="./test_opengl_renderer.html">test opengl renderer</a>
+<br /><br />
+<a href="./opengl_frame.html">opengl frame</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../opengl/index.html">opengl</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code breakdown in one sentence:</p>
 <p>The <code>createWindow</code> function initializes SDL and OpenGL, creates a window with the title &quot;C++ SDL2 Window | OpenGL&quot; and size 1000x800, and enables double buffering and a core profile, before returning the window ID.</p>
 <p>This function uses SDL functions such as <code>SDL_Init</code>, <code>SDL_GL_SetAttribute</code>, <code>SDL_GL_CreateContext</code>, <code>SDL_CreateWindow</code>, and <code>SDL_GL_SwapWindow</code> for event handling and window management.</p>
 
 
-<pre><code>
+<pre class="cpp"><code>
 #include <iostream>
 //#include <glad/glad.h>
 #include <SDL.h>
@@ -69,6 +125,17 @@ int createWindow(void) {
 #endif
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Header Includes</h3>
 <ul>
@@ -120,3 +187,7 @@ int createWindow(void) {
 <li><code>SDL_GetError</code></li>
 <li><code>SDL_GetWindowID</code></li>
 </ul>
+
+</body>
+
+</html>

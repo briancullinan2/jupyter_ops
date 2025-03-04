@@ -1,8 +1,84 @@
-<p>Here's a 2-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>select tree</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../patterns/index.html">patterns</a>
+    <br /><br />
+    <a href="./__walk_tree.html">, walk tree</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./select_tree.html">select tree</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./__resolve_a_promise_property.html">, resolve a promise property</a>
+<br /><br />
+<a href="./__making_a_class_the_normal_way.html">, making a class the normal way</a>
+<br /><br />
+<a href="./extend_prototype_class.html">extend prototype class</a>
+<br /><br />
+<a href="./enforcing_an_interface.html">enforcing an interface</a>
+<br /><br />
+<a href="./test_enforcing_an_interface_with_prototype.html">test enforcing an interface with prototype</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../patterns/index.html">patterns</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 2-sentence summary:</p>
 <p>The <code>evaluateDom</code> function evaluates a given XPath query or CSS selector on a DOM document, catching errors and handling various query formats and types, including those with wildcards. It returns an array of node values or a single value (number, string, or boolean) depending on the query type.</p>
 
 
-<pre><code>var importer = require('../Core')
+<pre class="javascript"><code>var importer = require('../Core')
 var { walkTree } = importer.import('walk tree')
 var { XPathResult, JSDOM } = require('jsdom')
 //var cheerio = require('cheerio')
@@ -167,6 +243,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Function Breakdown: <code>evaluateDom</code></strong></p>
 <h3>Overview</h3>
 <p>The <code>evaluateDom</code> function evaluates a given XPath query on a DOM document. It attempts to handle various query formats and types, including XPath and CSS selectors.</p>
@@ -190,3 +277,7 @@ module.exports = {
 </ul>
 <h3>Return Value</h3>
 <p>The function returns an array of node values or a single value (number, string, or boolean) depending on the query type.</p>
+
+</body>
+
+</html>

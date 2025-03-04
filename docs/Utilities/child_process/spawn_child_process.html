@@ -1,8 +1,64 @@
-<p>Here is a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>spawn child process</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../child_process/index.html">child process</a>
+    <br /><br />
+    <a href="./spawn_child_process.html">spawn child process</a>
+<br /><br />
+<a href="./test_child_process.html">test child process</a>
+<br /><br />
+<a href="./convert_bash_to_one_liner.html">convert bash to one liner</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../child_process/index.html">child process</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code:</p>
 <p>The code utilizes the <code>child_process</code> and <code>importer</code> modules to execute external Bash commands and handle errors, with functions such as <code>bashToExec</code> and <code>execCmd</code> to prepare and run the commands. The <code>execCmd</code> function creates a promise that resolves with the output of the executed command and logs the command and its output if not in quiet mode.</p>
 
 
-<pre><code>var {exec} = require('child_process');
+<pre class="javascript"><code>var {exec} = require('child_process');
 var path = require('path');
 var importer = require('../Core');
 
@@ -61,6 +117,17 @@ module.exports = execCmd;
  
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Requirements and Variables</h3>
 <p>The code requires the following modules:</p>
@@ -98,3 +165,7 @@ module.exports = execCmd;
 <li>The <code>on</code> method is used to listen to the <code>stderr</code> and <code>stdout</code> streams of the process</li>
 <li>If the process exits with a non-zero code, an error is rejected with the output and errors from the process.</li>
 </ul>
+
+</body>
+
+</html>

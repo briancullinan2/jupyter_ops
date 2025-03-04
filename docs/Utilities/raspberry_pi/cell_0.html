@@ -1,8 +1,62 @@
-<p>Here is a summary in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 0</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../raspberry_pi/index.html">raspberry pi</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../raspberry_pi/index.html">raspberry pi</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary in one sentence:</p>
 <p>This C code snippet is a driver for MaxDetect series sensors using the wiringPi library, providing two functions to wait for pin transitions and read bytes from the MaxDetect bus. The code is licensed under the LGPL version 3 or later and is specific to the MaxDetect series sensors and wiringPi library.</p>
 
 
-<pre><code>/*
+<pre class="c"><code>/*
  * maxdetect.c:
  *      Driver for the MaxDetect series sensors
  *
@@ -170,6 +224,17 @@ int readRHT03 (const int pin, int *temp, int *rh)
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <p>This is a C code snippet that appears to be a driver for the MaxDetect series sensors. The code is part of the wiringPi project, which is a C library for accessing GPIO pins on the Raspberry Pi.</p>
 <p><strong>Includes</strong></p>
@@ -191,3 +256,7 @@ int readRHT03 (const int pin, int *temp, int *rh)
 <p>The <code>maxDetectClockByte</code> function reads a single byte from the MaxDetect bus by sending a clock pulse on the specified pin and reading the resulting signal. The clock pulse is timed using the <code>millis</code> function, which returns the number of milliseconds since the program started. The function uses a loop to read each bit of the byte, waiting for the transition from high to low on the pin before reading the next bit.</p>
 <p><strong>Notes</strong></p>
 <p>The code is quite specific to the MaxDetect series sensors and the wiringPi library, so it may not be easily adaptable to other systems or sensors.</p>
+
+</body>
+
+</html>

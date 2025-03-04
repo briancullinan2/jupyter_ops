@@ -1,8 +1,72 @@
-<p>Here is a summary of the code in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../display_angular/index.html">display angular</a>
+    <br /><br />
+    <a href="./Include_the_script_in_the_response.html">Include the script in the response</a>
+<br /><br />
+<a href="./Display_angular_modules_in_jupyter.html">Display angular modules in jupyter</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../display_angular/index.html">display angular</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in two sentences:</p>
 <p>This code is a JavaScript implementation that imports modules and sets up variables for a universal project, including a rate limit and file system module. It defines several functions for outputting Angular app code slowly, compressing code, and handling errors, and executes the main workflow by fetching Angular app code, compressing it, and outputting script pieces.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var searchProvider = importer.import('search notebook provider');
 var lzw = importer.import('lzw compress');
 
@@ -37,36 +101,47 @@ function compress(code) {
     return ({compress: r[0].code, scripts: lzw.compressToBase64(code.scripts + code.chunks)});
 };
 
-$$.async();
+$.async();
 try {
     displAngular(project, '/search')
         .then(r => {
-            $$.html(r.html, true);
+            $.html(r.html, true);
             return compress(r);
         })
         .then(r => {
             console.log('App will be available in ');
             return outputSlowly(r, (c, i, t) => {
                 console.log((t - i) + ' - ' + c.substr(0, 10));
-                $$.html(`<script>
+                $.html(`<script>
 if(!doc.app) { doc.app=''; }
 doc.app+=` + JSON.stringify(c) + `;
 </script>`, true);
             });
         })
-        .then(compress => $$.html(`<script>
+        .then(compress => $.html(`<script>
 eval(decodeURI(` + JSON.stringify(encodeURI(compress)) + `));
 doc.document.write(LZString.decompressFromBase64(doc.app));
 doc.document.close();
 </script>`, true))
         .then(() => searchProvider())
-        .then(() => $$.sendResult())
-        .catch(e => $$.sendError(e));
+        .then(() => $.sendResult())
+        .catch(e => $.sendError(e));
 } catch (e) {
-    $$.sendError(e);
+    $.sendError(e);
 }
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Variables and Imports</h3>
@@ -111,3 +186,7 @@ doc.document.close();
 <ul>
 <li>Catch block catches any errors and sends the error to the UI component using <code>$.sendError</code></li>
 </ul>
+
+</body>
+
+</html>

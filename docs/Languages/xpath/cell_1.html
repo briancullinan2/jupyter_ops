@@ -1,8 +1,72 @@
-<p>Here is a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../xpath/index.html">xpath</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../xpath/index.html">xpath</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code:</p>
 <p>This Python module defines classes and functions for representing XPath expressions as Abstract Syntax Trees (ASTs) and serializing them into valid XPath expressions. The module includes classes for different types of expressions, such as unary and binary expressions, and functions for serializing the ASTs into strings.</p>
 
 
-<pre><code>'''Abstract Syntax Tree nodes for parsed XPath.
+<pre class="python"><code>'''Abstract Syntax Tree nodes for parsed XPath.
 
 This module contains basic nodes for representing parsed XPath expressions.
 The parser provided by this module creates its parsed XPath representation
@@ -277,7 +341,10 @@ class VariableReference(object):
                 serialize(self))
 
     def _serialize(self):
-        yield '$'
+        yield '
+</body>
+
+</html>
         prefix, localname = self.name
         if prefix:
             yield prefix
@@ -317,6 +384,17 @@ class FunctionCall(object):
                     yield tok
         yield ')'</code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <p>This is a Python module that defines classes and functions for representing and serializing XPath expressions as Abstract Syntax Trees (ASTs). Here's a concise overview:</p>
 <h3>Classes</h3>
@@ -345,3 +423,7 @@ class FunctionCall(object):
 </ol>
 <h3>Note</h3>
 <p>The code seems to be part of a larger library, and the classes and functions are designed to work together to represent and manipulate XPath expressions. The code snippet is a small part of a larger module, and there may be additional classes, functions, and logic not shown here.</p>
+
+</body>
+
+</html>

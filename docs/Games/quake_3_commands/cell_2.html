@@ -1,14 +1,109 @@
-<p>Here is a 2-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quake_3_commands/index.html">quake 3 commands</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./Try_streaming_the_game_over_VNC__is_it_awful_Kind_of__and_inputs_don_t_work_as_expected_.html">Try streaming the game over VNC, is it awful Kind of, and inputs don't work as expected.</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./https___quake_games_set_20name_20player_name.html">https://quake.games/set%20name%20player_name</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+<a href="./cell_14.html">Cell 14</a>
+<br /><br />
+<a href="./cell_15.html">Cell 15</a>
+<br /><br />
+<a href="./cell_16.html">Cell 16</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quake_3_commands/index.html">quake 3 commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary of the code:</p>
 <p>This code is a series of shell commands used to launch and configure a Quake III Arena game server, including launching the game server, client, and dedicated server. The commands set various game settings, such as the game directory, mode, and configuration file, and execute specific maps and modes.</p>
 
 
-<pre><code>open -n ./ioquake3-1.36.app --args +set fs_game baseq3 +set dedicated 1 +exec ./server.cfg
+<pre class="bash"><code>open -n ./ioquake3-1.36.app --args +set fs_game baseq3 +set dedicated 1 +exec ./server.cfg
 
 
 open ./build/release-darwin-x86_64/ioquake3.app/ --args +set dedicated 1 +set fs_basepath ~/.q3a/unpacked +set fs_basegame baseq3-combined-converted +set fs_homepath ~/.q3a/ +map q3dm0
 
 ./build/release-darwin-x86_64/ioq3ded.x86_64 --args +set ttycon 0 +set fs_basepath /Users/briancullinan/planet_quake_data +set fs_basegame baseq3-combined-converted-repacked +set fs_game baseq3-combined-converted-repacked-menu +set com_gamename Quake3Arena +set sv_pure 1 +map q3tourney5
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <p>This code appears to be a series of shell commands used to launch and configure a Quake III Arena game server.</p>
@@ -51,3 +146,7 @@ open ./build/release-darwin-x86_64/ioquake3.app/ --args +set dedicated 1 +set fs
 <li><code>+set sv_pure 1</code>: Enables pure server mode.</li>
 <li><code>+map q3tourney5</code>: Loads the <code>q3tourney5</code> map.</li>
 </ul>
+
+</body>
+
+</html>

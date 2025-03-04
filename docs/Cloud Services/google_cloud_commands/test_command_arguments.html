@@ -1,10 +1,81 @@
-<p>This Bash script takes three command-line arguments and prints each one to the console on a separate line.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>test command arguments</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_cloud_commands/index.html">google cloud commands</a>
+    <br /><br />
+    <a href="./upload_output_to_google_cloud_storage.html">upload output to google cloud storage</a>
+<br /><br />
+<a href="./add_public_permissions_to_google_cloud_storage.html">add public permissions to google cloud storage</a>
+<br /><br />
+<a href="./copy_html_to_google_cloud_storage.html">copy html to google cloud storage</a>
+<br /><br />
+<a href="./test_command_arguments.html">test command arguments</a>
+<br /><br />
+<a href="./deploy_a_cloud_function.html">deploy a cloud function</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_cloud_commands/index.html">google cloud commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This Bash script takes three command-line arguments and prints each one to the console on a separate line.</p>
 
 
-<pre><code>echo "$1"
+<pre class="bash"><code>echo "$1"
 echo "$2"
 echo "$3"
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet simply prints the values of three command-line arguments to the console.</p>
 <p>Here's a breakdown:</p>
@@ -34,3 +105,7 @@ world
 example
 </code></pre>
 <p>Let me know if you have any other code snippets you'd like me to explain!</p>
+
+</body>
+
+</html>

@@ -1,8 +1,76 @@
-<p>Here is a 2-sentence summary of the QEMU System x86_64 Command:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../qemu_configs/index.html">qemu configs</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../qemu_configs/index.html">qemu configs</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary of the QEMU System x86_64 Command:</p>
 <p>The <code>qemu-system-x86_64</code> command is used to launch a QEMU virtual machine with various settings and devices, including graphics, network, and storage configurations. By combining different options, such as CPU, memory, and device specifications, the command can be customized to create a virtual machine with specific hardware requirements.</p>
 
 
-<pre><code>qemu-system-x86_64 -vga std -nographic -vnc :1 -enable-kvm -m 3072 -cpu Penryn,kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on,$MY_OPTIONS\
+<pre class="bash"><code>qemu-system-x86_64 -vga std -nographic -vnc :1 -enable-kvm -m 3072 -cpu Penryn,kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on,$MY_OPTIONS\
           -machine pc-q35-2.11 \
           -smp 4,cores=2 \
           -usb -device usb-kbd -device usb-tablet \
@@ -20,6 +88,17 @@
           -netdev tap,id=net0,ifname=tap0,script=no,downscript=no -device vmxnet3,netdev=net0,id=net0,mac=52:54:00:AB:F8:B7
           
           </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>QEMU System x86_64 Command</strong></p>
 <h3>Overview</h3>
@@ -78,3 +157,7 @@
 <li><code>-netdev tap,id=net0,ifname=tap0,script=no,downscript=no</code>: Create a network device with TAP interface.</li>
 <li><code>-device vmxnet3,netdev=net0,id=net0,mac=52:54:00:AB:F8:B7</code>: Add a VMXNET3 network device with MAC address 52:54:00:AB:F8:B7.</li>
 </ul>
+
+</body>
+
+</html>

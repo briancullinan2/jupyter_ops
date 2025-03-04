@@ -1,8 +1,84 @@
-<p>Here is a summary of the code in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>image 2 image</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../llama_vision/index.html">llama vision</a>
+    <br /><br />
+    <a href="./llama_vision.html">llama vision</a>
+<br /><br />
+<a href="./analyze_image_with_llm.html">analyze image with llm</a>
+<br /><br />
+<a href="./llm_deceive.html">llm deceive</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./llm_voice.html">llm voice</a>
+<br /><br />
+<a href="./ollama_vision_request.html">ollama vision request</a>
+<br /><br />
+<a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a>
+<br /><br />
+<a href="./stable_diffusion_request.html">stable diffusion request</a>
+<br /><br />
+<a href="./mask_image.html">mask image</a>
+<br /><br />
+<a href="./inpaint_mask.html">inpaint mask</a>
+<br /><br />
+<a href="./image_2_image.html">image 2 image</a>
+<br /><br />
+<a href="./whisk_images.html">whisk images</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../llama_vision/index.html">llama vision</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in two sentences:</p>
 <p>The <code>doImage2Image</code> function is an asynchronous function that processes an image and a prompt, sends a POST request to a local API endpoint, and saves the generated image to a specified output directory. The function currently lacks error handling and checks for existing output directory or file, and requires additional functionality to handle potential issues during API requests and file operations.</p>
 
 
-<pre><code>const fs = require('fs')
+<pre class="javascript"><code>const fs = require('fs')
 const path = require('path')
 const {request} = require('gaxios')
 
@@ -82,6 +158,17 @@ module.exports = {
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Requires and Constants</h3>
 <p>The code requires three modules:</p>
@@ -113,3 +200,7 @@ module.exports = {
 <p>The function attempts to save the generated image to the output directory. If the directory exists, it reads the existing images in the directory, extracts the filename, and saves the new image with a incremented filename.</p>
 <h3>Missing Functionality</h3>
 <p>The code does not handle errors or exceptions that may occur during API requests or file operations. It also does not check if the output directory or file already exists before saving the image.</p>
+
+</body>
+
+</html>

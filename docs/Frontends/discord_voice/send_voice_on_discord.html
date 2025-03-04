@@ -1,10 +1,62 @@
-<p>Here is a summary of the code breakdown in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>send voice on discord</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_voice/index.html">discord voice</a>
+    <br /><br />
+    <a href="./send_voice_on_discord.html">send voice on discord</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_voice/index.html">discord voice</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code breakdown in one sentence:</p>
 <p>The code initializes a Discord bot, connects to a voice channel, and plays text-to-speech audio using the <code>outetts</code> library and FFmpeg, leveraging asynchronous programming for efficient execution.</p>
 <p>Alternatively, here is a two-sentence summary:</p>
 <p>The code sets up a Discord bot, connects to a voice channel, and utilizes FFmpeg for audio processing, allowing for text-to-speech functionality. It follows best practices for coding and documentation, utilizing modular and reusable design principles.</p>
 
 
-<pre><code>import os
+<pre class="python"><code>import os
 import io
 import ffmpeg
 import discord
@@ -83,6 +135,17 @@ async def play_tts(prompt, vc):
 __all__ = init_discord
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code imports the following modules:</p>
@@ -122,3 +185,7 @@ __all__ = init_discord
 <li>The use of asynchronous programming allows for efficient and concurrent execution of tasks.</li>
 <li>The code is well-structured and follows best practices for coding and documentation.</li>
 </ul>
+
+</body>
+
+</html>

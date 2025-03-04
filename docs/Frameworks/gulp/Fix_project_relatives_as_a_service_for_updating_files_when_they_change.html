@@ -1,7 +1,71 @@
-<p>This code sets up a Gulp task to continuously watch for changes in TypeScript files and automatically rebuild the project when changes are detected.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Fix project relatives as a service for updating files when they change</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../gulp/index.html">gulp</a>
+    <br /><br />
+    <a href="./use_gulp.html">use gulp</a>
+<br /><br />
+<a href="./use_a_Promise_as_a_gulp_task.html">use a Promise as a gulp task</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./Apply_universal_to_angular_project.html">Apply universal to angular project</a>
+<br /><br />
+<a href="./Fix_project_relatives_as_a_service_for_updating_files_when_they_change.html">Fix project relatives as a service for updating files when they change</a>
+<br /><br />
+<a href="./search_notebooks_gulp.html">search notebooks gulp</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../gulp/index.html">gulp</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code sets up a Gulp task to continuously watch for changes in TypeScript files and automatically rebuild the project when changes are detected.</p>
 
 
-<pre><code>var gulp = require('gulp'),
+<pre class="javascript"><code>var gulp = require('gulp'),
     watch = require('gulp-watch');
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
@@ -26,10 +90,21 @@ gulp.task('watch for changes', function () {
     });
 });
 
-$$.async();
+$.async();
 gulp.task(['watch for changes'])();
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet sets up a Gulp task to watch for changes in TypeScript files and trigger a build process.</p>
 <p>Here's a breakdown:</p>
@@ -67,8 +142,12 @@ gulp.task(['watch for changes'])();
 </ul></li>
 <li><p><strong>Task Execution:</strong></p>
 <ul>
-<li><code>$$.async();</code>: Initializes an asynchronous task runner (likely a custom implementation).</li>
+<li><code>$.async();</code>: Initializes an asynchronous task runner (likely a custom implementation).</li>
 <li><code>gulp.task(['watch for changes'])();</code>: Runs the &quot;watch for changes&quot; task.</li>
 </ul></li>
 </ol>
 <p>In essence, this code sets up a continuous build process where whenever TypeScript files in the <code>src</code> directory change, the <code>projectRelatives</code> function is executed, likely performing tasks like compiling the TypeScript code, running tests, or generating documentation.</p>
+
+</body>
+
+</html>

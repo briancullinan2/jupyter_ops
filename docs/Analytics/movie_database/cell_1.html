@@ -1,8 +1,70 @@
-<p>Here is a 2-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../movie_database/index.html">movie database</a>
+    <br /><br />
+    <a href="./Find_cross_section_of_actors_and_movies.html">Find cross section of actors and movies</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./use_elastic_search_from_node.html">use elastic search from node</a>
+<br /><br />
+<a href="./create_movie_database_tables.html">create movie database tables</a>
+<br /><br />
+<a href="./Or_use_ZMQ_interface_like_ijupyter.html">Or use ZMQ interface like ijupyter</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../movie_database/index.html">movie database</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a 2-sentence summary:</p>
 <p>This code provides a set of functions for interacting with a SQLite database containing movie information, including methods for searching by Levenshtein distance and retrieving actor and title data. The functions use a mix of synchronous and asynchronous programming, with prepared statements and promise chains to improve security, performance, and readability.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var levSort = importer.import('sort by levenshtein distance');
 var sqlite3 = require('better-sqlite3');
 var movies = './movies.sqlite.db';
@@ -79,15 +141,26 @@ OR (${words.map(word => 'originalTitle LIKE ?').join(' AND ')})
 }
 
 // https://v2.sg.media-imdb.com/suggests/w/werner%20herzog.json
-$$.async();
+$.async();
 //getTitle('three colors: white')
 getTitleTitleIntersection('tt0111507', 'tt0111495', 'tt0108394')
 //getActorTitlesIntersection('nm0001348', 'tt0082694')
-    .then(r => $$.sendResult(r))
-    .catch(e => $$.sendError(e))
+    .then(r => $.sendResult(r))
+    .catch(e => $.sendError(e))
     // close the database connection
     .then(() => db.close())
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2><strong>Overview</strong></h2>
 <p>This code is a set of functions for interacting with a SQLite database containing movie information. It provides methods for retrieving actor and title data, including functionality for searching by Levenshtein distance.</p>
@@ -152,3 +225,7 @@ getTitleTitleIntersection('tt0111507', 'tt0111495', 'tt0108394')
 <li>The exact name and title functions demonstrate how to retrieve a single record from the database.</li>
 <li>The utility function <code>assignPromise</code> demonstrates how to modify an object in a promise chain.</li>
 </ul>
+
+</body>
+
+</html>

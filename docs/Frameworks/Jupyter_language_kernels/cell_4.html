@@ -1,9 +1,88 @@
-<p>Here's a 1-2 sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 4</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../Jupyter_language_kernels/index.html">Jupyter language kernels</a>
+    <br /><br />
+    <a href="./install_bash_kernel.html">install bash kernel</a>
+<br /><br />
+<a href="./install_ipython_kernel.html">install ipython kernel</a>
+<br /><br />
+<a href="./install_ICSharp__C__kernel.html">install ICSharp (C) kernel</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./install_ruby.html">install ruby</a>
+<br /><br />
+<a href="./install_Powershell.html">install Powershell</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../Jupyter_language_kernels/index.html">Jupyter language kernels</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 1-2 sentence summary of the code breakdown:</p>
 <p>The <code>grep</code> command-line utility is used to search for strings, with options such as <code>-r</code> for recursive search, <code>/</code> for file path separation, and <code>--e</code>/<code>-e</code> for specifying a search pattern. In this case, it searches for files containing the string <code>'xunit.runners'</code>.</p>
 
 
-<pre><code>grep - r.
+<pre class="bash"><code>grep - r.
 / -e 'xunit.runners'</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <ul>
@@ -13,3 +92,7 @@
 <li><code>--e</code> (or <code>-e</code>): Specify a pattern to search for.</li>
 <li><code>'xunit.runners'</code>: The pattern to search for, in this case, files containing the string <code>'xunit.runners'</code>.</li>
 </ul>
+
+</body>
+
+</html>

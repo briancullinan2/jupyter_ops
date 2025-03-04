@@ -1,4 +1,72 @@
-<a href="./authorize_google_drive.html">authorize google drive</a>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>google drive</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../../Google/index.html">Google</a>
+    <br /><br />
+    <a href="./google_calendar_data/index.html">google calendar data</a>
+<br /><br />
+<a href="./google_calendar_graphs/index.html">google calendar graphs</a>
+<br /><br />
+<a href="./google_calendar/index.html">google calendar</a>
+<br /><br />
+<a href="./google_contacts/index.html">google contacts</a>
+<br /><br />
+<a href="./google_drive/index.html">google drive</a>
+<br /><br />
+<a href="./google_maps/index.html">google maps</a>
+<br /><br />
+<a href="./google_scheduling/index.html">google scheduling</a>
+<br /><br />
+<a href="./google_search_api/index.html">google search api</a>
+<br /><br />
+<a href="./google_sheets/index.html">google sheets</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../../Google/index.html">Google</a> ${PREV} ${NEXT}
+  </header>
+
+  <a href="./authorize_google_drive.html">authorize google drive</a>
 <br /><br />
 <p>Here's a 2-sentence summary of the code breakdown:</p>
 <p>The code requires various modules and defines several variables for interacting with the Google API, specifically the Google Drive API. It includes a function called <code>authorizeDrive</code> that authenticates with the Google API using a credentials file and returns a client instance for the Google Drive API.</p>
@@ -29,7 +97,7 @@
 <a href="./merge_google_drive.html">merge google drive</a>
 <br /><br />
 <p>Here is a 2-sentence summary of the code:</p>
-<p>The code imports dependencies and creates a <code>google</code> object to simplify access to Google APIs, then defines two functions: <code>listDriveFiles</code> to list files in a specified Google Drive folder, and <code>listDrive</code> to list files in the root folder. The <code>listDrive</code> function is exported, and an optional section allows it to be executed using a <code>$$.sendResult</code> method in a testing or debugging context.</p>
+<p>The code imports dependencies and creates a <code>google</code> object to simplify access to Google APIs, then defines two functions: <code>listDriveFiles</code> to list files in a specified Google Drive folder, and <code>listDrive</code> to list files in the root folder. The <code>listDrive</code> function is exported, and an optional section allows it to be executed using a <code>$.sendResult</code> method in a testing or debugging context.</p>
 <a href="./download_all_docs_as_actual_data_files.html">download all docs as actual data files</a>
 <br /><br />
 <p>Here's a two-sentence summary of the code:</p>
@@ -46,3 +114,7 @@
 <br /><br />
 <p>Here is a 2-sentence summary:</p>
 <p>The code imports necessary modules and defines a <code>copyMarketing</code> function to copy a Google Drive file named &quot;Marketing site&quot; and grant permissions to a specified email address. The function executes a sequential workflow of listing Google Drive files, copying the file, inserting permissions, and retrieving a sheet identifier (although the latter's purpose is unclear).</p>
+
+</body>
+
+</html>

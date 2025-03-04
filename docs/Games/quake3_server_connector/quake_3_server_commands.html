@@ -1,8 +1,70 @@
-<p>Here is a summary of the code breakdown in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>quake 3 server commands</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a>
+    <br /><br />
+    undefined<a href="./index.html">index</a>
+<br /><br />
+<a href="./ssh_remote_wget.html">ssh remote wget</a>
+<br /><br />
+<a href="./dns_lookup.html">dns lookup</a>
+<br /><br />
+<a href="./remove_ctrl_characters.html">remove ctrl characters</a>
+<br /><br />
+<a href="./quake3_server_status.html">quake3 server status</a>
+<br /><br />
+<a href="./spectate_q3_server.html">spectate q3 server</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code breakdown in two sentences:</p>
 <p>The code initializes a UDP client socket, imports various modules, and sets up constants and variables, including an array to store master information and an object to store the next response. It defines two functions, <code>mergeMaster</code> and <code>updateInfo</code>, which are used to merge incoming master information and handle incoming UDP messages, respectively.</p>
 
 
-<pre><code>var path = require('path')
+<pre class="node"><code>var path = require('path')
 var fs = require('fs')
 var zlib = require('zlib')
 var dgram = require('dgram')
@@ -423,6 +485,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <h3>Initializations</h3>
 <p>The code begins by importing various Node.js modules and setting up a UDP client socket.</p>
@@ -465,3 +538,7 @@ module.exports = {
 <li>If the master is already connected, it decodes the message using the <code>decodeClientMessage</code> function and checks the decoded message type. If it's a &quot;svc_gamestate&quot; message (type 2), it updates the <code>nextResponse</code> object with the decoded message.</li>
 </ul></li>
 </ul>
+
+</body>
+
+</html>

@@ -1,7 +1,63 @@
-<p>This code uses a Google Calendar to trigger the execution of Node.js scripts by parsing event descriptions and extracting parameters to run.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>run todays heartbeat items</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../heartbeat/index.html">heartbeat</a>
+    <br /><br />
+    <a href="./heartbeat_thump.html">heartbeat thump</a>
+<br /><br />
+<a href="./run_todays_heartbeat_items.html">run todays heartbeat items</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../heartbeat/index.html">heartbeat</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code uses a Google Calendar to trigger the execution of Node.js scripts by parsing event descriptions and extracting parameters to run.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var {JSDOM} = require('jsdom');
 var {
     getOauthClient,
@@ -50,13 +106,24 @@ function runTodaysHeartbeat(calendar, exit) {
 }
 module.exports = runTodaysHeartbeat;
 
-if(typeof $$ !== 'undefined') {
-    $$.async();
+if(typeof $ !== 'undefined') {
+    $.async();
     runTodaysHeartbeat(false, false)
-        .then(r => $$.sendResult(r))
-        .then(e => $$.sendError(e))
+        .then(r => $.sendResult(r))
+        .then(e => $.sendError(e))
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code fetches events from a Google Calendar, parses their descriptions, and executes Node.js scripts based on the extracted parameters.</p>
 <p>Here's a breakdown:</p>
@@ -87,7 +154,11 @@ if(typeof $$ !== 'undefined') {
 <li><p><strong>Module Export and Execution:</strong></p>
 <ul>
 <li>Exports the <code>runTodaysHeartbeat</code> function.</li>
-<li>If a <code>$$</code> object is available (likely a framework or environment-specific object), it executes the function asynchronously and handles results and errors.</li>
+<li>If a <code>$</code> object is available (likely a framework or environment-specific object), it executes the function asynchronously and handles results and errors.</li>
 </ul></li>
 </ol>
 <p><strong>In essence, this code acts as a scheduler or trigger for executing Node.js scripts based on events from a Google Calendar.</strong></p>
+
+</body>
+
+</html>

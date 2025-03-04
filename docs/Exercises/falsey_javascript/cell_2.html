@@ -1,8 +1,83 @@
-<p>Here's a summary of the code breakdown in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../falsey_javascript/index.html">falsey javascript</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../falsey_javascript/index.html">falsey javascript</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the code breakdown in two sentences:</p>
 <p>This line of code uses the logical OR operator (<code>||</code>) to evaluate two expressions, an empty string (<code>''</code>) and a non-empty string (<code>'unempty strings'</code>). Due to how JavaScript handles falsy values, it will always log <code>'unempty strings'</code> to the console, regardless of the value of the first expression.</p>
 
 
-<pre><code>console.log('' || 'unempty strings')</code></pre>
+<pre class="javascript"><code>console.log('' || 'unempty strings')</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Code Snippet</h3>
@@ -16,3 +91,7 @@
 <li>When the logical OR operator encounters a falsy value, it evaluates the next expression.</li>
 <li>Therefore, this line will always log <code>'unempty strings'</code> to the console, regardless of the value of the first expression.</li>
 </ul>
+
+</body>
+
+</html>

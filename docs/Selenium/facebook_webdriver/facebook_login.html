@@ -1,8 +1,64 @@
-<p>Here is a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>facebook login</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../facebook_webdriver/index.html">facebook webdriver</a>
+    <br /><br />
+    <a href="./facebook_login.html">facebook login</a>
+<br /><br />
+<a href="./list_friends.html">list friends</a>
+<br /><br />
+<a href="./add_friend.html">add friend</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../facebook_webdriver/index.html">facebook webdriver</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The code imports necessary dependencies, including Selenium, and defines environment variables for a user's profile directory and password file. The <code>enterFacebook</code> function is an asynchronous function that automates a Facebook sign-in process, including finding and filling out form elements, waiting for and handling potential CAPTCHA or other issues, and submitting the form.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 const getClient = importer.import('selenium client')
 const { Builder, Browser, By, Key, until } = require('selenium-webdriver')
 
@@ -103,6 +159,17 @@ async function loginFacebook(driver) {
 module.exports = loginFacebook
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Dependencies</h3>
 <p>The code imports the following dependencies:</p>
@@ -149,3 +216,7 @@ module.exports = loginFacebook
 <li>The code uses <code>setTimeout</code> to introduce delays between actions</li>
 <li>The code uses JavaScript <code>executeScript</code> method to interact with the webpage, such as clicking and sending text to elements.</li>
 </ul>
+
+</body>
+
+</html>

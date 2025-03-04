@@ -1,7 +1,71 @@
-<p>This code automates the process of retrieving and reading unread Facebook threads by logging into the user's account, navigating to the unread messages page, listing the threads, and then reading the content of each thread.  It is designed to be used as a reusable function within a larger application.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>get unread threads facebook</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../facebook_messaging/index.html">facebook messaging</a>
+    <br /><br />
+    <a href="./get_unread_threads_facebook.html">get unread threads facebook</a>
+<br /><br />
+<a href="./scan_commands_facebook.html">scan commands facebook</a>
+<br /><br />
+<a href="./sync_facebook_threads.html">sync facebook threads</a>
+<br /><br />
+<a href="./List_Facebook_threads.html">List Facebook threads</a>
+<br /><br />
+<a href="./Get_messages_from_facebook.html">Get messages from facebook</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./send_facebook_message.html">send facebook message</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../facebook_messaging/index.html">facebook messaging</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code automates the process of retrieving and reading unread Facebook threads by logging into the user's account, navigating to the unread messages page, listing the threads, and then reading the content of each thread.  It is designed to be used as a reusable function within a larger application.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var {
     loginFacebook,
     listFacebookThreads,
@@ -34,6 +98,17 @@ function getUnreadThreads() {
 module.exports = getUnreadThreads;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet is designed to retrieve and read unread Facebook threads.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -48,3 +123,7 @@ module.exports = getUnreadThreads;
 </ul></li>
 <li><p><strong>Export:</strong> The <code>getUnreadThreads</code> function is exported, making it callable from other parts of the application.</p></li>
 </ol>
+
+</body>
+
+</html>

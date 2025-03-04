@@ -1,8 +1,82 @@
-<p>Here's a 1 or 2 sentence summary of the provided code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>run a DOM query on a remote HTML page</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../node_express/index.html">node express</a>
+    <br /><br />
+    <a href="./use_nodejs_express.html">use nodejs express</a>
+<br /><br />
+<a href="./start_a_proxy_on__port_.html">start a proxy on {port}</a>
+<br /><br />
+<a href="./display_the_output_from_express.html">display the output from express</a>
+<br /><br />
+<a href="./run_a_DOM_query_on_a_remote_HTML_page.html">run a DOM query on a remote HTML page</a>
+<br /><br />
+<a href="./save_a_list_of_image_elements.html">save a list of image elements</a>
+<br /><br />
+<a href="./stop_express_server.html">stop express server</a>
+<br /><br />
+<a href="./express_rpc_wrapper.html">express rpc wrapper</a>
+<br /><br />
+<a href="./zuora_eloqua_express_mock.html">zuora eloqua express mock</a>
+<br /><br />
+<a href="./directory_to_html.html">directory to html</a>
+<br /><br />
+<a href="./node_express_directory_handler.html">node express directory handler</a>
+<br /><br />
+<a href="./html_music_player.html">html music player</a>
+<br /><br />
+<a href="./html_image_viewer.html">html image viewer</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../node_express/index.html">node express</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 1 or 2 sentence summary of the provided code breakdown:</p>
 <p>This code initializes an asynchronous operation that makes a request to a specified URL, processes the response to extract image sources, and updates an array with the sources. It also includes error handling to notify the operation in case of any errors that occur during the process.</p>
 
 
-<pre><code>$$.async();
+<pre class="javascript"><code>$.async();
 var images = [];
 new Promise((resolve, reject) => {
     request('http://' + host + ':' + port, (err, res, body) => {
@@ -19,14 +93,25 @@ new Promise((resolve, reject) => {
         .map(i => i.getAttribute('src'));
 }).then(sources => {
     images = sources;
-    $$.done(sources);
-}).catch(e => $$.done(e));
+    $.done(sources);
+}).catch(e => $.done(e));
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Initialization</h4>
 <ul>
-<li><code>$$.async()</code>: Initializes an asynchronous operation.</li>
+<li><code>$.async()</code>: Initializes an asynchronous operation.</li>
 <li><code>var images = []</code>: Initializes an empty array to store image sources.</li>
 </ul>
 <h4>Making a Request</h4>
@@ -53,13 +138,17 @@ new Promise((resolve, reject) => {
 <li><code>.then(sources =&gt; {... })</code>: Handles the array of sources.
 <ul>
 <li><code>images = sources;</code>: Assigns the sources array to the <code>images</code> variable.</li>
-<li><code>$$.done(sources);</code>: Notifies the asynchronous operation that the images array is ready.</li>
+<li><code>$.done(sources);</code>: Notifies the asynchronous operation that the images array is ready.</li>
 </ul></li>
 </ul>
 <h4>Error Handling</h4>
 <ul>
-<li><code>.catch(e =&gt; $$.done(e));</code>: Handles any errors that occur during the asynchronous operation.
+<li><code>.catch(e =&gt; $.done(e));</code>: Handles any errors that occur during the asynchronous operation.
 <ul>
-<li><code>$$.done(e);</code>: Notifies the asynchronous operation that an error occurred with the error object.</li>
+<li><code>$.done(e);</code>: Notifies the asynchronous operation that an error occurred with the error object.</li>
 </ul></li>
 </ul>
+
+</body>
+
+</html>

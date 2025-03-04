@@ -1,7 +1,123 @@
-<p>This code snippet constructs a SQL query to retrieve data about active subscriptions from a database, filtering by subscription status, date range, currency, and excluding specific rate plans and products.  The query is incomplete and requires further development to include additional filtering criteria.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>zuora renewals query</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../zuora_to_eloqua/index.html">zuora to eloqua</a>
+    <br /><br />
+    <a href="./zuora_export_service.html">zuora export service</a>
+<br /><br />
+<a href="./zuora_export_catalog.html">zuora export catalog</a>
+<br /><br />
+<a href="./zuora_export_service_test.html">zuora export service test</a>
+<br /><br />
+<a href="./zuora_renewals_query.html">zuora renewals query</a>
+<br /><br />
+<a href="./test_zuora_renewals_query.html">test zuora renewals query</a>
+<br /><br />
+<a href="./eloqua_import_service.html">eloqua import service</a>
+<br /><br />
+<a href="./test_eloqua_import_service.html">test eloqua import service</a>
+<br /><br />
+<a href="./zuora_eloqua_mapper.html">zuora eloqua mapper</a>
+<br /><br />
+<a href="./zuora_eloqua_mapper_test.html">zuora eloqua mapper test</a>
+<br /><br />
+<a href="./zuora_account_blueprints.html">zuora account blueprints</a>
+<br /><br />
+<a href="./eloqua_import_create_template.html">eloqua import create template</a>
+<br /><br />
+<a href="./test_eloqua_import_create_template.html">test eloqua import create template</a>
+<br /><br />
+<a href="./eloqua_import_blueprints.html">eloqua import blueprints</a>
+<br /><br />
+<a href="./eloqua_existing_import.html">eloqua existing import</a>
+<br /><br />
+<a href="./test_eloqua_existing_import.html">test eloqua existing import</a>
+<br /><br />
+<a href="./aws_entry_point.html">aws entry point</a>
+<br /><br />
+<a href="./test_aws_entry_point.html">test aws entry point</a>
+<br /><br />
+<a href="./notify_entry_point.html">notify entry point</a>
+<br /><br />
+<a href="./test_notify_entry_point.html">test notify entry point</a>
+<br /><br />
+<a href="./zuora_export_month.html">zuora export month</a>
+<br /><br />
+<a href="./test_zuora_export_month.html">test zuora export month</a>
+<br /><br />
+<a href="./zuora_account_service.html">zuora account service</a>
+<br /><br />
+<a href="./test_zuora_account_service.html">test zuora account service</a>
+<br /><br />
+<a href="./bulk_upload_eloqua.html">bulk upload eloqua</a>
+<br /><br />
+<a href="./test_bulk_upload_eloqua.html">test bulk upload eloqua</a>
+<br /><br />
+<a href="./sync_zuora_eloqua_end_to_end.html">sync zuora eloqua end to end</a>
+<br /><br />
+<a href="./calculate_price.html">calculate price</a>
+<br /><br />
+<a href="./calculate_price_test.html">calculate price test</a>
+<br /><br />
+<a href="./readme.html">readme</a>
+<br /><br />
+<a href="./cell_29.html">Cell 29</a>
+<br /><br />
+<a href="./cell_30.html">Cell 30</a>
+<br /><br />
+<a href="./cell_31.html">Cell 31</a>
+<br /><br />
+<a href="./cell_32.html">Cell 32</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../zuora_to_eloqua/index.html">zuora to eloqua</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code snippet constructs a SQL query to retrieve data about active subscriptions from a database, filtering by subscription status, date range, currency, and excluding specific rate plans and products.  The query is incomplete and requires further development to include additional filtering criteria.</p>
 
 
-<pre><code>var moment = require('moment');
+<pre class="javascript"><code>var moment = require('moment');
 var chrono = require('chrono-node');
 var excludedRatePlans = [
     'Act! Pro - New License',
@@ -95,6 +211,17 @@ module.exports = {
 };
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet appears to be constructing a SQL query for retrieving data about active subscriptions from a database.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -127,3 +254,7 @@ module.exports = {
 </ol>
 <p><strong>In essence:</strong></p>
 <p>This code snippet is building a SQL query to retrieve information about active subscriptions within a specific date range, excluding certain rate plans and products.</p>
+
+</body>
+
+</html>

@@ -1,7 +1,71 @@
-<p>This code provides a utility for selecting and manipulating code structures based on a grammar and a selection descriptor, likely used in a larger code analysis or transformation tool.  It parses code, allows for querying specific parts using a descriptor, and converts the selected code into a string representation.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>select jison tree</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../bison/index.html">bison</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./select_jison_tree.html">select jison tree</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../bison/index.html">bison</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a utility for selecting and manipulating code structures based on a grammar and a selection descriptor, likely used in a larger code analysis or transformation tool.  It parses code, allows for querying specific parts using a descriptor, and converts the selected code into a string representation.</p>
 
 
-<pre><code>var fs = require('fs');
+<pre class="javascript"><code>var fs = require('fs');
 var jison = require('jison');
 var importer = require('../Core')
 var {
@@ -73,6 +137,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a utility for selecting and manipulating code structures, likely within a larger code analysis or transformation system.</p>
 <p>Here's a breakdown:</p>
 <ul>
@@ -89,3 +164,7 @@ module.exports = {
 <li><p><strong>Exports:</strong> The module exports the <code>selectCode</code> function, making it available for use in other parts of the system.</p></li>
 </ul>
 <p>In essence, this code provides a way to query and extract specific parts of code based on a grammar and a selection descriptor.</p>
+
+</body>
+
+</html>

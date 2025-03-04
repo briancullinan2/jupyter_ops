@@ -1,7 +1,63 @@
-<p>This code implements a fuzzy search function, <code>levSearch</code>, that finds objects in a dataset based on the closest match to a given search term using Levenshtein distance.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>search levenshtein distance</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../levenshtein/index.html">levenshtein</a>
+    <br /><br />
+    <a href="./Find_the_levenshtein_distance.html">Find the levenshtein distance</a>
+<br /><br />
+<a href="./Sort_by_levenshtein_distance.html">Sort by levenshtein distance</a>
+<br /><br />
+<a href="./search_levenshtein_distance.html">search levenshtein distance</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../levenshtein/index.html">levenshtein</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code implements a fuzzy search function, <code>levSearch</code>, that finds objects in a dataset based on the closest match to a given search term using Levenshtein distance.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var levDist = importer.import(`${__filename}[0]`).levDist;
 
 function getStr(keys, obj) {
@@ -35,6 +91,17 @@ module.exports = levSearch;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a function <code>levSearch</code> that performs a fuzzy search within a dataset based on Levenshtein distance.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -64,3 +131,7 @@ module.exports = levSearch;
 </ul></li>
 </ol>
 <p><strong>In essence, this code provides a fuzzy search functionality that finds objects in a dataset based on the similarity of their values to a given search term, using Levenshtein distance as the similarity metric.</strong></p>
+
+</body>
+
+</html>

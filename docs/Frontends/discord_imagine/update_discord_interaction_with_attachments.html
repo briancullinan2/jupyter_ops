@@ -1,8 +1,66 @@
-<p>Here is a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>update discord interaction with attachments</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_imagine/index.html">discord imagine</a>
+    <br /><br />
+    <a href="./update_discord_interaction_with_attachments.html">update discord interaction with attachments</a>
+<br /><br />
+<a href="./discord_stability_proxy.html">discord stability proxy</a>
+<br /><br />
+<a href="./discord_mid_journey_commands.html">discord mid journey commands</a>
+<br /><br />
+<a href="./discord_ollama_vision.html">discord ollama vision</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_imagine/index.html">discord imagine</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The code imports necessary dependencies, including Discord configuration and mime types, and defines an asynchronous function <code>patchInteractionImageAttachment</code> that sends a PATCH request to a Discord webhook endpoint to update an interaction image attachment. The function takes four parameters: <code>prompt</code>, <code>buff</code>, <code>token</code>, and <code>content</code>, and constructs a multipart/form-data request body with a JSON payload and the base64-encoded <code>buff</code> buffer as a file attachment.</p>
 
 
-<pre><code>const {DEFAULT_APPLICATION} = importer.import('discord configuration')
+<pre class="javascript"><code>const {DEFAULT_APPLICATION} = importer.import('discord configuration')
 const { safeurl } = importer.import('domain cache tools')
 const mime = require('mime-types');
 const {requestAuthQ} = importer.import('discord request')
@@ -43,6 +101,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <ul>
@@ -78,3 +147,7 @@ module.exports = {
 <ul>
 <li>The <code>patchInteractionImageAttachment</code> function is exported as a module export.</li>
 </ul>
+
+</body>
+
+</html>

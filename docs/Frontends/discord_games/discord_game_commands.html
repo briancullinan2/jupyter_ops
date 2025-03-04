@@ -1,8 +1,62 @@
-<p>Here is a summary of the provided code breakdown in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>discord game commands</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_games/index.html">discord games</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./discord_game_commands.html">discord game commands</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_games/index.html">discord games</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the provided code breakdown in two sentences:</p>
 <p>The code imports functions from the Discord API module and defines an array of command names (<code>ALL_COMMANDS</code>) that will be synced with the Discord API. The <code>syncCommands</code> function retrieves the list of commands from the Discord API, registers or updates commands as needed, and repeats this process for each command in the <code>ALL_COMMANDS</code> array.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 const {
   registerCommand, getCommands, deleteCommand, updateCommand
 } = importer.import('discord api')
@@ -312,6 +366,17 @@ module.exports = {
   DISCORD_COMMANDS
 }</code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code imports functions from the <code>discord api</code> module using the <code>importer.import()</code> method:</p>
@@ -381,3 +446,7 @@ module.exports = {
 }
 </code></pre>
 <p>The <code>cmdDef</code> object is used to register or update commands in the Discord API.</p>
+
+</body>
+
+</html>

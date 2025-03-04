@@ -1,8 +1,84 @@
-<p>Here's a two-sentence summary of the provided CSS stylesheet for a chat application:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>chat page</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../brians_resume/index.html">brians resume</a>
+    <br /><br />
+    <a href="./_get_a_list_of_folder_topics_from_bookmarks.html">,get a list of folder topics from bookmarks</a>
+<br /><br />
+<a href="./update_insterests_resume_sheet.html">update insterests resume sheet</a>
+<br /><br />
+<a href="./load_message_history.html">load message history</a>
+<br /><br />
+<a href="./brians_resume.html">brians resume</a>
+<br /><br />
+<a href="./file_system_access.html">file system access</a>
+<br /><br />
+<a href="./access_web_information.html">access web information</a>
+<br /><br />
+<a href="./ask_another_llm_for_help.html">ask another llm for help</a>
+<br /><br />
+<a href="./render_message_history.html">render message history</a>
+<br /><br />
+<a href="./resume_express_chat_service.html">resume express chat service</a>
+<br /><br />
+<a href="./render_history_navigation.html">render history navigation</a>
+<br /><br />
+<a href="./resume_chat_program.html">resume chat program</a>
+<br /><br />
+<a href="./chat_page.html">chat page</a>
+<br /><br />
+<a href="./brians_resume_in_html.html">brians resume in html</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../brians_resume/index.html">brians resume</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the provided CSS stylesheet for a chat application:</p>
 <p>This CSS stylesheet sets the basic styles for a chat application, including global styles, container styles, chat program styles, chat inner styles, messages styles, text entry styles, and drag and drop styles. It defines elements such as the container, chat inner, messages, text entry, and drag and drop areas with styles for layout, colors, and typography to create a visually cohesive chat interface.</p>
 
 
-<pre><code><html>
+<pre class="html"><code><html>
 
 <head>
   <style>
@@ -454,6 +530,17 @@
 
 </html></code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Breakdown of the Code</h2>
 <p>The provided code is a CSS stylesheet for a chat application. Here's a breakdown of the different sections:</p>
 <h3>Global Styles</h3>
@@ -591,3 +678,7 @@ body {
 <li>Styles an element with absolute positioning and a semi-transparent background color.</li>
 </ul>
 <p>Note that the <code>#dr</code> in the code snippet appears to be a typo, and it's likely that it should be <code>#drag-and-drop</code>.</p>
+
+</body>
+
+</html>

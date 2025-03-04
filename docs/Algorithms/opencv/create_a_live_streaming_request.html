@@ -1,8 +1,80 @@
-<p>Here's a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>create a live streaming request</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../opencv/index.html">opencv</a>
+    <br /><br />
+    <a href="./detect_people.html">detect people</a>
+<br /><br />
+<a href="./motion_detection.html">motion detection</a>
+<br /><br />
+<a href="./python_write_video.html">python write video</a>
+<br /><br />
+<a href="./python_write_images_to_ffmpeg_stream.html">python write images to ffmpeg stream</a>
+<br /><br />
+<a href="./create_a_live_streaming_request.html">create a live streaming request</a>
+<br /><br />
+<a href="./authorize_youtube_in_python.html">authorize youtube in python</a>
+<br /><br />
+<a href="./list_broadcasts.html">list broadcasts</a>
+<br /><br />
+<a href="./create_live_stream.html">create live stream</a>
+<br /><br />
+<a href="./list_live_stream.html">list live stream</a>
+<br /><br />
+<a href="./bind_youtube_stream.html">bind youtube stream</a>
+<br /><br />
+<a href="./transition_live_stream.html">transition live stream</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../opencv/index.html">opencv</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The code imports necessary libraries, loads credentials from a service account JSON file, and sets up a YouTube API client using the <code>googleapiclient</code> library. The <code>live_stream</code> function is defined to create a new live stream on YouTube, utilizing the API client and specifying parameters such as title, description, and scheduled start time.</p>
 
 
-<pre><code>import os
+<pre class="python"><code>import os
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
 
@@ -42,6 +114,17 @@ __all__ = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <h3>Importing Libraries</h3>
 <p>The code begins by importing the necessary libraries:</p>
@@ -58,3 +141,7 @@ __all__ = {
 <p>The <code>live_stream</code> function is defined to create a new live stream on YouTube. It uses the <code>youtube.liveBroadcasts().insert</code> method to create a new broadcast, specifying the title, description, scheduled start time, and channel ID. The function also sets the privacy status to public and enables auto-start. The response from the API is then printed to the console.</p>
 <h3>Module Exports</h3>
 <p>Finally, the <code>__all__</code> variable is set to export the <code>live_stream</code> function as a module variable.</p>
+
+</body>
+
+</html>

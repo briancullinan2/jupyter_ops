@@ -1,4 +1,80 @@
-<a href="./readme_md.html">readme.md</a>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>notebook</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../../Core/index.html">Core</a>
+    <br /><br />
+    <a href="./aspects/index.html">aspects</a>
+<br /><br />
+<a href="./cache/index.html">cache</a>
+<br /><br />
+<a href="./compile/index.html">compile</a>
+<br /><br />
+<a href="./files/index.html">files</a>
+<br /><br />
+<a href="./import/index.html">import</a>
+<br /><br />
+<a href="./intent/index.html">intent</a>
+<br /><br />
+<a href="./kernels/index.html">kernels</a>
+<br /><br />
+<a href="./languages/index.html">languages</a>
+<br /><br />
+<a href="./notebook/index.html">notebook</a>
+<br /><br />
+<a href="./patterns/index.html">patterns</a>
+<br /><br />
+<a href="./pyimport/index.html">pyimport</a>
+<br /><br />
+<a href="./rpc/index.html">rpc</a>
+<br /><br />
+<a href="./syntax/index.html">syntax</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../../Core/index.html">Core</a> ${PREV} ${NEXT}
+  </header>
+
+  <a href="./readme_md.html">readme.md</a>
 <br /><br />
 <p>This code snippet is a placeholder comment reminding developers or users that a README file should be present in this location.  It serves as a note for documentation purposes and should be ignored as it doesn't contain executable code.</p>
 <a href="./import_notebook__import_all_cell_modules.html">import notebook, import all cell modules</a>
@@ -17,7 +93,7 @@
 <a href="./cell_6.html">Cell 6</a>
 <br /><br />
 <p>Here is a 2-sentence summary of the code:</p>
-<p>The code imports specific functions from a <code>../Core</code> module and defines a string of JavaScript code, which is then used to replace imports using the imported <code>replaceCore</code> function. The replaced code is sent as a MIME message with a <code>text/plain</code> type, if the <code>$$</code> object is defined and has the required properties.</p>
+<p>The code imports specific functions from a <code>../Core</code> module and defines a string of JavaScript code, which is then used to replace imports using the imported <code>replaceCore</code> function. The replaced code is sent as a MIME message with a <code>text/plain</code> type, if the <code>$</code> object is defined and has the required properties.</p>
 <a href="./add_missing_imports.html">add missing imports</a>
 <br /><br />
 <p>This code provides a function, <code>addImports</code>, that automatically inserts import statements into code based on the identification of global function calls. It leverages an AST parser, a cache of exports, and a transpiling function to achieve this.</p>
@@ -44,3 +120,7 @@
 <a href="./cell_15.html">Cell 15</a>
 <br /><br />
 <p>The code prints the value of the global object to the console using <code>console.log(global)</code>, which retrieves and displays the global scope in Node.js. The global object represents the global variables and functions.</p>
+
+</body>
+
+</html>

@@ -1,13 +1,76 @@
-<p>Here's a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 0</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../svn_commands/index.html">svn commands</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../svn_commands/index.html">svn commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary:</p>
 <p>This Docker command runs an <code>svnserve</code> container with automatic restart, mapping the host directory <code>/Users/briancullinan/Documents/svn</code> to the container directory, and exposing port 3690 for version control operations. The command uses the <code>gcscaglia/docker-svnserve</code> image with the latest available version.</p>
 
 
-<pre><code>docker run \
+<pre class="bash"><code>docker run \
     --name svnserve \
     --restart always \
     -p 3690:3690 \
     --volume /Users/briancullinan/Documents/svn:/var/opt/svn:rw \
     gcscaglia/docker-svnserve:latest </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Docker Container Run Command</h3>
 <h4>Overview</h4>
@@ -22,3 +85,7 @@
 </ul>
 <h4>Purpose</h4>
 <p>This command is used to start a container for hosting an SVN server, allowing version control operations on the specified host directory.</p>
+
+</body>
+
+</html>

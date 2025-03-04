@@ -1,7 +1,65 @@
-<p>This code defines a function that uses the Twilio API to make phone calls, taking a phone number and optional message as input.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>make a twilio call</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../twilio/index.html">twilio</a>
+    <br /><br />
+    <a href="./accept_incoming_twilio_message.html">accept incoming twilio message</a>
+<br /><br />
+<a href="./twilio_reminder.html">twilio reminder</a>
+<br /><br />
+<a href="./send_a_twilio_message.html">send a twilio message</a>
+<br /><br />
+<a href="./make_a_twilio_call.html">make a twilio call</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../twilio/index.html">twilio</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code defines a function that uses the Twilio API to make phone calls, taking a phone number and optional message as input.</p>
 
 
-<pre><code>var accountSid = 'AC83b0b1c7071b9f8f190001501c3ae5cb'; // Your Account SID from www.twilio.com/console
+<pre class="javascript"><code>var accountSid = 'AC83b0b1c7071b9f8f190001501c3ae5cb'; // Your Account SID from www.twilio.com/console
 var authToken = 'a065be17e68f0eddb071e2cf8a488d00';   // Your Auth Token from www.twilio.com/console
 
 var twilio = require('twilio');
@@ -17,6 +75,17 @@ function callTwilio(to, message) {
 
 module.exports = callTwilio;
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code sets up a function to make phone calls using the Twilio API.</p>
 <p>Here's a breakdown:</p>
@@ -48,3 +117,7 @@ module.exports = callTwilio;
 </ul></li>
 </ol>
 <p>In essence, this code provides a reusable function to make phone calls through the Twilio API, allowing you to integrate voice communication into your application.</p>
+
+</body>
+
+</html>

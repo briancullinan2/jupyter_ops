@@ -1,7 +1,67 @@
-<p>This code downloads the &quot;elevate&quot; tool from GitHub, extracts it to a local directory, and signals completion of the process.  It uses <code>https</code> to download the file, <code>fs</code> to write it to disk, and <code>child_process</code> to execute a PowerShell command for extraction.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>How do I installed elevated from the command line</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../install_Docker_on_Windows/index.html">install Docker on Windows</a>
+    <br /><br />
+    <a href="./install_Docker_on_Windows.html">install Docker on Windows</a>
+<br /><br />
+<a href="./How_do_I_installed_elevated_from_the_command_line.html">How do I installed elevated from the command line</a>
+<br /><br />
+<a href="./Where_do_I_download_the_Windows_Docker_installer.html">Where do I download the Windows Docker installer</a>
+<br /><br />
+<a href="./How_do_I_fix_the_firewall_for_Docker.html">How do I fix the firewall for Docker</a>
+<br /><br />
+<a href="./install_build_tools_on_Windows.html">install build tools on Windows</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../install_Docker_on_Windows/index.html">install Docker on Windows</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code downloads the &quot;elevate&quot; tool from GitHub, extracts it to a local directory, and signals completion of the process.  It uses <code>https</code> to download the file, <code>fs</code> to write it to disk, and <code>child_process</code> to execute a PowerShell command for extraction.</p>
 
 
-<pre><code>$$.async();
+<pre class="javascript"><code>$.async();
 var exec = require('child_process').exec;
 var http = require('https');
 var fs = require('fs');
@@ -11,7 +71,7 @@ http.get('https://github.com/jpassing/elevate/releases/download/1.0/elevate.zip'
     http.get(r.headers['location'], (r) => {
         r.pipe(fs.createWriteStream(elevateLoc)).on('finish', () => {
             var expand = exec('powershell -c "Expand-Archive -Force ' + elevateLoc + ' ' + expandedLoc + '"', () => {
-                $$.done('downloaded and extracted elevate.exec');
+                $.done('downloaded and extracted elevate.exec');
             });
             expand.stdout.on('data', (d) => console.log(d));
             expand.stderr.on('data', (d) => console.log(d));
@@ -21,12 +81,23 @@ http.get('https://github.com/jpassing/elevate/releases/download/1.0/elevate.zip'
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code downloads and extracts the &quot;elevate&quot; tool, a utility for running commands with elevated privileges on Windows.</p>
 <p><strong>Breakdown:</strong></p>
 <ol>
 <li><p><strong>Initialization:</strong></p>
 <ul>
-<li><code>$$.async();</code>: Likely initializes an asynchronous operation.</li>
+<li><code>$.async();</code>: Likely initializes an asynchronous operation.</li>
 <li><code>var exec = require('child_process').exec;</code>: Imports the <code>exec</code> function for running shell commands.</li>
 <li><code>var http = require('https');</code>: Imports the <code>https</code> module for making HTTP requests.</li>
 <li><code>var fs = require('fs');</code>: Imports the <code>fs</code> module for file system operations.</li>
@@ -58,10 +129,14 @@ http.get('https://github.com/jpassing/elevate/releases/download/1.0/elevate.zip'
 <ul>
 <li>The callback function executes after the extraction completes:
 <ul>
-<li><code>$$.done('downloaded and extracted elevate.exec');</code>: Signals completion of the asynchronous operation.</li>
+<li><code>$.done('downloaded and extracted elevate.exec');</code>: Signals completion of the asynchronous operation.</li>
 </ul></li>
 <li><code>expand.stdout.on('data', (d) =&gt; console.log(d));</code>: Logs the standard output of the extraction process.</li>
 <li><code>expand.stderr.on('data', (d) =&gt; console.log(d));</code>: Logs any standard error output from the extraction process.</li>
 </ul></li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

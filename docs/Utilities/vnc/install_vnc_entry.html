@@ -1,10 +1,89 @@
-<p>This code prepares a directory and generates a VNC entry point script for a Jupyter/Angular project using an npm script.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>install vnc entry</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../vnc/index.html">vnc</a>
+    <br /><br />
+    <a href="./What_is_VNC.html">What is VNC</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./VNC_HTML_client.html">VNC HTML client</a>
+<br /><br />
+<a href="./Use_vnc_with_live-server.html">Use vnc with live-server</a>
+<br /><br />
+<a href="./VNC_in_Docker.html">VNC in Docker</a>
+<br /><br />
+<a href="./selenium_vnc_server.html">selenium vnc server</a>
+<br /><br />
+<a href="./vnc_entry_point.html">vnc entry point</a>
+<br /><br />
+<a href="./install_vnc_entry.html">install vnc entry</a>
+<br /><br />
+<a href="./install_aws_vnc_selenium.html">install aws vnc selenium</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../vnc/index.html">vnc</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code prepares a directory and generates a VNC entry point script for a Jupyter/Angular project using an npm script.</p>
 
 
-<pre><code>cd ~/jupytangular \
+<pre class="bash"><code>cd ~/jupytangular \
    && mkdir /opt/bin || true \
    && npm run output "vnc entry point" "/opt/bin/entry_point.sh" \
    && chmod +x /opt/bin/entry_point.sh</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet sets up a directory structure and builds a VNC entry point script for a Jupyter/Angular project. Here's a breakdown:</p>
 <ol>
@@ -14,3 +93,7 @@
 <li><p><strong><code>chmod +x /opt/bin/entry_point.sh</code>:</strong> Makes the <code>entry_point.sh</code> script executable.</p></li>
 </ol>
 <p>In essence, this code prepares a directory for a VNC entry point script and generates the script itself using an npm script. The <code>entry_point.sh</code> script likely contains the commands to start the VNC server and other necessary configurations.</p>
+
+</body>
+
+</html>

@@ -1,8 +1,66 @@
-<p>Here is a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../build_Angular_components/index.html">build Angular components</a>
+    <br /><br />
+    <a href="./Run_angular-cli_commands_from_nodejs.html">Run angular-cli commands from nodejs</a>
+<br /><br />
+<a href="./Compile_the_project_using_webpack.html">Compile the project using webpack</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./Set_angular_theme_colors.html">Set angular theme colors</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../build_Angular_components/index.html">build Angular components</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code breakdown:</p>
 <p>This code creates a new Angular project called &quot;new-portal&quot; using <code>@angular/cli</code>, generates an &quot;AppServer&quot; module, and prepares the project for building and serving. The code also outlines missing functionality, including building in memory, integrating a sockify server, accepting logins and encrypting passwords, and sending mock responses to test interfaces.</p>
 
 
-<pre><code>//ng(path.dirname(project), ['new', '--skip-git', '--skip-install', 'new-portal'])
+<pre class="javascript"><code>//ng(path.dirname(project), ['new', '--skip-git', '--skip-install', 'new-portal'])
 //    .then(() => ng(project, [
 //    'generate', 'module', '--spec', '--flat', 'AppServer']))
 /*
@@ -26,6 +84,17 @@
 // accept logins and encrypt in to password file?
 // send mock responses to display all interfaces?  e.g. logging in displays redirect and error "you are already logged in" on login page at the same time
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Section 1: Creating a New Angular Project</h3>
@@ -74,3 +143,7 @@
 <li>Accepting logins and encrypting passwords</li>
 <li>Sending mock responses to test interfaces</li>
 </ul>
+
+</body>
+
+</html>

@@ -1,7 +1,75 @@
-<p>This code sets up a Ruby development environment with a specific Ruby version (2.4.1) using rbenv and Homebrew, including dependencies for building extensions and tools for working with ZeroMQ.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>install ruby</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../Jupyter_language_kernels/index.html">Jupyter language kernels</a>
+    <br /><br />
+    <a href="./install_bash_kernel.html">install bash kernel</a>
+<br /><br />
+<a href="./install_ipython_kernel.html">install ipython kernel</a>
+<br /><br />
+<a href="./install_ICSharp__C__kernel.html">install ICSharp (C) kernel</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./install_ruby.html">install ruby</a>
+<br /><br />
+<a href="./install_Powershell.html">install Powershell</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../Jupyter_language_kernels/index.html">Jupyter language kernels</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code sets up a Ruby development environment with a specific Ruby version (2.4.1) using rbenv and Homebrew, including dependencies for building extensions and tools for working with ZeroMQ.</p>
 
 
-<pre><code>brew
+<pre class="bash"><code>brew
 install
 rbenv
 automake
@@ -38,6 +106,17 @@ force
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet sets up a Ruby development environment using Homebrew and rbenv.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -51,3 +130,7 @@ force
 <li><p><strong><code>iruby iruby register --force</code></strong>: This registers the <code>iruby</code> command, which is likely a custom Ruby interpreter, with the system.</p></li>
 </ol>
 <p>In essence, this code snippet sets up a Ruby development environment with a specific Ruby version, necessary dependencies, and tools for working with ZeroMQ.</p>
+
+</body>
+
+</html>

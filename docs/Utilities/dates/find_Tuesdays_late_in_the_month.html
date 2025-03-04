@@ -1,7 +1,69 @@
-<p>This code identifies and lists all Tuesdays in the remaining months of 2017 that occur on or after the 26th of the month.  It does this by calculating the first Tuesday of each month and iterating through subsequent Tuesdays until the next month begins.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>find Tuesdays late in the month</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../dates/index.html">dates</a>
+    <br /><br />
+    <a href="./find_Tuesdays_late_in_the_month.html">find Tuesdays late in the month</a>
+<br /><br />
+<a href="./Convert_a_date_to_ISO.html">Convert a date to ISO</a>
+<br /><br />
+<a href="./sum_a_list_of_events.html">sum a list of events</a>
+<br /><br />
+<a href="./Number_of_days_between_events.html">Number of days between events</a>
+<br /><br />
+<a href="./display_recurrence_line_graph.html">display recurrence line graph</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../dates/index.html">dates</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code identifies and lists all Tuesdays in the remaining months of 2017 that occur on or after the 26th of the month.  It does this by calculating the first Tuesday of each month and iterating through subsequent Tuesdays until the next month begins.</p>
 
 
-<pre><code>function getTuesdays(month, year) {
+<pre class="javascript"><code>function getTuesdays(month, year) {
     var d = new Date(year, month, 1),
         tuesdays = [];
 
@@ -22,6 +84,17 @@ for (var m = month; month <= 12; month++) {
 console.log(results.map(d => d.getDate() + '/' + (d.getMonth() + 1)).join('\r\n'))
 module.exports = getTuesdays;
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code finds all Tuesdays in the remaining months of 2017 that fall on or after the 26th.</p>
 <p>Here's a breakdown:</p>
@@ -48,3 +121,7 @@ module.exports = getTuesdays;
 </ul></li>
 </ol>
 <p>Let me know if you'd like a more detailed explanation of any specific part!</p>
+
+</body>
+
+</html>

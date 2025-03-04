@@ -1,10 +1,74 @@
-<p>Here is a summary of the.NET project file in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 3</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../windows/index.html">windows</a>
+    <br /><br />
+    <a href="./list_window_handles.html">list window handles</a>
+<br /><br />
+<a href="./monitor_active_windows.html">monitor active windows</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../windows/index.html">windows</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the.NET project file in one sentence:</p>
 <p>The.NET project file is a Visual Studio solution file in XML format that declares the project, imports external files, sets project properties, and specifies references and compilation settings.</p>
 <p>Alternatively, here is a two-sentence summary:</p>
 <p>The.NET project file is a XML-based file that outlines the project's properties, references, and compilation settings. It includes sections for project declaration, importing external files, project properties, debug and release properties, references, and compilation items, providing a comprehensive description of the project's configuration.</p>
 
 
-<pre><code><?xml version="1.0" encoding="utf-8"?>
+<pre class="xml"><code><?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -59,6 +123,17 @@
 </Project>
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This is a.NET project file in XML format, specifically a Visual Studio solution file. Here's a breakdown of its main components:</p>
 <ol>
 <li><p><strong>Project Declaration</strong></p>
@@ -108,3 +183,7 @@
 <li>The file contains a commented out line <code>&lt;Compil</code>, which is not part of the project and is likely a placeholder or a mistake.</li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

@@ -1,7 +1,91 @@
-<p>The <code>importsCache</code> variable stores information about imported modules and files within Jupyter Notebook cells, including timestamps, file paths, and lists of imports. This cache likely aids in code analysis, dependency management, or understanding the structure of Jupyter Notebooks.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>imports cache</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../cache/index.html">cache</a>
+    <br /><br />
+    <a href="./cell_cache.html">cell cache</a>
+<br /><br />
+<a href="./cache_notebook.html">cache notebook</a>
+<br /><br />
+<a href="./test_cache_notebook.html">test cache notebook</a>
+<br /><br />
+<a href="./cache_all.html">cache all</a>
+<br /><br />
+<a href="./imports_cache.html">imports cache</a>
+<br /><br />
+<a href="./create_import_cache.html">create import cache</a>
+<br /><br />
+<a href="./test_import_cache.html">test import cache</a>
+<br /><br />
+<a href="./exports_cache.html">exports cache</a>
+<br /><br />
+<a href="./create_cell_cache.html">create cell cache</a>
+<br /><br />
+<a href="./test_export_cache.html">test export cache</a>
+<br /><br />
+<a href="./__update_code_cell.html">, update code cell</a>
+<br /><br />
+<a href="./update_regular_cache.html">update regular cache</a>
+<br /><br />
+<a href="./memory_safe_async.html">memory safe async</a>
+<br /><br />
+<a href="./refresh_regular_cache.html">refresh regular cache</a>
+<br /><br />
+<a href="./cell_14.html">Cell 14</a>
+<br /><br />
+<a href="./cell_15.html">Cell 15</a>
+<br /><br />
+<a href="./cell_16.html">Cell 16</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../cache/index.html">cache</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>importsCache</code> variable stores information about imported modules and files within Jupyter Notebook cells, including timestamps, file paths, and lists of imports. This cache likely aids in code analysis, dependency management, or understanding the structure of Jupyter Notebooks.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 // imports cache automatically replaced
 var importsCache = [
     [
@@ -113,6 +197,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a <code>importsCache</code> variable, which appears to store information about imported modules and files within Jupyter Notebook cells.</p>
 <p>Here's a breakdown:</p>
 <ul>
@@ -130,3 +225,7 @@ module.exports = {
 <li>The <code>importsCache</code> likely tracks the imported modules and files for each cell in a Jupyter Notebook, potentially for code analysis, dependency management, or other purposes related to understanding the structure and dependencies of a notebook.</li>
 </ul></li>
 </ul>
+
+</body>
+
+</html>

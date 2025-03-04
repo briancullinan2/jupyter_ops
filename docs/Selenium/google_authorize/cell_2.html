@@ -1,8 +1,66 @@
-<p>Here is a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_authorize/index.html">google authorize</a>
+    <br /><br />
+    <a href="./google_oauth_token_client.html">google oauth token client</a>
+<br /><br />
+<a href="./use_selenium_to_authorize_Google_access.html">use selenium to authorize Google access</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_authorize/index.html">google authorize</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary:</p>
 <p>This code imports dependencies for a Node.js application, sets up OAuth 2.0 credentials, and creates an instance of the <code>OAuth2Client</code> class to request an access token. The access token is requested using the <code>getToken</code> method of the <code>oauth2Client</code> instance, and the result is handled through a promise with a callback function for both successful and error cases.</p>
 
 
-<pre><code>var util = require('util');
+<pre class="javascript"><code>var util = require('util');
 var {OAuth2Client} = require('google-auth-library');
 var TOKEN_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '', '.credentials');
 var SECRET_PATH = path.join(TOKEN_DIR, 'client_secret.json');
@@ -13,13 +71,24 @@ var oauth2Client = new OAuth2Client(
     credentials.installed.client_secret,
     credentials.installed.redirect_uris[0]);
 
-$$.async()
+$.async()
 util.promisify(oauth2Client.getToken.bind(oauth2Client))
 ('4/QwGy62FM_KlubQwYvKLAu5z1xrT0cF85Zwb_3U7-IHvmm1gJZ-hj0Qo')
-    .then(r => $$.sendResult(JSON.stringify(r)))
-    .catch(e => $$.sendError(e))
+    .then(r => $.sendResult(JSON.stringify(r)))
+    .catch(e => $.sendError(e))
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
@@ -43,6 +112,10 @@ util.promisify(oauth2Client.getToken.bind(oauth2Client))
 <ul>
 <li><code>util.promisify(oauth2Client.getToken.bind(oauth2Client))</code>: Converts the <code>getToken</code> method of the <code>oauth2Client</code> instance into a promise-returning function.</li>
 <li><code>oauth2Client.getToken('4/QwGy62FM_KlubQwYvKLAu5z1xrT0cF85Zwb_3U7-IHvmm1gJZ-hj0Qo')</code>: Requests an access token with the given refresh token.</li>
-<li><code>.then(r =&gt; $$.sendResult(JSON.stringify(r)))</code>: Callback function to handle the result of the access token request.</li>
-<li><code>.catch(e =&gt; $$.sendError(e))</code>: Callback function to handle any errors that occur during the access token request.</li>
+<li><code>.then(r =&gt; $.sendResult(JSON.stringify(r)))</code>: Callback function to handle the result of the access token request.</li>
+<li><code>.catch(e =&gt; $.sendError(e))</code>: Callback function to handle any errors that occur during the access token request.</li>
 </ul>
+
+</body>
+
+</html>

@@ -1,7 +1,65 @@
-<p>This code sets up a root Certificate Authority (CA) using OpenSSL, configuring directories, files, and policies for issuing and managing digital certificates.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>create a trusted root CA</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../openssl/index.html">openssl</a>
+    <br /><br />
+    <a href="./create_a_trusted_root_CA.html">create a trusted root CA</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./generate_a_self-signed_cert.html">generate a self-signed cert</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../openssl/index.html">openssl</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code sets up a root Certificate Authority (CA) using OpenSSL, configuring directories, files, and policies for issuing and managing digital certificates.</p>
 
 
-<pre><code>ROOT=/Users/briancullinan/jupytangular2/Utilities/ca
+<pre class="bash"><code>ROOT=/Users/briancullinan/jupytangular2/Utilities/ca
 
 # prepare root CA
 mkdir $ROOT
@@ -170,6 +228,17 @@ openssl x509 -noout -text -in certs/ca.cert.pem
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet sets up a root Certificate Authority (CA) using OpenSSL.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -200,3 +269,7 @@ openssl x509 -noout -text -in certs/ca.cert.pem
 </ol>
 <p><strong>Purpose:</strong></p>
 <p>This code sets up a basic root CA infrastructure using OpenSSL, allowing for the generation of self-signed certificates and potentially issuing certificates to other entities within a controlled environment.</p>
+
+</body>
+
+</html>

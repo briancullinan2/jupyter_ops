@@ -1,4 +1,62 @@
-<a href="./cell_0.html">Cell 0</a>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>falsey javascript</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../../Exercises/index.html">Exercises</a>
+    <br /><br />
+    <a href="./falsey_javascript/index.html">falsey javascript</a>
+<br /><br />
+<a href="./fizz_buzz/index.html">fizz buzz</a>
+<br /><br />
+<a href="./math/index.html">math</a>
+<br /><br />
+<a href="./python_codekatas_solutions/index.html">python codekatas solutions</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../../Exercises/index.html">Exercises</a> ${PREV} ${NEXT}
+  </header>
+
+  <a href="./cell_0.html">Cell 0</a>
 <br /><br />
 <p>In JavaScript, an empty array <code>[]</code> is considered a truthy value, meaning it's treated as <code>true</code> in a boolean context, resulting in unexpected comparisons when using the loose equality operator <code>==</code>. This leads to <code>[] == true</code> returning <code>true</code> and <code>[] == false</code> returning <code>false</code>.</p>
 <a href="./cell_1.html">Cell 1</a>
@@ -22,3 +80,7 @@
 <p>The JavaScript code attempts to log the type of an undefined variable <code>undef</code> to the console, but throws a ReferenceError instead. When trying to log the result of the expression <code>undef || {&quot;too much&quot;: false}</code>, it returns the object literal <code>{&quot;too much&quot;: false}</code> to the console due to the undefined value of <code>undef</code>.</p>
 <a href="./cell_6.html">Cell 6</a>
 <br /><br />
+
+</body>
+
+</html>

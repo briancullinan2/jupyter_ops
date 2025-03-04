@@ -1,8 +1,70 @@
-<p>Here's a two-sentence summary of the code snippet:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>huffman decode</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a>
+    <br /><br />
+    undefined<a href="./index.html">index</a>
+<br /><br />
+<a href="./ssh_remote_wget.html">ssh remote wget</a>
+<br /><br />
+<a href="./dns_lookup.html">dns lookup</a>
+<br /><br />
+<a href="./remove_ctrl_characters.html">remove ctrl characters</a>
+<br /><br />
+<a href="./quake3_server_status.html">quake3 server status</a>
+<br /><br />
+<a href="./spectate_q3_server.html">spectate q3 server</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quake3_server_connector/index.html">quake3 server connector</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code snippet:</p>
 <p>This Node.js code implements a Huffman coding compression and decompression library using a WebAssembly module, allowing for the compression and decompression of messages. The code includes functions for writing and reading bits to and from a memory array, as well as a function for decompressing messages using the Huffman coding algorithm.</p>
 
 
-<pre><code>var fs = require('fs')
+<pre class="node"><code>var fs = require('fs')
 var huffman = fs.readFileSync('/Users/briancullinan/planet_quake/build/debug-js-js/huffman_js.wasm')
 //var Huffman = require('/Users/briancullinan/planet_quake/code/xquakejs/lib/huffman.js')
 var Huff_Compress
@@ -145,6 +207,17 @@ Object.assign(init, {
 })
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <p>This is a Node.js code snippet that appears to be implementing a Huffman coding compression and decompression library. Huffman coding is a lossless data compression algorithm that assigns variable-length codes to characters in a data set.</p>
 <p><strong>Variables and Functions</strong></p>
@@ -184,3 +257,7 @@ Object.assign(init, {
 </ul></li>
 </ul>
 <p><strong>Note:</strong> The code assumes that the <code>huffman</code> WASM module is present and correctly loaded. The <code>init</code> function is not implemented in this code snippet.</p>
+
+</body>
+
+</html>

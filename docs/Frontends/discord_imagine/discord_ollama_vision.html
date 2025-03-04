@@ -1,8 +1,66 @@
-<p>Here is a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>discord ollama vision</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_imagine/index.html">discord imagine</a>
+    <br /><br />
+    <a href="./update_discord_interaction_with_attachments.html">update discord interaction with attachments</a>
+<br /><br />
+<a href="./discord_stability_proxy.html">discord stability proxy</a>
+<br /><br />
+<a href="./discord_mid_journey_commands.html">discord mid journey commands</a>
+<br /><br />
+<a href="./discord_ollama_vision.html">discord ollama vision</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_imagine/index.html">discord imagine</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code breakdown:</p>
 <p>The <code>doVision</code> function is an asynchronous function that retrieves a message attachment from the Discord API, extracts the image data, and uses Llama Vision to describe the image. If successful, the function updates the interaction with the image description as the new content, and exports the <code>doVision</code> function as a module.</p>
 
 
-<pre><code>const { request } = require('gaxios')
+<pre class="javascript"><code>const { request } = require('gaxios')
 //const fs = require('fs')
 const requestOllamaVision = importer.import('request ollama vision')
 const {requestAuthQ} = importer.import('discord request')
@@ -65,6 +123,17 @@ async function doVision(interaction) {
 module.exports = doVision
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <h3>Dependencies and Imports</h3>
 <p>The code requires the following dependencies:</p>
@@ -94,3 +163,7 @@ module.exports = doVision
 <li>The <code>os.tmpdir()</code> function is commented out, which suggests that the code is intended to download the image file to a temporary directory.</li>
 <li>The <code>requestAuthQ</code> function is used to make a GET request to the Discord API, but its implementation is not shown in the code snippet.</li>
 </ul>
+
+</body>
+
+</html>

@@ -1,8 +1,78 @@
-<p>Here's a summary in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>discord mesh generator</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_tools/index.html">discord tools</a>
+    <br /><br />
+    <a href="./discord_pdf_converter.html">discord pdf converter</a>
+<br /><br />
+<a href="./discord_notebook_connector.html">discord notebook connector</a>
+<br /><br />
+<a href="./discord_llm_connector.html">discord llm connector</a>
+<br /><br />
+<a href="./discord_writing_llms.html">discord writing llms</a>
+<br /><br />
+<a href="./discord_mesh_generator.html">discord mesh generator</a>
+<br /><br />
+<a href="./discord_llm_interactions.html">discord llm interactions</a>
+<br /><br />
+<a href="./sync_discord_llm_tools.html">sync discord llm tools</a>
+<br /><br />
+<a href="./sync_deceptive_chat.html">sync deceptive chat</a>
+<br /><br />
+<a href="./discord_handy_tools.html">discord handy tools</a>
+<br /><br />
+<a href="./create_discord_message_with_attachments.html">create discord message with attachments</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_tools/index.html">discord tools</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary in two sentences:</p>
 <p>The <code>doMesh</code> function is a Node.js module that exports an asynchronous function for a Discord bot, generating an OBJ model and posting an image attachment to a channel. It selects a &quot;Mesh&quot; model, generates the OBJ model, extracts the data, and posts the image attachment after sending a typing indicator and updating the interaction.</p>
 
 
-<pre><code>const {postMessageImageAttachment} = importer.import('create message image attachments')
+<pre class="javascript"><code>const {postMessageImageAttachment} = importer.import('create message image attachments')
 const selectModel = importer.import('select llm')
 const {triggerTyping, createMessage, updateInteraction} = importer.import('disrcord api')
 
@@ -18,6 +88,17 @@ async function doMesh(interaction) {
 module.exports = doMesh
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <p>This is a Node.js module that exports an asynchronous function <code>doMesh</code>. The function appears to be part of a Discord bot.</p>
@@ -42,3 +123,7 @@ module.exports = doMesh
 </ol>
 <h4>Export</h4>
 <p>The <code>doMesh</code> function is exported as a module.</p>
+
+</body>
+
+</html>

@@ -1,7 +1,73 @@
-<p>This code defines a reusable function <code>sendEmail</code> that sends emails via Gmail using Nodemailer, securely retrieving credentials and handling email sending asynchronously.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>send email</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../node_simple-imap/index.html">node simple-imap</a>
+    <br /><br />
+    <a href="./node_imap_client.html">node imap client</a>
+<br /><br />
+<a href="./search_for_messages_using_simple-imap.html">search for messages using simple-imap</a>
+<br /><br />
+<a href="./test_search_messages_imap.html">test search messages imap</a>
+<br /><br />
+<a href="./scan_commands_email.html">scan commands email</a>
+<br /><br />
+<a href="./list_the_subjects_from_simple-imap_messages.html">list the subjects from simple-imap messages</a>
+<br /><br />
+<a href="./get_attachments_using_simple-imap.html">get attachments using simple-imap</a>
+<br /><br />
+<a href="./send_email.html">send email</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../node_simple-imap/index.html">node simple-imap</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code defines a reusable function <code>sendEmail</code> that sends emails via Gmail using Nodemailer, securely retrieving credentials and handling email sending asynchronously.</p>
 
 
-<pre><code>var nodemailer = require('nodemailer')
+<pre class="javascript"><code>var nodemailer = require('nodemailer')
 var importer = require('../Core');
 var getCredentials = importer.import('decrypt passwords');
 
@@ -44,6 +110,17 @@ module.exports = sendEmail;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a function <code>sendEmail</code> that sends emails using Nodemailer and Gmail.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -70,3 +147,7 @@ module.exports = sendEmail;
 </ul></li>
 </ol>
 <p>In essence, this code provides a reusable function for sending emails through Gmail using Nodemailer, securely handling credentials and returning a promise for asynchronous email sending.</p>
+
+</body>
+
+</html>

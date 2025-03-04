@@ -1,7 +1,71 @@
-<p>This code automates the scraping of LinkedIn thread data, including messages and participant information, storing the results in local JSON files. It utilizes Selenium for web interaction and relies on external modules for file handling and data processing.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>scrape linkedin threads</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../linkedin_messages/index.html">linkedin messages</a>
+    <br /><br />
+    <a href="./Log_in_to_LinkedIn.html">Log in to LinkedIn</a>
+<br /><br />
+<a href="./Scrape_LinkedIn_profile.html">Scrape LinkedIn profile</a>
+<br /><br />
+<a href="./List_LinkedIn_threads.html">List LinkedIn threads</a>
+<br /><br />
+<a href="./Read_messages_LinkedIn_thread.html">Read messages LinkedIn thread</a>
+<br /><br />
+<a href="./scrape_linkedin_threads.html">scrape linkedin threads</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./scan_for_commands_linkedin.html">scan for commands linkedin</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../linkedin_messages/index.html">linkedin messages</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code automates the scraping of LinkedIn thread data, including messages and participant information, storing the results in local JSON files. It utilizes Selenium for web interaction and relies on external modules for file handling and data processing.</p>
 
 
-<pre><code>var fs = require('fs');
+<pre class="javascript"><code>var fs = require('fs');
 var importer = require('../Core');
 var glob = require('glob');
 var path = require('path');
@@ -95,6 +159,17 @@ function scrapeLinkedInThreads() {
 module.exports = scrapeLinkedInThreads;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code is designed to scrape LinkedIn data, specifically focusing on threads and their participants. Here's a breakdown:</p>
 <p><strong>Core Functionality:</strong></p>
 <ol>
@@ -135,3 +210,7 @@ module.exports = scrapeLinkedInThreads;
 <li>The exact Selenium commands used in <code>runSeleniumCell</code> are not shown.</li>
 </ul>
 <p>Let me know if you have any other questions.</p>
+
+</body>
+
+</html>

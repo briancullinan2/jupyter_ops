@@ -1,7 +1,79 @@
-<p>The <code>updateRow</code> function updates a specific row in a Google Sheet based on a matching condition, utilizing helper functions for data formatting and range calculation. It leverages the Google Sheets API to perform the update and returns the modified row data.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>update a row in google sheets</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_sheets/index.html">google sheets</a>
+    <br /><br />
+    <a href="./templates_google_doc.html">templates google doc</a>
+<br /><br />
+<a href="./test_templates_google_sheet.html">test templates google sheet</a>
+<br /><br />
+<a href="./get_google_sheet_info.html">get google sheet info</a>
+<br /><br />
+<a href="./get_google_data_sheet.html">get google data sheet</a>
+<br /><br />
+<a href="./get_worksheet_rows.html">get worksheet rows</a>
+<br /><br />
+<a href="./test_google_data_sheet.html">test google data sheet</a>
+<br /><br />
+<a href="./add_row_data_google_sheet.html">add row data google sheet</a>
+<br /><br />
+<a href="./get_worksheet_by_name.html">get worksheet by name</a>
+<br /><br />
+<a href="./update_a_row_in_google_sheets.html">update a row in google sheets</a>
+<br /><br />
+<a href="./test_google_sheet_add_row.html">test google sheet add row</a>
+<br /><br />
+<a href="./authorize_sheets_api.html">authorize sheets api</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_sheets/index.html">google sheets</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>updateRow</code> function updates a specific row in a Google Sheet based on a matching condition, utilizing helper functions for data formatting and range calculation. It leverages the Google Sheets API to perform the update and returns the modified row data.</p>
 
 
-<pre><code>var util = require('util');
+<pre class="javascript"><code>var util = require('util');
 var importer = require('../Core');
 var getRows = importer.import('get worksheet rows');
 var authorizeSheets = importer.import('authorize sheets api');
@@ -51,6 +123,17 @@ module.exports = updateRow;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a function <code>updateRow</code> that updates a specific row in a Google Sheet based on a matching condition.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -70,3 +153,7 @@ module.exports = updateRow;
 </ul></li>
 <li><p><strong>Return Value:</strong> It returns the updated row data.</p></li>
 </ol>
+
+</body>
+
+</html>

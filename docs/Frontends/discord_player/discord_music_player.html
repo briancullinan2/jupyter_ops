@@ -1,8 +1,62 @@
-<p>Here is a summary of the code in one sentence:<br />
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>discord music player</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_player/index.html">discord player</a>
+    <br /><br />
+    <a href="./discord_music_player.html">discord music player</a>
+<br /><br />
+<a href="./discord_music_player_server.html">discord music player server</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_player/index.html">discord player</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in one sentence:<br />
 The <code>playerCommands</code> function is a JavaScript module that manages Discord bot commands by registering, updating, and deleting commands, as well as removing unused commands, using various functions from imported Discord modules.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 const {
   registerCommand, getCommands, deleteCommand, updateCommand
 } = importer.import('discord api')
@@ -53,6 +107,17 @@ module.exports = playerCommands
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h3>Code Overview</h3>
 <p>This is a JavaScript module that exports an asynchronous function <code>playerCommands</code>. The function manages Discord bot commands using the Discord API.</p>
 <h3>Imported Modules</h3>
@@ -82,3 +147,7 @@ module.exports = playerCommands
 <li><code>toRemove</code>: An array of commands to be removed.</li>
 <li><code>cmd</code>: A command object retrieved from the <code>getCommands</code> function.</li>
 </ul>
+
+</body>
+
+</html>

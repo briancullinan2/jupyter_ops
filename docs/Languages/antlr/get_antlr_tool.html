@@ -1,8 +1,84 @@
-<p>Here's a 2-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>get antlr tool</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../antlr/index.html">antlr</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./select_antlr_tree.html">select antlr tree</a>
+<br /><br />
+<a href="./test_select_jison_on_some_quake_3_C_code.html">test select jison on some quake 3 C code</a>
+<br /><br />
+<a href="./get_antlr_tool.html">get antlr tool</a>
+<br /><br />
+<a href="./antlr_to_html.html">antlr to html</a>
+<br /><br />
+<a href="./antlr_tree_visitor.html">antlr tree visitor</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./antlr_tree_to_es.html">antlr tree to es</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./ext_to_lang.html">ext to lang</a>
+<br /><br />
+<a href="./generate_antlr_parsers.html">generate antlr parsers</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../antlr/index.html">antlr</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 2-sentence summary:</p>
 <p>This code is designed to parse a directory structure for grammar files and extract language information for a parser generator tool, likely ANTLR. It utilizes two key functions: <code>findGrammars(directory)</code> to recursively extract language information from grammar files, and <code>getParser(language)</code> to search for corresponding parser files.</p>
 
 
-<pre><code>import fs from 'fs'
+<pre class="javascript"><code>import fs from 'fs'
 import path from 'path'
 
 const PARSER_PATH = path.join(__dirname, '../Resources/Parsers')
@@ -77,6 +153,17 @@ export default getParser
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Overview</h3>
 <p>This code is used to parse a directory structure for grammar files and extract language information. It appears to be designed for a parser generator tool, likely ANTLR.</p>
@@ -114,3 +201,7 @@ export default getParser
 </ul>
 <h3>Main Logic</h3>
 <p>The code first reads the top-level <code>Parsers</code> directory and calls <code>findGrammars(directory)</code> for each subdirectory. Then, it calls <code>getParser(language)</code> for each language in the <code>LANGUAGES</code> array.</p>
+
+</body>
+
+</html>

@@ -1,9 +1,73 @@
-<p>Here's a summary in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../d3/index.html">d3</a>
+    <br /><br />
+    <a href="./Create_a_word-cloud.html">Create a word-cloud</a>
+<br /><br />
+<a href="./d3_tiered_pie_chart.html">d3 tiered pie chart</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./d3_pie_chart.html">d3 pie chart</a>
+<br /><br />
+<a href="./Format_d3_tree.html">Format d3 tree</a>
+<br /><br />
+<a href="./Display_d3_tree.html">Display d3 tree</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../d3/index.html">d3</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary in one sentence:</p>
 <p>This code block includes conditional statements, asynchronous function calls, and error handling using the <code>$</code> object, which appears to be a utility or API object.</p>
 
 
-<pre><code>if(typeof $$ !== 'undefined') {
-    $$.async()
+<pre class="javascript"><code>if(typeof $ !== 'undefined') {
+    $.async()
 
     d3TreeToSVG([
         {
@@ -26,27 +90,38 @@
         }
 
     ])
-        .then(svg => $$.svg(svg))
-        .catch(e => $$.sendError(e));
+        .then(svg => $.svg(svg))
+        .catch(e => $.sendError(e));
 }
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Conditional Statement</h3>
-<pre><code class="language-javascript">if(typeof $$!== 'undefined')
+<pre><code class="language-javascript">if(typeof $!== 'undefined')
 </code></pre>
 <ul>
-<li>Checks if the <code>$$</code> variable is defined.</li>
+<li>Checks if the <code>$</code> variable is defined.</li>
 </ul>
 <h3>Executing Async Function</h3>
-<pre><code class="language-javascript">$$.async()
+<pre><code class="language-javascript">$.async()
 </code></pre>
 <ul>
-<li>Calls the <code>async()</code> function on the <code>$$</code> object, assuming it has an asynchronous method.</li>
+<li>Calls the <code>async()</code> function on the <code>$</code> object, assuming it has an asynchronous method.</li>
 </ul>
 <h3>Function Call</h3>
-<pre><code class="language-javascript">d3TreeToSVG([...], [...]).then(svg =&gt; $$.svg(svg)).catch(e =&gt; $$.sendError(e));
+<pre><code class="language-javascript">d3TreeToSVG([...], [...]).then(svg =&gt; $.svg(svg)).catch(e =&gt; $.sendError(e));
 </code></pre>
 <ul>
 <li>Calls the <code>d3TreeToSVG()</code> function, passing two arrays of data:
@@ -56,5 +131,9 @@
 </ul></li>
 <li>The <code>then()</code> method is used to handle the resolved value of the promise, which is the SVG element.</li>
 <li>The <code>catch()</code> method is used to handle any errors that occur during the promise chain.</li>
-<li>The resolved SVG element is passed to the <code>$$.svg()</code> method, and any errors are passed to the <code>$$.sendError()</code> method.</li>
+<li>The resolved SVG element is passed to the <code>$.svg()</code> method, and any errors are passed to the <code>$.sendError()</code> method.</li>
 </ul>
+
+</body>
+
+</html>

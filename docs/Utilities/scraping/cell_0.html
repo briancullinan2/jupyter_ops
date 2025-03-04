@@ -1,8 +1,66 @@
-<p>Here is a summary of the code breakdown in one or two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 0</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../scraping/index.html">scraping</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./google_maps_data_list.html">google maps data list</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../scraping/index.html">scraping</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code breakdown in one or two sentences:</p>
 <p>This JavaScript code imports various modules and sets constants for a project directory, then defines two functions, <code>getLocations</code> and <code>getLocation</code>, which respectively retrieve a list of locations and extract specific data from each location's webpage. The <code>getLocation</code> function makes a GET request to a URL, extracts XPath expressions for elements containing day names, times, and deals, and then maps the results to an object with <code>dotw</code>, <code>time</code>, and <code>deals</code> properties.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var util = require('util');
 var request = util.promisify(require('request'));
 var {JSDOM} = require('jsdom');
@@ -61,7 +119,7 @@ function getLocation(l) {
         })
 }
 
-$$.async();
+$.async();
 getLocations()
     .then(r => {
         return importer.runAllPromises(r.map(l => resolve => {
@@ -69,10 +127,21 @@ getLocations()
                 .then(r => setTimeout(() => resolve(r), 100))
         }));
     })
-    .then(r => $$.mime({'text/plain': JSON.stringify(r, null, 4)}))
-    .catch(e => $$.sendError(e))
+    .then(r => $.mime({'text/plain': JSON.stringify(r, null, 4)}))
+    .catch(e => $.sendError(e))
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules and Setting Constants</h3>
@@ -161,3 +230,7 @@ function getLocation(l) {
 <li>The <code>getLocation</code> function makes a GET request to a specific URL, extracts XPath expressions for elements containing day names, times, and deals, and then maps the results to an object with <code>dotw</code>, <code>time</code>, and <code>deals</code> properties.</li>
 <li>The <code>happy</code> variable is an array of objects containing the extracted data.</li>
 </ul>
+
+</body>
+
+</html>

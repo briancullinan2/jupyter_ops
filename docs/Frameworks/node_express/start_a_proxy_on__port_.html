@@ -1,8 +1,82 @@
-<p>Here's a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>start a proxy on {port}</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../node_express/index.html">node express</a>
+    <br /><br />
+    <a href="./use_nodejs_express.html">use nodejs express</a>
+<br /><br />
+<a href="./start_a_proxy_on__port_.html">start a proxy on {port}</a>
+<br /><br />
+<a href="./display_the_output_from_express.html">display the output from express</a>
+<br /><br />
+<a href="./run_a_DOM_query_on_a_remote_HTML_page.html">run a DOM query on a remote HTML page</a>
+<br /><br />
+<a href="./save_a_list_of_image_elements.html">save a list of image elements</a>
+<br /><br />
+<a href="./stop_express_server.html">stop express server</a>
+<br /><br />
+<a href="./express_rpc_wrapper.html">express rpc wrapper</a>
+<br /><br />
+<a href="./zuora_eloqua_express_mock.html">zuora eloqua express mock</a>
+<br /><br />
+<a href="./directory_to_html.html">directory to html</a>
+<br /><br />
+<a href="./node_express_directory_handler.html">node express directory handler</a>
+<br /><br />
+<a href="./html_music_player.html">html music player</a>
+<br /><br />
+<a href="./html_image_viewer.html">html image viewer</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../node_express/index.html">node express</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code breakdown:</p>
 <p>This code sets up an Express.js server and creates a reverse proxy middleware to forward requests to a specified host. It also includes error handling and asynchronous function initialization, allowing the server to be started or stopped and handled accordingly.</p>
 
 
-<pre><code>if (typeof server != 'undefined') {
+<pre class="javascript"><code>if (typeof server != 'undefined') {
     server.close();
 }
 var app = express();
@@ -11,15 +85,26 @@ app.use('/', function (req, res) {
     req.pipe(request(url)).pipe(res);
 });
 
-$$.async();
+$.async();
 try {
-    var server = app.listen(port, () => $$.done('server up and running on port ' + port));
-    server.on('error', (e) => $$.done(e));
+    var server = app.listen(port, () => $.done('server up and running on port ' + port));
+    server.on('error', (e) => $.done(e));
 } catch (e) {
-    $$.done(e);
+    $.done(e);
 }
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Checking for Server Existence</h4>
@@ -40,15 +125,19 @@ try {
 </code></pre>
 <p>This code creates a middleware function that acts as a reverse proxy. It adds the value of the <code>host</code> variable to the request URL and forwards the request to the specified URL using the <code>req.pipe()</code> method.</p>
 <h4>Initializing Async Function</h4>
-<pre><code class="language-javascript">$$.async();
+<pre><code class="language-javascript">$.async();
 </code></pre>
-<p>This line initializes an asynchronous function called <code>$$.async()</code>.</p>
+<p>This line initializes an asynchronous function called <code>$.async()</code>.</p>
 <h4>Handling Server Start/Stop</h4>
 <pre><code class="language-javascript">try {
-    var server = app.listen(port, () =&gt; $$.done('server up and running on port'+ port));
-    server.on('error', (e) =&gt; $$.done(e));
+    var server = app.listen(port, () =&gt; $.done('server up and running on port'+ port));
+    server.on('error', (e) =&gt; $.done(e));
 } catch (e) {
-    $$.done(e);
+    $.done(e);
 }
 </code></pre>
-<p>This code attempts to start the server on the specified <code>port</code> using <code>app.listen()</code>. The callback function is called when the server is successfully started. The <code>server.on('error')</code> event listener is also set to handle any potential errors during server startup. If an error occurs during startup, the <code>catch</code> block is executed, and the error is handled by the <code>$$.done()</code> function.</p>
+<p>This code attempts to start the server on the specified <code>port</code> using <code>app.listen()</code>. The callback function is called when the server is successfully started. The <code>server.on('error')</code> event listener is also set to handle any potential errors during server startup. If an error occurs during startup, the <code>catch</code> block is executed, and the error is handled by the <code>$.done()</code> function.</p>
+
+</body>
+
+</html>

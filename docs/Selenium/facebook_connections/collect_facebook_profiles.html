@@ -1,7 +1,69 @@
-<p>This code automates the process of scraping Facebook friend data using Selenium, storing it in a file, and providing a method to access the extracted friend URLs. It utilizes <code>jsdom</code> for parsing the scraped HTML and custom modules for interacting with Facebook and managing data.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>collect facebook profiles</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../facebook_connections/index.html">facebook connections</a>
+    <br /><br />
+    <a href="./collect_facebook_profiles.html">collect facebook profiles</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./_connect_on_facebook.html">,connect on facebook</a>
+<br /><br />
+<a href="./connect_add_friends_facebook.html">connect add friends facebook</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../facebook_connections/index.html">facebook connections</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code automates the process of scraping Facebook friend data using Selenium, storing it in a file, and providing a method to access the extracted friend URLs. It utilizes <code>jsdom</code> for parsing the scraped HTML and custom modules for interacting with Facebook and managing data.</p>
 
 
-<pre><code>var {JSDOM} = require('jsdom');
+<pre class="javascript"><code>var {JSDOM} = require('jsdom');
 var fs = require('fs');
 var path = require('path');
 var glob = require('glob');
@@ -97,6 +159,17 @@ function collectFacebookProfiles() {
 module.exports = collectFacebookProfiles;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code is designed to scrape Facebook friend data and process it. Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>
@@ -130,3 +203,7 @@ module.exports = collectFacebookProfiles;
 <li>Stores the scraped data in a file.</li>
 <li>Provides a way to access the scraped data using <code>getAllXPath</code>.</li>
 </ul>
+
+</body>
+
+</html>

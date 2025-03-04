@@ -1,8 +1,72 @@
-<p>Here is a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>node window screenshot</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../robot/index.html">robot</a>
+    <br /><br />
+    <a href="./node_screenshots.html">node screenshots</a>
+<br /><br />
+<a href="./node_window_screenshot.html">node window screenshot</a>
+<br /><br />
+<a href="./get_screen_size.html">get screen size</a>
+<br /><br />
+<a href="./move_mouse.html">move mouse</a>
+<br /><br />
+<a href="./mouse_click.html">mouse click</a>
+<br /><br />
+<a href="./send_keys.html">send keys</a>
+<br /><br />
+<a href="./mouse_control_cocoa.html">mouse control cocoa</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../robot/index.html">robot</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary:</p>
 <p>The code requires the <code>node-screenshots</code> library and exports a single function, <code>screenshotWindow</code>, which takes a window argument and returns a PNG screenshot of the corresponding desktop application window. The function identifies and captures the window, converts the image to PNG format, and returns it as the result.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 const fs = require("fs");
 const { Window } = require("node-screenshots");
 
@@ -47,6 +111,17 @@ async function screenshotWindow(window) {
 module.exports = screenshotWindow
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h3>Code Breakdown</h3>
 <h4>Requirements</h4>
 <p>The code requires two modules:</p>
@@ -84,3 +159,7 @@ module.exports = screenshotWindow
 </ol>
 <h4>Module Export</h4>
 <p>The <code>screenshotWindow</code> function is exported as the module's default export.</p>
+
+</body>
+
+</html>

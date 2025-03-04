@@ -1,8 +1,84 @@
-<p>Here is a summary of the provided code breakdown in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>get sheet purchases</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a>
+    <br /><br />
+    <a href="./readme_md.html">readme.md</a>
+<br /><br />
+<a href="./get_sheet_purchases.html">get sheet purchases</a>
+<br /><br />
+<a href="./sheet_marketing_import.html">sheet marketing import</a>
+<br /><br />
+<a href="./filter_data_sheet_based_on_url.html">filter data sheet based on url</a>
+<br /><br />
+<a href="./google_sheet_template_properties.html">google sheet template properties</a>
+<br /><br />
+<a href="./google_sheet_layout_template.html">google sheet layout template</a>
+<br /><br />
+<a href="./output_google_sheet_template.html">output google sheet template</a>
+<br /><br />
+<a href="./find_known_routes_to_sheets.html">find known routes to sheets</a>
+<br /><br />
+<a href="./collect_external_content_and_resources.html">collect external content and resources</a>
+<br /><br />
+<a href="./collect_google_sheets_resources.html">collect google sheets resources</a>
+<br /><br />
+<a href="./sheet_to_web.html">sheet to web</a>
+<br /><br />
+<a href="./convert_sheet_helper_functions.html">convert sheet helper functions</a>
+<br /><br />
+<a href="./package_json.html">package.json</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../convert_spreadsheet/index.html">convert spreadsheet</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the provided code breakdown in two sentences:</p>
 <p>The code requires various modules, defines constants and functions, and exports an asynchronous function <code>getSheet</code> which retrieves or creates a new sheet based on its link and domain, and adds or updates the sheet's data in a Google Sheets document. The <code>getSheet</code> function uses other functions such as <code>addSheet</code>, <code>updateRow</code>, <code>getInfo</code>, and <code>isInvalidDomain</code> to perform its operations.</p>
 
 
-<pre><code>var util = require('util');
+<pre class="javascript"><code>var util = require('util');
 var uuid = require('uuid/v1');
 var importer = require('../Core');
 var getDataSheet = importer.import('google sheet array objects');
@@ -55,6 +131,17 @@ async function getSheet(link, domain, email) {
 }
 
 module.exports = getSheet;</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Requires and Imports</h3>
@@ -116,3 +203,7 @@ c. If the domain is valid, updates the sheet's data using <code>updateRow</code>
 </ul>
 <h3>Exports</h3>
 <p>The <code>getSheet</code> function is exported as a module.</p>
+
+</body>
+
+</html>

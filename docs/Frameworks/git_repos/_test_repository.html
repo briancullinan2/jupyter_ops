@@ -1,7 +1,73 @@
-<p>This code sets up a local Git repository for Selenium testing by either cloning an existing repository with the &quot;Buy_funnel&quot; branch or creating a new one if it doesn't exist.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>,test repository</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../git_repos/index.html">git repos</a>
+    <br /><br />
+    <a href="./_test_repository.html">,test repository</a>
+<br /><br />
+<a href="./selenium_repository.html">selenium repository</a>
+<br /><br />
+<a href="./project_repository.html">project repository</a>
+<br /><br />
+<a href="./_Setup_git_credentials_in_docker.html">,Setup git credentials in docker</a>
+<br /><br />
+<a href="./use_in_Docker.html">use in Docker</a>
+<br /><br />
+<a href="./use_npm_cache_inside_of_docker.html">use npm cache inside of docker</a>
+<br /><br />
+<a href="./run_the_Docker_image.html">run the Docker image</a>
+<br /><br />
+<a href="./Selenium_test_scripts.html">Selenium test scripts</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../git_repos/index.html">git repos</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code sets up a local Git repository for Selenium testing by either cloning an existing repository with the &quot;Buy_funnel&quot; branch or creating a new one if it doesn't exist.</p>
 
 
-<pre><code>mkdir -r selenium/repository
+<pre class="bash"><code>mkdir -r selenium/repository
 cd selenium/repository
 git branch | grep 'Buy_funnel' &> /dev/null
 if [ $? != 0 ]; then
@@ -9,6 +75,17 @@ if [ $? != 0 ]; then
 fi
 cd ../../
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet automates the setup of a Git repository for Selenium testing, specifically targeting a branch named &quot;Buy_funnel&quot;.</p>
 <p>Here's a breakdown:</p>
@@ -44,3 +121,7 @@ cd ../../
 <li>Changes the current working directory back up two levels, effectively moving out of the &quot;selenium/repository&quot; directory.</li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

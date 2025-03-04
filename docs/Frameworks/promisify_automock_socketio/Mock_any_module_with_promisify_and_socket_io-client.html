@@ -1,7 +1,69 @@
-<p><code>sockifyClient</code> creates a mock Socket.IO client that intercepts function calls on a dependency object and emits events to a server, enabling testing of Socket.IO interactions in a serverless context.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Mock any module with promisify and socket.io-client</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../promisify_automock_socketio/index.html">promisify automock socketio</a>
+    <br /><br />
+    <a href="./mock_and_pass_through.html">mock and pass through</a>
+<br /><br />
+<a href="./Create_an_RPC_socker_io_server_for_any_module_using_promisify.html">Create an RPC socker.io server for any module using promisify</a>
+<br /><br />
+<a href="./Mock_any_module_with_promisify_and_socket_io-client.html">Mock any module with promisify and socket.io-client</a>
+<br /><br />
+<a href="./Check_if_sockify_server_is_running.html">Check if sockify server is running</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../promisify_automock_socketio/index.html">promisify automock socketio</a> ${PREV} ${NEXT}
+  </header>
+
+  <p><code>sockifyClient</code> creates a mock Socket.IO client that intercepts function calls on a dependency object and emits events to a server, enabling testing of Socket.IO interactions in a serverless context.</p>
 
 
-<pre><code>var client = require('socket.io-client');
+<pre class="javascript"><code>var client = require('socket.io-client');
 
 function sockifyClient(req, dep, host) {
     let ctx;
@@ -35,6 +97,17 @@ module.exports = sockifyClient;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>The code defines a function <code>sockifyClient</code> that creates a mock client for a Socket.IO server.</p>
 <p><strong>Functionality:</strong></p>
 <ol>
@@ -60,3 +133,7 @@ module.exports = sockifyClient;
 </ol>
 <p><strong>Purpose:</strong></p>
 <p>The code likely aims to facilitate testing and mocking of Socket.IO interactions within a serverless environment.</p>
+
+</body>
+
+</html>

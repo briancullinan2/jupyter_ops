@@ -1,7 +1,77 @@
-<p>This code provides utilities for interacting with Git repositories, enabling you to fetch remote information, retrieve branch names, and parse commit logs.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>convert git history to google calendar events</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../git/index.html">git</a>
+    <br /><br />
+    <a href="./Rename_a_bunch_of_files_using_Git_and_renamer.html">Rename a bunch of files using Git and renamer</a>
+<br /><br />
+<a href="./test_github_renamer.html">test github renamer</a>
+<br /><br />
+<a href="./json_git_tree.html">json git tree</a>
+<br /><br />
+<a href="./source_tree.html">source tree</a>
+<br /><br />
+<a href="./Display_graphs_of_different_commands_and_scenarios_using_dry-run.html">Display graphs of different commands and scenarios using dry-run</a>
+<br /><br />
+<a href="./update_git.html">update git</a>
+<br /><br />
+<a href="./github_updates.html">github updates</a>
+<br /><br />
+<a href="./_git_project_directory.html">,git project directory</a>
+<br /><br />
+<a href="./glob_git_branch.html">glob git branch</a>
+<br /><br />
+<a href="./convert_git_history_to_google_calendar_events.html">convert git history to google calendar events</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../git/index.html">git</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides utilities for interacting with Git repositories, enabling you to fetch remote information, retrieve branch names, and parse commit logs.</p>
 
 
-<pre><code>var chrono = require('chrono-node');
+<pre class="javascript"><code>var chrono = require('chrono-node');
 var _ = require('lodash');
 var importer = require('../Core');
 var execCmd = importer.import('spawn child process');
@@ -104,6 +174,17 @@ function gitHistory(project, summary, branch) {
 module.exports = gitHistory;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines several functions for interacting with Git repositories, including fetching remote information, retrieving branch names, and parsing commit logs.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -132,3 +213,7 @@ module.exports = gitHistory;
 </ul></li>
 </ol>
 <p>In essence, this code provides a set of utilities for interacting with Git repositories, allowing you to fetch remote information, retrieve branch names, and parse commit logs.</p>
+
+</body>
+
+</html>

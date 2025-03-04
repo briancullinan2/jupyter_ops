@@ -1,8 +1,84 @@
-<p>Here's a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 3</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../patterns/index.html">patterns</a>
+    <br /><br />
+    <a href="./__walk_tree.html">, walk tree</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./select_tree.html">select tree</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./__resolve_a_promise_property.html">, resolve a promise property</a>
+<br /><br />
+<a href="./__making_a_class_the_normal_way.html">, making a class the normal way</a>
+<br /><br />
+<a href="./extend_prototype_class.html">extend prototype class</a>
+<br /><br />
+<a href="./enforcing_an_interface.html">enforcing an interface</a>
+<br /><br />
+<a href="./test_enforcing_an_interface_with_prototype.html">test enforcing an interface with prototype</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../patterns/index.html">patterns</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary:</p>
 <p>This code is a JavaScript testing module that uses the <code>esprima</code> and <code>escodegen</code> libraries to parse and generate code, and the <code>assert</code> library to make assertions on the code's syntax. The module exports two test functions, <code>testProgram</code> and <code>testSelect</code>, which can be used to test the code's structure and behavior.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 var esprima = require('esprima'); 
 var escodegen = require('escodegen');
 var assert = require('assert');
@@ -49,7 +125,7 @@ module.exports = {
 }
 
 // TODO: compare with acorn
-if(typeof $$ !== 'undefined') {
+if(typeof $ !== 'undefined') {
     var ctx = esprima.parse(code);
     var output = testProgram(ctx);
     testSelect(ctx);
@@ -57,6 +133,17 @@ if(typeof $$ !== 'undefined') {
     console.log(output)
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Dependencies</h3>
@@ -119,7 +206,7 @@ console.log()
 <li>The module exports the two test functions: <code>testProgram</code> and <code>testSelect</code>.</li>
 </ul>
 <h3>Optional Code Execution</h3>
-<pre><code class="language-javascript">if(typeof $$!== 'undefined') {
+<pre><code class="language-javascript">if(typeof $!== 'undefined') {
     var ctx = esprima.parse(code);
     var output = testProgram(ctx);
     testSelect(ctx);
@@ -128,7 +215,11 @@ console.log()
 }
 </code></pre>
 <ul>
-<li>This code checks if the <code>$$$</code> variable is defined.</li>
+<li>This code checks if the <code>$$</code> variable is defined.</li>
 <li>If it is, the code parses the example code with <code>esprima</code>, runs the <code>testProgram</code> and <code>testSelect</code> functions, and generates the output code with <code>escodegen</code>.</li>
 <li>The output code is logged to the console.</li>
 </ul>
+
+</body>
+
+</html>

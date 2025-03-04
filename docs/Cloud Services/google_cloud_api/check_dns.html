@@ -1,8 +1,80 @@
-<p>Here's a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>check dns</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_cloud_api/index.html">google cloud api</a>
+    <br /><br />
+    <a href="./list_google_bucket_url_map.html">list google bucket url map</a>
+<br /><br />
+<a href="./test_list_url_map.html">test list url map</a>
+<br /><br />
+<a href="./wait_for_cloud_operation.html">wait for cloud operation</a>
+<br /><br />
+<a href="./add_a_google_bucket_web_map.html">add a google bucket web map</a>
+<br /><br />
+<a href="./test_global_forward.html">test global forward</a>
+<br /><br />
+<a href="./test_bucket_web_map.html">test bucket web map</a>
+<br /><br />
+<a href="./check_dns.html">check dns</a>
+<br /><br />
+<a href="./test_check_dns.html">test check dns</a>
+<br /><br />
+<a href="./invalidate_cdn_cache.html">invalidate cdn cache</a>
+<br /><br />
+<a href="./authorize_google_service.html">authorize google service</a>
+<br /><br />
+<a href="./setup_sheet_backend.html">setup sheet backend</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_cloud_api/index.html">google cloud api</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The code requires several modules for DNS operations and uses custom functions from a module named <code>../Core</code> to perform tasks such as creating a Google Cloud DNS managed zone and inserting an address. The <code>createZone</code> function creates or retrieves a managed zone with a given subdomain, while the <code>insertAddress</code> function attempts to insert an address into the DNS managed zone.</p>
 
 
-<pre><code>var dns = require('dns');
+<pre class="javascript"><code>var dns = require('dns');
 var util = require('util');
 var uuid = require('uuid/v1');
 var importer = require('../Core');
@@ -202,6 +274,17 @@ function addIP(project, subdomain) {
 module.exports = addIP;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Requirements and Imports</h3>
 <p>The code requires the following modules:</p>
@@ -242,3 +325,7 @@ module.exports = addIP;
 <li>Calls <code>insertAddress</code> with the zone name and other parameters</li>
 </ol>
 <p>Note that the code snippet is incomplete, and the <code>insertAddress</code> function is not fully implemented.</p>
+
+</body>
+
+</html>

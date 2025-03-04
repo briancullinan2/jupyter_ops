@@ -1,7 +1,95 @@
-<p>This code provides a way to map filenames to specific locations within a project directory based on predefined patterns, enabling flexible file organization and processing.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>file tools, match filename</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../files/index.html">files</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./project_word-cloud.html">project word-cloud</a>
+<br /><br />
+<a href="./project_imports_d3_tree.html">project imports d3 tree</a>
+<br /><br />
+<a href="./__glob_files.html">, glob files</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./list_project_files.html">list project files</a>
+<br /><br />
+<a href="./common_ignore_paths.html">common ignore paths</a>
+<br /><br />
+<a href="./List_all_projects_by_names.html">List all projects by names</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+<a href="./fix_project_paths.html">fix project paths</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./__________________1__________.html">(=\{((:[^{}]++|\{(1)\})++)\})</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./file_tools__match_filename.html">file tools, match filename</a>
+<br /><br />
+<a href="./mkdirp.html">mkdirp</a>
+<br /><br />
+<a href="./changing_file_names.html">changing file names</a>
+<br /><br />
+<a href="./use_memory-fs_and_rewire_to_audit_cli_events.html">use memory-fs and rewire to audit cli events</a>
+<br /><br />
+<a href="./TODO__combine_with_DOM_minimizing_service_from_recording_app.html">TODO: combine with DOM minimizing service from recording app</a>
+<br /><br />
+<a href="./cell_18.html">Cell 18</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../files/index.html">files</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a way to map filenames to specific locations within a project directory based on predefined patterns, enabling flexible file organization and processing.</p>
 
 
-<pre><code>var importer = require('../Core')
+<pre class="javascript"><code>var importer = require('../Core')
 var {minimatch} = importer.import('minimatch')
 
 var getDirectory = (match) => match[match.length-1] === '/'
@@ -33,6 +121,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines functions for matching filenames within a project directory structure based on provided patterns.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -51,3 +150,7 @@ module.exports = {
 <li><p><strong>Module Exports:</strong> The <code>matchFilename</code> and <code>getDirectory</code> functions are exported for use in other parts of the application.</p></li>
 </ol>
 <p>In essence, this code provides a way to map filenames to specific locations within a project directory based on predefined patterns, potentially for file organization, processing, or other purposes.</p>
+
+</body>
+
+</html>

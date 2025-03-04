@@ -1,18 +1,109 @@
-<p>Here is a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 9</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../Wireframing/index.html">Wireframing</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+<a href="./cell_14.html">Cell 14</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../Wireframing/index.html">Wireframing</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary:</p>
 <p>This code reads three JavaScript files synchronously from the file system using Node.js's <code>fs</code> module and stores their contents in variables. An HTML string is then created that includes the script elements, which decode and execute the base64-encoded JavaScript code from the three files using <code>eval()</code> and <code>atob()</code>.</p>
 
 
-<pre><code>const fs = require('fs');
+<pre class="typescript"><code>const fs = require('fs');
 const js1 = fs.readFileSync('./sosmethod/dist/www/polyfills.59868df8094f160adda5.js');
 const js2 = fs.readFileSync('./sosmethod/dist/www/vendor.59868df8094f160adda5.js');
 const js3 = fs.readFileSync('./sosmethod/dist/www/app.59868df8094f160adda5.js');
 
-$$html$$ = '<bc-app style="position:relative;display:block;min-height:600px;min-width:600px;">hello!</bc-app>'
+$html$ = '<bc-app style="position:relative;display:block;min-height:600px;min-width:600px;">hello!</bc-app>'
     + '<script type="application/javascript">eval(atob("' + (new Buffer(js1)).toString('base64') + '"));</script>'
     + '<script type="application/javascript">eval(atob("' + (new Buffer(js2)).toString('base64') + '"));</script>'
     + '<script type="application/javascript">eval(atob("' + (new Buffer(js3)).toString('base64') + '"));</script>';
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
@@ -30,13 +121,13 @@ const js3 = fs.readFileSync('./sosmethod/dist/www/app.59868df8094f160adda5.js');
 <li>Three files are read synchronously from the file system using <code>fs.readFileSync()</code>. The files are stored in the variables <code>js1</code>, <code>js2</code>, and <code>js3</code>.</li>
 </ul>
 <h3>Creating HTML String</h3>
-<pre><code class="language-javascript">$$html$$ = '&lt;bc-app style=&quot;position:relative;display:block;min-height:600px;min-width:600px;&quot;&gt;hello!&lt;/bc-app&gt;'
+<pre><code class="language-javascript">$html$ = '&lt;bc-app style=&quot;position:relative;display:block;min-height:600px;min-width:600px;&quot;&gt;hello!&lt;/bc-app&gt;'
     + '&lt;script type=&quot;application/javascript&quot;&gt;eval(atob(&quot;' + (new Buffer(js1)).toString('base64') + '&quot;));&lt;/script&gt;'
     + '&lt;script type=&quot;application/javascript&quot;&gt;eval(atob(&quot;' + (new Buffer(js2)).toString('base64') + '&quot;));&lt;/script&gt;'
     + '&lt;script type=&quot;application/javascript&quot;&gt;eval(atob(&quot;' + (new Buffer(js3)).toString('base64') + '&quot;));&lt;/script&gt;';
 </code></pre>
 <ul>
-<li>An HTML string is created and assigned to the variable <code>$$html$$</code>.</li>
+<li>An HTML string is created and assigned to the variable <code>$html$</code>.</li>
 <li>The string includes a <code>bc-app</code> element with a style attribute and a <code>hello!</code> text node.</li>
 <li>Three script elements are appended to the string, each containing a JavaScript code snippet that:
 <ol>
@@ -45,3 +136,7 @@ const js3 = fs.readFileSync('./sosmethod/dist/www/app.59868df8094f160adda5.js');
 <li>The decoded JavaScript code is executed in the context of the HTML document.</li>
 </ol></li>
 </ul>
+
+</body>
+
+</html>

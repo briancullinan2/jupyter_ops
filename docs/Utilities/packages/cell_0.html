@@ -1,8 +1,60 @@
-<p>Here's a 1-2 sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 0</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../packages/index.html">packages</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../packages/index.html">packages</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 1-2 sentence summary of the code:</p>
 <p>This code defines a JSON object with various commands that execute specific tasks using Node.js, including import, execution, interpretation, SSH connections, and Git automation. It utilizes Node.js variables and <code>npm run</code> to execute scripts and separate commands from arguments.</p>
 
 
-<pre><code>var json = {
+<pre class="javascript"><code>var json = {
 
 "import": "node -e \"var result = require('./Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))); result && result.catch ? result.catch(e => e).then(r => console.log(r)) : console.log(result)\"",
 "exec": "node -e \"console.log(require('./Core').import('spawn child process')(require('./Core').interpret(process.argv[1]).code))\"",
@@ -100,6 +152,17 @@
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <p>This code defines a JSON object with various keys, each representing a command or action. The values associated with these keys are Node.js commands that execute specific tasks.</p>
 <p><strong>Commands</strong></p>
@@ -134,3 +197,7 @@
 </ul>
 <p><strong>npm Run</strong></p>
 <p>The code uses <code>npm run</code> to execute scripts defined in the <code>package.json</code> file. The <code>--</code> separator is used to separate the command from the arguments.</p>
+
+</body>
+
+</html>

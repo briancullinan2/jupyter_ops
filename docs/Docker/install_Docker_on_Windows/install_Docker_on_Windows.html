@@ -1,26 +1,97 @@
-<p>This code checks if Docker is installed by running the <code>docker ps</code> command and signals completion with a message indicating whether Docker is found or not.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>install Docker on Windows</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../install_Docker_on_Windows/index.html">install Docker on Windows</a>
+    <br /><br />
+    <a href="./install_Docker_on_Windows.html">install Docker on Windows</a>
+<br /><br />
+<a href="./How_do_I_installed_elevated_from_the_command_line.html">How do I installed elevated from the command line</a>
+<br /><br />
+<a href="./Where_do_I_download_the_Windows_Docker_installer.html">Where do I download the Windows Docker installer</a>
+<br /><br />
+<a href="./How_do_I_fix_the_firewall_for_Docker.html">How do I fix the firewall for Docker</a>
+<br /><br />
+<a href="./install_build_tools_on_Windows.html">install build tools on Windows</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../install_Docker_on_Windows/index.html">install Docker on Windows</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code checks if Docker is installed by running the <code>docker ps</code> command and signals completion with a message indicating whether Docker is found or not.</p>
 
 
-<pre><code>$$.async();
+<pre class="javascript"><code>$.async();
 var exec = require('child_process').exec;
 var installed = false;
 var docker = exec('docker ps', function (err, stdout, stderr) {
     if (stdout.indexOf('not found') > -1) {
-        $$.done('Docker not found, installing');
+        $.done('Docker not found, installing');
     } else {
         installed = true;
-        $$.done('Docker is already installed');
+        $.done('Docker is already installed');
     }
 });
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet checks if Docker is installed on the system and signals completion based on the result.</p>
 <p><strong>Breakdown:</strong></p>
 <ol>
-<li><p><strong><code>$$.async();</code></strong>:</p>
+<li><p><strong><code>$.async();</code></strong>:</p>
 <ul>
-<li>This line likely initializes an asynchronous operation using a variable <code>$$</code> (possibly a custom function or library).</li>
+<li>This line likely initializes an asynchronous operation using a variable <code>$</code> (possibly a custom function or library).</li>
 </ul></li>
 <li><p><strong><code>var exec = require('child_process').exec;</code></strong>:</p>
 <ul>
@@ -45,13 +116,17 @@ var docker = exec('docker ps', function (err, stdout, stderr) {
 <li><code>if (stdout.indexOf('not found') &gt; -1) { ... }</code>:
 <ul>
 <li>Checks if the output contains the string &quot;not found&quot;, indicating Docker is not installed.</li>
-<li>If found, calls <code>$$.done('Docker not found, installing')</code> to signal the asynchronous operation with a message.</li>
+<li>If found, calls <code>$.done('Docker not found, installing')</code> to signal the asynchronous operation with a message.</li>
 </ul></li>
 <li><code>else { ... }</code>:
 <ul>
 <li>If &quot;not found&quot; is not found, it means Docker is installed.</li>
 <li>Sets <code>installed</code> to <code>true</code>.</li>
-<li>Calls <code>$$.done('Docker is already installed')</code> to signal completion with a success message.</li>
+<li>Calls <code>$.done('Docker is already installed')</code> to signal completion with a success message.</li>
 </ul></li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

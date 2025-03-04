@@ -1,8 +1,72 @@
-<p>Here's a 2-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>start a bunch of discord services</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_activities/index.html">discord activities</a>
+    <br /><br />
+    <a href="./discord_client_code.html">discord client code</a>
+<br /><br />
+<a href="./discord_client_auth_code.html">discord client auth code</a>
+<br /><br />
+<a href="./start_activity_server.html">start activity server</a>
+<br /><br />
+<a href="./check_discord_commands.html">check discord commands</a>
+<br /><br />
+<a href="./start_a_bunch_of_discord_services.html">start a bunch of discord services</a>
+<br /><br />
+<a href="./discord_authenticate_instances.html">discord authenticate instances</a>
+<br /><br />
+<a href="./discord_express_token_endpoint.html">discord express token endpoint</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_activities/index.html">discord activities</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 2-sentence summary of the code:</p>
 <p>This Node.js script manages a collection of Discord bots by launching and running multiple instances of a bot service, each with its own configuration and environment settings. The <code>launchDiscord</code> function allows users to specify which bot to launch by providing an index in the <code>DISCORD_SERVICES</code> array.</p>
 
 
-<pre><code>const {spawn, spawnSync} = require("child_process");
+<pre class="javascript"><code>const {spawn, spawnSync} = require("child_process");
 const path = require('path')
 
 const DISCORD_SERVICES = [
@@ -104,6 +168,17 @@ function launchDiscord(botIndex = 0) {
 module.exports = launchDiscord
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <p>This is a Node.js script that appears to be managing a collection of Discord bots. Here's a concise explanation of the code:</p>
 <p><strong>Requires</strong></p>
@@ -125,3 +200,7 @@ module.exports = launchDiscord
 </ol>
 <p><strong>Purpose</strong></p>
 <p>The purpose of this script appears to be launching and managing multiple Discord bots, each with its own configuration and environment settings. The <code>launchDiscord</code> function allows the user to specify which bot to launch by providing an index in the <code>DISCORD_SERVICES</code> array.</p>
+
+</body>
+
+</html>

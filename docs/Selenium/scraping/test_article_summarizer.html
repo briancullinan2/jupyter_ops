@@ -1,8 +1,72 @@
-<p>Here's a 2 sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>test article summarizer</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../scraping/index.html">scraping</a>
+    <br /><br />
+    <a href="./extract_llm_article.html">extract llm article</a>
+<br /><br />
+<a href="./test_article_extract.html">test article extract</a>
+<br /><br />
+<a href="./summarize_llm_article.html">summarize llm article</a>
+<br /><br />
+<a href="./test_article_summarizer.html">test article summarizer</a>
+<br /><br />
+<a href="./summarize_all_articles.html">summarize all articles</a>
+<br /><br />
+<a href="./convert_summaries.html">convert summaries</a>
+<br /><br />
+<a href="./default_link_collector.html">default link collector</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../scraping/index.html">scraping</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 2 sentence summary:</p>
 <p>This code imports necessary modules for extracting content from a website, interacting with a web browser, and summarizing the extracted content. A function <code>testExtractor</code> is then defined, which uses Selenium to extract and summarize content from a webpage and returns the summary.</p>
 
 
-<pre><code>const extractArticle = importer.import('extract llm article')
+<pre class="javascript"><code>const extractArticle = importer.import('extract llm article')
 const getClient = importer.import('selenium client')
 const summerizeArticle = importer.import('summarize llm article')
 
@@ -32,6 +96,17 @@ async function testExtractor(startPage) {
 
 module.exports = testExtractor
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
@@ -86,3 +161,7 @@ const summarizeArticle = importer.import('summarize llm article')
 <ul>
 <li>The <code>testExtractor</code> function is exported as a module, making it available for use in other JavaScript files.</li>
 </ul>
+
+</body>
+
+</html>

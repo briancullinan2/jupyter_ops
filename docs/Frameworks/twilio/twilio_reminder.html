@@ -1,7 +1,65 @@
-<p>The <code>setReminder</code> function schedules a Google Calendar event to send a Twilio message at a given time, handling OAuth authentication and calendar ID resolution.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>twilio reminder</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../twilio/index.html">twilio</a>
+    <br /><br />
+    <a href="./accept_incoming_twilio_message.html">accept incoming twilio message</a>
+<br /><br />
+<a href="./twilio_reminder.html">twilio reminder</a>
+<br /><br />
+<a href="./send_a_twilio_message.html">send a twilio message</a>
+<br /><br />
+<a href="./make_a_twilio_call.html">make a twilio call</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../twilio/index.html">twilio</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>setReminder</code> function schedules a Google Calendar event to send a Twilio message at a given time, handling OAuth authentication and calendar ID resolution.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var google = require('googleapis');
 var calendar = google.calendar('v3');
 var util = require('util');
@@ -41,6 +99,17 @@ function setReminder(to, message, time) {
 module.exports = incomingTwilio;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a function <code>setReminder</code> that schedules a Google Calendar event to send a Twilio message at a specified time.</p>
 <p><strong>Functionality:</strong></p>
 <ol>
@@ -72,3 +141,7 @@ module.exports = incomingTwilio;
 </ol>
 <p><strong>Purpose:</strong></p>
 <p>The code provides a way to schedule Twilio messages as Google Calendar events, likely for reminders or automated notifications.</p>
+
+</body>
+
+</html>

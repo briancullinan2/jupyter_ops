@@ -1,8 +1,62 @@
-<p>Here is a summary of the code in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../linkedin_webdriver/index.html">linkedin webdriver</a>
+    <br /><br />
+    <a href="./login_linkedin.html">login linkedin</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../linkedin_webdriver/index.html">linkedin webdriver</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in two sentences:</p>
 <p>The <code>listConnections</code> function is an asynchronous module that retrieves a list of unique LinkedIn connections' URLs by utilizing Selenium to navigate to the user's my network page, check for login status, and retrieve connections until at least 10 unique connections are found. If no driver is provided, it creates a new instance using <code>getClient()</code> and logs in to LinkedIn using <code>loginLinkedIn()</code>, before proceeding with the connection retrieval process.</p>
 
 
-<pre><code>const fs = require('fs')
+<pre class="javascript"><code>const fs = require('fs')
 const getClient = importer.import('selenium client')
 const getAllUntil = importer.import('all elements until')
 const loginLinkedIn = importer.import('login linkedin')
@@ -33,6 +87,17 @@ async function listConnections(driver) {
 
 module.exports = listConnections
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Dependencies and Import</h3>
@@ -76,3 +141,7 @@ module.exports = listConnections
 <ul>
 <li>The <code>listConnections</code> function is exported as a module, making it available for import in other files.</li>
 </ul>
+
+</body>
+
+</html>

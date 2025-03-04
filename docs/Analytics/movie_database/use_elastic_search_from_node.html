@@ -1,7 +1,69 @@
-<p>This code searches for documents containing &quot;express js&quot; in the &quot;books&quot; index and &quot;book&quot; type within an Elasticsearch database.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>use elastic search from node</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../movie_database/index.html">movie database</a>
+    <br /><br />
+    <a href="./Find_cross_section_of_actors_and_movies.html">Find cross section of actors and movies</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./use_elastic_search_from_node.html">use elastic search from node</a>
+<br /><br />
+<a href="./create_movie_database_tables.html">create movie database tables</a>
+<br /><br />
+<a href="./Or_use_ZMQ_interface_like_ijupyter.html">Or use ZMQ interface like ijupyter</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../movie_database/index.html">movie database</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code searches for documents containing &quot;express js&quot; in the &quot;books&quot; index and &quot;book&quot; type within an Elasticsearch database.</p>
 
 
-<pre><code>var elasticsearch = require('elasticsearch')
+<pre class="javascript"><code>var elasticsearch = require('elasticsearch')
 var client = elasticsearch.Client({
   host: 'localhost:9200'
 })
@@ -22,6 +84,17 @@ client.search({
 }, function (error) {
   console.trace(error.message)
 })</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code performs a search within an Elasticsearch index named &quot;books&quot; for documents matching the query &quot;express js&quot;.</p>
 <p>Here's a breakdown:</p>
@@ -63,3 +136,7 @@ client.search({
 </ul></li>
 </ol>
 <p>Let me know if you have any more questions!</p>
+
+</body>
+
+</html>

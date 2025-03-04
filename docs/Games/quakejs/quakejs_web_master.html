@@ -1,12 +1,83 @@
-<p>This code creates a global object named <code>master</code> and makes it available for use in other parts of the application.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>quakejs web master</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quakejs/index.html">quakejs</a>
+    <br /><br />
+    <a href="./quakejs_web_master.html">quakejs web master</a>
+<br /><br />
+<a href="./quakejs_connection.html">quakejs connection</a>
+<br /><br />
+<a href="./quakejs_parsing.html">quakejs parsing</a>
+<br /><br />
+<a href="./quakejs_utilities.html">quakejs utilities</a>
+<br /><br />
+<a href="./test_quakejs_master.html">test quakejs master</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quakejs/index.html">quakejs</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code creates a global object named <code>master</code> and makes it available for use in other parts of the application.</p>
 
 
-<pre><code>var master = root.master = {};
+<pre class="javascript"><code>var master = root.master = {};
 
 module.exports = master
 
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet defines a global variable named <code>master</code> and assigns it an empty object.</p>
 <p>Here's a breakdown:</p>
@@ -22,3 +93,7 @@ module.exports = master
 </ul></li>
 </ol>
 <p><strong>In essence, this code creates a global object named <code>master</code> and makes it accessible to other modules within the application.</strong></p>
+
+</body>
+
+</html>

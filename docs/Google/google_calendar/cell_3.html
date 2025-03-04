@@ -1,8 +1,76 @@
-<p>Here is a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 3</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_calendar/index.html">google calendar</a>
+    <br /><br />
+    <a href="./use_Google_calendar_API.html">use Google calendar API</a>
+<br /><br />
+<a href="./list_events.html">list events</a>
+<br /><br />
+<a href="./Run_todays_calendar_events.html">Run todays calendar events</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./Correct_calendar_dates_for_timeMax_and_timeMin.html">Correct calendar dates for timeMax and timeMin</a>
+<br /><br />
+<a href="./Lookup_calendar_id_by_name_or_id.html">Lookup calendar id by name or id</a>
+<br /><br />
+<a href="./days_events.html">days events</a>
+<br /><br />
+<a href="./Update_create_merge_delete_event.html">Update create merge delete event</a>
+<br /><br />
+<a href="./create_new_calendar_event.html">create new calendar event</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_calendar/index.html">google calendar</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code:</p>
 <p>The code defines a test suite for a &quot;calendar service&quot; using the <code>describe</code> function, which includes a test named &quot;should list events from around today&quot; that asserts an array of events is not empty. The test logic involves calling two functions, <code>correctCalendarId</code> and <code>listEvents</code>, with specific parameters to retrieve a list of events around today.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var {
     listEvents,
     correctCalendarId
@@ -34,6 +102,17 @@ describe('calendar service', () => {
     })
 })
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
@@ -95,3 +174,7 @@ var {
   })
 })
 </code></pre>
+
+</body>
+
+</html>

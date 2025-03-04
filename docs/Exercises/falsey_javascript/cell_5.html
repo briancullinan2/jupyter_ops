@@ -1,9 +1,84 @@
-<p>Here's a summary in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 5</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../falsey_javascript/index.html">falsey javascript</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../falsey_javascript/index.html">falsey javascript</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary in two sentences:</p>
 <p>The JavaScript code attempts to log the type of an undefined variable <code>undef</code> to the console, but throws a ReferenceError instead. When trying to log the result of the expression <code>undef || {&quot;too much&quot;: false}</code>, it returns the object literal <code>{&quot;too much&quot;: false}</code> to the console due to the undefined value of <code>undef</code>.</p>
 
 
-<pre><code>console.log(typeof undef)
+<pre class="javascript"><code>console.log(typeof undef)
 console.log(undef || {"too much": false})</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Line 1: <code>console.log(typeof undef)</code></h4>
@@ -20,3 +95,7 @@ console.log(undef || {"too much": false})</code></pre>
 <li>When used with variables, it returns the variable if it is not empty (i.e., not undefined, null, or zero), and the value on the right side if the variable is falsy.</li>
 <li>In this case, since <code>undef</code> is undefined, the expression <code>undef || {&quot;too much&quot;: false}</code> will evaluate to the object literal <code>{&quot;too much&quot;: false}</code>, which will be logged to the console.</li>
 </ul>
+
+</body>
+
+</html>

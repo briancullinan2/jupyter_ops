@@ -1,7 +1,63 @@
-<p>This code tests the <code>selectJson</code> function by reading a <code>package.json</code> file, simulating a slow data stream, and extracting the &quot;dependencies&quot; section from the JSON data.  It demonstrates how to use <code>selectJson</code> with a stream input and logs the result.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>test stream by creating a slow stream</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../json/index.html">json</a>
+    <br /><br />
+    <a href="./select_json.html">select json</a>
+<br /><br />
+<a href="./test_stream_by_creating_a_slow_stream.html">test stream by creating a slow stream</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../json/index.html">json</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code tests the <code>selectJson</code> function by reading a <code>package.json</code> file, simulating a slow data stream, and extracting the &quot;dependencies&quot; section from the JSON data.  It demonstrates how to use <code>selectJson</code> with a stream input and logs the result.</p>
 
 
-<pre><code>var fs = require('fs')
+<pre class="javascript"><code>var fs = require('fs')
 var path = require('path')
 var {Readable} = require('stream')
 var importer = require('../Core')
@@ -24,10 +80,21 @@ function testSelectJson() {
 
 module.exports = testSelectJson
 
-if(typeof $$ !== 'undefined') {
+if(typeof $ !== 'undefined') {
     console.log(testSelectJson())
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code defines a test function <code>testSelectJson</code> that demonstrates the usage of the <code>selectJson</code> function from the <code>importer</code> library.</p>
 <p>Here's a breakdown:</p>
@@ -42,6 +109,10 @@ if(typeof $$ !== 'undefined') {
 <li>It returns the result of the <code>selectJson</code> call.</li>
 </ul></li>
 <li><p><strong>Exports:</strong> The module exports the <code>testSelectJson</code> function.</p></li>
-<li><p><strong>Execution:</strong> The <code>if</code> block checks if a global variable <code>$$</code> exists. If it does, it executes <code>testSelectJson()</code> and logs the result to the console.</p></li>
+<li><p><strong>Execution:</strong> The <code>if</code> block checks if a global variable <code>$</code> exists. If it does, it executes <code>testSelectJson()</code> and logs the result to the console.</p></li>
 </ul>
 <p>In essence, this code tests the <code>selectJson</code> function by reading a <code>package.json</code> file, simulating a slow data stream, and selecting the &quot;dependencies&quot; section from the JSON data.</p>
+
+</body>
+
+</html>

@@ -1,26 +1,103 @@
-<p>Here's a 2-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 3</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../identity_server/index.html">identity server</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./set_up_identity_server.html">set up identity server</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../identity_server/index.html">identity server</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 2-sentence summary:</p>
 <p>The code sends an HTTP request to an identity server, handling the response and any errors through asynchronous operations and result/error handling functions. The process involves initiating the request, sending a request to the identity server, and then handling the response or error through a then block and catch block respectively.</p>
 
 
-<pre><code>$$.async();
+<pre class="javascript"><code>$.async();
 getIdentityServer()
-    .then(r => $$.sendResult(r))
-    .catch(e => $$.sendError(e));
+    .then(r => $.sendResult(r))
+    .catch(e => $.sendError(e));
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Purpose</h4>
 <p>The code sends an HTTP request to an identity server, handling the response and any potential errors.</p>
 <h4>Functions Used</h4>
 <ul>
-<li><code>$$.async()</code>: Initiates an asynchronous operation.</li>
+<li><code>$.async()</code>: Initiates an asynchronous operation.</li>
 <li><code>getIdentityServer()</code>: A function that makes an HTTP request to an identity server.</li>
-<li><code>$$.sendResult(r)</code> and <code>$$.sendError(e)</code> : Functions to handle the response and error respectively.</li>
+<li><code>$.sendResult(r)</code> and <code>$.sendError(e)</code> : Functions to handle the response and error respectively.</li>
 </ul>
 <h4>Flow</h4>
 <ol>
-<li><code>$$.async()</code> is called to initiate the request.</li>
+<li><code>$.async()</code> is called to initiate the request.</li>
 <li><code>getIdentityServer()</code> is called, sending a request to the identity server.</li>
-<li><code>then</code> block: If the request is successful, the response <code>r</code> is sent using <code>$$.sendResult(r)</code>.</li>
-<li><code>catch</code> block: If an error occurs, the error <code>e</code> is sent using <code>$$.sendError(e)</code>.</li>
+<li><code>then</code> block: If the request is successful, the response <code>r</code> is sent using <code>$.sendResult(r)</code>.</li>
+<li><code>catch</code> block: If an error occurs, the error <code>e</code> is sent using <code>$.sendError(e)</code>.</li>
 </ol>
+
+</body>
+
+</html>

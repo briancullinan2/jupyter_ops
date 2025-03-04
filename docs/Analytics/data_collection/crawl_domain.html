@@ -1,8 +1,84 @@
-<p>Here's a two-sentence summary of the <strong>Function Breakdown: crawlRecursive(url, depth, searches)</strong>:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>crawl domain</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../data_collection/index.html">data collection</a>
+    <br /><br />
+    <a href="./Crime_reports.html">Crime reports</a>
+<br /><br />
+<a href="./https___www_amazon_com_gp_yourstore_iyr_ref_pd_ys_iyr_nextie_UTF8_collection_watched_iyrGroup__maxIt.html">https://www.amazon.com/gp/yourstore/iyr/ref=pd_ys_iyr_nextie=UTF8&collection=watched&iyrGroup=&maxItem=616&minItem=600</a>
+<br /><br />
+<a href="./meta_search_all.html">meta search all</a>
+<br /><br />
+<a href="./schedule_search_all.html">schedule search all</a>
+<br /><br />
+<a href="./tell_joke.html">tell joke</a>
+<br /><br />
+<a href="./multi_crawl.html">multi crawl</a>
+<br /><br />
+<a href="./crawl_domain.html">crawl domain</a>
+<br /><br />
+<a href="./domain_cache_tools.html">domain cache tools</a>
+<br /><br />
+<a href="./browser_crawler_tools.html">browser crawler tools</a>
+<br /><br />
+<a href="./analyze_cache_file.html">analyze cache file</a>
+<br /><br />
+<a href="./schedule_crawl_domain.html">schedule crawl domain</a>
+<br /><br />
+<a href="./collect_all_bookmarks.html">collect all bookmarks</a>
+<br /><br />
+<a href="./search_results_as_json.html">search results as json</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../data_collection/index.html">data collection</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the <strong>Function Breakdown: crawlRecursive(url, depth, searches)</strong>:</p>
 <p>The <code>crawlRecursive</code> function is a recursive web crawler that starts at a specified initial URL, iteratively retrieves links from the crawled pages, and stores them in a cache, with the ability to manage recursion depth and cache updates. The function uses a series of steps, including crawling, cache management, link extraction, recursion, and termination, to fetch and process links from the web pages.</p>
 
 
-<pre><code>var {URL} = require('url')
+<pre class="javascript"><code>var {URL} = require('url')
 var fs = require('fs');
 var path = require('path');
 var importer = require('../Core');
@@ -82,14 +158,25 @@ module.exports = crawlAll
 //var importer = require('../Core')
 //var crawlAll = importer.import('crawl domain')
 
-if(typeof $$ !== 'undefined') {
-    $$.async()
+if(typeof $ !== 'undefined') {
+    $.async()
     crawlAll('https://google.com', 2)
-        .then(r => $$.sendResult('done'))
-        .catch(e => $$.sendError(e))
+        .then(r => $.sendResult('done'))
+        .catch(e => $.sendError(e))
 }
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Function Breakdown: crawlRecursive(url, depth, searches)</strong></p>
 <p><strong>Parameters:</strong></p>
@@ -139,3 +226,7 @@ if(typeof $$ !== 'undefined') {
 <li>The <code>storeCache</code> function is used to store the new cache.</li>
 <li>The <code>readCache</code> function is used to read the cache.</li>
 </ul>
+
+</body>
+
+</html>

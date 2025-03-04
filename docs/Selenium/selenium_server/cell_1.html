@@ -1,8 +1,72 @@
-<p>Here is a two-sentence summary of the provided code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../selenium_server/index.html">selenium server</a>
+    <br /><br />
+    <a href="./Start_a_selenium_http_express_server.html">Start a selenium http express server</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../selenium_server/index.html">selenium server</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the provided code breakdown:</p>
 <p>The code sets up routes for a WebdriverIO application using Express.js, defining handlers for GET and POST requests to various paths using route parameters and callback functions. Each route is associated with a callback that is called when the route is matched, and is likely being used by the WebdriverIO client to automate web browsers.</p>
 
 
-<pre><code>var express = require('express');
+<pre class="javascript"><code>var express = require('express');
 
 function route() {
     const router = express.Router();
@@ -388,6 +452,17 @@ module.exports = {
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <h3>Require Express</h3>
 <pre><code class="language-md">var express = require('express');
@@ -422,3 +497,7 @@ router.post('/session/:sessionId/chromium/launch_app', (req, res) =&gt; {... });
 <p>This line of code takes the <code>req.params</code> object, converts it to a JSON string using <code>JSON.stringify</code>, and then takes the first 200 characters of the string using <code>substr</code>. This is likely being done to prevent excessive logging or debugging output.</p>
 <h3>Note</h3>
 <p>The code appears to be setting up routes for a WebdriverIO application, which is a Node.js library for automating web browsers. The routes are likely to be matched by the WebdriverIO client when sending requests to the server.</p>
+
+</body>
+
+</html>

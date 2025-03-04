@@ -1,7 +1,89 @@
-<p>This code defines a function <code>import</code> that returns another function, but the returned function is immediately invoked, making the entire block importable as a module.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 9</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../demo/index.html">demo</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./use_Docker.html">use Docker</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+<a href="./Install_build_stack_on_colab.html">Install build stack on colab</a>
+<br /><br />
+<a href="./update_notebook_repo_on_colab.html">update notebook repo on colab</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../demo/index.html">demo</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code defines a function <code>import</code> that returns another function, but the returned function is immediately invoked, making the entire block importable as a module.</p>
 
 
-<pre><code>/*
+<pre class="javascript"><code>/*
 provide a public function by returning function with name as output
 
 var import = () => {
@@ -13,6 +95,17 @@ var import = () => {
 
 */
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <pre><code class="language-markdown">### Function: import
 
@@ -31,3 +124,7 @@ var import = () =&gt; {
 <h4>Explanation</h4>
 <p>This code defines a function <code>import</code> which returns another function. However, the returned function is not being used anywhere, it's immediately invoked with <code>(import)</code>. As a result, the entire block can be imported as a module, containing the returned function.</p>
 <p>However, due to the empty function body, this block does not provide any functionality when imported.</p>
+
+</body>
+
+</html>

@@ -1,8 +1,78 @@
-<p>Here's a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>include a dynamic lib</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../dylib/index.html">dylib</a>
+    <br /><br />
+    <a href="./include_a_dynamic_lib.html">include a dynamic lib</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./test_a_csharp_dylib.html">test a csharp dylib</a>
+<br /><br />
+<a href="./set_mouse_position.html">set mouse position</a>
+<br /><br />
+<a href="./get_c_parameters.html">get c parameters</a>
+<br /><br />
+<a href="./get_c_exports.html">get c exports</a>
+<br /><br />
+<a href="./get_c_types.html">get c types</a>
+<br /><br />
+<a href="./c_type_to_data_type.html">c type to data type</a>
+<br /><br />
+<a href="./build_dylib.html">build dylib</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../dylib/index.html">dylib</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code:</p>
 <p>This Node.js module exports a function <code>enumWindows</code> that enumerates the titles of visible windows on the system, filters out certain programs, and returns an array of window titles. The function uses Foreign Function Interface (FFI) bindings to a dynamic library <code>sog</code> to interact with the system's window management API.</p>
 
 
-<pre><code>const {
+<pre class="javascript"><code>const {
   equal
 } = require('assert')
 const {
@@ -62,6 +132,17 @@ function enumWindows() {
 module.exports = enumWindows
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Overview</h2>
 <p>This code is a Node.js module that exports a function <code>enumWindows</code> which enumerates the titles of visible windows on the system and filters out certain programs.</p>
 <h3>Dependencies</h3>
@@ -93,3 +174,7 @@ module.exports = enumWindows
 <li><code>windows</code>: the array of window titles.</li>
 <li><code>platform</code>: the current platform determined by <code>os.platform()</code>.</li>
 </ul>
+
+</body>
+
+</html>

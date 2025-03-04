@@ -1,7 +1,71 @@
-<p>This code snippet showcases two methods for applying patches in Git: using a visual diff tool (<code>git difftool</code>) and a text-based approach with the <code>patch</code> command.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>compare git branches</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../git_commands/index.html">git commands</a>
+    <br /><br />
+    <a href="./git_discard_whitespace.html">git discard whitespace</a>
+<br /><br />
+<a href="./compare_git_branches.html">compare git branches</a>
+<br /><br />
+<a href="./interesting_git_commands.html">interesting git commands</a>
+<br /><br />
+<a href="./cache_git_credentials.html">cache git credentials</a>
+<br /><br />
+<a href="./git_auto_commit.html">git auto commit</a>
+<br /><br />
+<a href="./git_auto_rebase.html">git auto rebase</a>
+<br /><br />
+<a href="./git_add_submodule.html">git add submodule</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../git_commands/index.html">git commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code snippet showcases two methods for applying patches in Git: using a visual diff tool (<code>git difftool</code>) and a text-based approach with the <code>patch</code> command.</p>
 
 
-<pre><code>git difftool --tool=b3 branch1..branch2
+<pre class="bash"><code>git difftool --tool=b3 branch1..branch2
 
 git diff > save.patch
 patch -p1 < save.patch
@@ -10,6 +74,17 @@ git diff --no-prefix > save.patch
 patch -p0 < save.patch
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet demonstrates two different ways to apply patches in Git, using both a visual diff tool and a text-based approach.</p>
 <p><strong>First Part:</strong></p>
@@ -38,3 +113,7 @@ patch -p0 &lt; save.patch
 <li><strong><code>patch -p0 &lt; save.patch</code>:</strong> This applies the patch file to the working directory. The <code>-p0</code> flag indicates that the patch file contains absolute paths.</li>
 </ul>
 <p><strong>Purpose:</strong> This part creates a patch file without file path prefixes and applies it to the working directory.</p>
+
+</body>
+
+</html>

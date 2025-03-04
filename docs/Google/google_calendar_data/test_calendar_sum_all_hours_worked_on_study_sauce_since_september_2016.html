@@ -1,7 +1,75 @@
-<p>This code retrieves Google Calendar events matching a specific query (&quot;study sauce&quot;) between two dates and then summarizes those events, sending the result to a client.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>test calendar sum all hours worked on study sauce since september 2016</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_calendar_data/index.html">google calendar data</a>
+    <br /><br />
+    <a href="./test_calendar_sum_all_hours_worked_on_study_sauce_since_september_2016.html">test calendar sum all hours worked on study sauce since september 2016</a>
+<br /><br />
+<a href="./convert_chrome_date_to_calendar_date.html">convert chrome date to calendar date</a>
+<br /><br />
+<a href="./Parse_bookmarks_file.html">Parse bookmarks file</a>
+<br /><br />
+<a href="./get_bookmarks_from_local_chrome_database.html">get bookmarks from local chrome database</a>
+<br /><br />
+<a href="./test_parse_bookmarks.html">test parse bookmarks</a>
+<br /><br />
+<a href="./sync_chrome_bookmarks.html">sync chrome bookmarks</a>
+<br /><br />
+<a href="./sync_chrome_history.html">sync chrome history</a>
+<br /><br />
+<a href="./sync_chrome_data.html">sync chrome data</a>
+<br /><br />
+<a href="./test_syn_chrome_data.html">test syn chrome data</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_calendar_data/index.html">google calendar data</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code retrieves Google Calendar events matching a specific query (&quot;study sauce&quot;) between two dates and then summarizes those events, sending the result to a client.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var { sumEvents, listEvents, ISODateString } = importer.import([
     'import google calendar api',
     'how to list events',
@@ -9,16 +77,27 @@ var { sumEvents, listEvents, ISODateString } = importer.import([
     'convert date to ISO'
 ]);
 
-$$.async();
+$.async();
 listEvents({
     timeMin: ISODateString(new Date('2016/09/22')),
     timeMax: ISODateString(new Date('2017/09/22')),
     q: 'study sauce'
 })
-    .then(r => $$.sendResult(sumEvents(r)))
-    .catch(e => $$.sendError(e));
+    .then(r => $.sendResult(sumEvents(r)))
+    .catch(e => $.sendError(e));
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet fetches and summarizes Google Calendar events matching a specific query within a date range.</p>
 <p>Here's a breakdown:</p>
@@ -34,7 +113,7 @@ listEvents({
 </ul></li>
 <li><p><strong>Async Execution:</strong></p>
 <ul>
-<li><code>$$.async()</code> likely sets up asynchronous execution for the following code.</li>
+<li><code>$.async()</code> likely sets up asynchronous execution for the following code.</li>
 </ul></li>
 <li><p><strong>Event Retrieval:</strong></p>
 <ul>
@@ -50,9 +129,13 @@ listEvents({
 <li>The <code>then</code> block executes when <code>listEvents</code> successfully retrieves events:
 <ul>
 <li><code>sumEvents</code> is called with the retrieved events to calculate a summary.</li>
-<li><code>$$.sendResult</code> sends the summary as a response.</li>
+<li><code>$.sendResult</code> sends the summary as a response.</li>
 </ul></li>
-<li>The <code>catch</code> block handles any errors during the process and sends an error response using <code>$$.sendError</code>.</li>
+<li>The <code>catch</code> block handles any errors during the process and sends an error response using <code>$.sendError</code>.</li>
 </ul></li>
 </ol>
 <p>In essence, this code queries Google Calendar for events related to &quot;study sauce&quot; within a specific date range, summarizes those events, and sends the result (or an error) as a response.</p>
+
+</body>
+
+</html>

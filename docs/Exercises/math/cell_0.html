@@ -1,8 +1,62 @@
-<p>Here's a 2-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 0</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../math/index.html">math</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../math/index.html">math</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 2-sentence summary of the code breakdown:</p>
 <p>The code generates all possible permutations of an input array and combines them with operator combinations to create mathematical equations in both standard and nested formats. It uses functions such as <code>spliceClone</code>, <code>permute</code>, <code>solve</code>, and <code>reduce</code> to generate and evaluate these equations, storing the results in variables like <code>permutations</code>, <code>operators</code>, and <code>equations</code>.</p>
 
 
-<pre><code>// permutation
+<pre class="javascript"><code>// permutation
 function spliceClone(arr, i) {
     return (a => a.splice(i, 1).concat(a))
         // call it with a clone to preserve array reference
@@ -81,6 +135,17 @@ for(var e of equations) { // .filter(e => e[12] === 24)) {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Function: <code>spliceClone(arr, i)</code></h3>
 <ul>
@@ -136,3 +201,7 @@ for(var e of equations) { // .filter(e => e[12] === 24)) {
 </ol></li>
 <li>Evaluates the equation using the <code>solve</code> function.</li>
 </ul>
+
+</body>
+
+</html>

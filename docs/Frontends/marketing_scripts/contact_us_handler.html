@@ -1,7 +1,63 @@
-<p>The <code>contactUs</code> function handles incoming contact form submissions, stores the data in a Google Sheet, and redirects the user upon successful submission.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>contact us handler</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../marketing_scripts/index.html">marketing scripts</a>
+    <br /><br />
+    <a href="./make_a_purchase_with_stripe.html">make a purchase with stripe</a>
+<br /><br />
+<a href="./contact_us_handler.html">contact us handler</a>
+<br /><br />
+<a href="./package_json.html">package.json</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../marketing_scripts/index.html">marketing scripts</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>contactUs</code> function handles incoming contact form submissions, stores the data in a Google Sheet, and redirects the user upon successful submission.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var addRow = importer.import('add row data google sheet');
 
 function contactUs(name, email, subject, message) {
@@ -20,6 +76,17 @@ function contactUs(name, email, subject, message) {
 module.exports = contactUs;
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code defines a function <code>contactUs</code> that handles incoming contact form submissions and adds them to a Google Sheet.</p>
 <p><strong>Functionality:</strong></p>
@@ -42,3 +109,7 @@ module.exports = contactUs;
 </ol>
 <p><strong>Purpose:</strong></p>
 <p>The code provides a mechanism for capturing contact form submissions and storing them in a Google Sheet for later processing or review.</p>
+
+</body>
+
+</html>

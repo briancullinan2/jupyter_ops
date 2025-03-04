@@ -1,7 +1,79 @@
-<p>The <code>getSheetByName</code> function efficiently retrieves a specific worksheet from a Google Sheet by name or index, utilizing caching to optimize performance.  It handles both direct worksheet objects and spreadsheet IDs with worksheet names or indices as input.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>get worksheet by name</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_sheets/index.html">google sheets</a>
+    <br /><br />
+    <a href="./templates_google_doc.html">templates google doc</a>
+<br /><br />
+<a href="./test_templates_google_sheet.html">test templates google sheet</a>
+<br /><br />
+<a href="./get_google_sheet_info.html">get google sheet info</a>
+<br /><br />
+<a href="./get_google_data_sheet.html">get google data sheet</a>
+<br /><br />
+<a href="./get_worksheet_rows.html">get worksheet rows</a>
+<br /><br />
+<a href="./test_google_data_sheet.html">test google data sheet</a>
+<br /><br />
+<a href="./add_row_data_google_sheet.html">add row data google sheet</a>
+<br /><br />
+<a href="./get_worksheet_by_name.html">get worksheet by name</a>
+<br /><br />
+<a href="./update_a_row_in_google_sheets.html">update a row in google sheets</a>
+<br /><br />
+<a href="./test_google_sheet_add_row.html">test google sheet add row</a>
+<br /><br />
+<a href="./authorize_sheets_api.html">authorize sheets api</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_sheets/index.html">google sheets</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>getSheetByName</code> function efficiently retrieves a specific worksheet from a Google Sheet by name or index, utilizing caching to optimize performance.  It handles both direct worksheet objects and spreadsheet IDs with worksheet names or indices as input.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var getInfo = importer.import('get google sheet info');
 var loadedDocs = {};
 
@@ -18,6 +90,17 @@ function getSheetByName(docId, page) {
 module.exports = getSheetByName;
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code defines a function <code>getSheetByName</code> that retrieves a specific worksheet from a Google Sheet based on its name or index.</p>
 <p>Here's a breakdown:</p>
@@ -36,3 +119,7 @@ module.exports = getSheetByName;
 </ul></li>
 <li><p><strong>Return Value:</strong> It returns the found worksheet object.</p></li>
 </ol>
+
+</body>
+
+</html>

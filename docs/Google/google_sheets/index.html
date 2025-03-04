@@ -1,4 +1,72 @@
-<a href="./templates_google_doc.html">templates google doc</a>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>google sheets</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../../Google/index.html">Google</a>
+    <br /><br />
+    <a href="./google_calendar_data/index.html">google calendar data</a>
+<br /><br />
+<a href="./google_calendar_graphs/index.html">google calendar graphs</a>
+<br /><br />
+<a href="./google_calendar/index.html">google calendar</a>
+<br /><br />
+<a href="./google_contacts/index.html">google contacts</a>
+<br /><br />
+<a href="./google_drive/index.html">google drive</a>
+<br /><br />
+<a href="./google_maps/index.html">google maps</a>
+<br /><br />
+<a href="./google_scheduling/index.html">google scheduling</a>
+<br /><br />
+<a href="./google_search_api/index.html">google search api</a>
+<br /><br />
+<a href="./google_sheets/index.html">google sheets</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../../Google/index.html">Google</a> ${PREV} ${NEXT}
+  </header>
+
+  <a href="./templates_google_doc.html">templates google doc</a>
 <br /><br />
 <p>This code analyzes a Google Sheet document to identify and categorize its sheets as either templates or data sheets based on their titles. It then returns an organized object containing these categorized sheets.</p>
 <a href="./test_templates_google_sheet.html">test templates google sheet</a>
@@ -31,3 +99,7 @@
 <a href="./authorize_sheets_api.html">authorize sheets api</a>
 <br /><br />
 <p>This code sets up authentication with the Google Sheets API and provides a function, <code>authorizeSheets</code>, that returns an authorized client for interacting with Google Sheets securely.</p>
+
+</body>
+
+</html>

@@ -1,7 +1,65 @@
-<p>This code analyzes a user's Google Contacts to categorize them based on their membership in various contact groups, determining both contact frequency and group affiliations.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>google contact settings</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_contacts/index.html">google contacts</a>
+    <br /><br />
+    <a href="./list_google_contact.html">list google contact</a>
+<br /><br />
+<a href="./google_contact_settings.html">google contact settings</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_contacts/index.html">google contacts</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code analyzes a user's Google Contacts to categorize them based on their membership in various contact groups, determining both contact frequency and group affiliations.</p>
 
 
-<pre><code>var google = require('googleapis');
+<pre class="javascript"><code>var google = require('googleapis');
 var people = google.people('v1');
 var importer = require('../Core');
 var getContacts = importer.import('list google contacts');
@@ -85,6 +143,17 @@ function getSettings(name) {
 module.exports = getSettings;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet retrieves a user's Google Contacts and analyzes their membership in various contact groups to categorize them.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -107,3 +176,7 @@ module.exports = getSettings;
 </ol>
 <p><strong>Purpose:</strong></p>
 <p>This code likely serves as part of a system that analyzes user relationships based on their Google Contacts. It retrieves contact group memberships and categorizes contacts based on their frequency and group affiliations.</p>
+
+</body>
+
+</html>

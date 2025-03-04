@@ -1,7 +1,71 @@
-<p>The code provides a function called <code>placeDetails</code> that retrieves detailed information about a Google Places location using its ID and your Google Maps API key.  It utilizes the <code>request</code> library to make an API call and returns the parsed JSON response containing place details.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>place details google maps</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_maps/index.html">google maps</a>
+    <br /><br />
+    <a href="./use_places_nearby_API.html">use places nearby API</a>
+<br /><br />
+<a href="./place_details_google_maps.html">place details google maps</a>
+<br /><br />
+<a href="./use_Google_Geocaching.html">use Google Geocaching</a>
+<br /><br />
+<a href="./cache_locations_nearby.html">cache locations nearby</a>
+<br /><br />
+<a href="./extract_depth_maps.html">extract depth maps</a>
+<br /><br />
+<a href="./load_google_panorama.html">load google panorama</a>
+<br /><br />
+<a href="./test_google_depth_maps.html">test google depth maps</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_maps/index.html">google maps</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The code provides a function called <code>placeDetails</code> that retrieves detailed information about a Google Places location using its ID and your Google Maps API key.  It utilizes the <code>request</code> library to make an API call and returns the parsed JSON response containing place details.</p>
 
 
-<pre><code>var util = require('util');
+<pre class="javascript"><code>var util = require('util');
 var request = util.promisify(require('request'));
 
 var API_KEY = 'AIzaSyDVoQW6NTPuVz8ClOtl0ShITBr_E2sP4l0';
@@ -15,6 +79,17 @@ function placeDetails(placeId) {
 }
 module.exports = placeDetails;
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code defines a function called <code>placeDetails</code> that fetches detailed information about a Google Places location given its ID.</p>
 <p>Here's a breakdown:</p>
@@ -41,3 +116,7 @@ module.exports = placeDetails;
 </ul></li>
 </ol>
 <p>Let me know if you have any other code snippets you'd like me to explain!</p>
+
+</body>
+
+</html>

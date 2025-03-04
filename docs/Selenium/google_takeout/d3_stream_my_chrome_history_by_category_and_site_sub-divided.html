@@ -1,7 +1,67 @@
-<p>This code parses a Chrome browser history file to categorize and count website visits, likely for the purpose of visualizing browsing habits using a pie chart. It identifies common websites visited and provides a summary of their frequency.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>d3 stream my chrome history by category and site sub-divided</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_takeout/index.html">google takeout</a>
+    <br /><br />
+    <a href="./download_google_takeout.html">download google takeout</a>
+<br /><br />
+<a href="./order_google_takeout.html">order google takeout</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./d3_stream_my_chrome_history_by_category_and_site_sub-divided.html">d3 stream my chrome history by category and site sub-divided</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_takeout/index.html">google takeout</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code parses a Chrome browser history file to categorize and count website visits, likely for the purpose of visualizing browsing habits using a pie chart. It identifies common websites visited and provides a summary of their frequency.</p>
 
 
-<pre><code>var fs = require('fs');
+<pre class="javascript"><code>var fs = require('fs');
 var importer = require('../Core');
 var d3PieChart = importer.import('d3 pie chart');
 
@@ -92,15 +152,26 @@ for (var i = 0; i < oldGroups.length; i++) {
     }
 }
 
-$$.async();
+$.async();
 d3PieChart(groupCounts)
-    .then(r => $$.svg(r))
-    .catch(e => $$.sendError(e));
+    .then(r => $.svg(r))
+    .catch(e => $.sendError(e));
 
 // TODO: show month by month, week by week?
 
 // TODO: use this chart instead? https://bl.ocks.org/mbostock/8d2112a115ad95f4a6848001389182fb
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code analyzes a Chrome browser history file (likely exported from Google Takeout) to categorize and count website visits.</p>
 <p>Here's a breakdown:</p>
@@ -136,3 +207,7 @@ d3PieChart(groupCounts)
 <li>The code likely uses the <code>d3PieChart</code> module (imported from <code>importer</code>) to create a pie chart visualizing the website visit counts.</li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

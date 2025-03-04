@@ -1,11 +1,65 @@
-<p>Here's a summary of the <code>getTitle(int i)</code> function in one sentence:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>lookup window by</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../window_enum/index.html">window enum</a>
+    <br /><br />
+    <a href="./enum_windows_with_cocoa.html">enum windows with cocoa</a>
+<br /><br />
+<a href="./lookup_window_by.html">lookup window by</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../window_enum/index.html">window enum</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a summary of the <code>getTitle(int i)</code> function in one sentence:</p>
 <p>The <code>getTitle(int i)</code> function retrieves the title of a window with the specified layer index <code>i</code> by searching through an array of window dictionaries and constructing a string with the window's layer index and owner name.</p>
 <p>Alternatively, you can also condense the summary into two sentences:</p>
 <p>The <code>getTitle(int i)</code> function searches for a window with a matching layer index <code>i</code> in an array of window dictionaries.<br />
 If found, it constructs a string with the window's layer index and owner name, and returns a duplicate of this string as a C-style string.</p>
 
 
-<pre><code>__attribute__((visibility("default")))
+<pre class="objective-c"><code>__attribute__((visibility("default")))
 const char* getTitle(int i) {
     if (windows == NULL) {
         count = enumWindows();
@@ -32,6 +86,17 @@ const char* getTitle(int i) {
 }
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/objective-c.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Code Attributes</h4>
@@ -65,3 +130,7 @@ const char* getTitle(int i) {
 <ul>
 <li>The function returns a C-style string (a pointer to a character array) using <code>strdup</code>. This ensures the returned string is persistent and can be stored or used by other functions.</li>
 </ul>
+
+</body>
+
+</html>

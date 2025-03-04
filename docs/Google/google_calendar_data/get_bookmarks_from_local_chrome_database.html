@@ -1,7 +1,75 @@
-<p>This code retrieves and processes today's browsing history from a Chrome SQLite database, likely for analysis or reporting.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>get bookmarks from local chrome database</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_calendar_data/index.html">google calendar data</a>
+    <br /><br />
+    <a href="./test_calendar_sum_all_hours_worked_on_study_sauce_since_september_2016.html">test calendar sum all hours worked on study sauce since september 2016</a>
+<br /><br />
+<a href="./convert_chrome_date_to_calendar_date.html">convert chrome date to calendar date</a>
+<br /><br />
+<a href="./Parse_bookmarks_file.html">Parse bookmarks file</a>
+<br /><br />
+<a href="./get_bookmarks_from_local_chrome_database.html">get bookmarks from local chrome database</a>
+<br /><br />
+<a href="./test_parse_bookmarks.html">test parse bookmarks</a>
+<br /><br />
+<a href="./sync_chrome_bookmarks.html">sync chrome bookmarks</a>
+<br /><br />
+<a href="./sync_chrome_history.html">sync chrome history</a>
+<br /><br />
+<a href="./sync_chrome_data.html">sync chrome data</a>
+<br /><br />
+<a href="./test_syn_chrome_data.html">test syn chrome data</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_calendar_data/index.html">google calendar data</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code retrieves and processes today's browsing history from a Chrome SQLite database, likely for analysis or reporting.</p>
 
 
-<pre><code>var sqlite3 = require('better-sqlite3');
+<pre class="javascript"><code>var sqlite3 = require('better-sqlite3');
 var HISTORY_FILE = '/Users/briancullinan/Library/Application Support/Google/Chrome/Default/History copy';
 var db = new sqlite3(HISTORY_FILE, {});
 var today = Math.floor(Date.now() / 60 / 60 / 48) * 60 * 60 * 48;
@@ -17,13 +85,24 @@ function getHistory() {
         .then(() => db.prepare('SELECT * FROM urls WHERE last_visit_time > ?').all(todayOffset))
 }
 
-if(typeof $$ !== 'undefined') {
-    $$.async();
+if(typeof $ !== 'undefined') {
+    $.async();
     getHistory()
-        .then(r => $$.sendResult(r))
-        .catch(e => $$.sendError(e))
+        .then(r => $.sendResult(r))
+        .catch(e => $.sendError(e))
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet retrieves and processes browsing history data from a SQLite database file associated with Google Chrome.</p>
 <p>Here's a breakdown:</p>
@@ -50,10 +129,14 @@ if(typeof $$ !== 'undefined') {
 </ul></li>
 <li><p><strong>Async Execution (if applicable):</strong></p>
 <ul>
-<li>The code checks if a variable <code>$$</code> exists (likely indicating an asynchronous environment).</li>
-<li>If <code>$$</code> is defined, it calls <code>$$.async()</code> and uses <code>getHistory()</code> to retrieve the history data.</li>
-<li>It then sends the result (<code>r</code>) to <code>$$.sendResult()</code> or the error (<code>e</code>) to <code>$$.sendError()</code> based on the outcome.</li>
+<li>The code checks if a variable <code>$</code> exists (likely indicating an asynchronous environment).</li>
+<li>If <code>$</code> is defined, it calls <code>$.async()</code> and uses <code>getHistory()</code> to retrieve the history data.</li>
+<li>It then sends the result (<code>r</code>) to <code>$.sendResult()</code> or the error (<code>e</code>) to <code>$.sendError()</code> based on the outcome.</li>
 </ul></li>
 </ol>
 <p><strong>Purpose:</strong></p>
 <p>This code snippet extracts and processes browsing history data from a Chrome database file, likely for analysis or reporting purposes. It filters the history to include only entries from the current day.</p>
+
+</body>
+
+</html>

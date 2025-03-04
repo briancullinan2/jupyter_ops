@@ -1,7 +1,59 @@
-<p>This code snippet offers two JavaScript utility functions: <code>flatten</code> for simplifying nested arrays and <code>escapeRegExp</code> for preparing strings for use in regular expressions.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>//  escape a string for regex</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../parse/index.html">parse</a>
+    <br /><br />
+    <a href="./____escape_a_string_for_regex.html">//  escape a string for regex</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../parse/index.html">parse</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code snippet offers two JavaScript utility functions: <code>flatten</code> for simplifying nested arrays and <code>escapeRegExp</code> for preparing strings for use in regular expressions.</p>
 
 
-<pre><code>// How to flatten and array in javascript?
+<pre class="javascript"><code>// How to flatten and array in javascript?
 var flatten = arr => arr.reduce((acc, val) =>
     acc.concat(Array.isArray(val) ? flatten(val) : val), []);
 
@@ -11,11 +63,22 @@ Array.prototype.flatten = function () {
 
 // How to escape a string for regex?
 function escapeRegExp(str) {
-    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\${OUTPUT}');
 }
 
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet provides two utility functions for working with arrays and regular expressions in JavaScript.</p>
 <ol>
@@ -37,3 +100,7 @@ function escapeRegExp(str) {
 </ol>
 <p><strong>Purpose:</strong></p>
 <p>These functions provide convenient ways to flatten nested arrays and escape strings for use in regular expressions, which are common tasks in JavaScript programming.</p>
+
+</body>
+
+</html>

@@ -1,8 +1,64 @@
-<p>Here's a two-sentence summary of the code:</p>
-<p>This code imports modules and variables, interprets functions, sets a project directory, and reads/displaying code. It uses various functions from the <code>importer</code> module to find and compare code snippets, and displays the differences using a custom <code>$$.html</code> function.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../diff/index.html">diff</a>
+    <br /><br />
+    <a href="./diff.html">diff</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../diff/index.html">diff</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code:</p>
+<p>This code imports modules and variables, interprets functions, sets a project directory, and reads/displaying code. It uses various functions from the <code>importer</code> module to find and compare code snippets, and displays the differences using a custom <code>$.html</code> function.</p>
 
 
-<pre><code>var importer = require('../Core')
+<pre class="javascript"><code>var importer = require('../Core')
 var left, right;
 var r = importer.interpret(['search notebook component', 'files in project', 'diff code blocks']);
 left = r[0].code;
@@ -14,8 +70,19 @@ var project = PROFILE_PATH + '/universal';
 
 var components = listInProject(project, '**/search.component.ts');
 right = fs.readFileSync(components[0]).toString();
-$$.html(diffTwoTexts(left, right))
+$.html(diffTwoTexts(left, right))
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules and Variables</h3>
@@ -48,11 +115,15 @@ var project = PROFILE_PATH + '/universal';
 <h3>Reading and Displaying Code</h3>
 <pre><code class="language-javascript">var components = listInProject(project, '**/search.component.ts');
 right = fs.readFileSync(components[0]).toString();
-$$.html(diffTwoTexts(left, right))
+$.html(diffTwoTexts(left, right))
 </code></pre>
 <ul>
 <li>Used the <code>listInProject</code> function to find files in the project matching the pattern '**/search.component.ts' and stored the result in <code>components</code>.</li>
 <li>Read the first file from the result and stored its contents in the <code>right</code> variable.</li>
-<li>Called the <code>diffTwoTexts</code> function with <code>left</code> and <code>right</code> as arguments and passed the result to the <code>$$.html</code> function for display.</li>
-<li>Note: The <code>$$.html</code> function is not a standard Node.js function, it's likely a part of a custom framework or library.</li>
+<li>Called the <code>diffTwoTexts</code> function with <code>left</code> and <code>right</code> as arguments and passed the result to the <code>$.html</code> function for display.</li>
+<li>Note: The <code>$.html</code> function is not a standard Node.js function, it's likely a part of a custom framework or library.</li>
 </ul>
+
+</body>
+
+</html>

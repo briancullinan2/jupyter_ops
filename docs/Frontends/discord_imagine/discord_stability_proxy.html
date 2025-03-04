@@ -1,8 +1,66 @@
-<p>Here's a 2-sentence summary of the provided code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>discord stability proxy</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_imagine/index.html">discord imagine</a>
+    <br /><br />
+    <a href="./update_discord_interaction_with_attachments.html">update discord interaction with attachments</a>
+<br /><br />
+<a href="./discord_stability_proxy.html">discord stability proxy</a>
+<br /><br />
+<a href="./discord_mid_journey_commands.html">discord mid journey commands</a>
+<br /><br />
+<a href="./discord_ollama_vision.html">discord ollama vision</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_imagine/index.html">discord imagine</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a 2-sentence summary of the provided code:</p>
 <p>The code consists of two functions, <code>doHallucinate</code> and <code>doImagineProxy</code>, which interact with the Discord API to generate images based on user prompts, while implementing content filtering and loading indicators. The functions utilize external libraries and services such as <code>llmPrompt</code> and <code>doStableRequest</code> to create and send the generated images to users.</p>
 
 
-<pre><code>const {patchInteractionImageAttachment} = importer.import('update discord interaction with attachments')
+<pre class="javascript"><code>const {patchInteractionImageAttachment} = importer.import('update discord interaction with attachments')
 const {doStableRequest} = importer.import('stable diffusion request')
 const whiskImages = importer.import('whisk images')
 
@@ -60,6 +118,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Overview</strong></p>
 <p>The provided code consists of two functions: <code>doHallucinate</code> and <code>doImagineProxy</code>. Both functions are designed to interact with the Discord API and utilize external libraries (<code>importer</code>) to perform various tasks.</p>
 <h3><code>doHallucinate</code> Function</h3>
@@ -91,3 +160,7 @@ module.exports = {
 <li><code>updateInteraction</code> is a function used to update an interaction with a new content or message.</li>
 <li><code>triggerTyping</code> is a function used to send a typing indicator to a channel.</li>
 </ul>
+
+</body>
+
+</html>

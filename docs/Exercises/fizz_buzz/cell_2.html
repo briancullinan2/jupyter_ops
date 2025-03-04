@@ -1,8 +1,66 @@
-<p>Here's a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../fizz_buzz/index.html">fizz buzz</a>
+    <br /><br />
+    <a href="./http___wiki_c2_com_FizzBuzzTest.html">http://wiki.c2.com/FizzBuzzTest</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../fizz_buzz/index.html">fizz buzz</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The <code>sortDesc</code> function combines two arrays <code>arr1</code> and <code>arr2</code> and sorts the concatenated array in descending order. However, the code then attempts to check each element in the sorted array to ensure it is greater than the previous one, throwing an error if this condition is not met, which suggests a logical flaw in the code logic.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 var arr1 = [1, 3, 2, 7];
 var arr2 = [9, 11, 4, 6];
 
@@ -22,6 +80,17 @@ result.forEach(r => {
   }
 })
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Variables</h4>
@@ -47,3 +116,7 @@ result.forEach(r => {
 <li>If the current element is not greater than the previous element, it throws an error with the message <code>'this doesnt work'</code></li>
 </ul></li>
 </ul>
+
+</body>
+
+</html>

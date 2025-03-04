@@ -1,8 +1,72 @@
-<p>Here is a summary of the provided code breakdown in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>list window handles</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../windows/index.html">windows</a>
+    <br /><br />
+    <a href="./list_window_handles.html">list window handles</a>
+<br /><br />
+<a href="./monitor_active_windows.html">monitor active windows</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../windows/index.html">windows</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the provided code breakdown in two sentences:</p>
 <p>The code defines a static class <code>ProgramExtensions</code> in the <code>window_tracker</code> namespace, which imports various Windows API functions from the <code>user32.dll</code> library and provides methods to retrieve window text, find windows, and retrieve the foreground window. The class includes a delegate <code>EnumWindowsProc</code> to filter which windows to include and uses various attributes and classes to handle the imported functions and their return types.</p>
 
 
-<pre><code>using System;
+<pre class="csharp"><code>using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -142,6 +206,17 @@ namespace window_tracker
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Namespace and Class</h3>
 <ul>
@@ -191,3 +266,7 @@ namespace window_tracker
 <li>The <code>EnumWindows</code> function is used to find all windows that match the given filter.</li>
 <li>The <code>GetForegroundWindow</code> function is used to retrieve the handle of the foreground window.</li>
 </ul>
+
+</body>
+
+</html>

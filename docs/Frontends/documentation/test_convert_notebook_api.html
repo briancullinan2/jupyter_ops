@@ -1,16 +1,80 @@
-<p>Here is a summary of the code in 2 sentences:</p>
-<p>The code imports various functions from a Core module, initializes an environment, and checks if a global object $$ is defined. If $$ is defined, it executes a series of calls to the imported functions to convert notebooks to OpenAPI specifications, generate RPC models, and call a permissions RPC operation, sending the result or error to $$ accordingly.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>test convert notebook api</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../documentation/index.html">documentation</a>
+    <br /><br />
+    <a href="./convert_notebook_to_open_api.html">convert notebook to open api</a>
+<br /><br />
+<a href="./test_convert_notebook_api.html">test convert notebook api</a>
+<br /><br />
+<a href="./convert_google_discovery_to_documentation.html">convert google discovery to documentation</a>
+<br /><br />
+<a href="./discover_well-known_apis.html">discover well-known apis</a>
+<br /><br />
+<a href="./export_documentation.html">export documentation</a>
+<br /><br />
+<a href="./highlight_js.html">highlight js</a>
+<br /><br />
+<a href="./javadoc_template.html">javadoc template</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../documentation/index.html">documentation</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in 2 sentences:</p>
+<p>The code imports various functions from a Core module, initializes an environment, and checks if a global object $ is defined. If $ is defined, it executes a series of calls to the imported functions to convert notebooks to OpenAPI specifications, generate RPC models, and call a permissions RPC operation, sending the result or error to $ accordingly.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var getRpcSpecFromCells = importer.import('convert notebook to open api');
 var getRpcFromSpec = importer.import('get rpc from spec');
 var getEnvironment = importer.import('get environment');
 var groupPermissions = importer.import('test get permissions');
 getEnvironment('STUDY_LOCAL')
 
-if(typeof $$ !== 'undefined') {
-    $$.async()
+if(typeof $ !== 'undefined') {
+    $.async()
     var spec = getRpcSpecFromCells(['study sauce.ipynb', 'rpc.ipynb'])
 //    var spec = getRpcSpecFromCells('study sauce.ipynb');
     console.log(spec)
@@ -18,10 +82,21 @@ if(typeof $$ !== 'undefined') {
     console.log(juypter_ops)
 //    juypter_ops.marketing.studysauce.copyStudy({email: 'megamindbrian@gmail.com'})
     juypter_ops.core.rpc.getPermissions({search: null})
-        .then(r => $$.sendResult(r))
-        .catch(e => $$.sendError(e))
+        .then(r => $.sendResult(r))
+        .catch(e => $.sendError(e))
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
@@ -53,33 +128,37 @@ var groupPermissions = importer.import('test get permissions');
 <ul>
 <li>Calls the <code>getEnvironment</code> function with the argument <code>'STUDY_LOCAL'</code>, which likely sets up a specific environment for the application.</li>
 </ul>
-<h3>Checking for $$ Variable</h3>
-<pre><code class="language-javascript">if (typeof $$!== 'undefined') {
+<h3>Checking for $ Variable</h3>
+<pre><code class="language-javascript">if (typeof $!== 'undefined') {
    ...
 }
 </code></pre>
 <ul>
-<li>Checks if the global object <code>$$</code> is defined and not <code>undefined</code>.</li>
+<li>Checks if the global object <code>$</code> is defined and not <code>undefined</code>.</li>
 <li>If it is defined, the code inside the <code>if</code> block is executed.</li>
 </ul>
-<h3>Executing Code with $$ Defined</h3>
-<pre><code class="language-javascript">$$
+<h3>Executing Code with $ Defined</h3>
+<pre><code class="language-javascript">$
 var spec = getRpcSpecFromCells(['study sauce.ipynb', 'rpc.ipynb'])
 //   var spec = getRpcSpecFromCells('study sauce.ipynb');
 console.log(spec)
 var juypter_ops = getRpcFromSpec(spec)
 console.log(juypter_ops)
 juypter_ops.core.rpc.getPermissions({search: null})
-   .then(r =&gt; $$.sendResult(r))
-   .catch(e =&gt; $$.sendError(e))
+   .then(r =&gt; $.sendResult(r))
+   .catch(e =&gt; $.sendError(e))
 </code></pre>
 <ul>
-<li>Executes the code inside the <code>if</code> block when <code>$$</code> is defined.</li>
+<li>Executes the code inside the <code>if</code> block when <code>$</code> is defined.</li>
 <li>Calls <code>getRpcSpecFromCells</code> with an array of notebook files and logs the resulting OpenAPI specification.</li>
 <li>Calls <code>getRpcFromSpec</code> with the obtained specification and logs the resulting RPC operations.</li>
 <li>Calls the <code>getPermissions</code> RPC operation on the <code>core.rpc</code> object and:
 <ul>
-<li>Sends the result to <code>$$</code> using <code>sendResult</code> when the promise resolves.</li>
-<li>Sends an error to <code>$$</code> using <code>sendError</code> when the promise rejects.</li>
+<li>Sends the result to <code>$</code> using <code>sendResult</code> when the promise resolves.</li>
+<li>Sends an error to <code>$</code> using <code>sendError</code> when the promise rejects.</li>
 </ul></li>
 </ul>
+
+</body>
+
+</html>

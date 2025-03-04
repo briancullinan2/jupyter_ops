@@ -1,8 +1,60 @@
-<p>Here's a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>shell parse</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../shell-parse/index.html">shell-parse</a>
+    <br /><br />
+    <a href="./shell_parse.html">shell parse</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../shell-parse/index.html">shell-parse</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code:</p>
 <p>The code is a parser for a Bash-like shell scripting language, using regular expressions to tokenize the input string and apply specific parsing rules for quoting and syntax. The parser handles various syntax elements, including single and double quotes, control characters and keywords, and backslashes and dollar signs, to correctly interpret the input string.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 // '<(' is process substitution operator and
 // can be parsed the same as control operator
 var CONTROL = '(?:' + [
@@ -17,7 +69,10 @@ var CONTROL = '(?:' + [
 	'<\\&',
 	'[&;()|<>]'
 ].join('|') + ')';
-var controlRE = new RegExp('^' + CONTROL + '$');
+var controlRE = new RegExp('^' + CONTROL + '
+</body>
+
+</html>);
 var META = '|&;()<> \\t';
 var SINGLE_QUOTE = '"((\\\\"|[^"])*?)"';
 var DOUBLE_QUOTE = '\'((\\\\\'|[^\'])*?)\'';
@@ -25,7 +80,10 @@ var hash = /^#$/;
 
 var SQ = "'";
 var DQ = '"';
-var DS = '$';
+var DS = '
+</body>
+
+</html>;
 
 var TOKEN = '';
 var mult = 0x100000000; // Math.pow(16, 8);
@@ -57,7 +115,10 @@ function getVar(env, pre, key) {
 	if (typeof r === 'undefined' && key != '') {
 		r = '';
 	} else if (typeof r === 'undefined') {
-		r = '$';
+		r = '
+</body>
+
+</html>;
 	}
 
 	if (typeof r === 'object') {
@@ -102,7 +163,10 @@ function parseInternal(string, env, opts) {
 		//
 		// 1. inside single quotes, all characters are printed literally.
 		// 2. inside double quotes, all characters are printed literally
-		//    except variables prefixed by '$' and backslashes followed by
+		//    except variables prefixed by '
+</body>
+
+</html> and backslashes followed by
 		//    either a double quote or another backslash.
 		// 3. outside of any quotes, backslashes are treated as escape
 		//    characters and not printed (unless they are themselves escaped)
@@ -230,6 +294,17 @@ module.exports = function parse(s, env, opts) {
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <p>The code appears to be a parser for Bash-like shell scripting language. It uses regular expressions to scan and tokenize the input string, and then applies specific parsing rules to handle quoting and other syntax.</p>
 <p><strong>Variables and Constants</strong></p>
@@ -254,3 +329,7 @@ module.exports = function parse(s, env, opts) {
 <li>Quoting: the parser handles quoting by identifying the quoting character (single or double quote) and then processing the inner string accordingly.</li>
 </ol>
 <p>The parser also handles control characters and keywords, as well as backslashes and dollar signs in the input string.</p>
+
+</body>
+
+</html>

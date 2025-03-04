@@ -1,7 +1,63 @@
-<p>This code configures authentication with the Google Custom Search Engine API by locating credentials and defining the necessary scope, providing a function to obtain an authorized client for API requests.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>authorize custom search</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_search_api/index.html">google search api</a>
+    <br /><br />
+    <a href="./search_the_web.html">search the web</a>
+<br /><br />
+<a href="./test_custom_search.html">test custom search</a>
+<br /><br />
+<a href="./authorize_custom_search.html">authorize custom search</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_search_api/index.html">google search api</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code configures authentication with the Google Custom Search Engine API by locating credentials and defining the necessary scope, providing a function to obtain an authorized client for API requests.</p>
 
 
-<pre><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+<pre class="javascript"><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 var credentials;
 if(fs.existsSync('./sheet to web-8ca5784e0b05.json')) {
     credentials = path.resolve('./sheet to web-8ca5784e0b05.json');
@@ -23,6 +79,17 @@ function authorizeSearch() {
 
 module.exports = authorizeSearch;
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet sets up authentication with the Google Custom Search Engine API.</p>
 <p>Here's a breakdown:</p>
@@ -49,3 +116,7 @@ module.exports = authorizeSearch;
 <li>The <code>authorizeSearch</code> function is exported as a module, allowing other parts of the application to use it for authentication.</li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

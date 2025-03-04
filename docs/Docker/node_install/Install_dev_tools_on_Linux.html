@@ -1,11 +1,78 @@
-<p>This script updates package lists and installs a collection of development, networking, and system administration tools on a Debian-based system.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Install dev tools on Linux</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../node_install/index.html">node install</a>
+    <br /><br />
+    <a href="./use_nodejs.html">use nodejs</a>
+<br /><br />
+<a href="./Install_dev_tools_on_Linux.html">Install dev tools on Linux</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../node_install/index.html">node install</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This script updates package lists and installs a collection of development, networking, and system administration tools on a Debian-based system.</p>
 
 
-<pre><code>mkdir /var/lib/apt/lists/partial
+<pre class="bash"><code>mkdir /var/lib/apt/lists/partial
 apt-get -qq update
 apt-get install -y --fix-missing git curl wget zip unzip vim dos2unix g++ python net-tools make websockify novnc 
 
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet updates the package lists and installs several packages on a Debian-based system.</p>
 <p>Here's a breakdown:</p>
@@ -44,3 +111,7 @@ apt-get install -y --fix-missing git curl wget zip unzip vim dos2unix g++ python
 </ul></li>
 </ol>
 <p>In essence, this code prepares a Debian-based system by updating package lists and installing a set of commonly used tools for development, networking, and system administration.</p>
+
+</body>
+
+</html>

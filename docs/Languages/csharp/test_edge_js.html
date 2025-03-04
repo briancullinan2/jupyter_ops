@@ -1,8 +1,68 @@
-<p>Here is a summary of the code breakdown in one or two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>test edge.js</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../csharp/index.html">csharp</a>
+    <br /><br />
+    <a href="./rosetta_euler_csharp_005.html">rosetta euler csharp 005</a>
+<br /><br />
+<a href="./test_edge_js.html">test edge.js</a>
+<br /><br />
+<a href="./list_csharp_namespaces.html">list csharp namespaces</a>
+<br /><br />
+<a href="./list_csharp_classes.html">list csharp classes</a>
+<br /><br />
+<a href="./get_csharp_params.html">get csharp params</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../csharp/index.html">csharp</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code breakdown in one or two sentences:</p>
 <p>This code imports necessary modules, defines constants, and creates a.NET function using <code>edge-js</code> to call a function from a C# assembly. The <code>testEdge</code> function is then exported as a module to be used elsewhere.</p>
 
 
-<pre><code>const path = require('path')
+<pre class="javascript"><code>const path = require('path')
 const edge = require('edge-js');
 //const dotnet = require('node-api-dotnet');
 const { safeurl } = importer.import('domain cache tools')
@@ -30,6 +90,17 @@ async function testEdge() {
 
 module.exports = testEdge
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <p><strong>Requires and Imports</strong></p>
@@ -69,3 +140,7 @@ module.exports = testEdge
 <ul>
 <li><code>module.exports = testEdge</code>: Exports the <code>testEdge</code> function as a module.</li>
 </ul>
+
+</body>
+
+</html>

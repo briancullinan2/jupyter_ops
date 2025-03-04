@@ -1,7 +1,63 @@
-<p>This code implements a basic JavaScript mocking framework called <code>AutoMock</code> that allows you to replace functions, objects, or properties with stubs during testing. It uses <code>underscore</code> for utility functions and tracks original and mock objects to prevent circular references.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>mock all properties and functions using rewire</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../autorewire/index.html">autorewire</a>
+    <br /><br />
+    <a href="./install_autorewire.html">install autorewire</a>
+<br /><br />
+<a href="./mock_all_properties_and_functions_using_rewire.html">mock all properties and functions using rewire</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../autorewire/index.html">autorewire</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code implements a basic JavaScript mocking framework called <code>AutoMock</code> that allows you to replace functions, objects, or properties with stubs during testing. It uses <code>underscore</code> for utility functions and tracks original and mock objects to prevent circular references.</p>
 
 
-<pre><code>var _ = require('underscore');
+<pre class="javascript"><code>var _ = require('underscore');
 _.mixin(require('underscore.string').exports());
 
 var path = require('path');
@@ -154,6 +210,17 @@ module.exports = new AutoMock(module.parent);
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a simple mocking framework called <code>AutoMock</code> for JavaScript.</p>
 <p>Here's a breakdown:</p>
 <p><strong>1. Setup:</strong></p>
@@ -206,3 +273,7 @@ module.exports = new AutoMock(module.parent);
 </ul></li>
 </ul>
 <p><strong>In summary:</strong> This code implements a basic mocking framework that allows you to replace functions, objects, or properties with stubs during testing. It uses <code>underscore</code> for utility functions and tracks original and mock objects to prevent circular references.</p>
+
+</body>
+
+</html>

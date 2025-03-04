@@ -1,7 +1,71 @@
-<p>This code generates a basic pie chart using D3.js, taking data as input and returning an SVG representation of the chart with labeled slices.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>d3 pie chart</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../d3/index.html">d3</a>
+    <br /><br />
+    <a href="./Create_a_word-cloud.html">Create a word-cloud</a>
+<br /><br />
+<a href="./d3_tiered_pie_chart.html">d3 tiered pie chart</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./d3_pie_chart.html">d3 pie chart</a>
+<br /><br />
+<a href="./Format_d3_tree.html">Format d3 tree</a>
+<br /><br />
+<a href="./Display_d3_tree.html">Display d3 tree</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../d3/index.html">d3</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code generates a basic pie chart using D3.js, taking data as input and returning an SVG representation of the chart with labeled slices.</p>
 
 
-<pre><code>var D3Node = require('d3-node');
+<pre class="javascript"><code>var D3Node = require('d3-node');
 var d3n = new D3Node();
 var d3 = d3n.d3;
 
@@ -56,6 +120,17 @@ module.exports = d3PieChart;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code generates a simple pie chart visualization using D3.js.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -89,3 +164,7 @@ module.exports = d3PieChart;
 </ul></li>
 </ol>
 <p>In essence, this code takes data and generates a basic pie chart visualization using D3.js, allowing for a clear representation of proportions.</p>
+
+</body>
+
+</html>

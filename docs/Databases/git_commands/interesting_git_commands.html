@@ -1,12 +1,87 @@
-<p>These Git commands help you visualize and explore your project's commit history, with options for displaying a graphical representation, listing branches, and controlling the level of detail in the output.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>interesting git commands</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../git_commands/index.html">git commands</a>
+    <br /><br />
+    <a href="./git_discard_whitespace.html">git discard whitespace</a>
+<br /><br />
+<a href="./compare_git_branches.html">compare git branches</a>
+<br /><br />
+<a href="./interesting_git_commands.html">interesting git commands</a>
+<br /><br />
+<a href="./cache_git_credentials.html">cache git credentials</a>
+<br /><br />
+<a href="./git_auto_commit.html">git auto commit</a>
+<br /><br />
+<a href="./git_auto_rebase.html">git auto rebase</a>
+<br /><br />
+<a href="./git_add_submodule.html">git add submodule</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../git_commands/index.html">git commands</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>These Git commands help you visualize and explore your project's commit history, with options for displaying a graphical representation, listing branches, and controlling the level of detail in the output.</p>
 
 
-<pre><code>git log --graph --oneline --decorate --all
+<pre class="bash"><code>git log --graph --oneline --decorate --all
 
 git log --graph --all
 
 git show-branch --list
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>These are Git commands used for visualizing and navigating your project's commit history. Let's break them down:</p>
 <p><strong>1. <code>git log --graph --oneline --decorate --all</code></strong></p>
@@ -31,3 +106,7 @@ git show-branch --list
 <li>The first two commands provide different ways to visualize your commit history, with varying levels of detail.</li>
 <li>The third command simply lists all the branches in your repository.</li>
 </ul>
+
+</body>
+
+</html>

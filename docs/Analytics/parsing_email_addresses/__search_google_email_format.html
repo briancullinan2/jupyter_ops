@@ -1,7 +1,61 @@
-<p>This code provides a function <code>getEmailFormat</code> that searches the web for email address formats associated with a given query, combining results from both a specific site (rocketreach.co) and a general search. It extracts potential email addresses using a regular expression and returns a list of found formats.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>, search google email format</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../parsing_email_addresses/index.html">parsing email addresses</a>
+    <br /><br />
+    <a href="./__search_google_email_format.html">, search google email format</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../parsing_email_addresses/index.html">parsing email addresses</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a function <code>getEmailFormat</code> that searches the web for email address formats associated with a given query, combining results from both a specific site (rocketreach.co) and a general search. It extracts potential email addresses using a regular expression and returns a list of found formats.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var search = importer.import('search the web');
 
 async function getEmailFormat(q) {
@@ -19,6 +73,17 @@ async function getEmailFormat(q) {
 
 module.exports = getEmailFormat
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code defines an asynchronous function <code>getEmailFormat</code> that searches the web for email address formats related to a given query.</p>
 <p>Here's a breakdown:</p>
@@ -62,3 +127,7 @@ module.exports = getEmailFormat
 <li>Exports the <code>getEmailFormat</code> function for use in other parts of the application.</li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

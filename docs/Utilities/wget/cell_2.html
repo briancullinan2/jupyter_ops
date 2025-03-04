@@ -1,9 +1,80 @@
-<p>Here is a summary of the code in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 2</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../wget/index.html">wget</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../wget/index.html">wget</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code in two sentences:</p>
 <p>This code uses the <code>wget</code> command to download a website's documentation section, including its dependencies, using a recursive approach to download only the required files. The code includes numerous options to customize the download process, such as avoiding overwrites and waiting between downloads to avoid overwhelming the server.</p>
 
 
-<pre><code>wget --mirror --level=2 --no-parent --convert-links --html-extension --no-host --no-clobber -N -c --accept-regex "/documentation/" --wait=1 --page-requisites https://www.excessiveplus.net/documentation
+<pre class="bash"><code>wget --mirror --level=2 --no-parent --convert-links --html-extension --no-host --no-clobber -N -c --accept-regex "/documentation/" --wait=1 --page-requisites https://www.excessiveplus.net/documentation
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p><strong>Code Breakdown</strong></p>
 <p>This code uses the <code>wget</code> command to download a website's documentation section. Here's a step-by-step explanation:</p>
@@ -24,3 +95,7 @@
 <li><code>https://www.excessiveplus.net/documentation</code>: The URL of the website's documentation section to download.</li>
 </ol>
 <p>In summary, this code downloads the documentation section of the website <code>https://www.excessiveplus.net/documentation</code> and its dependencies, using a recursive approach to download only the required files.</p>
+
+</body>
+
+</html>

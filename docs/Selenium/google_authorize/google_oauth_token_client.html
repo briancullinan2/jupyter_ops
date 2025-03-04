@@ -1,8 +1,66 @@
-<p>Here is a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>google oauth token client</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_authorize/index.html">google authorize</a>
+    <br /><br />
+    <a href="./google_oauth_token_client.html">google oauth token client</a>
+<br /><br />
+<a href="./use_selenium_to_authorize_Google_access.html">use selenium to authorize Google access</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_authorize/index.html">google authorize</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code:</p>
 <p>This JavaScript module handles OAuth2 authentication with Google Calendar using various external libraries and provides error handling and fallback scenarios to recover from connection issues. The module defines four primary functions: storing tokens, exchanging codes for OAuth2 tokens, error fallback, and renewing existing tokens, with the last function having incomplete documentation and implementation.</p>
 
 
-<pre><code>var readline = require('readline');
+<pre class="javascript"><code>var readline = require('readline');
 var process = require('process');
 var path = require('path');
 var fs = require('fs');
@@ -99,6 +157,17 @@ async function authorize(scopes = SCOPES) {
 module.exports = authorize;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Overview</strong></p>
 <p>This code is a JavaScript module that utilizes various external libraries to handle OAuth2 authentication with Google Calendar. The module appears to be designed to handle errors and fallback scenarios, allowing the application to recover from connection issues.</p>
 <p><strong>Breakdown</strong></p>
@@ -126,3 +195,7 @@ module.exports = authorize;
 <p>The <code>errorFallback</code> function is triggered when an error occurs during OAuth2 authentication. It checks if the error message indicates a connection issue or a problem with importing Selenium cells. If so, it prompts the user to visit the authorization URL and enter the code received. Once the code is entered, the <code>receiveCode</code> function is called to exchange the code for a token.</p>
 <h3>Notes</h3>
 <p>The code is written in a asynchronous manner, using <code>async/await</code> syntax to handle promises. The <code>process.stdout.isTTY</code> property is used to detect if the console is a terminal, but it is commented out. The <code>importer</code> variable is imported from another module, but the <code>runSeleniumCell</code> import is commented out.</p>
+
+</body>
+
+</html>

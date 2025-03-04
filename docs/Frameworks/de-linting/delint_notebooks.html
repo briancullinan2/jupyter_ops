@@ -1,7 +1,65 @@
-<p>This code provides a function <code>delintCode</code> that lints code using ESLint, optionally fixes identified issues, and returns both the original and fixed code along with linting results.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>delint notebooks</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../de-linting/index.html">de-linting</a>
+    <br /><br />
+    <a href="./delint_notebooks.html">delint notebooks</a>
+<br /><br />
+<a href="./delint_specific_cells.html">delint specific cells</a>
+<br /><br />
+<a href="./test_de-linting_service.html">test de-linting service</a>
+<br /><br />
+<a href="./delint_using_webstorm.html">delint using webstorm</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../de-linting/index.html">de-linting</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides a function <code>delintCode</code> that lints code using ESLint, optionally fixes identified issues, and returns both the original and fixed code along with linting results.</p>
 
 
-<pre><code>var CLIEngine = require("eslint").CLIEngine;
+<pre class="javascript"><code>var CLIEngine = require("eslint").CLIEngine;
 
 var esLintConfig = {
     parser: "babel-eslint",
@@ -52,6 +110,17 @@ module.exports = delintCode;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a function <code>delintCode</code> that performs code linting using ESLint and optionally fixes identified issues.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -94,3 +163,7 @@ module.exports = delintCode;
 <li>Exports the <code>delintCode</code> function for use in other parts of the application.</li>
 </ul></li>
 </ol>
+
+</body>
+
+</html>

@@ -1,13 +1,82 @@
-<p>This code uses the <code>iltorb</code> library to synchronously compress data in Node.js, handling potential errors during the process.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>encode files with brotli</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../compress/index.html">compress</a>
+    <br /><br />
+    <a href="./Minified_lzw_compression.html">Minified lzw compression</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./encode_files_with_brotli.html">encode files with brotli</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../compress/index.html">compress</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code uses the <code>iltorb</code> library to synchronously compress data in Node.js, handling potential errors during the process.</p>
 
 
-<pre><code>const {compressSync} = require('iltorb');
+<pre class="javascript"><code>const {compressSync} = require('iltorb');
 
 try {
   var output = compressSync(input, {quality: 11});
 } catch(err) {
   // ...
 }</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet demonstrates the use of the <code>iltorb</code> library for data compression in Node.js.</p>
 <p>Here's a breakdown:</p>
@@ -27,3 +96,7 @@ try {
 </ul></li>
 </ol>
 <p><strong>In essence, this code snippet demonstrates how to use the <code>iltorb</code> library to compress data synchronously in Node.js, with error handling in place to gracefully handle any potential issues.</strong></p>
+
+</body>
+
+</html>

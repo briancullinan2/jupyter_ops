@@ -1,7 +1,61 @@
-<p>This code defines a function <code>testCells</code> that executes JavaScript code within a Mocha testing framework, enabling the testing of code snippets or Jupyter notebook cells.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>test cells</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../test_runner/index.html">test runner</a>
+    <br /><br />
+    <a href="./test_cells.html">test cells</a>
+<br /><br />
+<a href="./test_runner.html">test runner</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../test_runner/index.html">test runner</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code defines a function <code>testCells</code> that executes JavaScript code within a Mocha testing framework, enabling the testing of code snippets or Jupyter notebook cells.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var path = require('path');
 var Module = require('module').Module;
 var Mocha = require('mocha');
@@ -55,6 +109,17 @@ function testCells(cells, ctx = {}) {
 module.exports = testCells;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a function <code>testCells</code> that executes JavaScript code within a Mocha test runner environment.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -96,3 +161,7 @@ module.exports = testCells;
 </ol>
 <p><strong>In essence:</strong></p>
 <p>This code provides a way to execute JavaScript code cells within a Mocha test environment, allowing for testing of code snippets or Jupyter notebook cells. It handles code interpretation, test setup, and result handling.</p>
+
+</body>
+
+</html>

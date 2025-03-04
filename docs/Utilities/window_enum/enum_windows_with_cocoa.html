@@ -1,8 +1,62 @@
-<p>Here's a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>enum windows with cocoa</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../window_enum/index.html">window enum</a>
+    <br /><br />
+    <a href="./enum_windows_with_cocoa.html">enum windows with cocoa</a>
+<br /><br />
+<a href="./lookup_window_by.html">lookup window by</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../window_enum/index.html">window enum</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code:</p>
 <p>This macOS code retrieves a list of open windows and their titles, storing them in global variables and using two functions: <code>enumWindows</code> to get the list of windows and <code>getTitle</code> to retrieve the title of each window. The <code>main</code> function iterates over the list of windows, calling <code>getTitle</code> to print each title to the console.</p>
 
 
-<pre><code>
+<pre class="objective-c"><code>
 @import Cocoa;
 
 static NSArray* windows;
@@ -56,6 +110,17 @@ int main(int argc, char *argv[])
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/objective-c.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Import and Global Variables</h3>
 <ul>
@@ -94,3 +159,7 @@ int main(int argc, char *argv[])
 <li>The code uses <code>extern &quot;C&quot;</code> to ensure compatibility with C++ code.</li>
 <li>The <code>#if __cplusplus</code> and <code>#endif</code> directives are used to conditionally include C++-specific code.</li>
 </ul>
+
+</body>
+
+</html>

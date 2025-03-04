@@ -1,7 +1,65 @@
-<p>This code uses Selenium to scrape location names and descriptions from Google Maps search results, handling pagination to retrieve all available data.  It then prepares the data for further processing or storage, likely in JSON format.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>google maps data list</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../scraping/index.html">scraping</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./google_maps_data_list.html">google maps data list</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../scraping/index.html">scraping</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code uses Selenium to scrape location names and descriptions from Google Maps search results, handling pagination to retrieve all available data.  It then prepares the data for further processing or storage, likely in JSON format.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var runSeleniumCell = importer.import('selenium cell');
 var fs = require('fs');
 var path = require('path');
@@ -60,14 +118,25 @@ function getNearbyJSON(place) {
 }
 module.exports = getNearbyJSON;
 
-if(typeof $$ !== 'undefined') {
-    $$.async();
+if(typeof $ !== 'undefined') {
+    $.async();
     runSeleniumCell('google maps data list', false)
         .then(func => func())
-        .then(r => $$.sendResult(r))
-        .catch(e => $$.sendError(e))
+        .then(r => $.sendResult(r))
+        .catch(e => $.sendError(e))
 }
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet uses Selenium to scrape location data from Google Maps search results.</p>
 <p>Here's a breakdown:</p>
@@ -101,3 +170,7 @@ if(typeof $$ !== 'undefined') {
 </ol>
 <p><strong>Purpose:</strong></p>
 <p>This code automates the process of scraping location data from Google Maps search results for a given location. It fetches both the initial page and subsequent pages of results, extracts relevant information, and prepares it for further processing or storage.</p>
+
+</body>
+
+</html>

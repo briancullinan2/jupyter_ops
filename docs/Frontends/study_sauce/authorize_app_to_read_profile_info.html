@@ -1,8 +1,74 @@
-<p>Here's a two-sentence summary of the code breakdown:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>authorize app to read profile info</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../study_sauce/index.html">study sauce</a>
+    <br /><br />
+    <a href="./convert_anki_package_to_study_sauce.html">convert anki package to study sauce</a>
+<br /><br />
+<a href="./render_study_sauce_cards_page.html">render study sauce cards page</a>
+<br /><br />
+<a href="./authorize_app_to_read_profile_info.html">authorize app to read profile info</a>
+<br /><br />
+<a href="./receive_an_authentication_code_from_google.html">receive an authentication code from google</a>
+<br /><br />
+<a href="./create_a_study_sauce_user_directory.html">create a study sauce user directory</a>
+<br /><br />
+<a href="./package_json.html">package.json</a>
+<br /><br />
+<a href="./study-demo_js.html">study-demo.js</a>
+<br /><br />
+<a href="./study_sauce_express_service.html">study sauce express service</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../study_sauce/index.html">study sauce</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code breakdown:</p>
 <p>The code requires several modules, including <code>path</code>, <code>fs</code>, and <code>google-auth-library</code>, and imports custom functions from the <code>../Core</code> module for interacting with Google Sheets. The <code>authorizeProfile</code> function is the main function, which handles OAuth2 authentication, user data retrieval, and redirects to the <code>home</code> page with the user link.</p>
 
 
-<pre><code>var path = require('path');
+<pre class="javascript"><code>var path = require('path');
 var fs = require('fs');
 var util = require('util');
 var cookie = require('cookie');
@@ -58,6 +124,17 @@ module.exports = authorizeProfile;
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <h3>Requires</h3>
 <p>The code requires several modules:</p>
@@ -104,3 +181,7 @@ module.exports = authorizeProfile;
 </ul>
 <h3>Exports</h3>
 <p>The code exports the <code>authorizeProfile</code> function.</p>
+
+</body>
+
+</html>

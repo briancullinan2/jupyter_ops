@@ -1,8 +1,72 @@
-<p>Here is a summary of the code breakdown in one or two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 1</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../pyimport/index.html">pyimport</a>
+    <br /><br />
+    <a href="./get_python_params.html">get python params</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./questions____re_sub_r____________q__flags_re_IGNORECASE__strip__.html">questions = [re.sub(r'|\|+', '', q, flags=re.IGNORECASE).strip()</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./run_python_cells.html">run python cells</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../pyimport/index.html">pyimport</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the code breakdown in one or two sentences:</p>
 <p>The code imports necessary modules and initializes a dictionary to store module instances, and then defines several functions for manipulating URLs, importing notebook modules, and building dynamic libraries. The <code>import_notebook</code> function imports notebook modules based on a query string and context, and uses different methods to import code depending on the language of the notebook.</p>
 
 
-<pre><code>import types
+<pre class="python"><code>import types
 import ctypes
 import os
 import re
@@ -76,6 +140,17 @@ __all__ = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules and Setting Up Variables</h3>
 <pre><code class="language-python">import types
@@ -119,3 +194,7 @@ modules = {}
 <li>The <code>build_dylib</code> function (not shown in this code snippet) is used to build a dynamic library from C++ code.</li>
 <li>The <code>get_functions</code> function (not shown in this code snippet) is used to extract function definitions from C++ code.</li>
 </ul>
+
+</body>
+
+</html>

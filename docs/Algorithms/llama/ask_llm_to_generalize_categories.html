@@ -1,8 +1,80 @@
-<p>Here is a two-sentence summary:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>ask llm to generalize categories</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../llama/index.html">llama</a>
+    <br /><br />
+    <a href="./search_llama.html">search llama</a>
+<br /><br />
+<a href="./ask_llm_about_categories.html">ask llm about categories</a>
+<br /><br />
+<a href="./ask_llm_to_generalize_categories.html">ask llm to generalize categories</a>
+<br /><br />
+<a href="./ask_llm_for_a_shorter_list_of_categories.html">ask llm for a shorter list of categories</a>
+<br /><br />
+<a href="./ask_llm_about_functions.html">ask llm about functions</a>
+<br /><br />
+<a href="./ask_llm_about_code.html">ask llm about code</a>
+<br /><br />
+<a href="./ask_llm_about_notebooks.html">ask llm about notebooks</a>
+<br /><br />
+<a href="./ask_llm_to_summerize.html">ask llm to summerize</a>
+<br /><br />
+<a href="./store_llama_function.html">store llama function</a>
+<br /><br />
+<a href="./store_all_notebook_llm_functions.html">store all notebook llm functions</a>
+<br /><br />
+<a href="./create_llm_session.html">create llm session</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../llama/index.html">llama</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary:</p>
 <p>The <code>askLlamaGeneralizeCategories</code> function takes an optional list of categories as input, generates a shorter list by asking the LLM to generalize, and recursively optimizes the list to a maximum of 100 items. The function also updates the <code>functionCache</code> object by asking the LLM to generalize categories for each function in the cache, if the <code>update</code> flag is set.</p>
 
 
-<pre><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')
+<pre class="javascript"><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')
 const { askLlamaAboutFunctions } = importer.import('ask llm about functions')
 const { storeLlamaFunction } = importer.import('store llama function')
 const { askLlamaToGeneralizeAll } = importer.import('ask llm for a shorter list of categories')
@@ -50,6 +122,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <h2>Code Breakdown</h2>
 <h3>Imported Functions</h3>
 <p>The code imports four functions from an <code>importer</code> module:</p>
@@ -82,3 +165,7 @@ module.exports = {
 </ol>
 <h4>Export</h4>
 <p>The <code>askLlamaGeneralizeCategories</code> function is exported as a module.</p>
+
+</body>
+
+</html>

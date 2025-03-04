@@ -1,8 +1,68 @@
-<p>Here is a summary of the HTML and CSS code breakdown in two sentences:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>remote desktop client</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../discord_remote/index.html">discord remote</a>
+    <br /><br />
+    <a href="./discord_remote_control.html">discord remote control</a>
+<br /><br />
+<a href="./discord_remote_proxy_server.html">discord remote proxy server</a>
+<br /><br />
+<a href="./express_automation_routes.html">express automation routes</a>
+<br /><br />
+<a href="./remote_desktop_client.html">remote desktop client</a>
+<br /><br />
+<a href="./client_input_remote_code.html">client input remote code</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../discord_remote/index.html">discord remote</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a summary of the HTML and CSS code breakdown in two sentences:</p>
 <p>The HTML document has a standard structure with a <code>&lt;head&gt;</code> for metadata and external links, and a <code>&lt;body&gt;</code> for content, and is secured by a Content Security Policy (CSP) that specifies allowed sources for content execution. The CSS styles define the layout and appearance of the HTML elements, applying various properties to elements such as <code>.container</code>, <code>.livedev</code>, and specific HTML tags like <code>h1</code>, <code>h2</code>, <code>img</code>, and <code>iframe</code>.</p>
 
 
-<pre><code><html>
+<pre class="html"><code><html>
 <head>
   <meta http-equiv="Content-Security-Policy" content="default-src *;
    img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
@@ -174,6 +234,17 @@
 
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>HTML and CSS Code Breakdown</strong></p>
 <h3>HTML Structure</h3>
 <p>The HTML document has a standard structure:</p>
@@ -207,3 +278,7 @@
 <li><code>.container p label</code> and <code>.container p button</code>: sets the border, border radius, background color, and position</li>
 </ul>
 <p>Note: The styles are applied to specific HTML elements using CSS selectors. The <code>.container</code> and <code>.livedev</code> classes are used to target these elements.</p>
+
+</body>
+
+</html>

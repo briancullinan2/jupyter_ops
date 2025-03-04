@@ -1,18 +1,85 @@
-<p>This code defines a function called <code>testLogin</code> that automates the process of logging into a website by navigating to the login page, entering credentials, and submitting the login form.  It is likely used for testing purposes or integration with other tools.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Test avidbrain</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../avidbrain/index.html">avidbrain</a>
+    <br /><br />
+    <a href="./Test_avidbrain.html">Test avidbrain</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../avidbrain/index.html">avidbrain</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code defines a function called <code>testLogin</code> that automates the process of logging into a website by navigating to the login page, entering credentials, and submitting the login form.  It is likely used for testing purposes or integration with other tools.</p>
 
 
-<pre><code>function testLogin() {
+<pre class="javascript"><code>function testLogin() {
     return client.url('http://web.avidbrain.com/#/index')
         .click('a*=Log In')
         .click('.emailInputBox')
         .keys('.emailInputBox', 'megamindbrian@gmail.com')
         .click('[type="password"]')
-        .keys('[type="password"]', 'P4$$w0rd!')
+        .keys('[type="password"]', 'P4$w0rd!')
         .click('[type="submit"]')
         .pause(1000)
 };
 module.exports = testLogin;
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code defines a function called <code>testLogin</code> that automates the process of logging into a website.</p>
 <p>Here's a breakdown:</p>
@@ -22,9 +89,13 @@ module.exports = testLogin;
 <li><p><strong><code>.click('.emailInputBox')</code>:</strong> Clicks on an element with the class &quot;emailInputBox&quot;, presumably an email input field.</p></li>
 <li><p><strong><code>.keys('.emailInputBox', 'megamindbrian@gmail.com')</code>:</strong> Types the email address &quot;megamindbrian@gmail.com&quot; into the email input field.</p></li>
 <li><p><strong><code>.click('[type=&quot;password&quot;]')</code>:</strong> Clicks on an element with the type attribute &quot;password&quot;, likely a password input field.</p></li>
-<li><p><strong><code>.keys('[type=&quot;password&quot;]', 'P4$$w0rd!')</code>:</strong> Types the password &quot;P4$$w0rd!&quot; into the password input field.</p></li>
+<li><p><strong><code>.keys('[type=&quot;password&quot;]', 'P4$w0rd!')</code>:</strong> Types the password &quot;P4$w0rd!&quot; into the password input field.</p></li>
 <li><p><strong><code>.click('[type=&quot;submit&quot;]')</code>:</strong> Clicks on a submit button, likely to log in.</p></li>
 <li><p><strong><code>.pause(1000)</code>:</strong> Pauses the script execution for 1000 milliseconds (1 second) to allow the login process to complete.</p></li>
 <li><p><strong><code>module.exports = testLogin;</code>:</strong> Exports the <code>testLogin</code> function, making it available for use in other parts of the application.</p></li>
 </ul>
 <p>In essence, this code is a test script that automates the login process for a website, likely used for testing purposes or integration with other tools.</p>
+
+</body>
+
+</html>

@@ -1,7 +1,69 @@
-<p>The <code>filterDistant</code> function takes a list of events and a time threshold, returning a new list containing only events that are within the specified time window from the previous event.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Number of days between events</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../dates/index.html">dates</a>
+    <br /><br />
+    <a href="./find_Tuesdays_late_in_the_month.html">find Tuesdays late in the month</a>
+<br /><br />
+<a href="./Convert_a_date_to_ISO.html">Convert a date to ISO</a>
+<br /><br />
+<a href="./sum_a_list_of_events.html">sum a list of events</a>
+<br /><br />
+<a href="./Number_of_days_between_events.html">Number of days between events</a>
+<br /><br />
+<a href="./display_recurrence_line_graph.html">display recurrence line graph</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../dates/index.html">dates</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>The <code>filterDistant</code> function takes a list of events and a time threshold, returning a new list containing only events that are within the specified time window from the previous event.</p>
 
 
-<pre><code>// subtract the events from the previous one
+<pre class="javascript"><code>// subtract the events from the previous one
 function filterDistant(events, days = 28) {
     var contributing = [];
     events.sort((a, b) => a.start - b.start);
@@ -26,6 +88,17 @@ function filterDistant(events, days = 28) {
 module.exports = filterDistant;
 
     </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This JavaScript code defines a function called <code>filterDistant</code> that filters a list of events based on a specified time threshold.</p>
 <p>Here's a breakdown:</p>
@@ -64,3 +137,7 @@ module.exports = filterDistant;
 </ul></li>
 </ol>
 <p><strong>In essence, this code filters a list of events, keeping only those that are within a specified time window (defaulting to 28 days) from the previous event.</strong></p>
+
+</body>
+
+</html>

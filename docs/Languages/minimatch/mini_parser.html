@@ -1,7 +1,65 @@
-<p>This code parses simplified glob patterns, converting them into regular expressions for matching files and directories. It handles special characters, escaping, and nested patterns to accurately represent the glob syntax in a regular expression format.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>mini parser</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../minimatch/index.html">minimatch</a>
+    <br /><br />
+    <a href="./__expand.html">, expand</a>
+<br /><br />
+<a href="./mini_parser.html">mini parser</a>
+<br /><br />
+<a href="./minimatch.html">minimatch</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../minimatch/index.html">minimatch</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code parses simplified glob patterns, converting them into regular expressions for matching files and directories. It handles special characters, escaping, and nested patterns to accurately represent the glob syntax in a regular expression format.</p>
 
 
-<pre><code>var reSpecials = charSet('().*{}+?[]^$\\!')
+<pre class="javascript"><code>var reSpecials = charSet('().*{}+?[]^$\\!')
 
 // replace stuff like \* with *
 function globUnescape (s) {
@@ -321,7 +379,10 @@ function parse (pattern, isSub) {
 
     var dollar = ''
     if (nlAfter === '' && isSub !== SUBPARSE) {
-      dollar = '$'
+      dollar = '
+</body>
+
+</html>
     }
     var newRe = nlBefore + nlFirst + nlAfter + dollar + nlLast
     re = newRe
@@ -351,7 +412,10 @@ function parse (pattern, isSub) {
   }
 
   try {
-    var regExp = new RegExp('^' + re + '$', 'i')
+    var regExp = new RegExp('^' + re + '
+</body>
+
+</html>, 'i')
   } catch (er) {
     // If it was an invalid regular expression, then it can't match
     // anything.  This trick looks for a character after the end of
@@ -368,6 +432,17 @@ function parse (pattern, isSub) {
 
 module.exports = parse
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code implements a parser for a simplified glob pattern language, similar to the one used in shell commands.</p>
 <p>Here's a breakdown:</p>
@@ -403,3 +478,7 @@ module.exports = parse
 </ul></li>
 </ol>
 <p><strong>In essence, this code provides a way to convert glob patterns into regular expressions, enabling the matching of files and directories based on these patterns.</strong></p>
+
+</body>
+
+</html>

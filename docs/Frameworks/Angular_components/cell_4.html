@@ -1,13 +1,88 @@
-<p>Here is a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 4</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../Angular_components/index.html">Angular components</a>
+    <br /><br />
+    <a href="./Display_search_notebook_component.html">Display search notebook component</a>
+<br /><br />
+<a href="./Search_notebook_service.html">Search notebook service</a>
+<br /><br />
+<a href="./Display_code_results.html">Display code results</a>
+<br /><br />
+<a href="./Sockify_search_notebook_provider.html">Sockify search notebook provider</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./Display_login_form.html">Display login form</a>
+<br /><br />
+<a href="./Authentication_service.html">Authentication service</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../Angular_components/index.html">Angular components</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here is a two-sentence summary of the code:</p>
 <p>This code sets up a project environment by determining the user's home directory path, appending a project directory path, initializing a server, and establishing a connection to the server using Socket.IO. It then sends a &quot;close&quot; event to the server, likely to terminate the connection.</p>
 
 
-<pre><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+<pre class="typescript"><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 var project = PROFILE_PATH + '/universal';
 var server = require(project + '/src/server/sockify-server.js').sockifyServer(8000);
 var client = require('socket.io-client').connect('https://localhost:8000');
 client.emit('close');
 </code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <h3>Code Breakdown</h3>
 <h4>Environment Variable</h4>
@@ -48,3 +123,7 @@ client.emit('close');
 <ul>
 <li>This line sends a <code>close</code> event to the connected Socket.IO server.</li>
 </ul>
+
+</body>
+
+</html>

@@ -1,7 +1,81 @@
-<p>This code processes user commands, checks for duplicates, retrieves user settings, and prepares the command for potential execution, likely as a scheduled Google Calendar event.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>filter command permission</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../rpc/index.html">rpc</a>
+    <br /><br />
+    <a href="./rpc_groups.html">rpc groups</a>
+<br /><br />
+<a href="./get_cell_rpc_groups.html">get cell rpc groups</a>
+<br /><br />
+<a href="./rpc_permissions.html">rpc permissions</a>
+<br /><br />
+<a href="./test_get_permissions.html">test get permissions</a>
+<br /><br />
+<a href="./filter_command_permission.html">filter command permission</a>
+<br /><br />
+<a href="./store_rpc_result.html">store rpc result</a>
+<br /><br />
+<a href="./rpc_result.html">rpc result</a>
+<br /><br />
+<a href="./get_environment.html">get environment</a>
+<br /><br />
+<a href="./get_rpc_from_spec.html">get rpc from spec</a>
+<br /><br />
+<a href="./test_rpc_from_spec.html">test rpc from spec</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../rpc/index.html">rpc</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code processes user commands, checks for duplicates, retrieves user settings, and prepares the command for potential execution, likely as a scheduled Google Calendar event.</p>
 
 
-<pre><code>var importer = require('../Core');
+<pre class="javascript"><code>var importer = require('../Core');
 var getPermissions = importer.import('rpc permissions');
 var getDaysEvents = importer.import('days events');
 var getSettings = importer.import('google contact settings');
@@ -43,6 +117,17 @@ function filterCommand(command, date, id, user) {
 module.exports = filterCommand;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines a function <code>filterCommand</code> that processes a user command, checks for existing events, and prepares data for potential execution.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -69,3 +154,7 @@ module.exports = filterCommand;
 </ul></li>
 </ol>
 <p>In essence, this code prepares a command for execution by checking for existing events, retrieving user settings, and interpreting the command itself. It likely serves as a part of a system that manages user commands and schedules them as Google Calendar events.</p>
+
+</body>
+
+</html>

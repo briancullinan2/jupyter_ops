@@ -1,7 +1,67 @@
-<p>This code provides utilities for encoding and decoding out-of-band (OOB) data, a method used to send special instructions or metadata within a network stream.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>quakejs utilities</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../quakejs/index.html">quakejs</a>
+    <br /><br />
+    <a href="./quakejs_web_master.html">quakejs web master</a>
+<br /><br />
+<a href="./quakejs_connection.html">quakejs connection</a>
+<br /><br />
+<a href="./quakejs_parsing.html">quakejs parsing</a>
+<br /><br />
+<a href="./quakejs_utilities.html">quakejs utilities</a>
+<br /><br />
+<a href="./test_quakejs_master.html">test quakejs master</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../quakejs/index.html">quakejs</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code provides utilities for encoding and decoding out-of-band (OOB) data, a method used to send special instructions or metadata within a network stream.</p>
 
 
-<pre><code>
+<pre class="javascript"><code>
 function _formatOOB(data) {
 	var str = '\xff\xff\xff\xff' + data + '\x00';
 
@@ -45,6 +105,17 @@ module.exports = {
 }
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code defines two functions for handling out-of-band (OOB) data, a common technique used in network communication to send special instructions or metadata alongside regular data.</p>
 <p><strong><code>_formatOOB(data)</code>:</strong></p>
 <ul>
@@ -63,3 +134,7 @@ module.exports = {
 <li>Returns the stripped OOB data as a string.</li>
 </ul>
 <p>In essence, these functions provide a way to encode and decode messages that need to be treated differently from regular data within a network stream.</p>
+
+</body>
+
+</html>

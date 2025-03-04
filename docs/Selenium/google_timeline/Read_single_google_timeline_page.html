@@ -1,7 +1,71 @@
-<p>This code snippet extracts structured timeline data, such as dates, titles, durations, and locations, from a webpage, likely a social media platform or personal website. It uses XPath expressions to target specific elements and <code>chrono-node</code> to parse dates from the extracted text.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Read single google timeline page</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_timeline/index.html">google timeline</a>
+    <br /><br />
+    <a href="./Scrape_google_timeline.html">Scrape google timeline</a>
+<br /><br />
+<a href="./Read_single_google_timeline_page.html">Read single google timeline page</a>
+<br /><br />
+<a href="./Find_the_average_latitute_and_longitude_at_each_destination.html">Find the average latitute and longitude at each destination</a>
+<br /><br />
+<a href="./Reconcile_timeline_data_with_calendar.html">Reconcile timeline data with calendar</a>
+<br /><br />
+<a href="./Load_location_export_data.html">Load location export data</a>
+<br /><br />
+<a href="./reconcile_timeline.html">reconcile timeline</a>
+<br /><br />
+<a href="./search_timeline_events.html">search timeline events</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_timeline/index.html">google timeline</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code snippet extracts structured timeline data, such as dates, titles, durations, and locations, from a webpage, likely a social media platform or personal website. It uses XPath expressions to target specific elements and <code>chrono-node</code> to parse dates from the extracted text.</p>
 
 
-<pre><code>var chrono = require('chrono-node');
+<pre class="javascript"><code>var chrono = require('chrono-node');
 
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 function readTimelinePage() {
@@ -70,6 +134,17 @@ if (typeof client.readTimelinePage == 'undefined') {
 module.exports = readTimelinePage;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet appears to be part of a larger script designed to extract and process timeline data, likely from a social media platform or a personal website.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -104,3 +179,7 @@ module.exports = readTimelinePage;
 </ul></li>
 </ol>
 <p><strong>Overall, this code snippet focuses on extracting structured timeline data from a web page, likely for further analysis or visualization.</strong></p>
+
+</body>
+
+</html>

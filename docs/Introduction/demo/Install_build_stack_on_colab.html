@@ -1,7 +1,89 @@
-<p>This code sets up a development environment for a Jupyter project by installing necessary packages, configuring Git, and initializing a repository. It then pulls the latest code from a remote repository and builds the project.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Install build stack on colab</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../demo/index.html">demo</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+<a href="./cell_7.html">Cell 7</a>
+<br /><br />
+<a href="./use_Docker.html">use Docker</a>
+<br /><br />
+<a href="./cell_9.html">Cell 9</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./cell_11.html">Cell 11</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./cell_13.html">Cell 13</a>
+<br /><br />
+<a href="./Install_build_stack_on_colab.html">Install build stack on colab</a>
+<br /><br />
+<a href="./update_notebook_repo_on_colab.html">update notebook repo on colab</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../demo/index.html">demo</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code sets up a development environment for a Jupyter project by installing necessary packages, configuring Git, and initializing a repository. It then pulls the latest code from a remote repository and builds the project.</p>
 
 
-<pre><code>!npm config set user 0
+<pre class="javascript"><code>!npm config set user 0
 !npm config set unsafe-perm true
 !npm install -g --unsafe-perm ijavascript zeromq node-gyp node-pre-gyp webpack
 !ijsinstall --install=global
@@ -16,6 +98,17 @@
 !cd jupytangular && git reset --hard origin/master
 !cd jupytangular && git pull origin master
 !cd jupytangular && npm install && npm run test && npm run build</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 
 <p>This code snippet appears to be a series of shell commands designed to set up a development environment for a Jupyter-based project.</p>
 <p>Here's a breakdown:</p>
@@ -55,3 +148,7 @@
 <li><code>!cd jupytangular &amp;&amp; npm run build</code>: Builds the project.</li>
 </ul>
 <p>Let me know if you have any more questions!</p>
+
+</body>
+
+</html>

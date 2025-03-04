@@ -1,8 +1,72 @@
-<p>Here's a two-sentence summary of the code:</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Cell 0</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../xpath/index.html">xpath</a>
+    <br /><br />
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./cell_1.html">Cell 1</a>
+<br /><br />
+<a href="./cell_2.html">Cell 2</a>
+<br /><br />
+<a href="./cell_3.html">Cell 3</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./cell_5.html">Cell 5</a>
+<br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../xpath/index.html">xpath</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>Here's a two-sentence summary of the code:</p>
 <p>This module is designed to build a lexer and parser for XPath expressions, importing and utilizing various libraries, including <code>ply</code> and <code>eulxml.xpath</code>. It defines custom lexing rules, utility functions, and exports the lexer, parser, and parsing and serialization functions for use in other modules.</p>
 
 
-<pre><code>"""Core XPath parsing glue.
+<pre class="python"><code>"""Core XPath parsing glue.
 
 This module builds a lexer and parser for XPath expressions for import into
 eulxml.xpath. To understand how this module builds the lexer and parser, it
@@ -151,6 +215,17 @@ def ptokens(s):
     for tok in lexer:
             print(tok)</code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p><strong>Module Breakdown</strong></p>
 <p>This code defines a module for building a lexer and parser for XPath expressions. Here's a concise overview:</p>
 <h3>Importing Modules</h3>
@@ -177,3 +252,7 @@ def ptokens(s):
 <p>The code also defines utility functions, including <code>serialize</code>, which is used to serialize XPath abstract syntax trees (ASTs).</p>
 <h3>Module Import and Export</h3>
 <p>The module exports several objects and functions, including <code>lexer</code>, <code>parser</code>, <code>parse</code>, and <code>serialize</code>, which can be imported by other modules.</p>
+
+</body>
+
+</html>

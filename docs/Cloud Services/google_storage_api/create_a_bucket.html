@@ -1,7 +1,71 @@
-<p>This code defines functions for managing Google Cloud Storage buckets, including listing existing buckets, creating new ones, and setting public access.</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>create a bucket</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+    }
+
+    body {
+      padding-left: 200px;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../google_storage_api/index.html">google storage api</a>
+    <br /><br />
+    <a href="./create_a_bucket.html">create a bucket</a>
+<br /><br />
+<a href="./test_create_bucket.html">test create bucket</a>
+<br /><br />
+<a href="./test_stream_to_output.html">test stream to output</a>
+<br /><br />
+<a href="./fetch_file_or_stream.html">fetch file or stream</a>
+<br /><br />
+<a href="./upload_files_to_google_cloud.html">upload files to google cloud</a>
+<br /><br />
+<a href="./copy_a_file_in_storage_bucket.html">copy a file in storage bucket</a>
+<br /><br />
+<a href="./test_upload_files_to_google_storage.html">test upload files to google storage</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../google_storage_api/index.html">google storage api</a> ${PREV} ${NEXT}
+  </header>
+
+  <p>This code defines functions for managing Google Cloud Storage buckets, including listing existing buckets, creating new ones, and setting public access.</p>
 
 
-<pre><code>var qs = require('querystring');
+<pre class="javascript"><code>var qs = require('querystring');
 var importer = require('../Core');
 var authorizeGoogle = importer.import('authorize google service');
 
@@ -82,6 +146,17 @@ function createBucket(project, bucketName) {
 module.exports = createBucket;
 </code></pre>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
+
 <p>This code snippet provides a set of functions for interacting with Google Cloud Storage buckets.</p>
 <p>Here's a breakdown:</p>
 <ol>
@@ -104,3 +179,7 @@ module.exports = createBucket;
 </ul></li>
 </ol>
 <p>Let me know if you have any more code snippets you'd like me to explain!</p>
+
+</body>
+
+</html>
