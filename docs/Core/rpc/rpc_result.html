@@ -88,8 +88,8 @@
 <pre class="javascript"><code>var path = require('path');
 var assert = require('assert');
 var importer = require('../Core');
-var groupPermissions = importer.import('test get permissions');
-var getParameters = importer.import('function parameters');
+var groupPermissions = importer.import("<a href="../../Core/rpc/test_get_permissions.html">test get permissions</a>");
+var getParameters = importer.import("<a href="../../Core/syntax/get_parameter_names.html">function parameters</a>");
 
 function getResult(props) {
     if (props.result === null) {
@@ -110,7 +110,7 @@ function getResult(props) {
     // TODO: make this nicer, ugly because importer doesn't conform to the same importing
     //   style and therefore functions are missing from the context when loaded separately.
     // This is maybe a sign there is something wrong with this style of dependency injection
-    var commandResult = importer.import(result.id);
+    var commandResult = importer.import("<a href="../../Core/notebook/readme_md.html">result.id</a>");
     if(commandResult &amp;&amp; typeof commandResult[Object.keys(commandResult)[0]] === 'function') {
         commandResult = commandResult[Object.keys(commandResult)[0]];
     }
@@ -149,8 +149,12 @@ module.exports = getResult;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet defines a function <code>getResult</code> that handles the execution of a command based on provided parameters and permissions.</p>
 <p>Here's a breakdown:</p>

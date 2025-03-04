@@ -87,10 +87,10 @@
 
 <pre class="javascript"><code>var uuid = require('uuid/v1');
 var importer = require('../Core');
-var getSheet = importer.import('get sheet identifier');
-var copyFile = importer.import('copy a file on google drive');
-var listDrive = importer.import('list google drive files');
-var insertPermission = importer.import('insert google drive permissions');
+var getSheet = importer.import("<a href="../../Frontends/convert_spreadsheet/get_sheet_purchases.html">get sheet identifier</a>");
+var copyFile = importer.import("<a href="../../Google/google_drive/copy_a_file_on_google_drive.html">copy a file on google drive</a>");
+var listDrive = importer.import("<a href="../../Google/google_drive/list_google_drive_files.html">list google drive files</a>");
+var insertPermission = importer.import("<a href="../../Google/google_drive/insert_google_drive_permissions.html">insert google drive permissions</a>");
 
 function copyStudy(email) {
     var fileId, newId;
@@ -119,8 +119,12 @@ module.exports = copyStudy;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Breakdown of the Code</h2>
 <h3>Dependencies</h3>

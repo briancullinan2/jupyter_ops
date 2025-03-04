@@ -87,13 +87,13 @@
 
 <pre class="javascript"><code>const {request} = require('gaxios')
 const WebSocket = require('ws')
-const {delay, wait, timeout} = importer.import('discord utilities')
+const {delay, wait, timeout} = importer.import("<a href="../../Frontends/discord/discord_utilities.html">discord utilities</a>")
 const {
   gatewayIdentified, gatewayClose, gatewayMessage,
-} = importer.import('discord gateway')
+} = importer.import("<a href="../../Frontends/discord/discord_gateway.html">discord gateway</a>")
 const {
   TOKEN, DEFAULT_API, DEFAULT_RATE
-} = importer.import('discord configuration')
+} = importer.import("<a href="../../Frontends/discord/discord_bot_configuration.html">discord configuration</a>")
 
 var ws = false
 var wsConnecting = false
@@ -218,8 +218,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules and Variables</h3>

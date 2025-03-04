@@ -79,8 +79,8 @@
 var vm = require('vm');
 var fs = require('fs');
 var path = require('path');
-var listInProject = importer.import('list files in project');
-var renderer = importer.import('render Angular modules');
+var listInProject = importer.import("<a href="../../Algorithms/opencv/list_live_stream.html">list files in project</a>");
+var renderer = importer.import("<a href="../../Core/cache/refresh_regular_cache.html">render Angular modules</a>");
 
 var renderer;
 function displAngular(project, url) {
@@ -142,8 +142,12 @@ displAngular;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>displAngular</code> that renders an Angular application within an iframe.</p>
 <p>Here's a breakdown:</p>

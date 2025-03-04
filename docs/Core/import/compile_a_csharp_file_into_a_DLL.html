@@ -106,7 +106,7 @@ function buildDLL(code, pathToCode, ctx) {
   } = require('../Core')
   const codeCell = interpret(pathToCode)
   // TODO: compare file times for dylib module recompile
-  const { safeurl } = importNotebook('domain cache tools')
+  const { safeurl } = importNotebook("<a href="../../Analytics/data_collection/domain_cache_tools.html">domain cache tools</a>")
   let libName = safeurl(codeCell.questions[0])
   let libPath = path.join(BUILD_DIRECTORY, libName + '.cs')
   if (!fs.existsSync(libPath)
@@ -140,15 +140,15 @@ async function makeDLL(code, pathToCode, ctx) {
   } = require('../Core')
   const codeCell = interpret(pathToCode)
   // TODO: compare file times for dylib module recompile
-  const { safeurl } = importNotebook('domain cache tools')
+  const { safeurl } = importNotebook("<a href="../../Analytics/data_collection/domain_cache_tools.html">domain cache tools</a>")
   let libName = safeurl(codeCell.questions[0])
 
-  const selectCode = await importNotebook('select antlr tree')
+  const selectCode = await importNotebook("<a href="../../Languages/antlr/select_antlr_tree.html">select antlr tree</a>")
   const rootNode = (await selectCode(['//*'], code.toString(), 'csharp'))[0]
 
-  const getClassParams = await importNotebook('list csharp params')
-  const getClassNames = await importNotebook('list csharp classes')
-  const getNamespacesBySize = await importNotebook('list csharp namespaces')
+  const getClassParams = await importNotebook("<a href="../../Languages/csharp/get_csharp_params.html">list csharp params</a>")
+  const getClassNames = await importNotebook("<a href="../../Languages/csharp/list_csharp_classes.html">list csharp classes</a>")
+  const getNamespacesBySize = await importNotebook("<a href="../../Languages/csharp/list_csharp_namespaces.html">list csharp namespaces</a>")
   const namespace = (await getNamespacesBySize(rootNode))[0]
   console.log(namespace)
   const dotnet = require('node-api-dotnet')
@@ -182,8 +182,12 @@ module.exports.makeDLL = makeDLL
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Overview</strong></p>
 <p>This code is a module that builds and loads Dynamic Link Libraries (DLLs) from source code. It uses Node.js's built-in modules and some custom modules (<code>../Core</code>) to interpret the source code, compile it to an object file, and then create a DLL.</p>

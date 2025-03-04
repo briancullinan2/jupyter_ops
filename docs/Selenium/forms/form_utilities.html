@@ -74,7 +74,9 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-module.exports = importer.import(['fill select dropdown', 'map object form']);
+module.exports = importer.import("<a href="../../Selenium/forms/fill_select_dropdown.html">fill select dropdown</a>"
+,<br />
+"<a href="../../Selenium/forms/map_object_to_form.html">map object form</a>");
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
@@ -86,8 +88,12 @@ module.exports = importer.import(['fill select dropdown', 'map object form']);
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet is a simple module export.</p>
 <p>Here's a breakdown:</p>

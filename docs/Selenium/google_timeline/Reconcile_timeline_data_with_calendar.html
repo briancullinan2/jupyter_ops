@@ -81,11 +81,11 @@ var {
     getDaysEvents,
     getNearby,
     getOauthClient
-} = importer.import([
-    'days events',
-    'import google calendar api',
-    'cache locations nearby',
-]);
+} = importer.import("<a href="../../Google/google_calendar/days_events.html">days events</a>"
+,<br />
+"<a href="../../Google/google_calendar/use_Google_calendar_API.html">import google calendar api</a>"
+,<br />
+"<a href="../../Google/google_maps/cache_locations_nearby.html">cache locations nearby</a>");
 
 function filterEvents(events, locations) {
     const unmatched = [], matches = [];
@@ -157,8 +157,12 @@ module.exports = reconcileTimelineLocations;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet aims to match events from a Google Calendar with nearby locations.</p>
 <p>Here's a breakdown:</p>

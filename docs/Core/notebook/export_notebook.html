@@ -95,19 +95,21 @@
 
 <pre class="javascript"><code>var fs = require('fs')
 var path = require('path')
-var mkdirpSync = importer.import('mkdirp')
+var mkdirpSync = importer.import("<a href="../../Core/files/mkdirp.html">mkdirp</a>")
 
 var importer = require('../Core')
-var authorTemplate = importer.import('authoring header template')
+var authorTemplate = importer.import("<a href="../../Core/notebook/authoring_header_template.html">authoring header template</a>")
 var {
     replaceImports, replaceCore
-} = importer.import(['replace notebook imports', 'replace core requirement'])
-var getImports = importer.import('get imports')
-var {fixImports} = importer.import('fix project paths')
-var delintCode = importer.import('delint notebooks')
-var niceName = importer.import('rename cell to nice name')
-var {matchFilename} = importer.import('match filename')
-var {makeHandler} = importer.import('generic gcloud function handler')
+} = importer.import("<a href="../../Core/notebook/replace_notebook_import.html">replace notebook imports</a>"
+,<br />
+"<a href="../../Core/notebook/__replace_core_requirement.html">replace core requirement</a>")
+var getImports = importer.import("<a href="../../Utilities/dylib/get_c_exports.html">get imports</a>")
+var {fixImports} = importer.import("<a href="../../Core/files/fix_project_paths.html">fix project paths</a>")
+var delintCode = importer.import("<a href="../../Frameworks/de-linting/delint_notebooks.html">delint notebooks</a>")
+var niceName = importer.import("<a href="../../Core/notebook/nice_name.html">rename cell to nice name</a>")
+var {matchFilename} = importer.import("<a href="../../Algorithms/llama_vision/mask_image.html">match filename</a>")
+var {makeHandler} = importer.import("<a href="../../Cloud Services/google_rpc/generic_gcloud_function_handler.html">generic gcloud function handler</a>")
 var makeHandlerCell = importer.interpret('generic gcloud function handler')
 
 function getImportsRecursively(searches) {
@@ -205,8 +207,12 @@ module.exports = exportNotebook;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines functions for processing and exporting Jupyter Notebooks, focusing on handling imports and generating function handlers.</p>
 <p>Here's a breakdown:</p>

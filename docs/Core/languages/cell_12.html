@@ -191,8 +191,12 @@ var isset = function (s) { return typeof s != 'undefined'; };
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Overview</h3>
 <p>This code defines a collection of custom functions, each mimicking a specific function or behavior found in PHP, for use in a JavaScript environment.</p>

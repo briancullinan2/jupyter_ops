@@ -74,8 +74,8 @@
 
 
 <pre class="node"><code>var importer = require('../Core')
-var discordApi = importer.import('discord api')
-var serverApi = importer.import('quake 3 server commands')
+var discordApi = importer.import("<a href="../../Frontends/discord/discord_api.html">discord api</a>")
+var serverApi = importer.import("<a href="../../Games/quake3_server_connector/quake_3_server_commands.html">quake 3 server commands</a>")
 
 var CHALLENGE = /(@[^:@\s]+\s*chall?[ae]nge|chall?[ae]nge\s*@[^:@\s]+)\s*([^:@\s]*?)\s*([^:@\s]*?)/ig
 var DEFAULT_HOST = process.env.DEFAULT_HOST || 'http://quakeiiiarena.com/play/'
@@ -142,8 +142,12 @@ module.exports = challengeCommand
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Breakdown of the Code</h2>
 <h3>Importing Modules</h3>

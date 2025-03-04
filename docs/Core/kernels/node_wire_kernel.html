@@ -118,11 +118,11 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var {nodeJson, notebookJson} = importer.import('get kernel json');
-var {wireKernel} = importer.import('jupyter wire kernel');
-var {nativeKernelInfo} = importer.import('get kernel info');
-var {processMetaKernel} = importer.import('process meta kernel');
-var {languageInterface} = importer.import('get kernel language');
+var {nodeJson, notebookJson} = importer.import("<a href="../../Core/kernels/__get_kernel_json.html">get kernel json</a>");
+var {wireKernel} = importer.import("<a href="../../Core/kernels/jupyter_meta_kernel.html">jupyter wire kernel</a>");
+var {nativeKernelInfo} = importer.import("<a href="../../Core/kernels/__get_kernel_json.html">get kernel info</a>");
+var {processMetaKernel} = importer.import("<a href="../../Core/kernels/process_meta_kernel.html">process meta kernel</a>");
+var {languageInterface} = importer.import("<a href="../../Languages/antlr/get_antlr_tool.html">get kernel language</a>");
 
 function getVersion(str) {
     return str.split('.').map(v =&gt; parseInt(v, 10)).join('.')
@@ -162,8 +162,12 @@ module.exports = nodeKernel;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>

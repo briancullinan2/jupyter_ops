@@ -85,7 +85,7 @@
 
 <pre class="javascript"><code>var path = require('path');
 var importer = require('../Core');
-var authorizeGoogle = importer.import('authorize google service');
+var authorizeGoogle = importer.import("<a href="../../Cloud Services/google_cloud_api/authorize_google_service.html">authorize google service</a>");
 
 function listUrlMaps(project, urlMap) {
     var params = {};
@@ -204,8 +204,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code is a set of functions for interacting with Google Cloud's Compute Engine API. It uses the <code>google-auth-library</code> and <code>googleapis</code> libraries to authenticate and make requests to the API.</p>
 <h3>Functions</h3>

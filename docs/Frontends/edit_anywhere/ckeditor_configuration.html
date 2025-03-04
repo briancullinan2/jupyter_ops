@@ -309,8 +309,12 @@ loadScript('https://code.jquery.com/jquery-3.5.1.min.js') //'https://code.jquery
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code sets up a system for real-time saving of edits made to content within a web page.</p>
 <p>Here's a breakdown:</p>

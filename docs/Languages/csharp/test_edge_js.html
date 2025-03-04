@@ -74,13 +74,13 @@
 <pre class="javascript"><code>const path = require('path')
 const edge = require('edge-js');
 //const dotnet = require('node-api-dotnet');
-const { safeurl } = importer.import('domain cache tools')
+const { safeurl } = importer.import("<a href="../../Analytics/data_collection/domain_cache_tools.html">domain cache tools</a>")
 
 const BUILD_DIRECTORY = path.join(__dirname, '../.build')
 
 async function testEdge() {
   const codeCell = importer.interpret('rosetta euler csharp 005')
-  const Euler = await importer.import('rosetta euler csharp 005')
+  const Euler = await importer.import("<a href="../../Languages/csharp/rosetta_euler_csharp_005.html">rosetta euler csharp 005</a>")
   let libName = safeurl(codeCell.questions[0])
   let dynamicLib = path.join(BUILD_DIRECTORY, libName + '.dll')
   const RunEuler = edge.func({
@@ -109,8 +109,12 @@ module.exports = testEdge
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <p><strong>Requires and Imports</strong></p>

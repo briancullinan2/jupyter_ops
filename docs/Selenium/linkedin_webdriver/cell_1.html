@@ -64,9 +64,9 @@
 
 
 <pre class="javascript"><code>const fs = require('fs')
-const getClient = importer.import('selenium client')
-const getAllUntil = importer.import('all elements until')
-const loginLinkedIn = importer.import('login linkedin')
+const getClient = importer.import("<a href="../../Selenium/webdriver/selenium_client.html">selenium client</a>")
+const getAllUntil = importer.import("<a href="../../Selenium/utilities/all_elements_until.html">all elements until</a>")
+const loginLinkedIn = importer.import("<a href="../../Selenium/linkedin_webdriver/login_linkedin.html">login linkedin</a>")
 
 async function listConnections(driver) {
   if(!driver) {
@@ -104,8 +104,12 @@ module.exports = listConnections
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Dependencies and Import</h3>

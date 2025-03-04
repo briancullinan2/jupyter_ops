@@ -69,7 +69,7 @@
 
 <pre class="javascript"><code>var importer = require('../Core');
 var assert = require('assert');
-var getResult = importer.import('rpc result');
+var getResult = importer.import("<a href="../../Core/rpc/rpc_result.html">rpc result</a>");
 
 function handler(event, context, callback) {
     var body = event || {};
@@ -137,8 +137,12 @@ module.exports.handler = handler;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>handler</code> that acts as a webhook endpoint, likely for handling requests from an external system.</p>
 <p>Here's a breakdown:</p>

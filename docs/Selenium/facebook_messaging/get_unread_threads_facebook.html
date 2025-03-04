@@ -80,12 +80,16 @@ var {
     loginFacebook,
     listFacebookThreads,
     readFacebookThread
-} = importer.import([
-    'decrypt password',
-    'log in facebook',
-    'list facebook threads',
-    'messages from facebook'
-], {client})
+} = importer.import("<a href="../../Selenium/service_auth/Decrypt_passwords_json.html">decrypt password</a>"
+,<br />
+"<a href="../../Selenium/facebook_data/Log_in_to_facebook.html">log in facebook</a>"
+,<br />
+"<a href="../../Selenium/facebook_messaging/List_Facebook_threads.html">list facebook threads</a>"
+,<br />
+"<a href="../../Selenium/facebook_messaging/Get_messages_from_facebook.html">messages from facebook'
+]</a>"
+,<br />
+"<a href="../../Core/files/mkdirp.html">{client}</a>")
 
 function getUnreadThreads() {
     return client
@@ -117,8 +121,12 @@ module.exports = getUnreadThreads;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet is designed to retrieve and read unread Facebook threads.</p>
 <p>Here's a breakdown:</p>

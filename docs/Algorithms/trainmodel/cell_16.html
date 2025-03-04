@@ -159,8 +159,12 @@ model.add(Dense(7, activation='softmax'))</code></pre>
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Convolutional Neural Network (CNN) Model Architecture</strong></p>
 <p>This code defines a CNN model architecture using the Keras Sequential API. The model consists of multiple convolutional and pooling layers, followed by fully connected and output layers.</p>

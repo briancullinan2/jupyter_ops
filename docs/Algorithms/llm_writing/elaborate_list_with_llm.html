@@ -84,7 +84,7 @@
 <pre class="javascript"><code>const os = require('os')
 const fs = require('fs')
 
-const analyzeSpreadsheet = importer.import('decode xlsx spreadsheet')
+const analyzeSpreadsheet = importer.import("<a href="../../Algorithms/llm_writing/decode_xlsx_spreadsheet.html">decode xlsx spreadsheet</a>")
 
 const TEMP_DIR = os.tmpdir();
 let counter = 0
@@ -96,7 +96,7 @@ async function elaborateLlama(sheetFile, sheetName, rangeString, prefix, suffix)
 
   console.log(results)
 
-  const {llmPrompt} = await importer.import('create llm session')
+  const {llmPrompt} = await importer.import("<a href="../../Algorithms/llama/create_llm_session.html">create llm session</a>")
   
   if(!prefix) {
     prefix = 'Imagine a scene that is much more exotic, weird, bizarre and detailed with this topic:\n'
@@ -137,8 +137,12 @@ module.exports = elaborateLlama
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Breakdown of the Code</strong></p>
 <h3>Importing Modules</h3>

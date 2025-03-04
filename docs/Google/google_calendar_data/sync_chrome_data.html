@@ -96,12 +96,13 @@ function unzip(file) {
 
 var {
     googleTakeout, syncChromeHistory, syncChromeBookmarks, execCmd
-} = importer.import([
-    'order google takeout',
-    'sync chrome history',
-    'sync chrome bookmarks',
-    'spawn child process'
-]);
+} = importer.import("<a href="../../Selenium/google_takeout/order_google_takeout.html">order google takeout</a>"
+,<br />
+"<a href="../../Google/google_calendar_data/sync_chrome_history.html">sync chrome history</a>"
+,<br />
+"<a href="../../Google/google_calendar_data/sync_chrome_bookmarks.html">sync chrome bookmarks</a>"
+,<br />
+"<a href="../../Utilities/child_process/spawn_child_process.html">spawn child process</a>");
 function syncChrome() {
     if(fs.existsSync(DOWNLOADS_PATH + '/Takeout')) {
         rimraf.sync(DOWNLOADS_PATH + '/Takeout');
@@ -133,8 +134,12 @@ module.exports = syncChrome;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code automates the synchronization of your Chrome browsing history and bookmarks with Google Calendar.</p>
 <p>Here's a breakdown:</p>

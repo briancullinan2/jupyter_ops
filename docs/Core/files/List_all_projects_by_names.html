@@ -101,7 +101,7 @@
 
 <pre class="javascript"><code>var importer = require('../Core');
 var path = require('path');
-var listInProject = importer.import('list project files');
+var listInProject = importer.import("<a href="../../Core/files/list_project_files.html">list project files</a>");
 
 // But we also want to automatically load projects?
 function listProjects(root, match = '{,*,*/,*/*/*,*/*/*/*,*/*/*/*/*}+(package.json|NuGet.config|*.sln|*.csproj)') {
@@ -126,8 +126,12 @@ module.exports = listProjects;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function to automatically discover and list projects within a given directory.</p>
 <p><strong>Here's a breakdown:</strong></p>

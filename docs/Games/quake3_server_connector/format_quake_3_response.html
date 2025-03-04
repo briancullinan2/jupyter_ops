@@ -76,7 +76,7 @@
 
 
 
-<pre class="node"><code>var removeCtrlChars = importer.import('remove ctrl characters')
+<pre class="node"><code>var removeCtrlChars = importer.import("<a href="../../Games/quake3_server_connector/remove_ctrl_characters.html">remove ctrl characters</a>")
 var importer = require('../Core')
 
 function formatQuake3Response(response, command, server) {
@@ -137,8 +137,12 @@ module.exports = formatQuake3Response
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>

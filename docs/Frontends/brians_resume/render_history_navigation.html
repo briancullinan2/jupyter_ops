@@ -89,8 +89,8 @@
 
 <pre class="javascript"><code>const path = require('path')
 const fs = require('fs')
-const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
-const selectModel = importer.import('select llm')
+const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import("<a href="../../Algorithms/llm_chat/general_chit_chat.html">general chit chat</a>")
+const selectModel = importer.import("<a href="../../Algorithms/llm_writing/select_llm.html">select llm</a>")
 
 async function renderHistory(req, res) {
   
@@ -205,8 +205,12 @@ module.exports = renderHistory
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown: <code>renderHistory</code> Function</strong></p>
 <h3>Dependencies and Variables</h3>

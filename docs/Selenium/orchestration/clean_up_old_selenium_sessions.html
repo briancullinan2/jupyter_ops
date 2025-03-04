@@ -88,12 +88,13 @@ var {
     getSeleniumServer,
     runSeleniumCell,
     execCmd
-} = importer.import([
-    'selenium docker',
-    'set up selenium server',
-    'selenium cell',
-    'spawn child process'
-]);
+} = importer.import("<a href="../../Docker/docker_demo/selenium_docker.html">selenium docker</a>"
+,<br />
+"<a href="../../Selenium/What_is_Selenium/What_is_Selenium.html">set up selenium server</a>"
+,<br />
+"<a href="../../Selenium/webdriver/selenium_client.html">selenium cell</a>"
+,<br />
+"<a href="../../Utilities/child_process/spawn_child_process.html">spawn child process</a>");
 
 var regexToArray = (ex, str, i = 0) =&gt; {
     var co = []; var m; while ((m = ex.exec(str)) &amp;&amp; co.push(m[i])); return co;
@@ -143,8 +144,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>cleanUpSessions</code> that manages and closes all active Selenium WebDriver sessions, cleans up session data, and restarts the Selenium server.</p>
 <p>Here's a breakdown:</p>

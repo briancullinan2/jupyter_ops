@@ -97,11 +97,11 @@
 
 
 
-<pre class="javascript"><code>const {readSessions} = importer.import('selenium session')
+<pre class="javascript"><code>const {readSessions} = importer.import("<a href="../../Selenium/webdriver/selenium_session.html">selenium session</a>")
 const { WebDriver, Capabilities, Session } = require('selenium-webdriver')
 const chrome = require('selenium-webdriver/chrome');
-const createExecutor = importer.import('selenium executor')
-const getClient = importer.import('webdriver client')
+const createExecutor = importer.import("<a href="../../Selenium/webdriver/selenium_executor.html">selenium executor</a>")
+const getClient = importer.import("<a href="../../Selenium/webdriver/selenium_client.html">webdriver client</a>")
 
 const LOCAL_URL = 'http://localhost:4444/wd/hub';
 
@@ -165,8 +165,12 @@ module.exports = getSessions
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Imported Modules</h3>

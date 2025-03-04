@@ -134,7 +134,7 @@ var fs = require('fs');
 var path = require('path');
 var importer = require('../Core');
 var {globSync} = require('glob')
-var mkdirpSync = importer.import('mkdirp')
+var mkdirpSync = importer.import("<a href="../../Core/files/mkdirp.html">mkdirp</a>")
 
 async function readPak(zipFile, outdir) {
     if(!outdir) {
@@ -185,8 +185,12 @@ module.exports = extractPaks;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet defines two asynchronous functions, <code>readPak</code> and <code>extractPaks</code>, designed to extract files from Quake 3 game archives (<code>.pk3</code> and <code>.zip</code> files).</p>
 <p><strong><code>readPak</code> Function:</strong></p>

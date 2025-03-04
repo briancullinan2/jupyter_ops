@@ -77,13 +77,15 @@ var {
     runSeleniumCell,
     levDist,
     levSort
-} = importer.import([
-    'use places nearby',
-    'place details google maps',
-    'run selenium cell',
-    'find levenshtien distance',
-    'sort levenshtien'
-]);
+} = importer.import("<a href="../../Google/google_maps/use_places_nearby_API.html">use places nearby</a>"
+,<br />
+"<a href="../../Google/google_maps/place_details_google_maps.html">place details google maps</a>"
+,<br />
+"<a href="../../Selenium/webdriver/selenium_client.html">run selenium cell</a>"
+,<br />
+"<a href="../../Utilities/levenshtein/Find_the_levenshtein_distance.html">find levenshtien distance</a>"
+,<br />
+"<a href="../../Algorithms/opencv/list_live_stream.html">sort levenshtien</a>");
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 var project = PROFILE_PATH + '/Collections/flagstaff-happy';
@@ -200,8 +202,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules and Functions</h3>

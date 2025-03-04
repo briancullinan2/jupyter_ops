@@ -109,7 +109,7 @@ async function initializeCache() {
         .filter(cell =&gt; cell.source.join('').includes('function cacheCells'))
         .map(cell =&gt; path.join(__dirname, cell.id))
 
-    cacheCells = importNotebook(cacheLookup).cacheCells
+    cacheCells = importNotebook("<a href="../../Core/cache/cache_all.html">cacheLookup</a>").cacheCells
     cellCache = [].concat
         .apply([], coreNotebooks.map(n =&gt; cacheCells(n)))
         .map(c =&gt; [
@@ -119,9 +119,9 @@ async function initializeCache() {
         ])
     createDatabase(cellCache)
 
-    var {cacheAll} = importNotebook('cache all')
+    var {cacheAll} = importNotebook("<a href="../../Core/cache/cache_all.html">cache all</a>")
     cacheAll()
-    cellCache = importNotebook('cell cache').cellCache
+    cellCache = importNotebook("<a href="../../Core/cache/cell_cache.html">cell cache</a>").cellCache
 
     createDatabase(cellCache)
 }
@@ -181,8 +181,12 @@ module.exports.interpret = interpret;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <p><strong>Requires</strong></p>

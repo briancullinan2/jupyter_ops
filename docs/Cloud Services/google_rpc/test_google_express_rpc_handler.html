@@ -72,7 +72,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var {handler} = importer.import('google cloud function rpc wrapper');
+var {handler} = importer.import("<a href="../../Cloud Services/google_rpc/google_cloud_function_rpc_wrapper.html">google cloud function rpc wrapper</a>");
 
 if(typeof $ !== 'undefined') {
     $.async();
@@ -103,8 +103,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet appears to be a Google Cloud Function handler that responds to a request to create a copy of a &quot;study sauce template&quot; and sends the result back to the caller.</p>
 <p>Here's a breakdown:</p>

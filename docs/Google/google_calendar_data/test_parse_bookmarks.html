@@ -80,7 +80,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var getBookmarksFromTakeout = importer.import('parse bookmarks file');
+var getBookmarksFromTakeout = importer.import("<a href="../../Google/google_calendar_data/Parse_bookmarks_file.html">parse bookmarks file</a>");
 
 $.async();
 
@@ -98,8 +98,12 @@ getBookmarksFromTakeout()
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet retrieves bookmarks from a Google Takeout file and sends the results to an external system.</p>
 <p>Here's a breakdown:</p>

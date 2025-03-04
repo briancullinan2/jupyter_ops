@@ -81,7 +81,7 @@
 
 
 
-<pre class="javascript"><code>const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
+<pre class="javascript"><code>const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import("<a href="../../Algorithms/llm_chat/general_chit_chat.html">general chit chat</a>")
 
 async function askLlamaMatchTimestamps(promptModel, messages, keywords, prompt, timestamps) {
   let q3 = 'Given the following keywords:\n'
@@ -153,8 +153,12 @@ module.exports = matchingTimestamps
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Constants</h3>

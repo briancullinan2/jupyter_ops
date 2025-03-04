@@ -84,7 +84,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var runSeleniumCell = importer.import('selenium cell');
+var runSeleniumCell = importer.import("<a href="../../Selenium/webdriver/selenium_client.html">selenium cell</a>");
 // Unfollow everyone on facebook?
 
 // https://www.facebook.com/me/following
@@ -113,8 +113,12 @@ runSeleniumCell([
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>

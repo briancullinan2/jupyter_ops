@@ -92,8 +92,12 @@ var downloads = http.get('https://download.docker.com/win/stable/InstallDocker.m
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code downloads the Docker installer (InstallDocker.msi) from the official Docker website and saves it to the current working directory.</p>
 <p>Here's a breakdown:</p>

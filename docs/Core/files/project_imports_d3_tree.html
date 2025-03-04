@@ -140,9 +140,11 @@ function wordCount(r) {
 
 var formatNodes;
 function projectTree(project) {
-    var formatNodes = importer.import('d3.ipynb[format tree]');
-    var d3TieredPieSVG = importer.import('d3.ipynb[display d3 tree]');
-    var projectRelatives = importer.import('relative paths and includes', {project});
+    var formatNodes = importer.import("<a href="../../Frameworks/d3/Create_a_word-cloud.html">d3.ipynb[format tree</a>");
+    var d3TieredPieSVG = importer.import("<a href="../../Frameworks/d3/Create_a_word-cloud.html">d3.ipynb[display d3 tree</a>");
+    var projectRelatives = importer.import("<a href="../../Core/kernels/native_meta_methods.html">relative paths and includes</a>"
+,<br />
+"<a href="../../Frontends/edit_anywhere/scope_css.html">{project}</a>");
     var words = [];
     
     return projectRelatives(project)
@@ -186,8 +188,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines functions for generating a tree-like visualization of a project's code structure based on imported files and relative paths.</p>
 <p>Here's a breakdown:</p>

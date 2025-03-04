@@ -83,7 +83,7 @@
 
 <pre class="javascript"><code>
 async function moveMouse(x, y) {
-  let {SetMousePosition} = await importer.import('mouse control c')
+  let {SetMousePosition} = await importer.import("<a href="../../Utilities/robot/mouse_control_cocoa.html">mouse control c</a>")
   await SetMousePosition(parseFloat(x), parseFloat(y))
 }
 
@@ -99,8 +99,12 @@ module.exports = moveMouse
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Function: <code>moveMouse</code></h3>
 <h4>Description</h4>

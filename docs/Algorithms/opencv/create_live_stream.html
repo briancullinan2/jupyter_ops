@@ -88,7 +88,9 @@ import re
 import json
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
-import_notebook("list live stream", globals())
+import_notebook("<a href="../../Algorithms/opencv/list_live_stream.html">list live stream</a>"
+,<br />
+"<a href="../../Cloud Services/deploy_host/deploy_aws.html">globals(</a>"))
 
 SCOPES = ['https://www.googleapis.com/auth/youtube.force-ssl']
 HOME_DIR = os.environ.get("HOME") or os.environ.get("USERPROFILE")
@@ -139,8 +141,12 @@ __all__ = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Breakdown of the Code</h2>
 <h3>Importing Libraries</h3>

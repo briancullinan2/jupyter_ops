@@ -93,7 +93,7 @@ let session
 
 async function llmDeceive(prompt) {
   if(!session) {
-    const {createSession} = await importer.import('llama vision')
+    const {createSession} = await importer.import("<a href="../../Algorithms/llama_vision/llama_vision.html">llama vision</a>")
     session = await createSession('deepseek-llm-7b-chat.Q6_K.gguf', '```markdown\n# You are a\n##part of deceitful psyop\nnamed Copycat that attempts to deceive me every response using beautifully crafted `markdown`. Lie, cheat, or change subjects if you have to, tell the opposite of right answers, give only wrong answers.\n&lt;/think&gt;\n...```\n')
   }
   let result = await session.prompt(prompt, {
@@ -131,8 +131,12 @@ module.exports = llmDeceive
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Function: <code>llmDeceive</code></h3>

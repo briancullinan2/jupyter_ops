@@ -83,13 +83,13 @@
 
 
 
-<pre class="javascript"><code>const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
-const {askLlamaAboutCategories} = importer.import('ask llm about categories')
+<pre class="javascript"><code>const {askLlamaAboutFunctions} = importer.import("<a href="../../Algorithms/llama/ask_llm_about_functions.html">ask llm about functions</a>")
+const {askLlamaAboutCategories} = importer.import("<a href="../../Algorithms/llama/ask_llm_about_categories.html">ask llm about categories</a>")
 const lookupCell = importer.lookupCell
-const { cacheCells } = importer.import('cache notebook')
-const { functionCache } = importer.import('cache rpc functions with llm descriptions')
-const { cellCache } = importer.import('cell cache')
-const {storeAllLlamaFunctions} = importer.import('store all notebook llm functions')
+const { cacheCells } = importer.import("<a href="../../Core/cache/cache_notebook.html">cache notebook</a>")
+const { functionCache } = importer.import("<a href="../../Databases/caches/cache_rpc_functions_with_llm_descriptions.html">cache rpc functions with llm descriptions</a>")
+const { cellCache } = importer.import("<a href="../../Core/cache/cell_cache.html">cell cache</a>")
+const {storeAllLlamaFunctions} = importer.import("<a href="../../Algorithms/llama/store_all_notebook_llm_functions.html">store all notebook llm functions</a>")
 
 async function askLlamaMatchingFunction(query) {
   await storeAllLlamaFunctions()
@@ -152,8 +152,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Import Statements</h4>

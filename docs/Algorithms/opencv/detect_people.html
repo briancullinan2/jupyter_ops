@@ -87,7 +87,9 @@
 import requests
 import cv2
 import numpy as np
-import_notebook('motion detection', globals())
+import_notebook("<a href="../../Algorithms/opencv/motion_detection.html">motion detection</a>"
+,<br />
+"<a href="../../Cloud Services/deploy_host/deploy_aws.html">globals(</a>"))
 
 
 # Initialize HOG descriptor/person detector
@@ -187,8 +189,12 @@ __all__ = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Libraries</h3>

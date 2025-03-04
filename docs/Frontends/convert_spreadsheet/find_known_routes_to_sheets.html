@@ -88,9 +88,9 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core')
-var wrapTemplate = importer.import('output google sheet template')
-var getTemplateProperties = importer.import('google sheet template properties')
-var getTemplateByUrl = importer.import('convert sheet helper functions')
+var wrapTemplate = importer.import("<a href="../../Frontends/convert_spreadsheet/output_google_sheet_template.html">output google sheet template</a>")
+var getTemplateProperties = importer.import("<a href="../../Frontends/convert_spreadsheet/google_sheet_template_properties.html">google sheet template properties</a>")
+var getTemplateByUrl = importer.import("<a href="../../Frontends/convert_spreadsheet/convert_sheet_helper_functions.html">convert sheet helper functions</a>")
 
 var TRIM = /^\s*\/\s*|\s*\/\s*$/ig;
 
@@ -154,8 +154,12 @@ module.exports = collectRoutes;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Import Statements</h3>

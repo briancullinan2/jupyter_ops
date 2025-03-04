@@ -129,7 +129,7 @@
 
 <pre class="javascript"><code>var assert = require('assert');
 var importer = require('../Core');
-var { temporaryImportTemplate } = importer.import('eloqua import create template');
+var { temporaryImportTemplate } = importer.import("<a href="../../Frameworks/zuora_to_eloqua/eloqua_import_create_template.html">eloqua import create template</a>");
 
 describe('eloqua bulk import definition', () =&gt; {
     it('should return the current import definition', () =&gt; {
@@ -149,8 +149,12 @@ describe('eloqua bulk import definition', () =&gt; {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet is a unit test for a function that generates an import definition for Eloqua, a marketing automation platform.</p>
 <p>Here's a breakdown:</p>

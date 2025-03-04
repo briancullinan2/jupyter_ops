@@ -70,8 +70,8 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var getDataSheet = importer.import('google sheet array objects');
-var d3PieChart = importer.import('d3 pie chart');
+var getDataSheet = importer.import("<a href="../../Google/google_sheets/get_google_data_sheet.html">google sheet array objects</a>");
+var d3PieChart = importer.import("<a href="../../Frameworks/d3/d3_pie_chart.html">d3 pie chart</a>");
 
 function getCourseSVG() {
     var docId = '1dAtBQyn5vwStM6ITn7iCpp996Sus26k0bJtbGNlCX2g';
@@ -92,8 +92,12 @@ module.exports = getCourseSVG;</code></pre>
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code generates an SVG image of a pie chart visualizing course enrollment data from a Google Sheet.</p>
 <p>Here's a breakdown:</p>

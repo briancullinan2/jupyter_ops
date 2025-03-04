@@ -73,7 +73,7 @@
 
 <pre class="javascript"><code>var fs = require('fs');
 var importer = require('../Core');
-var d3PieChart = importer.import('d3 pie chart');
+var d3PieChart = importer.import("<a href="../../Frameworks/d3/d3_pie_chart.html">d3 pie chart</a>");
 
 function convertUnicode(x) {
     var r = /\\u([\d\w]{4})/gi;
@@ -181,8 +181,12 @@ d3PieChart(groupCounts)
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code analyzes a Chrome browser history file (likely exported from Google Takeout) to categorize and count website visits.</p>
 <p>Here's a breakdown:</p>

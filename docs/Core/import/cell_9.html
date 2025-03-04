@@ -144,8 +144,12 @@ module.exports.searchQueryFiles = searchQueryFiles
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Overview</h3>
 <p>This code is a set of four functions for filtering and searching notebooks (.ipynb files) in a local environment. It reads notebooks from files, extracts cells, and searches based on filename or query.</p>

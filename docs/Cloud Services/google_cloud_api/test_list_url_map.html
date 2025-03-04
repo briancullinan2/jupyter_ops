@@ -90,7 +90,7 @@ var {
     listTargetProxies,
     listGlobalForwards,
     listBackendBuckets
-} = importer.import('list google bucket url map');
+} = importer.import("<a href="../../Cloud Services/google_cloud_api/list_google_bucket_url_map.html">list google bucket url map</a>");
 var project = 'spahaha-ea443';
 var map = 'web-map';
 var proxy = 'web-map-target-proxy-5';
@@ -142,8 +142,12 @@ describe('listing subdomains from load balancer', () =&gt; {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <p><strong>Dependencies and Imports</strong></p>

@@ -92,14 +92,14 @@
 var fs = require('fs');
 var path = require('path');
 var importer = require('../Core');
-var {doBrowserRequest} = importer.import('browser crawler tools')
+var {doBrowserRequest} = importer.import("<a href="../../Analytics/data_collection/browser_crawler_tools.html">browser crawler tools</a>")
 var {
     cacheFilename,
     existingCache,
     storeCache,
     readCache,
     rmhash
-} = importer.import('domain cache tools')
+} = importer.import("<a href="../../Analytics/data_collection/domain_cache_tools.html">domain cache tools</a>")
 
 async function crawlRecursive(url, depth, searches) {
     if(!depth) depth = 3 // TODO: minutes depth using time range?
@@ -166,7 +166,7 @@ async function crawlAll(url, depth, searches) {
 module.exports = crawlAll
 
 //var importer = require('../Core')
-//var crawlAll = importer.import('crawl domain')
+//var crawlAll = importer.import("<a href="../../Analytics/data_collection/crawl_domain.html">crawl domain</a>")
 
 if(typeof $ !== 'undefined') {
     $.async()
@@ -186,8 +186,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Function Breakdown: crawlRecursive(url, depth, searches)</strong></p>
 <p><strong>Parameters:</strong></p>

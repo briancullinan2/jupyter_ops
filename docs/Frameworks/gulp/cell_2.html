@@ -201,8 +201,12 @@ applyUniversal;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Overview of the Code</strong></p>
 <p>This code is a Gulp script written in JavaScript. It appears to be a build script for an Angular project that uses the Gulp task runner. The script has several tasks that perform various operations such as:</p>

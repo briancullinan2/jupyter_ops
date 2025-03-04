@@ -135,7 +135,7 @@ const modelSessions = {}
 const modelInit = {}
 
 async function selectModel(model, temperature) {
-  const {createSession} = await importer.import('llama vision')
+  const {createSession} = await importer.import("<a href="../../Algorithms/llama_vision/llama_vision.html">llama vision</a>")
 
   if(typeof model == 'string') {
     let modelNames = Object.keys(GGUF_SPECIFICATIONS)
@@ -166,8 +166,12 @@ module.exports = selectModel
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>GGUF SPECIFICATIONS AND INSTRUCTIONS</strong></p>
 <p>This code defines two objects: <code>GGUF_SPECIFICATIONS</code> and <code>GGUF_INSTRUCTIONS</code>.</p>

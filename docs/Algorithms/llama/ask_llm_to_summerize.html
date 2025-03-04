@@ -85,7 +85,7 @@
 
 <pre class="javascript"><code>
 async function askLlamaToSummerize(query) {
-  const {llmPrompt} = await importer.import('create llm session')
+  const {llmPrompt} = await importer.import("<a href="../../Algorithms/llama/create_llm_session.html">create llm session</a>")
   let q1 = 'Summerize this into one or two sentences:\n' + query + '\nDiscard any pleasantries or explainations, only return the summary.'
   console.log("User: " + q1);
   const a1 = await llmPrompt(q1);
@@ -95,7 +95,7 @@ async function askLlamaToSummerize(query) {
 }
 
 async function askLlamaToGeneralize(query) {
-  const {llmPrompt} = await importer.import('create llm session')
+  const {llmPrompt} = await importer.import("<a href="../../Algorithms/llama/create_llm_session.html">create llm session</a>")
   let q2 = 'How would you categorize this in two or three words:\n' + query + '\nReturn only the category.'
   console.log("User: " + q2);
   const a2 = await llmPrompt(q2);
@@ -123,8 +123,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Overview</h3>

@@ -85,8 +85,8 @@
 
 
 
-<pre class="javascript"><code>var {DEFAULT_GUILD} = importer.import('discord configuration')
-var {request} = importer.import('discord authorization')
+<pre class="javascript"><code>var {DEFAULT_GUILD} = importer.import("<a href="../../Frontends/discord/discord_bot_configuration.html">discord configuration</a>")
+var {request} = importer.import("<a href="../../Frontends/discord/discord_request.html">discord authorization</a>")
 
 
 async function userGuilds(userId = '@me') {
@@ -126,8 +126,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Dependencies</h3>

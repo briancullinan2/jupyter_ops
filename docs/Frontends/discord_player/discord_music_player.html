@@ -68,10 +68,10 @@
 <pre class="javascript"><code>
 const {
   registerCommand, getCommands, deleteCommand, updateCommand
-} = importer.import('discord api')
-const {interactionsCommands} = importer.import('discord gateway')
-const {discordExpress, closeExpress} = importer.import('discord music player server')
-const {doMention, doPrivate} = importer.import('discord llm interactions')
+} = importer.import("<a href="../../Frontends/discord/discord_api.html">discord api</a>")
+const {interactionsCommands} = importer.import("<a href="../../Frontends/discord/discord_gateway.html">discord gateway</a>")
+const {discordExpress, closeExpress} = importer.import("<a href="../../Frontends/discord_player/discord_music_player_server.html">discord music player server</a>")
+const {doMention, doPrivate} = importer.import("<a href="../../Frontends/discord_tools/discord_llm_interactions.html">discord llm interactions</a>")
 
 const ALL_COMMANDS = [
   'browse',
@@ -125,8 +125,12 @@ module.exports = playerCommands
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Overview</h3>
 <p>This is a JavaScript module that exports an asynchronous function <code>playerCommands</code>. The function manages Discord bot commands using the Discord API.</p>

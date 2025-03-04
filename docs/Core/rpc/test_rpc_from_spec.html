@@ -88,7 +88,7 @@
 <pre class="javascript"><code>var fs = require('fs')
 var path = require('path')
 var importer = require('../Core')
-var getRpcFromSpec = importer.import('get rpc from spec')
+var getRpcFromSpec = importer.import("<a href="../../Core/rpc/get_rpc_from_spec.html">get rpc from spec</a>")
 
 function testDiscovery(config = {api: 'drive', version: 'v3'}) {
     var discovery = getRpcFromSpec(require('/Users/briancullinan/Downloads/rest.json'));
@@ -125,8 +125,12 @@ module.exports = testDiscovery
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet fetches and saves API discovery documents in a specific format.</p>
 <p><strong>Key Points:</strong></p>

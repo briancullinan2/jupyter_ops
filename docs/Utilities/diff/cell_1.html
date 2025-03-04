@@ -69,8 +69,8 @@
 var left, right;
 var r = importer.interpret(['search notebook component', 'files in project', 'diff code blocks']);
 left = r[0].code;
-var listInProject = importer.import('files in project');
-var diffTwoTexts = importer.import('diff code blocks');
+var listInProject = importer.import("<a href="../../Core/rpc/get_environment.html">files in project</a>");
+var diffTwoTexts = importer.import("<a href="../../Utilities/diff/diff.html">diff code blocks</a>");
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 var project = PROFILE_PATH + '/universal';
@@ -89,8 +89,12 @@ $.html(diffTwoTexts(left, right))
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules and Variables</h3>

@@ -118,13 +118,13 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var extend = importer.import('extend prototype')
+var extend = importer.import("<a href="../../Core/patterns/extend_prototype_class.html">extend prototype</a>")
 var {
     setupSockets, parseMessage, collapseMessage
-} = importer.import('decode encode ipython zmq protocol');
-var {nativeMetaKernel, metaKernelInterface} = importer.import('jupyter meta kernel');
-var {processMetaKernel} = importer.import('process meta kernel');
-var {wireMetaKernel} = importer.import('wire meta kernel');
+} = importer.import("<a href="../../Core/kernels/__decode_encode_ipython_zmq_protocol.html">decode encode ipython zmq protocol</a>");
+var {nativeMetaKernel, metaKernelInterface} = importer.import("<a href="../../Core/kernels/jupyter_meta_kernel.html">jupyter meta kernel</a>");
+var {processMetaKernel} = importer.import("<a href="../../Core/kernels/process_meta_kernel.html">process meta kernel</a>");
+var {wireMetaKernel} = importer.import("<a href="../../Core/kernels/native_meta_kernel.html">wire meta kernel</a>");
 
 // TODO: move this to patterns, improve this flow
 function addCB(og, cb) {
@@ -177,8 +177,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>

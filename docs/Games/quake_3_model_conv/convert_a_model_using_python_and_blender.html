@@ -91,7 +91,7 @@ elif ".bsp" in sys.argv[4]:
     )
 elif ".obj" in sys.argv[4]:
   extname = '.obj'
-  bpy.ops.wm.obj_import(filepath=sys.argv[4])
+  bpy.ops.wm.obj_import("<a href="../../Games/quake_3/find_all_shaders.html">filepath=sys.argv[4</a>")
 
 
 bpy.context.view_layer.update()
@@ -224,8 +224,12 @@ sys.exit()
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Overview</strong></p>
 <p>This is a Python script that utilizes the Blender API (bpy) to import 3D models in various formats and export them as MD3 files. The script takes a file path as an argument and performs the following tasks:</p>

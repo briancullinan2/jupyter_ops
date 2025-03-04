@@ -91,7 +91,7 @@
 <pre class="javascript"><code>import fs from 'fs'
 //import path from 'path'
 import antlr from 'antlr4'
-const {selectDom} = importer.import('select tree')
+const {selectDom} = importer.import("<a href="../../Core/patterns/select_tree.html">select tree</a>")
 
 //TODO: fix this with own transpiler because no one is going to share their hard work on StringTemplate4 code
 /*
@@ -115,11 +115,11 @@ let treeToHtml
 let getParser
 async function selectCode(descriptor, code, language) {
     if(!extToLang)
-        extToLang = await importer.import('ext to lang')
+        extToLang = await importer.import("<a href="../../Languages/antlr/ext_to_lang.html">ext to lang</a>")
     if(!treeToHtml)
-        treeToHtml = (await importer.import('antlr to html')).treeToHtml
+        treeToHtml = (await importer.import("<a href="../../Languages/antlr/antlr_to_html.html">antlr to html</a>")).treeToHtml
     if(!getParser)
-        getParser = await importer.import('get antlr tool')
+        getParser = await importer.import("<a href="../../Languages/antlr/get_antlr_tool.html">get antlr tool</a>")
     if(typeof code === 'function') {
         code = code.toString()
     }
@@ -161,8 +161,12 @@ export default selectCode
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Import Statements</h3>

@@ -132,12 +132,12 @@
 <pre class="javascript"><code>var fs = require('fs')
 var path = require('path')
 var importer = require('../Core')
-var replaceClasses = importer.import('replace known classes in map')
-var replaceEntities = importer.import('replace entities in map')
-var replaceTextures = importer.import('replace common textures in map')
-var scaleMap = importer.import('scale quake map')
-var {addSkybox} = importer.import('add skybox to map')
-var {MAPS_HINTS, addHints} = importer.import('draw hints in map')
+var replaceClasses = importer.import("<a href="../../Games/quake_3/replace_known_classes_in_map.html">replace known classes in map</a>")
+var replaceEntities = importer.import("<a href="../../Games/quake_3/replace_entities_in_map.html">replace entities in map</a>")
+var replaceTextures = importer.import("<a href="../../Games/quake_3/replace_common_textures_in_map.html">replace common textures in map</a>")
+var scaleMap = importer.import("<a href="../../Games/quake_3/scale_quake_map.html">scale quake map</a>")
+var {addSkybox} = importer.import("<a href="../../Games/quake_3/add_skybox_to_map.html">add skybox to map</a>")
+var {MAPS_HINTS, addHints} = importer.import("<a href="../../Games/quake_3/draw_hints_in_map.html">draw hints in map</a>")
 
 function convertMap(fileName) {
     var file;
@@ -182,8 +182,12 @@ module.exports = convertMap;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet defines a function <code>convertMap</code> that modifies Quake 3 map files.</p>
 <p>Here's a breakdown:</p>

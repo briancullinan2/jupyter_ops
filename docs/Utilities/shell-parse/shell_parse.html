@@ -312,8 +312,12 @@ module.exports = function parse(s, env, opts) {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <p>The code appears to be a parser for Bash-like shell scripting language. It uses regular expressions to scan and tokenize the input string, and then applies specific parsing rules to handle quoting and other syntax.</p>

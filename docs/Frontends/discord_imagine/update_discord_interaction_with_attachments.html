@@ -69,10 +69,10 @@
 
 
 
-<pre class="javascript"><code>const {DEFAULT_APPLICATION} = importer.import('discord configuration')
-const { safeurl } = importer.import('domain cache tools')
+<pre class="javascript"><code>const {DEFAULT_APPLICATION} = importer.import("<a href="../../Frontends/discord/discord_bot_configuration.html">discord configuration</a>")
+const { safeurl } = importer.import("<a href="../../Analytics/data_collection/domain_cache_tools.html">domain cache tools</a>")
 const mime = require('mime-types');
-const {requestAuthQ} = importer.import('discord request')
+const {requestAuthQ} = importer.import("<a href="../../Frontends/discord/discord_request.html">discord request</a>")
 
 
 async function patchInteractionImageAttachment(prompt, buff, token, content = 'image/png') {
@@ -119,8 +119,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>

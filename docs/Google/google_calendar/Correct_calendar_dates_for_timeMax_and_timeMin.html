@@ -81,7 +81,7 @@
 
 <pre class="javascript"><code>var importer = require('../Core');
 var chrono = require('chrono-node');
-var ISODateString = importer.import('convert date to ISO');
+var ISODateString = importer.import("<a href="../../Utilities/dates/Convert_a_date_to_ISO.html">convert date to ISO</a>");
 
 function correctTimeLimits(options) {
     if (typeof options.timeMin !== 'undefined') {
@@ -107,8 +107,12 @@ module.exports = correctTimeLimits;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>correctTimeLimits</code> that takes an object <code>options</code> as input.</p>
 <p>Here's what it does:</p>

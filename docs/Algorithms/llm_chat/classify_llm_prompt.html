@@ -81,7 +81,7 @@
 
 
 
-<pre class="javascript"><code>const getExports = importer.import('get exports from source')
+<pre class="javascript"><code>const getExports = importer.import("<a href="../../Core/syntax/get_exports_from_source.html">get exports from source</a>")
 
 
 const API_FUNCTIONS = [
@@ -157,8 +157,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Breakdown of the Code</strong></p>
 <h3>Section 1: Importing and Defining Constants</h3>

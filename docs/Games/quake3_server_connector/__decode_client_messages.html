@@ -73,8 +73,8 @@
 
 
 
-<pre class="node"><code>var {readBits} = importer.import('huffman decode')
-var {parseConfigStr} = importer.import('quake 3 server responses')
+<pre class="node"><code>var {readBits} = importer.import("<a href="../../Games/quake3_server_connector/huffman_decode.html">huffman decode</a>")
+var {parseConfigStr} = importer.import("<a href="../../Games/quake3_server_connector/quake_3_server_responses.html">quake 3 server responses</a>")
 
 var BIG_INFO_STRING = 8192
 var MAX_STRING_CHARS = 1024
@@ -486,8 +486,12 @@ module.exports = decodeClientMessage
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <p>This is a JavaScript code that appears to be a Quake 3 server client parser. It defines several constants, functions, and variables related to Quake 3 network protocol.</p>

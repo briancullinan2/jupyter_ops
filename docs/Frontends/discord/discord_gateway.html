@@ -85,8 +85,8 @@
 
 
 
-<pre class="javascript"><code>const {TOKEN, DEFAULT_APPLICATION} = importer.import('discord configuration')
-const systemUsage = importer.import('system usage report')
+<pre class="javascript"><code>const {TOKEN, DEFAULT_APPLICATION} = importer.import("<a href="../../Frontends/discord/discord_bot_configuration.html">discord configuration</a>")
+const systemUsage = importer.import("<a href="../../Utilities/usage/system_usage_report.html">system usage report</a>")
 
 const INSTANCES = {}
 const SESSIONS = {}
@@ -233,8 +233,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Breakdown of the Code</strong></p>
 <h3>Importing Configuration and Functionality</h3>

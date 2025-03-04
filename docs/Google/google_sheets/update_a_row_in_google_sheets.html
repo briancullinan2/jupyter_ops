@@ -85,9 +85,9 @@
 
 <pre class="javascript"><code>var util = require('util');
 var importer = require('../Core');
-var getRows = importer.import('get worksheet rows');
-var authorizeSheets = importer.import('authorize sheets api');
-var getSheetByName = importer.import('get worksheet by name');
+var getRows = importer.import("<a href="../../Google/google_sheets/get_worksheet_rows.html">get worksheet rows</a>");
+var authorizeSheets = importer.import("<a href="../../Google/google_sheets/authorize_sheets_api.html">authorize sheets api</a>");
+var getSheetByName = importer.import("<a href="../../Google/google_sheets/get_worksheet_by_name.html">get worksheet by name</a>");
 
 var getOrderedValues = (columns, rowData) =&gt; ({
     // Google sheets API, NULL means don't write value in range, as opposed to "" which clears
@@ -142,8 +142,12 @@ module.exports = updateRow;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>updateRow</code> that updates a specific row in a Google Sheet based on a matching condition.</p>
 <p>Here's a breakdown:</p>

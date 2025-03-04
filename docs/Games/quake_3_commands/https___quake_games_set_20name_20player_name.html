@@ -120,8 +120,12 @@ open -n /Users/briancullinan/planet_quake/build/release-darwin-x86_64/ioquake3.a
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Breakdown of Quake 3 Game Launch Script</strong></p>
 <p>This script is used to launch Quake 3 games on a macOS system. It utilizes the <code>open</code> command to launch the game executable with various arguments to customize the game settings.</p>

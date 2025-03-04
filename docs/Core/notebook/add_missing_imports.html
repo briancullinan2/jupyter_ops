@@ -94,10 +94,10 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core')
-var {transpile} = importer.import('transpile code')
-var {selectAst} = importer.import('select code tree')
-var niceName = importer.import('rename cell to nice name')
-var exportsCache = importer.import('exports cache')
+var {transpile} = importer.import("<a href="../../Core/languages/transpile_code.html">transpile code</a>")
+var {selectAst} = importer.import("<a href="../../Core/syntax/select_ast.html">select code tree</a>")
+var niceName = importer.import("<a href="../../Core/notebook/nice_name.html">rename cell to nice name</a>")
+var exportsCache = importer.import("<a href="../../Core/cache/exports_cache.html">exports cache</a>")
 
 var GLOBAL_CALLS = `//CallExpression[
 not(./parent::MemberExpression)
@@ -113,13 +113,13 @@ and not(//MemberExpression/Identifier/@name=./Identifier/@name)
 
 var notebookExports;
 
-function addImport(ctx) {
+function addImport("<a href="../../Algorithms/audio/.html">ctx</a>") {
     var id = selectAst(`./Identifier/@name`, ctx)
     var file = exportsCache.filter(e =&gt; e[2].includes(id))
     if(file.length === 1) {
         var body = selectAst([`//Program`], ctx)[0]
         var include = selectAst([`//Program/*`],
-                                `var ${id} = importNotebook("${file[0]}")`)[0]
+                                `var ${id} = importNotebook()`)[0]
         body.insertBefore(include, body.childNodes[0] || null)
     } else if (file.length &gt; 1) {
         throw new Error(`undefined ${id}, couldn't import ${JSON.stringify(file)}`)
@@ -146,8 +146,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function to automatically add imports to a code snippet based on global function calls.</p>
 <p>Here's a breakdown:</p>

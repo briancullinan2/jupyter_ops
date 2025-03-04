@@ -78,7 +78,7 @@ var fs = require('fs');
 var papa = require('papaparse');
 var sqlite3 = require('better-sqlite3');
 var importer = require('../Core');
-var createTables = importer.import('create movie database tables');
+var createTables = importer.import("<a href="../../Analytics/movie_database/create_movie_database_tables.html">create movie database tables</a>");
 
 var principals = '/Users/briancullinan/Downloads/title.principals.tsv';
 var titles = '/Users/briancullinan/Downloads/title.basics.tsv';
@@ -164,8 +164,12 @@ stmt.all([params], function(err, res) {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code imports and processes data from IMDb TSV files into a SQLite database.</p>
 <p>Here's a breakdown:</p>

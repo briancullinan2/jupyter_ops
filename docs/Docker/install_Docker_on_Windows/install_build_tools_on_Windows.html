@@ -85,8 +85,12 @@ var firewall = exec(elevateExecLoc + ' powershell -c "' + npmCmd + ' ; ' + netwo
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code installs the necessary build tools for NativeScript on Windows using npm.</p>
 <p>Here's a breakdown:</p>

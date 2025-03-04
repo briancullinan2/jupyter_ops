@@ -63,10 +63,10 @@
 
 <pre class="javascript"><code>var json = {
 
-"import": "node -e \"var result = require('./Core').import(process.argv[1])(...(eval(process.argv[2] || '[]'))); result &amp;&amp; result.catch ? result.catch(e =&gt; e).then(r =&gt; console.log(r)) : console.log(result)\"",
-"exec": "node -e \"console.log(require('./Core').import('spawn child process')(require('./Core').interpret(process.argv[1]).code))\"",
+"import": "node -e \"var result = require('./Core').import("<a href="../../Core/notebook/nice_name.html">process.argv[1</a>")(...(eval(process.argv[2] || '[]'))); result &amp;&amp; result.catch ? result.catch(e =&gt; e).then(r =&gt; console.log(r)) : console.log(result)\"",
+"exec": "node -e \"console.log(require('./Core').import("<a href="../../Utilities/child_process/spawn_child_process.html">spawn child process</a>")(require('./Core').interpret(process.argv[1]).code))\"",
 "interpret": "node -e \"console.info = () =&gt; {}; console.log(require('./Core').interpret(process.argv[1]))\"",
-"interpret:bash": "node -e \"console.info = () =&gt; {}; console.log(require('./Core').import('bash to one liner')(require('./Core').interpret(process.argv[1]).code))\"",
+"interpret:bash": "node -e \"console.info = () =&gt; {}; console.log(require('./Core').import("<a href="../../Utilities/child_process/convert_bash_to_one_liner.html">bash to one liner</a>")(require('./Core').interpret(process.argv[1]).code))\"",
 "ssh": "ssh -i ~/.credentials/selenium.pem -t -L 5900:127.0.0.1:5900 ubuntu@ec2-54-201-232-148.us-west-2.compute.amazonaws.com",
 "ssh:creds": "npm run exec \"copy credentials\"",
 "ssh:install": "npm run ssh \"npm run install:minimal &amp;&amp; sudo npm run install:aws\"",
@@ -74,7 +74,7 @@
 "ssh:git": "npm run ssh -- \"$(npm run -s interpret:bash \"git auto rebase\")\"",
 "git:auto": "npm run exec \"git auto commit\"",
 "git:rebase": "npm run exec \"git auto rebase\"",
-"start:express": "node -e \"require('./Core').import('express rpc wrapper')\"",
+"start:express": "node -e \"require('./Core').import("<a href="../../Frameworks/node_express/express_rpc_wrapper.html">express rpc wrapper</a>")\"",
 "start:ng": "ng serve --host 0.0.0.0 --port 9090 --app 0",
 "start:note": "source activate py36 &amp;&amp; jupyter notebook",
 "start:store": "live-server --cors --port=8080 --host=0.0.0.0 --entry-file=./.output/app.html --mount=/:./.output --middleware=/Users/briancullinan/jupyter_ops/live-server-middleware.js",
@@ -168,8 +168,12 @@
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <p>This code defines a JSON object with various keys, each representing a command or action. The values associated with these keys are Node.js commands that execute specific tasks.</p>

@@ -74,9 +74,9 @@
 <pre class="javascript"><code>var importer = require('../Core');
 var path = require('path');
 var fs = require('fs');
-var execCmd = importer.import('spawn child process');
+var execCmd = importer.import("<a href="../../Utilities/child_process/spawn_child_process.html">spawn child process</a>");
 var importer = require('../Core');
-var seleniumDocker = importer.import('selenium docker');
+var seleniumDocker = importer.import("<a href="../../Docker/docker_demo/selenium_docker.html">selenium docker</a>");
 
 var DOWNLOAD_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '', 'Downloads');
 var PROFILE_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '', '.defaultProfile');
@@ -153,8 +153,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet sets up and manages a Selenium server using Docker.</p>
 <p>Here's a breakdown:</p>

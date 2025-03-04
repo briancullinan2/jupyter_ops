@@ -80,12 +80,13 @@ var https = require('https');
 var app = require('express')();
 var {
     searchProvider, sockify, seleniumServer
-} = importer.import([
-    'mock properties rewire',
-    'search notebook provider',
-    'socket.io server',
-    'selenium http server'
-]);
+} = importer.import("<a href="../../Algorithms/llm_scaffold/bash_project_files.html">mock properties rewire</a>"
+,<br />
+"<a href="../../Frameworks/Angular_components/Search_notebook_service.html">search notebook provider</a>"
+,<br />
+"<a href="../../Games/quake3_server_connector/spectate_q3_server.html">socket.io server</a>"
+,<br />
+"<a href="../../Utilities/vnc/selenium_vnc_server.html">selenium http server</a>");
 
 var httpsOptions = {
     key: fs.readFileSync('../Utilities/.ca/intermediate/private/localhost.key.pem'),
@@ -159,8 +160,12 @@ seleniumServer()
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>

@@ -86,7 +86,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var getGist = importer.import('read gist files');
+var getGist = importer.import("<a href="../../Frontends/edit_anywhere/read_gist_files.html">read gist files</a>");
 
 if(typeof $ !== 'undefined') {
     $.async();
@@ -105,8 +105,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>

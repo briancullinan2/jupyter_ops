@@ -132,9 +132,9 @@
 <pre class="javascript"><code>var fs = require('fs')
 var path = require('path')
 var importer = require('../Core')
-var {chext} = importer.import('changing file name')
-var exec = importer.import('spawn child process')
-var {glob} = importer.import('glob files')
+var {chext} = importer.import("<a href="../../Core/files/changing_file_names.html">changing file name</a>")
+var exec = importer.import("<a href="../../Utilities/child_process/spawn_child_process.html">spawn child process</a>")
+var {glob} = importer.import("<a href="../../Core/files/__glob_files.html">glob files</a>")
 
 var PROJECT = '/Users/briancullinan/planet_quake_data/'
 var QVM_DIS = '/Users/briancullinan/planet_quake_data/tools/q3vm-master/qvmdis'
@@ -172,8 +172,12 @@ module.exports = disassembleQVMs
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet defines an asynchronous function <code>disassembleQVMs</code> that disassembles Quake 3 game files (QVMs) into human-readable disassembly output.</p>
 <p>Here's a breakdown:</p>

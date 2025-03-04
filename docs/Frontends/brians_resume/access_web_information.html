@@ -88,9 +88,9 @@
 
 
 
-<pre class="javascript"><code>const extractArticle = importer.import('extract llm article')
-const getClient = importer.import('selenium client')
-const summerizeArticle = importer.import('summarize llm article')
+<pre class="javascript"><code>const extractArticle = importer.import("<a href="../../Selenium/scraping/extract_llm_article.html">extract llm article</a>")
+const getClient = importer.import("<a href="../../Selenium/webdriver/selenium_client.html">selenium client</a>")
+const summerizeArticle = importer.import("<a href="../../Selenium/scraping/summarize_llm_article.html">summarize llm article</a>")
 
 const HTTPS_LINK = /https:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)/;
 
@@ -160,8 +160,12 @@ module.exports = accessInternet
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>

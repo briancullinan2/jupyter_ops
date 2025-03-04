@@ -79,7 +79,7 @@
 
 <pre class="javascript"><code>var nodemailer = require('nodemailer')
 var importer = require('../Core');
-var getCredentials = importer.import('decrypt passwords');
+var getCredentials = importer.import("<a href="../../Selenium/service_auth/Decrypt_passwords_json.html">decrypt passwords</a>");
 
 function sendEmail(to, text, subject, from) {
     var credentials = getCredentials('accounts.google.com');
@@ -129,8 +129,12 @@ module.exports = sendEmail;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>sendEmail</code> that sends emails using Nodemailer and Gmail.</p>
 <p>Here's a breakdown:</p>

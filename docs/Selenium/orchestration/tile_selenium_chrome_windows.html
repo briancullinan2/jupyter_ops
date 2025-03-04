@@ -85,10 +85,9 @@
 var {
     resizeWindow,
     getAllSessionUrls
-} = importer.import([
-    'resize selenium window',
-    'get all session urls'
-])
+} = importer.import("<a href="../../Selenium/orchestration/resize_selenium_window.html">resize selenium window</a>"
+,<br />
+"<a href="../../Algorithms/llama/create_llm_session.html">get all session urls</a>")
 
 function openUrl(client, url) {
     var handles;
@@ -149,8 +148,12 @@ module.exports = tileWindows;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code manages multiple browser windows, allowing you to open URLs in separate windows and arrange them in a tiled layout.</p>
 <p>Here's a breakdown:</p>

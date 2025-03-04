@@ -88,7 +88,7 @@
 <pre class="javascript"><code>const path = require('path')
 const fs = require('fs')
 const BASE_DIRECTORY = process.env.BASE_DIRECTORY || process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE
-const directoryToHtml = importer.import('directory to html')
+const directoryToHtml = importer.import("<a href="../../Frameworks/node_express/directory_to_html.html">directory to html</a>")
 
 async function handleDirectory(req, res, next) {
   let basePath = path.resolve(BASE_DIRECTORY)
@@ -154,8 +154,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2><strong>Overview</strong></h2>
 <p>This is a Node.js module that exports two functions: <code>handleDirectory</code> and <code>BASE_DIRECTORY</code>.</p>

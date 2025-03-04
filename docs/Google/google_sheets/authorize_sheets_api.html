@@ -87,7 +87,7 @@
 var path = require('path');
 var {GoogleAuth} = require('google-auth-library');
 var importer = require('../Core')
-var getRpcFromSpec = importer.import('get rpc from spec')
+var getRpcFromSpec = importer.import("<a href="../../Core/rpc/get_rpc_from_spec.html">get rpc from spec</a>")
 
 // TODO: recognize a polyfill pattern in APIs and move this to polyfills, combine with aspects to apply it
 var google;
@@ -132,8 +132,12 @@ module.exports = authorizeSheets;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet sets up authentication with Google Sheets API and provides a function to obtain an authorized client.</p>
 <p>Here's a breakdown:</p>

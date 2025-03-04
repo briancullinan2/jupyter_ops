@@ -85,7 +85,7 @@
 
 <pre class="javascript"><code>var assert = require('assert');
 var importer = require('../Core');
-var {listGlobalForwards} = importer.import('list global bucket url map');
+var {listGlobalForwards} = importer.import("<a href="../../Cloud Services/google_cloud_api/list_google_bucket_url_map.html">list global bucket url map</a>");
 var project = 'spahaha-ea443';
 var proxy = 'https://www.googleapis.com/compute/v1/projects/spahaha-ea443/global/targetHttpsProxies/thp-0c28d-marketing-site-7b81f-sheet-to-web-com';
 
@@ -110,8 +110,12 @@ describe('listing global forwards', () =&gt; {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>

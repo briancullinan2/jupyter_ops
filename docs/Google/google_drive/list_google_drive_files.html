@@ -87,7 +87,7 @@
 
 <pre class="javascript"><code>var util = require('util');
 var importer = require('../Core');
-var authorizeDrive = importer.import('authorize google drive');
+var authorizeDrive = importer.import("<a href="../../Google/google_drive/authorize_google_drive.html">authorize google drive</a>");
 
 function listDrive() {
     return authorizeDrive()
@@ -107,8 +107,12 @@ module.exports = listDrive;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Function Breakdown</strong></p>
 <p>This code defines a Node.js module that exports a single function, <code>listDrive</code>, which returns a list of files from Google Drive.</p>

@@ -85,7 +85,7 @@
 
 <pre class="javascript"><code>var util = require('util');
 var importer = require('../Core');
-var updateRow = importer.import('update a row in google sheets');
+var updateRow = importer.import("<a href="../../Google/google_sheets/update_a_row_in_google_sheets.html">update a row in google sheets</a>");
 
 function addRow(link, newRow, page) {
     return updateRow(link, r =&gt; false, newRow, page)
@@ -102,8 +102,12 @@ module.exports = addRow;</code></pre>
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>addRow</code> that adds a new row to a specific sheet in a Google Sheet.</p>
 <p>Here's a breakdown:</p>

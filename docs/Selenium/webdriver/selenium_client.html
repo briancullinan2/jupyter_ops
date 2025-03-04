@@ -97,7 +97,7 @@
 
 
 
-<pre class="javascript"><code>const { updateOrAddSession } = importer.import('selenium sessions')
+<pre class="javascript"><code>const { updateOrAddSession } = importer.import("<a href="../../Selenium/webdriver/selenium_session.html">selenium sessions</a>")
 const { Builder, Browser, By, Key, until } = require('selenium-webdriver')
 const chrome = require('selenium-webdriver/chrome');
 const os = require('os')
@@ -181,8 +181,12 @@ module.exports = getClient
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <p>This code is a Node.js script that utilizes the Selenium WebDriver to create a Chrome browser session. Here's a simplified explanation of the code:</p>

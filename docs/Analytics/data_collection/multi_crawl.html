@@ -88,7 +88,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var runSeleniumCell = importer.import('selenium cell');
+var runSeleniumCell = importer.import("<a href="../../Selenium/webdriver/selenium_client.html">selenium cell</a>");
 
 var TIMEOUT = 1000;
 var CONNECTIONS = 3;
@@ -99,7 +99,11 @@ function deQueue(inputQueue, searchCallback, ctx) {
     console.log(ctx.client.requestHandler.sessionID);
     const callback = typeof searchCallback === 'function'
         ? searchCallback
-        : importer.import(searchCallback, Object.assign({useCache: false}, ctx));
+        : importer.import("<a href="../../Algorithms/llama/search_llama.html">searchCallback</a>"
+,<br />
+"<a href="../../Analytics/data_collection/meta_search_all.html">Object.assign({useCache: false}</a>"
+,<br />
+"<a href="../../Algorithms/audio/.html">ctx</a>"));
     if(inputQueue.length &gt; 0) {
         const item = inputQueue.shift();
         return new Promise(resolve =&gt; setTimeout(() =&gt; resolve(), 100))
@@ -168,8 +172,12 @@ module.exports = multiCrawl;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Import Statements</h3>

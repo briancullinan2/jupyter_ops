@@ -70,7 +70,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var delintCode = importer.import('delint notebooks');
+var delintCode = importer.import("<a href="../../Frameworks/de-linting/delint_notebooks.html">delint notebooks</a>");
 
 function delintCell(search) {
     var results = importer.interpret(search);
@@ -95,8 +95,12 @@ module.exports = delintCell;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>delintCell</code> that leverages an external library (<code>delint</code>) to perform code linting on a given input.</p>
 <p>Here's a breakdown:</p>

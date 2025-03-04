@@ -81,9 +81,9 @@
 
 
 
-<pre class="javascript"><code>const {postMessageImageAttachment} = importer.import('create message image attachments')
-const selectModel = importer.import('select llm')
-const {triggerTyping, createMessage, updateInteraction} = importer.import('disrcord api')
+<pre class="javascript"><code>const {postMessageImageAttachment} = importer.import("<a href="../../Frontends/discord_tools/create_discord_message_with_attachments.html">create message image attachments</a>")
+const selectModel = importer.import("<a href="../../Algorithms/llm_writing/select_llm.html">select llm</a>")
+const {triggerTyping, createMessage, updateInteraction} = importer.import("<a href="../../Frontends/discord/discord_api.html">disrcord api</a>")
 
 async function doMesh(interaction) {
   await triggerTyping(interaction.channel_id)
@@ -107,8 +107,12 @@ module.exports = doMesh
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <p>This is a Node.js module that exports an asynchronous function <code>doMesh</code>. The function appears to be part of a Discord bot.</p>

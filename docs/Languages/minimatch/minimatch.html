@@ -70,8 +70,8 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core')
-var expand = importer.import('expand')
-var parse = importer.import('mini parser')
+var expand = importer.import("<a href="../../Languages/minimatch/__expand.html">expand</a>")
+var parse = importer.import("<a href="../../Languages/minimatch/mini_parser.html">mini parser</a>")
 
 function regExpEscape (s) {
   return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\${OUTPUT}amp;')
@@ -131,8 +131,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code implements a <code>minimatch</code> function that performs pattern matching on filenames using a simplified glob-like syntax.</p>
 <p>Here's a breakdown:</p>

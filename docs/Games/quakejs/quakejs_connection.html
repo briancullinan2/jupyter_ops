@@ -73,8 +73,8 @@
 
 <pre class="javascript"><code>var importer = require('../Core')
 var WebSocket = require('ws')
-var {_formatOOB, _stripOOB} = importer.import('quakejs utilities')
-var {_parseServers, _parseInfoResponse} = importer.import('quakejs parsing')
+var {_formatOOB, _stripOOB} = importer.import("<a href="../../Games/quakejs/quakejs_utilities.html">quakejs utilities</a>")
+var {_parseServers, _parseInfoResponse} = importer.import("<a href="../../Games/quakejs/quakejs_parsing.html">quakejs parsing</a>")
 
 function connect(address, port, callback) {
 	var self = this;
@@ -170,8 +170,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a module for interacting with Quake 3 servers using WebSockets.</p>
 <p>Here's a breakdown:</p>

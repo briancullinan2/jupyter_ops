@@ -104,11 +104,11 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core')
-var {replaceCore} = importer.import('replace core requirement')
+var {replaceCore} = importer.import("<a href="../../Core/notebook/__replace_core_requirement.html">replace core requirement</a>")
 
 var code = `
 var importer = require('../Core');
-var getArrayAST = importer.import('get ast path array');
+var getArrayAST = importer.import("<a href="../../Languages/csharp/get_csharp_params.html">get ast path array</a>");
 `
 
 if(typeof $ != 'undefined') {
@@ -116,7 +116,7 @@ if(typeof $ != 'undefined') {
     
     /*
     expected output 
-var getArrayAST = importer.import('get ast path array');
+var getArrayAST = importer.import("<a href="../../Languages/csharp/get_csharp_params.html">get ast path array</a>");
 */
     
 }
@@ -132,8 +132,12 @@ var getArrayAST = importer.import('get ast path array');
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>

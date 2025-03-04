@@ -128,8 +128,8 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var renewalsQuery = importer.import('zuora renewals query');
-var zuoraExport = importer.import('zuora to eloqua.ipynb[0]');
+var renewalsQuery = importer.import("<a href="../../Frameworks/zuora_to_eloqua/zuora_renewals_query.html">zuora renewals query</a>");
+var zuoraExport = importer.import("<a href="../../Frameworks/zuora_to_eloqua/zuora_export_service.html">zuora to eloqua.ipynb[0</a>");
 
 function getZuoraMonth(months, zuoraConfig) {
     if(!months) {
@@ -166,8 +166,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>getZuoraMonth</code> that retrieves renewal data from Zuora for a specified period and converts it into a JSON format.</p>
 <p>Here's a breakdown:</p>

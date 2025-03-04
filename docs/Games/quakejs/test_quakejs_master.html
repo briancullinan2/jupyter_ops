@@ -72,7 +72,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core')
-var master = importer.import('quakejs connection')
+var master = importer.import("<a href="../../Games/quakejs/quakejs_connection.html">quakejs connection</a>")
 
 var host = 'local.games' //'master.quakejs.com'
 var port = 27950
@@ -116,8 +116,12 @@ module.exports = testServers
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code fetches and scans information about Quake 3 servers.</p>
 <p>Here's a breakdown:</p>

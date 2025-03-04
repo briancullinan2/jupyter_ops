@@ -104,8 +104,12 @@ exec remote-viewer --title Windows spice://127.0.0.1:${SPICE_PORT}
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Script Overview</strong></p>
 <p>This is a Bash script that runs a QEMU virtual machine (VM) and connects to it using the Remmina remote viewer.</p>

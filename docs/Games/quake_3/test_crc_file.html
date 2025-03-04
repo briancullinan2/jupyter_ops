@@ -130,7 +130,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core')
-var checksumZip = importer.import('crc checksum file')
+var checksumZip = importer.import("<a href="../../Games/quake_3/crc_checksum_file.html">crc checksum file</a>")
 
 var TEST_PK3 = '/Applications/ioquake3/baseq3/pak8a.pk3'
 
@@ -162,8 +162,12 @@ module.exports = testCrcFile
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet defines an asynchronous function <code>testCrcFile</code> that calculates the CRC checksum of a Quake 3 game archive file (<code>pak8a.pk3</code>).</p>
 <p>Here's a breakdown:</p>

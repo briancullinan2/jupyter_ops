@@ -79,7 +79,7 @@
 <pre class="javascript"><code>// add all passwords from passwords.html?
 var importer = require('../Core');
 var fs = require('fs');
-var saveCredentials = importer.import('add encrypted passwords.json');
+var saveCredentials = importer.import("<a href="../../Selenium/service_auth/Add_encrypted_to_passwords_json.html">add encrypted passwords.json</a>");
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
 var project = PROFILE_PATH + '/Documents/passwords.htm';
@@ -122,8 +122,12 @@ module.exports = readPasswordsHtm;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Function Description</strong></p>
 <p>The <code>readPasswordsHtm</code> function reads passwords from an HTML file (<code>passwords.htm</code>) and extracts host and credential information from each table row.</p>

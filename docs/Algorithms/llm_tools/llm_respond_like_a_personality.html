@@ -74,11 +74,11 @@
 <pre class="javascript"><code>const fs = require('fs')
 const path = require('path')
 const CHAT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'conversations')
-const {EMOTIONS} = importer.import('ask llm about emotions')
-const { askLlamaAboutConversation, askLlamaAboutCategory } = importer.import('ask llm about chat conversations')
-const {askLlamaAboutEmotions} = importer.import('ask llm about emotions')
-const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
-const {convertMessagesToNoDates, CHAT_DIRECTORIES} = importer.import('how to scan chat logs')
+const {EMOTIONS} = importer.import("<a href="../../Algorithms/llm_tools/ask_llm_about_emotions.html">ask llm about emotions</a>")
+const { askLlamaAboutConversation, askLlamaAboutCategory } = importer.import("<a href="../../Algorithms/llm_tools/ask_llm_about_chat_conversations.html">ask llm about chat conversations</a>")
+const {askLlamaAboutEmotions} = importer.import("<a href="../../Algorithms/llm_tools/ask_llm_about_emotions.html">ask llm about emotions</a>")
+const {askLlamaAboutFunctions} = importer.import("<a href="../../Algorithms/llama/ask_llm_about_functions.html">ask llm about functions</a>")
+const {convertMessagesToNoDates, CHAT_DIRECTORIES} = importer.import("<a href="../../Algorithms/llm_tools/scan_chat_logs.html">how to scan chat logs</a>")
 
 async function getChatHistory(chatLog) {
 
@@ -99,7 +99,7 @@ async function getChatHistory(chatLog) {
 
 
 async function askLlamaToRespondLike(name, conversation) {
-  const {llmPrompt} = await importer.import('create llm session')
+  const {llmPrompt} = await importer.import("<a href="../../Algorithms/llama/create_llm_session.html">create llm session</a>")
   if(!name) {
     name = 'Brian/Me'
   }
@@ -241,8 +241,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>Here's a short breakdown of the code:</p>
 <p><strong>Requires and Imports</strong></p>

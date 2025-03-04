@@ -216,8 +216,12 @@ double CIEDE2000(double l1, double a1, double b1, double l2, double a2, double b
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>CIEDE2000 Color Difference Calculation Function</strong></p>
 <p>This is a C++ function that calculates the CIEDE2000 color difference between two colors. The function takes six input parameters:</p>

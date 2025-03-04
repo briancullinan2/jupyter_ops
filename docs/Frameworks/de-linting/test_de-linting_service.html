@@ -71,9 +71,9 @@
 
 <pre class="javascript"><code>var fs = require('fs');
 var importer = require('../Core');
-var delint = importer.import('delint notebooks');
-var exportAndDeploy = importer.import('export deploy notebook');
-var exportNotebook = importer.import('notebook.ipynb[export cells modules]');
+var delint = importer.import("<a href="../../Frameworks/de-linting/delint_notebooks.html">delint notebooks</a>");
+var exportAndDeploy = importer.import("<a href="../../Core/notebook/export_notebook.html">export deploy notebook</a>");
+var exportNotebook = importer.import("<a href="../../Core/notebook/readme_md.html">notebook.ipynb[export cells modules</a>");
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 var project = path.resolve(path.join(__dirname, '../Utilities/.modules'));
@@ -115,8 +115,12 @@ describe('de-linting service', () =&gt; {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a test suite for a de-linting service within a project.</p>
 <p>Here's a breakdown:</p>

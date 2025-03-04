@@ -87,7 +87,7 @@
 
 
 
-<pre class="javascript"><code>const {selectDom} = importer.import('select tree')
+<pre class="javascript"><code>const {selectDom} = importer.import("<a href="../../Core/patterns/select_tree.html">select tree</a>")
 
 // TODO: populate the context with details from my resume
 
@@ -139,8 +139,12 @@ module.exports = messageResume
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Function:</strong> <code>messageResume</code></p>
 <p><strong>Purpose:</strong> Splits a large HTML block of text (a resume) into smaller sections and prompts the user for a short summary and related answers.</p>

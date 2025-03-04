@@ -131,11 +131,11 @@
 
 <pre class="javascript"><code>var path = require('path')
 var importer = require('../Core')
-var {glob} = importer.import('glob files')
-var {chext, chroot} = importer.import('changing file name')
-var listTextures = importer.import('list textures in quake 3 map')
-var mkdirpSync = importer.import('mkdirp')
-//var findShaders = importer.import('list shaders in quake 3 shader')
+var {glob} = importer.import("<a href="../../Core/files/__glob_files.html">glob files</a>")
+var {chext, chroot} = importer.import("<a href="../../Core/files/changing_file_names.html">changing file name</a>")
+var listTextures = importer.import("<a href="../../Games/quake_3/list_textures_in_quake_3_map.html">list textures in quake 3 map</a>")
+var mkdirpSync = importer.import("<a href="../../Core/files/mkdirp.html">mkdirp</a>")
+//var findShaders = importer.import("<a href="../../Games/quake_3/list_shaders_in_quake_3_shader.html">list shaders in quake 3 shader</a>")
 
 async function findTextures(file, modDir, outDir) {
     var textures = listTextures(file)
@@ -188,8 +188,12 @@ module.exports = findTextures
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet analyzes a Quake 3 map file to identify textures used within it and then attempts to locate and organize those textures within a specified output directory.</p>
 <p>Here's a breakdown:</p>

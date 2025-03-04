@@ -77,9 +77,9 @@
 
 <pre class="javascript"><code>const fs = require('fs')
 const path = require('path')
-const { safeurl } = importer.import('domain cache tools')
-const { getNearestSunday } = importer.import('default link collector')
-const summerizeArticle = importer.import('summarize all articles')
+const { safeurl } = importer.import("<a href="../../Analytics/data_collection/domain_cache_tools.html">domain cache tools</a>")
+const { getNearestSunday } = importer.import("<a href="../../Selenium/scraping/default_link_collector.html">default link collector</a>")
+const summerizeArticle = importer.import("<a href="../../Selenium/scraping/summarize_all_articles.html">summarize all articles</a>")
 
 const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'reasonings')
 
@@ -102,7 +102,7 @@ const CONVERSION_PROMPTS = [
 ]
 
 async function alternativeSummary(summary, funny) {
-  let { llmPrompt } = await importer.import('create llm session')
+  let { llmPrompt } = await importer.import("<a href="../../Algorithms/llama/create_llm_session.html">create llm session</a>")
 
   let q1 = 'Convert this article summary, ' + funny + ':\n' + summary[0] + '\nOnly return the summary and nothing else, no explanations.'
   console.log('User: ' + q1)
@@ -181,8 +181,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <p>This code imports various modules and functions, assigns constants, and defines an array of conversion prompts.</p>

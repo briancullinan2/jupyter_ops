@@ -75,7 +75,7 @@ const {spawnSync} = require('child_process')
 let count = 0
 
 async function systemBuffer(data) {
-  const graphUsage = await importer.import('system usage graph')
+  const graphUsage = await importer.import("<a href="../../Utilities/usage/system_usage_graph.html">system usage graph</a>")
   let svg = await graphUsage(data)
   let svgTempFile = path.join(TEMP_DIR, 'tmp' + (count % 4) + '.svg')
   fs.writeFileSync(svgTempFile, svg)
@@ -101,8 +101,12 @@ module.exports = systemBuffer
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Dependencies and Variables</h3>

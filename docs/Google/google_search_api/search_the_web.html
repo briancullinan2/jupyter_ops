@@ -68,7 +68,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var authorizeSearch = importer.import('authorize custom search');
+var authorizeSearch = importer.import("<a href="../../Google/google_search_api/authorize_custom_search.html">authorize custom search</a>");
 
 async function search(q) {
     var params = {
@@ -97,8 +97,12 @@ module.exports = search;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet defines a function <code>search</code> that performs a custom Google Search using the Google Custom Search Engine API.</p>
 <p>Here's a breakdown:</p>

@@ -88,7 +88,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core')
-var { walkTree } = importer.import('walk tree')
+var { walkTree } = importer.import("<a href="../../Core/patterns/__walk_tree.html">walk tree</a>")
 var { XPathResult, JSDOM } = require('jsdom')
 //var cheerio = require('cheerio')
 //var assert = require('assert')
@@ -261,8 +261,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Function Breakdown: <code>evaluateDom</code></strong></p>
 <h3>Overview</h3>

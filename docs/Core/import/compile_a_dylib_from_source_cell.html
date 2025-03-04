@@ -99,7 +99,7 @@ function generateCallback(libName, i, types, params) {
   const { importNotebook } = require('../Core')
   const { load } = require('ffi-rs')
   if(!typeToDataType)
-    typeToDataType = importNotebook('c type to data type')
+    typeToDataType = importNotebook("<a href="../../Utilities/dylib/c_type_to_data_type.html">c type to data type</a>")
 
   return function internalCallback(returnLength, ...paramValues) {
     //console.log(paramValues, types)
@@ -125,13 +125,13 @@ async function makeDylib(code, pathToCode, ctx) {
   if (Module._cache[pathToCode]) {
     return Module._cache[pathToCode].exports
   }
-  const buildDylib = importNotebook('build dylib')
+  const buildDylib = importNotebook("<a href="../../Utilities/dylib/build_dylib.html">build dylib</a>")
   // TODO: await module loaded
   buildDylib(code, pathToCode, ctx)
 
   const codeCell = interpret(pathToCode)
   // TODO: compare file times for dylib module recompile
-  const { safeurl } = importNotebook('domain cache tools')
+  const { safeurl } = importNotebook("<a href="../../Analytics/data_collection/domain_cache_tools.html">domain cache tools</a>")
   let libName = safeurl(codeCell.questions[0])
 
   open({
@@ -140,15 +140,15 @@ async function makeDylib(code, pathToCode, ctx) {
   })
 
   // TODO: turn this into a sort of prepFunction(...types) that takes a types argument instead
-  //const selectCode = await importNotebook('select antlr tree')
+  //const selectCode = await importNotebook("<a href="../../Languages/antlr/select_antlr_tree.html">select antlr tree</a>")
   //console.log(selectCode)
-  const selectCode = await importNotebook('select antlr tree')
+  const selectCode = await importNotebook("<a href="../../Languages/antlr/select_antlr_tree.html">select antlr tree</a>")
   const rootNode = (await selectCode(['//*'], code.toString(), 'cpp'))[0]
   //console.log('###########################', rootNode.tagName)
-  const getParameters = await importNotebook('get c parameters')
+  const getParameters = await importNotebook("<a href="../../Utilities/dylib/get_c_parameters.html">get c parameters</a>")
   const params = await getParameters(rootNode)
   console.log(params)
-  const getTypes = await importNotebook('get c types')
+  const getTypes = await importNotebook("<a href="../../Utilities/dylib/get_c_types.html">get c types</a>")
   // TODO: make functions out of all exports
   let resources = {}
   for (let i = 0; i &lt; params.length; i++) {
@@ -191,8 +191,12 @@ module.exports.makeDylib = makeDylib
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Breakdown of the Code</strong></p>
 <p>The code is written in JavaScript and appears to be a part of a larger project that generates dynamic libraries. Here's a brief explanation of the code:</p>

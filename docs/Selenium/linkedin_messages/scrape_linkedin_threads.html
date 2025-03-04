@@ -79,7 +79,7 @@
 var importer = require('../Core');
 var glob = require('glob');
 var path = require('path');
-var runSeleniumCell = importer.import('selenium cell');
+var runSeleniumCell = importer.import("<a href="../../Selenium/webdriver/selenium_client.html">selenium cell</a>");
 var loginLinkedIn, readLinkedInProfileInfo, listLinkedInThreads,
     readLinkedInThread;
 
@@ -178,8 +178,12 @@ module.exports = scrapeLinkedInThreads;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code is designed to scrape LinkedIn data, specifically focusing on threads and their participants. Here's a breakdown:</p>
 <p><strong>Core Functionality:</strong></p>

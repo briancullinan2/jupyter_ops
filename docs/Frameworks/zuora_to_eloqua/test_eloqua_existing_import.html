@@ -130,13 +130,13 @@
 <pre class="javascript"><code>var assert = require('assert');
 var sinon = require('sinon');
 var importer = require('../Core');
-var request = importer.import('http request polyfill');
-var existing = importer.import('eloqua existing import');
-var { bulkImportTemplate } = importer.import('eloqua create template');
+var request = importer.import("<a href="../../Utilities/polyfills/https_request.html">http request polyfill</a>");
+var existing = importer.import("<a href="../../Frameworks/zuora_to_eloqua/eloqua_existing_import.html">eloqua existing import</a>");
+var { bulkImportTemplate } = importer.import("<a href="../../Frameworks/zuora_to_eloqua/eloqua_import_create_template.html">eloqua create template</a>");
 var {
     getEloquaConfig,
     getOauthToken,
-} = importer.import('eloqua import blueprints');
+} = importer.import("<a href="../../Frameworks/zuora_to_eloqua/eloqua_import_blueprints.html">eloqua import blueprints</a>");
 
 var eloquaConfig = getEloquaConfig();
 var eloquaToken = getOauthToken();
@@ -184,8 +184,12 @@ describe('eloqua existing import', () =&gt; {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines unit tests for the <code>eloqua existing import</code> module, which likely handles interacting with the Eloqua API to check for existing custom data objects and import definitions.</p>
 <p>Here's a breakdown:</p>

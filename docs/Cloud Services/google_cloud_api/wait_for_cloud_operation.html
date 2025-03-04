@@ -84,7 +84,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var authorizeGoogle = importer.import('authorize google service');
+var authorizeGoogle = importer.import("<a href="../../Cloud Services/google_cloud_api/authorize_google_service.html">authorize google service</a>");
 
 function waitForOperation(operation) {
     return authorizeGoogle()
@@ -113,8 +113,12 @@ module.exports = waitForOperation;</code></pre>
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Function Breakdown</h3>
 <h4><code>waitForOperation(operation)</code></h4>

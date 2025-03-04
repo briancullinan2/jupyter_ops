@@ -85,7 +85,7 @@
 
 <pre class="javascript"><code>var assert = require('assert');
 var importer = require('../Core');
-var getTemplates = importer.import('templates google sheet');
+var getTemplates = importer.import("<a href="../../Google/google_sheets/templates_google_doc.html">templates google sheet</a>");
 
 var docsId = '113mVIumItArQ_oXpfDRXP-2Kw2ms4t48oPJ68_p5P8k';
 
@@ -115,8 +115,12 @@ describe('get templates from sheet', () =&gt; {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet is a unit test for a function that retrieves templates from a Google Sheet.</p>
 <p>Here's a breakdown:</p>

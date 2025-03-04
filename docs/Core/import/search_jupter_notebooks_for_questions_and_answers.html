@@ -126,7 +126,7 @@ function createDatabase(cache) {
     var searchFunc = getCells(path.resolve(__dirname, '../Utilities/levenshtein.ipynb'))
         .filter(cell =&gt; cell.source.join('').includes('function levSearch'))
         .map(cell =&gt; path.join(__dirname, '../Utilities', cell.id))
-    var levSearch = importNotebook(searchFunc).levSearch
+    var levSearch = importNotebook("<a href="../../Algorithms/llama/search_llama.html">searchFunc</a>").levSearch
     
     // TODO: turn this in to `levSearch()` function
     token = ({search: levSearch.bind(null, cache, FUSE_CONFIG)})
@@ -165,8 +165,12 @@ module.exports.lookupCell = lookupCell
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Dependencies and Configuration</h3>

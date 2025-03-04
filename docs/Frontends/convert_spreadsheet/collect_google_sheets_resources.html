@@ -92,10 +92,10 @@ if((process.env.ENVIRONMENT || '').includes('LOCAL')
    || (process.env.ENVIRONMENT || '').includes('TEST')
    || !(process.env.ENVIRONMENT || '').includes('DEPLOY')) {
  }
-var copyFileBucket = importer.import('copy file storage bucket');
-var collectExternalResources = importer.import('collect external content and resources');
-var collectRoutes = importer.import('find known routes to sheets');
-var getTemplateByUrl = importer.import('convert sheet helper functions');
+var copyFileBucket = importer.import("<a href="../../Cloud Services/google_storage_api/copy_a_file_in_storage_bucket.html">copy file storage bucket</a>");
+var collectExternalResources = importer.import("<a href="../../Frontends/convert_spreadsheet/collect_external_content_and_resources.html">collect external content and resources</a>");
+var collectRoutes = importer.import("<a href="../../Frontends/convert_spreadsheet/find_known_routes_to_sheets.html">find known routes to sheets</a>");
+var getTemplateByUrl = importer.import("<a href="../../Frontends/convert_spreadsheet/convert_sheet_helper_functions.html">convert sheet helper functions</a>");
 
 var timestamp = (new Date()).getTime();
 
@@ -103,9 +103,9 @@ var timestamp = (new Date()).getTime();
 function collectTemplateResources(path, page, properties, templates, bucketName, rendered) {
     var streamToGoogle
     if(!(process.env.ENVIRONMENT || '').includes('DEPLOY')) {
-        streamToGoogle = importer.import('test stream to output');
+        streamToGoogle = importer.import("<a href="../../Cloud Services/google_storage_api/test_stream_to_output.html">test stream to output</a>");
     } else {
-        streamToGoogle = importer.import('upload files google cloud');
+        streamToGoogle = importer.import("<a href="../../Cloud Services/google_storage_api/upload_files_to_google_cloud.html">upload files google cloud</a>");
     }
 
     if(!rendered) {
@@ -155,8 +155,12 @@ module.exports = collectTemplateResources;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <p>This is a Node.js script that appears to be part of a larger application. It imports various modules and functions from another module (<code>../Core</code>) and uses them to perform tasks related to template rendering, resource collection, and file streaming to Google Cloud.</p>

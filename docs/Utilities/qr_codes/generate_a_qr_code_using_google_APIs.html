@@ -65,7 +65,7 @@
 
 <pre class="javascript"><code>var util = require('util');
 var importer = require('../Core');
-var {request} = importer.import('https request');
+var {request} = importer.import("<a href="../../Utilities/polyfills/https_request.html">https request</a>");
 
 var first = 'Elvis';
 var last = 'Presley';
@@ -89,8 +89,12 @@ $.async(request(qr)
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet generates a QR code image from a vCard (digital contact card) and displays it.</p>
 <p>Here's a breakdown:</p>

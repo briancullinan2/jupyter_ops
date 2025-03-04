@@ -131,9 +131,9 @@ var xlsx = require('xlsx');
 var importer = require('../Core');
 var fs = require('fs');
 
-var {getZuoraMonth} = importer.import('zuora export month');
-var calculatePrice = importer.import('calculate price');
-var {getCatalog} = importer.import('zuora to eloqua.ipynb[0]');
+var {getZuoraMonth} = importer.import("<a href="../../Frameworks/zuora_to_eloqua/zuora_export_month.html">zuora export month</a>");
+var calculatePrice = importer.import("<a href="../../Frameworks/zuora_to_eloqua/calculate_price.html">calculate price</a>");
+var {getCatalog} = importer.import("<a href="../../Frameworks/zuora_to_eloqua/zuora_export_service.html">zuora to eloqua.ipynb[0</a>");
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
 var zuoraConfig = JSON.parse(fs.readFileSync(PROFILE_PATH + '/.credentials/zuoraRest_production.json').toString().trim());
@@ -162,8 +162,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h1><strong>Code Breakdown</strong></h1>
 <h3>Dependencies</h3>

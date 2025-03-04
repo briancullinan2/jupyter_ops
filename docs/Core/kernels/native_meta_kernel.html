@@ -118,11 +118,11 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var {extend} = importer.import('extend prototype class');
-var interface = importer.import('enforcing an interface');
-var metaKernelInterface = importer.import('meta kernel interface');
-var nativeMethods = importer.import('native meta kernel methods');
-var {nativeKernelInfo} = importer.import('kernel info interface');
+var {extend} = importer.import("<a href="../../Core/patterns/extend_prototype_class.html">extend prototype class</a>");
+var interface = importer.import("<a href="../../Core/patterns/enforcing_an_interface.html">enforcing an interface</a>");
+var metaKernelInterface = importer.import("<a href="../../Core/kernels/meta_kernel_interface.html">meta kernel interface</a>");
+var nativeMethods = importer.import("<a href="../../Core/kernels/native_meta_methods.html">native meta kernel methods</a>");
+var {nativeKernelInfo} = importer.import("<a href="../../Core/kernels/kernel_info_interface.html">kernel info interface</a>");
 
 // automatically fill in some properties passed in from children
 function reassignProperties(meta_kernel) {
@@ -188,8 +188,12 @@ module.exports = nativeMetaKernel;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Imports</h3>

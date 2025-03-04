@@ -79,12 +79,13 @@
 var {
     loadLocations, averageDestinations, reconcileTimelineLocations,
     runSeleniumCell
-} = importer.import([
-    'load locations export data',
-    'average latitude longitude',
-    'reconcile timeline calendar',
-    'selenium cell'
-])
+} = importer.import("<a href="../../Selenium/google_timeline/Load_location_export_data.html">load locations export data</a>"
+,<br />
+"<a href="../../Frameworks/d3/Create_a_word-cloud.html">average latitude longitude</a>"
+,<br />
+"<a href="../../Selenium/google_timeline/reconcile_timeline.html">reconcile timeline calendar</a>"
+,<br />
+"<a href="../../Selenium/webdriver/selenium_client.html">selenium cell</a>")
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 var PROJECT_PATH = PROFILE_PATH + '/Collections/timeline';
@@ -183,8 +184,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet appears to be part of a larger script designed to analyze location history data from Google Takeout and reconcile it with timeline data from Google Calendar.</p>
 <p>Here's a breakdown:</p>

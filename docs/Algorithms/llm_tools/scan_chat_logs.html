@@ -75,10 +75,10 @@
 //import {fileURLToPath} from "url";
 const fs = require('fs')
 const path = require('path')
-const {askLlamaAboutEmotions} = importer.import('ask llm about emotions')
-const {storeChatHistory} = importer.import('how to cache chat logs')
-//const { chatCache } = importer.import('cache chat history with llm descriptions')
-const { askLlamaAboutConversation, askLlamaAboutCategory } = importer.import('ask llm about chat conversations')
+const {askLlamaAboutEmotions} = importer.import("<a href="../../Algorithms/llm_tools/ask_llm_about_emotions.html">ask llm about emotions</a>")
+const {storeChatHistory} = importer.import("<a href="../../Algorithms/llm_tools/cache_chat_logs.html">how to cache chat logs</a>")
+//const { chatCache } = importer.import("<a href="../../Databases/caches/cache_chat_history_with_llm_descriptions.html">cache chat history with llm descriptions</a>")
+const { askLlamaAboutConversation, askLlamaAboutCategory } = importer.import("<a href="../../Algorithms/llm_tools/ask_llm_about_chat_conversations.html">ask llm about chat conversations</a>")
 
 const hashCode = s =&gt; s.split('').reduce((a,b) =&gt; (((a &lt;&lt; 5) - a) + b.charCodeAt(0))|0, 0)
 
@@ -233,8 +233,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Breakdown of the Code</strong></p>
 <h3>Importing Modules and Functions</h3>

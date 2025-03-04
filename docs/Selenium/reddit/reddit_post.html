@@ -75,14 +75,14 @@
 
 
 
-<pre class="javascript"><code>const loginReddit = importer.import('reddit login')
-const getClient = importer.import('selenium client')
-const getAllQuery = importer.import('selenium query')
+<pre class="javascript"><code>const loginReddit = importer.import("<a href="../../Selenium/reddit/reddit_login.html">reddit login</a>")
+const getClient = importer.import("<a href="../../Selenium/webdriver/selenium_client.html">selenium client</a>")
+const getAllQuery = importer.import("<a href="../../Selenium/webdriver/selenium_query.html">selenium query</a>")
 const { By } = require('selenium-webdriver')
 
 
 async function redditPost(driver, content, startPage) {
-  let {llmPrompt} = await importer.import('create llm session')
+  let {llmPrompt} = await importer.import("<a href="../../Algorithms/llama/create_llm_session.html">create llm session</a>")
 
   if(!startPage.includes('://')) {
     startPage = 'https://www.reddit.com/r/' + startPage
@@ -158,8 +158,12 @@ module.exports = redditPost
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Overview</h3>

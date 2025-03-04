@@ -75,12 +75,12 @@
 
 <pre class="node"><code>var importer = require('../Core')
 var gamedig = require('gamedig')
-var serverApi = importer.import('quake 3 server commands')
-var { sendRcon, nextAllResponses, udpClient } = importer.import('quake 3 server commands')
-var discordApi = importer.import('discord api')
-var {authorizeGateway} = importer.import('authorize discord')
-var {parseConfigStr} = importer.import('quake 3 server responses')
-var removeCtrlChars = importer.import('remove ctrl characters')
+var serverApi = importer.import("<a href="../../Games/quake3_server_connector/quake_3_server_commands.html">quake 3 server commands</a>")
+var { sendRcon, nextAllResponses, udpClient } = importer.import("<a href="../../Games/quake3_server_connector/quake_3_server_commands.html">quake 3 server commands</a>")
+var discordApi = importer.import("<a href="../../Frontends/discord/discord_api.html">discord api</a>")
+var {authorizeGateway} = importer.import("<a href="../../Frontends/discord/discord_request.html">authorize discord</a>")
+var {parseConfigStr} = importer.import("<a href="../../Games/quake3_server_connector/quake_3_server_responses.html">quake 3 server responses</a>")
+var removeCtrlChars = importer.import("<a href="../../Games/quake3_server_connector/remove_ctrl_characters.html">remove ctrl characters</a>")
 
 async function getStatus(ip, port) {
     return gamedig.query({
@@ -208,8 +208,12 @@ module.exports = getChats</code></pre>
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown: Quake 3 Server Status and Chat Capture</strong></p>
 <h3>Dependencies and Imports</h3>

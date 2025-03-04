@@ -72,10 +72,14 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core')
-var {selectAst} = importer.import('select ast')
+var {selectAst} = importer.import("<a href="../../Core/syntax/select_ast.html">select ast</a>")
 var {
     niceName, getExports, getParameters
-} = importer.import(['nice name', 'get exports', 'get parameters'])
+} = importer.import("<a href="../../Core/notebook/nice_name.html">nice name</a>"
+,<br />
+"<a href="../../Utilities/dylib/get_c_exports.html">get exports</a>"
+,<br />
+"<a href="../../Utilities/dylib/get_c_parameters.html">get parameters</a>")
 
 async function handler(req, res) {
     if(!req &amp;&amp; process.stdout.isTTY) {
@@ -159,8 +163,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a generic cloud function handler and a function <code>makeHandler</code> to create specialized handlers from code snippets.</p>
 <p>Here's a breakdown:</p>

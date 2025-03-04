@@ -101,7 +101,7 @@
 
 <pre class="javascript"><code>var fs = require('fs');
 var importer = require('../Core')
-var {glob} = importer.import('glob files')
+var {glob} = importer.import("<a href="../../Core/files/__glob_files.html">glob files</a>")
 fs.readdirSync('.');
 var PROJECT_PATH = '/Users/briancullinan/Google Drive/Colab Notebooks'
 glob.sync('**/*.ipynb', {cwd: PROJECT_PATH}).forEach(f =&gt; {
@@ -135,8 +135,12 @@ glob.sync('**/*.ipynb', {cwd: PROJECT_PATH}).forEach(f =&gt; {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code iterates through all Jupyter Notebook files (<code>*.ipynb</code>) within a specified project directory (<code>PROJECT_PATH</code>) and modifies their metadata.</p>
 <p>Here's a breakdown:</p>

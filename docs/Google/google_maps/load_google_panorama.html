@@ -81,8 +81,8 @@ var fs = require('fs')
 var {GoogleAuth} = require('google-auth-library');
 var google = require('googleapis')
 var importer = require('../Core')
-var getRpcFromSpec = importer.import('get rpc from spec')
-var authorize = importer.import('google oauth token client')
+var getRpcFromSpec = importer.import("<a href="../../Core/rpc/get_rpc_from_spec.html">get rpc from spec</a>")
+var authorize = importer.import("<a href="../../Selenium/google_authorize/google_oauth_token_client.html">google oauth token client</a>")
 var mapsClient = getRpcFromSpec(require('../Resources/APIs/google-maps-platform-openapi3.json'));
 var {createCanvas, loadImage} = require('canvas')
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
@@ -227,8 +227,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet is designed to load and compose a panoramic image from Google Street View using the Google Maps Platform API.</p>
 <p>Here's a breakdown:</p>

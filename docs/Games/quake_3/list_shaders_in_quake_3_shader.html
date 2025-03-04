@@ -130,7 +130,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core')
-var balanced = importer.import('balanced')
+var balanced = importer.import("<a href="../../Languages/balanced/balanced.html">balanced</a>")
 
 function findShaders(file) {
     if(typeof file === 'string' &amp;&amp; fs.existsSync(file)) {
@@ -161,8 +161,12 @@ module.exports = findShaders
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet is designed to extract shader definitions from a text file, likely a Quake game configuration or script file.</p>
 <p>Here's a breakdown:</p>

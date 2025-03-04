@@ -74,8 +74,8 @@
 <pre class="javascript"><code>var cookie = require('cookie');
 var cors = require('cors')({origin: true});
 var importer = require('../Core');
-var getResult = importer.import('rpc result');
-var getEnvironment = importer.import('get environment');
+var getResult = importer.import("<a href="../../Core/rpc/rpc_result.html">rpc result</a>");
+var getEnvironment = importer.import("<a href="../../Core/rpc/get_environment.html">get environment</a>");
 
 var expressToResult = (req, res) =&gt; getResult({
     command: (req.body || {})['function'] || (req.query || {})['function'],
@@ -122,8 +122,12 @@ module.exports.handler = expressHandler;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code sets up an Express.js middleware function for a Firebase Cloud Function that acts as a remote procedure call (RPC) endpoint.</p>
 <p>Here's a breakdown:</p>

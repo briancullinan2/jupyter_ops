@@ -84,11 +84,11 @@ var {JSDOM} = require('jsdom');
 var {
     listEvents,
     storeResult
-} = importer.import([
-    'list events',
-    'import google calendar api',
-    'store rpc result'
-]);
+} = importer.import("<a href="../../Google/google_calendar/list_events.html">list events</a>"
+,<br />
+"<a href="../../Google/google_calendar/use_Google_calendar_API.html">import google calendar api</a>"
+,<br />
+"<a href="../../Core/rpc/store_rpc_result.html">store rpc result</a>");
 
 var options = {
     calendarId: 'commands'
@@ -144,9 +144,9 @@ function runTodaysEvents(calendar) {
 
 module.exports = runTodaysEvents;
 
-// node -e "require('/Users/briancullinan/jupytangular2/Core').import('heartbeat')('run todays calendar events')"
+// node -e "require('/Users/briancullinan/jupytangular2/Core').import("<a href="../../Frameworks/zuora_to_eloqua/readme.html">heartbeat</a>")('run todays calendar events')"
 
-// echo "require('/Users/briancullinan/jupytangular2/Core').import('scrape facebook events').then(runner =&gt; runner()).then(e=&gt;{console.log(e); process.exit(e) }).catch(e=&gt;{console.log(e); process.exit(e) });" | node
+// echo "require('/Users/briancullinan/jupytangular2/Core').import("<a href="../../Selenium/facebook_data/Scrape_facebook_events.html">scrape facebook events</a>").then(runner =&gt; runner()).then(e=&gt;{console.log(e); process.exit(e) }).catch(e=&gt;{console.log(e); process.exit(e) });" | node
 
 </code></pre>
 
@@ -159,8 +159,12 @@ module.exports = runTodaysEvents;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet fetches upcoming events from a Google Calendar, extracts parameters from their descriptions, and prepares them for execution.</p>
 <p>Here's a breakdown:</p>

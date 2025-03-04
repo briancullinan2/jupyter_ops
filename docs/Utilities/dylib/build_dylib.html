@@ -87,8 +87,8 @@
 const fs = require('fs')
 const path = require('path')
 const { interpret } = require('../Core')
-const { safeurl } = importer.import('domain cache tools')
-const parse = importer.import('shell parse')
+const { safeurl } = importer.import("<a href="../../Analytics/data_collection/domain_cache_tools.html">domain cache tools</a>")
+const parse = importer.import("<a href="../../Utilities/shell-parse/shell_parse.html">shell parse</a>")
 
 const BUILD_DIRECTORY = path.join(__dirname, '../.build')
 const SCAN_ENVIRONMENT = /([A-Z_])\s*[\:-=]+\s*(.*?)\s*(\n|$)/g
@@ -190,8 +190,12 @@ module.exports = buildDylib
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Requires and Constants</h3>

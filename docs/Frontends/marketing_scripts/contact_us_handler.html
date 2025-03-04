@@ -68,7 +68,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var addRow = importer.import('add row data google sheet');
+var addRow = importer.import("<a href="../../Google/google_sheets/add_row_data_google_sheet.html">add row data google sheet</a>");
 
 function contactUs(name, email, subject, message) {
     console.log(`Adding contact row for ${req.body['name']}`)
@@ -96,8 +96,12 @@ module.exports = contactUs;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>contactUs</code> that handles incoming contact form submissions and adds them to a Google Sheet.</p>
 <p><strong>Functionality:</strong></p>

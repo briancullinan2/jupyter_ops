@@ -72,7 +72,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var levSort = importer.import('sort by levenshtein distance');
+var levSort = importer.import("<a href="../../Utilities/levenshtein/Sort_by_levenshtein_distance.html">sort by levenshtein distance</a>");
 var sqlite3 = require('better-sqlite3');
 var movies = './movies.sqlite.db';
 var db = new sqlite3(movies, {});
@@ -167,8 +167,12 @@ getTitleTitleIntersection('tt0111507', 'tt0111495', 'tt0108394')
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2><strong>Overview</strong></h2>
 <p>This code is a set of functions for interacting with a SQLite database containing movie information. It provides methods for retrieving actor and title data, including functionality for searching by Levenshtein distance.</p>

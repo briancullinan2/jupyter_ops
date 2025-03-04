@@ -79,10 +79,10 @@
 const path = require('path')
 const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
 const {spawnSync} = require('child_process')
-const updateCode = importer.import('update code cell')
+const updateCode = importer.import("<a href="../../Core/cache/__update_code_cell.html">update code cell</a>")
 
 async function generateCell(prompt, codeCell, github) {
-  const llmCode = await importer.import('llm code')
+  const llmCode = await importer.import("<a href="../../Algorithms/llama_vision/llm_voice.html">llm code</a>")
 
   if(!github) {
     console.error('Project not specified.')
@@ -171,8 +171,12 @@ module.exports = generateCell
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Breakdown of the Code</strong></p>
 <p>This Node.js script appears to be a part of a larger project that utilizes a Large Language Model (LLM) to generate code for a given project. Here's a brief overview of the code:</p>

@@ -222,8 +222,12 @@ module.exports = gitFileTree
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code sets up a runtime environment for interacting with Git using the <code>wasm-git</code> library and defines a function to generate file icons based on MIME types.</p>
 <p>Here's a breakdown:</p>

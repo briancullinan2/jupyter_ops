@@ -131,7 +131,7 @@
 
 <pre class="javascript"><code>var path = require('path')
 var importer = require('../Core')
-var {getBounds} = importer.import('add skybox to map')
+var {getBounds} = importer.import("<a href="../../Games/quake_3/add_skybox_to_map.html">add skybox to map</a>")
 
 
 var MAPS_HINTS = {
@@ -284,8 +284,12 @@ module.exports.MAPS_HINTS = MAPS_HINTS
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet defines a function <code>addHints</code> that adds hints to a Quake 3 map file based on its name or a provided pattern.</p>
 <p>Here's a breakdown:</p>

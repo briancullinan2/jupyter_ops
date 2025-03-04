@@ -20,9 +20,9 @@ DevOps crestomathy in jupyter notebooks.
 ## TODO
 
 1. DONE: Self-hosted / no-dependencies
-2. Documentation export
+2. DONE: [Documentation export](https://jupyter.briancullinan.com)
 3. Multi-lingual, runs from R/Matlab (DONE: Python, C#, C, C++, ES/CommonJS interops)
 4. Logic merging (as opposed to line merging and feature branching, the enemies of code organization)
-5. [Aspects oriented](https://en.wikipedia.org/wiki/Aspect-oriented_programming) eg [Morpheus](https://github.com/briancullinan2/morpheus/blob/main/library/repl/scripts/voidzero.js)
+5. [Aspects oriented](https://en.wikipedia.org/wiki/Aspect-oriented_programming) eg [Morpheus](https://github.com/briancullinan2/morpheus/blob/main/library/repl/attrib.js)
 
 

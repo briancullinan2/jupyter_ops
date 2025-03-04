@@ -79,7 +79,7 @@ var path = require('path');
 var glob = require('glob');
 var assert = require('assert');
 var importer = require('../Core');
-var runSeleniumCell = importer.import('selenium cell');
+var runSeleniumCell = importer.import("<a href="../../Selenium/webdriver/selenium_client.html">selenium cell</a>");
 var loginFacebook,
     likeAllPosts,
     getAllXPath,
@@ -127,9 +127,13 @@ function collectFacebookProfiles() {
         .then(doc =&gt; {
             // call script to get all Facebook friends
             var dom = new JSDOM(doc);
-            getAllXPath = importer.import('all elements xpath',  {
+            getAllXPath = importer.import("<a href="../../Selenium/utilities/all_elements_until.html">all elements xpath</a>"
+,<br />
+"<a href="../../Google/google_calendar_graphs/test_google_calendar_search_pie_chart.html">{
                 client: {
-                    execute: (func, ...args) =&gt; Promise.resolve({
+                    execute: (func</a>"
+,<br />
+"<a href="../../Core/files/mkdirp.html">...args</a>") =&gt; Promise.resolve({
                         value: func.apply(dom.window.document, args)
                     }),
                     addCommand: () =&gt; {
@@ -178,8 +182,12 @@ module.exports = collectFacebookProfiles;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code is designed to scrape Facebook friend data and process it. Here's a breakdown:</p>
 <ol>

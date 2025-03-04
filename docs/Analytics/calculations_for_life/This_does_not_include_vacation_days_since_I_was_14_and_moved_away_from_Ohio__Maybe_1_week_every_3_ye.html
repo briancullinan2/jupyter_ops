@@ -122,8 +122,12 @@ console.log('Percent of Jim\'s life spent with his only son: ' + _percentOfJimsL
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code calculates the percentage of the author's life spent with a friend named Jim, taking into account various factors like the number of years they've known each other, how often they visited, and the length of vacations.</p>
 <p>Here's a breakdown:</p>

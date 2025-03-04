@@ -100,14 +100,14 @@ $.async();
 
 // don't do this
 Promise.all([
-    importer.importNotebook(n)
-    importer.importNotebook(n)
+    importer.importNotebook("<a href="../../Algorithms/audio/.html">n</a>")
+    importer.importNotebook("<a href="../../Algorithms/audio/.html">n</a>")
     ]);
 
 // do this instead!
 runAllPromises([
-    importer.importNotebook(n)
-    importer.importNotebook(n)
+    importer.importNotebook("<a href="../../Algorithms/audio/.html">n</a>")
+    importer.importNotebook("<a href="../../Algorithms/audio/.html">n</a>")
     ])
 */
 
@@ -122,8 +122,12 @@ runAllPromises([
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet demonstrates the correct way to handle multiple asynchronous operations using promises in JavaScript.</p>
 <p><strong>Problem:</strong></p>

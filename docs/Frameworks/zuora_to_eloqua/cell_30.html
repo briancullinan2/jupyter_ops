@@ -132,7 +132,9 @@ if(typeof $ !== 'undefined') {
     eloquaOauth(eloquaConfig)
         .then(r =&gt; {
             eloquaToken = r;
-            return getEloquaExistingImport(eloquaToken, eloquaConfig)
+            return getEloquaExistingImport("<a href="../../Analytics/data_collection/tell_joke.html">eloquaToken</a>"
+,<br />
+"<a href="../../Algorithms/llama_vision/llama_vision.html">eloquaConfig</a>")
         })
         /*
         .then(r =&gt; {
@@ -172,8 +174,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Conditional Block</h3>

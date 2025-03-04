@@ -87,10 +87,10 @@
 
 
 
-<pre class="javascript"><code>const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
-const relevantHistory = importer.import('relevant llm history')
-const relevantKeywords = importer.import('relevant llm keywords')
-const matchingTimestamps = importer.import('relevant history timestamps')
+<pre class="javascript"><code>const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import("<a href="../../Algorithms/llm_chat/general_chit_chat.html">general chit chat</a>")
+const relevantHistory = importer.import("<a href="../../Algorithms/llm_chat/relevant_llm_history.html">relevant llm history</a>")
+const relevantKeywords = importer.import("<a href="../../Algorithms/llm_chat/relevant_chat_keywords.html">relevant llm keywords</a>")
+const matchingTimestamps = importer.import("<a href="../../Algorithms/llm_chat/relevant_history_timestamps.html">relevant history timestamps</a>")
 
 
 async function messageHistory(promptModel, session, prompt) {
@@ -237,8 +237,12 @@ module.exports = messageHistory
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Function Breakdown</strong></p>
 <h3>Importing Modules and Constants</h3>

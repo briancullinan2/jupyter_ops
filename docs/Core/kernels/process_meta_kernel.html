@@ -120,11 +120,11 @@
 
 <pre class="javascript"><code>var {spawn} = require("child_process");
 var importer = require('../Core');
-var interface = importer.import('enforcing an interface');
-var metaKernelInterface = importer.import('meta kernel interface');
-var {extend} = importer.import('extend prototype class');
-var {socketMetaKernel} = socketMethods = importer.import('socket meta kernel')
-var nativeMethods = importer.import('native meta kernel methods');
+var interface = importer.import("<a href="../../Core/patterns/enforcing_an_interface.html">enforcing an interface</a>");
+var metaKernelInterface = importer.import("<a href="../../Core/kernels/meta_kernel_interface.html">meta kernel interface</a>");
+var {extend} = importer.import("<a href="../../Core/patterns/extend_prototype_class.html">extend prototype class</a>");
+var {socketMetaKernel} = socketMethods = importer.import("<a href="../../Core/kernels/__socket_meta_kernel.html">socket meta kernel</a>")
+var nativeMethods = importer.import("<a href="../../Core/kernels/native_meta_methods.html">native meta kernel methods</a>");
 
 function processMetaKernel(meta_kernel) {
     var meta = interface(meta_kernel, metaKernelInterface);
@@ -216,8 +216,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2><strong>Overview</strong></h2>
 <p>This code is likely part of a Node.js application that interacts with a meta kernel, which is a system that manages and executes a kernel. The kernel is responsible for performing various tasks, such as executing commands, inspecting the system, and handling messages.</p>

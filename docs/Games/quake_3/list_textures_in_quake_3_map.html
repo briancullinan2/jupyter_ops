@@ -132,7 +132,7 @@
 <pre class="javascript"><code>var fs = require('fs')
 var path = require('path')
 var importer = require('../Core')
-var {BitStream} = importer.import('bit buffer')
+var {BitStream} = importer.import("<a href="../../Utilities/bitbuffer/bit_buffer.html">bit buffer</a>")
 
 var MAX_QPATH = 64
 
@@ -212,8 +212,12 @@ module.exports = listTextures
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet analyzes Quake map files to extract and list texture references used within the map.</p>
 <p>Here's a breakdown:</p>

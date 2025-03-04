@@ -90,9 +90,9 @@
 <pre class="javascript"><code>var fs = require('fs');
 var path = require('path');
 var importer = require('../Core');
-var getEnvironment = importer.import('get environment');
-var importSheet = importer.import('sheet marketing import');
-var {glob} = importer.import('glob files')
+var getEnvironment = importer.import("<a href="../../Core/rpc/get_environment.html">get environment</a>");
+var importSheet = importer.import("<a href="../../Frontends/convert_spreadsheet/sheet_marketing_import.html">sheet marketing import</a>");
+var {glob} = importer.import("<a href="../../Core/files/__glob_files.html">glob files</a>")
 var streamToGoogle
 
 function initSync(env) {
@@ -100,9 +100,9 @@ function initSync(env) {
     if((process.env.ENVIRONMENT || '').includes('LOCAL')
     || (process.env.ENVIRONMENT || '').includes('TEST')
     || !(process.env.ENVIRONMENT || '').includes('DEPLOY')) {
-        streamToGoogle = importer.import('test stream to output');
+        streamToGoogle = importer.import("<a href="../../Cloud Services/google_storage_api/test_stream_to_output.html">test stream to output</a>");
     } else {
-        streamToGoogle = importer.import('upload files google cloud');
+        streamToGoogle = importer.import("<a href="../../Cloud Services/google_storage_api/upload_files_to_google_cloud.html">upload files google cloud</a>");
     }
 }
 
@@ -149,8 +149,12 @@ module.exports = importTest;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Requires and Imports</h4>

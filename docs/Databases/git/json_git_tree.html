@@ -84,9 +84,7 @@
 <pre class="javascript"><code>var execSync = require('child_process').execSync;
 /*var {
     execCmd
-} = importer.import([
-    'spawn child process',
-]);*/
+} = importer.import("<a href="../../Utilities/child_process/spawn_child_process.html">spawn child process</a>");*/
 
 
 function gitTree(project) {
@@ -143,8 +141,12 @@ module.exports = gitTree;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>gitTree</code> that analyzes a Git repository and generates a structured representation of its commit history, essentially creating a visual &quot;tree&quot; of branches and commits.</p>
 <p>Here's a breakdown:</p>

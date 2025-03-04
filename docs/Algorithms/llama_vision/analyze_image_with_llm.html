@@ -90,7 +90,7 @@
 <pre class="javascript"><code>const fs = require('fs')
 
 async function analyzeImage(imagePath) {
-  const {llmAnalyze} = await importer.import('llama vision')
+  const {llmAnalyze} = await importer.import("<a href="../../Algorithms/llama_vision/llama_vision.html">llama vision</a>")
 
   console.log("User: Analyze the image:\n" + imagePath);
   const a0 = await llmAnalyze('Analyze the image:\n' + fs.readFileSync(imagePath).toString('base64'));
@@ -111,8 +111,12 @@ module.exports = analyzeImage
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Function Breakdown</h3>
 <p><strong>analyzeImage Function</strong></p>

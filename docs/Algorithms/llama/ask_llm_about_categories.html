@@ -83,8 +83,8 @@
 
 
 
-<pre class="javascript"><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')
-const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
+<pre class="javascript"><code>const { functionCache } = importer.import("<a href="../../Databases/caches/cache_rpc_functions_with_llm_descriptions.html">cache rpc functions with llm descriptions</a>")
+const {askLlamaAboutFunctions} = importer.import("<a href="../../Algorithms/llama/ask_llm_about_functions.html">ask llm about functions</a>")
 
 
 async function askLlamaAboutCategories(query) {
@@ -136,8 +136,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>

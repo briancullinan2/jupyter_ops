@@ -93,11 +93,11 @@ var {
     getOauthClient,
     ISODateString,
     createNewEvent,
-} = importer.import([
-    'convert date iso',
-    'create new calendar event',
-    'import google calendar api',
-]);
+} = importer.import("<a href="../../Games/quake_3/convert_nonalpha.html">convert date iso</a>"
+,<br />
+"<a href="../../Google/google_calendar/create_new_calendar_event.html">create new calendar event</a>"
+,<br />
+"<a href="../../Google/google_calendar/use_Google_calendar_API.html">import google calendar api</a>");
 
 var options = {
     calendarId: 'aws'
@@ -125,8 +125,12 @@ module.exports = scheduleSearch;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Requirements and Imports</h4>

@@ -70,7 +70,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var mockTypescriptFs = importer.import('memory-fs rewire');
+var mockTypescriptFs = importer.import("<a href="../../Core/cache/memory_safe_async.html">memory-fs rewire</a>");
 // overlay out temp filesystem on top of current filesystem
 var cli = require('@angular/cli');
 
@@ -107,8 +107,12 @@ module.exports = ng;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code sets up a way to mock the Angular CLI (<code>ng</code>) commands within a test environment.</p>
 <p>Here's a breakdown:</p>

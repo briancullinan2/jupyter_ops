@@ -84,10 +84,10 @@
 <pre class="javascript"><code>var chrono = require('chrono-node');
 var _ = require('lodash');
 var importer = require('../Core');
-var execCmd = importer.import('spawn child process');
-var ISODateString = importer.import('convert date iso');
-var correctCalendarId = importer.import('lookup calendar name');
-var updateEvent = importer.import('update create merge event');
+var execCmd = importer.import("<a href="../../Utilities/child_process/spawn_child_process.html">spawn child process</a>");
+var ISODateString = importer.import("<a href="../../Games/quake_3/convert_nonalpha.html">convert date iso</a>");
+var correctCalendarId = importer.import("<a href="../../Utilities/window_enum/lookup_window_by.html">lookup calendar name</a>");
+var updateEvent = importer.import("<a href="../../Google/google_calendar/Update_create_merge_delete_event.html">update create merge event</a>");
 var offset = (new Date()).getTimezoneOffset() * 60 * 1000;
 
 function gitRemote(project) {
@@ -193,8 +193,12 @@ module.exports = gitHistory;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines several functions for interacting with Git repositories, including fetching remote information, retrieving branch names, and parsing commit logs.</p>
 <p>Here's a breakdown:</p>

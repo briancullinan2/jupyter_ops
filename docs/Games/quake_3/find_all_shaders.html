@@ -132,8 +132,8 @@
 <pre class="javascript"><code>var fs = require('fs')
 var path = require('path')
 var importer = require('../Core')
-var {glob} = importer.import('glob files')
-var findShaders = importer.import('list shaders in quake 3 shader')
+var {glob} = importer.import("<a href="../../Core/files/__glob_files.html">glob files</a>")
+var findShaders = importer.import("<a href="../../Games/quake_3/list_shaders_in_quake_3_shader.html">list shaders in quake 3 shader</a>")
 
 async function findAllShaders(modDir) {
     var allShaders = {}
@@ -159,8 +159,12 @@ module.exports = findAllShaders
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet is designed to find and collect all shader definitions from a Quake 3 mod directory.</p>
 <p>Here's a breakdown:</p>

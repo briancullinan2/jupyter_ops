@@ -83,8 +83,8 @@
 
 
 
-<pre class="javascript"><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')
-const { updateCode } = importer.import('update code cell')
+<pre class="javascript"><code>const { functionCache } = importer.import("<a href="../../Databases/caches/cache_rpc_functions_with_llm_descriptions.html">cache rpc functions with llm descriptions</a>")
+const { updateCode } = importer.import("<a href="../../Core/cache/__update_code_cell.html">update code cell</a>")
 
 function storeLlamaFunction (cellId, mtime, exports, description, summary, categories, category) {
   functionCache[cellId] = {
@@ -121,8 +121,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Functions</h4>

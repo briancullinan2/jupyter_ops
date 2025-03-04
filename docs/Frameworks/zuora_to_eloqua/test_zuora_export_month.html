@@ -129,9 +129,9 @@
 
 <pre class="javascript"><code>var assert = require('assert');
 var sinon = require('sinon');
-var exporter = importer.import('zuora export month');
-var zuoraExport = importer.import('zuora to eloqua.ipynb[0]');
-var renewalsQuery = importer.import('zuora renewals query');
+var exporter = importer.import("<a href="../../Frameworks/zuora_to_eloqua/zuora_export_month.html">zuora export month</a>");
+var zuoraExport = importer.import("<a href="../../Frameworks/zuora_to_eloqua/zuora_export_service.html">zuora to eloqua.ipynb[0</a>");
+var renewalsQuery = importer.import("<a href="../../Frameworks/zuora_to_eloqua/zuora_renewals_query.html">zuora renewals query</a>");
 
 var sandbox = sinon.createSandbox();
 var zuoraConfig = {
@@ -206,8 +206,12 @@ describe('zuora export month', () =&gt; {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines unit tests for a module named <code>exporter</code> that interacts with the Zuora API to export data.</p>
 <p>Here's a breakdown:</p>

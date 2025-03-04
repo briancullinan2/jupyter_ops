@@ -79,7 +79,7 @@
 
 <pre class="javascript"><code>var chrono = require('chrono-node');
 var importer = require('../Core');
-var imapClient = importer.import('node imap client');
+var imapClient = importer.import("<a href="../../Frameworks/node_simple-imap/node_imap_client.html">node imap client</a>");
 var util = require('util');
 
 function flatten(messages) {
@@ -152,8 +152,12 @@ module.exports = searchImap;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>searchImap</code> that retrieves emails from an IMAP server based on specified criteria.</p>
 <p>Here's a breakdown:</p>

@@ -74,8 +74,8 @@
 
 
 <pre class="node"><code>var importer = require('../Core')
-var discordApi = importer.import('discord api')
-var {authorizeGateway, privateChannels, interactions} = importer.import('authorize discord')
+var discordApi = importer.import("<a href="../../Frontends/discord/discord_api.html">discord api</a>")
+var {authorizeGateway, privateChannels, interactions} = importer.import("<a href="../../Frontends/discord/discord_request.html">authorize discord</a>")
 var {
     discordCommands,
     challengeCommand,
@@ -83,7 +83,7 @@ var {
     connectCommand,
     rconCommand,
     chatCommand,
-} = importer.import('discord commands')
+} = importer.import("<a href="../../Frontends/discord/discord_commands.html">discord commands</a>")
 
 var DEFAULT_USERNAME = 'Orbb'
 
@@ -224,8 +224,12 @@ module.exports = respondCommand
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Requirements and Imports</h3>

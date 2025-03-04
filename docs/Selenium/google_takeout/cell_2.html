@@ -70,7 +70,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var googleTakeout = importer.import('order google takeout');
+var googleTakeout = importer.import("<a href="../../Selenium/google_takeout/order_google_takeout.html">order google takeout</a>");
 
 $.async();
 googleTakeout('chrome')
@@ -88,8 +88,12 @@ googleTakeout('chrome')
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>

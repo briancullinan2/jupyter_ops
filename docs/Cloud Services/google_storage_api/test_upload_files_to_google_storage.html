@@ -78,7 +78,7 @@
 <pre class="javascript"><code>var path = require('path');
 var assert = require('assert');
 var importer = require('../Core');
-var streamToGoogle = importer.import('upload files google cloud');
+var streamToGoogle = importer.import("<a href="../../Cloud Services/google_storage_api/upload_files_to_google_cloud.html">upload files google cloud</a>");
 
 describe('upload google storage', () =&gt; {
     
@@ -104,8 +104,12 @@ describe('upload google storage', () =&gt; {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a test suite using the <code>describe</code> and <code>it</code> functions from a testing framework (likely Jest) to verify the functionality of a function called <code>streamToGoogle</code>.</p>
 <p>Here's a breakdown:</p>

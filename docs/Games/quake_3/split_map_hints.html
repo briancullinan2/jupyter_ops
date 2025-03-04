@@ -131,10 +131,10 @@
 
 <pre class="javascript"><code>var path = require('path')
 var importer = require('../Core')
-var {MAPS_HINTS, addHints} = importer.import('draw hints in map')
-var translateMap = importer.import('translate quake map')
-var {isInside} = importer.import('brush to vertex')
-var {addSkybox} = importer.import('add skybox to map')
+var {MAPS_HINTS, addHints} = importer.import("<a href="../../Games/quake_3/draw_hints_in_map.html">draw hints in map</a>")
+var translateMap = importer.import("<a href="../../Games/quake_3/translate_quake_map.html">translate quake map</a>")
+var {isInside} = importer.import("<a href="../../Games/quake_3/brush_to_vertex.html">brush to vertex</a>")
+var {addSkybox} = importer.import("<a href="../../Games/quake_3/add_skybox_to_map.html">add skybox to map</a>")
 
 var BUFFER_UNITS = 200
 var ENTITIES_EXP = /\{[^\{\}]*?"classname"\s*"([^"]*)"[^\{\}]*?(\{[^\{\}]*?\}[^\{\}]*?)*\}/ig
@@ -307,8 +307,12 @@ module.exports = splitHints
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet processes a Quake map file, extracts entity and brush information, and potentially applies hints or modifications based on predefined rules.</p>
 <p>Here's a breakdown:</p>

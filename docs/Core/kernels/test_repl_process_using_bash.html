@@ -118,9 +118,9 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var {processMetaKernel} = processMethods = importer.import('process meta kernel')
-var metaKernelInterface = importer.import('meta kernel interface');
-var interface = importer.import('enforcing an interface');
+var {processMetaKernel} = processMethods = importer.import("<a href="../../Core/kernels/process_meta_kernel.html">process meta kernel</a>")
+var metaKernelInterface = importer.import("<a href="../../Core/kernels/meta_kernel_interface.html">meta kernel interface</a>");
+var interface = importer.import("<a href="../../Core/patterns/enforcing_an_interface.html">enforcing an interface</a>");
 
 function do_respond(message) {
     console.log(`response "${message.toString()}"`);
@@ -174,8 +174,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2><strong>Overview</strong></h2>
 <p>This code defines a JavaScript module that exports a <code>testProcessKernel</code> function. The function creates a new instance of a kernel using the <code>bashKernel</code> function and tests its functionality by executing a message and shutting down the kernel.</p>

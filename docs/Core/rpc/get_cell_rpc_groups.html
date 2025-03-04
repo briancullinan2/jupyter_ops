@@ -89,13 +89,15 @@
 var {
     selectAst,
     getExports
-} = importer.import(['select code tree', 'get exports'])
+} = importer.import("<a href="../../Core/syntax/select_ast.html">select code tree</a>"
+,<br />
+"<a href="../../Utilities/dylib/get_c_exports.html">get exports</a>")
 
 // TODO: filter RPC functions by fully unit tested or unlinted?
 // TODO: filter by local system groups?
 // TODO: move these classifications to import notebook?
 var {FUNCTION_GROUPS, SELENIUM_GROUPS,
-     UNITTEST_GROUPS, DEFAULT_GROUPS, PUBLIC} = importer.import('rpc groups')
+     UNITTEST_GROUPS, DEFAULT_GROUPS, PUBLIC} = importer.import("<a href="../../Core/rpc/rpc_groups.html">rpc groups</a>")
 
 function getUnmatched(cell) {
     try {
@@ -152,8 +154,12 @@ module.exports = getCellGroups;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>getCellGroups</code> that categorizes code cells based on various criteria.</p>
 <p>Here's a breakdown:</p>

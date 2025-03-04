@@ -78,7 +78,7 @@
 <pre class="javascript"><code>var fs = require('fs');
 var unidecode = require('unidecode');
 var importer = require('../Core');
-var placesNearby = importer.import('places nearby api');
+var placesNearby = importer.import("<a href="../../Google/google_maps/use_places_nearby_API.html">places nearby api</a>");
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 var PROJECT_PATH = PROFILE_PATH + '/Collections/timeline';
@@ -132,8 +132,12 @@ module.exports = getNearby;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code fetches nearby places for a list of destinations, caching the results to improve performance.</p>
 <p>Here's a breakdown:</p>

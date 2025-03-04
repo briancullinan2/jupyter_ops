@@ -87,8 +87,8 @@
 
 <pre class="javascript"><code>const {
   registerCommand, getCommands, deleteCommand, updateCommand
-} = importer.import('discord api')
-const {timeout} = importer.import('discord utilities')
+} = importer.import("<a href="../../Frontends/discord/discord_api.html">discord api</a>")
+const {timeout} = importer.import("<a href="../../Frontends/discord/discord_utilities.html">discord utilities</a>")
 
 const EXCEPT_COMMANDS = [
   
@@ -118,8 +118,12 @@ module.exports = deleteCommands
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Dependencies</h3>

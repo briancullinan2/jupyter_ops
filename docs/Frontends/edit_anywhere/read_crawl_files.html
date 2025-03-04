@@ -92,11 +92,11 @@ var fs = require('fs')
 var {URL} = require('url')
 var uuid = require('uuid/v1')
 var importer = require('../Core')
-var {glob} = importer.import('glob files')
-var {minimatch} = importer.import('minimatch')
-var {selectDom} = importer.import('select tree')
-var prefixCssRules = importer.import('scope css')
-var {findCache} = importer.import('domain crawler tools')
+var {glob} = importer.import("<a href="../../Core/files/__glob_files.html">glob files</a>")
+var {minimatch} = importer.import("<a href="../../Languages/minimatch/minimatch.html">minimatch</a>")
+var {selectDom} = importer.import("<a href="../../Core/patterns/select_tree.html">select tree</a>")
+var prefixCssRules = importer.import("<a href="../../Frontends/edit_anywhere/scope_css.html">scope css</a>")
+var {findCache} = importer.import("<a href="../../Analytics/data_collection/domain_cache_tools.html">domain crawler tools</a>")
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
 var project = path.join(PROFILE_PATH, 'Collections/crawls');
@@ -433,7 +433,7 @@ ${importer.interpret('ckeditor configuration').code}
 module.exports = loadScraped
 
 //var importer = require('../Core')
-//var loadScraped = importer.import('read crawl files')
+//var loadScraped = importer.import("<a href="../../Frontends/edit_anywhere/read_crawl_files.html">read crawl files</a>")
 
 if(typeof $ != 'undefined') {
     var scraped = loadScraped('https://google.com')
@@ -450,8 +450,12 @@ if(typeof $ != 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet is designed to load and process scraped web pages, likely for a web crawler or data extraction tool.</p>
 <p>Here's a breakdown:</p>

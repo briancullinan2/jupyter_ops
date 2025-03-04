@@ -108,12 +108,12 @@
 <pre class="javascript"><code>var babel = require('babel-core')
 var toBabel = require('estree-to-babel');
 var importer = require('../Core')
-var {selectAst} = importer.import('select code tree')
-var {selectAcorn} = importer.import('select acorn tree')
-var {htmlToTree} = importer.import('html to tree')
-var {addImports} = importer.import('add missing imports')
-var {replaceCore} = importer.import('replace core requirement')
-var {replaceImports} = importer.import('replace notebook import')
+var {selectAst} = importer.import("<a href="../../Core/syntax/select_ast.html">select code tree</a>")
+var {selectAcorn} = importer.import("<a href="../../Core/syntax/select_acorn_tree.html">select acorn tree</a>")
+var {htmlToTree} = importer.import("<a href="../../Core/syntax/html_to_tree.html">html to tree</a>")
+var {addImports} = importer.import("<a href="../../Core/notebook/add_missing_imports.html">add missing imports</a>")
+var {replaceCore} = importer.import("<a href="../../Core/notebook/__replace_core_requirement.html">replace core requirement</a>")
+var {replaceImports} = importer.import("<a href="../../Core/notebook/replace_notebook_import.html">replace notebook import</a>")
 
 // TODO: convert these to transpiler tools like Add, Replace, Remove
 var transpilePlugins = [
@@ -159,8 +159,12 @@ module.exports = babelTranspile
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a Babel plugin for transpiling notebook code, likely for a specific environment or framework.</p>
 <p>Here's a breakdown:</p>

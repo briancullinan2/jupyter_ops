@@ -86,7 +86,9 @@ var gulp = require('gulp');
 var run = require('gulp-run');
 var tap = require('gulp-tap');
 var importer = require('../Core');
-var gulpPromise = importer.import('gulp task to a Promise', {gulp})
+var gulpPromise = importer.import("<a href="../../Frameworks/gulp/use_a_Promise_as_a_gulp_task.html">gulp task to a Promise</a>"
+,<br />
+"<a href="../../Frameworks/gulp/use_gulp.html">{gulp}</a>")
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
 var project = typeof project === 'undefined' ? path.join(PROFILE_PATH, 'Documents/portal') : project;
@@ -124,8 +126,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>getBranchBoundaries</code> that executes a Git command to compare two specific commits within a project and outputs the differences to a &quot;output&quot; directory.</p>
 <p>Here's a breakdown:</p>

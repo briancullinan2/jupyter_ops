@@ -75,14 +75,14 @@
 
 <pre class="node"><code>var ip6addr = require('ip6addr')
 var importer = require('../Core')
-var challengeCommand = importer.import('challenge discord command')
-var discordApi = importer.import('discord api')
+var challengeCommand = importer.import("<a href="../../Games/quake3_server_connector/challenge_discord_command.html">challenge discord command</a>")
+var discordApi = importer.import("<a href="../../Frontends/discord/discord_api.html">discord api</a>")
 var {
     getInfo, sendRcon, nextInfoResponse,
     nextPrintResponse
-} = importer.import('quake 3 server commands')
-var formatQuake3Response = importer.import('format quake 3 response')
-var removeCtrlChars = importer.import('remove ctrl characters')
+} = importer.import("<a href="../../Games/quake3_server_connector/quake_3_server_commands.html">quake 3 server commands</a>")
+var formatQuake3Response = importer.import("<a href="../../Games/quake3_server_connector/format_quake_3_response.html">format quake 3 response</a>")
+var removeCtrlChars = importer.import("<a href="../../Games/quake3_server_connector/remove_ctrl_characters.html">remove ctrl characters</a>")
 
 var personality = [
     'Yeehaw!',
@@ -261,8 +261,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <p>The code is written in JavaScript and appears to be a Discord bot using the Discord.js library. It consists of the following sections:</p>

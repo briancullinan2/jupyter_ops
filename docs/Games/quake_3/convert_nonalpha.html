@@ -132,11 +132,11 @@
 <pre class="javascript"><code>var path = require('path')
 var fs = require('fs')
 var importer = require('../Core')
-var {glob} = importer.import('glob files')
-var execCmd = importer.import('spawn child process')
-var mkdirpSync = importer.import('mkdirp')
-var { chext, chroot } = importer.import('changing file names')
-var {imageTypes} = importer.import('quake 3 file whitelist')
+var {glob} = importer.import("<a href="../../Core/files/__glob_files.html">glob files</a>")
+var execCmd = importer.import("<a href="../../Utilities/child_process/spawn_child_process.html">spawn child process</a>")
+var mkdirpSync = importer.import("<a href="../../Core/files/mkdirp.html">mkdirp</a>")
+var { chext, chroot } = importer.import("<a href="../../Core/files/changing_file_names.html">changing file names</a>")
+var {imageTypes} = importer.import("<a href="../../Games/quake_3/quake_3_file_whitelist.html">quake 3 file whitelist</a>")
 
 async function convertNonAlpha(root) {
     var result = []
@@ -177,8 +177,12 @@ module.exports = convertNonAlpha</code></pre>
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines an asynchronous function <code>convertNonAlpha</code> that converts image files within a specified directory to PNG format, ensuring transparency support.</p>
 <p>Here's a breakdown:</p>

@@ -72,7 +72,7 @@
 let beginFrame, endFrame
 async function doFrame(window) {
   if(!beginFrame) {
-    frameLoader = await importer.import('opengl frame')
+    frameLoader = await importer.import("<a href="../../Frontends/opengl/opengl_frame.html">opengl frame</a>")
     beginFrame = frameLoader.beginFrame
     endFrame = frameLoader.endFrame
   }
@@ -82,7 +82,7 @@ async function doFrame(window) {
 }
 
 async function testOpenGL() {
-  const {createWindow} = await importer.import('opengl context')
+  const {createWindow} = await importer.import("<a href="../../Frontends/opengl/opengl_context.html">opengl context</a>")
   let window = createWindow()
   //console.log(window)
   doFrame(window)
@@ -101,8 +101,12 @@ module.exports = testOpenGL
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Variables</h3>

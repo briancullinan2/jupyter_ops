@@ -76,7 +76,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var syncLinkedInContacts = importer.import('sync linkedin contacts');
+var syncLinkedInContacts = importer.import("<a href="../../Selenium/linkedin_connections/scrape_linkedin_contacts.html">sync linkedin contacts</a>");
 $.async();
 syncLinkedInContacts()
     .then(r =&gt; $.sendResult(r))
@@ -93,8 +93,12 @@ syncLinkedInContacts()
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>

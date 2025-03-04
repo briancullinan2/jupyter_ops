@@ -66,7 +66,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var search = importer.import('search the web');
+var search = importer.import("<a href="../../Google/google_search_api/search_the_web.html">search the web</a>");
 
 async function getEmailFormat(q) {
     var hits = []
@@ -93,8 +93,12 @@ module.exports = getEmailFormat
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines an asynchronous function <code>getEmailFormat</code> that searches the web for email address formats related to a given query.</p>
 <p>Here's a breakdown:</p>

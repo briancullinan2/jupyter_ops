@@ -608,8 +608,12 @@ if (typeof define === 'function' &amp;&amp; define.amd) {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>LZString Library Breakdown</strong></p>
 <p>The LZString library is a JavaScript implementation of the LZ77 compression algorithm. It provides methods for compressing and decompressing strings using Base64 and UTF16 encoding schemes.</p>

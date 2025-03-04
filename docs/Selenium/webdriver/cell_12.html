@@ -96,12 +96,12 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var readSessions = importer.import('load webdriver sessions');
+var readSessions = importer.import("<a href="../../Utilities/bash/node_webdriver_support.html">load webdriver sessions</a>");
 var {
     verifySession,
     lockPromise,
     updateOrAddSession
-} = importer.import('verify session');
+} = importer.import("<a href="../../Selenium/utilities/verify_human.html">verify session</a>");
 
 var TIMEOUT = 10000;
 
@@ -155,8 +155,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Function Breakdown</h2>
 <h3>getSessions Function</h3>

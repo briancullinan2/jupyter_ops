@@ -81,16 +81,16 @@ var udpClient = dgram.createSocket('udp4')
 udpClient.on('message', updateInfo)
 
 var importer = require('../Core')
-var mdfour = importer.import('md4 checksum')
+var mdfour = importer.import("<a href="../../Games/quake_3/md4_checksum.html">md4 checksum</a>")
 var {
     getServersResponse, statusResponse, infoResponse
-} = importer.import('quake 3 server responses')
-var lookupDNS = importer.import('dns lookup')
+} = importer.import("<a href="../../Games/quake3_server_connector/quake_3_server_responses.html">quake 3 server responses</a>")
+var lookupDNS = importer.import("<a href="../../Games/quake3_server_connector/dns_lookup.html">dns lookup</a>")
 var {
     compressMessage,
     writeBits
-} = importer.import('huffman decode')
-var decodeClientMessage = importer.import('decode client message')
+} = importer.import("<a href="../../Games/quake3_server_connector/huffman_decode.html">huffman decode</a>")
+var decodeClientMessage = importer.import("<a href="../../Games/quake3_server_connector/__decode_client_messages.html">decode client message</a>")
 
 
 var MAX_TIMEOUT = process.env.DEFAULT_TIMEOUT || 10000
@@ -503,8 +503,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Initializations</h3>

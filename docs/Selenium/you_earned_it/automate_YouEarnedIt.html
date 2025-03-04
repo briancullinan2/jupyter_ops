@@ -70,7 +70,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var runSeleniumCell = importer.import('selenium cell');
+var runSeleniumCell = importer.import("<a href="../../Selenium/webdriver/selenium_client.html">selenium cell</a>");
 function runHighFiver() {
     var highFive = runSeleniumCell('high five people youearnedit');
     return highFive.then(func =&gt; func());
@@ -88,8 +88,12 @@ module.exports = runHighFiver;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>runHighFiver</code> that orchestrates a Selenium WebDriver-based automation task on a website, likely &quot;YouEarnedIt&quot;.</p>
 <p>Here's a breakdown:</p>

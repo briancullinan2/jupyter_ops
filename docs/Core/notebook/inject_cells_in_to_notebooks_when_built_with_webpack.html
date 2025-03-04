@@ -95,8 +95,8 @@
 
 <pre class="javascript"><code>var path = require('path');
 var importer = require('../Core');
-var getArrayAST = importer.import('get ast path array');
-var {importsTemplate, cachedTemplate} = importer.import('include require like import');
+var getArrayAST = importer.import("<a href="../../Languages/csharp/get_csharp_params.html">get ast path array</a>");
+var {importsTemplate, cachedTemplate} = importer.import("<a href="../../Core/notebook/replace_notebook_import.html">include require like import</a>");
 
 // TODO: this should be a test in the Core notebook
 // inject cellCache and cellIds loaded in to the interpreter so notebooks don't need to be uploaded,
@@ -128,8 +128,12 @@ module.exports = injectImports;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet appears to be part of a JavaScript project that deals with code transformation and execution, likely within a notebook environment. Let's break it down:</p>
 <p><strong>1. Dependencies:</strong></p>

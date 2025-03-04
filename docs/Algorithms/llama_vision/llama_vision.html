@@ -181,8 +181,12 @@ export default {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <p>This code is a JavaScript implementation for interacting with the LLaMA (Large Language Model Application) using the <code>node-llama-cpp</code> library. It provides functions for initializing a session, creating a session, and analyzing text using the LLaMA model.</p>

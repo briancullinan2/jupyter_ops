@@ -76,10 +76,10 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var getRpcSpecFromCells = importer.import('convert notebook to open api');
-var getRpcFromSpec = importer.import('get rpc from spec');
-var getEnvironment = importer.import('get environment');
-var groupPermissions = importer.import('test get permissions');
+var getRpcSpecFromCells = importer.import("<a href="../../Frontends/documentation/convert_notebook_to_open_api.html">convert notebook to open api</a>");
+var getRpcFromSpec = importer.import("<a href="../../Core/rpc/get_rpc_from_spec.html">get rpc from spec</a>");
+var getEnvironment = importer.import("<a href="../../Core/rpc/get_environment.html">get environment</a>");
+var groupPermissions = importer.import("<a href="../../Core/rpc/test_get_permissions.html">test get permissions</a>");
 getEnvironment('STUDY_LOCAL')
 
 if(typeof $ !== 'undefined') {
@@ -105,8 +105,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>

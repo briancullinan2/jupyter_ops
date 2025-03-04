@@ -70,7 +70,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var getCourseSVG = importer.import('course list pie chart');
+var getCourseSVG = importer.import("<a href="../../Analytics/resume/course_list_pie_chart.html">course list pie chart</a>");
 
 getCourseSVG().then(r =&gt; $.html(r));
 </code></pre>
@@ -84,8 +84,12 @@ getCourseSVG().then(r =&gt; $.html(r));
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet imports a function to generate a pie chart visualization of course data and then displays the resulting SVG image on a webpage.</p>
 <p>Here's a breakdown:</p>

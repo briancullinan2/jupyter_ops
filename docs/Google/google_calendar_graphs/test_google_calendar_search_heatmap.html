@@ -74,8 +74,8 @@
 <pre class="javascript"><code>var importer = require('../Core');
 
 var options = {};
-var listEvents = importer.import('list events')
-var d3Heatmap = importer.import('d3 calendar')
+var listEvents = importer.import("<a href="../../Google/google_calendar/list_events.html">list events</a>")
+var d3Heatmap = importer.import("<a href="../../Frameworks/d3_dates/d3_calendar.html">d3 calendar</a>")
 
 var now = new Date();
 function calendarSearchToHeatmap(searches) {
@@ -142,8 +142,12 @@ if(typeof $ != 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code fetches and visualizes Google Calendar events based on provided search queries.</p>
 <p>Here's a breakdown:</p>

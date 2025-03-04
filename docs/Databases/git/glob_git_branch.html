@@ -87,10 +87,9 @@ var importer = require('../Core');
 var {
     cloneProject,
     execCmd
-} = importer.import([
-    'git project directory',
-    'spawn child process'
-]);
+} = importer.import("<a href="../../Databases/git/_git_project_directory.html">git project directory</a>"
+,<br />
+"<a href="../../Utilities/child_process/spawn_child_process.html">spawn child process</a>");
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
 var project = path.join(PROFILE_PATH, 'Documents/portal');
@@ -230,8 +229,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet defines a function <code>globBranch</code> that automates the process of cloning a Git repository, fetching branches, resetting to a specific commit, and creating new branches based on modified files.</p>
 <p>Here's a breakdown:</p>

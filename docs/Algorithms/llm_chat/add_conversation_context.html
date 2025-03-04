@@ -81,12 +81,12 @@
 
 
 
-<pre class="javascript"><code>const { messageRecents } = importer.import('general chit chat')
-const {doStableRequest} = importer.import('stable diffusion request')
-//const messageOllamaVision = importer.import('describe an image')
-const {askLlamaMatchingFunction, API_DESCRIPTION} = importer.import('classify llm prompt')
-const getParameters = importer.import('function parameters')
-const {listMemories} = importer.import('llm load memories')
+<pre class="javascript"><code>const { messageRecents } = importer.import("<a href="../../Algorithms/llm_chat/general_chit_chat.html">general chit chat</a>")
+const {doStableRequest} = importer.import("<a href="../../Algorithms/llama_vision/stable_diffusion_request.html">stable diffusion request</a>")
+//const messageOllamaVision = importer.import("<a href="../../Algorithms/llama_vision/image_2_image.html">describe an image</a>")
+const {askLlamaMatchingFunction, API_DESCRIPTION} = importer.import("<a href="../../Algorithms/llm_chat/classify_llm_prompt.html">classify llm prompt</a>")
+const getParameters = importer.import("<a href="../../Core/syntax/get_parameter_names.html">function parameters</a>")
+const {listMemories} = importer.import("<a href="../../Algorithms/llm_chat/llm_load_memories.html">llm load memories</a>")
 
 async function classifyPrompt(promptModel, session, prompt, image, otr) {
 
@@ -110,7 +110,7 @@ async function classifyPrompt(promptModel, session, prompt, image, otr) {
 
   // TODO: convert to available parameters like Core/import.ipynb:run() style parameterization
   for (let i = 0; i &lt; matchingFunctions.length; i++) {
-    importedFunction = importer.import(matchingFunctions[i])
+    importedFunction = importer.import("<a href="../../Algorithms/opencv/motion_detection.html">matchingFunctions[i</a>")
     if (typeof importedFunction == 'object' &amp;&amp; typeof Object.values(importedFunction)[0] == 'function') {
       importedFunction = Object.values(importedFunction)[0]
     }
@@ -162,8 +162,12 @@ module.exports = classifyPrompt
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Import Statements</h3>

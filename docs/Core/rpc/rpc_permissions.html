@@ -87,8 +87,8 @@
 
 <pre class="javascript"><code>var path = require('path');
 var importer = require('../Core');
-var getCellGroups = importer.import('get cell rpc groups');
-var {PUBLIC} = importer.import('rpc groups')
+var getCellGroups = importer.import("<a href="../../Core/rpc/get_cell_rpc_groups.html">get cell rpc groups</a>");
+var {PUBLIC} = importer.import("<a href="../../Core/rpc/rpc_groups.html">rpc groups</a>")
 
 // find the shortest words from the query to match the same cell
 var id2 = (cell) =&gt; path.basename(cell.filename) + '[' + cell.questions[0] + ']';
@@ -136,8 +136,12 @@ module.exports = getPermissions;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>getPermissions</code> that retrieves permissions for code cells based on a given search query.</p>
 <p>Here's a breakdown:</p>

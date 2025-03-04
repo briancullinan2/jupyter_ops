@@ -83,9 +83,9 @@
 
 <pre class="javascript"><code>const path = require('path')
 const fs = require('fs')
-const selectModel = importer.import('select llm')
-const {askLlamaAboutEmotions} = importer.import('ask llm about emotions')
-const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
+const selectModel = importer.import("<a href="../../Algorithms/llm_writing/select_llm.html">select llm</a>")
+const {askLlamaAboutEmotions} = importer.import("<a href="../../Algorithms/llm_tools/ask_llm_about_emotions.html">ask llm about emotions</a>")
+const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import("<a href="../../Algorithms/llm_chat/general_chit_chat.html">general chit chat</a>")
 
 
 async function storeResponse(user, session, content, context, otr) {
@@ -151,8 +151,12 @@ module.exports = storeResponse
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Function Breakdown</strong></p>
 <h3><code>storeResponse</code> Function</h3>

@@ -71,10 +71,10 @@
 const fs = require('fs')
 const {Remarkable} = require('remarkable');
 const md = new Remarkable({html: true, xhtmlOut: true, breaks: true});
-const selectModel = importer.import('select llm')
+const selectModel = importer.import("<a href="../../Algorithms/llm_writing/select_llm.html">select llm</a>")
 const {spawnSync} = require('child_process')
-const parsePatch = importer.import('parse patch file')
-const {safeurl} = importer.import('domain cache tools')
+const parsePatch = importer.import("<a href="../../Algorithms/llm_blogging/parse_patch_file.html">parse patch file</a>")
+const {safeurl} = importer.import("<a href="../../Analytics/data_collection/domain_cache_tools.html">domain cache tools</a>")
 
 const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
 const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'code-summaries')
@@ -182,8 +182,12 @@ module.exports = blogAboutCode
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Dependencies</h3>

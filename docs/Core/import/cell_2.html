@@ -141,7 +141,7 @@ async function makePythonModule(code, filename, context) {
     return Module._cache[filepath].exports
   }
 
-  let pythonParams = await importNotebook('python params in antlr')
+  let pythonParams = await importNotebook("<a href="../../Languages/python/python_params_in_antrl.html">python params in antlr</a>")
   CONSOLE.log(pythonParams)
   let params = await pythonParams(code)
   CONSOLE.log(params)
@@ -176,8 +176,12 @@ module.exports.makePythonModule = makePythonModule
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Function Breakdown</strong></p>
 <h3><code>runPythonModule</code> Function</h3>

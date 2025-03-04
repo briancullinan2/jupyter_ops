@@ -86,7 +86,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var createSheet = importer.import('create a sheet in google drive');
+var createSheet = importer.import("<a href="../../Google/google_drive/create_a_sheet_in_google_drive.html">create a sheet in google drive</a>");
 
 describe('create a new marketing sheet', () =&gt; {
     
@@ -105,8 +105,12 @@ describe('create a new marketing sheet', () =&gt; {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>

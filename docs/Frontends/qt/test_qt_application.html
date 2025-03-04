@@ -71,7 +71,7 @@
 
 <pre class="javascript"><code>
 async function textQtApp() {
-  let {main} = await importer.import('qt qml widget')
+  let {main} = await importer.import("<a href="../../Frontends/qt/qt_qml_widget.html">qt qml widget</a>")
   main(0, '')
 }
 
@@ -88,8 +88,12 @@ module.exports = textQtApp
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Overview</h3>

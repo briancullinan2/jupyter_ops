@@ -86,8 +86,12 @@
 <pre class="python"><code>import time
 import subprocess
 from googleapiclient.discovery import build
-import_notebook("bind youtube stream", globals())
-import_notebook("list live stream", globals())
+import_notebook("<a href="../../Algorithms/opencv/bind_youtube_stream.html">bind youtube stream</a>"
+,<br />
+"<a href="../../Cloud Services/deploy_host/deploy_aws.html">globals(</a>"))
+import_notebook("<a href="../../Algorithms/opencv/list_live_stream.html">list live stream</a>"
+,<br />
+"<a href="../../Cloud Services/deploy_host/deploy_aws.html">globals(</a>"))
 
 
 def transition_stream():
@@ -139,8 +143,12 @@ __all__ = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Import Statements</h3>

@@ -75,8 +75,8 @@
 
 
 
-<pre class="javascript"><code>const getClient = importer.import('selenium client')
-const selectDom = importer.import('selenium select')
+<pre class="javascript"><code>const getClient = importer.import("<a href="../../Selenium/webdriver/selenium_client.html">selenium client</a>")
+const selectDom = importer.import("<a href="../../Selenium/webdriver/selenium_select.html">selenium select</a>")
 
 // TODO: help me extract this article from html, only return the article in plain text and remove the html:
 async function extractArticle(driver, startPage, retry) {
@@ -142,8 +142,12 @@ module.exports = extractArticle
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Function Breakdown: <code>extractArticle</code></strong></p>
 <h3>Purpose</h3>

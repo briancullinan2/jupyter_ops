@@ -88,7 +88,7 @@
 <pre class="javascript"><code>
 async function llmVoice(prompt, session2) {
   if(!session2) {
-    const {createSession} = await importer.import('llama vision')
+    const {createSession} = await importer.import("<a href="../../Algorithms/llama_vision/llama_vision.html">llama vision</a>")
     session2 = await createSession('OuteTTS-0.3-1B-Q8_0.gguf', 'you are an llm that responds with medium quality text to voice\n')
   }
   let result = await session2.prompt(prompt, {
@@ -117,8 +117,12 @@ module.exports = llmVoice
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Function Description</h3>
 <p><code>llmVoice</code> is an asynchronous function that generates voice output from a given text prompt using LLaMA.</p>

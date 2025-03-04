@@ -88,11 +88,11 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var getDataSheet = importer.import('google sheet array objects');
-var renderRows = importer.import('google sheet layout template');
-var getRows = importer.import('get worksheet rows');
-var {filteredData, unfilteredData} = importer.import('filter data sheet based on url');
-var promiseOrResolve = importer.import('resolve promise property');
+var getDataSheet = importer.import("<a href="../../Google/google_sheets/get_google_data_sheet.html">google sheet array objects</a>");
+var renderRows = importer.import("<a href="../../Frontends/convert_spreadsheet/google_sheet_layout_template.html">google sheet layout template</a>");
+var getRows = importer.import("<a href="../../Google/google_sheets/get_worksheet_rows.html">get worksheet rows</a>");
+var {filteredData, unfilteredData} = importer.import("<a href="../../Frontends/convert_spreadsheet/filter_data_sheet_based_on_url.html">filter data sheet based on url</a>");
+var promiseOrResolve = importer.import("<a href="../../Core/patterns/__resolve_a_promise_property.html">resolve promise property</a>");
 
 var isWrapper = rows =&gt; rows.length === 1 &amp;&amp; rows[0].length === 1
               &amp;&amp; rows[0][0].match(/\{\{\s*&gt;\s*(.*?)(\/(.*?-)+link)*\}\}/ig);
@@ -166,8 +166,12 @@ module.exports = getTemplateProperties;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Variables and Functions</h3>

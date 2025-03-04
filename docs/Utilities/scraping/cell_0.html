@@ -85,7 +85,7 @@ function getLocations() {
     }
     return request('https://web.archive.org/web/20160322001433/http://keepflaghappy.com/happy-hours/friday/')
         .then(r =&gt; {
-            const getAllXPath = importer.import('all elements xpath from string')(r.body);
+            const getAllXPath = importer.import("<a href="../../Selenium/utilities/all_elements_until.html">all elements xpath from string</a>")(r.body);
             return getAllXPath([
                 '//a[contains(@href, "by-location")]/@href',
             ]);
@@ -102,7 +102,7 @@ function getLocation(l) {
     console.log('Downloading ' + l);
     return request(l)
         .then(r =&gt; {
-            const getAllXPath = importer.import('all elements xpath from string')(r.body);
+            const getAllXPath = importer.import("<a href="../../Selenium/utilities/all_elements_until.html">all elements xpath from string</a>")(r.body);
             return getAllXPath([
                 '//h3[contains(., "Mon") or contains(., "Tue") or contains(., "Wed") or contains(., "Thu") or contains(., "Fri") or contains(., "Sat") or contains(., "Sun")]',
                 {
@@ -148,8 +148,12 @@ getLocations()
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules and Setting Constants</h3>

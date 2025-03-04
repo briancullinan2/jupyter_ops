@@ -72,7 +72,7 @@
 <pre class="javascript"><code>var google = require('googleapis');
 var people = google.people('v1');
 var importer = require('../Core');
-var getOauthClient = importer.import('import google calendar api');
+var getOauthClient = importer.import("<a href="../../Google/google_calendar/use_Google_calendar_API.html">import google calendar api</a>");
 
 var options = {
     scopes: [
@@ -154,8 +154,12 @@ module.exports = getContacts;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet fetches and processes contacts from Google Contacts using the Google People API.</p>
 <p>Here's a breakdown:</p>

@@ -102,8 +102,8 @@
 <pre class="javascript"><code>var fs = require('fs')
 var path = require('path')
 var importer = require('../Core')
-var {relativeImports} = importer.import('builtin and local modules')
-var {glob} = importer.import('glob files')
+var {relativeImports} = importer.import("<a href="../../Core/syntax/builtin_and_local_modules.html">builtin and local modules</a>")
+var {glob} = importer.import("<a href="../../Core/files/__glob_files.html">glob files</a>")
 
 function fixImports(project) {
     var packagePath = path.join(project, 'package.json')
@@ -155,8 +155,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code aims to automatically fix import statements and dependencies within a project directory.</p>
 <p><strong>Here's a breakdown:</strong></p>

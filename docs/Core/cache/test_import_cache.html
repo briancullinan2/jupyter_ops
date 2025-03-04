@@ -96,7 +96,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core')
-var {createImportCache} = importer.import('create import cache')
+var {createImportCache} = importer.import("<a href="../../Core/cache/create_import_cache.html">create import cache</a>")
 
 module.exports = createImportCache
 
@@ -114,8 +114,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code sets up a module for managing import caching, likely for Jupyter Notebook environments.</p>
 <p>Here's a breakdown:</p>

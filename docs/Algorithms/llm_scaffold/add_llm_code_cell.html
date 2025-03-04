@@ -81,7 +81,7 @@ const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USE
 const { spawnSync } = require('child_process')
 
 async function makeCell(prompt, notebookFile, github) {
-  const llmCode = await importer.import('llm code')
+  const llmCode = await importer.import("<a href="../../Algorithms/llama_vision/llm_voice.html">llm code</a>")
 
   if (!github) {
     console.error('Project not specified.')
@@ -232,8 +232,12 @@ module.exports = makeCell
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <p>This is a Node.js script that appears to be designed to use a large language model (LLM) to generate code blocks for a project. Here's a high-level overview of the code:</p>

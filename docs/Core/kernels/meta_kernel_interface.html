@@ -118,8 +118,8 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var languageInterface = importer.import('kernel language interface');
-var {kernelInfoInterface} = importer.import('kernel info interface');
+var languageInterface = importer.import("<a href="../../Core/kernels/jupyter_meta_kernel.html">kernel language interface</a>");
+var {kernelInfoInterface} = importer.import("<a href="../../Core/kernels/kernel_info_interface.html">kernel info interface</a>");
 
 var metaKernelInterface = {
     ...kernelInfoInterface,
@@ -151,8 +151,12 @@ module.exports = metaKernelInterface;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>

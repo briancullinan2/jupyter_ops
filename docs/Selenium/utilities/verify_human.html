@@ -74,7 +74,7 @@
 
 
 <pre class="javascript"><code>
-const getClient = importer.import('selenium client')
+const getClient = importer.import("<a href="../../Selenium/webdriver/selenium_client.html">selenium client</a>")
 
 async function verifyHuman(driver) {
   if(!driver) {
@@ -97,8 +97,12 @@ module.exports = verifyHuman
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Purpose</h4>

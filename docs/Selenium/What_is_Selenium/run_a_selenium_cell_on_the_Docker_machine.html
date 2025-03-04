@@ -74,7 +74,7 @@
 <pre class="javascript"><code>var importer = require('../Core');
 
 function runSeleniumCell(search) {
-    var createWebdriverClient = importer.import('webdriver client');
+    var createWebdriverClient = importer.import("<a href="../../Selenium/webdriver/selenium_client.html">webdriver client</a>");
     var promise = createWebdriverClient();
     var isError = false;
     return promise
@@ -85,20 +85,30 @@ function runSeleniumCell(search) {
             };
             Object.assign(
                 context,
-                importer.import([
-                    'decrypt password',
-                    'all elements xpath',
-                    'get all elements until',
-                    'resize selenium window',
-                    'click spa link',
-                ], context));
+                importer.import("<a href="../../Selenium/service_auth/Decrypt_passwords_json.html">decrypt password</a>"
+,<br />
+"<a href="../../Selenium/utilities/all_elements_until.html">all elements xpath</a>"
+,<br />
+"<a href="../../Selenium/utilities/all_elements_until.html">get all elements until</a>"
+,<br />
+"<a href="../../Selenium/orchestration/resize_selenium_window.html">resize selenium window</a>"
+,<br />
+"<a href="../../Selenium/utilities/click_spa_link.html">click spa link</a>"
+,<br />
+"<a href="../../Algorithms/audio/.html">]</a>"
+,<br />
+"<a href="../../Games/quake3_server_connector/index.html">context</a>"));
             Object.assign(
                 context,
-                importer.import('form utilities', context))
+                importer.import("<a href="../../Selenium/forms/form_utilities.html">form utilities</a>"
+,<br />
+"<a href="../../Games/quake3_server_connector/index.html">context</a>"))
             if(!search) {
                 return context;
             }
-            return importer.import(search, context);
+            return importer.import("<a href="../../Frameworks/zuora_to_eloqua/readme.html">search</a>"
+,<br />
+"<a href="../../Games/quake3_server_connector/index.html">context</a>");
         })
 };
 module.exports = runSeleniumCell;
@@ -121,8 +131,12 @@ if(typeof $ !== 'undefined') {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>runSeleniumCell</code> that sets up a Selenium WebDriver session and executes a user-specified search.</p>
 <p>Here's a breakdown:</p>

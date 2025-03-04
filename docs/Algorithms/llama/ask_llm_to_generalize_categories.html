@@ -83,10 +83,10 @@
 
 
 
-<pre class="javascript"><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')
-const { askLlamaAboutFunctions } = importer.import('ask llm about functions')
-const { storeLlamaFunction } = importer.import('store llama function')
-const { askLlamaToGeneralizeAll } = importer.import('ask llm for a shorter list of categories')
+<pre class="javascript"><code>const { functionCache } = importer.import("<a href="../../Databases/caches/cache_rpc_functions_with_llm_descriptions.html">cache rpc functions with llm descriptions</a>")
+const { askLlamaAboutFunctions } = importer.import("<a href="../../Algorithms/llama/ask_llm_about_functions.html">ask llm about functions</a>")
+const { storeLlamaFunction } = importer.import("<a href="../../Algorithms/llama/store_llama_function.html">store llama function</a>")
+const { askLlamaToGeneralizeAll } = importer.import("<a href="../../Algorithms/llama/ask_llm_for_a_shorter_list_of_categories.html">ask llm for a shorter list of categories</a>")
 
 async function askLlamaGeneralizeCategories(categories) {
   let update = false
@@ -140,8 +140,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Imported Functions</h3>

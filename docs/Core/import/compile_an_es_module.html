@@ -120,7 +120,9 @@ async function makeESModule(code, filename, context) {
       },
       // @ts-expect-error: wrong type definition
       async importModuleDynamically(specifier) {
-          return await import(resolveModuleSpecifier(specifier, dirname))
+          return await import("<a href="../../Core/syntax/core_dependencies.html">resolveModuleSpecifier(specifier</a>"
+,<br />
+"<a href="../../Core/notebook/nice_name.html">dirname</a>"))
       }
   })
   context['__INTERNAL_IMPORTS_FROM_STRING'] = {}
@@ -133,7 +135,7 @@ async function makeESModule(code, filename, context) {
 
   const linker = async (specifier) =&gt; {
       const resolvedSpecifier = specifier //resolveModuleSpecifier(specifier, dirname)
-      const targetModule = await import(resolvedSpecifier)
+      const targetModule = await import("<a href="../../Google/google_scheduling/remove_overlaps.html">resolvedSpecifier</a>")
       context['__INTERNAL_IMPORTS_FROM_STRING'][specifier] = targetModule
 
       const stringifiedSpecifier = JSON.stringify(specifier)
@@ -173,8 +175,12 @@ module.exports.makeESModule = makeESModule
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Dependencies</h3>

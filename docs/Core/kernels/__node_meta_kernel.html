@@ -119,11 +119,11 @@
 
 <pre class="javascript"><code>var vm = require('vm');
 var importer = require('../Core');
-var {extend} = importer.import('extend prototype class');
-//var {processMetaKernel} = importer.import('process meta kernel')
-var nativeMetaKernel = importer.import('native meta kernel');
-var nativeMethods = importer.import('native meta kernel methods');
-var {socketMetaKernel} = socketMethods = importer.import('socket meta kernel')
+var {extend} = importer.import("<a href="../../Core/patterns/extend_prototype_class.html">extend prototype class</a>");
+//var {processMetaKernel} = importer.import("<a href="../../Core/kernels/process_meta_kernel.html">process meta kernel</a>")
+var nativeMetaKernel = importer.import("<a href="../../Core/kernels/native_meta_kernel.html">native meta kernel</a>");
+var nativeMethods = importer.import("<a href="../../Core/kernels/native_meta_methods.html">native meta kernel methods</a>");
+var {socketMetaKernel} = socketMethods = importer.import("<a href="../../Core/kernels/__socket_meta_kernel.html">socket meta kernel</a>")
 
 var TRANSFORM = {
     presets: [
@@ -177,8 +177,12 @@ module.exports = nodeMetaKernel;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Overview</strong></p>
 <p>This is a Node.js module that exports a function <code>nodeMetaKernel</code> which returns a meta kernel for Node.js. The meta kernel has three methods: <code>do_execute</code>, <code>do_is_complete</code>, and <code>do_init</code>.</p>

@@ -78,8 +78,8 @@
 <pre class="javascript"><code>var fs = require('fs');
 var path = require('path');
 var importer = require('../Core');
-var mkdirpSync = importer.import('mkdirp');
-var fetchOrStream = importer.import('fetch file or stream');
+var mkdirpSync = importer.import("<a href="../../Core/files/mkdirp.html">mkdirp</a>");
+var fetchOrStream = importer.import("<a href="../../Cloud Services/google_storage_api/fetch_file_or_stream.html">fetch file or stream</a>");
 
 // locally based utility for editing styles
 function streamToOutput(fileUrl, bucketName, stream) {
@@ -103,8 +103,12 @@ module.exports = streamToOutput;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a utility function called <code>streamToOutput</code> that takes a file URL, a bucket name, and an optional stream as input.</p>
 <p>Here's a breakdown:</p>

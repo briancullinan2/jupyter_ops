@@ -128,8 +128,8 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var zuoraExport = importer.import('zuora account service');
-var eloquaUpload = importer.import('bulk upload eloqua');
+var zuoraExport = importer.import("<a href="../../Frameworks/zuora_to_eloqua/zuora_account_service.html">zuora account service</a>");
+var eloquaUpload = importer.import("<a href="../../Frameworks/zuora_to_eloqua/bulk_upload_eloqua.html">bulk upload eloqua</a>");
 
 function handler(event, context, callback) {
     const zuoraConfig = {
@@ -194,8 +194,12 @@ module.exports = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines an AWS Lambda function that handles the bulk upload of Zuora account data to Eloqua.</p>
 <p>Here's a breakdown:</p>

@@ -94,9 +94,9 @@ async function run() {
     const {
         importNotebook, interpret, CONSOLE
     } = require('../Core')
-    const getParameters = await importNotebook('function parameters')
+    const getParameters = await importNotebook("<a href="../../Core/syntax/get_parameter_names.html">function parameters</a>")
     const cell = await interpret(process.argv[1])
-    let result = await importNotebook(process.argv[1])
+    let result = await importNotebook("<a href="../../Core/notebook/nice_name.html">process.argv[1</a>")
     CONSOLE.log(result)
     // HACK to get C# working
     if(typeof result.functions != 'undefined') {
@@ -169,8 +169,12 @@ module.exports.run = run;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Function <code>run</code></h3>
 <h4>Overview</h4>

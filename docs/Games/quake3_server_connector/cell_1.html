@@ -72,8 +72,8 @@
 
 
 <pre class="node"><code>var importer = require('../Core')
-var {authorizeGateway} = importer.import('authorize discord')
-var {registerCommand, getCommands, deleteCommand} = importer.import('discord api')
+var {authorizeGateway} = importer.import("<a href="../../Frontends/discord/discord_request.html">authorize discord</a>")
+var {registerCommand, getCommands, deleteCommand} = importer.import("<a href="../../Frontends/discord/discord_api.html">discord api</a>")
 
 async function syncCommands() {
     await authorizeGateway()
@@ -177,8 +177,12 @@ module.exports = syncCommands
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/node.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>

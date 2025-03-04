@@ -85,10 +85,9 @@ var importer = require('../Core');
 var {
     ISODateString,
     listEvents 
-} = importer.import([
-    'convert date iso',
-    'list events'
-]);
+} = importer.import("<a href="../../Games/quake_3/convert_nonalpha.html">convert date iso</a>"
+,<br />
+"<a href="../../Google/google_calendar/list_events.html">list events</a>");
 
 function getDaysEvents(startDate, options) {
     var eventCache = {}; // TODO: fix this, move it outside, only update if calendar is modified?
@@ -135,8 +134,12 @@ module.exports = getDaysEvents;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>getDaysEvents</code> that fetches events from a Google Calendar for a specific day.</p>
 <p>Here's a breakdown:</p>

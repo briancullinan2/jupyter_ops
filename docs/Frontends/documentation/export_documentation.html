@@ -77,17 +77,18 @@
 
 <pre class="javascript"><code>const fs = require('fs')
 const path = require('path')
-const { functionCache } = importer.import('cache rpc functions with llm descriptions')
-const { storeAllLlamaFunctions } = importer.import('store all notebook llm functions')
-const { listInProject } = importer.import('list project files');
-const { askLlamaAboutCode } = importer.import('ask llm about code')
-const { askLlamaToSummerize, askLlamaToGeneralize } = importer.import('ask llm to summerize')
-const { cacheCells } = importer.import('cache notebook')
-const { safeurl } = importer.import('domain cache tools')
+const { functionCache } = importer.import("<a href="../../Databases/caches/cache_rpc_functions_with_llm_descriptions.html">cache rpc functions with llm descriptions</a>")
+const { storeAllLlamaFunctions } = importer.import("<a href="../../Algorithms/llama/store_all_notebook_llm_functions.html">store all notebook llm functions</a>")
+const { listInProject } = importer.import("<a href="../../Core/files/list_project_files.html">list project files</a>");
+const { askLlamaAboutCode } = importer.import("<a href="../../Algorithms/llama/ask_llm_about_code.html">ask llm about code</a>")
+const { askLlamaToSummerize, askLlamaToGeneralize } = importer.import("<a href="../../Algorithms/llama/ask_llm_to_summerize.html">ask llm to summerize</a>")
+const { cacheCells } = importer.import("<a href="../../Core/cache/cache_notebook.html">cache notebook</a>")
+const { safeurl } = importer.import("<a href="../../Analytics/data_collection/domain_cache_tools.html">domain cache tools</a>")
 const { Remarkable } = require('remarkable');
 const md = new Remarkable({ html: true, xhtmlOut: true, breaks: true });
 
 const PROJECT_PATH = path.resolve(path.join(path.dirname(__dirname), 'docs'))
+const INTERPRET = {}
 
 async function exportAll(query) {
   // await storeAllLlamaFunctions()
@@ -211,7 +212,29 @@ async function exportAll(query) {
       }
       const key = path.join(fullpath, cellname + '.html')
       results[key] = {
-        output: '\n\n&lt;pre class="' + newCache[j].language + '"&gt;&lt;code&gt;' + newCache[j].code.replaceAll('&amp;', '&amp;amp;').replaceAll('&lt;', '&amp;lt;').replaceAll('&gt;', '&amp;gt;') + '&lt;/code&gt;&lt;/pre&gt;\n\n'
+        output: '\n\n&lt;pre class="' + newCache[j].language + '"&gt;&lt;code&gt;' + newCache[j].code.replaceAll('&amp;', '&amp;amp;').replaceAll('&lt;', '&amp;lt;').replaceAll('&gt;', '&amp;gt;').replaceAll(/(import_notebook|importNotebook|import)\([\\\n\r\[\]\s'"]*([\s\S]*?)[\\\n\r\]\[\s'"]*\)/gi, (match, ...args) =&gt; {
+          let searches = args[1].split(/[\\\n\r\s'"]*,[\\\n\r\s'"]*/gi)
+          let links = []
+          for(let k = 0; k &lt; searches.length; k++) {
+            try {
+              if(!searches[k].trim()) continue
+              let cell
+              if(typeof INTERPRET[searches[k]] != 'undefined') {
+                cell = INTERPRET[searches[k]]
+              } else {
+                console.log('Searching: ', searches[k])
+                cell = importer.interpret(searches[k])
+                INTERPRET[searches[k]] = cell
+              }
+              if(!cell) continue
+              const relative = path.relative(path.resolve(__dirname, '../'), cell.filename)
+              links.push('"&lt;a href="../../' + relative.split(path.sep)[0] 
+                + '/' + safeurl(path.basename(cell.filename).replace('.ipynb', '')) 
+                + '/' + safeurl(cell.questions[0]) + '.html"&gt;' + searches[k] + '&lt;/a&gt;"')
+            } catch(e) {}
+          }
+          return args[0] + '(' + links.join('\n,&lt;br /&gt;\n') + ')'
+        }) + '&lt;/code&gt;&lt;/pre&gt;\n\n'
       }
       results[key].output += languageTemplate.code.replaceAll('${LANGUAGE}', newCache[j].language)
 
@@ -270,6 +293,7 @@ async function exportAll(query) {
     output = output.replaceAll('${PREV}', results[paths[i]].prev)
     const relative = path.relative(path.resolve(__dirname, '../docs'), paths[i])
     const searchRelative = path.relative(path.dirname(relative), 'search.html')
+    const pluginRelative = path.relative(path.dirname(relative), 'mergehtml.js')
     output = output.replaceAll('${SEARCH}', '&lt;a href="' + searchRelative + '"&gt;Search&lt;/a&gt;')
     if (results[paths[i]].index)
       output = output.replaceAll('${CLASSES}', results[results[paths[i]].index].indexOutput)
@@ -277,6 +301,7 @@ async function exportAll(query) {
       output = output.replaceAll('${CLASSES}', '')
     // do this last because it should already the necessary replacements
     output = output.replaceAll('${OUTPUT}', results[paths[i]].output)
+    output = output.replaceAll('../../mergehtml.js', pluginRelative)
     fs.writeFileSync(paths[i], output)
   }
 
@@ -294,8 +319,12 @@ module.exports = exportAll
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Breakdown of the Code</strong></p>
 <p>This code appears to be a Node.js script that exports documentation for a project in HTML format. It utilizes various imports and functions to generate the documentation.</p>

@@ -86,23 +86,31 @@ namespace window_tracker
     public static class ProgramExtensions
     {
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>"
+,<br />
+"<a href="../../Core/syntax/select_acorn_tree.html">SetLastError = true</a>")]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>"
+,<br />
+"<a href="../../Core/syntax/select_acorn_tree.html">SetLastError = true</a>")]
         private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
-        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>"
+,<br />
+"<a href="../../Selenium/scraping/extract_llm_article.html">CharSet = CharSet.Unicode</a>")]
         private static extern int GetWindowText(IntPtr hWnd, StringBuilder strText, int maxCount);
 
-        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>"
+,<br />
+"<a href="../../Selenium/scraping/extract_llm_article.html">CharSet = CharSet.Unicode</a>")]
         private static extern int GetWindowTextLength(IntPtr hWnd);
 
-        [DllImport("user32.dll")]
+        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>")]
         private static extern bool EnumWindows(EnumWindowsProc enumProc, IntPtr lParam);
 
-        [DllImport("user32.dll")]
+        [DllImport("<a href="../../Frameworks/gulp/use_gulp.html">user32.dll</a>")]
         private static extern IntPtr GetForegroundWindow();
 
         // Delegate to filter which windows to include 
@@ -224,8 +232,12 @@ namespace window_tracker
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Namespace and Class</h3>

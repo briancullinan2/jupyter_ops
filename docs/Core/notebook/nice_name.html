@@ -94,7 +94,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var getExtension = importer.import('cell extension')
+var getExtension = importer.import("<a href="../../Core/notebook/__get_cell_extension.html">cell extension</a>")
 
 // get previous markdown and extract name that leads back to the current cell
 function niceName(cell) {
@@ -128,8 +128,12 @@ module.exports = niceName;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function called <code>niceName</code> that generates a user-friendly filename for a code cell based on its content and type.</p>
 <p><strong>Here's a breakdown:</strong></p>

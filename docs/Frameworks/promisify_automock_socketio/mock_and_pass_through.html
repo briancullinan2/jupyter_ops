@@ -75,7 +75,7 @@
 
 <pre class="javascript"><code>var Promise = require('bluebird');
 var importer = require('../Core');
-var automock = importer.import('mock all properties and functions using rewire');
+var automock = importer.import("<a href="../../Frameworks/autorewire/mock_all_properties_and_functions_using_rewire.html">mock all properties and functions using rewire</a>");
 
 function promisifyMock(req, dep) {
     let ctx;
@@ -106,8 +106,12 @@ module.exports = promisifyMock;
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code defines a function <code>promisifyMock</code> that creates mock implementations for asynchronous functions within a given request object (<code>req</code>) using the <code>rewire</code> library.</p>
 <p>Here's a breakdown:</p>

@@ -420,8 +420,12 @@ selectDom([
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Overview</strong></p>
 <p>This code defines a set of methods for a class <code>GenericVisitor</code> that appears to be used for parsing and analyzing a programming language, likely C++. The methods are designed to extract specific information from the abstract syntax tree (AST) of a program.</p>

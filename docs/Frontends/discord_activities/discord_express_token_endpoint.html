@@ -75,10 +75,10 @@
 
 
 
-<pre class="javascript"><code>const {INSTANCES, SESSIONS} = importer.import('discord gateway')
+<pre class="javascript"><code>const {INSTANCES, SESSIONS} = importer.import("<a href="../../Frontends/discord/discord_gateway.html">discord gateway</a>")
 const {request} = require('gaxios')
 const qs = require('qs');
-const {DEFAULT_API, SECRET, TOKEN, DEFAULT_APPLICATION} = importer.import('discord configuration')
+const {DEFAULT_API, SECRET, TOKEN, DEFAULT_APPLICATION} = importer.import("<a href="../../Frontends/discord/discord_bot_configuration.html">discord configuration</a>")
 var crypto = require('crypto')
 
 async function getToken(req, res, next) {
@@ -153,8 +153,12 @@ module.exports = getToken
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Function Breakdown: <code>getToken</code></strong></p>
 <h3>Function Purpose</h3>

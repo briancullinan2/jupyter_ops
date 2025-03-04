@@ -68,7 +68,7 @@
 
 
 <pre class="javascript"><code>var importer = require('../Core');
-var getSettings = importer.import('google contact settings');
+var getSettings = importer.import("<a href="../../Google/google_contacts/google_contact_settings.html">google contact settings</a>");
 
 $.async();
 getSettings('megamindbrian@gmail.com')
@@ -85,8 +85,12 @@ getSettings('megamindbrian@gmail.com')
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>

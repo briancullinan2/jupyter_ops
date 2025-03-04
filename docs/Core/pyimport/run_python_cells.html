@@ -95,7 +95,9 @@ async def run_internal():
     results = interpret(notebook_path)
     #print(results[0]['code'])
 
-    module = import_notebook(notebook_path, globals())
+    module = import_notebook("<a href="../../Frameworks/notebook_extensions/notebook_extension.html">notebook_path</a>"
+,<br />
+"<a href="../../Cloud Services/deploy_host/deploy_aws.html">globals(</a>"))
     print(module)
 
     # Find the first function in the module
@@ -171,8 +173,12 @@ __all__ = {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>

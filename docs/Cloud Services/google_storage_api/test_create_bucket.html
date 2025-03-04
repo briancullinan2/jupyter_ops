@@ -77,7 +77,7 @@
 
 <pre class="javascript"><code>var assert = require('assert');
 var importer = require('../Core');
-var createBucket = importer.import('create a bucket');
+var createBucket = importer.import("<a href="../../Cloud Services/google_storage_api/create_a_bucket.html">create a bucket</a>");
 var project = 'spahaha-ea443';
 var bucketName = 'sheet-to-web.sheet-to-web.com';
 
@@ -101,8 +101,12 @@ describe('adding a bucket to google storage', () =&gt; {
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="../../mergehtml.js"></script>
 
-<script>hljs.highlightAll();</script>
+<script>
+hljs.addPlugin(mergeHTMLPlugin);
+hljs.highlightAll();
+</script>
 
 <p>This code snippet is a unit test for a function that creates a Google Cloud Storage bucket.</p>
 <p>Here's a breakdown:</p>
