@@ -76,54 +76,54 @@
 function closeAllTabs(client, keep) {
     return client
         .getWindowHandles()
-        .then(h => {
+        .then(h =&gt; {
             var promises = [];
-            for(var i = 0; i < h.length; i++) {
+            for(var i = 0; i &lt; h.length; i++) {
                 if(h[i] === keep) {
                     continue;
                 }
-                promises.push((i => resolve => client
+                promises.push((i =&gt; resolve =&gt; client
                               .switchToWindow(h[i])
-                              .then(() => client.close())
-                              .then(() => resolve())
-                              .catch(e => resolve()))
+                              .then(() =&gt; client.close())
+                              .then(() =&gt; resolve())
+                              .catch(e =&gt; resolve()))
                               .apply(this, [i]));
             }
             return importer.runAllPromises(promises);
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 
 function closeAllWindows(client, keep) {
     return client
         .getWindowHandles()
-        .then(h => {
+        .then(h =&gt; {
             var promises = [];
-            for(var i = 0; i < h.length; i++) {
+            for(var i = 0; i &lt; h.length; i++) {
                 if(h[i] === keep) {
                     continue;
                 }
-                promises.push((i => resolve => client
+                promises.push((i =&gt; resolve =&gt; client
                               .switchToWindow(h[i])
-                              .then(() => client.close())
-                              .then(() => resolve())
-                              .catch(e => resolve()))
+                              .then(() =&gt; client.close())
+                              .then(() =&gt; resolve())
+                              .catch(e =&gt; resolve()))
                               .apply(this, [i]));
             }
             return importer.runAllPromises(promises);
         })
-        .then(() => client.switchToWindow(keep))
-        .catch(e => console.log(e))
+        .then(() =&gt; client.switchToWindow(keep))
+        .catch(e =&gt; console.log(e))
 }
 
 function onlyOneWindow(client) {
     return client
         .newWindow('https://google.com')
-        .then(() => client.getWindowHandle())
-        .then(r => closeAllWindows(client, r))
-        .then(() => client.getWindowHandle())
-        .then(r => closeAllTabs(client, r))
-        .catch(e => console.log(e))
+        .then(() =&gt; client.getWindowHandle())
+        .then(r =&gt; closeAllWindows(client, r))
+        .then(() =&gt; client.getWindowHandle())
+        .then(r =&gt; closeAllTabs(client, r))
+        .catch(e =&gt; console.log(e))
     // TODO: close all tabs
 }
 

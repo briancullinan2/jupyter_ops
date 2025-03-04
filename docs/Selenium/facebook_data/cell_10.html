@@ -87,14 +87,14 @@ runSeleniumCell([
     'log in facebook',
     'unfollow everyone facebook'
 ])
-    .then(r => {
+    .then(r =&gt; {
         loginFacebook = r[0];
         unfollowFacebook = r[1];
         return loginFacebook();
     })
-    .then(() => unfollowFacebook())
-    .then(r => $.sendResult(r))
-    .catch(e => $.sendError(e));
+    .then(() =&gt; unfollowFacebook())
+    .then(r =&gt; $.sendResult(r))
+    .catch(e =&gt; $.sendError(e));
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

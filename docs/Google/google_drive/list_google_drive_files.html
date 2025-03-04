@@ -82,8 +82,8 @@ var authorizeDrive = importer.import('authorize google drive');
 
 function listDrive() {
     return authorizeDrive()
-        .then(drive => util.promisify(drive.files.list.bind(drive))({}))
-        .then(r => r.data.files || [])
+        .then(drive =&gt; util.promisify(drive.files.list.bind(drive))({}))
+        .then(r =&gt; r.data.files || [])
 }
 
 module.exports = listDrive;

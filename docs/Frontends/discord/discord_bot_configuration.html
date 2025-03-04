@@ -104,12 +104,12 @@ if(fs.existsSync('./discord.txt')) {
 
 
 var TOKEN = process.env.TOKEN
-if(!TOKEN && fs.existsSync(process.env.TOKENPATH || tokenPath)) {
+if(!TOKEN &amp;&amp; fs.existsSync(process.env.TOKENPATH || tokenPath)) {
   TOKEN = fs.readFileSync(process.env.TOKENPATH || tokenPath).toString('utf-8').trim()
 }
 
 var SECRET = process.env.SECRET
-if(!SECRET && fs.existsSync(process.env.SECRETPATH || secretPath)) {
+if(!SECRET &amp;&amp; fs.existsSync(process.env.SECRETPATH || secretPath)) {
   SECRET = fs.readFileSync(process.env.SECRETPATH || secretPath).toString('utf-8').trim()
 }
 

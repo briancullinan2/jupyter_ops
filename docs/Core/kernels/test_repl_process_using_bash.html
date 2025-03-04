@@ -119,9 +119,9 @@ function do_respond(message) {
 
 // TODO: move this to ibash kernel below
 function testProcessKernel() {
-    return new Promise(resolve => {
+    return new Promise(resolve =&gt; {
         var kernel = bashKernel({
-            do_respond: (message) => {
+            do_respond: (message) =&gt; {
                 setTimeout(resolve.bind(kernel, kernel), 1000);
                 return do_respond(message);
             },
@@ -132,12 +132,12 @@ function testProcessKernel() {
             }
         })
 
-        setTimeout(() => {
+        setTimeout(() =&gt; {
             console.log(interface(kernel, metaKernelInterface, false))
             console.log(kernel.do_message({do_execute: `hello`}))
         }, 500)
     })
-    .then(kernel => console.log(kernel.do_shutdown()))
+    .then(kernel =&gt; console.log(kernel.do_shutdown()))
 }
 
 module.exports = testProcessKernel;

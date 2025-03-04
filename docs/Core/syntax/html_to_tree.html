@@ -138,7 +138,7 @@ function accumulateChildNodes(body) {
     // TODO: exclude children parent properties
     //   left-over children are assigned to children: []
     return Array.from(body.childNodes)
-        .reduce((obj, n) => {
+        .reduce((obj, n) =&gt; {
             if(n.nodeName === '#text') {
                 commentBuffer.push[n];
                 return obj;
@@ -177,7 +177,7 @@ function htmlToTree(body) {
         return accumulateChildNodes(dom.window.document.body).children;
     }
     if(Array.isArray(body)) {
-        return body.map(t => htmlToTree(t))
+        return body.map(t =&gt; htmlToTree(t))
     }
     if(body.nodeName === '#text') {
         return body.nodeValue;
@@ -185,8 +185,8 @@ function htmlToTree(body) {
     // convert attributed object containers back to properties
     // TODO: might have a property named -type and it will be lost
     var attrs = body.getAttributeNames()
-        .filter(a => a !== 'parent-attr' && a.substr(-5) != '-type')
-        .reduce((obj, p) => {
+        .filter(a =&gt; a !== 'parent-attr' &amp;&amp; a.substr(-5) != '-type')
+        .reduce((obj, p) =&gt; {
             var attr = body.getAttribute(p);
             try {
                 if(body.getAttribute(`${p}-type`) !== 'string') {

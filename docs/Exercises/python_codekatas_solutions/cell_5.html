@@ -85,7 +85,7 @@ The <code>create_max</code> function takes an input number <code>num</code> as a
     drop = len(digits) - k
     stack = []
     for digit in digits:
-        while drop and stack and stack[-1] < digit:
+        while drop and stack and stack[-1] &lt; digit:
             stack.pop()
             drop -= 1
         stack.append(digit)

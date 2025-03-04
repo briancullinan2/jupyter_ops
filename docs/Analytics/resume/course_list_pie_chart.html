@@ -67,8 +67,8 @@ function getCourseSVG() {
     var docId = '1dAtBQyn5vwStM6ITn7iCpp996Sus26k0bJtbGNlCX2g';
 
     return getDataSheet(docId, 'Courses pie data')
-        .then(data => data.map(d => ({label: d.subject, value: d.percent})))
-        .then(values => d3PieChart(values))
+        .then(data =&gt; data.map(d =&gt; ({label: d.subject, value: d.percent})))
+        .then(values =&gt; d3PieChart(values))
 }
 
 module.exports = getCourseSVG;</code></pre>

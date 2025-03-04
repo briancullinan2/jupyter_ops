@@ -68,10 +68,10 @@ var {
 } = importer.import(['nice name', 'get exports', 'get parameters'])
 
 async function handler(req, res) {
-    if(!req && process.stdout.isTTY) {
+    if(!req &amp;&amp; process.stdout.isTTY) {
         res = {}
         req = {query: {}, body: {}, form: {}}
-        Array.from(process.argv).forEach(arg => {
+        Array.from(process.argv).forEach(arg =&gt; {
             req.query[arg.split('=')[0]] = arg.split('=').slice(1).join('=')
         })
     }
@@ -82,8 +82,8 @@ async function handler(req, res) {
     
     var func = require('./entry.js')
     return await func(...parameters)
-        .then(r => !res ? console.log(r) : res.status(200).send(r))
-        .catch(e => !res ? console.log(e) : res.status(500).send(e))
+        .then(r =&gt; !res ? console.log(r) : res.status(200).send(r))
+        .catch(e =&gt; !res ? console.log(e) : res.status(500).send(e))
 }
 
 // use syntax to alter the function handler above
@@ -96,7 +96,7 @@ function makeHandler(entry) {
     }
     var exports = []
     var interpret = importer.interpret(entry)
-    var handlers = interpret.map(cell => {
+    var handlers = interpret.map(cell =&gt; {
         // replace the require statement
         // TODO: make this part generic, moving vars to parameters
         var doc = selectAst('.', handler.toString())
@@ -111,7 +111,7 @@ function makeHandler(entry) {
         // replace the parameters with names
         var replaceParams = selectAst('//VariableDeclaration', `
 var parameters = [${parameters
-            .map(p => `(req.body || {})['${p}'] || (req.form || {})['${p}'] || (req.query || {})['${p}']`)
+            .map(p =&gt; `(req.body || {})['${p}'] || (req.form || {})['${p}'] || (req.query || {})['${p}']`)
             .join(',\n')}]`)
         
         var assignmentStmt = selectAst([`//VariableDeclaration[./*/*[@name = "parameters"]]`], doc)

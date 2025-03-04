@@ -58,53 +58,53 @@
 <p>This C++ code defines a 3D transformation system using SDL for rendering, which consists of classes and functions for representing points, vectors, and matrices, as well as applying transformations such as rotation, translation, and connection drawing. The system uses the SDL library for rendering and includes functions for calculating dot products, applying composite transformations, and getting rotation matrices.</p>
 
 
-<pre class="cpp"><code>#include <vector>
-#include <cmath>
-#include <SDL.h>
+<pre class="cpp"><code>#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;SDL.h&gt;
 
 class Point {
   public:
     double x, y, z;
 
     Point() {
-        this->x = 0;
-        this->y = 0;
-        this->z = 0;
+        this-&gt;x = 0;
+        this-&gt;y = 0;
+        this-&gt;z = 0;
     }
 
     Point(double x, double y, double z) {
-        this->x = x;
-        this->y = y;
-        this->z = z;
+        this-&gt;x = x;
+        this-&gt;y = y;
+        this-&gt;z = z;
     }
 
     Point(double x, double y) {
-        this->x = x;
-        this->y = y;
-        this->z = 0;
+        this-&gt;x = x;
+        this-&gt;y = y;
+        this-&gt;z = 0;
     }
 
     double operator[](int i) const {
-        if (i == 0) return this->x;
-        if (i == 1) return this->y;
-        return this->z;
+        if (i == 0) return this-&gt;x;
+        if (i == 1) return this-&gt;y;
+        return this-&gt;z;
     }
 
-    double& operator[](int i) {
-        if (i == 0) return this->x;
-        if (i == 1) return this->y;
-        return this->z;
+    double&amp; operator[](int i) {
+        if (i == 0) return this-&gt;x;
+        if (i == 1) return this-&gt;y;
+        return this-&gt;z;
     }
 };
 
-typedef std::vector<double> Vector;
-typedef std::vector<Vector> Matrix;
+typedef std::vector&lt;double&gt; Vector;
+typedef std::vector&lt;Vector&gt; Matrix;
 
-Matrix dot(const Matrix& a, const Matrix& b) {
+Matrix dot(const Matrix&amp; a, const Matrix&amp; b) {
     Matrix result = Matrix(a.size(), Vector(b[0].size(), 0));
-    for (int i=0; i<a.size(); i++) {
-        for (int j=0; j<b[0].size(); j++) {
-            for (int k=0; k<b.size(); k++) {
+    for (int i=0; i&lt;a.size(); i++) {
+        for (int j=0; j&lt;b[0].size(); j++) {
+            for (int k=0; k&lt;b.size(); k++) {
                 result[i][j] += a[i][k] * b[k][j];
             }
         }
@@ -112,13 +112,13 @@ Matrix dot(const Matrix& a, const Matrix& b) {
     return result;
 }
 
-Point transform(const Matrix& matrix, const Point& point) {
+Point transform(const Matrix&amp; matrix, const Point&amp; point) {
     Matrix p = {{point.x}, {point.y}, {point.z}};
     Matrix r = dot(matrix, p);
     return Point(r[0][0], r[1][0], r[2][0]);
 }
 
-Point translate(const Point& shift, const Point& point) {
+Point translate(const Point&amp; shift, const Point&amp; point) {
     return Point(
         point.x + shift.x,
         point.y + shift.y,
@@ -126,7 +126,7 @@ Point translate(const Point& shift, const Point& point) {
     );
 }
 
-void connect(SDL_Renderer* const renderer, const std::vector<Point> &points, int i, int j) {
+void connect(SDL_Renderer* const renderer, const std::vector&lt;Point&gt; &amp;points, int i, int j) {
     SDL_RenderDrawLine(
         renderer,
         points[i].x,
@@ -172,7 +172,7 @@ int HEIGHT = 800;
 
 static bool first = false;
 static SDL_Renderer* renderer;
-std::vector<Point> points;
+std::vector&lt;Point&gt; points;
 Matrix rotationXYZ;
 
 Point screenShift;
@@ -181,7 +181,7 @@ Point screenShiftOpposite;
 void beginFrame(int windowId) {
     SDL_Window *window = SDL_GetWindowFromID(windowId);
     SDL_Event event;
-    while(SDL_PollEvent(&event)){
+    while(SDL_PollEvent(&amp;event)){
         if(event.type == SDL_QUIT) {
             SDL_DestroyWindow(window);
             SDL_Quit();
@@ -212,7 +212,7 @@ void beginFrame(int windowId) {
     screenShiftOpposite = Point(-WIDTH / 2, -HEIGHT / 2);
     int scale = 200;
 
-    for (Point& p : points) {
+    for (Point&amp; p : points) {
         p.x = (scale * p.x + screenShift.x);
         p.y = (scale * p.y + screenShift.y);
         p.z = (scale * p.z + screenShift.z);
@@ -222,7 +222,7 @@ void beginFrame(int windowId) {
   }
 
 
-  for (Point &p : points) {
+  for (Point &amp;p : points) {
     p = translate(screenShiftOpposite, p);
     p = transform(rotationXYZ, p);
     p = translate(screenShift, p);
@@ -231,7 +231,7 @@ void beginFrame(int windowId) {
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
   SDL_RenderClear(renderer);
   SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-  for (int i=0; i<4; i++) {
+  for (int i=0; i&lt;4; i++) {
       connect(renderer, points, i, (i + 1) % 4);
       connect(renderer, points, i + 4, ((i + 1) % 4) + 4);
       connect(renderer, points, i, i + 4);

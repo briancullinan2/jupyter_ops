@@ -139,14 +139,14 @@ function handler(event, context, callback) {
         "rest_api_password": process.env.ELOQUA_API_PASS
     };
     return zuoraExport.getZuoraMonth(0, zuoraConfig)
-        .then(records => mapper.mapDataToFields(records))
-        .then(accounts => eloquaUpload.bulkUploadEloqua(accounts, eloquaConfig))
-        .then(() => callback(null, {
+        .then(records =&gt; mapper.mapDataToFields(records))
+        .then(accounts =&gt; eloquaUpload.bulkUploadEloqua(accounts, eloquaConfig))
+        .then(() =&gt; callback(null, {
             'statusCode': 200,
             'headers': { 'Content-Type': 'text/plain' },
             'body': 'Success!'
         }))
-        .catch(e => callback(e.message || e.body || e, {
+        .catch(e =&gt; callback(e.message || e.body || e, {
             'statusCode': 500,
             'headers': { 'Content-Type': 'text/plain' },
             'body': 'Error: ' + e.message

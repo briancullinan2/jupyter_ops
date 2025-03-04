@@ -132,13 +132,13 @@ var eloquaConfig = getEloquaConfig();
 var eloquaToken = getOauthToken();
 var sandbox = sinon.createSandbox();
 
-describe('eloqua bulk upload', () => {
+describe('eloqua bulk upload', () =&gt; {
     
-    afterEach(() => {
+    afterEach(() =&gt; {
         sandbox.restore();
     })
 
-    it('should call oauth', () => {
+    it('should call oauth', () =&gt; {
         const requestStub = sandbox.stub(eloquaImport, "eloquaOauth").returns(Promise.resolve(eloquaToken));
         sandbox.stub(eloquaImport, "createImportDefinition");
         sandbox.stub(eloquaImport, "startBulkImportData");
@@ -147,13 +147,13 @@ describe('eloqua bulk upload', () => {
         sandbox.stub(eloquaImport, "completeBulkImportSync").returns(Promise.resolve());
         
         return dataImporter.bulkUploadEloqua({}, eloquaConfig)
-            .then(() => {
+            .then(() =&gt; {
                 const stubCall = requestStub.getCall(0);
                 assert.equal(stubCall.args[0], eloquaConfig);
             })
     })
     
-    it('should call import data', () => {
+    it('should call import data', () =&gt; {
         sandbox.stub(eloquaImport, "eloquaOauth").returns(Promise.resolve(eloquaToken));
         sandbox.stub(eloquaImport, "createImportDefinition").returns(Promise.resolve({ body: {uri: '/imports/1234'} }));
         sandbox.stub(eloquaImport, "startBulkImportData").returns(Promise.resolve({ body: {status: 'success'} }));
@@ -162,26 +162,26 @@ describe('eloqua bulk upload', () => {
         const requestStub = sandbox.stub(eloquaImport, "completeBulkImportSync").returns(Promise.resolve({ body: {uri: '/imports/1234'} }));
         
         return dataImporter.bulkUploadEloqua({}, eloquaConfig)
-            .then(() => {
+            .then(() =&gt; {
                 const stubCall = requestStub.getCall(0);
                 assert.equal(stubCall.args[1], eloquaToken);
             })
     })
     
-    it('should import temporary for each email from Content', () => {
+    it('should import temporary for each email from Content', () =&gt; {
         sandbox.stub(eloquaImport, "eloquaOauth").returns(Promise.resolve(eloquaToken));
         sandbox.stub(eloquaImport, "createInstanceDefinition").returns(Promise.resolve({ body: {uri: '/imports/1234'} }));
         sandbox.stub(eloquaImport, "startBulkImportData").returns(Promise.resolve({ body: {status: 'success'} }));
         const requestStub = sandbox.stub(eloquaImport, "completeBulkImportSync").returns(Promise.resolve({ body: {uri: '/imports/1234'} }));
         
         return dataImporter.bulkUploadEloqua({}, eloquaConfig, 'instance123', 'execution123')
-            .then(() => {
+            .then(() =&gt; {
                 const stubCall = requestStub.getCall(0);
                 assert.equal(stubCall.args[1], eloquaToken);
             })
     })
     
-    it('should import an existing definition', () => {
+    it('should import an existing definition', () =&gt; {
         sandbox.stub(eloquaImport, "eloquaOauth").returns(Promise.resolve(eloquaToken));
         sandbox.stub(eloquaImport, "createImportDefinition").returns(Promise.resolve({ body: {uri: '/imports/1234'} }));
         sandbox.stub(eloquaImport, "startBulkImportData").returns(Promise.resolve({ body: {status: 'success'} }));
@@ -190,7 +190,7 @@ describe('eloqua bulk upload', () => {
         const requestStub = sandbox.stub(eloquaImport, "completeBulkImportSync").returns(Promise.resolve({ body: {uri: '/imports/1234'} }));
         
         return dataImporter.bulkUploadEloqua({}, eloquaConfig)
-            .then(() => {
+            .then(() =&gt; {
                 const stubCall = requestStub.getCall(0);
                 assert.equal(stubCall.args[1], eloquaToken);
             })

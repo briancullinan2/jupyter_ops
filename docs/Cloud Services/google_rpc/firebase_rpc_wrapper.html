@@ -78,25 +78,25 @@ if(typeof module.exports === 'undefined') {
     module.exports = {};
 }
 
-module.exports.rpc = functions.https.onRequest((req, res) => {
+module.exports.rpc = functions.https.onRequest((req, res) =&gt; {
     process.env.HOME = process.env.HOMEPATH = process.env.USERPROFILE = '';
     const config = functions.config();
-    const services = Object.keys(config).reduce(k => {
-        Object.keys(config[k]).forEach(s => {
+    const services = Object.keys(config).reduce(k =&gt; {
+        Object.keys(config[k]).forEach(s =&gt; {
             process.env[k.toUpperCase() + '_' + s.toUpperCase()] = config[k][s];
         });
     });
     
-    cors(req, res, () => {
+    cors(req, res, () =&gt; {
         return Promise.resolve([])
-            .then(() => getResult({
+            .then(() =&gt; getResult({
                 command: req.body['function'] || req.query['function'],
                 result: importer.interpret(req.body['function'] || req.query['function']),
                 body: req.method === 'POST' ? req.body : req.query,
                 circles: ['Public']
             }))
-            .then(r => {
-                const result = Object.getOwnPropertyNames(r).reduce((alt, key) => {
+            .then(r =&gt; {
+                const result = Object.getOwnPropertyNames(r).reduce((alt, key) =&gt; {
                     alt[key] = r[key] + '';
                     return alt;
                 }, {});
@@ -104,8 +104,8 @@ module.exports.rpc = functions.https.onRequest((req, res) => {
                 return res.status(200).send(r);
             })
             // TODO: object assign error?
-            .catch(e => { 
-                const result = Object.getOwnPropertyNames(e).reduce((alt, key) => {
+            .catch(e =&gt; { 
+                const result = Object.getOwnPropertyNames(e).reduce((alt, key) =&gt; {
                     alt[key] = e[key] + '';
                     return alt;
                 }, {});

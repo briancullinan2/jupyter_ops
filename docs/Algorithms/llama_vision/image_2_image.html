@@ -137,7 +137,7 @@ async function doImage2Image(image, prompt) {
     let imagePath
     if(fs.existsSync(stablePath)) {
       let images = fs.readdirSync(stablePath)
-      for(let i = 0; i < images.length; i++) {
+      for(let i = 0; i &lt; images.length; i++) {
         if(images[i].match('-' + seed + '-')) {
           imagePath = path.join('img2img-images', folderName, images[i])
           break

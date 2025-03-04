@@ -71,7 +71,7 @@ const {storeChatHistory} = importer.import('how to cache chat logs')
 //const { chatCache } = importer.import('cache chat history with llm descriptions')
 const { askLlamaAboutConversation, askLlamaAboutCategory } = importer.import('ask llm about chat conversations')
 
-const hashCode = s => s.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)
+const hashCode = s =&gt; s.split('').reduce((a,b) =&gt; (((a &lt;&lt; 5) - a) + b.charCodeAt(0))|0, 0)
 
 const CHAT_DIRECTORIES = [
   '/Volumes/External/Personal/Collections/conversations',
@@ -107,7 +107,7 @@ function cellNeedsTidying(cellId, chatCache) {
   || typeof chatCache[cellId].date == 'undefined'
   || !chatCache[cellId].date
   || chatCache[cellId].summary.match(/Find the derivative/gi)
-  || chatCache[cellId].category == '<h1>'
+  || chatCache[cellId].category == '&lt;h1&gt;'
   || typeof chatCache[cellId].from == 'undefined' || typeof chatCache[cellId].to == 'undefined'
 }
 
@@ -116,10 +116,10 @@ function convertMessagesToNoDates(currentMessages) {
   if(typeof currentMessages != 'string') {
     messageNoTimes = messageNoTimes.join('\n').trim()
   }
-  for(let i = 0; i < CHAT_DATES.length; i++) {
+  for(let i = 0; i &lt; CHAT_DATES.length; i++) {
     messageNoTimes = messageNoTimes.replace(CHAT_DATES[i], '')
   }
-  for(let i = 0; i < CHAT_TIMES.length; i++) {
+  for(let i = 0; i &lt; CHAT_TIMES.length; i++) {
     messageNoTimes = messageNoTimes.replace(CHAT_TIMES[i], '')
   }
   messageNoTimes = messageNoTimes.replace(/\[\s*\]\s*/gi, '')
@@ -134,7 +134,7 @@ async function askLlamaAboutChatLog(chatLog) {
 
   let chatHistory = []
   let chatPath
-  for(let i = 0; i < CHAT_DIRECTORIES.length; i++) {
+  for(let i = 0; i &lt; CHAT_DIRECTORIES.length; i++) {
     chatPath = path.join(CHAT_DIRECTORIES[i], chatLog + '.log')
     if(fs.existsSync(chatPath)) {
       chatHistory = fs.readFileSync(chatPath).toLocaleString('utf-8').split('\n')
@@ -157,16 +157,16 @@ async function askLlamaAboutChatLog(chatLog) {
   let currentMessages = []
   let currentTotal = 0
   let cellId = chatPath + '[' + cellCounter + ']'
-  for(let i = 0; i < chatHistory.length; i++) {
-    if(currentMessages.length > 0 && currentTotal + chatHistory[i].length > 2048 || currentMessages.length == 20) {
+  for(let i = 0; i &lt; chatHistory.length; i++) {
+    if(currentMessages.length &gt; 0 &amp;&amp; currentTotal + chatHistory[i].length &gt; 2048 || currentMessages.length == 20) {
       // process now
       // TODO: store result
       let messageBlock = currentMessages.join('\n')
       let messageNoTimes = convertMessagesToNoDates(currentMessages)
-      let date = CHAT_DATES.map(d => (messageBlock.match(d) || [])[0]).filter(d=>d)[0]
-      let time = CHAT_TIMES.map(d => (messageBlock.match(d) || [])[0]).filter(d=>d)[0]
+      let date = CHAT_DATES.map(d =&gt; (messageBlock.match(d) || [])[0]).filter(d=&gt;d)[0]
+      let time = CHAT_TIMES.map(d =&gt; (messageBlock.match(d) || [])[0]).filter(d=&gt;d)[0]
       let now = new Date(date + ' ' + time).getTime() || previousTime
-      if(date && time)
+      if(date &amp;&amp; time)
         previousTime = now
       let hash = hashCode(messageBlock)
       if(cellNeedsTidying(cellId, chatCache) || chatCache[cellId].hash != hash) {
@@ -187,12 +187,12 @@ async function askLlamaAboutChatLog(chatLog) {
     currentMessages[currentMessages.length] = chatHistory[i]
     currentTotal += chatHistory[i].length
   }
-  if(currentMessages.length > 0) {
+  if(currentMessages.length &gt; 0) {
     // process now
     let messageBlock = currentMessages.join('\n')
     let messageNoTimes = convertMessagesToNoDates(currentMessages)
-    let date = CHAT_DATES.map(d => (messageBlock.match(d) || [])[0]).filter(d=>d)[0]
-    let time = CHAT_TIMES.map(d => (messageBlock.match(d) || [])[0]).filter(d=>d)[0]
+    let date = CHAT_DATES.map(d =&gt; (messageBlock.match(d) || [])[0]).filter(d=&gt;d)[0]
+    let time = CHAT_TIMES.map(d =&gt; (messageBlock.match(d) || [])[0]).filter(d=&gt;d)[0]
     let now = new Date(date + ' ' + time).getTime()
     let hash = hashCode(messageBlock)
     if(cellNeedsTidying(cellId, chatCache) || chatCache[cellId].hash != hash) {

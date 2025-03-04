@@ -114,13 +114,13 @@ inTrigger != 0 { print; next }
 }
 
 # Replace `FULLTEXT KEY` or any other `XXXXX KEY` except PRIMARY by `KEY`
-/^  [^"]+KEY/ && !/^  PRIMARY KEY/ { gsub( /.+KEY/, "  KEY" ) }
+/^  [^"]+KEY/ &amp;&amp; !/^  PRIMARY KEY/ { gsub( /.+KEY/, "  KEY" ) }
 
 # Get rid of field lengths in KEY lines
 / KEY/ { gsub(/\([0-9]+\)/, "") }
 
 # Print all fields definition lines except the `KEY` lines.
-/^  / && !/^(  KEY|\);)/ {
+/^  / &amp;&amp; !/^(  KEY|\);)/ {
 	gsub( /AUTO_INCREMENT|auto_increment/, "" )
 	gsub( /(CHARACTER SET|character set) [^ ]+ /, "" )
 	gsub( /DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP|default current_timestamp on update current_timestamp/, "" )

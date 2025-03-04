@@ -94,7 +94,7 @@ async function renderHistory(req, res) {
   // TODO: extract time frame to, from prompt
   let history = fs.readdirSync(PROJECT_PATH)
   let historyFiles = []
-  for(let i = 0; i < history.length; i++) {
+  for(let i = 0; i &lt; history.length; i++) {
     if(history[i].match('-' + DEFAULT_MODEL + '-' + session + '.json')) {
       historyFiles.push(path.basename(history[i]))
     }
@@ -106,8 +106,8 @@ async function renderHistory(req, res) {
   let includedHistory = []
   let missingSummaries = {}
   let historySummaries = ''
-  historyFiles.sort((a, b) => b - a)
-  for(let i = 0; i < historyFiles.length; i++) {
+  historyFiles.sort((a, b) =&gt; b - a)
+  for(let i = 0; i &lt; historyFiles.length; i++) {
     let convoFile = path.join(PROJECT_PATH, historyFiles[i])
     if(fs.existsSync(convoFile)) {
       ACTIVE_CONVERSATIONS[convoFile] = JSON.parse(fs.readFileSync(convoFile))
@@ -116,9 +116,9 @@ async function renderHistory(req, res) {
     }
 
     let timestamps = Object.keys(ACTIVE_CONVERSATIONS[convoFile])
-      .filter(k => k != 'summaries' && k != 'memories')
+      .filter(k =&gt; k != 'summaries' &amp;&amp; k != 'memories')
     timestamps.sort()
-    for(let i = 0; i < timestamps.length; i++) {
+    for(let i = 0; i &lt; timestamps.length; i++) {
       let nearestHourGroup = (Math.round(parseInt(timestamps[i]) / 60 / 60) + 1) * 60 * 60
       if(nearestHourGroup == nowNearestHour) {
         // TODO:
@@ -135,8 +135,8 @@ async function renderHistory(req, res) {
         }
       } else if(!includedHistory.includes(nearestHourGroup)) {
         includedHistory.push(nearestHourGroup)
-        historySummaries += '<a onclick="loadHistory(event)" href="#history-' + nearestHourGroup + '">' 
-          + ACTIVE_CONVERSATIONS[convoFile]['summaries'][nearestHourGroup] + '</div>'
+        historySummaries += '&lt;a onclick="loadHistory(event)" href="#history-' + nearestHourGroup + '"&gt;' 
+          + ACTIVE_CONVERSATIONS[convoFile]['summaries'][nearestHourGroup] + '&lt;/div&gt;'
       }
     }
   }
@@ -147,10 +147,10 @@ async function renderHistory(req, res) {
   let promptModel = await selectModel(DEFAULT_MODEL)
   let missingTimestamps = Object.keys(missingSummaries)
   //console.log(missingTimestamps)
-  for(let i = 0; i < missingTimestamps.length; i++) {
+  for(let i = 0; i &lt; missingTimestamps.length; i++) {
 
     let missingDate = new Date(parseInt(missingTimestamps[i]))
-    let convoFile = historyFiles.filter(f => f.startsWith(missingDate.getFullYear() 
+    let convoFile = historyFiles.filter(f =&gt; f.startsWith(missingDate.getFullYear() 
       + '-' + String(missingDate.getMonth() + 1).padStart(2, '0')
       + '-' + DEFAULT_MODEL
       + '-'))[0]

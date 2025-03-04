@@ -103,7 +103,7 @@ apply
                 router
                 rxjs
             }
-        ->
+        -&gt;
             {
                 rank = same
                 cli
@@ -114,7 +114,7 @@ apply
         }
 
         edge[style = 'invisible', dir = 'none'];
-        router -> material -> socket -> xhr;
+        router -&gt; material -&gt; socket -&gt; xhr;
     }
 
     subgraph
@@ -128,10 +128,10 @@ apply
         webpack[shape = 'box', label = 'Webpack'];
 
         edge[style = 'invisible', dir = 'none'];
-        teamcity -> lint -> webpack
+        teamcity -&gt; lint -&gt; webpack
     }
 
-    webpack -> socket [minlen = 3]
+    webpack -&gt; socket [minlen = 3]
 
     subgraph
     cluster_aws
@@ -162,10 +162,10 @@ apply
                 }
 
                 edge[style = 'invisible', dir = 'none'];
-                csharp -> swagger -> identity
+                csharp -&gt; swagger -&gt; identity
             }
 
-            xhr -> identity [minlen = 3]
+            xhr -&gt; identity [minlen = 3]
         }
     }
 }

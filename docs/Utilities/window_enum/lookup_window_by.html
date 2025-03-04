@@ -68,7 +68,7 @@ const char* getTitle(int i) {
     NSDictionary* targetWindow = nil;
     for (NSDictionary* window in windows) {
         NSNumber* windowLayer = (NSNumber*)[window objectForKey:(__bridge NSString*)kCGWindowLayer];
-        if (windowLayer && [windowLayer intValue] == i) { // Compare with the provided index
+        if (windowLayer &amp;&amp; [windowLayer intValue] == i) { // Compare with the provided index
             targetWindow = window;
             break;
         }

@@ -110,7 +110,7 @@ GenericVisitor.prototype.visitTypespecifier = function (ctx) {
 }
 GenericVisitor.prototype.visitEqualityexpression = function (ctx) {
     var obj = getGenericContext.apply(this, [ctx])
-    if(!obj.NotEqual && !obj.Equal) return this.visitChildren(ctx)
+    if(!obj.NotEqual &amp;&amp; !obj.Equal) return this.visitChildren(ctx)
     return {
         type: 'BinaryExpression',
         operator: (obj.NotEqual || obj.Equal).accept(this),
@@ -167,7 +167,7 @@ GenericVisitor.prototype.visit = function (ctx) {
         return this['visit' + visit](ctx)
     }
     var obj = getGenericContext.apply(this, [ctx])
-    return Object.keys(obj).reduce((ret, cur) => {
+    return Object.keys(obj).reduce((ret, cur) =&gt; {
         ret[cur] = obj ? obj.accept(this) : obj
     }, {})
 }
@@ -231,7 +231,7 @@ GenericVisitor.prototype.visitAssignmentexpression = function (ctx) {
     return {
         type: 'AssignmentExpression',
         operator: '=' | '*=' | '**=' | '/=' | '%=' | '+=' | '-=' |
-            '<<=' | '>>=' | '>>>=' | '&=' | '^=' | '|=',
+            '&lt;&lt;=' | '&gt;&gt;=' | '&gt;&gt;&gt;=' | '&amp;=' | '^=' | '|=',
         left: 0,
         right: this.visitChildren(ctx)[0],
     }
@@ -310,7 +310,7 @@ GenericVisitor.prototype.visitSimpledeclaration = function (ctx) {
 }
 
 var types = selectDom(['//SimpletypespecifierContext'], dom)
-types.forEach(t => {
+types.forEach(t =&gt; {
     var node = selectDom(['.//TerminalNode'], t)
     assert(node.length === 1)
     t.replaceWith(selectDom('./*', treeToHtml([{
@@ -320,11 +320,11 @@ types.forEach(t => {
 })
 
 var ids = selectDom(['//IdexpressionContext'], dom)
-ids.forEach(i => {
+ids.forEach(i =&gt; {
     var node = selectDom(['.//TerminalNode'], i)
     // unary operator parses incorrectly
     var ctx = selectDom(['.//ClassnameContext'], i)
-    if(ctx.length > 0 && node[0].getAttribute('value') === '~') {
+    if(ctx.length &gt; 0 &amp;&amp; node[0].getAttribute('value') === '~') {
         i.replaceWith(selectDom('./*', treeToHtml([{
             type: 'UnaryExpression',
             operator: '~',
@@ -346,7 +346,7 @@ ids.forEach(i => {
 // TODO: use transpile to get even more succinct
 selectDom([
     '//MemberdeclarationContext',
-    replace(ctx => selectDom('./*', treeToHtml([{
+    replace(ctx =&gt; selectDom('./*', treeToHtml([{
         type: 'Property',
         kind: htmlToTree(selectDom('.//Type', ctx)),
         key: htmlToTree(selectDom('.//Identifier', ctx)),
@@ -360,7 +360,7 @@ selectDom([
 selectDom([
     // TODO: use parent:: method instead especially since it supports it
     '//ClassspecifierContext',
-    replace(ctx => selectDom('./*', treeToHtml([{
+    replace(ctx =&gt; selectDom('./*', treeToHtml([{
         type: 'ClassExpression',
         id: null,
         superClass: selectDom('.//ClasskeyContext//@value', ctx),
@@ -373,7 +373,7 @@ selectDom([
 
 selectDom([
     '//DeclspecifierseqContext[not(.//DeclspecifierseqContext)]',
-    replace(ctx => {
+    replace(ctx =&gt; {
         var result = selectDom([
             `.//Type[not(.//parent::Identifier)]
             |.//Identifier[not(.//parent::ClassExpression)]
@@ -386,7 +386,7 @@ selectDom([
 
 selectDom([
     '//SimpledeclarationContext',
-    replace(ctx => selectDom('./*', treeToHtml([{
+    replace(ctx =&gt; selectDom('./*', treeToHtml([{
         type: 'VariableDeclaration',
         declarations: [{
             type: 'VariableDeclarator',

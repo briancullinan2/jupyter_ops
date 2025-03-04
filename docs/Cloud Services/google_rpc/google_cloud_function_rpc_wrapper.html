@@ -67,17 +67,17 @@ var importer = require('../Core');
 var getResult = importer.import('rpc result');
 var getEnvironment = importer.import('get environment');
 
-var expressToResult = (req, res) => getResult({
+var expressToResult = (req, res) =&gt; getResult({
     command: (req.body || {})['function'] || (req.query || {})['function'],
     result: importer.interpret((req.body || {})['function'] || (req.query || {})['function']),
     body: req.method === 'POST' ? req.body : req.query,
     circles: ['Public']
 })
 
-var logResult = (r) => {
+var logResult = (r) =&gt; {
     // TODO: call storeResult()?
     var result = typeof r === 'object'
-        ? Object.keys(r).reduce((alt, key) => {
+        ? Object.keys(r).reduce((alt, key) =&gt; {
             alt[key] = r[key] + '';
             return alt;
         }, {})
@@ -90,13 +90,13 @@ function expressHandler(req, res) {
     getEnvironment();
     req.cookies = cookie.parse(req.get('cookie') || '');
     res.setHeader('Cache-Control', 'private');
-    cors(req, res, () => {});
+    cors(req, res, () =&gt; {});
     return Promise.resolve()
-        .then(() => expressToResult(req, res))
-        .then(r => (res.status(200), r))
-        .catch(e => (res.status(500), e))
-        .then(r => logResult(r))
-        .then(r => res.send(r));
+        .then(() =&gt; expressToResult(req, res))
+        .then(r =&gt; (res.status(200), r))
+        .catch(e =&gt; (res.status(500), e))
+        .then(r =&gt; logResult(r))
+        .then(r =&gt; res.send(r));
 }
 
 module.exports.handler = expressHandler;

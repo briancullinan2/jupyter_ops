@@ -83,14 +83,14 @@ async function extractArticle(driver, startPage, retry) {
 
     await driver.get(startPage)
 
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    await new Promise(resolve =&gt; setTimeout(resolve, 1500))
 
     let bodyElements = await selectDom(driver, [
-      '//body//*[string-length(text()) > 20 and not(self::script|self::style|self::form) and not(ancestor::aside|ancestor::nav|ancestor::form|ancestor::header)]'
+      '//body//*[string-length(text()) &gt; 20 and not(self::script|self::style|self::form) and not(ancestor::aside|ancestor::nav|ancestor::form|ancestor::header)]'
     ])
     let bodyText = []
 
-    for (let i = 0; i < bodyElements.length; i++) {
+    for (let i = 0; i &lt; bodyElements.length; i++) {
       try {
         let text = await bodyElements[i].getText()
         bodyText.push(text)
@@ -104,8 +104,8 @@ async function extractArticle(driver, startPage, retry) {
     }
 
     return bodyText
-      .map(t => Array.isArray(t) ? t.join('\n').trim() : t.trim())
-      .filter(t => t.length)
+      .map(t =&gt; Array.isArray(t) ? t.join('\n').trim() : t.trim())
+      .filter(t =&gt; t.length)
       .join('\n')
 
   } catch (up) {

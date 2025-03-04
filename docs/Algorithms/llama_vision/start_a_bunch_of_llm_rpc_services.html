@@ -118,11 +118,11 @@ function launchChats(botIndex = 0) {
     botIndex = parseInt(botIndex)
   }
 
-  if(typeof botIndex != 'number' && !botIndex) {
+  if(typeof botIndex != 'number' &amp;&amp; !botIndex) {
     return
   }
 
-  for(let i = botIndex; i < ENVIRONMENTS.length; i++) {
+  for(let i = botIndex; i &lt; ENVIRONMENTS.length; i++) {
     if(!ENVIRONMENTS[i]) {
       continue
     }

@@ -115,7 +115,7 @@ async function channelMessagesB(channelId = DEFAULT_CHANNEL, messageTime = MESSA
 async function channelMessages(channelId = DEFAULT_CHANNEL, messageTime = MESSAGE_TIME) {
   var params = {
     limit: 100,
-    after: (BigInt(Date.now() - MESSAGES_START - messageTime) << BigInt(22)).toString()
+    after: (BigInt(Date.now() - MESSAGES_START - messageTime) &lt;&lt; BigInt(22)).toString()
   };
   var messages = await requestAuthQ({
     method: 'GET',

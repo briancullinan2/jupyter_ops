@@ -133,7 +133,7 @@ console.log(entities)
 async function findMissingTextures() {
     await loadDefaultDirectories()
     var mapGraphs = glob.sync('*.json', {cwd: GRAPH_PATH})
-    for(var i = 0; i < mapGraphs.length; i++) {
+    for(var i = 0; i &lt; mapGraphs.length; i++) {
         var previous = JSON.parse(fs.readFileSync(path.join(GRAPH_PATH, mapGraphs[i])).toString('utf-8'))
         var game = await graphGame(previous, null, console.log)
         console.log(game.notfound)

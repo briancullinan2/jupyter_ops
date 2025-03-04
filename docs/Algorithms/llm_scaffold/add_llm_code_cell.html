@@ -81,12 +81,12 @@ async function makeCell(prompt, notebookFile, github) {
 
   // TODO: local pull
   if (!fs.existsSync(github)
-    && fs.existsSync(path.join(PROFILE_PATH, github))) {
+    &amp;&amp; fs.existsSync(path.join(PROFILE_PATH, github))) {
     github = path.join(PROFILE_PATH, github)
   }
 
   if (github.includes('://')
-    && fs.existsSync(path.basename(github).replace('.git', ''))
+    &amp;&amp; fs.existsSync(path.basename(github).replace('.git', ''))
   ) {
     github = path.join(PROFILE_PATH, path.basename(github).replace('.git', ''))
   }
@@ -184,14 +184,14 @@ async function makeCell(prompt, notebookFile, github) {
   }
 
   notebook.cells[notebook.cells.length] = {
-    source: markdownBlocks.split('\n').map(line => line + '\n'),
+    source: markdownBlocks.split('\n').map(line =&gt; line + '\n'),
     cell_type: "markdown",
     metadata: {},
     outputs: [],
   }
 
   notebook.cells[notebook.cells.length] = {
-    source: codeBlocks.split('\n').map(line => line + '\n'),
+    source: codeBlocks.split('\n').map(line =&gt; line + '\n'),
     cell_type: "code",
     metadata: {
       "vscode": {

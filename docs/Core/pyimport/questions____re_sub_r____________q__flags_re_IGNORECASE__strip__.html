@@ -93,7 +93,7 @@ def accumulate_markdown(cells, notebook_path):
     result = []
     
     for i, code_cell in enumerate(codes):
-        from_idx = cells.index(codes[i-1]) + 1 if i > 0 else 0
+        from_idx = cells.index(codes[i-1]) + 1 if i &gt; 0 else 0
         to_idx = cells.index(code_cell)
         markdown = "\n".join("".join(m["source"]) for m in cells[from_idx:to_idx])
         code = "".join(code_cell["source"])

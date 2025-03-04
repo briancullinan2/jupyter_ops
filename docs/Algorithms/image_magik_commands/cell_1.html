@@ -65,7 +65,7 @@
 
 
 <pre class="bash"><code>
-convert /Users/briancullinan/jupyter_ops/.output/IMG_6104.jpeg -scale 50% -quality 50% /Users/briancullinan/jupyter_ops/.output/IMG_6104-final.jpg && \
+convert /Users/briancullinan/jupyter_ops/.output/IMG_6104.jpeg -scale 50% -quality 50% /Users/briancullinan/jupyter_ops/.output/IMG_6104-final.jpg &amp;&amp; \
 
 convert /Users/briancullinan/jupyter_ops/.output/IMG_6104-final.jpg +clone -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite /Users/briancullinan/jupyter_ops/.output/IMG_6104-final.jpg
 

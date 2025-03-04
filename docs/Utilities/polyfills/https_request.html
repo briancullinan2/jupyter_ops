@@ -117,7 +117,7 @@ try {
                     resolve(res);
                 });
             });
-            req.on('error', err => reject(err));
+            req.on('error', err =&gt; reject(err));
             if (params.data) {
                 req.write(postData);
             }
@@ -129,18 +129,18 @@ try {
 
 function request(...args) {
     return httpRequest(...args)
-        .then(res => {
-            if(res.statusCode < 200 || res.statusCode >= 300) {
+        .then(res =&gt; {
+            if(res.statusCode &lt; 200 || res.statusCode &gt;= 300) {
                 throw new Error('Error: ' + res.statusCode + ' - ' + JSON.stringify(res.body));
             }
             var isJson = (res.headers['content-type'] || '').match(/application\/json/ig);
             var isPlain = (res.headers['content-type'] || '').match(/text\//ig);
-            if(isJson && typeof res.body !== 'undefined') {
+            if(isJson &amp;&amp; typeof res.body !== 'undefined') {
                 try {
                     res.body = JSON.parse(res.body.toString('utf8'));
                 } catch (e) {}
             }
-            if(isPlain && typeof res.body !== 'undefined') {
+            if(isPlain &amp;&amp; typeof res.body !== 'undefined') {
                 res.body = res.body.toString('utf8');
             }
             return res;

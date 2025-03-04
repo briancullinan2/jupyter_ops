@@ -63,8 +63,8 @@ var search = importer.import('search the web');
 $.async();
 
 search('google')
-    .then(({items}) => $.sendResult(items))
-    .catch(e => $.sendError(e))
+    .then(({items}) =&gt; $.sendResult(items))
+    .catch(e =&gt; $.sendError(e))
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

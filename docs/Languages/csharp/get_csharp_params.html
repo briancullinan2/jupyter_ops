@@ -87,8 +87,8 @@ async function getClassParams(code, classname) {
     }], code, 'csharp')
   }
 
-  //result.sort((a, b) => (b.stop - b.start) - (a.stop - a.start))
-  return result.map(r => [r.name].concat(r.params))
+  //result.sort((a, b) =&gt; (b.stop - b.start) - (a.stop - a.start))
+  return result.map(r =&gt; [r.name].concat(r.params))
 }
 
 module.exports = getClassParams

@@ -103,8 +103,8 @@ async function messageRecents(session) {
   }
 
   let messageTimes = Object.keys(ACTIVE_CONVERSATIONS[convoFile])
-    .filter(k => k != 'summaries' && k != 'memories')
-  messageTimes.sort((a, b) => b - a)
+    .filter(k =&gt; k != 'summaries' &amp;&amp; k != 'memories')
+  messageTimes.sort((a, b) =&gt; b - a)
 
   if(messageTimes.length == 0) {
     return ''
@@ -112,14 +112,14 @@ async function messageRecents(session) {
   let count = 0
   let messages = '\nCurrent date: ' + (new Date).toISOString() 
     + '\nOur recent conversion:\n'
-  for(let i = 0; i < messageTimes.length && count < 25; i++) {
+  for(let i = 0; i &lt; messageTimes.length &amp;&amp; count &lt; 25; i++) {
     let message = ACTIVE_CONVERSATIONS[convoFile][messageTimes[i]]
-    let useSummary = i > 10 || messages.length > 1024 || (message.content && message.content.length > 1024)
+    let useSummary = i &gt; 10 || messages.length &gt; 1024 || (message.content &amp;&amp; message.content.length &gt; 1024)
     let useKeywords = !message.content
     messages += (message.user ? 'User: ' : 'AI: ') 
       + (useKeywords ? message.keywords : (useSummary ? message.summary : message.content))
       + '\n\n'
-    if(messages.length > 2048) {
+    if(messages.length &gt; 2048) {
       break
     }
     count++

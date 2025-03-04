@@ -116,7 +116,7 @@ async function saveScreenshot(filename, response, page) {
         if(!type.includes('text/html')) return
         console.log(`Printing screenshot ${filename}`)
         await page.addStyleTag({content: '*,*:before,*:after{max-height: 100000px!important;}*:before,*:after{vertical-align:unset!important;}'})
-        await page.emulateMediaType('screen').catch(e => console.log(e))
+        await page.emulateMediaType('screen').catch(e =&gt; console.log(e))
         await page.screenshot({ path: filename, fullPage: true })
     } catch (e) {
         console.log(e)
@@ -132,13 +132,13 @@ async function collectAllBookmarks() {
         return arr
     }, [])
 
-    var urls = links.map(l => l.url.toLowerCase())
+    var urls = links.map(l =&gt; l.url.toLowerCase())
     var existing = []
     var notexisting = []
     console.log(urls.length)
     //links = [{url: 'http://lifehacker.com/386811/shutdown-windows-with-a-text-message-thunderbird-edition'}]
     //var i = urls.indexOf('http://lifehacker.com/386811/shutdown-windows-with-a-text-message-thunderbird-edition')
-    for(var i = 0; i < links.length; i++) {
+    for(var i = 0; i &lt; links.length; i++) {
         const filename = path.join(project, safeurl(links[i].url) + '.pdf')
         const filename2 = path.join(project2, safeurl(links[i].url) + '.png')
         

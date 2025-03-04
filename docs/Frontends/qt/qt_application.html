@@ -60,10 +60,10 @@
 <p>The code creates a simple Qt application that displays a window with three buttons arranged horizontally using a <code>QHBoxLayout</code>. The application runs until the user closes the window, at which point the event loop ends and the application terminates.</p>
 
 
-<pre class="cpp"><code>#include <QApplication>
-#include <QWidget>
-#include <QPushButton>
-#include <QHBoxLayout>
+<pre class="cpp"><code>#include &lt;QApplication&gt;
+#include &lt;QWidget&gt;
+#include &lt;QPushButton&gt;
+#include &lt;QHBoxLayout&gt;
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
@@ -76,9 +76,9 @@ int main(int argc, char *argv[]) {
     QPushButton *button3 = new QPushButton("Button 3");
 
     QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(button1);
-    layout->addWidget(button2);
-    layout->addWidget(button3);
+    layout-&gt;addWidget(button1);
+    layout-&gt;addWidget(button2);
+    layout-&gt;addWidget(button3);
 
     window.setLayout(layout);
     window.show();

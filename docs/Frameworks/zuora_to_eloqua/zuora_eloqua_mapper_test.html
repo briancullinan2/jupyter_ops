@@ -129,29 +129,29 @@ var zuoraQuery = renewalsQuery.getQuery('beginning of November', 'beginning of D
 var accounts = getUniqueRatePlans();
 for(let records of accounts) {
 
-    describe('given account with ' + records.map(r => r['ProductRatePlan.Name']), () => {
+    describe('given account with ' + records.map(r =&gt; r['ProductRatePlan.Name']), () =&gt; {
         
-        describe('contact information properties mapped', () => {
+        describe('contact information properties mapped', () =&gt; {
             
-            it('should map EmailAddress to eloqua given SoldToContact.WorkEmail, BillToContact.WorkEmail from zuora', () => {
+            it('should map EmailAddress to eloqua given SoldToContact.WorkEmail, BillToContact.WorkEmail from zuora', () =&gt; {
                 const mapped = mapDataToFields(records);
                 assert.equal(records[0]['SoldToContact.WorkEmail'] || records[0]['BillToContact.WorkEmail'], mapped[0]['EmailAddress']);
             })
 
 
-            it('should map State to eloqua given SoldToContact.State from zuora', () => {
+            it('should map State to eloqua given SoldToContact.State from zuora', () =&gt; {
                 const mapped = mapDataToFields(records);
                 assert.equal(records[0]['SoldToContact.State'], mapped[0]['State']);
             })
 
 
-            it('should map Country to eloqua given SoldToContact.Country from zuora', () => {
+            it('should map Country to eloqua given SoldToContact.Country from zuora', () =&gt; {
                 const mapped = mapDataToFields(records);
                 assert.equal(records[0]['SoldToContact.Country'], mapped[0]['Country']);
             })
 
 
-            it('should map Currency to eloqua given Account.Currency from zuora', () => {
+            it('should map Currency to eloqua given Account.Currency from zuora', () =&gt; {
                 const mapped = mapDataToFields(records);
                 assert.equal(records[0]['Account.Currency'], mapped[0]['Currency']);
             })
@@ -161,15 +161,15 @@ for(let records of accounts) {
         if(mapRatePlanToProduct(records[0]['ProductRatePlan.Name']) === 'pro'
             || mapRatePlanToProduct(records[0]['ProductRatePlan.Name']) === 'cloud'
             || mapRatePlanToProduct(records[0]['ProductRatePlan.Name']) === 'premium') {
-            describe('primary product properties mapped', () => {
+            describe('primary product properties mapped', () =&gt; {
 
-                it('should map ActProduct to eloqua given ProductRatePlan.Name from zuora', () => {
+                it('should map ActProduct to eloqua given ProductRatePlan.Name from zuora', () =&gt; {
                     const mapped = mapDataToFields(records);
                     assert.equal(records[0]['ProductRatePlan.Name'], mapped[0]['ActProduct']);
                 })
 
 
-                it('should map Quantity to eloqua given RatePlanCharge.Quantity from zuora', () => {
+                it('should map Quantity to eloqua given RatePlanCharge.Quantity from zuora', () =&gt; {
                     const mapped = mapDataToFields(records);
                     assert.equal(records[0]['RatePlanCharge.Quantity'], mapped[0]['Quantity']);
                 })
@@ -178,9 +178,9 @@ for(let records of accounts) {
         }
 
         if(mapRatePlanToProduct(records[0]['ProductRatePlan.Name']) === 'discount') {
-            describe('discounts! properties mapped', () => {
+            describe('discounts! properties mapped', () =&gt; {
 
-                it('should map Discount to eloqua given ProductRatePlan.Name from zuora', () => {
+                it('should map Discount to eloqua given ProductRatePlan.Name from zuora', () =&gt; {
                     const mapped = mapDataToFields(records);
                     assert.equal(records[0]['ProductRatePlan.Name'], mapped[0]['Discount']);
                 })
@@ -189,15 +189,15 @@ for(let records of accounts) {
         }
 
         if(mapRatePlanToProduct(records[0]['ProductRatePlan.Name']) === 'support') {
-            describe('support properties mapped', () => {
+            describe('support properties mapped', () =&gt; {
 
-                it('should map Support to eloqua given ProductRatePlan.Name from zuora', () => {
+                it('should map Support to eloqua given ProductRatePlan.Name from zuora', () =&gt; {
                     const mapped = mapDataToFields(records);
                     assert.equal(records[0]['ProductRatePlan.Name'], mapped[0]['Support']);
                 })
 
 
-                it('should map SupportQuantity to eloqua given RatePlanCharge.Quantity from zuora', () => {
+                it('should map SupportQuantity to eloqua given RatePlanCharge.Quantity from zuora', () =&gt; {
                     const mapped = mapDataToFields(records);
                     assert.equal(records[0]['RatePlanCharge.Quantity'], mapped[0]['SupportQuantity']);
                 })
@@ -205,30 +205,30 @@ for(let records of accounts) {
             });
         }
 
-        describe('subscription properties mapped', () => {
+        describe('subscription properties mapped', () =&gt; {
             
-            it('should map RenewalsStatus to eloqua given Subscription.Status from zuora', () => {
+            it('should map RenewalsStatus to eloqua given Subscription.Status from zuora', () =&gt; {
                 const mapped = mapDataToFields(records);
                 assert.equal(records[0]['Subscription.Status'], mapped[0]['RenewalsStatus']);
             })
 
         });
 
-        describe('account data properties mapped', () => {
+        describe('account data properties mapped', () =&gt; {
             
-            it('should map RepName to eloqua given Account.renewalRep__c from zuora', () => {
+            it('should map RepName to eloqua given Account.renewalRep__c from zuora', () =&gt; {
                 const mapped = mapDataToFields(records);
                 assert.equal(records[0]['Account.renewalRep__c'], mapped[0]['RepName']);
             })
 
 
-            it('should map RORName to eloqua given Account.resellerofRecord__c from zuora', () => {
+            it('should map RORName to eloqua given Account.resellerofRecord__c from zuora', () =&gt; {
                 const mapped = mapDataToFields(records);
                 assert.equal(records[0]['Account.resellerofRecord__c'], mapped[0]['RORName']);
             })
 
 
-            it('should map AccountId to eloqua given Account.Id from zuora', () => {
+            it('should map AccountId to eloqua given Account.Id from zuora', () =&gt; {
                 const mapped = mapDataToFields(records);
                 assert.equal(records[0]['Account.Id'], mapped[0]['AccountId']);
             })
@@ -239,8 +239,8 @@ for(let records of accounts) {
 
 }
 
-describe('check field map', () => {
-    it('should map all fields from zuora query', () => {
+describe('check field map', () =&gt; {
+    it('should map all fields from zuora query', () =&gt; {
         const requireFields = [
         "Account.Id",
         "RatePlanCharge.Id",
@@ -271,11 +271,11 @@ describe('check field map', () => {
         "Account.resellerofRecord__c",
         "Account.Id"
         ];
-        const missing = requireFields.filter(f => !zuoraQuery.includes(f));
+        const missing = requireFields.filter(f =&gt; !zuoraQuery.includes(f));
         assert(missing.length === 0, 'missing fields from zuora query ' + missing.join(', '));
     })
 
-    it('should map all fields in eloqua import definition', () => {
+    it('should map all fields in eloqua import definition', () =&gt; {
         const mappedFields = [
         "EmailAddress",
         "State",
@@ -299,11 +299,11 @@ describe('check field map', () => {
         "RORNumber",
         "AccountId"
         ];
-        const unmapped = Object.keys(bulkImportTemplate(60).fields).filter(k => !mappedFields.includes(k));
+        const unmapped = Object.keys(bulkImportTemplate(60).fields).filter(k =&gt; !mappedFields.includes(k));
         assert(unmapped.length === 0, 'unmapped eloqua fields ' + unmapped.join(', '));
     })
 
-    it('should map all record fields to eloqua fields', () => {
+    it('should map all record fields to eloqua fields', () =&gt; {
         const mappedFields = [
         "EmailAddress",
         "State",
@@ -327,7 +327,7 @@ describe('check field map', () => {
         "RORNumber",
         "AccountId"
         ];
-        const missing = mappedFields.filter(f => !Object.keys(bulkImportTemplate(60).fields).includes(f));
+        const missing = mappedFields.filter(f =&gt; !Object.keys(bulkImportTemplate(60).fields).includes(f));
         assert(missing.length === 0, 'missing fields from eloqua import definition ' + missing.join(', '));
     })
 })</code></pre>

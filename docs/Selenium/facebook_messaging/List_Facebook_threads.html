@@ -75,19 +75,19 @@ function getFacebookThreads(threads) {
         .getAllUntil('//*[contains(@class, "scrollable")]',
                      '//*[contains(@data-href, "messages")]/@data-href',
                      threads,
-                     (a, b) => a === b,
-                     i => i < 20)
+                     (a, b) =&gt; a === b,
+                     i =&gt; i &lt; 20)
 };
 
 function listArchivedFacebook(threads) {
     return client
-        .then(url => url.indexOf('/messages/archived') == -1
+        .then(url =&gt; url.indexOf('/messages/archived') == -1
             ? client.url('https://www.facebook.com/messages/archived')
                 .pause(1000)
                 .click('.scrollable a[href="#"]')
             : Promise.resolve([]))
         .pause(2000)
-        .then(() => getFacebookThreads(threads))
+        .then(() =&gt; getFacebookThreads(threads))
 }
 
 var threads, results;
@@ -103,24 +103,24 @@ function listFacebookThreads(threads, archived = false) {
         threads = [];
     }
     return client.getUrl()
-        .then(url => url.indexOf('/messages/t') == -1
+        .then(url =&gt; url.indexOf('/messages/t') == -1
             ? client
                 .click('[data-tooltip-content="Messages"]')
                 .click('a[href*="/messages/t"]')
             : Promise.resolve([]))
         .pause(2000)
-        .then(() => getFacebookThreads(threads))
-        .then(r => threads = r)
-        .then(() => archived ? listArchivedFacebook(threads) : threads)
+        .then(() =&gt; getFacebookThreads(threads))
+        .then(r =&gt; threads = r)
+        .then(() =&gt; archived ? listArchivedFacebook(threads) : threads)
         // list all message threads
-        .then(r => {
+        .then(r =&gt; {
             threads = r;
             fs.writeFileSync(
                 project + '/facebook-threads.json',
                 JSON.stringify(r, null, 4));
             return threads;
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 module.exports = listFacebookThreads;
 listFacebookThreads;

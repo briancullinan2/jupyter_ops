@@ -86,7 +86,7 @@ async function spectateServer(address = 'localhost', port = 27960) {
 
     
     var challenge = new ArrayBuffer(4)
-    for(var c = 0; c < 4; c++) {
+    for(var c = 0; c &lt; 4; c++) {
         challenge[c] = Math.round(Math.random() * 255)
     }
     await getInfo(address, port)
@@ -114,7 +114,7 @@ async function spectateServer(address = 'localhost', port = 27960) {
     await sendReliable(address, port, 'team s')
 
     // await print commands
-    info.chatListener = setInterval(async () => {
+    info.chatListener = setInterval(async () =&gt; {
         if(!info.chatWaiting) {
             info.chatWaiting = true
             var message = await nextChat(address, port)

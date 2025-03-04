@@ -58,11 +58,11 @@
 <p>This code provides functions for color space conversions, including <code>RGBtoXYZ</code>, <code>XYZtoLab</code>, and <code>rgb2lab</code>, which transform RGB values into L<em>a</em>b* color space according to CIE XYZ and Lab specifications. The code uses C programming language and assumes RGB values are in the range [0, 255] and XYZ values are in the range [0, 1].</p>
 
 
-<pre class="c"><code>#include <math.h>
+<pre class="c"><code>#include &lt;math.h&gt;
 
 double F(double input) // function f(...), which is used for defining L, a and b changes within [4/29,1]
 {
-  if (input > 0.008856)
+  if (input &gt; 0.008856)
     return (pow(input, 0.333333333)); // maximum 1
   else
     return ((841/108)*input + 4/29);  //841/108 = 29*29/36*16
@@ -88,11 +88,11 @@ void RGBtoXYZ(double R, double G, double B, double *X, double *Y, double *Z) {
   float var_G = G / 255.0;
   float var_B = B / 255.0;
 
-  var_R = (var_R > 0.04045) ? pow((var_R + 0.055) / 1.055, 2.4)
+  var_R = (var_R &gt; 0.04045) ? pow((var_R + 0.055) / 1.055, 2.4)
                             : var_R / 12.92;
-  var_G = (var_G > 0.04045) ? pow((var_G + 0.055) / 1.055, 2.4)
+  var_G = (var_G &gt; 0.04045) ? pow((var_G + 0.055) / 1.055, 2.4)
                             : var_G / 12.92;
-  var_B = (var_B > 0.04045) ? pow((var_B + 0.055) / 1.055, 2.4)
+  var_B = (var_B &gt; 0.04045) ? pow((var_B + 0.055) / 1.055, 2.4)
                             : var_B / 12.92;
 
   var_R *= 100;
@@ -111,8 +111,8 @@ void RGBtoXYZ(double R, double G, double B, double *X, double *Y, double *Z) {
 double *rgb2lab(int R, int G, int B){
   static double Lab[3] = {0, 0, 0};
   double X, Y, Z;
-  RGBtoXYZ(R, G, B, &X, &Y, &Z);
-  XYZtoLab(X, Y, Z, &Lab[0], &Lab[1], &Lab[2]);
+  RGBtoXYZ(R, G, B, &amp;X, &amp;Y, &amp;Z);
+  XYZtoLab(X, Y, Z, &amp;Lab[0], &amp;Lab[1], &amp;Lab[2]);
   return Lab;
 }
 

@@ -72,8 +72,8 @@ var imapClient = importer.import('node imap client');
 
 $.async();
 imapClient()
-    .then(r => $.sendResult(r))
-    .catch(e => $.sendError(e))
+    .then(r =&gt; $.sendResult(r))
+    .catch(e =&gt; $.sendError(e))
 
 </code></pre>
 

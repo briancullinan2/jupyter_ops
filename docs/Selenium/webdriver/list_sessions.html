@@ -119,14 +119,14 @@ async function getSessions(driver, inactive = false) {
   //const session = await driver.getSession()
   //const original = session.getId()
   let active = [].concat(sessions)
-      .filter(session => typeof session[1] !== 'undefined'
-              && session[1] !== null && session[1].length > 0);
+      .filter(session =&gt; typeof session[1] !== 'undefined'
+              &amp;&amp; session[1] !== null &amp;&amp; session[1].length &gt; 0);
   //if(inactive) {
-  //    active = active.filter(session => (new Date()).getTime() - session[0] > TIMEOUT);
+  //    active = active.filter(session =&gt; (new Date()).getTime() - session[0] &gt; TIMEOUT);
   //}
   let cancelled = false;
   let available = []
-  for(let i = 0; i < active.length; i++) {
+  for(let i = 0; i &lt; active.length; i++) {
     let r = await verifySession(driver, active[i])
     if(typeof r !== 'undefined') {
       available[available.length] = active[i]
@@ -139,8 +139,8 @@ async function getSessions(driver, inactive = false) {
   //session.id_ = original;
 
   return available
-    .filter(sess => typeof sess !== 'undefined' && sess !== null)
-    .filter((elem, pos, arr) => arr.indexOf(elem) === pos)
+    .filter(sess =&gt; typeof sess !== 'undefined' &amp;&amp; sess !== null)
+    .filter((elem, pos, arr) =&gt; arr.indexOf(elem) === pos)
 }
 
 

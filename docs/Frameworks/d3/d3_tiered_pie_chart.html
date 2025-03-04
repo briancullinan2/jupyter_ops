@@ -90,19 +90,19 @@ function d3TieredPieSVG(nodes) {
     var y = d3.scaleLinear().range([0, radius]);
 
     var partition = d3.partition()
-    var tree = d3.hierarchy(nodes[0], d => d.children);
+    var tree = d3.hierarchy(nodes[0], d =&gt; d.children);
     var root = // partition(
-        tree.sum(d => 1)
-            .sort((a, b) => b.size - a.size || b.value - a.value)
+        tree.sum(d =&gt; 1)
+            .sort((a, b) =&gt; b.size - a.size || b.value - a.value)
             //)
             .descendants();
-    root.forEach(r => {
+    root.forEach(r =&gt; {
         r.name = r.data.name;
         r.index = r.data.index;
         r.branch = r.data.branch;
     })
-    var tree = d3.hierarchy(root[0], d => d.depth < 3 ? d.children : []);
-    var root = partition(tree.sum(d => 1)).descendants();
+    var tree = d3.hierarchy(root[0], d =&gt; d.depth &lt; 3 ? d.children : []);
+    var root = partition(tree.sum(d =&gt; 1)).descendants();
 
     var arc = d3.arc()
         .startAngle(function (d) {
@@ -147,21 +147,21 @@ function d3TieredPieSVG(nodes) {
     }
 
     g.selectAll('text')
-        .data(root.filter(d => d.depth == 1))
+        .data(root.filter(d =&gt; d.depth == 1))
         .enter().append('text')
         .attr('transform', function (d) {
             return 'rotate(' + computeTextRotation(d) + ')';
         })
-        .attr('x', d => y(d.depth + 1))
+        .attr('x', d =&gt; y(d.depth + 1))
         .attr('dx', '-6') // margin
         .attr('dy', '.35em') // vertical-align
-        .attr('text-anchor', (d) => 'end')
-        .text(d => (d.data).name)
+        .attr('text-anchor', (d) =&gt; 'end')
+        .text(d =&gt; (d.data).name)
         .attr('class', 'monospace');
 
     /*
     path
-        .data(partition.value(d => d.data.size).nodes)
+        .data(partition.value(d =&gt; d.data.size).nodes)
         .attrTween("d", arcTween);
 */
 

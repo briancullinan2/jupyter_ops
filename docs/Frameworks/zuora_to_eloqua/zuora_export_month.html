@@ -133,14 +133,14 @@ function getZuoraMonth(months, zuoraConfig) {
     end.setMonth(end.getMonth() + months + 1);
     end.setDate(1);
     end.setHours(0, 0, 0);
-    if(start.getMonth() > end.getMonth()) {
+    if(start.getMonth() &gt; end.getMonth()) {
         end.getFullYear(end.getFullYear() + 1)
     }
     
     return zuoraExport.createBulkExportJob(renewalsQuery.getQuery(start.toString(), end.toString()), zuoraConfig)
-        .then(exportId => zuoraExport.getBulkExportJobStatus(exportId, zuoraConfig))
-        .then(fileId => zuoraExport.getBulkExportFile(fileId, zuoraConfig))
-        .then(r => zuoraExport.csvToJson(r))
+        .then(exportId =&gt; zuoraExport.getBulkExportJobStatus(exportId, zuoraConfig))
+        .then(fileId =&gt; zuoraExport.getBulkExportFile(fileId, zuoraConfig))
+        .then(r =&gt; zuoraExport.csvToJson(r))
 }
 module.exports = {
     getZuoraMonth

@@ -108,14 +108,14 @@ function testSelect(ctx) {
     var node = selectTree([
         'Identifier, CallExpression', // interchangable CSS selector
     ], ctx);
-    assert(node.length > 6, 'list of concatenated elements');
+    assert(node.length &gt; 6, 'list of concatenated elements');
     assert(typeof node[6].name !== 'undefined');
     
     var node = selectTree([
         '//*[@type="Identifier"]', // interchangable CSS selector
         './@name'
     ], ctx);
-    assert(node.length > 3, 'list of ids');
+    assert(node.length &gt; 3, 'list of ids');
     assert(node[3] === 'params');
 }
 

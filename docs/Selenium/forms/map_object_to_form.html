@@ -67,10 +67,10 @@
 
 function fillForm(obj) {
     const fields = Object.keys(obj);
-    return importer.runAllPromises(fields.map(f => resolve => {
+    return importer.runAllPromises(fields.map(f =&gt; resolve =&gt; {
         return selectDropdown(f, obj[f])
-            .catch(e => console.log(e))
-            .then(r => resolve(r))
+            .catch(e =&gt; console.log(e))
+            .then(r =&gt; resolve(r))
     }))
 }
 module.exports = fillForm;

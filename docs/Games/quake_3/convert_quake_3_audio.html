@@ -132,8 +132,8 @@ async function convertAudio(root) {
     var result = []
     var output = path.join(path.dirname(root), path.basename(root) + '-converted')
     
-    var files = await glob(audioTypes.map(a => '**/*' + a), root)
-    for(var i = 0; i < files.length; i++) {
+    var files = await glob(audioTypes.map(a =&gt; '**/*' + a), root)
+    for(var i = 0; i &lt; files.length; i++) {
         var outFile, inFile = files[i]
         outFile = chroot(chext(inFile, '.opus'), root, output)
         mkdirpSync(path.dirname(outFile))

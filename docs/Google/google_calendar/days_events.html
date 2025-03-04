@@ -107,10 +107,10 @@ function getDaysEvents(startDate, options) {
         })
     }
     return todaysEvents
-        .then(m => {
+        .then(m =&gt; {
             assert(eventCache[options.calendarId], 'something is seriously wrong with the calendar service "' + options.calendarId + '" ' + JSON.stringify(eventCache, null, 4));
             eventCache[options.calendarId][day.getTime()] = m;
-            return m.filter(e => e.event.deleted !== true)
+            return m.filter(e =&gt; e.event.deleted !== true)
         })
 }
 module.exports = getDaysEvents;

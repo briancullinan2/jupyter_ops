@@ -71,11 +71,11 @@ var createBucket = importer.import('create a bucket');
 var project = 'spahaha-ea443';
 var bucketName = 'sheet-to-web.sheet-to-web.com';
 
-describe('adding a bucket to google storage', () => {
-    it('should add a bucket', () => {
+describe('adding a bucket to google storage', () =&gt; {
+    it('should add a bucket', () =&gt; {
         return createBucket(project, bucketName)
-            .then(bucketName => {
-                assert(bucketName.length > 0, 'should have added a bucket');
+            .then(bucketName =&gt; {
+                assert(bucketName.length &gt; 0, 'should have added a bucket');
             })
     })
     

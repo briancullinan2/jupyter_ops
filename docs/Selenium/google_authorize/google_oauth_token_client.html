@@ -89,7 +89,7 @@ function storeToken(token, tokenPath) {
 
 function receiveCode(code, oauth2Client, tokenPath) {
     return util.promisify(oauth2Client.getToken.bind(oauth2Client))(code)
-        .then(token => {
+        .then(token =&gt; {
             console.log('recieved token: ' + token.access_token);
             oauth2Client.setCredentials(token);
             storeToken(token, tokenPath);
@@ -106,7 +106,7 @@ async function errorFallback(up, authUrl, oauth2Client, tokenPath) {
         //if (process.stdout.isTTY) {
         //}
         var interface = readline.createInterface(process.stdin, process.stdout);
-        var code = await new Promise(resolve => interface.question(
+        var code = await new Promise(resolve =&gt; interface.question(
             'Enter the code from that page here: ', resolve))
         interface.close();
         return receiveCode(code, oauth2Client, tokenPath)

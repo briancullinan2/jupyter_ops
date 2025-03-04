@@ -131,7 +131,7 @@ async function requestOllamaVision(image, prompt) {
     })
   })
   //let buff = Buffer.from(result.data.images[0], 'base64');
-  if(result.data && result.data.message)
+  if(result.data &amp;&amp; result.data.message)
     return result.data.message.content
   else
     return

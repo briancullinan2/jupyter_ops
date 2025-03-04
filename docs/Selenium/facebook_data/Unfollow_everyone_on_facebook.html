@@ -82,11 +82,11 @@ function unfollowFacebook() {
         .url('https://www.facebook.com/me/following')
         .pause(3000)
         .elements('//a[contains(@ajaxify, "unfollow_profile")]')
-        .then(els => {
-            return importer.runAllPromises(els.value.map(el => resolve => {
+        .then(els =&gt; {
+            return importer.runAllPromises(els.value.map(el =&gt; resolve =&gt; {
                 return client.elementIdClick(el.ELEMENT)
-                    .then(r => resolve())
-                    .catch(e => resolve(e));
+                    .then(r =&gt; resolve())
+                    .catch(e =&gt; resolve(e));
             }))
         })
 };

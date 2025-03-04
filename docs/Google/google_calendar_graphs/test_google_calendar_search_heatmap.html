@@ -70,22 +70,22 @@ var d3Heatmap = importer.import('d3 calendar')
 var now = new Date();
 function calendarSearchToHeatmap(searches) {
     return importer.runAllPromises(searches
-        .map((s, i) => (resolve) => listEvents({
+        .map((s, i) =&gt; (resolve) =&gt; listEvents({
             auth: options.auth,
             calendarId: 'Emotions',
             q: s
         })
-            .then(r => {
+            .then(r =&gt; {
                 //console.log(s);
-                //console.log(r.map(e => e.event.start.dateTime));
-                resolve(r.map(e => ({
+                //console.log(r.map(e =&gt; e.event.start.dateTime));
+                resolve(r.map(e =&gt; ({
                     id: e.event.id,
                     start: new Date(e.event.start.dateTime),
                     end: new Date(e.event.end.dateTime),
                 })));
             })
-            .catch(e => console.log(e))))
-        .then(r => d3Heatmap(r))
+            .catch(e =&gt; console.log(e))))
+        .then(r =&gt; d3Heatmap(r))
 }
 
 module.exports = calendarSearchToHeatmap;
@@ -117,8 +117,8 @@ if(typeof $ != 'undefined') {
         'media server',
         */
     ])
-        .then(r => $.html(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.html(r))
+        .catch(e =&gt; $.sendError(e))
 
 }
 </code></pre>

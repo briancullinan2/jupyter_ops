@@ -89,8 +89,8 @@ var updateRow = importer.import('update a row in google sheets')
 var purchaseId = '1kWjkjLGxQyzFUzRLBk3LpcjPW3UjcaF-PBMDX_3hZfM';
 var project = 'spahaha-ea443';
 
-var isInvalidDomain = (match, domain) =>
-    !match || domain && domain !== match.domain && domain !== match.bucket
+var isInvalidDomain = (match, domain) =&gt;
+    !match || domain &amp;&amp; domain !== match.domain &amp;&amp; domain !== match.bucket
 
 function safeName(name) {
     return name.replace(/[^a-z0-9\-]/ig, '-').substr(0, 40).toLowerCase();
@@ -108,7 +108,7 @@ async function addSheet(docId, title, email) {
         bucket: name + '.sheet-to-web.com',
         project: project,
         sheet: docId
-    }, 'Purchases').then(() => name + '.sheet-to-web.com')
+    }, 'Purchases').then(() =&gt; name + '.sheet-to-web.com')
 }
 
 async function getSheet(link, domain, email) {
@@ -117,14 +117,14 @@ async function getSheet(link, domain, email) {
     title = info.properties.title;
     docId = info.spreadsheetId;
     var purchases = (await getDataSheet(purchaseId, 'Purchases'))
-    var match = purchases.filter(p => p.sheet == docId)[0]
-    if(domain && isInvalidDomain(match, domain)) {
+    var match = purchases.filter(p =&gt; p.sheet == docId)[0]
+    if(domain &amp;&amp; isInvalidDomain(match, domain)) {
         throw new Error(`sheet ${docId} doesn't match domain ${domain}`)
     } else if(!match) {
         return await addSheet(docId, title, email);
     }
     console.log(`Purchase ${docId} already exists: ${match.domain} or ${match.bucket}`);
-    return await updateRow(purchaseId, r => r.sheet == docId, Object.assign(match, {
+    return await updateRow(purchaseId, r =&gt; r.sheet == docId, Object.assign(match, {
         name: title,
         email
     }), 'Purchases');

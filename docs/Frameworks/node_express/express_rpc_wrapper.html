@@ -93,21 +93,21 @@ app.use(cors);
 var router = express.Router();
 
 // TODO: ? https://en.wikipedia.org/wiki/Portmap
-router.all('/rpc', (req, res) => {
+router.all('/rpc', (req, res) =&gt; {
     return Promise.resolve([])
-        .then(() => getResult({
+        .then(() =&gt; getResult({
             command: req.body['function'] || req.query['function'],
             result: importer.interpret(req.body['function'] || req.query['function']),
             body: req.method === 'POST' ? req.body : req.query,
             circles: ['Public']
         }))
-        .then(r => {
+        .then(r =&gt; {
             //console.log(r);
             res.status(200).send(JSON.stringify(r, null, 4));
         })
         // TODO: object assign error?
-        .catch(e => {
-            const resultError = Object.getOwnPropertyNames(e).reduce((alt, key) => {
+        .catch(e =&gt; {
+            const resultError = Object.getOwnPropertyNames(e).reduce((alt, key) =&gt; {
                 alt[key] = e[key];
                 return alt;
             }, {});
@@ -124,30 +124,30 @@ if(typeof listener !== 'undefined') {
 }
 console.log('Listening on 0.0.0.0:8181');
 var listener = server.listen(8181)
-    .on('error', e => {
+    .on('error', e =&gt; {
         debugger
         if(e.code !== 'EADDRINUSE') {
             throw e;
         }
     })
-    .on('close', () => {
+    .on('close', () =&gt; {
         debugger
     })
 
 // shut down properly
-process.on ('SIGTERM', () => {
+process.on ('SIGTERM', () =&gt; {
     debugger
     listener.close()
     process.exit(0)
 });
-process.on ('SIGINT', () => {
+process.on ('SIGINT', () =&gt; {
     debugger
     listener.close()
     process.exit(0)
 });
 
 module.exports = function start() {
-    return new Promise(resolve => {
+    return new Promise(resolve =&gt; {
     })
 }
 

@@ -79,7 +79,7 @@ async function askLlamaAboutFunctions(query, functions, descriptions, categories
   const {llmPrompt} = await importer.import('create llm session')
 
   let q1 = "Given a list of " + (categories ? 'categories' : "functions") + ":\n";
-  for(let i = 0; i < functions.length; i++) {
+  for(let i = 0; i &lt; functions.length; i++) {
       if(descriptions[i]) {
           q1 += functions[i] + ' - ' + descriptions[i] + '\n'
       } else {
@@ -91,7 +91,7 @@ async function askLlamaAboutFunctions(query, functions, descriptions, categories
   const a1 = await llmPrompt(q1);
   console.log("AI: " + a1);
   // TODO: parse function name
-  let result = a1.trim().split(/["`*'\n]/gi).filter(x => functions.indexOf(x) > -1)[0]
+  let result = a1.trim().split(/["`*'\n]/gi).filter(x =&gt; functions.indexOf(x) &gt; -1)[0]
   return result
 }
 

@@ -78,14 +78,14 @@ var MODS = typeof process.env.DEFAULT_MODS == 'string'
     ]
 
 async function challengeCommand(command) {
-    if(!command.private && (!command.mentions || command.mentions.length === 0))
+    if(!command.private &amp;&amp; (!command.mentions || command.mentions.length === 0))
         return
     var options = CHALLENGE.exec(command.content)
     var launch = (options ? options[2] : '') || ''
     var map = (options ? options[3] : '') || ''
     var message = 'I read you'
     var instruction = ''
-    if(!MODS.includes(launch) && map.length === 0) {
+    if(!MODS.includes(launch) &amp;&amp; map.length === 0) {
         map = launch
         launch = ''
     }
@@ -97,7 +97,7 @@ async function challengeCommand(command) {
     } else if(command.launching) {
         instruction += ' ' + launch + ' on map ' + map
     }
-    if(!command.launching && !command.content.match(/:thumbsup:/ig)) {
+    if(!command.launching &amp;&amp; !command.content.match(/:thumbsup:/ig)) {
         message = 'Waiting for reaction'
         instruction += ', react with :thumbsup: to launch'
     }
@@ -113,10 +113,10 @@ async function challengeCommand(command) {
         }
         await serverApi.sendRcon(masters[0].ip, masters[0].port, '\exec ' + launch + '.cfg')
         await serverApi.sendRcon(masters[0].ip, masters[0].port, '\map ' + map)
-        await new Promise(resolve => setTimeout(resolve, 1000))
+        await new Promise(resolve =&gt; setTimeout(resolve, 1000))
         await discordApi.createMessage(`Match is ready ${DEFAULT_HOST}?connect%20${masters[0].ip}:${masters[0].port} (${masters[0].ip}:${masters[0].port})`
                                        + '\n```BOT'+command.id+'L\nbeep boop\n```\n', command.channel_id)
-    } else if (instruction.length > 0) {
+    } else if (instruction.length &gt; 0) {
         await discordApi.createMessage(message + instruction + '\n```BOT'+command.id+'\nbeep boop\n```\n', command.channel_id)
     }
 }

@@ -127,12 +127,12 @@ function mapRatePlanToProduct(description) {
         return 'trial';
     else if (description.includes('volume') || description.includes('discount'))
         return 'discount';
-    else if (description.includes('cloud') && !description.includes('trial'))
+    else if (description.includes('cloud') &amp;&amp; !description.includes('trial'))
         return 'actpremiumcloud';
-    else if (description.includes('premium') && !description.includes('cloud')
-             && !description.includes('trial') && !description.includes('support'))
+    else if (description.includes('premium') &amp;&amp; !description.includes('cloud')
+             &amp;&amp; !description.includes('trial') &amp;&amp; !description.includes('support'))
         return 'actpremium';
-    else if (description.includes('pro')  && !description.includes('support'))
+    else if (description.includes('pro')  &amp;&amp; !description.includes('support'))
         return 'actpro';
     else if (description.includes('support'))
         return 'support';
@@ -148,16 +148,16 @@ function mapRatePlanToProduct(description) {
 }
 
 function mapDataToFields(records) {
-    var uniqueIds = _.groupBy(records, r => r['Account.Id']);
-    return Object.keys(uniqueIds).map(k => {
-        const rpcs = _.groupBy(uniqueIds[k], r => r['RatePlanCharge.Id']);
-        const charges = Object.keys(rpcs).map(k => _.sortBy(rpcs[k], r => r['RatePlanCharge.Version']).pop());
+    var uniqueIds = _.groupBy(records, r =&gt; r['Account.Id']);
+    return Object.keys(uniqueIds).map(k =&gt; {
+        const rpcs = _.groupBy(uniqueIds[k], r =&gt; r['RatePlanCharge.Id']);
+        const charges = Object.keys(rpcs).map(k =&gt; _.sortBy(rpcs[k], r =&gt; r['RatePlanCharge.Version']).pop());
         const record = {};
-        charges.sort((a, b) =>
+        charges.sort((a, b) =&gt;
                           chrono.parseDate(b['Subscription.TermEndDate']).getTime()
                           - chrono.parseDate(a['Subscription.TermEndDate']).getTime());
         // contact information
-        const contact = charges.filter(charge => charge['SoldToContact.WorkEmail'] || charge['BillToContact.WorkEmail'])[0]
+        const contact = charges.filter(charge =&gt; charge['SoldToContact.WorkEmail'] || charge['BillToContact.WorkEmail'])[0]
         if(typeof contact === 'undefined') {
             console.log('No contact information for ' + JSON.stringify(charges));
             return;
@@ -168,7 +168,7 @@ function mapDataToFields(records) {
         record['Currency'] = contact['Account.Currency'];
 
         // primary product
-        const actProduct = charges.filter(p => {
+        const actProduct = charges.filter(p =&gt; {
             const pname = mapRatePlanToProduct(p['ProductRatePlan.Name']);
             return pname === 'actpremiumcloud' || pname === 'actpremium' || pname === 'actpro' || pname === 'trial'
         })[0];
@@ -182,7 +182,7 @@ function mapDataToFields(records) {
         }
         
         // discounts!
-        const discount = charges.filter(p => {
+        const discount = charges.filter(p =&gt; {
             const pname = mapRatePlanToProduct(p['ProductRatePlan.Name']);
             return pname === 'discount'
         })[0];
@@ -193,7 +193,7 @@ function mapDataToFields(records) {
         }
         
         // support
-        const support = charges.filter(charge => {
+        const support = charges.filter(charge =&gt; {
             return mapRatePlanToProduct(charge['ProductRatePlan.Name']) === 'support'
         })[0];
         if(typeof support !== 'undefined') {
@@ -224,7 +224,7 @@ function mapDataToFields(records) {
         record['AccountId'] = charges[0]['Account.Id'];
 
         return record;
-    }).filter(r => typeof r !== 'undefined');
+    }).filter(r =&gt; typeof r !== 'undefined');
 }
 module.exports = {
     mapDataToFields,

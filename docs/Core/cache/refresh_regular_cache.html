@@ -87,18 +87,18 @@
 
 <pre class="javascript"><code>
 function refreshCache(cache, allIds) {
-    var cacheIds = cache.map(e => e[1])
+    var cacheIds = cache.map(e =&gt; e[1])
     
     // add files that don't exist
-    var missing = allIds.filter(n => !cacheIds.includes(n))
-    if(missing.length > 0) {
+    var missing = allIds.filter(n =&gt; !cacheIds.includes(n))
+    if(missing.length &gt; 0) {
         return missing[0]
     }
     
     // TODO: update any changed notebooks first
     
     // update the oldest record
-    cache.sort((a, b) => a[0] - b[0])
+    cache.sort((a, b) =&gt; a[0] - b[0])
     return cache[0][1]
 }
 

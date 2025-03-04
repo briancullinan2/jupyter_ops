@@ -98,13 +98,13 @@ var {glob} = importer.import('glob files')
 function fixImports(project) {
     var packagePath = path.join(project, 'package.json')
     var codeFiles = glob('**/*.+(ts|js|ipynb)', project)
-    codeFiles.forEach(f => {
+    codeFiles.forEach(f =&gt; {
         var imports = relativeImports(f)
         
         // TODO: find file based on matching syntax structure
-        imports.missing.forEach(i => {
+        imports.missing.forEach(i =&gt; {
             var match = codeFiles
-                .filter(f => path.basename(f) === path.basename(i))[0]
+                .filter(f =&gt; path.basename(f) === path.basename(i))[0]
             if(match) {
                 var newRelative = './' + path.relative(
                     path.dirname(f), path.join(project, match))
@@ -117,13 +117,13 @@ function fixImports(project) {
         if(fs.existsSync(packagePath)) {
             var packageJson = JSON.parse(fs.readFileSync(packagePath))
             var toAdd = imports.packages
-                .filter(p => typeof packageJson.dependencies[p] === 'undefined'
-                        && typeof packageJson.devDependencies[p] === 'undefined')
-            toAdd.forEach(a => {
+                .filter(p =&gt; typeof packageJson.dependencies[p] === 'undefined'
+                        &amp;&amp; typeof packageJson.devDependencies[p] === 'undefined')
+            toAdd.forEach(a =&gt; {
                 console.log(`adding ${a}`)
                 packageJson.dependencies[a] = 'latest'
             })
-            if(toAdd.length > 0) {
+            if(toAdd.length &gt; 0) {
                 fs.writeFileSync(packagePath,
                                  JSON.stringify(packageJson, null, 4))
             }

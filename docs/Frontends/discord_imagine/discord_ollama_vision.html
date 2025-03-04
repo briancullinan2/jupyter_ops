@@ -72,7 +72,7 @@ async function doVision(interaction) {
   // TODO: download the image file to temp
   let result
   if(interaction.data.options[0].value.includes('discord')
-    && interaction.data.options[0].value.includes('/channels/')
+    &amp;&amp; interaction.data.options[0].value.includes('/channels/')
   ) {
     // TODO: get the message reference instead
     let messageUrl = new URL(interaction.data.options[0].value)
@@ -83,15 +83,15 @@ async function doVision(interaction) {
       method: 'GET',
       url: `channels/${channelId}/messages/${messageId}`,
     })
-    if(message.attachments && message.attachments[0]) {
+    if(message.attachments &amp;&amp; message.attachments[0]) {
       result = await request({
         url: message.attachments[0].url,
         method: 'GET',
       })
-    } else if (message.message_snapshots && message.message_snapshots[0]
-      && message.message_snapshots[0].message
-      && message.message_snapshots[0].message.attachments
-      && message.message_snapshots[0].message.attachments[0]
+    } else if (message.message_snapshots &amp;&amp; message.message_snapshots[0]
+      &amp;&amp; message.message_snapshots[0].message
+      &amp;&amp; message.message_snapshots[0].message.attachments
+      &amp;&amp; message.message_snapshots[0].message.attachments[0]
     ) {
       result = await request({
         url: message.message_snapshots[0].message.attachments[0].url,

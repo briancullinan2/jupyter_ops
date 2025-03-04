@@ -87,7 +87,7 @@ const EXCEPT_COMMANDS = [
 
 async function deleteCommands(guildId) {
   var toRemove = await getCommands(guildId)
-  for(var i = 0; i < toRemove.length; i++) {
+  for(var i = 0; i &lt; toRemove.length; i++) {
     if(EXCEPT_COMMANDS.includes(toRemove[i].name))
       continue
     await timeout(3000)

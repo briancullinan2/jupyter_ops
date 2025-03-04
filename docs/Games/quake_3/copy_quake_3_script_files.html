@@ -130,8 +130,8 @@ var {fileTypes} = importer.import('quake 3 file whitelist')
 async function convertScripts(root) {
     var result = []
     var output = path.join(path.dirname(root), path.basename(root) + '-converted')
-    var files = await glob(fileTypes.map(a => '**/*' + a), root)
-    for(var i = 0; i < files.length; i++) {
+    var files = await glob(fileTypes.map(a =&gt; '**/*' + a), root)
+    for(var i = 0; i &lt; files.length; i++) {
         var inFile = files[i]
         var outFile = chroot(inFile, root, output)
         if(!fs.existsSync(outFile)) {

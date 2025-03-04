@@ -79,9 +79,9 @@
 <pre class="javascript"><code>var importer = require('../Core');
 var createSheet = importer.import('create a sheet in google drive');
 
-describe('create a new marketing sheet', () => {
+describe('create a new marketing sheet', () =&gt; {
     
-    it('should create a sheet', () => {
+    it('should create a sheet', () =&gt; {
         return createSheet('bjcullinan@gmail.com');
     })
 })

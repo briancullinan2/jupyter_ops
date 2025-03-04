@@ -83,15 +83,15 @@
     """Mergesort."""
     def merge(a, b):
         i, j, merged, m, n = 0, 0, [], len(a), len(b)
-        while i < m and j < n:
-            if a[i] < b[j]:
+        while i &lt; m and j &lt; n:
+            if a[i] &lt; b[j]:
                 merged.append(a[i])
                 i += 1
             else:
                 merged.append(b[j])
                 j += 1
         return merged + a[i:] + b[j:]
-    if len(nums) < 2:
+    if len(nums) &lt; 2:
         return nums
     a = mergesort(nums[:len(nums)//2])
     b = mergesort(nums[len(nums)//2:])

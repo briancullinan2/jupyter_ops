@@ -89,8 +89,8 @@ function setReminder(to, message, time) {
         end: {dateTime: new Date(time.getTime() + 30 * 60 * 1000)}
     }
     return (options.auth ? Promise.resolve([]) : getOauthClient(options))
-        .then(() => correctCalendarId(options))
-        .then(() => insertEvent({
+        .then(() =&gt; correctCalendarId(options))
+        .then(() =&gt; insertEvent({
             calendarId: options.calendarId,
             auth: options.auth,
             resource: event

@@ -82,7 +82,7 @@ async function handleConversation(promptModel, session, prompt, image, otr) {
     context.content + (context.memories ? ('\nApply any relevant memories to your reponse:\n' + context.memories.join('\n')) : ''), 
     otr)
 
-  let q1 = (context && context.content ? context.content : '') 
+  let q1 = (context &amp;&amp; context.content ? context.content : '') 
   + (context.image ? '\nThe response image is provided.\n' : '')
   + '\nRespond to this message and pretend to be emotional (e.g. ' 
   + messageStorage.emotions.join(', ') + '):\n' 

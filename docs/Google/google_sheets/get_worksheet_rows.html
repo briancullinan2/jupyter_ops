@@ -82,15 +82,15 @@ function getRows(link, worksheet) {
     var sheets;
     if(typeof link === 'object') (worksheet = link, link = worksheet.spreadsheetId);
     return authorizeSheets()
-        .then(s => (sheets = s, getSheetByName(link, worksheet)))
-        .then(ws => (worksheet = ws,
+        .then(s =&gt; (sheets = s, getSheetByName(link, worksheet)))
+        .then(ws =&gt; (worksheet = ws,
               console.log(`reading sheet: ${worksheet.properties.title}`
                           + ` - ${worksheet.properties.gridProperties.rowCount}`)))
-        .then(() => sheets.spreadsheets.values.get({
+        .then(() =&gt; sheets.spreadsheets.values.get({
             spreadsheetId: worksheet.spreadsheetId,
             range: `'${worksheet.properties.title}'!A1:Z${worksheet.properties.gridProperties.rowCount}`
         }))
-        .then(res => res.data.values || [])
+        .then(res =&gt; res.data.values || [])
 }
 
 module.exports = getRows;

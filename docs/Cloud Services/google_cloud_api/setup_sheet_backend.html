@@ -90,15 +90,15 @@ function setupBackend(link, domain) {
     var project;
 
     return getSheet(link, domain)
-        .then(match => {
+        .then(match =&gt; {
             project = match.project;
             domain = domain || match.bucket;
             return addIP(project, domain);
         })
-        .then(ip => insertGlobalForward(project, ip, urlMap, domain))
-        .then(() => insertBackendBucket(project, domain))
-        .then(() => updateUrlMap(project, urlMap, domain))
-        .then(() => domain)
+        .then(ip =&gt; insertGlobalForward(project, ip, urlMap, domain))
+        .then(() =&gt; insertBackendBucket(project, domain))
+        .then(() =&gt; updateUrlMap(project, urlMap, domain))
+        .then(() =&gt; domain)
 }
 
 module.exports = setupBackend;

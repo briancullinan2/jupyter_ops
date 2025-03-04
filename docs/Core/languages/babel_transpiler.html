@@ -117,7 +117,7 @@ function transpileNotebook() {
         manipulateOptions(opts, parserOpts) {
             opts.parserOpts = {
                 parser(code, opts) {
-                    code = transpilePlugins.reduce((code, plugin) => {
+                    code = transpilePlugins.reduce((code, plugin) =&gt; {
                         return plugin(code, opts.sourceFileName)
                     }, code)
                     var ast = toBabel(code)

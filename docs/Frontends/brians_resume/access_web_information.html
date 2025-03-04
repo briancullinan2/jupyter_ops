@@ -84,7 +84,7 @@
 const getClient = importer.import('selenium client')
 const summerizeArticle = importer.import('summarize llm article')
 
-const HTTPS_LINK = /https:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/;
+const HTTPS_LINK = /https:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&amp;\/=]*)/;
 
 const SEARCH_ENGINES = [
   'https://www.google.com/search?q=',
@@ -114,7 +114,7 @@ async function accessInternet(promptModel, session, prompt) {
   let matching = [
     'extractArticle',
     'knowledgeSearch',
-  ].filter(func => a1.match(func))
+  ].filter(func =&gt; a1.match(func))
 
   let driver = await getClient()
   let link = HTTPS_LINK.exec(prompt)

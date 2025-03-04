@@ -130,12 +130,12 @@ var zuoraConfig = {
     "rest_api_url": "http://localhost:18888"
 };
 
-describe('zuora account service', () => {
-    afterEach(() => {
+describe('zuora account service', () =&gt; {
+    afterEach(() =&gt; {
         sandbox.restore();
     })
     
-    it('should call zuora query', () => {
+    it('should call zuora query', () =&gt; {
         const dummyEmail = 'zuora-test@swiftipage.com'
         
         const queryStub = sandbox.stub(request, 'request').returns(Promise.resolve({ body: {records: [{}]} }))
@@ -144,7 +144,7 @@ describe('zuora account service', () => {
             items: [{
                  'EmailAddress': dummyEmail
             }]
-        }, zuoraConfig).then(r => {
+        }, zuoraConfig).then(r =&gt; {
             assert(r);
             const queryCall = queryStub.getCall(0);
             assert(queryCall.args[0].json.queryString.includes(dummyEmail));

@@ -67,8 +67,8 @@ var googleTakeout = importer.import('order google takeout');
 
 $.async();
 googleTakeout('chrome')
-    .then(r => $.sendResult(r))
-    .catch(e => $.sendError(e));
+    .then(r =&gt; $.sendResult(r))
+    .catch(e =&gt; $.sendError(e));
 
 </code></pre>
 

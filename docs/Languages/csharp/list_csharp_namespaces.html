@@ -70,8 +70,8 @@ async function getNamespacesBySize(code) {
       stop: './@stop',
       name: '(./qualified_identifier/@strdata)[1]'
     }], code, 'csharp')
-    result.sort((a, b) => (b.stop - b.start) - (a.stop - a.start))
-    return result.map(r => r.name)
+    result.sort((a, b) =&gt; (b.stop - b.start) - (a.stop - a.start))
+    return result.map(r =&gt; r.name)
 }
 
 module.exports = getNamespacesBySize

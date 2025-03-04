@@ -81,7 +81,7 @@
 <pre class="javascript"><code>var {Interval} = require('antlr4ts/misc')
 
 function typeToString(node) {
-    if(node === 'object' && node) {
+    if(node === 'object' &amp;&amp; node) {
         return Object.getPrototypeOf(node).constructor.name;
     } else {
         return typeof node;
@@ -107,8 +107,8 @@ function getGenericContext(ctx) {
         'accept'
     ]
     var allTokens = Object.getOwnPropertyNames(Object.getPrototypeOf(ctx))
-        .filter(t => exclude.indexOf(t) === -1)
-    return allTokens.reduce((obj, cur) => {
+        .filter(t =&gt; exclude.indexOf(t) === -1)
+    return allTokens.reduce((obj, cur) =&gt; {
         obj[cur] = ctx[cur]()
         return obj
     }, {})
@@ -124,7 +124,7 @@ function getGenericVisitor({parser, visitor}) {
     GenericVisitor.prototype.defaultResult = function () {
         return {children: []}
     }
-    GenericVisitor.prototype.aggregateResult = (ctx, child) => {
+    GenericVisitor.prototype.aggregateResult = (ctx, child) =&gt; {
         if(!Array.isArray(ctx)) ctx = ctx.children
         ctx[ctx.length] = child
         return ctx

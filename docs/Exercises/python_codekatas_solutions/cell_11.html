@@ -86,14 +86,14 @@
         pindex = start
         pivot = end
         for i in range(start, end):
-            if nums[i] <= nums[pivot]:
+            if nums[i] &lt;= nums[pivot]:
                 nums[i], nums[pindex] = nums[pindex], nums[i]
                 pindex += 1
         nums[pindex], nums[pivot] = nums[pivot], nums[pindex]
         return pindex
     if not end:
         end = len(nums)-1
-    if start >= end:
+    if start &gt;= end:
         return None
     pivot = partition(nums, start, end)
     quicksort(nums, start, pivot-1)

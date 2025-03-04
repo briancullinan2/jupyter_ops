@@ -97,8 +97,8 @@ var project = PROFILE_PATH + '/Documents/asm';
 if(typeof $ !== 'undefined') {
     $.async();
     findLongFunctions(project)
-        .then(e => $.sendResult(e.map(m => m.path)))
-        .catch(e => $.sendError(e))
+        .then(e =&gt; $.sendResult(e.map(m =&gt; m.path)))
+        .catch(e =&gt; $.sendError(e))
 
 }
 </code></pre>

@@ -81,13 +81,13 @@ function searchAll(queries, root = '') {
     return (typeof queries === 'string'
             ? fuseSearch(queries)
             : Promise.all(queries.map(fuseSearch)))
-        .then(r => interpretObject(r))
+        .then(r =&gt; interpretObject(r))
 };
 
 function searchHandler() {
-    return new Promise(resolve => {
+    return new Promise(resolve =&gt; {
         console.log('Search handler');
-        client.on('resolve', (name, search) => {
+        client.on('resolve', (name, search) =&gt; {
             console.log('searching...');
             if (name === 'SearchService.prototype.search') {
                 client.emit('result', 'SearchService.prototype.search',
@@ -98,12 +98,12 @@ function searchHandler() {
                     searchAll(search),
                     searchNotebooks(search)
                 ])
-                    .then(r => client.emit('result', 'SearchService.prototype.results', [].concat(...r)))
-                    .catch(e => console.log(e))
+                    .then(r =&gt; client.emit('result', 'SearchService.prototype.results', [].concat(...r)))
+                    .catch(e =&gt; console.log(e))
             }
         });
-        client.emit('handle', 'SearchService', () => resolve());
-        client.on('error', e => console.log(e))
+        client.emit('handle', 'SearchService', () =&gt; resolve());
+        client.on('error', e =&gt; console.log(e))
     })
 };
 module.exports = searchHandler;

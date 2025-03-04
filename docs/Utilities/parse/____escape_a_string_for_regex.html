@@ -54,7 +54,7 @@
 
 
 <pre class="javascript"><code>// How to flatten and array in javascript?
-var flatten = arr => arr.reduce((acc, val) =>
+var flatten = arr =&gt; arr.reduce((acc, val) =&gt;
     acc.concat(Array.isArray(val) ? flatten(val) : val), []);
 
 Array.prototype.flatten = function () {
@@ -63,7 +63,7 @@ Array.prototype.flatten = function () {
 
 // How to escape a string for regex?
 function escapeRegExp(str) {
-    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\${OUTPUT}');
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\${OUTPUT}amp;');
 }
 
 

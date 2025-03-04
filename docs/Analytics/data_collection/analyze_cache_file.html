@@ -91,12 +91,12 @@ function analyzeCache(url) {
     }
     
     var json = JSON.parse(fs.readFileSync(cache[0]))
-    var domains = json.map(s => new URL(s.url).hostname)
-        .filter((h, i, arr) => arr.indexOf(h) === i)
-    var largeness = json.sort((a, b) => b.content.length - a.content.length)
+    var domains = json.map(s =&gt; new URL(s.url).hostname)
+        .filter((h, i, arr) =&gt; arr.indexOf(h) === i)
+    var largeness = json.sort((a, b) =&gt; b.content.length - a.content.length)
         .slice(0, 10)
-    var urls = json.map(s => s.url)
-    var repeats = json.filter((s, i, arr) => i > 0 && urls.indexOf(s.url) === i)
+    var urls = json.map(s =&gt; s.url)
+    var repeats = json.filter((s, i, arr) =&gt; i &gt; 0 &amp;&amp; urls.indexOf(s.url) === i)
     fs.writeFileSync(cache[0], JSON.stringify(repeats, null, 2))
     return {
         countPages: json.length,
@@ -104,8 +104,8 @@ function analyzeCache(url) {
         target: json[0].url,
         countDomains: domains.length,
         domains: domains,
-        countLargest: largeness.reduce((cur, l) => cur + l.content.length, 0),
-        largest10: largeness.map(l => l.url),
+        countLargest: largeness.reduce((cur, l) =&gt; cur + l.content.length, 0),
+        largest10: largeness.map(l =&gt; l.url),
         repeats: json.length - repeats.length,
     }
 }

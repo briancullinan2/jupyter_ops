@@ -66,23 +66,23 @@ var execSync = require('child_process').execSync;
 var packages = execSync('npm list --dev', {cwd: cwd}).toString().split('\n');
 var packageJson = JSON.parse(fs.readFileSync(path.join(cwd, 'package.json')));
 var deps = Object.keys(packageJson.dependencies);
-deps.forEach((d, k) => {
-    packages.forEach((p, i) => {
-        if (p.indexOf(d + '@') > -1) {
+deps.forEach((d, k) =&gt; {
+    packages.forEach((p, i) =&gt; {
+        if (p.indexOf(d + '@') &gt; -1) {
             packageJson.dependencies[d] = '~' + p.split('@').pop().replace(' deduped', '');
         }
     });
 });
 console.log(packages);
 var devDeps = Object.keys(packageJson.devDependencies);
-devDeps.forEach((d, k) => {
-    packages.forEach((p, i) => {
-        if (p.indexOf(d + '@') > -1) {
+devDeps.forEach((d, k) =&gt; {
+    packages.forEach((p, i) =&gt; {
+        if (p.indexOf(d + '@') &gt; -1) {
             packageJson.devDependencies[d] = '~' + p.split('@').pop().replace(' deduped', '');
         }
     });
 });
-$.mime({'text/html': '<pre>' + JSON.stringify(packageJson, null, 4) + '</pre>'});
+$.mime({'text/html': '&lt;pre&gt;' + JSON.stringify(packageJson, null, 4) + '&lt;/pre&gt;'});
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

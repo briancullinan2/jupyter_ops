@@ -420,11 +420,11 @@ async function getImages(root) {
     var result = []
     var output = path.join(path.dirname(root), path.basename(root) + '-menu')
     var images = imagelist
-        .split('\n').map(l => l.split(/[\t\s]+/ig)[6])
-        .filter(i => i)
-        .map(i => '**/' + chext(i, '') + '*')
+        .split('\n').map(l =&gt; l.split(/[\t\s]+/ig)[6])
+        .filter(i =&gt; i)
+        .map(i =&gt; '**/' + chext(i, '') + '*')
     var files = await glob(images, root)
-    for(var i = 0; i < files.length; i++) {
+    for(var i = 0; i &lt; files.length; i++) {
         var outFile = chroot(files[i], root, output)
         mkdirpSync(path.dirname(outFile))
         fs.copyFileSync(files[i], outFile)

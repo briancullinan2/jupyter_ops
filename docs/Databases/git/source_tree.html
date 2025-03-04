@@ -88,8 +88,8 @@ var {
 
 // TODO: convert this to bash
 function getResetCommit(branch, parent, project) {
-    branch = branch.replace('HEAD -> ', '').trim();
-    parent = parent.replace('HEAD -> ', '').trim();
+    branch = branch.replace('HEAD -&gt; ', '').trim();
+    parent = parent.replace('HEAD -&gt; ', '').trim();
     return execCmd(`
 git checkout ${branch}
 git reset --mixed ${parent}
@@ -101,25 +101,25 @@ git commit -m "auto reset ${branch}"
 var svgs = [];
 function resetAllBranches() {
     var children = [];
-    var nodeTree = _.sortBy(gitTree(project), a => a.time);
+    var nodeTree = _.sortBy(gitTree(project), a =&gt; a.time);
     var promises = [];
     for (const n of nodeTree) {
         var current = n;
         var parentCount = 0;
         while (typeof current.parent !== 'undefined'
-            && current.parent.branch === current.branch) {
+            &amp;&amp; current.parent.branch === current.branch) {
             current = current.parent;
             parentCount++;
         }
-        if (parentCount > 0 && typeof current.parent !== 'undefined') {
+        if (parentCount &gt; 0 &amp;&amp; typeof current.parent !== 'undefined') {
             // TODO: keep track of the parent so the squashed branch can be merged on to the newly squashed parent
-            promises.push(((current, n) => resolve => {
+            promises.push(((current, n) =&gt; resolve =&gt; {
                 if (typeof n.children !== 'undefined') {
                     children.push(n);
                 }
                 return getResetCommit(n.branch, current.parent.name, project)
-                    .then(() => {
-                        var nodeTree = _.sortBy(gitTree(project), a => a.time);
+                    .then(() =&gt; {
+                        var nodeTree = _.sortBy(gitTree(project), a =&gt; a.time);
                         svgs.push(displayBranches(nodeTree));
                         resolve();
                     })
@@ -127,7 +127,7 @@ function resetAllBranches() {
         }
     }
     return importer.runAllPromises(promises)
-        .then(() => children);
+        .then(() =&gt; children);
 }
 
 function gitTipOfTree(project) {
@@ -135,18 +135,18 @@ function gitTipOfTree(project) {
     return (Promise.resolve(project) || cloneProject(project, true))
         // TODO: git checkout command
         // TODO: pull all missing remmotes
-        .then(r => {
+        .then(r =&gt; {
             project = r;
-            var nodeTree = _.sortBy(gitTree(project), a => a.time);
-            const head = nodeTree.filter(r => r.branch.indexOf('HEAD') > -1)[0];
+            var nodeTree = _.sortBy(gitTree(project), a =&gt; a.time);
+            const head = nodeTree.filter(r =&gt; r.branch.indexOf('HEAD') &gt; -1)[0];
             const branch = head
-                ? (nodeTree.filter(r => r.branch.indexOf(head.branch.replace(/HEAD *-*>* */ig, '').split(/\s*,\s*/ig)) > -1)[0] || nodeTree[0])
+                ? (nodeTree.filter(r =&gt; r.branch.indexOf(head.branch.replace(/HEAD *-*&gt;* */ig, '').split(/\s*,\s*/ig)) &gt; -1)[0] || nodeTree[0])
                 : nodeTree[0];
             return displayBranches([branch]);
         })
-        .then(r => svgs.push(r))
-        //.then(() => resetAllBranches())
-        .then(() => svgs)
+        .then(r =&gt; svgs.push(r))
+        //.then(() =&gt; resetAllBranches())
+        .then(() =&gt; svgs)
 }
 module.exports = gitTipOfTree;
 
@@ -155,8 +155,8 @@ if(typeof $ !== 'undefined') {
     var project = path.join(PROFILE_PATH, 'Documents/portal-copy-2018-1-24-23-49-46');
     $.async();
     gitTipOfTree(project)
-        .then(r => $.html(r.join('')))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.html(r.join('')))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

@@ -81,22 +81,22 @@ var {
 ]);
 
 var options = {};
-describe('calendar service', () => {
-    beforeEach(() => {
+describe('calendar service', () =&gt; {
+    beforeEach(() =&gt; {
     })
     
-    it('should list events from around today', (done) => {
+    it('should list events from around today', (done) =&gt; {
         return correctCalendarId(Object.assign(options, {
             calendarId: 'commands'
         }))
-        .then(() => listEvents({
+        .then(() =&gt; listEvents({
             auth: options.auth,
             calendarId: options.calendarId,
             timeMin: '12 AM today',
             timeMax: 'next hour today'
         }))
-        .then(r => {
-            assert(r.length > 0)
+        .then(r =&gt; {
+            assert(r.length &gt; 0)
             done()
         })
     })

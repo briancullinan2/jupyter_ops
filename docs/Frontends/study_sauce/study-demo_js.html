@@ -76,7 +76,7 @@ function createStudyPack(email) {
 
 function createCards(cards) {
     jupyter_ops.studysauce.renderCards({cards: cards})
-        .then(r => document
+        .then(r =&gt; document
               .getElementsByTagName('iframe')[0]
               .setAttribute('src', r))
     return false;

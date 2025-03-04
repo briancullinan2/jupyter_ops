@@ -116,17 +116,17 @@ async function askLlamaToWriteStory(topic, name, promptModel = 'Meta') {
     const a0 = await promptModel(q0);
     console.log("AI: " + a0);
 
-    let names = a0.trim().split(/(^|\s*\n)[0-9]+\.\s*/).filter(a => a && a.trim().length > 0)
+    let names = a0.trim().split(/(^|\s*\n)[0-9]+\.\s*/).filter(a =&gt; a &amp;&amp; a.trim().length &gt; 0)
     bookName = names[Math.round(Math.random() * (names.length-1))]
   }
 
   let chapters = await askLlamaForAChapterSynopsis('a book named ' + bookName + '\n' + topic)
   let characters = await askLlamaForAChapterSynopsis(topic + '\n'
-    + Object.keys(chapters).map(k => k + ' - ' + chapters[k]).join('\n') 
+    + Object.keys(chapters).map(k =&gt; k + ' - ' + chapters[k]).join('\n') 
     + '\nInclude character names followed by personalities, physical attributes, and likely scenarios they might appear.', 'character')
   let interactions = await askLlamaForAChapterSynopsis('A sequal to ' + topic 
     + '\nUsing this list of characters write chapters that include interactions between them:' 
-    + Object.keys(characters).map(k => k + ' - ' + characters[k]).join('\n') 
+    + Object.keys(characters).map(k =&gt; k + ' - ' + characters[k]).join('\n') 
     + '\nMake this half unique from existing chapters:\n' 
     + Object.keys(chapters).join('\n'))
 
@@ -134,7 +134,7 @@ async function askLlamaToWriteStory(topic, name, promptModel = 'Meta') {
   let keys = Object.keys(chapters)
   let prevChapter = ''
   debugger
-  for(let i = 0; i < keys.length; i++) {
+  for(let i = 0; i &lt; keys.length; i++) {
     let q1 = 'Write a short story, include an entire Hero\'s journey, including departure, initiation, apotheosis, refusal of destiny, and successful return involving these characters (don\'t actually use the word apotheosis):\n' 
       + Object.keys(characters).join('\n') 
       + '\n' + APOTHEOSIS[Object.keys(APOTHEOSIS)[Math.round(Math.random() * (Object.keys(APOTHEOSIS).length - 1))]] 
@@ -156,7 +156,7 @@ async function askLlamaToWriteStory(topic, name, promptModel = 'Meta') {
 
   let bookInteractions = []
   let keys2 = Object.keys(interactions)
-  for(let i = 0; i < keys2.length; i++) {
+  for(let i = 0; i &lt; keys2.length; i++) {
     let q2 = 'Write a short story, include an entire Hero\'s journey, including departure, initiation, apotheosis, refusal of destiny, and successful return involving these characters (don\'t actually use the word apotheosis):\n' 
       + Object.keys(characters).join('\n') 
       + '\n' + APOTHEOSIS[Object.keys(APOTHEOSIS)[Math.round(Math.random() * (Object.keys(APOTHEOSIS).length - 1))]] 

@@ -78,8 +78,8 @@
 
 <pre class="javascript"><code>$.async();
 var images = [];
-new Promise((resolve, reject) => {
-    request('http://' + host + ':' + port, (err, res, body) => {
+new Promise((resolve, reject) =&gt; {
+    request('http://' + host + ':' + port, (err, res, body) =&gt; {
         if (err) {
             reject(err)
         }
@@ -87,14 +87,14 @@ new Promise((resolve, reject) => {
             resolve(body)
         }
     });
-}).then((body) => {
+}).then((body) =&gt; {
     var nodeList = (new JSDOM(body)).window.document.querySelectorAll(query);
     return Array.prototype.slice.call(nodeList, 0)
-        .map(i => i.getAttribute('src'));
-}).then(sources => {
+        .map(i =&gt; i.getAttribute('src'));
+}).then(sources =&gt; {
     images = sources;
     $.done(sources);
-}).catch(e => $.done(e));
+}).catch(e =&gt; $.done(e));
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

@@ -80,10 +80,10 @@ namespace window_tracker
                 var placement = ProgramExtensions.GetPlacement(wnd);
                 var title = ProgramExtensions.GetWindowText(wnd);
                 return placement.rcNormalPosition.top != placement.rcNormalPosition.bottom
-                    && !String.IsNullOrWhiteSpace(title)
-                    && ProgramExtensions.GetProcessTitle(wnd) == title;
+                    &amp;&amp; !String.IsNullOrWhiteSpace(title)
+                    &amp;&amp; ProgramExtensions.GetProcessTitle(wnd) == title;
             });
-            Console.WriteLine(String.Join("\n", listWindows.Select(ptr => (ProgramExtensions.IsForeground(ptr) ? "* " : "" )
+            Console.WriteLine(String.Join("\n", listWindows.Select(ptr =&gt; (ProgramExtensions.IsForeground(ptr) ? "* " : "" )
                 + ProgramExtensions.GetWindowText(ptr) + " - " + ProgramExtensions.GetProcess(ptr).ProcessName)));
         }
     }

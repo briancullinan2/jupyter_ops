@@ -135,13 +135,13 @@ var zuoraConfig = {
     "rest_api_url": "http://localhost:18888"
 };
 
-describe('zuora oauth', () => {
+describe('zuora oauth', () =&gt; {
     
-    afterEach(() => {
+    afterEach(() =&gt; {
         sandbox.restore();
     })
     
-    it('should connect to zuora using oauth', () => {
+    it('should connect to zuora using oauth', () =&gt; {
         const dummyId = '123';
         const dummyQuery = 'SELECT * FROM Accounts';
         
@@ -149,7 +149,7 @@ describe('zuora oauth', () => {
             .returns(Promise.resolve({ body: {Id: dummyId } }));
         
         return createBulkExportJob(dummyQuery, zuoraConfig)
-            .then(result => {
+            .then(result =&gt; {
                 assert.equal(result, dummyId);
                 assert(requestStub.calledOnce, 'request should only be called once');
                 const stubCall = requestStub.getCall(0);
@@ -157,33 +157,33 @@ describe('zuora oauth', () => {
             });
     })
     
-    it('should wait for the export to complete', () => {
+    it('should wait for the export to complete', () =&gt; {
         const dummyId = '12345'
         
         const requestStub = sandbox.stub(request, "request")
             .returns(Promise.resolve({ body: {Status: 'Completed', FileId: dummyId } }));
         
         return getBulkExportJobStatus('123', zuoraConfig)
-            .then(result => {
+            .then(result =&gt; {
                 assert.equal(result, dummyId);
                 assert(requestStub.calledOnce, 'request should only be called once');
             })
     })
     
-    it('should download the csv file', () => {
+    it('should download the csv file', () =&gt; {
         const csvFile = 'some,csv,file';
         
         const requestStub = sandbox.stub(request, "request")
             .returns(Promise.resolve({ body: csvFile }));
         
         return getBulkExportFile('1234', zuoraConfig)
-            .then(result => {
+            .then(result =&gt; {
                 assert.equal(result, csvFile);
                 assert(requestStub.calledOnce, 'request should only be called once');
             })
     })
     
-    it('should convert CSV to JSON', () => {
+    it('should convert CSV to JSON', () =&gt; {
         const result = csvToJson('some,csv,file\n1,2,3');
         assert.equal(result[0].file, 3);
     })

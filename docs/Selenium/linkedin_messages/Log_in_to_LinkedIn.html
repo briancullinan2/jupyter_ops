@@ -65,7 +65,7 @@
   <p>This code provides a function <code>loginLinkedIn</code> that automates the process of logging into LinkedIn using Selenium, handling potential CAPTCHA challenges and returning a boolean indicating success or failure.</p>
 
 
-<pre class="javascript"><code>var notRobot = () => {
+<pre class="javascript"><code>var notRobot = () =&gt; {
     return client.click('')
 }
 
@@ -73,17 +73,17 @@ function enterLinkedIn() {
     console.log('LinkedIn: Sign in required');
     var credentials = getCredentials('linkedin.com');
     return client.isExisting('a[href*="uas/login"]')
-        .then(is => is ? client.click('a[href*="uas/login"]') : Promise.resolve([]))
-        .then(() => client.click('input[name*="session_key"]'))
+        .then(is =&gt; is ? client.click('a[href*="uas/login"]') : Promise.resolve([]))
+        .then(() =&gt; client.click('input[name*="session_key"]'))
         .keys(credentials.username)
         .pause(1000)
-        .then(() => console.log('LinkedIn: Require password'))
+        .then(() =&gt; console.log('LinkedIn: Require password'))
         .click('input[name*="session_password"]')
         .keys(credentials.password)
         .submitForm('.login-form, [type="submit"]')
         .pause(2000)
         .isExisting('.cp-challenge-form')
-        .then(is => {
+        .then(is =&gt; {
             if (is) {
                 throw new Error('captcha');
             }
@@ -93,25 +93,25 @@ function enterLinkedIn() {
 function loginLinkedIn() {
     return client
         .alertText()
-        .then(t => t.indexOf('leave') > -1 ? client.alertAccept() : '')
-        .catch(e => {
+        .then(t =&gt; t.indexOf('leave') &gt; -1 ? client.alertAccept() : '')
+        .catch(e =&gt; {
         })
         .pause(1000)
         .getUrl()
-        .then(url => {
-            var loggedIn = url.indexOf('linkedin') > -1 && url.indexOf('login') == -1
-                 && url.indexOf('authwall') == -1;
+        .then(url =&gt; {
+            var loggedIn = url.indexOf('linkedin') &gt; -1 &amp;&amp; url.indexOf('login') == -1
+                 &amp;&amp; url.indexOf('authwall') == -1;
             console.log(loggedIn);
             return loggedIn
                 ? client
-                    .isExisting('iframe.authentication-iframe').then(is => is
+                    .isExisting('iframe.authentication-iframe').then(is =&gt; is
                         ? client.element('iframe.authentication-iframe')
-                            .then(el => client.frame(el.value))
-                            .then(() => enterLinkedIn())
+                            .then(el =&gt; client.frame(el.value))
+                            .then(() =&gt; enterLinkedIn())
                             .frame()
                         : Promise.resolve([]))
                 : client.url('https://www.linkedin.com/')
-                    .isExisting('*=Forgot password?').then(is => is
+                    .isExisting('*=Forgot password?').then(is =&gt; is
                         ? enterLinkedIn()
                         : Promise.resolve([]));
         })

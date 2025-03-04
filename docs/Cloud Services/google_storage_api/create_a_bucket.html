@@ -79,8 +79,8 @@ function setPublic(project, bucketName) {
     var client;
     // TODO:
     return authorizeGoogle()
-        .then(c => client = c)
-        .then(() => client.request({
+        .then(c =&gt; client = c)
+        .then(() =&gt; client.request({
             method: 'POST',
             url: `https://www.googleapis.com/storage/v1/b/${qs.escape(bucketName)}/acl`,
             data: {
@@ -88,7 +88,7 @@ function setPublic(project, bucketName) {
                 role: 'READER'
             }
         }))
-        .then(() => client.request({
+        .then(() =&gt; client.request({
             method: 'POST',
             url: `https://www.googleapis.com/storage/v1/b/${qs.escape(bucketName)}/defaultObjectAcl`,
             data: {
@@ -104,16 +104,16 @@ function listBuckets(project, bucketName) {
         params.prefix = bucketName;
     }
     return authorizeGoogle()
-        .then(client => client.request({
+        .then(client =&gt; client.request({
             url: `https://www.googleapis.com/storage/v1/b`,
             params
         }))
-        .then(response => response.data.items || [])
+        .then(response =&gt; response.data.items || [])
 }
 
 function addBucket(project, bucketName) {
     return authorizeGoogle()
-        .then(client => client.request({
+        .then(client =&gt; client.request({
             method: 'POST',
             url: `https://www.googleapis.com/storage/v1/b`,
             params: {project: project},
@@ -126,21 +126,21 @@ function addBucket(project, bucketName) {
                 }
             }
         }))
-        .then(response => response.data.name)
-        .then(() => setPublic(project, bucketName))
+        .then(response =&gt; response.data.name)
+        .then(() =&gt; setPublic(project, bucketName))
 }
 
 function createBucket(project, bucketName) {
     bucketName = safeName(bucketName);
     return listBuckets(project, bucketName)
-        .then(buckets => {
-            if(buckets.length > 0) {
+        .then(buckets =&gt; {
+            if(buckets.length &gt; 0) {
                 console.log(`bucket ${bucketName} already exists`);
                 return Promise.resolve(buckets[0].name);
             }
             return addBucket(project, bucketName)
         })
-        .then(() => bucketName);
+        .then(() =&gt; bucketName);
 }
 
 module.exports = createBucket;

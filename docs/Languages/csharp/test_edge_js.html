@@ -81,7 +81,7 @@ async function testEdge() {
   });
 
 
-  console.log(await new Promise(resolve => RunEuler("", function(arg1, arg2) {
+  console.log(await new Promise(resolve =&gt; RunEuler("", function(arg1, arg2) {
     resolve(arg2)
   })))
   //Euler.Main()

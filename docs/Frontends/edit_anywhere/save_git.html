@@ -108,14 +108,14 @@ async function gitSave(url, data, gist) {
     
     // diff the HTML for changes
     const changes = []
-    if(saved && saved[host + '-acl.json']) {
+    if(saved &amp;&amp; saved[host + '-acl.json']) {
         var acl = files[host + '-acl.json'] || []
         if(typeof acl === 'string') {
             acl = [acl]
         }
         var bodyPrevious = selectDom('//body', saved[file])
         var bodyNew = selectDom('//body', data)
-        acl.forEach(i => {
+        acl.forEach(i =&gt; {
             var before = selectDom([i], bodyPrevious)
             var after = selectDom([i], bodyNew)
             

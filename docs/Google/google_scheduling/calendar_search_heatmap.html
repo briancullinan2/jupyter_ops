@@ -92,27 +92,27 @@ function calendarHeatmap(search, calendar) {
     }
     var total = 0;
     return getOauthClient(options)
-        .then(() => correctCalendarId(options))
-        .then(() => importer.runAllPromises(search.split('|').map(term => resolve => {
+        .then(() =&gt; correctCalendarId(options))
+        .then(() =&gt; importer.runAllPromises(search.split('|').map(term =&gt; resolve =&gt; {
             return listEvents({
                 auth: options.auth,
                 calendarId: options.calendarId,
                 q: term
-            }).then(r => {
+            }).then(r =&gt; {
                 console.log(term);
-                console.log(r.map(e => e.event.summary).slice(0, 10));
+                console.log(r.map(e =&gt; e.event.summary).slice(0, 10));
                 const hours = sumEvents(r);
                 console.log(hours + ' hrs');
                 total += hours;
                 return resolve(r);
             })
         })))
-        .then(r => [].concat(...r.map((e, i) => ({
+        .then(r =&gt; [].concat(...r.map((e, i) =&gt; ({
             id: e.id,
             start: new Date(e.event.start.dateTime),
             end: new Date(e.event.end.dateTime),
         }))))
-        .then(r => {
+        .then(r =&gt; {
             console.log(total + ' hrs total');
             console.log((total / 41) + ' hrs / week') // subtract from 48 weeks, 2 weeks of mental health, 2 weeks of holidays
             return [d3Heatmap(r)]
@@ -134,8 +134,8 @@ if(typeof $ !== 'undefined') {
     1353.75 hrs total
     28.203125 hrs / week
     */
-        .then(r => $.html(r[0]))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.html(r[0]))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

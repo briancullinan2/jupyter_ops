@@ -79,18 +79,18 @@ var getTemplates = importer.import('templates google sheet');
 
 var docsId = '113mVIumItArQ_oXpfDRXP-2Kw2ms4t48oPJ68_p5P8k';
 
-describe('get templates from sheet', () => {
+describe('get templates from sheet', () =&gt; {
     
-    it('should have at least one page', () => {
+    it('should have at least one page', () =&gt; {
         return getTemplates(docsId)
-            .then(t => {
-                console.log(JSON.stringify(Object.keys(t).reduce((obj, cur) => {
+            .then(t =&gt; {
+                console.log(JSON.stringify(Object.keys(t).reduce((obj, cur) =&gt; {
                     obj[cur] = {};
                     obj[cur].template = ((t[cur].template || {}).title || '').substr(0, 1000);
                     obj[cur].data = (t[cur].data ? ('yes: ' + t[cur].data.rowCount) : 'no');
                     return obj;
                 }, {}), null, 4))
-                assert(Object.keys(t).length > 0, 'should have a page called template');
+                assert(Object.keys(t).length &gt; 0, 'should have a page called template');
             })
     })
 })

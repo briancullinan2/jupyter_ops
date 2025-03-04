@@ -94,7 +94,7 @@ var importer = require('../Core')
 var {glob} = importer.import('glob files')
 fs.readdirSync('.');
 var PROJECT_PATH = '/Users/briancullinan/Google Drive/Colab Notebooks'
-glob.sync('**/*.ipynb', {cwd: PROJECT_PATH}).forEach(f => {
+glob.sync('**/*.ipynb', {cwd: PROJECT_PATH}).forEach(f =&gt; {
     const nb = JSON.parse(fs.readFileSync(path.join(PROJECT_PATH, f)).toString());
     nb.nbformat_minor = 0;
     /*

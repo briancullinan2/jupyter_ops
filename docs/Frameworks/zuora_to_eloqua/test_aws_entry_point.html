@@ -130,38 +130,38 @@ process.env.ZUORA_API_USER = 'pass';
 process.env.ZUORA_API_USER = 'http://localhost:18888';
 var sandbox = sinon.createSandbox();
 
-describe('bulk upload entry point', () => {
+describe('bulk upload entry point', () =&gt; {
     
-    afterEach(() => {
+    afterEach(() =&gt; {
         sandbox.restore();
     })
     
-    it('should call zuora month export', () => {
+    it('should call zuora month export', () =&gt; {
         var callback = sinon.spy();
         sandbox.stub(zuoraExport, 'getZuoraMonth').returns(Promise.resolve([]));
         return bundle.handler({}, null, callback)
-            .then(() => {
+            .then(() =&gt; {
                 assert(zuoraExport.getZuoraMonth.calledWithMatch(0));
             });
     });
     
-    it('should call data mapper', () => {
+    it('should call data mapper', () =&gt; {
         var callback = sinon.spy();
         sandbox.stub(zuoraExport, 'getZuoraMonth').returns(Promise.resolve([]));
         sandbox.stub(mapper, 'mapDataToFields').returns([]);
         return bundle.handler({}, null, callback)
-            .then(() => {
+            .then(() =&gt; {
                 assert(mapper.mapDataToFields.calledWithMatch([]));
             });
     });
     
-    it('should call bulk upload', () => {
+    it('should call bulk upload', () =&gt; {
         var callback = sinon.spy();
         sandbox.stub(zuoraExport, 'getZuoraMonth').returns(Promise.resolve([]));
         sandbox.stub(mapper, 'mapDataToFields').returns([]);
         sandbox.stub(eloquaUpload, 'bulkUploadEloqua').returns([]);
         return bundle.handler({}, null, callback)
-            .then(() => {
+            .then(() =&gt; {
                 assert(eloquaUpload.bulkUploadEloqua.calledWithMatch([]));
             });
     });

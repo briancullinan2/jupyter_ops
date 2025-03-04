@@ -87,7 +87,7 @@ try {
     if(!e.message.includes('Cannot find module')) {
         throw e
     }
-    google = {sheets: ({version, auth}) => getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/sheets.${version}.json`)), auth)}
+    google = {sheets: ({version, auth}) =&gt; getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/sheets.${version}.json`)), auth)}
 }
 
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
@@ -107,7 +107,7 @@ function authorizeSheets() {
         keyFile: credentials,
         scopes: GOOGLE_AUTH_SCOPE
     }).getClient(/* options here are always ignored b/c cache */)
-        .then(client => google.sheets({version: 'v4', auth: client}))
+        .then(client =&gt; google.sheets({version: 'v4', auth: client}))
 }
 
 module.exports = authorizeSheets;

@@ -70,7 +70,7 @@ const {walkTree} = importer.import('walk tree')
 async function scrollClient(driver, selector, up = false) {
   // scroll to bottom of messages
   return await driver
-    .executeScript((evaluateDomString, walkTreeString, selectDomString, selector, up = false) => {
+    .executeScript((evaluateDomString, walkTreeString, selectDomString, selector, up = false) =&gt; {
       if (selector === '' || selector === false) {
         window.scroll(window.scrollX, window.scrollY + (up ? -100000 : 100000));
         return;

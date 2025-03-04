@@ -83,19 +83,19 @@ function importSQL(file, cb) {
     }
     var prev = 0;
     var count = 0;
-    return new Promise(resolve => papa.parse(file, {
+    return new Promise(resolve =&gt; papa.parse(file, {
         worker: true,
         delimiter: '\t',
         fastMode: true,
         skipEmptyLines: true,
         chunk: function(results) {
             count++;
-            if(count === 1 || count > prev + 1000) {
+            if(count === 1 || count &gt; prev + 1000) {
                 prev = count;
                 console.log(`${count} - ${results.data.length} - ${results.data[1]}`);
             }
             
-            return results.data.map(r => cb(r));
+            return results.data.map(r =&gt; cb(r));
         },
         complete: resolve
     }));
@@ -113,7 +113,7 @@ function insertTitles(data) {
     return db.prepare(`
 INSERT OR IGNORE INTO titles
     (tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres)
-VALUES ${data.map(d => '(?,?,?,?,?,?,?,?,?)').join(',')}`).run([].concat.apply([], data));
+VALUES ${data.map(d =&gt; '(?,?,?,?,?,?,?,?,?)').join(',')}`).run([].concat.apply([], data));
 }
 
 function insertNames(data) {
@@ -121,16 +121,16 @@ function insertNames(data) {
     return db.prepare(`
 INSERT OR IGNORE INTO name
     (nconst, primaryName, birthYear, deathYear, primaryProfession, knownForTitles)
-VALUES ${data.map(d => '(?,?,?,?,?,?)').join(',')}`).run([].concat.apply([], data));
+VALUES ${data.map(d =&gt; '(?,?,?,?,?,?)').join(',')}`).run([].concat.apply([], data));
 }
 
 $.async();
 createTables(db)
-    .then(() => importSQL(names, insertNames))
-    .then(r => $.sendResult(r))
-    .catch(e => $.sendError(e))
+    .then(() =&gt; importSQL(names, insertNames))
+    .then(r =&gt; $.sendResult(r))
+    .catch(e =&gt; $.sendError(e))
     // close the database connection
-    .then(() => db.close())
+    .then(() =&gt; db.close())
 
 
 

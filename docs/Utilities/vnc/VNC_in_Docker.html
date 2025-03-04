@@ -73,7 +73,7 @@
 RUN dos2unix /home/seluser/novnc/utils/launch.sh
 RUN sed -i -e 's/export GEOMETRY.*/export GEOMETRY="8160x6120x24"/g' /opt/bin/start-xvfb.sh
 RUN sed -i -e 's/x11vnc/x11vnc -scale 4080x3060 -noxdamage/g' /opt/bin/start-vnc.sh
-RUN sed -i '/wait \$/i/home/seluser/novnc/utils/launch.sh --vnc localhost:5900 &' /opt/bin/entry_point.sh
+RUN sed -i '/wait \$/i/home/seluser/novnc/utils/launch.sh --vnc localhost:5900 &amp;' /opt/bin/entry_point.sh
 USER seluser
 </code></pre>
 

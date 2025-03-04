@@ -75,8 +75,8 @@ import inspect
 
 async def run_internal():
     from Core import interpret, import_notebook, get_parameter_names
-    if len(sys.argv) < 2:
-        print("Usage: python script.py <notebook_path> <function_args>")
+    if len(sys.argv) &lt; 2:
+        print("Usage: python script.py &lt;notebook_path&gt; &lt;function_args&gt;")
         sys.exit(1)
 
     notebook_path = sys.argv[1]

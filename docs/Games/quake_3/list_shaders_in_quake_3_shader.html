@@ -123,7 +123,7 @@
 var balanced = importer.import('balanced')
 
 function findShaders(file) {
-    if(typeof file === 'string' && fs.existsSync(file)) {
+    if(typeof file === 'string' &amp;&amp; fs.existsSync(file)) {
         file = fs.readFileSync(file).toString('utf-8')
             .replace(/\/\/.*/ig, '')
     }

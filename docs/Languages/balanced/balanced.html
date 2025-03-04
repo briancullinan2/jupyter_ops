@@ -62,7 +62,7 @@ function balanced(a, b, str) {
 
   var r = range(a, b, str);
 
-  return r && {
+  return r &amp;&amp; {
     start: r[0],
     end: r[1],
     pre: str.slice(0, r[0]),
@@ -83,11 +83,11 @@ function range(a, b, str) {
   var bi = str.indexOf(b, ai + 1);
   var i = ai;
 
-  if (ai >= 0 && bi > 0) {
+  if (ai &gt;= 0 &amp;&amp; bi &gt; 0) {
     begs = [];
     left = str.length;
 
-    while (i >= 0 && !result) {
+    while (i &gt;= 0 &amp;&amp; !result) {
       if (i == ai) {
         begs.push(i);
         ai = str.indexOf(a, i + 1);
@@ -95,7 +95,7 @@ function range(a, b, str) {
         result = [ begs.pop(), bi ];
       } else {
         beg = begs.pop();
-        if (beg < left) {
+        if (beg &lt; left) {
           left = beg;
           right = bi;
         }
@@ -103,7 +103,7 @@ function range(a, b, str) {
         bi = str.indexOf(b, i + 1);
       }
 
-      i = ai < bi && ai >= 0 ? ai : bi;
+      i = ai &lt; bi &amp;&amp; ai &gt;= 0 ? ai : bi;
     }
 
     if (begs.length) {

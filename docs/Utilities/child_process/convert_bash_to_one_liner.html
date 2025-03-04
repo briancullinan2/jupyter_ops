@@ -60,17 +60,17 @@
 
 <pre class="javascript"><code>// read cmd template and execute each line?
 var multiline = process.platform === 'win32' ? '^\n ' : '\\\n ';
-var multicmd = process.platform === 'win32' ? ' ^\n; ' : ' \\\n&& ';
+var multicmd = process.platform === 'win32' ? ' ^\n; ' : ' \\\n&amp;&amp; ';
 
 function bashToOne(code) {
     return code
         .split(/\n/ig)
-        .map(l => '{EXEC} ' + l)
+        .map(l =&gt; '{EXEC} ' + l)
         .join('\n')
-        .replace(/\\((\s*\n)+\{EXEC\})+\s*&&/ig, multicmd)
+        .replace(/\\((\s*\n)+\{EXEC\})+\s*&amp;&amp;/ig, multicmd)
         .replace(/\\((\s*\n)+\{EXEC\})+/ig, multiline)
         .split(/\s*\{EXEC\}\s*/ig)
-        .filter(r => r.trim() !== '')
+        .filter(r =&gt; r.trim() !== '')
         .join(multicmd);
 }
 module.exports = bashToOne;

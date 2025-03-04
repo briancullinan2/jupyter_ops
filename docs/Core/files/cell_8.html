@@ -100,21 +100,21 @@ var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERP
 
 if(typeof describe !== 'undefined') {
 
-    describe('file system service', () => {
-        beforeEach(() => {
+    describe('file system service', () =&gt; {
+        beforeEach(() =&gt; {
         })
 
-        it('should list files quickly', () => {
+        it('should list files quickly', () =&gt; {
             var files = listInProject(PROFILE_PATH);
             console.log(files.length);
-            assert(files.length > 0);
+            assert(files.length &gt; 0);
         })
 
-        it('should ignore hidden directories for better performance', () => {
+        it('should ignore hidden directories for better performance', () =&gt; {
             var files = listProjects(PROFILE_PATH);
             console.log(files.portal);
-            assert(files.jupytangular && files.jupytangular.indexOf('jupytangular') > -1
-                    || files.jupytangular2 && files.jupytangular2.indexOf('jupytangular2') > -1, 'could not find own notebook project under the name jupytangular');
+            assert(files.jupytangular &amp;&amp; files.jupytangular.indexOf('jupytangular') &gt; -1
+                    || files.jupytangular2 &amp;&amp; files.jupytangular2.indexOf('jupytangular2') &gt; -1, 'could not find own notebook project under the name jupytangular');
         })
     });
 

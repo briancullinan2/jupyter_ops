@@ -132,15 +132,15 @@
 var {selectDom} = importer.import('select tree')
 
 //TODO: remove \u200b characters
-var specialChars = (str) => {
+var specialChars = (str) =&gt; {
     var special = {
-        '&':'&amp;',
-        '<':'&lt;',
-        '>':'&gt;',
-        '"':'&quot;',
-        "'":'&apos;'
+        '&amp;':'&amp;amp;',
+        '&lt;':'&amp;lt;',
+        '&gt;':'&amp;gt;',
+        '"':'&amp;quot;',
+        "'":'&amp;apos;'
     }
-    Object.keys(special).forEach(s => {
+    Object.keys(special).forEach(s =&gt; {
         str = str.replace(new RegExp(s, 'ig'), special[s])
     })
     return str
@@ -157,23 +157,23 @@ function treeToStr(statement, parent) {
         }
         isList = false;
         var jsType = typeof statement[i];
-        if(jsType === 'object' && statement[i]) {
+        if(jsType === 'object' &amp;&amp; statement[i]) {
             jsType = Object.getPrototypeOf(statement[i]).constructor.name;
         }
         // if the property is an Object, print out as a child
         // TODO: replace this type property when converting other trees
-        //   should be like getEl() treeToStr(() => el.type)
-        if(statement[i] && typeof statement[i].type !== 'undefined'
+        //   should be like getEl() treeToStr(() =&gt; el.type)
+        if(statement[i] &amp;&amp; typeof statement[i].type !== 'undefined'
            // or if the property is an Array,
            //   print them out as child elements
-           || (Array.isArray(statement[i]) && statement[i].length
-           && typeof statement[i][0].type !== 'undefined')) {
+           || (Array.isArray(statement[i]) &amp;&amp; statement[i].length
+           &amp;&amp; typeof statement[i][0].type !== 'undefined')) {
             // print out the other keys just for fun matching
             attrs +=  `
 ${i}="" ${i}-type="${jsType}"`;
             result += `
 ${treeToStr(statement[i], i)}`
-            // output as child element and <-attr> elements
+            // output as child element and &lt;-attr&gt; elements
             //   for posterity, only child elements are return on the select,
             //   but attr elements can still be matched
         } else {
@@ -189,13 +189,13 @@ ${i}="${specialChars(statement[i])}" ${i}-type="${jsType}"`
     }
     
     return isList ? result : `
-<${type}${attrs}${parent ? `
- parent-attr="${parent}"`: ``}>${result}</${type}>`
+&lt;${type}${attrs}${parent ? `
+ parent-attr="${parent}"`: ``}&gt;${result}&lt;/${type}&gt;`
 }
 
 function treeToHtml(tree) {
     var body = treeToStr(tree);
-    return selectDom('//BODY', '<BODY>' + body + '</BODY>');
+    return selectDom('//BODY', '&lt;BODY&gt;' + body + '&lt;/BODY&gt;');
 }
 
 module.exports = {

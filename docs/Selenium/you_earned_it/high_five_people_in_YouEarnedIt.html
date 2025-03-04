@@ -78,7 +78,7 @@ function doHighFive(el) {
     return client.elementIdClick(el)
         .pause(1000)
         .isExisting('//div[contains(@class, "modal")]//button[contains(., "Continue")]')
-        .then(is => is
+        .then(is =&gt; is
             ? client.click('//div[contains(@class, "modal")]//button[contains(., "Continue")]')
             : Promise.resolve([]))
     // TODO: check for multiple dialog?
@@ -88,20 +88,20 @@ function highFive() {
     return client.url('https://swiftpage.youearnedit.com/posts')
         .pause(2000)
         .isExisting('form[action*="sign_in"]')
-        .then(is => is ? loginYouEarnedIt() : Promise.resolve([]))
+        .then(is =&gt; is ? loginYouEarnedIt() : Promise.resolve([]))
         .elements('//button[not(@disabled)]/i[contains(@class, "High-Five")]')
-        .then(els => {
+        .then(els =&gt; {
             console.log(els);
             return importer.runAllPromises(els.value
-                .map(el => resolve => doHighFive(el.ELEMENT)
-                    .then(() => resolve())
-                    .catch(e => {
+                .map(el =&gt; resolve =&gt; doHighFive(el.ELEMENT)
+                    .then(() =&gt; resolve())
+                    .catch(e =&gt; {
                         console.log(e);
                         resolve();
                
             })));
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
     // TODO: repeat or just first page?
 }
 

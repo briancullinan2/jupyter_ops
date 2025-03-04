@@ -86,7 +86,7 @@ AWS.config.update(JSON.parse(fs.readFileSync(path.join(PROFILE_PATH, '.credentia
 function uploadS3(file) {
     var base64data = fs.readFileSync(file);
     var s3 = new AWS.S3();
-    return new Promise((resolve, reject) => s3.putObject({
+    return new Promise((resolve, reject) =&gt; s3.putObject({
         Bucket: 'selenium-bots',
         Key: path.basename(file),
         Body: base64data,
@@ -105,25 +105,25 @@ function getScreenshots(client) {
     }
     var session, paths;
     return client
-        .catch(e => {
-            if((e + '').indexOf('Already') > -1) {
+        .catch(e =&gt; {
+            if((e + '').indexOf('Already') &gt; -1) {
                 // ignore because we don't need a valid session to start
                 return;
             }
             throw e;
         })
-        .then(() => {
+        .then(() =&gt; {
             session = client.sessionId;
         })
-        .then(() => importer.runAllPromises([client.getSessions(false), client.getSessions(true)]))
-        .then(sess => [].concat(...sess))
-        .then(r => {
+        .then(() =&gt; importer.runAllPromises([client.getSessions(false), client.getSessions(true)]))
+        .then(sess =&gt; [].concat(...sess))
+        .then(r =&gt; {
             console.log(r);
-            return importer.runAllPromises(r.map(s => resolve => {
+            return importer.runAllPromises(r.map(s =&gt; resolve =&gt; {
                 return client
-                    .then(() => client.sessionId = s)
-                    .then(() => client.getWindowHandles())
-                    .then(h => importer.runAllPromises(h.map(hwnd => resolve => {
+                    .then(() =&gt; client.sessionId = s)
+                    .then(() =&gt; client.getWindowHandles())
+                    .then(h =&gt; importer.runAllPromises(h.map(hwnd =&gt; resolve =&gt; {
                          const time = new Date();
                         // TODO: include address in image?
                          let filepath = path.join(SCREENSHOTS_DIR, 'screenshot-'
@@ -135,32 +135,32 @@ function getScreenshots(client) {
                                                       + time.getSeconds());
                          return client
                             .switchToWindow(hwnd)
-                            .then(() => client.getUrl())
-                            .then(url => filepath += '-' + unidecode(url).replace(/[^a-z0-9_-]/igm, '_'))
-                            .then(() => client.saveScreenshot(filepath + '.png'))
+                            .then(() =&gt; client.getUrl())
+                            .then(url =&gt; filepath += '-' + unidecode(url).replace(/[^a-z0-9_-]/igm, '_'))
+                            .then(() =&gt; client.saveScreenshot(filepath + '.png'))
                             // TODO: create thumbnails
-                            .then(() => uploadS3(filepath + '.png'))
-                            .catch(e => console.log(e))
-                            .then(() => resolve(filepath + '.png'))
+                            .then(() =&gt; uploadS3(filepath + '.png'))
+                            .catch(e =&gt; console.log(e))
+                            .then(() =&gt; resolve(filepath + '.png'))
                     })))
-                    .catch(e => console.log(e))
-                    .then(r => resolve(r))
+                    .catch(e =&gt; console.log(e))
+                    .then(r =&gt; resolve(r))
             }));
         })
-        .then(r => {
+        .then(r =&gt; {
             client.sessionId = session;
             paths = r;
         })
-        .catch(e => console.log(e))
-        .then(() => paths)
+        .catch(e =&gt; console.log(e))
+        .then(() =&gt; paths)
 }
 module.exports = getScreenshots;
 
 if(typeof $ !== 'undefined') {
     $.async();
     getScreenshots()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

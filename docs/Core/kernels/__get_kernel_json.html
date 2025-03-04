@@ -125,7 +125,7 @@ function wireJson(kernel_json) {
     var wire_json = Object.create(interface(kernel_json, jsonInterface))
     Object.assign(wire_json, {
         argv: (kernel_json.argv || [])
-            .filter(a => a.includes('{connection_file}')).length === 0
+            .filter(a =&gt; a.includes('{connection_file}')).length === 0
             ? (kernel_json.argv || []).concat(['{connection_file}'])
             : (kernel_json.argv || [])
     })

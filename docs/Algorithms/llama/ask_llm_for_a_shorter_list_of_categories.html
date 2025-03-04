@@ -84,13 +84,13 @@ async function askLlamaToGeneralize(categories) {
   console.log("AI: " + a1);
 
   return a1.split(/\s*\n\s*|,\s*|\s*- |\s*\* /gi)
-    .filter((a, i, arr) => a.trim().length > 0 /*&& arr.indexOf(a) == i*/)
+    .filter((a, i, arr) =&gt; a.trim().length &gt; 0 /*&amp;&amp; arr.indexOf(a) == i*/)
 }
 
 async function askLlamaToGeneralizeAll(categories, groupSize = 10) {
   let resultValues = []
   let functions = []
-  for(let i = 0; i < categories.length; i++) {
+  for(let i = 0; i &lt; categories.length; i++) {
     let category = categories[i]
     functions[functions.length] = category
 
@@ -100,14 +100,14 @@ async function askLlamaToGeneralizeAll(categories, groupSize = 10) {
       resultValues = resultValues.concat(result)
     }
   }
-  if(functions.length > 0) {
+  if(functions.length &gt; 0) {
     let result = await askLlamaToGeneralize(functions)
     functions = []
     resultValues = resultValues.concat(result)
   }
 
   // TODO: if the list is still longer than say 100, call this function recursively until its short, haha
-  let uniqueValues = resultValues.filter((a, i, arr) => arr.indexOf(a) == i)
+  let uniqueValues = resultValues.filter((a, i, arr) =&gt; arr.indexOf(a) == i)
   return uniqueValues
 }
 

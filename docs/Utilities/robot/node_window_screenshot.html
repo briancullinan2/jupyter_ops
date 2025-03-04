@@ -82,9 +82,9 @@ async function screenshotWindow(window) {
   if(!Number.isNaN(parseInt(window)))
     item = windows[window]
   else
-    item = windows.filter(w => {
+    item = windows.filter(w =&gt; {
       console.log(w.title, w.app_name)
-      return w.title.includes(window) || w.app_name && w.app_name.includes(window)
+      return w.title.includes(window) || w.app_name &amp;&amp; w.app_name.includes(window)
     })[0]
 
   if(!item)

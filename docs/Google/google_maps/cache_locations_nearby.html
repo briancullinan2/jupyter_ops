@@ -83,8 +83,8 @@ try {
 
 function getNearby(destinations) {
     return importer.runAllPromises(destinations
-        .filter(d => !d.traveling)
-        .map(d => resolve => {
+        .filter(d =&gt; !d.traveling)
+        .map(d =&gt; resolve =&gt; {
             if (typeof nearbyCache[d.name + ', ' + d.location] !== 'undefined') {
                 return resolve(nearbyCache[d.name + ', ' + d.location]);
             }
@@ -92,7 +92,7 @@ function getNearby(destinations) {
             return placesNearby(
                 unidecode(d.name + ', ' + d.location),
                 {lat: d.averageLat, lng: d.averageLon})
-                .then(result => {
+                .then(result =&gt; {
                     if (result.length === 0) {
                         console.warn('No match for ' + JSON.stringify(d))
                         resolve();
@@ -101,13 +101,13 @@ function getNearby(destinations) {
                         resolve(Object.assign(d, result[0]))
                     }
                 })
-                .catch(e => resolve(e))
+                .catch(e =&gt; resolve(e))
         }))
-        .then(r => {
+        .then(r =&gt; {
             fs.writeFileSync(
                 PROJECT_PATH + '/geolocations.json',
                 JSON.stringify(nearbyCache, null, 4));
-            return r.filter(l => typeof l !== 'undefined');
+            return r.filter(l =&gt; typeof l !== 'undefined');
         })
 }
 module.exports = getNearby;

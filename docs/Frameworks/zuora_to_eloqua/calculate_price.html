@@ -121,20 +121,20 @@
 
 // returns [account number, subtotal, previous discount]
 function calculatePrice(subscription, products) {
-    const rpcs = _.groupBy(subscription, r => r['RatePlanCharge.Id']);
-    const charges = Object.keys(rpcs).map(k => _.sortBy(rpcs[k], r => r['RatePlanCharge.Version']).pop());
+    const rpcs = _.groupBy(subscription, r =&gt; r['RatePlanCharge.Id']);
+    const charges = Object.keys(rpcs).map(k =&gt; _.sortBy(rpcs[k], r =&gt; r['RatePlanCharge.Version']).pop());
     var subtotal = 0;
     var discount;
     var quantity = 0;
     charges
         // TODO: escelate this to mapDataToFields function?
-        .filter(c => !(c['ProductRatePlan.Name'] || '').toLowerCase().includes('perpetual'))
-        .forEach(charge => {
-            const product = products.filter(p => p['id'] === charge['Product.Id'])[0];
-            const productRatePlan = product.productRatePlans.filter(p => p['id'] === charge['ProductRatePlan.Id'])[0];
+        .filter(c =&gt; !(c['ProductRatePlan.Name'] || '').toLowerCase().includes('perpetual'))
+        .forEach(charge =&gt; {
+            const product = products.filter(p =&gt; p['id'] === charge['Product.Id'])[0];
+            const productRatePlan = product.productRatePlans.filter(p =&gt; p['id'] === charge['ProductRatePlan.Id'])[0];
             // select correct price plan for the item
-            const productCharge = productRatePlan.productRatePlanCharges.filter(p => p['id'] === charge['ProductRatePlanCharge.Id'])[0];
-            const pricing = productCharge.pricing.filter(p => p['currency'] === charge['Account.Currency'])[0];
+            const productCharge = productRatePlan.productRatePlanCharges.filter(p =&gt; p['id'] === charge['ProductRatePlanCharge.Id'])[0];
+            const pricing = productCharge.pricing.filter(p =&gt; p['currency'] === charge['Account.Currency'])[0];
         
         
             if((charge['ProductRatePlan.Name'] || '').toLowerCase().includes('discount')
@@ -144,8 +144,8 @@ function calculatePrice(subscription, products) {
             } else {
                 const price = pricing.tiers === null
                     ? pricing.price
-                    : pricing.tiers.filter(t => charge['RatePlanCharge.Quantity'] >= t['startingUnit']
-                                           && charge['RatePlanCharge.Quantity'] <= t['endingUnit'])[0];
+                    : pricing.tiers.filter(t =&gt; charge['RatePlanCharge.Quantity'] &gt;= t['startingUnit']
+                                           &amp;&amp; charge['RatePlanCharge.Quantity'] &lt;= t['endingUnit'])[0];
                 if(typeof price === 'undefined') {
                     throw new Error('unknown rate plan component');
                 }
@@ -153,12 +153,12 @@ function calculatePrice(subscription, products) {
                 subtotal += parseInt(charge['RatePlanCharge.Quantity']) * price;
             }
         });
-    const discounts = charges.filter(c => (c['ProductRatePlan.Name'] || '').toLowerCase().includes('discount') > -1
-                                    || (c['ProductRatePlan.Name'] || '').toLowerCase().includes('volume') > -1)
-                             .filter(c => !(c['ProductRatePlan.Name'] || '').toLowerCase().includes('diamond')
-                                    && !(c['ProductRatePlan.Name'] || '').toLowerCase().includes('distribution'));
+    const discounts = charges.filter(c =&gt; (c['ProductRatePlan.Name'] || '').toLowerCase().includes('discount') &gt; -1
+                                    || (c['ProductRatePlan.Name'] || '').toLowerCase().includes('volume') &gt; -1)
+                             .filter(c =&gt; !(c['ProductRatePlan.Name'] || '').toLowerCase().includes('diamond')
+                                    &amp;&amp; !(c['ProductRatePlan.Name'] || '').toLowerCase().includes('distribution'));
     assert(!isNaN(subtotal), 'not a number! ' + JSON.stringify(charges, null, 4))
-    //assert(discounts.length <= 1, 'multiple discounts! ' + JSON.stringify(discounts, null, 4))
+    //assert(discounts.length &lt;= 1, 'multiple discounts! ' + JSON.stringify(discounts, null, 4))
     return [subscription[0]['Account.AccountNumber'], subtotal, discount, quantity];
 }
 module.exports = calculatePrice;

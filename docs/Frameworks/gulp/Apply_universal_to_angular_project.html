@@ -73,8 +73,8 @@ if (!fs.existsSync(project)) {
 
 $.async()
 applyUniversal(project)
-    .then(r => $.sendResult(r))
-    .catch(e => $.sendError(e));
+    .then(r =&gt; $.sendResult(r))
+    .catch(e =&gt; $.sendError(e));
 
 </code></pre>
 

@@ -86,10 +86,10 @@ app.post('/api/token', getToken)
 app.get('/', authenticateRoute, discordLogin.bind(null, BASE_URI))
 app.get('*', authenticateRoute, handleDirectory)
 //app.use('/Music', express.static(path.join(BASE_DIRECTORY, 'Music')))
-app.get('/amplitude.js', (req, res) => {
+app.get('/amplitude.js', (req, res) =&gt; {
   return res.sendFile(path.join(__dirname, '../amplitude.js'))
 })
-app.get('/amplitude.css', (req, res) => {
+app.get('/amplitude.css', (req, res) =&gt; {
   return res.sendFile(path.join(__dirname, '../amplitude.css'))
 })
 
@@ -113,14 +113,14 @@ async function discordLogin(baseURI, req, res, next) {
   }
 
   // this is exclusively a discord function so it has to be appended somewhere before using the generic directory lister
-  let htmlCode = await directoryToHtml(combined, req.path.split('/').length > 2, req.authenticated)
-  htmlCode = htmlCode.replace('<head>', `<head>
-    <base href="/.proxy/" />
-    <script type="text/javascript">
+  let htmlCode = await directoryToHtml(combined, req.path.split('/').length &gt; 2, req.authenticated)
+  htmlCode = htmlCode.replace('&lt;head&gt;', `&lt;head&gt;
+    &lt;base href="/.proxy/" /&gt;
+    &lt;script type="text/javascript"&gt;
     ${importer.interpret('discord client auth code').code
       .replaceAll('{CLIENT_ID}', DEFAULT_APPLICATION)
       .replaceAll('{BASE_URI}', baseURI)}
-    </script>`)
+    &lt;/script&gt;`)
   return res.send(htmlCode)
 }
 
@@ -131,16 +131,16 @@ async function discordExpress(activity) {
   
   //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
-  if(activity.participants.length == 0 && server) {
+  if(activity.participants.length == 0 &amp;&amp; server) {
     server.close()
     server = null
   }
 
-  if(activity.length > 1 || server) {
+  if(activity.length &gt; 1 || server) {
     return
   }
 
-  return (server = await app.listen(process.env.EXPRESS_PORT || 3001, () => {
+  return (server = await app.listen(process.env.EXPRESS_PORT || 3001, () =&gt; {
     console.log('Listening on: ', process.env.EXPRESS_PORT || 3001)
   }))
 }

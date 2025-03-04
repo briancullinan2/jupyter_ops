@@ -93,7 +93,7 @@ function delintCode(code) {
     }
     try {
         return code
-            .map(c => Object.assign(cli.executeOnText(c).results[0], {
+            .map(c =&gt; Object.assign(cli.executeOnText(c).results[0], {
                 source: c,
                 fixed: fix.executeOnText(c).results[0].output || c
             }))

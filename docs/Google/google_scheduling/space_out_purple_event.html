@@ -85,19 +85,19 @@ var options = {
 var now = new Date()
 // TODO: batch promises?
 function batchPromises(options) {
-    const promises = Array.from(Array(Math.ceil(DAYS / SIMUL)).keys()).map((acc, i) => {
+    const promises = Array.from(Array(Math.ceil(DAYS / SIMUL)).keys()).map((acc, i) =&gt; {
         const daysBeforeAfter = i - Math.ceil(DAYS / SIMUL / 2)
-        return resolve => Promise.all(Array.from(Array(SIMUL).keys()).map(day => {
+        return resolve =&gt; Promise.all(Array.from(Array(SIMUL).keys()).map(day =&gt; {
             const date = new Date(now)
             date.setDate(date.getDate() + daysBeforeAfter * SIMUL + day)
             return getDaysEvents(date, options)
         }))
-            .then(r => {
-                setTimeout(() => resolve(r), 100)
+            .then(r =&gt; {
+                setTimeout(() =&gt; resolve(r), 100)
             })
     });
     return importer.runAllPromises(promises)
-        .then(r => [].concat.apply([], r))
+        .then(r =&gt; [].concat.apply([], r))
 }
 
 function moveEvent(e, i, options) {
@@ -106,8 +106,8 @@ function moveEvent(e, i, options) {
     newTime.setDate(newTime.getDate() + i)
     newTime.setHours(12, 0, 0)
     return authorizeCalendar(options)
-        .then(calendar => events = calendar.events)
-        .then(() => util.promisify(events.patch.bind(events))({
+        .then(calendar =&gt; events = calendar.events)
+        .then(() =&gt; util.promisify(events.patch.bind(events))({
             eventId: e.event.id,
             calendarId: options.calendarId,
             auth: options.auth,
@@ -116,8 +116,8 @@ function moveEvent(e, i, options) {
                 end: { dateTime: new Date(newTime.getTime() + 120 * 60 * 1000) },
             }
         }))
-        .then(r => new Promise(resolve => {
-            setTimeout(() => resolve(r), 100);
+        .then(r =&gt; new Promise(resolve =&gt; {
+            setTimeout(() =&gt; resolve(r), 100);
         }))
     // TODO: skip dates using chrono description relative to each date
     // TODO: skip overlap using study sauce algorithm
@@ -127,17 +127,17 @@ function moveEvent(e, i, options) {
 function adjustPurpleEvents(options) {
     if(!options) options = {}
     return Promise.resolve()
-        .then(() => correctCalendarId(options))
-        .then(() => typeof global.listEvents === 'undefined'
+        .then(() =&gt; correctCalendarId(options))
+        .then(() =&gt; typeof global.listEvents === 'undefined'
               ? batchPromises(options)
               : Promise.resolve(global.listEvents))
-        .then(r => {
+        .then(r =&gt; {
             global.listEvents = r
-            const purpleEvents = r.filter(e => e.event.colorId === '1')
-            const promises = purpleEvents.map((e, i) => moveEvent(e, i, options))
+            const purpleEvents = r.filter(e =&gt; e.event.colorId === '1')
+            const promises = purpleEvents.map((e, i) =&gt; moveEvent(e, i, options))
             return importer.runAllPromises()
         })
-        .then(r => d3Heatmap(r.map((e, i) => ({
+        .then(r =&gt; d3Heatmap(r.map((e, i) =&gt; ({
             id: e.id,
             start: new Date(e.start.dateTime),
             end: new Date(e.end.dateTime),

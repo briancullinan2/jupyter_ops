@@ -91,7 +91,7 @@ async function redditPost(driver, content, startPage) {
 
   await loginReddit(driver)
 
-  await new Promise(resolve => setTimeout(resolve, 1500))
+  await new Promise(resolve =&gt; setTimeout(resolve, 1500))
 
   let titleStr = (/\*\*(.*?)\*\*\n*/gi).exec(content)
   if(titleStr) {
@@ -115,7 +115,7 @@ async function redditPost(driver, content, startPage) {
       'button[aria-label*="Switch to Markdown"]'
     ])
     await driver.executeScript('arguments[0].click();', switchButton[0])
-    await new Promise(resolve => setTimeout(resolve, 500))
+    await new Promise(resolve =&gt; setTimeout(resolve, 500))
 
     let body = await getAllQuery(driver, [
       'shreddit-composer',
@@ -127,7 +127,7 @@ async function redditPost(driver, content, startPage) {
 
     let submit = await driver.findElement(By.css('#submit-post-button'))
     submit.click()
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    await new Promise(resolve =&gt; setTimeout(resolve, 1500))
 
   } catch (e) {
     //driver.quit()

@@ -100,19 +100,19 @@ function sortAlphaNumeric(a, b) {
 
 function cleanCache(cache, allIds) {
     // clean up ids that exist in the index but not in memory
-    var extra = cache.filter(e => !allIds.includes(e[1]))
-    extra.forEach(e => cache.splice(cache.indexOf(e), 1))
+    var extra = cache.filter(e =&gt; !allIds.includes(e[1]))
+    extra.forEach(e =&gt; cache.splice(cache.indexOf(e), 1))
     
-    cache.sort((a, b) => {
+    cache.sort((a, b) =&gt; {
         return sortAlphaNumeric(a[1], b[1])
     })
 }
 
 function updateCache(updates, cache, allIds) {
-    var cacheIds = cache.map(e => e[1])
+    var cacheIds = cache.map(e =&gt; e[1])
     
     // update with results from search
-    updates.forEach(e => {
+    updates.forEach(e =&gt; {
         var i = cacheIds.indexOf(e[1])
         if(i === -1) {
             cache.push(e)

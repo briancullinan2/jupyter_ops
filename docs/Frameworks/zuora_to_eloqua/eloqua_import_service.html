@@ -133,7 +133,7 @@ function eloquaOauth(eloquaConfig) {
         || typeof eloquaConfig.rest_api_password === 'undefined'
         || typeof eloquaConfig.rest_client_id === 'undefined'
         || typeof eloquaConfig.rest_secret === 'undefined') {
-        return Promise.resolve([]).then(() => {
+        return Promise.resolve([]).then(() =&gt; {
             throw new Error('Please supply valid eloqua configuration.');
         });
     }
@@ -153,7 +153,7 @@ function eloquaOauth(eloquaConfig) {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
-    }).then(res => {
+    }).then(res =&gt; {
         res.body.expires = (new Date()).getTime() + parseFloat(res.body.expires_in) * 1000;
         return res.body;
     });
@@ -174,12 +174,12 @@ function eloquaBulkImportStatus(syncUri, eloquaToken, eloquaConfig) {
         uri: eloquaConfig.rest_api_url + '/bulk/2.0' + syncUri,
         method: 'GET',
         headers: eloquaRequestHeaders(eloquaToken)
-    }).then(res => {
+    }).then(res =&gt; {
         if (res.body.status === 'success' || res.body.status === 'warning') {
             return true;
         } else if (res.body.status === 'active' || res.body.status === 'pending') {
-            return new Promise(resolve => setTimeout(resolve, 500))
-                .then(() => eloquaBulkImportStatus(syncUri, eloquaToken, eloquaConfig));
+            return new Promise(resolve =&gt; setTimeout(resolve, 500))
+                .then(() =&gt; eloquaBulkImportStatus(syncUri, eloquaToken, eloquaConfig));
         } else {
             throw new Error('Sync status error ' + res.statusCode + ' ' + JSON.stringify(res.body));
         }
@@ -195,7 +195,7 @@ function completeBulkImportSync(importUri, eloquaToken, eloquaConfig) {
             syncedInstanceUri: importUri
         },
         headers: eloquaRequestHeaders(eloquaToken)
-    }).then(res => {
+    }).then(res =&gt; {
         const syncUri = res.body.uri;
         return eloquaBulkImportStatus(syncUri, eloquaToken, eloquaConfig);
     });
@@ -222,7 +222,7 @@ function createImportDefinition(customDataObjectId, eloquaToken, eloquaConfig) {
         method: 'POST',
         json: bulkImportTemplate(customDataObjectId),
         headers: eloquaRequestHeaders(eloquaToken)
-    }).then(res => {
+    }).then(res =&gt; {
         return res.body.uri;
     });
 }
@@ -234,7 +234,7 @@ function createInstanceDefinition(instanceId, executionId, eloquaToken, eloquaCo
         method: 'POST',
         json: temporaryImportTemplate(instanceId, executionId),
         headers: eloquaRequestHeaders(eloquaToken)
-    }).then(res => {
+    }).then(res =&gt; {
         return res.body.uri;
     });
 }

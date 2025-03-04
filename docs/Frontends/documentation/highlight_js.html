@@ -68,16 +68,16 @@
 <p>The HTML document includes external style sheets and a JavaScript file from the Highlight.js library, which is used to highlight code elements on the page. The library is initialized using <code>hljs.highlightAll()</code> to automatically highlight all code elements on the page.</p>
 
 
-<pre class="html"><code><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+<pre class="html"><code>&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css"&gt;
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"&gt;&lt;/script&gt;
 
-<!-- and it's easy to individually load additional languages -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/${LANGUAGE}.min.js"></script>
+&lt;!-- and it's easy to individually load additional languages --&gt;
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/${LANGUAGE}.min.js"&gt;&lt;/script&gt;
 
-<script>hljs.highlightAll();</script>
+&lt;script&gt;hljs.highlightAll();&lt;/script&gt;
 
 </code></pre>
 

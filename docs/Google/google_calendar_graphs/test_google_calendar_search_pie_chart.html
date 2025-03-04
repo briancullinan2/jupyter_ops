@@ -75,18 +75,18 @@ var {
 
 function calendarSearchToPieChart(searches) {
     return importer.runAllPromises(searches
-        .map(s => (resolve) => listEvents({
+        .map(s =&gt; (resolve) =&gt; listEvents({
             auth: options.auth,
             q: s
         })
-            .then(r => {
+            .then(r =&gt; {
                 //console.log(s);
-                //console.log(r.map(e => e.event.summary));
+                //console.log(r.map(e =&gt; e.event.summary));
                 resolve({label: s, value: sumEvents(r)})
             })
-            .catch(e => console.log(e))))
-        .then(r => d3PieChart(r))
-        .catch(e => console.log(e))
+            .catch(e =&gt; console.log(e))))
+        .then(r =&gt; d3PieChart(r))
+        .catch(e =&gt; console.log(e))
 }
 
 $.async();
@@ -104,8 +104,8 @@ calendarSearchToPieChart([
     '"c#"',
     'docker'
 ])
-    .then(r => $.svg(r))
-    .catch(e => $.sendError(e))
+    .then(r =&gt; $.svg(r))
+    .catch(e =&gt; $.sendError(e))
 
 </code></pre>
 

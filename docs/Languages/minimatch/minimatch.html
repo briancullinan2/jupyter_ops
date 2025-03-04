@@ -64,7 +64,7 @@ var expand = importer.import('expand')
 var parse = importer.import('mini parser')
 
 function regExpEscape (s) {
-  return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\${OUTPUT}')
+  return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\${OUTPUT}amp;')
 }
 
 // convert minimatch expression to regular expression
@@ -77,7 +77,7 @@ function minimatch (filename, pattern) {
             return s.split(/\/+/)
         })
 
-        // glob --> regexps
+        // glob --&gt; regexps
         .map(function (s, si, set) {
             return s.map(parse)
         })

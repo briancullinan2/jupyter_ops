@@ -84,12 +84,12 @@ async function generateCode(prompt, codeFile, github) {
 
   // TODO: local pull
   if(!fs.existsSync(github)
-    && fs.existsSync(path.join(PROFILE_PATH, github))) {
+    &amp;&amp; fs.existsSync(path.join(PROFILE_PATH, github))) {
       github = path.join(PROFILE_PATH, github)
   }
 
   if(github.includes('://')
-    && fs.existsSync(path.basename(github).replace('.git', ''))
+    &amp;&amp; fs.existsSync(path.basename(github).replace('.git', ''))
   ) {
     github = path.join(PROFILE_PATH, path.basename(github).replace('.git', ''))
   }
@@ -109,10 +109,10 @@ async function generateCode(prompt, codeFile, github) {
 
   if(!codeFile) {
     let project = fs.readdirSync(github)
-    let projectDirs = project.filter(dir => fs.statSync(path.join(github, dir)).isDirectory())
-    let projectFiles = project.filter(dir => !fs.statSync(path.join(github, dir)).isDirectory())
-    for(let i = 0; i < projectDirs.length; i++) {
-      projectFiles = projectFiles.concat(fs.readdirSync(github).filter(file => !fs.statSync(path.join(github, projectDirs[i], file)).isDirectory()))
+    let projectDirs = project.filter(dir =&gt; fs.statSync(path.join(github, dir)).isDirectory())
+    let projectFiles = project.filter(dir =&gt; !fs.statSync(path.join(github, dir)).isDirectory())
+    for(let i = 0; i &lt; projectDirs.length; i++) {
+      projectFiles = projectFiles.concat(fs.readdirSync(github).filter(file =&gt; !fs.statSync(path.join(github, projectDirs[i], file)).isDirectory()))
     }
 
     let q0 = 'Out of these project files:\n' + projectFiles 
@@ -123,7 +123,7 @@ async function generateCode(prompt, codeFile, github) {
     let a0 = await llmCode(q0)
     console.log('AI: ' + a0)
 
-    codeFile = projectFiles.filter(file => a0.match(file))
+    codeFile = projectFiles.filter(file =&gt; a0.match(file))
   }
 
   //if(fs.existsSync(path.join(github, codeFile))) {

@@ -133,7 +133,7 @@ def authorize():
   line = sys.stdin.readline().strip()
   oauth2callback(line)
 
-# https://localhost:8080/?state=O2rTe25jM5gOZ6fZBpl9A9JeLm7SYK&code=4/0AQSTgQH3rDCG1u4-CyvP1oiuKLGOMf3ZzgZRrlsaju-NKQJUPKDvB_1xalzp9_EiEXhAOw&scope=https://www.googleapis.com/auth/youtube.force-ssl
+# https://localhost:8080/?state=O2rTe25jM5gOZ6fZBpl9A9JeLm7SYK&amp;code=4/0AQSTgQH3rDCG1u4-CyvP1oiuKLGOMf3ZzgZRrlsaju-NKQJUPKDvB_1xalzp9_EiEXhAOw&amp;scope=https://www.googleapis.com/auth/youtube.force-ssl
 @app.route('/oauth2callback')
 def oauth2callback(request_response):
   # Specify the state when creating the flow in the callback so that it can

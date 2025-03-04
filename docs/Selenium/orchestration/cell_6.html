@@ -225,7 +225,7 @@ function tellJokes() {
         'messages from facebook',
         'send facebook thanks',
     ])
-        .then(r => {
+        .then(r =&gt; {
             tileWindows = r.tileWindows;
             sendFacebookMessage = r.sendFacebookMessage;
             sendJoke = r.sendJoke;
@@ -233,29 +233,29 @@ function tellJokes() {
             sendFacebookThanks = r.sendFacebookThanks;
             return r.loginFacebook()
         })
-        .then(() => listFacebookThreads())
-        .then(r => {
+        .then(() =&gt; listFacebookThreads())
+        .then(r =&gt; {
             friends = r.slice(0, 100);
             console.log(friends);
         })
-        .then(() => tileWindows(friends.slice(0, 3)))
-        .then(windows => {
+        .then(() =&gt; tileWindows(friends.slice(0, 3)))
+        .then(windows =&gt; {
             var promises = [];
-            for(var i = 0; i < Math.ceil(friends.length / windows.length); i++) {
-                promises = promises.concat((i => windows.map((hwnd, j) => resolve => {
-                    return sendFacebookThanks(friends[i * windows.length + j], hwnd).catch(e => e).then(r => resolve(r));
+            for(var i = 0; i &lt; Math.ceil(friends.length / windows.length); i++) {
+                promises = promises.concat((i =&gt; windows.map((hwnd, j) =&gt; resolve =&gt; {
+                    return sendFacebookThanks(friends[i * windows.length + j], hwnd).catch(e =&gt; e).then(r =&gt; resolve(r));
                 }))(i));
             }
             return importer.runAllPromises(promises);
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 
 if(typeof $ !== 'undefined') {
     $.async();
     tellJokes()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

@@ -85,7 +85,7 @@ async function relevantHistory(promptModel, session, prompt) {
   // TODO: extract time frame to, from prompt
   let history = fs.readdirSync(PROJECT_PATH)
   let historyFiles = []
-  for(let i = 0; i < history.length; i++) {
+  for(let i = 0; i &lt; history.length; i++) {
     if(history[i].match('-' + DEFAULT_MODEL + '-' + session + '.json')) {
       historyFiles.push(path.basename(history[i]))
     }
@@ -94,7 +94,7 @@ async function relevantHistory(promptModel, session, prompt) {
   let now = new Date()
   let q1 = 'Current date: ' + now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0')
     + '\nGiven the following chat history:\n'
-    + historyFiles.map(f => f.substring(0, 7)).join('\n')
+    + historyFiles.map(f =&gt; f.substring(0, 7)).join('\n')
     + '\nGiven the following prompt:\n'
     + prompt + '\nReturn a short range of Year-Month for related dates.'
   console.log('User: ' + q1)
@@ -103,7 +103,7 @@ async function relevantHistory(promptModel, session, prompt) {
 
   // TODO: create a range of month out of the response
   let relevantFiles = []
-  for(let i = 0; i < historyFiles.length; i++) {
+  for(let i = 0; i &lt; historyFiles.length; i++) {
     if(a1.match(historyFiles[i])) {
       let convoFile = path.join(PROJECT_PATH, historyFiles[i])
       if(fs.existsSync(convoFile)) {

@@ -82,28 +82,28 @@ function renderUser(user) {
     var properties = {}, templates;
     
     return getTemplates(process.env.DOCID)
-        .then(t => {
+        .then(t =&gt; {
             templates = t;
             return getTemplateProperties('app', properties, templates);
         })
-        .then(() => getTemplateProperties('user', properties, templates))
-        .then(() => {
+        .then(() =&gt; getTemplateProperties('user', properties, templates))
+        .then(() =&gt; {
             var users = properties['user-data'];
             Object.assign(properties, {
                 'base': user + '/',
                 'users-users-link': `/${user}/users`
             })
-            templates['users-users'] = {template: {rows: [[`{{> users/users-users-link}}`]]}}
+            templates['users-users'] = {template: {rows: [[`{{&gt; users/users-users-link}}`]]}}
         })
-        .then(() => getTemplateProperties('users-users', properties, templates))
-        .then(() => wrapTemplate(`${user}/users`, 'users', properties['users-users'], properties))
-        .then(page => collectTemplateResources(
+        .then(() =&gt; getTemplateProperties('users-users', properties, templates))
+        .then(() =&gt; wrapTemplate(`${user}/users`, 'users', properties['users-users'], properties))
+        .then(page =&gt; collectTemplateResources(
             `${user}/users`,
             page,
             properties,
             templates,
             process.env.BUCKET))
-        .then(resources => (console.log(resources), `/${user}/users`))
+        .then(resources =&gt; (console.log(resources), `/${user}/users`))
 }
 
 module.exports = renderUser;

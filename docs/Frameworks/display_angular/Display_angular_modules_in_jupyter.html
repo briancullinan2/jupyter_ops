@@ -80,8 +80,8 @@ function displAngular(project, url) {
     module.paths.unshift(path.join(project, 'node_modules'));
     require('module').Module._initPaths();
     process.argv = [(process.argv0 = path.join(project, '.server', 'render-service.js'))];
-    return new Promise((resolve, reject) => {
-        renderer(url, (err, html) => {
+    return new Promise((resolve, reject) =&gt; {
+        renderer(url, (err, html) =&gt; {
             if (err) {
                 return reject(err);
             }
@@ -91,15 +91,15 @@ function displAngular(project, url) {
             return resolve(innerHtml);
         });
     })
-        .then(() => listInProject(project, '**/public/assets/0.*.js'))
-        .then(paths => paths.map(p => '<script defer>' + fs.readFileSync(p) + '</script>')[0])
+        .then(() =&gt; listInProject(project, '**/public/assets/0.*.js'))
+        .then(paths =&gt; paths.map(p =&gt; '&lt;script defer&gt;' + fs.readFileSync(p) + '&lt;/script&gt;')[0])
         // TODO convert to using the same type of template system as angular-cli now that typescript is becoming more relevant here.
-        .then(chunks => ({
+        .then(chunks =&gt; ({
             html: `
-<div id="container" style="display:block; width:100%;position:relative;">
-<iframe id="cell1" style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;border:0;"></iframe>
-</div>
-<script defer>
+&lt;div id="container" style="display:block; width:100%;position:relative;"&gt;
+&lt;iframe id="cell1" style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;border:0;"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;script defer&gt;
 var ifrm = document.getElementById('cell1');
 var doc = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
 doc.document.open();
@@ -116,7 +116,7 @@ contHeight = setInterval(function () {
         document.getElementById("container").style.height = (doc.document.getElementsByTagName('app-root')[0].offsetHeight + 40) + 'px';
     }
 }, 500);
-</script>`, scripts: scripts, chunks: chunks
+&lt;/script&gt;`, scripts: scripts, chunks: chunks
         }));
 };
 module.exports = displAngular;

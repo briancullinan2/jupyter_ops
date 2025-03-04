@@ -82,12 +82,12 @@ var authorizeDrive = importer.import('authorize google drive');
 
 function copyFile(fileId, title) {
     return authorizeDrive()
-        .then(drive => util.promisify(drive.files.copy.bind(drive))({
+        .then(drive =&gt; util.promisify(drive.files.copy.bind(drive))({
             fileId: fileId,
             resource: {name: title},
             convert: true
         }))
-        .then(r => r.data.id)
+        .then(r =&gt; r.data.id)
 }
 
 module.exports = copyFile;

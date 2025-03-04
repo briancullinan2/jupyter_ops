@@ -109,12 +109,12 @@ function gatewayOpen() {
 
 async function authorizeGateway() {
   if(wsConnecting) {
-    var result = await wait(() => ws && ws.identified, 3000)
+    var result = await wait(() =&gt; ws &amp;&amp; ws.identified, 3000)
     if(!result)
       return await authorizeGateway()
     else
       return ws
-  } else if (ws && ws.readyState == 1 && ws.identified) {
+  } else if (ws &amp;&amp; ws.readyState == 1 &amp;&amp; ws.identified) {
     return ws
   }
 
@@ -131,7 +131,7 @@ async function authorizeGateway() {
   ws.on('open', gatewayOpen)
   ws.on('message', gatewayMessage.bind(null, ws, authorizeGateway, interactionResponse))
   ws.on('close', gatewayClose.bind(null, ws, authorizeGateway))
-  await wait(() => ws.identified, 3000)
+  await wait(() =&gt; ws.identified, 3000)
   wsConnecting = false
   return ws
 }
@@ -150,7 +150,7 @@ async function requestAuthQ(outgoing) {
   outgoing.url = DEFAULT_API + outgoing.url
   previousRequest = await delay(previousRequest, DEFAULT_RATE)
   var resolveRequest
-  resolveRequest = async () => {
+  resolveRequest = async () =&gt; {
     var result
     try {
       //console.log('Discord request', outgoing)

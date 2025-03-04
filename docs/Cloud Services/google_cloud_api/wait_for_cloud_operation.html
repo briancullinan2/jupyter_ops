@@ -79,16 +79,16 @@ var authorizeGoogle = importer.import('authorize google service');
 
 function waitForOperation(operation) {
     return authorizeGoogle()
-        .then(client => client.request({
+        .then(client =&gt; client.request({
             url: `${operation}`,
         }))
-        .then(res => {
+        .then(res =&gt; {
             if(res.data.status != 'RUNNING') {
                 return Promise.resolve(res.data.targetLink);
             }
             console.log(`waiting for ${operation}`);
-            return new Promise(resolve => setTimeout(resolve, 500))
-                .then(() => waitForOperation(operation));
+            return new Promise(resolve =&gt; setTimeout(resolve, 500))
+                .then(() =&gt; waitForOperation(operation));
         })
   
 }

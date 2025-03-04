@@ -101,18 +101,18 @@ async function discordExpress(activity) {
   
   //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
-  if(activity.participants.length == 0 && server) {
+  if(activity.participants.length == 0 &amp;&amp; server) {
     server.close()
     server = null
   }
 
   // TODO: check if user was removed
 
-  if(activity.length > 1 || server) {
+  if(activity.length &gt; 1 || server) {
     return
   }
 
-  return (server = await app.listen(3000, () => {
+  return (server = await app.listen(3000, () =&gt; {
     console.log('Listening on: ', 3000)
   }))
 }

@@ -84,15 +84,15 @@ function safeName(name) {
 }
 
 function escape(s) {
-    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\${OUTPUT}');
+    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\${OUTPUT}amp;');
 }
 
 function getDataClasses(c, data) {
     // get classes from mustache vars used with supplied data
     return typeof data != 'object' ? [] : (data || [])
-        .reduce((keys, cur) => keys.concat(Object.keys(cur)), [])
-        .filter((k, h, a) => a.indexOf(k) == h)
-        .filter(k => c.match(new RegExp(`\\{\\{\\s*[>#\\/]?\\s*${escape(k)}\\s*\\}\\}`, 'ig')))
+        .reduce((keys, cur) =&gt; keys.concat(Object.keys(cur)), [])
+        .filter((k, h, a) =&gt; a.indexOf(k) == h)
+        .filter(k =&gt; c.match(new RegExp(`\\{\\{\\s*[&gt;#\\/]?\\s*${escape(k)}\\s*\\}\\}`, 'ig')))
 }
 
 function defineProperty(c, value, properties) {
@@ -111,34 +111,34 @@ function defineProperty(c, value, properties) {
 
 function renderRows(key, rows, properties, templates) {
     // set object properties for mustache template
-    var html = (rows || []).reduce((arr, row, i) => {
-        var rowsHtml = row.reduce((arr, c, j) => {
+    var html = (rows || []).reduce((arr, row, i) =&gt; {
+        var rowsHtml = row.reduce((arr, c, j) =&gt; {
             if(c.substr(0, 1) === ':') {
                 // use subsequent column for property values
                 defineProperty(c, row[j + 1], properties)
                 
             // render if it is not the value for the previous property
-            } else if(j === 0 || row[j - 1] && row[j - 1].substr(0, 1) !== ':') {
+            } else if(j === 0 || row[j - 1] &amp;&amp; row[j - 1].substr(0, 1) !== ':') {
                 var dataClasses = getDataClasses(c, properties[key + '-original-data'])
-                    .map(k => 'val-' + safeName(k))
+                    .map(k =&gt; 'val-' + safeName(k))
                     .join(' ')
                 var sectionClasses = getDataClasses(c, [properties, templates])
-                    .map(k => 'section-' + safeName(k))
+                    .map(k =&gt; 'section-' + safeName(k))
                     .join(' ')
                 arr[arr.length] = `
-<div class="cell-${arr.length} ${dataClasses} ${sectionClasses}">
+&lt;div class="cell-${arr.length} ${dataClasses} ${sectionClasses}"&gt;
 ${c}
-</div>
+&lt;/div&gt;
 `;
             }
             return arr;
         }, []);
 
-        if(rowsHtml.length > 0) {
+        if(rowsHtml.length &gt; 0) {
             arr[arr.length] = `
-<div class="row-${arr.length} ${properties['class'] || ''} col-${rowsHtml.length}">
+&lt;div class="row-${arr.length} ${properties['class'] || ''} col-${rowsHtml.length}"&gt;
 ${rowsHtml.join('')}
-</div>
+&lt;/div&gt;
 `;
         }
 

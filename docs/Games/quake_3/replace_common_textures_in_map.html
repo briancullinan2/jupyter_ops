@@ -144,46 +144,46 @@ var textures = {
 function replaceTextures(file) {
     var used = []
     
-    if(typeof file === 'string' && fs.existsSync(file)) {
+    if(typeof file === 'string' &amp;&amp; fs.existsSync(file)) {
         file = fs.readFileSync(file).toString('utf-8')
     }
     
     // get a list of common textures
     if(!common) {
         var files = fs.readdirSync('/Users/briancullinan/planet_quake_data/quake3-baseq3/common-spog.pk3dir/textures/common')
-        common = files.map(f => f.substr(0, f.length - path.extname(f).length));
+        common = files.map(f =&gt; f.substr(0, f.length - path.extname(f).length));
     }
     
     // get all brushes in map, leaf nodes with at least one vertex
     var brushes = importer.regexToArray(/\{[\s\S^}]*?\}/ig, file)
     
     // replace all brushes with textures from common or berserker overrides
-    brushes.forEach(b => {
+    brushes.forEach(b =&gt; {
         var newBrush = b
-        Object.keys(textures).forEach(k => {
+        Object.keys(textures).forEach(k =&gt; {
             newBrush = newBrush.replace(new RegExp('\\) ([^\\/\\)\\(]*?\\/)*?' + k, 'ig'),
-                                        (str, $1) => (') ' + textures[k]))
+                                        (str, $1) =&gt; (') ' + textures[k]))
         })
-        common.forEach(k => {
+        common.forEach(k =&gt; {
             newBrush = newBrush.replace(new RegExp('\\) ([^\\/\\)\\(]*?\\/)*?' + k, 'ig'),
-                                (str, $1) => (') common/' + (k === 'clip' ? 'hint' : k)))
+                                (str, $1) =&gt; (') common/' + (k === 'clip' ? 'hint' : k)))
         })
         // fix water, don't mix textures because
         //   trenchbroom rearranges verteces so water isn't always applied
         if(newBrush.includes('wter')) {
             newBrush = newBrush
                 .replace(/\)\s+([^\)\(]*?)\s+((\s*[0-9\.-]+){5,8})/igm,
-                         (str, $1, $2) => (') e1u1/bluwter ' + $2))
+                         (str, $1, $2) =&gt; (') e1u1/bluwter ' + $2))
         }
         var texts = importer.regexToArray(/\)\s+([^\)\(]*?)\s+((\s*[0-9\.-]+){5,8})/igm, b, 1)
-        texts.forEach($1 => {
+        texts.forEach($1 =&gt; {
             if(used.indexOf(path.dirname($1)) === -1) used.push(path.dirname($1))
         })
         
         file = file.replace(b, newBrush)
     })
     
-    used = used.map(u => 'textures/' + u.replace('^\/|\/$|^\s*|\s*
+    used = used.map(u =&gt; 'textures/' + u.replace('^\/|\/$|^\s*|\s*
 </body>
 
 </html>, ''))

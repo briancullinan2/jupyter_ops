@@ -80,19 +80,19 @@ var getDataSheet = importer.import('google sheet array objects');
 
 var docsId = '113mVIumItArQ_oXpfDRXP-2Kw2ms4t48oPJ68_p5P8k';
 
-describe('get data from data sheet', () => {
+describe('get data from data sheet', () =&gt; {
     
-    it('should process at least one data sheet', () => {
+    it('should process at least one data sheet', () =&gt; {
         return getTemplates(docsId)
-            .then(t => {
-                var key = Object.keys(t).filter(k => t[k].data)[0];
+            .then(t =&gt; {
+                var key = Object.keys(t).filter(k =&gt; t[k].data)[0];
                 assert(typeof key != 'undefined', 'should have at least one data sheet');
                 return getDataSheet(t[key].data);
             })
-            .then(data => {
+            .then(data =&gt; {
                 console.log(data.length);
                 console.log(data);
-                assert(data.length > 0, 'should have data');
+                assert(data.length &gt; 0, 'should have data');
             })
     })
     

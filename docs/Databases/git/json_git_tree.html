@@ -83,7 +83,7 @@ function gitTree(project) {
     console.log('creating tree "' + project + '"');
     var branches = execSync('git branch --list --all ', {cwd: project}).toString()
         .trim().split(/\s*\n\s*\**\s*/ig)
-        .map(b => b.replace('remotes/', '').trim());
+        .map(b =&gt; b.replace('remotes/', '').trim());
 
     // reverse git so we can add merges to the "graph" after the branch tree is constructed
     var branch = execSync('git log --pretty=format:"%ct %d %h %p" '
@@ -92,11 +92,11 @@ function gitTree(project) {
 
     var nodes = [];
     var edges = [];
-    branch.forEach(b => {
+    branch.forEach(b =&gt; {
         var commits = ((/[0-9]+\s+\(.*?\)\s*(.+)/ig).exec(b)
             || (/[0-9]+\s+(.+)/ig).exec(b) || [b, b.trim()])[1].trim().split(/\s+/ig);
-        commits.forEach(r => {
-            if (nodes.filter(d => d.name == r).length == 0) {
+        commits.forEach(r =&gt; {
+            if (nodes.filter(d =&gt; d.name == r).length == 0) {
                 nodes[nodes.length] = {
                     name: r,
                     index: nodes.length,
@@ -112,7 +112,7 @@ function gitTree(project) {
         if (commits.length == 2) {
             edges = edges.concat(commits.slice(1)
                 // check all existing sources to test for merge
-                .map((c, i) => {
+                .map((c, i) =&gt; {
                     return {source: c, target: commits[i]}; // -1 because of slice(1)
                 }))
         }

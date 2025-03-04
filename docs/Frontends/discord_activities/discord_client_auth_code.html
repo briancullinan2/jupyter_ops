@@ -71,15 +71,15 @@ let expiry
 let result
 let initNonce = Math.round(Math.random() * 1000)
 
-window.addEventListener('message', async (evt) => {
+window.addEventListener('message', async (evt) =&gt; {
 
-  document.querySelector('h1').innerHTML = '<pre>' + JSON.stringify(evt.data, null, 2) + '</pre>'
+  document.querySelector('h1').innerHTML = '&lt;pre&gt;' + JSON.stringify(evt.data, null, 2) + '&lt;/pre&gt;'
 
-  const sourceWindow = () => {
+  const sourceWindow = () =&gt; {
     return (window.parent.opener || window.parent)
   }
 
-  if(evt.data[0] == 3 && typeof evt.data[1].frame_id != 'undefined') {
+  if(evt.data[0] == 3 &amp;&amp; typeof evt.data[1].frame_id != 'undefined') {
 
     result = evt.data[1] // get it from page init instead of query params
     // send handshake
@@ -93,7 +93,7 @@ window.addEventListener('message', async (evt) => {
     }], 'https://discord.com' || '*')
   }
 
-  if(evt.data[0] == 1 && evt.data[1].cmd == 'DISPATCH') {
+  if(evt.data[0] == 1 &amp;&amp; evt.data[1].cmd == 'DISPATCH') {
 
     // start authorization chain
     sourceWindow().postMessage([1, {
@@ -149,7 +149,7 @@ window.addEventListener('message', async (evt) => {
     // TODO: some authenticated page update
     // trying to solve the cookie problem
     if(window.session_id)
-      window.location = '{BASE_URI}?t=' + Date.now() + '&session=' + window.session_id
+      window.location = '{BASE_URI}?t=' + Date.now() + '&amp;session=' + window.session_id
   }
 })
 

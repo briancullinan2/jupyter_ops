@@ -90,21 +90,21 @@ async function redditWeekly(
 
   // TODO: get top
   let top = await redditLinks(driver, startPage + '/top/')
-  let topLinks = top.map(post => post.link)
+  let topLinks = top.map(post =&gt; post.link)
 
   // TODO: sort by most comments
   let posts = await redditList(driver, startPage)
-  let topCommented = posts.sort((a, b) => {
+  let topCommented = posts.sort((a, b) =&gt; {
     let aInt = parseInt(a.comment.replace(/comments*/gi, '').trim())
     let bInt = parseInt(b.comment.replace(/comments*/gi, '').trim())
     return bInt - aInt
-  }).filter(post => !topLinks.includes(post.link))
+  }).filter(post =&gt; !topLinks.includes(post.link))
 
   let freshPosts = topCommented.slice(0, 25).concat(top.slice(0, 25))
   let summaries = persistSummaries()
 
   // TODO: loop through top 20 (10 of each) and repost
-  for(let i = 0; i < freshPosts.length; i++) {
+  for(let i = 0; i &lt; freshPosts.length; i++) {
     let summary = summaries[freshPosts[i].link]
     if(!summary) {
       let article = await extractArticle(driver, freshPosts[i].link)

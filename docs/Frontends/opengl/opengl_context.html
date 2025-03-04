@@ -60,9 +60,9 @@
 
 
 <pre class="cpp"><code>
-#include <iostream>
-//#include <glad/glad.h>
-#include <SDL.h>
+#include &lt;iostream&gt;
+//#include &lt;glad/glad.h&gt;
+#include &lt;SDL.h&gt;
 
 
 #if __cplusplus
@@ -77,11 +77,11 @@ int createWindow(void) {
 	int screen_width = 1000;
 	int screen_height = 800;
 
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		std::cout << "SDL failed initialization. " << SDL_GetError();
+	if (SDL_Init(SDL_INIT_VIDEO) &lt; 0) {
+		std::cout &lt;&lt; "SDL failed initialization. " &lt;&lt; SDL_GetError();
 		return 0;
 	} else {
-		std::cout << "SDL successfully initialized.";
+		std::cout &lt;&lt; "SDL successfully initialized.";
 	}
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
@@ -105,7 +105,7 @@ int createWindow(void) {
 		//glViewport(0, 0, screen_width, screen_height);
 
 		SDL_Event event;
-		while(SDL_PollEvent(&event)){
+		while(SDL_PollEvent(&amp;event)){
 			if(event.type == SDL_QUIT) {
 				done = true;
 			}

@@ -88,7 +88,7 @@ function processResult(response, options) {
         delete q.auth;
         console.log('No events found for ' + JSON.stringify(q));
     } else {
-        for (var i = 0; i < events.length; i++) {
+        for (var i = 0; i &lt; events.length; i++) {
             var event = events[i];
             var start = event.start.dateTime || event.start.date;
             resultEvents[resultEvents.length] = {
@@ -108,17 +108,17 @@ function processResult(response, options) {
 function listEvents(options = {calendarId: 'primary'}) {
     let calendar, events = [];
     return authorizeCalendar(options)
-        .then(c => calendar = c)
-        .then(() => correctTimeLimits(options))
-        .then(() => correctCalendarId(options))
-        .then(() => {
+        .then(c =&gt; calendar = c)
+        .then(() =&gt; correctTimeLimits(options))
+        .then(() =&gt; correctCalendarId(options))
+        .then(() =&gt; {
             var data = Object.assign({}, options, {
                 maxResults: 1000,
                 singleEvents: true,
                 orderBy: 'startTime'
             });
-            return new Promise((resolve, reject) => {
-                calendar.events.list(data, (err, response) => {
+            return new Promise((resolve, reject) =&gt; {
+                calendar.events.list(data, (err, response) =&gt; {
                     if (err) reject(err);
                     try {
                         return resolve(response);
@@ -128,13 +128,13 @@ function listEvents(options = {calendarId: 'primary'}) {
                 });
             })
         })
-        .then(response => {
+        .then(response =&gt; {
             events = events.concat(processResult(response, options));
             //console.log(response)
             if(response.data.nextPageToken) {
                 console.log('paging ' + response.data.nextPageToken)
                 return listEvents(Object.assign({}, options, {pageToken: response.data.nextPageToken}))
-                    .then(e => events.concat(e));
+                    .then(e =&gt; events.concat(e));
             }
             return events;
         })

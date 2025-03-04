@@ -129,40 +129,40 @@ module.exports = {
 function bulkUploadEloqua(accounts, eloquaConfig, instanceId, executionId) {
     var eloquaToken, importUri;
     return eloquaImport.eloquaOauth(eloquaConfig)
-        .then(token => {
+        .then(token =&gt; {
             eloquaToken = token;
-            assert(token.expires > (new Date()).getTime());
+            assert(token.expires &gt; (new Date()).getTime());
             if(instanceId) {
                 return eloquaImport.createInstanceDefinition(instanceId, executionId, eloquaToken, eloquaConfig)
             } else {
                 // get custom data object ID from API
                 var existingId;
                 return eloquaObjects.getCustomDataObject(eloquaToken, eloquaConfig)
-                    .then(existing => {
+                    .then(existing =&gt; {
                         if(!existing) {
                             throw new Error('Eloqua custom data object not configured.')
                         }
                         existingId = existing.uri.split('/').pop();
                         return eloquaObjects.getImportDefinitions(existing.uri, eloquaToken, eloquaConfig);
                     })
-                    .then(importDef => importDef
+                    .then(importDef =&gt; importDef
                           ? importDef.uri
                           : eloquaImport.createImportDefinition(existingId, eloquaToken, eloquaConfig))
             }
         })
-        .then(r => {
+        .then(r =&gt; {
             importUri = r;
             return eloquaImport.startBulkImportData(accounts, importUri, eloquaToken, eloquaConfig);
         })
-        .then(() => eloquaImport.completeBulkImportSync(importUri, eloquaToken, eloquaConfig))
-        .then(() => accounts)
+        .then(() =&gt; eloquaImport.completeBulkImportSync(importUri, eloquaToken, eloquaConfig))
+        .then(() =&gt; accounts)
 }
 
 if(typeof $ !== 'undefined') {
     $.async();
     bulkUploadEloqua()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

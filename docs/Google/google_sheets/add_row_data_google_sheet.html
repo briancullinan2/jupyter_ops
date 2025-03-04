@@ -78,7 +78,7 @@ var importer = require('../Core');
 var updateRow = importer.import('update a row in google sheets');
 
 function addRow(link, newRow, page) {
-    return updateRow(link, r => false, newRow, page)
+    return updateRow(link, r =&gt; false, newRow, page)
 }
 
 module.exports = addRow;</code></pre>

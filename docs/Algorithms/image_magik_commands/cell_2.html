@@ -74,7 +74,7 @@ while IFS= read -r i; do \
 o="${i%.*}"; \
 o="${o%-final*}-final.jpg"; \
 if [ ! -f "$o" ]; \
-then convert -density 600 "$i" -resize "600^<" -scale 50% "$o" || true && \
+then convert -density 600 "$i" -resize "600^&lt;" -scale 50% "$o" || true &amp;&amp; \
     convert "$o" +clone -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite -quality 50% "$o" || true; \
 fi; \
 done;

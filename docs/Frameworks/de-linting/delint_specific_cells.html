@@ -65,9 +65,9 @@ var delintCode = importer.import('delint notebooks');
 function delintCell(search) {
     var results = importer.interpret(search);
     if(typeof results[0] !== 'undefined') {
-        return delintCode(results.map(r => r.code));
+        return delintCode(results.map(r =&gt; r.code));
     }
-    return typeof search === 'string' && results.length === 1
+    return typeof search === 'string' &amp;&amp; results.length === 1
         ? delintCode(results.code)[0]
         : delintCode(results.code);
 }

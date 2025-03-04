@@ -81,18 +81,18 @@ var project = PROFILE_PATH + '/Documents/passwords.htm';
 function readPasswordsHtm() {
     var credentials;
     var passwords = fs.readFileSync(project).toString('utf16le');
-    importer.regexToArray(/TBODY[^>]*>[\s\S]*?\/TBODY/ig, passwords).forEach(b => {
+    importer.regexToArray(/TBODY[^&gt;]*&gt;[\s\S]*?\/TBODY/ig, passwords).forEach(b =&gt; {
         var creds = {};
-        creds['host'] = (((/subcaption[^>]*>(.*?)<\/td>/ig)
-            .exec(b) || [])[1] || '').replace(/<wbr>/ig, '').toLowerCase();
+        creds['host'] = (((/subcaption[^&gt;]*&gt;(.*?)&lt;\/td&gt;/ig)
+            .exec(b) || [])[1] || '').replace(/&lt;wbr&gt;/ig, '').toLowerCase();
         if (creds.host.trim() === '') {
             return;
         }
-        importer.regexToArray(/<tr>[\s\S]*?<\/tr>/ig, b).forEach(f => {
-            var key = (((/field[^>]*>(.*?)<\/td>/ig)
-                .exec(f) || [])[1] || '').replace(/<wbr>/ig, '');
-            var value = (((/wordbreakfield[^>]*>(.*?)<\/td>/ig)
-                .exec(f) || [])[1] || '').replace(/<wbr>/ig, '');
+        importer.regexToArray(/&lt;tr&gt;[\s\S]*?&lt;\/tr&gt;/ig, b).forEach(f =&gt; {
+            var key = (((/field[^&gt;]*&gt;(.*?)&lt;\/td&gt;/ig)
+                .exec(f) || [])[1] || '').replace(/&lt;wbr&gt;/ig, '');
+            var value = (((/wordbreakfield[^&gt;]*&gt;(.*?)&lt;\/td&gt;/ig)
+                .exec(f) || [])[1] || '').replace(/&lt;wbr&gt;/ig, '');
             if (key.trim() !== '') {
                 creds[key] = value;
             }

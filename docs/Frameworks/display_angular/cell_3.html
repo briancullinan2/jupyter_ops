@@ -119,7 +119,7 @@ searchProvider();
 
 $.async();
 seleniumServer()
-    .catch(e => $.sendError(e));
+    .catch(e =&gt; $.sendError(e));
 
 // var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 // var keyChain = path.join(PROFILE_PATH, '/Library/Keychains/login.keychain');

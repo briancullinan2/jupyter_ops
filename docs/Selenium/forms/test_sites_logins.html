@@ -72,7 +72,7 @@ var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERP
 var PASSWORDS_FILE = path.join(PROFILE_PATH, '.credentials', 'passwords.json');
 
 function testLogins() {
-    var sites = JSON.parse(fs.readFileSync(PASSWORDS_FILE)).map(s => s.host);
+    var sites = JSON.parse(fs.readFileSync(PASSWORDS_FILE)).map(s =&gt; s.host);
     sites = [
         'twitter.com',
         'linkedin.com',
@@ -86,15 +86,15 @@ function testLogins() {
     ];
 
     console.log(sites);
-    return multiCrawl(sites.map(s => 'https://' + s), 'log in multiple sites');    
+    return multiCrawl(sites.map(s =&gt; 'https://' + s), 'log in multiple sites');    
 }
 module.exports = testLogins;
 
 if(typeof $ !== 'undefined') {
     $.async();
     testLogins()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 
 </code></pre>

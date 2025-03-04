@@ -87,41 +87,41 @@ var options = {
 
 function scanCommandsEmail() {
     return searchImap('*', 'megamind', 1, 'Megamind')
-        .then(messages => messages.flatten())
+        .then(messages =&gt; messages.flatten())
         // get settings for each
-        .then(friends => {
-            const hasCommands = friends.map(f => Object.assign(f, {
+        .then(friends =&gt; {
+            const hasCommands = friends.map(f =&gt; Object.assign(f, {
                 id: 'Email: ' + id,
                 command: (/megamind\s*(.*)/ig).exec(f.subject)[1].trim()
-            })).filter(f => f.command.length > 0
+            })).filter(f =&gt; f.command.length &gt; 0
                        // filter out responses from my own INBOX so I can test this service myself
-                        && !f.body.match(/^\s* Mm\s*$/gm));
-            return importer.runAllPromises(hasCommands.map(f => resolve => {
+                        &amp;&amp; !f.body.match(/^\s* Mm\s*$/gm));
+            return importer.runAllPromises(hasCommands.map(f =&gt; resolve =&gt; {
                 return filterCommand(f.command, f.date, f.id, f.email)
-                    .then(props => resolve(Object.assign(f, props)));
+                    .then(props =&gt; resolve(Object.assign(f, props)));
             }))
         })
         // generate and send responses
-        .then(friends => {
-            return importer.runAllPromises(friends.map(f => resolve => {
+        .then(friends =&gt; {
+            return importer.runAllPromises(friends.map(f =&gt; resolve =&gt; {
                 return storeResult(f)
-                    .then(response => sendEmail(
+                    .then(response =&gt; sendEmail(
                         f.email,
                         JSON.stringify(response, null, 4) + '\n Mm\n',
                         f.subject))
-                    .catch(e => console.log(e))
-                    .then(r => resolve(r))
+                    .catch(e =&gt; console.log(e))
+                    .then(r =&gt; resolve(r))
             }))
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 module.exports = scanCommandsEmail;
 
 if(typeof $ !== 'undefined') {
     $.async();
     scanCommandsEmail()
-        .then(r => $.sendResult(r))
-        .catch((e) => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch((e) =&gt; $.sendError(e))
 }
 </code></pre>
 

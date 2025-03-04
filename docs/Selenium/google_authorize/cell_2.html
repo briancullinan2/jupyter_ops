@@ -74,8 +74,8 @@ var oauth2Client = new OAuth2Client(
 $.async()
 util.promisify(oauth2Client.getToken.bind(oauth2Client))
 ('4/QwGy62FM_KlubQwYvKLAu5z1xrT0cF85Zwb_3U7-IHvmm1gJZ-hj0Qo')
-    .then(r => $.sendResult(JSON.stringify(r)))
-    .catch(e => $.sendError(e))
+    .then(r =&gt; $.sendResult(JSON.stringify(r)))
+    .catch(e =&gt; $.sendError(e))
 
 </code></pre>
 

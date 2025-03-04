@@ -97,7 +97,7 @@ async function crawlRecursive(url, depth, searches) {
     // searches2 keeps track of new pages that should be added if searches is not provided
     //   this guaruntees at least one page will be requested when this is called
     const searches2 = []
-    for(var i = 0; i < url.length; i++) {
+    for(var i = 0; i &lt; url.length; i++) {
         var l = url[i]
         try {
             await doBrowserRequest(l, readCache.bind(null, searches || searches2),
@@ -113,26 +113,26 @@ async function crawlRecursive(url, depth, searches) {
     //   so we are always getting at least the page requested
     if(!searches) searches = searches2.concat(existingCache(url[0]))
     
-    var existing = searches.map(s => rmhash(s.url))
+    var existing = searches.map(s =&gt; rmhash(s.url))
     var links = searches2
     // TODO: pattern defensive programming
-        .map(s => {
+        .map(s =&gt; {
             var styles = s.styles || []
             var links = s.links || []
             return styles.concat(links)
         })
         .flat()
         // do not include hash in actual link to the page
-        .map(s => rmhash(s))
+        .map(s =&gt; rmhash(s))
         // filter out first occurence
-        .filter((l, i, arr) => arr.indexOf(l) === i
+        .filter((l, i, arr) =&gt; arr.indexOf(l) === i
         // filter out all existing urls
-                && !existing.includes(rmhash(l))
+                &amp;&amp; !existing.includes(rmhash(l))
         // filter out data uris
-                && !l.includes('data:') && !l.includes('mailto:')
-                && !l.includes('javascript:') && !l.includes('ios-app:'))
+                &amp;&amp; !l.includes('data:') &amp;&amp; !l.includes('mailto:')
+                &amp;&amp; !l.includes('javascript:') &amp;&amp; !l.includes('ios-app:'))
     
-    if(depth > 1) {
+    if(depth &gt; 1) {
         return await crawlRecursive(links, depth - 1, searches)
     }
     
@@ -161,8 +161,8 @@ module.exports = crawlAll
 if(typeof $ !== 'undefined') {
     $.async()
     crawlAll('https://google.com', 2)
-        .then(r => $.sendResult('done'))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult('done'))
+        .catch(e =&gt; $.sendError(e))
 }
 
 </code></pre>

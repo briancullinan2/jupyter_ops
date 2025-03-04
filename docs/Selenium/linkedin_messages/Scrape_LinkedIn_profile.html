@@ -79,20 +79,20 @@
 function readLinkedInProfileInfo() {
     var name, title, url, phone, email;
     return client
-        .getUrl().then(url => url.indexOf('/in/') == -1
+        .getUrl().then(url =&gt; url.indexOf('/in/') == -1
             ? visitMyProfile()
             : Promise.resolve([]))
         .isExisting('.contact-see-more-less')
-        .then(is => is ? client.click('.contact-see-more-less') : client)
+        .then(is =&gt; is ? client.click('.contact-see-more-less') : client)
         .pause(500)
-        .then(() => getAllXPath({
+        .then(() =&gt; getAllXPath({
             name: '//*[contains(@class, "pv-top-card-section__name")]//text()',
             title: '//*[contains(@class, "pv-top-card-section__headline")]//text()',
             url: '//*[contains(@class, "ci-vanity-url")]//*[contains(@class, "pv-contact-info__contact-item")]//text()',
             phone: '//*[contains(@class, "ci-phone")]//*[contains(@class, "pv-contact-info__contact-item")]//text()',
             email: '//*[contains(@class, "ci-email")]//*[contains(@class, "pv-contact-info__contact-item")]//text()'
         }))
-        .then(r => ({
+        .then(r =&gt; ({
             name: (typeof r.name === 'string' ? [r.name] : (r.name || [])).join('').trim(),
             title: (typeof r.title === 'string' ? [r.title] : (r.title || [])).join('').trim(),
             url: (typeof r.url === 'string' ? [r.url] : (r.url || [])).join('').trim(),

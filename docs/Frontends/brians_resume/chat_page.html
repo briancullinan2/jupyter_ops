@@ -78,10 +78,10 @@
 <p>This CSS stylesheet sets the basic styles for a chat application, including global styles, container styles, chat program styles, chat inner styles, messages styles, text entry styles, and drag and drop styles. It defines elements such as the container, chat inner, messages, text entry, and drag and drop areas with styles for layout, colors, and typography to create a visually cohesive chat interface.</p>
 
 
-<pre class="html"><code><html>
+<pre class="html"><code>&lt;html&gt;
 
-<head>
-  <style>
+&lt;head&gt;
+  &lt;style&gt;
     html,
     body {
       padding: 0;
@@ -126,16 +126,16 @@
       position: relative;
     }
 
-    #chat-inner #messages > div {
+    #chat-inner #messages &gt; div {
       margin: 20px 0px;
     }
 
-    #chat-inner #messages > div.user {
+    #chat-inner #messages &gt; div.user {
       text-align: right;
       margin: 30px 0px;
     }
 
-    #chat-inner #messages > div.user p {
+    #chat-inner #messages &gt; div.user p {
       padding: 10px;
       background-color: #444;
       display: inline-block;
@@ -265,27 +265,27 @@
         margin-left: 180px;
       }
     }
-  </style>
-</head>
+  &lt;/style&gt;
+&lt;/head&gt;
 
-<body>
+&lt;body&gt;
 
-  <div id="messages-hidden" style="display:none;"></div>
+  &lt;div id="messages-hidden" style="display:none;"&gt;&lt;/div&gt;
 
-  <div id="drag-and-drop">
-    <div>Drop files here</div>
-  </div>
+  &lt;div id="drag-and-drop"&gt;
+    &lt;div&gt;Drop files here&lt;/div&gt;
+  &lt;/div&gt;
 
-  <nav id="chat-history">
+  &lt;nav id="chat-history"&gt;
 
-  </nav>
+  &lt;/nav&gt;
 
-  <div class="container" id="chat-program">
+  &lt;div class="container" id="chat-program"&gt;
 
 
-  </div>
+  &lt;/div&gt;
 
-  <script>
+  &lt;script&gt;
     let historyIndex = 0
     let currentValue = ''
     function sendHandler(evt) {
@@ -296,7 +296,7 @@
         let messageHistory = document.querySelector('#messages')
         let otr = document.querySelector('#chat-program input')
         let image = document.querySelector('#text-entry img')
-        messageHistory.innerHTML += '<div class="user"><p>User: ' + chatBox.value + '</p></div>'
+        messageHistory.innerHTML += '&lt;div class="user"&gt;&lt;p&gt;User: ' + chatBox.value + '&lt;/p&gt;&lt;/div&gt;'
         let messagePost = {
           method: 'POST',
           body: JSON.stringify({ otr: otr.checked, session: session, content: chatBox.value, image: image ? image.src : void 0 }),
@@ -312,17 +312,17 @@
           image.remove()
         chatBox.value = ''
         historyIndex = 0
-        setTimeout(async () => {
+        setTimeout(async () =&gt; {
           messageHistory.scrollTop = messageHistory.scrollTop + 10000
-          let result = await fetch(window.location.origin + '/?session=' + session + '&t=' + Date.now(), messagePost)
+          let result = await fetch(window.location.origin + '/?session=' + session + '&amp;t=' + Date.now(), messagePost)
           if (result.ok) {
-            messageHistory.innerHTML += '<div class="ai">AI: ' + await result.text() + '</div>'
+            messageHistory.innerHTML += '&lt;div class="ai"&gt;AI: ' + await result.text() + '&lt;/div&gt;'
           }
           messageHistory.scrollTop = messageHistory.scrollTop + 10000
         }, 100)
         return false
       }
-      if (evt.key === 'ArrowUp' && chatBox.scrollTop < 10) {
+      if (evt.key === 'ArrowUp' &amp;&amp; chatBox.scrollTop &lt; 10) {
         if (historyIndex === 0) {
           currentValue = chatBox.value
         }
@@ -330,7 +330,7 @@
         // TODO: adjust according to messages loaded, don't count too high
         let count = 0
         let i
-        for (i = messageHistory.childNodes.length - 1; i >= 0 && count < (historyIndex + 1); i--) {
+        for (i = messageHistory.childNodes.length - 1; i &gt;= 0 &amp;&amp; count &lt; (historyIndex + 1); i--) {
           if (!messageHistory.childNodes[i].innerText) {
             continue
           }
@@ -338,12 +338,12 @@
             count++
           }
         }
-        if (i > 0) {
+        if (i &gt; 0) {
           historyIndex++
           chatBox.value = messageHistory.childNodes[i + 1].innerText.substring(6)
         }
       }
-      if (evt.key === 'ArrowDown' && historyIndex > 0) {
+      if (evt.key === 'ArrowDown' &amp;&amp; historyIndex &gt; 0) {
         let messageHistory = document.querySelector('#messages')
         if (historyIndex === 1) {
           historyIndex--
@@ -351,7 +351,7 @@
         } else {
           let count = 0
           let i
-          for (i = messageHistory.childNodes.length - 1; i >= 0 && count < (historyIndex - 1); i--) {
+          for (i = messageHistory.childNodes.length - 1; i &gt;= 0 &amp;&amp; count &lt; (historyIndex - 1); i--) {
             if (!messageHistory.childNodes[i].innerText) {
               continue
             }
@@ -359,7 +359,7 @@
               count++
             }
           }
-          if (i > 0) {
+          if (i &gt; 0) {
             historyIndex--
             chatBox.value = messageHistory.childNodes[i + 1].innerText.substring(6)
           }
@@ -383,13 +383,13 @@
         clearInterval(messageInterval)
         messageInterval = null
       }
-      let result = await fetch(window.location.origin + '/embed?session=' + session + '&when=' + when + '&t=' + Date.now(), {
+      let result = await fetch(window.location.origin + '/embed?session=' + session + '&amp;when=' + when + '&amp;t=' + Date.now(), {
         method: 'GET'
       })
       let messageHistory = document.querySelector('#messages')
-      let newMessages = (/<div id="messages">([\s\S]*?)<\/div>\n<\/div>/gi).exec(await result.text())
-      if(newMessages && newMessages[1].length > 1) {
-        for(let i = 0; i < messageHistory.childNodes.length; i++) {
+      let newMessages = (/&lt;div id="messages"&gt;([\s\S]*?)&lt;\/div&gt;\n&lt;\/div&gt;/gi).exec(await result.text())
+      if(newMessages &amp;&amp; newMessages[1].length &gt; 1) {
+        for(let i = 0; i &lt; messageHistory.childNodes.length; i++) {
           messageHistory.childNodes[0].remove()
         }
         messageHistory.innerHTML += newMessages[1]
@@ -440,8 +440,8 @@
     async function updateHistory() {
       let messageHidden = document.querySelector('#messages-hidden')
       let messageHistory = document.querySelector('#messages')
-      let messagesWithIds = document.querySelectorAll('#messages > *[id*="id-"]')
-      let messagesWithoutIds = document.querySelectorAll('#messages > *:not([id]), #restart-now')
+      let messagesWithIds = document.querySelectorAll('#messages &gt; *[id*="id-"]')
+      let messagesWithoutIds = document.querySelectorAll('#messages &gt; *:not([id]), #restart-now')
       if(messageHistory.scrollTop + messageHistory.clientHeight == messageHistory.scrollHeight) {
         messageHistory.scrollTop = messageHistory.scrollTop + 10000
       }
@@ -450,18 +450,18 @@
       }
       messageHidden.innerHTML = ''
       let from = parseInt(messagesWithIds[messagesWithIds.length - 1].id.replace('id-', ''))
-      let result = await fetch(window.location.origin + '/embed?session=' + session + '&from=' + (from + 1) + '&t=' + Date.now(), {
+      let result = await fetch(window.location.origin + '/embed?session=' + session + '&amp;from=' + (from + 1) + '&amp;t=' + Date.now(), {
         method: 'GET'
       })
-      let newMessages = (/<div id="messages">([\s\S]*?)<\/div>\n<\/div>/gi).exec(await result.text())
-      if(newMessages && newMessages[1].length > 1) {
-        for(let i = 0; i < messagesWithoutIds.length; i++) {
+      let newMessages = (/&lt;div id="messages"&gt;([\s\S]*?)&lt;\/div&gt;\n&lt;\/div&gt;/gi).exec(await result.text())
+      if(newMessages &amp;&amp; newMessages[1].length &gt; 1) {
+        for(let i = 0; i &lt; messagesWithoutIds.length; i++) {
           messagesWithoutIds[i].remove()
         }
         messageHidden.innerHTML += newMessages[1]
       }
-      setTimeout(() => {
-        for(let i = 0; i < messageHidden.childNodes.length; i++) {
+      setTimeout(() =&gt; {
+        for(let i = 0; i &lt; messageHidden.childNodes.length; i++) {
           messageHistory.appendChild(messageHidden.childNodes[0])
         }
         if(messageHistory.scrollTop + messageHistory.clientHeight == messageHistory.scrollHeight) {
@@ -469,7 +469,7 @@
         }
       }, 100)
     
-      let result2 = await fetch(window.location.origin + '/history?session=' + session + '&from=' + (from + 1) + '&t=' + Date.now(), {
+      let result2 = await fetch(window.location.origin + '/history?session=' + session + '&amp;from=' + (from + 1) + '&amp;t=' + Date.now(), {
         method: 'GET'
       })
       if(result2.status == 200)
@@ -477,9 +477,9 @@
       /*
       if(newMessages) {
         messageHidden.innerHTML = newMessages[1]
-        setTimeout(() => {
-          for(let i = 0; i < messageHidden.length; i++) {
-            for(let j = 0; j < messageHistory.length; j++) {
+        setTimeout(() =&gt; {
+          for(let i = 0; i &lt; messageHidden.length; i++) {
+            for(let j = 0; j &lt; messageHistory.length; j++) {
 
             }
           }
@@ -491,28 +491,28 @@
 
     document.addEventListener('drop', dropHandler)
 
-    document.addEventListener('DOMContentLoaded', async (event) => {
+    document.addEventListener('DOMContentLoaded', async (event) =&gt; {
 
       if (!session) {
         const array = new Uint8Array(16)
         window.crypto.getRandomValues(array)
-        localStorage.setItem('brian-chat-session', (session = Array.from(array).map(byte => byte.toString(16).padStart(2, '0')).join('')));
+        localStorage.setItem('brian-chat-session', (session = Array.from(array).map(byte =&gt; byte.toString(16).padStart(2, '0')).join('')));
       }
 
 
-      let result = await fetch(window.location.origin + '/embed?session=' + session + '&t=' + Date.now(), {
+      let result = await fetch(window.location.origin + '/embed?session=' + session + '&amp;t=' + Date.now(), {
         method: 'GET'
       })
       document.querySelector('#chat-program').innerHTML = await result.text()
 
-      let result2 = await fetch(window.location.origin + '/history?session=' + session + '&t=' + Date.now(), {
+      let result2 = await fetch(window.location.origin + '/history?session=' + session + '&amp;t=' + Date.now(), {
         method: 'GET'
       })
       document.querySelector('#chat-history').innerHTML = await result2.text()
 
 
       
-      setTimeout(() => {
+      setTimeout(() =&gt; {
         let messageHistory = document.querySelector('#messages')
         messageHistory.scrollTop = messageHistory.scrollTop + 10000
         document.querySelector('#chat-program textarea').addEventListener('keydown', sendHandler)
@@ -525,10 +525,10 @@
       messageInterval = setInterval(updateHistory, 5000)
 
     })
-  </script>
-</body>
+  &lt;/script&gt;
+&lt;/body&gt;
 
-</html></code></pre>
+&lt;/html&gt;</code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">

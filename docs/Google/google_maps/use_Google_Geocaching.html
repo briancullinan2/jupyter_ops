@@ -69,15 +69,15 @@
 var request = util.promisify(require('request'));
 
 function googleGeocodeAddress(address) {
-    return request('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=AIzaSyAoTAY0vq2yuaDyygjMdwgharnS_CXEvRY')
-        .then(r => JSON.parse(r.body).results)
+    return request('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&amp;key=AIzaSyAoTAY0vq2yuaDyygjMdwgharnS_CXEvRY')
+        .then(r =&gt; JSON.parse(r.body).results)
 }
 
 if(typeof $ !== 'undefined') {
     $.async();
     googleGeocodeAddress('Kazimierz World Wine Bar')
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 
 </code></pre>

@@ -76,15 +76,15 @@
  *    GNU Lesser General Public License for more details.
  *
  *    You should have received a copy of the GNU Lesser General Public License
- *    along with wiringPi.  If not, see <http://www.gnu.org/licenses/>.
+ *    along with wiringPi.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
  ***********************************************************************
  */
 
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <unistd.h>
+//#include &lt;stdio.h&gt;
+//#include &lt;stdlib.h&gt;
+//#include &lt;unistd.h&gt;
 
-#include <wiringPi.h>
+#include &lt;wiringPi.h&gt;
 
 #include "maxdetect.h"
 
@@ -105,11 +105,11 @@ static void maxDetectLowHighWait (const int pin)
   unsigned int timeOut = millis () + 2000 ;
 
   while (digitalRead (pin) == HIGH)
-    if (millis () > timeOut)
+    if (millis () &gt; timeOut)
       return ;
 
   while (digitalRead (pin) == LOW)
-    if (millis () > timeOut)
+    if (millis () &gt; timeOut)
       return ;
 }
 
@@ -125,14 +125,14 @@ static unsigned int maxDetectClockByte (const int pin)
   unsigned int byte = 0 ;
   int bit ;
 
-  for (bit = 0 ; bit < 8 ; ++bit)
+  for (bit = 0 ; bit &lt; 8 ; ++bit)
   {
     maxDetectLowHighWait (pin) ;
 
 // bit starting now - we need to time it.
 
     delayMicroseconds (30) ;
-    byte <<= 1 ;
+    byte &lt;&lt;= 1 ;
     if (digitalRead (pin) == HIGH)      // It's a 1
       byte |= 1 ;
   }
@@ -168,16 +168,16 @@ int maxDetectRead (const int pin, unsigned char buffer [4])
 
 // and read in 5 bytes (40 bits)
 
-  for (i = 0 ; i < 5 ; ++i)
+  for (i = 0 ; i &lt; 5 ; ++i)
     localBuf [i] = maxDetectClockByte (pin) ;
 
   checksum = 0 ;
-  for (i = 0 ; i < 4 ; ++i)
+  for (i = 0 ; i &lt; 4 ; ++i)
   {
     buffer [i] = localBuf [i] ;
     checksum += localBuf [i] ;
   }
-  checksum &= 0xFF ;
+  checksum &amp;= 0xFF ;
 
   return checksum == localBuf [4] ;
 }
@@ -185,7 +185,7 @@ int maxDetectRead (const int pin, unsigned char buffer [4])
 
 /*
  * readRHT03:
- *      Read the Temperature & Humidity from an RHT03 sensor
+ *      Read the Temperature &amp; Humidity from an RHT03 sensor
  *********************************************************************************
  */
 
@@ -200,7 +200,7 @@ int readRHT03 (const int pin, int *temp, int *rh)
 
 // Don't read more than once a second
 
-  if (millis () < nextTime)
+  if (millis () &lt; nextTime)
   {
     *temp = lastTemp ;
     *rh   = lastRh ;

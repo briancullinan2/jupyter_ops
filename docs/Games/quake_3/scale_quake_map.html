@@ -127,19 +127,19 @@ function scaleMap(file, amount) {
     var brushes = importer.regexToArray(/\{[\s\S]*?\}/ig, file)
     
     // replace all brushes with scaled values
-    brushes.forEach(b => {
+    brushes.forEach(b =&gt; {
         var newBrush = b
-        newBrush = newBrush.replace(/\(((\s*[0-9\.-]+\s*)*)\)/ig, (str, $1) => {
+        newBrush = newBrush.replace(/\(((\s*[0-9\.-]+\s*)*)\)/ig, (str, $1) =&gt; {
             return '( ' + $1.trim().split(/\s+/ig)
-                .map(n => Math.round((n.includes('.')
+                .map(n =&gt; Math.round((n.includes('.')
                         ? parseFloat(n.trim())
                         : parseInt(n.trim())) * amount * DIGITS) / DIGITS)
                 .join(' ') + ' )'
         })
         // scale the texture on the brush
-        newBrush = newBrush.replace(/\)\s+([^\)\(]*?)\s+((\s*[0-9\.-]+\s*){5,8})/ig, (str, $1, $2) => {
+        newBrush = newBrush.replace(/\)\s+([^\)\(]*?)\s+((\s*[0-9\.-]+\s*){5,8})/ig, (str, $1, $2) =&gt; {
             return ') ' + $1 + ' ' + $2.trim().split(/\s+/ig)
-                .map((n, i) => i >= 5 || i <= 2 ? n : (Math.round((n.includes('.')
+                .map((n, i) =&gt; i &gt;= 5 || i &lt;= 2 ? n : (Math.round((n.includes('.')
                         ? parseFloat(n.trim())
                         : parseInt(n.trim())) * amount * DIGITS) / DIGITS))
                 .join(' ') + '\n'
@@ -150,18 +150,18 @@ function scaleMap(file, amount) {
     // replace all origins with scaled
     // TODO: make this a function
     var origins = importer.regexToArray(/"origin"\s+"((\s*[0-9\.-]+\s*)*)"/ig, file, 1)
-    origins.forEach($1 => {
+    origins.forEach($1 =&gt; {
         var newOrigin = $1.trim().split(/\s+/ig)
-            .map(n => Math.round((n.includes('.')
+            .map(n =&gt; Math.round((n.includes('.')
                     ? parseFloat(n.trim())
                     : parseInt(n.trim())) * amount * DIGITS) / DIGITS)
             .join(' ')
         file = file.replace(new RegExp('"origin"\\s+"' + $1 + '"', 'ig'), '"origin" "' + newOrigin + '"')
     })
     var lips = importer.regexToArray(/"lip"\s+"((\s*[0-9\.-]+\s*)*)"/ig, file, 1)
-    lips.forEach($1 => {
+    lips.forEach($1 =&gt; {
         var newOrigin = $1.trim().split(/\s+/ig)
-            .map(n => Math.round((n.includes('.')
+            .map(n =&gt; Math.round((n.includes('.')
                     ? parseFloat(n.trim())
                     : parseInt(n.trim())) * amount * DIGITS) / DIGITS)
             .join(' ')
@@ -170,7 +170,7 @@ function scaleMap(file, amount) {
     
     // scale models
     var models = importer.regexToArray(/\{[\s\S^\}\{]*?"classname"\s+"misc_model"[\s\S^\}\{]*?\}/ig, file)
-    models.forEach(m => {
+    models.forEach(m =&gt; {
         var newModel = m
         if(m.match(/"modelscale"/i)) {
             var match = (/"modelscale"\s+"([^"]*?)"/ig).exec(m)

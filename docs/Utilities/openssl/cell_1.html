@@ -70,8 +70,8 @@ cd $ROOT/intermediate
 mkdir certs crl csr newcerts private
 chmod 700 private
 touch index.txt
-echo 1000 > serial
-echo 1000 > $ROOT/intermediate/crlnumber
+echo 1000 &gt; serial
+echo 1000 &gt; $ROOT/intermediate/crlnumber
 
 # create intermediate configuration
 cp $ROOT/openssl.cnf $ROOT/intermediate/openssl.cnf
@@ -82,7 +82,7 @@ private_key     = \$dir/private/intermediate.key.pem
 certificate     = \$dir/certs/intermediate.cert.pem
 crl             = \$dir/crl/intermediate.crl.pem
 policy          = policy_loose
-" >> $ROOT/intermediate/openssl.cnf
+" &gt;&gt; $ROOT/intermediate/openssl.cnf
 
 # intermediate private CA key
 cd $ROOT
@@ -115,7 +115,7 @@ openssl verify -CAfile certs/ca.cert.pem \
       
 # create certificate chain
 cat intermediate/certs/intermediate.cert.pem \
-      certs/ca.cert.pem > intermediate/certs/ca-chain.cert.pem
+      certs/ca.cert.pem &gt; intermediate/certs/ca-chain.cert.pem
 chmod 744 intermediate/certs/ca-chain.cert.pem
 
 </code></pre>

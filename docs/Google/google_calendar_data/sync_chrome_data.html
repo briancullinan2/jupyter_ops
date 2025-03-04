@@ -96,19 +96,19 @@ function syncChrome() {
     if(fs.existsSync(DOWNLOADS_PATH + '/Takeout')) {
         rimraf.sync(DOWNLOADS_PATH + '/Takeout');
     }
-    var takeouts = glob.sync('takeout-*.zip', {cwd: DOWNLOADS_PATH}).map(f => path.join(DOWNLOADS_PATH, f));
-    var takeout = takeouts.sort((a, b) => fs.statSync(a).mtime.getTime() - fs.statSync(b).mtime.getTime()).pop();
+    var takeouts = glob.sync('takeout-*.zip', {cwd: DOWNLOADS_PATH}).map(f =&gt; path.join(DOWNLOADS_PATH, f));
+    var takeout = takeouts.sort((a, b) =&gt; fs.statSync(a).mtime.getTime() - fs.statSync(b).mtime.getTime()).pop();
     console.log(takeout);
-    var shouldDownload = !fs.existsSync(takeout) || (new Date().getTime()) - fs.statSync(takeout).mtime.getTime() > 24 * 60 * 60 * 1000;
+    var shouldDownload = !fs.existsSync(takeout) || (new Date().getTime()) - fs.statSync(takeout).mtime.getTime() &gt; 24 * 60 * 60 * 1000;
     return (shouldDownload
         ? googleTakeout('chrome')
-            .then(() => {
+            .then(() =&gt; {
                 const takeout = path.join(DOWNLOADS_PATH, glob.sync('takeout-*.zip', {cwd: DOWNLOADS_PATH}).pop());
                 return unzip(takeout);
             })
         : unzip(takeout))
-        .then(() => syncChromeHistory())
-        .then(() => syncChromeBookmarks())
+        .then(() =&gt; syncChromeHistory())
+        .then(() =&gt; syncChromeBookmarks())
 }
 
 module.exports = syncChrome;

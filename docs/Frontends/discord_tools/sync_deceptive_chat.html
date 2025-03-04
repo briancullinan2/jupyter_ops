@@ -94,7 +94,7 @@ async function doDeceive(interaction) {
 
 async function doArgument(interaction) {
   let count = 0
-  return Promise.resolve(argueLlama(interaction.data.options[0].value, async (prompt, answer) => {
+  return Promise.resolve(argueLlama(interaction.data.options[0].value, async (prompt, answer) =&gt; {
     if(count == 0) {
       // don't repost original prompt
       await updateInteraction(answer.substring(0, 1800), interaction.id, interaction.token)
@@ -135,7 +135,7 @@ async function doPrivate(interaction) {
 async function syncTools(guildId = null) {
   var cmd, cmdDef
   var commandResult = await getCommands(guildId)
-  var commands = commandResult.map(command => command.name)
+  var commands = commandResult.map(command =&gt; command.name)
 
 
   cmdDef = {
@@ -153,7 +153,7 @@ async function syncTools(guildId = null) {
   if(!commands.includes('deceive')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'deceive')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'deceive')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -177,15 +177,15 @@ async function syncTools(guildId = null) {
   if(!commands.includes('argue')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'argue')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'argue')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
   interactionsCommands['argue'] = doArgument
 
 
-  var toRemove = commandResult.filter(c => !ALL_COMMANDS.includes(c.name))
-  for(var i = 0; i < toRemove.length; i++) {
+  var toRemove = commandResult.filter(c =&gt; !ALL_COMMANDS.includes(c.name))
+  for(var i = 0; i &lt; toRemove.length; i++) {
     await deleteCommand(toRemove[i].id, guildId)
   }
 

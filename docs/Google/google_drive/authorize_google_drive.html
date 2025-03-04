@@ -98,7 +98,7 @@ function authorizeDrive() {
         keyFile: credentials,
         scopes: GOOGLE_AUTH_SCOPE
     }).getClient()
-        .then(client => google.drive({version: 'v3', auth: client}))
+        .then(client =&gt; google.drive({version: 'v3', auth: client}))
 }
 
 module.exports = authorizeDrive;

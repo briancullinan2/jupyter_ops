@@ -101,7 +101,7 @@ let sessionModified = 0;
 function readSessions() {
     try {
         if (fs.existsSync(SESSIONS_PATH)
-            && fs.statSync(SESSIONS_PATH).mtime.getTime() > sessionModified) {
+            &amp;&amp; fs.statSync(SESSIONS_PATH).mtime.getTime() &gt; sessionModified) {
             sessionModified = fs.statSync(SESSIONS_PATH).mtime.getTime();
             sessions = JSON.parse(fs.readFileSync(SESSIONS_PATH)
                 .toString());
@@ -120,7 +120,7 @@ function updateOrAddSession(currentSession) {
         return sessions;
     }
     // don't update sessions while scanning
-    const updateSession = sessions.filter(s => s[1] === currentSession)[0];
+    const updateSession = sessions.filter(s =&gt; s[1] === currentSession)[0];
     if (typeof updateSession !== 'undefined') {
         console.log('update ' + currentSession);
         updateSession[0] = (new Date()).getTime();

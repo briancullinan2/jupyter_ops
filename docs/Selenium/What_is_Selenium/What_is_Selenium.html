@@ -96,17 +96,17 @@ function getSeleniumServer(name = 'act-selenium') {
     }
     seleniumDocker(DOCKERFILE);
     return execCmd('docker ps -a')
-        .then(r => {
-            if (r[0].indexOf(name) > -1) {
+        .then(r =&gt; {
+            if (r[0].indexOf(name) &gt; -1) {
                 return execCmd('docker stop ' + name)
-                    .then(r => new Promise(resolve =>
-                        setTimeout(() => resolve(r), 1000)))
-                    .then(() => execCmd('docker rm ' + name));
+                    .then(r =&gt; new Promise(resolve =&gt;
+                        setTimeout(() =&gt; resolve(r), 1000)))
+                    .then(() =&gt; execCmd('docker rm ' + name));
             }
         })
-        .then(() => new Promise(resolve =>
-            setTimeout(() => resolve(), 1000)))
-        .then(() => {
+        .then(() =&gt; new Promise(resolve =&gt;
+            setTimeout(() =&gt; resolve(), 1000)))
+        .then(() =&gt; {
             var build = 'docker build -t ' + name + ' "'
                 + path.dirname(DOCKERFILE) + '"\n'
                 + 'docker run --shm-size=3g -d '
@@ -122,15 +122,15 @@ function getSeleniumServer(name = 'act-selenium') {
                 + name + '\n';
             return execCmd(build)
         })
-        .then(r => new Promise(resolve => setTimeout(() => resolve(r), 6000)))
+        .then(r =&gt; new Promise(resolve =&gt; setTimeout(() =&gt; resolve(r), 6000)))
 };
 module.exports = getSeleniumServer;
 
 if(typeof $ !== 'undefined') {
     $.async();
     getSeleniumServer()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e));
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e));
 }
 </code></pre>
 

@@ -84,7 +84,7 @@ function gitRemote(project) {
     return execCmd(`
 git remote -v
 `, {cwd: project})
-        .then(r => r[0].trim().split('\n').map(l => {
+        .then(r =&gt; r[0].trim().split('\n').map(l =&gt; {
             if(!l) return {function: '(fetch)', name: false}
             var line = l.split('\t');
             return {
@@ -100,7 +100,7 @@ function gitBranch(project, remote) {
     return execCmd(`
 git remote show ${remote}
 `, {cwd: project})
-        .then(r => `${remote}/${(/\s*HEAD branch:\s*(.*?)\s/ig).exec(r[0].trim())[1]}`)
+        .then(r =&gt; `${remote}/${(/\s*HEAD branch:\s*(.*?)\s/ig).exec(r[0].trim())[1]}`)
 }
 
 function gitLog(project, remote, branch) {
@@ -113,7 +113,7 @@ git log --name-only --pretty=format:"%h%x09%an%x09%aD%x09%s" ${branch}`
         cmd = `git log --name-only --pretty=format:"%h%x09%an%x09%aD%x09%s" ${branch}`
         
     return execCmd(cmd, {cwd: project})
-        .then(log => log[remote ? 1 : 0].split('\n\n').map(l => {
+        .then(log =&gt; log[remote ? 1 : 0].split('\n\n').map(l =&gt; {
             var fields = l.split('\n')[0].split('\t');
             var files = l.split('\n').slice(1);
             return {
@@ -135,23 +135,23 @@ function gitHistory(project, summary, branch) {
         summary = 'Worked on Quake 3'
     }
     return gitRemote(project)
-        .then(remotes => remote = remotes.filter(r => r.function == '(fetch)')[0].name)
-        .then(() => branch || gitBranch(project, remote))
-        .then(b => branch = b)
-        .then(() => gitLog(project, remote, branch))
-        .then(commits => {
+        .then(remotes =&gt; remote = remotes.filter(r =&gt; r.function == '(fetch)')[0].name)
+        .then(() =&gt; branch || gitBranch(project, remote))
+        .then(b =&gt; branch = b)
+        .then(() =&gt; gitLog(project, remote, branch))
+        .then(commits =&gt; {
         console.log(commits)
             // group commits by a few hours and make a working event
-            var grouped = _.groupBy(commits, c => {
+            var grouped = _.groupBy(commits, c =&gt; {
                 // round to the nearest 3 hours
                 return Math.round(c.date.getTime() / (60 * 60 * 3 * 1000)) * 60 * 60 * 3 * 1000;
             })
-            return Object.keys(grouped).map(t => {
-                var min = _.min(grouped[t].map(g => g.date)).getTime();
+            return Object.keys(grouped).map(t =&gt; {
+                var min = _.min(grouped[t].map(g =&gt; g.date)).getTime();
                 min = Math.round(min / (60 * 60 * 3 * 1000)) * 60 * 60 * 3 * 1000
-                var max = _.max(grouped[t].map(g => g.date)).getTime();
+                var max = _.max(grouped[t].map(g =&gt; g.date)).getTime();
                 max = Math.round(max / (60 * 60 * 3 * 1000)) * 60 * 60 * 3 * 1000
-                var s = grouped[t].map(g => g.message).filter(g => g != 'no message').join(', ')
+                var s = grouped[t].map(g =&gt; g.message).filter(g =&gt; g != 'no message').join(', ')
                 return {
                     start: {
                         dateTime: ISODateString(new Date(parseInt(min) - offset))
@@ -164,10 +164,10 @@ function gitHistory(project, summary, branch) {
                 }
             })
         })
-        .then(results => {
+        .then(results =&gt; {
             return importer.runAllPromises(results
-                .map(event => resolve => updateEvent(event, {})
-                    .then(r => resolve(r))))
+                .map(event =&gt; resolve =&gt; updateEvent(event, {})
+                    .then(r =&gt; resolve(r))))
         })
 }
 

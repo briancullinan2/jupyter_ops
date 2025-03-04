@@ -102,18 +102,18 @@ var MAX_SESSIONS = 4;
 function connectSession(client) {
     var isError = false;
     return lockPromise(true, true)
-        .then(() => getSessions(client, true))
+        .then(() =&gt; getSessions(client, true))
         // save current session
-        .then(validSessions => {
+        .then(validSessions =&gt; {
             isError = false;
             var sessions = readSessions();
             // the next null or end will be the next available profile id
-            var index = sessions.map(s => s[1]).indexOf(validSessions[0] || 0);
+            var index = sessions.map(s =&gt; s[1]).indexOf(validSessions[0] || 0);
             if(index === -1) {
                 console.log('session not found ' + validSessions[0]);
                 index = sessions.length;
             }
-            if(index >= MAX_SESSIONS) {
+            if(index &gt;= MAX_SESSIONS) {
                 throw new Error('Already running max sessions ' + MAX_SESSIONS);
             }
             client.options.connectionRetryTimeout = TIMEOUT;
@@ -126,15 +126,15 @@ function connectSession(client) {
                 console.log('new session ' + index);
             }
         })
-        .then(() => client.status())
-        .then(r => updateOrAddSession(client.sessionId))
-        .catch(e => {
+        .then(() =&gt; client.status())
+        .then(r =&gt; updateOrAddSession(client.sessionId))
+        .catch(e =&gt; {
             console.log(e);
             client.sessionId = null;
             isError = e;
         })
-        .then(() => lockPromise(false, true))
-        .then(() => {
+        .then(() =&gt; lockPromise(false, true))
+        .then(() =&gt; {
             if(isError)
                 throw isError;
             return client.sessionId;

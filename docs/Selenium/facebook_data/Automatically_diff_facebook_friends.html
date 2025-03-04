@@ -87,10 +87,10 @@ var project = PROFILE_PATH + '/Conversations';
 function getFriends(file) {
     var html = fs.readFileSync(file).toString();
     return importer.regexToArray(/href="([^"]*)/ig, html, 1)
-        .filter(h => h.indexOf('.js') === -1 && h.indexOf('.css') === -1
-            && h.indexOf('friends_tab') > -1)
-        .map(m => (/(.*)\?/ig).exec(m)[1])
-        .filter((elem, pos, arr) => arr.indexOf(elem) === pos)
+        .filter(h =&gt; h.indexOf('.js') === -1 &amp;&amp; h.indexOf('.css') === -1
+            &amp;&amp; h.indexOf('friends_tab') &gt; -1)
+        .map(m =&gt; (/(.*)\?/ig).exec(m)[1])
+        .filter((elem, pos, arr) =&gt; arr.indexOf(elem) === pos)
 };
 
 function getFriendsDiff() {
@@ -99,25 +99,25 @@ function getFriendsDiff() {
         'scrape facebook profile',
         'scrape facebook friends'
     ])
-        .then(r => r.scrapeFacebookFriends())
-        .then(doc => {
+        .then(r =&gt; r.scrapeFacebookFriends())
+        .then(doc =&gt; {
             var date = new Date();
             fs.writeFileSync(project + '/friendlist-' + date.getFullYear()
                 + '-' + (date.getMonth() + 1)
-                + '-' + date.getDate() + '.htm', '<html>' + doc + '</html>');
+                + '-' + date.getDate() + '.htm', '&lt;html&gt;' + doc + '&lt;/html&gt;');
             var friends = glob.sync('**/*friend*', {cwd: project, nodir: true});
-            friends.sort((a, b) => new Date(fs.statSync(path.join(project, a)).mtime).getTime() - new Date(fs.statSync(
+            friends.sort((a, b) =&gt; new Date(fs.statSync(path.join(project, a)).mtime).getTime() - new Date(fs.statSync(
                 path.join(project, b)).mtime).getTime());
             //console.log(friends);
             var urls = getFriends(path.join(project, friends.pop()));
             //console.log(urls);
             var urls2 = getFriends(path.join(project, friends.pop()));
             //console.log(urls2);
-            var diff = urls.filter(u => urls2.indexOf(u) === -1)
-                .concat(urls2.filter(u => urls.indexOf(u) === -1))
+            var diff = urls.filter(u =&gt; urls2.indexOf(u) === -1)
+                .concat(urls2.filter(u =&gt; urls.indexOf(u) === -1))
             return diff;
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 module.exports = getFriendsDiff;
 </code></pre>

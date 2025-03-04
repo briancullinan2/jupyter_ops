@@ -102,24 +102,24 @@ function standardCompare(type, expected) {
 }
 
 function arrayCompare(compare, specification, loosey) {
-    var match = specification.map(i => {
+    var match = specification.map(i =&gt; {
         try {
             return interface(compare, i, loosey);
         } catch (e) {
             return e;
         }
-    }).filter(s => !s || s.constructor !== Error);
-    if(match.length > 0) {
+    }).filter(s =&gt; !s || s.constructor !== Error);
+    if(match.length &gt; 0) {
         return match[0];
     }
     typeErrorTemplate(void 0,
                       void 0,
                       typeof compare,
-                      specification.map(s => typeof s));
+                      specification.map(s =&gt; typeof s));
 }
 
 function objectCompare(compare, specification, loosey) {
-    var match = Object.keys(specification).reduce((map, k) => {
+    var match = Object.keys(specification).reduce((map, k) =&gt; {
         try {
             var m = interface(compare[k], specification[k], loosey);
             if(k === 'kernel_config') {
@@ -151,13 +151,13 @@ function interface(compare, specification, loosey) {
         case Array.prototype:
             // if it is an empty array to the actual compare on the object,
             //   if it is not an empty array compare to each type in the array
-            if(specification.length > 0) {
+            if(specification.length &gt; 0) {
                 return arrayCompare(compare, specification, loosey)
             }
         case Object.prototype:
             // compare properties on object
-            if(Object.keys(specification).length > 0
-               && (typeof compare === 'object' || typeof compare === 'function')) {
+            if(Object.keys(specification).length &gt; 0
+               &amp;&amp; (typeof compare === 'object' || typeof compare === 'function')) {
                return objectCompare(compare, specification, loosey)
             }
         default:
@@ -166,7 +166,7 @@ function interface(compare, specification, loosey) {
                //   return void 0 (undefined) instead of error
                //   only if compare it undefined,
                //   still error on other wrong types
-               || (loosey !== false && compare === void 0)) {
+               || (loosey !== false &amp;&amp; compare === void 0)) {
                 return compare;
             }
             typeErrorTemplate(void 0,

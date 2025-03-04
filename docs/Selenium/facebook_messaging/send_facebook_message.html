@@ -69,7 +69,7 @@
     var result;
     if(typeof thread !== 'undefined') {
         result = client.getUrl()
-            .then(url => url.indexOf(thread) > -1
+            .then(url =&gt; url.indexOf(thread) &gt; -1
                   ? []
                   : client.url(thread));
     } else {
@@ -82,20 +82,20 @@
         .keys('a')
         .keys('NULL')
         .keys('Delete')
-        .then(() => importer.runAllPromises(parts.map((t, i) => resolve => {
+        .then(() =&gt; importer.runAllPromises(parts.map((t, i) =&gt; resolve =&gt; {
             if(i === parts.length - 1) {
-                return client.keys(t).then(() => resolve());
+                return client.keys(t).then(() =&gt; resolve());
             }
             return client
                 .keys(t)
                 .keys('Shift')
                 .keys('Enter')
                 .keys('NULL')
-                .catch(e => console.log(e))
-                .then(() => resolve());
+                .catch(e =&gt; console.log(e))
+                .then(() =&gt; resolve());
         })))
         .keys('\uE007')
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 module.exports = sendFacebookMessage;
 </code></pre>

@@ -69,7 +69,7 @@
 <pre class="javascript"><code>const fs = require('fs');
 
 function decodeJupyterNotebook(filePath) {
-    fs.readFile(filePath, 'utf8', (err, data) => {
+    fs.readFile(filePath, 'utf8', (err, data) =&gt; {
         if (err) {
             console.error(err);
             return;
@@ -79,7 +79,7 @@ function decodeJupyterNotebook(filePath) {
             const notebook = JSON.parse(data);
             const cells = notebook.cells;
             
-            cells.forEach(cell => {
+            cells.forEach(cell =&gt; {
                 if (cell.cell_type === 'code') {
                     const source = cell.source.join('');
                     console.log('Decoded code cell content:');

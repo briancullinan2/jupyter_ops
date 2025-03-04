@@ -71,7 +71,7 @@ var key = JSON.parse(fs.readFileSync(path.join(PROFILE_PATH, '.credentials/aws-s
 AWS.config.update(key);
 
 function getS3Objects(bucket, marker) {
-    return new Promise((resolve, reject) => s3.listObjects({
+    return new Promise((resolve, reject) =&gt; s3.listObjects({
         Bucket: bucket || 'selenium-bots',
         Prefix: '',
         Marker: marker
@@ -81,10 +81,10 @@ function getS3Objects(bucket, marker) {
         }
         return resolve(resp);
     }))
-    .then(resp => {
+    .then(resp =&gt; {
         if(resp.IsTruncated) {
             return getS3Objects(bucket, resp.Contents[resp.Contents.length-1].Key)
-                .then(contents => resp.Contents.concat(contents));
+                .then(contents =&gt; resp.Contents.concat(contents));
         }
         return resp.Contents;
     })
@@ -92,11 +92,11 @@ function getS3Objects(bucket, marker) {
 
 function latestS3(match, bucket) {
     return getS3Objects(bucket)
-        .then(files => {
-            return files.sort((a, b) => b.LastModified.getTime() - a.LastModified.getTime())
-               .filter(s => !match || minimatch(s.Key, match))
+        .then(files =&gt; {
+            return files.sort((a, b) =&gt; b.LastModified.getTime() - a.LastModified.getTime())
+               .filter(s =&gt; !match || minimatch(s.Key, match))
                .slice(0, 5)
-               .map(i => AWS_HTTP + i.Key)
+               .map(i =&gt; AWS_HTTP + i.Key)
         });
 }
 module.exports = latestS3;
@@ -104,8 +104,8 @@ module.exports = latestS3;
 if(typeof $ !== 'undefined') {
     $.async();
     latestS3()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

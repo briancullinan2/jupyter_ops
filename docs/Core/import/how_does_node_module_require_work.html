@@ -92,7 +92,7 @@ function getCached(filepath) {
 
     // TODO: don't use cache of parent modules that have includes that have changed
     var cachedModule = Module._cache[filepath];
-    if (cachedModule && mtime < cachedModule.buildTime) {
+    if (cachedModule &amp;&amp; mtime &lt; cachedModule.buildTime) {
         return cachedModule;
     }
 }
@@ -104,14 +104,14 @@ function makeModule(code, pathToCode, ctxGlobal) {
     ctxGlobal.module = getCached(filepath)
     if (ctxGlobal.module) {
         if (!ctxGlobal.module.loaded) {
-            return ((module) => new Promise(resolve => {
-                let inter = setInterval(() => {
+            return ((module) =&gt; new Promise(resolve =&gt; {
+                let inter = setInterval(() =&gt; {
                     if (module.loaded) {
                         clearInterval(inter)
                         resolve()
                     }
                 }, 100)
-            }).then(() => module.exports))(ctxGlobal.module)
+            }).then(() =&gt; module.exports))(ctxGlobal.module)
         }
         return ctxGlobal.module.exports
     }
@@ -139,7 +139,7 @@ function makeModule(code, pathToCode, ctxGlobal) {
 
     // this is basically the magic of the 'rewire' module, reuse this?
     const validVars = Object.keys(ctxGlobal)
-        .filter(k => k.match(/^(\$\$|[a-z_][a-z0-9_]*)$/i))
+        .filter(k =&gt; k.match(/^(\$\$|[a-z_][a-z0-9_]*)$/i))
         .join(',');
 
     if (!pathToCode.includes('Core')) {
@@ -149,7 +149,7 @@ function makeModule(code, pathToCode, ctxGlobal) {
     // TODO: use the transpiler or kernels here
     try {
         ctxGlobal.module._compile(`
-        module.exports = (({${validVars}}) => {
+        module.exports = (({${validVars}}) =&gt; {
         ${code}
         return module.exports || exports || {}
         })`, filepath);

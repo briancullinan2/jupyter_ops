@@ -61,7 +61,7 @@
 
 <pre class="javascript"><code>var concatMap = function (xs, fn) {
     var res = [];
-    for (var i = 0; i < xs.length; i++) {
+    for (var i = 0; i &lt; xs.length; i++) {
         var x = fn(xs[i], i);
         if (Array.isArray(x)) res.push.apply(res, x);
         else res.push(x);
@@ -161,10 +161,10 @@ function isPadded(el) {
 }
 
 function lte(i, y) {
-  return i <= y;
+  return i &lt;= y;
 }
 function gte(i, y) {
-  return i >= y;
+  return i &gt;= y;
 }
 
 function expand(str, isTop) {
@@ -176,8 +176,8 @@ function expand(str, isTop) {
   var isNumericSequence = /^-?\d+\.\.-?\d+(?:\.\.-?\d+)?$/.test(m.body);
   var isAlphaSequence = /^[a-zA-Z]\.\.[a-zA-Z](?:\.\.-?\d+)?$/.test(m.body);
   var isSequence = isNumericSequence || isAlphaSequence;
-  var isOptions = m.body.indexOf(',') >= 0;
-  if (!isSequence && !isOptions) {
+  var isOptions = m.body.indexOf(',') &gt;= 0;
+  if (!isSequence &amp;&amp; !isOptions) {
     // {a},b}
     if (m.post.match(/,.*\}/)) {
       str = m.pre + '{' + m.body + escClose + m.post;
@@ -192,7 +192,7 @@ function expand(str, isTop) {
   } else {
     n = parseCommaParts(m.body);
     if (n.length === 1) {
-      // x{{a,b}}y ==> x{a}y x{b}y
+      // x{{a,b}}y ==&gt; x{a}y x{b}y
       n = expand(n[0], false).map(embrace);
       if (n.length === 1) {
         var post = m.post.length
@@ -224,7 +224,7 @@ function expand(str, isTop) {
       ? Math.abs(numeric(n[2]))
       : 1;
     var test = lte;
-    var reverse = y < x;
+    var reverse = y &lt; x;
     if (reverse) {
       incr *= -1;
       test = gte;
@@ -243,9 +243,9 @@ function expand(str, isTop) {
         c = String(i);
         if (pad) {
           var need = width - c.length;
-          if (need > 0) {
+          if (need &gt; 0) {
             var z = new Array(need + 1).join('0');
-            if (i < 0)
+            if (i &lt; 0)
               c = '-' + z + c.slice(1);
             else
               c = z + c;
@@ -258,8 +258,8 @@ function expand(str, isTop) {
     N = concatMap(n, function(el) { return expand(el, false) });
   }
 
-  for (var j = 0; j < N.length; j++) {
-    for (var k = 0; k < post.length; k++) {
+  for (var j = 0; j &lt; N.length; j++) {
+    for (var k = 0; k &lt; post.length; k++) {
       var expansion = pre + N[j] + post[k];
       if (!isTop || isSequence || expansion)
         expansions.push(expansion);

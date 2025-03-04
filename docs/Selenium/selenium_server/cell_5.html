@@ -73,22 +73,22 @@ var router = express.Router();
 
 function getWindowHandles() {
     return promisifyChrome('windows.getAll', {})
-        .then(windows => {
-            return {value: windows.map(w => w.id)};
+        .then(windows =&gt; {
+            return {value: windows.map(w =&gt; w.id)};
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 
-router.get('/session/:sessionId/window', (req, res) => {
+router.get('/session/:sessionId/window', (req, res) =&gt; {
     throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
 }); //,"GetWindow",ExecuteGetCurrentWindowHandle,
-router.get('/session/:sessionId/window_handle', (req, res) => {
+router.get('/session/:sessionId/window_handle', (req, res) =&gt; {
     throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
 }); //,"GetWindow",ExecuteGetCurrentWindowHandle,
-router.get('/session/:sessionId/window/handles', (req, res) => {
+router.get('/session/:sessionId/window/handles', (req, res) =&gt; {
     throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
 }); //,"GetWindows",ExecuteGetWindowHandles,
-router.get('/session/:sessionId/window_handles', (req, res) => {
+router.get('/session/:sessionId/window_handles', (req, res) =&gt; {
     response(res, getWindowHandles(req.params['sessionId']));
 }); //,"GetWindows",ExecuteGetWindowHandles,
 

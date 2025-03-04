@@ -94,19 +94,19 @@ function takeoutProducts(product) {
         .pause(500)
         .click('//*[contains(@role, "button")][contains(., "Create archive")]')
         .waitUntil(
-            () => client.isExisting('//tr[1]//*[contains(@href, "takeout/download")]'),
+            () =&gt; client.isExisting('//tr[1]//*[contains(@href, "takeout/download")]'),
             120000,
             '')
         .isVisible('iframe[src*="settings"]')
-        .then(is => is ? client.execute(() => {
+        .then(is =&gt; is ? client.execute(() =&gt; {
             document.querySelector('iframe[src*="settings"]').remove();
         }) : [])
         .click('//tr[1]/td[last()]//*[contains(@href, "takeout/download")]')
         .pause(1000)
         .isVisible('#passwordNext')
-        .then(is => is ? client
+        .then(is =&gt; is ? client
             .loginGoogle()
-            .then(is => is ? client.execute(() => {
+            .then(is =&gt; is ? client.execute(() =&gt; {
                 const question = document.querySelector('iframe[src*="settings"]');
                 if(question) {
                     question.remove();
@@ -115,31 +115,31 @@ function takeoutProducts(product) {
              : [])
         // wait for download
         .pause(10000)
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 
 function downloadGoogleTakeout(products) {
     var regex = new RegExp(products, 'ig');
     return listTakeouts()
-        .then(ids => {
+        .then(ids =&gt; {
             return ids
-                .map(k => ({
+                .map(k =&gt; ({
                     id: k.id + '',
                     label: k.label + ''
                 }))
-                .filter(k => k.id != '_gd' && (products.indexOf('all') > -1
+                .filter(k =&gt; k.id != '_gd' &amp;&amp; (products.indexOf('all') &gt; -1
                     || k.id.match(regex) != null || k.label.match(regex) != null))
         })
-        .then(selectedProducts => {
+        .then(selectedProducts =&gt; {
             console.log(selectedProducts);
             return importer.runAllPromises(selectedProducts
-                .map(p => (resolve) => {
+                .map(p =&gt; (resolve) =&gt; {
                     return takeoutProducts(p)
-                        .then(r => resolve(r))
-                        .catch(e => resolve(e))
+                        .then(r =&gt; resolve(r))
+                        .catch(e =&gt; resolve(e))
                 }))
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 if (typeof client.downloadGoogleTakeout == 'undefined') {
     client.addCommand('downloadGoogleTakeout', downloadGoogleTakeout);

@@ -56,13 +56,13 @@
 
 
 <pre class="javascript"><code>$.async();
-//  /usr/bin/osascript -e 'do shell script "/path/to/myscript args 2>&1 etc" with administrator privileges'
+//  /usr/bin/osascript -e 'do shell script "/path/to/myscript args 2&gt;&amp;1 etc" with administrator privileges'
 var exec = require('child_process').exec;
-var installCmd = exec('npm install rimraf JSONStream', () => {
+var installCmd = exec('npm install rimraf JSONStream', () =&gt; {
     $.done('installed basic node utilities, rimraf, JSONStream, etc');
 });
-installCmd.stdout.on('data', (d) => console.log(d));
-installCmd.stderr.on('data', (d) => console.log(d));
+installCmd.stdout.on('data', (d) =&gt; console.log(d));
+installCmd.stderr.on('data', (d) =&gt; console.log(d));
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

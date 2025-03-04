@@ -102,32 +102,32 @@ function getSessions(client, inactive = false) {
     const sessions = readSessions();
     const original = client.sessionId;
     var active = [].concat(sessions)
-        .filter(session => typeof session[1] !== 'undefined'
-                && session[1] !== null && session[1].length > 0);
+        .filter(session =&gt; typeof session[1] !== 'undefined'
+                &amp;&amp; session[1] !== null &amp;&amp; session[1].length &gt; 0);
     if(inactive) {
-        active = active.filter(session => (new Date()).getTime() - session[0] > TIMEOUT);
+        active = active.filter(session =&gt; (new Date()).getTime() - session[0] &gt; TIMEOUT);
     }
     var cancelled = false;
-    return importer.runAllPromises(active.map(session => (resolve) => {
+    return importer.runAllPromises(active.map(session =&gt; (resolve) =&gt; {
         if(cancelled) {
             return resolve();
         }
         console.log(session);
         return verifySession(client, session)
-            .catch(e => console.log(e))
-            .then(r => {
+            .catch(e =&gt; console.log(e))
+            .then(r =&gt; {
                 // only try to find 1 decent session
-                if(inactive && typeof r !== 'undefined') {
+                if(inactive &amp;&amp; typeof r !== 'undefined') {
                     cancelled = true;
                 }
                 return resolve(r);
             })
     }))
-        .then(available => {
+        .then(available =&gt; {
             client.sessionId = original;
             return available
-                .filter(sess => typeof sess !== 'undefined' && sess !== null)
-                .filter((elem, pos, arr) => arr.indexOf(elem) === pos)
+                .filter(sess =&gt; typeof sess !== 'undefined' &amp;&amp; sess !== null)
+                .filter((elem, pos, arr) =&gt; arr.indexOf(elem) === pos)
         })
 }
 

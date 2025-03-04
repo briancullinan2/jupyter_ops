@@ -103,25 +103,25 @@ var first = false;
 function addPlugins(client) {
     if(!first) {
         first = true;
-        client.on('result', (result) => {
+        client.on('result', (result) =&gt; {
             if(scanning) {
                 return;
             }
             const currentSession = client.sessionId;
-            const updateSession = sessions.filter(s => s[1] === currentSession)[0];
+            const updateSession = sessions.filter(s =&gt; s[1] === currentSession)[0];
 
             // only update the session often enough that it isn't reused by another process
             if(typeof updateSession !== 'undefined') {
-                if((new Date()).getTime() - updateSession[0] <= TIMEOUT / 2) {
+                if((new Date()).getTime() - updateSession[0] &lt;= TIMEOUT / 2) {
                     return;
                 }
             }
 
             return lockPromise(true)
-                .then(() => updateOrAddSession(currentSession))
-                .then(s => (sessions = s))
-                .then(() => lockPromise(false))
-                .catch(e => console.log(e));
+                .then(() =&gt; updateOrAddSession(currentSession))
+                .then(s =&gt; (sessions = s))
+                .then(() =&gt; lockPromise(false))
+                .catch(e =&gt; console.log(e));
         });
     }
 }
@@ -133,10 +133,10 @@ function verifySession(client, session) {
     alreadyScanning = scanning;
     scanning = true
     return client.getWindowHandle()
-        .then(r => client.switchToWindow(r))
-        .then(() => client.status())
-        .then(s => session[1])
-        .catch(e => {
+        .then(r =&gt; client.switchToWindow(r))
+        .then(() =&gt; client.status())
+        .then(s =&gt; session[1])
+        .catch(e =&gt; {
             scanning = false || alreadyScanning;
             if(e.message === 'ESOCKETTIMEDOUT' || e.message.includes('no such session') || e.message.includes('chrome not reachable')) {
                 console.log('unusable session ' + session);
@@ -148,10 +148,10 @@ function verifySession(client, session) {
                 throw e;
             }
             // if the session is really old and has an error delete it from the list
-            //const index = sessions.map(s => s[1]).indexOf(session[1]);
+            //const index = sessions.map(s =&gt; s[1]).indexOf(session[1]);
             //sessions[index][1] = null;
         })
-        .then(r => {
+        .then(r =&gt; {
             scanning = false || alreadyScanning;
             return r;
         })

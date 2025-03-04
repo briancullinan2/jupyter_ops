@@ -142,25 +142,25 @@ function createWebdriverClient(host, port) {
     };
     
     //console.log('deleting webdriver from cache');
-    //Object.keys(require.cache).filter(k => k.includes('webdriver') || k.includes('wdio'))
-    //    .forEach(k => delete require.cache[k]);
+    //Object.keys(require.cache).filter(k =&gt; k.includes('webdriver') || k.includes('wdio'))
+    //    .forEach(k =&gt; delete require.cache[k]);
     var promise = remote(webdriverServer);
     var client;
-    //remote.on('error', e => console.log(e.message));
-    //remote.on('end', () => console.log('Daemon: Closing browser'));
+    //remote.on('error', e =&gt; console.log(e.message));
+    //remote.on('end', () =&gt; console.log('Daemon: Closing browser'));
     const connectSession = importer.import('connect webdriver session');
     return promise
-        .then(r => client = r)
-        .then(() => connectSession(client))
-        .then(() => getSessions(client))
-        .then(() => onlyOneWindow(client))
-        .then(() => getAllSessionUrls(client))
-        .catch(e => {
+        .then(r =&gt; client = r)
+        .then(() =&gt; connectSession(client))
+        .then(() =&gt; getSessions(client))
+        .then(() =&gt; onlyOneWindow(client))
+        .then(() =&gt; getAllSessionUrls(client))
+        .catch(e =&gt; {
             console.log(e);
             isError = e;
             throw new Error('there is an error with the client ' + e);
         })
-        .then(() => client);
+        .then(() =&gt; client);
 }
 
 module.exports = createWebdriverClient;

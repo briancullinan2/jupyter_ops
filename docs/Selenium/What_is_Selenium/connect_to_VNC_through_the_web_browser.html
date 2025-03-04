@@ -63,7 +63,7 @@
 
 
 <pre class="javascript"><code>function urlEncode(obj) {
-    return Object.keys(obj).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])).join('&');
+    return Object.keys(obj).map(k =&gt; encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])).join('&amp;');
 }
 
 var vncIframe = (options = {
@@ -74,13 +74,13 @@ var vncIframe = (options = {
     resize: 'scale',
     view_only: true,
     reconnect: true
-}) => {
+}) =&gt; {
     console.log(`//localhost:6080/vnc.html?${urlEncode(options)}`);
     return `
-<div style="display:block; width:100%; padding-bottom:69%;position:relative;">
-<iframe id="vnc"
+&lt;div style="display:block; width:100%; padding-bottom:69%;position:relative;"&gt;
+&lt;iframe id="vnc"
 style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;border:0;" 
-src="//localhost:6080/vnc.html?${urlEncode(options)}"></iframe></div>
+src="//localhost:6080/vnc.html?${urlEncode(options)}"&gt;&lt;/iframe&gt;&lt;/div&gt;
 `;
 }
 module.exports = vncIframe;

@@ -82,11 +82,11 @@
 <pre class="python"><code>def find_in_sorted(nums, target):
     """Binary search."""
     start, end = 0, len(nums)-1
-    while start < end:
+    while start &lt; end:
         mid = (start+end)//2
         if nums[mid] == target:
             return mid
-        elif nums[mid] < target:
+        elif nums[mid] &lt; target:
             start = mid+1
         else:
             end = mid-1

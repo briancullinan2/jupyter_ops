@@ -137,7 +137,7 @@ function convertXPathToCss(path) {
         .replace(/\/parent::[a-z-]+\/[a-z-]+\[([0-9]+)]/ig, ':nth-child($1)')
         .replace(/^\/\//ig, '')
         .replace(/\/\//ig, ' ')
-        .replace(/\//ig, ' > ');
+        .replace(/\//ig, ' &gt; ');
 }
 
 

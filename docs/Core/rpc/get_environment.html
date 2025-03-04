@@ -79,7 +79,7 @@
 var path = require('path');
 var Mustache = require('mustache');
 
-var ENVIRONMENT = (key) => Object.assign({}, {
+var ENVIRONMENT = (key) =&gt; Object.assign({}, {
     'DEFAULT': {
         'PROFILE_PATH': '{{#HOME}}{{{.}}}{{/HOME}}{{^HOME}}{{#HOMEPATH}}{{{.}}}{{/HOMEPATH}}{{^HOMEPATH}}{{{USERPROFILE}}}{{/HOMEPATH}}{{/HOME}}',
         'DOWNLOAD_PATH': '{{{PROFILE_PATH}}}/Downloads'
@@ -128,7 +128,7 @@ var ENVIRONMENT = (key) => Object.assign({}, {
     }
 }[key] || {});
 
-var assign = (key) => {
+var assign = (key) =&gt; {
     var envs = Object.assign.apply(null, [
         {
             'ENVIRONMENT': key || ''
@@ -136,7 +136,7 @@ var assign = (key) => {
         ENVIRONMENT('DEFAULT'),
         ENVIRONMENT(key) || {}
     ])
-    var env = Object.keys(envs).reduce((env, e) => {
+    var env = Object.keys(envs).reduce((env, e) =&gt; {
         var properties = Object.assign({}, process.env, env);
         //Mustache.parse(envs[e]);
         env[e.toUpperCase()] = Mustache.render(envs[e], properties, properties);

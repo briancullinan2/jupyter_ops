@@ -83,8 +83,8 @@ listEvents({
     timeMax: ISODateString(new Date('2017/09/22')),
     q: 'study sauce'
 })
-    .then(r => $.sendResult(sumEvents(r)))
-    .catch(e => $.sendError(e));
+    .then(r =&gt; $.sendResult(sumEvents(r)))
+    .catch(e =&gt; $.sendError(e));
 
 </code></pre>
 

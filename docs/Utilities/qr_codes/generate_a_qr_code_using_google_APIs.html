@@ -61,12 +61,12 @@ var first = 'Elvis';
 var last = 'Presley';
 var phone = '5558675309';
 var email = 'dawid@gmail.com';
-var qr = `https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=BEGIN:VCARD%0AN:${first}%20${last}%0ATEL;CELL:${phone}%0AEMAIL:${email}%0AEND:VCARD`
+var qr = `https://chart.googleapis.com/chart?chs=150x150&amp;cht=qr&amp;chl=BEGIN:VCARD%0AN:${first}%20${last}%0ATEL;CELL:${phone}%0AEMAIL:${email}%0AEND:VCARD`
 
 console.log(qr);
 $.async(request(qr)
-         .then(r => $.png(new Buffer(r.body).toString('base64')))
-         .catch(e => $.sendError(e)))
+         .then(r =&gt; $.png(new Buffer(r.body).toString('base64')))
+         .catch(e =&gt; $.sendError(e)))
 
 </code></pre>
 

@@ -80,7 +80,7 @@ apply
         partner2[style = invis]
         shared2[style = invis]
         customer2[style = invis]
-        partner2 -> shared2 -> customer2[style = 'invis']
+        partner2 -&gt; shared2 -&gt; customer2[style = 'invis']
     }
 
 
@@ -90,7 +90,7 @@ apply
         label = 'Customer'
 
         customerAnchor[style = invis]
-        customer2 -> customerAnchor[style = 'invis'
+        customer2 -&gt; customerAnchor[style = 'invis'
         constraint = false
     ]
 
@@ -116,7 +116,7 @@ apply
                     confirm
                     funnelFooter
                 }
-            ->
+            -&gt;
                 {
                     rank = same
                     subtotal
@@ -135,7 +135,7 @@ apply
                 productDescription
                 productSummary
             }
-        ->
+        -&gt;
             {
                 rank = same
                 productTile
@@ -160,7 +160,7 @@ apply
                 contact
                 demo
             }
-        ->
+        -&gt;
             {
                 rank = same
                 home
@@ -182,7 +182,7 @@ apply
         billingOptions[shape = box, label = 'Billing']
 
         partnerAnchor[style = invis]
-        partner2 -> partnerAnchor[style = 'invis'
+        partner2 -&gt; partnerAnchor[style = 'invis'
         constraint = false
     ]
 
@@ -195,7 +195,7 @@ apply
         label = 'Shared Components'
 
         sharedAnchor[style = invis]
-        shared2 -> sharedAnchor[style = 'invis'
+        shared2 -&gt; sharedAnchor[style = 'invis'
         constraint = false
     ]
 
@@ -216,7 +216,7 @@ apply
                 login
                 logout
             }
-        ->
+        -&gt;
             {
                 rank = same
                 register
@@ -243,7 +243,7 @@ apply
                 footer
                 language
             }
-        ->
+        -&gt;
             {
                 rank = same
                 menu
@@ -275,7 +275,7 @@ apply
                 actpremium
                 actpremiumcloud
             }
-        ->
+        -&gt;
             {
                 rank = same
                 actpro
@@ -288,7 +288,7 @@ apply
 
     }
 
-    partnerAnchor -> sharedAnchor -> customerAnchor[style = 'invis'
+    partnerAnchor -&gt; sharedAnchor -&gt; customerAnchor[style = 'invis'
     minlen = 3
 ]
 }

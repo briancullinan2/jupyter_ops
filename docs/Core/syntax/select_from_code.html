@@ -148,7 +148,7 @@ function exprToXpath(code) {
         // select all elements from func that match param name
         //   TODO: default functionality can be overridden by specifying
         //   a function as the default parameter value
-        (name) => selectAst([`BlockStatement//*[@name="${name}"]`], code)[0]
+        (name) =&gt; selectAst([`BlockStatement//*[@name="${name}"]`], code)[0]
     ], code)[0]; // TODO: make multiple expressions?
     if(!expression) {
         throw new Error(`can't match expression ${JSON.stringify(htmlToTree(code))}`)

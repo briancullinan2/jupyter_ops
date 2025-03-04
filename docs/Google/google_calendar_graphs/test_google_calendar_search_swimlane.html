@@ -76,31 +76,31 @@ var {
 var now = new Date();
 function calendarSearchToSwimlane(searches) {
     return importer.runAllPromises(searches
-        .map((s, i) => (resolve) => listEvents({
+        .map((s, i) =&gt; (resolve) =&gt; listEvents({
             auth: options.auth,
             q: s
         })
-            .then(r => {
+            .then(r =&gt; {
                 //console.log(s);
-                //console.log(r.map(e => e.event.summary));
-                resolve(r.map(e => ({
+                //console.log(r.map(e =&gt; e.event.summary));
+                resolve(r.map(e =&gt; ({
                     id: e.event.id,
                     lane: i,
                     start: new Date(e.event.start.dateTime),
                     end: new Date(e.event.end.dateTime),
-                    class: e.event.end.dateTime > now ? 'future' : 'past',
+                    class: e.event.end.dateTime &gt; now ? 'future' : 'past',
                     desc: e.event.summary
                 })));
             })
-            .catch(e => console.log(e))))
-        .then(r => d3Swimlane({
-            lanes: searches.map((s, i) => ({
+            .catch(e =&gt; console.log(e))))
+        .then(r =&gt; d3Swimlane({
+            lanes: searches.map((s, i) =&gt; ({
                 id: i,
                 label: s
             })),
             items: [].concat(...r)
         }))
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 
 $.async();
@@ -118,8 +118,8 @@ calendarSearchToSwimlane([
     '"c#"',
     'docker'
 ])
-    .then(r => $.html(r))
-    .catch(e => $.sendError(e))
+    .then(r =&gt; $.html(r))
+    .catch(e =&gt; $.sendError(e))
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

@@ -96,8 +96,8 @@ async function importSheet(link, domain) {
     await getTemplateProperties(key, properties, templates)
     var page = await wrapTemplate('', key, properties[key], properties)
     var resources = (await collectTemplateResources(key, page, properties, templates, domain))
-        .filter((cur, i, arr) => arr.indexOf(cur) == i)
-        .filter(r => !r.includes(':') && r.includes('.'))
+        .filter((cur, i, arr) =&gt; arr.indexOf(cur) == i)
+        .filter(r =&gt; !r.includes(':') &amp;&amp; r.includes('.'))
     return resources
 }
 

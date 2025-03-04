@@ -62,7 +62,7 @@
 
 
 <pre class="bash"><code>if [[ -n $1 ]]; \
-    then gsutil defacl ch -u AllUsers:R "$1" && \
+    then gsutil defacl ch -u AllUsers:R "$1" &amp;&amp; \
     gsutil acl ch -u AllUsers:R "$1/**"; \
 fi;
 </code></pre>

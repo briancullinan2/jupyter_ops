@@ -81,14 +81,14 @@ const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
 async function askLlamaAboutCategories(query) {
   // TODO: list all categories in database
   let keys = Object.keys(functionCache)
-  let categorys = keys.map(k => functionCache[k].categories)
-    .concat(keys.map(k => functionCache[k].category))
-    .filter((a, i, arr) => a && arr.indexOf(a) == i && !a.includes('\n'))
+  let categorys = keys.map(k =&gt; functionCache[k].categories)
+    .concat(keys.map(k =&gt; functionCache[k].category))
+    .filter((a, i, arr) =&gt; a &amp;&amp; arr.indexOf(a) == i &amp;&amp; !a.includes('\n'))
 
   // TODO: ask llm if any of the categories match, don't choose best one, choose all matches
   let returnValues = []
   let functions = []
-  for(let i = 0; i < categorys.length; i++) {
+  for(let i = 0; i &lt; categorys.length; i++) {
     let category = categorys[i]
     functions[functions.length] = category
 
@@ -99,7 +99,7 @@ async function askLlamaAboutCategories(query) {
         returnValues = returnValues.concat(result)
     }
   }
-  if(functions.length > 0) {
+  if(functions.length &gt; 0) {
       let result = await askLlamaAboutFunctions(query, functions, [], true)
       functions = []
       if(result)
@@ -107,9 +107,9 @@ async function askLlamaAboutCategories(query) {
   }
 
   // TODO: return notebook filenames that contain matching categories
-  let matching = keys.filter(k => returnValues.includes(functionCache[k].category) || returnValues.includes(functionCache[k].categories))
-    .map(k => k.replace(/\[[0-9]*\]/, ''))
-    .filter((a, i, arr) => a && arr.indexOf(a) == i)
+  let matching = keys.filter(k =&gt; returnValues.includes(functionCache[k].category) || returnValues.includes(functionCache[k].categories))
+    .map(k =&gt; k.replace(/\[[0-9]*\]/, ''))
+    .filter((a, i, arr) =&gt; a &amp;&amp; arr.indexOf(a) == i)
   return matching
 }
 

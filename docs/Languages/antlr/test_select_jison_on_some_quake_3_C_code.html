@@ -100,8 +100,8 @@ module.exports = testAntlr
 if(typeof $ !== 'undefined') {
     $.async()
     testAntlr()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

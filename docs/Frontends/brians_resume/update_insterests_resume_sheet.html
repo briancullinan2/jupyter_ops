@@ -89,11 +89,11 @@ var doc = 'https://docs.google.com/spreadsheets/d/1dAtBQyn5vwStM6ITn7iCpp996Sus2
 function updateInterestPage() {
     var links, interests;
     return getDataSheet(doc, 'Interests data')
-        .then(rows => interests = rows.map(r => r.category).filter((r, i, arr) => arr.indexOf(r) === i))
-        .then(() => getBookmarksFromTakeout())
-        .then(l => links = [].concat(...Object.values(l))
-              .filter(b => interests.includes(b.folder))
-              .map(b => ({
+        .then(rows =&gt; interests = rows.map(r =&gt; r.category).filter((r, i, arr) =&gt; arr.indexOf(r) === i))
+        .then(() =&gt; getBookmarksFromTakeout())
+        .then(l =&gt; links = [].concat(...Object.values(l))
+              .filter(b =&gt; interests.includes(b.folder))
+              .map(b =&gt; ({
                 category: b.folder,
                 date: b.time,
                 title: b.title,
@@ -101,11 +101,11 @@ function updateInterestPage() {
                 skills: null,
                 tools: null
             })))
-        .then(() => importer.runAllPromises(links.map(l => resolve => {
+        .then(() =&gt; importer.runAllPromises(links.map(l =&gt; resolve =&gt; {
             // category date title link skills tools
-            return updateRow(doc, r => {
-                return r.category == l.category && !r.link
-                             || r.date == l.date && r.link == l.link}, l, 'Interests data')
+            return updateRow(doc, r =&gt; {
+                return r.category == l.category &amp;&amp; !r.link
+                             || r.date == l.date &amp;&amp; r.link == l.link}, l, 'Interests data')
                 .then(resolve);
         })))
 }
@@ -116,8 +116,8 @@ if(typeof $ != 'undefined') {
     $.async();
     
     updateInterestPage()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

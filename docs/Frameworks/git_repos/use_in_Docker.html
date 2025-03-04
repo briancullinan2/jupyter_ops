@@ -77,7 +77,7 @@ RUN npm run build
 WORKDIR /home/seluser/selenium/test
 RUN npm install
 
-RUN sed -i '/wait \\$NODE_PID/inpm --prefix /home/seluser/selenium/test run static &' /opt/bin/entry_point.sh
+RUN sed -i '/wait \\$NODE_PID/inpm --prefix /home/seluser/selenium/test run static &amp;' /opt/bin/entry_point.sh
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

@@ -85,20 +85,20 @@ var getTemplateByUrl = importer.import('convert sheet helper functions')
 
 var TRIM = /^\s*\/\s*|\s*\/\s*$/ig;
 
-var isFiltered = (url) => url.split('/').length > 1
+var isFiltered = (url) =&gt; url.split('/').length &gt; 1
 
-// combine with "getSections" by using fake "{{> url/path}}" include
+// combine with "getSections" by using fake "{{&gt; url/path}}" include
 function collectRoutes(routes, properties, templates, rendered) {
     var local = routes.concat(properties['render'] || [])
-        .filter((link, i, arr) => !rendered.includes(link)
+        .filter((link, i, arr) =&gt; !rendered.includes(link)
                 // protocol means it's absolute remote path and not to try to generate it
-                && arr.indexOf(link) == i && !link.includes(':'))
+                &amp;&amp; arr.indexOf(link) == i &amp;&amp; !link.includes(':'))
 
-    local.forEach(link => rendered[rendered.length] = link)
+    local.forEach(link =&gt; rendered[rendered.length] = link)
     
     var promises = local
         // promise in series so there is no data collisions
-        .map(link => resolve => {
+        .map(link =&gt; resolve =&gt; {
             
             var trimmedBase = (properties['base'] || '').replace(TRIM, '')
             link = link.replace(/#.*$/, '') // remove hash #
@@ -115,13 +115,13 @@ function collectRoutes(routes, properties, templates, rendered) {
             newProps[key + '-' + key + '-link'] = link;
             templates[key + '-' + key] = {template: {rows: [[
                 isFiltered(link)
-                    ? `{{> ${key}/${key}-${key}-link}}`
-                    : `{{> ${key}}}`
+                    ? `{{&gt; ${key}/${key}-${key}-link}}`
+                    : `{{&gt; ${key}}}`
             ]]}}
         
             return getTemplateProperties(key + '-' + key, newProps, templates)
-                .then(() => wrapTemplate(link, key, newProps[key + '-' + key], newProps))
-                .then(page => {
+                .then(() =&gt; wrapTemplate(link, key, newProps[key + '-' + key], newProps))
+                .then(page =&gt; {
                     var pages = {};
                     pages[link] = page;
                     resolve(pages)
@@ -129,7 +129,7 @@ function collectRoutes(routes, properties, templates, rendered) {
         })
     
     return importer.runAllPromises(promises)
-        .then(results => results.reduce((obj, r) => Object.assign(obj, r), {}))
+        .then(results =&gt; results.reduce((obj, r) =&gt; Object.assign(obj, r), {}))
 }
 
 module.exports = collectRoutes;

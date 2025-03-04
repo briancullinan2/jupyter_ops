@@ -81,7 +81,7 @@ console.log(new Date(Math.round(history['Browser History'][total - 1].time_usec 
 
 var groupCounts = [];
 function addSite(label, value = 1) {
-    var site = groupCounts.filter(g => g.label === label)[0];
+    var site = groupCounts.filter(g =&gt; g.label === label)[0];
     if (typeof site === 'undefined') {
         groupCounts[groupCounts.length] = {
             label: label,
@@ -92,7 +92,7 @@ function addSite(label, value = 1) {
     }
 };
 
-for (var i = 0; i < total; i++) {
+for (var i = 0; i &lt; total; i++) {
     var uri = convertUnicode(history['Browser History'][i].url);
     if (uri.match('google.*?search')) {
         addSite('google search');
@@ -144,8 +144,8 @@ for (var i = 0; i < total; i++) {
 
 var oldGroups = groupCounts;
 groupCounts = [];
-for (var i = 0; i < oldGroups.length; i++) {
-    if (oldGroups[i].value < 300) {
+for (var i = 0; i &lt; oldGroups.length; i++) {
+    if (oldGroups[i].value &lt; 300) {
         addSite('other', oldGroups[i].value);
     } else {
         addSite(oldGroups[i].label, oldGroups[i].value);
@@ -154,8 +154,8 @@ for (var i = 0; i < oldGroups.length; i++) {
 
 $.async();
 d3PieChart(groupCounts)
-    .then(r => $.svg(r))
-    .catch(e => $.sendError(e));
+    .then(r =&gt; $.svg(r))
+    .catch(e =&gt; $.sendError(e));
 
 // TODO: show month by month, week by week?
 

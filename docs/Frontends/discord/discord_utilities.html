@@ -82,8 +82,8 @@ var mainTimer = setInterval(callResolve, 20)
 function callResolve() {
   var now = Date.now()
   var times = Object.keys(timers)
-  for(var i = 0; i < times.length; i++) {
-    if(now > times[i]) {
+  for(var i = 0; i &lt; times.length; i++) {
+    if(now &gt; times[i]) {
       try {
         Promise.resolve(timers[times[i]]())
       } catch (e) {
@@ -105,13 +105,13 @@ function addResolve(resolve, time) {
 
 async function timeout(delay) {
   var now = Date.now()
-  await new Promise(resolve => addResolve(resolve, now + delay))  
+  await new Promise(resolve =&gt; addResolve(resolve, now + delay))  
 }
 
 async function delay(prev, delay) {
   var now = Date.now()
-  if(now - prev < delay)
-    await new Promise(resolve => addResolve(resolve, now + (delay - (now - prev))))
+  if(now - prev &lt; delay)
+    await new Promise(resolve =&gt; addResolve(resolve, now + (delay - (now - prev))))
   return Date.now()
 }
 
@@ -121,7 +121,7 @@ async function wait(until, delay) {
   var result
   var now = Date.now()
   var delayed = now + delay
-  while(!result && now < delayed) {
+  while(!result &amp;&amp; now &lt; delayed) {
     await timeout(100)
     result = await until()
     now = Date.now()

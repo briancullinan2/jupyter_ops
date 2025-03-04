@@ -75,16 +75,16 @@ function placesNearby(name, nearby) {
     if(typeof nearby === 'undefined') {
         const uri = 'https://maps.googleapis.com/maps/api/place/textsearch/json' 
             + '?query=' + encodeURIComponent(name)
-            + '&key=' + API_KEY;
+            + '&amp;key=' + API_KEY;
         return request(uri)
-            .then(r => JSON.parse(r.body).results)
+            .then(r =&gt; JSON.parse(r.body).results)
     }
     const uri = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json' 
         + '?name=' + encodeURIComponent(name)
-        + '&location=' + nearby.lat + ',' + (nearby.lng || nearby.lon)
-        + '&rankby=distance&key=' + API_KEY;
+        + '&amp;location=' + nearby.lat + ',' + (nearby.lng || nearby.lon)
+        + '&amp;rankby=distance&amp;key=' + API_KEY;
     return request(uri)
-        .then(r => JSON.parse(r.body).results)
+        .then(r =&gt; JSON.parse(r.body).results)
 }
 
 module.exports = placesNearby;
@@ -94,18 +94,18 @@ if(typeof $ !== 'undefined') {
     var results;
     //placesNearby('Kazimierz World Wine Bar near', {lat:  33.505033, lng: -111.926218})
     //placesNearby('Rock Springs', lat_long)
-    placesNearby('Sportsman\'s Bar & Grill near 1000 N Humphreys St, Flagstaff')
-        .then(r => {
+    placesNearby('Sportsman\'s Bar &amp; Grill near 1000 N Humphreys St, Flagstaff')
+        .then(r =&gt; {
         console.log(r);
             results = r;
             return placeDetails(r[0].place_id);
         })
-        .then(r => {
+        .then(r =&gt; {
             Object.assign(results[0], r);
             return results;
         })
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e));
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e));
 }
 </code></pre>
 

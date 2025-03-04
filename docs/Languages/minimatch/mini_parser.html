@@ -75,7 +75,7 @@ function charSet (s) {
 
 var SUBPARSE = {}
 function parse (pattern, isSub) {
-  if (pattern.length > 1024 * 64) {
+  if (pattern.length &gt; 1024 * 64) {
     throw new TypeError('pattern is too long')
   }
 
@@ -86,7 +86,7 @@ function parse (pattern, isSub) {
   var re = ''
   var hasMagic = false
   var escaping = false
-  // ? => one single character
+  // ? =&gt; one single character
   var patternListStack = []
   var negativeLists = []
   var stateChar
@@ -121,10 +121,10 @@ function parse (pattern, isSub) {
   }
 
   for (var i = 0, len = pattern.length, c
-    ; (i < len) && (c = pattern.charAt(i))
+    ; (i &lt; len) &amp;&amp; (c = pattern.charAt(i))
     ; i++) {
     // skip over any that are escaped.
-    if (escaping && reSpecials[c]) {
+    if (escaping &amp;&amp; reSpecials[c]) {
       re += '\\' + c
       escaping = false
       continue
@@ -151,7 +151,7 @@ function parse (pattern, isSub) {
         // all of those are literals inside a class, except that
         // the glob [!a] means [^a] in regexp
         if (inClass) {
-          if (c === '!' && i === classStart + 1) c = '^'
+          if (c === '!' &amp;&amp; i === classStart + 1) c = '^'
           re += c
           continue
         }
@@ -199,7 +199,7 @@ function parse (pattern, isSub) {
         hasMagic = true
         var pl = patternListStack.pop()
         // negation is (?:(?!js)[^/]*)
-        // The others are (?:<pattern>)<type>
+        // The others are (?:&lt;pattern&gt;)&lt;type&gt;
         re += pl.close
         if (pl.type === '!') {
           negativeLists.push(pl)
@@ -282,7 +282,7 @@ function parse (pattern, isSub) {
           // no need
           escaping = false
         } else if (reSpecials[c]
-          && !(c === '^' && inClass)) {
+          &amp;&amp; !(c === '^' &amp;&amp; inClass)) {
           re += '\\'
         }
 
@@ -357,7 +357,7 @@ function parse (pattern, isSub) {
   // like 'a.xyz.yz' doesn't match.  So, the first negative
   // lookahead, has to look ALL the way ahead, to the end of
   // the pattern.
-  for (var n = negativeLists.length - 1; n > -1; n--) {
+  for (var n = negativeLists.length - 1; n &gt; -1; n--) {
     var nl = negativeLists[n]
 
     var nlBefore = re.slice(0, nl.reStart)
@@ -372,13 +372,13 @@ function parse (pattern, isSub) {
     // "after" the negated section.
     var openParensBefore = nlBefore.split('(').length - 1
     var cleanAfter = nlAfter
-    for (i = 0; i < openParensBefore; i++) {
+    for (i = 0; i &lt; openParensBefore; i++) {
       cleanAfter = cleanAfter.replace(/\)[+*?]?/, '')
     }
     nlAfter = cleanAfter
 
     var dollar = ''
-    if (nlAfter === '' && isSub !== SUBPARSE) {
+    if (nlAfter === '' &amp;&amp; isSub !== SUBPARSE) {
       dollar = '
 </body>
 
@@ -391,7 +391,7 @@ function parse (pattern, isSub) {
   // if the re is not "" at this point, then we need to make sure
   // it doesn't match against an empty path part.
   // Otherwise a/* will match a/, which it should not.
-  if (re !== '' && hasMagic) {
+  if (re !== '' &amp;&amp; hasMagic) {
     re = '(?=.)' + re
   }
 

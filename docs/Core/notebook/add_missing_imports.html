@@ -105,13 +105,13 @@ var notebookExports;
 
 function addImport(ctx) {
     var id = selectAst(`./Identifier/@name`, ctx)
-    var file = exportsCache.filter(e => e[2].includes(id))
+    var file = exportsCache.filter(e =&gt; e[2].includes(id))
     if(file.length === 1) {
         var body = selectAst([`//Program`], ctx)[0]
         var include = selectAst([`//Program/*`],
                                 `var ${id} = importNotebook("${file[0]}")`)[0]
         body.insertBefore(include, body.childNodes[0] || null)
-    } else if (file.length > 1) {
+    } else if (file.length &gt; 1) {
         throw new Error(`undefined ${id}, couldn't import ${JSON.stringify(file)}`)
     }
 }

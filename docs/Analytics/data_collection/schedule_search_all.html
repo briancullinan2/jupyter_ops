@@ -102,7 +102,7 @@ function scheduleSearch(search) {
     return (typeof options.auth === 'undefined'
            ? getOauthClient(options)
            : Promise.resolve([]))
-        .then(() => createNewEvent('meta search all', JSON.stringify(parameters, null, 4), options))
+        .then(() =&gt; createNewEvent('meta search all', JSON.stringify(parameters, null, 4), options))
 }
 module.exports = scheduleSearch;
 </code></pre>

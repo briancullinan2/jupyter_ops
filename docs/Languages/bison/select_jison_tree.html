@@ -125,7 +125,7 @@ function selectCode(descriptor, code, language) {
     // TODO: move this conversion to selectDom for all objects?
     //   No more selectTree because jsel and friends are inconsistent.
     if(typeof code.evaluate === 'undefined'
-       && typeof code.ownerDocument === 'undefined') {
+       &amp;&amp; typeof code.ownerDocument === 'undefined') {
         code = selectDom('//Program', treeToHtml(code))
         code.ownerDocument.toString = toString.bind(code, code)
     }

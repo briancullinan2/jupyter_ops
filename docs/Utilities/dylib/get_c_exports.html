@@ -76,7 +76,7 @@
 async function getExports(code) {
     const selectCode = await importer.import('select antlr tree')
     const result = await selectCode(['//functionDefinition', './declarator//declaratorid/@strdata'], code, 'cpp')
-    return result.map(e => typeof e == 'string' ? e : e[0])
+    return result.map(e =&gt; typeof e == 'string' ? e : e[0])
 }
 
 module.exports = getExports

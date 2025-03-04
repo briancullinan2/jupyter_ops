@@ -69,11 +69,11 @@
   <p>This script automates the setup of a Selenium testing environment on a Linux machine by installing required dependencies, configuring the system, and setting up the Selenium server and ChromeDriver.</p>
 
 
-<pre class="bash"><code>echo "deb http://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse \n" > /etc/apt/sources.list \
-  && echo "deb http://archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse \n" >> /etc/apt/sources.list \
-  && echo "deb http://security.ubuntu.com/ubuntu xenial-security main restricted universe multiverse \n" >> /etc/apt/sources.list \
-  && apt-get -qqy update \
-  && apt-get -qqy --no-install-recommends install \
+<pre class="bash"><code>echo "deb http://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse \n" &gt; /etc/apt/sources.list \
+  &amp;&amp; echo "deb http://archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse \n" &gt;&gt; /etc/apt/sources.list \
+  &amp;&amp; echo "deb http://security.ubuntu.com/ubuntu xenial-security main restricted universe multiverse \n" &gt;&gt; /etc/apt/sources.list \
+  &amp;&amp; apt-get -qqy update \
+  &amp;&amp; apt-get -qqy --no-install-recommends install \
     bzip2 \
     ca-certificates \
     openjdk-8-jre-headless \
@@ -84,36 +84,36 @@
     x11vnc \
     locales \
     xvfb \
-  && echo "UTC" > /etc/timezone \
-  && dpkg-reconfigure --frontend noninteractive tzdata \
-  && useradd seluser \
+  &amp;&amp; echo "UTC" &gt; /etc/timezone \
+  &amp;&amp; dpkg-reconfigure --frontend noninteractive tzdata \
+  &amp;&amp; useradd seluser \
          --shell /bin/bash  \
          --create-home \
-  && usermod -a -G sudo seluser \
-  && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
-  && echo 'seluser:secret' | chpasswd \
-  && sudo mkdir -p /opt/selenium \
-  && sudo chown seluser:seluser /opt/selenium \
-  && wget --no-verbose https://selenium-release.storage.googleapis.com/3.8/selenium-server-standalone-3.8.1.jar \
+  &amp;&amp; usermod -a -G sudo seluser \
+  &amp;&amp; echo 'ALL ALL = (ALL) NOPASSWD: ALL' &gt;&gt; /etc/sudoers \
+  &amp;&amp; echo 'seluser:secret' | chpasswd \
+  &amp;&amp; sudo mkdir -p /opt/selenium \
+  &amp;&amp; sudo chown seluser:seluser /opt/selenium \
+  &amp;&amp; wget --no-verbose https://selenium-release.storage.googleapis.com/3.8/selenium-server-standalone-3.8.1.jar \
     -O /opt/selenium/selenium-server-standalone.jar \
-  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-  && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-  && apt-get update -qqy \
-  && apt-get -qqy install \
+  &amp;&amp; wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+  &amp;&amp; echo "deb http://dl.google.com/linux/chrome/deb/ stable main" &gt;&gt; /etc/apt/sources.list.d/google-chrome.list \
+  &amp;&amp; apt-get update -qqy \
+  &amp;&amp; apt-get -qqy install \
     google-chrome-stable \
-  && CD_VERSION=$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE) \
-  && echo "Using chromedriver version: "$CD_VERSION \
-  && wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CD_VERSION/chromedriver_linux64.zip \
-  && rm -rf /opt/selenium/chromedriver \
-  && unzip /tmp/chromedriver_linux64.zip -d /opt/selenium \
-  && rm /tmp/chromedriver_linux64.zip \
-  && mv /opt/selenium/chromedriver /opt/selenium/chromedriver-$CD_VERSION \
-  && chmod 755 /opt/selenium/chromedriver-$CD_VERSION \
-  && ln -fs /opt/selenium/chromedriver-$CD_VERSION /usr/bin/chromedriver \
-  && locale-gen en_US.UTF-8 \
-  && dpkg-reconfigure --frontend noninteractive locales \
-  && apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install \
+  &amp;&amp; CD_VERSION=$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE) \
+  &amp;&amp; echo "Using chromedriver version: "$CD_VERSION \
+  &amp;&amp; wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CD_VERSION/chromedriver_linux64.zip \
+  &amp;&amp; rm -rf /opt/selenium/chromedriver \
+  &amp;&amp; unzip /tmp/chromedriver_linux64.zip -d /opt/selenium \
+  &amp;&amp; rm /tmp/chromedriver_linux64.zip \
+  &amp;&amp; mv /opt/selenium/chromedriver /opt/selenium/chromedriver-$CD_VERSION \
+  &amp;&amp; chmod 755 /opt/selenium/chromedriver-$CD_VERSION \
+  &amp;&amp; ln -fs /opt/selenium/chromedriver-$CD_VERSION /usr/bin/chromedriver \
+  &amp;&amp; locale-gen en_US.UTF-8 \
+  &amp;&amp; dpkg-reconfigure --frontend noninteractive locales \
+  &amp;&amp; apt-get update -qqy \
+  &amp;&amp; apt-get -qqy --no-install-recommends install \
     language-pack-en \
     fonts-ipafont-gothic \
     xfonts-100dpi \

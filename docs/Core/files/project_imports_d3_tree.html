@@ -100,28 +100,28 @@ function icons(c) {
 }
 
 function wordCount(r) {
-    var words = r['packages'].map(p => p.import)
-        .concat(r['packages'].map(p => path.basename(p.file)))
-        .concat(r['relatives'].map(r => path.basename(r.import)))
-        .concat(r['relatives'].map(r => path.basename(r.file)));
+    var words = r['packages'].map(p =&gt; p.import)
+        .concat(r['packages'].map(p =&gt; path.basename(p.file)))
+        .concat(r['relatives'].map(r =&gt; path.basename(r.import)))
+        .concat(r['relatives'].map(r =&gt; path.basename(r.file)));
     var wordCounts = {};
-    words.forEach(w => {
+    words.forEach(w =&gt; {
         if (typeof wordCounts[w] === 'undefined') {
             wordCounts[w] = 1;
         } else {
             wordCounts[w]++;
         }
     });
-    var resultWords = Object.keys(wordCounts).map((d, i) => ({
+    var resultWords = Object.keys(wordCounts).map((d, i) =&gt; ({
         name: icons(d),
         branch: ((/\.component|\.module|\.service|\.routing/ig).exec(d) || {})[0],
         size: wordCounts[d]}));
     var edges = [];
-    r['packages'].forEach(p => edges[edges.length] = {
+    r['packages'].forEach(p =&gt; edges[edges.length] = {
         source: icons(p.import),
         target: icons(path.basename(p.file))
     });
-    r['relatives'].forEach(p => edges[edges.length] = {
+    r['relatives'].forEach(p =&gt; edges[edges.length] = {
         source: icons(path.basename(p.file)),
         target: icons(path.basename(p.import))
     });
@@ -136,23 +136,23 @@ function projectTree(project) {
     var words = [];
     
     return projectRelatives(project)
-        .then(words => {
+        .then(words =&gt; {
             var tree = wordCount(words);
-            var nodeNames = tree.nodes.map(n => n.name);
+            var nodeNames = tree.nodes.map(n =&gt; n.name);
             tree.nodes = tree.nodes
-                .filter((n, i, arr) => nodeNames.indexOf(n.name) === i)
-                .map((n, i) => {
+                .filter((n, i, arr) =&gt; nodeNames.indexOf(n.name) === i)
+                .map((n, i) =&gt; {
                     Object.assign(n, {index: tree.nodes
-                                      .filter(f => f.branch === n.branch).indexOf(n)})
+                                      .filter(f =&gt; f.branch === n.branch).indexOf(n)})
                     return n;
                 })
-            var edgeNames = tree.edges.map(n => n.source + '/' + n.target);
+            var edgeNames = tree.edges.map(n =&gt; n.source + '/' + n.target);
             tree.edges = tree.edges
-                .filter((n, i, arr) => edgeNames.indexOf(n.source + '/' + n.target) === i)
+                .filter((n, i, arr) =&gt; edgeNames.indexOf(n.source + '/' + n.target) === i)
             var root = formatNodes(tree.nodes, tree.edges);
             return d3TieredPieSVG(root);
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 module.exports = projectTree;
 
@@ -162,8 +162,8 @@ if(typeof $ !== 'undefined') {
 
     $.async()
     projectTree(project)
-        .then(svg => $.svg(svg))
-        .catch(e => $.sendError(e));
+        .then(svg =&gt; $.svg(svg))
+        .catch(e =&gt; $.sendError(e));
 }
 </code></pre>
 

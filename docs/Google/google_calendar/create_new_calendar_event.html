@@ -93,7 +93,7 @@ function createNewEvent(summary, description, options) {
         options = description;
     }
     return correctCalendarId(options)
-        .then(() => util.promisify(
+        .then(() =&gt; util.promisify(
             calendar.events.insert.bind(calendar.events, {
                 calendarId: options.calendarId,
                 auth: options.auth,

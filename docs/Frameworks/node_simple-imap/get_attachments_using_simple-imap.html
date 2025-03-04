@@ -75,21 +75,21 @@ if (!fs.existsSync(output)) {
 
 function getAttachments(messages) {
     attachments = []
-    return Promise.all(messages.map(message => {
+    return Promise.all(messages.map(message =&gt; {
         return Promise.all(imaps.getParts(message.attributes.struct)
-            .filter((part) => part.disposition && part.disposition.type === 'ATTACHMENT')
+            .filter((part) =&gt; part.disposition &amp;&amp; part.disposition.type === 'ATTACHMENT')
             // retrieve the attachments only of the messages with attachments 
-            .map((part) => connection.getPartData(message, part).then((partData) => ({
+            .map((part) =&gt; connection.getPartData(message, part).then((partData) =&gt; ({
                 filename: part.disposition.params.filename,
                 data: partData
             }))))
-            .then(a => attachments = attachments.concat(a));
+            .then(a =&gt; attachments = attachments.concat(a));
     }));
 }
 
 function saveAttachments(attachments) {
-    var result = attachments.map((attachment) => {
-        return new Promise((resolve, reject) => fs.writeFile(
+    var result = attachments.map((attachment) =&gt; {
+        return new Promise((resolve, reject) =&gt; fs.writeFile(
             path.join(output, attachment.filename),
             attachment.data,
             'binary',
@@ -98,14 +98,14 @@ function saveAttachments(attachments) {
                 else resolve(attachment);
             }));
     });
-    return Promise.all(result).then(images => {
+    return Promise.all(result).then(images =&gt; {
         html = '';
         htmlPrint = '';
-        images.forEach((i) => {
+        images.forEach((i) =&gt; {
             var filename = i.filename.split('/').pop();
             var ext = mime.lookup(i.filename);
-            html += '<img src="data:' + ext + ';base64,' + (new Buffer(i.data, 'binary')).toString('base64') + '" />';
-            htmlPrint += '<li><img src="/assets/' + filename + '" /></li>\n';
+            html += '&lt;img src="data:' + ext + ';base64,' + (new Buffer(i.data, 'binary')).toString('base64') + '" /&gt;';
+            htmlPrint += '&lt;li&gt;&lt;img src="/assets/' + filename + '" /&gt;&lt;/li&gt;\n';
         });
         $.mime({'text/markdown': 'Usage:\n\n```html\n' + htmlPrint + '\n```\nOutput:\n' + html});
     })

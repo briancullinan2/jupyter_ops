@@ -84,16 +84,16 @@ var getBookmarksFromTakeout = importer.import('parse bookmarks file');
 
 function getBookmarkFolders() {
     return getBookmarksFromTakeout()
-        .then(links => {
+        .then(links =&gt; {
             // group by half hour
-            const groups = Object.keys(links).sort((a, b) => parseInt(b) - parseInt(a));
-            return groups.reduce((acc, t) => {
-                const folders = _.groupBy(links[t], l => l.folder);
+            const groups = Object.keys(links).sort((a, b) =&gt; parseInt(b) - parseInt(a));
+            return groups.reduce((acc, t) =&gt; {
+                const folders = _.groupBy(links[t], l =&gt; l.folder);
                 acc = acc.concat(Object.keys(folders));
                 return acc;
             }, []);
         })
-        .then(folders => folders.filter((f, i, arr) => arr.indexOf(f) === i))
+        .then(folders =&gt; folders.filter((f, i, arr) =&gt; arr.indexOf(f) === i))
 }
 
 module.exports = getBookmarkFolders;
@@ -102,8 +102,8 @@ if(typeof $ != 'undefined') {
     $.async();
     
     getBookmarkFolders()
-        .then(r => $.mime({'text/plain': r.join('\n')}))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.mime({'text/plain': r.join('\n')}))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

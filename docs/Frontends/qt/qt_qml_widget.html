@@ -61,14 +61,14 @@
 
 
 <pre class="cpp"><code>
-#include <QApplication>
-#include <QWidget>
-#include <QVBoxLayout>
-#include <QQmlEngine>
-#include <QQmlComponent>
-#include <QQuickWidget>
-#include <QQuickItem>
-#include <QQuickWindow>
+#include &lt;QApplication&gt;
+#include &lt;QWidget&gt;
+#include &lt;QVBoxLayout&gt;
+#include &lt;QQmlEngine&gt;
+#include &lt;QQmlComponent&gt;
+#include &lt;QQuickWidget&gt;
+#include &lt;QQuickItem&gt;
+#include &lt;QQuickWindow&gt;
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
@@ -91,35 +91,35 @@ int main(int argc, char *argv[]) {
 
     // Create QML engine and component
     QQmlEngine engine;
-    QQmlComponent component(&engine);
+    QQmlComponent component(&amp;engine);
     component.setData(qmlString.toUtf8(), QUrl());
 
     // Check for errors
     if (component.isError()) {
-        qDebug() << "Error loading QML:" << component.errorString();
+        qDebug() &lt;&lt; "Error loading QML:" &lt;&lt; component.errorString();
         return 1;
     }
 
     // Create the QQuickItem
-    QQuickItem *item = qobject_cast<QQuickItem*>(component.create());
+    QQuickItem *item = qobject_cast&lt;QQuickItem*&gt;(component.create());
     if (!item) {
-        qDebug() << "Error creating QQuickItem";
+        qDebug() &lt;&lt; "Error creating QQuickItem";
         return 1;
     }
 
     // Create a QQuickWidget to host the QQuickItem
     QQuickWidget *quickWidget = new QQuickWidget;
-    quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    quickWidget->setSource(QUrl("data:text/plain," + qmlString)); //Alternative to using setData on component
+    quickWidget-&gt;setResizeMode(QQuickWidget::SizeRootObjectToView);
+    quickWidget-&gt;setSource(QUrl("data:text/plain," + qmlString)); //Alternative to using setData on component
 
     //Create main widget and layout
     QWidget *mainWindow = new QWidget;
     QVBoxLayout *layout = new QVBoxLayout(mainWindow);
     
     // Add the QQuickWidget to the layout
-    layout->addWidget(quickWidget);
-    mainWindow->setLayout(layout);
-    mainWindow->show();
+    layout-&gt;addWidget(quickWidget);
+    mainWindow-&gt;setLayout(layout);
+    mainWindow-&gt;show();
 
     return app.exec();
 }

@@ -89,12 +89,12 @@ function copyStudy(email) {
         throw new Error('email not specified!');
     }
     return listDrive()
-        .then(r => fileId = r.filter(f => f.name === 'Study sauce template')[0].id)
-        .then(() => copyFile(fileId, 'Study sauce ' + uuid().substr(0, 5)))
-        .then(id => newId = id)
-        .then(() => insertPermission(newId, email))
-        .then(() => getSheet(newId, null, email))
-        .then(() => newId)
+        .then(r =&gt; fileId = r.filter(f =&gt; f.name === 'Study sauce template')[0].id)
+        .then(() =&gt; copyFile(fileId, 'Study sauce ' + uuid().substr(0, 5)))
+        .then(id =&gt; newId = id)
+        .then(() =&gt; insertPermission(newId, email))
+        .then(() =&gt; getSheet(newId, null, email))
+        .then(() =&gt; newId)
 }
 
 module.exports = copyStudy;

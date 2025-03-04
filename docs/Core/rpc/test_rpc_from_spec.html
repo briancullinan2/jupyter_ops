@@ -84,7 +84,7 @@ function testDiscovery(config = {api: 'drive', version: 'v3'}) {
     var discovery = getRpcFromSpec(require('/Users/briancullinan/Downloads/rest.json'));
 //    Promise.resolve(discovery)
     return discovery.apis.getRest(config)
-        .then(r => {
+        .then(r =&gt; {
         try {
             fs.writeFileSync(path.join(__dirname, `../Resources/APIs/${config.api}.${config.version}.json`),
                              JSON.stringify(r.body, null, 4))
@@ -98,9 +98,9 @@ function testDiscovery(config = {api: 'drive', version: 'v3'}) {
 if(typeof $ !== 'undefined') {
     $.async();
     testDiscovery()
-        .then(r => $.sendResult(r))
-//        .then(r => $.sendResult(getRpcFromSpec(r)))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+//        .then(r =&gt; $.sendResult(getRpcFromSpec(r)))
+        .catch(e =&gt; $.sendError(e))
 }
 
 module.exports = testDiscovery

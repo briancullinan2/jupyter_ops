@@ -80,7 +80,7 @@ function renameUsingGit(gitRoot, match, find, replace) {
         find: find,
         replace: replace
     });
-    return renamer.dryRun(results).list.map(r => {
+    return renamer.dryRun(results).list.map(r =&gt; {
         // rename with git instead
         var output = execSync('git '
             + '--work-tree=' + JSON.stringify(gitRoot)

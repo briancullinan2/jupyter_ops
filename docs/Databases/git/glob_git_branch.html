@@ -91,13 +91,13 @@ function globBranch(globs, project, remote, branch) {
     branch = branch || 'development';
     var projectCopy;
     return cloneProject(project, true)
-        .then(p => {
+        .then(p =&gt; {
             projectCopy = p;
             return execCmd(`
 git fetch ${remote}
 git log ${remote}/${branch}..${'HEAD'}`, {cwd: projectCopy});
         })
-        .then(c => {
+        .then(c =&gt; {
             commits = importer.regexToArray(/commit\s+(.*?)\s+/ig, c, 1);
             // TODO: match commits to specified branches
             console.log(commits[commits.length-1])
@@ -105,23 +105,23 @@ git log ${remote}/${branch}..${'HEAD'}`, {cwd: projectCopy});
 git reset --mixed ${commits[commits.length-1]}
 git status -s`, {cwd: projectCopy});
         })
-        .then(r => {
-            const files = r[1].split('\n').map(f => f.split(/\s+/ig)[2]).filter(f => f);
+        .then(r =&gt; {
+            const files = r[1].split('\n').map(f =&gt; f.split(/\s+/ig)[2]).filter(f =&gt; f);
             var promises = [];
-            Object.keys(globs).forEach(k => {
-                const matches = files.filter(f => minimatch(f, k));
+            Object.keys(globs).forEach(k =&gt; {
+                const matches = files.filter(f =&gt; minimatch(f, k));
                 if(matches.length) {
-                    promises.push(resolve => execCmd(`
+                    promises.push(resolve =&gt; execCmd(`
 git checkout -B ${globs[k]}
 git add ${matches.join('\ngit add ')}
 git commit -m "auto-commit ${globs[k]}"
-`, {cwd: projectCopy}).catch(e => console.log(e)).then(r => resolve(r)));
+`, {cwd: projectCopy}).catch(e =&gt; console.log(e)).then(r =&gt; resolve(r)));
                 }
             });
             return importer.runAllPromises(promises);
         })
         // TODO: add to commit message all commit messages / features
-        // TODO: require minimatch for commit message <> feature
+        // TODO: require minimatch for commit message &lt;&gt; feature
 }
 module.exports = globBranch;
 
@@ -152,22 +152,22 @@ TODO:
 	modified:   src/app/layout/toolbar/toolbar.component.html
 	deleted:    src/assets/.gitkeep
 	deleted:    src/assets/.npmignore
-	renamed:    src/assets/act-logo-circle.png -> src/assets/act-logo-circle.png
-	renamed:    src/assets/act-pro.png -> src/assets/act-pro.png
-	renamed:    src/assets/act_logo_small.png -> src/assets/act_logo_small.png
-	renamed:    src/assets/actpremium.jpg -> src/assets/actpremium.jpg
-	renamed:    src/assets/actpremiumcloud.png -> src/assets/actpremiumcloud.png
-	renamed:    src/assets/aem_logo.png -> src/assets/aem_logo.png
-	renamed:    src/assets/background.jpg -> src/assets/background.jpg
-	renamed:    src/assets/colors.scss -> src/assets/colors.scss
+	renamed:    src/assets/act-logo-circle.png -&gt; src/assets/act-logo-circle.png
+	renamed:    src/assets/act-pro.png -&gt; src/assets/act-pro.png
+	renamed:    src/assets/act_logo_small.png -&gt; src/assets/act_logo_small.png
+	renamed:    src/assets/actpremium.jpg -&gt; src/assets/actpremium.jpg
+	renamed:    src/assets/actpremiumcloud.png -&gt; src/assets/actpremiumcloud.png
+	renamed:    src/assets/aem_logo.png -&gt; src/assets/aem_logo.png
+	renamed:    src/assets/background.jpg -&gt; src/assets/background.jpg
+	renamed:    src/assets/colors.scss -&gt; src/assets/colors.scss
 	new file:   src/assets/css/three-dot-loader.scss
-	renamed:    src/assets/hhc_logo.png -> src/assets/hhc_logo.png
+	renamed:    src/assets/hhc_logo.png -&gt; src/assets/hhc_logo.png
 	modified:   src/assets/i18n/en.json
-	renamed:    src/assets/layout.scss -> src/assets/layout.scss
-	renamed:    src/assets/loader.svg -> src/assets/loader.svg
-	renamed:    src/assets/material-overrides.scss -> src/assets/material-overrides.scss
-	renamed:    src/assets/noise.png -> src/assets/noise.png
-	renamed:    src/assets/palette.scss -> src/assets/palette.scss
+	renamed:    src/assets/layout.scss -&gt; src/assets/layout.scss
+	renamed:    src/assets/loader.svg -&gt; src/assets/loader.svg
+	renamed:    src/assets/material-overrides.scss -&gt; src/assets/material-overrides.scss
+	renamed:    src/assets/noise.png -&gt; src/assets/noise.png
+	renamed:    src/assets/palette.scss -&gt; src/assets/palette.scss
 	modified:   src/index.html
 	modified:   src/testing/account-stubs.ts
 	modified:   src/testing/auth-stubs.ts
@@ -206,8 +206,8 @@ if(typeof $ !== 'undefined') {
                // ignore whitespace?
                // run all git commands and show the tree?
                project)
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

@@ -84,12 +84,12 @@ function getInfo(link) {
     var sheets;
     
     return authorizeSheets()
-        .then(s => sheets = s)
-        .then(() => sheets.spreadsheets.get({
+        .then(s =&gt; sheets = s)
+        .then(() =&gt; sheets.spreadsheets.get({
             spreadsheetId: docId
         }))
-        .then(res => Object.assign(res.data, {
-            sheets: res.data.sheets.map(s => Object.assign(s, {
+        .then(res =&gt; Object.assign(res.data, {
+            sheets: res.data.sheets.map(s =&gt; Object.assign(s, {
                 spreadsheetId: res.data.spreadsheetId
             }))
         }))

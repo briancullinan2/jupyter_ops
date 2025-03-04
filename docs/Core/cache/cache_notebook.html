@@ -92,12 +92,12 @@ var MATCH_QUESTIONS = (/^.*\?.*$/igm);
 
 function getQuestions(source, markdown) {
     var questions = importer.regexToArray(MATCH_QUESTIONS, markdown)
-        .map(r => r.replace(/how to|\?|#+/ig, '').trim())
+        .map(r =&gt; r.replace(/how to|\?|#+/ig, '').trim())
         .concat(importer.regexToArray(MATCH_QUESTIONS, source)
-            .filter(r => r.match(/how to/ig))
-            .map(r => r.replace(/how to|\?|#+/ig, '').trim()))
+            .filter(r =&gt; r.match(/how to/ig))
+            .map(r =&gt; r.replace(/how to|\?|#+/ig, '').trim()))
         // find the shortest words from the query to match the same cell
-    questions.sort((a, b) => a.length - b.length)
+    questions.sort((a, b) =&gt; a.length - b.length)
     // TODO: weird fix, Fuse.js apparently doesn't work on lists with one element
     return questions[0] ? questions.concat(questions[0]) : questions;
 }
@@ -105,14 +105,14 @@ function getQuestions(source, markdown) {
 // TODO: convert to pattern like group everything leading up to match
 function accumulateMarkdown(cells) {
     // read markdown leading up to code cells
-    var codes = cells.filter(c => c.cell_type === 'code')
+    var codes = cells.filter(c =&gt; c.cell_type === 'code')
     return codes
-        .map((c, i) => Object.assign(c, {
-            from: i > 0 ? (cells.indexOf(codes[i-1]) + 1) : 0,
+        .map((c, i) =&gt; Object.assign(c, {
+            from: i &gt; 0 ? (cells.indexOf(codes[i-1]) + 1) : 0,
             to: cells.indexOf(c)
         }))
-        .map((c, i) => Object.assign(c, {
-            markdown: cells.slice(c.from, c.to).map(m => m.source.join('')),
+        .map((c, i) =&gt; Object.assign(c, {
+            markdown: cells.slice(c.from, c.to).map(m =&gt; m.source.join('')),
             code: c.source.join('')
         }))
 }
@@ -122,7 +122,7 @@ function cacheCells(filename) {
     const mtime = fs.statSync(filename).mtime.getTime()
     const cells = importer.getCells(filename, ['*', 'markdown', 'code'])
     const newCache = accumulateMarkdown(cells)
-    return newCache.map((c, i) => {
+    return newCache.map((c, i) =&gt; {
         var id = path.basename(filename) + '[' + i + ']'
         var questions = getQuestions(c.code, c.markdown)
         if(questions.length === 0) questions = ['']

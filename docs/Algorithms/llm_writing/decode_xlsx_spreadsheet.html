@@ -103,12 +103,12 @@ async function analyzeSpreadsheet(sheetFile, sheetName, rangeString) {
   const range = {
     s: {
       r: parseInt(rangeString.split('-')[0].split(/[^0-9]/gi).join('')),
-      c: rangeString.split('-')[0].toUpperCase().split(/[^A-Z]/gi).map(c => c.charCodeAt(0) - 'A'.charCodeAt(0))
+      c: rangeString.split('-')[0].toUpperCase().split(/[^A-Z]/gi).map(c =&gt; c.charCodeAt(0) - 'A'.charCodeAt(0))
         .reduce(function(a, b) { return a + b; }, 0)
     },
     e: {
       r: parseInt(rangeString.split('-')[1].split(/[^0-9]/gi).join('')),
-      c: rangeString.split('-')[1].toUpperCase().split(/[^A-Z]/gi).map(c => c.charCodeAt(0) - 'A'.charCodeAt(0))
+      c: rangeString.split('-')[1].toUpperCase().split(/[^A-Z]/gi).map(c =&gt; c.charCodeAt(0) - 'A'.charCodeAt(0))
         .reduce(function(a, b) { return a + b; }, 0)
     }
   }
@@ -123,8 +123,8 @@ async function analyzeSpreadsheet(sheetFile, sheetName, rangeString) {
   
   let results = []
 
-  for(var R = range.s.r; R <= range.e.r; ++R) {
-    for(var C = range.s.c; C <= range.e.c; ++C) {
+  for(var R = range.s.r; R &lt;= range.e.r; ++R) {
+    for(var C = range.s.c; C &lt;= range.e.c; ++C) {
       const cellAddress = xlsx.utils.encode_cell({ r: R, c: C });
       const cell = sheet[cellAddress];
       if(cell)

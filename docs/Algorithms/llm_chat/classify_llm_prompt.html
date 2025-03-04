@@ -89,12 +89,12 @@ const API_FUNCTIONS = [
   // 'switch llm models'
 ]
 
-const API_EXPORTS = API_FUNCTIONS.map(func => getExports(importer.interpret(func).code)[0])
+const API_EXPORTS = API_FUNCTIONS.map(func =&gt; getExports(importer.interpret(func).code)[0])
 
 const API_DESCRIPTION = API_FUNCTIONS
-  .map(func => importer.interpret(func))
-  .filter((code, i) => API_EXPORTS[i])
-  .map((code, i) => API_EXPORTS[i] + ' - ' + code.markdown.join('').trim()
+  .map(func =&gt; importer.interpret(func))
+  .filter((code, i) =&gt; API_EXPORTS[i])
+  .map((code, i) =&gt; API_EXPORTS[i] + ' - ' + code.markdown.join('').trim()
     .replaceAll(/^#.*?\n/gi, '')
     .replaceAll(code.questions, '')
     .replaceAll(/\s*[\n]+[\s\r\n]*/gi, '-'))
@@ -111,8 +111,8 @@ async function askLlamaMatchingFunction(promptModel, prompt, image) {
   console.log('AI: ' + a1)
 
   let matchingFunctions = a1.split(/\s*\n\s*|\s*,\s*/gi)
-    .map((matchStr) => {
-      for (let i = 0; i < API_FUNCTIONS.length; i++) {
+    .map((matchStr) =&gt; {
+      for (let i = 0; i &lt; API_FUNCTIONS.length; i++) {
         if (!API_EXPORTS[i]) {
           continue
         }
@@ -124,8 +124,8 @@ async function askLlamaMatchingFunction(promptModel, prompt, image) {
         }
       }
     })
-    .filter(func => a1.length > 0 && func)
-    .map(func => func.importStr)
+    .filter(func =&gt; a1.length &gt; 0 &amp;&amp; func)
+    .map(func =&gt; func.importStr)
 
   return matchingFunctions
 }

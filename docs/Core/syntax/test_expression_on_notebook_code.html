@@ -137,7 +137,7 @@ var {cellCache} = importer.import('cell cache')
 function matchCell(xpath, cell) {
     try {
         var match = selectAst([`//${xpath}`], cell.code);
-        if(match.length > 0) {
+        if(match.length &gt; 0) {
             console.log(`match ${cell.id}`)
             return cell;
         }
@@ -155,26 +155,26 @@ function findImport(importer) {
 function testExpressions() {
     var xpath = exprToXpath(findImport);
     console.log(`matching ${xpath}`);
-    var allCellIds = cellCache.map(c => c.id)
+    var allCellIds = cellCache.map(c =&gt; c.id)
     // get only first occurrence
     var allCells = cellCache
-        .filter((c, i) => allCellIds.indexOf(c.id) == i)
-        .filter(c => c.code.length < 10000
-                && c.code.trim().length > 10)
+        .filter((c, i) =&gt; allCellIds.indexOf(c.id) == i)
+        .filter(c =&gt; c.code.length &lt; 10000
+                &amp;&amp; c.code.trim().length &gt; 10)
     //    .slice(0, 10)
     return Promise
-        .all(allCells.map(cell => new Promise(resolve => {
-            return setTimeout(() => resolve(matchCell(xpath, cell)), 100);
+        .all(allCells.map(cell =&gt; new Promise(resolve =&gt; {
+            return setTimeout(() =&gt; resolve(matchCell(xpath, cell)), 100);
         })))
-        .then(matches => matches.filter(cell => cell)
-              .map(cell => cell.id))
+        .then(matches =&gt; matches.filter(cell =&gt; cell)
+              .map(cell =&gt; cell.id))
 }
 
 module.exports = testExpressions;
 
 if(typeof $ !== 'undefined') {
     testExpressions()
-        .then(matches => $.sendResult(matches))
+        .then(matches =&gt; $.sendResult(matches))
 }
 </code></pre>
 

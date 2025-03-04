@@ -121,7 +121,7 @@ async function startServer() {
   })
 
   let port = process.env.CHAT_PORT || 8181
-  app.listen(port, () => console.log('Listening on https://localhost:' + port))
+  app.listen(port, () =&gt; console.log('Listening on https://localhost:' + port))
 }
 
 module.exports = startServer

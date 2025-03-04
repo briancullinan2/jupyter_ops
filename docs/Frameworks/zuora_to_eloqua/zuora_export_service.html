@@ -127,7 +127,7 @@ function getAuthHeaders(zuoraConfig) {
         || typeof zuoraConfig.rest_api_user === 'undefined'
         || typeof zuoraConfig.rest_api_password === 'undefined'
         || typeof zuoraConfig.rest_api_url === 'undefined') {
-        return Promise.resolve([]).then(() => {
+        return Promise.resolve([]).then(() =&gt; {
             throw new Error('Please supply valid zuora configuration.');
         });
     }
@@ -146,7 +146,7 @@ function createBulkExportJob(query, zuoraConfig) {
         json: query,
         method: 'POST',
         headers: getAuthHeaders(zuoraConfig)
-    }).then(r => r.body.Id)
+    }).then(r =&gt; r.body.Id)
 }
 
 function getBulkExportJobStatus(exportId, zuoraConfig) {
@@ -156,12 +156,12 @@ function getBulkExportJobStatus(exportId, zuoraConfig) {
         uri: zuoraConfig.rest_api_url + '/object/export/' + exportId,
         method: 'GET',
         headers: getAuthHeaders(zuoraConfig)
-    }).then(r => {
+    }).then(r =&gt; {
         if (r.body.Status === 'Completed') {
             return r.body.FileId;
         } else if (r.body.Status === 'Processing' || r.body.Status === 'Pending') {
-            return new Promise(resolve => setTimeout(resolve, 500))
-                .then(() => getBulkExportJobStatus(exportId, zuoraConfig));
+            return new Promise(resolve =&gt; setTimeout(resolve, 500))
+                .then(() =&gt; getBulkExportJobStatus(exportId, zuoraConfig));
         } else {
             throw new Error('Export status error ' + r.statusCode + ' ' + r.body.Status);
         }
@@ -174,7 +174,7 @@ function getBulkExportFile(fileId, zuoraConfig) {
         uri: zuoraConfig.rest_api_url + '/files/' + fileId,
         method: 'GET',
         headers: getAuthHeaders(zuoraConfig)
-    }).then(r => r.body)
+    }).then(r =&gt; r.body)
 }
 
 function csvToJson(csv) {

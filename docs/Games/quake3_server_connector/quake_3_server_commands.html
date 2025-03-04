@@ -99,8 +99,8 @@ var nextResponse = {
 
 function mergeMaster(master) {
     var found = false
-    masters.forEach((ma, i) => {
-        if(ma['ip'] == master['ip'] && ma['port'] == master['port']) {
+    masters.forEach((ma, i) =&gt; {
+        if(ma['ip'] == master['ip'] &amp;&amp; ma['port'] == master['port']) {
             found = true
             Object.assign(masters[i], master)
             Object.assign(master, masters[i])
@@ -117,7 +117,7 @@ async function updateInfo(m, rinfo) {
         ip: rinfo.address,
         port: rinfo.port
     })
-    if(m[0] == 255 && m[1] == 255 && m[2] == 255 && m[3] == 255)
+    if(m[0] == 255 &amp;&amp; m[1] == 255 &amp;&amp; m[2] == 255 &amp;&amp; m[3] == 255)
         m = m.slice(4, m.length)
     else {
         if(master.connected) {
@@ -134,11 +134,11 @@ async function updateInfo(m, rinfo) {
             } else if (channel.messageType == 7) { // svc_snapshot
                 nextResponse.nextSnapshot = 
                 master.nextResponse.nextSnapshot = channel
-            } else if (channel.messageType > 0) {
+            } else if (channel.messageType &gt; 0) {
             }
-            if(commandNumber < channel.commandSequence) {
-                for(var j = commandNumber + 1; j <= channel.commandSequence; j++) {
-                    var index = j & (MAX_RELIABLE_COMMANDS-1)
+            if(commandNumber &lt; channel.commandSequence) {
+                for(var j = commandNumber + 1; j &lt;= channel.commandSequence; j++) {
+                    var index = j &amp; (MAX_RELIABLE_COMMANDS-1)
                     if((channel.serverCommands[index] + '').match(/^chat /i)) {
                         nextResponse.nextChat = 
                         master.nextResponse.nextChat = channel.serverCommands[index] + ''
@@ -254,13 +254,13 @@ async function getNextResponse(key, address, port = 27960) {
     }
     nextResponse.nextAll = []
     nextResponse[key] = null
-    return new Promise(resolve => {
+    return new Promise(resolve =&gt; {
         var waiter
-        waiter = setInterval(() => {
+        waiter = setInterval(() =&gt; {
             timeout += 20
-            if((!address && nextResponse[key] != null)
-               || (address && server.nextResponse[key] != null)
-               || timeout >= MAX_TIMEOUT) {
+            if((!address &amp;&amp; nextResponse[key] != null)
+               || (address &amp;&amp; server.nextResponse[key] != null)
+               || timeout &gt;= MAX_TIMEOUT) {
                 clearInterval(waiter)
                 resolve(nextResponse[key])
             }
@@ -318,14 +318,14 @@ async function nextAllResponses(address, port = 27960) {
 
 async function getChallenge(address, port = 27960, challenge, gamename) {
     var dstIP = await lookupDNS(address)
-    var msgBuff = new Buffer.from(`\xFF\xFF\xFF\xFFgetchallenge ${challenge} ${gamename}`.split('').map(c => c.charCodeAt(0)))
+    var msgBuff = new Buffer.from(`\xFF\xFF\xFF\xFFgetchallenge ${challenge} ${gamename}`.split('').map(c =&gt; c.charCodeAt(0)))
     udpClient.send(msgBuff, 0, msgBuff.length, port, dstIP)
 }
 
 async function sendConnect(address, port = 27960, info) {
     var connectInfo = typeof info == 'string' 
         ? info 
-        : Object.keys(info).map(k => '\\' + k + '\\' + info[k]).join('')
+        : Object.keys(info).map(k =&gt; '\\' + k + '\\' + info[k]).join('')
     var dstIP = await lookupDNS(address)
     var compressedInfo = await compressMessage(`\xFF\xFF\xFF\xFFconnect "${connectInfo}"`)
     var msgBuff = new Buffer.from(compressedInfo)
@@ -347,14 +347,14 @@ async function sendSequence(address, port, channel) {
     msg = writeBits(msg[1], msg[0], channel.serverId ? (channel.commandSequence || 0) : 0, 32)
     
     // write any unacknowledged clientCommands
-    for ( var i = channel.reliableAcknowledge + 1 ; i <= channel.reliableSequence ; i++ ) {
+    for ( var i = channel.reliableAcknowledge + 1 ; i &lt;= channel.reliableSequence ; i++ ) {
 		msg = writeBits(msg[1], msg[0], 4, 8) // clc_clientCommand
 		msg = writeBits(msg[1], msg[0], i, 32)
-        var command = channel.reliableCommands[ i & (MAX_RELIABLE_COMMANDS-1) ]
-        for ( var c = 0 ; c < command.length; c++ ) {
+        var command = channel.reliableCommands[ i &amp; (MAX_RELIABLE_COMMANDS-1) ]
+        for ( var c = 0 ; c &lt; command.length; c++ ) {
             // get rid of 0x80+ and '%' chars, because old clients don't like them
             var v
-            if ( command[c] & 0x80 || command[c] == '%' )
+            if ( command[c] &amp; 0x80 || command[c] == '%' )
                 v = '.'.charCodeAt(0);
             else
                 v = command[c].charCodeAt(0);
@@ -376,16 +376,16 @@ async function sendSequence(address, port, channel) {
     var qport = udpClient.address().port
     var checksum = NETCHAN_GENCHECKSUM(channel.challenge, channel.outgoingSequence)
     var msgBuff = Buffer.concat([new Buffer.from([
-        (channel.outgoingSequence >> 0) & 0xFF,
-        (channel.outgoingSequence >> 8) & 0xFF,
-        (channel.outgoingSequence >> 16) & 0xFF,
-        (channel.outgoingSequence >> 24) & 0xFF,
-        (qport >> 0) & 0xFF,
-        (qport >> 8) & 0xFF,
-        (checksum >> 0) & 0xFF,
-        (checksum >> 8) & 0xFF,
-        (checksum >> 16) & 0xFF,
-        (checksum >> 24) & 0xFF,
+        (channel.outgoingSequence &gt;&gt; 0) &amp; 0xFF,
+        (channel.outgoingSequence &gt;&gt; 8) &amp; 0xFF,
+        (channel.outgoingSequence &gt;&gt; 16) &amp; 0xFF,
+        (channel.outgoingSequence &gt;&gt; 24) &amp; 0xFF,
+        (qport &gt;&gt; 0) &amp; 0xFF,
+        (qport &gt;&gt; 8) &amp; 0xFF,
+        (checksum &gt;&gt; 0) &amp; 0xFF,
+        (checksum &gt;&gt; 8) &amp; 0xFF,
+        (checksum &gt;&gt; 16) &amp; 0xFF,
+        (checksum &gt;&gt; 24) &amp; 0xFF,
     ]), msg[1]])
     channel.outgoingSequence++
     //console.log(qport, channel.commandSequence)
@@ -402,7 +402,7 @@ async function sendReliable(address, port, cmd) {
         console.log('clientCommand: ', cmd)
         var channel = server.channel
     	channel.reliableSequence++
-        var index = channel.reliableSequence & ( MAX_RELIABLE_COMMANDS - 1 )
+        var index = channel.reliableSequence &amp; ( MAX_RELIABLE_COMMANDS - 1 )
         channel.reliableCommands[index] = cmd
         await sendSequence(address, port, channel)
     } else
@@ -428,28 +428,28 @@ async function sendPureChecksums(address, port, channel) {
 
 async function sendRcon(address, port = 27960, command, password = DEFAULT_PASS) {
     var dstIP = await lookupDNS(address)
-    var msgBuff = new Buffer.from(`\xFF\xFF\xFF\xFFrcon "${password}" ${command}`.split('').map(c => c.charCodeAt(0)))
+    var msgBuff = new Buffer.from(`\xFF\xFF\xFF\xFFrcon "${password}" ${command}`.split('').map(c =&gt; c.charCodeAt(0)))
     udpClient.send(msgBuff, 0, msgBuff.length, port, dstIP)
 }
 
 async function getStatus(address, port = 27960) {
     var dstIP = await lookupDNS(address)
-    var msgBuff = new Buffer.from('\xFF\xFF\xFF\xFFgetstatus'.split('').map(c => c.charCodeAt(0)))
+    var msgBuff = new Buffer.from('\xFF\xFF\xFF\xFFgetstatus'.split('').map(c =&gt; c.charCodeAt(0)))
     udpClient.send(msgBuff, 0, msgBuff.length, port, dstIP)
 }
 
 async function getInfo(address, port = 27960) {
     var dstIP = await lookupDNS(address)
-    var msgBuff = new Buffer.from('\xFF\xFF\xFF\xFFgetinfo xxx'.split('').map(c => c.charCodeAt(0)))
+    var msgBuff = new Buffer.from('\xFF\xFF\xFF\xFFgetinfo xxx'.split('').map(c =&gt; c.charCodeAt(0)))
     udpClient.send(msgBuff, 0, msgBuff.length, port, dstIP)
 }
 
 async function listMasters(master = DEFAULT_MASTER, port = 27950, wait = true) {
     var dstIP = await lookupDNS(master)
-    var msgBuff = new Buffer.from('\xFF\xFF\xFF\xFFgetservers 68 empty'.split('').map(c => c.charCodeAt(0)))
+    var msgBuff = new Buffer.from('\xFF\xFF\xFF\xFFgetservers 68 empty'.split('').map(c =&gt; c.charCodeAt(0)))
     udpClient.send(msgBuff, 0, msgBuff.length, port, dstIP)
     if(wait) {
-        await new Promise(resolve => setTimeout(resolve, MAX_TIMEOUT))
+        await new Promise(resolve =&gt; setTimeout(resolve, MAX_TIMEOUT))
     } else {
         var timeout = 0
         var timer

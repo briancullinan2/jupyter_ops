@@ -99,8 +99,8 @@ function generateCallback(libName, i, types, params) {
       library: libName, // path to the dynamic library file
       funcName: params[i][0], // the name of the function to call
       retType: returnType, // the return value type
-      paramsType: types.slice(1).map((t, i) => typeToDataType(typeof paramValues[i] == 'undefined' ? 0 : typeof paramValues == 'object' && paramValues[i].constructor.name == 'Array' ? paramValues[i].length : 1, t)), // the parameter types
-      paramsValue: paramValues.length < 2 && types.length && types.length <= 2 && types[1] == 'void' && typeof paramValues[0] == 'undefined' ? [void 0] : paramValues // the actual parameter values
+      paramsType: types.slice(1).map((t, i) =&gt; typeToDataType(typeof paramValues[i] == 'undefined' ? 0 : typeof paramValues == 'object' &amp;&amp; paramValues[i].constructor.name == 'Array' ? paramValues[i].length : 1, t)), // the parameter types
+      paramsValue: paramValues.length &lt; 2 &amp;&amp; types.length &amp;&amp; types.length &lt;= 2 &amp;&amp; types[1] == 'void' &amp;&amp; typeof paramValues[0] == 'undefined' ? [void 0] : paramValues // the actual parameter values
       // freeResultMemory: true, // whether or not need to free the result of return value memory automatically, default is false
     })
   }
@@ -142,7 +142,7 @@ async function makeDylib(code, pathToCode, ctx) {
   const getTypes = await importNotebook('get c types')
   // TODO: make functions out of all exports
   let resources = {}
-  for (let i = 0; i < params.length; i++) {
+  for (let i = 0; i &lt; params.length; i++) {
     if(typeof params[i] == 'string') {
       params[i] = [params[i]]
     }
@@ -150,7 +150,7 @@ async function makeDylib(code, pathToCode, ctx) {
     //console.log(types)
     // TODO: make a version of this function that can load all data types from parameters
     let newCallback = generateCallback(libName, i, types, params)
-    resources[params[i][0]] = ((i, types) => function (...paramValues) {
+    resources[params[i][0]] = ((i, types) =&gt; function (...paramValues) {
       return resources[params[i][0] + 'Ret'](1, ...paramValues)
     })(i, types)
     resources[params[i][0] + 'Ret'] = newCallback

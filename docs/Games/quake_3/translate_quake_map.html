@@ -127,11 +127,11 @@ function translateMap(file, amount) {
     var brushes = importer.regexToArray(/\{[^\{\}]*?\}/ig, file)
     
     // replace all brushes with scaled values
-    brushes.forEach(b => {
+    brushes.forEach(b =&gt; {
         var newBrush = b
-        newBrush = newBrush.replace(/\(((\s*[0-9\.-]+\s*)*)\)/ig, (str, $1) => {
+        newBrush = newBrush.replace(/\(((\s*[0-9\.-]+\s*)*)\)/ig, (str, $1) =&gt; {
             return '( ' + $1.trim().split(/\s+/ig)
-                .map((n, i) => (n.includes('.')
+                .map((n, i) =&gt; (n.includes('.')
                         ? parseFloat(n.trim())
                         : parseInt(n.trim())) + amount[i])
                 .join(' ') + ' )'
@@ -142,9 +142,9 @@ function translateMap(file, amount) {
     // replace all origins with scaled
     // TODO: make this a function
     var origins = importer.regexToArray(/"origin"\s+"((\s*[0-9\.-]+\s*)*)"/ig, file, 1)
-    origins.forEach($1 => {
+    origins.forEach($1 =&gt; {
         var newOrigin = $1.trim().split(/\s+/ig)
-            .map((n, i) => (n.includes('.')
+            .map((n, i) =&gt; (n.includes('.')
                     ? parseFloat(n.trim())
                     : parseInt(n.trim())) + amount[i])
             .join(' ')

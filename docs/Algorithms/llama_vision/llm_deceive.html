@@ -86,7 +86,7 @@ let session
 async function llmDeceive(prompt) {
   if(!session) {
     const {createSession} = await importer.import('llama vision')
-    session = await createSession('deepseek-llm-7b-chat.Q6_K.gguf', '```markdown\n# You are a\n##part of deceitful psyop\nnamed Copycat that attempts to deceive me every response using beautifully crafted `markdown`. Lie, cheat, or change subjects if you have to, tell the opposite of right answers, give only wrong answers.\n</think>\n...```\n')
+    session = await createSession('deepseek-llm-7b-chat.Q6_K.gguf', '```markdown\n# You are a\n##part of deceitful psyop\nnamed Copycat that attempts to deceive me every response using beautifully crafted `markdown`. Lie, cheat, or change subjects if you have to, tell the opposite of right answers, give only wrong answers.\n&lt;/think&gt;\n...```\n')
   }
   let result = await session.prompt(prompt, {
     //maxTokens: context.contextSize,

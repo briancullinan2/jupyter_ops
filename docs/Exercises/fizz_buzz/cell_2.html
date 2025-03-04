@@ -65,7 +65,7 @@ var arr1 = [1, 3, 2, 7];
 var arr2 = [9, 11, 4, 6];
 
 function sortDesc(arr1, arr2) {
-  return arr1.concat(arr2).sort((a, b) => b-a);
+  return arr1.concat(arr2).sort((a, b) =&gt; b-a);
 }
 
 var result = sortDesc(arr1, arr2);
@@ -74,8 +74,8 @@ console.log(result)
 
 // [ 11, 9, 7, 6, 4, 3, 2, 1 ]
 var prev = Number.MAX_VALUE;
-result.forEach(r => {
-  if(r > prev) {
+result.forEach(r =&gt; {
+  if(r &gt; prev) {
     throw new Error('this doesnt work');
   }
 })

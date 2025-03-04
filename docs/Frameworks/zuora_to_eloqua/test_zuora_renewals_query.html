@@ -121,10 +121,10 @@
 var importer = require('../Core');
 var renewalsQuery = importer.import('zuora renewals query');
 
-describe('zuora query', () => {
-    it('should include the dates specified', () => {
+describe('zuora query', () =&gt; {
+    it('should include the dates specified', () =&gt; {
         const now = new Date();
-        const year = now.getMonth() < 11 ? (now.getFullYear() - 1) : now.getFullYear()
+        const year = now.getMonth() &lt; 11 ? (now.getFullYear() - 1) : now.getFullYear()
         const q = renewalsQuery.getQuery('beginning of November', 'beginning of December');
         assert(q.Query.includes(year + '-11-01'), 'should have correct dates');
     })

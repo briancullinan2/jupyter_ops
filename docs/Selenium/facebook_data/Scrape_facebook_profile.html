@@ -82,24 +82,24 @@ function readFacebookProfileInfo() {
     // TODO: check for profile path
     return client
         .getAllXPath('//*[contains(@class, "scrollable")]//h4[contains(., "Profile")]/parent::*//a/@href')
-        .then(r => r != ''
+        .then(r =&gt; r != ''
             ? client.clickSpa(r)
                 .pause(2000)
-                .then(() => importer.runAllPromises([
+                .then(() =&gt; importer.runAllPromises([
                     client.getText('[role="main"] h1'),
-                    client.isExisting('#intro_container_id li').then(is => is
+                    client.isExisting('#intro_container_id li').then(is =&gt; is
                         ? client.getText('#intro_container_id li')
                         : Promise.resolve('')),
                     client.getUrl()
                 ]))
-                .then(r => (profile = ({
+                .then(r =&gt; (profile = ({
                     name: r[0],
                     description: r[1],
                     url: r[2]
                 })))
             : client)
-        .then(() => profile)
-        .catch(e => console.log(e))
+        .then(() =&gt; profile)
+        .catch(e =&gt; console.log(e))
 };
 module.exports = readFacebookProfileInfo;
 

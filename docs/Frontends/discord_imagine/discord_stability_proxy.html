@@ -80,7 +80,7 @@ async function doHallucinate(interaction) {
   }
   await updateInteraction('This could take a while...', interaction.id, interaction.token)
   let {image} = await doStableRequest(a1)
-  return await patchInteractionImageAttachment(interaction.data.options[0].value + '* -> *' + a1, image, interaction.token)
+  return await patchInteractionImageAttachment(interaction.data.options[0].value + '* -&gt; *' + a1, image, interaction.token)
 }
 
 

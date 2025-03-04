@@ -60,7 +60,7 @@
 <p>The <code>powershell.exe</code> command launches the PowerShell command-line interface and allows for various switches to customize its behavior. The main command, <code>&amp; {... }</code>, executes a script block that imports a namespace, creates an array, and uses the <code>Compress-Archive</code> cmdlet to compress a file into an archive named <code>index.zip</code>.</p>
 
 
-<pre class="javascript"><code>powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; @('notify.bundle.js') | Compress-Archive -DestinationPath index.zip; }"</code></pre>
+<pre class="javascript"><code>powershell.exe -nologo -noprofile -command "&amp; { Add-Type -A 'System.IO.Compression.FileSystem'; @('notify.bundle.js') | Compress-Archive -DestinationPath index.zip; }"</code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">

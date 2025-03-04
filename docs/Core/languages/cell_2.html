@@ -104,7 +104,7 @@ const getJavaGenerator = require('./codegeneration/java/Generator');
 const getPythonGenerator = require('./codegeneration/python/Generator');
 ...
 
-const loadJSTree = (input) => {
+const loadJSTree = (input) =&gt; {
 /* Lexing and parsing the user input */
   ...
 };
@@ -119,12 +119,12 @@ const loadJSTree = (input) => {
  * 
  * @returns {function} the compile function to be exported
  */
-const composeTranspiler = (loadTree, visitor, generator) => {
+const composeTranspiler = (loadTree, visitor, generator) =&gt; {
   const Transpiler = generator(visitor);
   const transpiler = new Transpiler();
 
   return {
-    compile: (input) => {
+    compile: (input) =&gt; {
       const tree = loadTree(input);
       return transpiler.start(tree);
     }

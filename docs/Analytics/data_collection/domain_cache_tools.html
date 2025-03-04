@@ -110,7 +110,7 @@ function findCache(url) {
         '**/*' + host + '*',
         project
     )
-    crawl.sort((a, b) => {
+    crawl.sort((a, b) =&gt; {
         return fs.statSync(b).mtime.getTime() - fs.statSync(a).mtime.getTime()
     })
     return crawl
@@ -125,8 +125,8 @@ function existingCache(url, restrain) {
         var date = Date.parse(segments.slice(segments.length - 3).join('-'))
         var inAWeek = date + 1000*60*60*24*7
         if(restrain === false
-          || (restrain === 'week' && inAWeek > Date.now())
-          || (restrain === 'day' && cache[0] === filePath)) {
+          || (restrain === 'week' &amp;&amp; inAWeek &gt; Date.now())
+          || (restrain === 'day' &amp;&amp; cache[0] === filePath)) {
             return JSON.parse(fs.readFileSync(cache[0])) || []
         }
     }
@@ -139,9 +139,9 @@ async function storeCache(cache, response) {
     if(typeof result.url === 'undefined') {
         return
     }
-    var urls = cache.map(s => s.url.toLowerCase())
+    var urls = cache.map(s =&gt; s.url.toLowerCase())
     var index = urls.indexOf(result.url.toLowerCase())
-    if(index > -1) {
+    if(index &gt; -1) {
         console.log(`Received existing ${result.url}`)
         cache[index] = result
     } else {
@@ -159,9 +159,9 @@ function adBlocker() {
     //now we read the host file
     var hostFile = fs.readFileSync(path.join(__dirname,
         '../Resources/Projects/adblocker/hosts.txt'), 'utf8').split('\n');
-    for (var i = 0; i < hostFile.length; i++) {
+    for (var i = 0; i &lt; hostFile.length; i++) {
         var frags = hostFile[i].split(' ');
-        if (frags.length > 1 && frags[0] === '0.0.0.0') {
+        if (frags.length &gt; 1 &amp;&amp; frags[0] === '0.0.0.0') {
             hosts[frags[1].trim()] = true;
         }
     }
@@ -175,14 +175,14 @@ function readCache(cache, request) {
     if(adBlocker()[new URL(request.url()).host]) {
         return request.abort()
     }
-    var urls = cache.map(s => s.url.toLowerCase())
+    var urls = cache.map(s =&gt; s.url.toLowerCase())
     var index = urls.indexOf(request.url().toLowerCase())
     var response = cache[index]
-    if (response && response.status == 200) {
+    if (response &amp;&amp; response.status == 200) {
     // TODO: remove this restriction since we literally just downloaded it
-    //    && response.expires
-    //    && response.expires > Date.now()
-    //    && response.content
+    //    &amp;&amp; response.expires
+    //    &amp;&amp; response.expires &gt; Date.now()
+    //    &amp;&amp; response.content
     //if(response.type.includes('\n')) {
     //    debugger
     //}
@@ -198,7 +198,7 @@ function readCache(cache, request) {
                 headers: headers,
                 status: response.status || 200,
                 body: response.content
-                    && response.content.substr(0, 5) === 'data:'
+                    &amp;&amp; response.content.substr(0, 5) === 'data:'
                     ? Buffer.from(response.content.split(',')[1], 'base64')
                     : Buffer.from(response.content || [], 'utf8'),
             })

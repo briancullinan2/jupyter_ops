@@ -94,7 +94,7 @@ async function doInteraction(interaction) {
 
 async function doMention(interaction) {
   await triggerTyping(interaction.channel_id)
-  let q1 = interaction.content.replace('<@' + DEFAULT_APPLICATION + '>', '') + '\nmake it short.'
+  let q1 = interaction.content.replace('&lt;@' + DEFAULT_APPLICATION + '&gt;', '') + '\nmake it short.'
 
   let promptModel = await selectModel(DEFAULT_MODEL)
   let result = await handleConversation(promptModel, interaction.author.id, q1)

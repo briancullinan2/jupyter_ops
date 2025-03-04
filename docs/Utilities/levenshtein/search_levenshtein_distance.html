@@ -64,8 +64,8 @@ function getStr(keys, obj) {
     if(typeof keys === 'string') {
         keys = [keys]
     }
-    return keys.reduce((arr, id) => {
-        var value = id.split('.').reduce((o, i) => o[i], obj)
+    return keys.reduce((arr, id) =&gt; {
+        var value = id.split('.').reduce((o, i) =&gt; o[i], obj)
         return arr.concat(Array.isArray(value)
                             ? value
                             : [value])
@@ -73,18 +73,18 @@ function getStr(keys, obj) {
 }
 
 function levSearch(cache, config, search) {
-    var result = cache.map((a) => a)
+    var result = cache.map((a) =&gt; a)
     // TODO: tokenize
     result.sort(function (a, b) {
         var minA = Math.min.apply(null, getStr(config.keys, a)
-            .map(s => levDist(s, search)))
+            .map(s =&gt; levDist(s, search)))
         var minB = Math.min.apply(null, getStr(config.keys, b)
-            .map(s => levDist(s, search)))
+            .map(s =&gt; levDist(s, search)))
         return minA - minB
     })
     return result
-        .filter(c => c)
-        .map(c => config.id.split('.').reduce((o, i) => o[i], c))
+        .filter(c =&gt; c)
+        .map(c =&gt; config.id.split('.').reduce((o, i) =&gt; o[i], c))
 }
 
 module.exports = levSearch;

@@ -91,7 +91,7 @@ async function getToken(req, res, next) {
   let expiry = new Date(Date.now() + result.data.expires_in)
 
   if(typeof req.body['launch_id'] != 'undefined' 
-    && typeof req.body['frame_id'] != 'undefined')
+    &amp;&amp; typeof req.body['frame_id'] != 'undefined')
   {
     let userResult = await request({
       method: 'GET',

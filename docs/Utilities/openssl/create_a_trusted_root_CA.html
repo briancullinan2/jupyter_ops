@@ -68,7 +68,7 @@ cd $ROOT
 mkdir certs crl newcerts private
 chmod 700 private
 touch index.txt
-echo 1000 > serial
+echo 1000 &gt; serial
 
 echo "
 # OpenSSL root CA configuration file.
@@ -140,7 +140,7 @@ default_md          = sha256
 x509_extensions     = v3_ca
 
 [ req_distinguished_name ]
-# See <https://en.wikipedia.org/wiki/Certificate_signing_request>.
+# See &lt;https://en.wikipedia.org/wiki/Certificate_signing_request&gt;.
 countryName                     = Country Name (2 letter code)
 stateOrProvinceName             = State or Province Name
 localityName                    = Locality Name
@@ -208,7 +208,7 @@ authorityKeyIdentifier = keyid,issuer
 keyUsage = critical, digitalSignature
 extendedKeyUsage = critical, OCSPSigning
 
-" > $ROOT/openssl.cnf
+" &gt; $ROOT/openssl.cnf
 
 # create root key
 cd $ROOT

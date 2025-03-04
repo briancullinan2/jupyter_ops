@@ -145,7 +145,7 @@ def main(image_path):
       frame = image_grayscale(image)
       diff_image = diff_images(prev_frame, frame)
       motion = percent_motion(diff_image)
-      # TODO: if motion is > 1.0 start recording and compile a video and upload to youtube
+      # TODO: if motion is &gt; 1.0 start recording and compile a video and upload to youtube
       print(motion)
     else:
       frame = image_grayscale(image)
@@ -158,7 +158,7 @@ def main(image_path):
     cv2.imshow("People Detection", image)
 
     # Wait for 1 second (1000 ms) and check for key press
-    if cv2.waitKey(1000) & 0xFF == ord('q'):  # Press 'q' to exit
+    if cv2.waitKey(1000) &amp; 0xFF == ord('q'):  # Press 'q' to exit
         break
 
   cv2.destroyAllWindows()

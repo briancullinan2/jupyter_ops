@@ -102,17 +102,17 @@ function installBuildTestEvent(project) {
 
 function updateHeartbeatEvent(project, branch, commit) {
     return getOauthClient(options)
-        .then(() => getDaysEvents(new Date(), options))
-        .then(r => {
-            const heartbeat = r.filter(r => r.event.summary === 'heartbeat'
+        .then(() =&gt; getDaysEvents(new Date(), options))
+        .then(r =&gt; {
+            const heartbeat = r.filter(r =&gt; r.event.summary === 'heartbeat'
                                        || r.event.summary === 'todays heartbeat items');
             try {
-                var dom = new JSDOM('<body>' + (heartbeat[0].event.description || '').replace(/<br\/?>/igm, '\n') + '</body>');
+                var dom = new JSDOM('&lt;body&gt;' + (heartbeat[0].event.description || '').replace(/&lt;br\/?&gt;/igm, '\n') + '&lt;/body&gt;');
                 const desc = dom.window.document.body.textContent.split('\n');
-                desc.forEach((c, i) => {
-                    if(c.trim().length > 0 && c.includes('github updates')) {
+                desc.forEach((c, i) =&gt; {
+                    if(c.trim().length &gt; 0 &amp;&amp; c.includes('github updates')) {
                         const parameters = JSON.parse(((/[\{].*[\}]|[\[].*[\]]|(['"]).*\1/igm).exec(c) || ['""'])[0]);
-                        if(parameters[0] === project && parameters[1] === branch) {
+                        if(parameters[0] === project &amp;&amp; parameters[1] === branch) {
                             parameters[2] = commit;
                         }
                         desc[i] = 'github updates ' + JSON.stringify(parameters);
@@ -129,36 +129,36 @@ function updateHeartbeatEvent(project, branch, commit) {
 
 function findBranchRemote(project, branch) {
     return execCmd(`git branch -r`, {cwd: project}) // 
-        .then(r => {
-            const remotes = r.join('\n').split(/\s*\n\s*/igm).filter(r => (r.split('/')[1] || '').trim() === branch);
+        .then(r =&gt; {
+            const remotes = r.join('\n').split(/\s*\n\s*/igm).filter(r =&gt; (r.split('/')[1] || '').trim() === branch);
             if(remotes.length === 0) {
                 throw new Error('branch "' + branch + '" not found on any remotes ' + JSON.stringify(r))
             }
             remote = remotes[0].split('/')[0];
             return remote;
         })
-        .then(() => ({remote, branch}))
+        .then(() =&gt; ({remote, branch}))
 }
 
 function getUpdate(project, branch, fromCommit) {
     var projectCopy, latestCommit;
     return cloneProject(project)
-        .then(p => {
+        .then(p =&gt; {
             projectCopy = p;
             return findBranchRemote(projectCopy, branch);
         })
-        .then(({remote, branch}) => execCmd(`
+        .then(({remote, branch}) =&gt; execCmd(`
 git fetch ${remote}
 git log ${fromCommit || 'HEAD'}..${remote}/${branch}`, {cwd: projectCopy}))
-        .then(log => {
-            if(log.join('').trim().length > 0) {
+        .then(log =&gt; {
+            if(log.join('').trim().length &gt; 0) {
                 latestCommit = (/commit (.*)/ig).exec(log.join(''))[1];
                 return cloneProject(projectCopy, true)
             } else {
                 throw new Error('nothing for git to do');
             }
         })
-        .then(r => {
+        .then(r =&gt; {
             projectCopy = r;
             if(branch) {
                 return execCmd(`
@@ -166,11 +166,11 @@ git reset --hard
 git checkout ${branch}`, {cwd: projectCopy})
             }
         })
-        .then(() => execCmd(importer.interpret('git auto rebase').code.trim()
+        .then(() =&gt; execCmd(importer.interpret('git auto rebase').code.trim()
                             + ` ${remote} ${branch}`, {cwd: projectCopy}))
-        .then(() => installBuildTestEvent(projectCopy))
+        .then(() =&gt; installBuildTestEvent(projectCopy))
     // TODO: update heartbeat event description to pass in the latest commit
-        .then(() => updateHeartbeatEvent(project, branch, latestCommit))
+        .then(() =&gt; updateHeartbeatEvent(project, branch, latestCommit))
 }
 module.exports = getUpdate;
 
@@ -181,8 +181,8 @@ module.exports = getUpdate;
 if(typeof $ !== 'undefined') {
     $.async();
     getUpdate('portal')
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

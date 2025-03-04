@@ -77,29 +77,29 @@ function clickElement(id) {
     }, 'DOM.resolveNode', {
         objectId: id
     })
-        .then(r => {
+        .then(r =&gt; {
         console.log(r);
         promisifyChrome('debugger.sendCommand', {
             tabId: getTab()
         }, 'Runtime.evaluate', {
-            expression: `new window.BackupPromise(resolve => setTimeout(() => {
+            expression: `new window.BackupPromise(resolve =&gt; setTimeout(() =&gt; {
 resolve();
 }, 500))`,
             awaitPromise: true
         })})
-        .then(r => promisifyChrome('debugger.sendCommand', {
+        .then(r =&gt; promisifyChrome('debugger.sendCommand', {
             tabId: getTab()
         }, 'Input.dispatchMouseEvent', {
             type: 'mousePressed', 
             x: r.x,
             y: r.y, 
         }))
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
     // TODO: click center
 }
 
 
-router.post('/session/:sessionId/element/:id/click', (req, res) => {
+router.post('/session/:sessionId/element/:id/click', (req, res) =&gt; {
     response(res, clickElement(parseInt(req.params['id'])))
 }); //,"ClickElement",ExecuteClickElement,
 

@@ -100,7 +100,7 @@ function injectImports(ast, allImports) {
     cacheBody.body.splice(cacheBody.body.indexOf(firstCache), 1, ...cacheCode.body);
     var runContext = getArrayAST(`//AssignmentExpression[
 //Identifier[@name == 'runInNewContext']]`, ast)[0];
-    var addImports = Object.values(allImports).map(i => i.id).filter((i, j, arr) => arr.indexOf(i) === j)
+    var addImports = Object.values(allImports).map(i =&gt; i.id).filter((i, j, arr) =&gt; arr.indexOf(i) === j)
     var requireCode = getArrayAST('*', importsTemplate(addImports))[0].body[0];
     requireCode.expression.right = runContext.right;
     runContext.right = requireCode;

@@ -84,47 +84,47 @@ function openUrl(client, url) {
     var handles;
     return client
         .getWindowHandles()
-        .then(h => handles = h)
-        .execute((url, width, height) => {
+        .then(h =&gt; handles = h)
+        .execute((url, width, height) =&gt; {
             window.open(url, '', 'width=1350,height=1024');
         }, url)
         .getWindowHandles()
-        .then(h => h.filter(hwnd => handles.indexOf(hwnd) === -1)[0])
-        .catch(e => console.log(e))
+        .then(h =&gt; h.filter(hwnd =&gt; handles.indexOf(hwnd) === -1)[0])
+        .catch(e =&gt; console.log(e))
 }
 
 function createNewWindows(client, urls) {
     var hwnd;
     return client
         .getWindowHandle()
-        .then(r => hwnd = r)
+        .then(r =&gt; hwnd = r)
         .getWindowHandles()
-        .then(r => {
+        .then(r =&gt; {
             // -1 first window is already used by sliced url
             const count = urls.length - (r.length - 1);
             const promises = [];
-            for(var i = 0; i < count; i++) {
-                promises.push((i => resolve => {
+            for(var i = 0; i &lt; count; i++) {
+                promises.push((i =&gt; resolve =&gt; {
                     console.log(urls[i]);
                     return openUrl(urls[i])
                         .switchToWindow(hwnd)
-                        .then(h => resolve(h))
-                        .catch(e => { console.log(e); resolve() })
+                        .then(h =&gt; resolve(h))
+                        .catch(e =&gt; { console.log(e); resolve() })
                 }).apply(this, [i]));
             }
             return importer.runAllPromises(promises);
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 
 function tileWindows(client, urls) {
     return client
         .resizeWindow(client, 0)
         .url(typeof urls === 'string' ? urls : urls[0])
-        .then(h => typeof urls === 'string' ? [] : createNewWindows(urls.slice(1)))
-        .then(() => getAllSessionUrls())
-        .then(() => client.getWindowHandles())
-        .catch(e => console.log(e))
+        .then(h =&gt; typeof urls === 'string' ? [] : createNewWindows(urls.slice(1)))
+        .then(() =&gt; getAllSessionUrls())
+        .then(() =&gt; client.getWindowHandles())
+        .catch(e =&gt; console.log(e))
 }
 module.exports = tileWindows;
 

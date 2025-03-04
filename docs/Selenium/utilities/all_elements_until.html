@@ -70,8 +70,8 @@ const selectDom = importer.import('selenium select')
 
 async function getAllUntil(driver, scrollableSelector,
     dataSelector,
-    compare = (a, b) => a === b,
-    cb = (i) => i < 3,
+    compare = (a, b) =&gt; a === b,
+    cb = (i) =&gt; i &lt; 3,
     set = [],
     up = false,
     i = 0) {
@@ -81,9 +81,9 @@ async function getAllUntil(driver, scrollableSelector,
 
     let filtered = []
     let newPosts = ((typeof result === 'string' ? [result] : result) || [])
-    for (let i = 0; i < newPosts.length; i++) {
+    for (let i = 0; i &lt; newPosts.length; i++) {
         let found = false
-        for (let j = 0; j < set.length; j++) {
+        for (let j = 0; j &lt; set.length; j++) {
             if (await compare(newPosts[i], set[j])) {
                 found = true
             }
@@ -94,11 +94,11 @@ async function getAllUntil(driver, scrollableSelector,
     }
     set = set.concat(filtered);
     // TODO: something with page timing is causing this to fail, continue to call until cb
-    if (filtered.length > 0 && await cb(i, set)) {
+    if (filtered.length &gt; 0 &amp;&amp; await cb(i, set)) {
         await scrollClient(driver, scrollableSelector, up)
-        await new Promise(resolve => setTimeout(resolve, 2500))
+        await new Promise(resolve =&gt; setTimeout(resolve, 2500))
         await scrollClient(driver, scrollableSelector, up)
-        await new Promise(resolve => setTimeout(resolve, 2500))
+        await new Promise(resolve =&gt; setTimeout(resolve, 2500))
         return await getAllUntil(driver, scrollableSelector, dataSelector, compare, cb, set, up, i + 1)
     }
     return set

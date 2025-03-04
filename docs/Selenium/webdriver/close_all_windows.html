@@ -100,7 +100,7 @@ async function closeAllWindows(driver, sessionId, keep) {
   try {
     let windows = await driver2.getAllWindowHandles()
     console.log('closing session ' + sessionId[1] + ' windows ' + windows)
-    for(let i = 0; i < windows.length; i++) {
+    for(let i = 0; i &lt; windows.length; i++) {
       if(windows[i] != keep) {
         await driver2.switchTo().window(windows[i])
         await driver2.close()

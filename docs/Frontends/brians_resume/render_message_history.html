@@ -110,14 +110,14 @@ function renderMessages(req, res) {
       ACTIVE_CONVERSATIONS[convoFile] = {}
     }
   }
-  let messageTimes = Object.keys(ACTIVE_CONVERSATIONS[convoFile]).filter(k => k != 'summaries' && k != 'memories')
-  messageTimes.sort((a, b) => b - a)
+  let messageTimes = Object.keys(ACTIVE_CONVERSATIONS[convoFile]).filter(k =&gt; k != 'summaries' &amp;&amp; k != 'memories')
+  messageTimes.sort((a, b) =&gt; b - a)
   let compareWhen = when.getTime()
   let compareFrom = from.getTime()
   let count = 0
   let messages = ''
-  for(let i = 0; i < messageTimes.length && count < 25; i++) {
-    if(parseInt(messageTimes[i]) > compareWhen || parseInt(messageTimes[i]) < compareFrom) {
+  for(let i = 0; i &lt; messageTimes.length &amp;&amp; count &lt; 25; i++) {
+    if(parseInt(messageTimes[i]) &gt; compareWhen || parseInt(messageTimes[i]) &lt; compareFrom) {
       continue
     }
 
@@ -125,22 +125,22 @@ function renderMessages(req, res) {
     // load messages in reverse order because the are sorted from recent to oldest
     if(typeof message.content != 'undefined') {
       if(message.user) {
-        messages = '<div id="id-' + messageTimes[i] + '" class="user"><p>User: ' + message.content + '</p></div>\n' + messages
+        messages = '&lt;div id="id-' + messageTimes[i] + '" class="user"&gt;&lt;p&gt;User: ' + message.content + '&lt;/p&gt;&lt;/div&gt;\n' + messages
       } else {
         const mdHtml = md.render(message.content);
-        messages = '<div id="id-' + messageTimes[i] + '" class="ai">AI: ' + mdHtml + '</div>\n' + messages
+        messages = '&lt;div id="id-' + messageTimes[i] + '" class="ai"&gt;AI: ' + mdHtml + '&lt;/div&gt;\n' + messages
       }
     } else {
       if(message.user) {
-        messages = '<div id="id-' + messageTimes[i] + '" class="user"><p>User: Content off the record</p></div>\n' + messages
+        messages = '&lt;div id="id-' + messageTimes[i] + '" class="user"&gt;&lt;p&gt;User: Content off the record&lt;/p&gt;&lt;/div&gt;\n' + messages
       } else {
-        messages = '<div id="id-' + messageTimes[i] + '" class="ai">AI: Content off the record</div>\n' + messages
+        messages = '&lt;div id="id-' + messageTimes[i] + '" class="ai"&gt;AI: Content off the record&lt;/div&gt;\n' + messages
       }
     }
     count++
   }
   return res.send(importer.interpret('resume chat program').code
-    .replace('<div id="messages">', '<div id="messages">' + messages))
+    .replace('&lt;div id="messages"&gt;', '&lt;div id="messages"&gt;' + messages))
 }
 
 module.exports = renderMessages

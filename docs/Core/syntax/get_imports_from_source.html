@@ -144,7 +144,7 @@ function getImports(code) {
         IMPORTER_CALLS.replace('importer', importer),
         [`./Identifier/@name|./*/Identifier/@name|.//Literal/@value`]
     ], code))
-        .filter((i, j, arr) => arr.indexOf(i) === j)
+        .filter((i, j, arr) =&gt; arr.indexOf(i) === j)
 }
 
 module.exports = getImports;

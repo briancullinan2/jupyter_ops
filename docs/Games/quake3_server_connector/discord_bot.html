@@ -92,11 +92,11 @@ var lose = [
     'Boo hoo!',
     'Phooey!',
     'Au revoir, mon amis.',
-    '#*&^@#!!',
+    '#*&amp;^@#!!',
 ]
 
 var discordCommands = {
-    CHALLENGE: /^[!\\\/]?(<@[^:@\s]+>\s*chall?[ae]nge|chall?[ae]nge\s*<@[^:@\s]+>)\s*([^:@\s]*?)\s*([^:@\s]*?)/ig,
+    CHALLENGE: /^[!\\\/]?(&lt;@[^:@\s]+&gt;\s*chall?[ae]nge|chall?[ae]nge\s*&lt;@[^:@\s]+&gt;)\s*([^:@\s]*?)\s*([^:@\s]*?)/ig,
     CONNECT: /^[!\\\/]?(rcon)?conn?ect\s*([0-9\.a-z-_]+(:[0-9]+)*)$/ig,
     RCON: /^[!\\\/]?rcon(pass?wo?rd)?\s+([^"\s]+)\s*(.*)$/ig,
     DISCONNECT: /[!\\\/]?disconn?ect/ig,
@@ -108,12 +108,12 @@ var discordCommands = {
 }
 
 async function configCommand(command) {
-    if(!command.attachments && !command.embed) return
+    if(!command.attachments &amp;&amp; !command.embed) return
     var user = command.author.username
     var options = discordCommands.CONFIG.exec(command.content)
     var options2 = command.attachments
-        .map(a => discordCommands.CONFIG.exec(a.filename))
-        .filter(a => a)[0]
+        .map(a =&gt; discordCommands.CONFIG.exec(a.filename))
+        .filter(a =&gt; a)[0]
     var name = options ? options[1] : options2 ? options2[1] : ''
         .replace(options[2], '')
         .replace(options2[2], '')
@@ -148,18 +148,18 @@ async function connectCommand(command) {
     await getInfo(match[1], parseInt(match[2]) || 27960)
     var info = await nextInfoResponse()
     var filteredKeys = Object.keys(info)
-        .filter(k => k != 'challenge'
-                && k != 'hostname'
-                && k != 'sv_hostname'
-                && k != 'mapname'
-                && k != 'clients'
-                && k != 'g_humanplayers'
-                && k != 'sv_maxclients'
-                && k != 'ip'
-                && k != 'port')
-        .map(k => removeCtrlChars(k))
+        .filter(k =&gt; k != 'challenge'
+                &amp;&amp; k != 'hostname'
+                &amp;&amp; k != 'sv_hostname'
+                &amp;&amp; k != 'mapname'
+                &amp;&amp; k != 'clients'
+                &amp;&amp; k != 'g_humanplayers'
+                &amp;&amp; k != 'sv_maxclients'
+                &amp;&amp; k != 'ip'
+                &amp;&amp; k != 'port')
+        .map(k =&gt; removeCtrlChars(k))
     var filteredValues = filteredKeys
-        .map(k => removeCtrlChars(info[k]))
+        .map(k =&gt; removeCtrlChars(info[k]))
     var json = {
         content: '\n```BOT'+command.id+'\nbeep boop\n```\n',
         embeds: [{
@@ -209,7 +209,7 @@ async function rconCommand(command) {
     await discordApi.triggerTyping(command.channel_id)
     var match = (/^(.*?):*([0-9]+)*$/ig).exec(userLogins[user].address)
     await sendRcon(match[1], parseInt(match[2]) || 27960,
-             options[3] && options[3].length > 0
+             options[3] &amp;&amp; options[3].length &gt; 0
                  ? options[3]
                  : 'cmdlist',
              userLogins[user].password)

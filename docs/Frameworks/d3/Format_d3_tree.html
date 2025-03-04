@@ -83,8 +83,8 @@
         // return { parent: nodeMap[x.target], source: nodeMap[x.source], target: nodeMap[x.target] };
     });
     edges.forEach(function (x) {
-        if (typeof nodeMap[x.target].branch != 'undefined' && nodeMap[x.target].branch != ''
-            && typeof nodeMap[x.source].branch == 'undefined' || nodeMap[x.source].branch == '') {
+        if (typeof nodeMap[x.target].branch != 'undefined' &amp;&amp; nodeMap[x.target].branch != ''
+            &amp;&amp; typeof nodeMap[x.source].branch == 'undefined' || nodeMap[x.source].branch == '') {
             nodeMap[x.source].branch = nodeMap[x.target].branch;
         }
     });

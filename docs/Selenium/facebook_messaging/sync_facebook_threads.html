@@ -79,18 +79,18 @@ runSeleniumCell([
     'list facebook threads',
     'messages from facebook',
 ])
-    .then(r => ({
+    .then(r =&gt; ({
         loginFacebook, listFacebookThreads, readFacebookThread
     } = r).loginFacebook())
-    .then(threads => {
+    .then(threads =&gt; {
         try { threads = JSON.parse(fs.readFileSync(project + '/facebook-threads.json')); }
         catch (e) { threads = []; }
     // TODO: compare glob/stat to see which threads need updating
         return importer.runAllPromises(threads.slice(450, 600)
-            .map(t => ((resolve) => readFacebookThread(t).then((r) => resolve(r)))));
+            .map(t =&gt; ((resolve) =&gt; readFacebookThread(t).then((r) =&gt; resolve(r)))));
     })
     // TODO: when threads gets to 100% call listFacebookThreads()
-    //.then(() => listFacebookThreads())
+    //.then(() =&gt; listFacebookThreads())
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

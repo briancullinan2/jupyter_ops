@@ -70,8 +70,8 @@ function googleTakeout(products = 'all?') {
             'log in google',
             'download google takeout'
         ])
-        .then(({downloadGoogleTakeout}) => downloadGoogleTakeout(products))
-        .catch(e => console.log(e))
+        .then(({downloadGoogleTakeout}) =&gt; downloadGoogleTakeout(products))
+        .catch(e =&gt; console.log(e))
 };
 module.exports = googleTakeout;
 

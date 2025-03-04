@@ -108,7 +108,7 @@
 <p>The code consists of four functions: <code>status</code>, <code>onError</code>, <code>onStdout</code>, and <code>onStderr</code>, which handle responses to kernel requests, error handling, and standard output and error messages, respectively. These functions utilize the <code>do_respond</code> and <code>respond</code> methods to send messages to the shell and iopub sockets, providing status updates, error notifications, and streaming data.</p>
 
 
-<pre class="javascript"><code>    status: (kernel, request) => kernel.do_respond({
+<pre class="javascript"><code>    status: (kernel, request) =&gt; kernel.do_respond({
         status: request.content
     }),
 

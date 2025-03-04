@@ -70,7 +70,7 @@ function sendTwilio(to, message) {
         body: message,
         to: (!to.includes('+') ? '+1' : '') + to,  // Text this number
         from: '+18086701280' // From a valid Twilio number
-    }).then(message => message.sid);
+    }).then(message =&gt; message.sid);
 }
 module.exports = sendTwilio;
 </code></pre>

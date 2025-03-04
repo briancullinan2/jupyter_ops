@@ -83,7 +83,7 @@ gulp.task('watch for changes', function () {
     }, function () {
         if (!searching) {
             searching = true;
-            projectRelatives(project).then(() => {
+            projectRelatives(project).then(() =&gt; {
                 searching = false
             });
         }

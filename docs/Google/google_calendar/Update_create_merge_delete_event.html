@@ -88,32 +88,32 @@ function updateEvent(event, options) {
     var calendar;
     
     return authorizeCalendar()
-        .then(c => calendar = c)
-        .then(() => correctCalendarId(options))
-        .then(() => getDaysEvents(event.start.dateTime, options))
-        .then(m => {
+        .then(c =&gt; calendar = c)
+        .then(() =&gt; correctCalendarId(options))
+        .then(() =&gt; getDaysEvents(event.start.dateTime, options))
+        .then(m =&gt; {
             const actionsArray = [];
-            const matches = m.filter(match => !match.event.deleted
-                && match.event.summary.toLowerCase().trim() === event.summary.toLowerCase().trim()
-                && Math.abs(Math.round(new Date(match.event.start.dateTime).getTime() / 1000 / 60)
-                    - Math.round(new Date(event.start.dateTime).getTime() / 1000 / 60)) < 32);
+            const matches = m.filter(match =&gt; !match.event.deleted
+                &amp;&amp; match.event.summary.toLowerCase().trim() === event.summary.toLowerCase().trim()
+                &amp;&amp; Math.abs(Math.round(new Date(match.event.start.dateTime).getTime() / 1000 / 60)
+                    - Math.round(new Date(event.start.dateTime).getTime() / 1000 / 60)) &lt; 32);
             console.log('Matching ' + matches.length);
         
             // TODO: check for existing event if the ID is already set?
-            if (matches.length > 0) {
+            if (matches.length &gt; 0) {
                 var unique = [];
                 try {
                     let descriptions = JSON.parse(event.description) || [];
                     descriptions = descriptions.concat(
-                        ...matches.map(match => {
+                        ...matches.map(match =&gt; {
                             try {
                                 return JSON.parse(match.event.description)
                             } catch (e) {
                                 return [];
                             }
                         }));
-                    const urls = descriptions.map(d => (d || {}).url);
-                    unique = descriptions.filter((d, i) => urls.indexOf((d || {}).url) === i);
+                    const urls = descriptions.map(d =&gt; (d || {}).url);
+                    unique = descriptions.filter((d, i) =&gt; urls.indexOf((d || {}).url) === i);
                 } catch (e) {
                     unique = [event.description];
                 }
@@ -159,7 +159,7 @@ function updateEvent(event, options) {
             }
             return importer.runAllPromises(actionsArray);
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 module.exports = updateEvent;
 </code></pre>

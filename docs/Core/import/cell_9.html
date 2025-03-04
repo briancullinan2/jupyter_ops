@@ -90,7 +90,7 @@ function filterLocal(query) {
     var query = path.basename(query).split(/[\[\]]/ig);
     if(fs.existsSync(filename)) {
         var local = getCells(filename)
-        if(query.length < 3) {
+        if(query.length &lt; 3) {
             return local
         } else {
             return [local[parseInt(query[1])]]
@@ -103,13 +103,13 @@ function filterLocal(query) {
 // filter query results by filename
 function filterFilename(arr, fname) {
     return arr
-        .filter(id => path.basename(id)
+        .filter(id =&gt; path.basename(id)
                 .substr(0, fname.length + 1) === fname + '[');
 }
 
 function searchFiles(query, cellCache) {
-    return filterFilename(cellCache.map(c => c[1]), path.basename(query))
-        .sort((a, b) => 
+    return filterFilename(cellCache.map(c =&gt; c[1]), path.basename(query))
+        .sort((a, b) =&gt; 
               parseInt(a.split(/[\[\]]/ig)[1])
               - parseInt(b.split(/[\[\]]/ig)[1]))
 }
@@ -118,7 +118,7 @@ function searchQueryFiles(query, cellCache) {
     var {queryDatabase} = require('../Core')
     var isNumeric = parseInt(query[1]) + '' === query[1]
     return isNumeric
-        ? [(cellCache.filter(cell => path.basename(cell[1]) === `${query[0]}[${query[1]}]`)[0] || [])[1]]
+        ? [(cellCache.filter(cell =&gt; path.basename(cell[1]) === `${query[0]}[${query[1]}]`)[0] || [])[1]]
         : filterFilename(queryDatabase(query[1]), query[0])
 }
 

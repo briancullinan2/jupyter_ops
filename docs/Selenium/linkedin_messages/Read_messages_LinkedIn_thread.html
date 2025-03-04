@@ -74,32 +74,32 @@ function getThreadParticipants(thread) {
     // check for thread url and go there
     return client
         .getUrl()
-        .then(url => {
+        .then(url =&gt; {
             return url.indexOf(thread + 'topcard/') === -1
                 ? client.url('https://www.linkedin.com' + thread + 'topcard/')
                     .alertText()
-                    .then(t => t.indexOf('leave') > -1 ? client.alertAccept() : '')
-                    .catch(e => {
+                    .then(t =&gt; t.indexOf('leave') &gt; -1 ? client.alertAccept() : '')
+                    .catch(e =&gt; {
                     })
                 : Promise.resolve([]);
         })
         .pause(3000)
         .elements('.view-profile')
-        .then(els => Promise.all(els.value.map(a => {
-            return client.elementIdAttribute(a.ELEMENT, 'href').then(h => h.value);
+        .then(els =&gt; Promise.all(els.value.map(a =&gt; {
+            return client.elementIdAttribute(a.ELEMENT, 'href').then(h =&gt; h.value);
         })))
-        .then(links => {
-            return importer.runAllPromises(links.map(link => (resolve => {
+        .then(links =&gt; {
+            return importer.runAllPromises(links.map(link =&gt; (resolve =&gt; {
                 var results = [];
                 return client
                     .click('a[href*="' + link.replace('https://www.linkedin.com', '') + '"]')
                     .pause(3000)
-                    .then(() => readLinkedInProfileInfo(link))
-                    .then(r => results = r)
+                    .then(() =&gt; readLinkedInProfileInfo(link))
+                    .then(r =&gt; results = r)
                     .back()
                     .pause(1000)
-                    .then(r => resolve(results))
-                    .catch(e => console.log(e))
+                    .then(r =&gt; resolve(results))
+                    .catch(e =&gt; console.log(e))
             })));
         });
 };
@@ -109,12 +109,12 @@ function scrollLinkedInMessages(messages) {
     // TODO: add check for needing to login
     // scroll to bottom of messages
     return client
-        .execute(() => {
+        .execute(() =&gt; {
             document.getElementsByClassName('msg-s-message-list')[0]
                 .scrollTop -= 10000;
         })
         .pause(2000)
-        .then(() => readLinkedInMessages(messages));
+        .then(() =&gt; readLinkedInMessages(messages));
 }
 
 function readLinkedInMessages(messages) {
@@ -122,10 +122,10 @@ function readLinkedInMessages(messages) {
     var lastTime;
     return client
         .alertText()
-        .then(t => t.indexOf('leave') > -1 ? client.alertAccept() : '')
-        .catch(e => {
+        .then(t =&gt; t.indexOf('leave') &gt; -1 ? client.alertAccept() : '')
+        .catch(e =&gt; {
         })
-        .then(() => getAllXPath([
+        .then(() =&gt; getAllXPath([
             '//li[contains(@class, "msg-s-message-list__event")]',
             {
                 from: './/img/@title',
@@ -133,8 +133,8 @@ function readLinkedInMessages(messages) {
                 message: './/*[contains(@class, "msg-s-message-listitem__message-bubble")]//text()'
             }
         ]))
-        .then(r => {
-            return r.map(m => {
+        .then(r =&gt; {
+            return r.map(m =&gt; {
                 var newTime = chrono.parseDate(m.time + '');
                 if (newTime !== null) {
                     newTime.setHours(newTime.getHours() - (new Date()).getTimezoneOffset() / 60)
@@ -143,54 +143,54 @@ function readLinkedInMessages(messages) {
                 return Object.assign(m, {
                     time: lastTime,
                     from: m.from + '',
-                    message: m.message.filter(s => !s.match(/^\s*$/igm)).join('\n')
+                    message: m.message.filter(s =&gt; !s.match(/^\s*$/igm)).join('\n')
                 })
             })
         })
-        .then(r => {
+        .then(r =&gt; {
             var newMessages = r
-                .filter(e => messages
-                    .filter(m => m.message === e.message).length === 0);
+                .filter(e =&gt; messages
+                    .filter(m =&gt; m.message === e.message).length === 0);
             messages = newMessages.concat(messages);
-            return newMessages.length > 0
+            return newMessages.length &gt; 0
                 ? scrollLinkedInMessages(messages)
                 : Promise.resolve(messages);
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 
 function readLinkedInThread(thread, messages) {
     var participants;
     return client
         .getUrl()
-        .then(url => url.indexOf(thread) === -1
+        .then(url =&gt; url.indexOf(thread) === -1
             ? client.url('https://www.linkedin.com' + thread)
                 .alertText()
-                .then(t => t.indexOf('leave') > -1 ? client.alertAccept() : '')
-                .catch(e => {
+                .then(t =&gt; t.indexOf('leave') &gt; -1 ? client.alertAccept() : '')
+                .catch(e =&gt; {
                 })
                 .pause(1000)
-                .isExisting('a[href*="topcard"]').then(is => is
+                .isExisting('a[href*="topcard"]').then(is =&gt; is
                     ? client.click('a[href*="topcard"]')
                     : Promise.resolve([]))
             : (url.indexOf('topcard') === -1
-                ? client.isExisting('a[href*="topcard"]').then(is => is
+                ? client.isExisting('a[href*="topcard"]').then(is =&gt; is
                     ? client.click('a[href*="topcard"]')
                     : Promise.resolve([]))
                 : Promise.resolve([])))
         // get participants from topcard
         .pause(3000)
-        .then(() => getThreadParticipants(thread))
-        .then(p => participants = p)
+        .then(() =&gt; getThreadParticipants(thread))
+        .then(p =&gt; participants = p)
         .back()
         // TODO: save to contacts
-        .then(() => readLinkedInMessages(messages || []))
-        .then(messages => ({
+        .then(() =&gt; readLinkedInMessages(messages || []))
+        .then(messages =&gt; ({
             thread: thread,
             participants: participants,
             messages: messages
         }))
-        .catch(e => console.log(e));
+        .catch(e =&gt; console.log(e));
 };
 module.exports = readLinkedInThread;
 </code></pre>

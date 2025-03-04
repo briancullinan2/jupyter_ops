@@ -80,12 +80,12 @@ var {listGlobalForwards} = importer.import('list global bucket url map');
 var project = 'spahaha-ea443';
 var proxy = 'https://www.googleapis.com/compute/v1/projects/spahaha-ea443/global/targetHttpsProxies/thp-0c28d-marketing-site-7b81f-sheet-to-web-com';
 
-describe('listing global forwards', () => {
-    it('should list forward', () => {
+describe('listing global forwards', () =&gt; {
+    it('should list forward', () =&gt; {
         return listGlobalForwards(project, proxy)
-            .then(ip => {
+            .then(ip =&gt; {
                 console.log(ip);
-                assert(Object.keys(ip).length > 0, 'should list forward');
+                assert(Object.keys(ip).length &gt; 0, 'should list forward');
             })
     }).timeout(60000)
     

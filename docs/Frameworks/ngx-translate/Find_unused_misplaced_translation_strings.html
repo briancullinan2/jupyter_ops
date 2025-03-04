@@ -63,7 +63,7 @@ var cwd = '/Users/briancullinan/Documents/portal/src/';
 
 function findMisplaced(obj, parentKey) {
     for (var k in obj) {
-        if (typeof obj[k] == 'object' && obj[k] !== null) {
+        if (typeof obj[k] == 'object' &amp;&amp; obj[k] !== null) {
             var newParent = typeof parentKey !== 'undefined' ? (parentKey + '.' + k) : k;
             findMisplaced(obj[k], newParent);
         } else if (typeof obj[k] == 'string') {
@@ -83,11 +83,11 @@ var enJson = JSON.parse(fs.readFileSync(path.join(cwd, 'assets', 'i18n', 'en.jso
 function flattenAllKeys(obj, parentKey) {
     var result = [];
     for (var k in obj) {
-        if (typeof obj[k] == 'object' && obj[k] !== null) {
+        if (typeof obj[k] == 'object' &amp;&amp; obj[k] !== null) {
             var newParent = typeof parentKey !== 'undefined' ? (parentKey + '.' + k) : k;
             result = result.concat(flattenAllKeys(obj[k], newParent));
         } else if (typeof obj[k] == 'string'
-            && parentKey.indexOf('TEMPDEMOPAGES') === -1) {
+            &amp;&amp; parentKey.indexOf('TEMPDEMOPAGES') === -1) {
             result[result.length] = parentKey + '.' + k;
         }
     }
@@ -98,7 +98,7 @@ var allENKeys = flattenAllKeys(enJson);
 
 // find unused keys
 function getUnused() {
-    allENKeys.forEach(k => {
+    allENKeys.forEach(k =&gt; {
         var parentKey = k.split('.');
         parentKey.pop();
         parentKey = parentKey.join('.');
@@ -112,7 +112,7 @@ function getUnused() {
 function getMissing() {
     for (var k in translationKeys) {
         if (typeof translationKeys[k] !== 'undefined') {
-            translationKeys[k].forEach(i => {
+            translationKeys[k].forEach(i =&gt; {
                 if (allENKeys.indexOf(i) === -1) {
                     console.log('Missing key: ' + i);
                 }
@@ -126,14 +126,14 @@ getUnused();
 
 
 // find strings of text in html files
-var htmlWordRegex = (/>[^><]*?(\b[^><]*\b)+[^><]*?</ig)
+var htmlWordRegex = (/&gt;[^&gt;&lt;]*?(\b[^&gt;&lt;]*\b)+[^&gt;&lt;]*?&lt;/ig)
 var attrWordRegex = (/(placeholder|title|alt)\s*=\s*["]([^"]*)["]/ig);
-var needTranslations = files.map((f, i) => {
+var needTranslations = files.map((f, i) =&gt; {
     var html = fs.readFileSync(path.join(cwd, f)).toString();
     let r;
     var needTranslations = [];
     while ((r = htmlWordRegex.exec(html)) !== null) {
-        if (r[1].trim() !== '' && r[1].match(/\|\s*translate/ig) === null) {
+        if (r[1].trim() !== '' &amp;&amp; r[1].match(/\|\s*translate/ig) === null) {
             needTranslations[needTranslations.length] = r[1].trim();
         }
     }
@@ -143,9 +143,9 @@ var needTranslations = files.map((f, i) => {
         }
     }
     return {file: f, texts: needTranslations};
-}).filter(t => t.texts.length > 0);
+}).filter(t =&gt; t.texts.length &gt; 0);
 
-needTranslations.forEach(t => {
+needTranslations.forEach(t =&gt; {
     console.log('Needs translating: ' + t.texts + ' in ' + t.file);
 });
 

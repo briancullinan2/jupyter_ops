@@ -155,8 +155,8 @@ function do_message(message, func) {
 // TODO: move this to socket kernel and call from parent process kernel
 function do_shutdown(message) {
     return Promise.resolve()
-        .then(() => this.socket.kill('SIGTERM'))
-        .then(() => process.exit() /*request.content.restart
+        .then(() =&gt; this.socket.kill('SIGTERM'))
+        .then(() =&gt; process.exit() /*request.content.restart
               ? kernel.do_init(kernel.kernel_config, kernel)
               : void 0*/)
 }

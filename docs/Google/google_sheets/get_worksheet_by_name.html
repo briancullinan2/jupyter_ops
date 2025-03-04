@@ -80,10 +80,10 @@ var loadedDocs = {};
 function getSheetByName(docId, page) {
     return typeof page === 'string'
         ? Promise.resolve(loadedDocs[docId] || getInfo(docId))
-            .then(info => loadedDocs[docId] = info)
-            .then(() => page
-                ? loadedDocs[docId].sheets.filter(s => s.properties.title === page)[0]
-                : loadedDocs[docId].sheets.filter(s => s.properties.index === 0)[0])
+            .then(info =&gt; loadedDocs[docId] = info)
+            .then(() =&gt; page
+                ? loadedDocs[docId].sheets.filter(s =&gt; s.properties.title === page)[0]
+                : loadedDocs[docId].sheets.filter(s =&gt; s.properties.index === 0)[0])
         : Promise.resolve(page)
 }
 

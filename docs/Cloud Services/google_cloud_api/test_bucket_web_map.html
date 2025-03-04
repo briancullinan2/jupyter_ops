@@ -88,27 +88,27 @@ var project = 'spahaha-ea443';
 var domain = 'sheet-to-web.sheet-to-web.com';
 var urlMap = 'web-map';
 
-describe('adding a subdomain to a load balancer', () => {
-    it('should add a bucket backend', () => {
+describe('adding a subdomain to a load balancer', () =&gt; {
+    it('should add a bucket backend', () =&gt; {
         return insertBackendBucket(project, domain)
-            .then(bucketName => {
-                assert(bucketName.length > 0, 'should have added a backend');
+            .then(bucketName =&gt; {
+                assert(bucketName.length &gt; 0, 'should have added a backend');
             })
     }).timeout(60000)
     
-    it('should add a frontend to load balancer', () => {
+    it('should add a frontend to load balancer', () =&gt; {
         // TODO: check for A record in DNS to get ip
         return addIP(project, domain)
-            .then(ip => insertGlobalForward(project, ip, urlMap, domain))
-            .then(bucketName => {
-                assert(bucketName.length > 0, 'should have added a forward');
+            .then(ip =&gt; insertGlobalForward(project, ip, urlMap, domain))
+            .then(bucketName =&gt; {
+                assert(bucketName.length &gt; 0, 'should have added a forward');
             })
     }).timeout(60000)
     
-    it('should update url map on load balancer', () => {
+    it('should update url map on load balancer', () =&gt; {
         return updateUrlMap(project, urlMap, domain)
-            .then(map => {
-                assert(map.length > 0, 'should have updated the map');
+            .then(map =&gt; {
+                assert(map.length &gt; 0, 'should have updated the map');
             })
     }).timeout(60000)
 })

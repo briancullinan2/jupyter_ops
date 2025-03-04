@@ -82,12 +82,12 @@ async function generateCell(prompt, codeCell, github) {
 
   // TODO: local pull
   if(!fs.existsSync(github)
-    && fs.existsSync(path.join(PROFILE_PATH, github))) {
+    &amp;&amp; fs.existsSync(path.join(PROFILE_PATH, github))) {
       github = path.join(PROFILE_PATH, github)
   }
 
   if(github.includes('://')
-    && fs.existsSync(path.basename(github).replace('.git', ''))
+    &amp;&amp; fs.existsSync(path.basename(github).replace('.git', ''))
   ) {
     github = path.join(PROFILE_PATH, path.basename(github).replace('.git', ''))
   }

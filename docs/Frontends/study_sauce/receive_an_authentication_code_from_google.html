@@ -79,7 +79,7 @@ function extractProfile(oauth2Client) {
     return util.promisify(oauth2Client.request.bind(oauth2Client))({
             url: 'https://www.googleapis.com/oauth2/v3/userinfo?alt=json'
         })
-        .then(r => {
+        .then(r =&gt; {
             var profile = r.data;
             var rowData = {
                 link: safeName(profile.name) + '-' + uuid().substr(0, 5),
@@ -93,7 +93,7 @@ function extractProfile(oauth2Client) {
                 session: uuidSess(),
                 date: (new Date).getTime()
             }
-            return updateRow(process.env.DOCID, u => u.email === profile.email, rowData, 'User data')
+            return updateRow(process.env.DOCID, u =&gt; u.email === profile.email, rowData, 'User data')
         })
 }
 
@@ -105,10 +105,10 @@ function receiveCode(req, res) {
 
     var token;
     return util.promisify(oauth2Client.getToken.bind(oauth2Client))(req.query['code'])
-        .then(t => token = t)
-        .then(() => oauth2Client.setCredentials(token))
-        .then(() => extractProfile(oauth2Client))
-        .then(profile => {
+        .then(t =&gt; token = t)
+        .then(() =&gt; oauth2Client.setCredentials(token))
+        .then(() =&gt; extractProfile(oauth2Client))
+        .then(profile =&gt; {
             res.cookie('__session', profile.session);
             return res.redirect(process.env.DOMAIN + '/home/' + profile.link);
         })

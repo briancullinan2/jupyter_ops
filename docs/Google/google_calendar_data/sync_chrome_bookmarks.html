@@ -88,8 +88,8 @@ var options = {
 
 function getAllBookmarks(folders) {
     if(!folders) return []
-    return folders.map(f => f['links']
-        .map(l => Object.assign(l, {folder: f.folder}))
+    return folders.map(f =&gt; f['links']
+        .map(l =&gt; Object.assign(l, {folder: f.folder}))
         .concat(getAllBookmarks(f.children)))
         .flat(2)
 }
@@ -99,11 +99,11 @@ async function syncChromeBookmarks() {
     // TODO: copy to chrome history
     var links = getAllBookmarks(getBookmarksFromTakeout())
     // group by half hour
-    links.sort((a, b) => parseInt(b.date) - parseInt(a.date))
-    var groups = _.groupBy(links, l => Math.floor(l.date / (60 * 30 * 1000)))
-    var results = Object.keys(groups).reduce((acc, t) => {
-        var folders = _.groupBy(groups[t], l => l.folder)
-        return acc.concat(Object.keys(folders).map(f => ({
+    links.sort((a, b) =&gt; parseInt(b.date) - parseInt(a.date))
+    var groups = _.groupBy(links, l =&gt; Math.floor(l.date / (60 * 30 * 1000)))
+    var results = Object.keys(groups).reduce((acc, t) =&gt; {
+        var folders = _.groupBy(groups[t], l =&gt; l.folder)
+        return acc.concat(Object.keys(folders).map(f =&gt; ({
             start: {
                 dateTime: ISODateString(new Date(parseInt(t) * 30 * 60 * 1000 - offset))
             },
@@ -115,9 +115,9 @@ async function syncChromeBookmarks() {
         })))
     }, [])
     return await importer.runAllPromises(results
-        .map(event => resolve => updateEvent(event, options)
-        .then(r => resolve(r))
-        .catch(e => {
+        .map(event =&gt; resolve =&gt; updateEvent(event, options)
+        .then(r =&gt; resolve(r))
+        .catch(e =&gt; {
             console.log(e);
             resolve()
         })))

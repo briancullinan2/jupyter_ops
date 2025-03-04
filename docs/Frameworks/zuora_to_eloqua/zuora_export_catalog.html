@@ -125,10 +125,10 @@ function getCatalog(zuoraConfig, next) {
         uri: zuoraConfig.rest_api_url + (typeof next !== 'undefined' ? next.replace(/\/v1/ig, '') : '/catalog/products'),
         method: 'GET',
         headers: getAuthHeaders(zuoraConfig)
-    }).then(r => {
+    }).then(r =&gt; {
         catalog = catalog.concat(r.body.products);
         if(r.body.nextPage) {
-            return getCatalog(zuoraConfig, r.body.nextPage).then(r => catalog.concat(r));
+            return getCatalog(zuoraConfig, r.body.nextPage).then(r =&gt; catalog.concat(r));
         }
         return catalog;
     })

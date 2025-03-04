@@ -95,8 +95,8 @@ function authorizeProfile(req, res) {
     var user;
 
     return getDataSheet(process.env.DOCID, 'User data')
-        .then(users => user = users.filter(u => u.session && u.session === sessId)[0])
-        .then(() => {
+        .then(users =&gt; user = users.filter(u =&gt; u.session &amp;&amp; u.session === sessId)[0])
+        .then(() =&gt; {
             var token = JSON.parse((user || {}).token || '""');
             if(token) {
                 oauth2Client.setCredentials(token)
@@ -104,9 +104,9 @@ function authorizeProfile(req, res) {
             }
             throw new Error('invalid_token');
         })
-        .then(() => extractProfile(oauth2Client))
-        .then(() => res.redirect(process.env.DOMAIN + '/' + user.link + '/home/'))
-        .catch(up => {
+        .then(() =&gt; extractProfile(oauth2Client))
+        .then(() =&gt; res.redirect(process.env.DOMAIN + '/' + user.link + '/home/'))
+        .catch(up =&gt; {
             if(up.message == 'invalid_token') {
                 var authUrl = oauth2Client.generateAuthUrl({
                     access_type: 'offline',

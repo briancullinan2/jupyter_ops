@@ -75,8 +75,8 @@ var project = PROFILE_PATH + '/Conversations';
 
 function listAllConnections(force = false) {
     var friends = [];
-    if (fs.existsSync(project + '/connections.json') && !force
-        && (new Date()).getTime() - fs.statSync(project + '/connections.json').mtime.getTime() < 1000 * 60 * 60 * 24) {
+    if (fs.existsSync(project + '/connections.json') &amp;&amp; !force
+        &amp;&amp; (new Date()).getTime() - fs.statSync(project + '/connections.json').mtime.getTime() &lt; 1000 * 60 * 60 * 24) {
         return Promise.resolve(JSON.parse(
             fs.readFileSync(project + '/connections.json')));
     }
@@ -85,21 +85,21 @@ function listAllConnections(force = false) {
         .getUrl()
         .url('https://www.linkedin.com/mynetwork/invite-connect/connections/')
         .pause(3000)
-        .then(() => getAllUntil(
+        .then(() =&gt; getAllUntil(
             false,
             '//a[contains(@href, "/in/")]/@href',
             friends,
-            (a, b) => a === b,
-            (i) => i < 10
+            (a, b) =&gt; a === b,
+            (i) =&gt; i &lt; 10
         ))
-        .then(r => r.filter((l, i, arr) => arr.indexOf(l) === i))
-        .then(r => {
+        .then(r =&gt; r.filter((l, i, arr) =&gt; arr.indexOf(l) === i))
+        .then(r =&gt; {
             fs.writeFileSync(
                 project + '/connections.json',
                 JSON.stringify(r, null, 4));
             return r;
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 module.exports = listAllConnections;
 </code></pre>

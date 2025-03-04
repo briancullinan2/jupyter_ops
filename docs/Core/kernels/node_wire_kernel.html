@@ -116,7 +116,7 @@ var {processMetaKernel} = importer.import('process meta kernel');
 var {languageInterface} = importer.import('get kernel language');
 
 function getVersion(str) {
-    return str.split('.').map(v => parseInt(v, 10)).join('.')
+    return str.split('.').map(v =&gt; parseInt(v, 10)).join('.')
 }
 
 function nodeKernel(config, options) {

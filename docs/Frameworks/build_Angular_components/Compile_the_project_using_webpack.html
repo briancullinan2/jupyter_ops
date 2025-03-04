@@ -85,7 +85,7 @@ function webpackAngularProject(project) {
     //compiler.resolvers.normal.fileSystem = memfs;
     //compiler.resolvers.context.fileSystem = memfs;
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) =&gt; {
         compiler.run(function (err, stats) {
             process.chdir(previous);
             if (err) return reject(err);

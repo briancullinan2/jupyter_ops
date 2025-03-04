@@ -151,7 +151,7 @@ async function extractPaks(inpaks, outdir) {
     var results = globSync('**', {cwd: root})
     results.sort()
     console.log(path.resolve(path.dirname(inpaks)), results)
-    for(let i = 0; i < results.length; i++) {
+    for(let i = 0; i &lt; results.length; i++) {
         if(!results[i].match(/(\.pk3|\.zip)/))
             continue
         if(results[i].match(/\/|\\/))

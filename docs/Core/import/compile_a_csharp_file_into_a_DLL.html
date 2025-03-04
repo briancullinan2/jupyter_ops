@@ -101,7 +101,7 @@ function buildDLL(code, pathToCode, ctx) {
   let libName = safeurl(codeCell.questions[0])
   let libPath = path.join(BUILD_DIRECTORY, libName + '.cs')
   if (!fs.existsSync(libPath)
-    || fs.statSync(codeCell.filename).mtime > fs.statSync(libPath).mtime
+    || fs.statSync(codeCell.filename).mtime &gt; fs.statSync(libPath).mtime
   ) {
     fs.writeFileSync(libPath, codeCell.source.join(''))
   }
@@ -110,7 +110,7 @@ function buildDLL(code, pathToCode, ctx) {
   // TODO: recompile dylib
   let objPath = path.join(BUILD_DIRECTORY, libName + '.dll')
   if (!fs.existsSync(objPath)
-    || fs.statSync(libPath).mtime > fs.statSync(objPath).mtime
+    || fs.statSync(libPath).mtime &gt; fs.statSync(objPath).mtime
   ) {
     const { spawnSync } = require('child_process')
     let args = ['-target:library', '-out:' + objPath, libPath]
@@ -150,8 +150,8 @@ async function makeDLL(code, pathToCode, ctx) {
   console.log(params)
 
   // TODO: loop through classes
-  dotnet[namespace][classes[0]].functions = params.map(p => p[0])
-  for(let i = 0; i < params.length; i++) {
+  dotnet[namespace][classes[0]].functions = params.map(p =&gt; p[0])
+  for(let i = 0; i &lt; params.length; i++) {
     if(dotnet[namespace][classes[0]][params[i][0]]) {
       dotnet[namespace][classes[0]][params[i][0]].params = params
     }

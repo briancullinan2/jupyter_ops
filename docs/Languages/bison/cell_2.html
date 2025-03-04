@@ -71,11 +71,11 @@
 // return the indented AST
 jisonAST.prototype.get = function(indent){
   // create an indentation for level l
-  function indentString(l) { var r=""; for(var i=0;i<l;i++){r+="  "}; return r }
+  function indentString(l) { var r=""; for(var i=0;i&lt;l;i++){r+="  "}; return r }
 
   var r = indentString(indent) + "["+this.name+": ";
   var rem = this.x;
-  if( rem.length == 1 && !(rem[0] instanceof jisonAST) ) r += "'"+rem[0]+"'"; 
+  if( rem.length == 1 &amp;&amp; !(rem[0] instanceof jisonAST) ) r += "'"+rem[0]+"'"; 
   else for( i in rem ){ 
       if( rem[i] instanceof jisonAST ) r += "\n" + rem[i].get(indent+1);
       else { r += "\n" + indentString(indent+1); r += "'"+rem[i]+"'"; }
@@ -85,7 +85,7 @@ jisonAST.prototype.get = function(indent){
 
 function o( s ){
     r = "$ = new yy.jisonAST('"+s+"',[";
-    for( i = 1; i <= s.split(" ").length; i++ ){ r += "$"+i+"," }
+    for( i = 1; i &lt;= s.split(" ").length; i++ ){ r += "$"+i+"," }
     r = r.slice(0,-1) + "]);";
     return [s,r];
 }

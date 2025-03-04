@@ -89,9 +89,9 @@ function getCells(notebook, types = ['*', 'code']) {
     var json = JSON.parse(fs.readFileSync(notebook))
     var kernel = json.metadata.kernelspec;
     var cells = json.cells
-        .filter(c => types.includes(c.cell_type))
-        .map((c, i) => Object.assign(c, {
-            language: c.metadata && c.metadata.vscode 
+        .filter(c =&gt; types.includes(c.cell_type))
+        .map((c, i) =&gt; Object.assign(c, {
+            language: c.metadata &amp;&amp; c.metadata.vscode 
                 ? c.metadata.vscode.languageId : (json.metadata.kernelspec 
                     ? json.metadata.kernelspec.language : (json.metadata.language_info 
                         ? json.metadata.language_info.name : '')),

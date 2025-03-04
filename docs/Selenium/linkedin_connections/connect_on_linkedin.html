@@ -82,8 +82,8 @@ function listAllConnections(list) {
     }
     return client
         .getUrl()
-        .then(url => {
-            if(list && list.includes('linkedin.com')) {
+        .then(url =&gt; {
+            if(list &amp;&amp; list.includes('linkedin.com')) {
                 return client
                     .url(list)
                     .pause(3000);
@@ -92,60 +92,60 @@ function listAllConnections(list) {
                 .url('https://www.linkedin.com/mynetwork/')
                 .pause(3000);
         })
-        .then(() => getAllUntil(
+        .then(() =&gt; getAllUntil(
             false,
             '//a[contains(@href, "/in/")]/@href',
             friends,
-            (a, b) => a === b,
-            (i) => i < 10
+            (a, b) =&gt; a === b,
+            (i) =&gt; i &lt; 10
         ))
-        .then(r => r.filter((l, i, arr) => arr.indexOf(l) === i))
-        .then(r => {
+        .then(r =&gt; r.filter((l, i, arr) =&gt; arr.indexOf(l) === i))
+        .then(r =&gt; {
             fs.writeFileSync(
                 project + '/new-connections.json',
                 JSON.stringify(r, null, 4));
             return r;
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 
 function connectLinkedin(profile) {
     return client
-        .then(() => clickSpa('https://linkedin.com' + profile))
+        .then(() =&gt; clickSpa('https://linkedin.com' + profile))
         .pause(3000)
         .isExisting('//button[contains(., "Connect")]')
-        .then(is => {
+        .then(is =&gt; {
             console.log(is + ' - ' + profile);
             return is
               ? client
                   .isVisible('//button[contains(., "Connect")]')
-                  .then(is => is
+                  .then(is =&gt; is
                         ? client
                             .click('//button[contains(., "Connect")]')
                             .pause(1000)
                         : [])
               : client
                   .isExisting('//button[contains(., "More")]')
-                  .then(is => is ? client.click('//button[contains(., "More")]').pause(500) : [])
+                  .then(is =&gt; is ? client.click('//button[contains(., "More")]').pause(500) : [])
                   .isVisible('//button[contains(., "Connect")][not(contains(., "Remove"))]')
-                  .then(is => is
+                  .then(is =&gt; is
                         ? client
                             .click('//button[contains(., "Connect")][not(contains(., "Remove"))]')
                             .pause(1000)
                         : [])
         })
         .isExisting('//button[contains(., "Send now")]')
-        .then(is => is
+        .then(is =&gt; is
               ? client
               .isVisible('//button[contains(., "Send now")]')
-              .then(is => is
+              .then(is =&gt; is
                     ? client
                         .click('//button[contains(., "Send now")]')
                         .pause(2000)
                     : [])
               : [])
         .pause(1000)
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 
 module.exports = {

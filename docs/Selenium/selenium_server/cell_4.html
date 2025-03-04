@@ -78,8 +78,8 @@ var sessionId = fs.readFileSync(SESSIONS_PATH).toString().split('\n')[0];
 function deleteSession() {
     if (typeof getTab() !== 'undefined') {
         return promisifyChrome('debugger.detach', {tabId: getTab()})
-            .then(() => ({value: {}}))
-            .catch(e => console.log(e))
+            .then(() =&gt; ({value: {}}))
+            .catch(e =&gt; console.log(e))
     } else {
         return Promise.resolve({value: {}});
     }
@@ -98,11 +98,11 @@ function getSessionCapabilities(sessionId) {
     return Promise.resolve({value: {}});
 }
 
-router.post('/session', (req, res) =>
+router.post('/session', (req, res) =&gt;
     response(res, createSession()));
-router.delete('/session/:sessionId', (req, res) =>
+router.delete('/session/:sessionId', (req, res) =&gt;
     response(res, deleteSession()));
-router.get('/session/:sessionId', (req, res) => {
+router.get('/session/:sessionId', (req, res) =&gt; {
     response(res, getSessionCapabilities(req.params['sessionId']));
 }); //,"GetSessionCapabilities",ExecuteGetSessionCapabilities,
 

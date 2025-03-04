@@ -126,7 +126,7 @@ var importer = require('../Core')
 function listNoise() {
     var contents = fs.readFileSync('/Users/briancullinan/.q3a/baseq3/baseq2.pk3dir/maps/base1.map').toString('utf8')
     var noises = importer.regexToArray(/noise.*?"\s*"(.*?)"/ig, contents, 1)
-    return {all: noises, missing: noises.filter(n => {
+    return {all: noises, missing: noises.filter(n =&gt; {
         return !fs.existsSync(path.join('/Users/briancullinan/.q3a/baseq3/baseq2.pk3dir/sound/', n))
     })}
 }

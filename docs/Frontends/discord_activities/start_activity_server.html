@@ -81,7 +81,7 @@ const ALL_COMMANDS = [
 async function activityCommands(guildId = null) {
   var cmd, cmdDef
   var commandResult = await getCommands(guildId)
-  var commands = commandResult.map(command => command.name)
+  var commands = commandResult.map(command =&gt; command.name)
 
   interactionsCommands['startActivity'] = discordExpress
   interactionsCommands['endActivity'] = closeExpress
@@ -95,13 +95,13 @@ async function activityCommands(guildId = null) {
   if(!commands.includes('launch')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'launch')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'launch')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
 
-  var toRemove = commandResult.filter(c => !ALL_COMMANDS.includes(c.name))
-  for(var i = 0; i < toRemove.length; i++) {
+  var toRemove = commandResult.filter(c =&gt; !ALL_COMMANDS.includes(c.name))
+  for(var i = 0; i &lt; toRemove.length; i++) {
     await deleteCommand(toRemove[i].id, guildId)
   }
 

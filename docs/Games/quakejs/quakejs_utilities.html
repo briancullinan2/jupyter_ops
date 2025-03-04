@@ -68,7 +68,7 @@ function _formatOOB(data) {
 	var buffer = new ArrayBuffer(str.length);
 	var view = new Uint8Array(buffer);
 
-	for (var i = 0; i < str.length; i++) {
+	for (var i = 0; i &lt; str.length; i++) {
 		view[i] = str.charCodeAt(i);
 	}
 
@@ -87,11 +87,11 @@ function _stripOOB(buffer) {
 	var i_end = buffer.byteLength;
 
 	/* ignore trailing whitespace */
-	while (i_end > i_start && view.getUint8(i_end - 1) <= ' '.charCodeAt(0)) {
+	while (i_end &gt; i_start &amp;&amp; view.getUint8(i_end - 1) &lt;= ' '.charCodeAt(0)) {
 		--i_end;
 	}
 
-	for (var i = i_start; i < i_end; i++) {
+	for (var i = i_start; i &lt; i_end; i++) {
 		var c = String.fromCharCode(view.getUint8(i));
 		str += c;
 	}

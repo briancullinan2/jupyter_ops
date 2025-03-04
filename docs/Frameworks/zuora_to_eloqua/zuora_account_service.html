@@ -161,9 +161,9 @@ WHERE Id='${paymentId}'`, zuoraConfig);
 
 function getAccountLast4Digits(email, zuoraConfig) {
     return getContact(email, zuoraConfig)
-        .then(r => getAccountById(r.body.records[0].AccountId, zuoraConfig))
-        .then(r => getPaymentMethod(r.body.records[0].DefaultPaymentMethodId, zuoraConfig))
-        .then(r => {
+        .then(r =&gt; getAccountById(r.body.records[0].AccountId, zuoraConfig))
+        .then(r =&gt; getPaymentMethod(r.body.records[0].DefaultPaymentMethodId, zuoraConfig))
+        .then(r =&gt; {
             return {
                 "EmailAddress": email,
                 "Last4DigitsOfCard": r.body.records[0].CreditCardMaskNumber
@@ -173,11 +173,11 @@ function getAccountLast4Digits(email, zuoraConfig) {
 
 function getZuoraAccounts(notifyRequest, zuoraConfig) {
     if(!notifyRequest.items) {
-        return Promise.resolve([]).then(() => {
+        return Promise.resolve([]).then(() =&gt; {
             throw new Error('Account items not defined, nothing to do!');
         });
     }
-    return Promise.all(notifyRequest.items.map(c => {
+    return Promise.all(notifyRequest.items.map(c =&gt; {
         return getAccountLast4Digits(c.EmailAddress, zuoraConfig);
     }))
 }

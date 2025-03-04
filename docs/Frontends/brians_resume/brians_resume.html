@@ -87,30 +87,30 @@ async function messageResume(promptModel, session, prompt) {
   let originalPrompt = 'This is part of Brian Cullinan\'s resume:\n'
   let originalLength = originalPrompt.length
   let answers = []
-  for(let i = 0; i < text.length; i++) {
+  for(let i = 0; i &lt; text.length; i++) {
     originalPrompt += text[i]
-    if(originalPrompt.length > 2048) {
+    if(originalPrompt.length &gt; 2048) {
       let q1 = originalPrompt + '\nWrite a short summary of this resume section.'
       console.log('User: ' + q1)
       answers.push(await promptModel(q1))
       let a2 = await promptModel(originalPrompt 
         + '\nAnswer this prompt, or respond No if it is not related to the question:\n' 
         + prompt + '\nRespond with "No" if the prompt is unrelated.')
-      if(a2.trim() != 'No' && a2.trim() != 'No.') {
+      if(a2.trim() != 'No' &amp;&amp; a2.trim() != 'No.') {
         answers.push(a2)
       }
       originalPrompt = 'This is part of Brian Cullinan\'s resume:\n'
     }
   }
 
-  if(originalPrompt.length > originalLength) {
+  if(originalPrompt.length &gt; originalLength) {
     let q1 = originalPrompt + '\nWrite a short summary of this resume section.'
     console.log('User: ' + q1)
     answers.push(await promptModel(q1))
     let a2 = await promptModel(originalPrompt 
       + '\nAnswer this prompt, or respond No if it is not related to the question:\n' 
       + prompt + '\nRespond with "No" if the prompt is unrelated.')
-    if(a2.trim() != 'No' && a2.trim() != 'No.') {
+    if(a2.trim() != 'No' &amp;&amp; a2.trim() != 'No.') {
       answers.push(a2)
     }
 }

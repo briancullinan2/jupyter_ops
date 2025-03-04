@@ -79,12 +79,12 @@ var calendarList = [], lastCalendar;
 function filterCalendar(options) {
     var rexexp = new RegExp(options.calendarId, 'ig');
     var matches = calendarList
-        .filter(c => c.id == options.calendarId);
+        .filter(c =&gt; c.id == options.calendarId);
     if (matches.length == 0) {
         matches = calendarList
-            .filter(c => c.summary.match(rexexp));
+            .filter(c =&gt; c.summary.match(rexexp));
     }
-    assert(matches.length > 0, 'something is seriously wrong with the calendarId ' + JSON.stringify(options, null, 4) + JSON.stringify(calendarList, null, 4));
+    assert(matches.length &gt; 0, 'something is seriously wrong with the calendarId ' + JSON.stringify(options, null, 4) + JSON.stringify(calendarList, null, 4));
     if (lastCalendar !== matches[0].summary) {
         lastCalendar = matches[0].summary;
         console.log('Using calendar: ' + matches[0].summary
@@ -100,18 +100,18 @@ function correctCalendarId(options) {
             calendarId: 'primary'
         }))
     }
-    if (calendarList.length > 0) {
+    if (calendarList.length &gt; 0) {
         return filterCalendar(options);
     }
     return (calendarList.length == 0
         ? authorizeCalendar()
-            .then(calendar => util.promisify(calendar.calendarList.list.bind(calendar))())
+            .then(calendar =&gt; util.promisify(calendar.calendarList.list.bind(calendar))())
         : Promise.resolve(calendarList))
-        .then(r => {
+        .then(r =&gt; {
             calendarList = (r.data || {}).items || [];
             return filterCalendar(options);
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 
 module.exports = correctCalendarId;

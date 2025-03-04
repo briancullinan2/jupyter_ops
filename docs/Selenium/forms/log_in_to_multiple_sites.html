@@ -80,15 +80,15 @@ var MATCH_SUBMIT = '//*[@type = "submit"]'
 function fillAll(client, obj) {
     const promises = [];
     for(const k of Object.keys(obj)) {
-        promises.push((k => resolve => client
+        promises.push((k =&gt; resolve =&gt; client
             .isExisting(k)
-            .then(is => is && obj[k] !== false
+            .then(is =&gt; is &amp;&amp; obj[k] !== false
                   ? client.click(k).keys(obj[k])
                   : (client
                      ? client.click(k)
                      : []))
-            .then(() => resolve())
-            .catch(e => resolve(e))
+            .then(() =&gt; resolve())
+            .catch(e =&gt; resolve(e))
                       )(k));
     }
     
@@ -99,21 +99,21 @@ function multiLogin(client, baseUrl) {
     console.log(baseUrl);
     const parts = url.parse(baseUrl);
     const login = getCredentials(parts.hostname);
-    const usernameField = Object.keys(login).filter(k => k.match(/user|mail|name/ig))[0];
-    const passwordField = Object.keys(login).filter(k => k.match(/pass/ig))[0];
+    const usernameField = Object.keys(login).filter(k =&gt; k.match(/user|mail|name/ig))[0];
+    const passwordField = Object.keys(login).filter(k =&gt; k.match(/pass/ig))[0];
     return client
         .url(baseUrl)
         .isExisting(SIGN_IN)
-        .then(is => is ? client.click(SIGN_IN) : [])
+        .then(is =&gt; is ? client.click(SIGN_IN) : [])
         // TODO: check for form elements or URL to see if it needs logging in again like Google an Facebook service do
-        .then(() => {
+        .then(() =&gt; {
             const obj = {};
             obj[MATCH_USERNAME] = login[usernameField];
             obj[MATCH_PASSWORD] = login[passwordField];
             obj[MATCH_SUBMIT] = false
-            return fillAll(obj).then(() => fillAll(obj)).then(() => fillAll(obj))
+            return fillAll(obj).then(() =&gt; fillAll(obj)).then(() =&gt; fillAll(obj))
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
         .getUrl();
 }
 module.exports = multiLogin

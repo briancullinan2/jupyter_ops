@@ -139,7 +139,7 @@ function loadShaders(buffer, fileofs, filelen) {
 
 	var shaders = new Array(filelen / dshader_t.size);
 
-	for (var i = 0; i < shaders.length; i++) {
+	for (var i = 0; i &lt; shaders.length; i++) {
 		var shader = shaders[i] = new dshader_t();
 
 		shader.shaderName = bb.readASCIIString(MAX_QPATH);
@@ -163,20 +163,20 @@ function listTextures(file, dirsOnly) {
         let fileofs = bb.readInt32()
         let filelen = bb.readInt32()
         let shaders = loadShaders(file, fileofs, filelen)
-        return shaders.filter((s, i, arr) => s.shaderName && arr.indexOf(s) == i).map(s => s.shaderName)
+        return shaders.filter((s, i, arr) =&gt; s.shaderName &amp;&amp; arr.indexOf(s) == i).map(s =&gt; s.shaderName)
     }
 
-    if(typeof file === 'string' && fs.existsSync(file)) {
+    if(typeof file === 'string' &amp;&amp; fs.existsSync(file)) {
         file = fs.readFileSync(file).toString('utf-8')
     }
 
     var used = []
     var brushes = importer.regexToArray(/\{[\s\S^\}\{]*?\}/ig, file, -1) // returns indexes
     console.log(`found ${brushes.length} brushes.`)
-    for(var i = 0; i < brushes.length; i++) {
+    for(var i = 0; i &lt; brushes.length; i++) {
         var b = file.substr(brushes[i][0], brushes[i][1])
         var texts = importer.regexToArray(/\)\s+([^\)\(]*?)\s+((\s*[0-9\.-]+){5,8})/igm, b, 1)
-        texts.forEach($1 => {
+        texts.forEach($1 =&gt; {
             if(dirsOnly) {
                 if(!used.includes(path.dirname($1)))
                     used.push(path.dirname($1))

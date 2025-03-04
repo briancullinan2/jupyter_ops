@@ -85,7 +85,7 @@ var md = new Remarkable({html: true, xhtmlOut: true, breaks: true});
 var importer = require('../Core');
 var {selectDom} = importer.import('select tree');
 
-var TRIM_ENTITIES = /<\/?\s*p\s*>|[\s\n\r]+|<\s*br\s*\/?\s*>/ig
+var TRIM_ENTITIES = /&lt;\/?\s*p\s*&gt;|[\s\n\r]+|&lt;\s*br\s*\/?\s*&gt;/ig
 
 function safeName(name) {
     return name.replace(/[^a-z0-9\-]/ig, '-').substr(0, 40);
@@ -97,26 +97,26 @@ function collectExternalResources(page, rendered, routes) {
     
     // replace all leaf Text nodes with markdown
     var textObjs = selectDom([`//*[not(self::STYLE) and contains(., /text())]`], body);
-    textObjs.forEach((parent, i) => {
-        parent.childNodes.forEach(string => {
+    textObjs.forEach((parent, i) =&gt; {
+        parent.childNodes.forEach(string =&gt; {
             if(string.nodeType !== 3) return;
             var mdHtml = md.render(string.textContent);
             // if all markdown did was insert a paragraph and line break, use value instead
             if(mdHtml.replace(TRIM_ENTITIES, '').trim()
                != string.textContent.replace(TRIM_ENTITIES, '').trim()) {
-                string.replaceWith.apply(string, selectDom(['//BODY/*'], `<html><body>${mdHtml}</body></html>`));
+                string.replaceWith.apply(string, selectDom(['//BODY/*'], `&lt;html&gt;&lt;body&gt;${mdHtml}&lt;/body&gt;&lt;/html&gt;`));
             }
         })
     })
     
     // add IDs to h1, h2, h3, etc elements that match their text contents
     var headingsObjs = selectDom(['(//h1|//h2|//h3|//h4)[not(@id) and not(./ancestor::nav)]'], body);
-    headingsObjs.forEach(h => h.setAttribute('id', safeName(h.textContent)));
+    headingsObjs.forEach(h =&gt; h.setAttribute('id', safeName(h.textContent)));
     
     var paragraphs = selectDom(['//p'], body)
-    paragraphs.forEach(p => {
+    paragraphs.forEach(p =&gt; {
         p.setAttribute('class', selectDom(['.//*'], p)
-                       .map(e => e.tagName).join(' '))
+                       .map(e =&gt; e.tagName).join(' '))
         var img = selectDom(['.//img'], p)[0]
         var id = 'id' + safeName(p.textContent || img.src)
         p.setAttribute('id', id)
@@ -131,12 +131,12 @@ function collectExternalResources(page, rendered, routes) {
     })
     
     var linksObjs = selectDom(['//a[@href]'], body);
-    var links = linksObjs.map(l => decodeURIComponent(l.getAttribute('href')));
+    var links = linksObjs.map(l =&gt; decodeURIComponent(l.getAttribute('href')));
     
     // TODO: convert images and add timestamps, add svg
     var imgObjs = selectDom(['//img[@src]'], body);
-    var imgs = imgObjs.map(l => decodeURIComponent(l.getAttribute('src')));
-    imgObjs.forEach(img => {
+    var imgs = imgObjs.map(l =&gt; decodeURIComponent(l.getAttribute('src')));
+    imgObjs.forEach(img =&gt; {
         var src = decodeURIComponent(img.getAttribute('src'))
             .replace(/(-final)*\.[^\.]*$/ig, '-final.jpg')
         img.setAttribute('src', src)
@@ -144,11 +144,11 @@ function collectExternalResources(page, rendered, routes) {
 
     // TODO: scan for urls and inline
     var stylesObjs = selectDom(['//link[@href]'], body);
-    var styles = stylesObjs.map(l => l.getAttribute('href'));
+    var styles = stylesObjs.map(l =&gt; l.getAttribute('href'));
 
     // TODO: add timestamps and inline
     var scriptsObjs = selectDom(['//script[@src]'], body);
-    var scripts = scriptsObjs.map(l => l.getAttribute('src'));
+    var scripts = scriptsObjs.map(l =&gt; l.getAttribute('src'));
     
     // TODO: add CSS imports
     var backgrounds = importer.regexToArray(/url\(['"]?(.*?)['"]?\)/ig, page, 1);
@@ -157,12 +157,12 @@ function collectExternalResources(page, rendered, routes) {
         imgs, styles, backgrounds, scripts
     ])
     
-    links.forEach(s => routes[routes.length] = s)
-    searches.forEach(s => rendered[rendered.length] = s)
+    links.forEach(s =&gt; routes[routes.length] = s)
+    searches.forEach(s =&gt; rendered[rendered.length] = s)
     
     // TODO: copy resource images to output directory
     var newPage = body.ownerDocument.documentElement.outerHTML
-    backgrounds.forEach(b => newPage = newPage.replace(b, b.replace(/(-final)*\.[^\.]*$/ig, '-final.jpg')))
+    backgrounds.forEach(b =&gt; newPage = newPage.replace(b, b.replace(/(-final)*\.[^\.]*$/ig, '-final.jpg')))
     var stream = new Readable();
     stream.push(newPage);
     stream.push(null);

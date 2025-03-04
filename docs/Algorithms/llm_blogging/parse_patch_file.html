@@ -74,16 +74,16 @@ function parsePatch(patchFile) {
 
     let currentFile = null;
 
-    lines.forEach(line => {
+    lines.forEach(line =&gt; {
         console.log(line)
         if (line.startsWith("+++ b/")) {
             currentFile = line.replace("+++ b/", "").trim();
             summary.files[currentFile] = { additions: [], deletions: [] };
-        } else if (line.startsWith("+") && !line.startsWith("+++")) {
+        } else if (line.startsWith("+") &amp;&amp; !line.startsWith("+++")) {
             const addedLine = line.slice(1).trim(); // Remove leading '+' and trim
             summary.files[currentFile].additions.push(addedLine);
             summary.totalAdditions++;
-        } else if (line.startsWith("-") && !line.startsWith("---")) {
+        } else if (line.startsWith("-") &amp;&amp; !line.startsWith("---")) {
             const deletedLine = line.slice(1).trim(); // Remove leading '+' and trim
             summary.files[currentFile].deletions.push(deletedLine);
             summary.totalDeletions++;

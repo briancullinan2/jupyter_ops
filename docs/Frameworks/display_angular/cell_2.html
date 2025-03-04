@@ -80,12 +80,12 @@ var rateLimit = 900000;
 
 function outputSlowly(r, out) {
     var counter = 0;
-    return new Promise(resolve => {
+    return new Promise(resolve =&gt; {
         var interval;
         var scriptPieces = Math.ceil(r.scripts.length / rateLimit);
         console.log(scriptPieces + ' pieces');
-        interval = setInterval(() => {
-            if (counter < scriptPieces) {
+        interval = setInterval(() =&gt; {
+            if (counter &lt; scriptPieces) {
                 out(r.scripts.substr(counter * rateLimit, rateLimit), counter, scriptPieces);
             } else {
                 clearInterval(interval);
@@ -104,28 +104,28 @@ function compress(code) {
 $.async();
 try {
     displAngular(project, '/search')
-        .then(r => {
+        .then(r =&gt; {
             $.html(r.html, true);
             return compress(r);
         })
-        .then(r => {
+        .then(r =&gt; {
             console.log('App will be available in ');
-            return outputSlowly(r, (c, i, t) => {
+            return outputSlowly(r, (c, i, t) =&gt; {
                 console.log((t - i) + ' - ' + c.substr(0, 10));
-                $.html(`<script>
+                $.html(`&lt;script&gt;
 if(!doc.app) { doc.app=''; }
 doc.app+=` + JSON.stringify(c) + `;
-</script>`, true);
+&lt;/script&gt;`, true);
             });
         })
-        .then(compress => $.html(`<script>
+        .then(compress =&gt; $.html(`&lt;script&gt;
 eval(decodeURI(` + JSON.stringify(encodeURI(compress)) + `));
 doc.document.write(LZString.decompressFromBase64(doc.app));
 doc.document.close();
-</script>`, true))
-        .then(() => searchProvider())
-        .then(() => $.sendResult())
-        .catch(e => $.sendError(e));
+&lt;/script&gt;`, true))
+        .then(() =&gt; searchProvider())
+        .then(() =&gt; $.sendResult())
+        .catch(e =&gt; $.sendError(e));
 } catch (e) {
     $.sendError(e);
 }

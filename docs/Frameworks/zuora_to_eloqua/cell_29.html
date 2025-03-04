@@ -171,31 +171,31 @@ if(typeof $ !== 'undefined') {
 $.async();
     var accountId, paymentId;
     getContact('flyfisher8008@yahoo.com')
-        .then(r => {
+        .then(r =&gt; {
             console.log(r.body.records);
             return getAccountById(r.body.records[0].AccountId)
         })
-        .then(r => {
+        .then(r =&gt; {
             console.log(r.body.records);
             accountId = r.body.records[0].Id;
             paymentId = r.body.records[0].DefaultPaymentMethodId
             return getSubscription(accountId)
         })
-        .then(r => {
+        .then(r =&gt; {
             console.log(r.body.records);
-            return getRatePlans(r.body.records.map(r => r.Id));
+            return getRatePlans(r.body.records.map(r =&gt; r.Id));
         })
-        .then(r => {
-            console.log(_.groupBy(r.body.records, r => r.SubscriptionId))
+        .then(r =&gt; {
+            console.log(_.groupBy(r.body.records, r =&gt; r.SubscriptionId))
             return getPaymentMethod(paymentId);
         })
-        .then(r => {
+        .then(r =&gt; {
             console.log(r.body.records[0].CreditCardMaskNumber)
             return getContactByAccount(accountId);
         })
-        .then(r => r.body.records)
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; r.body.records)
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

@@ -70,7 +70,7 @@ function contactUs(name, email, subject, message) {
         message,
         responded: 0,
     })
-        .then(r => res.redirect(process.env.CONTACT_REDIRECT))
+        .then(r =&gt; res.redirect(process.env.CONTACT_REDIRECT))
 }
     
 module.exports = contactUs;

@@ -66,13 +66,13 @@
 
 <pre class="javascript"><code>$.async();
 fs.unlink('test.file')
-    .catch(e => console.log(e))
-    .then(() => fs.writeFile('test.file', 'some output'))
-    .then(() => fs.readFile('test.file'))
-    .then(r => r.toString())
-    .then(r => $.sendResult(r))
-    .then(() => fs.___close())
-    .catch(e => $.sendError(e));
+    .catch(e =&gt; console.log(e))
+    .then(() =&gt; fs.writeFile('test.file', 'some output'))
+    .then(() =&gt; fs.readFile('test.file'))
+    .then(r =&gt; r.toString())
+    .then(r =&gt; $.sendResult(r))
+    .then(() =&gt; fs.___close())
+    .catch(e =&gt; $.sendError(e));
 
 </code></pre>
 

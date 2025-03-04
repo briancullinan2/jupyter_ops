@@ -75,7 +75,7 @@
 <pre class="javascript"><code>const { open, load, close, DataType, arrayConstructor } = require('ffi-rs')
 
 function typeToDataType(returnLength, returnType, dataType) {
-  if(returnLength > 1) {
+  if(returnLength &gt; 1) {
     switch(returnType) {
       case 'void':
         return arrayConstructor({ type: DataType.StackArray, length: returnLength })

@@ -76,7 +76,7 @@ function testWatcher(files, tests) {
         }
         console.log('running all tests');
         done = false;
-        return testCells(tests).then(() => (done = true))
+        return testCells(tests).then(() =&gt; (done = true))
     });
     testCells(tests);
     

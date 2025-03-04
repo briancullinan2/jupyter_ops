@@ -72,23 +72,23 @@ var options = {
 };
 
 function googlePromise(func) {
-    return new Promise((resolve, reject) => func((err, response) => {
+    return new Promise((resolve, reject) =&gt; func((err, response) =&gt; {
         if (err) reject(err);
         try {
         } catch (e) {
             reject(e);
         }
-        setTimeout(() => resolve(response), 100);
-    })).catch(e => console.log(e));
+        setTimeout(() =&gt; resolve(response), 100);
+    })).catch(e =&gt; console.log(e));
 };
 
 function mapMembership(memberships) {
     return {
-        'frequency': ((memberships.filter(m => m.contactGroupMembership.contactGroupLabel === 'Weekly'
+        'frequency': ((memberships.filter(m =&gt; m.contactGroupMembership.contactGroupLabel === 'Weekly'
                                         ||  m.contactGroupMembership.contactGroupLabel === 'Yearly'
                                         ||  m.contactGroupMembership.contactGroupLabel === 'Monthly')[0] || {})
             .contactGroupMembership || {}).contactGroupLabel,
-        'circles': memberships.filter(m => m.contactGroupMembership.contactGroupLabel === 'YouTube'
+        'circles': memberships.filter(m =&gt; m.contactGroupMembership.contactGroupLabel === 'YouTube'
                                         || m.contactGroupMembership.contactGroupLabel === 'Coworkers'
                                         || m.contactGroupMembership.contactGroupLabel === 'Family'
                                         || m.contactGroupMembership.contactGroupLabel === 'friends'
@@ -98,14 +98,14 @@ function mapMembership(memberships) {
                                         || m.contactGroupMembership.contactGroupLabel === 'C-Level'
                                         || m.contactGroupMembership.contactGroupLabel === 'Inner Circle'
                                         || m.contactGroupMembership.contactGroupLabel === 'Outer Circle')
-            .map(c => c.contactGroupMembership.contactGroupLabel),
-        'preferred': memberships.filter(m => m.contactGroupMembership.contactGroupLabel === 'LinkedIn'
+            .map(c =&gt; c.contactGroupMembership.contactGroupLabel),
+        'preferred': memberships.filter(m =&gt; m.contactGroupMembership.contactGroupLabel === 'LinkedIn'
                                         || m.contactGroupMembership.contactGroupLabel === 'Facebook'
                                         || m.contactGroupMembership.contactGroupLabel === 'Email'
                                         || m.contactGroupMembership.contactGroupLabel === 'Mobile'
                                         || m.contactGroupMembership.contactGroupLabel === 'Skype'
                                         || m.contactGroupMembership.contactGroupLabel === 'Slack')
-            .map(c => c.contactGroupMembership.contactGroupLabel)
+            .map(c =&gt; c.contactGroupMembership.contactGroupLabel)
     }
 }
 
@@ -113,32 +113,32 @@ function getSettings(name) {
     var groups;
     console.log('Searching for settings: ' + name);
     return getOauthClient(options)
-        .then(() => googlePromise(
+        .then(() =&gt; googlePromise(
             people.contactGroups.list.bind(people.contactGroups.list, {
                 auth: options.auth,
                 pageToken: options.pageToken
-            })).catch(e => console.log(e)))
-        .then(g => groups = g.contactGroups)
-        .then(() => {
+            })).catch(e =&gt; console.log(e)))
+        .then(g =&gt; groups = g.contactGroups)
+        .then(() =&gt; {
             const options = {};
-            if(name.indexOf('@') > -1) {
+            if(name.indexOf('@') &gt; -1) {
                 options.emailAddress = name.split(/\s/).join('.*');
             } else {
                 options.displayName = name.split(/\s/).join('.*');
             }
             return getContacts(options);
         })
-        .then(contacts => contacts.map(c => {
+        .then(contacts =&gt; contacts.map(c =&gt; {
             return Object.assign(c, {
-                memberships: c.memberships.map(m => Object.assign(m, {
+                memberships: c.memberships.map(m =&gt; Object.assign(m, {
                     contactGroupMembership: Object.assign(m.contactGroupMembership, {
-                        contactGroupLabel: (groups.filter(g => (g.resourceName || '').indexOf(m.contactGroupMembership.contactGroupId) > -1)[0] || {}).name
+                        contactGroupLabel: (groups.filter(g =&gt; (g.resourceName || '').indexOf(m.contactGroupMembership.contactGroupId) &gt; -1)[0] || {}).name
                     })
                 }))
             });
         }))
-        .then(contacts => mapMembership(contacts[0].memberships))
-        .catch(e => console.log(e))
+        .then(contacts =&gt; mapMembership(contacts[0].memberships))
+        .catch(e =&gt; console.log(e))
 }
 module.exports = getSettings;
 </code></pre>

@@ -68,19 +68,19 @@ if(typeof $ !== 'undefined') {
     $.async();
     handler({
         headers: {origin: 'google.com'},
-        get: r => null,
+        get: r =&gt; null,
         query: {
             function: 'create a copy of study sauce template',
             email: 'megamindbrian@gmail.com'
         }
     }, {
-        getHeader: h => {},
-        setHeader: h => console.log(`header ${h}`),
-        status: s => console.log(`status ${s}`),
-        send: r => console.log(r)
+        getHeader: h =&gt; {},
+        setHeader: h =&gt; console.log(`header ${h}`),
+        status: s =&gt; console.log(`status ${s}`),
+        send: r =&gt; console.log(r)
     })
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

@@ -62,12 +62,12 @@
 <p>The HTML document has a standard structure with a <code>&lt;head&gt;</code> for metadata and external links, and a <code>&lt;body&gt;</code> for content, and is secured by a Content Security Policy (CSP) that specifies allowed sources for content execution. The CSS styles define the layout and appearance of the HTML elements, applying various properties to elements such as <code>.container</code>, <code>.livedev</code>, and specific HTML tags like <code>h1</code>, <code>h2</code>, <code>img</code>, and <code>iframe</code>.</p>
 
 
-<pre class="html"><code><html>
-<head>
-  <meta http-equiv="Content-Security-Policy" content="default-src *;
+<pre class="html"><code>&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv="Content-Security-Policy" content="default-src *;
    img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
-   style-src  'self' 'unsafe-inline' *" />
-  <style type="text/css">
+   style-src  'self' 'unsafe-inline' *" /&gt;
+  &lt;style type="text/css"&gt;
     html, body {
       padding: 0;
       margin: 0;
@@ -190,47 +190,47 @@
     }
     
     
-  </style>
-</head>
-<body>
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-<div class="container">
-  <h1>Live Development</h2>
-  <ol class="windows"></ol>
-  <div class="livedev">
-    <img src="{BASE_URI}monitors/0" />
-    <img src="{BASE_URI}monitors/1" />
-    <img src="{BASE_URI}monitors/2" />
-    <!--<p>
-      <script>
-        document.write(`<iframe width="560" height="315" allow="autoplay" modestbranding="true" src="https://www.youtube.com/embed/live_stream?channel=UCPaZDuwY1sJOb5l-QHm9mDw&origin=${window.location.origin}&controls=0&rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>`)
-      </script>
-    </p>-->
-  </div>
+&lt;div class="container"&gt;
+  &lt;h1&gt;Live Development&lt;/h2&gt;
+  &lt;ol class="windows"&gt;&lt;/ol&gt;
+  &lt;div class="livedev"&gt;
+    &lt;img src="{BASE_URI}monitors/0" /&gt;
+    &lt;img src="{BASE_URI}monitors/1" /&gt;
+    &lt;img src="{BASE_URI}monitors/2" /&gt;
+    &lt;!--&lt;p&gt;
+      &lt;script&gt;
+        document.write(`&lt;iframe width="560" height="315" allow="autoplay" modestbranding="true" src="https://www.youtube.com/embed/live_stream?channel=UCPaZDuwY1sJOb5l-QHm9mDw&amp;origin=${window.location.origin}&amp;controls=0&amp;rel=0&amp;autoplay=1" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;`)
+      &lt;/script&gt;
+    &lt;/p&gt;--&gt;
+  &lt;/div&gt;
 
-  <p>
-    <textarea id="sendkeys"></textarea>
-    <span>
-      <input type="checkbox" id="special-alt" value="alt" />
-      <input type="checkbox" id="special-command" value="command" />
-      <input type="checkbox" id="special-control" value="control" />
-      <input type="checkbox" id="special-shift" value="shift" />
-      <button id="special-esc" value="">send</button>
-      <button id="special-esc" value="enter">enter</button>
-      <button id="special-esc" value="escape">escape</button>
-      <button id="special-esc" value="backspace">backspace</button>
-      <button id="special-esc" value="delete">delete</button>
-      <label for="special-alt">alt</label>
-      <label for="special-command">command</label>
-      <label for="special-control">control</label>
-      <label for="special-shift">shift</label>
-    </span>
-    <a class="nowButton" target="_blank" href="https://www.youtube.com/channel/UCPaZDuwY1sJOb5l-QHm9mDw">
-      My YouTube Channel</a>
-  </p>
-</div>
-</body>
-</html>
+  &lt;p&gt;
+    &lt;textarea id="sendkeys"&gt;&lt;/textarea&gt;
+    &lt;span&gt;
+      &lt;input type="checkbox" id="special-alt" value="alt" /&gt;
+      &lt;input type="checkbox" id="special-command" value="command" /&gt;
+      &lt;input type="checkbox" id="special-control" value="control" /&gt;
+      &lt;input type="checkbox" id="special-shift" value="shift" /&gt;
+      &lt;button id="special-esc" value=""&gt;send&lt;/button&gt;
+      &lt;button id="special-esc" value="enter"&gt;enter&lt;/button&gt;
+      &lt;button id="special-esc" value="escape"&gt;escape&lt;/button&gt;
+      &lt;button id="special-esc" value="backspace"&gt;backspace&lt;/button&gt;
+      &lt;button id="special-esc" value="delete"&gt;delete&lt;/button&gt;
+      &lt;label for="special-alt"&gt;alt&lt;/label&gt;
+      &lt;label for="special-command"&gt;command&lt;/label&gt;
+      &lt;label for="special-control"&gt;control&lt;/label&gt;
+      &lt;label for="special-shift"&gt;shift&lt;/label&gt;
+    &lt;/span&gt;
+    &lt;a class="nowButton" target="_blank" href="https://www.youtube.com/channel/UCPaZDuwY1sJOb5l-QHm9mDw"&gt;
+      My YouTube Channel&lt;/a&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
 </code></pre>
 

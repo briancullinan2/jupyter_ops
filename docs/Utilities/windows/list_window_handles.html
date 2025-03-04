@@ -99,11 +99,11 @@ namespace window_tracker
         // Delegate to filter which windows to include 
         public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
 
-        /// <summary> Get the text for the window pointed to by hWnd </summary>
+        /// &lt;summary&gt; Get the text for the window pointed to by hWnd &lt;/summary&gt;
         public static string GetWindowText(IntPtr hWnd)
         {
             int size = GetWindowTextLength(hWnd);
-            if(size > 0)
+            if(size &gt; 0)
             {
                 var builder = new StringBuilder(size + 1);
                 GetWindowText(hWnd, builder, builder.Capacity);
@@ -113,14 +113,14 @@ namespace window_tracker
             return String.Empty;
         }
 
-        /// <summary> Find all windows that match the given filter </summary>
-        /// <param name="filter"> A delegate that returns true for windows
+        /// &lt;summary&gt; Find all windows that match the given filter &lt;/summary&gt;
+        /// &lt;param name="filter"&gt; A delegate that returns true for windows
         ///    that should be returned and false for windows that should
-        ///    not be returned </param>
-        public static IEnumerable<IntPtr> FindWindows(EnumWindowsProc filter)
+        ///    not be returned &lt;/param&gt;
+        public static IEnumerable&lt;IntPtr&gt; FindWindows(EnumWindowsProc filter)
         {
             IntPtr found = IntPtr.Zero;
-            List<IntPtr> windows = new List<IntPtr>();
+            List&lt;IntPtr&gt; windows = new List&lt;IntPtr&gt;();
 
             EnumWindows(delegate (IntPtr wnd, IntPtr param)
             {
@@ -137,9 +137,9 @@ namespace window_tracker
             return windows;
         }
 
-        /// <summary> Find all windows that contain the given title text </summary>
-        /// <param name="titleText"> The text that the window title must contain. </param>
-        public static IEnumerable<IntPtr> FindWindowsWithText(string titleText)
+        /// &lt;summary&gt; Find all windows that contain the given title text &lt;/summary&gt;
+        /// &lt;param name="titleText"&gt; The text that the window title must contain. &lt;/param&gt;
+        public static IEnumerable&lt;IntPtr&gt; FindWindowsWithText(string titleText)
         {
             return FindWindows(delegate (IntPtr wnd, IntPtr param)
             {

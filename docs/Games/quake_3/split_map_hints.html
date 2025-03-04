@@ -140,7 +140,7 @@ var moves = [
 ]
 function splitHints(fileName, hints) {
     var file
-    if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+    if(typeof fileName === 'string' &amp;&amp; fs.existsSync(fileName)) {
         file = fs.readFileSync(fileName).toString('utf-8')
         if(!hints) {
             hints = path.basename(fileName).replace(/[-_]converted|\.map$/ig, '')
@@ -151,7 +151,7 @@ function splitHints(fileName, hints) {
     
     if(typeof hints !== 'object') {
         var exp = new RegExp(hints, 'ig')
-        hints = Object.keys(MAPS_HINTS).reduce((obj, k) => {
+        hints = Object.keys(MAPS_HINTS).reduce((obj, k) =&gt; {
             if(k.match(exp)) {
                 obj[k] = MAPS_HINTS[k]
             }
@@ -161,23 +161,23 @@ function splitHints(fileName, hints) {
     
     var multimaps = {}
     var worldspawn = {}
-    Object.keys(hints).forEach(k => (multimaps[k] = [], worldspawn[k] = []))
+    Object.keys(hints).forEach(k =&gt; (multimaps[k] = [], worldspawn[k] = []))
     
     var entities = importer
         .regexToArray(ENTITIES_EXP, file, false)
     
-    entities.forEach(ent => {
+    entities.forEach(ent =&gt; {
         var include = false
         var points = []
         ent.points = points
         
         var brushes = importer.regexToArray(BRUSH_EXP, ent[0])
 
-        brushes.forEach(brush => {
+        brushes.forEach(brush =&gt; {
             var pts = importer
                 .regexToArray(/\(((\s*[0-9\.-]+\s*)*)\)/ig, brush, 1)
-                .map(m => m.trim().split(/\s+/ig)
-                    .map(n => (n.includes('.')
+                .map(m =&gt; m.trim().split(/\s+/ig)
+                    .map(n =&gt; (n.includes('.')
                         ? parseFloat(n.trim())
                         : parseInt(n.trim()))))
             
@@ -185,13 +185,13 @@ function splitHints(fileName, hints) {
                 return
             }
 
-            pts.forEach(b => {
-                Object.keys(hints).forEach(k => {
+            pts.forEach(b =&gt; {
+                Object.keys(hints).forEach(k =&gt; {
                     if(worldspawn[k].indexOf(brush) === -1) {
                         // if moving the point in any direction would
                         //   cause it to be inside, include that brush
-                        for(var m = 0; m < moves.length; m++) {
-                            if(isInside(hints[k].map(h => ({x: h[0], y: h[1]})), 
+                        for(var m = 0; m &lt; moves.length; m++) {
+                            if(isInside(hints[k].map(h =&gt; ({x: h[0], y: h[1]})), 
                                         hints[k].length-1, 
                                         {x: b[0] + moves[m][0], y: b[1] + moves[m][1]})) {
                                 points.push.apply(pts)
@@ -205,7 +205,7 @@ function splitHints(fileName, hints) {
         })
 
         var skipOrigin = false
-        Object.keys(worldspawn).forEach(k => {
+        Object.keys(worldspawn).forEach(k =&gt; {
             if(!worldspawn[k].length) return
 
             multimaps[k].push({
@@ -219,17 +219,17 @@ function splitHints(fileName, hints) {
 
         var origins = importer
             .regexToArray(/"origin"\s+"((\s*[0-9\.-]+\s*)*)"/ig, ent[0], 1)
-            .map(o => o.trim().split(/\s+/ig)
-                .map(n => (n.includes('.')
+            .map(o =&gt; o.trim().split(/\s+/ig)
+                .map(n =&gt; (n.includes('.')
                     ? parseFloat(n.trim())
                     : parseInt(n.trim()))))
         
-        origins.forEach(b => {
-            Object.keys(hints).forEach(k => {
+        origins.forEach(b =&gt; {
+            Object.keys(hints).forEach(k =&gt; {
                 // if moving the point in any direction would
                 //   cause it to be inside, include that brush
-                for(var m = 0; m < moves.length; m++) {
-                    if(isInside(hints[k].map(h => ({x: h[0], y: h[1]})), 
+                for(var m = 0; m &lt; moves.length; m++) {
+                    if(isInside(hints[k].map(h =&gt; ({x: h[0], y: h[1]})), 
                                 hints[k].length-1, 
                                 {x: b[0] + moves[m][0], y: b[1] + moves[m][1]})) {
                         points.push(b)
@@ -241,17 +241,17 @@ function splitHints(fileName, hints) {
     })
     
     // get middle 50% of all points
-    var translations = Object.keys(multimaps).map(k => {
+    var translations = Object.keys(multimaps).map(k =&gt; {
         var result = []
-        for(var i = 0; i < 3; i++) {
+        for(var i = 0; i &lt; 3; i++) {
             var points = [].concat.apply([], multimaps[k]
-                .map(ent => ent.points.map(p => p[i])))
+                .map(ent =&gt; ent.points.map(p =&gt; p[i])))
             points.sort()
             result[i] = -Math.round((points
                 // get the middle half
                 .slice(points.length / 4, points.length / 4 * 3)
                 // get the average
-                .reduce((a, b) => a + b, 0) / (points.length / 2))
+                .reduce((a, b) =&gt; a + b, 0) / (points.length / 2))
                 // round to the nearest grid position?
                 / 147.2) * 147.2
         }
@@ -261,10 +261,10 @@ function splitHints(fileName, hints) {
     console.log(translations)
     
     // copy all the brushes in to a new file, skybox and save
-    var maps = Object.keys(multimaps).forEach((k, i) => {
+    var maps = Object.keys(multimaps).forEach((k, i) =&gt; {
         var map = multimaps[k]
-            .filter((ent, i, arr) => arr.indexOf(ent) === i)
-            .map(ent => ent[0])
+            .filter((ent, i, arr) =&gt; arr.indexOf(ent) === i)
+            .map(ent =&gt; ent[0])
             .join('\n')
         
         map = translateMap(map, translations[i])
@@ -273,7 +273,7 @@ function splitHints(fileName, hints) {
         
         file = addHints(file, [hints[k]])
         
-        if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+        if(typeof fileName === 'string' &amp;&amp; fs.existsSync(fileName)) {
             var newFile = path.join(path.dirname(path.resolve(fileName)), path.basename(k) + '.map')
             console.log(`writing ${newFile}`)
             fs.writeFileSync(newFile, map)

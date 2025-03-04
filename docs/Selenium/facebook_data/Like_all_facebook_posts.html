@@ -84,30 +84,30 @@ var project = PROFILE_PATH + '/Conversations';
 
 function listFacebookPosts(profile, posts = []) {
     return client
-        .then(() => getAllUntil(
+        .then(() =&gt; getAllUntil(
             '//body',
             '//*[contains(@class, "timestampContent")]/parent::*/parent::*/@href',
             posts,
-            (a, b) => a === b,
-            (i) => i < 20
+            (a, b) =&gt; a === b,
+            (i) =&gt; i &lt; 20
         ))
         // transform add facebook url
-        .then(r => {
-        return r.map(l => l.indexOf('facebook.com') === -1
+        .then(r =&gt; {
+        return r.map(l =&gt; l.indexOf('facebook.com') === -1
             ? ('https://www.facebook.com' + l)
             : l)
     })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 
 function scrapeFacebookPost(post) {
     console.log(post);
     return client
-        .getUrl().then(url => url.indexOf(post) == -1
+        .getUrl().then(url =&gt; url.indexOf(post) == -1
             ? client.url(post)
             : client)
-        .pause(post.indexOf('video') > -1 ? 4000 : 2000)
-        .then(() => getAllXPath([
+        .pause(post.indexOf('video') &gt; -1 ? 4000 : 2000)
+        .then(() =&gt; getAllXPath([
             '//body[not(.//*[contains(@class, "fbPhotoSnowliftPopup")])]|//body[.//*[contains(@class, "fbPhotoSnowliftPopup")]]//*[contains(@class, "fbPhotoSnowliftPopup")]',
             {
                 posts: [
@@ -135,44 +135,44 @@ function scrapeFacebookPost(post) {
                 ]
             }
         ]))
-        .then(r => r[0].posts.map(p => {
+        .then(r =&gt; r[0].posts.map(p =&gt; {
             return Object.assign(p, {
                 post: post,
                 description: typeof p.description === 'string' ? p.description : p.description.join(' '),
-                participants: p.participants.filter(i => i
+                participants: p.participants.filter(i =&gt; i
                         .indexOf('photo') === -1
-                    && i !== '#'
-                    && i.indexOf('ufi/reaction') === -1),
-                photos: p.participants.filter(i => i
+                    &amp;&amp; i !== '#'
+                    &amp;&amp; i.indexOf('ufi/reaction') === -1),
+                photos: p.participants.filter(i =&gt; i
                         .indexOf('photo') !== -1
-                    && i !== '#'
-                    && i.indexOf('ajax/sharer') === -1),
-                comments: p.comments.map(c => Object.assign(c, {
+                    &amp;&amp; i !== '#'
+                    &amp;&amp; i.indexOf('ajax/sharer') === -1),
+                comments: p.comments.map(c =&gt; Object.assign(c, {
                     time: typeof c.time === 'string' ? c.time : c.time.join(' '),
                     content: typeof c.content === 'string' ? c.content : c.content.join(' '),
                     from: typeof c.from === 'string' ? c.from : c.from.join(' ')
                 }))
             });
         }))
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 
 function likeFacebookPost(post) {
     return client
-        .getUrl().then(url => url.indexOf(post) === -1
+        .getUrl().then(url =&gt; url.indexOf(post) === -1
             ? client.url(post)
             : client)
-        .pause(post.indexOf('video') > -1 ? 4000 : 2000)
+        .pause(post.indexOf('video') &gt; -1 ? 4000 : 2000)
         .elements(
             '//body[not(.//*[contains(@class, "fbPhotoSnowliftPopup")])]//a[contains(., "Like")][contains(@class, "UFILikeLink")][not(contains(@class, "UFILinkBright"))]|//body[.//*[contains(@class, "fbPhotoSnowliftPopup")]]//*[contains(@class, "fbPhotoSnowliftPopup")]//a[contains(., "Like")][contains(@class, "UFILikeLink")][not(contains(@class, "UFILinkBright"))]')
-        .then(els => {
+        .then(els =&gt; {
             return importer.runAllPromises(els.value.slice(0, 4)
-                .map(el => (resolve) => client.elementIdClick(el.ELEMENT)
+                .map(el =&gt; (resolve) =&gt; client.elementIdClick(el.ELEMENT)
                     .pause(1500)
-                    .catch(e => resolve())
-                    .then(() => resolve())))
+                    .catch(e =&gt; resolve())
+                    .then(() =&gt; resolve())))
         })
-        .catch(e => console.log(e));
+        .catch(e =&gt; console.log(e));
 }
 
 var posts;
@@ -188,28 +188,28 @@ function likeAllPosts(profile, like = null) {
     }
     return client
         .getUrl()
-        .then(url => url !== profile
+        .then(url =&gt; url !== profile
             ? client.url(profile)
             : client)
-        .then(() => listFacebookPosts(posts.map(p => p.post)))
+        .then(() =&gt; listFacebookPosts(posts.map(p =&gt; p.post)))
         // TODO: remove slice to download all posts from first part
-        .then(r => importer.runAllPromises(r.map(c => (resolve) => {
+        .then(r =&gt; importer.runAllPromises(r.map(c =&gt; (resolve) =&gt; {
             return (like ? likeFacebookPost(c) : client)
-                .then(() => client.isExisting('//h3[contains(.,"Temporarily Blocked")]'))
-                .then(is => {
+                .then(() =&gt; client.isExisting('//h3[contains(.,"Temporarily Blocked")]'))
+                .then(is =&gt; {
                     if (is) like = null;
                     return scrapeFacebookPost(c);
                 })
-                .then(r => resolve(r))
-                .catch(e => console.log(e))
+                .then(r =&gt; resolve(r))
+                .catch(e =&gt; console.log(e))
         })))
-        .then(t => {
+        .then(t =&gt; {
             var filename = project + '/' + profileId
                 + '-posts-' + (new Date()).getFullYear() + '.json';
             fs.writeFileSync(filename, JSON.stringify(t, null, 4));
             return t;
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 module.exports = likeAllPosts;
 </code></pre>

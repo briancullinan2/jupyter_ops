@@ -69,14 +69,14 @@
 <pre class="javascript"><code>function clickSpa(client, profile) {
     return client
         .getUrl()
-        .then(url => url.indexOf(profile) > -1
+        .then(url =&gt; url.indexOf(profile) &gt; -1
               ? []
               : client
-             .execute(url => {
+             .execute(url =&gt; {
                 var a = document.createElement('a');
                 a.setAttribute('href', url);
                 a.setAttribute('class', 'spa');
-                a.onclick = () => setTimeout(() => document.body.removeChild(a), 500)
+                a.onclick = () =&gt; setTimeout(() =&gt; document.body.removeChild(a), 500)
                 a.href = url;
                 a.style.position = 'absolute';
                 a.style.zIndex = 4294967295;
@@ -88,7 +88,7 @@
             }, profile)
         .click('a.spa[href*="' + profile + '"]')
         .pause(1000))
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 
 module.exports = clickSpa;

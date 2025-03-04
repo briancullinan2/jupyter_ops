@@ -80,10 +80,10 @@ var DEFAULT_USERNAME = 'Orbb'
 
 function interpretCommand(message) {
     return Object.keys(discordCommands)
-       .filter(k => message.content.match(discordCommands[k])
-              || (message.attachments && message.attachments.filter(a => a.filename.match(discordCommands[k])).length > 0)
-              || (message.embeds && message.embeds.filter(e => (e.title && e.title.match(discordCommands[k]))
-                                                          || (e.description && e.description.match(discordCommands[k]))).length > 0))
+       .filter(k =&gt; message.content.match(discordCommands[k])
+              || (message.attachments &amp;&amp; message.attachments.filter(a =&gt; a.filename.match(discordCommands[k])).length &gt; 0)
+              || (message.embeds &amp;&amp; message.embeds.filter(e =&gt; (e.title &amp;&amp; e.title.match(discordCommands[k]))
+                                                          || (e.description &amp;&amp; e.description.match(discordCommands[k]))).length &gt; 0))
 }
 
 async function readAllCommands(specificChannel) {
@@ -99,27 +99,27 @@ async function readAllCommands(specificChannel) {
         // only read channel if it was updated within the last hour
         var userChannels = Object
             .keys(privateChannels)
-            .filter(k => privateChannels[k] > Date.now() - 1000 * 60 * 60)
-            .map(k => ({id: k}))
+            .filter(k =&gt; privateChannels[k] &gt; Date.now() - 1000 * 60 * 60)
+            .map(k =&gt; ({id: k}))
         channels.push.apply(channels, userChannels)
         specificChannel = ''
         private = true
     } else {
         var guilds = await discordApi.userGuilds()
         console.log(`Reading ${guilds.length} guilds`)
-        for(var i = 0; i < guilds.length; i++) {
+        for(var i = 0; i &lt; guilds.length; i++) {
             channels.push.apply(channels, await discordApi.guildChannels(guilds[i].id))
         }
     }
     
     console.log(`Reading ${channels.length} channels`)
-    for(var i = 0; i < channels.length; i++) {
+    for(var i = 0; i &lt; channels.length; i++) {
         if(!specificChannel
            || channels[i].id == specificChannel
            || (typeof specificChannel == 'string'
-              && (specificChannel.length === 0
+              &amp;&amp; (specificChannel.length === 0
                  || (channels[i].name
-                     && channels[i].name.match(new RegExp(specificChannel, 'ig'))
+                     &amp;&amp; channels[i].name.match(new RegExp(specificChannel, 'ig'))
                     )
                  )
               )
@@ -131,23 +131,23 @@ async function readAllCommands(specificChannel) {
     
     // find commands in channel history
     console.log(`Reading ${messages.length} messages`)
-    for(var j = 0; j < messages.length; j++) {
+    for(var j = 0; j &lt; messages.length; j++) {
         var applicableCommands = interpretCommand(messages[j])
-        if(applicableCommands.length > 0
-          && messages[j].author.username != DEFAULT_USERNAME) {
+        if(applicableCommands.length &gt; 0
+          &amp;&amp; messages[j].author.username != DEFAULT_USERNAME) {
             messages[j].commands = applicableCommands
             messages[j].private = private
             commands.push(messages[j])
             if((messages[j].reactions || [])
-                .filter(a => a.emoji.name == '\u{1F44D}').length > 0) {
+                .filter(a =&gt; a.emoji.name == '\u{1F44D}').length &gt; 0) {
                 launches.push(messages[j])
             }
         }
         if(messages[j].content.match(/```BOT/ig)) {
             responses.push(messages[j])
             if((messages[j].reactions || [])
-                .filter(a => a.emoji.name == '\u{1F44D}').length > 0) {
-                var l = messages.filter(m => messages[j].content.match('```BOT'+m.id))[0]
+                .filter(a =&gt; a.emoji.name == '\u{1F44D}').length &gt; 0) {
+                var l = messages.filter(m =&gt; messages[j].content.match('```BOT'+m.id))[0]
                 if(!l) continue
                 l.launching = true
                 l.reactions = l.reactions || []
@@ -159,14 +159,14 @@ async function readAllCommands(specificChannel) {
         
     // find all commands in interactions
     var interactionsCount = Object.keys(interactions)
-        .reduce((sum, i) => {return sum + interactions[i].length}, 0)
+        .reduce((sum, i) =&gt; {return sum + interactions[i].length}, 0)
     console.log(`Reading ${Object.keys(interactions).length} channels with ${interactionsCount} interactions`)
-    Object.keys(interactions).forEach(i => {
+    Object.keys(interactions).forEach(i =&gt; {
         for(var c in interactions[i]) {
             interactions[i][c].commands = [interactions[i][c].data.name.toUpperCase()]
             interactions[i][c].author = interactions[i][c].member.user
             interactions[i][c].content = interactions[i][c].data.name + ' '
-                + (interactions[i][c].data.options || []).map(o => o.value).join(' ')
+                + (interactions[i][c].data.options || []).map(o =&gt; o.value).join(' ')
             interactions[i][c].interaction = true
             commands.push(interactions[i][c])
         }
@@ -176,16 +176,16 @@ async function readAllCommands(specificChannel) {
 
     // exclude commands that already got a response
     return commands
-        .filter(c => responses.filter(r => r.content.match(new RegExp('```BOT'+c.id))).length === 0)
+        .filter(c =&gt; responses.filter(r =&gt; r.content.match(new RegExp('```BOT'+c.id))).length === 0)
         .concat(launches)
-        .filter(c => responses.filter(r => r.content.match(new RegExp('```BOT'+c.id+'L'))).length === 0)
-        .filter((c, i, arr) => arr.indexOf(c) === i)
+        .filter(c =&gt; responses.filter(r =&gt; r.content.match(new RegExp('```BOT'+c.id+'L'))).length === 0)
+        .filter((c, i, arr) =&gt; arr.indexOf(c) === i)
 }
 
 async function respondCommand(specificChannel) {
     await authorizeGateway()
     var commands = await readAllCommands(specificChannel)
-    for(var i = 0; i < commands.length; i++) {
+    for(var i = 0; i &lt; commands.length; i++) {
         if(commands[i].commands.includes('CHALLENGE'))
             await challengeCommand(commands[i])
         else if(commands[i].commands.includes('CONFIG')) 

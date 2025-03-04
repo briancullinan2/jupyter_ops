@@ -59,17 +59,17 @@
 
 
 <pre class="javascript"><code>echo
-'<configuration> \
-   <packageRestore> \
-       <add key="enabled" value="True" /> \
-       <add key="automatic" value="True" /> \
-   </packageRestore> \
-   <packageSources> \
-       <add key="nuget.org" value="https://www.nuget.org/api/v2/" /> \
-       <add key="nuget.org" value="https://api.nuget.org/v3/index.json" protocolVersion="3" /> \
-       <add key="teamCity" value="http://teamcity.actops.com/httpAuth/app/nuget/v1/FeedService.svc" /> \
-   </packageSources> \
-</configuration>' > / act.subscription.management /
+'&lt;configuration&gt; \
+   &lt;packageRestore&gt; \
+       &lt;add key="enabled" value="True" /&gt; \
+       &lt;add key="automatic" value="True" /&gt; \
+   &lt;/packageRestore&gt; \
+   &lt;packageSources&gt; \
+       &lt;add key="nuget.org" value="https://www.nuget.org/api/v2/" /&gt; \
+       &lt;add key="nuget.org" value="https://api.nuget.org/v3/index.json" protocolVersion="3" /&gt; \
+       &lt;add key="teamCity" value="http://teamcity.actops.com/httpAuth/app/nuget/v1/FeedService.svc" /&gt; \
+   &lt;/packageSources&gt; \
+&lt;/configuration&gt;' &gt; / act.subscription.management /
 .
 nuget / NuGet.Config
 

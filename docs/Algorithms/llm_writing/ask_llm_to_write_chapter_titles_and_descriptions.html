@@ -86,14 +86,14 @@ async function askLlamaForAChapterSynopsis(topic, chapterOrCharacterOrSections =
   console.log("AI: " + a1);
 
   let titles = a1.trim().split(/(^|\n)\s*[0-9]+\.\s*/gi)
-    .filter(a => a && a.trim().length > 0)
+    .filter(a =&gt; a &amp;&amp; a.trim().length &gt; 0)
   let obj = {}
-  for(let i = 0; i < titles.length; i++) {
-    if(topic.includes(titles[i]) && titles[i+1].length < 128) continue;
-    let lines = titles[i].split(/\*\*|\#\#|\n/gi).filter(a => a && a.trim().length > 0)
+  for(let i = 0; i &lt; titles.length; i++) {
+    if(topic.includes(titles[i]) &amp;&amp; titles[i+1].length &lt; 128) continue;
+    let lines = titles[i].split(/\*\*|\#\#|\n/gi).filter(a =&gt; a &amp;&amp; a.trim().length &gt; 0)
     let key = lines[0]
     obj[key] = lines.slice(1).join('\n')
-    if(obj[key].length == 0 && titles[i+1].length > 128) {
+    if(obj[key].length == 0 &amp;&amp; titles[i+1].length &gt; 128) {
       obj[key] = titles[i+1]
       i++
     }

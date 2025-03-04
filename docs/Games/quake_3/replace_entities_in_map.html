@@ -134,7 +134,7 @@ function replaceEntities(file, entities) {
     if(!ents) {
         var entityStr = fs.readFileSync(entities).toString('utf-8')
         var matches = importer.regexToArray(/QUAKED\s+.*/ig, entityStr)
-        ents = matches.reduce((obj, m, i, arr) => {
+        ents = matches.reduce((obj, m, i, arr) =&gt; {
             var start = entityStr.indexOf(m)
             var end = entityStr.indexOf(arr[i + 1])
             if(end === -1) end = entityStr.length
@@ -145,22 +145,22 @@ function replaceEntities(file, entities) {
         }, {})
     }
     
-    if(typeof file === 'string' && fs.existsSync(file)) {
+    if(typeof file === 'string' &amp;&amp; fs.existsSync(file)) {
         file = fs.readFileSync(file).toString('utf-8')
     }
     
     // replace entities
-    file = file.replace(/"misc_([^"]*)"/ig, ($0) => `"misc_model"\n "model" ${$0}`)
+    file = file.replace(/"misc_([^"]*)"/ig, ($0) =&gt; `"misc_model"\n "model" ${$0}`)
     
     var noises = importer.regexToArray(/noise.*?"\s*"(.*?)"/ig, file, false)
-    noises.forEach(n => {
+    noises.forEach(n =&gt; {
         if(!n[1].includes('sound/')) {
             file = file.replace(n[0], `noise" "sound/${n[1]}"`)
         }
     })
     
     // replace misc_ with models from ent
-    Object.keys(ents).forEach(k => {
+    Object.keys(ents).forEach(k =&gt; {
         if(!k.includes('misc_')) return
         file = file.replace(new RegExp('"' + k + '"', 'ig'), '"' + ents[k] + '"')
     })

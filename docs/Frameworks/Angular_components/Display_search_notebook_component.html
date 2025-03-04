@@ -73,13 +73,13 @@ import {SearchService} from '../../../imports/search.service';
 @Component({
     selector: 'bc-search',
     template: `
-        <form>
-            <md-input-container>
-                <input mdInput name="search" required type="text"
+        &lt;form&gt;
+            &lt;md-input-container&gt;
+                &lt;input mdInput name="search" required type="text"
                        placeholder="Search"
-                       maxlength="100" [(ngModel)]="query" (change)="search()">
-            </md-input-container>
-        </form>
+                       maxlength="100" [(ngModel)]="query" (change)="search()"&gt;
+            &lt;/md-input-container&gt;
+        &lt;/form&gt;
     `,
     styles: [`
         md-input-container {
@@ -94,7 +94,7 @@ export class SearchComponent {
     constructor(public) {}
 
     search(): void {
-        this.service.search(this.query).subscribe(r => {
+        this.service.search(this.query).subscribe(r =&gt; {
             console.log('searched ' + r);
         });
     }

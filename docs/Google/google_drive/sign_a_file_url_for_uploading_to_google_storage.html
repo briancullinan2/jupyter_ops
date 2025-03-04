@@ -86,7 +86,7 @@ const storage = new Storage();
  * @param {Object} req Cloud Function request context.
  * @param {Object} res Cloud Function response context.
  */
-exports.getSignedUrl = (req, res) => {
+exports.getSignedUrl = (req, res) =&gt; {
   if (req.method !== 'POST') {
     // Return a "method not allowed" error
     return res.status(405).end();
@@ -104,7 +104,7 @@ exports.getSignedUrl = (req, res) => {
     contentType: req.body.contentType,
   };
 
-  file.getSignedUrl(config, (err, url) => {
+  file.getSignedUrl(config, (err, url) =&gt; {
     if (err) {
       console.error(err);
       res.status(500).end();

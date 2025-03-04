@@ -102,7 +102,7 @@ const parse5 = require('parse5');
 const xmlser = require('xmlserializer');
 const dom = require('xmldom').DOMParser;
 
-(async () => {
+(async () =&gt; {
     const html = await fs.readFile('./test.htm');
     const document = parse5.parse(html.toString());
     const xhtml = xmlser.serializeToString(document);

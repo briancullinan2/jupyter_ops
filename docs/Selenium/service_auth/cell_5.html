@@ -73,9 +73,9 @@ var runSeleniumCell = importer.import('selenium cell');
 
 $.async();
 runSeleniumCell('download passwords from google')
-    .then(downloadGooglePasswords => downloadGooglePasswords())
-    .then(r => $.sendResult(r))
-    .catch(e => $.sendError(e));
+    .then(downloadGooglePasswords =&gt; downloadGooglePasswords())
+    .then(r =&gt; $.sendResult(r))
+    .catch(e =&gt; $.sendError(e));
 
 </code></pre>
 

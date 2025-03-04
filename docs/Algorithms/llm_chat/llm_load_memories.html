@@ -80,7 +80,7 @@ const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('gen
 async function listMemories(session) {
 
   let memories = await findMemories(session)
-  return Object.keys(memories).map(key => {
+  return Object.keys(memories).map(key =&gt; {
     // provide the date the memory was made
     let date = new Date(parseInt(key))
     return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + date.getDate()
@@ -116,8 +116,8 @@ async function findMemories(session) {
 
   let history = fs.readdirSync(PROJECT_PATH)
   // newest to oldest
-  history.sort((a, b) => b - a)
-  for(let i = 0; i < history.length; i++) {
+  history.sort((a, b) =&gt; b - a)
+  for(let i = 0; i &lt; history.length; i++) {
     if(!history[i].match('-' + DEFAULT_MODEL + '-' + session + '.json')) {
       continue
     }

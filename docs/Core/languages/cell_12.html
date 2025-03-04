@@ -100,14 +100,14 @@
 // format I used on study sauce templates
 
 var array_shift = function (arr) {return arr.shift();};
-var strpos = function (str, match) {var i; return (i = str.indexOf(match)) > -1 ? i : false;};
+var strpos = function (str, match) {var i; return (i = str.indexOf(match)) &gt; -1 ? i : false;};
 var substr = function (str, start, length) {return str.substr(start, length);};
 var is_numeric = function (num) {return !isNaN(parseInt(num)) || !isNaN(parseFloat(num));};
 var strlen = function (str) {return (''+(str || '')).length;};
 var array_merge = function () {
-var isObject = typeof arguments[0] == 'object' && arguments[0] != null && arguments[0].constructor != Array;
+var isObject = typeof arguments[0] == 'object' &amp;&amp; arguments[0] != null &amp;&amp; arguments[0].constructor != Array;
 var args = [isObject ? {} : []];
-for(var a = 0; a < arguments.length; a++) {
+for(var a = 0; a &lt; arguments.length; a++) {
     args[args.length] = arguments[a];
 };
 return args.reduce(function (a, b) {
@@ -115,13 +115,13 @@ return args.reduce(function (a, b) {
 });
 };
 var round = function (num, digits) {
-    if(digits > 0) {
+    if(digits &gt; 0) {
         return Math.round(num * (10 * (digits ? digits : 0))) / (10 * (digits ? digits : 0));
     }
     return Math.round(num);
 };
 var is_string = function (obj) {return typeof obj == 'string';};
-var is_a = function (obj, typeStr) { return typeof obj == 'object' && obj != null && obj.constructor.name == typeStr();};
+var is_a = function (obj, typeStr) { return typeof obj == 'object' &amp;&amp; obj != null &amp;&amp; obj.constructor.name == typeStr();};
 var intval = function (str) {var result = parseInt(str); return isNaN(result) ? 0 : result;};
 var trim = function (str) {return (str || '').trim();};
 var explode = function (del, str) {return (str || '').split(del);};
@@ -129,7 +129,7 @@ var array_slice = function (arr, start, length) { return (arr || []).slice(start
 var array_splice = function (arr, start, length) { return arr.splice(start, length); };
 var array_search = function (item, arr) { var index = (arr || []).indexOf(item); return index == -1 ? false : index; };
 var count = function (arr) { return (arr || []).length; };
-var in_array = function (needle, arr) { return (arr || []).indexOf(needle) > -1; };
+var in_array = function (needle, arr) { return (arr || []).indexOf(needle) &gt; -1; };
 var array_values = function (arr) { return (arr || []).slice(0); };
 var is_array = function (obj) { return typeof obj == 'array' || typeof obj == 'object'; }; // PHP and javascript don't make a distinction between arrays and objects syntax wise using [property], all php objects should be restful anyways
 var array_keys = function (obj) {var result=[]; for (var k in obj) { if (obj.hasOwnProperty(k)) { result[result.length] = k } } return result; };
@@ -144,7 +144,7 @@ var preg_match = function (needle, subject, matches) {
         return 0;
     }
     if(typeof matches != 'undefined') {
-        for(var m = 0; m < result.length; m++) {
+        for(var m = 0; m &lt; result.length; m++) {
             matches[m] = result[m];
         }
     }
@@ -158,7 +158,7 @@ var strtolower = function(s) { return (s || '').toLocaleLowerCase(); };
 var empty = function(s) {
     if(typeof s == 'undefined' || ('' + s).trim() == ''
         || s === false || s === 'false' || s == null || s === 0
-        || (typeof s == 'object' && s.constructor == Array && s.length == 0)) {
+        || (typeof s == 'object' &amp;&amp; s.constructor == Array &amp;&amp; s.length == 0)) {
         return true;
     }
     if(typeof s == 'object') {
@@ -170,7 +170,7 @@ var empty = function(s) {
     }
 };
 var json_encode = JSON.stringify;
-var method_exists = function (s,m) { return typeof s == 'object' && typeof s[m] == 'function'; };
+var method_exists = function (s,m) { return typeof s == 'object' &amp;&amp; typeof s[m] == 'function'; };
 var isset = function (s) { return typeof s != 'undefined'; };
 
 </code></pre>

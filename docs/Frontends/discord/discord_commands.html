@@ -84,7 +84,7 @@ const {requestAuthQ} = importer.import('discord request')
 
 async function registerCommand(cmd, desc, guildId = null) {
   // TODO: guild specific commands
-  //url = "https://discord.com/api/v8/applications/<my_application_id>/guilds/<guild_id>/commands"
+  //url = "https://discord.com/api/v8/applications/&lt;my_application_id&gt;/guilds/&lt;guild_id&gt;/commands"
   var json
   if(typeof cmd == 'object') {
     json = cmd

@@ -64,13 +64,13 @@ var JsDiff = require('diff');
 var importer = require('../Core');
 var prismPlugin = '../node_modules/prismjs/plugins/keep-markup/prism-keep-markup.js';
 //TODO: fix diff fs.readFileSync(prismPlugin).toString()
-function htmlEntities(str) { return str.replace(/[\u00A0-\u9999<>\&]/gim, i => '&#' + i.charCodeAt(0) + ';'); }
+function htmlEntities(str) { return str.replace(/[\u00A0-\u9999&lt;&gt;\&amp;]/gim, i =&gt; '&amp;#' + i.charCodeAt(0) + ';'); }
 
 function prismHighlightHtml(code) {
     var Prism = require('prismjs');
-    var dom = new JSDOM('<body>' + code + '</body>');
-    dom.window.document.createRange = () => ({
-        createContextualFragment: str => JSDOM.fragment(str)
+    var dom = new JSDOM('&lt;body&gt;' + code + '&lt;/body&gt;');
+    dom.window.document.createRange = () =&gt; ({
+        createContextualFragment: str =&gt; JSDOM.fragment(str)
     });
     const ctx = {
         __filename: prismPlugin,
@@ -84,23 +84,23 @@ function prismHighlightHtml(code) {
 function diffTwoTexts(left, right) {
     var diff = JsDiff.diffWords(left, right);
     var code = '';
-    for (var i = 0; i < diff.length; i++) {
-        if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
+    for (var i = 0; i &lt; diff.length; i++) {
+        if (diff[i].added &amp;&amp; diff[i + 1] &amp;&amp; diff[i + 1].removed) {
             var swap = diff[i];
             diff[i] = diff[i + 1];
             diff[i + 1] = swap;
         }
 
         if (diff[i].removed) {
-            code += '<span class="del">' + htmlEntities(diff[i].value) + '</span>';
+            code += '&lt;span class="del"&gt;' + htmlEntities(diff[i].value) + '&lt;/span&gt;';
         } else if (diff[i].added) {
-            code += '<span class="ins">' + htmlEntities(diff[i].value) + '</span>';
+            code += '&lt;span class="ins"&gt;' + htmlEntities(diff[i].value) + '&lt;/span&gt;';
         } else {
-            code += '<span>' + htmlEntities(diff[i].value) + '</span>';
+            code += '&lt;span&gt;' + htmlEntities(diff[i].value) + '&lt;/span&gt;';
         }
     }
     return `
-<style>
+&lt;style&gt;
 
 .token.comment,
 .token.prolog,
@@ -181,8 +181,8 @@ function diffTwoTexts(left, right) {
     background: #eaf2c2;
     text-decoration: none;
 }
-</style>
-<pre>` + prismHighlightHtml(code) + `</pre>`;
+&lt;/style&gt;
+&lt;pre&gt;` + prismHighlightHtml(code) + `&lt;/pre&gt;`;
 }
 module.exports = diffTwoTexts;
 diffTwoTexts;

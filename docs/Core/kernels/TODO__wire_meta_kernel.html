@@ -127,16 +127,16 @@ function do_execute(kernel, request) {
     }})
     var result;
     return Promise.resolve()
-        .then(() => kernel.do_execute(request.content))
-        .then(r => result = r)
-        .then(() => kernel.do_respond({status: {execution_state: 'idle'}}))
-        .then(() => kernel.do_respond({execute_reply: {
+        .then(() =&gt; kernel.do_execute(request.content))
+        .then(r =&gt; result = r)
+        .then(() =&gt; kernel.do_respond({status: {execution_state: 'idle'}}))
+        .then(() =&gt; kernel.do_respond({execute_reply: {
             status: 'ok',
             execution_count: request.execution_count,
             payload: [], // TODO(NR) not implemented,
             user_expressions: {}, // TODO(NR) not implemented,
         }}))
-        .then(() => kernel.do_respond({execute_result: {
+        .then(() =&gt; kernel.do_respond({execute_result: {
             execution_count: request.execution_count,
             data: {'text/plain': result + ''},
             metadata: {}
@@ -155,21 +155,21 @@ function do_display(kernel, request) {
 function do_shutdown(kernel, request) {
     kernel.do_respond({status: {execution_state: 'busy'}});
     return Promise.resolve()
-        .then(() => kernel.do_shutdown(request.content))
-        .then(r => result = r)
+        .then(() =&gt; kernel.do_shutdown(request.content))
+        .then(r =&gt; result = r)
         // TODO: some sort of shutdown scripting
-        .then(() => kernel.do_respond({status: {execution_state: 'idle'}}))
-        .then(() => kernel.do_respond({shutdown_reply: request.content}))
+        .then(() =&gt; kernel.do_respond({status: {execution_state: 'idle'}}))
+        .then(() =&gt; kernel.do_respond({shutdown_reply: request.content}))
 }
 
 function do_complete(kernel, request) {
     kernel.do_respond({status: {execution_state: 'busy'}});
     var result;
     return Promise.resolve()
-        .then(() => kernel.do_complete(request.content))
-        .then(r => result = r)
-        .then(() => kernel.do_respond({status: {execution_state: 'idle'}}))
-        .then(() => kernel.do_respond({complete_reply: {
+        .then(() =&gt; kernel.do_complete(request.content))
+        .then(r =&gt; result = r)
+        .then(() =&gt; kernel.do_respond({status: {execution_state: 'idle'}}))
+        .then(() =&gt; kernel.do_respond({complete_reply: {
             matches: result.completion.list,
             cursor_start: result.completion.cursorStart,
             cursor_end: result.completion.cursorEnd,
@@ -180,10 +180,10 @@ function do_complete(kernel, request) {
 function do_history(kernel, request) {
     kernel.do_respond({status: {execution_state: 'busy'}});
     return Promise.resolve()
-        .then(() => kernel.do_history(request.content))
-        .then(r => result = r)
-        .then(() => kernel.do_respond({status: {execution_state: 'idle'}}))
-        .then(() => kernel.do_respond({history_reply: {
+        .then(() =&gt; kernel.do_history(request.content))
+        .then(r =&gt; result = r)
+        .then(() =&gt; kernel.do_respond({status: {execution_state: 'idle'}}))
+        .then(() =&gt; kernel.do_respond({history_reply: {
             history: [] // TODO
         }}))
 }
@@ -192,10 +192,10 @@ function do_is_complete(kernel, request) {
     kernel.do_respond({status: {execution_state: 'busy'}});
     var result;
     return Promise.resolve()
-        .then(() => kernel.do_is_complete(request.content))
-        .then(r => result = r)
-        .then(() => kernel.do_respond({status: {execution_state: 'idle'}}))
-        .then(() => kernel.do_respond({is_complete_reply: {
+        .then(() =&gt; kernel.do_is_complete(request.content))
+        .then(r =&gt; result = r)
+        .then(() =&gt; kernel.do_respond({status: {execution_state: 'idle'}}))
+        .then(() =&gt; kernel.do_respond({is_complete_reply: {
             status: (result ? 'complete': 'incomplete'),
             indent: ''
         }}))
@@ -206,23 +206,23 @@ function do_inspect(kernel, request) {
     kernel.do_respond({status: {execution_state: 'busy'}});
     var result;
     return Promise.resolve()
-        .then(() => kernel.do_inspect(request.content))
-        .then(r => result = r)
-        .then(() => kernel.do_respond({status: {execution_state: 'idle'}}))
+        .then(() =&gt; kernel.do_inspect(request.content))
+        .then(r =&gt; result = r)
+        .then(() =&gt; kernel.do_respond({status: {execution_state: 'idle'}}))
         // TODO: move this to do_display method?
-        .then(() => result.inspection
+        .then(() =&gt; result.inspection
               ? result.inspection.type + ': ' + result.inspection.string
               : result.doc.usage
                   ? result.doc.usage + '\n\n' + result.doc.description
                   : result)
         // TODO: use error for all promises
-        .then(() => kernel.do_respond({inspect_reply: {
+        .then(() =&gt; kernel.do_respond({inspect_reply: {
             found: true,
-            data: {'text/plain': result, 'text/html': `<pre>${result}</pre>`},
+            data: {'text/plain': result, 'text/html': `&lt;pre&gt;${result}&lt;/pre&gt;`},
             metadata: {},
             status: "ok",
         }}))
-        .catch(e => kernel.do_respond({inspect_reply: {
+        .catch(e =&gt; kernel.do_respond({inspect_reply: {
             status: "error",
             execution_count: execution_count,
             ename: result.error.ename,

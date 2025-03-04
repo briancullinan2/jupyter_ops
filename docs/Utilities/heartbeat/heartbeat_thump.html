@@ -69,7 +69,7 @@ function thump(thump, parameters, exit) {
     console.log('executing ' + NODE + ' - ' + CORE + ' - ' + thump + ' - ' + JSON.stringify(parameters));
     require('child_process').spawn(NODE, [
         '-e',
-        'require(' + JSON.stringify(CORE) + ').import("' + thump + '")(' + (parameters ? ('...' + JSON.stringify(parameters || [])) : '') + ').catch(e => console.log(e)).then(() => process.exit())'
+        'require(' + JSON.stringify(CORE) + ').import("' + thump + '")(' + (parameters ? ('...' + JSON.stringify(parameters || [])) : '') + ').catch(e =&gt; console.log(e)).then(() =&gt; process.exit())'
     ], {
         detached: true,
         stdio: [ 'ignore', out, err ]

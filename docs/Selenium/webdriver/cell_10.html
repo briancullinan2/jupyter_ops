@@ -100,7 +100,7 @@ var sessionModified = 0;
 function readSessions() {
     try {
         if(fs.existsSync(SESSIONS_PATH)
-           && fs.statSync(SESSIONS_PATH).mtime.getTime() > sessionModified) {
+           &amp;&amp; fs.statSync(SESSIONS_PATH).mtime.getTime() &gt; sessionModified) {
             sessionModified = fs.statSync(SESSIONS_PATH).mtime.getTime();
             sessions = JSON.parse(fs.readFileSync(SESSIONS_PATH)
                 .toString());

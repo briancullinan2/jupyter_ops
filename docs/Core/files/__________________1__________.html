@@ -96,20 +96,20 @@ function matchCurlyBraces(contents) {
     var XRegExp = require('xregexp');
     var newMatches = XRegExp.matchRecursive(contents, '{', '}', 'gi', {
         valueNames: ['literal', null, 'value', null]
-    }).filter(m => m.name === 'value');
+    }).filter(m =&gt; m.name === 'value');
     //console.log(newMatches);
     return newMatches.reduce(
-        (arr, m) => arr.concat(matchCurlyBraces(m.value)),
+        (arr, m) =&gt; arr.concat(matchCurlyBraces(m.value)),
         newMatches);
 };
 
 function findLongFunctions(project) {
     var files = listInProject(project, '**/*.+(ts|js|cs)')
-    var results = files.map(file => {
+    var results = files.map(file =&gt; {
         const contents = file.contents.toString();
         try {
             results = results.concat(matchCurlyBraces(contents)
-                .map(m => Object.assign(m, {path: file.path})))
+                .map(m =&gt; Object.assign(m, {path: file.path})))
         } catch (e) {
             results = results.concat([{
                 name: 'value',
@@ -121,19 +121,19 @@ function findLongFunctions(project) {
             }])
         }
     });
-    var code = results.map(r => r.value);
+    var code = results.map(r =&gt; r.value);
     var topLevel = results
-        .filter(r => code
-            .filter(c => c !== r.value && c.indexOf(r.value) > 0).length === 0)
+        .filter(r =&gt; code
+            .filter(c =&gt; c !== r.value &amp;&amp; c.indexOf(r.value) &gt; 0).length === 0)
     results = results
-        .filter(m => topLevel.filter(c => c.value === m.value).length === 0)
-    code = results.map(r => r.value);
-    topLevel = topLevel.concat(results.filter(r => code
-        .filter(c => c !== r.value && c.indexOf(r.value) > 0).length === 0))
+        .filter(m =&gt; topLevel.filter(c =&gt; c.value === m.value).length === 0)
+    code = results.map(r =&gt; r.value);
+    topLevel = topLevel.concat(results.filter(r =&gt; code
+        .filter(c =&gt; c !== r.value &amp;&amp; c.indexOf(r.value) &gt; 0).length === 0))
     results = results
-        .filter(m => topLevel.filter(c => c.value === m.value).length === 0)
+        .filter(m =&gt; topLevel.filter(c =&gt; c.value === m.value).length === 0)
     return results
-        .filter(m => m.value.split(/\n/ig).length > 100)
+        .filter(m =&gt; m.value.split(/\n/ig).length &gt; 100)
 }
 
 module.exports = findLongFunctions

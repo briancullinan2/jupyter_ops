@@ -73,22 +73,22 @@ import * as Prism from 'prismjs';
 @Component({
     selector: 'bc-results',
     template: `
-        <pre [class]="'language-'+(r.lang||'javascript')" *ngFor="let r of results" [innerHTML]="highlight(r.code)">
-        </pre>
+        &lt;pre [class]="'language-'+(r.lang||'javascript')" *ngFor="let r of results" [innerHTML]="highlight(r.code)"&gt;
+        &lt;/pre&gt;
     `,
     styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit, OnDestroy {
     query = '';
-    results: Array<any> = [];
+    results: Array&lt;any&gt; = [];
     private resultsSub: Subscription;
     
 
     constructor(public service: SearchService, public ref: ChangeDetectorRef) {}
 
     ngOnInit(): void {
-        this.resultsSub = this.service.results(this.query).subscribe(r => {
-            this.results = [(r as Array < any >)[0]];
+        this.resultsSub = this.service.results(this.query).subscribe(r =&gt; {
+            this.results = [(r as Array &lt; any &gt;)[0]];
             this.ref.detectChanges();
         });
     }

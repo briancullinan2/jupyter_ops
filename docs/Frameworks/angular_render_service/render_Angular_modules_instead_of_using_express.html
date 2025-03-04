@@ -83,11 +83,11 @@ enableProdMode();
 /**
  * Map of Module Factories
  */
-const factoryCacheMap = new Map < Type < {} >, NgModuleFactory
-<
+const factoryCacheMap = new Map &lt; Type &lt; {} &gt;, NgModuleFactory
+&lt;
 {
 }
->>
+&gt;&gt;
 ();
 
 /**
@@ -103,7 +103,7 @@ function bootstrapRender(boot: any) {
     ]);
 
     return function (url: string, callback: (err?: Error | null, html ? : string
-) =>
+) =&gt;
     void
 )
     {
@@ -114,17 +114,17 @@ function bootstrapRender(boot: any) {
             }
 
             getFactory(boot, compiler)
-                .then(factory => {
+                .then(factory =&gt; {
                     return renderModuleFactory(factory, {
-                        document: '<app-root></app-root>',
+                        document: '&lt;app-root&gt;&lt;/app-root&gt;',
                         url: url,
                         extraProviders: [
                             {
                                 provide: APP_INITIALIZER,
-                                useFactory: (injector: Injector) => {
-                                    return () => {
+                                useFactory: (injector: Injector) =&gt; {
+                                    return () =&gt; {
                                         const router: Router = injector.get(Router);
-                                        router.navigate([url]); // => This has NO effect
+                                        router.navigate([url]); // =&gt; This has NO effect
                                         console.log(router.url); // this logs: '/' instead of the 'domain.com/de-de/contact'
                                     };
                                 },
@@ -134,16 +134,16 @@ function bootstrapRender(boot: any) {
                             {
                                 provide: INITIAL_CONFIG,
                                 useValue: {
-                                    document: '<app-root></app-root>',
+                                    document: '&lt;app-root&gt;&lt;/app-root&gt;',
                                     url: url
                                 }
                             }
                         ]
                     });
                 })
-                .then((html: string) => {
+                .then((html: string) =&gt; {
                     callback(null, html);
-                }, (err) => {
+                }, (err) =&gt; {
                     callback(err);
                 });
         } catch (err) {
@@ -156,11 +156,11 @@ function bootstrapRender(boot: any) {
 /**
  * Get a factory from a bootstrapped module/ module factory
  */
-function getFactory(moduleOrFactory: Type<{}> | NgModuleFactory<{}>, compiler: Compiler): Promise<NgModuleFactory<{}
+function getFactory(moduleOrFactory: Type&lt;{}&gt; | NgModuleFactory&lt;{}&gt;, compiler: Compiler): Promise&lt;NgModuleFactory&lt;{}
 
->>
+&gt;&gt;
 {
-    return new Promise < NgModuleFactory < {} >> ((resolve, reject) => {
+    return new Promise &lt; NgModuleFactory &lt; {} &gt;&gt; ((resolve, reject) =&gt; {
         // If module has been compiled AoT
         if (moduleOrFactory instanceof NgModuleFactory) {
             resolve(moduleOrFactory);
@@ -176,10 +176,10 @@ function getFactory(moduleOrFactory: Type<{}> | NgModuleFactory<{}>, compiler: C
 
             // Compile the module and cache it
             compiler.compileModuleAsync(moduleOrFactory)
-                .then((factory) => {
+                .then((factory) =&gt; {
                     factoryCacheMap.set(moduleOrFactory, factory);
                     resolve(factory);
-                }, (err => {
+                }, (err =&gt; {
                     reject(err);
                 }));
         }
@@ -187,7 +187,7 @@ function getFactory(moduleOrFactory: Type<{}> | NgModuleFactory<{}>, compiler: C
 }
 
 // Hacky way to get this function out of the Zone context?
-( < any > global
+( &lt; any &gt; global
 ).
 renderer = bootstrapRender(AppServerModule);
 

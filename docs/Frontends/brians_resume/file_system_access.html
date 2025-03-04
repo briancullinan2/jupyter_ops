@@ -87,9 +87,9 @@ async function messageFilesystem(promptModel, session, prompt) {
 
   let currentProject = path.basename(path.resolve(__dirname, '..'))
   let availableProjects = fs.readdirSync(PROFILE_PATH)
-    .filter(dir => dir[0] != '.')
-    .filter(dir => fs.statSync(path.join(PROFILE_PATH, dir)).isDirectory())
-    .filter(dir => fs.existsSync(path.join(PROFILE_PATH, dir, '.git')))
+    .filter(dir =&gt; dir[0] != '.')
+    .filter(dir =&gt; fs.statSync(path.join(PROFILE_PATH, dir)).isDirectory())
+    .filter(dir =&gt; fs.existsSync(path.join(PROFILE_PATH, dir, '.git')))
   let q1 = 'Current project: ' + currentProject
     + '\nAvailable projects:\n' + availableProjects.join('\n')
     + '\nAre any of these project related to the current prompt:\n'
@@ -99,7 +99,7 @@ async function messageFilesystem(promptModel, session, prompt) {
   let a1 = await promptModel(q1)
   console.log('AI: ' + a1)
   
-  let relatedProjects = availableProjects.filter(dir => a1.match(dir))
+  let relatedProjects = availableProjects.filter(dir =&gt; a1.match(dir))
 
   if(relatedProjects.length == 0) {
     return 'Current project: ' + currentProject
@@ -107,13 +107,13 @@ async function messageFilesystem(promptModel, session, prompt) {
   }
 
   let projectFiles = fs.readdirSync(path.join(PROFILE_PATH, relatedProjects[0]))
-    .filter(dir => dir[0] != '.' && dir != 'node_modules')
-    .map(file => {
+    .filter(dir =&gt; dir[0] != '.' &amp;&amp; dir != 'node_modules')
+    .map(file =&gt; {
       let currentPath = path.join(PROFILE_PATH, relatedProjects[0], file)
       if(fs.statSync(currentPath).isDirectory()) {
         return [file].concat(fs.readdirSync(currentPath)
-          .filter(dir => dir[0] != '.')
-          .map(dir => path.join(file, dir)))
+          .filter(dir =&gt; dir[0] != '.')
+          .map(dir =&gt; path.join(file, dir)))
       } else {
         return file
       }
@@ -127,10 +127,10 @@ async function messageFilesystem(promptModel, session, prompt) {
       + '\nProject files:\n'
     let originalFilePrompt = q2
     let count = 0
-    for(let i = 0; i < projectFiles.length; i++) {
+    for(let i = 0; i &lt; projectFiles.length; i++) {
       q2 += projectFiles[i] + '\n'
       count++
-      if(count == 25 || q2.length > 2048) {
+      if(count == 25 || q2.length &gt; 2048) {
         q2 += '\nAre any of the project files relevant to the prompt:\n'
           + prompt
           + '\nOnly respond with the related file paths or file names, nothing else.'
@@ -138,12 +138,12 @@ async function messageFilesystem(promptModel, session, prompt) {
         let a2 = await promptModel(q2)
         console.log('AI: ' + a2)
         relatedFiles = relatedFiles.concat(projectFiles
-          .filter(file => a2.match(file) || a2.match(path.basename(file))))
+          .filter(file =&gt; a2.match(file) || a2.match(path.basename(file))))
         count = 0
         q2 = originalFilePrompt
       }
     }
-    if(q2.length != originalFilePrompt.length || count > 0) {
+    if(q2.length != originalFilePrompt.length || count &gt; 0) {
       q2 += '\nAre any of the project files relevant to the prompt:\n'
         + prompt
         + '\nOnly respond with the related file paths or file names, nothing else.'
@@ -151,7 +151,7 @@ async function messageFilesystem(promptModel, session, prompt) {
       let a2 = await promptModel(q2)
       console.log('AI: ' + a2)
       relatedFiles = relatedFiles.concat(projectFiles
-        .filter(file => a2.match(file) || a2.match(path.basename(file))))
+        .filter(file =&gt; a2.match(file) || a2.match(path.basename(file))))
     }
   }
 

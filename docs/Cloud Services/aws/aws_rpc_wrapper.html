@@ -87,13 +87,13 @@ function handler(event, context, callback) {
     // TODO: parse action and call from notify service or call with posted data?
     // TODO: add an entry point for Zuora subscription callout to update single records in eloqua?
     return Promise.resolve([])
-        .then(() => getResult({
+        .then(() =&gt; getResult({
             command: body['function'],
             result: importer.interpret(body['function']),
             body: body,
             circles: ['Public']
         }))
-        .then(r => callback(null, {
+        .then(r =&gt; callback(null, {
             'statusCode': 200,
             'headers': { 
                 'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ function handler(event, context, callback) {
             'body': JSON.stringify(r, null, 4)
         }))
         // TODO: object assign error?
-        .catch(e => callback(e, {
+        .catch(e =&gt; callback(e, {
             'statusCode': 500,
             'headers': { 
                 'Content-Type': 'application/json',

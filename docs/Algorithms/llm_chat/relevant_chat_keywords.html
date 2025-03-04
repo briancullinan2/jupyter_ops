@@ -82,22 +82,22 @@ async function relevantKeywords(promptModel, session, prompt) {
   // TODO: search all loaded user histories for keywords
   let keywords = []
   let loadedConversations = Object.keys(ACTIVE_CONVERSATIONS)
-    .filter(key => key.match('-' + DEFAULT_MODEL + '-' + session + '.json'))
-  loadedConversations.sort((a, b) => b - a)
-  for(let i = 0; i < loadedConversations.length; i++) {
+    .filter(key =&gt; key.match('-' + DEFAULT_MODEL + '-' + session + '.json'))
+  loadedConversations.sort((a, b) =&gt; b - a)
+  for(let i = 0; i &lt; loadedConversations.length; i++) {
     let conversation = ACTIVE_CONVERSATIONS[loadedConversations[i]]
-    let timestamps = Object.keys(conversation).filter(k => k != 'summaries' && k != 'memories')
-    timestamps.sort((a, b) => b - a)
-    for(let j = 0; j < timestamps.length; j++) {
+    let timestamps = Object.keys(conversation).filter(k =&gt; k != 'summaries' &amp;&amp; k != 'memories')
+    timestamps.sort((a, b) =&gt; b - a)
+    for(let j = 0; j &lt; timestamps.length; j++) {
       let message = conversation[timestamps[j]]
       let newKeywords = message.keywords
       newKeywords = newKeywords.replace(/.*?:\s*\n\s*/gi, '')
       newKeywords = newKeywords.replaceAll('*', '').replaceAll('# ', '').replaceAll('#', '').replaceAll(/[0-9]+\.\s*/gi, '')
       newKeywords = newKeywords.split(/\s*\n\s*|\s*,\s*/gi)
-      keywords = keywords.concat(newKeywords.map(k => k.trim()))
+      keywords = keywords.concat(newKeywords.map(k =&gt; k.trim()))
     }
   }
-  keywords = keywords.filter((k, i, arr) => k && arr.indexOf(k) == i)
+  keywords = keywords.filter((k, i, arr) =&gt; k &amp;&amp; arr.indexOf(k) == i)
 
 
   let q2 = 'Given the following keywords:\n'
@@ -109,7 +109,7 @@ async function relevantKeywords(promptModel, session, prompt) {
   console.log('AI: ' + a2)
 
   let matching = []
-  for(let i = 0; i < keywords.length; i++) {
+  for(let i = 0; i &lt; keywords.length; i++) {
     if(a2.match(keywords[i])) {
       matching.push(keywords[i])
     }

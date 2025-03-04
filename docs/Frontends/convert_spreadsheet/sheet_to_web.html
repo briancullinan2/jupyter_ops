@@ -99,11 +99,11 @@ function initSync(env) {
 
 initSync(process.env.ENVIRONMENT);
 
-var copyAllFiles = (resources, bucketName) => Promise.all(resources
-    .map(f => f && streamToGoogle(path.basename(f),
+var copyAllFiles = (resources, bucketName) =&gt; Promise.all(resources
+    .map(f =&gt; f &amp;&amp; streamToGoogle(path.basename(f),
                                   bucketName,
                                   fs.createReadStream(f))
-        .catch(e => console.error(e))))
+        .catch(e =&gt; console.error(e))))
 
 async function importTest(link, domain, env) {
     if(env) {
@@ -113,17 +113,17 @@ async function importTest(link, domain, env) {
     // TODO: fix google storage check
     if(process.env.PROJECT_OUTPUT) {
         var existingFiles = glob(resources
-            .map(r => `**/*${path.basename(r)}*`), process.env.PROJECT_OUTPUT)
-        resources = resources.filter(r => existingFiles.filter(e => e.includes(path.basename(r))).length == 0)
+            .map(r =&gt; `**/*${path.basename(r)}*`), process.env.PROJECT_OUTPUT)
+        resources = resources.filter(r =&gt; existingFiles.filter(e =&gt; e.includes(path.basename(r))).length == 0)
         console.log(resources)
     }
     var newFiles = glob(resources
-        .map(r => `**/*${path.basename(r)}*`), process.env.DOWNLOAD_PATH)
-    resources = resources.filter(r => newFiles.filter(e => e.includes(path.basename(r))).length == 0)
+        .map(r =&gt; `**/*${path.basename(r)}*`), process.env.DOWNLOAD_PATH)
+    resources = resources.filter(r =&gt; newFiles.filter(e =&gt; e.includes(path.basename(r))).length == 0)
     var desktopFiles = glob(resources
-        .map(r => `**/*${path.basename(r)}*`), path.join(process.env.DOWNLOAD_PATH, '../Desktop'))
+        .map(r =&gt; `**/*${path.basename(r)}*`), path.join(process.env.DOWNLOAD_PATH, '../Desktop'))
     var pictureFiles = glob(resources
-        .map(r => `**/*${path.basename(r)}*`), path.join(process.env.DOWNLOAD_PATH, '../Pictures'))
+        .map(r =&gt; `**/*${path.basename(r)}*`), path.join(process.env.DOWNLOAD_PATH, '../Pictures'))
     return copyAllFiles(newFiles.concat(desktopFiles).concat(pictureFiles), domain)
 }
 

@@ -102,7 +102,7 @@ async function storeResponse(user, session, content, context, otr) {
   }
 
   let contextContainsImage = false
-  if(context && context.startsWith('data:image/png;base64,')) {
+  if(context &amp;&amp; context.startsWith('data:image/png;base64,')) {
     contextContainsImage = true
   }
 

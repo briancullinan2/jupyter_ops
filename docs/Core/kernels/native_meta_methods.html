@@ -128,7 +128,7 @@ function do_message(message) {
         return;
     }
     var result = this[Object.keys(message)[0]].apply(this, Object.values(message));
-    if(result && Object.getPrototypeOf.constructor === Promise) {
+    if(result &amp;&amp; Object.getPrototypeOf.constructor === Promise) {
         
     }
     return result;

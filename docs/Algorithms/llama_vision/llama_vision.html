@@ -91,7 +91,7 @@ let context
 let session
 let initialChatHistory
 
-const DEFAULT_PROMPT = '```markdown\n# You are a\n##large language model\nnamed ' + (process.env.MODEL_NAME || 'Llama') + ' that provides clear and concise answers in beautifully crafted `markdown` unless otherwise instructed.\n</think>\n...```\n'
+const DEFAULT_PROMPT = '```markdown\n# You are a\n##large language model\nnamed ' + (process.env.MODEL_NAME || 'Llama') + ' that provides clear and concise answers in beautifully crafted `markdown` unless otherwise instructed.\n&lt;/think&gt;\n...```\n'
 
 const DEFAULT_MODEL = process.env.DEFAULT_GGUF || 'Qwen2-VL-7B-Instruct-Q6_K.gguf'
 

@@ -73,23 +73,23 @@ import {AuthService} from '../../../imports/auth.service';
 @Component({
     selector: 'bc-login',
     template: `
-        <form>
-            <md-input-container>
-                <input mdInput name="signupEmail" required type="email"
+        &lt;form&gt;
+            &lt;md-input-container&gt;
+                &lt;input mdInput name="signupEmail" required type="email"
                        placeholder="Username"
-                       maxlength="100" [(ngModel)]="username">
-            </md-input-container>
-            <br/>
-            <md-input-container>
-                <input mdInput name="signupPassword" required type="password" maxlength="25"
+                       maxlength="100" [(ngModel)]="username"&gt;
+            &lt;/md-input-container&gt;
+            &lt;br/&gt;
+            &lt;md-input-container&gt;
+                &lt;input mdInput name="signupPassword" required type="password" maxlength="25"
                        placeholder="Password"
-                       length="40" [(ngModel)]="password">
-            </md-input-container>
-            <button md-raised-button color="primary"
-                    id="signupSubmit" type="submit" (click)="onLogin()">
+                       length="40" [(ngModel)]="password"&gt;
+            &lt;/md-input-container&gt;
+            &lt;button md-raised-button color="primary"
+                    id="signupSubmit" type="submit" (click)="onLogin()"&gt;
                 Login
-            </button>
-        </form>
+            &lt;/button&gt;
+        &lt;/form&gt;
     `,
     styleUrls: ['./login.component.scss']
 })
@@ -105,7 +105,7 @@ export class LoginComponent {
 onLogin()
 :
 void {
-    this.service.login(this.username, this.password).subscribe(r => {
+    this.service.login(this.username, this.password).subscribe(r =&gt; {
     console.log(r);
 });
 }

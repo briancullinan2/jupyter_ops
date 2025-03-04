@@ -79,46 +79,46 @@ function switchToParticipantThread(i) {
         .pause(1000)
         .click('//*[contains(@class, "scrollable")]//h4[contains(., "People")]/parent::*//li[' + i + ']')
         .pause(1000)
-        .then(() => readFacebookProfileInfo())
-        .catch(e => console.log(e))
+        .then(() =&gt; readFacebookProfileInfo())
+        .catch(e =&gt; console.log(e))
 };
 
 function getThreadParticipants(thread) {
     return client
-        .execute(() => {
+        .execute(() =&gt; {
             return document.evaluate(
                 'count(//*[contains(@class, "scrollable")]//h4[contains(., "People")]/parent::*//li)',
                 document, null,
                 XPathResult.NUMBER_TYPE, null).numberValue;
         })
-        .then(r => {
+        .then(r =&gt; {
             var result = [];
-            for (var i = 1; i < Math.min(3, r.value); i++) {
-                result[result.length] = (i =>
-                    resolve => {
+            for (var i = 1; i &lt; Math.min(3, r.value); i++) {
+                result[result.length] = (i =&gt;
+                    resolve =&gt; {
                         var profile = {};
                         switchToParticipantThread(i)
-                            .then(r => profile = r)
+                            .then(r =&gt; profile = r)
                             .url(thread)
                             .pause(3000)
-                            .catch(e => console.log(e))
-                            .then(() => resolve(profile))
+                            .catch(e =&gt; console.log(e))
+                            .then(() =&gt; resolve(profile))
                     })(i);
             }
             if (r.value === 0) {
-                result[result.length] = (resolve => {
+                result[result.length] = (resolve =&gt; {
                     var profile = {};
                     readFacebookProfileInfo()
-                        .then(r => profile = r)
+                        .then(r =&gt; profile = r)
                         .url(thread)
                         .pause(3000)
-                        .catch(e => console.log(e))
-                        .then(() => resolve(profile))
+                        .catch(e =&gt; console.log(e))
+                        .then(() =&gt; resolve(profile))
                 })
             }
-            return importer.runAllPromises(result).catch(e => console.log(e));
+            return importer.runAllPromises(result).catch(e =&gt; console.log(e));
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 
 function readFacebookMessages(messages, i = 0) {
@@ -128,14 +128,14 @@ function readFacebookMessages(messages, i = 0) {
     // TODO: add check for needing to login
     return client
         // TODO: move this to utility?
-        .execute(() => (new Date()).getTimezoneOffset())
-        .then(o => browserOffset = o.value)
+        .execute(() =&gt; (new Date()).getTimezoneOffset())
+        .then(o =&gt; browserOffset = o.value)
         .getAllUntil(
             '//*[contains(@role, "main")]//*[contains(@class, "scrollable")][contains(.,"Messages")]',
             '//*[contains(@role, "main")]//*[contains(@class, "scrollable")][contains(.,"Messages")]//h4//text()',
             [],
-            (a, b) => a + '' === b + '',
-            i => i < 10,
+            (a, b) =&gt; a + '' === b + '',
+            i =&gt; i &lt; 10,
             true /* scroll up, not down */
         )
         .getAllXPath([
@@ -151,8 +151,8 @@ function readFacebookMessages(messages, i = 0) {
                 ]
             }
         ])
-        .then(messages => {
-            return messages.reduce((acc, m) => {
+        .then(messages =&gt; {
+            return messages.reduce((acc, m) =&gt; {
                 // TODO: this should get the timezone inside the container using client.execute() and append:
                 var results = new chrono.parse(m.time); // Create new ParsedResult Object
                 results[0].start.assign('timezoneOffset', browserOffset * 60); // Change value in ParsedComponents Object 'start'
@@ -164,20 +164,20 @@ function readFacebookMessages(messages, i = 0) {
                 const localTime = new Date();
                 const offsetTime = new Date();
                 offsetTime.setHours(offsetTime.getHours() - (browserOffset - offset));
-                if(newTime.getDate() === localTime.getDate() && newTime.getDate() + 1 === offsetTime.getDate()) {
+                if(newTime.getDate() === localTime.getDate() &amp;&amp; newTime.getDate() + 1 === offsetTime.getDate()) {
                     // the current time adjusted for GMT has incremented one day
                     newTime.setDate(newTime.getDate() + 1);
                     console.log(newTime);
                 }
                 */
                 
-                m.messages.forEach((r, i) => {
+                m.messages.forEach((r, i) =&gt; {
                     const newMessage = {
                         time: newTime,
                         from: r.from,
                         message: typeof r.message === 'string' ? r.message : r.message.join('\n')
                     };
-                    if(i === 0 && newMessage.message === newMessage.from) {
+                    if(i === 0 &amp;&amp; newMessage.message === newMessage.from) {
                         return;
                     }
                     acc.push(newMessage);
@@ -185,7 +185,7 @@ function readFacebookMessages(messages, i = 0) {
                 return acc;
             }, []);
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 
 function readFacebookThread(thread) {
@@ -200,31 +200,31 @@ function readFacebookThread(thread) {
         messages = []
     }
     var participants;
-    return client.getUrl().then(url => url.indexOf(thread) === -1
+    return client.getUrl().then(url =&gt; url.indexOf(thread) === -1
         ? client.url(thread)
         : client)
         // get participants from topcard
         .pause(1000)
-        .then(() => getThreadParticipants(thread))
-        .then(p => (participants = p))
+        .then(() =&gt; getThreadParticipants(thread))
+        .then(p =&gt; (participants = p))
 
         // TODO: save to contacts
-        .then(() => readFacebookMessages(messages || []))
-        .then(messages => ({
+        .then(() =&gt; readFacebookMessages(messages || []))
+        .then(messages =&gt; ({
             thread: thread,
             participants: participants || [],
             messages: messages
         }))
-        .then(t => {
+        .then(t =&gt; {
             var filename = project + '/'
                 + threadId
                 + '-' + t.participants
-                    .map(p => p.name).join('')
+                    .map(p =&gt; p.name).join('')
                     .replace(/[^a-z0-9]/ig, '_') + '.json';
             fs.writeFileSync(filename, JSON.stringify(t, null, 4));
             return t;
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 module.exports = readFacebookThread;
 </code></pre>

@@ -78,13 +78,13 @@ import {Core} from '../../../testing/core';
 {import}
 
 describe('{title}', function () {
-    let fixture: ComponentFixture<{title}>;
+    let fixture: ComponentFixture&lt;{title}&gt;;
     let router: Router;
     let location: Location;
     let xhr: MockBackend;
     let comp: {title};
 
-    beforeEach(() => {
+    beforeEach(() =&gt; {
         fixture = Core.createAppWithShared([], [], [{title}]);
         comp = fixture.componentInstance;
         router = fixture.debugElement.injector.get(Router);
@@ -92,8 +92,8 @@ describe('{title}', function () {
         location = fixture.debugElement.injector.get(Location);
     });
 
-    it('should load {title}', (done) => {
-        fixture.whenStable().then(() => {
+    it('should load {title}', (done) =&gt; {
+        fixture.whenStable().then(() =&gt; {
             expect(comp).not.toBeNull();
             done();
         });
@@ -107,13 +107,13 @@ var files = glob.sync('**/*component.ts', {
     cwd: cwd
 });
 
-var titles = files.map(f => {
+var titles = files.map(f =&gt; {
     var name = f.split('.')[0].split('/').pop();
-    var ucFirst = name.replace(/(^|\s|-)([a-z])/g, (m, p1, p2) => p1 + p2.toUpperCase());
+    var ucFirst = name.replace(/(^|\s|-)([a-z])/g, (m, p1, p2) =&gt; p1 + p2.toUpperCase());
     return ucFirst.replace(/-/ig, '') + 'Component';
 });
 
-titles.forEach((t, i) => {
+titles.forEach((t, i) =&gt; {
     try {
         var specPath = path.join(cwd, files[i].replace('.ts', '.spec.ts'));
         if (fs.existsSync(specPath)) {

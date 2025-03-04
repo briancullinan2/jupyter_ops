@@ -104,7 +104,7 @@ function add() {
 
 function replace(func, ctx) {
     if(!ctx) {
-        return (ctx) => replace(func, ctx) 
+        return (ctx) =&gt; replace(func, ctx) 
     }
     ctx.replaceWith(func(ctx))
 }
@@ -113,7 +113,7 @@ function remove(ctx) {
     if(!Array.isArray(ctx)) {
         ctx = [ctx]
     }
-    ctx.forEach(o => {
+    ctx.forEach(o =&gt; {
         var body = selectAst([`./parent::*`], o)[0]
         body.removeChild(o)
     })
@@ -122,11 +122,11 @@ function remove(ctx) {
 // TODO: use selectDom or handle antlr trees or existing doms properly
 function transpile(input, output, code) {
     var root
-    if(Array.isArray(input) && typeof code === 'undefined') {
+    if(Array.isArray(input) &amp;&amp; typeof code === 'undefined') {
         code = output
     }
     root = selectAst(`//Program`, code)
-    input.forEach(i => {
+    input.forEach(i =&gt; {
         selectAst([...i], root)
     })
     // TODO: add a feature for parsing default parameters

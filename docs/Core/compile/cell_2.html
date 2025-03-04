@@ -60,9 +60,9 @@
 <p>The <code>logger</code> function logs a message to the console and returns a closure that can be used to print additional messages, but with a prefix of &quot;wtf? &quot;. The <code>test</code> function demonstrates the usage of <code>logger</code> by calling it and logging &quot;wtf? undefined&quot; to the console.</p>
 
 
-<pre class="javascript"><code>var logger = (message) => {
+<pre class="javascript"><code>var logger = (message) =&gt; {
     console.log(message)
-    return (m) => 'wtf? ' + m
+    return (m) =&gt; 'wtf? ' + m
 }
 
 function test() {

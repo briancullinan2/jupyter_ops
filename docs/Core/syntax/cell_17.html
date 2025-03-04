@@ -157,10 +157,10 @@ module.exports = testASTArray;
 
 function htmlEntities(str) {
     return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
+        .replace(/&amp;/g, '&amp;amp;')
+        .replace(/&lt;/g, '&amp;lt;')
+        .replace(/&gt;/g, '&amp;gt;')
+        .replace(/"/g, '&amp;quot;');
 }
 
 if(typeof $ !== 'undefined') {
@@ -172,7 +172,7 @@ console.log()
 `
     var ctx = setupASTArray(code);
     var html = testASTArray(ctx);
-    $.html('<pre>' + htmlEntities(html) + '</pre>')
+    $.html('&lt;pre&gt;' + htmlEntities(html) + '&lt;/pre&gt;')
 }
 </code></pre>
 

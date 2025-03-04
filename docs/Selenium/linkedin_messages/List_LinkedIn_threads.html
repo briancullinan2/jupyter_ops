@@ -70,42 +70,42 @@
     // TODO: add check for needing to login
     // scroll to bottom of messages
     return client
-        .execute(() => {
+        .execute(() =&gt; {
             document.getElementsByClassName(
                 'msg-conversations-container__conversations-list')[0]
                 .scrollTop += 10000;
         })
         .pause(2000)
-        .then(() => getLinkedInThreads(threads));
+        .then(() =&gt; getLinkedInThreads(threads));
 }
 
 function getLinkedInThreads(threads) {
     return client
-        .execute(() => {
+        .execute(() =&gt; {
             var iterator = document.evaluate(
                 '//*[@data-control-name="view_message"]/@href',
                 document, null,
                 XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null);
             var co = [];
             var m;
-            while ((m = iterator.iterateNext()) && co.push(m.value)) ;
+            while ((m = iterator.iterateNext()) &amp;&amp; co.push(m.value)) ;
             return co;
         })
-        .then(els => {
-            var newThreads = els.value.filter(e => threads.indexOf(e) === -1);
+        .then(els =&gt; {
+            var newThreads = els.value.filter(e =&gt; threads.indexOf(e) === -1);
             threads = threads.concat(newThreads);
-            return newThreads.length > 0
+            return newThreads.length &gt; 0
                 ? scrollLinkedInThreads(threads)
                 : Promise.resolve(threads);
         });
 }
 
 function listLinkedInThreads(threads) {
-    return client.getUrl().then(url => url.indexOf('/messaging') == -1
+    return client.getUrl().then(url =&gt; url.indexOf('/messaging') == -1
         ? client.click('a[href*="/messaging/"]')
         : Promise.resolve([]))
         .pause(2000)
-        .then(() => getLinkedInThreads(threads || []))
+        .then(() =&gt; getLinkedInThreads(threads || []))
 };
 module.exports = listLinkedInThreads;
 </code></pre>

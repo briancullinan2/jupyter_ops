@@ -139,8 +139,8 @@ function makeCombinations(values) {
     var combinations = [];
     // start at 1 to always include * or Element tag name
     let i, j;
-    for (i = 1; i <= values.length; i++) {
-        for (j = 1; j <= values.length; j++) {
+    for (i = 1; i &lt;= values.length; i++) {
+        for (j = 1; j &lt;= values.length; j++) {
             combinations.push([
                 values[0],
                 ...values.slice(i, j)
@@ -148,8 +148,8 @@ function makeCombinations(values) {
         }
     }
     return combinations
-        .filter((c, i, arr) => arr.indexOf(c) === i)
-        .sort((a, b) => a.length - b.length)
+        .filter((c, i, arr) =&gt; arr.indexOf(c) === i)
+        .sort((a, b) =&gt; a.length - b.length)
 }
 
 // algorithm magic!
@@ -163,23 +163,23 @@ function makeXpaths(node) {
         parent: `local-name(parent::*)`,
         //parent: `parent::*/@*[name()="type" or name()="id" or name()="name"]`,
         nthType: `count(preceding-sibling::*[local-name(*)=local-name(.)])`
-    }, ({tag, ids, classNames, index, parent, nthType}) => ({
-        tag: tag && tag !== 'object' ? tag : `*`,
+    }, ({tag, ids, classNames, index, parent, nthType}) =&gt; ({
+        tag: tag &amp;&amp; tag !== 'object' ? tag : `*`,
         id: ids.length
             ? `[${ids
-            .map(id => 
+            .map(id =&gt; 
                  `(@id="${id}" or @name="${id}" or @type="${id}")`)
             .join(` and `)}]`
             : ``,
-        classNames: classNames.length > 0
+        classNames: classNames.length &gt; 0
             ? `[contains(@class, "${classNames}")]`
             : ``,
-        index: typeof index !== 'undefined' && parent
+        index: typeof index !== 'undefined' &amp;&amp; parent
             ? `/parent::${parent}/*[${index+1}]`
             : ``,
-        parent: parent && typeof nthType !== 'undefined'
+        parent: parent &amp;&amp; typeof nthType !== 'undefined'
             ? `/parent::${parent}/${
-                tag && tag !== 'object' ? tag : `*`}[${nthType+1}]`
+                tag &amp;&amp; tag !== 'object' ? tag : `*`}[${nthType+1}]`
             : ``
     })]
     

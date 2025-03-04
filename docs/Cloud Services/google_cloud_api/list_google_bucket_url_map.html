@@ -84,12 +84,12 @@ function listUrlMaps(project, urlMap) {
         params.filter = `name="${urlMap}"`
     }
     return authorizeGoogle()
-        .then(client => client.request({
+        .then(client =&gt; client.request({
             url: `https://www.googleapis.com/compute/v1/projects/${project}/global/urlMaps`,
             params
         }))
-        .then(res => {
-            return (res.data.items || []).reduce((obj, cur) => {
+        .then(res =&gt; {
+            return (res.data.items || []).reduce((obj, cur) =&gt; {
                 obj[cur.name] = {
                     hostRules: cur.hostRules,
                     pathMatchers: cur.pathMatchers,
@@ -107,11 +107,11 @@ function listTargetProxies(project, urlMap) {
         params.filter = `urlMap="https://www.googleapis.com/compute/v1/projects/${project}/global/urlMaps/${urlMap}"`
     }
     return authorizeGoogle()
-        .then(client => client.request({
+        .then(client =&gt; client.request({
             url: `https://www.googleapis.com/compute/v1/projects/${project}/global/targetHttpsProxies`,
             params
         }))
-        .then(res => (res.data.items || []).reduce((obj, p) => {
+        .then(res =&gt; (res.data.items || []).reduce((obj, p) =&gt; {
             obj[p.name] = p.sslCertificates;
             return obj
         }, {}));
@@ -126,12 +126,12 @@ function listGlobalForwards(project, proxy, ip) {
         params['filter'] = `IPAddress="https://www.googleapis.com/compute/v1/projects/${project}/global/addresses/${ip}"`;
     }
     return authorizeGoogle()
-        .then(client => client.request({
+        .then(client =&gt; client.request({
             url: `https://www.googleapis.com/compute/v1/projects/${project}/global/forwardingRules`,
             params
         }))
-        .then(res => {
-            return (res.data.items || []).reduce((obj, cur) => {
+        .then(res =&gt; {
+            return (res.data.items || []).reduce((obj, cur) =&gt; {
                 obj[cur.name] = {
                     IPAddress: cur.IPAddress,
                     target: cur.target
@@ -147,12 +147,12 @@ function listBackendBuckets(project, bucketName) {
         params.filter = `bucketName="${bucketName}"`;
     }
     return authorizeGoogle()
-        .then(client => client.request({
+        .then(client =&gt; client.request({
             url: `https://www.googleapis.com/compute/v1/projects/${project}/global/backendBuckets`,
             params
         }))
-        .then(res => {
-            return (res.data.items || []).reduce((obj, cur) => {
+        .then(res =&gt; {
+            return (res.data.items || []).reduce((obj, cur) =&gt; {
                 obj[cur.name] = cur.bucketName;
                 return obj;
             }, {})
@@ -165,12 +165,12 @@ function listSslCertificates(project, certName) {
         params.filter = `name="${certName}"`;
     }
     return authorizeGoogle()
-        .then(client => client.request({
+        .then(client =&gt; client.request({
             url: `https://www.googleapis.com/compute/v1/projects/${project}/global/sslCertificates`,
             params
         }))
-        .then(res => {
-            return (res.data.items || []).reduce((obj, cur) => {
+        .then(res =&gt; {
+            return (res.data.items || []).reduce((obj, cur) =&gt; {
                 obj[cur.name] = cur.description;
                 return obj;
             }, {})

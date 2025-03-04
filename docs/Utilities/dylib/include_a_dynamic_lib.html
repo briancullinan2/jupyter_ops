@@ -113,7 +113,7 @@ function enumWindows() {
     // freeResultMemory: true, // whether or not need to free the result of return value memory automatically, default is false
   })
   let windows = []
-  for(let i = 0; i < count; i++) {
+  for(let i = 0; i &lt; count; i++) {
     const result = load({
       library: "sog", // path to the dynamic library file
       funcName: 'getTitle', // the name of the function to call
@@ -126,7 +126,7 @@ function enumWindows() {
   }
   // Release library memory when you're not using it.
   close('sog')
-  return windows.filter((a, i, arr) => arr.indexOf(a) == i && !IGNORE_PROGRAMS.includes(a))
+  return windows.filter((a, i, arr) =&gt; arr.indexOf(a) == i &amp;&amp; !IGNORE_PROGRAMS.includes(a))
 }
 
 module.exports = enumWindows

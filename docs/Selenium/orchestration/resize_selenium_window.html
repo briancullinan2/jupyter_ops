@@ -81,11 +81,11 @@ var screen = {
 function getScreenSize(client) {
     return client
         .getWindowHandle()
-        .then(r => client.maximizeWindow(r))
-        .catch(e => {})
+        .then(r =&gt; client.maximizeWindow(r))
+        .catch(e =&gt; {})
         .getWindowSize()
-        .then(r => (screen = r))
-        .catch(e => console.log(e))
+        .then(r =&gt; (screen = r))
+        .catch(e =&gt; console.log(e))
 }
 
 function resizeWindow(client, i = 0) {
@@ -93,10 +93,10 @@ function resizeWindow(client, i = 0) {
     var hwnd;
     return client
         .getWindowHandle()
-        .then(r => client.switchToWindow((hwnd = r)))
-        .then(() => typeof screen === 'undefined' ? getScreenSize() : screen)
-        .catch(e => console.log(e))
-        .then(screen => {
+        .then(r =&gt; client.switchToWindow((hwnd = r)))
+        .then(() =&gt; typeof screen === 'undefined' ? getScreenSize() : screen)
+        .catch(e =&gt; console.log(e))
+        .then(screen =&gt; {
             const newPosition = {
                 x: Math.floor(i % columns)
                     * Math.floor(screen.width / columns),
@@ -108,11 +108,11 @@ function resizeWindow(client, i = 0) {
                 newPosition.x,
                 newPosition.y)
         })
-        .catch(e => console.log(e))
-        .then(() => client.setWindowSize(
+        .catch(e =&gt; console.log(e))
+        .then(() =&gt; client.setWindowSize(
             Math.floor(screen.width / columns),
             Math.floor(screen.height / rows)))
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 
 

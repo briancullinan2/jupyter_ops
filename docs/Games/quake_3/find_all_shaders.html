@@ -128,7 +128,7 @@ var findShaders = importer.import('list shaders in quake 3 shader')
 async function findAllShaders(modDir) {
     var allShaders = {}
     var shaders = await glob('**/*.shader', modDir)
-    for(var i = 0; i < shaders.length; i++) {
+    for(var i = 0; i &lt; shaders.length; i++) {
         console.log(shaders[i])
         Object.assign(allShaders, findShaders(shaders[i]))
     }

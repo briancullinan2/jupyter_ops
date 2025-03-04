@@ -84,7 +84,7 @@ var getRpcFromSpec = importer.import('get rpc from spec')
 var authorize = importer.import('google oauth token client')
 
 // TODO: pattern recognized! create a "google" object that does this for every service in the Google discovery list
-var google = {drive: ({version, auth}) => getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/drive.${version}.json`)), auth)}
+var google = {drive: ({version, auth}) =&gt; getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/drive.${version}.json`)), auth)}
 
 //var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 /*
@@ -129,8 +129,8 @@ module.exports = listDrive
 
 if(typeof $ != 'undefined') {
     listDrive()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 
 </code></pre>

@@ -82,14 +82,14 @@ function streamToGoogle(fileUrl, bucketName, stream, metadata) {
     var gcsname = (stream ? fileUrl : path.basename(fileUrl)).replace(/\?.*/ig, '');
     console.log('project', storage.projectId, process.env.GOOGLE_STORAGE_PROJECT)
     return createBucket(storage.projectId, bucketName)
-        .then(() => storage.bucket(bucketName).file(gcsname)
+        .then(() =&gt; storage.bucket(bucketName).file(gcsname)
             .createWriteStream({
                 metadata: Object.assign({
                     contentType: mime.lookup(gcsname)
                 }, metadata || {})
             }))
-        .then(writeStream => fetchOrStream(stream || fileUrl, writeStream))
-        .then(() => `https://storage.googleapis.com/${bucketName}/${gcsname}`)
+        .then(writeStream =&gt; fetchOrStream(stream || fileUrl, writeStream))
+        .then(() =&gt; `https://storage.googleapis.com/${bucketName}/${gcsname}`)
 }
 
 module.exports = streamToGoogle;

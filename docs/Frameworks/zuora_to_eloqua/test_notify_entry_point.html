@@ -126,13 +126,13 @@ var eloquaUpload = importer.import('bulk upload eloqua');
 
 var sandbox = sinon.createSandbox();
 
-describe('content notify entry point', () => {
+describe('content notify entry point', () =&gt; {
     
-    afterEach(() => {
+    afterEach(() =&gt; {
         sandbox.restore();
     })
     
-    it('should call zuora export', () => {
+    it('should call zuora export', () =&gt; {
         const callback = sinon.spy();
         const dummyBody = {
         }
@@ -143,14 +143,14 @@ describe('content notify entry point', () => {
             .returns(Promise.resolve(true));
         
         return bundle.handler(dummyBody, null, callback)
-            .then(() => {
+            .then(() =&gt; {
                 assert(callback.calledOnce);
                 const stubCall = requestStub.getCall(0);
                 assert.equal(stubCall.args[0], dummyBody);
             });
     })
     
-    it('should call bulk upload', () => {
+    it('should call bulk upload', () =&gt; {
         const callback = sinon.spy();
         const dummyAccounts = [];
         
@@ -160,7 +160,7 @@ describe('content notify entry point', () => {
             .returns(Promise.resolve(true));
         
         return bundle.handler({}, null, callback)
-            .then(() => {
+            .then(() =&gt; {
                 assert(callback.calledOnce);
                 const stubCall = requestStub.getCall(0);
                 assert.equal(stubCall.args[0], dummyAccounts);

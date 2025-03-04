@@ -190,7 +190,7 @@ var MAPS_HINTS = {
 
 function addHints(fileName, hints) {
     var file
-    if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+    if(typeof fileName === 'string' &amp;&amp; fs.existsSync(fileName)) {
         file = fs.readFileSync(fileName).toString('utf-8')
         if(!hints) {
             hints = path.basename(fileName).replace(/[-_]converted|\.map$/ig, '')
@@ -201,7 +201,7 @@ function addHints(fileName, hints) {
     
     if(!Array.isArray(hints)) {
         var exp = new RegExp(hints, 'ig')
-        hints = Object.keys(MAPS_HINTS).reduce((arr, k) => {
+        hints = Object.keys(MAPS_HINTS).reduce((arr, k) =&gt; {
             if(k.match(exp)) {
                 arr.push(MAPS_HINTS[k])
             }
@@ -212,7 +212,7 @@ function addHints(fileName, hints) {
     var brushes = importer.regexToArray(/\{[^\{}]*?\}\s*/ig, file)
     
     /*
-    brushes.forEach(b => {
+    brushes.forEach(b =&gt; {
         if(b.includes('/areaportal')) {
             file = file.replace(b, '')
             return false
@@ -225,8 +225,8 @@ function addHints(fileName, hints) {
     
     var newBrush = ``
     
-    for(var h = 0; h < hints.length; h++) {
-        for(var i = 0; i < hints[h].length - 1; i++) {
+    for(var h = 0; h &lt; hints.length; h++) {
+        for(var i = 0; i &lt; hints[h].length - 1; i++) {
             var minX = Math.min(hints[h][i][0], hints[h][i+1][0]), 
                 maxX = Math.max(hints[h][i][0], hints[h][i+1][0]), 
                 minY = Math.min(hints[h][i][1], hints[h][i+1][1]), 
@@ -252,7 +252,7 @@ function addHints(fileName, hints) {
     var pos = exp.lastIndex
     file = file.substr(0, pos - match[0].length) + newBrush + file.substr(pos - match[0].length)
     
-    if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+    if(typeof fileName === 'string' &amp;&amp; fs.existsSync(fileName)) {
         console.log(`writing ${fileName}`)
         fs.writeFileSync(fileName, file)
     } else {

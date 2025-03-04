@@ -115,8 +115,8 @@ function createDatabase(cache) {
         importNotebook, getCells
     } = require('../Core')
     var searchFunc = getCells(path.resolve(__dirname, '../Utilities/levenshtein.ipynb'))
-        .filter(cell => cell.source.join('').includes('function levSearch'))
-        .map(cell => path.join(__dirname, '../Utilities', cell.id))
+        .filter(cell =&gt; cell.source.join('').includes('function levSearch'))
+        .map(cell =&gt; path.join(__dirname, '../Utilities', cell.id))
     var levSearch = importNotebook(searchFunc).levSearch
     
     // TODO: turn this in to `levSearch()` function
@@ -131,14 +131,14 @@ function queryDatabase(search) {
     var tokenResults = token.search(search)
     var fuseResults = fuse.search(search)
     return fuseResults
-        .filter(s => tokenResults.includes(s))
-        .concat(tokenResults.filter(s => fuseResults.includes(s)))
+        .filter(s =&gt; tokenResults.includes(s))
+        .concat(tokenResults.filter(s =&gt; fuseResults.includes(s)))
 }
 
 function lookupCell(cacheId, cacheCells) {
     const filename = cacheId.replace(/\.ipynb\[[0-9]+\].*/ig, '.ipynb')
     const fresh = cacheCells(filename)
-    const cell = fresh.filter(cell => cell.id === path.basename(cacheId))[0]
+    const cell = fresh.filter(cell =&gt; cell.id === path.basename(cacheId))[0]
     return cell
 }
 

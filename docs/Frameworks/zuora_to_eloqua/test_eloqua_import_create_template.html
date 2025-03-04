@@ -121,8 +121,8 @@
 var importer = require('../Core');
 var { temporaryImportTemplate } = importer.import('eloqua import create template');
 
-describe('eloqua bulk import definition', () => {
-    it('should return the current import definition', () => {
+describe('eloqua bulk import definition', () =&gt; {
+    it('should return the current import definition', () =&gt; {
         const dummyInstance = 'instance123';
         const template = temporaryImportTemplate(dummyInstance, 'execution123');
         assert(JSON.stringify(template).includes(dummyInstance));

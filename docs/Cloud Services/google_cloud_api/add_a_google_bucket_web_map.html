@@ -96,16 +96,16 @@ function insertBackendBucket(project, bucketName) {
     // TODO: check for creation of bucket here?
     var name = 'bb-' + uuid().substr(0, 5) + '-' + safeName(bucketName);
     return createBucket(project, bucketName)
-        .then(() => listBackendBuckets(project, bucketName))
-        .then(buckets => {
-            if(Object.keys(buckets).length > 0) {
+        .then(() =&gt; listBackendBuckets(project, bucketName))
+        .then(buckets =&gt; {
+            if(Object.keys(buckets).length &gt; 0) {
                 name = Object.keys(buckets)[0];
                 console.log(`Bucket ${bucketName} already mapped`);
                 return Promise.resolve(Object.keys(buckets)[0]);
             }
             console.log(`Creating a backend for ${bucketName}`);
             return authorizeGoogle()
-                .then(client => client.request({
+                .then(client =&gt; client.request({
                     method: 'POST',
                     url: `https://www.googleapis.com/compute/v1/projects/${project}/global/backendBuckets`,
                     data: {
@@ -115,16 +115,16 @@ function insertBackendBucket(project, bucketName) {
                         kind: 'compute#backendBucket'
                     }
                 }))
-                .then(backend => {
+                .then(backend =&gt; {
                     return waitForOperation(backend.data.selfLink);
                 })
         })
-        .then(() => name);
+        .then(() =&gt; name);
 }
 
 function addSslCertificate(project, bucketName) {
     return authorizeGoogle()
-        .then(client => client.request({
+        .then(client =&gt; client.request({
             method: 'POST',
             url: `https://www.googleapis.com/compute/beta/projects/${project}/global/sslCertificates`,
             data: {
@@ -135,16 +135,16 @@ function addSslCertificate(project, bucketName) {
 //                        sslPolicy: 'https://www.googleapis.com/compute/v1/projects/spahaha-ea443/global/sslPolicies/my-ssl-policy'
             }
         }))
-        .then(ssl => {
+        .then(ssl =&gt; {
             return waitForOperation(ssl.data.selfLink);
         })
-        .then(() => 'cert-' + safeName(bucketName))
+        .then(() =&gt; 'cert-' + safeName(bucketName))
 }
 
 function insertSslCertificate(project, bucketName) {
     return listSslCertificates(project, 'cert-' + safeName(bucketName))
-        .then(ssl => {
-            if(Object.keys(ssl).length > 0) {
+        .then(ssl =&gt; {
+            if(Object.keys(ssl).length &gt; 0) {
                 console.log(`SSL ${bucketName} already exists`);
                 return Promise.resolve(Object.keys(ssl)[0]);
             }
@@ -159,11 +159,11 @@ function addTargetHttpsProxy(project, urlMap, bucketName) {
     var proxyName = 'thp-' + uuid().substr(0, 5) + '-' + safeName(bucketName);
     
     return insertSslCertificate(project, bucketName)
-        .then(ssl => {
+        .then(ssl =&gt; {
             sslCertificate = ssl;
         })
-        .then(() => authorizeGoogle())
-        .then(client => client.request({
+        .then(() =&gt; authorizeGoogle())
+        .then(client =&gt; client.request({
             method: 'POST',
             url: `https://www.googleapis.com/compute/v1/projects/${project}/global/targetHttpsProxies`,
             data: {
@@ -175,23 +175,23 @@ function addTargetHttpsProxy(project, urlMap, bucketName) {
 //              sslPolicy: 'https://www.googleapis.com/compute/v1/projects/spahaha-ea443/global/sslPolicies/my-ssl-policy'
             }
         }))
-        .then(proxy => {
+        .then(proxy =&gt; {
             return waitForOperation(proxy.data.selfLink);
         })
-        .then(() => proxyName)
+        .then(() =&gt; proxyName)
 }
 
 function insertTargetHttpsProxy(project, urlMap, bucketName) {
     // check for a proxy with an sslCert matching our project name
     return listTargetProxies(project)
-        .then(proxies => {
+        .then(proxies =&gt; {
             var matches = Object.keys(proxies)
-                .filter(k => proxies[k]
-                        .filter(cert => cert.includes(`https://www.googleapis.com/compute/v1/projects/${project}/global/sslCertificates/cert-${safeName(bucketName)}`)).length > 0);
+                .filter(k =&gt; proxies[k]
+                        .filter(cert =&gt; cert.includes(`https://www.googleapis.com/compute/v1/projects/${project}/global/sslCertificates/cert-${safeName(bucketName)}`)).length &gt; 0);
             // TODO: is using sheet-to-web host, just add the certificate to existing proxy
             // support for SNI? https://www.ietf.org/rfc/rfc4366.txt
             
-            if(matches.length > 0) {
+            if(matches.length &gt; 0) {
                 console.log(`Proxy ${bucketName} already exists`);
                 return Promise.resolve(Object.keys(proxies)[0]);
             }
@@ -204,7 +204,7 @@ function addGlobalForward(project, ip, urlMap, bucketName, targetHttpsProxy) {
     var name = 'gfr-' + uuid().substr(0, 5) + '-' + safeName(urlMap)
 
     return authorizeGoogle()
-        .then(client => client.request({
+        .then(client =&gt; client.request({
             method: 'POST',
             url: `https://www.googleapis.com/compute/v1/projects/${project}/global/forwardingRules`,
             data: {
@@ -217,10 +217,10 @@ function addGlobalForward(project, ip, urlMap, bucketName, targetHttpsProxy) {
                 networkTier: 'PREMIUM'
             }
         }))
-        .then(rule => {
+        .then(rule =&gt; {
             return waitForOperation(rule.data.selfLink);
         })
-        .then(() => name);
+        .then(() =&gt; name);
 }
 
 function insertGlobalForward(project, ip, urlMap, bucketName) {
@@ -228,10 +228,10 @@ function insertGlobalForward(project, ip, urlMap, bucketName) {
     // get proxy first because it's require by forwardRule
     var targetHttpsProxy;
     return insertTargetHttpsProxy(project, urlMap, bucketName)
-        .then(proxy => (targetHttpsProxy = proxy))
-        .then(() => listGlobalForwards(project, targetHttpsProxy))
-        .then(forwards => {
-            if(Object.keys(forwards).length > 0) {
+        .then(proxy =&gt; (targetHttpsProxy = proxy))
+        .then(() =&gt; listGlobalForwards(project, targetHttpsProxy))
+        .then(forwards =&gt; {
+            if(Object.keys(forwards).length &gt; 0) {
                 console.log(`Forward for ${bucketName} already exists`);
                 return Promise.resolve(Object.keys(forwards)[0]);
             }
@@ -243,12 +243,12 @@ function insertGlobalForward(project, ip, urlMap, bucketName) {
 function updateUrlMap(project, urlMap, bucketName) {
     return listUrlMaps(project, urlMap)
         // add a global forward if the ip isn't already set up
-        .then(maps => {
+        .then(maps =&gt; {
             if(typeof maps[urlMap] == 'undefined') {
                 // TODO: create the map
                 throw new Error('Implement url map create');
             }
-            if(maps[urlMap].hostRules.filter(hr => hr.hosts.filter(h => h == bucketName).length > 0).length > 0) {
+            if(maps[urlMap].hostRules.filter(hr =&gt; hr.hosts.filter(h =&gt; h == bucketName).length &gt; 0).length &gt; 0) {
                 console.log(`Map host rule ${bucketName} already exists`);
                 return Promise.resolve(urlMap);
             }
@@ -256,9 +256,9 @@ function updateUrlMap(project, urlMap, bucketName) {
             var defaultService;
             var pathMatcherName = 'pm-' + uuid().substr(0, 5) + '-' + safeName(bucketName);
             return insertBackendBucket(project, bucketName)
-                .then(bn => (defaultService = bn))
-                .then(() => authorizeGoogle())
-                .then(client => client.request({
+                .then(bn =&gt; (defaultService = bn))
+                .then(() =&gt; authorizeGoogle())
+                .then(client =&gt; client.request({
                     method: 'PATCH',
                     url: `https://www.googleapis.com/compute/v1/projects/${project}/global/urlMaps/${urlMap}`,
                     data: {
@@ -274,10 +274,10 @@ function updateUrlMap(project, urlMap, bucketName) {
                         }]),
                     }
                 }))
-                .then(path => {
+                .then(path =&gt; {
                     return waitForOperation(path.data.selfLink);
                 })
-                .then(map => pathMatcherName)
+                .then(map =&gt; pathMatcherName)
         });
 }
 

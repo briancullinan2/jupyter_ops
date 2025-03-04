@@ -88,11 +88,11 @@
 <p>The code checks if <code>client</code> and <code>$</code> are defined, and if so, executes a block of code. It also contains functions to execute an asynchronous method and handle client window handles, including sending results or errors through the <code>$</code> object.</p>
 
 
-<pre class="javascript"><code>if(typeof client !== 'undefined' && typeof $ !== 'undefined') {
+<pre class="javascript"><code>if(typeof client !== 'undefined' &amp;&amp; typeof $ !== 'undefined') {
     $.async();
     client.windowHandles()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e));
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e));
 }
 </code></pre>
 

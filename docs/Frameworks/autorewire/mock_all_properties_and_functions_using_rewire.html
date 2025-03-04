@@ -66,7 +66,7 @@ var util = require('util');
 function simpleStubCreator(name) {
     return function stub() {
         // TODO: report arguments in a sane/safe way?
-        console.log(_.sprintf('<stub for "%s()">', name));
+        console.log(_.sprintf('&lt;stub for "%s()"&gt;', name));
     };
 }
 
@@ -107,7 +107,7 @@ AutoMock.prototype._mockValue = function (name, orig, context) {
     if (_.isObject(orig)) {
         // check for circular reference...
         var index = _.indexOf(context.originals, orig);
-        if (index >= 0) {
+        if (index &gt;= 0) {
             return context.mocks[index];
         }
         if (_.isFunction(orig)) {
@@ -129,7 +129,7 @@ AutoMock.prototype._mockValue = function (name, orig, context) {
         // don't want to create a *new* prototype object.  Instead, we just want
         // to extend the mock's prototype with mocks of any prototype values of
         // the original.  (This is how we mock classes.)
-        if (_.isFunction(orig) && !_.isUndefined(orig.prototype)) {
+        if (_.isFunction(orig) &amp;&amp; !_.isUndefined(orig.prototype)) {
             this._mockProperties(name + '.prototype', orig.prototype, mock.prototype, prototypeIgnored, context);
         }
     } else {
@@ -159,10 +159,10 @@ AutoMock.prototype._mockProperties = function (name, orig, mock, ignoredProperti
     var keys = Object.getOwnPropertyNames(orig);
 
     var self = this;
-    for (var i = 0; i < keys.length; i++) {
+    for (var i = 0; i &lt; keys.length; i++) {
         var key = keys[i];
 
-        if (ignoredProperties && _.contains(ignoredProperties, key)) {
+        if (ignoredProperties &amp;&amp; _.contains(ignoredProperties, key)) {
             continue;
         }
 

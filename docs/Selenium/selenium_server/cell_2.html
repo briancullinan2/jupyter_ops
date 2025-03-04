@@ -74,23 +74,23 @@ function waitForComplete() {
     return promisifyChrome('debugger.sendCommand', {
         tabId: getTab()
     }, 'Runtime.evaluate', {
-        expression: `new window.BackupPromise(resolve => {
+        expression: `new window.BackupPromise(resolve =&gt; {
 resolve(document.readyState === "complete" || document.readyState === "interactive");
 })`,
         awaitPromise: true
     })
-    .then(b => b ? ({value: {}}) : waitForComplete())
+    .then(b =&gt; b ? ({value: {}}) : waitForComplete())
 }
 
 function go(url) {
     return promisifyChrome('windows.getAll', {})
-        .then(windows => importer.runAllPromises(windows
-            .map(w => resolve =>
+        .then(windows =&gt; importer.runAllPromises(windows
+            .map(w =&gt; resolve =&gt;
                 promisifyChrome('tabs.getAllInWindow', w.id)
-                    .then(tabs => resolve(tabs)))))
-        .then(tabs => {
+                    .then(tabs =&gt; resolve(tabs)))))
+        .then(tabs =&gt; {
             for (const t of [].concat(...tabs)) {
-                if (t.url.indexOf(url) > -1 || t.id === getTab()) {
+                if (t.url.indexOf(url) &gt; -1 || t.id === getTab()) {
                     return promisifyChrome(
                         'tabs.update', t.id, {active: true});
                 }
@@ -100,7 +100,7 @@ function go(url) {
                 url
             });
         })
-        .then(t => {
+        .then(t =&gt; {
             if(t.id !== getTab()) {
                 setTab(t.id)
                 return promisifyChrome('debugger.attach', {
@@ -108,20 +108,20 @@ function go(url) {
                 }, '1.1')
             }
         })
-        .then(() => promisifyChrome('debugger.sendCommand', {
+        .then(() =&gt; promisifyChrome('debugger.sendCommand', {
             tabId: getTab()
         }, 'Page.navigate', {
             url: url
         }))
-        .then(() => waitForComplete())
-        .catch(e => console.log(e))
+        .then(() =&gt; waitForComplete())
+        .catch(e =&gt; console.log(e))
 }
-router.get('/session/:sessionId/url', (req, res) => {
+router.get('/session/:sessionId/url', (req, res) =&gt; {
     response(res, promisifyChrome('tabs.get', {
         tabId: getTab()
-    }).then(r => ({value: r.url})));
+    }).then(r =&gt; ({value: r.url})));
 })
-router.post('/session/:sessionId/url', (req, res) => {
+router.post('/session/:sessionId/url', (req, res) =&gt; {
     response(res, go(req.body.url))
 })
 

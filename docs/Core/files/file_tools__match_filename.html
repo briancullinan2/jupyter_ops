@@ -92,9 +92,9 @@
 <pre class="javascript"><code>var importer = require('../Core')
 var {minimatch} = importer.import('minimatch')
 
-var getDirectory = (match) => match[match.length-1] === '/'
+var getDirectory = (match) =&gt; match[match.length-1] === '/'
     ? match
-    : (fs.existsSync(match) && fs.lstatSync(match).isDirectory()
+    : (fs.existsSync(match) &amp;&amp; fs.lstatSync(match).isDirectory()
        ? match
        : path.dirname(match));
 
@@ -105,8 +105,8 @@ function matchFilename(filename, matchOutput, projectOutput) {
          matchOutput = {'{**,**/*}': './'}
     }
     return Object.keys(matchOutput)
-    .filter(match => minimatch(filename, match))
-    .map(match => {
+    .filter(match =&gt; minimatch(filename, match))
+    .map(match =&gt; {
         var projectMatch = path.join(projectOutput, matchOutput[match])
         var dir = getDirectory(projectMatch);
         return path.join(dir, path.basename(projectMatch) === path.basename(dir)

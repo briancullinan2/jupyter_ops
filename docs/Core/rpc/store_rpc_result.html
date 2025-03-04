@@ -100,7 +100,7 @@ function updateResultEvent(response, executed, isError, isStarting = false) {
     }
     assert(config.colorId !== 10 || !isError,
            'something went wrong with reporting the error ' + JSON.stringify(response, null, 4));
-    return createNewEvent(config, options).then(() => response);
+    return createNewEvent(config, options).then(() =&gt; response);
 }
 
 function storeResult(executed, calendar) {
@@ -113,7 +113,7 @@ function storeResult(executed, calendar) {
         throw new Error('Nothing to do!');
     }
     
-    console.log('creating rpc event ' + JSON.stringify(Object.keys(executed).reduce((acc, k) => {
+    console.log('creating rpc event ' + JSON.stringify(Object.keys(executed).reduce((acc, k) =&gt; {
         acc[k] = (JSON.stringify(executed[k]) || '').substr(0, 200);
         return acc;
     }, {})));
@@ -123,7 +123,7 @@ function storeResult(executed, calendar) {
     var isError = false;
     return getOauthClient(options)
         // create a new events to store the results
-        .then(() => updateResultEvent({
+        .then(() =&gt; updateResultEvent({
             time: new Date(),
             result: executed.result.filename,
             command: executed.command,
@@ -131,10 +131,10 @@ function storeResult(executed, calendar) {
             status: 'starting'
         }, executed, false, true))
         // process the command, this should return a function to be called after event
-        .then(() => getResult(executed))
-        .catch(e => {
+        .then(() =&gt; getResult(executed))
+        .catch(e =&gt; {
             isError = true;
-            const resultError = Object.getOwnPropertyNames(e).reduce((alt, key) => {
+            const resultError = Object.getOwnPropertyNames(e).reduce((alt, key) =&gt; {
                 alt[key] = e[key];
                 return alt;
             }, {});
@@ -142,8 +142,8 @@ function storeResult(executed, calendar) {
             return resultError;
         })
         // update event with logged results or tracking
-        .then(response => updateResultEvent(response, executed, isError || !response))
-        .catch(e => console.log(e))
+        .then(response =&gt; updateResultEvent(response, executed, isError || !response))
+        .catch(e =&gt; console.log(e))
 }
 module.exports = storeResult;
 

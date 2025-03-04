@@ -64,7 +64,7 @@ async function getEmailFormat(q) {
     return items
     var {items2} = await search(q + ' email format')
     var results = (items || []).concat(items2 || [])
-    results.forEach(i => {
+    results.forEach(i =&gt; {
         var match = (/\S*\s{0,2}\S+@\S+\.\S+/).exec(i.htmlSnippet)
         if(match) hits.push(match)
     })

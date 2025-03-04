@@ -72,8 +72,8 @@ var searchRegexp = 'permissions';
 
 $.async();
 searchNotebooks(searchRegexp)
-    .then(r => $.mime({'text/markdown': '```\n' + r.map(c => c.code).join('') + '\n```\n-------------\n'}))
-    .catch(e => $.sendError(e));
+    .then(r =&gt; $.mime({'text/markdown': '```\n' + r.map(c =&gt; c.code).join('') + '\n```\n-------------\n'}))
+    .catch(e =&gt; $.sendError(e));
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

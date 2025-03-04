@@ -138,7 +138,7 @@ function searchAll(query = 'search engine') {
     
     // TODO: save results
     return multiCrawl(engines, 'search results json')
-        .then(r => {
+        .then(r =&gt; {
             const time = new Date();
             fs.writeFileSync(path.join(project, query.replace(/[^a-z0-9]/ig, '_')
                                        + '-' + time.getFullYear()
@@ -153,8 +153,8 @@ module.exports = searchAll;
 if(typeof $ !== 'undefined') {
     $.async();
     searchAll()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

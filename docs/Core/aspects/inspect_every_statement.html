@@ -117,7 +117,7 @@ filename: "${filename}"
     // insert into parent statement body
     // TODO: make this a transpile operation because it contains node calls
     var parent = selectAst(`./parent::*`, ctx)
-    Array.from(inspect.childNodes).forEach(n => {
+    Array.from(inspect.childNodes).forEach(n =&gt; {
         if(n.setAttribute) {
             n.setAttribute('parent-attr', 'body')
         }

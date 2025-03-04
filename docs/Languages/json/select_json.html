@@ -86,14 +86,14 @@ function selectJson(select, file) {
     
     var results = []
     var buffer = new Buffer(2048)
-    var evaluate = (select, ctx) => {
+    var evaluate = (select, ctx) =&gt; {
         results.push.apply(results, selectTree(select, ctx))
     }
-    file.on('data', (chunk) => {
+    file.on('data', (chunk) =&gt; {
         buffer.push(chunk)
         walkJson(select, buffer, evaluate)
     })
-    file.on('end', (chunk) => {
+    file.on('end', (chunk) =&gt; {
         buffer.push(chunk)
         walkJson(select, buffer, evaluate)
     })

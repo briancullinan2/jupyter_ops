@@ -97,13 +97,13 @@ async function initializeCache() {
         path.resolve(__dirname, '../Languages/balanced.ipynb'),
     ]
     var cacheLookup = getCells(path.resolve(__dirname, './cache.ipynb'))
-        .filter(cell => cell.source.join('').includes('function cacheCells'))
-        .map(cell => path.join(__dirname, cell.id))
+        .filter(cell =&gt; cell.source.join('').includes('function cacheCells'))
+        .map(cell =&gt; path.join(__dirname, cell.id))
 
     cacheCells = importNotebook(cacheLookup).cacheCells
     cellCache = [].concat
-        .apply([], coreNotebooks.map(n => cacheCells(n)))
-        .map(c => [
+        .apply([], coreNotebooks.map(n =&gt; cacheCells(n)))
+        .map(c =&gt; [
             c.mtime,
             path.join(path.dirname(c.filename), c.id),
             c
@@ -127,10 +127,10 @@ function interpret(queries) {
         initializeCache()
     }
 
-    const fileMode = typeof queries === 'string' && queries.match(/\.ipynb$/ig)
+    const fileMode = typeof queries === 'string' &amp;&amp; queries.match(/\.ipynb$/ig)
     let searchResults = [].concat.apply([], (typeof queries === 'string'
         ? [queries]
-        : queries).map(query => {
+        : queries).map(query =&gt; {
         var search = path.basename(query).split(/[\[\]]/ig)
         var searchResults
         if (query.includes('/')) {
@@ -155,9 +155,9 @@ function interpret(queries) {
     if(typeof searchResults[0].source !== 'undefined') {
         return searchResults
     }
-    return typeof queries === 'string' && !fileMode
+    return typeof queries === 'string' &amp;&amp; !fileMode
         ? lookupCell(searchResults[0], cacheCells)
-        : searchResults.map(r => lookupCell(r, cacheCells));
+        : searchResults.map(r =&gt; lookupCell(r, cacheCells));
 }
 
 module.exports.interpret = interpret;

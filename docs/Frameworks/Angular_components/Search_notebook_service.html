@@ -83,7 +83,7 @@ search(query
 :
 string
 ):
-Observable < Response > {
+Observable &lt; Response &gt; {
     console.log('Searching ' + query);
 return this.http.post(callbackUrl, {query});
 }

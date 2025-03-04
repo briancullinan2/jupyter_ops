@@ -90,17 +90,17 @@
 
 export DISPLAY=:4000
 
-/usr/bin/Xvfb $DISPLAY -screen 0 1000x600x24 -dpi 70 -ac +extension RANDR & echo $! > /tmp/xvfb.pid
-/usr/bin/xinit -display $DISPLAY & echo $! > /tmp/x11.pid
+/usr/bin/Xvfb $DISPLAY -screen 0 1000x600x24 -dpi 70 -ac +extension RANDR &amp; echo $! &gt; /tmp/xvfb.pid
+/usr/bin/xinit -display $DISPLAY &amp; echo $! &gt; /tmp/x11.pid
 
-/usr/lib/ioquake3/ioquake3 --args +set fs_game missionpack +exec ./client.cfg & echo $! > /tmp/xterm.pid
+/usr/lib/ioquake3/ioquake3 --args +set fs_game missionpack +exec ./client.cfg &amp; echo $! &gt; /tmp/xterm.pid
 
 sleep 5
-/usr/bin/x11vnc -scale 1000x600 -noxdamage -forever -shared -rfbport 5900 -display $DISPLAY -noxrecord & echo $! > /tmp/vnc.pid
+/usr/bin/x11vnc -scale 1000x600 -noxdamage -forever -shared -rfbport 5900 -display $DISPLAY -noxrecord &amp; echo $! &gt; /tmp/vnc.pid
 
 int_handler()
 {
-    kill $(cat /tmp/xterm.pid) 2> /dev/null
+    kill $(cat /tmp/xterm.pid) 2&gt; /dev/null
     kill $(cat /tmp/vnc.pid)
     kill $(cat /tmp/x11.pid)
     kill $(cat /tmp/xvfb.pid)

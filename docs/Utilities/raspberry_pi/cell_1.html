@@ -60,7 +60,7 @@
  * rht03.c:
  *      Driver for the MaxDetect series sensors
  *
- * Copyright (c) 2012-2013 Gordon Henderson. <projects@drogon.net>
+ * Copyright (c) 2012-2013 Gordon Henderson. &lt;projects@drogon.net&gt;
  ***********************************************************************
  * This file is part of wiringPi:
  *      https://projects.drogon.net/raspberry-pi/wiringpi/
@@ -76,15 +76,15 @@
  *    GNU Lesser General Public License for more details.
  *
  *    You should have received a copy of the GNU Lesser General Public License
- *    along with wiringPi.  If not, see <http://www.gnu.org/licenses/>.
+ *    along with wiringPi.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
  ***********************************************************************
  */
 
-#include <stdio.h>
-#include <time.h>
+#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
 
-#include <wiringPi.h>
-#include <maxdetect.h>
+#include &lt;wiringPi.h&gt;
+#include &lt;maxdetect.h&gt;
 
 #define RHT03_PIN       7
 
@@ -108,7 +108,7 @@ int main (void)
   for(;;)
   {
 
-    if (!readRHT03 (RHT03_PIN, &newTemp, &newRh))
+    if (!readRHT03 (RHT03_PIN, &amp;newTemp, &amp;newRh))
     {
       delay(57);
       continue;
@@ -119,7 +119,7 @@ int main (void)
       temp = newTemp ;
       temp2 = (9.0 / 5) * (newTemp / 10) + 32;
       rh   = newRh ;
-      fprintf (stdout, "celsius=%.2f&fahrenheit=%.2f&humidity=%.2f&time=%u\n", temp / 10.0, temp2, rh / 10.0, (unsigned)time(NULL)) ;
+      fprintf (stdout, "celsius=%.2f&amp;fahrenheit=%.2f&amp;humidity=%.2f&amp;time=%u\n", temp / 10.0, temp2, rh / 10.0, (unsigned)time(NULL)) ;
       fflush(stdout);
     }
 

@@ -85,9 +85,9 @@ string, password
 :
 string
 ):
-Observable < number > {
+Observable &lt; number &gt; {
     return this.http.post(callbackUrl, {username, password})
-        .map(r => r.json());
+        .map(r =&gt; r.json());
 }
 }
 

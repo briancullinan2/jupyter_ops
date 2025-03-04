@@ -83,7 +83,7 @@ def build_dylib(code, path_to_code, ctx):
     lib_ext = ".cpp" if code_cell['language'] == "cpp" else ".c"
     lib_path = os.path.join(BUILD_DIRECTORY, f"{lib_name}{lib_ext}")
     
-    if not os.path.exists(lib_path) or os.path.getmtime(code_cell['filename']) > os.path.getmtime(lib_path):
+    if not os.path.exists(lib_path) or os.path.getmtime(code_cell['filename']) &gt; os.path.getmtime(lib_path):
         with open(lib_path, "w") as f:
             f.write("".join(code_cell['code']))
     
@@ -99,7 +99,7 @@ def build_dylib(code, path_to_code, ctx):
         env["CXX"] = os.getenv("CXX", "clang").split()
     
     obj_path = os.path.join(BUILD_DIRECTORY, f"{lib_name}.o")
-    if not os.path.exists(obj_path) or os.path.getmtime(lib_path) > os.path.getmtime(obj_path):
+    if not os.path.exists(obj_path) or os.path.getmtime(lib_path) &gt; os.path.getmtime(obj_path):
         mods = ["-x", "objective-c", "-fno-objc-arc"] if code_cell['language'] == "objective-c" else []
         if "@import" in "".join(code_cell['code']):
             mods = ["-fmodules"] + mods
@@ -113,7 +113,7 @@ def build_dylib(code, path_to_code, ctx):
         subprocess.run(env["CXX"] + mods + cflags + args, check=True, env=os.environ)
     
     mod_path = os.path.join(BUILD_DIRECTORY, f"{lib_name}.dylib")
-    if not os.path.exists(mod_path) or os.path.getmtime(obj_path) > os.path.getmtime(mod_path):
+    if not os.path.exists(mod_path) or os.path.getmtime(obj_path) &gt; os.path.getmtime(mod_path):
         libs = []
         if "PKG_CONFIG" in env:
             result = subprocess.run(["pkg-config", "--libs"] + env["PKG_CONFIG"].split(), capture_output=True, text=True)

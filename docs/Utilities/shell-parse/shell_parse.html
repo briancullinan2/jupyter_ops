@@ -55,25 +55,25 @@
 
 
 <pre class="javascript"><code>
-// '<(' is process substitution operator and
+// '&lt;(' is process substitution operator and
 // can be parsed the same as control operator
 var CONTROL = '(?:' + [
 	'\\|\\|',
-	'\\&\\&',
+	'\\&amp;\\&amp;',
 	';;',
-	'\\|\\&',
-	'\\<\\(',
-	'\\<\\<\\<',
-	'>>',
-	'>\\&',
-	'<\\&',
-	'[&;()|<>]'
+	'\\|\\&amp;',
+	'\\&lt;\\(',
+	'\\&lt;\\&lt;\\&lt;',
+	'&gt;&gt;',
+	'&gt;\\&amp;',
+	'&lt;\\&amp;',
+	'[&amp;;()|&lt;&gt;]'
 ].join('|') + ')';
 var controlRE = new RegExp('^' + CONTROL + '
 </body>
 
 </html>);
-var META = '|&;()<> \\t';
+var META = '|&amp;;()&lt;&gt; \\t';
 var SINGLE_QUOTE = '"((\\\\"|[^"])*?)"';
 var DOUBLE_QUOTE = '\'((\\\\\'|[^\'])*?)\'';
 var hash = /^#$/;
@@ -87,7 +87,7 @@ var DS = '
 
 var TOKEN = '';
 var mult = 0x100000000; // Math.pow(16, 8);
-for (var i = 0; i < 4; i++) {
+for (var i = 0; i &lt; 4; i++) {
 	TOKEN += (mult * Math.random()).toString(16);
 }
 var startsWithToken = new RegExp('^' + TOKEN);
@@ -112,7 +112,7 @@ function matchAll(s, r) {
 
 function getVar(env, pre, key) {
 	var r = typeof env === 'function' ? env(key) : env[key];
-	if (typeof r === 'undefined' && key != '') {
+	if (typeof r === 'undefined' &amp;&amp; key != '') {
 		r = '';
 	} else if (typeof r === 'undefined') {
 		r = '
@@ -191,7 +191,7 @@ function parseInternal(string, env, opts) {
 					throw new Error('Bad substitution: ' + s.slice(i - 2, i + 1));
 				}
 				varend = s.indexOf('}', i);
-				if (varend < 0) {
+				if (varend &lt; 0) {
 					throw new Error('Bad substitution: ' + s.slice(i));
 				}
 				varname = s.slice(i, varend);
@@ -213,9 +213,9 @@ function parseInternal(string, env, opts) {
 			return getVar(env, '', varname);
 		}
 
-		for (i = 0; i < s.length; i++) {
+		for (i = 0; i &lt; s.length; i++) {
 			var c = s.charAt(i);
-			isGlob = isGlob || (!quote && (c === '*' || c === '?'));
+			isGlob = isGlob || (!quote &amp;&amp; (c === '*' || c === '?'));
 			if (esc) {
 				out += c;
 				esc = false;

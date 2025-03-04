@@ -91,7 +91,7 @@ function authorTemplate(markdown, code) {
  * Written by Brian Cullinan, exported using magic.
  * Copyright (c) ${(new Date()).getFullYear()} by Brian Cullinan, All rights reserved.
  *
-${((markdown || '') + '').split('\n').map(l => ' * ' + l).join('\n')}
+${((markdown || '') + '').split('\n').map(l =&gt; ' * ' + l).join('\n')}
  *
  **/
 

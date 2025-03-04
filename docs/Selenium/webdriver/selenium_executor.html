@@ -144,7 +144,7 @@ function configureExecutor(executor, vendorPrefix) {
 
 function createExecutor(url, vendorPrefix) {
   const agent = new _http.Agent({ keepAlive: true })
-  const client = url.then((url) => new _http.HttpClient(url, agent))
+  const client = url.then((url) =&gt; new _http.HttpClient(url, agent))
   const executor = new _http.Executor(client)
   configureExecutor(executor, vendorPrefix)
   return executor

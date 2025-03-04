@@ -73,9 +73,9 @@ var API_KEY = 'AIzaSyDVoQW6NTPuVz8ClOtl0ShITBr_E2sP4l0';
 function placeDetails(placeId) {
     const uri = 'https://maps.googleapis.com/maps/api/place/details/json' 
         + '?placeid=' + placeId
-        + '&key=' + API_KEY;
+        + '&amp;key=' + API_KEY;
     return request(uri)
-        .then(r => JSON.parse(r.body).result)
+        .then(r =&gt; JSON.parse(r.body).result)
 }
 module.exports = placeDetails;
 </code></pre>

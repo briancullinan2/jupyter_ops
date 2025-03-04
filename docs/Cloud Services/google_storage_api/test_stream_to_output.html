@@ -78,7 +78,7 @@ function streamToOutput(fileUrl, bucketName, stream) {
     mkdirpSync(path.dirname(outputPath));
     var writeStream = fs.createWriteStream(outputPath);
     return fetchOrStream(stream || fileUrl, writeStream)
-        .then(() => outputPath)
+        .then(() =&gt; outputPath)
 }
 
 module.exports = streamToOutput;

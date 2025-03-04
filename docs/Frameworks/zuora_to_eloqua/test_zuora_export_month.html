@@ -130,13 +130,13 @@ var zuoraConfig = {
     "rest_api_url": "http://localhost:18888"
 };
 
-describe('zuora export month', () => {
+describe('zuora export month', () =&gt; {
     
-    afterEach(() => {
+    afterEach(() =&gt; {
         sandbox.restore();
     })
     
-    it('should get the query', () => {
+    it('should get the query', () =&gt; {
         const dummyQuery = 'test query';
         
         sandbox.stub(zuoraExport, "createBulkExportJob").returns(Promise.resolve(''));
@@ -146,7 +146,7 @@ describe('zuora export month', () => {
         const queryStub = sandbox.stub(renewalsQuery, "getQuery")
             .returns({ Query: dummyQuery });
 
-        return exporter.getZuoraMonth(0, zuoraConfig).then(result => {
+        return exporter.getZuoraMonth(0, zuoraConfig).then(result =&gt; {
                 assert.equal(result.length, 0);
                 assert(queryStub.calledOnce, 'getQuery should only be called once');
                 const stubCall = queryStub.getCall(0);
@@ -154,7 +154,7 @@ describe('zuora export month', () => {
         });
     })
     
-    it('should call bulk export service', () => {
+    it('should call bulk export service', () =&gt; {
         const dummyQuery = 'test query';
         
         const exportStub = sandbox.stub(zuoraExport, "createBulkExportJob").returns(Promise.resolve(''));
@@ -164,7 +164,7 @@ describe('zuora export month', () => {
         sandbox.stub(renewalsQuery, "getQuery")
             .returns({ Query: dummyQuery });
 
-        return exporter.getZuoraMonth(0, zuoraConfig).then(result => {
+        return exporter.getZuoraMonth(0, zuoraConfig).then(result =&gt; {
                 assert.equal(result.length, 0);
                 assert(exportStub.calledOnce, 'createBulkExportJob should only be called once');
                 const stubCall = exportStub.getCall(0);
@@ -172,7 +172,7 @@ describe('zuora export month', () => {
         });
     })
     
-    it('should convert csv dump to json', () => {
+    it('should convert csv dump to json', () =&gt; {
         const dummyCsv = 'this,is,a,test\n1,2,3,4';
         
         sandbox.stub(zuoraExport, "createBulkExportJob").returns(Promise.resolve(''));
@@ -180,7 +180,7 @@ describe('zuora export month', () => {
         sandbox.stub(zuoraExport, "getBulkExportFile").returns(Promise.resolve(dummyCsv));
         sandbox.stub(renewalsQuery, "getQuery").returns({ Query: 'test query' });
         
-        return exporter.getZuoraMonth(0, zuoraConfig).then(result => {
+        return exporter.getZuoraMonth(0, zuoraConfig).then(result =&gt; {
                 assert.equal(result[0].test, 4);
         });
     })

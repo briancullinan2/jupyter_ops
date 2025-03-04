@@ -132,7 +132,7 @@ async function findTextures(file, modDir, outDir) {
     var shaders = require(path.join(modDir, 'all_shaders.json'))
     var textureCount = textures.length
     var shaded = []
-    for(var i = 0; i < textureCount; i++) {
+    for(var i = 0; i &lt; textureCount; i++) {
         var realTexture = textures[i].includes('textures') ? textures[i] : ('textures/' + textures[i])
         if(typeof shaders[realTexture] != 'undefined') {
             console.log('shaded ' + realTexture)
@@ -140,20 +140,20 @@ async function findTextures(file, modDir, outDir) {
             var shader = shaders[realTexture]
             var extraTextures = importer
                 .regexToArray(/map\s([^\s]+?\/[^\s]+?$)/img, shader, 1)
-                .map(t => chext(t, ''))
+                .map(t =&gt; chext(t, ''))
             textures.push.apply(textures, extraTextures)
         }
     }
     
     var defaults = textures
-        .filter(t => !shaded.includes(t))
-    var matched = await glob(defaults.map(t => '**/' + t + '*'), modDir)
+        .filter(t =&gt; !shaded.includes(t))
+    var matched = await glob(defaults.map(t =&gt; '**/' + t + '*'), modDir)
     var listStr = matched.join(';')
     var unmatched = defaults
-        .filter(t => !listStr.includes(path.basename(t)))
+        .filter(t =&gt; !listStr.includes(path.basename(t)))
     
     if(outDir) {
-        for(var i = 0; i < matched.length; i++) {
+        for(var i = 0; i &lt; matched.length; i++) {
             var outFile = chroot(matched[i], modDir, outDir)
             mkdirpSync(path.dirname(outFile))
             fs.copyFileSync(matched[i], outFile)

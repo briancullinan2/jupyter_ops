@@ -298,8 +298,8 @@ async function askLlamaAboutEmotions(currentMessages) {
 
   console.log(emotions)
   return EMOTIONS
-    .filter(e => emotions.includes(e) || a2.includes(e) || a1.includes(e))
-    .filter((e, i, arr) => arr.indexOf(e) == i)
+    .filter(e =&gt; emotions.includes(e) || a2.includes(e) || a1.includes(e))
+    .filter((e, i, arr) =&gt; arr.indexOf(e) == i)
 }
 
 module.exports = {

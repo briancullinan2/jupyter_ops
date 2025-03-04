@@ -78,10 +78,10 @@
 
 var month = (new Date()).getMonth();
 var results = [];
-for (var m = month; month <= 12; month++) {
-    results = results.concat(getTuesdays(month, 2017).filter((d) => d.getDate() > 25));
+for (var m = month; month &lt;= 12; month++) {
+    results = results.concat(getTuesdays(month, 2017).filter((d) =&gt; d.getDate() &gt; 25));
 }
-console.log(results.map(d => d.getDate() + '/' + (d.getMonth() + 1)).join('\r\n'))
+console.log(results.map(d =&gt; d.getDate() + '/' + (d.getMonth() + 1)).join('\r\n'))
 module.exports = getTuesdays;
 </code></pre>
 

@@ -82,19 +82,19 @@ var {cellCache} = importer.import(path.join(__dirname, './cache.ipynb'))
 
 function groupPermissions(groups, search) {
     if(typeof groups === 'string') groups = [groups];
-    var permissions = getPermissions(!search && groups.includes('Available')
-                                     ? cellCache.map(i => i.id)
+    var permissions = getPermissions(!search &amp;&amp; groups.includes('Available')
+                                     ? cellCache.map(i =&gt; i.id)
                                      : search);
     if(typeof groups !== 'undefined') {
         return Object.keys(permissions)
-            .reduce((obj, p) => groups.filter(g => permissions[p].includes(g)).length === groups.length
+            .reduce((obj, p) =&gt; groups.filter(g =&gt; permissions[p].includes(g)).length === groups.length
                     ? (obj[p] = permissions[p], obj)
                     : obj, {});
     }
     
     // TODO: convert this to pattern utility
-    return Object.keys(permissions).reduce((types, key) => {
-        return permissions[key].reduce((types, group) => {
+    return Object.keys(permissions).reduce((types, key) =&gt; {
+        return permissions[key].reduce((types, group) =&gt; {
             if(typeof types[group] === 'undefined') types[group] = {};
             types[group][key] = permissions[key];
         }, types)

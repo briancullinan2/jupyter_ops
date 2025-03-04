@@ -78,9 +78,9 @@ var getInfo = importer.import('get google sheet info');
 
 function getTemplates(doc) {
     return getInfo(doc)
-        .then(info => {
+        .then(info =&gt; {
             console.log(`loaded doc: ${info.properties.title} ${info.spreadsheetId}`);
-            return info.sheets.reduce((obj, worksheet) => {
+            return info.sheets.reduce((obj, worksheet) =&gt; {
                 var layoutTitle = worksheet.properties.title.toLowerCase()
                     .replace(/\s*layout|\s*data|\s*template/ig, '')
                     .split(/\s+/ig).join('-');

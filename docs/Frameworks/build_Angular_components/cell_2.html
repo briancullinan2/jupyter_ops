@@ -61,17 +61,17 @@
 
 
 <pre class="javascript"><code>//ng(path.dirname(project), ['new', '--skip-git', '--skip-install', 'new-portal'])
-//    .then(() => ng(project, [
+//    .then(() =&gt; ng(project, [
 //    'generate', 'module', '--spec', '--flat', 'AppServer']))
 /*
-//.then(() => npm(project, ['install'], {'save': true, bin-links': false, verbose: true, prefix: project}))
-//.then(() => npm(project, ['install', '@angular/material', '@angular/cdk'], {'save': true, bin-links': false, verbose: true, prefix: project}))
-//.then(() => npm(project, ['list'], {prefix: project}))
-//.then(() => npm(project, ['prefix'], {prefix: project}))
+//.then(() =&gt; npm(project, ['install'], {'save': true, bin-links': false, verbose: true, prefix: project}))
+//.then(() =&gt; npm(project, ['install', '@angular/material', '@angular/cdk'], {'save': true, bin-links': false, verbose: true, prefix: project}))
+//.then(() =&gt; npm(project, ['list'], {prefix: project}))
+//.then(() =&gt; npm(project, ['prefix'], {prefix: project}))
 //convertNgUniversal(project)
-//    .then(() => ng(project, ['build', '--aot', '--prod']))
-//.then(() => webpackAngularProject(project))
-.then(r => {
+//    .then(() =&gt; ng(project, ['build', '--aot', '--prod']))
+//.then(() =&gt; webpackAngularProject(project))
+.then(r =&gt; {
     process.chdir(project);
     var server = require(path.join(project, '.server', 'server.js'));
     console.log(server);

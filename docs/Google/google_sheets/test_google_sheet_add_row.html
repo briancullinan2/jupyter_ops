@@ -79,9 +79,9 @@ var addRow = importer.import('add row data google sheet');
 
 var docsId = '16b1Z0sQkYhtMUfP7qMRL3vRBPWQsRbSlntURkMqWGX0';
 
-describe('add row data to google sheet', () => {
+describe('add row data to google sheet', () =&gt; {
     
-    it('should add a row', () => {
+    it('should add a row', () =&gt; {
         return addRow(docsId, {
             timestamp: Date.now(),
             name: 'Test Name',
@@ -90,7 +90,7 @@ describe('add row data to google sheet', () => {
             message: 'This is a new message',
             responded: 0
         })
-            .then(rows => {
+            .then(rows =&gt; {
                 assert(typeof rows != 'undefined', 'should have added a row to the sheet');
             })
     })

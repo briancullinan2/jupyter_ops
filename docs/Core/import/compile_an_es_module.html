@@ -120,7 +120,7 @@ async function makeESModule(code, filename, context) {
     console.info(`compiling ES ${filename} with ${Object.keys(context)}`);
   }
 
-  const linker = async (specifier) => {
+  const linker = async (specifier) =&gt; {
       const resolvedSpecifier = specifier //resolveModuleSpecifier(specifier, dirname)
       const targetModule = await import(resolvedSpecifier)
       context['__INTERNAL_IMPORTS_FROM_STRING'][specifier] = targetModule
@@ -131,7 +131,7 @@ async function makeESModule(code, filename, context) {
               ? `export default __INTERNAL_IMPORTS_FROM_STRING[${stringifiedSpecifier}].default;\n`
               : ''
           }export const { ${exportedNames
-              .filter(exportedName => exportedName !== 'default')
+              .filter(exportedName =&gt; exportedName !== 'default')
               .join(', ')} } = __INTERNAL_IMPORTS_FROM_STRING[${stringifiedSpecifier}];`
 
       return new vm.SourceTextModule(targetModuleContent, {

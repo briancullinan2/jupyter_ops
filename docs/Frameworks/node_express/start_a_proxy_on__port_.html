@@ -87,8 +87,8 @@ app.use('/', function (req, res) {
 
 $.async();
 try {
-    var server = app.listen(port, () => $.done('server up and running on port ' + port));
-    server.on('error', (e) => $.done(e));
+    var server = app.listen(port, () =&gt; $.done('server up and running on port ' + port));
+    server.on('error', (e) =&gt; $.done(e));
 } catch (e) {
     $.done(e);
 }

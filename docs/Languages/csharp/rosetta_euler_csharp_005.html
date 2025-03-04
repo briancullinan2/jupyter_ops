@@ -70,9 +70,9 @@ namespace Rosetta
 {
     public class Euler
     {
-        public async Task<object> RunEuler(dynamic input)
+        public async Task&lt;object&gt; RunEuler(dynamic input)
         {
-            return await Task.Run(() => new Euler().Calculate().ToString());
+            return await Task.Run(() =&gt; new Euler().Calculate().ToString());
         }
 
         public static void Main(string[] args)
@@ -82,26 +82,26 @@ namespace Rosetta
 
         public ulong Calculate()
         {
-            List<List<ulong>> primeFactorLists = new List<List<ulong>>();
+            List&lt;List&lt;ulong&gt;&gt; primeFactorLists = new List&lt;List&lt;ulong&gt;&gt;();
 
-            for (ulong x = 1; x <= 20; x++)
+            for (ulong x = 1; x &lt;= 20; x++)
             {
                 primeFactorLists.Add(PrimeFactors(x));
             }
 
-            List<ulong> factors = new List<ulong>();
+            List&lt;ulong&gt; factors = new List&lt;ulong&gt;();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i &lt; 20; i++)
             {
                 factors = Overlap(factors, primeFactorLists[i]);
             }
 
-            return factors.Aggregate((product, factor) => product * factor);
+            return factors.Aggregate((product, factor) =&gt; product * factor);
         }
 
-        public List<ulong> Overlap(List<ulong> a, List<ulong> b)
+        public List&lt;ulong&gt; Overlap(List&lt;ulong&gt; a, List&lt;ulong&gt; b)
         {
-            for (int i = 0; i < b.Count; i++)
+            for (int i = 0; i &lt; b.Count; i++)
             {
                 a.Remove(b[i]);
             }
@@ -111,13 +111,13 @@ namespace Rosetta
             return a;
         }
 
-        public List<ulong> PrimeFactors(ulong n)
+        public List&lt;ulong&gt; PrimeFactors(ulong n)
         {
             bool found = false;
 
             ulong v = 2;
 
-            for (ulong i = 2; i < n - 1; i++)
+            for (ulong i = 2; i &lt; n - 1; i++)
             {
                 if (n % i == 0)
                 {
@@ -129,7 +129,7 @@ namespace Rosetta
                 }
             }
 
-            List<ulong> result = new List<ulong>();
+            List&lt;ulong&gt; result = new List&lt;ulong&gt;();
 
             if (found)
             {

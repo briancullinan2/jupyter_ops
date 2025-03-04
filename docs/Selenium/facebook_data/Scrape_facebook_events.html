@@ -88,9 +88,9 @@ var filename = path.join(project, 'events.json');
 function getEvents(file) {
     var html = fs.readFileSync(file).toString();
     return importer.regexToArray(/href="([^"?]*)/ig, html, 1)
-        .filter(h => h.indexOf('.js') === -1)
-        .filter(h => h.indexOf('.css') === -1)
-        .filter(h => h.match(/events\/[0-9]+/ig));
+        .filter(h =&gt; h.indexOf('.js') === -1)
+        .filter(h =&gt; h.indexOf('.css') === -1)
+        .filter(h =&gt; h.match(/events\/[0-9]+/ig));
 };
 
 var scrapeFacebookEvent, loginFacebook;
@@ -102,26 +102,26 @@ function scrapeFacebookEvents() {
             'log in facebook',
             'facebook event'
         ])
-        .then(r => {
+        .then(r =&gt; {
             console.log(r);
             loginFacebook = r[0];
             scrapeFacebookEvent = r[1];
             return loginFacebook();
         })
-        .then(() => {
+        .then(() =&gt; {
             var events = [
                 ...getEvents(path.join(project, eventFiles[0])),
                 ...getEvents(path.join(project, eventFiles[1])),
                 ...getEvents(path.join(project, eventFiles[2]))
             ]
-                .filter((elem, pos, arr) => arr.indexOf(elem) === pos);
+                .filter((elem, pos, arr) =&gt; arr.indexOf(elem) === pos);
             console.log(events);
             return importer.runAllPromises(events
-                .map(e => resolve => scrapeFacebookEvent(e)
-                    .then(r => resolve(r))
-                    .catch(r => resolve(r))))
+                .map(e =&gt; resolve =&gt; scrapeFacebookEvent(e)
+                    .then(r =&gt; resolve(r))
+                    .catch(r =&gt; resolve(r))))
         })
-        .then(r => {
+        .then(r =&gt; {
             fs.writeFileSync(filename, JSON.stringify(r, null, 4));
             return r;
         })

@@ -56,7 +56,7 @@
 <pre class="javascript"><code>var last_id = '';
 var clear_queued = false;
 console_log = function (arg) {
-    $('#output').append('<p>' + arg + '</p>');
+    $('#output').append('&lt;p&gt;' + arg + '&lt;/p&gt;');
 }
 
 function execute(code) {
@@ -65,16 +65,16 @@ function execute(code) {
             output: function (msg) {
                 // see static/notebook/js/outputarea.js:handle_output
                 if (msg.header.msg_type === 'stream') {
-                    $('#output').append('<p>' + msg.content.data + '</p>');
+                    $('#output').append('&lt;p&gt;' + msg.content.data + '&lt;/p&gt;');
                 } else if (msg.header.msg_type === 'display_data') {
-                    $('#output').append('<p>' + msg.content.data + '</p>');
+                    $('#output').append('&lt;p&gt;' + msg.content.data + '&lt;/p&gt;');
                 } else if (msg.header.msg_type === 'execute_result') {
                     if (msg.content.data['text/plain'] !== undefined) {
-                        $('#output').append('<p><strong>' + msg.content.data['text/plain'] + '</strong></p>');
+                        $('#output').append('&lt;p&gt;&lt;strong&gt;' + msg.content.data['text/plain'] + '&lt;/strong&gt;&lt;/p&gt;');
                     }
                 } else if (msg.header.msg_type === 'error') {
                     $('#output')
-                        .append('<p style=\'color:red\'>' + msg.content.ename + ': ' + msg.content.evalue + '</p>');
+                        .append('&lt;p style=\'color:red\'&gt;' + msg.content.ename + ': ' + msg.content.evalue + '&lt;/p&gt;');
                 } else {
                     console.log('unhandled output message', msg);
                 }
@@ -97,7 +97,7 @@ function execute(code) {
 }
 
 function js_execute(code) {
-    $('#output').append('<p><strong>' + eval(code) + '</strong></p>');
+    $('#output').append('&lt;p&gt;&lt;strong&gt;' + eval(code) + '&lt;/strong&gt;&lt;/p&gt;');
 }
 
 require(
@@ -136,7 +136,7 @@ require(
         kk._kernel_started({id: kernel_id, name: 'python2'});
         events.one('status_idle.Kernel', function (evt, data) {
             if (data.kernel === kk) {
-                if (window.parent !== window && window.parent._subframe_cb !== undefined) {
+                if (window.parent !== window &amp;&amp; window.parent._subframe_cb !== undefined) {
                     window.parent._subframe_cb(execute);
                 }
                 console.log = console_log;

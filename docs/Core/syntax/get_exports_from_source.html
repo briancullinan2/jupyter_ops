@@ -150,8 +150,8 @@ function getExports(code) {
         './@name'
     ], code)
     return exports.concat(functions).concat(functions2).concat(functions3)
-        .filter(e => e !== 'exports' && e !== 'require' && e !== 'module')
-        .filter((e, i, arr) => arr.indexOf(e) === i)
+        .filter(e =&gt; e !== 'exports' &amp;&amp; e !== 'require' &amp;&amp; e !== 'module')
+        .filter((e, i, arr) =&gt; arr.indexOf(e) === i)
 }
 
 module.exports = getExports;

@@ -110,7 +110,7 @@ async function askLlamaToWriteBusinessPlan(topic, name, promptModel = 'Meta') {
   const a1 = await promptModel(q1);
   console.log("AI: " + a1);
 
-  let goals = a1.trim().split('\n').filter(g => g.trim().length > 0)
+  let goals = a1.trim().split('\n').filter(g =&gt; g.trim().length &gt; 0)
 
   let q2 = 'Write an Executive Summary for a business plan using markdown, expand on these goals:\n'
     + 'a company named ' + businessName + '\n'

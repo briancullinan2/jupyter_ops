@@ -103,7 +103,7 @@
 }
 
 // TODO: better way to do this, childClass.prototype.bind?
-module.exports = () => new childClass;
+module.exports = () =&gt; new childClass;
 
 if(typeof $ !== 'undefined') {
     console.log(typeof module.exports);
@@ -122,12 +122,12 @@ if(typeof $ !== 'undefined') {
     this is extremely annoying, how to achieve the same effect with prototype?
     the javascript language is apparently not indempotent
     
-    evalmachine.<anonymous>:1
+    evalmachine.&lt;anonymous&gt;:1
     class parentClass {
     ^
 
     SyntaxError: Identifier 'parentClass' has already been declared
-        at evalmachine.<anonymous>:1:1
+        at evalmachine.&lt;anonymous&gt;:1:1
     */
 }
 

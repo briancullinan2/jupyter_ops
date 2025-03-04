@@ -100,15 +100,15 @@ async function classifyPrompt(promptModel, session, prompt, image, otr) {
   //let historyFiles = await relevantHistory(promptModel, session, prompt)
 
   // TODO: convert to available parameters like Core/import.ipynb:run() style parameterization
-  for (let i = 0; i < matchingFunctions.length; i++) {
+  for (let i = 0; i &lt; matchingFunctions.length; i++) {
     importedFunction = importer.import(matchingFunctions[i])
-    if (typeof importedFunction == 'object' && typeof Object.values(importedFunction)[0] == 'function') {
+    if (typeof importedFunction == 'object' &amp;&amp; typeof Object.values(importedFunction)[0] == 'function') {
       importedFunction = Object.values(importedFunction)[0]
     }
     // call parameterized
     let params = getParameters(importedFunction.toString()).slice(1)
     let inputs = []
-    for(let j = 0; j < params.length; j++)
+    for(let j = 0; j &lt; params.length; j++)
       inputs[j] = context[params[j]]
     answer = await importedFunction.apply(null, inputs)
     break

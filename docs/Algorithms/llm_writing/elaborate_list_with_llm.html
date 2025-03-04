@@ -97,7 +97,7 @@ async function elaborateLlama(sheetFile, sheetName, rangeString, prefix, suffix)
   }
   let results2 = []
 
-  for(let i = 0; i < results.length; i++) {
+  for(let i = 0; i &lt; results.length; i++) {
     let q1 = prefix + results[i] + suffix
     console.log('User: ' + q1)
     let a1 = await llmPrompt(q1)

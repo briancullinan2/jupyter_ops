@@ -74,7 +74,7 @@ function copyFileBucket(bucket, file) {
     var params = {project: project};
     console.log('copying file:', file)
     return authorizeGoogle()
-        .then(client => client.request({
+        .then(client =&gt; client.request({
             method: 'POST',
             url: `https://www.googleapis.com/storage/v1/b/${bucket}/o/${qs.escape(file)}/rewriteTo/b/${bucket}/o/${qs.escape(file.replace(/\.html|\.htm/ig, ''))}`,
             params

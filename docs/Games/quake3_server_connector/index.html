@@ -133,7 +133,7 @@ var serverList = [
     'quakearea.com:27960',
     'q3.rofl.it:27960',
 ]
-serverList.forEach(async (s) => {
+serverList.forEach(async (s) =&gt; {
     var address = s.split(':')[0]
     var port = parseInt(s.split(':')[1] || '27960')
     await monitorServer(address, port)

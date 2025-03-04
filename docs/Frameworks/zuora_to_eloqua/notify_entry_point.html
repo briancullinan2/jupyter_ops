@@ -158,13 +158,13 @@ function handler(event, context, callback) {
     // TODO: add if statement for creating the import template
     // TODO: add an entry point for Zuora subscription callout to update single records in eloqua?
     return zuoraExport.getZuoraAccounts(body, zuoraConfig)
-        .then(accounts => eloquaUpload.bulkUploadEloqua(accounts, eloquaConfig, body.instanceId, body.executionId))
-        .then(() => callback(null, {
+        .then(accounts =&gt; eloquaUpload.bulkUploadEloqua(accounts, eloquaConfig, body.instanceId, body.executionId))
+        .then(() =&gt; callback(null, {
             'statusCode': 200,
             'headers': { 'Content-Type': 'text/plain' },
             'body': 'Success!'
         }))
-        .catch(e => callback(e.message || e.body || e, {
+        .catch(e =&gt; callback(e.message || e.body || e, {
             'statusCode': 500,
             'headers': { 'Content-Type': 'text/plain' },
             'body': 'Error: ' + e.message

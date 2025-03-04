@@ -133,8 +133,8 @@ function setupSockets(config) {
         }
     }
     var keys = Object.keys(sockets);
-    return Promise.all(keys.map(s => setupSocket.apply(null, [sockets[s], config])))
-        .then(sockets => sockets.reduce((obj, socket, i) =>
+    return Promise.all(keys.map(s =&gt; setupSocket.apply(null, [sockets[s], config])))
+        .then(sockets =&gt; sockets.reduce((obj, socket, i) =&gt;
                                         (obj[keys[i]] = socket, obj), {}))
 }
 
@@ -142,7 +142,7 @@ function setupSocket(config, general) {
     const sock = zmq.socket(config.type);
     const addr = general.transport + '://' + general.ip + ':' + config.port
     return util.promisify(sock.bind.bind(sock))(addr)
-        .then(() => sock)
+        .then(() =&gt; sock)
 }
 
 module.exports = {

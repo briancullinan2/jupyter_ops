@@ -96,7 +96,7 @@
 
 
 <pre class="javascript"><code>function toLogString(vals) {
-  return vals.map(val => {
+  return vals.map(val =&gt; {
     if ('string' === typeof val) return val
     return toSafeString(val)
   }).join(' ') + '\n'
@@ -104,7 +104,7 @@
 
 function toSafeString(val) {
   let pre = ''
-  if ('object' === typeof val && val && val.constructor && val.constructor.name !== 'Object') {
+  if ('object' === typeof val &amp;&amp; val &amp;&amp; val.constructor &amp;&amp; val.constructor.name !== 'Object') {
     pre = '[' + val.constructor.name + '] '
   }
   if ('function' === typeof val) {

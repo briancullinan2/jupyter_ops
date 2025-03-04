@@ -69,11 +69,11 @@ function testSelectJson() {
             highWaterMark: 8
         })
     var slowStream = new Readable()
-    slowStream._read = () => {}
+    slowStream._read = () =&gt; {}
     var delay = 50
-    package.on('data', (data) => {
+    package.on('data', (data) =&gt; {
         delay += 50
-        setTimeout(() => slowStream.push(data), delay)
+        setTimeout(() =&gt; slowStream.push(data), delay)
     })
     return selectJson('//depenedencies', slowStream)
 }

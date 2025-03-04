@@ -88,7 +88,7 @@ function escapeFilename(f) {
 
 function syncLinkedInContacts() {
     var loaded = glob.sync('**/linkedin-*.json', {cwd: project})
-        .reduce((arr, l) => {
+        .reduce((arr, l) =&gt; {
             try {
                 arr.push(escapeFilename(path.basename(l).replace('.json', '').replace('linkedin-', '')))
                 arr.push(escapeFilename(JSON.parse(fs.readFileSync(path.join(project, l)))[0]
@@ -105,15 +105,15 @@ function syncLinkedInContacts() {
         'scrape linkedin contacts',
         'scrape entire linkedin profile'
     ])
-        .then(r => ({
+        .then(r =&gt; ({
             listAllConnections, scrapeEntireLinkedInProfile
         } = r).loginLinkedIn())
-        .then(() => listAllConnections())
-        .then((connections) => {
-            fresh = connections.filter(c => {
+        .then(() =&gt; listAllConnections())
+        .then((connections) =&gt; {
+            fresh = connections.filter(c =&gt; {
                 const fname = escapeFilename(c.replace(/^.*?\/*in\/|\/$/ig, ''));
                 return loaded.indexOf(fname) === -1
-                    && loaded.indexOf(c) === -1
+                    &amp;&amp; loaded.indexOf(c) === -1
             });
             const percent = Math
                 .round((connections.length - fresh.length) / connections.length * 100);
@@ -122,20 +122,20 @@ function syncLinkedInContacts() {
                 + percent
                 + '%');
         })
-        .then(() => {
+        .then(() =&gt; {
             const rand = Math.floor(fresh.length / 30 * Math.random()) * 30;
             console.log(fresh.slice(rand, rand + 30));
-            return importer.runAllPromises(fresh.slice(rand, rand + 30).map(c => resolve => {
+            return importer.runAllPromises(fresh.slice(rand, rand + 30).map(c =&gt; resolve =&gt; {
                 var linkedIn;
                 const fname = c.replace(/^\/*in\/|\/$/ig, '');
                 return scrapeEntireLinkedInProfile('https://linkedin.com' + c)
-                    .then(r => {
+                    .then(r =&gt; {
                         linkedIn = r;
                         return getContacts({
                             displayName: r.name.split(/\s/).join('.*')
                         });
                     })
-                    .then(r => {
+                    .then(r =&gt; {
                         console.log(linkedIn.name);
                         if (r.length === 0) {
                             r.push({});
@@ -146,7 +146,7 @@ function syncLinkedInContacts() {
                             JSON.stringify(r, null, 4));
                         return resolve(r);
                     })
-                    .catch(e => {
+                    .catch(e =&gt; {
                         console.log(e);
                         resolve()
                     })

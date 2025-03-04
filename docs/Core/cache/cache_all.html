@@ -110,16 +110,16 @@ function cacheAll() {
     
     // all ids are the ones in the cache plus missing notebooks
     var allIds = notebooks
-        .reduce((arr, n) => arr
+        .reduce((arr, n) =&gt; arr
                 .concat([n + '[0]'])
                 .concat(cellCache
-                        .filter(c => c[1].substr(0, n.length) === n)
-                        .map(c => c[1])), [])
+                        .filter(c =&gt; c[1].substr(0, n.length) === n)
+                        .map(c =&gt; c[1])), [])
     
     // update by loading every notebook
-    var updates = notebooks.reduce((arr, n) => {
+    var updates = notebooks.reduce((arr, n) =&gt; {
         return arr.concat(cacheCells(n)
-            .map(({mtime, id, filename, from, to, questions}) => [
+            .map(({mtime, id, filename, from, to, questions}) =&gt; [
                 mtime,
                 path.join(path.dirname(filename), id),
                 {
@@ -131,7 +131,7 @@ function cacheAll() {
     }, [])
      
     // save the cache in this notebook
-    updateCache(updates, cellCache, updates.map(u => u[1]))
+    updateCache(updates, cellCache, updates.map(u =&gt; u[1]))
     
     saveCache()
 }

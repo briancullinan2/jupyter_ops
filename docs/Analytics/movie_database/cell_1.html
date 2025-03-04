@@ -75,7 +75,7 @@ function getTitles(t) {
     return db.prepare(`
 SELECT *
 FROM principals
-WHERE tconst IN (${t.map(i => '?').join(',')})`).all(t);
+WHERE tconst IN (${t.map(i =&gt; '?').join(',')})`).all(t);
 }
 
 function getTitlesByName(n) {
@@ -83,7 +83,7 @@ function getTitlesByName(n) {
     return db.prepare(`
 SELECT *
 FROM principals
-WHERE nconst IN (${n.map(i => '?').join(',')})`).all(n);
+WHERE nconst IN (${n.map(i =&gt; '?').join(',')})`).all(n);
 }
 
 function getActorsByTitles(t, n) {
@@ -92,52 +92,52 @@ function getActorsByTitles(t, n) {
     return db.prepare(`
 SELECT *
 FROM principals
-WHERE nconst IN (${n.map(i => '?').join(',')})
-AND tconst IN (${t.map(i => '?').join(',')})`).all(n.concat(t));
+WHERE nconst IN (${n.map(i =&gt; '?').join(',')})
+AND tconst IN (${t.map(i =&gt; '?').join(',')})`).all(n.concat(t));
 }
 
-var assignPromise = r => resolve => getExactName(r.nconst)
-    .then(result => Object.assign(r, result))
+var assignPromise = r =&gt; resolve =&gt; getExactName(r.nconst)
+    .then(result =&gt; Object.assign(r, result))
     .then(resolve)
 
 function getActorTitlesIntersection(n, t) {
     var titles, actors;
     return Promise.resolve()
-        .then(() => getTitlesByName(n))
-        .then(ts => titles = ts.map(t => t.tconst))
-        .then(() => getTitles(t))
-        .then(as => getActorsByTitles(titles, as.map(a => a.nconst)))
-        .then(r => importer.runAllPromises(r.map(r => assignPromise(r))))
+        .then(() =&gt; getTitlesByName(n))
+        .then(ts =&gt; titles = ts.map(t =&gt; t.tconst))
+        .then(() =&gt; getTitles(t))
+        .then(as =&gt; getActorsByTitles(titles, as.map(a =&gt; a.nconst)))
+        .then(r =&gt; importer.runAllPromises(r.map(r =&gt; assignPromise(r))))
 }
 
 function getTitleTitleIntersection(t) {
     var titles = Array.from(arguments);
     return Promise.resolve()
-        .then(() => getTitles(t))
-        .then(as => getActorsByTitles(titles.slice(1), as.map(a => a.nconst)))
-        .then(r => importer.runAllPromises(r.map(r => assignPromise(r))))
+        .then(() =&gt; getTitles(t))
+        .then(as =&gt; getActorsByTitles(titles.slice(1), as.map(a =&gt; a.nconst)))
+        .then(r =&gt; importer.runAllPromises(r.map(r =&gt; assignPromise(r))))
 }
 
 function getExactName(n) {
     return Promise.resolve()
-        .then(() => db.prepare(`SELECT * FROM name WHERE nconst=?`).get(n))
+        .then(() =&gt; db.prepare(`SELECT * FROM name WHERE nconst=?`).get(n))
 }
 
 function getExactTitle(t) {
     return Promise.resolve()
-        .then(() => db.prepare(`SELECT * FROM titles WHERE tconst=?`).get(t))
+        .then(() =&gt; db.prepare(`SELECT * FROM titles WHERE tconst=?`).get(t))
 }
 
 function getTitle(t) {
     var words = t.split(/\s+/ig);
     return Promise.resolve()
-        .then(() => db.prepare(`
+        .then(() =&gt; db.prepare(`
 SELECT * 
 FROM titles 
-WHERE (${words.map(word => 'primaryTitle LIKE ?').join(' AND ')})
-OR (${words.map(word => 'originalTitle LIKE ?').join(' AND ')})
-`).all(words.map(w => `%${w}%`).concat(words.map(w => `%${w}%`))))
-        .then(results => levSort(results, t, r => r.primaryTitle)[0])
+WHERE (${words.map(word =&gt; 'primaryTitle LIKE ?').join(' AND ')})
+OR (${words.map(word =&gt; 'originalTitle LIKE ?').join(' AND ')})
+`).all(words.map(w =&gt; `%${w}%`).concat(words.map(w =&gt; `%${w}%`))))
+        .then(results =&gt; levSort(results, t, r =&gt; r.primaryTitle)[0])
 }
 
 // https://v2.sg.media-imdb.com/suggests/w/werner%20herzog.json
@@ -145,10 +145,10 @@ $.async();
 //getTitle('three colors: white')
 getTitleTitleIntersection('tt0111507', 'tt0111495', 'tt0108394')
 //getActorTitlesIntersection('nm0001348', 'tt0082694')
-    .then(r => $.sendResult(r))
-    .catch(e => $.sendError(e))
+    .then(r =&gt; $.sendResult(r))
+    .catch(e =&gt; $.sendError(e))
     // close the database connection
-    .then(() => db.close())
+    .then(() =&gt; db.close())
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

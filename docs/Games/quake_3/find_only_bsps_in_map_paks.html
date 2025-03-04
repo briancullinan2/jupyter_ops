@@ -132,14 +132,14 @@ function readPak(zipFile, cb) {
         storeEntries: true
     });
 
-    zip.on('ready', () => {
+    zip.on('ready', () =&gt; {
         console.log('Entries read: ' + zip.entriesCount + ' ' + path.basename(zipFile));
         for (const entry of Object.values(zip.entries())) {
             if(entry.name.includes('.bsp')) {
                 console.log(entry.name)
                 /*var pk3Path = '/Applications/ioquake3/bestmaps/' + path.basename(pk3.name);
                 if(!fs.existsSync(pk3Path)) {
-                    zip.extract(pk3.name, pk3Path, err => {
+                    zip.extract(pk3.name, pk3Path, err =&gt; {
                         console.log((err ? 'Extract error ' : 'Extracted ') + pk3.name);
                         zip.close();
                         cb(zipFile);
@@ -147,10 +147,10 @@ function readPak(zipFile, cb) {
                     return;
                 }*/
             }
-            if(entry.name.includes('levelshots/') && entry.name !== 'levelshots/') {
+            if(entry.name.includes('levelshots/') &amp;&amp; entry.name !== 'levelshots/') {
                 var levelPath = '/Applications/ioquake3/bestmaps/levelshots/' + path.basename(entry.name)
                 if(!fs.existsSync(levelPath)) {
-                    zip.extract(entry.name, levelPath, err => {
+                    zip.extract(entry.name, levelPath, err =&gt; {
                         console.log((err ? 'Extract error ' : 'Extracted ') + entry.name);
                         zip.close();
                         cb(zipFile);
@@ -163,15 +163,15 @@ function readPak(zipFile, cb) {
         cb();
     });
     
-    zip.on('error', err => { cb() });
+    zip.on('error', err =&gt; { cb() });
 }
 
 
 function extractPaks() {
     var results = listInProject('/Applications/ioquake3/bestmaps', '**/*.pk3')
     console.log(results)
-    return importer.runAllPromises(results.map(r => {
-        return (resolve) => {
+    return importer.runAllPromises(results.map(r =&gt; {
+        return (resolve) =&gt; {
             try {
                 readPak(r, resolve)
             } catch (e) {
@@ -180,7 +180,7 @@ function extractPaks() {
                 resolve()
             }
         }
-    })).then(results => results.filter(r => r))
+    })).then(results =&gt; results.filter(r =&gt; r))
 }
 
 

@@ -85,7 +85,7 @@ async function storeAllLlamaFunctions() {
   const getParameters = await importer.import('get c parameters')
   const pythonParams = await importer.import('python params in antlr')
   let cellCache = importer.import('cell cache').cellCache
-  for(let i = 0; i < cellCache.length; i++) {
+  for(let i = 0; i &lt; cellCache.length; i++) {
     let cell = cellCache[i]
     //if(!cell[2].questions || !cell[2].questions[0]) continue
     let code = importer.lookupCell(cell[1], cacheCells)
@@ -104,7 +104,7 @@ async function storeAllLlamaFunctions() {
     if(typeof functionCache[cell[1]] != 'undefined') {
       if(
         // notebook hasn't changed
-        code.mtime <= functionCache[cell[1]].mtime
+        code.mtime &lt;= functionCache[cell[1]].mtime
         // don't both updating cache notebooks, 
         // otherwise this will run every time any notebook changes
         || code.filename.match(/cache/gi)
@@ -122,7 +122,7 @@ async function storeAllLlamaFunctions() {
 
     // needs cleanup
     if(!summary || !categories || (categories + '').includes('\n')
-      || summary.length < 256 || summary.match(/Find the derivative/gi) 
+      || summary.length &lt; 256 || summary.match(/Find the derivative/gi) 
       || shortened.match(/Find the derivative/gi)
       || categories.match(/Code analysis request/gi)) {
       // TODO: this should cause the erroneous cell to show up every time and for these to be fixed next pass
@@ -136,10 +136,10 @@ async function storeAllLlamaFunctions() {
         if(code.language == 'javascript')
           rpcFunction = getExports(code.code)
         if(code.language == 'c' || code.language == 'cpp')
-          rpcFunction = (await getParameters(code.code)).map(p => typeof p == 'string' ? p : p[0])
+          rpcFunction = (await getParameters(code.code)).map(p =&gt; typeof p == 'string' ? p : p[0])
         if(code.language == 'python') {
           const params = await pythonParams(code.code)
-          rpcFunction = typeof params.function != 'undefined' ? [params.function] : params.map(p => p.function)
+          rpcFunction = typeof params.function != 'undefined' ? [params.function] : params.map(p =&gt; p.function)
         }
         fresh = true
       } catch (e) {

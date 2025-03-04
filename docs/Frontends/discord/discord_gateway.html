@@ -104,7 +104,7 @@ function gatewayMessage(ws, reconnectGateway, interactionResponse, message) {
   var msgBuff = new Buffer.from(message)
   var gateway = JSON.parse(msgBuff.toString('utf-8'))
   if(gateway.s) seq = gateway.s
-  if(gateway.d && gateway.d.seq) seq = gateway.d.seq
+  if(gateway.d &amp;&amp; gateway.d.seq) seq = gateway.d.seq
   
   console.log('Gateway message', gateway)
   
@@ -145,7 +145,7 @@ function gatewayMessage(ws, reconnectGateway, interactionResponse, message) {
           interactionsCommands['promptPrivate'](gateway.d)
         }
       } else if(gateway.d.content.includes('@' + DEFAULT_APPLICATION)
-        && typeof interactionsCommands['promptMention'] != 'undefined'
+        &amp;&amp; typeof interactionsCommands['promptMention'] != 'undefined'
       ) {
         interactionsCommands['promptMention'](gateway.d)
       }
@@ -163,10 +163,10 @@ function gatewayMessage(ws, reconnectGateway, interactionResponse, message) {
       if(typeof INSTANCES[gateway.d['instance_id']] == 'undefined') {
         INSTANCES[gateway.d['instance_id']] = []
       }
-      INSTANCES[gateway.d['instance_id']] = INSTANCES[gateway.d['instance_id']].filter(i => gateway.d.participants.includes(i[0]))
+      INSTANCES[gateway.d['instance_id']] = INSTANCES[gateway.d['instance_id']].filter(i =&gt; gateway.d.participants.includes(i[0]))
     
       if(typeof interactionsCommands['startActivity'] != 'undefined'
-        && typeof interactionsCommands['endActivity'] != 'undefined'
+        &amp;&amp; typeof interactionsCommands['endActivity'] != 'undefined'
       ) {
         if(gateway.d.participants.length) {
           Promise.resolve(interactionsCommands['startActivity'](gateway.d))

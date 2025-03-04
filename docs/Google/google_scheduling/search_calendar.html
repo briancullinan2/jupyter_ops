@@ -88,15 +88,15 @@ function searchCalendar(search, calendar) {
     }
     var total = 0;
     return getOauthClient(options)
-        .then(() => correctCalendarId(options))
-        .then(() => importer.runAllPromises(search.split('|').map(term => resolve => {
+        .then(() =&gt; correctCalendarId(options))
+        .then(() =&gt; importer.runAllPromises(search.split('|').map(term =&gt; resolve =&gt; {
             return listEvents({
                 auth: options.auth,
                 calendarId: options.calendarId,
                 q: term
-            }).then(r => {
+            }).then(r =&gt; {
                 console.log(term);
-                console.log(r.map(e => e.event.summary).slice(0, 10));
+                console.log(r.map(e =&gt; e.event.summary).slice(0, 10));
                 return resolve(r);
             })
         })))
@@ -106,8 +106,8 @@ module.exports = searchCalendar;
 if(typeof $ !== 'undefined') {
     $.async();
     searchCalendar('blur')
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

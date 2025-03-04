@@ -80,12 +80,12 @@ var addIP = importer.import('check dns');
 var project = 'spahaha-ea443';
 var bucketName = 'sheet-to-web.sheet-to-web.com';
 
-describe('adding an external ip', () => {
-    it('should add an ip', () => {
+describe('adding an external ip', () =&gt; {
+    it('should add an ip', () =&gt; {
         return addIP(project, bucketName)
-            .then(ip => {
+            .then(ip =&gt; {
                 console.log(ip);
-                assert(ip.length > 0, 'should have added an ip');
+                assert(ip.length &gt; 0, 'should have added an ip');
             })
     }).timeout(60000)
     

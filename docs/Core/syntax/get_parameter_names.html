@@ -147,9 +147,9 @@ function getParameters(code) {
 
     var params = selectAst([PARAMETERS.replaceAll('EXPORTS', fnName.join(' ')), './@name'], code)
     //for (const attr of params[1].attributes) {
-    //    console.log(`${attr.name} -> ${attr.value}\n`)
+    //    console.log(`${attr.name} -&gt; ${attr.value}\n`)
     //}
-    return [fnName[0], ...params.filter(p => p) /*.filter((p, i, arr) => arr.indexOf(p) === i)*/]
+    return [fnName[0], ...params.filter(p =&gt; p) /*.filter((p, i, arr) =&gt; arr.indexOf(p) === i)*/]
 }
 
 module.exports = getParameters;

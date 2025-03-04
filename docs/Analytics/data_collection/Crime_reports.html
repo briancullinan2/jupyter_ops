@@ -95,11 +95,11 @@ function scrapeAlert(ID) {
             title: '//*[contains(@class, "single")]//h3//text()',
             content: '//*[@class = "single"]//*[@class = "content"]//text()'
         })
-        .then(r => {
+        .then(r =&gt; {
             fs.writeFileSync(path.join(project, 'maricopa-alert-' + ID + '.json'), JSON.stringify(r, null, 4));
             return r;
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 module.exports = scrapeAlert;
 
@@ -107,8 +107,8 @@ if(typeof $ !== 'undefined') {
     $.async();
     var IDs = Array.from(Array(500).keys());
     multiCrawl(IDs, 'crime reports')
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

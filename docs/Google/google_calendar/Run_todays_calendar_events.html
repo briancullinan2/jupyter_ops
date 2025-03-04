@@ -96,21 +96,21 @@ function runTodaysEvents(calendar) {
             timeMax: 'next hour today'
         })
         // filter processed
-        .then(events => {
+        .then(events =&gt; {
             // TODO: create object with property "already" and filter out like other RPC methods?
             // determine if the event has already been run today by matching it with the result
             const commandEvent = events
-                .filter(e => {
+                .filter(e =&gt; {
                     const matches = events
-                        .filter(m => 'Result: ' + e.event.summary === m.event.summary
-                            && e.event.start.dateTime === m.event.start.dateTime);
-                    return e.event.summary.indexOf('Result:') === -1 && matches.length === 0
+                        .filter(m =&gt; 'Result: ' + e.event.summary === m.event.summary
+                            &amp;&amp; e.event.start.dateTime === m.event.start.dateTime);
+                    return e.event.summary.indexOf('Result:') === -1 &amp;&amp; matches.length === 0
                 })[0]
             if (typeof commandEvent === 'undefined') throw new Error('No events!');
             // parse parameters from event description
             var parameters;
             try {
-                var dom = new JSDOM('<body>' + (commandEvent.event.description || '""').replace(/<br\/?>/igm, '\n') + '</body>');
+                var dom = new JSDOM('&lt;body&gt;' + (commandEvent.event.description || '""').replace(/&lt;br\/?&gt;/igm, '\n') + '&lt;/body&gt;');
                 parameters = JSON.parse(dom.window.document.body.textContent);
             } catch ( e ) {
                 parameters = (commandEvent.event.description || '').trim().split(/\n/ig);
@@ -128,15 +128,15 @@ function runTodaysEvents(calendar) {
             };
         })
         // use rpc
-        .then(f => storeResult(f, options.calendarId))
-        .catch(e => console.log(e))
+        .then(f =&gt; storeResult(f, options.calendarId))
+        .catch(e =&gt; console.log(e))
 }
 
 module.exports = runTodaysEvents;
 
 // node -e "require('/Users/briancullinan/jupytangular2/Core').import('heartbeat')('run todays calendar events')"
 
-// echo "require('/Users/briancullinan/jupytangular2/Core').import('scrape facebook events').then(runner => runner()).then(e=>{console.log(e); process.exit(e) }).catch(e=>{console.log(e); process.exit(e) });" | node
+// echo "require('/Users/briancullinan/jupytangular2/Core').import('scrape facebook events').then(runner =&gt; runner()).then(e=&gt;{console.log(e); process.exit(e) }).catch(e=&gt;{console.log(e); process.exit(e) });" | node
 
 </code></pre>
 

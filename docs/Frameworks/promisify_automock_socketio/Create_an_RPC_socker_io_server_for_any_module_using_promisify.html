@@ -81,7 +81,7 @@ function sockifyRequire(req, dep) {
             // var orig = req[name.split('.')[1]];
             return function () {
                 var args = ['resolve', name];
-                for (var i = 0; i < arguments.length; i++) {
+                for (var i = 0; i &lt; arguments.length; i++) {
                     args[args.length] = arguments[i];
                 }
                 return new Observable(function () {
@@ -115,7 +115,7 @@ function sockifyServer(port) {
 
         socket.on('result', function (name) {
             var args = ['result', name];
-            for (var i = 1; i < arguments.length; i++) {
+            for (var i = 1; i &lt; arguments.length; i++) {
                 args[args.length] = arguments[i];
             }
             var handlers = (typeof io.sockets.adapter.rooms[name] !== 'undefined'
@@ -131,7 +131,7 @@ function sockifyServer(port) {
 
         socket.on('call', function (name) {
             var args = [];
-            for (var i = 1; i < arguments.length; i++) {
+            for (var i = 1; i &lt; arguments.length; i++) {
                 args[args.length] = arguments[i];
             }
             var props = name.split('.');
@@ -141,7 +141,7 @@ function sockifyServer(port) {
                 socket.join(name);
             }
             var func = deps[dep];
-            for (var j = 1; j < props.length; j++) {
+            for (var j = 1; j &lt; props.length; j++) {
                 func = func[props[j]];
             }
             var tmpsub;

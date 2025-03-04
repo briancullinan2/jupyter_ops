@@ -84,7 +84,7 @@
 function promiseOrResolve(obj, property, cb) {
     return obj ? (typeof obj[property] != 'undefined'
                   ? Promise.resolve(obj[property])
-                  : cb(obj).then(d => (obj[property] = d)))
+                  : cb(obj).then(d =&gt; (obj[property] = d)))
         : Promise.resolve()
 }
 

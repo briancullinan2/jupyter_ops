@@ -85,10 +85,10 @@ var getRows = importer.import('get worksheet rows');
 var {filteredData, unfilteredData} = importer.import('filter data sheet based on url');
 var promiseOrResolve = importer.import('resolve promise property');
 
-var isWrapper = rows => rows.length === 1 && rows[0].length === 1
-              && rows[0][0].match(/\{\{\s*>\s*(.*?)(\/(.*?-)+link)*\}\}/ig);
+var isWrapper = rows =&gt; rows.length === 1 &amp;&amp; rows[0].length === 1
+              &amp;&amp; rows[0][0].match(/\{\{\s*&gt;\s*(.*?)(\/(.*?-)+link)*\}\}/ig);
 
-var isFiltered = (url) => url.split('/').length > 1
+var isFiltered = (url) =&gt; url.split('/').length &gt; 1
 
 // TODO: remove previous properties if for some strange reason recalling the same template,
 //   prevents situations like ::stylesheet being added to many times
@@ -101,33 +101,33 @@ function getTemplateProperties(key, properties, templates) {
     // load template data
     var rows;
     return promiseOrResolve(templates[key].data, 'rows', getDataSheet)
-        .then(data => {
+        .then(data =&gt; {
             properties[key + '-original-data'] = data;
             properties[key + '-data'] = unfilteredData.bind(null, key);
         })
         // load template layout
-        .then(() => promiseOrResolve(templates[key].template, 'rows', getRows))
-        .then(rs => {
+        .then(() =&gt; promiseOrResolve(templates[key].template, 'rows', getRows))
+        .then(rs =&gt; {
             rows = rs || []
             return rows.flat()
-              .reduce((p, c, j) => p.then(() => matchSections(c, properties, templates)), Promise.resolve())
+              .reduce((p, c, j) =&gt; p.then(() =&gt; matchSections(c, properties, templates)), Promise.resolve())
         })
         // detect if this is just a wrapper template and don't render rows, do a direct replacement
-        .then(() => isWrapper(rows) ? rows[0][0] : renderRows(key, rows, properties, templates))
-        .then(template => (properties[key] = template))
+        .then(() =&gt; isWrapper(rows) ? rows[0][0] : renderRows(key, rows, properties, templates))
+        .then(template =&gt; (properties[key] = template))
 }
 
 // must do this up front so we can process all data
-var matchSections = (cell, properties, templates) => importer
-    .regexToArray(/\{\{\s*>\s*(.*?)\s*\}\}/ig, cell, 1)
-    .reduce((promise, section) => promise
-        .then(() => getTemplateProperties(section.split('/')[0], properties, templates))
-        .then(() => isFiltered(section)
+var matchSections = (cell, properties, templates) =&gt; importer
+    .regexToArray(/\{\{\s*&gt;\s*(.*?)\s*\}\}/ig, cell, 1)
+    .reduce((promise, section) =&gt; promise
+        .then(() =&gt; getTemplateProperties(section.split('/')[0], properties, templates))
+        .then(() =&gt; isFiltered(section)
               ? createAssignFilter(section, properties)
               : Promise.resolve()),
             Promise.resolve())
 
-var isCategorical = (data, key) => data.filter(row => row.hasOwnProperty(key)).length > 0;
+var isCategorical = (data, key) =&gt; data.filter(row =&gt; row.hasOwnProperty(key)).length &gt; 0;
 
 function createAssignFilter(section, properties) {
     var key = section.split('/')[0];
@@ -137,8 +137,8 @@ function createAssignFilter(section, properties) {
     // add a special partial for the filtered data
     var categorical = isCategorical(properties[key + '-original-data'] || [], key)
     // automatically wrap unique templates in a data section for accessing filtered properties
-    if(!categorical && !properties[key].includes(`{{#${key}-data}}`)
-        && typeof properties[key + '-original-data'] !== 'undefined') {
+    if(!categorical &amp;&amp; !properties[key].includes(`{{#${key}-data}}`)
+        &amp;&amp; typeof properties[key + '-original-data'] !== 'undefined') {
         properties[section] = `{{#${key}-data}}${properties[key]}{{/${key}-data}}`;
     }
     // run the filtered function instead of using the array

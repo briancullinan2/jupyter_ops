@@ -82,8 +82,8 @@ if(typeof $ !== 'undefined') {
     console.log(juypter_ops)
 //    juypter_ops.marketing.studysauce.copyStudy({email: 'megamindbrian@gmail.com'})
     juypter_ops.core.rpc.getPermissions({search: null})
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

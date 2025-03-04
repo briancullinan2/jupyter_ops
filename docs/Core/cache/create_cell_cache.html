@@ -96,7 +96,7 @@ function makeCamel(str) {
     return str
         .replace(/[^a-z0-9 ]/ig, '')
         .split(' ')
-        .map((w, i) => i > 0
+        .map((w, i) =&gt; i &gt; 0
              ? (w[0].toUpperCase() + w.substr(1))
              : w)
         .join('')
@@ -106,8 +106,8 @@ function createCellCache(search, cache, cacheCell, callback) {
     var camelCase = makeCamel(cacheCell.questions[0])
     
     var allIds = cellCache
-        .filter(c => c.code.length < 100000)
-        .map(cell => cell.id)
+        .filter(c =&gt; c.code.length &lt; 100000)
+        .map(cell =&gt; cell.id)
     
     if(!search) {
         search = refreshCache(cache, allIds)
@@ -118,17 +118,17 @@ function createCellCache(search, cache, cacheCell, callback) {
 
     var allCells = [].concat.apply([], importer.interpret(Array.isArray(search)
                                                           ? search : [search]))
-    var allCellIds = allCells.map(c => c.id)
+    var allCellIds = allCells.map(c =&gt; c.id)
     
     // get only first occurrence
     allCells = allCells
-        .filter((c, i) => allCellIds.indexOf(c.id) == i)
-        .filter(c => c.code.length < 10000)
+        .filter((c, i) =&gt; allCellIds.indexOf(c.id) == i)
+        .filter(c =&gt; c.code.length &lt; 10000)
     
     console.log(`caching ${search} - ${allCells.length} cells`)
 
     return Promise
-        .all(allCells.map(cell => memorySafe(() => {
+        .all(allCells.map(cell =&gt; memorySafe(() =&gt; {
             try {
                 console.log(cell.id)
                 return [Date.now(), cell.id, callback(cell.code)]
@@ -136,7 +136,7 @@ function createCellCache(search, cache, cacheCell, callback) {
                 return [Date.now(), cell.id, e.message]
             }
         })))
-        .then(updates => {
+        .then(updates =&gt; {
             updateCache(updates, cache, allIds)
         
             var code = `

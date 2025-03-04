@@ -131,8 +131,8 @@ var {imageTypes} = importer.import('quake 3 file whitelist')
 async function convertNonAlpha(root) {
     var result = []
     var output = path.join(path.dirname(root), path.basename(root) + '-converted')
-    var files = await glob(imageTypes.map(a => '**/*' + a), root)
-    for(var i = 0; i < files.length; i++) {
+    var files = await glob(imageTypes.map(a =&gt; '**/*' + a), root)
+    for(var i = 0; i &lt; files.length; i++) {
         var outFile, inFile = files[i]
         var alphaCmd = await execCmd(`identify -format '%[opaque]' '${inFile}'`, {quiet: true})
         // if it is alpha

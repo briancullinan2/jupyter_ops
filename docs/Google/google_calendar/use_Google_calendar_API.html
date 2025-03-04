@@ -82,7 +82,7 @@ function authorizeCalendar(options = {}) {
     }
     return authorize(options.scopes || [
             'https://www.googleapis.com/auth/calendar'])
-        .then(c => {
+        .then(c =&gt; {
             options.auth = c;
             return google.calendar({version: 'v3', auth: c});
         })

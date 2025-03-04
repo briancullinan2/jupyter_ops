@@ -78,10 +78,10 @@
 
 <pre class="javascript"><code>var html = '';
 var htmlPrint = '';
-var requests = images.map((src) => {
+var requests = images.map((src) =&gt; {
     var filename = src.split('/').pop();
-    return new Promise((resolve, reject) => {
-        request(src, {encoding: 'binary'}, (err, res, body) => {
+    return new Promise((resolve, reject) =&gt; {
+        request(src, {encoding: 'binary'}, (err, res, body) =&gt; {
             if (err) {
                 reject(err)
             }
@@ -89,8 +89,8 @@ var requests = images.map((src) => {
                 resolve(body)
             }
         });
-    }).then(body => {
-        return new Promise((resolve, reject) => {
+    }).then(body =&gt; {
+        return new Promise((resolve, reject) =&gt; {
             fs.writeFile(
                 path.join(output, filename),
                 body,
@@ -103,15 +103,15 @@ var requests = images.map((src) => {
     });
 });
 $.async();
-Promise.all(requests).then(images => {
-    images.forEach((i) => {
+Promise.all(requests).then(images =&gt; {
+    images.forEach((i) =&gt; {
         var filename = i.filename.split('/').pop();
         var ext = mime.lookup(i.filename);
-        html += '<img src="data:' + ext + ';base64,' + (new Buffer(i.data, 'binary')).toString('base64') + '" />';
-        htmlPrint += '<li><img src="/assets/' + filename + '" /></li>\n';
+        html += '&lt;img src="data:' + ext + ';base64,' + (new Buffer(i.data, 'binary')).toString('base64') + '" /&gt;';
+        htmlPrint += '&lt;li&gt;&lt;img src="/assets/' + filename + '" /&gt;&lt;/li&gt;\n';
     });
     $.mime({'text/markdown': 'Usage:\n\n```html\n' + htmlPrint + '\n```\nOutput:\n' + html});
-}).catch(e => $.done(e));
+}).catch(e =&gt; $.done(e));
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

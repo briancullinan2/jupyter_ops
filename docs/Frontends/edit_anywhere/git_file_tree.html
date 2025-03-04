@@ -82,7 +82,7 @@ var mime = require('mime')
 
 lg.noExitRuntime = true
 lg.quit = function () {}
-lg.onRuntimeInitialized = () => {
+lg.onRuntimeInitialized = () =&gt; {
     const FS = lg.FS;
     const MEMFS = FS.filesystems.MEMFS;
 
@@ -135,8 +135,8 @@ async function gitFileTree() {
     const ERRNO_CODES = lg.ERRNO_CODES
     // wait for the module to load
     var waiter, counter = 0
-    await new Promise(resolve => {
-        waiter = setInterval(() => {
+    await new Promise(resolve =&gt; {
+        waiter = setInterval(() =&gt; {
             if(lg.loaded || counter === 1000) {
                 clearInterval(waiter)
                 resolve()
@@ -159,7 +159,7 @@ async function gitFileTree() {
         lg.callMain(['remote', 'remove', 'origin'])
         lg.callMain(['remote', 'add', 'origin', 'https://github.com/torch2424/made-with-webassembly.git'])
         lg.callMain(['config', 'core.sparsecheckout', 'true'])
-        // echo "finisht/*" >> .git/info/sparse-checkout
+        // echo "finisht/*" &gt;&gt; .git/info/sparse-checkout
         lg.callMain(['fetch', 'origin', '--depth=1'])
         lg.callMain(['checkout', 'master'])
         // git rev-list --all --quiet --objects --missing=print | wc -l
@@ -171,30 +171,30 @@ async function gitFileTree() {
     var makeTree
     makeTree = function (dir) {
         var files = FS.readdir(dir)
-            .filter(dir => !dir.match(/^\.\.?$/))
-        return `<ul>` + files.map((file, i) => {
+            .filter(dir =&gt; !dir.match(/^\.\.?$/))
+        return `&lt;ul&gt;` + files.map((file, i) =&gt; {
             var mimeType = mime.getType(file)
             var path = dir + '/' + file
             var escPath = 'ft' + path.replace(/[^a-z0-9_-]/ig, '_') + '_' + i
             if(FS.isDir(FS.lstat(path).mode)) {
-                return `<li class="folder">
-                    <input type="checkbox" name="${escPath}" id="${escPath}" />
-                    <label for="${escPath}">
-                        <i class="fas fa-angle-right"></i><i class="fas fa-folder"></i>
+                return `&lt;li class="folder"&gt;
+                    &lt;input type="checkbox" name="${escPath}" id="${escPath}" /&gt;
+                    &lt;label for="${escPath}"&gt;
+                        &lt;i class="fas fa-angle-right"&gt;&lt;/i&gt;&lt;i class="fas fa-folder"&gt;&lt;/i&gt;
                         ${file}
-                    </label>
+                    &lt;/label&gt;
                     ${makeTree(path)}
-                    </li>`
+                    &lt;/li&gt;`
             } else if (FS.isFile(FS.lstat(path).mode)) {
-                return `<li>
-                    <input type="checkbox" name="${escPath}" id="${escPath}" />
-                    <label for="${escPath}">
-                        <i class="fas ${mimeToIcon(mimeType)}"></i>
+                return `&lt;li&gt;
+                    &lt;input type="checkbox" name="${escPath}" id="${escPath}" /&gt;
+                    &lt;label for="${escPath}"&gt;
+                        &lt;i class="fas ${mimeToIcon(mimeType)}"&gt;&lt;/i&gt;
                         ${file}
-                    </label>
-                    </li>`
+                    &lt;/label&gt;
+                    &lt;/li&gt;`
             }
-        }).join('') + `</ul>`
+        }).join('') + `&lt;/ul&gt;`
     }
     var fileTree = makeTree('.')
     return fileTree

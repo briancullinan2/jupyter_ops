@@ -75,10 +75,10 @@ const ALLOWED_USERS = [
 async function authenticateRoute(req, res, next) {
   var url_parts = url.parse(req.url, true);
   var query = url_parts.query;
-  //console.log(query, SESSIONS, query.session && typeof SESSIONS[query.session] != 'undefined' 
-  //  && ALLOWED_USERS.includes(SESSIONS[query.session]))
-  if(query.session && typeof SESSIONS[query.session] != 'undefined' 
-    && ALLOWED_USERS.includes(SESSIONS[query.session])) {
+  //console.log(query, SESSIONS, query.session &amp;&amp; typeof SESSIONS[query.session] != 'undefined' 
+  //  &amp;&amp; ALLOWED_USERS.includes(SESSIONS[query.session]))
+  if(query.session &amp;&amp; typeof SESSIONS[query.session] != 'undefined' 
+    &amp;&amp; ALLOWED_USERS.includes(SESSIONS[query.session])) {
     req.authenticated = query.session
     return next()
   }

@@ -91,21 +91,21 @@ function deQueue(inputQueue, searchCallback, ctx) {
     const callback = typeof searchCallback === 'function'
         ? searchCallback
         : importer.import(searchCallback, Object.assign({useCache: false}, ctx));
-    if(inputQueue.length > 0) {
+    if(inputQueue.length &gt; 0) {
         const item = inputQueue.shift();
-        return new Promise(resolve => setTimeout(() => resolve(), 100))
-            .then(() => callback(...[item, ctx]))
-            .catch(e => {
+        return new Promise(resolve =&gt; setTimeout(() =&gt; resolve(), 100))
+            .then(() =&gt; callback(...[item, ctx]))
+            .catch(e =&gt; {
                 console.log(e + '');
-                if((e + '').indexOf('Already') > -1 || (e + '').indexOf('session') > -1) {
+                if((e + '').indexOf('Already') &gt; -1 || (e + '').indexOf('session') &gt; -1) {
                     inputQueue.push(item);
                     throw new Error('Abandoning session :(', e);
                 }
             })
-            .then(r => results.push(r))
-            .then(() => deQueue(inputQueue, searchCallback, ctx))
-            .then(r => results.concat(r))
-            .catch(e => console.log(e))
+            .then(r =&gt; results.push(r))
+            .then(() =&gt; deQueue(inputQueue, searchCallback, ctx))
+            .then(r =&gt; results.concat(r))
+            .catch(e =&gt; console.log(e))
     } else {
         return results;
     }
@@ -115,17 +115,17 @@ function deQueue(inputQueue, searchCallback, ctx) {
 function multiCrawl(inputList, searchCallback) {
     var indexes = Array.from(Array(Math.min(inputList.length, CONNECTIONS)).keys());
     var connections = [];
-    var promises = indexes.map((s, i) => resolve => {
+    var promises = indexes.map((s, i) =&gt; resolve =&gt; {
         const client = runSeleniumCell(false, false);
         return client
             // skip this if error
-            //.then(() => connections[i].onlyOneWindow())
-            //.then(() => connections[i].resizeWindow())
-            .then(ctx => {
+            //.then(() =&gt; connections[i].onlyOneWindow())
+            //.then(() =&gt; connections[i].resizeWindow())
+            .then(ctx =&gt; {
                 connections.push(ctx);
                 resolve(ctx)
             })
-            .catch(e => {
+            .catch(e =&gt; {
                 console.log(e);
                 resolve(null);
             })
@@ -133,18 +133,18 @@ function multiCrawl(inputList, searchCallback) {
     var queue = [].concat(inputList);
     var count = 0;
     return importer.runAllPromises(promises)
-        .then(() => {
-            console.log(connections.map(c => c.client.requestHandler.sessionID));
+        .then(() =&gt; {
+            console.log(connections.map(c =&gt; c.client.requestHandler.sessionID));
         })
-        .then(() => {
+        .then(() =&gt; {
             return connections[0].client
                 .scanning(true)
-                .then(() => connections[0].getAllSessionUrls())
+                .then(() =&gt; connections[0].getAllSessionUrls())
                 .scanning(false)
         })
-        .then(() => console.log('done loading sessions'))
-        .then(() => Promise.all(connections.map(ctx => deQueue(queue, searchCallback, ctx))))
-        .then(r => [].concat([], ...r))
+        .then(() =&gt; console.log('done loading sessions'))
+        .then(() =&gt; Promise.all(connections.map(ctx =&gt; deQueue(queue, searchCallback, ctx))))
+        .then(r =&gt; [].concat([], ...r))
 }
 module.exports = multiCrawl;
 

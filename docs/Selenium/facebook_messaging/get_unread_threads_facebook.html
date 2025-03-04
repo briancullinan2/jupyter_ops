@@ -79,21 +79,21 @@ var {
 
 function getUnreadThreads() {
     return client
-        .then(() => loginFacebook())
+        .then(() =&gt; loginFacebook())
         .getUrl()
-        .then(url => url.indexOf('https://www.facebook.com/messages/?filter=unread') === -1
+        .then(url =&gt; url.indexOf('https://www.facebook.com/messages/?filter=unread') === -1
              ? client.url('https://www.facebook.com/messages/?filter=unread')
              : [])
         .pause(500)
-        .then(() => listFacebookThreads(false))
-        .then(threads => {
-            return importer.runAllPromises(threads.map(thread => resolve => {
+        .then(() =&gt; listFacebookThreads(false))
+        .then(threads =&gt; {
+            return importer.runAllPromises(threads.map(thread =&gt; resolve =&gt; {
                 return readFacebookThread(thread)
-                    .catch(e => console.log(e))
-                    .then(r => resolve(r))
+                    .catch(e =&gt; console.log(e))
+                    .then(r =&gt; resolve(r))
             }))
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 module.exports = getUnreadThreads;
 </code></pre>

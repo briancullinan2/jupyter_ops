@@ -86,14 +86,14 @@ async function redditLinks(driver, startPage) {
   try {
     await driver.get(startPage)
 
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise(resolve =&gt; setTimeout(resolve, 1000))
 
     let links = await selectDom(driver, [
       '//div[contains(@role, "main")]//div[contains(@class, "link") and not(contains(@class, "linklisting")) and not(contains(@class, "promoted"))]'])
 
     // TODO: get some special links, get comment count, titles, finally next page
     let results = []
-    for(let i = 0; i < links.length; i++) {
+    for(let i = 0; i &lt; links.length; i++) {
       let result = await selectDom(driver, {
         title: './/a[contains(@class, "title")]/text()',
         link: './/a[contains(@class, "title")]/@href',
@@ -105,7 +105,7 @@ async function redditLinks(driver, startPage) {
 
     let next = await selectDom(driver, '//a[contains(@rel, "next")]/@href')
 
-    let objectArray = results.map(r => ({
+    let objectArray = results.map(r =&gt; ({
       title: r.title,
       time: new Date(r.time),
       link: r.link.includes('://') 

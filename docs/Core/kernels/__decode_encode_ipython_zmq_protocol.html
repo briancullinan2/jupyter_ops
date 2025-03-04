@@ -114,17 +114,17 @@ var crypto = require('crypto');
 var uuid = require('uuid/v4');
 
 // uuids, delim, hmac, header, parent_header, metadata, content
-var DELIM = '<IDS|MSG>'
+var DELIM = '&lt;IDS|MSG&gt;'
 function parseMessage() {
-    const strs = [].map.call(arguments, a => a.toString())
+    const strs = [].map.call(arguments, a =&gt; a.toString())
     let i
-    for (i=0; i<strs.length; i++) {
+    for (i=0; i&lt;strs.length; i++) {
       if (strs[i] === DELIM) {
         break
       }
     }
     const uuids = [].slice.call(arguments, 0, i)
-    const args = strs.slice(i + 2).map(a => JSON.parse(a))
+    const args = strs.slice(i + 2).map(a =&gt; JSON.parse(a))
     let [header, parent, metadata, content] = args
     var result = {};
     result[header.msg_type] = {content, header, metadata, parent};

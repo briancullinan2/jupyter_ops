@@ -63,15 +63,15 @@ var path = require('path');
 var importer = require('../Core');
 
 var multiline = process.platform === 'win32' ? '^\n ' : '\\\n ';
-var multicmd = process.platform === 'win32' ? ' ^\n&& ' : ' \\\n&& ';
+var multicmd = process.platform === 'win32' ? ' ^\n&amp;&amp; ' : ' \\\n&amp;&amp; ';
 
 // read cmd template and execute each line?
 function bashToExec(code) {
     return code
         .split(/\n/ig)
-        .map(l => '{EXEC} ' + l)
+        .map(l =&gt; '{EXEC} ' + l)
         .join('\n')
-        .replace(/\\((\s*\n)+\{EXEC\})+\s*&&/ig, multicmd)
+        .replace(/\\((\s*\n)+\{EXEC\})+\s*&amp;&amp;/ig, multicmd)
         .replace(/\\((\s*\n)+\{EXEC\})+\s*/ig, multiline);
 }
 
@@ -82,10 +82,10 @@ function execCmd(script, options) {
     return importer.runAllPromises(
         bashToExec(script)
             .split(/\s*\{EXEC\}\s*/ig)
-            .filter(r => r.trim() !== '')
-            .map(r => (resolve, reject) => {
+            .filter(r =&gt; r.trim() !== '')
+            .map(r =&gt; (resolve, reject) =&gt; {
                 if(!options.quiet) console.log('spawning process ' + r)
-                const ps = exec(r.replace(/\$[0-9]+/ig, i => process.argv[parseInt(i.substr(1))+1] || ''), Object.assign(options || {}, {maxBuffer: 1024 * 50000}),  (err, result) => {
+                const ps = exec(r.replace(/\$[0-9]+/ig, i =&gt; process.argv[parseInt(i.substr(1))+1] || ''), Object.assign(options || {}, {maxBuffer: 1024 * 50000}),  (err, result) =&gt; {
                     if (err) {
                         return reject(err);
                     }
@@ -93,16 +93,16 @@ function execCmd(script, options) {
                 });
                 let errors = '';
                 let data = '';
-                ps.stderr.on('data', d => {
+                ps.stderr.on('data', d =&gt; {
                     if(!options.quiet) console.error(d);
                     data += d;
                 });
-                ps.stdout.on('data', d => {
+                ps.stdout.on('data', d =&gt; {
                     if(!options.quiet) console.log(d);
                     errors += d;
                 });
-                ps.on('exit', (code, signal) => {
-                    if(code > 0) {
+                ps.on('exit', (code, signal) =&gt; {
+                    if(code &gt; 0) {
                         const err = new Error(`child process exited with code ${code} and signal ${signal}`);
                         err.data = data + errors;
                         reject(err);

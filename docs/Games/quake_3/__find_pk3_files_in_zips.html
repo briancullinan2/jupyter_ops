@@ -131,16 +131,16 @@ function readZip(zipFile, cb) {
         storeEntries: true
     });
 
-    zip.on('ready', () => {
+    zip.on('ready', () =&gt; {
         // Take a look at the files
         console.log('Entries read: ' + zip.entriesCount + ' ' + path.basename(zipFile));
         var pk3s = Object.values(zip.entries())
-            .filter(entry => entry.name.match(/\.pk3/i))
+            .filter(entry =&gt; entry.name.match(/\.pk3/i))
 
-        return importer.runAllPromises(pk3s.map((pk3, i) => new Promise((resolve) => {
+        return importer.runAllPromises(pk3s.map((pk3, i) =&gt; new Promise((resolve) =&gt; {
             var pk3Path = '/Volumes/External/Personal/planet_quake_data/bestmaps/' + path.basename(pk3.name);
             if(!fs.existsSync(pk3Path)) {
-                zip.extract(pk3.name, pk3Path, err => {
+                zip.extract(pk3.name, pk3Path, err =&gt; {
                     if(err) {
                         console.log('Extract error ' + err)
                         return resolve()
@@ -151,20 +151,20 @@ function readZip(zipFile, cb) {
             } else {
                 resolve()
             }
-        }))).then(() => {
+        }))).then(() =&gt; {
             zip.close()
             cb()
         })
     });
     
-    zip.on('error', err => { cb() });
+    zip.on('error', err =&gt; { cb() });
 }
 
 function extractAll(root) {
     var results = listInProject(root || '/Volumes/External/Personal/planet_quake_data/lvlworld/new-2020-11-6', '**/*.zip')
     console.log(results)
-    return importer.runAllPromises(results.map(r => {
-        return (resolve) => {
+    return importer.runAllPromises(results.map(r =&gt; {
+        return (resolve) =&gt; {
             try {
                 readZip(r, resolve)
             } catch (e) {
@@ -173,7 +173,7 @@ function extractAll(root) {
                 resolve()
             }
         }
-    })).then(results => results.filter(r => r))
+    })).then(results =&gt; results.filter(r =&gt; r))
 }
 
 module.exports = extractAll;

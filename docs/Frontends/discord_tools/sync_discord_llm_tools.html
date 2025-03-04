@@ -102,13 +102,13 @@ const ALL_COMMANDS = [
 async function syncChat(guildId = null) {
   var cmd, cmdDef
   var commandResult = await getCommands(guildId)
-  var commands = commandResult.map(command => command.name)
+  var commands = commandResult.map(command =&gt; command.name)
 
 
   if(!commands.includes('hello')) {
     await registerCommand('hello', 'Check if Orbb is awake.', guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'hello')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'hello')[0]
     //await updateCommand(cmd.name, cmd.description, cmd.id, guildId)
   }
   interactionsCommands['hello'] = doInteraction
@@ -128,10 +128,10 @@ async function syncChat(guildId = null) {
   if(!commands.includes('prompt')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'prompt')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'prompt')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description 
       || cmdDef.options.length != cmd.options.length
-      || JSON.stringify(cmdDef.options) != JSON.stringify(cmd.options.map(o => ({
+      || JSON.stringify(cmdDef.options) != JSON.stringify(cmd.options.map(o =&gt; ({
         name: o.name,
         description: o.description,
         required: o.required,
@@ -161,7 +161,7 @@ async function syncChat(guildId = null) {
   if(!commands.includes('distill')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'distill')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'distill')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -183,7 +183,7 @@ async function syncChat(guildId = null) {
   if(!commands.includes('instruct')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'instruct')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'instruct')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -205,7 +205,7 @@ async function syncChat(guildId = null) {
   if(!commands.includes('mistral')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'mistral')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'mistral')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -227,7 +227,7 @@ async function syncChat(guildId = null) {
   if(!commands.includes('reason')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'reason')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'reason')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -262,7 +262,7 @@ async function syncChat(guildId = null) {
   if(!commands.includes('essay')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'essay')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'essay')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -297,7 +297,7 @@ async function syncChat(guildId = null) {
   if(!commands.includes('business')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'business')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'business')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -332,7 +332,7 @@ async function syncChat(guildId = null) {
   if(!commands.includes('story')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'story')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'story')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -354,7 +354,7 @@ async function syncChat(guildId = null) {
   if(!commands.includes('voice')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'voice')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'voice')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -362,8 +362,8 @@ async function syncChat(guildId = null) {
   */
 
 
-  var toRemove = commandResult.filter(c => !ALL_COMMANDS.includes(c.name))
-  for(var i = 0; i < toRemove.length; i++) {
+  var toRemove = commandResult.filter(c =&gt; !ALL_COMMANDS.includes(c.name))
+  for(var i = 0; i &lt; toRemove.length; i++) {
     await deleteCommand(toRemove[i].id, guildId)
   }
 

@@ -110,28 +110,28 @@ var fromJavascriptToPhp = {
 }
 
 var phpToJs = [
-    [() => array_shift(arr), () => arr.shift()],
-    [() => strpos(str, match), () => { // has parameters so call this function instead?
+    [() =&gt; array_shift(arr), () =&gt; arr.shift()],
+    [() =&gt; strpos(str, match), () =&gt; { // has parameters so call this function instead?
         var i = str.indexOf(match);
-        return i > -1 ? i : false}],
-    [() => substr(str, start, length), () => str.substr(start, length)],
-    [() => is_numeric(num), () => !isNaN(parseInt(num)) || !isNaN(parseFloat(num))],
-    [() => abs(), () => Math.abs()], // doesn't mess with parameters
+        return i &gt; -1 ? i : false}],
+    [() =&gt; substr(str, start, length), () =&gt; str.substr(start, length)],
+    [() =&gt; is_numeric(num), () =&gt; !isNaN(parseInt(num)) || !isNaN(parseFloat(num))],
+    [() =&gt; abs(), () =&gt; Math.abs()], // doesn't mess with parameters
     // Call Identifier name match done automatically
     //[['abs', 'sin', 'cos', 'pow', 'floor', 'ceil', 'round', 'max', 'min'], {
-    //    `//*[contains(@type, "Call")`: (id) => Math.id(), // optional ()
+    //    `//*[contains(@type, "Call")`: (id) =&gt; Math.id(), // optional ()
     //}]
     // above is shorthand for this:
     [(id = ['abs', 'sin', 'cos',
             'pow', 'floor', 'ceil',
-            'round', 'max', 'min']) => id(), {
-                '//*[contains(@type, "Call")': (id) => Math.id(), // optional ()
+            'round', 'max', 'min']) =&gt; id(), {
+                '//*[contains(@type, "Call")': (id) =&gt; Math.id(), // optional ()
     }],
 
 ]
 
 // this will work as long as PHP syntax is also called a Call or Member or Indentifier
-var jsToPhp = phpToJs.map(d => [d[1], d[0]])
+var jsToPhp = phpToJs.map(d =&gt; [d[1], d[0]])
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

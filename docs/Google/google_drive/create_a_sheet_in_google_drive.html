@@ -85,10 +85,10 @@ function createSheet(email) {
     var sheets;
     
     return authorizeSheets()
-        .then(s => sheets = s)
-        .then(() => util.promisify(sheets.spreadsheets.create.bind(sheets))())
-        .then(r => insertPermission(r.data.spreadsheetId, 'megamindbrian@gmail.com'))
-        .then(r => insertPermission(r.data.spreadsheetId, email))
+        .then(s =&gt; sheets = s)
+        .then(() =&gt; util.promisify(sheets.spreadsheets.create.bind(sheets))())
+        .then(r =&gt; insertPermission(r.data.spreadsheetId, 'megamindbrian@gmail.com'))
+        .then(r =&gt; insertPermission(r.data.spreadsheetId, email))
 }
 
 module.exports = createSheet;

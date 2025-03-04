@@ -129,7 +129,7 @@ function getCustomDataObject(eloquaToken, eloquaConfig) {
         method: 'GET',
         headers: eloquaImport.eloquaRequestHeaders(eloquaToken)
     })
-        .then(r => r.body.items.filter(i => i.name === 'AUT - NA Renewals')[0])
+        .then(r =&gt; r.body.items.filter(i =&gt; i.name === 'AUT - NA Renewals')[0])
 }
 
 function getImportDefinitions(uri, eloquaToken, eloquaConfig) {
@@ -139,7 +139,7 @@ function getImportDefinitions(uri, eloquaToken, eloquaConfig) {
         method: 'GET',
         headers: eloquaImport.eloquaRequestHeaders(eloquaToken)
     })
-        .then(r => r.body.items.filter(i => i.name === bulkImportTemplate(0).name)[0])
+        .then(r =&gt; r.body.items.filter(i =&gt; i.name === bulkImportTemplate(0).name)[0])
 }
 
 module.exports = {

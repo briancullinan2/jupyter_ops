@@ -135,9 +135,9 @@ async function doBackgroundMask(image) {
     }
     let highestCount = 0
     let images = fs.readdirSync(stablePath)
-    for(let i = 0; i < images.length; i++) {
+    for(let i = 0; i &lt; images.length; i++) {
       let index = parseInt(images[i].split(/[\.-]/gi)[0])
-      if(!isNaN(index) && index > highestCount) {
+      if(!isNaN(index) &amp;&amp; index &gt; highestCount) {
         highestCount = index
       }
     }

@@ -71,9 +71,9 @@ var {registerCommand, getCommands, deleteCommand} = importer.import('discord api
 async function syncCommands() {
     await authorizeGateway()
     var commandResult = (await getCommands())
-    var commands = commandResult.map(command => command.name)
+    var commands = commandResult.map(command =&gt; command.name)
     if(commands.includes('hello-orbb'))
-    await deleteCommand(commandResult.filter(c => c.name == 'hello-orbb')[0].id)
+    await deleteCommand(commandResult.filter(c =&gt; c.name == 'hello-orbb')[0].id)
     if(!commands.includes('hello'))
     await registerCommand('hello', 'Check if Orbb is awake.')
     if(!commands.includes('challenge'))

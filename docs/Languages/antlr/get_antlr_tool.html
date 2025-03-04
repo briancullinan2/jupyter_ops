@@ -87,7 +87,7 @@ const GRAMMARS = []
 
 function findGrammars(directory) {
     let grammars = fs.readdirSync(path.join(PARSER_PATH, directory))
-    for(let j = 0; j < grammars.length; j++) {
+    for(let j = 0; j &lt; grammars.length; j++) {
         if(grammars[j][0] == '.' || grammars[j].match('examples')) {
             continue
         }
@@ -109,7 +109,7 @@ function findGrammars(directory) {
 }
 
 let languages = fs.readdirSync(PARSER_PATH)
-for(let i = 0; i < languages.length; i++) {
+for(let i = 0; i &lt; languages.length; i++) {
     if(languages[i][0] == '.') {
         continue
     }
@@ -120,7 +120,7 @@ for(let i = 0; i < languages.length; i++) {
 }
 
 async function getParser(language) {
-    for(let i = 0; i < GRAMMARS.length; i++) {
+    for(let i = 0; i &lt; GRAMMARS.length; i++) {
         if(GRAMMARS[i].match(language + '/') || GRAMMARS[i].match('/' + language)) {
             let lang = path.basename(GRAMMARS[i], path.extname(GRAMMARS[i]))
                 .replace('Lexer', '').replace('Parser', '')
@@ -142,7 +142,7 @@ import parser from '${parserPath}'
 ${hasListener?('import listener from \''+listenerPath+'\''):''}
 export default {antlr4, lexer, parser${hasListener?', listener':''}}
 `
-            let module = await importer.makeESModule(codeCell, __filename + '<inline>', global)
+            let module = await importer.makeESModule(codeCell, __filename + '&lt;inline&gt;', global)
             return module
         }
     }

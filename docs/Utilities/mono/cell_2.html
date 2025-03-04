@@ -103,7 +103,7 @@ ADD ./*.dcproj /app/src/
 RUN /bin/bash -c "dotnet restore ./act.subscription.management.sln"
 
 ADD . /app/src 
-RUN /bin/bash -c "dotnet restore ./act.subscription.management.sln && dotnet publish ./act.subscription.management.sln -c Release -o ./obj/Docker/publish"
+RUN /bin/bash -c "dotnet restore ./act.subscription.management.sln &amp;&amp; dotnet publish ./act.subscription.management.sln -c Release -o ./obj/Docker/publish"
 
 RUN cp -R ${source:-subscription.services/Subscription.Services.EloquaImport/obj/Docker/publish} /app
 

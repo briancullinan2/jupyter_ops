@@ -88,9 +88,9 @@ async function defaultCollector(driver, startPage, selector = '//a[@href]/@href'
 
   try {
     await driver.get(startPage)
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise(resolve =&gt; setTimeout(resolve, 1000))
     let links = await selectDom(driver, selector)
-    return links.map(l => ({link: l})) // to match reddit post lister
+    return links.map(l =&gt; ({link: l})) // to match reddit post lister
   } catch (e) {
     driver.quit()
     throw e
@@ -103,7 +103,7 @@ function persistSummaries(funny, summaries) {
     funny = 'summary'
   }
   let weeklySummary = path.join(PROJECT_PATH, safeurl(getNearestSunday()) + '-' + safeurl(funny) + '.json')
-  if(!summaries && fs.existsSync(weeklySummary)) {
+  if(!summaries &amp;&amp; fs.existsSync(weeklySummary)) {
     return JSON.parse(fs.readFileSync(weeklySummary))
   } else if (!summaries) {
     return {}

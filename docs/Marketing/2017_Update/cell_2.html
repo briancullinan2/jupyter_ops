@@ -96,38 +96,38 @@ apply
 
     node [shape = box];
     {
-        start->selectrp->upgrade [color = invis];
+        start-&gt;selectrp-&gt;upgrade [color = invis];
         rankdir = LR;
     }
 
-    start:e -> selectrp
+    start:e -&gt; selectrp
 :
     w
-    selectrp:e -> monthly
+    selectrp:e -&gt; monthly
 :
     w
-    selectrp:e -> annual
+    selectrp:e -&gt; annual
 :
     w
-    selectrp:e-> perpetual
+    selectrp:e-&gt; perpetual
 :
     w
-    selectrp:e -> year2
+    selectrp:e -&gt; year2
 :
     w
-    monthly:e -> upgrade
+    monthly:e -&gt; upgrade
 :
     w
-    annual:e -> upgrade
+    annual:e -&gt; upgrade
 :
     w
-    perpetual:e -> upgrade
+    perpetual:e -&gt; upgrade
 :
     w
-    year2:e -> upgrade
+    year2:e -&gt; upgrade
 :
     w
-    upgrade:s -> selectrp
+    upgrade:s -&gt; selectrp
 :
     s
 }</code></pre>

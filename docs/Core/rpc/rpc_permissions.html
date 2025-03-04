@@ -81,9 +81,9 @@ var getCellGroups = importer.import('get cell rpc groups');
 var {PUBLIC} = importer.import('rpc groups')
 
 // find the shortest words from the query to match the same cell
-var id2 = (cell) => path.basename(cell.filename) + '[' + cell.questions[0] + ']';
+var id2 = (cell) =&gt; path.basename(cell.filename) + '[' + cell.questions[0] + ']';
 
-var catchInterpret = search => search.map(s => {
+var catchInterpret = search =&gt; search.map(s =&gt; {
     try {
         return importer.interpret(s);
     } catch (e) {
@@ -92,22 +92,22 @@ var catchInterpret = search => search.map(s => {
     }
 });
 
-var mapReduceCells = (search, public) => catchInterpret(search || [])
-    .map((results, i) => (typeof results.id !== 'undefined' ? [results] : results)
-         .map(cell => Object.assign(cell, {
+var mapReduceCells = (search, public) =&gt; catchInterpret(search || [])
+    .map((results, i) =&gt; (typeof results.id !== 'undefined' ? [results] : results)
+         .map(cell =&gt; Object.assign(cell, {
             id2: id2(cell),
             original: search[i],
             groups: (public === PUBLIC ? [] : ['Search'])
                 .concat(public[search[i]] || [])
                 .concat(public[id2(cell)] || [])
          })))
-    .reduce((arr, i) => typeof i.id !== 'undefined'
+    .reduce((arr, i) =&gt; typeof i.id !== 'undefined'
             ? arr.concat([i])
             : arr.concat(i), [])
-    .reduce((acc, cell) => (acc[cell.id] = acc[cell.id2] = getCellGroups(cell), acc), {})
+    .reduce((acc, cell) =&gt; (acc[cell.id] = acc[cell.id2] = getCellGroups(cell), acc), {})
 
 function getPermissions(search) {
-    if(typeof search === 'string' && search) {
+    if(typeof search === 'string' &amp;&amp; search) {
         search = [search];
     }
     var public = mapReduceCells(Object.keys(PUBLIC), PUBLIC);

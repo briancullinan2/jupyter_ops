@@ -66,16 +66,16 @@
 <p>The basic structure of an HTML document includes the document type declaration, HTML tag, head section (with metadata, document title, viewport settings, stylesheet link, and inline styles), body section (with navigation bar, header section, and output section), and end of document tags. The document can be customized with variables and links to external stylesheets, and can be designed to be responsive with viewport settings.</p>
 
 
-<pre class="html"><code><!DOCTYPE html>
-<html>
+<pre class="html"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
 
-<head>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>${TITLE}</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-  <style>
+&lt;head&gt;
+  &lt;meta charset='utf-8'&gt;
+  &lt;meta http-equiv='X-UA-Compatible' content='IE=edge'&gt;
+  &lt;title&gt;${TITLE}&lt;/title&gt;
+  &lt;meta name='viewport' content='width=device-width, initial-scale=1'&gt;
+  &lt;link rel='stylesheet' type='text/css' media='screen' href='main.css'&gt;
+  &lt;style&gt;
     nav {
       position: fixed;
       overflow: auto;
@@ -103,23 +103,23 @@
         display: none;
       }
     }
-  </style>
-</head>
+  &lt;/style&gt;
+&lt;/head&gt;
 
-<body>
-  <nav>
+&lt;body&gt;
+  &lt;nav&gt;
     ${PARENT}
-    <br /><br />
+    &lt;br /&gt;&lt;br /&gt;
     ${CLASSES}
-  </nav>
-  <header>
+  &lt;/nav&gt;
+  &lt;header&gt;
     ${PARENT} ${PREV} ${NEXT}
-  </header>
+  &lt;/header&gt;
 
   ${OUTPUT}
-</body>
+&lt;/body&gt;
 
-</html></code></pre>
+&lt;/html&gt;</code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">

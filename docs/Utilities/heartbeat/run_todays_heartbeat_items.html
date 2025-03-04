@@ -81,16 +81,16 @@ function runTodaysHeartbeat(calendar, exit) {
     return (typeof options.auth === 'undefined'
            ? getOauthClient(options)
            : Promise.resolve([]))
-        .then(() => getDaysEvents(new Date(), options))
-        .then(r => {
-            const heartbeat = r.filter(r => r.event.summary === 'heartbeat'
+        .then(() =&gt; getDaysEvents(new Date(), options))
+        .then(r =&gt; {
+            const heartbeat = r.filter(r =&gt; r.event.summary === 'heartbeat'
                                        || r.event.summary === 'todays heartbeat items');
         
             try {
-                var dom = new JSDOM('<body>' + (heartbeat[0].event.description || '').replace(/<br\/?>/igm, '\n') + '</body>');
+                var dom = new JSDOM('&lt;body&gt;' + (heartbeat[0].event.description || '').replace(/&lt;br\/?&gt;/igm, '\n') + '&lt;/body&gt;');
                 const desc = dom.window.document.body.textContent.split('\n');
-                desc.forEach(c => {
-                    if(c.trim().length > 0) {
+                desc.forEach(c =&gt; {
+                    if(c.trim().length &gt; 0) {
                         const parameters = (/[\{].*[\}]|[\[].*[\]]|(['"]).*\1/igm).exec(c) || ['""'];
                         thump(c.replace(parameters[0], ''), JSON.parse(parameters[0]), false);
                     }
@@ -109,8 +109,8 @@ module.exports = runTodaysHeartbeat;
 if(typeof $ !== 'undefined') {
     $.async();
     runTodaysHeartbeat(false, false)
-        .then(r => $.sendResult(r))
-        .then(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .then(e =&gt; $.sendError(e))
 }
 </code></pre>
 

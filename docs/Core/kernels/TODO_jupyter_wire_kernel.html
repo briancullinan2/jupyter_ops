@@ -137,16 +137,16 @@ function wireKernel(kernel) {
 }
 
 wireKernel.prototype = {
-    input_request: (kernel, request) => {
+    input_request: (kernel, request) =&gt; {
         // TODO: finish this
         //this.onReplies[response.header.msg_id] = onReply;
     },
-    comm_info_request: (kernel, request) => {
+    comm_info_request: (kernel, request) =&gt; {
         kernel.do_respond({status: {execution_state: 'busy'}});
         kernel.do_respond({status: {execution_state: 'idle'}});
         kernel.do_respond({comm_info_reply: {comms: {}}});
     },
-    kernel_info_request: (kernel, request) => {
+    kernel_info_request: (kernel, request) =&gt; {
         kernel.do_respond({status: {execution_state: 'busy'}});
         kernel.do_respond({status: {execution_state: 'idle'}});
         kernel.do_respond({kernel_info_reply: kernel.kernel_info});

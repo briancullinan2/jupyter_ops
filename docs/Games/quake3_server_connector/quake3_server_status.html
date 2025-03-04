@@ -78,9 +78,9 @@ async function getStatus(ip, port) {
         type: 'quake3',
         host: ip,
         port: port
-    }).then((state) => {
+    }).then((state) =&gt; {
         return state
-    }).catch((error) => {
+    }).catch((error) =&gt; {
         console.log('Server is offline', error)
     })
 }
@@ -122,7 +122,7 @@ async function getChats(channelId) {
         return JSON.parse(r.content)
     })
     var chats = parsed.filter(function (r) {
-        if(r.timestamp > maxTime)
+        if(r.timestamp &gt; maxTime)
             maxTime = r.timestamp
         return r.type == SV_EVENT.CLIENTSAY
     })
@@ -159,7 +159,7 @@ async function getChats(channelId) {
     if(call.length) {
         await discordApi.triggerTyping(channelId)        
     }
-    for(var i = 0; i < call.length; i++) {
+    for(var i = 0; i &lt; call.length; i++) {
         try {
             //console.log('Say: ' + call[i].value)
             await discordApi.createMessage({
@@ -170,7 +170,7 @@ async function getChats(channelId) {
                     fields: [
                         {
                             name: call[i].value,
-                            value: `<@&752605581029802155> [Connect](https://quake.games/?connect%20${'127.0.0.1:27960'})`,
+                            value: `&lt;@&amp;752605581029802155&gt; [Connect](https://quake.games/?connect%20${'127.0.0.1:27960'})`,
                             inline: false
                         },
                     ]

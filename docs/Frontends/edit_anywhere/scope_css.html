@@ -81,15 +81,15 @@
 
 function prefixRule(r, str, prefix, bodyId) {
     if(typeof r.rules !== 'undefined') {
-        r.rules.forEach(r2 => prefixRule(r2, str, prefix, bodyId))
+        r.rules.forEach(r2 =&gt; prefixRule(r2, str, prefix, bodyId))
     }
     if(typeof r.selectors === 'undefined') {
         return;
     }
-    r.selectors.forEach((s, i) => {
+    r.selectors.forEach((s, i) =&gt; {
         if(s.includes(bodyId)) {
             r.selectors[i] = s.replace('#' + bodyId, prefix);
-        } else if(s.includes('body') && !s.includes('#body')) {
+        } else if(s.includes('body') &amp;&amp; !s.includes('#body')) {
             r.selectors[i] = s.replace(/\s*body\s*/ig, prefix);
         } else {
             r.selectors[i] = prefix + ' ' + s;
@@ -101,7 +101,7 @@ function prefixCssRules(str, prefix, bodyId) {
     try {
         const ast = css.parse(str);
         // TODO: add a check for media queries
-        ast.stylesheet.rules.forEach(r => prefixRule(r, str, prefix, bodyId))
+        ast.stylesheet.rules.forEach(r =&gt; prefixRule(r, str, prefix, bodyId))
         return css.stringify(ast);
     } catch (e) {
         console.log(e)

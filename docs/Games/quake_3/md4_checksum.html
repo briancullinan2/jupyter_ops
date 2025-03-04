@@ -127,10 +127,10 @@ It assumes that an int is at least 32 bits long
 
 var m
 
-function F(X,Y,Z) {return (((X)&(Y)) | ((~(X))&(Z)))}
-function G(X,Y,Z) {return (((X)&(Y)) | ((X)&(Z)) | ((Y)&(Z)))}
+function F(X,Y,Z) {return (((X)&amp;(Y)) | ((~(X))&amp;(Z)))}
+function G(X,Y,Z) {return (((X)&amp;(Y)) | ((X)&amp;(Z)) | ((Y)&amp;(Z)))}
 function H(X,Y,Z) {return ((X)^(Y)^(Z))}
-function lshift(x,s) {return (((x)<<(s)) | ((x)>>>(32-(s))))}
+function lshift(x,s) {return (((x)&lt;&lt;(s)) | ((x)&gt;&gt;&gt;(32-(s))))}
 
 /* this applies md4 to 64 byte chunks */
 function mdfour64(M)
@@ -139,7 +139,7 @@ function mdfour64(M)
     var X = new Uint32Array(16)
     var A, B, C, D
 
-    for (var j=0;j<16;j++)
+    for (var j=0;j&lt;16;j++)
         X[j] = M[j];
 
     function ROUND1(a,b,c,d,k,s) { return lshift(a + F(b,c,d) + X[k], s) }
@@ -213,7 +213,7 @@ function mdfour64(M)
 
     A += AA; B += BB; C += CC; D += DD;
 
-    for (var j=0;j<16;j++)
+    for (var j=0;j&lt;16;j++)
         X[j] = 0;
 
     m.A = A; m.B = B; m.C = C; m.D = D;
@@ -221,12 +221,12 @@ function mdfour64(M)
 
 function copy64(M, input)
 {
-    for (var i=0;i<16;i++)
+    for (var i=0;i&lt;16;i++)
         M[i] =
-            (input[i*4+3] << 24) |
-            (input[i*4+2] << 16) |
-            (input[i*4+1] << 8) |
-            (input[i*4+0] << 0)
+            (input[i*4+3] &lt;&lt; 24) |
+            (input[i*4+2] &lt;&lt; 16) |
+            (input[i*4+1] &lt;&lt; 8) |
+            (input[i*4+0] &lt;&lt; 0)
 }
 
 function mdfour_begin(md)
@@ -249,21 +249,21 @@ function mdfour_tail(input, n)
 
     b = m.totalN * 8
 
-    if (n) for(var i=0;i<n;i++) buf[i] = input[i]
+    if (n) for(var i=0;i&lt;n;i++) buf[i] = input[i]
     buf[n] = 0x80
 
-    if (n <= 55) {
-        buf[56] = (b&0xFF)
-        buf[57] = (b>>8)&0xFF
-        buf[58] = (b>>16)&0xFF
-        buf[59] = (b>>24)&0xFF
+    if (n &lt;= 55) {
+        buf[56] = (b&amp;0xFF)
+        buf[57] = (b&gt;&gt;8)&amp;0xFF
+        buf[58] = (b&gt;&gt;16)&amp;0xFF
+        buf[59] = (b&gt;&gt;24)&amp;0xFF
         copy64(M, buf)
         mdfour64(M)
     } else {
-        buf[120] = (b&0xFF)
-        buf[121] = (b>>8)&0xFF
-        buf[122] = (b>>16)&0xFF
-        buf[123] = (b>>24)&0xFF
+        buf[120] = (b&amp;0xFF)
+        buf[121] = (b&gt;&gt;8)&amp;0xFF
+        buf[122] = (b&gt;&gt;16)&amp;0xFF
+        buf[123] = (b&gt;&gt;24)&amp;0xFF
         copy64(M, buf)
         mdfour64(M)
         copy64(M, buf.slice(64))
@@ -279,7 +279,7 @@ function mdfour_update(md, input, n)
 
     if (n == 0) mdfour_tail(input, n)
 
-    while (n - m.totalN >= 64) {
+    while (n - m.totalN &gt;= 64) {
         copy64(M, input.slice(m.totalN, m.totalN + 64))
         mdfour64(M)
         m.totalN += 64

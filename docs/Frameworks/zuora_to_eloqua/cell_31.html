@@ -136,13 +136,13 @@ var zuora;
 if(typeof $ !== 'undefined') {
     $.async();
     (zuora ? Promise.resolve(zuora) : getZuoraMonth(6, zuoraConfig))
-        .then(r => {
+        .then(r =&gt; {
             zuora = r;
         console.log(zuora.length);
-            console.log(JSON.stringify(_.uniqBy(zuora, r => r['ProductRatePlan.Name']), null, 4));
+            console.log(JSON.stringify(_.uniqBy(zuora, r =&gt; r['ProductRatePlan.Name']), null, 4));
         })
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

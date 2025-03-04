@@ -120,7 +120,7 @@ function mockTypescriptFs(root, data) {
         getDirectories: 'readdirSync'
     };
     Object.keys(toMock)
-        .forEach(k => {
+        .forEach(k =&gt; {
             if (typeof mem[toMock[k]] === 'function') {
                 tsMock.sys[k] = function () {
                     // typescript.sys functions return defined on error

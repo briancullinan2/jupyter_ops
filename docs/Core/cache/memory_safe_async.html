@@ -87,10 +87,10 @@
 
 <pre class="javascript"><code>
 function memorySafe(callback) {
-    return new Promise(resolve => {
-        setTimeout(() => {
+    return new Promise(resolve =&gt; {
+        setTimeout(() =&gt; {
             try {
-                if (process.memoryUsage().heapUsed > 500000000) {
+                if (process.memoryUsage().heapUsed &gt; 500000000) {
                     throw new Error('out of memory')
                 }
                 return resolve(callback())

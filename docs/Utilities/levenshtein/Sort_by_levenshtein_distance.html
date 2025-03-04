@@ -62,9 +62,9 @@ var levDist = importer.import(`${__filename}[0]`).levDist;
 
 function levSort(arr, search, getStr) {
     if(typeof getStr === 'undefined') {
-        getStr = (a) => a;
+        getStr = (a) =&gt; a;
     }
-    var result = arr.map((a) => a); // make a copy of the array
+    var result = arr.map((a) =&gt; a); // make a copy of the array
     result.sort(function (a, b) {
         return levDist(getStr(a), search) - levDist(getStr(b), search);
     });

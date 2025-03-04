@@ -68,10 +68,10 @@
 function sockifyClient(req, dep, host) {
     let ctx;
     ctx = automock.mockValue(req, {
-        stubCreator: (name) => {
+        stubCreator: (name) =&gt; {
             return function () {
                 var args = ['call', dep, name.split('.')[1]];
-                for (var i = 0; i < arguments.length; i++) {
+                for (var i = 0; i &lt; arguments.length; i++) {
                     args[args.length] = arguments[i];
                 }
                 socket.emit.apply(socket, args);
@@ -80,7 +80,7 @@ function sockifyClient(req, dep, host) {
         name: dep
     });
     var promises = promisifyMock(ctx, dep);
-    promises.___close = () => socket.emit('close');
+    promises.___close = () =&gt; socket.emit('close');
     var socket = client.connect(host);
     socket.on('connect', function () {
         // TODO: socket.emit('handler') service provider

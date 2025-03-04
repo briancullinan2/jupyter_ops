@@ -117,17 +117,17 @@ var metaKernelInterface = {
     language_info: languageInterface,
     kernel_info: kernelInfoInterface,
     kernel_config: [void 0, {}],
-    do_init: () => {}, // custom for executing once
-    do_message: () => {}, // custom input message
-    do_respond: () => {}, // custom output message
-    do_execute: () => {},
-    do_complete: [void 0, () => {}],
-    do_inspect: [void 0, () => {}],
-    do_history: [void 0, () => {}],
-    do_is_complete: [void 0, () => {}],
-    do_shutdown: [void 0, () => {}],
+    do_init: () =&gt; {}, // custom for executing once
+    do_message: () =&gt; {}, // custom input message
+    do_respond: () =&gt; {}, // custom output message
+    do_execute: () =&gt; {},
+    do_complete: [void 0, () =&gt; {}],
+    do_inspect: [void 0, () =&gt; {}],
+    do_history: [void 0, () =&gt; {}],
+    do_is_complete: [void 0, () =&gt; {}],
+    do_shutdown: [void 0, () =&gt; {}],
     // custom for executing install script, even remotely!
-    do_install: () => {},
+    do_install: () =&gt; {},
 }
 
 module.exports = metaKernelInterface;

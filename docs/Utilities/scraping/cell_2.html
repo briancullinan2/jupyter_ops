@@ -90,7 +90,7 @@ function loadLocations() {
         return Promise.resolve(locations);
     }
     return runSeleniumCell('google maps data list', false)
-        .then(func => func());
+        .then(func =&gt; func());
 }
 
 function getAllLocationsData() {
@@ -102,17 +102,17 @@ function getAllLocationsData() {
     }
     var locations;    
     return loadLocations()
-        .then(r => locations = r)
-        .then(() => importer.runAllPromises(locations.map(l => resolve => {
+        .then(r =&gt; locations = r)
+        .then(() =&gt; importer.runAllPromises(locations.map(l =&gt; resolve =&gt; {
             var result;
             placesNearby(l.name + ' near ' + l.description.pop() + ', Flagstaff')
-                .then(r => {
+                .then(r =&gt; {
                     result = r[0];
                     return placeDetails(result.place_id);
                 })
-                .then(r => resolve(Object.assign(l, result, r)))
+                .then(r =&gt; resolve(Object.assign(l, result, r)))
         })))
-        .then(r => {
+        .then(r =&gt; {
             fs.writeFileSync(filename, JSON.stringify(r, null, 4));
             return r;
         })
@@ -121,30 +121,30 @@ function getAllLocationsData() {
 if(typeof $ !== 'undefined') {
     $.async();
     getAllLocationsData()
-        .then(r => {
-            const hasSites = r.filter(l => l.website);
+        .then(r =&gt; {
+            const hasSites = r.filter(l =&gt; l.website);
             console.log('websites: ' + hasSites.length + '/' + r.length + ' - ' + Math.round(1.0 * hasSites.length / r.length * 100) + '%')
-            //console.log(r.filter(l => l.opening_hours).map(l => l));
+            //console.log(r.filter(l =&gt; l.opening_hours).map(l =&gt; l));
             const existing = glob.sync('**/!(locations)*', {cwd: project});
             const existingMatch = existing
-                .map(l => l.split(/-|\.json/ig).join(' ').trim())
-                .map(l => {
-                    const levMatch = levSort(r, l, r => r.name)[0].name;
-                    if(levDist(l, levMatch) < l.length / 2) {
+                .map(l =&gt; l.split(/-|\.json/ig).join(' ').trim())
+                .map(l =&gt; {
+                    const levMatch = levSort(r, l, r =&gt; r.name)[0].name;
+                    if(levDist(l, levMatch) &lt; l.length / 2) {
                         return l + ' - ' + levMatch;
                     }
                     return l + ' - no match';
                 })
-                .filter(l => !l.includes('no match'))
+                .filter(l =&gt; !l.includes('no match'))
             console.log('existing: ' + existingMatch.length + '/' + existing.length + ' - ' + Math.round(1.0 * existingMatch.length / existing.length * 100) + '%')
             console.log('variance: ');
-            const variations = existing.map(l => path.join(project, l))
-                .reduce((acc, l) => {
+            const variations = existing.map(l =&gt; path.join(project, l))
+                .reduce((acc, l) =&gt; {
                     const loaded = JSON.parse(fs.readFileSync(l));
                     if(typeof acc.dotw === 'undefined') {
                         acc.dotw = {};
                     }
-                    loaded.forEach(d => {
+                    loaded.forEach(d =&gt; {
                         if(d.dotw.match(/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/ig)) {
                             if(typeof acc['dotw']['matches'] === 'undefined') {
                                 acc['dotw']['matches'] = 0;
@@ -160,7 +160,7 @@ if(typeof $ !== 'undefined') {
                     if(typeof acc.time === 'undefined') {
                         acc.time = {};
                     }
-                    loaded.forEach(d => {
+                    loaded.forEach(d =&gt; {
                         console.log(l + ' - ' + d.time)
                         if(d.time.match(/^([0-9]+(p|a)\.m\.\s+-\s+([0-9]+(p|a)|close)|all day)\s*$/ig)) {
                             if(typeof acc['time']['matches'] === 'undefined') {
@@ -179,8 +179,8 @@ if(typeof $ !== 'undefined') {
             console.log(variations)
             return r;
         })
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

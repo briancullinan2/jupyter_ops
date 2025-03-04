@@ -80,7 +80,7 @@
 
 <pre class="javascript"><code>var TRIM = /^\s*\/\s*|\s*\/\s*$/ig;
 
-var compareLink = (dataValue, base, link) => {
+var compareLink = (dataValue, base, link) =&gt; {
     var compareOps = [
         link,
         base + '/' + link,
@@ -89,8 +89,8 @@ var compareLink = (dataValue, base, link) => {
         link.substr(0, (dataValue || '').length)
     ]
     var result = false
-    compareOps.forEach(comp => {
-        if(dataValue && comp.replace(TRIM, '') === dataValue.replace(TRIM, ''))
+    compareOps.forEach(comp =&gt; {
+        if(dataValue &amp;&amp; comp.replace(TRIM, '') === dataValue.replace(TRIM, ''))
             result = comp.replace(TRIM, '')
         return false
     })
@@ -99,7 +99,7 @@ var compareLink = (dataValue, base, link) => {
 
 function unfilteredData(key) {
     console.log(`rendering unfiltered ${key}`) 
-    return (val, render) => render(`{{#${key}-original-data}}${val}{{/${key}-original-data}}`)
+    return (val, render) =&gt; render(`{{#${key}-original-data}}${val}{{/${key}-original-data}}`)
 }
 
 function filteredData(key, match, properties, categorical) {
@@ -114,9 +114,9 @@ function filteredData(key, match, properties, categorical) {
         
         if(categorical) {
             // handle multiple results for use with categories
-            properties[matchKey] = restore.filter(data => compareLink(data[key], base, link))
+            properties[matchKey] = restore.filter(data =&gt; compareLink(data[key], base, link))
         } else {
-            properties[matchKey] = restore.filter(data => compareLink(data['link'], base, link)
+            properties[matchKey] = restore.filter(data =&gt; compareLink(data['link'], base, link)
                                                    || compareLink(data['url'], base, link));
             if(properties[matchKey].length !== 1) {
                 throw new Error(`Unique key not found: ${key} ${match} ${link} ${properties[matchKey].length}`)

@@ -78,12 +78,12 @@ function fetchOrStream(stream, writeStream) {
         promise = util.promisify(protocol.get.bind(protocol))(stream)
     }
     return promise
-        .then(() => new Promise((resolve, reject) => {
+        .then(() =&gt; new Promise((resolve, reject) =&gt; {
             stream.pipe(writeStream)
-            .on("error", (err) => {
+            .on("error", (err) =&gt; {
                 reject(err);
             })
-            .on('finish', () => {
+            .on('finish', () =&gt; {
                 resolve();
             });
         }))

@@ -73,25 +73,25 @@ function findElements(selector) {
     return promisifyChrome('debugger.sendCommand', {
         tabId: getTab()
     }, 'Runtime.evaluate', {
-        expression: `new window.BackupPromise(resolve => setTimeout(() => {
+        expression: `new window.BackupPromise(resolve =&gt; setTimeout(() =&gt; {
 resolve([].slice.call(window.document.querySelectorAll(${JSON.stringify(selector)}), 0)[0])
 }, 500))`,
         awaitPromise: true
     })
-        .then(r => {
+        .then(r =&gt; {
             return promisifyChrome('debugger.sendCommand', {
                 tabId: getTab()
             }, 'DOM.requestNode', {
                 objectId: r.result.objectId
             })
         })
-        .then(r => ({value: {ELEMENT: r.nodeId}}))
-        .catch(e => console.log(e))
+        .then(r =&gt; ({value: {ELEMENT: r.nodeId}}))
+        .catch(e =&gt; console.log(e))
 }
 
-router.post('/session/:sessionId/element', (req, res) =>
+router.post('/session/:sessionId/element', (req, res) =&gt;
     response(res, findElements(req.body.value)));
-router.post('/session/:sessionId/elements', (req, res) =>
+router.post('/session/:sessionId/elements', (req, res) =&gt;
     response(res, findElements(req.body.value)));
 
 module.exports = {

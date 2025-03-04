@@ -96,7 +96,7 @@ const ALL_COMMANDS = [
 async function syncTools(guildId = null) {
   var cmd, cmdDef
   var commandResult = await getCommands(guildId)
-  var commands = commandResult.map(command => command.name)
+  var commands = commandResult.map(command =&gt; command.name)
 
   interactionsCommands['promptMention'] = doMention
   interactionsCommands['promptPrivate'] = doPrivate
@@ -116,7 +116,7 @@ async function syncTools(guildId = null) {
   if(!commands.includes('pdf')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'pdf')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'pdf')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -138,7 +138,7 @@ async function syncTools(guildId = null) {
   if(!commands.includes('interpret')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'interpret')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'interpret')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -153,7 +153,7 @@ async function syncTools(guildId = null) {
   if(!commands.includes('usage')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'usage')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'usage')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -176,7 +176,7 @@ async function syncTools(guildId = null) {
   if(!commands.includes('summary')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'summary')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'summary')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -199,7 +199,7 @@ async function syncTools(guildId = null) {
   if(!commands.includes('mesh')) {
     await registerCommand(cmdDef, null, guildId)
   } else {
-    cmd = commandResult.filter(c => c.name == 'mesh')[0]
+    cmd = commandResult.filter(c =&gt; c.name == 'mesh')[0]
     if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
       await updateCommand(cmdDef, null, cmd.id, guildId)
   }
@@ -207,8 +207,8 @@ async function syncTools(guildId = null) {
 
 
 
-  var toRemove = commandResult.filter(c => !ALL_COMMANDS.includes(c.name))
-  for(var i = 0; i < toRemove.length; i++) {
+  var toRemove = commandResult.filter(c =&gt; !ALL_COMMANDS.includes(c.name))
+  for(var i = 0; i &lt; toRemove.length; i++) {
     await deleteCommand(toRemove[i].id, guildId)
   }
 

@@ -78,11 +78,11 @@ async function pythonParams(pythonCode) {
       let funcName = ctx.children[1].getText();  // Function name
       let paramCtx = ctx.children[2]; // Parameters
   
-      if (paramCtx && paramCtx.children.length > 1) {
+      if (paramCtx &amp;&amp; paramCtx.children.length &gt; 1) {
         let params = paramCtx.getText()
           .replace(/[()]/g, '')  // Remove brackets
           .split(',')
-          .map(param => param.trim());
+          .map(param =&gt; param.trim());
   
         this.parameters.push({ function: funcName, parameters: params });
       }

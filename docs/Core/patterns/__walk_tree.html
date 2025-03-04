@@ -82,10 +82,10 @@
 function walkTree(select, ctx, evaluate) {
     var result;
     if(Array.isArray(select)) {
-        result = select.reduce((arr, query, i) => {
+        result = select.reduce((arr, query, i) =&gt; {
             // pass the previous results to the next statement as the context
-            if(i > 0) {
-                return arr.map(r => walkTree(query, r, evaluate))
+            if(i &gt; 0) {
+                return arr.map(r =&gt; walkTree(query, r, evaluate))
             }
             var result = walkTree(query, ctx, evaluate)
             if(typeof result !== 'undefined') {
@@ -102,15 +102,15 @@ function walkTree(select, ctx, evaluate) {
         //   called from the array reduce above
         result = select(ctx); 
     } else if (typeof select === 'object') {
-        result = Object.keys(select).reduce((obj, prop) => {
+        result = Object.keys(select).reduce((obj, prop) =&gt; {
             obj[prop] = walkTree(select[prop], ctx, evaluate);
             return obj;
         }, {});
     } else {
         result = evaluate(select, ctx);
     }
-    return typeof select === 'string' && Array.isArray(result)
-        && result.length <= 1
+    return typeof select === 'string' &amp;&amp; Array.isArray(result)
+        &amp;&amp; result.length &lt;= 1
        ? result[0]
        : result;
 }

@@ -107,16 +107,16 @@ function getImportsRecursively(searches) {
     const processed = []
     const allCells = []
     const pending = importer.interpret(searches)
-    while(pending.length > 0) {
+    while(pending.length &gt; 0) {
         var cell = pending.pop()
         processed.push(cell.id)
         allCells.push(cell)
-        if(cell.code.length > 10000 || cell.filename.includes('cache.ipynb')) continue
+        if(cell.code.length &gt; 10000 || cell.filename.includes('cache.ipynb')) continue
         continue
-        getImports(cell.code).forEach(search => {
+        getImports(cell.code).forEach(search =&gt; {
             try {
                 var cells = importer.interpret([search])
-                cells.forEach(c => {
+                cells.forEach(c =&gt; {
                     if(!processed.includes(c.id))
                         pending.push(c)
                 })
@@ -133,10 +133,10 @@ function exportNotebook(searches, projectOutput, matchOutput) {
     if(!matchOutput) matchOutput = {}
     const nextImports = []
     const cells = getImportsRecursively(searches)
-    cells.forEach((cell, i) => {
+    cells.forEach((cell, i) =&gt; {
         var exportedCode
         assert(!niceName(cell).match(/^\./),
-               `No filename ${cell.id} -> ${niceName(cell)} ${cell.questions}!`)
+               `No filename ${cell.id} -&gt; ${niceName(cell)} ${cell.questions}!`)
         // some special exceptions with file-naming
         if(cell.name === 'readme.md') {
             exportedCode = cell.markdown
@@ -157,8 +157,8 @@ function exportNotebook(searches, projectOutput, matchOutput) {
     })
     
     // if there is no index, add a google handler
-    if(Object.values(matchOutput).filter(o => o.includes('index.js')).length === 0
-       && cells.filter(cell => niceName(cell).includes('index')).length === 0) {
+    if(Object.values(matchOutput).filter(o =&gt; o.includes('index.js')).length === 0
+       &amp;&amp; cells.filter(cell =&gt; niceName(cell).includes('index')).length === 0) {
         outputExport(makeHandler(searches), makeHandlerCell, projectOutput, {
             '*function-handler*': './index.js'
         })
@@ -171,7 +171,7 @@ function exportNotebook(searches, projectOutput, matchOutput) {
 
 function outputExport(exportedCode, cell, projectOutput, matchOutput) {
     // emit the file in every location request
-    matchFilename(niceName(cell), matchOutput, projectOutput).forEach(filename => {
+    matchFilename(niceName(cell), matchOutput, projectOutput).forEach(filename =&gt; {
         console.log(`emitting ${filename}`);
         // create directory if needed
         mkdirpSync(path.dirname(filename));

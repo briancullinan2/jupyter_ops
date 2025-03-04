@@ -81,23 +81,23 @@ var listAllConnections, connectLinkedin, loginLinkedIn;
 function addLinkedinConnections(conn, list) {
     var pages;
     return runSeleniumCell(['log in linkedin', 'connect on linkedin'])
-        .then(r => {
+        .then(r =&gt; {
             listAllConnections = r[1].listAllConnections;
             connectLinkedin = r[1].connectLinkedin;
             loginLinkedIn = r.loginLinkedIn;
             return loginLinkedIn();
         })
-        .then(() => typeof conn === 'string' ? [conn] : (typeof conn !== 'undefined' ? conn : listAllConnections(list)))
-        .then(pages => {
+        .then(() =&gt; typeof conn === 'string' ? [conn] : (typeof conn !== 'undefined' ? conn : listAllConnections(list)))
+        .then(pages =&gt; {
             const rand = Math.round(pages.length / 30 * Math.random()) * 30;
             console.log(pages.slice(rand, rand + 30));
-            return importer.runAllPromises(pages.slice(rand, rand + 30).map(page => resolve => {
+            return importer.runAllPromises(pages.slice(rand, rand + 30).map(page =&gt; resolve =&gt; {
                 return connectLinkedin(page, true)
-                    .then(() => resolve(page))
-                    .catch(e => resolve(e))
+                    .then(() =&gt; resolve(page))
+                    .catch(e =&gt; resolve(e))
             }));
         })
-        .then(r => {
+        .then(r =&gt; {
             console.log(r);
             return r;
         })

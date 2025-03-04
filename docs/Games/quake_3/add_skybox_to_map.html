@@ -126,22 +126,22 @@ function getBounds(file) {
     // get all brushes in map, leaf nodes with at least one vertex
     var brushes = importer.regexToArray(/\{[\s\S]*?\}/ig, file)
    
-    brushes = brushes.map(b => {
+    brushes = brushes.map(b =&gt; {
         var points = importer
             .regexToArray(/\(((\s*[0-9\.-]+\s*)*)\)/ig, b, 1)
-            .map(m => m.trim().split(/\s+/ig)
-                .map(n => (n.includes('.')
+            .map(m =&gt; m.trim().split(/\s+/ig)
+                .map(n =&gt; (n.includes('.')
                     ? parseFloat(n.trim())
                     : parseInt(n.trim()))))
         
         return [[
-            Math.min.apply(null, points.map(b => b[0])),
-            Math.min.apply(null, points.map(b => b[1])),
-            Math.min.apply(null, points.map(b => b[2]))
+            Math.min.apply(null, points.map(b =&gt; b[0])),
+            Math.min.apply(null, points.map(b =&gt; b[1])),
+            Math.min.apply(null, points.map(b =&gt; b[2]))
         ], [
-            Math.max.apply(null, points.map(b => b[0])),
-            Math.max.apply(null, points.map(b => b[1])),
-            Math.max.apply(null, points.map(b => b[2]))
+            Math.max.apply(null, points.map(b =&gt; b[0])),
+            Math.max.apply(null, points.map(b =&gt; b[1])),
+            Math.max.apply(null, points.map(b =&gt; b[2]))
         ]]
     })
  
@@ -149,36 +149,36 @@ function getBounds(file) {
     // TODO: make this a function
     var origins = importer
         .regexToArray(/"origin"\s+"((\s*[0-9\.-]+\s*)*)"/ig, file, 1)
-        .map(o => o.trim().split(/\s+/ig)
-            .map(n => (n.includes('.')
+        .map(o =&gt; o.trim().split(/\s+/ig)
+            .map(n =&gt; (n.includes('.')
                 ? parseFloat(n.trim())
                 : parseInt(n.trim()))))
     
     origins = origins.concat.apply(origins, brushes)
-        .filter(o => o && isFinite(o[0]))
+        .filter(o =&gt; o &amp;&amp; isFinite(o[0]))
     
     return [[
-        Math.min.apply(null, origins.map(b => b[0])),
-        Math.min.apply(null, origins.map(b => b[1])),
-        Math.min.apply(null, origins.map(b => b[2]))
+        Math.min.apply(null, origins.map(b =&gt; b[0])),
+        Math.min.apply(null, origins.map(b =&gt; b[1])),
+        Math.min.apply(null, origins.map(b =&gt; b[2]))
     ], [
-        Math.max.apply(null, origins.map(b => b[0])),
-        Math.max.apply(null, origins.map(b => b[1])),
-        Math.max.apply(null, origins.map(b => b[2]))
+        Math.max.apply(null, origins.map(b =&gt; b[0])),
+        Math.max.apply(null, origins.map(b =&gt; b[1])),
+        Math.max.apply(null, origins.map(b =&gt; b[2]))
     ]]
 }
 
 
 function addSkybox(fileName) {
     var file
-    if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+    if(typeof fileName === 'string' &amp;&amp; fs.existsSync(fileName)) {
         file = fs.readFileSync(fileName).toString('utf-8')
     } else {
         file = fileName
     }
 
     var brushes = importer.regexToArray(/\{[^\{}]*?\}\s*/ig, file)
-    brushes.forEach(b => {
+    brushes.forEach(b =&gt; {
         if(b.includes('/sky')) {
             file = file.replace(b, '')
             return false
@@ -211,7 +211,7 @@ function addSkybox(fileName) {
         
     ]
     var newBrush = ``
-    for(var i = 0; i < points.length / 2; i++) {
+    for(var i = 0; i &lt; points.length / 2; i++) {
         var p1 = points[i*2]
         var p2 = points[i*2+1]
         newBrush += `
@@ -232,7 +232,7 @@ function addSkybox(fileName) {
     var pos = exp.lastIndex
     file = file.substr(0, pos - match[0].length) + newBrush + file.substr(pos - match[0].length)
     
-    if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+    if(typeof fileName === 'string' &amp;&amp; fs.existsSync(fileName)) {
         console.log(`writing ${fileName}`)
         fs.writeFileSync(fileName, file)
     } else {

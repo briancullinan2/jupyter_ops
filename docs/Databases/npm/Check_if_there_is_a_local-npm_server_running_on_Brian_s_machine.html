@@ -65,8 +65,8 @@ function checkLocalNPM(host) {
     var HOST = host || os.hostname() || 'localhost';
     return http.get(
         'http://' + HOST + ':5080',
-        (r) => r.statusCode === 200)
-        .on('error', (e) => false);
+        (r) =&gt; r.statusCode === 200)
+        .on('error', (e) =&gt; false);
 };
 module.exports = checkLocalNPM;
 </code></pre>

@@ -95,28 +95,28 @@ function straightDistance(lat1, lon1, lat2, lon2) {
 function averageDestinations(geoLocations, timelineLocations) {
     var destinations = [];
     for (const d of timelineLocations) {
-        if ((d.name + '') == '' || (d.name + '').indexOf('Driving') > -1) {
+        if ((d.name + '') == '' || (d.name + '').indexOf('Driving') &gt; -1) {
             continue;
         }
         const nearest = _.sortBy(
             geoLocations,
-            l => Math.abs(new Date(l.time).getTime() - new Date(d.time).getTime()))
+            l =&gt; Math.abs(new Date(l.time).getTime() - new Date(d.time).getTime()))
             .slice(0, 3);
         // make sure it isn't off by much
-        const averageLat = nearest.map(n => n.latitudeE7)
-            .reduce((a, b) => a + b, 0) / nearest.length / 10000000;
-        const averageLon = nearest.map(n => n.longitudeE7)
-            .reduce((a, b) => a + b, 0) / nearest.length / 10000000;
-        if (nearest.filter(nearby => straightDistance(
+        const averageLat = nearest.map(n =&gt; n.latitudeE7)
+            .reduce((a, b) =&gt; a + b, 0) / nearest.length / 10000000;
+        const averageLon = nearest.map(n =&gt; n.longitudeE7)
+            .reduce((a, b) =&gt; a + b, 0) / nearest.length / 10000000;
+        if (nearest.filter(nearby =&gt; straightDistance(
                 nearby.latitudeE7 / 10000000,
                 nearby.longitudeE7 / 10000000,
                 averageLat,
                 averageLon
-            ) < 2000).length > 0) {
+            ) &lt; 2000).length &gt; 0) {
             destinations.push(Object.assign(d, {
                 averageLat: averageLat,
                 averageLon: averageLon,
-                locations: nearest.map(nearby => Object.assign(nearby, {
+                locations: nearest.map(nearby =&gt; Object.assign(nearby, {
                     averageLat: nearby.latitudeE7 - averageLat,
                     averageLon: nearby.longitudeE7 - averageLon,
                     averageDist: straightDistance(
@@ -129,7 +129,7 @@ function averageDestinations(geoLocations, timelineLocations) {
             }));
         } else {
             console.log('too far! ' + d.name + ' - ' + d.time);
-            console.log(nearest.map(nearby => straightDistance(
+            console.log(nearest.map(nearby =&gt; straightDistance(
                 nearby.latitudeE7 / 10000000,
                 nearby.longitudeE7 / 10000000,
                 averageLat,

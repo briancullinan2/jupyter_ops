@@ -133,7 +133,7 @@ function do_init(config) {
 
 // TODO: do something on the client when shutting down
 //   same thing as parent but with process?
-// do_shutdown: (kernel, message) => kernel.socket.send({do_shutdown: message}),
+// do_shutdown: (kernel, message) =&gt; kernel.socket.send({do_shutdown: message}),
 
 function do_respond(message) {
     message = nativeMethods.do_respond.call(this, message);

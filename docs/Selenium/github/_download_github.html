@@ -66,7 +66,7 @@ var execCmd = importer.import('spawn child process');
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 var DOWNLOADS_PATH = path.join(PROFILE_PATH, '/Downloads');
 
-var unzip = (file) => {
+var unzip = (file) =&gt; {
     console.log('unzipping ' + file);
     return execCmd('unzip "' + file + '"', {cwd: DOWNLOADS_PATH})
 }
@@ -76,12 +76,12 @@ function getGithub(url) {
         url: url,
         encoding: 'binary'
     })
-        .then(r => {
+        .then(r =&gt; {
             const fname = path.join(DOWNLOADS_PATH, path.basename(url));
             fs.writeFileSync(fname, r.body, 'binary');
             return unzip(fname);
         })
-        .then(() => {
+        .then(() =&gt; {
             return glob.sync(path.basename(url), {cwd: DOWNLOADS_PATH});
         })
 }
@@ -89,8 +89,8 @@ module.exports = getGithub;
 
 $.async();
 getGithub('https://github.com/github/gitignore/archive/master.zip')
-    .then(r => $.sendResult(r))
-    .catch(e => $.sendError(e))
+    .then(r =&gt; $.sendResult(r))
+    .catch(e =&gt; $.sendError(e))
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

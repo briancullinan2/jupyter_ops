@@ -104,8 +104,8 @@ function collectTemplateResources(path, page, properties, templates, bucketName,
     }
 
     // if it is the first page in the template, rename it to index.html
-    if((path.split('/').length < 2 || path === '/' || path === '')
-       && getTemplateByUrl(templates, path) === getTemplateByUrl(templates, '/')) {
+    if((path.split('/').length &lt; 2 || path === '/' || path === '')
+       &amp;&amp; getTemplateByUrl(templates, path) === getTemplateByUrl(templates, '/')) {
         console.log(`using ${path} as index.html`);
         path = 'index';
     }
@@ -120,18 +120,18 @@ function collectTemplateResources(path, page, properties, templates, bucketName,
     
     var routes = [];
     return collectExternalResources(page, rendered, routes)
-        .then(stream => (console.log(`emitting ${path}`), stream))
-        .then(stream => streamToGoogle(path + '.html', bucketName, stream, {
+        .then(stream =&gt; (console.log(`emitting ${path}`), stream))
+        .then(stream =&gt; streamToGoogle(path + '.html', bucketName, stream, {
             contentType: 'text/html; charset=utf-8'
         } /* TODO: insert permission settings for user directory */))
-        .then(() => !(process.env.ENVIRONMENT || '').includes('DEPLOY')
+        .then(() =&gt; !(process.env.ENVIRONMENT || '').includes('DEPLOY')
               ? {}
               : copyFileBucket(bucketName, path + '.html'))
-        .then(() => collectRoutes(routes, properties, templates, rendered))
-        .then(pages => importer.runAllPromises(Object.keys(pages).map(fileName => resolve => 
+        .then(() =&gt; collectRoutes(routes, properties, templates, rendered))
+        .then(pages =&gt; importer.runAllPromises(Object.keys(pages).map(fileName =&gt; resolve =&gt; 
             collectTemplateResources(fileName, pages[fileName], properties, templates, bucketName, rendered)
-                .then(() => resolve()))))
-        .then(() => rendered)
+                .then(() =&gt; resolve()))))
+        .then(() =&gt; rendered)
 }
 
 module.exports = collectTemplateResources;

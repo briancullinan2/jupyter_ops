@@ -81,45 +81,45 @@ function scanCommandsFacebook() {
         'unread threads facebook',
         'send facebook message',
     ])
-        .then(r => {
+        .then(r =&gt; {
             getUnreadThreads = r.getUnreadThreads;
             sendFacebookMessage = r.sendFacebookMessage;
             return getUnreadThreads();
         })
-        .then(friends => {
-            const hasCommands = friends.map(f => Object.assign(f, {
+        .then(friends =&gt; {
+            const hasCommands = friends.map(f =&gt; Object.assign(f, {
                 messages: f.messages
-                    .filter(m => m.from !== 'Brian' && (/megamind\s*(.*)/ig).exec(m.message))
-            })).filter(f => f.messages.length > 0).map(f => Object.assign(f, {
+                    .filter(m =&gt; m.from !== 'Brian' &amp;&amp; (/megamind\s*(.*)/ig).exec(m.message))
+            })).filter(f =&gt; f.messages.length &gt; 0).map(f =&gt; Object.assign(f, {
                 name: f.participants[0].name.split('\n')[0],
                 command: (/megamind\s*(.*)/ig).exec(f.messages[0].message)[1].trim(),
                 date: f.messages[0].time,
                 id: 'Facebook: ' + f.thread.replace(/^\/|\/$/ig, '').split('/').pop()
                     + f.messages[0].time
             }));
-            return importer.runAllPromises(hasCommands.map(f => resolve => {
+            return importer.runAllPromises(hasCommands.map(f =&gt; resolve =&gt; {
                 return filterCommand(f.command, f.date, f.id, f.name)
-                    .then(props => resolve(Object.assign(f, props)));
+                    .then(props =&gt; resolve(Object.assign(f, props)));
             }))
         })
         // generate and send responses
-        .then(friends => {
-            return importer.runAllPromises(friends.map(f => resolve => {
+        .then(friends =&gt; {
+            return importer.runAllPromises(friends.map(f =&gt; resolve =&gt; {
                 return storeResult(f)
-                    .then(response => sendFacebookMessage(JSON.stringify(response, null, 4) + '\n Mm\n', f.thread))
-                    .catch(e => console.log(e))
-                    .then(r => resolve(r))
+                    .then(response =&gt; sendFacebookMessage(JSON.stringify(response, null, 4) + '\n Mm\n', f.thread))
+                    .catch(e =&gt; console.log(e))
+                    .then(r =&gt; resolve(r))
             }))
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 module.exports = scanCommandsFacebook;
 
 if(typeof $ !== 'undefined') {
     $.async();
     scanCommandsFacebook()
-        .then(r => $.sendResult(r))
-        .catch((e) => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch((e) =&gt; $.sendError(e))
 }
 </code></pre>
 

@@ -63,10 +63,10 @@
 
 
 <pre class="javascript"><code>
-document.addEventListener('DOMContentLoaded', (evt) => {
+document.addEventListener('DOMContentLoaded', (evt) =&gt; {
 
   let queryParams = {}
-  let params = (window.location.search.split('?')[1] || '').split('&')
+  let params = (window.location.search.split('?')[1] || '').split('&amp;')
   for(var param in params) {
     if (params.hasOwnProperty(param)) {
       let paramParts = params[param].split('=')
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', (evt) => {
     window.session_id = queryParams.session
   }
   
-  document.querySelector('.livedev').addEventListener('click', (evt) => {
+  document.querySelector('.livedev').addEventListener('click', (evt) =&gt; {
     debugger
     let localX = evt.clientX - evt.currentTarget.offsetLeft
     let localY = evt.clientY - evt.currentTarget.offsetTop
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', (evt) => {
   function getSpecialKeys() {
     let modifiers = document.querySelectorAll('.container input:checked')
     let result = []
-    for(let i = 0; i < modifiers.length; i++) {
+    for(let i = 0; i &lt; modifiers.length; i++) {
       result.push(modifiers[i].value)
     }
     return result
@@ -106,11 +106,11 @@ document.addEventListener('DOMContentLoaded', (evt) => {
 
 
   let currentTimer
-  document.querySelector('#sendkeys').addEventListener('keypress', (evt) => {
+  document.querySelector('#sendkeys').addEventListener('keypress', (evt) =&gt; {
     if(currentTimer) {
       return
     }
-    currentTimer = setTimeout(((target) => {
+    currentTimer = setTimeout(((target) =&gt; {
       fetch('{BASE_URI}keys?session=' + window.session_id, {
         method: 'POST',
         headers: {
@@ -129,8 +129,8 @@ document.addEventListener('DOMContentLoaded', (evt) => {
 
 
   let buttons = document.querySelectorAll('.container button')
-  for(let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', (evt) => {
+  for(let i = 0; i &lt; buttons.length; i++) {
+    buttons[i].addEventListener('click', (evt) =&gt; {
       let target = document.querySelector('#sendkeys')
       let keys = getSpecialKeys()
       if(evt.currentTarget.value)
@@ -152,11 +152,11 @@ document.addEventListener('DOMContentLoaded', (evt) => {
 
 
 
-  setInterval(() => {
+  setInterval(() =&gt; {
     // TODO: refresh images
-    let images = document.querySelectorAll('.livedev > img')
-    for(let i = 0; i < images.length; i++) {
-      if(images[i].src && !images[i].getAttribute('original-src')) {
+    let images = document.querySelectorAll('.livedev &gt; img')
+    for(let i = 0; i &lt; images.length; i++) {
+      if(images[i].src &amp;&amp; !images[i].getAttribute('original-src')) {
         images[i].setAttribute('original-src', images[i].src)
       }
       let originalImage = images[i].getAttribute('original-src')
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', (evt) => {
       if(images[i].src) {
         images[i].style.backgroundImage = "url('" + encodeURI(images[i].src) + "')"
       }
-      setTimeout(() => {
+      setTimeout(() =&gt; {
         images[i].src = newImage
       }, 100)
     }

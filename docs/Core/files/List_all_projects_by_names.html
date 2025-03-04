@@ -97,7 +97,7 @@ var listInProject = importer.import('list project files');
 function listProjects(root, match = '{,*,*/,*/*/*,*/*/*/*,*/*/*/*/*}+(package.json|NuGet.config|*.sln|*.csproj)') {
     var result = {};
     var matches = listInProject(root, match);
-    matches.forEach(m => {
+    matches.forEach(m =&gt; {
         var projectPath = path.resolve(path.dirname(m));
         result[path.basename(projectPath)] = projectPath;
     });

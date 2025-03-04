@@ -142,7 +142,7 @@ def scan_directory(directory, limit):
                 query = parser.parse(os.path.abspath(notebook_path))
                 results = index.searcher().search(query)
                 if(not results or len(results) == 0
-                    or results[0]['mtime'] < datetime.datetime.fromtimestamp(os.path.getmtime(os.path.abspath(notebook_path)))):
+                    or results[0]['mtime'] &lt; datetime.datetime.fromtimestamp(os.path.getmtime(os.path.abspath(notebook_path)))):
                     print("replacing: ", notebook_path)
                     writer = AsyncWriter(index)
                     writer.delete_by_query(query, index.searcher())

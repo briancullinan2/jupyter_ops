@@ -82,11 +82,11 @@ gulp.task('build :src :dest', function (files, project) {
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
 var project = PROFILE_PATH + '/Documents/universal';
 
-gulp.task('default', () => gulp.task(['build :src :dest'])(['**/app.browser.module.ts'], project));
+gulp.task('default', () =&gt; gulp.task(['build :src :dest'])(['**/app.browser.module.ts'], project));
 
 $.async()
 try {
-    gulp.series(() => gulp.task(['default'])(), function (done) {
+    gulp.series(() =&gt; gulp.task(['default'])(), function (done) {
         done();
         $.sendResult();
     })();

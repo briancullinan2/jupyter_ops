@@ -76,7 +76,7 @@ var wrapTemplate = importer.import('output google sheet template');
 var getTemplateProperties = importer.import('google sheet template properties');
 
 function parseCards(str) {
-    return str.split('\n').map(line => {
+    return str.split('\n').map(line =&gt; {
         var values = line.split(',');
         return {
             type: values[0],
@@ -100,26 +100,26 @@ function renderCards(cards) {
     var properties = {}, templates;
     
     return getTemplates(process.env.DOCID)
-        .then(t => {
+        .then(t =&gt; {
             templates = t;
             templates['cards'].data.rows = properties['cards-data'];
-            templates['cards-cards'] = {template: {rows: [[`{{> cards/cards-cards-link}}`]]}}
+            templates['cards-cards'] = {template: {rows: [[`{{&gt; cards/cards-cards-link}}`]]}}
             return getTemplateProperties('app', properties, templates);
         })
-        .then(() => getTemplateProperties('demo', properties, templates))
-        .then(() => getTemplateProperties('cards-cards', properties, templates))
-        .then(() => wrapTemplate('cards/' + name, 'cards', properties['cards-cards'], Object.assign(properties, {
+        .then(() =&gt; getTemplateProperties('demo', properties, templates))
+        .then(() =&gt; getTemplateProperties('cards-cards', properties, templates))
+        .then(() =&gt; wrapTemplate('cards/' + name, 'cards', properties['cards-cards'], Object.assign(properties, {
             'cards-cards-link': '/cards/' + name,
             'cards-data': (cards || parseCards(properties['demo-text']))
-                .map(c => Object.assign(c, {cards: '/cards/' + name}))
+                .map(c =&gt; Object.assign(c, {cards: '/cards/' + name}))
         })))
-        .then(page => collectTemplateResources(
+        .then(page =&gt; collectTemplateResources(
             `cards/${name}.html`,
             page,
             properties,
             templates,
             process.env.BUCKET))
-        .then(resources => (console.log(resources), '/cards/' + name + '.html'))
+        .then(resources =&gt; (console.log(resources), '/cards/' + name + '.html'))
 }
 
 module.exports = renderCards;

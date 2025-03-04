@@ -103,7 +103,7 @@ async function askLlamaWriteEssay(topic, name, promptModel = 'Qwen') {
     const a0 = await promptModel(q0);
     console.log("AI: " + a0);
 
-    let names = a0.trim().split(/(^|\s*\n)[0-9]+\.\s*/).filter(a => a && a.trim().length > 0)
+    let names = a0.trim().split(/(^|\s*\n)[0-9]+\.\s*/).filter(a =&gt; a &amp;&amp; a.trim().length &gt; 0)
     paperName = names[Math.round(Math.random() * (names.length-1))]
   }
 
@@ -111,7 +111,7 @@ async function askLlamaWriteEssay(topic, name, promptModel = 'Qwen') {
   let keys = Object.keys(chapters)
 
   let bookChapters = []
-  for(let i = 0; i < keys.length; i++) {
+  for(let i = 0; i &lt; keys.length; i++) {
     let q1
     if(i == 0) {
       q1 = 'Write a long essay section introducing the topic, discard any synopsis or conclusions:' + topic + '\n' + keys[i] + '\n' + chapters[keys[i]]

@@ -79,7 +79,7 @@
 <pre class="javascript"><code>const listDrive = importer.import('merge google drive')
 const getRpcFromSpec = importer.import('get rpc from spec')
 const authorize = importer.import('google oauth token client')
-const google = {drive: ({version, auth}) => getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/drive.${version}.json`)), auth)}
+const google = {drive: ({version, auth}) =&gt; getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/drive.${version}.json`)), auth)}
 const { safeurl } = importer.import('domain cache tools')
 const GOOGLE_AUTH_SCOPE = [
   'https://www.googleapis.com/auth/drive'
@@ -102,7 +102,7 @@ async function downloadDocs(folder = 'root') {
 
   let drive = await listDrive(folder)
 
-  for(let i = 0; i < drive.length; i++) {
+  for(let i = 0; i &lt; drive.length; i++) {
     if(drive[i].mimeType == 'application/vnd.google-apps.document') {
       console.log('Exporting ' + drive[i].name)
       try {

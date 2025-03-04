@@ -79,17 +79,17 @@
 
 
 <pre class="javascript"><code>
-var getTemplateByUrl = (templates, path) => !path || path === '' || path === '/'
+var getTemplateByUrl = (templates, path) =&gt; !path || path === '' || path === '/'
     ? getEntryTemplate(templates)
-    : path.split('/').filter(segment => templates[segment]
-                             && templates[segment].template)[0]
+    : path.split('/').filter(segment =&gt; templates[segment]
+                             &amp;&amp; templates[segment].template)[0]
     || path.split('/')[0];
 
-var getEntryTemplate = (templates) => Object.keys(templates)
-    .filter(t => templates[t].template
-            && templates[t].template.properties
-            && templates[t].template.properties.index == 0)[0]
-    || Object.keys(templates).filter(t => templates[t].template)[0];
+var getEntryTemplate = (templates) =&gt; Object.keys(templates)
+    .filter(t =&gt; templates[t].template
+            &amp;&amp; templates[t].template.properties
+            &amp;&amp; templates[t].template.properties.index == 0)[0]
+    || Object.keys(templates).filter(t =&gt; templates[t].template)[0];
 
 module.exports = getTemplateByUrl;</code></pre>
 

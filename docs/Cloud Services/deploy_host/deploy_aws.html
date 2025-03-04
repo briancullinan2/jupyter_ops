@@ -61,12 +61,12 @@
 
 <pre class="javascript"><code>function deployAws() {
     return execCmd(os.platform() === 'win32' ? `
-powershell.exe -nologo -noprofile -command "& { \
+powershell.exe -nologo -noprofile -command "&amp; { \
     Add-Type -A 'System.IO.Compression.FileSystem'; \
     Remove-Item –path index.zip –recurse -erroraction 'silentlycontinue'; \
     $files = @('index.js', 'eloqua-service.js', 'eloqua-create.js', 'eloqua-mapper.js', 'https-request-polyfill.js', 'sync-zuora-eloqua.js', 'zuora-service.js', 'zuora-renewals-query.js', 'package.json', 'package-lock.json'); \
     $files | Compress-Archive -DestinationPath index.zip; \
-    & aws lambda update-function-code --region us-west-2 --function-name eloqua_test --zip-file fileb://index.zip; \
+    &amp; aws lambda update-function-code --region us-west-2 --function-name eloqua_test --zip-file fileb://index.zip; \
 }"` : `
 rm index.zip 
 zip ./index.zip -r index.js eloqua-service.js eloqua-create.js eloqua-mapper.js https-request-polyfill.js sync-zuora-eloqua.js zuora-service.js zuora-renewals-query.js package.json package-lock.json

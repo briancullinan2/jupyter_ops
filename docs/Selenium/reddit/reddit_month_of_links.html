@@ -104,16 +104,16 @@ async function redditList(driver, startPage, timeSpan = 'week') {
       startPage = result.next
 
       // not yet includes any articles over a month ago
-      beforeTimeSpan = result.filter(r => timeSpan == 'month' 
-        ? r.time < monthAgo : r.time < weekAgo).length
+      beforeTimeSpan = result.filter(r =&gt; timeSpan == 'month' 
+        ? r.time &lt; monthAgo : r.time &lt; weekAgo).length
 
       safety--
 
-      if(result.next && beforeTimeSpan == 0 && safety > 0) {
-        await new Promise(resolve => setTimeout(resolve, 1000))
+      if(result.next &amp;&amp; beforeTimeSpan == 0 &amp;&amp; safety &gt; 0) {
+        await new Promise(resolve =&gt; setTimeout(resolve, 1000))
       }
 
-    } while(result.next && beforeTimeSpan == 0 && safety > 0)
+    } while(result.next &amp;&amp; beforeTimeSpan == 0 &amp;&amp; safety &gt; 0)
 
     return finalResult;
 

@@ -96,8 +96,8 @@ function createZone(client, project, subdomain) {
                 dnsName: subdomain.includes(host) ? (host + '.') : (subdomain + '.')
             }
         })
-        .then(res => {
-            if(res.data.managedZones.length > 0) {
+        .then(res =&gt; {
+            if(res.data.managedZones.length &gt; 0) {
                 zone = res.data.managedZones[0].name;
                 console.log(`Zone ${subdomain} already mapped`);
                 return Promise.resolve(res.data.managedZones[0].name);
@@ -119,7 +119,7 @@ function createZone(client, project, subdomain) {
                 }
             })
         })
-        .then(() => zone)
+        .then(() =&gt; zone)
 }
 
 function insertAddress(client, project, addrs, subdomain) {
@@ -131,26 +131,26 @@ function insertAddress(client, project, addrs, subdomain) {
     
     return createZone(client, project, subdomain)
         // TODO: check for unused ips
-        .then(z => (zone = z))
-        .then(() => {
+        .then(z =&gt; (zone = z))
+        .then(() =&gt; {
             return client.request({
                 url: `https://www.googleapis.com/dns/v1/projects/${project}/managedZones/${zone}/rrsets`
             })
         })
-        .then(res => {
-            defaultRecord = res.data.rrsets.filter(r => r.type == 'A' && r.name == host + '.')[0];
-            records = res.data.rrsets.filter(r => r.type == 'A' && r.name == subdomain + '.');
+        .then(res =&gt; {
+            defaultRecord = res.data.rrsets.filter(r =&gt; r.type == 'A' &amp;&amp; r.name == host + '.')[0];
+            records = res.data.rrsets.filter(r =&gt; r.type == 'A' &amp;&amp; r.name == subdomain + '.');
         })
         // check if there is an ip unassigned
-        .then(() => listGlobalForwards(project))
-        .then(forwards => {
+        .then(() =&gt; listGlobalForwards(project))
+        .then(forwards =&gt; {
             // match existing dns records
             var match = Object.keys(addrs)
                 // use sheet-to-web host ip address
-                .filter(a => subdomain.includes(host)
+                .filter(a =&gt; subdomain.includes(host)
                         ? defaultRecord.rrdatas[0] == addrs[a]
-                        : records.filter(r => r.rrdatas[0] == addrs[a]).length > 0)
-            if(match.length > 0) {
+                        : records.filter(r =&gt; r.rrdatas[0] == addrs[a]).length &gt; 0)
+            if(match.length &gt; 0) {
                 name = match[0];
                 address = addrs[match[0]];
                 console.log(`Matched IP ${match[0]} already exists`);
@@ -158,10 +158,10 @@ function insertAddress(client, project, addrs, subdomain) {
             }
         
             var unused = Object.keys(addrs)
-                .filter(a => Object.values(forwards)
-                        .map(gf => gf.IPAddress)
-                        .filter(ip => ip == addrs[a]).length == 0);
-            if(unused.length > 0) {
+                .filter(a =&gt; Object.values(forwards)
+                        .map(gf =&gt; gf.IPAddress)
+                        .filter(ip =&gt; ip == addrs[a]).length == 0);
+            if(unused.length &gt; 0) {
                 name = unused[0];
                 address = addrs[unused[0]];
                 console.log(`New unused IP ${unused[0]} already exists`);
@@ -178,20 +178,20 @@ function insertAddress(client, project, addrs, subdomain) {
                     networkTier: 'PREMIUM'
                 }
             })
-                .then(res => {
+                .then(res =&gt; {
                     return waitForOperation(res.data.selfLink);
                 })
-                .then(target => {
+                .then(target =&gt; {
                     return client.request({
                         url: target
                     })
                 })
-                .then(res => {
+                .then(res =&gt; {
                     address = res.data.address;
                 })
         })
         // update zone with A record
-        .then(() => {
+        .then(() =&gt; {
             return client.request({
                 method: 'POST',
                 url: `https://www.googleapis.com/dns/v1/projects/${project}/managedZones/${zone}/changes`,
@@ -209,7 +209,7 @@ function insertAddress(client, project, addrs, subdomain) {
                 }
             })
         })
-        .then(() => name)
+        .then(() =&gt; name)
     /*
     {
   "kind": "dns#resourceRecordSet",
@@ -240,10 +240,10 @@ Example of the resource record set representation:
 function addIP(project, subdomain) {
     var client, addresses;
     return util.promisify(dns.lookup)(subdomain)
-        .then((addrs, family) => {
+        .then((addrs, family) =&gt; {
             addresses = [addrs.address];
         })
-        .catch(up => {
+        .catch(up =&gt; {
             if(up.message.includes('ENOTFOUND')) {
                 addresses = [];
                 console.log(up.message);
@@ -251,19 +251,19 @@ function addIP(project, subdomain) {
             }
             throw up
         })
-        .then(() => authorizeGoogle())
-        .then(c => (client = c).request({
+        .then(() =&gt; authorizeGoogle())
+        .then(c =&gt; (client = c).request({
             url: `https://www.googleapis.com/compute/v1/projects/${project}/global/addresses`,
         }))
-        .then(res => {
-            return (res.data.items || []).reduce((obj, addr) => {
+        .then(res =&gt; {
+            return (res.data.items || []).reduce((obj, addr) =&gt; {
                 obj[addr.name] = addr.address;
                 return obj
             }, {});
         })
-        .then(addrs => {
-            var matching = Object.keys(addrs).filter(a => addresses.indexOf(addrs[a]) > -1);
-            if(matching.length > 0) {
+        .then(addrs =&gt; {
+            var matching = Object.keys(addrs).filter(a =&gt; addresses.indexOf(addrs[a]) &gt; -1);
+            if(matching.length &gt; 0) {
                 console.log(`domain ${subdomain} already exists, ip address ${matching[0]}`)
                 return Promise.resolve(matching[0]);
             }

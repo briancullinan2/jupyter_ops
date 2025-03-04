@@ -66,7 +66,7 @@
 <p>The code resizes and enhances an input image using ImageMagick's <code>convert</code> command, applying techniques such as despeckling and alpha channel processing. The final output image is saved as a new file, with adjustable quality settings and a maximum width of 600 pixels.</p>
 
 
-<pre class="bash"><code>convert -density 600 "./.output/IMG_1587.JPG" -resize "600^<" -scale 50% "./.output/IMG_1587-final.jpg" || true && \
+<pre class="bash"><code>convert -density 600 "./.output/IMG_1587.JPG" -resize "600^&lt;" -scale 50% "./.output/IMG_1587-final.jpg" || true &amp;&amp; \
     convert "./.output/IMG_1587-final.jpg" +clone -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite -quality </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

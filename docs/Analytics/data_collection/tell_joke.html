@@ -87,13 +87,13 @@ function getJoke() {
     // TODO: collect jokes instead
     return (typeof jokes === 'undefined'
         ? request('http://www.ducksters.com/jokes/silly.php')
-        .then(res => importer.regexToArray(/^.*?Q:.*$|^.*?A:.*$/igm, res.body))
-        .then(r => {
-            r = r.reduce((arr, j, i) => {
+        .then(res =&gt; importer.regexToArray(/^.*?Q:.*$|^.*?A:.*$/igm, res.body))
+        .then(r =&gt; {
+            r = r.reduce((arr, j, i) =&gt; {
                 if(i % 2 === 1) {
                     arr.push([
-                        r[i-1].replace(/<.*?\s*\/?>/ig, '').trim().replace(/^\s*|\s*$/igm, ''),
-                        j.replace(/<.*?\s*\/?>/ig, '').trim().replace(/^\s*|\s*$/igm, '')
+                        r[i-1].replace(/&lt;.*?\s*\/?&gt;/ig, '').trim().replace(/^\s*|\s*$/igm, ''),
+                        j.replace(/&lt;.*?\s*\/?&gt;/ig, '').trim().replace(/^\s*|\s*$/igm, '')
                     ]);
                 }
                 return arr;
@@ -103,7 +103,7 @@ function getJoke() {
             return r;
         })
         : Promise.resolve(jokes))
-        .then(arr => {
+        .then(arr =&gt; {
             const i = Math.round(Math.random() * arr.length);
             return arr[i];
         })

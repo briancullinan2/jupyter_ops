@@ -140,7 +140,7 @@ function relativeImports(code, pathToCode) {
         missing: []
     }
     var requires = getRequires(code)
-    requires.forEach(imp => {
+    requires.forEach(imp =&gt; {
         var local = imp.substr(0, 1) === '.'
         try {
             if(local) {

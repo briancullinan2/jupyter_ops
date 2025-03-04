@@ -80,40 +80,40 @@ function displayBranches(nodes) {
     var d3 = d3n.d3;
 
     var visited = [];
-    var root = d3.hierarchy({ name: '', children: nodes }, d => {
-        if(visited.indexOf(d) > -1) {
+    var root = d3.hierarchy({ name: '', children: nodes }, d =&gt; {
+        if(visited.indexOf(d) &gt; -1) {
             return [];
         }
         visited.push(d);
         return d.children;
     })
-        .sum(d => 1)
-        .sort((a, b) => b.data.time - a.data.time || b.value - a.value)
+        .sum(d =&gt; 1)
+        .sort((a, b) =&gt; b.data.time - a.data.time || b.value - a.value)
         //)
         .descendants();
     
     var branches = root
-        .map(r => (r.data.branch || '').replace('HEAD -> ', '').trim().split(/\s*,\s*/igm))
-        .reduce((acc, r) => acc.concat(r), [])
-        .filter((b, i, arr) => arr.indexOf(b) === i)
+        .map(r =&gt; (r.data.branch || '').replace('HEAD -&gt; ', '').trim().split(/\s*,\s*/igm))
+        .reduce((acc, r) =&gt; acc.concat(r), [])
+        .filter((b, i, arr) =&gt; arr.indexOf(b) === i)
 
-    root.forEach(r => {
+    root.forEach(r =&gt; {
         r.name = r.data.name;
         r.index = r.data.index;
         r.branch = r.data.branch;
     })
-    var nodes = d3.hierarchy(root[0], d => d.children)
+    var nodes = d3.hierarchy(root[0], d =&gt; d.children)
         .descendants();
-    var nodeNames = nodes.map(n => n.data.name);
+    var nodeNames = nodes.map(n =&gt; n.data.name);
     nodes = nodes
-        .filter((n, i, arr) => nodeNames.indexOf(n.data.name) === i)
-        //.map((n, i) => {
+        .filter((n, i, arr) =&gt; nodeNames.indexOf(n.data.name) === i)
+        //.map((n, i) =&gt; {
         //    Object.assign(n.data, {index: i})
         //    return n;
         //})
         .slice(1);
 
-    var links = nodes.filter(n => n !== null && n.depth > 1);
+    var links = nodes.filter(n =&gt; n !== null &amp;&amp; n.depth &gt; 1);
 
     var fill = d3.scaleOrdinal(d3.schemeCategory20);
     var svg = d3n.createSVG(
@@ -130,8 +130,8 @@ function displayBranches(nodes) {
     function branchIndex(d) {
         var result = Math.min.apply(null, (d.data.branch || '')
             .split(/\s*,\s*/ig)
-            .map(b => branches.indexOf(b))
-            .filter(i => i > -1));
+            .map(b =&gt; branches.indexOf(b))
+            .filter(i =&gt; i &gt; -1));
         if (!isFinite(result)) {
             result = d.depth;
         }
@@ -145,7 +145,7 @@ function displayBranches(nodes) {
         .attr('fill', 'none')
         .attr('stroke', 'rgba(0,0,0,0.3)')
         .attr('stroke-width', 3)
-        .attr('d', d => `
+        .attr('d', d =&gt; `
             M${x(branchIndex(d))},${y(d.data.index)}
             C${x((branchIndex(d) + branchIndex(d.parent)) / 2.0)},
               ${y(d.data.index)} ${x((branchIndex(d) + branchIndex(d.parent)) / 2.0)},
@@ -160,20 +160,20 @@ function displayBranches(nodes) {
         .style('fill', function (d, i) {
             return fill(d.data.branch);
         })
-        .attr('transform', d => `translate(${x(branchIndex(d))},${y(d.data.index)})`);
+        .attr('transform', d =&gt; `translate(${x(branchIndex(d))},${y(d.data.index)})`);
 
     node.append('circle')
-        .attr('class', d => (d.data).isAux ? 'node-aux-route' : 'node-route')
+        .attr('class', d =&gt; (d.data).isAux ? 'node-aux-route' : 'node-route')
         .attr('r', 6);
 
     node.append('text')
-        .attr('x', (d) => 13)
+        .attr('x', (d) =&gt; 13)
         .attr('dy', '.35em')
         .attr('text-anchor', 'start')
         .attr('style', 'text-shadow:0 0 1px rgba(0,0,0,1), 0 0 1px rgba(0,0,0,1), 0 0 1px rgba(0,0,0,1);')
-        .text(d => d.data.name + (d.data.branch && (typeof d.children === 'undefined'
+        .text(d =&gt; d.data.name + (d.data.branch &amp;&amp; (typeof d.children === 'undefined'
                                 || !d.children || d.children.filter(
-                c => c.data.branch == d.data.branch) == 0) ? (' ( ' + d.data.branch + ' ) ') : ''))
+                c =&gt; c.data.branch == d.data.branch) == 0) ? (' ( ' + d.data.branch + ' ) ') : ''))
         .attr('class', 'monospace');
 
     // reset transform

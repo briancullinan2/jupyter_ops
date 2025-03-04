@@ -97,8 +97,8 @@ async function updateGist(gist, files) {
         gist_id,
         files
     })
-        .then(r => r.data)
-        .catch(e => console.log(e))
+        .then(r =&gt; r.data)
+        .catch(e =&gt; console.log(e))
 }
 
 module.exports = updateGist

@@ -88,7 +88,7 @@ Banana Cake
 Oatmeal Raisin Cookies
 Bread Pudding
 Carrot Cake
-M&M Cookies
+M&amp;M Cookies
 Vanilla Cupcakes
 Crepes
 Angel Food Cake
@@ -132,7 +132,7 @@ Chocolate Chip Cookies
 Banana Pudding
 Boston Cream Pie Cheesecake
 Chocolate Fondue
-Mini Peanut Butter & Jelly Pies
+Mini Peanut Butter &amp; Jelly Pies
 Red Velvet Bread Pudding
 Alton's Chocolate Pudding
 Homemade Glazed Doughnuts
@@ -168,9 +168,9 @@ Dark Chocolate Mousse`.split('\n')
 
 function renameImages() {
 
-  let images = fs.readdirSync(IMAGEPATH).sort((a, b) => fs.statSync(path.join(IMAGEPATH, a)).mtime - fs.statSync(path.join(IMAGEPATH, b)).mtime)
+  let images = fs.readdirSync(IMAGEPATH).sort((a, b) =&gt; fs.statSync(path.join(IMAGEPATH, a)).mtime - fs.statSync(path.join(IMAGEPATH, b)).mtime)
 
-  for(let i = 0; i < images.length; i++) {
+  for(let i = 0; i &lt; images.length; i++) {
     if (images[i][0] == '.') continue
     let seed = images[i].split(/-|\./gi)[1]
     fs.renameSync(path.join(IMAGEPATH, images[i]), 

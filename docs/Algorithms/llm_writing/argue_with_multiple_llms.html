@@ -80,7 +80,7 @@ async function argueLlama(prompt, callback) {
 
   let count = 10
 
-  while(--count > 0) {
+  while(--count &gt; 0) {
     let q1 = prompt
     let a1 = await llmPrompt(q1)
     await callback(q1, a1)

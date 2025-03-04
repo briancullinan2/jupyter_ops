@@ -69,14 +69,14 @@ var project = PROFILE_PATH + '/Collections/flagstaff-happy';
 
 function getResultsPage() {
     return client
-        .then(() => getAllXPath([
+        .then(() =&gt; getAllXPath([
             '//*[contains(@class, "section-result-text-content")]',
             {
                 name: './/h3[contains(@class, "section-result-title")]//text()',
                 description: './/span[contains(@class, "section-result-details")]//text()|.//span[contains(@class, "section-result-location")]//text()'
             }
         ]))
-        .then(r => r.map(l => ({
+        .then(r =&gt; r.map(l =&gt; ({
             name: typeof l.name === 'string' ? l.name : l.name.join('\n').trim(),
             description: typeof l.description === 'string'
                 ? l.description
@@ -87,16 +87,16 @@ function getResultsPage() {
 function getAllResults() {
     var locations = [];
     return getResultsPage()
-        .then(newLocs => {
+        .then(newLocs =&gt; {
             locations = newLocs;
             return client.isExisting('//*[contains(@class, "section-pagination-right")]//button[contains(@aria-label, "Next page") and not(@disabled)]');
         })
-        .then(is => {
+        .then(is =&gt; {
             if(is) {
                 return client.click('//*[contains(@class, "section-pagination-right")]//button[contains(@aria-label, "Next page") and not(@disabled)]')
                     .pause(3000)
-                    .then(() => getAllResults())
-                    .then(newLocs => locations.concat(newLocs))
+                    .then(() =&gt; getAllResults())
+                    .then(newLocs =&gt; locations.concat(newLocs))
             } else {
                 return locations;
             }
@@ -108,8 +108,8 @@ function getNearbyJSON(place) {
         place = 'bars+near+Flagstaff,+AZ';
     }
     return client.url('https://www.google.com/maps/search/' + place)
-        .then(() => getAllResults())
-        .then(r => {
+        .then(() =&gt; getAllResults())
+        .then(r =&gt; {
             const day = new Date();
             const date = day.getFullYear() + '-' + (day.getMonth() + 1) + '-' + day.getDate();
             fs.writeFileSync(path.join(project, 'locations-' + date + '.json'), JSON.stringify(r, null, 4));
@@ -121,9 +121,9 @@ module.exports = getNearbyJSON;
 if(typeof $ !== 'undefined') {
     $.async();
     runSeleniumCell('google maps data list', false)
-        .then(func => func())
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(func =&gt; func())
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

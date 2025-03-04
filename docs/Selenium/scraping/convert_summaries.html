@@ -111,13 +111,13 @@ async function alternativeSummary(summary, funny) {
 async function alternativeArticles(startPage, random) {
 
   // TODO: get base summary, if it doesn't exist generate it
-  const CONVERSION_FILES = CONVERSION_PROMPTS.map(funny =>
+  const CONVERSION_FILES = CONVERSION_PROMPTS.map(funny =&gt;
     path.join(PROJECT_PATH, safeurl(getNearestSunday()) + '-' + safeurl(funny) + '.json'))
 
 
   // TODO: get a list of all other summary conversions
   const allSummaries = []
-  for (let i = 0; i < CONVERSION_FILES.length; i++) {
+  for (let i = 0; i &lt; CONVERSION_FILES.length; i++) {
     if (fs.existsSync(CONVERSION_FILES[i]))
       allSummaries[i] = JSON.parse(fs.readFileSync(CONVERSION_FILES[i]))
     else
@@ -133,8 +133,8 @@ async function alternativeArticles(startPage, random) {
   if(random) {
     random = Math.round(Math.random() * (CONVERSION_PROMPTS.length - 1)) + 1
   }
-  for (let i = 0; i < links.length; i++) {
-    for (let j = random ? random : 1; j < CONVERSION_PROMPTS.length; j++) {
+  for (let i = 0; i &lt; links.length; i++) {
+    for (let j = random ? random : 1; j &lt; CONVERSION_PROMPTS.length; j++) {
 
       if(typeof allSummaries[j][links[i]] != 'undefined') {
         continue

@@ -74,8 +74,8 @@ function sourceWindow() {
   return (window.parent.opener || window.parent)
 }
 
-document.addEventListener('click', async (evt) => {
-  if(evt.target.tagName == 'A' && evt.target.getAttribute('href').includes('://')) {
+document.addEventListener('click', async (evt) =&gt; {
+  if(evt.target.tagName == 'A' &amp;&amp; evt.target.getAttribute('href').includes('://')) {
     debugger
 
 
@@ -90,18 +90,18 @@ document.addEventListener('click', async (evt) => {
     return false
   }
 
-  if(evt.target.tagName == 'A' && evt.target.getAttribute('href').includes('/.proxy/')) {
+  if(evt.target.tagName == 'A' &amp;&amp; evt.target.getAttribute('href').includes('/.proxy/')) {
     const loggedInResponse = await fetch(evt.target.getAttribute('href'))
     const newContent = await loggedInResponse.text()
     //if(!newContent.includes('Cannot GET'))
-    document.body.innerHTML = newContent.replace(/<\/?html>/gi, '')
-                                        .replace(/<script.*?>[\s\S]*?<\/script>/gi, '');
+    document.body.innerHTML = newContent.replace(/&lt;\/?html&gt;/gi, '')
+                                        .replace(/&lt;script.*?&gt;[\s\S]*?&lt;\/script&gt;/gi, '');
   }
   return true
 })
 
 let result = {}
-let params = (window.location.search.split('?')[1] || '').split('&')
+let params = (window.location.search.split('?')[1] || '').split('&amp;')
 for(var param in params) {
   if (params.hasOwnProperty(param)) {
     let paramParts = params[param].split('=')
@@ -109,7 +109,7 @@ for(var param in params) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", (event) =&gt; {
 
   debugger
 

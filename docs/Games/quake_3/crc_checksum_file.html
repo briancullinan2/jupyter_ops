@@ -130,9 +130,9 @@ async function checksumZip(file) {
       file: file,
       storeEntries: true
     })
-    var index = await new Promise(resolve => {
+    var index = await new Promise(resolve =&gt; {
         var skipped = 0
-        zip.on('ready', async () => {
+        zip.on('ready', async () =&gt; {
           console.log('Entries read: ' + zip.entriesCount + ' ' + path.basename(file))
           resolve(Object.values(zip.entries()))
         })
@@ -140,9 +140,9 @@ async function checksumZip(file) {
     })
     var contents = [0]
     var j = 1
-    for(var i = 0; i < index.length; i++) {
+    for(var i = 0; i &lt; index.length; i++) {
         var entry = index[i]
-        if((entry.method != 0 && entry.method != 8) || entry.size === 0)
+        if((entry.method != 0 &amp;&amp; entry.method != 8) || entry.size === 0)
             continue
         contents[j++] = entry.crc
     }

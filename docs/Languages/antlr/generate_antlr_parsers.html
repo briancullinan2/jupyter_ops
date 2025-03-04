@@ -88,7 +88,7 @@ async function generateAntlr() {
     var files = glob('**/*.g4', path.join(__dirname, '../Resources/Parsers/'))
 
     /*
-    for(var i = 0; i < files.length; i++) {
+    for(var i = 0; i &lt; files.length; i++) {
         try {
             await execCmd(`npx antlr4ts -visitor "${files[i]}"`)
         } catch (e) {
@@ -106,10 +106,10 @@ async function generateAntlr() {
     */
     
     var typescripts = glob('**/*.ts', path.join(__dirname, '../Resources/Parsers/'))
-        .map(f => path.dirname(f))
-        .filter((f, i, arr) => arr.indexOf(f) === i)
+        .map(f =&gt; path.dirname(f))
+        .filter((f, i, arr) =&gt; arr.indexOf(f) === i)
     
-    for(var i = 0; i < typescripts.length; i++) {
+    for(var i = 0; i &lt; typescripts.length; i++) {
         try {
             await execCmd(`npx babel --extensions .ts,.tsx "${typescripts[i]}" --out-dir "${typescripts[i]}"`)
         } catch (e) {

@@ -82,7 +82,7 @@ var PROJECT_PATH = PROFILE_PATH + '/Downloads';
 
 var bookmarkTree = [
     '*/*/dl/dt[./h3]', // select all the headings
-    ctx => selectDom({
+    ctx =&gt; selectDom({
         folder: './h3/text()', // get heading text
         links: [ // all the links under that heading
             './dl/dt/a',
@@ -91,7 +91,7 @@ var bookmarkTree = [
                 time: './@add_date',
                 title: './text()'
             },
-            (obj) => ({ // a bit of parsing
+            (obj) =&gt; ({ // a bit of parsing
                 url: obj.url + '',
                 title: obj.title + '',
                 time_usec: parseInt(obj.time + ''),
@@ -99,14 +99,14 @@ var bookmarkTree = [
             })
         ],
         // get children from same context as each heading
-        children: (ctx) => selectDom(bookmarkTree, ctx)
+        children: (ctx) =&gt; selectDom(bookmarkTree, ctx)
     }, ctx)
 ]
 
 function getBookmarksFromTakeout() {
     var files = glob.sync('Takeout*/Chrome/Bookmarks.html', {cwd: PROJECT_PATH})
-        .map(f => path.join(PROJECT_PATH, f));
-    files.sort((a, b) => fs.statSync(a).ctime - fs.statSync(b).ctime);
+        .map(f =&gt; path.join(PROJECT_PATH, f));
+    files.sort((a, b) =&gt; fs.statSync(a).ctime - fs.statSync(b).ctime);
     // parse bookmark html
     var html = fs.readFileSync(files.pop()).toString();
     return selectDom(bookmarkTree, html)

@@ -66,7 +66,7 @@
  **********************************************************/
 var BitView = function (source, byteOffset, byteLength) {
 	var isBuffer = source instanceof ArrayBuffer ||
-		(typeof Buffer !== 'undefined' && source instanceof Buffer);
+		(typeof Buffer !== 'undefined' &amp;&amp; source instanceof Buffer);
 
 	if (!isBuffer) {
 		throw new Error('Must specify a valid ArrayBuffer or Buffer.');
@@ -98,24 +98,24 @@ Object.defineProperty(BitView.prototype, 'byteLength', {
 
 BitView.prototype._setBit = function (offset, on) {
 	if (on) {
-		this._view[offset >> 3] |= 1 << (offset & 7);
+		this._view[offset &gt;&gt; 3] |= 1 &lt;&lt; (offset &amp; 7);
 	} else {
-		this._view[offset >> 3] &= ~(1 << (offset & 7));
+		this._view[offset &gt;&gt; 3] &amp;= ~(1 &lt;&lt; (offset &amp; 7));
 	}
 };
 
 BitView.prototype.getBits = function (offset, bits, signed) {
 	var available = (this._view.length * 8 - offset);
 
-	if (bits > available) {
+	if (bits &gt; available) {
 		throw new Error('Cannot get ' + bits + ' bit(s) from offset ' + offset + ', ' + available + ' available');
 	}
 
 	var value = 0;
-	for (var i = 0; i < bits;) {
+	for (var i = 0; i &lt; bits;) {
 		var remaining = bits - i;
-		var bitOffset = offset & 7;
-		var currentByte = this._view[offset >> 3];
+		var bitOffset = offset &amp; 7;
+		var currentByte = this._view[offset &gt;&gt; 3];
 
 		// the max number of bits we can read from the current byte
 		var read = Math.min(remaining, 8 - bitOffset);
@@ -123,19 +123,19 @@ BitView.prototype.getBits = function (offset, bits, signed) {
 		var mask, readBits;
 		if (this.bigEndian) {
 			// create a mask with the correct bit width
-			mask = ~(0xFF << read);
+			mask = ~(0xFF &lt;&lt; read);
 			// shift the bits we want to the start of the byte and mask of the rest
-			readBits = (currentByte >> (8 - read - bitOffset)) & mask;
+			readBits = (currentByte &gt;&gt; (8 - read - bitOffset)) &amp; mask;
 
-			value <<= read;
+			value &lt;&lt;= read;
 			value |= readBits;
 		} else {
 			// create a mask with the correct bit width
-			mask = ~(0xFF << read);
+			mask = ~(0xFF &lt;&lt; read);
 			// shift the bits we want to the start of the byte and mask off the rest
-			readBits = (currentByte >> bitOffset) & mask;
+			readBits = (currentByte &gt;&gt; bitOffset) &amp; mask;
 
-			value |= readBits << i;
+			value |= readBits &lt;&lt; i;
 		}
 
 		offset += read;
@@ -146,57 +146,57 @@ BitView.prototype.getBits = function (offset, bits, signed) {
 		// If we're not working with a full 32 bits, check the
 		// imaginary MSB for this bit count and convert to a
 		// valid 32-bit signed value if set.
-		if (bits !== 32 && value & (1 << (bits - 1))) {
-			value |= -1 ^ ((1 << bits) - 1);
+		if (bits !== 32 &amp;&amp; value &amp; (1 &lt;&lt; (bits - 1))) {
+			value |= -1 ^ ((1 &lt;&lt; bits) - 1);
 		}
 
 		return value;
 	}
 
-	return value >>> 0;
+	return value &gt;&gt;&gt; 0;
 };
 
 BitView.prototype.setBits = function (offset, value, bits) {
 	var available = (this._view.length * 8 - offset);
 
-	if (bits > available) {
+	if (bits &gt; available) {
 		throw new Error('Cannot set ' + bits + ' bit(s) from offset ' + offset + ', ' + available + ' available');
 	}
 
-	for (var i = 0; i < bits;) {
+	for (var i = 0; i &lt; bits;) {
 		var remaining = bits - i;
-		var bitOffset = offset & 7;
-		var byteOffset = offset >> 3;
+		var bitOffset = offset &amp; 7;
+		var byteOffset = offset &gt;&gt; 3;
 		var wrote = Math.min(remaining, 8 - bitOffset);
 
 		var mask, writeBits, destMask;
 		if (this.bigEndian) {
 			// create a mask with the correct bit width
-			mask = ~(~0 << wrote);
+			mask = ~(~0 &lt;&lt; wrote);
 			// shift the bits we want to the start of the byte and mask of the rest
-			writeBits = (value >> (bits - i - wrote)) & mask;
+			writeBits = (value &gt;&gt; (bits - i - wrote)) &amp; mask;
 
 			var destShift = 8 - bitOffset - wrote;
 			// destination mask to zero all the bits we're changing first
-			destMask = ~(mask << destShift);
+			destMask = ~(mask &lt;&lt; destShift);
 
 			this._view[byteOffset] =
-				(this._view[byteOffset] & destMask)
-				| (writeBits << destShift);
+				(this._view[byteOffset] &amp; destMask)
+				| (writeBits &lt;&lt; destShift);
 
 		} else {
 			// create a mask with the correct bit width
-			mask = ~(0xFF << wrote);
+			mask = ~(0xFF &lt;&lt; wrote);
 			// shift the bits we want to the start of the byte and mask of the rest
-			writeBits = value & mask;
-			value >>= wrote;
+			writeBits = value &amp; mask;
+			value &gt;&gt;= wrote;
 
 			// destination mask to zero all the bits we're changing first
-			destMask = ~(mask << bitOffset);
+			destMask = ~(mask &lt;&lt; bitOffset);
 
 			this._view[byteOffset] =
-				(this._view[byteOffset] & destMask)
-				| (writeBits << bitOffset);
+				(this._view[byteOffset] &amp; destMask)
+				| (writeBits &lt;&lt; bitOffset);
 		}
 
 		offset += wrote;
@@ -262,7 +262,7 @@ BitView.prototype.setFloat64 = function (offset, value) {
 };
 BitView.prototype.getArrayBuffer = function (offset, byteLength) {
 	var buffer = new Uint8Array(byteLength);
-	for (var i = 0; i < byteLength; i++) {
+	for (var i = 0; i &lt; byteLength; i++) {
 		buffer[i] = this.getUint8(offset + (i * 8));
 	}
 	return buffer;
@@ -279,7 +279,7 @@ BitView.prototype.getArrayBuffer = function (offset, byteLength) {
  **********************************************************/
 var reader = function (name, size) {
 	return function () {
-		if (this._index + size > this._length) {
+		if (this._index + size &gt; this._length) {
 			throw new Error('Trying to read past the end of the stream');
 		}
 		var val = this._view[name](this._index);
@@ -317,7 +317,7 @@ function readString(stream, bytes, utf8) {
 
 	// Read while we still have space available, or until we've
 	// hit the fixed byte length passed in.
-	while (i < bytes) {
+	while (i &lt; bytes) {
 		var c = stream.readUint8();
 
 		// Stop appending chars once we hit 0x00
@@ -351,8 +351,8 @@ function readString(stream, bytes, utf8) {
 function writeASCIIString(stream, string, bytes) {
 	var length = bytes || string.length + 1;  // + 1 for NULL
 
-	for (var i = 0; i < length; i++) {
-		stream.writeUint8(i < string.length ? string.charCodeAt(i) : 0x00);
+	for (var i = 0; i &lt; length; i++) {
+		stream.writeUint8(i &lt; string.length ? string.charCodeAt(i) : 0x00);
 	}
 }
 
@@ -360,33 +360,33 @@ function writeUTF8String(stream, string, bytes) {
 	var byteArray = stringToByteArray(string);
 
 	var length = bytes || byteArray.length + 1;  // + 1 for NULL
-	for (var i = 0; i < length; i++) {
-		stream.writeUint8(i < byteArray.length ? byteArray[i] : 0x00);
+	for (var i = 0; i &lt; length; i++) {
+		stream.writeUint8(i &lt; byteArray.length ? byteArray[i] : 0x00);
 	}
 }
 
 function stringToByteArray(str) { // https://gist.github.com/volodymyr-mykhailyk/2923227
 	var b = [], i, unicode;
-	for (i = 0; i < str.length; i++) {
+	for (i = 0; i &lt; str.length; i++) {
 		unicode = str.charCodeAt(i);
-		// 0x00000000 - 0x0000007f -> 0xxxxxxx
-		if (unicode <= 0x7f) {
+		// 0x00000000 - 0x0000007f -&gt; 0xxxxxxx
+		if (unicode &lt;= 0x7f) {
 			b.push(unicode);
-			// 0x00000080 - 0x000007ff -> 110xxxxx 10xxxxxx
-		} else if (unicode <= 0x7ff) {
-			b.push((unicode >> 6) | 0xc0);
-			b.push((unicode & 0x3F) | 0x80);
-			// 0x00000800 - 0x0000ffff -> 1110xxxx 10xxxxxx 10xxxxxx
-		} else if (unicode <= 0xffff) {
-			b.push((unicode >> 12) | 0xe0);
-			b.push(((unicode >> 6) & 0x3f) | 0x80);
-			b.push((unicode & 0x3f) | 0x80);
-			// 0x00010000 - 0x001fffff -> 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+			// 0x00000080 - 0x000007ff -&gt; 110xxxxx 10xxxxxx
+		} else if (unicode &lt;= 0x7ff) {
+			b.push((unicode &gt;&gt; 6) | 0xc0);
+			b.push((unicode &amp; 0x3F) | 0x80);
+			// 0x00000800 - 0x0000ffff -&gt; 1110xxxx 10xxxxxx 10xxxxxx
+		} else if (unicode &lt;= 0xffff) {
+			b.push((unicode &gt;&gt; 12) | 0xe0);
+			b.push(((unicode &gt;&gt; 6) &amp; 0x3f) | 0x80);
+			b.push((unicode &amp; 0x3f) | 0x80);
+			// 0x00010000 - 0x001fffff -&gt; 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
 		} else {
-			b.push((unicode >> 18) | 0xf0);
-			b.push(((unicode >> 12) & 0x3f) | 0x80);
-			b.push(((unicode >> 6) & 0x3f) | 0x80);
-			b.push((unicode & 0x3f) | 0x80);
+			b.push((unicode &gt;&gt; 18) | 0xf0);
+			b.push(((unicode &gt;&gt; 12) &amp; 0x3f) | 0x80);
+			b.push(((unicode &gt;&gt; 6) &amp; 0x3f) | 0x80);
+			b.push((unicode &amp; 0x3f) | 0x80);
 		}
 	}
 
@@ -395,9 +395,9 @@ function stringToByteArray(str) { // https://gist.github.com/volodymyr-mykhailyk
 
 var BitStream = function (source, byteOffset, byteLength) {
 	var isBuffer = source instanceof ArrayBuffer ||
-		(typeof Buffer !== 'undefined' && source instanceof Buffer);
+		(typeof Buffer !== 'undefined' &amp;&amp; source instanceof Buffer);
 
-	if (!(source instanceof BitView) && !isBuffer) {
+	if (!(source instanceof BitView) &amp;&amp; !isBuffer) {
 		throw new Error('Must specify a valid BitView, ArrayBuffer or Buffer');
 	}
 
@@ -521,7 +521,7 @@ BitStream.prototype.writeBitStream = function(stream, length) {
 	}
 
 	var bitsToWrite;
-	while (length > 0) {
+	while (length &gt; 0) {
 		bitsToWrite = Math.min(length, 32);
 		this.writeBits(stream.readBits(bitsToWrite), bitsToWrite);
 		length -= bitsToWrite;
@@ -539,7 +539,7 @@ BitStream.prototype.writeArrayBuffer = function(buffer, byteLength) {
 };
 
 // AMD / RequireJS
-if (typeof define !== 'undefined' && define.amd) {
+if (typeof define !== 'undefined' &amp;&amp; define.amd) {
 	define(function () {
 		return {
 			BitView: BitView,
@@ -548,7 +548,7 @@ if (typeof define !== 'undefined' && define.amd) {
 	});
 }
 // Node.js
-else if (typeof module !== 'undefined' && module.exports) {
+else if (typeof module !== 'undefined' &amp;&amp; module.exports) {
 	module.exports = {
 		BitView: BitView,
 		BitStream: BitStream

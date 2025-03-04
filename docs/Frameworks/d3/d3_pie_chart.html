@@ -85,7 +85,7 @@ function d3PieChart(values) {
 
     var pie = d3.pie()
         .sort(null)
-        .value(d => d.value)
+        .value(d =&gt; d.value)
 
     var path = d3.arc()
         .outerRadius(radius - 10)
@@ -102,13 +102,13 @@ function d3PieChart(values) {
 
     arc.append('path')
         .attr('d', path)
-        .attr('fill', d => color(d.data.label))
+        .attr('fill', d =&gt; color(d.data.label))
 
     arc.append('text')
-        .text(d => d.data.label + ' - ' + d.data.value)
+        .text(d =&gt; d.data.label + ' - ' + d.data.value)
         .attr('dy', '0.35em')
-        .attr('transform', d => {
-            var midAngle = true || d.endAngle < Math.PI 
+        .attr('transform', d =&gt; {
+            var midAngle = true || d.endAngle &lt; Math.PI 
                 ? d.startAngle/2 + d.endAngle/2 
                 : d.startAngle/2 + d.endAngle/2 + Math.PI;
             return 'translate(' + label.centroid(d) + ') rotate(-90) rotate(' + (midAngle * 180/Math.PI) + ')'

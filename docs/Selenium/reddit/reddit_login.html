@@ -93,7 +93,7 @@ async function enterReddit(driver) {
   } catch (e) {}
 
   if(loginStill3) {
-    await new Promise(resolve => setTimeout(resolve, 20000))
+    await new Promise(resolve =&gt; setTimeout(resolve, 20000))
     try {
       loginStill = false
       loginStill2 = false
@@ -113,7 +113,7 @@ async function loginReddit(driver) {
 
   try {
     let url = await driver.getCurrentUrl()
-    let loggedIn = url.indexOf('reddit') > -1 && url.indexOf('login') == -1
+    let loggedIn = url.indexOf('reddit') &gt; -1 &amp;&amp; url.indexOf('login') == -1
 
     debugger
     if(loggedIn) {

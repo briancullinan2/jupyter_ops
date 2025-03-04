@@ -101,7 +101,7 @@ function getResult(props) {
     //   style and therefore functions are missing from the context when loaded separately.
     // This is maybe a sign there is something wrong with this style of dependency injection
     var commandResult = importer.import(result.id);
-    if(commandResult && typeof commandResult[Object.keys(commandResult)[0]] === 'function') {
+    if(commandResult &amp;&amp; typeof commandResult[Object.keys(commandResult)[0]] === 'function') {
         commandResult = commandResult[Object.keys(commandResult)[0]];
     }
        
@@ -111,7 +111,7 @@ function getResult(props) {
             if(typeof props.body[0] !== 'undefined') {
                 parameterValues = props.body;
             } else {
-                parameterValues = getParameters(commandResult).slice(1).map((k, i) => {
+                parameterValues = getParameters(commandResult).slice(1).map((k, i) =&gt; {
                     const p = props.body[k] || props.body[i];
                     if(typeof p === 'undefined' || p === 'undefined') {
                         return;

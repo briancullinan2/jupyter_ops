@@ -58,14 +58,14 @@
 
 <pre class="javascript"><code>var glob = require('glob');
 
-var translateRegex = (/[\{"]([^><"]*?)\s*\|\s*translate\s*(:\s*[^><"\}]*?)?["\}]/ig);
+var translateRegex = (/[\{"]([^&gt;&lt;"]*?)\s*\|\s*translate\s*(:\s*[^&gt;&lt;"\}]*?)?["\}]/ig);
 
 function getTranslations(project) {
     var files = glob.sync('**/*component.html', {
         ignore: '**/temp-demo-pages/**',
         cwd: project
     });
-    var translations = files.map((f, i) => {
+    var translations = files.map((f, i) =&gt; {
         var html = fs.readFileSync(path.join(cwd, f)).toString();
         let r;
         var translateStrings = [];
@@ -84,7 +84,7 @@ function getTranslations(project) {
         return result;
     });
 
-    var translationKeys = translations.reduce((obj, tr) => {
+    var translationKeys = translations.reduce((obj, tr) =&gt; {
         var key = Object.keys(tr).pop();
         if (typeof obj[key] !== 'undefined') {
             obj[key] = obj[key].concat(tr[key]);

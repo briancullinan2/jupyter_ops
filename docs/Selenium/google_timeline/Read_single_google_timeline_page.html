@@ -81,7 +81,7 @@ function readTimelinePage() {
             }
         ]
     })
-        .then(r => {
+        .then(r =&gt; {
             if (r === null || r.day.length == 0) {
                 return [];
             }
@@ -93,10 +93,10 @@ function readTimelinePage() {
             var newKey = currDate.getDate()
                 + months[currDate.getMonth()]
                 + (currDate.getFullYear() + '').substr(2, 2);
-            return r.items.map(i => {
+            return r.items.map(i =&gt; {
                 var timelineData = (i.data + '').split(':');
                 var start, end, length;
-                if (timelineData.length >= 3) {
+                if (timelineData.length &gt;= 3) {
                     start = new Date(parseFloat(timelineData[1].split(',')[0]));
                     end = new Date(parseFloat(timelineData[2].split(',')[0]));
                     length = end.getTime() - start.getTime();
@@ -111,7 +111,7 @@ function readTimelinePage() {
                                            + i.duration.join('').trim().split('-')[1]);
                     length = 0;
                 }
-                if(start.getFullYear() !== 2016 || length < 0) {
+                if(start.getFullYear() !== 2016 || length &lt; 0) {
                     console.log(start);
                 }
                 var traveling = (/(Driving|Walking|Traveling|Flying|Moving).*\s+-\s+(.*),/ig).exec(i.title + ', ' + i.location)
@@ -126,7 +126,7 @@ function readTimelinePage() {
                 })
             })
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 if (typeof client.readTimelinePage == 'undefined') {
     client.addCommand('readTimelinePage', readTimelinePage);

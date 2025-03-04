@@ -98,14 +98,14 @@ const GGUF_INSTRUCTIONS = {
   'DeepSeek': void 0,
   'Llama':  void 0,
   'Qwen':  void 0,
-  'Code': '```markdown\n# You are a\n##helpful coding module\nnamed ' + (process.env.MODEL_NAME || 'Llama') + ' that responds to every request using beautifully crafted `markdown`. Return only a single code block in the specified language without reasoning or instructions if requested.\n</think>\n...```\n',
+  'Code': '```markdown\n# You are a\n##helpful coding module\nnamed ' + (process.env.MODEL_NAME || 'Llama') + ' that responds to every request using beautifully crafted `markdown`. Return only a single code block in the specified language without reasoning or instructions if requested.\n&lt;/think&gt;\n...```\n',
   'Mistral':  void 0,
   'Mesh': 'You are an LLM that responds with high quality detailed OBJ format models',
   'Meta-Llama-3.1-8B-Instruct-Q6_K_L':  void 0,
   'DeepSeek-R1-Distill-Llama-8B-Q6_K':  void 0,
   'Meta-Llama-3-70B-Instruct-Q5_K_M': void 0,
   'Qwen2.5-14B-Instruct-1M-Q6_K_L':  void 0,
-  'DeepSeek-R1-Distill-Llama-70B-Q5_K_S': '```markdown\n# You are a\n##helpful coding module\nnamed ' + (process.env.MODEL_NAME || 'Llama') + ' that responds to every request using beautifully crafted `markdown`. Return only a single code block in the specified language without reasoning or instructions if requested.\n</think>\n...```\n',
+  'DeepSeek-R1-Distill-Llama-70B-Q5_K_S': '```markdown\n# You are a\n##helpful coding module\nnamed ' + (process.env.MODEL_NAME || 'Llama') + ' that responds to every request using beautifully crafted `markdown`. Return only a single code block in the specified language without reasoning or instructions if requested.\n&lt;/think&gt;\n...```\n',
   'Mistral-Small-24B-Instruct-2501-Q6_K_L':  void 0,
   'LLaMA-Mesh-Q6_K_L': 'You are an LLM that responds with high quality detailed OBJ format models'
 }
@@ -130,7 +130,7 @@ async function selectModel(model, temperature) {
 
   if(typeof model == 'string') {
     let modelNames = Object.keys(GGUF_SPECIFICATIONS)
-    for(let i = 0; i < modelNames.length; i++) {
+    for(let i = 0; i &lt; modelNames.length; i++) {
       if(modelNames[i].match(model)) {
         let gguf = GGUF_SPECIFICATIONS[modelNames[i]]
         if(!modelSessions[modelNames[i]]) {

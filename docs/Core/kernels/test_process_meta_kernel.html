@@ -114,9 +114,9 @@ var metaKernelInterface = importer.import('meta kernel interface');
 var interface = importer.import('enforcing an interface');
 
 function testProcessKernel() {
-    return new Promise(resolve => {
+    return new Promise(resolve =&gt; {
         var kernel = processMetaKernel({
-            do_respond: (message) => {
+            do_respond: (message) =&gt; {
                 console.log(message);
                 resolve(kernel);
             },
@@ -134,13 +134,13 @@ function testProcessKernel() {
                 ]
             },
         });
-        setTimeout(() => {
+        setTimeout(() =&gt; {
             //console.log(interface(kernel, metaKernelInterface, false))
             console.log(kernel.do_message({do_execute: 'console.log(1 + 1)'}));
             console.log(kernel.do_message({do_execute: '1 + 1'}));
         }, 5000)
     })
-    .then(kernel => console.log(kernel.do_shutdown()))
+    .then(kernel =&gt; console.log(kernel.do_shutdown()))
 }
 
 module.exports = testProcessKernel;
@@ -148,8 +148,8 @@ module.exports = testProcessKernel;
 if(typeof $ !== 'undefined') {
     $.async();
     testProcessKernel()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
     
     /* expected output
     undefined

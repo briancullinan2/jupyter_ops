@@ -86,11 +86,11 @@ var insertPermission = importer.import('insert google drive permissions');
 function copyMarketing(email) {
     var fileId;
     return listDrive()
-        .then(r => fileId = r.filter(f => f.name === 'Marketing site')[0].id)
-        .then(() => copyFile(fileId, 'Marketing site ' + uuid().substr(0, 5)))
-        .then(id => insertPermission(id, email))
-        .then(() => getSheet(fileId, email))
-        .then(() => fileId)
+        .then(r =&gt; fileId = r.filter(f =&gt; f.name === 'Marketing site')[0].id)
+        .then(() =&gt; copyFile(fileId, 'Marketing site ' + uuid().substr(0, 5)))
+        .then(id =&gt; insertPermission(id, email))
+        .then(() =&gt; getSheet(fileId, email))
+        .then(() =&gt; fileId)
 }
 
 module.exports = copyMarketing;

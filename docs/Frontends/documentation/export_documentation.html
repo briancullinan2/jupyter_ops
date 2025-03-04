@@ -105,7 +105,7 @@ async function exportAll(query) {
 
   let categories = []
   let namespaces = {}
-  for (let i = 0; i < notebooks.length; i++) {
+  for (let i = 0; i &lt; notebooks.length; i++) {
     // TODO: output folders and pages for every namespace and notebook
     const relative = path.relative(path.resolve(__dirname, '../'), notebooks[i])
     let category = relative.split(path.sep)[0]
@@ -115,8 +115,8 @@ async function exportAll(query) {
 
     if(!categories.includes(category)) {
       categories.push(category)
-      results[intro].output += '<a href="./' +  category + '/index.html">' + category + '</a>' + '\n<br /><br />\n'
-      results[intro].indexOutput += '<a href="../' +  category + '/index.html">' + category + '</a>' + '\n<br /><br />\n'
+      results[intro].output += '&lt;a href="./' +  category + '/index.html"&gt;' + category + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+      results[intro].indexOutput += '&lt;a href="../' +  category + '/index.html"&gt;' + category + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
     }
 
     if (!fs.existsSync(path.join(PROJECT_PATH, category))) {
@@ -131,7 +131,7 @@ async function exportAll(query) {
         title: category
       }
       results[catpath].index = intro
-      results[catpath].parent = '<a href="../index.html">Categories</a>'
+      results[catpath].parent = '&lt;a href="../index.html"&gt;Categories&lt;/a&gt;'
     }
 
 
@@ -141,8 +141,8 @@ async function exportAll(query) {
       fs.mkdirSync(fullpath)
     }
 
-    results[catpath].output += '<a href="./' +  safeurl(namespace) + '/index.html">' + namespace + '</a>' + '\n<br /><br />\n'
-    results[catpath].indexOutput += '<a href="../' +  safeurl(namespace) + '/index.html">' + namespace + '</a>' + '\n<br /><br />\n'
+    results[catpath].output += '&lt;a href="./' +  safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+    results[catpath].indexOutput += '&lt;a href="../' +  safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
     let index = path.join(fullpath, 'index.html')
     results[index] = {
       output: '',
@@ -150,13 +150,13 @@ async function exportAll(query) {
       title: namespace
     }
     results[index].index = catpath
-    results[index].parent = '<a href="../../' +  category + '/index.html">' + category + '</a>'
+    results[index].parent = '&lt;a href="../../' +  category + '/index.html"&gt;' + category + '&lt;/a&gt;'
 
     namespaces[relative] = []
 
     const newCache = cacheCells(notebooks[i])
 
-    for(let j = 0; j < newCache.length; j++) {
+    for(let j = 0; j &lt; newCache.length; j++) {
       let cellname = newCache[j].questions[0]
       if(!cellname) {
         cellname = 'cell_' + j
@@ -165,7 +165,7 @@ async function exportAll(query) {
       }
       let key = path.join(fullpath, cellname + '.html')
       results[key] = {
-        output: '\n\n<pre class="' + newCache[j].language + '"><code>' + newCache[j].code + '</code></pre>\n\n'
+        output: '\n\n&lt;pre class="' + newCache[j].language + '"&gt;&lt;code&gt;' + newCache[j].code.replaceAll('&amp;', '&amp;amp;').replaceAll('&lt;', '&amp;lt;').replaceAll('&gt;', '&amp;gt;') + '&lt;/code&gt;&lt;/pre&gt;\n\n'
       }
       results[key].output += languageTemplate.code.replaceAll('${LANGUAGE}', newCache[j].language)
 
@@ -175,9 +175,9 @@ async function exportAll(query) {
       }
       results[key].index = index
       results[key].title = title
-      results[key].parent = '<a href="../' +  safeurl(namespace) + '/index.html">' + namespace + '</a>'
-      results[index].output += '<a href="./' +  cellname + '.html">' + title + '</a>' + '\n<br /><br />\n'
-      results[index].indexOutput += '<a href="./' +  cellname + '.html">' + title + '</a>' + '\n<br /><br />\n'
+      results[key].parent = '&lt;a href="../' +  safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;'
+      results[index].output += '&lt;a href="./' +  cellname + '.html"&gt;' + title + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
+      results[index].indexOutput += '&lt;a href="./' +  cellname + '.html"&gt;' + title + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
 
       const description = functionCache[notebooks[i] + '[' + j + ']']
       if(!description) {
@@ -198,7 +198,7 @@ async function exportAll(query) {
   // TODO: export all the markdown
 
   const paths = Object.keys(results)
-  for (let i = 0; i < paths.length; i++) {
+  for (let i = 0; i &lt; paths.length; i++) {
     // TODO: add navigation and full template
     let output = javadocTemplate.code
     output = output.replaceAll('${TITLE}', results[paths[i]].title)

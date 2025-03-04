@@ -90,7 +90,7 @@ async function doClick(req, res, next) {
   if(!req.authenticated) {
     return res.status(403).send('Forbidden')
   }
-  if(Date.now() - lastClick < 2000) {
+  if(Date.now() - lastClick &lt; 2000) {
     await mouseClick(lastX, lastY)
   } else {
     await mouseMove(req.body.x, req.body.y)
@@ -110,20 +110,20 @@ async function doKeys(req, res, next) {
 }
 
 function serveHomepage(baseURI, req, res, next) {
-  if(req.path.length <= 1) {
+  if(req.path.length &lt;= 1) {
     let htmlCode = importer.interpret('remote desktop client').code
     htmlCode = htmlCode.replaceAll('{BASE_URI}', baseURI)
-    htmlCode = htmlCode.replace('<head>', `<head>
-      <script type="text/javascript">
+    htmlCode = htmlCode.replace('&lt;head&gt;', `&lt;head&gt;
+      &lt;script type="text/javascript"&gt;
       ${importer.interpret('discord client auth code').code
         .replaceAll('{CLIENT_ID}', DEFAULT_APPLICATION)
         .replaceAll('{BASE_URI}', baseURI)}
-      </script>
-      <script type="text/javascript">
+      &lt;/script&gt;
+      &lt;script type="text/javascript"&gt;
       ${importer.interpret('client input remote code').code
         .replaceAll('{CLIENT_ID}', DEFAULT_APPLICATION)
         .replaceAll('{BASE_URI}', baseURI)}
-      </script>`)
+      &lt;/script&gt;`)
     return res.send(htmlCode)
   }
   return next()

@@ -80,12 +80,12 @@ listEvents({
     q: 'period',
     calendarId: 'p4685f6at8ccctenocjlqgnqss@group.calendar.google.com'
 })
-    .then(r => {
+    .then(r =&gt; {
         var dates = filterDistant(r);
-        console.log(dates.map(d => d.start + ' - ' + d.days));
+        console.log(dates.map(d =&gt; d.start + ' - ' + d.days));
         return $.svg(graphDates(dates))
     })
-    .catch(e => $.sendError(e));
+    .catch(e =&gt; $.sendError(e));
 
 </code></pre>
 

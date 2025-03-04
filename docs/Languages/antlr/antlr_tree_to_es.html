@@ -91,7 +91,7 @@ function antlrToESTree(tree) {
     selectDom([
         `//TerminalNode/ancestor::ThetypenameContext
         |//TerminalNode/ancestor::SimpletypespecifierContext`,
-        replace(ctx => {
+        replace(ctx =&gt; {
             var {range, value} = htmlToTree(selectDom('.//TerminalNode', ctx))
             return selectDom('./*', treeToHtml({
                 type: 'Type',
@@ -104,7 +104,7 @@ function antlrToESTree(tree) {
     
     selectDom([
         `//TerminalNode/ancestor::IdexpressionContext`,
-        replace(ctx => {
+        replace(ctx =&gt; {
             if(selectDom('.//TerminalNode/ancestor::ClassnameContext', ctx)) {
                 var {range, value} = htmlToTree(selectDom('.//TerminalNode[./parent::ClassnameContext]', ctx))
                 return selectDom('./*', treeToHtml({
@@ -133,7 +133,7 @@ function antlrToESTree(tree) {
     
     selectDom([
         `//MemberdeclarationContext`,
-        replace(ctx => {
+        replace(ctx =&gt; {
             var {kind, key, semi} = selectDom({
                 kind: './/Type',
                 key: './/Identifier',
@@ -161,7 +161,7 @@ function antlrToESTree(tree) {
         `//SimpledeclarationContext[
             .//ClassheadContext//TerminalNode[@value = "struct"]
         ]`,
-        replace(ctx => {
+        replace(ctx =&gt; {
             var {typedef, body, id, superClass, semi} = selectDom({
                 typedef: './/TerminalNode[@value = "typedef"]',
                 id: './/InitdeclaratorContext//Identifier',
@@ -188,7 +188,7 @@ function antlrToESTree(tree) {
     
     selectDom([
         `//ParameterdeclarationContext`,
-        replace(ctx => {
+        replace(ctx =&gt; {
             var {type, constant, ptr, id} = selectDom({
                 type: './/Type',
                 constant: './/TerminalNode[@value="const"]/@value',
@@ -207,7 +207,7 @@ function antlrToESTree(tree) {
     /*
     selectDom([
         `//SimpledeclarationContext`,
-        replace(ctx => {
+        replace(ctx =&gt; {
             var {type, constant, ptr, ids} = selectDom({
                 static: './/TerminalNode[@value="static"]',
                 type: './/Type',
@@ -218,7 +218,7 @@ function antlrToESTree(tree) {
             }, ctx)
             var result = {
                 type: 'VariableDeclaration',
-                declarations: htmlToTree(ids).map(id => ({
+                declarations: htmlToTree(ids).map(id =&gt; ({
                     type: 'VariableDeclarator',
                     id: Object.assign(id, {
                         kind: htmlToTree(type),

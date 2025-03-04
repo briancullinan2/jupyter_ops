@@ -95,7 +95,7 @@ function buildDylib(code, pathToCode, ctx) {
   let libName = safeurl(codeCell.questions[0])
   let libPath = path.join(BUILD_DIRECTORY, libName + (codeCell.language == 'cpp' ? '.cpp' : '.c'))
   if (!fs.existsSync(libPath)
-    || fs.statSync(codeCell.filename).mtime > fs.statSync(libPath).mtime
+    || fs.statSync(codeCell.filename).mtime &gt; fs.statSync(libPath).mtime
   ) {
     fs.writeFileSync(libPath, codeCell.source.join(''))
   }
@@ -117,7 +117,7 @@ function buildDylib(code, pathToCode, ctx) {
   // TODO: recompile dylib
   let objPath = path.join(BUILD_DIRECTORY, libName + '.o')
   if (!fs.existsSync(objPath)
-    || fs.statSync(libPath).mtime > fs.statSync(objPath).mtime
+    || fs.statSync(libPath).mtime &gt; fs.statSync(objPath).mtime
   ) {
     const { spawnSync } = require('child_process')
     
@@ -146,7 +146,7 @@ function buildDylib(code, pathToCode, ctx) {
 
   let modPath = path.join(BUILD_DIRECTORY, libName + '.dylib')
   if (!fs.existsSync(modPath)
-    || fs.statSync(objPath).mtime > fs.statSync(modPath).mtime
+    || fs.statSync(objPath).mtime &gt; fs.statSync(modPath).mtime
   ) {
     const { spawnSync } = require('child_process')
 

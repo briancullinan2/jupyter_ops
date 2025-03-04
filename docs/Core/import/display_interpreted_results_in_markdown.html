@@ -84,15 +84,15 @@
     return ('\n\n\n' + res.length + ' match'
         + (res.length !== 1 ? 'es' : '')
         + ' found: ' + res.join(' , ') + '\n\n\n'
-        + (res.length > 0
+        + (res.length &gt; 0
             ? ('\n\n\n' + res.markdown.join('\n') + '\n\n\n'
                 + '```\n\n\n' + res.code + '\n\n\n```\n\n\n')
             : ''));
 };
 
 function displayCell(results) {
-    return (typeof results[0] !== 'undefined' && typeof results[0] !== 'string'
-        ? results.reduce((str, res) => {
+    return (typeof results[0] !== 'undefined' &amp;&amp; typeof results[0] !== 'string'
+        ? results.reduce((str, res) =&gt; {
             str += resultMarkdown(res);
             return str;
         }, '')

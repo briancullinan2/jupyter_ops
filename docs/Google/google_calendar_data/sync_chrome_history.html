@@ -81,14 +81,14 @@ var PROJECT_PATH = PROFILE_PATH + '/Downloads';
 function loadChromeHistory(file) {
     var chromeHistory = {};
     var wholeFile = JSON.parse(fs.readFileSync(file).toString('utf-8'))
-    wholeFile['Browser History'].forEach((match) => {
+    wholeFile['Browser History'].forEach((match) =&gt; {
         var timeGroup = Math.round(match.time_usec / 60 / 30 / 1000000) * 60 * 30 * 1000;
         if (typeof chromeHistory[timeGroup] === 'undefined') {
             chromeHistory[timeGroup] = [];
         }
         match.host = url.parse(match.url).hostname;
         var hostAlreadyListed = chromeHistory[timeGroup]
-            .filter(h => h.host === match.host)
+            .filter(h =&gt; h.host === match.host)
         if (hostAlreadyListed.length === 0) {
             chromeHistory[timeGroup].push(match);
         } else {
@@ -116,15 +116,15 @@ var options = {
 
 function syncChromeHistory() {
     var files = glob.sync('Takeout*/Chrome/BrowserHistory.json', {cwd: PROJECT_PATH})
-        .map(f => path.join(PROJECT_PATH, f));
-    files.sort((a, b) => fs.statSync(a).ctime - fs.statSync(b).ctime);
+        .map(f =&gt; path.join(PROJECT_PATH, f));
+    files.sort((a, b) =&gt; fs.statSync(a).ctime - fs.statSync(b).ctime);
     return correctCalendarId(options)
-        .then(() => loadChromeHistory(files.pop()))
-        .then(links => {
-            const groups = Object.keys(links).sort((a, b) => parseInt(b) - parseInt(a));
+        .then(() =&gt; loadChromeHistory(files.pop()))
+        .then(links =&gt; {
+            const groups = Object.keys(links).sort((a, b) =&gt; parseInt(b) - parseInt(a));
             console.log(groups.slice(0, 10));
             console.log(new Date(parseInt(Object.keys(links)[0])));
-            return Object.keys(links).map(t => ({
+            return Object.keys(links).map(t =&gt; ({
                 start: {
                     dateTime: ISODateString(new Date(parseInt(t)))
                 },
@@ -135,18 +135,18 @@ function syncChromeHistory() {
                 description: JSON.stringify(links[t], null, 4)
             }))
         })
-        .then(results => {
+        .then(results =&gt; {
             return importer.runAllPromises(results
-                .map(event => resolve => {
+                .map(event =&gt; resolve =&gt; {
                     return updateEvent(event, options)
-                        .then(r => resolve(r))
-                        .catch(e => {
+                        .then(r =&gt; resolve(r))
+                        .catch(e =&gt; {
                             console.log(e);
                             resolve()
                         })
                 }))
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 
 module.exports = syncChromeHistory;

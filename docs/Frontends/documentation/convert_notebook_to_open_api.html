@@ -93,7 +93,7 @@ function getPathId(cell) {
 
 function getRpcSpecFromCells(search) {
     var functions = groupPermissions(['Function', 'Available'], search)
-    var resources = Object.keys(functions).reduce((obj, f) => {
+    var resources = Object.keys(functions).reduce((obj, f) =&gt; {
         var cell = importer.interpret(f)
         var path = getPathId(cell)
         cell.params = getParameters(cell.code)
@@ -106,7 +106,7 @@ function getRpcSpecFromCells(search) {
             id: `${package.name}.${path}.${fn}`,
             httpMethod: 'GET',
             path: `?function=${cell.questions[0]}`,
-            parameters: cell.params.slice(1).reduce((o, p) => (o[p] = {
+            parameters: cell.params.slice(1).reduce((o, p) =&gt; (o[p] = {
                 type: 'string',
                 location: 'query',
                 required: true,

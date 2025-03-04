@@ -95,7 +95,7 @@ function loadOnce() {
         'single timeline page',
         'scrape google timeline'
     ])
-        .then(r => {
+        .then(r =&gt; {
             readTimelinePage = r.readTimelinePage;
             getGoogleTimeline = r.getGoogleTimeline;
             return geoLocations;
@@ -106,10 +106,10 @@ function reconcileTimeline(date) {
     var dateKey = date.getDate() + months[date.getMonth()]
         + (date.getFullYear() + '').substr(2, 2);
     return loadOnce()
-        .then(() => getGoogleTimeline(date))
-        .then(() => readTimelinePage())
-        .catch(e => console.log(e))
-        .then(timelineLocations => {
+        .then(() =&gt; getGoogleTimeline(date))
+        .then(() =&gt; readTimelinePage())
+        .catch(e =&gt; console.log(e))
+        .then(timelineLocations =&gt; {
             if (timelineLocations.length === 0) {
                 console.log('no timeline data for ' + date);
                 return;
@@ -133,13 +133,13 @@ function reconcileTimeline(date) {
                         JSON.stringify(d, null, 4))
             return reconcileTimelineLocations(d, date);
         })
-        .then(events => {
+        .then(events =&gt; {
             fs.writeFileSync(
                         PROJECT_PATH + '/events-' + dateKey + '.json',
                         JSON.stringify(events, null, 4));
             return events;
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 module.exports = reconcileTimeline;
 
@@ -151,16 +151,16 @@ if(typeof $ !== 'undefined') {
     var start = new Date('10/1/2016');
     var end = daysInMonth(start.getMonth()+1, start.getFullYear());
     var promises = [];
-    for(var day = start.getDate(); day <= end; day++) {
+    for(var day = start.getDate(); day &lt;= end; day++) {
         var tmpDate = new Date(start);
         tmpDate.setDate(day);
-        promises.push((date => resolve => reconcileTimeline(date)
-                       .catch(e => console.log(e))
-                       .then(r => resolve(r)))(tmpDate));
+        promises.push((date =&gt; resolve =&gt; reconcileTimeline(date)
+                       .catch(e =&gt; console.log(e))
+                       .then(r =&gt; resolve(r)))(tmpDate));
     }
     importer.runAllPromises(promises)
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

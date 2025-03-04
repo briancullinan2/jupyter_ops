@@ -71,9 +71,9 @@ function npm(project, args, conf) {
     process.chdir(project);
     return importer
         .import('memory-fs rewire')
-        .then(r => {
+        .then(r =&gt; {
             // set up project path
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve, reject) =&gt; {
                 //if(typeof mockTypescriptFs == 'undefined') {
                 //    mockTypescriptFs = eval("'use strict';" + r[0].code);
                 // overlay out temp filesystem on top of current filesystem
@@ -81,14 +81,14 @@ function npm(project, args, conf) {
                 //}
 
                 var cli = require('npm');
-                cli.load(conf, (err) => {
+                cli.load(conf, (err) =&gt; {
                     // handle errors
                     if (err) {
                         return reject(err);
                     }
 
                     // install module
-                    cli.commands[args[0]](args.slice(1), (er, data) => {
+                    cli.commands[args[0]](args.slice(1), (er, data) =&gt; {
                         if (er) {
                             return reject(er);
                         }
@@ -96,14 +96,14 @@ function npm(project, args, conf) {
                         resolve(data);
                     });
 
-                    cli.on('log', (message) => {
+                    cli.on('log', (message) =&gt; {
                         // log installation progress
                         console.log(message);
                     });
                 });
             });
         })
-        .then((r => {
+        .then((r =&gt; {
             process.chdir(previous);
 
             return r;

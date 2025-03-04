@@ -86,37 +86,37 @@ var project = 'spahaha-ea443';
 var map = 'web-map';
 var proxy = 'web-map-target-proxy-5';
 
-describe('listing subdomains from load balancer', () => {
+describe('listing subdomains from load balancer', () =&gt; {
     
-    it('should list buckets maps', () => {
+    it('should list buckets maps', () =&gt; {
         return listUrlMaps(project)
-            .then(items => {
+            .then(items =&gt; {
                 console.log(items[Object.keys(items)[0]].hostRules);
                 console.log(items[Object.keys(items)[0]].pathMatchers);
                 console.log(items[Object.keys(items)[0]].pathMatchers[0].pathRules);
-                assert(Object.keys(items).length > 0, 'should have a url mapper');
+                assert(Object.keys(items).length &gt; 0, 'should have a url mapper');
                 
                 return listTargetProxies(
                     project,
                     map);
             })
-            .then(proxies => {
+            .then(proxies =&gt; {
                 console.log(proxies);
-                assert(proxies.length > 0, 'should have a proxy');
+                assert(proxies.length &gt; 0, 'should have a proxy');
             
                 return listGlobalForwards(
                     project,
                     proxy);
             })
-            .then(rules => {
+            .then(rules =&gt; {
                 console.log(rules);
-                assert(Object.keys(rules).length > 0, 'should have a rule');
+                assert(Object.keys(rules).length &gt; 0, 'should have a rule');
             
                 return listBackendBuckets(project);
             })
-            .then(buckets => {
+            .then(buckets =&gt; {
                 console.log(buckets);
-                assert(Object.keys(buckets).length > 0, 'should have a bucket');
+                assert(Object.keys(buckets).length &gt; 0, 'should have a bucket');
             });
     })
     

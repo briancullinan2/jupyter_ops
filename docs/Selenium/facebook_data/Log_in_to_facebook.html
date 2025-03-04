@@ -81,13 +81,13 @@
     return client.click('input[name*="email"]')
         .keys(credentials.username)
         .pause(1000)
-        .then(() => console.log('Facebook: Require password'))
+        .then(() =&gt; console.log('Facebook: Require password'))
         .click('input[name*="pass"]')
         .keys(credentials.password)
         .submitForm('[type="submit"]')
         .pause(2000)
         .isExisting('.cp-challenge-form')
-        .then(is => {
+        .then(is =&gt; {
             if (is) {
                 throw new Error('captcha');
             }
@@ -97,15 +97,15 @@
 function loginFacebook() {
     return client
         .getUrl()
-        .then(url => {
-            var loggedIn = url.indexOf('facebook') > -1 && url.indexOf('login') === -1;
+        .then(url =&gt; {
+            var loggedIn = url.indexOf('facebook') &gt; -1 &amp;&amp; url.indexOf('login') === -1;
             return loggedIn
                 ? client
                     .isVisible('input[name*="email"]')
-                    .then(is => is ? enterFacebook() : client)
+                    .then(is =&gt; is ? enterFacebook() : client)
                 : client.url('https://www.facebook.com/')
                     .isVisible('input[name*="email"]')
-                    .then(is => is ? enterFacebook() : client)
+                    .then(is =&gt; is ? enterFacebook() : client)
         })
 }
 module.exports = loginFacebook;

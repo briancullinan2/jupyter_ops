@@ -61,7 +61,7 @@ var margin = {top: 30, right: 15, bottom: 35, left: 100},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var styles = `<style>
+var styles = `&lt;style&gt;
 .chart {
 	shape-rendering: crispEdges;
 }
@@ -105,7 +105,7 @@ var styles = `<style>
 	fill: blue;
 	fill-opacity: .165;
 }
-</style>`
+&lt;/style&gt;`
 
 
 var now = new Date();
@@ -226,7 +226,7 @@ function d3Swimlane(events) {
 
     // draw the x axis
     var xDateAxis = d3.axisBottom(x)
-        .tickArguments(d3.timeMondays, (x.domain()[1] - x.domain()[0]) > 15552e6 ? 2 : 1)
+        .tickArguments(d3.timeMondays, (x.domain()[1] - x.domain()[0]) &gt; 15552e6 ? 2 : 1)
         .tickFormat(d3.timeFormat('%d'))
         .tickSize(6, 0, 0);
 
@@ -323,14 +323,14 @@ function d3Swimlane(events) {
             , minExtent = d3.timeMonday(now)
             , maxExtent = d3.timeSaturday.ceil(now)
             , visItems = items.filter(function (d) {
-            return d.start < maxExtent && d.end > minExtent
+            return d.start &lt; maxExtent &amp;&amp; d.end &gt; minExtent
         });
 
         mini.select('.brush').call(brush.extent([minExtent, maxExtent]));
 
         x1.domain([minExtent, maxExtent]);
 
-        if ((maxExtent - minExtent) > 1468800000) {
+        if ((maxExtent - minExtent) &gt; 1468800000) {
             x1DateAxis
                 .tickArguments([d3.timeMondays.every(1)])
                 .tickFormat(d3.timeFormat('%a %d'))
@@ -338,7 +338,7 @@ function d3Swimlane(events) {
                 .tickArguments([d3.timeMonday.every(1)])
                 .tickFormat(d3.timeFormat('%b - Week %W'))
         }
-        else if ((maxExtent - minExtent) > 172800000) {
+        else if ((maxExtent - minExtent) &gt; 172800000) {
             x1DateAxis
                 .tickArguments([d3.timeDay.every(1)])
                 .tickFormat(d3.timeFormat('%a %d'))
@@ -417,7 +417,7 @@ function d3Swimlane(events) {
             });
 
         labels.enter().append('text')
-            .text((d) => d.desc)
+            .text((d) =&gt; d.desc)
             .attr('x', function (d) {
                 return x1(Math.max(d.start, minExtent)) + 2;
             })
@@ -446,13 +446,13 @@ function d3Swimlane(events) {
     // is there a better way to do a bunch of lines as a single path with d3?
     function getPaths(items) {
         var paths = {}, d, offset = .5 * y2(1) + 0.5, result = [];
-        for (var i = 0; i < items.length; i++) {
+        for (var i = 0; i &lt; items.length; i++) {
             d = items[i];
             const key = d.class + ' ' + d.class + '-' + d.lane;
             if (!paths[key]) paths[key] = {class: key, path: '', lane: d.lane};
             paths[key].path += ['M', x(d.start), (y2(d.lane) + offset), 'H', x(d.end)].join(' ');
         }
-        return Object.keys(paths).map(k => paths[k]);
+        return Object.keys(paths).map(k =&gt; paths[k]);
     }
 
     return display();

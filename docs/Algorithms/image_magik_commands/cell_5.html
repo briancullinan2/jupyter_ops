@@ -66,7 +66,7 @@
 
 <pre class="bash"><code>magick /Users/fred/desktop/PZImages/original/17201-33020@02.jpg -print "%f\n" \
 -fuzz "10%" -trim +repage -background "white" \
--resize "650x650" -rotate "90<" -set option:dim "%wx%h" \
+-resize "650x650" -rotate "90&lt;" -set option:dim "%wx%h" \
 \( /Users/fred/desktop/PZImages/WM_m.png -resize "%[dim]" \
 -gravity center -background none -extent "%[dim]" \) \
 -gravity center -compose over -composite /Users/fred/desktop/PZImages/fred_results/17201-33020@02.jpg
@@ -74,7 +74,7 @@
 
 
 magick path2originals\17201-33020@02.jpg -print "%f\n" -fuzz "10%" -trim +repage -background "white" ^
--resize "650x650" -rotate "90<" -set option:dim "%wx%h" ^
+-resize "650x650" -rotate "90&lt;" -set option:dim "%wx%h" ^
 ( path2towatermark\WM_m.png -resize "%[dim]" -gravity center -background none -extent "%[dim]" ) ^
 -gravity center -compose over -composite path2output\17201-33020@02.jpg
 

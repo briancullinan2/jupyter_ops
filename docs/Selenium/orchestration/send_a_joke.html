@@ -75,12 +75,12 @@
 function sendJoke(client, hwnd) {
     var joke;
     return client
-        .then(() => getJoke())
-        .then(r => joke = r)
+        .then(() =&gt; getJoke())
+        .then(r =&gt; joke = r)
         .switchToWindow(hwnd)
-        .then(() => sendFacebookMessage(joke[0]))
+        .then(() =&gt; sendFacebookMessage(joke[0]))
         .pause(20000)
-        .then(() => sendFacebookMessage(joke[1]))
+        .then(() =&gt; sendFacebookMessage(joke[1]))
 }
 module.exports = sendJoke;
 </code></pre>

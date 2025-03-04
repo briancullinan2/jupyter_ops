@@ -69,7 +69,7 @@
 
 // I wish Linus Torvolds had absolute power over everything javascript(+derivatives) and he could just do a massive purge of all the bullshit.
 function tasksToPromise(tasks) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) =&gt; {
         gulp.series.apply(gulp, tasks.concat([function (done) {
             resolve(done());
         }]))();

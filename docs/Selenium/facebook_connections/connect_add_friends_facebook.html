@@ -72,9 +72,9 @@ var runSeleniumCell = importer.import('run selenium cell');
 var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 var project = PROFILE_PATH + '/Conversations';
 
-var regexToArray = (ex, str, i = 0) => {
+var regexToArray = (ex, str, i = 0) =&gt; {
     var co = []; var m;
-    while ((m = ex.exec(str)) && co.push(m[i])) ;
+    while ((m = ex.exec(str)) &amp;&amp; co.push(m[i])) ;
     return co;
 }
                                          
@@ -84,12 +84,12 @@ function loadNewConnections() {
         return JSON.parse(fs.readFileSync(path.join(project, 'new-friends.json')).toString());
     }
     var posts = glob.sync('**/*-posts-*', {cwd: project})
-        .map(f => path.join(project, f));
-    var friends = posts.reduce((acc, p) => {
-        importer.streamJson(p, [true, {emitPath: true}], (match) => {
-            [].concat(match.value).forEach(m => {
+        .map(f =&gt; path.join(project, f));
+    var friends = posts.reduce((acc, p) =&gt; {
+        importer.streamJson(p, [true, {emitPath: true}], (match) =&gt; {
+            [].concat(match.value).forEach(m =&gt; {
                 const url = regexToArray(/facebook.com\/.*/ig, m);
-                if(url && url[0]) {
+                if(url &amp;&amp; url[0]) {
                     acc.push(url[0].replace(/\?fref.*|\?ref.*|\?rc=.*|\?hc_location.*/ig, ''));
                 }
             })
@@ -97,8 +97,8 @@ function loadNewConnections() {
         return acc;
     }, []);
     var unique = [];
-    for(let i = 0; i < friends.length / 1000; i++) {
-        unique = unique.concat(friends.slice(i * 1000, i * 1000 + 1000).filter((u, i, arr) => arr.indexOf(u) === i))
+    for(let i = 0; i &lt; friends.length / 1000; i++) {
+        unique = unique.concat(friends.slice(i * 1000, i * 1000 + 1000).filter((u, i, arr) =&gt; arr.indexOf(u) === i))
     }
     fs.writeFileSync(path.join(project, 'new-friends.json'), JSON.stringify(unique, null, 4));
     // TODO: diff file-system (abstract better?, code reuse?), selenium connect
@@ -111,19 +111,19 @@ function addFacebookFriends() {
     console.log(pages.length);
     console.log(pages.slice(0, 30))
     return runSeleniumCell(['log in facebook', 'connect on facebook'])
-        .then(r => {
+        .then(r =&gt; {
             loginFacebook = r.loginFacebook;
             friendsOnFacebook = r.friendsOnFacebook;
             return loginFacebook();
         })
-        .then(() => {
+        .then(() =&gt; {
             const rand = Math.round(pages.length / 30 * Math.random()) * 30;
             console.log(pages.slice(rand, rand + 30));
-            return importer.runAllPromises(pages.slice(rand, rand + 30).map(page => resolve => {
+            return importer.runAllPromises(pages.slice(rand, rand + 30).map(page =&gt; resolve =&gt; {
                 console.log(page);
                 return friendsOnFacebook(page, true)
-                    .then(r => resolve(r))
-                    .catch(e => resolve(e))
+                    .then(r =&gt; resolve(r))
+                    .catch(e =&gt; resolve(e))
             }))
         })
 }

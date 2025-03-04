@@ -66,24 +66,24 @@
 <pre class="javascript"><code>function friendsOnFacebook(profile, friends) {
     return client
         .getUrl()
-        .then(url => url.indexOf(profile) > -1 ? [] : client.url('https://' + profile))
+        .then(url =&gt; url.indexOf(profile) &gt; -1 ? [] : client.url('https://' + profile))
         .isExisting('//*[@id = "fbProfileCover"]//button[contains(., "Add Friend")]')
-        .then(is => is ? client
+        .then(is =&gt; is ? client
               .isVisible('//*[@id = "fbProfileCover"]//button[contains(., "Add Friend")]')
-              .then(is => is
+              .then(is =&gt; is
                     ? client.click('//*[@id = "fbProfileCover"]//button[contains(., "Add Friend")]')
                     : [])
               : [])
         .pause(1000)
         .isExisting('//button[contains(., "Confirm")]')
-        .then(is => is ? client
+        .then(is =&gt; is ? client
               .isVisible('//button[contains(., "Confirm")]')
-              .then(is => is
+              .then(is =&gt; is
                     ? client.click('//button[contains(., "Confirm")]')
                     : [])
               : [])
         .pause(1000)
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 module.exports = friendsOnFacebook;
 </code></pre>

@@ -89,9 +89,9 @@ function searchNotebooks(search) {
         return gulp.src(
             ['**/*.ipynb', '!node_modules{,/**}', '!**/\\.*'],
             {cwd: project})
-            .pipe(tap(file => {
+            .pipe(tap(file =&gt; {
                 const result = importer.getCells(file.path);
-                result.forEach(r => {
+                result.forEach(r =&gt; {
                     if(r.source.join('').match(search)) {
                         cells.push(r);
                     }
@@ -100,7 +100,7 @@ function searchNotebooks(search) {
     });
 
     return tasksToPromise(['search notebooks'], [])
-        .then(() => cells);
+        .then(() =&gt; cells);
 }
 
 module.exports = searchNotebooks;

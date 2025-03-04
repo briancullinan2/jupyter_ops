@@ -142,18 +142,18 @@ async function makePk3MapIndex(searchPath, prefixPath) {
         nodir: false, cwd: searchPath, nocase: true
     })
     var allMaps = {}
-    pk3dirs.forEach(dir => {
+    pk3dirs.forEach(dir =&gt; {
         var pk3path = path.join(searchPath, dir)
         var pk3files = glob.sync('**/*', {
             nodir: false, cwd: pk3path, nocase: true
         })
-        var maps = pk3files.filter(file => file.match(/\.bsp$/i))
+        var maps = pk3files.filter(file =&gt; file.match(/\.bsp$/i))
         var pk3Key = path.join(prefixPath, dir).toLowerCase()
         var initial = {}
         allMaps[pk3Key] = initial[pk3Key] = {
             name: path.join('/', dir).replace(/\/$/ig, '')
         }
-        var manifest = pk3files.map(file => {
+        var manifest = pk3files.map(file =&gt; {
             var stat = fs.statSync(path.join(searchPath, dir, file))
             return stat.isDirectory() ? ({
                 name: path.join('/', dir, file).replace(/\/$/ig, ''),
@@ -161,14 +161,14 @@ async function makePk3MapIndex(searchPath, prefixPath) {
                 name: path.join('/', dir, file),
                 size: stat.size
             })
-        }).reduce((obj, o) => {
+        }).reduce((obj, o) =&gt; {
             var key = path.join(prefixPath, o.name).toLowerCase()
                 + (typeof o.size == 'undefined' ? '/' : '')
             obj[key] = o
             return obj
         }, initial)
         var manifestJson = JSON.stringify(manifest, null, 2)
-        maps.forEach(map => {
+        maps.forEach(map =&gt; {
             var mapName = path.basename(map).toLowerCase().replace(/\.bsp/i, '')
             var outIndexFile = path.join(searchPath, 'index-' + mapName + '.json')
             var key = path.join(prefixPath, path.basename(pk3path), map).toLowerCase()

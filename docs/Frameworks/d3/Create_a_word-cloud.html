@@ -107,7 +107,7 @@ function drawD3Cloud(wordCount) {
 function d3CloudToSVG(wordCount) {
     console.log('git');
     var Canvas = require('canvas');
-    return new Promise(resolve => {
+    return new Promise(resolve =&gt; {
         cloud()
             .canvas(function () {
                 return new Canvas(1, 1);

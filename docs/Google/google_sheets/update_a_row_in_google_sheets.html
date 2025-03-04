@@ -79,15 +79,15 @@ var getRows = importer.import('get worksheet rows');
 var authorizeSheets = importer.import('authorize sheets api');
 var getSheetByName = importer.import('get worksheet by name');
 
-var getOrderedValues = (columns, rowData) => ({
+var getOrderedValues = (columns, rowData) =&gt; ({
     // Google sheets API, NULL means don't write value in range, as opposed to "" which clears
-    values: [columns.map(c => typeof rowData[c] === 'undefined'
+    values: [columns.map(c =&gt; typeof rowData[c] === 'undefined'
                          ? null
                          : rowData[c])]
 })
 
-var getRange = (title, columns, match, rows) => {
-    var row = rows.filter(r => match(columns.reduce((acc, c, i) => (acc[c] = r[i], acc), {}), r))[0];
+var getRange = (title, columns, match, rows) =&gt; {
+    var row = rows.filter(r =&gt; match(columns.reduce((acc, c, i) =&gt; (acc[c] = r[i], acc), {}), r))[0];
     // if no match, add it
     var index = (rows.indexOf(row) + 1) || (rows.length + 1);
     var range = `'${title}'!A${index}:${String.fromCharCode(65 + columns.length - 1)}${index}`;
@@ -98,9 +98,9 @@ function updateRow(link, match, updateRow, page) {
     var sheets, sheet;
     
     return authorizeSheets()
-        .then(s => (sheets = s, getSheetByName(link, page)))
-        .then(sh => (sheet = sh, getRows(link, sheet)))
-        .then(rows => {
+        .then(s =&gt; (sheets = s, getSheetByName(link, page)))
+        .then(sh =&gt; (sheet = sh, getRows(link, sheet)))
+        .then(rows =&gt; {
             // if passing an array, just use that
             var columns = typeof updateRow.length != 'undefined'
                 ? new Array(updateRow.length)
@@ -116,7 +116,7 @@ function updateRow(link, match, updateRow, page) {
                 resource: getOrderedValues(columns, updateRow)
             })
         })
-        .then(() => updateRow)
+        .then(() =&gt; updateRow)
 }
 
 module.exports = updateRow;

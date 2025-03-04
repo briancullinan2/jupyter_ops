@@ -85,17 +85,17 @@ var options = {
     calendarId: 'Commands'
 };
 
-var alreadyRun = (date, id) => getDaysEvents(new Date(date), options)
-    .then(events => events
-          .filter(e => e.event.summary.indexOf('Result:') > -1
-                  && e.event.summary.indexOf(id) > -1).length > 0);
+var alreadyRun = (date, id) =&gt; getDaysEvents(new Date(date), options)
+    .then(events =&gt; events
+          .filter(e =&gt; e.event.summary.indexOf('Result:') &gt; -1
+                  &amp;&amp; e.event.summary.indexOf(id) &gt; -1).length &gt; 0);
 
 // TODO: move this logic out to a higher level coordinator?
 function filterCommand(command, date, id, user) {
     const props = {};
     return authorizeCalendar(options)
-        .then(() => getSettings(user))
-        .then(settings => {
+        .then(() =&gt; getSettings(user))
+        .then(settings =&gt; {
             // assign user controls and interpreted command
             try {
                 Object.assign(props, settings, {
@@ -103,16 +103,16 @@ function filterCommand(command, date, id, user) {
                 });
                 // TODO: accept parameters from message context
             } catch (e) {
-                if((e + '').indexOf('Nothing found') > -1) {
+                if((e + '').indexOf('Nothing found') &gt; -1) {
                     Object.assign(props, {result: null});
                 } else {
                     throw e;
                 }
             }
         })
-        .then(() => alreadyRun(date, id))
-        .catch(e => console.log(e))
-        .then(already => Object.assign(props, {already: already || null}))
+        .then(() =&gt; alreadyRun(date, id))
+        .catch(e =&gt; console.log(e))
+        .then(already =&gt; Object.assign(props, {already: already || null}))
 }
 module.exports = filterCommand;
 </code></pre>

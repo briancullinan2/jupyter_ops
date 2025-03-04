@@ -85,7 +85,7 @@ const path = require('path')
 const {spawn} = require('child_process')
 
 async function runPythonModule(isOne, cellId, signature, ...args) {
-  let params = signature.parameters.map((p, i) => '--' + p + '=' + String(args[i]))
+  let params = signature.parameters.map((p, i) =&gt; '--' + p + '=' + String(args[i]))
   console.log(params)
   console.log(path.resolve(path.dirname(__dirname)))
   result = spawn('python3', ['-u', '-c', '__import__(\'Core\').run()', cellId].concat(params), {
@@ -102,16 +102,16 @@ async function runPythonModule(isOne, cellId, signature, ...args) {
   }
 
   let lines = []
-  result.stdout.on('data', (data) => {
+  result.stdout.on('data', (data) =&gt; {
     lines.push(data)
     console.log(`stdout: ${data.toString().trim()}`);
   });
   
-  result.stderr.on('data', (data) => {
+  result.stderr.on('data', (data) =&gt; {
     console.error(`stderr: ${data.toString().trim()}`);
   });
   
-  await new Promise((resolve, reject) => result.on('close', (code) => {
+  await new Promise((resolve, reject) =&gt; result.on('close', (code) =&gt; {
     if(code != 0) return reject()
     return resolve()
   }));
@@ -146,12 +146,12 @@ async function makePythonModule(code, filename, context) {
   Module._cache[filepath] = {}
   Module._cache[filepath].exports = {}
 
-  for(let i = 0; i < params.length; i++) {
+  for(let i = 0; i &lt; params.length; i++) {
     Module._cache[filepath].exports[params[i].function] = runPythonModule.bind(null, cellExportsOne, filename, params[i])
     Module._cache[filepath].exports[params[i].function].params = params[i].parameters
   }
 
-  Module._cache[filepath].exports.functions = params.map(p => p.function)
+  Module._cache[filepath].exports.functions = params.map(p =&gt; p.function)
 
   return Module._cache[filepath].exports
 }

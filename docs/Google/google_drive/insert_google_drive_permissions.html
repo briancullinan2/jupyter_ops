@@ -82,7 +82,7 @@ var authorizeDrive = importer.import('authorize google drive');
 
 function insertPermission(fileId, email) {
     return authorizeDrive()
-        .then(drive => util.promisify(drive.permissions.create.bind(drive))({
+        .then(drive =&gt; util.promisify(drive.permissions.create.bind(drive))({
             resource: {
                 'type': 'user',
                 'role': 'owner',
@@ -92,7 +92,7 @@ function insertPermission(fileId, email) {
             fields: 'id',
             transferOwnership: true
         }))
-        .then(r => r.data.id)
+        .then(r =&gt; r.data.id)
 }
 
 module.exports = insertPermission;

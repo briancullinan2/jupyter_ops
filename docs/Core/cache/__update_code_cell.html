@@ -92,7 +92,7 @@ function updateCode(cell, code) {
     var notebook = JSON.parse(fs.readFileSync(cell.filename))
     var match = (/\/\/.*/ig).exec(code)[0]
     
-    assert(match && match.length > 2,
+    assert(match &amp;&amp; match.length &gt; 2,
            `nothing to match, include a "//" comment`)
     // replace code cell with new code
     // make sure the cell if where the cache says
@@ -102,7 +102,7 @@ function updateCode(cell, code) {
            `code cell "${match}" could not be located`)
     
     notebook.cells[cell.to].source = code.split('\n')
-        .map(line => line + '\n')
+        .map(line =&gt; line + '\n')
     
     fs.writeFileSync(cell.filename, JSON.stringify(notebook, null, 4))
 }

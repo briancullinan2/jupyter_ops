@@ -75,7 +75,7 @@ function delint(project) {
     // output .idea to set the framework preferences?
     // I think I overwrote the default, some way to env variables for this?
     return util.promisify(ncp)(idea, project + '/.idea')
-        .then(() => execCmd(`"${webstorm}" "${project}"`, {cwd: project}))
+        .then(() =&gt; execCmd(`"${webstorm}" "${project}"`, {cwd: project}))
 }
 
 module.exports = delint;

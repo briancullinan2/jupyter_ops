@@ -82,9 +82,9 @@ const path = require('path');
 async function directoryToHtml(dirPath, back, session) {
   let files = await fs.readdirSync(dirPath)
 
-  let htmlOutput = `<html>
-<head>
-<style>
+  let htmlOutput = `&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
 ul {
   list-style: none;
   padding: 0;
@@ -118,15 +118,15 @@ ul {
 ul li {
   padding-left: 10px;
 }
-</style>
-</head>  
-<body><h1>Directory Listing</h1><ul>`;
+&lt;/style&gt;
+&lt;/head&gt;  
+&lt;body&gt;&lt;h1&gt;Directory Listing&lt;/h1&gt;&lt;ul&gt;`;
 
   if(back) {
-    htmlOutput += `<li><a href="../?t=${Date.now()}${session ? ('&session=' + session): ''}">Parent directory/</a></li>`;
+    htmlOutput += `&lt;li&gt;&lt;a href="../?t=${Date.now()}${session ? ('&amp;session=' + session): ''}"&gt;Parent directory/&lt;/a&gt;&lt;/li&gt;`;
   }
 
-  files.forEach((file) => {
+  files.forEach((file) =&gt; {
     const filePath = path.join(dirPath, file);
     const fileStat = fs.statSync(filePath);
 
@@ -135,13 +135,13 @@ ul li {
     }
 
     if (fileStat.isDirectory()) {
-      htmlOutput += `<li><a href="${encodeURIComponent(file).replaceAll('(', '%28').replaceAll(')', '%29')}/?t=${Date.now()}${session ? ('&session=' + session): ''}">${file}/</a></li>`;
+      htmlOutput += `&lt;li&gt;&lt;a href="${encodeURIComponent(file).replaceAll('(', '%28').replaceAll(')', '%29')}/?t=${Date.now()}${session ? ('&amp;session=' + session): ''}"&gt;${file}/&lt;/a&gt;&lt;/li&gt;`;
     } else {
-      htmlOutput += `<li><a href="${encodeURIComponent(file).replaceAll('(', '%28').replaceAll(')', '%29')}?t=${Date.now()}${session ? ('&session=' + session): ''}">${file}</a></li>`;
+      htmlOutput += `&lt;li&gt;&lt;a href="${encodeURIComponent(file).replaceAll('(', '%28').replaceAll(')', '%29')}?t=${Date.now()}${session ? ('&amp;session=' + session): ''}"&gt;${file}&lt;/a&gt;&lt;/li&gt;`;
     }
   });
 
-  htmlOutput += '</ul></body></html>';
+  htmlOutput += '&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;';
 
   return htmlOutput
 }

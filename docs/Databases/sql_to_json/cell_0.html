@@ -72,8 +72,8 @@ var credentials = path.join(PROFILE_PATH, 'credentials/studysaucedb.json');
 var con = mysql.createConnection(fs.readFileSync(credentials).toString());
 
 function mysqlQuery(q) {
-    return new Promise((resolve, reject) =>
-        con.query(q, (err, result) => {
+    return new Promise((resolve, reject) =&gt;
+        con.query(q, (err, result) =&gt; {
             if (err) reject(err);
             console.log(result);
             resolve(result);
@@ -82,29 +82,29 @@ function mysqlQuery(q) {
 
 function showTables() {
     return mysqlQuery('SHOW TABLES')
-        .then(result => result.map(r => r[Object.keys(r)[0]])
-            .filter(r => r.indexOf('acl_') === -1
-                && r.indexOf('rememberme') === -1
-                && r.indexOf('session') === -1
-                && r.indexOf('mail') === -1
-                && r.indexOf('visit') === -1));
+        .then(result =&gt; result.map(r =&gt; r[Object.keys(r)[0]])
+            .filter(r =&gt; r.indexOf('acl_') === -1
+                &amp;&amp; r.indexOf('rememberme') === -1
+                &amp;&amp; r.indexOf('session') === -1
+                &amp;&amp; r.indexOf('mail') === -1
+                &amp;&amp; r.indexOf('visit') === -1));
 };
 
-var parseBool = r => r === 'true' || r === '0' || parseInt(r) > 0;
+var parseBool = r =&gt; r === 'true' || r === '0' || parseInt(r) &gt; 0;
 
-var parseString = r => r + '';
+var parseString = r =&gt; r + '';
 
 function describeTable(table) {
     return mysqlQuery('DESCRIBE ' + table)
-        .then(fields => {
+        .then(fields =&gt; {
             var obj = {};
-            fields.forEach(f => {
+            fields.forEach(f =&gt; {
                 var parse = parseString;
                 if (f.Type === 'tinyint(1)')
                     return obj[f.Field] = parseBool;
-                if (f.Type.indexOf('int') > -1)
+                if (f.Type.indexOf('int') &gt; -1)
                     return obj[f.Field] = parseInt;
-                if (f.Type.indexOf('datetime') > -1)
+                if (f.Type.indexOf('datetime') &gt; -1)
                     return obj[f.Field] = Date.parse;
                 obj[f.Field] = parse;
             })
@@ -114,7 +114,7 @@ function describeTable(table) {
 
 function selectObjects(table, descriptor, query = '') {
     return mysqlQuery('SELECT * FROM ' + table + ' ' + query)
-        .then(rows => rows.map(r => {
+        .then(rows =&gt; rows.map(r =&gt; {
             delete r['password'];
             delete r['salt'];
             delete r['confirmation_token'];
@@ -135,47 +135,47 @@ function selectObjects(table, descriptor, query = '') {
 
 $.async();
 var tables, unserialize;
-new Promise((resolve, reject) => https.get(
+new Promise((resolve, reject) =&gt; https.get(
     'https://raw.githubusercontent.com/naholyr/js-php-unserialize/master/php-unserialize.js',
-    (res) => {
+    (res) =&gt; {
         var data = '';
-        res.on('data', (d) => {
+        res.on('data', (d) =&gt; {
             data += d.toString();
         });
-        res.on('end', () => {
+        res.on('end', () =&gt; {
             resolve(data);
         });
-    }).on('error', (e) => {
+    }).on('error', (e) =&gt; {
     reject(e);
 }))
-    .then(r => {
+    .then(r =&gt; {
         unserialize = importer.runInNewContext(r + '\rmodule.exports = exports;\n', {
             __filename: '//raw.githubusercontent.com/naholyr/js-php-unserialize/master/php-unserialize.js',
             exports: {}
         }, {}, false).unserialize;
-        return new Promise((resolve, reject) => con.connect((err) => {
+        return new Promise((resolve, reject) =&gt; con.connect((err) =&gt; {
             if (err) reject(err);
             console.log('Connected!');
             resolve();
         }))
     })
-    .then(() => showTables())
-    .then(tables => {
+    .then(() =&gt; showTables())
+    .then(tables =&gt; {
         var results = {};
         return importer.runAllPromises(tables
-            .map(t => describeTable(t)
-                .then(descriptor => selectObjects(t, descriptor))
-                .then(rows => results[t
+            .map(t =&gt; describeTable(t)
+                .then(descriptor =&gt; selectObjects(t, descriptor))
+                .then(rows =&gt; results[t
                     .replace('ss_', '')
                     .replace('coupon', 'bundle')] = rows)))
-            .then(() => results)
+            .then(() =&gt; results)
     })
-    .then(result => {
+    .then(result =&gt; {
         fs.writeFileSync(filename, JSON.stringify(result, null, 4));
         $.sendResult(result)
     })
-    .then(result => $.sendResult(result))
-    .catch(e => $.sendError(e))
+    .then(result =&gt; $.sendResult(result))
+    .catch(e =&gt; $.sendError(e))
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

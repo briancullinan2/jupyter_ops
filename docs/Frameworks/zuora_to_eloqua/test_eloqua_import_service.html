@@ -138,56 +138,56 @@ var eloquaConfig = getEloquaConfig();
 var eloquaToken = getOauthToken();
 var sandbox = sinon.createSandbox();
 
-describe('eloqua bulk upload', () => {
+describe('eloqua bulk upload', () =&gt; {
         
-    afterEach(() => {
+    afterEach(() =&gt; {
         sandbox.restore();
     })
 
-    it('should get a valid oauth token', () => {
+    it('should get a valid oauth token', () =&gt; {
         
         const requestStub = sandbox.stub(request, "request")
             .returns(Promise.resolve({ body: {expires_in: 1000 } }));
         
         return eloquaOauth(eloquaConfig)
-            .then(r => {
-                assert(r.expires > (new Date()).getTime());
+            .then(r =&gt; {
+                assert(r.expires &gt; (new Date()).getTime());
                 assert(requestStub.calledOnce, 'request should only be called once');
             })
     })
     
-    it('should create a bulk import instance', () => {
+    it('should create a bulk import instance', () =&gt; {
         
         const requestStub = sandbox.stub(request, "request")
             .returns(Promise.resolve({ body: {uri: '/imports/123' } }));
         
         return createImportDefinition(60, eloquaToken, eloquaConfig)
-            .then(r => {
+            .then(r =&gt; {
                 assert(r.includes('/imports/'));
                 assert(requestStub.calledOnce, 'request should only be called once');
             })
     })
     
-    it('should update data to eloqua', () => {
+    it('should update data to eloqua', () =&gt; {
         
         const requestStub = sandbox.stub(request, "request")
             .returns(Promise.resolve({ body: {uri: '/imports/123' }, statusCode: 204 }));
         
         return startBulkImportData([getImportData()], '/imports/123', eloquaToken, eloquaConfig)
-            .then(r => {
+            .then(r =&gt; {
                 assert(r.statusCode === 204, 'invalid status recieved from import ' + r.statusCode);
                 assert(requestStub.calledOnce, 'request should only be called once');
             })
     })
     
-    it('should verify upload was successful', () => {
+    it('should verify upload was successful', () =&gt; {
         var importUri;
         
         const requestStub = sandbox.stub(request, "request")
             .returns(Promise.resolve({ body: {uri: '/imports/123', status: 'success' } }));
         
         return completeBulkImportSync(importUri, eloquaToken, eloquaConfig)
-            .then(r => {
+            .then(r =&gt; {
                 assert(r === true);
                 assert(requestStub.called, 'request should only be called once');
             })

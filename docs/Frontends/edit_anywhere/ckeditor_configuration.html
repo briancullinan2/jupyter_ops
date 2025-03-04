@@ -78,11 +78,11 @@
 
 
 <pre class="javascript"><code>function saveEdits(data) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) =&gt; {
         var xhr = new XMLHttpRequest()
         xhr.setHeader('X-Referrer', window.location)
         xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 300) {
+            if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) {
                 resolve(xhr)
             } else {
                 reject(new Error('The request failed!'))
@@ -91,8 +91,8 @@
         xhr.open('GET', window.location.href.replace('gitEditorHandler', 'gitSaveHandler')
                  + '?referrer=' + window.location.href
                  // TODO: use referer in receiving function for this
-                 + '&gist=' + window.location.search.match(/[\?&]gist=([^&]*)/ig)[1]
-                 + '&url=' + window.location.search.match(/[\?&]url=([^&]*)/ig)[1]
+                 + '&amp;gist=' + window.location.search.match(/[\?&amp;]gist=([^&amp;]*)/ig)[1]
+                 + '&amp;url=' + window.location.search.match(/[\?&amp;]url=([^&amp;]*)/ig)[1]
                  )
         xhr.send(data)
     })
@@ -101,7 +101,7 @@
 var script = document.createElement('script')
 script.onload = function () {
     var editors = document.querySelectorAll( '*[contenteditable]' )
-    editors.forEach(e => {
+    editors.forEach(e =&gt; {
         InlineEditor.create( e, {
             plugins: [
                 Autosave,
@@ -112,7 +112,7 @@ script.onload = function () {
                 }
             }
         })
-        .catch( error => console.error( error ) )
+        .catch( error =&gt; console.error( error ) )
         
     })
 }
@@ -272,7 +272,7 @@ function startGolden() {
 }
 
 function loadScript(src) {
-    return new Promise(resolve => {
+    return new Promise(resolve =&gt; {
         var script = document.createElement('script')
         script.onload = function () {
             resolve()

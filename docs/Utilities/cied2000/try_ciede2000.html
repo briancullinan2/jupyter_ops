@@ -70,7 +70,7 @@ async function testCIED2000() {
   let [l2, a2, b2] = rgb2labRet(3, R2, G2, B2)
   let ciede = CIEDE2000(l, a, b, l2, a2, b2)
   console.log(ciede)
-  assert.ok(ciede < 20, 'colors are the same')
+  assert.ok(ciede &lt; 20, 'colors are the same')
   return ciede
 }
 

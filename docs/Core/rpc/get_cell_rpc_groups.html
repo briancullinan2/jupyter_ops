@@ -99,9 +99,9 @@ function getUnmatched(cell) {
 
 function filterClassGroups(cell) {
     return (cell.groups || [])
-        .filter(g => g !== 'Unmatched' && g !== 'Exact'
-           && g !== 'Corrected' && g !== 'Available'
-           && g !== 'Error' && g !== 'Uncallable')
+        .filter(g =&gt; g !== 'Unmatched' &amp;&amp; g !== 'Exact'
+           &amp;&amp; g !== 'Corrected' &amp;&amp; g !== 'Available'
+           &amp;&amp; g !== 'Error' &amp;&amp; g !== 'Uncallable')
 }
 
 function getCellGroups(cell) {
@@ -116,7 +116,7 @@ function getCellGroups(cell) {
     return [].concat.apply([], [
         cell.groups,
         cell.ast ? [] : ['Error'],
-        cell.ast && cell.exports[0] ? FUNCTION_GROUPS : ['Uncallable'],
+        cell.ast &amp;&amp; cell.exports[0] ? FUNCTION_GROUPS : ['Uncallable'],
         cell.filename.includes('Selenium') ? SELENIUM_GROUPS : [],
         cell.questions[0].includes('test') ? UNITTEST_GROUPS : [],
         // TODO: add AST check for describe function call
@@ -127,7 +127,7 @@ function getCellGroups(cell) {
         cell.notebook.replace(/\.ipynb|\s+/ig, '').toLowerCase(),
         getUnmatched(cell) ? ['Unmatched'] : DEFAULT_GROUPS,
         !cell.original || cell.id2 === cell.original ? ['Exact'] : ['Corrected']
-    ]).filter((g, i, arr) => arr.indexOf(g) === i)
+    ]).filter((g, i, arr) =&gt; arr.indexOf(g) === i)
 }
 
 module.exports = getCellGroups;

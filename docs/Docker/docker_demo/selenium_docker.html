@@ -60,7 +60,7 @@ var fs = require('fs');
 
 // add some run commands to the bash script
 function bashToRun(code) {
-    return code.split('\n').filter(n => n.trim().length > 0).map(l => 'RUN ' + l.trim())
+    return code.split('\n').filter(n =&gt; n.trim().length &gt; 0).map(l =&gt; 'RUN ' + l.trim())
     .join('\n').replace(/\\\s*\nRUN\s*/ig, '\\\n ');
 }
 

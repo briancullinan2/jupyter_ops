@@ -71,9 +71,9 @@ var runSeleniumCell = importer.import('run selenium cell');
 
 $.async();
 runSeleniumCell('messages from facebook')
-    .then(func => func('https://www.facebook.com/messages/t/jaimeneufer'))
-    .then(r => $.sendResult(r))
-    .catch(e => $.sendError(e))
+    .then(func =&gt; func('https://www.facebook.com/messages/t/jaimeneufer'))
+    .then(r =&gt; $.sendResult(r))
+    .catch(e =&gt; $.sendError(e))
 </code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

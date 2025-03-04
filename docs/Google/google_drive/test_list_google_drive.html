@@ -80,13 +80,13 @@
 var listDrive = importer.import('list google drive files');
 var insertPermission = importer.import('insert google drive permissions');
 
-describe('list google drive files', () => {
+describe('list google drive files', () =&gt; {
     
-    it('should list files', () => {
+    it('should list files', () =&gt; {
         return listDrive()
-            .then(r => importer
-                  .runAllPromises(r.filter(r => r.name.includes('Untitled'))
-                                           .map(f => resolve => insertPermission(f.id, 'megamindbrian@gmail.com')
+            .then(r =&gt; importer
+                  .runAllPromises(r.filter(r =&gt; r.name.includes('Untitled'))
+                                           .map(f =&gt; resolve =&gt; insertPermission(f.id, 'megamindbrian@gmail.com')
                                                 .then(resolve))))
     })
 })

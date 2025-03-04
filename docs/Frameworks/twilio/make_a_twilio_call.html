@@ -70,7 +70,7 @@ function callTwilio(to, message) {
         url: 'http://demo.twilio.com/docs/voice.xml',
         to: (!to.includes('+') ? '+1' : '') + to,
         from: '+18086701280'
-    }).then(call => call.sid);
+    }).then(call =&gt; call.sid);
 }
 
 module.exports = callTwilio;

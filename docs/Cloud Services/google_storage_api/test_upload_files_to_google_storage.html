@@ -70,14 +70,14 @@ var assert = require('assert');
 var importer = require('../Core');
 var streamToGoogle = importer.import('upload files google cloud');
 
-describe('upload google storage', () => {
+describe('upload google storage', () =&gt; {
     
-    it('should upload a file to a bucket', () => {
+    it('should upload a file to a bucket', () =&gt; {
         return streamToGoogle(
-            'https://www.sgs.com/-/media/global/images/structural-website-images/hero-images/hero-color-palette.jpg?la=en&hash=70B51DB0FA678306B2EAF2E6C4A725BAB0D12342',
+            'https://www.sgs.com/-/media/global/images/structural-website-images/hero-images/hero-color-palette.jpg?la=en&amp;hash=70B51DB0FA678306B2EAF2E6C4A725BAB0D12342',
             'sheet-to-web.com')
-            .then(url => {
-                assert(url.length > 0, 'should have a file url');
+            .then(url =&gt; {
+                assert(url.length &gt; 0, 'should have a file url');
             })
     })
     

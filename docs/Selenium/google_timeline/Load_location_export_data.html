@@ -71,8 +71,8 @@ var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc
 function loadLocations(file) {
     var locationCache = {};
     var offset = (new Date()).getTimezoneOffset() * 60 * 1000;
-    importer.streamJson(file, [true, {emitPath: true}], (match) => {
-        if (match.path[0] === 'locations' && match.path.length === 3) {
+    importer.streamJson(file, [true, {emitPath: true}], (match) =&gt; {
+        if (match.path[0] === 'locations' &amp;&amp; match.path.length === 3) {
             var currDate = new Date(parseInt(match.value.timestampMs));
             var newKey = currDate.getDate() + months[currDate.getMonth()]
                 + (currDate.getFullYear() + '').substr(2, 2);

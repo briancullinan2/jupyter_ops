@@ -75,7 +75,7 @@ async function getChatHistory(chatLog) {
 
   let chatHistory = []
   let chatPath
-  for(let i = 0; i < CHAT_DIRECTORIES.length; i++) {
+  for(let i = 0; i &lt; CHAT_DIRECTORIES.length; i++) {
     chatPath = path.join(CHAT_DIRECTORIES[i], chatLog + '.log')
     if(fs.existsSync(chatPath)) {
       chatHistory = fs.readFileSync(chatPath).toLocaleString('utf-8').split('\n')
@@ -126,7 +126,7 @@ grafana for gpt?
 
   let chatCache = {}
   let conversations = fs.readdirSync(CHAT_PATH)
-  for(let i = 0; i < conversations.length; i++) {
+  for(let i = 0; i &lt; conversations.length; i++) {
     if(conversations[i][0] == '.') continue
     let chatCacheFile = path.join(CHAT_PATH, conversations[i])
     try {
@@ -137,14 +137,14 @@ grafana for gpt?
   }
 
   // TODO: search for matching emotions
-  let allCategories = Object.keys(chatCache).map(k => chatCache[k].category)
-    .filter((a, i, arr) => arr.indexOf(a) == i)
+  let allCategories = Object.keys(chatCache).map(k =&gt; chatCache[k].category)
+    .filter((a, i, arr) =&gt; arr.indexOf(a) == i)
   let matchingEmotions = await askLlamaAboutEmotions(conversation.join(', '))
   let category = await askLlamaAboutCategory(conversation)
 
   let matchingCategories = []
   let functions = []
-  for(let i = 0; i < allCategories.length; i++) {
+  for(let i = 0; i &lt; allCategories.length; i++) {
     functions[functions.length] = allCategories[i]
 
     if(functions.length == 20) {
@@ -154,7 +154,7 @@ grafana for gpt?
         matchingCategories = matchingCategories.concat(result)
     }
   }
-  if(functions.length > 0) {
+  if(functions.length &gt; 0) {
       let result = await askLlamaAboutFunctions(category, functions, [], true)
       functions = []
       if(result)
@@ -167,9 +167,9 @@ grafana for gpt?
   let summaries = []
   // TODO: search for contextual matches in summaries
   let keys = Object.keys(chatCache)
-  for(let i = 0; i < keys.length; i++) {
+  for(let i = 0; i &lt; keys.length; i++) {
     if(chatCache[keys[i]].emotions
-      && chatCache[keys[i]].emotions.filter(e => matchingEmotions.includes(e)).length > 0
+      &amp;&amp; chatCache[keys[i]].emotions.filter(e =&gt; matchingEmotions.includes(e)).length &gt; 0
       || matchingCategories.includes(chatCache[keys[i]].category)
     ) {
       // TODO: this is where eliza characterization comes in
@@ -199,7 +199,7 @@ grafana for gpt?
     }
   }
   /*
-  if(summaries.length > 0) {
+  if(summaries.length &gt; 0) {
     let q2 = 'Derive any response style, personality, topics from this conversation:\n' + summaries.join(', ')
     console.log("User: " + q2)
     const a2 = await llmPrompt(q2)

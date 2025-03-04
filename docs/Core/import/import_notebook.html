@@ -88,7 +88,7 @@
 // individual cells can serve as modules as well as notebooks
 // adding the cell id as a part of the filename
 function getCellPath(cell) {
-    var question = cell.questions && cell.questions[0]
+    var question = cell.questions &amp;&amp; cell.questions[0]
         ? (' aka ' + cell.questions[0].substr(0, 50))
         : ''
     return path.join(path.dirname(path.resolve(cell.filename)), cell.id) + question
@@ -98,10 +98,10 @@ function getCellPath(cell) {
 function importNotebook(notebook, ctx = {}) {
     var {interpret, makeModule, makeESModule, makeDylib, makeDLL, makePythonModule} = require('../Core')
     // accept all arguments as the list of queries
-    if(arguments.length > 2) {
+    if(arguments.length &gt; 2) {
         notebook = Array.from(arguments)
         if(typeof arugments[arguments.length - 1] === 'object'
-          && !Array.isArray(arugments[arguments.length - 1])) {
+          &amp;&amp; !Array.isArray(arugments[arguments.length - 1])) {
             notebook = notebook.slice(0, arguments.length - 1)
             ctx = arugments[arguments.length - 1]
         }
@@ -139,8 +139,8 @@ function importNotebook(notebook, ctx = {}) {
 
         } else
 
-        if (!cells.filename.match(/Core\//gi) && !cells.filename.match(/cache/gi) 
-            && cells.source.join('').match(/^import\s|\simport\s|^export\s/gmi)
+        if (!cells.filename.match(/Core\//gi) &amp;&amp; !cells.filename.match(/cache/gi) 
+            &amp;&amp; cells.source.join('').match(/^import\s|\simport\s|^export\s/gmi)
         ) {
             console.error('ES module matched')
             return Promise.resolve(makeESModule(cells.source.join(''), cells.filename, ctx))
@@ -151,10 +151,10 @@ function importNotebook(notebook, ctx = {}) {
                           ctx)
     }
     
-    console.log(`importing ${notebook} - ${cells.length} cells - ${cells.map(c => c.id)}`)
+    console.log(`importing ${notebook} - ${cells.length} cells - ${cells.map(c =&gt; c.id)}`)
     var package = {}
 
-    for(let i = 0; i < cells.length; i++) {
+    for(let i = 0; i &lt; cells.length; i++) {
 
         let result
 
@@ -177,8 +177,8 @@ function importNotebook(notebook, ctx = {}) {
             result = makeDylib(cells[i].source.join(''), cells[i].id)
 
         } else
-        if (!cells[i].filename.match(/Core\//gi) && !cells[i].filename.match(/cache/gi) 
-            && cells[i].source.join('').match(/^import\s|\simport\s|^export\s|\sexport\s/gi)
+        if (!cells[i].filename.match(/Core\//gi) &amp;&amp; !cells[i].filename.match(/cache/gi) 
+            &amp;&amp; cells[i].source.join('').match(/^import\s|\simport\s|^export\s|\sexport\s/gi)
         ) {
             result = Promise.resolve(makeESModule(cells[i].source.join(''), cells[i].filename, ctx))
         } else

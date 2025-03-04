@@ -132,31 +132,31 @@ var eloquaConfig = getEloquaConfig();
 var eloquaToken = getOauthToken();
 var sandbox = sinon.createSandbox();
 
-describe('eloqua existing import', () => {
+describe('eloqua existing import', () =&gt; {
         
-    afterEach(() => {
+    afterEach(() =&gt; {
         sandbox.restore();
     })
 
-    it('should check if the custom object is configured', () => {
+    it('should check if the custom object is configured', () =&gt; {
         
         const requestStub = sandbox.stub(request, "request")
             .returns(Promise.resolve({ body: {items: [{name: 'AUT - NA Renewals'}] } }));
         
         return existing.getCustomDataObject({}, eloquaConfig)
-            .then(r => {
+            .then(r =&gt; {
                 assert(r);
                 assert(requestStub.calledOnce, 'request should only be called once');
             })
     })
     
-    it('should check if there is already an import definition', () => {
+    it('should check if there is already an import definition', () =&gt; {
         
         const requestStub = sandbox.stub(request, "request")
             .returns(Promise.resolve({ body: {items: [{name: bulkImportTemplate(0).name, uri: '/imports/1234'}] } }));
         
         return existing.getImportDefinitions('/imports/1234', eloquaToken, eloquaConfig)
-            .then(r => {
+            .then(r =&gt; {
                 assert(r.uri);
                 assert(requestStub.calledOnce, 'request should only be called once');
             })

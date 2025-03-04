@@ -88,7 +88,7 @@ async function askLlamaAboutNotebooks(query) {
   let functions = []
   let descriptions = []
 
-  for(let i = 0; i < notebooks.length; i++) {
+  for(let i = 0; i &lt; notebooks.length; i++) {
     let notebookName = path.basename(notebooks[i]).replace('.ipynb', '')
     let notebookCamel = notebookName.substring(0, 1).toLocaleUpperCase() + notebookName.substring(1)
     let folderName = path.basename(path.dirname(notebooks[i]))
@@ -97,7 +97,7 @@ async function askLlamaAboutNotebooks(query) {
     functions[functions.length] = 'search' + folderCamel.replace(/[^a-z0-9]/gi, '') + notebookCamel.replace(/[^a-z0-9]/gi, '').substring(0, 15)
     descriptions[descriptions.length] = folderCamel + ' ' + notebookCamel
 
-    // TODO: convert this to something like function.length + description.length + 4 < 2048
+    // TODO: convert this to something like function.length + description.length + 4 &lt; 2048
     if(functions.length == 20) {
       let result = await askLlamaAboutFunctions(query, functions, descriptions)
       if(result) {
@@ -109,7 +109,7 @@ async function askLlamaAboutNotebooks(query) {
       }
     }
   }
-  if(functions.length > 1) {
+  if(functions.length &gt; 1) {
     let result = await askLlamaAboutFunctions(query, functions, descriptions)
     if(result) functions = [result]
     else functions = []

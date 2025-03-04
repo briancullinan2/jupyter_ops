@@ -84,7 +84,7 @@ async function askLlamaMatchTimestamps(promptModel, messages, keywords, prompt, 
   console.log('AI: ' + a3)
 
   return timestamps
-    .filter(time => a3.match(time) || a3.match(new Date(parseInt(time)).toISOString()))
+    .filter(time =&gt; a3.match(time) || a3.match(new Date(parseInt(time)).toISOString()))
 }
 
 
@@ -95,15 +95,15 @@ async function matchingTimestamps(promptModel, session, prompt, keywords) {
     + '\nOur recent topics:\n'
   let originalTimestamp = messages
   let loadedConversations = Object.keys(ACTIVE_CONVERSATIONS)
-    .filter(key => key.match('-' + DEFAULT_MODEL + '-' + session + '.json'))
-  for(let i = 0; i < loadedConversations.length; i++) {
+    .filter(key =&gt; key.match('-' + DEFAULT_MODEL + '-' + session + '.json'))
+  for(let i = 0; i &lt; loadedConversations.length; i++) {
     let conversation = ACTIVE_CONVERSATIONS[loadedConversations[i]]
-    let timestamps = Object.keys(conversation).filter(k => k != 'summaries' && k != 'memories')
-    timestamps.sort((a, b) => b - a)
-    for(let j = 0; j < timestamps.length; j++) {
+    let timestamps = Object.keys(conversation).filter(k =&gt; k != 'summaries' &amp;&amp; k != 'memories')
+    timestamps.sort((a, b) =&gt; b - a)
+    for(let j = 0; j &lt; timestamps.length; j++) {
       let message = conversation[timestamps[j]]
-      let topics = keywords.filter(key => message.keywords.match(key))
-      if(!prompt.match(timestamps[j]) && topics.length == 0) {
+      let topics = keywords.filter(key =&gt; message.keywords.match(key))
+      if(!prompt.match(timestamps[j]) &amp;&amp; topics.length == 0) {
         continue
       }
 
@@ -112,7 +112,7 @@ async function matchingTimestamps(promptModel, session, prompt, keywords) {
         + (message.summary ? (' - ' + message.summary) : '') 
         + '\n'
 
-      if(messages.length > 2048) {
+      if(messages.length &gt; 2048) {
         let newTimestamps = await askLlamaMatchTimestamps(promptModel, messages, keywords, prompt, timestamps)
 
         matchingTimestamps = matchingTimestamps.concat(newTimestamps)
@@ -121,7 +121,7 @@ async function matchingTimestamps(promptModel, session, prompt, keywords) {
       }
     }
 
-    if(messages.length > originalTimestamp.length) {
+    if(messages.length &gt; originalTimestamp.length) {
       let newTimestamps = await askLlamaMatchTimestamps(promptModel, messages, keywords, prompt, timestamps)
 
       matchingTimestamps = matchingTimestamps.concat(newTimestamps)

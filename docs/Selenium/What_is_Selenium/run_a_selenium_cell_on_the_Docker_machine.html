@@ -68,7 +68,7 @@ function runSeleniumCell(search) {
     var promise = createWebdriverClient();
     var isError = false;
     return promise
-        .then(client => {
+        .then(client =&gt; {
             var context = {
                 client,
                 browser: client
@@ -97,8 +97,8 @@ if(typeof $ !== 'undefined') {
     console.log('this should not be hit!');
     $.async()
     runSeleniumCell('test docker selenium')
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e));
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e));
 }
 </code></pre>
 

@@ -81,11 +81,11 @@ var importer = require('../Core')
 var {request} = importer.import('http request')
 
 function getRpcFromSpec(spec, req, base) {
-    if(req && req.request)
+    if(req &amp;&amp; req.request)
         req = req.request.bind(req)
     base = spec.baseUrl || base;
-    var GoogleSpec = Object.keys(spec.resources || {}).reduce((obj, key) => {
-        obj[key] = Object.keys(spec.resources[key].methods || {}).reduce((o, k) => {
+    var GoogleSpec = Object.keys(spec.resources || {}).reduce((obj, key) =&gt; {
+        obj[key] = Object.keys(spec.resources[key].methods || {}).reduce((o, k) =&gt; {
             spec.resources[key].methods[k].parameters2 = spec.parameters
             o[k] = assignAndRequest.bind(spec,
                                          base,
@@ -99,13 +99,13 @@ function getRpcFromSpec(spec, req, base) {
     }, {})
     var version = ((spec.info || {}).version || '1').split('.')[0]
     // convert stupid OpenAPI to Google Discovery format
-    var OpenAPI = Object.keys(spec.paths || {}).reduce((obj, key) => {
+    var OpenAPI = Object.keys(spec.paths || {}).reduce((obj, key) =&gt; {
         var method = {
             path: '',
             parameters2: {}
         }
         var keys = key.replace(/^\/|\/$/ig, '').split('/')
-            .reduce((keylist, k) => {
+            .reduce((keylist, k) =&gt; {
                 if(k == 'json') {
                     method.parameters2['format'] = {
                         "enum": [
@@ -130,7 +130,7 @@ function getRpcFromSpec(spec, req, base) {
                         "default": k
                     }
                     method.path += '/{version}'
-                } else if (k == 'api' || k == '@' || k.length < 0) {
+                } else if (k == 'api' || k == '@' || k.length &lt; 0) {
                     method.path += '/' + k
                 } else {
                     keylist[keylist.length] = k
@@ -139,13 +139,13 @@ function getRpcFromSpec(spec, req, base) {
                 return keylist
             }, [])
         var currentPath = obj
-        keys.forEach(k => {
+        keys.forEach(k =&gt; {
             if(!currentPath[k]) currentPath[k] = {}
             currentPath = currentPath[k]
         })
-        Object.keys(spec.paths[key]).forEach(k => {
+        Object.keys(spec.paths[key]).forEach(k =&gt; {
             var parameters = (spec.paths[key][k].parameters || [])
-                .reduce((o, p) => {
+                .reduce((o, p) =&gt; {
                     o[p.name] = {
                         location: p.in,
                         type: p.schema ? p.schema['$ref'] || p.schema.type || 'string' : 'string',
@@ -169,7 +169,7 @@ function getRpcFromSpec(spec, req, base) {
 function assignAndRequest(base, resource, request, input) {
     // TODO: get path parameters
     var path = getResourceParameters(resource, input, 'path')
-    var address = `${base}${resource.path.replace(/\{(.*?)\}/ig, ($0, $1) => {
+    var address = `${base}${resource.path.replace(/\{(.*?)\}/ig, ($0, $1) =&gt; {
         if(!path[$1]) {
             throw new Error(`path parameter ${$1} not defined!`);
         }
@@ -202,10 +202,10 @@ function getResourceParameters(resource, input, type) {
     Object.assign(paramters, resource.parameters2)
     Object.assign(paramters, resource.parameters)
     return Object.keys(paramters)
-        .filter(k => paramters[k].location === type)
-        .reduce((obj, key) => {
+        .filter(k =&gt; paramters[k].location === type)
+        .reduce((obj, key) =&gt; {
             if(paramters[key].required
-               && (!input || typeof input[key] === 'undefined')) {
+               &amp;&amp; (!input || typeof input[key] === 'undefined')) {
                 throw new Error(`required field ${key} not defined!`);
             }
             if(typeof input[key] !== 'undefined')

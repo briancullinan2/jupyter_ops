@@ -137,14 +137,14 @@ function coreDependencies() {
     var packages = []
     var builtin = []
     var coreNotebooks = listInProject(__dirname, '{,*,*/,*/*/*,*/*/*/*}*.ipynb')
-        .filter(n => !n.includes('cache.ipynb'))
-    coreNotebooks.forEach(n => {
+        .filter(n =&gt; !n.includes('cache.ipynb'))
+    coreNotebooks.forEach(n =&gt; {
         var cells = importer.interpret(path.basename(n))
-        cells.forEach(cell => {
+        cells.forEach(cell =&gt; {
             try {
                 var imports = relativeImports(cell.code, cell.filename)
-                imports.packages.forEach(p => packages.push(p))
-                imports.builtin.forEach(p => builtin.push(p))
+                imports.packages.forEach(p =&gt; packages.push(p))
+                imports.builtin.forEach(p =&gt; builtin.push(p))
             } catch (e) {
                 console.log(`problem with ${cell.id} ${e.message}`)
             }

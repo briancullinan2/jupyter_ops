@@ -134,8 +134,8 @@ function minXpath(combinations, ctx) {
     // flatten the XPath stack using '/'
     // sort by smallest and return shortest path matching 1 DOM element
     const minimal = combinations
-            .filter(c => selectDom([`.//${c}`], ctx).length === 1)
-            .sort((a, b) => a.length - b.length);
+            .filter(c =&gt; selectDom([`.//${c}`], ctx).length === 1)
+            .sort((a, b) =&gt; a.length - b.length);
     return minimal[ 0 ];
 
     // TODO: prioritize by button/input, ids, classes, attributes? (extra credit), index

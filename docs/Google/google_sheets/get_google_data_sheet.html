@@ -76,13 +76,13 @@
 <pre class="javascript"><code>var importer = require('../Core');
 var getRows = importer.import('get worksheet rows');
 
-var rowsToObjects = (rows, columns) =>
-    rows.reduce((acc, o, i) =>
-                (acc[i] = o.reduce((obj, cell, j) =>
+var rowsToObjects = (rows, columns) =&gt;
+    rows.reduce((acc, o, i) =&gt;
+                (acc[i] = o.reduce((obj, cell, j) =&gt;
                                    (obj[columns[j]] = cell, obj), {}), acc), [])
 
 function getDataSheet(link, worksheet) {
-    return getRows(link, worksheet).then(rows => rowsToObjects(rows.slice(1), rows[0]))
+    return getRows(link, worksheet).then(rows =&gt; rowsToObjects(rows.slice(1), rows[0]))
 }
 
 module.exports = getDataSheet;

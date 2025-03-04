@@ -82,7 +82,7 @@ function deepCopy(project_orig) {
     const now = new Date();
     // delete old cloned directories
     const copies = glob.sync(path.basename(project_orig) + '-copy-*', {cwd: path.dirname(project_orig)});
-    copies.forEach(c => {
+    copies.forEach(c =&gt; {
         rimraf.sync(path.join(path.dirname(project_orig), c));
     });
     const projectName = path.basename(project_orig) + '-copy-' + now.getFullYear()
@@ -91,18 +91,18 @@ function deepCopy(project_orig) {
         + '-' + now.getSeconds();
     const project = path.join(path.dirname(project_orig), projectName);
     // do a deep copy of all git files
-    console.log('cloning repo ' + project_orig + ' -> ' + project);
+    console.log('cloning repo ' + project_orig + ' -&gt; ' + project);
     return Promise.all([
         listInProject(project_orig, '**/*'),
         listInProject(project_orig + '/.git', '**/*'),
     ])
         // TODO: clone from remote
-        .then(r => {
+        .then(r =&gt; {
             for (const file of [].concat(...r).sort()) {
                 const dirname = path.dirname(
                     file.replace(project_orig, project)).split(/\/|\\/ig);
 
-                for (var i = 2; i <= dirname.length; i++) {
+                for (var i = 2; i &lt;= dirname.length; i++) {
                     if (!fs.existsSync(dirname.slice(0, i).join('/'))) {
                         fs.mkdirSync(dirname.slice(0, i).join('/'));
                     }
@@ -110,8 +110,8 @@ function deepCopy(project_orig) {
                 fs.copyFileSync(file, file.replace(project_orig, project));
             }
         })
-        .then(() => listInProject(project, '**/*.lock').forEach(p => rimraf.sync(p)))
-        .then(() => project)
+        .then(() =&gt; listInProject(project, '**/*.lock').forEach(p =&gt; rimraf.sync(p)))
+        .then(() =&gt; project)
 }
 
 function cloneProject(project, copy) {
@@ -135,14 +135,14 @@ function cloneProject(project, copy) {
             return execCmd(`
 git clone -v ${projectHttp}
 `, {cwd: path.resolve(PROFILE_PATH)})
-                .then(r => path.resolve(path.join(PROFILE_PATH, projectName)))
-                .then(r => copy ? deepCopy(r) : r)
+                .then(r =&gt; path.resolve(path.join(PROFILE_PATH, projectName)))
+                .then(r =&gt; copy ? deepCopy(r) : r)
         }
     } else {
         throw new Error('invalid project path "' + project + '"');
     }
     return Promise.resolve(project)
-            .then(r => copy ? deepCopy(r) : r)
+            .then(r =&gt; copy ? deepCopy(r) : r)
 }
 module.exports = cloneProject;
 

@@ -67,8 +67,8 @@ if [[ -n $1 ]]; \
 fi; \
 for file in $(find "$output" -type f -name "*.html"); \
 do \
-    f=${file#"$output"/*} && \
-    gsutil setmeta -h "Content-Type:text/html; charset=utf-8" "$2/$f" && \
+    f=${file#"$output"/*} &amp;&amp; \
+    gsutil setmeta -h "Content-Type:text/html; charset=utf-8" "$2/$f" &amp;&amp; \
     gsutil -h "Content-Type:text/html; charset=utf-8" cp "$file" "$2/${f%.*}"; \
 done
 </code></pre>

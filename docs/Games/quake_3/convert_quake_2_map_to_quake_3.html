@@ -131,7 +131,7 @@ var {MAPS_HINTS, addHints} = importer.import('draw hints in map')
 
 function convertMap(fileName) {
     var file;
-    if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+    if(typeof fileName === 'string' &amp;&amp; fs.existsSync(fileName)) {
         file = fs.readFileSync(fileName).toString('utf-8')
     }
     

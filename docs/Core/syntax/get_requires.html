@@ -136,7 +136,7 @@ var {selectAst} = importer.import('select code tree')
 function getRequires(code) {
     return [].concat.apply([], selectAst([
         `//CallExpression[./Identifier[@name="require"]]`,
-        (ctx) => {
+        (ctx) =&gt; {
             var req = selectAst([`.//Literal/@value`], ctx)
             if(req.length === 0) throw new Error(
                 `dynamic require: ${JSON.stringify(htmlToTree(ctx))}`)

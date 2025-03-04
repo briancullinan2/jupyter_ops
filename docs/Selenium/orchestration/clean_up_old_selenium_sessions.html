@@ -85,8 +85,8 @@ var {
     'spawn child process'
 ]);
 
-var regexToArray = (ex, str, i = 0) => {
-    var co = []; var m; while ((m = ex.exec(str)) && co.push(m[i])); return co;
+var regexToArray = (ex, str, i = 0) =&gt; {
+    var co = []; var m; while ((m = ex.exec(str)) &amp;&amp; co.push(m[i])); return co;
 };
 
 var TOKEN_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, '.credentials');
@@ -94,13 +94,13 @@ var SESSIONS_PATH = path.join(TOKEN_DIR, 'sessions.json');
 
 function closeAllSessions(logs) {
     const sessLogs = regexToArray(/\/session\/(.+?)\//ig, logs.join('\n'), 1);
-    const sessions = sessLogs.filter((s, i, arr) => arr.indexOf(s) === i)
+    const sessions = sessLogs.filter((s, i, arr) =&gt; arr.indexOf(s) === i)
 }
 
 function cleanUpSessions() {
     return getSeleniumServer()
-        .then(log => closeAllSessions(log))
-        .catch(e => {
+        .then(log =&gt; closeAllSessions(log))
+        .catch(e =&gt; {
             console.log(e);
             if(((e.data || e) + '').indexOf('docker: not found') === -1) {
                 throw e;
@@ -109,7 +109,7 @@ function cleanUpSessions() {
                 return execCmd('sudo killall chrome');
             }
         })
-        .then(() => {
+        .then(() =&gt; {
             fs.writeFileSync(SESSIONS_PATH, '[]');
             return runSeleniumCell(false);
         })
@@ -119,8 +119,8 @@ module.exports = cleanUpSessions;
 if(typeof $ !== 'undefined') {
     $.async()
     cleanUpSessions()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

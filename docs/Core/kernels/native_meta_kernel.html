@@ -124,12 +124,12 @@ function reassignProperties(meta_kernel) {
         install_config
     } = meta_kernel;
     
-    if(!language_info && kernel_info)
+    if(!language_info &amp;&amp; kernel_info)
         meta_kernel.language_info = kernel_info.language_info
     
     // if(typeof kernel_config === 'function')
     //     meta_kernel.kernel_config = kernel_config(kernel_config);
-    if(kernel_info && !kernel_info.language_info)
+    if(kernel_info &amp;&amp; !kernel_info.language_info)
         kernel_info.language_info = language_info;
     
     meta_kernel.kernel_info = nativeKernelInfo(kernel_info);

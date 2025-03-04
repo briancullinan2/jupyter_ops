@@ -78,18 +78,18 @@ var todayOffset = (today - new Date(1601, 0, 1).getTime()) * 1000;
 
 function getHistory() {
     return Promise.resolve()
-    //    .then(() => db.prepare('PRAGMA table_info(visits)').all())
-    //    .then(() => db.prepare('SELECT * FROM visits WHERE visit_time > ?').all(todayOffset))
+    //    .then(() =&gt; db.prepare('PRAGMA table_info(visits)').all())
+    //    .then(() =&gt; db.prepare('SELECT * FROM visits WHERE visit_time &gt; ?').all(todayOffset))
     // sqlite_temp_master
-    //    .then(() => db.prepare('SELECT name FROM sqlite_master WHERE type = ?').all('table'))
-        .then(() => db.prepare('SELECT * FROM urls WHERE last_visit_time > ?').all(todayOffset))
+    //    .then(() =&gt; db.prepare('SELECT name FROM sqlite_master WHERE type = ?').all('table'))
+        .then(() =&gt; db.prepare('SELECT * FROM urls WHERE last_visit_time &gt; ?').all(todayOffset))
 }
 
 if(typeof $ !== 'undefined') {
     $.async();
     getHistory()
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

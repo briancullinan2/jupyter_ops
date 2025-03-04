@@ -184,7 +184,7 @@ var query = `SELECT
     Subscription.AutoRenew
 FROM RatePlanCharge
 WHERE Subscription.Status!='Draft' AND Subscription.Status!='Cancelled' AND Subscription.Status!='Expired'
-    AND Subscription.TermEndDate &gt;='{0}' AND Subscription.TermEndDate &lt;='{1}'
+    AND Subscription.TermEndDate &amp;gt;='{0}' AND Subscription.TermEndDate &amp;lt;='{1}'
     AND (Account.Currency='${currencies.join("' OR Account.Currency='")}')
     AND (ProductRatePlan.Name!='${excludedRatePlans.join("' AND ProductRatePlan.Name!='")}')
     AND (Product.SKU!='${excludedProductSkus.join("' AND Product.SKU!='")}')
@@ -192,7 +192,7 @@ WHERE Subscription.Status!='Draft' AND Subscription.Status!='Cancelled' AND Subs
     AND NOT (BillToContact.WorkEmail LIKE 'qaaw%@gmail.com')
     AND NOT (Account.Name LIKE '%do not use%')
 `;
-// AND (RatePlanCharge.EffectiveEndDate &gt;='{2}' OR RatePlanCharge.ChargeType='OneTime')
+// AND (RatePlanCharge.EffectiveEndDate &amp;gt;='{2}' OR RatePlanCharge.ChargeType='OneTime')
 // removed this so that discounts show up on the account
 // AND RatePlanCharge.BillingPeriod!='Month'
 

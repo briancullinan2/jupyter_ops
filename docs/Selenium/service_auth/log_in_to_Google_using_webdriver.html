@@ -72,11 +72,11 @@ function enterGoogleUsername(email) {
     console.log('Google: Sign in required');
     return client
         .pause(1000)
-        .then(() => client.$(matchUsername))
-        .then(el => el.addValue(email))
-        .then(() => client.$('#identifierNext'))
-        .then(el => el.click())
-        .catch((e) => console.log(e));
+        .then(() =&gt; client.$(matchUsername))
+        .then(el =&gt; el.addValue(email))
+        .then(() =&gt; client.$('#identifierNext'))
+        .then(el =&gt; el.click())
+        .catch((e) =&gt; console.log(e));
 }
 
 var matchPassword = 'input[name="Passwd"], input[autocomplete="password"], input[name="password"]';
@@ -84,59 +84,59 @@ function enterGooglePassword(pass) {
     console.log('Google: Require password');
     return client
         .pause(2000)
-        .then(() => client.$(matchPassword))
-        .then(el => el.addValue(pass))
-        .then(() => client.$('#passwordNext'))
-        .then(el => el.click());
+        .then(() =&gt; client.$(matchPassword))
+        .then(el =&gt; el.addValue(pass))
+        .then(() =&gt; client.$('#passwordNext'))
+        .then(el =&gt; el.click());
 }
 
 function enterCredentials(is) {
     var credentials = getCredentials('accounts.google.com');
     if (is) {
         return client.$('#passwordNext')
-            .then(el => el.isDisplayed())
-            .then(is => is
+            .then(el =&gt; el.isDisplayed())
+            .then(is =&gt; is
                 ? enterGooglePassword(credentials.Passwd)
                 : enterGoogleUsername(credentials.Email)
-                    .then(() => enterGooglePassword(credentials.Passwd)))
+                    .then(() =&gt; enterGooglePassword(credentials.Passwd)))
     } else {
         return client
             .findElements('xpath', '//h1[contains(., "Choose an account")]')
-            .then(is => {
-                if (is.length > 0) {
+            .then(is =&gt; {
+                if (is.length &gt; 0) {
                     return client
                         .findElements('xpath', '//*[@data-authuser][contains(., "@")]')
-                        .then(is => {
+                        .then(is =&gt; {
                             console.log(is);
-                            return is.length > 0
-                              ? client.$('//*[@data-authuser][contains(., "@")]').then(el => el.click())
+                            return is.length &gt; 0
+                              ? client.$('//*[@data-authuser][contains(., "@")]').then(el =&gt; el.click())
                               : []
                         })
-                        .then(() => client.$('#passwordNext'))
-                        .then(el => el.isDisplayed())
-                        .then(is => is
+                        .then(() =&gt; client.$('#passwordNext'))
+                        .then(el =&gt; el.isDisplayed())
+                        .then(is =&gt; is
                             ? enterGooglePassword(credentials.Passwd)
                             : [])
                 } else {
                     return client.findElements('xpath', '//h1[contains(., "Sign in")]')
-                        .then(is => is
+                        .then(is =&gt; is
                             ? enterGoogleUsername(credentials.Email)
-                                .then(() => enterGooglePassword(credentials.Passwd))
+                                .then(() =&gt; enterGooglePassword(credentials.Passwd))
                             : null)
                 }
             })
-            .catch((e) => console.log(e));
+            .catch((e) =&gt; console.log(e));
     }
 }
 
 function loginGoogle() {
     return client
         .findElements('css selector', 'a[href*="ServiceLogin"]')
-        .then(is => is.length > 0 ? client.click('a[href*="ServiceLogin"]') : null)
-        .then(() => client.pause(1000))
-        .then(() => client.findElements('css selector', 'form[action*="signin"]'))
-        .then(is => enterCredentials(is.length > 0))
-        .catch((e) => {
+        .then(is =&gt; is.length &gt; 0 ? client.click('a[href*="ServiceLogin"]') : null)
+        .then(() =&gt; client.pause(1000))
+        .then(() =&gt; client.findElements('css selector', 'form[action*="signin"]'))
+        .then(is =&gt; enterCredentials(is.length &gt; 0))
+        .catch((e) =&gt; {
             console.log(e);
             console.log('Google: Could not log in');
         });

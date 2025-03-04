@@ -81,20 +81,20 @@ async function keySend(text, special) {
   // Type "Hello World".
   //robot.typeString(text)
 
-  let modifiers = special.filter(s => !TAP_SPECIAL.includes(s))
+  let modifiers = special.filter(s =&gt; !TAP_SPECIAL.includes(s))
 
-  for(let i = 0; i < text.length; i++) {
+  for(let i = 0; i &lt; text.length; i++) {
     let localModifiers = [].concat(modifiers)
-    if(text[i].toUpperCase() == text[i] && !localModifiers.includes('shift')) {
+    if(text[i].toUpperCase() == text[i] &amp;&amp; !localModifiers.includes('shift')) {
       localModifiers.push('shift')
     }
     robot.keyToggle(text[i].toLowerCase(), 'down', modifiers)
-    await new Promise(resolve => setTimeout(resolve, 150))
+    await new Promise(resolve =&gt; setTimeout(resolve, 150))
     robot.keyToggle(text[i].toLowerCase(), 'up', modifiers)
   }
 
-  let tap = special.filter(s => TAP_SPECIAL.includes(s))
-  if(tap.length > 0) {
+  let tap = special.filter(s =&gt; TAP_SPECIAL.includes(s))
+  if(tap.length &gt; 0) {
     // Press enter.
     robot.keyTap(tap[0], modifiers)
   }

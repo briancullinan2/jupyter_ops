@@ -81,14 +81,14 @@ function scrapeFacebookEvent(event) {
     var description;
     return client
         .getUrl()
-        .then(url => url.indexOf(event) === -1
+        .then(url =&gt; url.indexOf(event) === -1
             ? client.url(event)
             : client)
         .pause(3000)
         .isExisting('//a[contains(., "About")]')
-        .then(is => is ? client.click('//a[contains(., "About")]') : [])
+        .then(is =&gt; is ? client.click('//a[contains(., "About")]') : [])
         .pause(1000)
-        .then(() => getAllXPath([
+        .then(() =&gt; getAllXPath([
             '//body[not(.//*[contains(@class, "fbPhotoSnowliftPopup")])]|//body[.//*[contains(@class, "fbPhotoSnowliftPopup")]]//*[contains(@class, "fbPhotoSnowliftPopup")]',
             {
                 description: [
@@ -99,13 +99,13 @@ function scrapeFacebookEvent(event) {
                 ]
             }
         ]))
-        .then(desc => {
+        .then(desc =&gt; {
             description = desc;
         })
         .isExisting('//a[contains(., "Discussion")]')
-        .then(is => is ? client.click('//a[contains(., "Discussion")]') : client)
+        .then(is =&gt; is ? client.click('//a[contains(., "Discussion")]') : client)
         .pause(1000)
-        .then(() => {
+        .then(() =&gt; {
             return getAllXPath([
                 '//body[not(.//*[contains(@class, "fbPhotoSnowliftPopup")])]|//body[.//*[contains(@class, "fbPhotoSnowliftPopup")]]//*[contains(@class, "fbPhotoSnowliftPopup")]',
                 {
@@ -135,21 +135,21 @@ function scrapeFacebookEvent(event) {
                 }
             ])
         })
-        .then(results => results.map((r, i) => Object.assign(r, {
-            description: description[i].description.map(d => d.value.join(' ')),
-            posts: r.posts.map(p => {
+        .then(results =&gt; results.map((r, i) =&gt; Object.assign(r, {
+            description: description[i].description.map(d =&gt; d.value.join(' ')),
+            posts: r.posts.map(p =&gt; {
                 return Object.assign(p, {
                     event: event,
                     description: p.description.join(' '),
-                    participants: p.participants.filter(i => i
+                    participants: p.participants.filter(i =&gt; i
                             .indexOf('photo') === -1
-                        && i !== '#'
-                        && i.indexOf('ufi/reaction') === -1),
-                    photos: p.participants.filter(i => i
+                        &amp;&amp; i !== '#'
+                        &amp;&amp; i.indexOf('ufi/reaction') === -1),
+                    photos: p.participants.filter(i =&gt; i
                             .indexOf('photo') !== -1
-                        && i !== '#'
-                        && i.indexOf('ajax/sharer') === -1),
-                    comments: p.comments.map(c => Object.assign(c, {
+                        &amp;&amp; i !== '#'
+                        &amp;&amp; i.indexOf('ajax/sharer') === -1),
+                    comments: p.comments.map(c =&gt; Object.assign(c, {
                         time: c.time.join(' '),
                         content: c.content.join(' '),
                         from: c.from.join(' ')
@@ -157,7 +157,7 @@ function scrapeFacebookEvent(event) {
                 });
             })
         })))
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 module.exports = scrapeFacebookEvent;
 </code></pre>

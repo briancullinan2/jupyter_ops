@@ -98,9 +98,9 @@ function applyAcl(acl, doc) {
     var body = selectDom('//body', doc)
     if(body) {
         // add content editable to -acl list elements
-        acl.forEach(i => {
+        acl.forEach(i =&gt; {
             var els = selectDom([i], body)
-            els.forEach(el => {
+            els.forEach(el =&gt; {
                 el.setAttribute('contenteditable', 'contenteditable')
             })
         })

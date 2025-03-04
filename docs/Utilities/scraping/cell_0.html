@@ -77,16 +77,16 @@ function getLocations() {
         return Promise.resolve(locations);
     }
     return request('https://web.archive.org/web/20160322001433/http://keepflaghappy.com/happy-hours/friday/')
-        .then(r => {
+        .then(r =&gt; {
             const getAllXPath = importer.import('all elements xpath from string')(r.body);
             return getAllXPath([
                 '//a[contains(@href, "by-location")]/@href',
             ]);
         })
-        .then(r => {
+        .then(r =&gt; {
             locations = r
-                .filter(l => l.match(/by-location\/[^#]+/ig))
-                .map(l => l.includes('archive.org') ? l : 'https://web.archive.org' + l);
+                .filter(l =&gt; l.match(/by-location\/[^#]+/ig))
+                .map(l =&gt; l.includes('archive.org') ? l : 'https://web.archive.org' + l);
             return locations;
         });
 }
@@ -94,7 +94,7 @@ function getLocations() {
 function getLocation(l) {
     console.log('Downloading ' + l);
     return request(l)
-        .then(r => {
+        .then(r =&gt; {
             const getAllXPath = importer.import('all elements xpath from string')(r.body);
             return getAllXPath([
                 '//h3[contains(., "Mon") or contains(., "Tue") or contains(., "Wed") or contains(., "Thu") or contains(., "Fri") or contains(., "Sat") or contains(., "Sun")]',
@@ -105,8 +105,8 @@ function getLocation(l) {
                 }
             ]);
         })
-        .then(r => {
-            const happy = r.map(l => {
+        .then(r =&gt; {
+            const happy = r.map(l =&gt; {
                 return {
                     dotw: l.dotw,
                     time: l.time,
@@ -121,14 +121,14 @@ function getLocation(l) {
 
 $.async();
 getLocations()
-    .then(r => {
-        return importer.runAllPromises(r.map(l => resolve => {
+    .then(r =&gt; {
+        return importer.runAllPromises(r.map(l =&gt; resolve =&gt; {
             return getLocation(l)
-                .then(r => setTimeout(() => resolve(r), 100))
+                .then(r =&gt; setTimeout(() =&gt; resolve(r), 100))
         }));
     })
-    .then(r => $.mime({'text/plain': JSON.stringify(r, null, 4)}))
-    .catch(e => $.sendError(e))
+    .then(r =&gt; $.mime({'text/plain': JSON.stringify(r, null, 4)}))
+    .catch(e =&gt; $.sendError(e))
 
 </code></pre>
 

@@ -66,26 +66,26 @@
 
 
 <pre class="javascript"><code>function getScriptsAndStyles(content, additional = '0.*.js') {
-    var output = content.match(/<style.*?\/style>/ig) || '';
+    var output = content.match(/&lt;style.*?\/style&gt;/ig) || '';
     var scripts = ``;
 
-    var m, re = (/<link.*?>/ig);
+    var m, re = (/&lt;link.*?&gt;/ig);
     while (m = re.exec(content)) {
         var src;
-        if ((src = (/href="(.*?)"/ig).exec(m[0])) != null && src[1].indexOf('google') == -1) {
-            scripts += '<style>' + fs.readFileSync(path.join(project, 'public', src[1])) + '</style>';
+        if ((src = (/href="(.*?)"/ig).exec(m[0])) != null &amp;&amp; src[1].indexOf('google') == -1) {
+            scripts += '&lt;style&gt;' + fs.readFileSync(path.join(project, 'public', src[1])) + '&lt;/style&gt;';
         } else {
             scripts += m[0];
         }
     }
 
-    var m, re = (/<script.*?\/script>/ig);
+    var m, re = (/&lt;script.*?\/script&gt;/ig);
     while (m = re.exec(content)) {
         var src;
         if ((src = (/src="(.*?)"/ig).exec(m[0])) != null) {
-            scripts += '<script defer>'
+            scripts += '&lt;script defer&gt;'
                 + fs.readFileSync(path.join(project, 'public', src[1]))
-                + '</script>';
+                + '&lt;/script&gt;';
         } else {
             scripts += m[0];
         }

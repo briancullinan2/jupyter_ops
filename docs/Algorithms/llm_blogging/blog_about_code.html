@@ -79,12 +79,12 @@ async function blogAboutCode(project, timeframe = 3, promptModel = 'Meta') {
 
   // TODO: local pull
   if(!fs.existsSync(project)
-    && fs.existsSync(path.join(PROFILE_PATH, project))) {
+    &amp;&amp; fs.existsSync(path.join(PROFILE_PATH, project))) {
       project = path.join(PROFILE_PATH, project)
   }
 
   if(project.includes('://')
-    && fs.existsSync(path.basename(project).replace('.git', ''))
+    &amp;&amp; fs.existsSync(path.basename(project).replace('.git', ''))
   ) {
     project = path.join(PROFILE_PATH, path.basename(project).replace('.git', ''))
   }
@@ -135,7 +135,7 @@ async function blogAboutCode(project, timeframe = 3, promptModel = 'Meta') {
 
   summaryOutputs = []
   let files = Object.keys(summary.files)
-  for(let i = 0; i < files.length; i++) {
+  for(let i = 0; i &lt; files.length; i++) {
     if(files[i].match('cache.ipynb')) {
       continue
     }

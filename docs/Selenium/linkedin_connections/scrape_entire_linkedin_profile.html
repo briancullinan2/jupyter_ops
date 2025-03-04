@@ -72,44 +72,44 @@
 function loadEntirePage() {
     return client
     // load all defered elements by scrolling
-        .then(() => getAllUntil(
+        .then(() =&gt; getAllUntil(
             false,
             '//*[contains(@class, "pv-deferred-area")]/@id',
             [],
-            (a, b) => a === b,
-            (i) => i < 30
+            (a, b) =&gt; a === b,
+            (i) =&gt; i &lt; 30
         ))
         .pause(2000)
         // show more all sections
         .scroll(0, 0)
-        .then(() => importer.runAllPromises([
+        .then(() =&gt; importer.runAllPromises([
             '//button[contains(., "See more")]',
             '//button[contains(., "more skills")]',
             '//button[contains(., "more education")]',
             '//button[contains(., "more recommendations")]'
-        ].map(selector => resolve => {
+        ].map(selector =&gt; resolve =&gt; {
             return client
                 .isVisible(selector)
-                .then(is => is
+                .then(is =&gt; is
                     ? client.click(selector).pause(1000)
                     : [])
-                .then(e => resolve())
-                .catch(e => {console.log; return resolve()})
+                .then(e =&gt; resolve())
+                .catch(e =&gt; {console.log; return resolve()})
         })))
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 
 function scrapeEntireLinkedInProfile(profile) {
     var contact;
     return client
-        .then(() => clickSpa(profile))
-        .then(() => readLinkedInProfileInfo())
-        .then(r => {
+        .then(() =&gt; clickSpa(profile))
+        .then(() =&gt; readLinkedInProfileInfo())
+        .then(r =&gt; {
             contact = r;
             return loadEntirePage();
         })
         // get extra profile info
-        .then(() => {
+        .then(() =&gt; {
             return getAllXPath({
                 summary: '//p[contains(@class, "section__summary")]//text()',
                 experience: [
@@ -130,28 +130,28 @@ function scrapeEntireLinkedInProfile(profile) {
                 ]
             });
         })
-        .then(r => {
+        .then(r =&gt; {
             return Object.assign(r, {
                 summary: r.summary.join(''),
-                experience: r.experience.map(e => typeof e[0] === 'string'
+                experience: r.experience.map(e =&gt; typeof e[0] === 'string'
                     ? e[0]
                     : e[0].join('')
                         .trim().split(/\s*\n+\s*/)),
-                skills: r.skills.map(e => typeof e[0] === 'string'
+                skills: r.skills.map(e =&gt; typeof e[0] === 'string'
                     ? e[0]
                     : e[0].join('')
                         .trim().split(/\s*\n+\s*/)),
-                recommendations: r.recommendations.map(e => typeof e[0] === 'string'
+                recommendations: r.recommendations.map(e =&gt; typeof e[0] === 'string'
                     ? e[0]
                     : e[0].join('')
                         .trim().split(/\s*\n+\s*/)),
-                interests: r.interests.map(e => typeof e[0] === 'string'
+                interests: r.interests.map(e =&gt; typeof e[0] === 'string'
                     ? e[0]
                     : e[0].join('')
                         .trim().split(/\s*\n+\s*/))
             }, contact)
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 module.exports = scrapeEntireLinkedInProfile;
 

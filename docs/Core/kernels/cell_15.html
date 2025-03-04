@@ -110,16 +110,16 @@
 <p>The code initializes the kernel by setting up sockets, binding them to the kernel, and sending an idle status message back to the front-end. It also handles incoming messages from the front-end, sending responses and handling different message types, including control, shell, and stdin messages.</p>
 
 
-<pre class="javascript"><code>do_init: (kernel, config) => {
+<pre class="javascript"><code>do_init: (kernel, config) =&gt; {
     console.log('starting wire sockets');
     return setupSockets(config)
         .then(bindSockets)
-        .then(() => kernel.meta_kernel.do_init(kernel, config))
-        .then(() => this.do_respond(kernel, {
+        .then(() =&gt; kernel.meta_kernel.do_init(kernel, config))
+        .then(() =&gt; this.do_respond(kernel, {
             status: {execution_state: 'idle'}
         }));
 },
-do_respond: (kernel, message) => {
+do_respond: (kernel, message) =&gt; {
     var result = {};
     var msg_type = Object.keys(message)[0];
     result[msg_type] = {content: message[msg_type]};
@@ -133,10 +133,10 @@ function bindSockets(sockets) {
     this.sockets = sockets;
     sockets.heartbeat.on('message', sockets.heartbeat.send);
     [sockets.control, sockets.shell, sockets.stdin]
-        .forEach(socket => socket.on('message', addCB.bind(
+        .forEach(socket =&gt; socket.on('message', addCB.bind(
             null,
             parseMessage,
-            parsed => this.do_message(this, parsed))))
+            parsed =&gt; this.do_message(this, parsed))))
     // iopub appears to be write to only
 }
 
@@ -160,7 +160,7 @@ function wireMessage(kernel, message) {
     // TODO: need to pass arguments, that's why callback was used
 // TODO: add execution count recorder, also to do_respond maybe
     /*
-    kernel.do_respond = (message) => kernel.do_respond(
+    kernel.do_respond = (message) =&gt; kernel.do_respond(
         kernel, message,
         
     
@@ -176,7 +176,7 @@ function wireMessage(kernel, message) {
 
     */
     nativeMetaKernel.prototype.do_message(Object.assign({}, kernel, {
-        do_respond: (response) => {
+        do_respond: (response) =&gt; {
             var result = {};
             var res_type = Object.keys(response)[0];
             result[res_type] = {

@@ -145,7 +145,7 @@ var classes = {
     func_door_rotating:             'func_rotating'
 }
 function replaceClasses(file) {
-    if(typeof file === 'string' && fs.existsSync(file)) {
+    if(typeof file === 'string' &amp;&amp; fs.existsSync(file)) {
         file = fs.readFileSync(file).toString('utf-8')
     }
     
@@ -157,7 +157,7 @@ function replaceClasses(file) {
     file = file.replace(/"classname" "trigger_once"/ig,
                         '"classname" "trigger_multiple"\n "wait" "-1"')
     // replace classes
-    Object.keys(classes).forEach(k => {
+    Object.keys(classes).forEach(k =&gt; {
         file = file.replace(new RegExp('"classname" "' + k + '"', 'ig'),
                             '"classname" "' + classes[k] + '"')
     })

@@ -102,7 +102,7 @@ async function handleDirectory(req, res, next) {
   }
 
   if((req.authenticated || combined.includes('stable-diffusion-webui/outputs')) 
-    && (path.extname(combined).toLocaleLowerCase() == '.png' 
+    &amp;&amp; (path.extname(combined).toLocaleLowerCase() == '.png' 
     || path.extname(combined).toLocaleLowerCase() == '.jpg' 
     || path.extname(combined).toLocaleLowerCase() == '.jpeg')
   ) {
@@ -116,7 +116,7 @@ async function handleDirectory(req, res, next) {
       .replaceAll('{SESSION}', req.authenticated ? req.authenticated : ''))
   }
 
-  if(req.authenticated && fs.statSync(combined).isFile()) {
+  if(req.authenticated &amp;&amp; fs.statSync(combined).isFile()) {
     return res.sendFile(combined)
   }
 
@@ -124,7 +124,7 @@ async function handleDirectory(req, res, next) {
     return res.status(403).send('Forbidden')
   }
 
-  let html = await directoryToHtml(combined, req.path.split('/').length > 2, req.authenticated)
+  let html = await directoryToHtml(combined, req.path.split('/').length &gt; 2, req.authenticated)
 
   return res.send(html)
 }

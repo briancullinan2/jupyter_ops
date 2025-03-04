@@ -91,7 +91,7 @@ async function doSystemUsage(interaction) {
   await patchInteractionImageAttachment('system usage', buffer, interaction.token)
   let update
   let count = 24
-  update = setInterval(async () => {
+  update = setInterval(async () =&gt; {
     count--
     buffer = await systemBuffer()
     await patchInteractionImageAttachment('system usage', buffer, interaction.token)

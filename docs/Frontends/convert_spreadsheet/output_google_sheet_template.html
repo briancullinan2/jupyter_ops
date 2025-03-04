@@ -95,9 +95,9 @@ function segment(url, val, render) {
 }
 
 function wrapTemplate(path, key, html, properties) {
-    properties['safeName'] = () => safeName
-    properties['toJSON'] = () => toJSON
-    properties['segment'] = () => segment.bind(null, path)
+    properties['safeName'] = () =&gt; safeName
+    properties['toJSON'] = () =&gt; toJSON
+    properties['segment'] = () =&gt; segment.bind(null, path)
     var classNames = path.replace(/\//ig, ' ')
         + ' ' + (key !== path.split('/')[0] ? key : '')
         + ' ' + (properties['class'] || '')
@@ -109,35 +109,35 @@ function wrapTemplate(path, key, html, properties) {
     
     // automatically set title if it isn't set manually
     var result;
-    if(typeof properties['title'] == 'undefined' && (result = (/<h1>(.*)<\/h1>/ig).exec(html))) {
+    if(typeof properties['title'] == 'undefined' &amp;&amp; (result = (/&lt;h1&gt;(.*)&lt;\/h1&gt;/ig).exec(html))) {
         properties['title'] = result[1];
     }
     
     var pageHtml = `
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-<link rel="icon" href="{{logo}}">
-{{#base}}<base href="/{{.}}" />{{/base}}
-<meta property="og:type" content="website">
-<meta property="og:title" content="{{title}}">
-<link rel="canonical" href="${domain}/${path}">
-<title>{{title}}</title>
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"&gt;
+&lt;link rel="icon" href="{{logo}}"&gt;
+{{#base}}&lt;base href="/{{.}}" /&gt;{{/base}}
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta property="og:title" content="{{title}}"&gt;
+&lt;link rel="canonical" href="${domain}/${path}"&gt;
+&lt;title&gt;{{title}}&lt;/title&gt;
 {{#banner}}
-<style>
-body > div.col-1:nth-of-type(2):before {background-image: url('{{{.}}}');}
-body > div.col-1:nth-of-type(2):after {background-image: url('{{{.}}}');}
-</style>
+&lt;style&gt;
+body &gt; div.col-1:nth-of-type(2):before {background-image: url('{{{.}}}');}
+body &gt; div.col-1:nth-of-type(2):after {background-image: url('{{{.}}}');}
+&lt;/style&gt;
 {{/banner}}
-{{#stylesheet}}<link rel="stylesheet" href="{{.}}">{{/stylesheet}}
-</head>
-<body class="${classNames}">
+{{#stylesheet}}&lt;link rel="stylesheet" href="{{.}}"&gt;{{/stylesheet}}
+&lt;/head&gt;
+&lt;body class="${classNames}"&gt;
 ${html}
-{{#script}}<script async src="{{.}}"></script>{{/script}}
-</body>
-</html>`;
+{{#script}}&lt;script async src="{{.}}"&gt;&lt;/script&gt;{{/script}}
+&lt;/body&gt;
+&lt;/html&gt;`;
 
     Mustache.parse(pageHtml);
     // use properties for view and for partials

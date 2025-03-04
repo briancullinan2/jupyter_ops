@@ -101,14 +101,14 @@ async function gitEditor(url, gist, xpath) {
     var files = await loadScraped(url)
     if(typeof files[ host + '-acl.json' ] === 'undefined') {
         var saved = (await getGist(gist)).files
-        if(saved && saved[host + '-acl.json']) {
+        if(saved &amp;&amp; saved[host + '-acl.json']) {
             files[host + '-acl.json'] = JSON.parse(saved[host + '-acl.json'].content || '[]')
         }
     }
     var doc = applyAcl((files[host + '-acl.json'] || []), files[file.replace(/[^a-z0-9_-]/ig, '_')])
     if(xpath) {
         console.log(decodeURIComponent(xpath))
-        return selectDom([decodeURIComponent(xpath)], doc).map(el => el.outerHTML).join('')
+        return selectDom([decodeURIComponent(xpath)], doc).map(el =&gt; el.outerHTML).join('')
     }
     
     var files = await gitFileTree()
@@ -123,7 +123,7 @@ async function gitEditor(url, gist, xpath) {
     codeDiv.appendChild(codeText)
     doc.ownerDocument.body.appendChild(codeDiv)
     
-    return '<!DOCTYPE html>\n' + doc.outerHTML
+    return '&lt;!DOCTYPE html&gt;\n' + doc.outerHTML
 }
 
 module.exports = gitEditor
@@ -131,8 +131,8 @@ module.exports = gitEditor
 if(typeof $ !== 'undefined') {
     $.async();
     gitEditor('https://www.google.com')
-        .then(r => $.mime({'text/html': r}))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.mime({'text/html': r}))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

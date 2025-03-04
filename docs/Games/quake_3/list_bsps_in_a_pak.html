@@ -129,7 +129,7 @@ function listBsps(zipFile) {
         storeEntries: true
     });
 
-    zip.on('ready', () => {
+    zip.on('ready', () =&gt; {
         console.log('Entries read: ' + zip.entriesCount + ' ' + path.basename(zipFile));
         for (const entry of Object.values(zip.entries())) {
             if(entry.name.includes('.bsp')) {
@@ -138,7 +138,7 @@ function listBsps(zipFile) {
         }
     });
     
-    zip.on('error', err => {  });
+    zip.on('error', err =&gt; {  });
 }
 
 module.exports = listBsps;

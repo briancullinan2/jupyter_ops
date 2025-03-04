@@ -96,7 +96,7 @@ async function run() {
     if(typeof result.functions != 'undefined') {
         result = result[result.functions[0]]
     }
-    if(typeof result == 'object' && typeof result[Object.keys(result)[0]] == 'function') {
+    if(typeof result == 'object' &amp;&amp; typeof result[Object.keys(result)[0]] == 'function') {
         result = result[Object.keys(result)[0]]
     }
     const params = typeof result.params != 'undefined' 
@@ -112,9 +112,9 @@ async function run() {
     if(!Array.isArray(inputs)) {
         inputs = [inputs]
     }
-    for(let i = 0; i < process.argv.length; i++) {
+    for(let i = 0; i &lt; process.argv.length; i++) {
         let a = process.argv[i]
-        for(let j = 0; j < params.length; j++) {
+        for(let j = 0; j &lt; params.length; j++) {
             if(a.includes('--' + params[j])) {
                 if(a.includes('=')) {
                     inputs[j] = a.split('=')[1]
@@ -122,7 +122,7 @@ async function run() {
                     inputs[j] = process.argv[i+1]
                     i++
                 }
-                if(result.types && typeof inputs[j] != 'number') {
+                if(result.types &amp;&amp; typeof inputs[j] != 'number') {
                     if(result.types[j+1] == 'int') {
                         inputs[j] = parseInt(inputs[j])
                     } else if(result.types[j+1] == 'float' || result.types[j+1] == 'double') {
@@ -141,8 +141,8 @@ async function run() {
     }
     // TODO: try to write the entire output back into the notebook cell because it was started from CLI
     
-    if(executed && typeof executed.catch != 'undefined') {
-        return await executed.catch(e => e).then(r => console.log(r))
+    if(executed &amp;&amp; typeof executed.catch != 'undefined') {
+        return await executed.catch(e =&gt; e).then(r =&gt; console.log(r))
     } else {
         console.log(executed)
     }

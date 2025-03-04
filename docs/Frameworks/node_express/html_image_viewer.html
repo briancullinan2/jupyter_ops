@@ -76,8 +76,8 @@
 <p>The provided HTML code has a basic structure consisting of a head section with metadata and styles, and a body section containing content such as a directory listing, links, and an image display. The code uses internal CSS styles to customize the appearance, as well as external stylesheet and script links, and includes placeholders for variables like session IDs and file URLs.</p>
 
 
-<pre class="html"><code><head>
-  <style>
+<pre class="html"><code>&lt;head&gt;
+  &lt;style&gt;
     ul {
       list-style: none;
       padding: 0;
@@ -111,20 +111,20 @@
     ul li {
       padding-left: 10px;
     }
-  </style>
-  <link rel="stylesheet" type="text/css" href="/amplitude.css" />
-  <script src="/amplitude.js"></script>
-</head>
+  &lt;/style&gt;
+  &lt;link rel="stylesheet" type="text/css" href="/amplitude.css" /&gt;
+  &lt;script src="/amplitude.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
 
-<body>
-  <h1>Directory Listing</h1>
-  <ul>
-    <li><a href="./?session={SESSION}">Parent directory/</a></li>
-  </ul>
-  <img src="{FILE_URL}?raw=true&session={SESSION}" />
-</body>
+&lt;body&gt;
+  &lt;h1&gt;Directory Listing&lt;/h1&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="./?session={SESSION}"&gt;Parent directory/&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;img src="{FILE_URL}?raw=true&amp;session={SESSION}" /&gt;
+&lt;/body&gt;
 
-</html></code></pre>
+&lt;/html&gt;</code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">

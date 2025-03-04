@@ -65,17 +65,17 @@
 function authorizeSelenium(authUrl) {
     return client
         .url(authUrl)
-        .then(() => loginGoogle(client))
-        .then(() => client.$('#submit_approve_access'))
-        .then(el => el.waitForDisplayed(3000))
-        .then(() => client.$('#submit_approve_access'))
-        .then(el => el.moveTo())
-        .then(() => client.$('#submit_approve_access content'))
-        .then(el => el.waitForDisplayed(3000))
-        .then(() => client.$('#submit_approve_access content'))
-        .then(el => el.click())
-        .then(() => client.$('textarea'))
-        .then(el => el.waitForDisplayed(4000).then(() => el.getValue()))
+        .then(() =&gt; loginGoogle(client))
+        .then(() =&gt; client.$('#submit_approve_access'))
+        .then(el =&gt; el.waitForDisplayed(3000))
+        .then(() =&gt; client.$('#submit_approve_access'))
+        .then(el =&gt; el.moveTo())
+        .then(() =&gt; client.$('#submit_approve_access content'))
+        .then(el =&gt; el.waitForDisplayed(3000))
+        .then(() =&gt; client.$('#submit_approve_access content'))
+        .then(el =&gt; el.click())
+        .then(() =&gt; client.$('textarea'))
+        .then(el =&gt; el.waitForDisplayed(4000).then(() =&gt; el.getValue()))
 };
 
 module.exports = authorizeSelenium;

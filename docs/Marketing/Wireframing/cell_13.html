@@ -134,15 +134,15 @@ apply
         }
     }
 
-    submit -> complete
-    complete -> submit     [headlabel = 'no']
-    complete -> min        [headlabel = 'yes']
-    min -> admreject       [headlabel = 'no']
-    min -> suitable        [headlabel = 'yes']
-    suitable -> admreject  [headlabel = 'no']
-    suitable -> facaccept  [headlabel = 'yes']
-    admreject -> letter
-    facaccept -> letter
+    submit -&gt; complete
+    complete -&gt; submit     [headlabel = 'no']
+    complete -&gt; min        [headlabel = 'yes']
+    min -&gt; admreject       [headlabel = 'no']
+    min -&gt; suitable        [headlabel = 'yes']
+    suitable -&gt; admreject  [headlabel = 'no']
+    suitable -&gt; facaccept  [headlabel = 'yes']
+    admreject -&gt; letter
+    facaccept -&gt; letter
 }</code></pre>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">

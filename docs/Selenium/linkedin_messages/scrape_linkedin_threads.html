@@ -87,12 +87,12 @@ function readThread(thread) {
         messages = []
     }
     return readLinkedInThread(thread, messages)
-        .then(t => {
+        .then(t =&gt; {
         console.log(t);
             var filename = project + '/'
                 + t.thread.replace(/^\/|\/$/ig, '').split('/').pop()
                 + '-' + t.participants
-                    .map(p => p.name).join('')
+                    .map(p =&gt; p.name).join('')
                     .replace(/[^a-z]/ig, '_') + '.json';
             fs.writeFileSync(filename, JSON.stringify(t, null, 4));
             return t;
@@ -103,15 +103,15 @@ function listThreads() {
     var threads = [];
     return readLinkedInProfileInfo()
     // show my profile info
-        .then(() => listLinkedInThreads(threads))
+        .then(() =&gt; listLinkedInThreads(threads))
         // list all message threads
-        .then(r => {
+        .then(r =&gt; {
             fs.writeFileSync(
                 project + '/threads.json',
                 JSON.stringify(r, null, 4))
             return r;
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 };
 
 function scrapeLinkedInThreads() {
@@ -123,12 +123,12 @@ function scrapeLinkedInThreads() {
         'list LinkedIn threads',
         'messages LinkedIn thread',
     ])
-        .then(r => ({
+        .then(r =&gt; ({
             loginLinkedIn, readLinkedInProfileInfo, listLinkedInThreads,
             readLinkedInThread
         } = r).loginLinkedIn())
         // scrape each thread
-        .then(() => {
+        .then(() =&gt; {
             try {
                 threads = JSON.parse(fs.readFileSync(project + '/threads.json'));
             }
@@ -136,15 +136,15 @@ function scrapeLinkedInThreads() {
                 threads = [];
             }
             var threadCount = threads.length;
-            var ids = threads.map(t => t.replace(/^\/|\/$/ig, '').split('/').pop());
+            var ids = threads.map(t =&gt; t.replace(/^\/|\/$/ig, '').split('/').pop());
             var files = glob.sync('**/@(' + ids.join('|') + ')-*.json', {
                 cwd: project
             });
-            fresh = threads.filter(t => {
+            fresh = threads.filter(t =&gt; {
                 var threadId = t.replace(/^\/|\/$/ig, '').split('/').pop();
-                var file = files.filter(f => f.indexOf(threadId) > -1)[0];
+                var file = files.filter(f =&gt; f.indexOf(threadId) &gt; -1)[0];
                 return !(typeof file !== 'undefined'
-                    && fs.existsSync(path.join(project, file)));
+                    &amp;&amp; fs.existsSync(path.join(project, file)));
             });
             const percent = Math.round((threadCount - fresh.length) / threadCount * 100);
             console.log((threadCount - fresh.length) + ' / ' + threadCount + ' : '
@@ -153,8 +153,8 @@ function scrapeLinkedInThreads() {
             console.log(fresh.slice(0, 30));
             return percent === 100 ? listThreads() : [];
         })
-        .then(() => importer.runAllPromises(fresh.slice(0, 30)
-            .map(t => ((resolve) => readThread(t).then((r) => resolve(r))))))
+        .then(() =&gt; importer.runAllPromises(fresh.slice(0, 30)
+            .map(t =&gt; ((resolve) =&gt; readThread(t).then((r) =&gt; resolve(r))))))
 };
 module.exports = scrapeLinkedInThreads;
 </code></pre>

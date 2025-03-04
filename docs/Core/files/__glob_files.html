@@ -104,18 +104,18 @@ function globMatch(pattern, cwd, origin) {
     var result = []
     cwd = path.resolve(cwd)
     var files = fs.readdirSync(cwd)
-    files.forEach(file => {
+    files.forEach(file =&gt; {
         file = '/' + path.relative(origin, path.join(cwd, file))
         var filepath = path.join(origin, '.' + file)
         
         // skip ignores, don't even search directories
-        if(ignores.filter(i => minimatch(file, i)).length > 0) {
+        if(ignores.filter(i =&gt; minimatch(file, i)).length &gt; 0) {
             return
         }
         
         var isDirectory = fs.lstatSync(filepath).isDirectory()
         
-        pattern.forEach(pattern => {
+        pattern.forEach(pattern =&gt; {
             if(minimatch(file, pattern)) {
                 if(isDirectory) {
                     // if we are collecting only directories

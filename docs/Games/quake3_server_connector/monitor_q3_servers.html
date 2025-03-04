@@ -78,31 +78,31 @@ async function getServerChannel(server) {
     var channel
 
     // sort ffa/ctf/freeZe
-    if(!channel && (server.server_freezetag == '1'
+    if(!channel &amp;&amp; (server.server_freezetag == '1'
         || server.gamename.toLowerCase() == 'freon'
         || (typeof server.xp_version != 'undefined'
-           && server.g_gametype == '8'))) {
-        channel = channels.filter(c => c.name.toLowerCase() == 'freeze-tag')[0]
+           &amp;&amp; server.g_gametype == '8'))) {
+        channel = channels.filter(c =&gt; c.name.toLowerCase() == 'freeze-tag')[0]
     }
-    if(!channel && server.gamename.toLowerCase() == 'defrag') {
-        channel = channels.filter(c => c.name.toLowerCase() == 'defrag')[0]
+    if(!channel &amp;&amp; server.gamename.toLowerCase() == 'defrag') {
+        channel = channels.filter(c =&gt; c.name.toLowerCase() == 'defrag')[0]
     }
-    if(!channel && server.g_gametype == '4') {
-        channel = channels.filter(c => c.name.toLowerCase() == 'capture-the-flag')[0]
+    if(!channel &amp;&amp; server.g_gametype == '4') {
+        channel = channels.filter(c =&gt; c.name.toLowerCase() == 'capture-the-flag')[0]
     }
-    if(!channel && server.g_gametype == '3') {
-        channel = channels.filter(c => c.name.toLowerCase() == 'team-deathmatch')[0]
+    if(!channel &amp;&amp; server.g_gametype == '3') {
+        channel = channels.filter(c =&gt; c.name.toLowerCase() == 'team-deathmatch')[0]
     }
-    if(!channel && typeof server.xp_version != 'undefined'
-        && server.g_gametype == '7') {
-        channel = channels.filter(c => c.name.toLowerCase() == 'clan-arena')[0]
+    if(!channel &amp;&amp; typeof server.xp_version != 'undefined'
+        &amp;&amp; server.g_gametype == '7') {
+        channel = channels.filter(c =&gt; c.name.toLowerCase() == 'clan-arena')[0]
     }
-    if(!channel && typeof server.xp_version != 'undefined'
-        && server.g_gametype == '1') {
-        channel = channels.filter(c => c.name.toLowerCase() == '1on1-duel')[0]
+    if(!channel &amp;&amp; typeof server.xp_version != 'undefined'
+        &amp;&amp; server.g_gametype == '1') {
+        channel = channels.filter(c =&gt; c.name.toLowerCase() == '1on1-duel')[0]
     }
     if(!channel) {
-        channel = channels.filter(c => c.name.toLowerCase() == 'general')[0]
+        channel = channels.filter(c =&gt; c.name.toLowerCase() == 'general')[0]
     }
 
     return channel
@@ -112,24 +112,24 @@ async function updateChannelThread(threadName, channel, json) {
     
     // find old threads to reactivate
     var archived = (await discordApi.archivedThreads(channel.id)).threads 
-        .filter(t => t.name == threadName)
+        .filter(t =&gt; t.name == threadName)
 
     var thread
     var removeOld
-    if(archived.length > 0) {
+    if(archived.length &gt; 0) {
         thread = archived[0]
         removeOld = (await discordApi.getPins(thread.id))
-            .filter(p => p.author.username == DEFAULT_USERNAME)
+            .filter(p =&gt; p.author.username == DEFAULT_USERNAME)
     } else {
         // thread is already active
         var active = (await discordApi.activeThreads(channel.id)).threads
-            .filter(t => t.name == threadName)
-        if(active.length > 0) {
+            .filter(t =&gt; t.name == threadName)
+        if(active.length &gt; 0) {
             // find and update previous "whos online" message, pins?
             thread = active[0]
             var pins = (await discordApi.getPins(thread.id))
-                .filter(p => p.author.username == DEFAULT_USERNAME)
-            if(pins.length > 0) {
+                .filter(p =&gt; p.author.username == DEFAULT_USERNAME)
+            if(pins.length &gt; 0) {
                 await discordApi.updateMessage(json, pins[0].id, thread.id)
                 return thread
             }
@@ -140,7 +140,7 @@ async function updateChannelThread(threadName, channel, json) {
     // create new "whos online message"
     var message = await discordApi.createMessage(json, thread.id)
     await discordApi.pinMessage(message.id, thread.id)
-    if(removeOld && removeOld.length > 0) {
+    if(removeOld &amp;&amp; removeOld.length &gt; 0) {
         await discordApi.unpinMessage(removeOld[0].id, thread.id)
     }
     return thread
@@ -158,12 +158,12 @@ async function monitorServer(address = 'q3msk.ru', port = 27977) {
     var threadName = 'Pickup for ' + removeCtrlChars(server.sv_hostname || server.hostname).replace(/[^0-9a-z-]/ig, '-')
     console.log(threadName)
     var redTeam = (server.Players_Red || '').trim()
-        .split(/\s+/ig).filter(n => n)
-        .map(i => parseInt(i))
+        .split(/\s+/ig).filter(n =&gt; n)
+        .map(i =&gt; parseInt(i))
     var blueTeam = (server.Players_Blue || '').trim()
-        .split(/\s+/ig).filter(n => n)
-        .map(i => parseInt(i))
-    server.players.forEach(p => {
+        .split(/\s+/ig).filter(n =&gt; n)
+        .map(i =&gt; parseInt(i))
+    server.players.forEach(p =&gt; {
         if(redTeam.includes(p.i))
             p.team = 'red'
         else if (blueTeam.includes(p.i))
@@ -171,11 +171,11 @@ async function monitorServer(address = 'q3msk.ru', port = 27977) {
         else
             p.team = 'other'
     })
-    server.players.sort((a, b) => {
+    server.players.sort((a, b) =&gt; {
         return a.team - b.team
     })
     var json
-    if(redTeam.length > 0 || blueTeam.length > 0) {
+    if(redTeam.length &gt; 0 || blueTeam.length &gt; 0) {
         json = {
             embeds: [{
                 title: removeCtrlChars(server.sv_hostname || server.hostname || server.gamename || server.game || ''),
@@ -195,28 +195,28 @@ async function monitorServer(address = 'q3msk.ru', port = 27977) {
                     {
                         name: 'Player',
                         value: ':red_circle: Red Team\n```http\n' 
-                            + server.players.filter(p => p.team == 'red').map((p, i) => (p.i) + ') ' 
+                            + server.players.filter(p =&gt; p.team == 'red').map((p, i) =&gt; (p.i) + ') ' 
                             + removeCtrlChars(p.name)).join('\n') + '\u0020\n```\n'
                             + ':blue_circle: Blue Team\n```http\n' 
-                            + server.players.filter(p => p.team == 'blue').map((p, i) => (p.i) + ') ' 
+                            + server.players.filter(p =&gt; p.team == 'blue').map((p, i) =&gt; (p.i) + ') ' 
                             + removeCtrlChars(p.name)).join('\n') + '\u0020\n```\n'
                             + 'Other\n```http\n' 
-                            + server.players.filter(p => p.team == 'other').map((p, i) => (p.i) + ') ' 
+                            + server.players.filter(p =&gt; p.team == 'other').map((p, i) =&gt; (p.i) + ') ' 
                             + removeCtrlChars(p.name)).join('\n') + '\u0020\n```\n',
                         inline: true
                     },
                     {
                         name: 'Score',
-                        value: '-\n```yaml\n' + server.players.filter(p => p.team == 'red').map(p => p.score).join('\n') + '\u0020\n```'
-                            + '-\n```yaml\n' + server.players.filter(p => p.team == 'blue').map(p => p.score).join('\n') + '\u0020\n```'
-                            + '-\n```yaml\n' + server.players.filter(p => p.team == 'other').map(p => p.score).join('\n') + '\u0020\n```',
+                        value: '-\n```yaml\n' + server.players.filter(p =&gt; p.team == 'red').map(p =&gt; p.score).join('\n') + '\u0020\n```'
+                            + '-\n```yaml\n' + server.players.filter(p =&gt; p.team == 'blue').map(p =&gt; p.score).join('\n') + '\u0020\n```'
+                            + '-\n```yaml\n' + server.players.filter(p =&gt; p.team == 'other').map(p =&gt; p.score).join('\n') + '\u0020\n```',
                         inline: true
                     },
                     {
                         name: 'Ping',
-                        value: '-\n```fix\n' + server.players.filter(p => p.team == 'red').map(p => p.ping).join('\n') + '\u0020\n```'
-                            + '-\n```fix\n' + server.players.filter(p => p.team == 'blue').map(p => p.ping).join('\n') + '\u0020\n```'
-                            + '-\n```fix\n' + server.players.filter(p => p.team == 'other').map(p => p.ping).join('\n') + '\u0020\n```',
+                        value: '-\n```fix\n' + server.players.filter(p =&gt; p.team == 'red').map(p =&gt; p.ping).join('\n') + '\u0020\n```'
+                            + '-\n```fix\n' + server.players.filter(p =&gt; p.team == 'blue').map(p =&gt; p.ping).join('\n') + '\u0020\n```'
+                            + '-\n```fix\n' + server.players.filter(p =&gt; p.team == 'other').map(p =&gt; p.ping).join('\n') + '\u0020\n```',
                         inline: true
                     }
                 ]
@@ -241,18 +241,18 @@ async function monitorServer(address = 'q3msk.ru', port = 27977) {
                     },
                     {
                         name: 'Player',
-                        value: '```http\n' + server.players.map((p, i) => (p.i) + ') ' 
+                        value: '```http\n' + server.players.map((p, i) =&gt; (p.i) + ') ' 
                             + removeCtrlChars(p.name)).join('\n') + '\u0020\n```',
                         inline: true
                     },
                     {
                         name: 'Score',
-                        value: '```yaml\n' + server.players.map(p => p.score).join('\n') + '\u0020\n```',
+                        value: '```yaml\n' + server.players.map(p =&gt; p.score).join('\n') + '\u0020\n```',
                         inline: true
                     },
                     {
                         name: 'Ping',
-                        value: '```fix\n' + server.players.map(p => p.ping).join('\n') + '\u0020\n```',
+                        value: '```fix\n' + server.players.map(p =&gt; p.ping).join('\n') + '\u0020\n```',
                         inline: true
                     }
                 ]
@@ -270,7 +270,7 @@ async function monitorServer(address = 'q3msk.ru', port = 27977) {
         thread = await updateChannelThread(threadName, channel, json)
         server.channelId = thread.id
     }
-    server.monitorRunning = setTimeout(() => {
+    server.monitorRunning = setTimeout(() =&gt; {
         monitorServer(address, port)
     }, 60 * 1000)
     return thread

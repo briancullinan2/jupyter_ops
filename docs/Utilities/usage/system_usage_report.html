@@ -72,7 +72,7 @@ function cpuAverage() {
   var cpus = os.cpus();
 
   //Loop through CPU cores
-  for(var i = 0, len = cpus.length; i < len; i++) {
+  for(var i = 0, len = cpus.length; i &lt; len; i++) {
 
     //Select CPU core
     var cpu = cpus[i];
@@ -96,7 +96,7 @@ async function systemUsage() {
 
   reportMem.unshift(Math.round(100 * (os.totalmem() - os.freemem()) / os.totalmem()))
 
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  await new Promise(resolve =&gt; setTimeout(resolve, 1000))
 
   var endMeasure = cpuAverage(); 
 
@@ -108,7 +108,7 @@ async function systemUsage() {
   var percentageCPU = 100 - ~~(100 * idleDifference / totalDifference);
   reportCPU.unshift(percentageCPU)
 
-  if(reportMem.length > 30 || reportCPU.length > 30) {
+  if(reportMem.length &gt; 30 || reportCPU.length &gt; 30) {
     reportMem.pop()
     reportCPU.pop()
   }

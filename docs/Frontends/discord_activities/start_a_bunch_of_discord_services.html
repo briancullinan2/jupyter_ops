@@ -138,11 +138,11 @@ function launchDiscord(botIndex = 0) {
     botIndex = parseInt(botIndex)
   }
 
-  if(typeof botIndex != 'number' && !botIndex) {
+  if(typeof botIndex != 'number' &amp;&amp; !botIndex) {
     return
   }
 
-  for(let i = botIndex; i < DISCORD_SERVICES.length; i++) {
+  for(let i = botIndex; i &lt; DISCORD_SERVICES.length; i++) {
     if(!DISCORD_SERVICES[i]) {
       continue
     }

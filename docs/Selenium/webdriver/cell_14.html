@@ -88,11 +88,11 @@
 <p>This code checks if two variables, <code>client</code> and <code>$</code>, are defined, and if so, it creates a new Webdriver client instance and sends the result to the <code>$</code> function. The code also catches any errors that occur during client creation and sends them to the <code>$</code> function for handling.</p>
 
 
-<pre class="javascript"><code>if(typeof client !== 'undefined' && typeof $ !== 'undefined') {
+<pre class="javascript"><code>if(typeof client !== 'undefined' &amp;&amp; typeof $ !== 'undefined') {
     $.async();
     var client = createWebdriverClient('localhost', 4444)
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e));
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e));
 }
 </code></pre>
 

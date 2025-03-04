@@ -79,16 +79,16 @@ function repositionSession(client, s, reposition = true) {
     client.sessionId = s.id;
     return client
         .getUrl()
-        .then(() => client.getWindowHandles())
-        .then(h => {
-            return importer.runAllPromises(h.map(hwnd => resolve => {
+        .then(() =&gt; client.getWindowHandles())
+        .then(h =&gt; {
+            return importer.runAllPromises(h.map(hwnd =&gt; resolve =&gt; {
                 windowCounter++
                 return client
                     .switchToWindow(hwnd)
-                    .then(() => reposition ? resizeWindow(client, windowCounter) : [])
-                    .then(() => client.getUrl())
-                    .catch(e => console.log(e))
-                    .then(r => resolve(r))
+                    .then(() =&gt; reposition ? resizeWindow(client, windowCounter) : [])
+                    .then(() =&gt; client.getUrl())
+                    .catch(e =&gt; console.log(e))
+                    .then(r =&gt; resolve(r))
             }));
         });
 }
@@ -98,19 +98,19 @@ function getAllSessionUrls(client, reposition = true) {
     session = client.sessionId;
     return client
         .getSessions()
-        .then(r => {
-            return importer.runAllPromises(r.map(s => resolve => {
+        .then(r =&gt; {
+            return importer.runAllPromises(r.map(s =&gt; resolve =&gt; {
                 return repositionSession(client, s, reposition)
-                    .catch(e => e.message.includes('chrome not reachable') ? [] : console.log(e))
-                    .then(r => resolve(r));
+                    .catch(e =&gt; e.message.includes('chrome not reachable') ? [] : console.log(e))
+                    .then(r =&gt; resolve(r));
             }));
         })
-        .then(r => {
+        .then(r =&gt; {
             client.sessionId = session;
             urls = r;
         })
-        .catch(e => console.log(e))
-        .then(() => urls)
+        .catch(e =&gt; console.log(e))
+        .then(() =&gt; urls)
 }
 
 module.exports = getAllSessionUrls;
@@ -118,8 +118,8 @@ module.exports = getAllSessionUrls;
 if(typeof $ !== 'undefined') {
     $.async();
     getAllSessionUrls(false)
-        .then(r => $.sendResult(r))
-        .catch(e => $.sendError(e))
+        .then(r =&gt; $.sendResult(r))
+        .catch(e =&gt; $.sendError(e))
 }
 </code></pre>
 

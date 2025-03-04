@@ -89,7 +89,7 @@ var document
 function evaluateDom(select, ctx, query) {
     try {
         //    let $ = cheerio.load(ctx)
-        //if(!select.match(/^\/|\*\/|\.\//ig) && select.localeCompare('*') !== 0) { // probably XPath, fall through
+        //if(!select.match(/^\/|\*\/|\.\//ig) &amp;&amp; select.localeCompare('*') !== 0) { // probably XPath, fall through
         //    return query(select);
         //}
     } catch (e) {
@@ -139,7 +139,7 @@ function evaluateDom(select, ctx, query) {
 //   if there is no context convert the tree to html
 function selectDom(select, ctx) {
     // var cheerio = require('cheerio');
-    if (typeof ctx === 'string' && typeof JSDOM != 'undefined') {
+    if (typeof ctx === 'string' &amp;&amp; typeof JSDOM != 'undefined') {
         var dom = new JSDOM(ctx)
         wgxpath.install(dom.window, true)
         ctx = dom.window.document
@@ -151,13 +151,13 @@ function selectDom(select, ctx) {
     }
     //var query = ctx.querySelector.bind(ctx.ownerDocument)
     //    || ctx.ownerDocument.querySelector.bind(ctx.ownerDocument)
-    return walkTree(select, ctx, (select, ctx) => {
+    return walkTree(select, ctx, (select, ctx) =&gt; {
         return evaluateDom(select, ctx /*, query*/)
     })
 }
 
 function queryDom(select, ctx) {
-    if (typeof ctx === 'string' && typeof JSDOM != 'undefined') {
+    if (typeof ctx === 'string' &amp;&amp; typeof JSDOM != 'undefined') {
         var dom = new JSDOM(ctx)
         wgxpath.install(dom.window, true)
         ctx = dom.window.document
@@ -167,7 +167,7 @@ function queryDom(select, ctx) {
     } else {
         ctx = document
     }
-    return walkTree(select, ctx, (select, ctx) => {
+    return walkTree(select, ctx, (select, ctx) =&gt; {
         let result = ctx.querySelectorAll(select)
         let co = []
         for (let m of result) {
@@ -187,7 +187,7 @@ function queryDom(select, ctx) {
 
 // TODO: try catch with esquery, vm.runInThisContext, conver and select DOM, and jsel
 
-// from least nuanced to most nuanced, CSS -> XPath -> custom ASTQ
+// from least nuanced to most nuanced, CSS -&gt; XPath -&gt; custom ASTQ
 //   Most xpath like //Element will not work on CSS, might have a problem with *
 function evaluateQuery(select, ctx) {
     try {
@@ -197,7 +197,7 @@ function evaluateQuery(select, ctx) {
             return esquery(ctx, select);
     } catch (e) {
         if (!e.name.includes('SyntaxError')
-            && !e.message.includes('Cannot find module')) {
+            &amp;&amp; !e.message.includes('Cannot find module')) {
             throw e;
         }
     }
@@ -207,8 +207,8 @@ function evaluateQuery(select, ctx) {
         return jsel(ctx).selectAll(select);
     } catch (e) {
         if (!e.message.includes('XPath parse error')
-            && !e.message.includes('Unexpected character')
-            && !e.message.includes('Cannot find module')) {
+            &amp;&amp; !e.message.includes('Unexpected character')
+            &amp;&amp; !e.message.includes('Cannot find module')) {
             throw e;
         }
     }

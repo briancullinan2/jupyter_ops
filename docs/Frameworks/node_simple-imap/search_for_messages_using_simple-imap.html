@@ -73,19 +73,19 @@ var imapClient = importer.import('node imap client');
 var util = require('util');
 
 function flatten(messages) {
-    return messages.map(message => {
+    return messages.map(message =&gt; {
         var header = message.parts.filter(function (part) {
-            return part.which.indexOf('HEADER') > -1;
+            return part.which.indexOf('HEADER') &gt; -1;
         });
         var text = message.parts.filter(function (part) {
-            return part.which.indexOf('TEXT') > -1;
+            return part.which.indexOf('TEXT') &gt; -1;
         });
         var subject = header[0].body.subject[0];
         var from = header[0].body.from[0];
         var to = header[0].body.to[0];
         var date = header[0].body.date[0];
-        from = ((/.+<(.*?)>/ig).exec(from) || [])[1] || from;
-        to = ((/.+<(.*?)>/ig).exec(to) || [])[1] || to;
+        from = ((/.+&lt;(.*?)&gt;/ig).exec(from) || [])[1] || from;
+        to = ((/.+&lt;(.*?)&gt;/ig).exec(to) || [])[1] || to;
         return {
             id: message.attributes.uid,
             email: from,
@@ -116,18 +116,18 @@ function searchImap(from = '*', subject = '*', days = 7, mailbox = 'INBOX') {
     };
     var imap;
     return imapClient()
-        .then(c => {
+        .then(c =&gt; {
             imap = c;
             if(mailbox !== 'INBOX') {
                 return util.promisify(imap.openBox.bind(imap))(mailbox)
             }
         })
-        .then(() => util.promisify(imap.search.bind(imap))(searchCriteria, fetchOptions))
-        .then(r => {
-            r.flatten = () => flatten(r);
+        .then(() =&gt; util.promisify(imap.search.bind(imap))(searchCriteria, fetchOptions))
+        .then(r =&gt; {
+            r.flatten = () =&gt; flatten(r);
             return r;
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 
 module.exports = searchImap;

@@ -103,13 +103,13 @@ var UPDATE_WAIT = 1000;
 // insert - posibility of a session being reused, but sych session starts
 function lockPromise(lock = true, init = false) {
     console.log((init ? 'init' : 'update') + ' - ' + (lock ? 'locking' : 'unlocking'));
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) =&gt; {
         const func = lock ? lockFile.lock : lockFile.unlock;
         const p = SESSIONS_PATH + '.' + (init ? 'init' : 'update') + '.lock';
         return func.apply(lockFile, [p].concat(lock ? [{
             stale: init ? INIT_WAIT : UPDATE_WAIT,
             wait: init ? INIT_WAIT : UPDATE_WAIT
-        }] : []).concat([(err) => {
+        }] : []).concat([(err) =&gt; {
             if(err) {
                 return reject(err);
             }
@@ -125,7 +125,7 @@ function updateOrAddSession(currentSession) {
         return sessions;
     }
     // don't update sessions while scanning
-    const updateSession = sessions.filter(s => s[1] === currentSession)[0];
+    const updateSession = sessions.filter(s =&gt; s[1] === currentSession)[0];
     if(typeof updateSession !== 'undefined') {
         console.log('update ' + currentSession);
         updateSession[0] = (new Date()).getTime();

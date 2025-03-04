@@ -78,12 +78,12 @@ async function generateBash(prompt, github) {
 
   // TODO: local pull
   if(!fs.existsSync(github)
-    && fs.existsSync(path.join(PROFILE_PATH, github))) {
+    &amp;&amp; fs.existsSync(path.join(PROFILE_PATH, github))) {
       github = path.join(PROFILE_PATH, github)
   }
 
   if(github.includes('://')
-    && fs.existsSync(path.basename(github).replace('.git', ''))
+    &amp;&amp; fs.existsSync(path.basename(github).replace('.git', ''))
   ) {
     github = path.join(PROFILE_PATH, path.basename(github).replace('.git', ''))
   }
@@ -102,7 +102,7 @@ async function generateBash(prompt, github) {
 
   // TODO: generate bash
   let q1 = 'Project listing:\n' +  fs.readdirSync(github).join('\n')
-    + '\nGenerate a Bash shell script for the following request, include any empty file touch/folder creations, file moves or general file management: ' + prompt + '\n</think>Don\'t do any file content insertion or reasoning, limit response to two or three shell command lines.'
+    + '\nGenerate a Bash shell script for the following request, include any empty file touch/folder creations, file moves or general file management: ' + prompt + '\n&lt;/think&gt;Don\'t do any file content insertion or reasoning, limit response to two or three shell command lines.'
   console.log('User: ' + q1)
   let a1 = await llmCode(q1)
   console.log('AI: ' + a1)

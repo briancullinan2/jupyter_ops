@@ -75,15 +75,15 @@
     return client
         .switchToWindow(hwnd)
         .clickSpa(friend)
-        .then(() => readFacebookThread(friend))
-        .then(r => {
-            const thanks = r.messages.filter(m => m.message.indexOf('dream') > -1);
+        .then(() =&gt; readFacebookThread(friend))
+        .then(r =&gt; {
+            const thanks = r.messages.filter(m =&gt; m.message.indexOf('dream') &gt; -1);
             console.log(thanks);
             return thanks.length === 0
               ? sendFacebookMessage('Are you living the dream?')
               : []
         })
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 module.exports = sendFacebookThanks;
 </code></pre>

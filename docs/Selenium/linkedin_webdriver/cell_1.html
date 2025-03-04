@@ -68,21 +68,21 @@ async function listConnections(driver) {
   }
 
   let url = await driver.getCurrentUrl()
-  let loggedIn = url.indexOf('mynetwork') > -1
+  let loggedIn = url.indexOf('mynetwork') &gt; -1
   if(!loggedIn) {
     await driver.get('https://www.linkedin.com/mynetwork/')
-    await new Promise(resolve => setTimeout(resolve, 4000))
+    await new Promise(resolve =&gt; setTimeout(resolve, 4000))
   }
 
   let result = await getAllUntil(driver, 
     false,
     '//a[contains(@href, "/in/")]/@href',
     /* friends */ [],
-    (a, b) => a === b,
-    (i) => i < 10
+    (a, b) =&gt; a === b,
+    (i) =&gt; i &lt; 10
   )
 
-  return result.filter((l, i, arr) => arr.indexOf(l) === i)
+  return result.filter((l, i, arr) =&gt; arr.indexOf(l) === i)
 }
 
 module.exports = listConnections

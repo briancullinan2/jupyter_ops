@@ -71,7 +71,7 @@ function _parseInfoString(str) {
 
 		var split = str.split('\\');
 
-		for (var i = 0; i < split.length - 1; i += 2) {
+		for (var i = 0; i &lt; split.length - 1; i += 2) {
 			var key = split[i];
 			var value = split[i+1];
 			data[key] = value;
@@ -89,11 +89,11 @@ function _parseServers(str) {
 	if (str) {
 		var split = str.split('\\');
 
-		for (var i = 0; i < split.length; i++) {
+		for (var i = 0; i &lt; split.length; i++) {
 			var info = split[i];
-			var addr = (info.charCodeAt(0) & 0xff).toString() + '.' + (info.charCodeAt(1) & 0xff).toString() + '.' +
-				(info.charCodeAt(2) & 0xff).toString() + '.' + (info.charCodeAt(3) & 0xff).toString();
-			var port = ((info.charCodeAt(4) & 0xff) << 8) | (info.charCodeAt(5) & 0xff);
+			var addr = (info.charCodeAt(0) &amp; 0xff).toString() + '.' + (info.charCodeAt(1) &amp; 0xff).toString() + '.' +
+				(info.charCodeAt(2) &amp; 0xff).toString() + '.' + (info.charCodeAt(3) &amp; 0xff).toString();
+			var port = ((info.charCodeAt(4) &amp; 0xff) &lt;&lt; 8) | (info.charCodeAt(5) &amp; 0xff);
 
 			servers.push({ addr: addr, port: port });
 		}
@@ -111,7 +111,7 @@ function _parsePlayers(str) {
 
 		var split = str.split('\n');
 
-		for (var i = 0; i < split.length; i++) {
+		for (var i = 0; i &lt; split.length; i++) {
 			var pinfo = split[i];
 			var psplit = pinfo.match(/\S+|"[^"]+"/g);  // split on space, combining quoted items
 

@@ -86,13 +86,13 @@ rm -f /tmp/.X*lock
 
 export DISPLAY=:99
 xvfb-run --server-args="-screen 0 8160x6120x24 -ac +extension RANDR" \
-  java -Dwebdriver.chrome.chromedriver=/opt/selenium/chromedriver-* -jar /opt/selenium/selenium-server-standalone.jar  &
+  java -Dwebdriver.chrome.chromedriver=/opt/selenium/chromedriver-* -jar /opt/selenium/selenium-server-standalone.jar  &amp;
 NODE_PID=$!
 
 trap shutdown SIGTERM SIGINT
 for i in $(seq 1 10)
 do
-  xdpyinfo -display $DISPLAY >/dev/null 2>&1
+  xdpyinfo -display $DISPLAY &gt;/dev/null 2&gt;&amp;1
   if [ $? -eq 0 ]; then
     break
   fi
@@ -100,9 +100,9 @@ do
   sleep 0.5
 done
 
-fluxbox -display $DISPLAY &
+fluxbox -display $DISPLAY &amp;
 
-x11vnc -scale 2700x2048 -noxdamage -forever -nopw -shared -rfbport 5900 -display $DISPLAY &
+x11vnc -scale 2700x2048 -noxdamage -forever -nopw -shared -rfbport 5900 -display $DISPLAY &amp;
 
 wait $NODE_PID
 </code></pre>

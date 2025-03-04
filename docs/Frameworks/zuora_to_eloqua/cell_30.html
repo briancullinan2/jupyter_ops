@@ -123,15 +123,15 @@ if(typeof $ !== 'undefined') {
     $.async();
     var eloquaToken, eloquaConfig = JSON.parse(fs.readFileSync(PROFILE_PATH + '/.credentials/eloqua_production.json').toString().trim());
     eloquaOauth(eloquaConfig)
-        .then(r => {
+        .then(r =&gt; {
             eloquaToken = r;
             return getEloquaExistingImport(eloquaToken, eloquaConfig)
         })
         /*
-        .then(r => {
+        .then(r =&gt; {
             // delete import definitions
             const imports = JSON.parse(r.body).items;
-            return importer.runAllPromises(imports.map(r => resolve => {
+            return importer.runAllPromises(imports.map(r =&gt; resolve =&gt; {
                 return request({
                     followAllRedirects: true,
                     uri: eloquaConfig.rest_api_url + '/bulk/2.0' + r.uri,
@@ -141,15 +141,15 @@ if(typeof $ !== 'undefined') {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     }
-                }).then(r => resolve(r)).catch(e => resolve(e))
+                }).then(r =&gt; resolve(r)).catch(e =&gt; resolve(e))
             }))
         })
         */
-        .then(r => {
+        .then(r =&gt; {
             console.log(r);
-            $.mime({'text/html': '<pre>' + JSON.stringify(r, null, 4) + '</pre>'});
+            $.mime({'text/html': '&lt;pre&gt;' + JSON.stringify(r, null, 4) + '&lt;/pre&gt;'});
         })
-        .catch(e => $.sendError(e))
+        .catch(e =&gt; $.sendError(e))
 }
 
 // TODO: find other definitions, compare, and import using the same definition

@@ -95,8 +95,8 @@ function matchPage(match, search, hostname) {
     return search.toLowerCase() == match.toLowerCase()
         || minimatch(search, match)
         || (!match || match === 'index')
-        && search.match(/https?:\/\/[^\/]*\/?$/ig)
-        && search.includes(hostname)
+        &amp;&amp; search.match(/https?:\/\/[^\/]*\/?$/ig)
+        &amp;&amp; search.includes(hostname)
 }
 
 function loadScraped(url) {
@@ -118,7 +118,7 @@ function loadScraped(url) {
         return
     }
     var crawl = JSON.parse(fs.readFileSync(cache[0]).toString());
-    var entry = crawl.filter(r => matchPage(file, r.url, host))[0];
+    var entry = crawl.filter(r =&gt; matchPage(file, r.url, host))[0];
     var result = {}
     //console.log(entry)
     // parse out styles and images and package it up in to one nice page
@@ -126,7 +126,7 @@ function loadScraped(url) {
         var doc = selectDom('*', entry.html)
         var styles = selectDom(['//link[@rel = "stylesheet"]|//style'], doc)
         var css = ''
-        styles.forEach(s => {
+        styles.forEach(s =&gt; {
             var src = s.getAttribute('src') || s.getAttribute('href')
             s.remove()
             if(!src) {
@@ -134,29 +134,29 @@ function loadScraped(url) {
                 return
             }
             src = new URL(src, url).href
-            var rules = crawl.filter(r => r.url === src)[0]
+            var rules = crawl.filter(r =&gt; r.url === src)[0]
             if(rules) {
                 css += rules.content
             }
         })
         
         var scripts = selectDom(['//script|//iframe'], doc)
-        scripts.forEach(s => s.remove())
+        scripts.forEach(s =&gt; s.remove())
         
         var images = selectDom(['//img'], doc)
-        images.forEach(i => {
+        images.forEach(i =&gt; {
             var src = i.getAttribute('src')
             src = new URL(src, url).pathname
-            var images = crawl.filter(r => r.url.includes(src))[0]
-            if(images && images.content.includes('data:')) {
+            var images = crawl.filter(r =&gt; r.url.includes(src))[0]
+            if(images &amp;&amp; images.content.includes('data:')) {
                 i.setAttribute('src', images.content)
             }
             var src = i.getAttribute('srcset')
             if(src) {
                 src = src.split(' ')[0]
                 src = new URL(src, url).pathname
-                var images = crawl.filter(r => r.url.includes(src))[0]
-                if(images && images.content.includes('data:')) {
+                var images = crawl.filter(r =&gt; r.url.includes(src))[0]
+                if(images &amp;&amp; images.content.includes('data:')) {
                     i.setAttribute('src', images.content)
                     i.removeAttribute('srcset')
                 }
@@ -164,7 +164,7 @@ function loadScraped(url) {
         })
         
         var links = selectDom(['//a'], doc)
-        links.forEach(l => {
+        links.forEach(l =&gt; {
             var src = l.getAttribute('href')
             src = new URL(src, url).href
             l.setAttribute('href', '/?url=' + src)
@@ -172,11 +172,11 @@ function loadScraped(url) {
         
         var bodyId = selectDom('body', doc).getAttribute('id')
         
-        var urlReplace = ($0, $1) => {
+        var urlReplace = ($0, $1) =&gt; {
             if(!$1 || $1.length === 0) return $0
             var src = new URL($1, url).pathname
-            var images = crawl.filter(r => r.url.includes(src))[0]
-            if(images && images.content.includes('data:')) {
+            var images = crawl.filter(r =&gt; r.url.includes(src))[0]
+            if(images &amp;&amp; images.content.includes('data:')) {
                 return `url(${images.content})`
             }
             return $0
@@ -184,34 +184,34 @@ function loadScraped(url) {
         // TODO: load images as data URIs and lower quality
         css = prefixCssRules(css, '#' + hostEscaped, bodyId)
             .replace(/url\s*\(['"]*([^\)]*?)['"]*\)/ig, urlReplace)
-            .replace(/href="([^\"]*)"/ig, ($0, $1) => {
+            .replace(/href="([^\"]*)"/ig, ($0, $1) =&gt; {
                 var src = new URL($1, url).href
                 return $0.replace($1, '/?url=' + src)
             })
         
         var styleTags = selectDom(['//*[@style]'], doc)
-        styleTags.forEach(i => {
+        styleTags.forEach(i =&gt; {
             var style = i.getAttribute('style')
                 .replace(/url\s*\(['"]*([^\)]*?)['"]*\)/ig, urlReplace)
             i.setAttribute('style', style)
         })
 
-        var icon = (crawl.filter(r => r.url.includes('favicon.ico'))[0] || {}).content
+        var icon = (crawl.filter(r =&gt; r.url.includes('favicon.ico'))[0] || {}).content
         
         // inject the editor into copied page
         var body = selectDom('//body', doc)
         var classes = body.getAttribute('class')
         result[file.replace(/[^a-z0-9_-]/ig, '_')] = `
-<!DOCTYPE html>
-<html><head>
-<link rel="icon" href="${icon}">
-<link type="text/css" rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" />
-<link type="text/css" rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/solid.css" />
-<link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-base.css" />
-<link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-dark-theme.css" />
-<link type="text/css" rel="stylesheet" href="" />
-<style>${css}</style>
-<style>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;link rel="icon" href="${icon}"&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/solid.css" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-base.css" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-dark-theme.css" /&gt;
+&lt;link type="text/css" rel="stylesheet" href="" /&gt;
+&lt;style&gt;${css}&lt;/style&gt;
+&lt;style&gt;
 body, html {
     margin: 0;
     padding: 0;
@@ -251,12 +251,12 @@ body, html {
     background-size: 75%;
 }
 
-.lm_controls>li {
+.lm_controls&gt;li {
     background-size: 15px;
     padding: 5px 5px;
 }
 
-.lm_header .lm_controls>li,
+.lm_header .lm_controls&gt;li,
 .lm_maximised .lm_controls .lm_maximise,
 .lm_header .lm_tab .lm_close_tab {
     text-align: unset;
@@ -410,12 +410,12 @@ body, html {
     left: 0;
 }
 
-</style>
-</head><body><div id="${hostEscaped}" class="initial-page"><div class="${classes}">${body.innerHTML}</div></div>
-<script>
+&lt;/style&gt;
+&lt;/head&gt;&lt;body&gt;&lt;div id="${hostEscaped}" class="initial-page"&gt;&lt;div class="${classes}"&gt;${body.innerHTML}&lt;/div&gt;&lt;/div&gt;
+&lt;script&gt;
 ${importer.interpret('ckeditor configuration').code}
-</script>
-</body></html>`
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;`
     }
     return result
 }

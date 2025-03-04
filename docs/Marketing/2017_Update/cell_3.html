@@ -90,13 +90,13 @@ apply
         highlight[shape = 'box', label = 'Highlight best\nsales options'];
 
 
-        start:s -> hasaccount
+        start:s -&gt; hasaccount
     :
         n
-        hasaccount:e -> upgrade
+        hasaccount:e -&gt; upgrade
     :
         w[label = 'Yes']
-        hasaccount:s -> highlight
+        hasaccount:s -&gt; highlight
     :
         n[label = 'No']
     }
@@ -112,9 +112,9 @@ apply
         trialinfo[shape = 'box', label = 'Collect trial\ncustomer info']
         trial[shape = 'diamond', label = 'Subscribe to trial?'];
 
-        highlight -> trial
-        trial -> trialinfo[label = 'Yes']
-        trialinfo -> trialemail
+        highlight -&gt; trial
+        trial -&gt; trialinfo[label = 'Yes']
+        trialinfo -&gt; trialemail
     }
 
     subgraph
@@ -122,10 +122,10 @@ apply
     {
         label = 'Purchase Funnel'
 
-        upgrade:s -> funnel
+        upgrade:s -&gt; funnel
     :
         n
-        trial:e -> funnel
+        trial:e -&gt; funnel
     :
         n[label = 'No']
 
@@ -136,11 +136,11 @@ apply
         skiptobilling [shape = box, label = 'Skip To Billing']
         setupaccount [shape = box, label = 'Set Up Account']
 
-        funnel -> subscribe
-        subscribe -> review
-        review -> hasaccount2
-        hasaccount2 -> setupaccount [label = 'No']
-        hasaccount2 -> skiptobilling [label = 'Yes']
+        funnel -&gt; subscribe
+        subscribe -&gt; review
+        review -&gt; hasaccount2
+        hasaccount2 -&gt; setupaccount [label = 'No']
+        hasaccount2 -&gt; skiptobilling [label = 'Yes']
     }
 
     subgraph
@@ -148,8 +148,8 @@ apply
     {
         label = 'Billing'
 
-        setupaccount -> billing
-        skiptobilling -> billing
+        setupaccount -&gt; billing
+        skiptobilling -&gt; billing
 
         billing [shape = 'box', label = 'Billing']
         {
@@ -161,12 +161,12 @@ apply
         confirm [shape = box, label = 'Confirmation']
         thanksemail [shape = box, style = rounded, label = 'Send Thank\nYou Email']
 
-        billing -> hasaccount3
-        hasaccount3 -> autofill [label = 'Yes']
-        autofill -> collectpayment
-        hasaccount3 -> collectpayment [label = 'No']
-        collectpayment -> confirm
-        confirm -> thanksemail
+        billing -&gt; hasaccount3
+        hasaccount3 -&gt; autofill [label = 'Yes']
+        autofill -&gt; collectpayment
+        hasaccount3 -&gt; collectpayment [label = 'No']
+        collectpayment -&gt; confirm
+        confirm -&gt; thanksemail
     }
 
 }</code></pre>

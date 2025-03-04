@@ -68,7 +68,7 @@
 <pre class="javascript"><code>var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 function selectDate(date) {
     return client
-        .then(() => fillForm({
+        .then(() =&gt; fillForm({
             'Year': date.getFullYear(),
             'Month': months[date.getMonth()],
             'Day': date.getDate(),
@@ -79,10 +79,10 @@ function getGoogleTimeline(date) {
     console.log('Google: Logging timeline history');
     return client
         .getUrl()
-        .then(url => {
+        .then(url =&gt; {
              return client
                 .isVisible('button[jsaction="header.select-today"]')
-                .then(is => url.indexOf('/timeline') === -1 || !is
+                .then(is =&gt; url.indexOf('/timeline') === -1 || !is
                     ? client.url('https://www.google.com/maps/timeline')
                         .loginGoogle()
                         .pause(3000)
@@ -92,11 +92,11 @@ function getGoogleTimeline(date) {
         .catch(function (e) {
             console.log(e);
         })
-        .then(() => date
+        .then(() =&gt; date
              ? selectDate(date)
              : client.click('button[jsaction="header.select-today"]'))
         .pause(3000)
-        .catch(e => console.log(e))
+        .catch(e =&gt; console.log(e))
 }
 if (typeof client.getGoogleTimeline == 'undefined') {
     client.addCommand('getGoogleTimeline', getGoogleTimeline);
