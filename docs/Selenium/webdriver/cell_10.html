@@ -1,3 +1,5 @@
+<p>Here's a brief summary:</p>
+<p>This code defines a module that reads session data from a JSON file at <code>SESSIONS_PATH</code> and returns an array of session data. It also includes error handling to reset the session array if an error occurs while reading the file.</p>
 
 
 <pre><code>var fs = require('fs');
@@ -25,3 +27,38 @@ function readSessions() {
 module.exports = readSessions;
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Module Dependencies</h4>
+<ul>
+<li><code>fs</code>: File system module for interacting with the file system.</li>
+<li><code>path</code>: Module for working with file paths.</li>
+</ul>
+<h4>Constants</h4>
+<ul>
+<li><code>TOKEN_DIR</code>: Directory path for storing credentials, constructed from the following environment variables in order of preference:
+<ul>
+<li><code>HOME</code></li>
+<li><code>HOMEPATH</code></li>
+<li><code>USERPROFILE</code></li>
+</ul></li>
+<li><code>SESSIONS_PATH</code>: Path to the'sessions.json' file within <code>TOKEN_DIR</code>.</li>
+</ul>
+<h4>Variables</h4>
+<ul>
+<li><code>sessions</code>: Array to store session data.</li>
+<li><code>sessionModified</code>: Timestamp of the last modification to the'sessions.json' file.</li>
+</ul>
+<h4>Function: <code>readSessions()</code></h4>
+<ol>
+<li>Checks if the'sessions.json' file exists and has been modified since the last read.</li>
+<li>If the file exists and has been modified, reads its contents, parses it as JSON, and updates the <code>sessions</code> array.</li>
+<li>Returns the <code>sessions</code> array.</li>
+</ol>
+<h4>Error Handling</h4>
+<ul>
+<li>If an error occurs while reading the file, the <code>sessions</code> array is reset to an empty array.</li>
+</ul>
+<h4>Export</h4>
+<ul>
+<li>The <code>readSessions</code> function is exported as a module.</li>
+</ul>

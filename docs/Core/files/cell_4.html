@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary of the code:</p>
+<p>The code imports dependencies, defines a test function <code>testGlobFiles</code> to verify the <code>glob</code> function's behavior, and exports it as a module. The <code>testGlobFiles</code> function searches for files matching the pattern <code>**index**</code> in the current directory and asserts that it returns exactly one result.</p>
 
 
 <pre><code>var assert = require('assert')
@@ -19,3 +21,22 @@ if(typeof $$ !== 'undefined') {
 }
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Dependencies and Initialization</h4>
+<ul>
+<li><code>var assert = require('assert')</code>: Imports the built-in Node.js assertion library.</li>
+<li><code>var importer = require('../Core')</code>: Imports the <code>importer</code> module from a file named <code>Core</code> in a parent directory.</li>
+<li><code>var {glob} = importer.import('glob files')</code>: Imports the <code>glob</code> function from a module named <code>glob files</code> within the <code>importer</code> module.</li>
+</ul>
+<h4>Test Function</h4>
+<ul>
+<li><code>function testGlobFiles()</code>: Defines a function to test the <code>glob</code> function.</li>
+<li><code>var results = glob('**index**', '.')</code>: Calls the <code>glob</code> function to search for files matching the pattern <code>**index**</code> in the current directory (<code>.</code>).</li>
+<li><code>assert(results.length === 1, 'index is missing in glob resultss')</code>: Asserts that the <code>glob</code> function returns exactly one result. If not, it throws an error with a message indicating that the <code>index</code> file is missing.</li>
+<li><code>return results</code>: Returns the results of the <code>glob</code> function.</li>
+</ul>
+<h4>Exports and Logging</h4>
+<ul>
+<li><code>module.exports = testGlobFiles</code>: Exports the <code>testGlobFiles</code> function as a module.</li>
+<li><code>if(typeof $$!== 'undefined') { console.log(testGlobFiles()) }</code>: If the <code>$$</code> variable is defined, executes the <code>testGlobFiles</code> function and logs its result to the console.</li>
+</ul>

@@ -1,3 +1,5 @@
+<p>Here's a summary of the file overview in one or two sentences:</p>
+<p>The <code>rht03.c</code> C program is a driver for the MaxDetect series RHT03 sensor, designed to run on a Raspberry Pi device, and it continuously reads and displays temperature and humidity values from the sensor. The program is distributed under the GNU Lesser General Public License (LGPL) version 3 or later, written by Gordon Henderson and part of the wiringPi project.</p>
 
 
 <pre><code>/*
@@ -75,3 +77,34 @@ int main (void)
 
 </code></pre>
 
+<h3>File Overview</h3>
+<p>This is a C program named <code>rht03.c</code> that serves as a driver for the MaxDetect series sensors, specifically the RHT03 sensor. The program is designed to run on a Raspberry Pi device.</p>
+<h3>Includes and Definitions</h3>
+<p>The program includes the following header files:</p>
+<ul>
+<li><code>stdio.h</code>: for standard input/output operations</li>
+<li><code>time.h</code>: for time-related functions</li>
+<li><code>wiringPi.h</code>: for wiringPi library functions</li>
+<li><code>maxdetect.h</code>: for MaxDetect sensor library functions</li>
+</ul>
+<p>The program defines a single constant:</p>
+<ul>
+<li><code>RHT03_PIN</code>: the pin number on the Raspberry Pi where the RHT03 sensor is connected (pin 7)</li>
+</ul>
+<h3>Main Program</h3>
+<p>The <code>main</code> function is the entry point of the program. It performs the following tasks:</p>
+<ol>
+<li>Initializes variables to store temperature, humidity, and new temperature/humidity values.</li>
+<li>Sets up the wiringPi library using <code>wiringPiSetup</code>.</li>
+<li>Sets the priority of the program to 55 using <code>piHiPri</code>.</li>
+<li>Enters an infinite loop where it:
+<ul>
+<li>Reads the temperature and humidity values from the RHT03 sensor using <code>readRHT03</code>.</li>
+<li>Checks if the new values are different from the previous ones.</li>
+<li>If the values are different, updates the temperature and humidity variables and prints the values to the console using <code>fprintf</code>. The output format includes the temperature in Celsius and Fahrenheit, humidity, and the current time.</li>
+<li>Waits for 57 milliseconds using <code>delay(57)</code> if an error occurs while reading the sensor values.</li>
+<li>Waits for 23 seconds using <code>delay(23000)</code>.</li>
+</ul></li>
+</ol>
+<h3>License and Copyright</h3>
+<p>The program is distributed under the GNU Lesser General Public License (LGPL) version 3 or later. The copyright notice indicates that the program was written by Gordon Henderson and is part of the wiringPi project.</p>

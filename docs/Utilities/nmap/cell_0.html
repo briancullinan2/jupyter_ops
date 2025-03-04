@@ -1,3 +1,5 @@
+<p>Here is a one or two sentence summary:</p>
+<p>The <code>nmap</code> command <code>nmap --script=smb-brute.nse localhost</code> performs an SMB brute-force attack against the local machine using the <code>smb-brute.nse</code> script. This command is used to test the security of the local machine's SMB protocol by attempting to brute-force login credentials.</p>
 
 
 <pre><code>nmap--
@@ -6,3 +8,15 @@ smb - brute.nse
 localhost
 </code></pre>
 
+<p><strong>nmap Command Breakdown</strong></p>
+<h3>Command</h3>
+<pre><code class="language-bash">nmap --script=smb-brute.nse localhost
+</code></pre>
+<h3>Options</h3>
+<ul>
+<li><code>--script</code>: specifies the NSE (Nmap Scripting Engine) to run</li>
+<li><code>smb-brute.nse</code>: the NSE script to use for SMB brute-force attack</li>
+<li><code>localhost</code>: the target IP address to scan (in this case, the local machine)</li>
+</ul>
+<h3>Purpose</h3>
+<p>This command uses the <code>smb-brute.nse</code> script to perform an SMB brute-force attack against the local machine.</p>

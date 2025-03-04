@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary:</p>
+<p>The Node.js module <code>getTranslations</code> extracts translation keys and values from HTML files in a specified project directory, returning an object with flat translation keys as properties and arrays of values as values. The function uses <code>glob</code> to find HTML files, regular expressions to extract translations, and reduces the results into a single object for ease of use.</p>
 
 
 <pre><code>var glob = require('glob');
@@ -48,3 +50,30 @@ if(typeof $$ !== 'undefined') {
 }
 </code></pre>
 
+<h1><strong>Module Overview</strong></h1>
+<p>This Node.js module provides a function <code>getTranslations</code> that extracts translation keys and values from HTML files in a project directory.</p>
+<h2><strong>Function Signature</strong></h2>
+<pre><code class="language-javascript">function getTranslations(project) {... }
+</code></pre>
+<h2><strong>Function Parameters</strong></h2>
+<ul>
+<li><code>project</code>: The project directory path.</li>
+</ul>
+<h2><strong>Function Flow</strong></h2>
+<ol>
+<li>Use the <code>glob</code> module to find all <code>component.html</code> files in the project directory, excluding files under <code>temp-demo-pages</code>.</li>
+<li>For each file, read the contents as a string using <code>fs.readFileSync</code>.</li>
+<li>Use a regular expression (<code>translateRegex</code>) to find all translation strings in the HTML file.</li>
+<li>Extract the translation key (filename with modifications) and value (translation string).</li>
+<li>Create an object with the translation key and value.</li>
+<li>Collect all translation objects into an array.</li>
+<li>Reduce the array to a single object with a flat structure.</li>
+</ol>
+<h2><strong>Returning Value</strong></h2>
+<p>The function returns an object with translation keys as properties and arrays of translation values as values.</p>
+<h2><strong>Example Usage</strong></h2>
+<pre><code class="language-javascript">var getTranslations = require('./getTranslations');
+var cwd = '/Users/briancullinan/Documents/portal/src/';
+var translations = getTranslations(cwd);
+console.log(translations);
+</code></pre>

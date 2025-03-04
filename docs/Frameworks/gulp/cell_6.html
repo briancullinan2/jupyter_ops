@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>This code imports a module named <code>Core</code> to use its <code>importer</code> function, which imports another module named <code>search notebooks using gulp</code> to search for notebooks. The search result is then processed asynchronously, formatted as markdown, and sent to the user, with error handling if the search fails.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -10,3 +12,35 @@ searchNotebooks(searchRegexp)
     .catch(e => $$.sendError(e));
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+var searchNotebooks = importer.import('search notebooks using gulp');
+</code></pre>
+<ul>
+<li>The code imports a module named <code>Core</code> into the current scope.</li>
+<li>The <code>importer</code> module is then used to import another module named <code>search notebooks using gulp</code>, which is assigned to the <code>searchNotebooks</code> variable.</li>
+</ul>
+<h4>Searching Notebooks</h4>
+<pre><code class="language-javascript">var searchRegexp = 'permissions';
+$$.async();
+searchNotebooks(searchRegexp)
+   .then(r =&gt; $$.mime({'text/markdown': '```\n' + r.map(c =&gt; c.code).join('') + '\n```\n-------------\n'}))
+   .catch(e =&gt; $$.sendError(e));
+</code></pre>
+<ul>
+<li>A string <code>permissions</code> is assigned to the <code>searchRegexp</code> variable.</li>
+<li>The <code>$$.async()</code> function is called, which is likely used to begin an asynchronous operation.</li>
+<li>The <code>searchNotebooks</code> function is called with the <code>searchRegexp</code> variable as an argument.
+<ul>
+<li>If the function call is successful, the <code>then</code> method is executed.
+<ul>
+<li>The <code>r</code> variable represents the result of the function call.</li>
+<li>The <code>$$.mime()</code> function is called with an object containing a <code>text/markdown</code> key and a value that represents the result in markdown format.</li>
+</ul></li>
+<li>If the function call fails, the <code>catch</code> method is executed.
+<ul>
+<li>The <code>$$.sendError()</code> function is called with the error object as an argument to handle the error.</li>
+</ul></li>
+</ul></li>
+</ul>

@@ -1,5 +1,5 @@
-<p>Here's a summary of the code breakdown in two sentences:</p>
-<p>The code imports necessary modules, initializes the environment, and checks for the existence of the <code>$$</code> object before proceeding to process Jupyter notebooks and RPC specifications. It then executes RPC operations, logs results and errors, and sends them to the <code>$$</code> object accordingly.</p>
+<p>Here is a summary of the code in 2 sentences:</p>
+<p>The code imports various functions from a Core module, initializes an environment, and checks if a global object $$ is defined. If $$ is defined, it executes a series of calls to the imported functions to convert notebooks to OpenAPI specifications, generate RPC models, and call a permissions RPC operation, sending the result or error to $$ accordingly.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -25,43 +25,61 @@ if(typeof $$ !== 'undefined') {
 
 <p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+</code></pre>
 <ul>
-<li>The code imports four modules from the <code>'../Core'</code> directory:
+<li>Loads the <code>Core</code> module from the parent directory (<code>../</code>).</li>
+<li>Assigns it to the <code>importer</code> variable for later use.</li>
+</ul>
+<h3>Importing Specific Functions</h3>
+<pre><code class="language-javascript">var getRpcSpecFromCells = importer.import('convert notebook to open api');
+var getRpcFromSpec = importer.import('get rpc from spec');
+var getEnvironment = importer.import('get environment');
+var groupPermissions = importer.import('test get permissions');
+</code></pre>
 <ul>
-<li><code>convert notebook to open api</code></li>
-<li><code>get rpc from spec</code></li>
-<li><code>get environment</code></li>
-<li><code>test get permissions</code></li>
+<li>Uses the <code>importer</code> object to import specific functions from the loaded <code>Core</code> module:
+<ul>
+<li><code>getRpcSpecFromCells</code>: converts notebooks to OpenAPI specifications.</li>
+<li><code>getRpcFromSpec</code>: generates RPC models from OpenAPI specifications.</li>
+<li><code>getEnvironment</code>: returns an environment object.</li>
+<li><code>groupPermissions</code>: (not used in this code snippet).</li>
 </ul></li>
-<li>These modules are stored in the <code>importer</code> object.</li>
+<li>Assigns each imported function to a separate variable for later use.</li>
 </ul>
 <h3>Initializing Environment</h3>
+<pre><code class="language-javascript">getEnvironment('STUDY_LOCAL')
+</code></pre>
 <ul>
-<li>The code initializes the environment using <code>getEnvironment</code> with the argument <code>'STUDY_LOCAL'</code>.</li>
+<li>Calls the <code>getEnvironment</code> function with the argument <code>'STUDY_LOCAL'</code>, which likely sets up a specific environment for the application.</li>
 </ul>
-<h3>Checking for $$ Object</h3>
+<h3>Checking for $$ Variable</h3>
+<pre><code class="language-javascript">if (typeof $$!== 'undefined') {
+   ...
+}
+</code></pre>
 <ul>
-<li>It checks if the <code>$$</code> object is defined.</li>
-<li>If it is, the code proceeds to execute the following lines.</li>
+<li>Checks if the global object <code>$$</code> is defined and not <code>undefined</code>.</li>
+<li>If it is defined, the code inside the <code>if</code> block is executed.</li>
 </ul>
-<h3>Processing Jupyter Notebooks</h3>
+<h3>Executing Code with $$ Defined</h3>
+<pre><code class="language-javascript">$$
+var spec = getRpcSpecFromCells(['study sauce.ipynb', 'rpc.ipynb'])
+//   var spec = getRpcSpecFromCells('study sauce.ipynb');
+console.log(spec)
+var juypter_ops = getRpcFromSpec(spec)
+console.log(juypter_ops)
+juypter_ops.core.rpc.getPermissions({search: null})
+   .then(r =&gt; $$.sendResult(r))
+   .catch(e =&gt; $$.sendError(e))
+</code></pre>
 <ul>
-<li>The code uses <code>getRpcSpecFromCells</code> to process two Jupyter notebooks:
+<li>Executes the code inside the <code>if</code> block when <code>$$</code> is defined.</li>
+<li>Calls <code>getRpcSpecFromCells</code> with an array of notebook files and logs the resulting OpenAPI specification.</li>
+<li>Calls <code>getRpcFromSpec</code> with the obtained specification and logs the resulting RPC operations.</li>
+<li>Calls the <code>getPermissions</code> RPC operation on the <code>core.rpc</code> object and:
 <ul>
-<li><code>'study sauce.ipynb'</code></li>
-<li><code>'rpc.ipynb'</code></li>
+<li>Sends the result to <code>$$</code> using <code>sendResult</code> when the promise resolves.</li>
+<li>Sends an error to <code>$$</code> using <code>sendError</code> when the promise rejects.</li>
 </ul></li>
-<li>The processed data is stored in the <code>spec</code> variable.</li>
-<li>The code logs the <code>spec</code> to the console.</li>
-</ul>
-<h3>Processing RPC Specifications</h3>
-<ul>
-<li>The code uses <code>getRpcFromSpec</code> to process the <code>spec</code> and stores the result in <code>juypter_ops</code>.</li>
-<li>The code logs <code>juypter_ops</code> to the console.</li>
-</ul>
-<h3>Executing RPC Operations</h3>
-<ul>
-<li>The code attempts to execute the <code>getPermissions</code> operation using <code>juypter_ops</code>.</li>
-<li>If the operation is successful, the result is sent to the <code>$$</code> object using <code>$$.sendResult(r)</code>.</li>
-<li>If the operation fails, the error is sent to the <code>$$</code> object using <code>$$.sendError(e)</code>.</li>
 </ul>

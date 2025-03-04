@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The code is a pair of scripts, one for Windows and one for Unix/Linux, that use image conversion tools to process multiple image file types in bulk. The scripts convert images to various formats, resize and scale them, and apply enhancements to create final images with a consistent &quot;.jpg&quot; format.</p>
 
 
 <pre><code>#windows
@@ -18,3 +20,38 @@ done;
 echo "done"
 </code></pre>
 
+<p><strong>Breakdown of the Code</strong></p>
+<h3>Section 1: Windows Batch Script</h3>
+<pre><code class="language-bash"># Windows
+# for /r %%v in (*.pcx or *.jpg or *.jpeg) do convert -colorspace RGB &quot;%%v&quot; &quot;%%~dpv%%~nv.tga&quot; ; done
+</code></pre>
+<ul>
+<li>This script uses the Windows <code>for</code> loop to iterate over files with <code>.pcx</code>, <code>.jpg</code>, and <code>.jpeg</code> extensions in the current directory and its subdirectories.</li>
+<li>The <code>convert</code> command is used to convert these images to the <code>RGB</code> colorspace and output to <code>.tga</code> files.</li>
+</ul>
+<h3>Section 2: Unix/Linux Bash Script</h3>
+<pre><code class="language-bash">#/bin/bash
+find /Users/briancullinan/jupyter_ops/.output -iname '*.jpeg' -o -iname '*.jpg' -o -iname '*.heic' -o -iname '*.tga' -o -iname '*.png' -o -iname '*.svg' -o -name '*.webp' -o -name '*.wal' | \
+while IFS= read -r i; do \
+o=&quot;${i%.*}&quot;; \
+o=&quot;${o%-final*}-final.jpg&quot;; \
+if [! -f &quot;$o&quot; ]; \
+then convert -density 600 &quot;$i&quot; -resize &quot;600^&lt;&quot; -scale 50% &quot;$o&quot; || true &amp;&amp; \
+    convert &quot;$o&quot; +clone -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite -quality 50% &quot;$o&quot; || true; \
+fi; \
+done;
+
+echo &quot;done&quot;
+</code></pre>
+<ul>
+<li>This script uses the <code>find</code> command to locate files with various image extensions in the specified directory and its subdirectories.</li>
+<li>The script then loops through the found files and performs the following operations:
+<ol>
+<li>Extracts the filename without extension and appends <code>&quot;-final.jpg&quot;</code> to it.</li>
+<li>If the file does not already exist, it uses the <code>convert</code> command to:<br />
+a. Resize the image to 600 pixels or less on the longest side.<br />
+b. Scale the image to 50% of its original size.<br />
+c. Enhance the image, remove speckles, and adjust the alpha channel.</li>
+<li>The script outputs &quot;done&quot; after completing the loop.</li>
+</ol></li>
+</ul>

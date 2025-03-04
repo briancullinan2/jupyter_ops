@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary:</p>
+<p>This code provides a set of functions for interacting with a SQLite database containing movie information, including methods for searching by Levenshtein distance and retrieving actor and title data. The functions use a mix of synchronous and asynchronous programming, with prepared statements and promise chains to improve security, performance, and readability.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -87,3 +89,66 @@ getTitleTitleIntersection('tt0111507', 'tt0111495', 'tt0108394')
     .then(() => db.close())
 </code></pre>
 
+<h2><strong>Overview</strong></h2>
+<p>This code is a set of functions for interacting with a SQLite database containing movie information. It provides methods for retrieving actor and title data, including functionality for searching by Levenshtein distance.</p>
+<h2><strong>Required Modules</strong></h2>
+<p>The code requires two external modules:</p>
+<ol>
+<li><code>better-sqlite3</code> for interacting with the SQLite database.</li>
+<li>A custom module <code>../Core</code> containing a function <code>import</code> for importing modules and <code>runAllPromises</code> for running multiple promises concurrently.</li>
+</ol>
+<h2><strong>Functions</strong></h2>
+<h3>Database Interactions</h3>
+<ul>
+<li><code>getTitles(t)</code>:
+<ul>
+<li>Retrieves titles from the <code>principals</code> table where the <code>tconst</code> column matches any of the provided values.</li>
+</ul></li>
+<li><code>getTitlesByName(n)</code>:
+<ul>
+<li>Retrieves names from the <code>principals</code> table where the <code>nconst</code> column matches any of the provided values.</li>
+</ul></li>
+<li><code>getActorsByTitles(t, n)</code>:
+<ul>
+<li>Retrieves actors from the <code>principals</code> table where the <code>tconst</code> column matches any of the provided titles and the <code>nconst</code> column matches any of the provided names.</li>
+</ul></li>
+</ul>
+<h3>Intersection Functions</h3>
+<ul>
+<li><code>getActorTitlesIntersection(n, t)</code>:
+<ul>
+<li>Finds the intersection of actors and titles by first retrieving titles by name, then retrieving titles by title, and finally retrieving actors that have contributed to both sets of titles.</li>
+</ul></li>
+<li><code>getTitleTitleIntersection(t)</code>:
+<ul>
+<li>Finds the intersection of titles by retrieving titles by title and then retrieving actors that have contributed to all of those titles.</li>
+</ul></li>
+</ul>
+<h3>Exact Name and Title Functions</h3>
+<ul>
+<li><code>getExactName(n)</code>:
+<ul>
+<li>Retrieves the exact name from the <code>name</code> table where the <code>nconst</code> column matches the provided value.</li>
+</ul></li>
+<li><code>getExactTitle(t)</code>:
+<ul>
+<li>Retrieves the exact title from the <code>titles</code> table where the <code>tconst</code> column matches the provided value.</li>
+</ul></li>
+</ul>
+<h3>Utility Functions</h3>
+<ul>
+<li><code>assignPromise(r)</code>:
+<ul>
+<li>Resolves the promise by assigning the exact name to the provided object.</li>
+</ul></li>
+</ul>
+<h2><strong>Notes</strong></h2>
+<ul>
+<li>The <code>better-sqlite3</code> module is used for interacting with the SQLite database.</li>
+<li>The <code>../Core</code> module contains functions for importing modules and running multiple promises concurrently.</li>
+<li>The code uses a mix of synchronous and asynchronous programming.</li>
+<li>The database interactions use prepared statements to improve security and performance.</li>
+<li>The intersection functions demonstrate how to retrieve data from the database in a chain of promises.</li>
+<li>The exact name and title functions demonstrate how to retrieve a single record from the database.</li>
+<li>The utility function <code>assignPromise</code> demonstrates how to modify an object in a promise chain.</li>
+</ul>

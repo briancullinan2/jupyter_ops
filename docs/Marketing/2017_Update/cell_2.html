@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the Graphviz code:</p>
+<p>The code is a visual representation of a process using Graphviz, comprising a single 'digraph' statement with a name 'apply' and several nodes and edges that outline the steps from registering a new customer to upgrading a plan. The code includes various attributes for nodes and edges, a subgraph for available plans, and a specific layout direction and edge color specification.</p>
 
 
 <pre><code>%%
@@ -68,3 +70,34 @@ apply
     s
 }</code></pre>
 
+<p><strong>Graphviz Code</strong></p>
+<p>This code is written in Graphviz, a tool for visualizing and drawing graphs.</p>
+<h3>Code Structure</h3>
+<p>The code consists of a single <code>digraph</code> statement with a name <code>apply</code> and the label <code>'2017 Updated'</code>.</p>
+<h3>Node and Edge Attributes</h3>
+<p>The code defines several attributes for nodes and edges:</p>
+<ul>
+<li>Node attributes: <code>fontname</code>, <code>width</code>, <code>height</code></li>
+<li>Edge attributes: <code>fontname</code>, <code>fontsize</code>, <code>fontcolor</code>, <code>labeldistance</code></li>
+</ul>
+<h3>Nodes</h3>
+<p>The code defines several nodes:</p>
+<ul>
+<li><code>start</code>: a rounded box with the label 'Register New Customer'</li>
+<li><code>selectrp</code>: a box with the label 'Select Rate Plan'</li>
+<li><code>monthly</code>, <code>annual</code>, <code>perpetual</code>, <code>year2</code>: boxes representing available plans with their respective labels and attributes</li>
+</ul>
+<h3>Subgraph</h3>
+<p>The code defines a subgraph <code>cluster_available_plans</code> with the label 'Available Plans'. This subgraph contains the four available plan nodes.</p>
+<h3>Edges</h3>
+<p>The code defines several edges between nodes, including:</p>
+<ul>
+<li><code>start</code> -&gt; <code>selectrp</code></li>
+<li><code>selectrp</code> -&gt; <code>monthly</code>, <code>annual</code>, <code>perpetual</code>, <code>year2</code></li>
+<li><code>monthly</code>, <code>annual</code>, <code>perpetual</code>, <code>year2</code> -&gt; <code>upgrade</code></li>
+<li><code>upgrade</code> -&gt; <code>selectrp</code></li>
+</ul>
+<h3>Layout</h3>
+<p>The code uses the <code>rankdir</code> attribute to specify the layout direction (left-to-right) and the <code>rank</code> attribute to specify the rank of nodes within the subgraph.</p>
+<h3>Miscellaneous</h3>
+<p>The code uses the <code>color</code> attribute to set the edge color to invisible for a specific edge.</p>

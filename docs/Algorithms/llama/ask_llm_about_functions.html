@@ -1,7 +1,5 @@
-<p>Here is a summary of the function in one sentence:</p>
-<p><code>askLlamaAboutFunctions</code> is an asynchronous function that takes in a user query and an array of functions with optional descriptions, and uses an AI to match the query against the functions and return a matching function name.</p>
-<p>Alternatively, here is a two-sentence summary:</p>
-<p><code>askLlamaAboutFunctions</code> is an asynchronous function that constructs a prompt to match a user query against a list of functions, and uses an AI to generate a response. The function then parses the AI's response to extract a matching function name, which it returns as the result.</p>
+<p>Here's a two-sentence summary:</p>
+<p>The <code>askLlamaAboutFunctions</code> function sends a query to a language model to match a given function name against an array of functions, and returns the matched function name. It uses an <code>llmPrompt</code> function to interact with the language model, logs the query and response to the console, and exports the function as part of a module.</p>
 
 
 <pre><code>
@@ -30,23 +28,30 @@ module.exports = {
 }
 </code></pre>
 
-<h2>Code Breakdown</h2>
-<h3>Function Description</h3>
-<p><code>askLlamaAboutFunctions</code> is an asynchronous function that takes in four parameters:</p>
+<h2>Function Breakdown: <code>askLlamaAboutFunctions</code></h2>
+<h3>Function Signature</h3>
+<pre><code class="language-javascript">async function askLlamaAboutFunctions(query, functions, descriptions, categories = false)
+</code></pre>
+<h3>Parameters</h3>
 <ul>
-<li><code>query</code>: The user's query to match against a list of functions.</li>
+<li><code>query</code>: The query string to match a function against.</li>
 <li><code>functions</code>: An array of function names.</li>
-<li><code>descriptions</code>: An array of descriptions for the functions, optional.</li>
-<li><code>categories</code>: A boolean flag indicating whether the input is categories instead of functions.</li>
+<li><code>descriptions</code>: An array of function descriptions corresponding to the <code>functions</code> array. Defaults to <code>false</code>.</li>
+<li><code>categories</code>: A boolean flag indicating whether the <code>functions</code> array contains categories instead of function names. Defaults to <code>false</code>.</li>
 </ul>
-<h3>Function Logic</h3>
+<h3>Behavior</h3>
 <ol>
-<li>It imports the <code>llmPrompt</code> function from the <code>create llm session</code> module.</li>
-<li>It constructs a prompt string <code>q1</code> by iterating through the <code>functions</code> array and appending each function name along with its description (if available). The prompt is then completed with the <code>query</code> and a question asking the AI to match the query against the functions.</li>
-<li>The prompt is logged to the console as &quot;User: <prompt>&quot;.</li>
-<li>The AI's response to the prompt is fetched using <code>llmPrompt(q1)</code> and logged to the console as &quot;AI: <response>&quot;.</li>
-<li>The function attempts to parse the AI's response to extract a function name that matches one of the input functions. The parsed result is stored in the <code>result</code> variable.</li>
-<li>Finally, the function returns the parsed <code>result</code>.</li>
+<li>The function imports an <code>llmPrompt</code> function from the <code>create llm session</code> module using <code>importer.import()</code>.</li>
+<li>It constructs a query string <code>q1</code> based on the <code>functions</code> array and the <code>categories</code> flag.</li>
+<li>The query string is logged to the console.</li>
+<li>The function calls <code>llmPrompt()</code> with the query string <code>q1</code> and awaits the response.</li>
+<li>The response from the AI is logged to the console.</li>
+<li>The function parses the response to extract the matched function name.</li>
+<li>The matched function name is returned.</li>
 </ol>
 <h3>Export</h3>
-<p>The function is exported as a module export under the name <code>askLlamaAboutFunctions</code>.</p>
+<p>The function is exported as part of a module:</p>
+<pre><code class="language-javascript">module.exports = {
+  askLlamaAboutFunctions,
+}
+</code></pre>

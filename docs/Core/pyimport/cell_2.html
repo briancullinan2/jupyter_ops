@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>This code is part of a build system for dynamic libraries (.dylib) that imports necessary libraries, sanitizes URLs, and builds libraries using external functions and regular expressions. It involves interpreting code, extracting library information, compiling object files, and creating dynamic libraries using various tools and compiler flags.</p>
 
 
 <pre><code>import os
@@ -62,3 +64,45 @@ __all__ = {
 }
 </code></pre>
 
+<p><strong>Breakdown of the Code</strong></p>
+<p>This code is a part of a build system for dynamic libraries (.dylib) in various programming languages. Here's a simplified explanation of what it does:</p>
+<h3>Importing Libraries and Setting Constants</h3>
+<pre><code class="language-python">import os
+import re
+import subprocess
+
+BUILD_DIRECTORY = os.path.join(os.path.dirname(__file__), &quot;../.build&quot;)
+</code></pre>
+<p>The code imports the necessary libraries and sets the <code>BUILD_DIRECTORY</code> constant to the path where the build output will be stored.</p>
+<h3>Defining a Function to Sanitize URLs</h3>
+<pre><code class="language-python">def safeurl(name):
+    return re.sub(r'\W+', '_', name)
+</code></pre>
+<p>This function takes a string <code>name</code> and replaces any non-alphanumeric characters with underscores using a regular expression.</p>
+<h3>Defining the <code>build_dylib</code> Function</h3>
+<pre><code class="language-python">def build_dylib(code, path_to_code, ctx):
+</code></pre>
+<p>This function takes three parameters:</p>
+<ul>
+<li><code>code</code>: The code to be built</li>
+<li><code>path_to_code</code>: The path to the code file</li>
+<li><code>ctx</code>: The context object (likely not used in this snippet)</li>
+</ul>
+<h3>Interpreting the Code and Building the Library</h3>
+<ol>
+<li>The code uses an external <code>interpret</code> function from the <code>Core</code> module to interpret the code and retrieve the code cell object.</li>
+<li>It extracts the library name from the code cell object using the <code>safeurl</code> function.</li>
+<li>It checks if the library file already exists and, if not, or if the code file has been modified, it writes the code to the library file.</li>
+<li>It extracts environment variables from the code cell object's markdown text using regular expressions.</li>
+<li>It sets up the build environment by setting <code>CXX</code> and <code>STD</code> variables based on the language.</li>
+</ol>
+<h3>Compiling the Object File</h3>
+<ol>
+<li>It checks if the object file already exists and, if not, or if the library file has been modified, it compiles the library file to an object file using the <code>CXX</code> compiler.</li>
+<li>It adds additional flags to the compilation command based on the language and presence of certain keywords.</li>
+</ol>
+<h3>Creating the dylib File</h3>
+<ol>
+<li>It checks if the dylib file already exists and, if not, or if the object file has been modified, it creates the dylib file by running the <code>ld</code> command on the object file.</li>
+</ol>
+<p>Note that this is a simplified explanation, and the actual code may contain additional complexity and error handling.</p>

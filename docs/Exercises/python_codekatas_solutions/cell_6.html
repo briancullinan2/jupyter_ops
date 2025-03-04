@@ -1,3 +1,7 @@
+<p>Here's a summary of the code breakdown in one sentence:</p>
+<p>The code implements a singly linked list node class (<code>ListNode</code>) and a function (<code>reverse_list</code>) to reversely iterate through the linked list, swapping the next node reference, and returning the new head of the reversed list.</p>
+<p>Alternatively, you could also condense it into two sentences:</p>
+<p>The <code>ListNode</code> class represents a node in a singly linked list, with methods for initialization, string representation, and equality comparison. The <code>reverse_list</code> function takes the head of a linked list as input and returns the new head of the reversed list, achieved through iterative traversal and node reference swapping.</p>
 
 
 <pre><code>class ListNode(object):
@@ -41,3 +45,34 @@ rev.next.next = ListNode(1)
 assert reverse_list(head) == rev
 print('All passed!')</code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>ListNode Class</h3>
+<p>This is a Python implementation of a singly linked list node.</p>
+<h4><code>__init__</code> Method</h4>
+<p>Initializes a new ListNode instance with a given value <code>x</code> and sets the <code>next</code> attribute to <code>None</code>.</p>
+<h4><code>__str__</code> Method</h4>
+<p>Returns a string representation of the node, including its value and the value of its <code>next</code> node.</p>
+<h4><code>__eq__</code> Method</h4>
+<p>Compares two ListNode instances for equality. Two nodes are considered equal if they have the same attributes (<code>val</code> and <code>next</code>).</p>
+<h3><code>reverse_list</code> Function</h3>
+<p>Reverses a singly linked list iteratively.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>head</code>: The head of the linked list to reverse.</li>
+</ul>
+<h4>Return Value</h4>
+<p>The new head of the reversed linked list.</p>
+<h4>Algorithm</h4>
+<ol>
+<li>Initialize three pointers: <code>prev</code>, <code>head</code>, and <code>nxt</code>.</li>
+<li>Traverse the linked list:
+<ul>
+<li>Set <code>nxt</code> to the next node in the list (<code>head.next</code>).</li>
+<li>Set <code>head.next</code> to <code>prev</code>, effectively reversing the link between the current node and its next node.</li>
+<li>Move <code>prev</code> and <code>head</code> one step forward.</li>
+</ul></li>
+<li>Repeat step 2 until the end of the list is reached (<code>head</code> becomes <code>None</code>).</li>
+<li>Return the new head of the reversed linked list (<code>prev</code>).</li>
+</ol>
+<h3>Example Usage</h3>
+<p>The code includes three test cases to verify the correctness of the <code>reverse_list</code> function. Each test case creates a linked list with a specific structure and checks that the reversed list is correct.</p>

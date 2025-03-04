@@ -1,3 +1,5 @@
+<p>Here is a summary in one sentence:</p>
+<p>The <code>findElements</code> function uses the Chrome debugger API to find elements on a webpage based on an input selector, and is called by two express routes to handle POST requests. The function and express router are exported as part of the module, allowing it to be used in other applications.</p>
 
 
 <pre><code>var express = require('express');
@@ -35,3 +37,29 @@ module.exports = {
 
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Requires and Dependencies</h3>
+<ul>
+<li><code>express</code> is required and an instance of an express router is created.</li>
+</ul>
+<h3>Function: <code>findElements(selector)</code></h3>
+<ul>
+<li>Returns elements found on a webpage using a Chrome debugger API.</li>
+<li>Takes a <code>selector</code> as input, which is a string representing an HTML or CSS selector.</li>
+<li>Uses <code>promisifyChrome</code> to send a command to the Chrome debugger to evaluate an expression.</li>
+<li>The expression uses <code>window.BackupPromise</code> to resolve a promise that returns an array of elements matching the selector.</li>
+<li>The function returns an object containing the node ID of the first matching element.</li>
+</ul>
+<h3>Express Router</h3>
+<ul>
+<li>Two routes are defined:
+<ul>
+<li><code>/session/:sessionId/element</code>: Handles a POST request to find a single element.</li>
+<li><code>/session/:sessionId/elements</code>: Handles a POST request to find multiple elements.</li>
+</ul></li>
+<li>Both routes call the <code>findElements</code> function with the request body as an argument, and call the <code>response</code> function to send the result back to the client.</li>
+</ul>
+<h3>Module Exports</h3>
+<ul>
+<li>The <code>findElements</code> function and the express router are exported as part of the module.</li>
+</ul>

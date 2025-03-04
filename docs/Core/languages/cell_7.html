@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>This code reads an HTML file, parses it, serializes it to XHTML, and then parses the XHTML string as an XML document using various Node.js modules. It then uses an XPath expression to select specific nodes from the XML document and logs the selected nodes to the console.</p>
 
 
 <pre><code>const fs = require('mz/fs');
@@ -18,3 +20,55 @@ const dom = require('xmldom').DOMParser;
 
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">const fs = require('mz/fs');
+const xpath = require('xpath');
+const parse5 = require('parse5');
+const xmlser = require('xmlserializer');
+const dom = require('xmldom').DOMParser;
+</code></pre>
+<p>This section imports various Node.js modules:</p>
+<ul>
+<li><code>fs</code> (mz/fs): A file system module for reading files.</li>
+<li><code>xpath</code>: A module for evaluating XPath expressions.</li>
+<li><code>parse5</code>: A parser for parsing HTML and XML documents.</li>
+<li><code>xmlser</code> (xmlserializer): A module for serializing XML documents to strings.</li>
+<li><code>dom</code> (xmldom): A module for parsing and manipulating XML documents.</li>
+</ul>
+<h3>Main Code Block</h3>
+<pre><code class="language-javascript">(async () =&gt; {
+    //... code...
+})();
+</code></pre>
+<p>This is an immediately invoked async function, which executes its contents as soon as it's defined.</p>
+<h3>Reading the HTML File</h3>
+<pre><code class="language-javascript">const html = await fs.readFile('./test.htm');
+</code></pre>
+<p>This line reads the contents of the file <code>test.htm</code> in the current directory and assigns it to the <code>html</code> variable.</p>
+<h3>Parsing the HTML Document</h3>
+<pre><code class="language-javascript">const document = parse5.parse(html.toString());
+</code></pre>
+<p>This line parses the HTML document using <code>parse5.parse()</code> and assigns the resulting document node to the <code>document</code> variable.</p>
+<h3>Serializing the Document to XHTML</h3>
+<pre><code class="language-javascript">const xhtml = xmlser.serializeToString(document);
+</code></pre>
+<p>This line serializes the parsed HTML document to an XHTML string using <code>xmlser.serializeToString()</code> and assigns it to the <code>xhtml</code> variable.</p>
+<h3>Parsing the XHTML String as an XML Document</h3>
+<pre><code class="language-javascript">const doc = new dom().parseFromString(xhtml);
+</code></pre>
+<p>This line parses the XHTML string as an XML document using <code>xmldom.DOMParser.parseFromString()</code> and assigns the resulting document node to the <code>doc</code> variable.</p>
+<h3>Evaluating XPath Expression</h3>
+<pre><code class="language-javascript">const select = xpath.useNamespaces({&quot;x&quot;: &quot;http://www.w3.org/1999/xhtml&quot;});
+const nodes = select(&quot;//x:a/@href&quot;, doc);
+</code></pre>
+<p>This code:</p>
+<ol>
+<li>Uses <code>xpath.useNamespaces()</code> to register a namespace with prefix <code>x</code> and URI <code>http://www.w3.org/1999/xhtml</code>.</li>
+<li>Evaluates an XPath expression <code>//x:a/@href</code> on the <code>doc</code> document node to select all <code>href</code> attributes of elements with tag name <code>a</code> from the XHTML namespace.</li>
+<li>Assigns the selected nodes to the <code>nodes</code> variable.</li>
+</ol>
+<h3>Logging the Selected Nodes</h3>
+<pre><code class="language-javascript">console.log(nodes);
+</code></pre>
+<p>This line logs the selected nodes to the console.</p>

@@ -1,3 +1,4 @@
+<p>The <code>shortest_path</code> function finds the shortest path between two nodes (<code>u</code> and <code>v</code>) in a graph <code>g</code> by performing a breadth-first search (BFS) traversal. It returns the path as a list of nodes if found, otherwise returns -1.</p>
 
 
 <pre><code>def shortest_path(g, u, v):
@@ -25,3 +26,41 @@ end = 'g'
 assert len(shortest_path(graph, start, end)) == 5
 print('All passed!')</code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Function: <code>shortest_path</code></h3>
+<h4>Description</h4>
+<p>Finds the shortest path between two nodes (<code>u</code> and <code>v</code>) in a graph <code>g</code>.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>g</code>: a dictionary representing the graph, where each key is a node and its value is a list of neighboring nodes.</li>
+<li><code>u</code>: the starting node.</li>
+<li><code>v</code>: the ending node.</li>
+</ul>
+<h4>Return Value</h4>
+<ul>
+<li>If a path from <code>u</code> to <code>v</code> is found, returns the path as a list of nodes.</li>
+<li>If no path is found, returns -1.</li>
+</ul>
+<h3>Algorithm</h3>
+<ol>
+<li>Initialize an empty set <code>visited</code> to keep track of visited nodes.</li>
+<li>Create a queue <code>q</code> and add the starting node <code>u</code> as the first path.</li>
+<li>While the queue is not empty:
+<ol>
+<li>Dequeue the next path.</li>
+<li>If the last node in the path is the destination <code>v</code>, return the path.</li>
+<li>Mark the last node as visited.</li>
+<li>For each neighbor of the last node:
+<ol>
+<li>If the neighbor has not been visited, create a new path by appending the neighbor to the current path and enqueue it.</li>
+</ol></li>
+</ol></li>
+<li>If the loop completes without finding a path, return -1.</li>
+</ol>
+<h3>Test Cases</h3>
+<p>The code includes three test cases:</p>
+<ol>
+<li>A graph with a self-loop (node 'a' is connected to itself).</li>
+<li>A graph with no connections between nodes 'a' and 'b'.</li>
+<li>A graph with multiple nodes and connections, and a path from 'a' to 'g' with a length of 5.</li>
+</ol>

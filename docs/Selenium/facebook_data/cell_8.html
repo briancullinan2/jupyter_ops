@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>This JavaScript code retrieves the difference between a user's Facebook friends and LinkedIn connections and sends the result or error to the client using the <code>getFriendsDiff()</code> function, which returns a promise that is then handled by the <code>.then()</code> and <code>.catch()</code> methods. If an error occurs, the <code>$$.sendError(e)</code> function is called to send an error message to the client, while successful results are sent to the client using the <code>$$.sendResult(diff)</code> function.</p>
 
 
 <pre><code>// How many facebook friends are also on linked in?  Do people still post contact information?
@@ -9,3 +11,29 @@ getFriendsDiff()
 
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Overview</h3>
+<p>This code snippet is written in JavaScript and appears to be a part of a larger application or script. It retrieves the difference between Facebook friends and LinkedIn connections, and then sends the result or an error to the client.</p>
+<h3>Code Sections</h3>
+<h4>1. Function Call</h4>
+<p>The code starts by calling the <code>getFriendsDiff()</code> function, which is assumed to be defined elsewhere in the codebase. This function is likely responsible for retrieving the difference between Facebook friends and LinkedIn connections.</p>
+<h4>2. Promise Chain</h4>
+<p>The <code>getFriendsDiff()</code> function returns a promise, which is then chained with two methods:</p>
+<ul>
+<li><code>.then()</code>: This method is called when the promise is resolved. In this case, it calls the <code>$$.sendResult(diff)</code> function, passing the resolved value (<code>diff</code>) as an argument. This function is likely responsible for sending the result to the client.</li>
+<li><code>.catch()</code>: This method is called when the promise is rejected (i.e., an error occurs). In this case, it calls the <code>$$.sendError(e)</code> function, passing the error object (<code>e</code>) as an argument. This function is likely responsible for sending an error message to the client.</li>
+</ul>
+<h4>3. Error Handling</h4>
+<p>If an error occurs during the execution of the <code>getFriendsDiff()</code> function, the <code>$$.sendError(e)</code> function is called to send an error message to the client.</p>
+<h4>Relevant Functions</h4>
+<ul>
+<li><code>getFriendsDiff()</code>: Retrieves the difference between Facebook friends and LinkedIn connections.</li>
+<li><code>$$.sendResult(diff)</code>: Sends the result to the client.</li>
+<li><code>$$.sendError(e)</code>: Sends an error message to the client.</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The <code>$</code> object is not defined in this code snippet and may be a part of a larger framework or library.</li>
+<li>The <code>getFriendsDiff()</code> function is not defined in this code snippet and is assumed to be defined elsewhere in the codebase.</li>
+<li>The code uses ES6 syntax (e.g., arrow functions, promises).</li>
+</ul>

@@ -1,3 +1,5 @@
+<p>Here's a summary of the code in two sentences:</p>
+<p>This JavaScript code imports necessary modules, sets environment variables, and defines test suites and individual tests using Mocha, including test setup and conditional execution. The tests cover listing files in a project directory, ignoring hidden directories for better performance, and verifying the presence of specific projects.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -31,3 +33,83 @@ if(typeof describe !== 'undefined') {
 }
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {
+    listInProject,
+    listProjects
+} = importer.import(['list project files', 'list all projects by name']);
+</code></pre>
+<ul>
+<li>Imports the <code>importer</code> module from a relative path (<code>../Core</code>).</li>
+<li>Uses the <code>importer</code> module to import two functions: <code>listInProject</code> and <code>listProjects</code>.</li>
+<li>Passes an array of function names to <code>importer.import()</code>.</li>
+</ul>
+<h4>Environment Variable</h4>
+<pre><code class="language-javascript">var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+</code></pre>
+<ul>
+<li>Sets the <code>PROFILE_PATH</code> variable to the value of one of the following environment variables:
+<ul>
+<li><code>HOME</code></li>
+<li><code>HOMEPATH</code></li>
+<li><code>USERPROFILE</code></li>
+</ul></li>
+</ul>
+<h4>Conditional Execution</h4>
+<pre><code class="language-javascript">if(typeof describe!== 'undefined') {
+    //...
+}
+</code></pre>
+<ul>
+<li>Checks if the <code>describe</code> variable is defined.</li>
+<li>If it is, executes the code block that follows.</li>
+</ul>
+<h4>Mocha Tests</h4>
+<pre><code class="language-javascript">describe('file system service', () =&gt; {
+    //...
+});
+</code></pre>
+<ul>
+<li>Defines a test suite using the <code>describe()</code> function.</li>
+<li>The test suite is named 'file system service'.</li>
+</ul>
+<h4>Test Setup</h4>
+<pre><code class="language-javascript">beforeEach(() =&gt; {
+    // intentionally left empty
+})
+</code></pre>
+<ul>
+<li>Defines a setup function using the <code>beforeEach()</code> function.</li>
+<li>The function is intentionally left empty.</li>
+</ul>
+<h4>Individual Tests</h4>
+<pre><code class="language-javascript">it('should list files quickly', () =&gt; {
+    //...
+});
+
+it('should ignore hidden directories for better performance', () =&gt; {
+    //...
+});
+</code></pre>
+<ul>
+<li>Defines two individual tests using the <code>it()</code> function.</li>
+<li>Each test has a descriptive name.</li>
+</ul>
+<h4>Test Logic</h4>
+<pre><code class="language-javascript">// Test 1: listing files
+var files = listInProject(PROFILE_PATH);
+console.log(files.length);
+assert(files.length &gt; 0);
+
+// Test 2: ignoring hidden directories
+var files = listProjects(PROFILE_PATH);
+console.log(files.portal);
+assert(files.jupytangular &amp;&amp; files.jupytangular.indexOf('jupytangular') &gt; -1
+        || files.jupytangular2 &amp;&amp; files.jupytangular2.indexOf('jupytangular2') &gt; -1, 'could not find own notebook project under the name jupytangular');
+</code></pre>
+<ul>
+<li>Test 1: lists files in the project directory using <code>listInProject()</code> and asserts that the list is not empty.</li>
+<li>Test 2: lists projects in the directory using <code>listProjects()</code> and asserts that a specific project is found.</li>
+</ul>

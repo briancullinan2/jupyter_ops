@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The code imports a module and a function (<code>getGist</code>) from it to read Gist files, and then uses conditional execution to call the <code>getGist</code> function with a specific Gist ID if a variable <code>$$</code> is defined. The result of the <code>getGist</code> function is sent using the <code>$$</code> object's <code>sendResult</code> method, and any errors are sent using the <code>sendError</code> method.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -11,3 +13,30 @@ if(typeof $$ !== 'undefined') {
 }
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+var getGist = importer.import('read gist files');
+</code></pre>
+<ul>
+<li>The code imports the <code>importer</code> module from a file located at <code>../Core</code>.</li>
+<li>The <code>importer</code> module is then used to import the <code>getGist</code> function, which is specifically designed to read Gist files.</li>
+</ul>
+<h4>Conditional Execution</h4>
+<pre><code class="language-javascript">if(typeof $$!== 'undefined') {
+    $$.async();
+    getGist('a572d0830ae72b962e12a57adaec7c52')
+       .then(r =&gt; $$.sendResult(r))
+       .catch(e =&gt; $$.sendError(e))
+}
+</code></pre>
+<ul>
+<li>The code checks if a variable named <code>$$</code> is defined. If it is, the following code is executed.</li>
+<li>The <code>$$</code> object's <code>async</code> method is called.</li>
+<li>The <code>getGist</code> function is called with a Gist ID of <code>'a572d0830ae72b962e12a57adaec7c52'</code> and returns a promise.</li>
+<li>The promise is handled using the <code>.then</code> and <code>.catch</code> methods:
+<ul>
+<li>If the promise is resolved, the result (<code>r</code>) is sent using the <code>$$</code> object's <code>sendResult</code> method.</li>
+<li>If the promise is rejected, the error (<code>e</code>) is sent using the <code>$$</code> object's <code>sendError</code> method.</li>
+</ul></li>
+</ul>

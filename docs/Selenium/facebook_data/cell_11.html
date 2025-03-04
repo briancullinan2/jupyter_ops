@@ -1,3 +1,5 @@
+<p>Here is a summary of the provided functions in one sentence:</p>
+<p>The code defines three functions: <code>getUninvited</code>, <code>clickInvite</code>, and <code>clickConnect</code>, which together automate the process of inviting individuals to a fundraiser event by identifying uninvited participants and simulating clicks on them.</p>
 
 
 <pre><code>
@@ -28,3 +30,27 @@ function clickConnect() {
 module.exports = clickInvite;
 </code></pre>
 
+<p><strong>Function Breakdown</strong></p>
+<h3>getUninvited()</h3>
+<ul>
+<li>Returns an array of XPath elements that contain the string &quot;Invite&quot; within an element with an action attribute containing &quot;fundraiser&quot; but do not contain an element with a tabindex attribute ending with &quot;-1&quot;.</li>
+<li>The function uses <code>getAllXPathBrowser</code> to retrieve the elements and <code>filter</code> to exclude the already invited individuals.</li>
+</ul>
+<h3>clickInvite()</h3>
+<ul>
+<li>Retrieves the uninvited individuals using <code>getUninvited()</code>.</li>
+<li>Scrolls a specific element to the bottom using <code>scrollTop</code>.</li>
+<li>Simulates a click on each uninvited individual with a 50ms delay between clicks.</li>
+<li>If there are still uninvited individuals after 5 seconds, recursively calls <code>clickInvite()</code>.</li>
+</ul>
+<h3>clickConnect()</h3>
+<ul>
+<li>Retrieves a button element with the text &quot;Connect&quot; using <code>getAllXPathBrowser</code>.</li>
+<li>If the button is found, simulates a click on it.</li>
+<li>If the button is present, recursively calls <code>clickConnect()</code> with a 1-second delay.</li>
+</ul>
+<h3>Exported Function</h3>
+<ul>
+<li>The <code>clickInvite</code> function is exported as the module's default export.</li>
+</ul>
+<p><strong>Note</strong>: These functions appear to be used in a web scraping or automation context, potentially for social media or event planning platforms. The <code>getAllXPathBrowser</code> function is not defined in this code snippet, but it is likely used to retrieve XPath elements from a web page using a browser.</p>

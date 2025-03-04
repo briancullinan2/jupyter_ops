@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code imports modules and functions from a parent directory, defines a function <code>testHtmlTree</code> to translate HTML into a tree-like structure using the <code>htmlToTree</code> function, and provides an example usage of the function by parsing HTML from a Google search page and logging the result to the console. The code also includes a conditional statement to check if the <code>$$</code> variable is defined, but no code is executed within the block.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -24,3 +26,53 @@ if(typeof $$ !== 'undefined') {
 }
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {htmlToTree} = importer.import('html to tree');
+</code></pre>
+<ul>
+<li>The <code>require</code> function is used to import modules in Node.js.</li>
+<li><code>../Core</code> is the path to a module named <code>Core</code> in the parent directory.</li>
+<li>The <code>importer.import</code> function is used to import a specific function from the <code>Core</code> module.</li>
+<li>The function being imported is named <code>htmlToTree</code> and is located in the <code>html to tree</code> module within the <code>Core</code> module.</li>
+</ul>
+<h3>Defining a Function</h3>
+<pre><code class="language-javascript">function testHtmlTree(page) {
+    var translated_back = htmlToTree(page);
+    return translated_back;
+}
+</code></pre>
+<ul>
+<li>A function named <code>testHtmlTree</code> is defined, which takes a <code>page</code> parameter.</li>
+<li>The function uses the <code>htmlToTree</code> function imported earlier to translate the input <code>page</code> into a tree-like structure.</li>
+<li>The result is stored in the <code>translated_back</code> variable and returned by the function.</li>
+</ul>
+<h3>Conditional Execution</h3>
+<pre><code class="language-javascript">if(typeof $$!== 'undefined') {
+    // code here
+}
+</code></pre>
+<ul>
+<li>An <code>if</code> statement is used to check if the <code>$$</code> variable is defined.</li>
+<li>If it is, the code inside the block will be executed.</li>
+</ul>
+<h3>Example Usage</h3>
+<pre><code class="language-javascript">// copied from Chrome Google search homepage
+var code = `&lt;div id=&quot;fakebox-container&quot;&gt;
+  &lt;div id=&quot;fakebox&quot;&gt;
+    &lt;div id=&quot;fakebox-search-icon&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;fakebox-text&quot;&gt;Search Google or type a URL&lt;/div&gt;
+    &lt;input id=&quot;fakebox-input&quot; autocomplete=&quot;off&quot; tabindex=&quot;-1&quot; type=&quot;url&quot; aria-hidden=&quot;true&quot;&gt;
+    &lt;div id=&quot;fakebox-cursor&quot;&gt;&lt;/div&gt;
+    &lt;button id=&quot;fakebox-microphone&quot; title=&quot;Search by voice&quot;&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;`
+var tree = testHtmlTree(code);
+console.log(tree);
+</code></pre>
+<ul>
+<li>A variable <code>code</code> is defined and assigned an HTML string.</li>
+<li>The <code>testHtmlTree</code> function is called with the <code>code</code> string as an argument, and the result is stored in the <code>tree</code> variable.</li>
+<li>The <code>tree</code> variable is then logged to the console using <code>console.log</code>.</li>
+</ul>

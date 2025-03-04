@@ -1,5 +1,26 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>This code uses the <code>wget</code> command to download a website's documentation section, including its dependencies, using a recursive approach to download only the required files. The code includes numerous options to customize the download process, such as avoiding overwrites and waiting between downloads to avoid overwhelming the server.</p>
 
 
 <pre><code>wget --mirror --level=2 --no-parent --convert-links --html-extension --no-host --no-clobber -N -c --accept-regex "/documentation/" --wait=1 --page-requisites https://www.excessiveplus.net/documentation
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<p>This code uses the <code>wget</code> command to download a website's documentation section. Here's a step-by-step explanation:</p>
+<ol>
+<li><code>wget</code>: The command to download the website using the <code>wget</code> utility.</li>
+<li><code>--mirror</code>: Download the website and its entire hierarchy, without removing any files.</li>
+<li><code>--level=2</code>: Recursively download only up to 2 levels of subdirectories.</li>
+<li><code>--no-parent</code>: Do not follow links to the parent directory.</li>
+<li><code>--convert-links</code>: Convert links in the documents to be relative, so they can be correctly viewed locally.</li>
+<li><code>--html-extension</code>: Give saved files an <code>.html</code> extension, even if they don't end in <code>.html</code>.</li>
+<li><code>--no-host</code>: Don't include the domain name in the saved file names.</li>
+<li><code>--no-clobber</code>: Don't overwrite any files that already exist.</li>
+<li><code>-N</code>: Save files in the current date format to avoid overwriting existing files.</li>
+<li><code>-c</code>: Continue downloading a partially-downloaded file.</li>
+<li><code>--accept-regex &quot;/documentation/&quot;</code>: Only download files that match the regular expression <code>/documentation/</code>, effectively downloading only the documentation section.</li>
+<li><code>--wait=1</code>: Wait 1 second between downloading each file to avoid overwhelming the server.</li>
+<li><code>--page-requisites</code>: Download all the necessary files for the initially retrieved HTML page, including images, CSS, scripts, etc.</li>
+<li><code>https://www.excessiveplus.net/documentation</code>: The URL of the website's documentation section to download.</li>
+</ol>
+<p>In summary, this code downloads the documentation section of the website <code>https://www.excessiveplus.net/documentation</code> and its dependencies, using a recursive approach to download only the required files.</p>

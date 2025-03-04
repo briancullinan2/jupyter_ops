@@ -1,4 +1,5 @@
-<p>This code snippet ensures a clean shutdown of all open browser windows or tabs associated with a WebDriver client object by first checking if the client object exists and then calling the <code>endAll()</code> method to terminate all sessions.</p>
+<p>Here is a 2-sentence summary of the code breakdown:</p>
+<p>The code requires two modules: <code>../Core</code> and <code>webdriverio</code>, and imports specific functions and constants from <code>../Core</code>. It defines a function <code>createWebdriverClient</code> that creates a WebdriverIO client configuration object with various settings and capabilities, including browser name, Chrome-specific options, and log level.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -79,10 +80,60 @@ function createWebdriverClient(host, port) {
 module.exports = createWebdriverClient;
 </code></pre>
 
-<p>This code snippet gracefully shuts down all open browser windows or tabs associated with a given <code>client</code> object.</p>
-<p>Here's a breakdown:</p>
+<p><strong>Code Breakdown</strong></p>
+<h3>Dependencies and Imports</h3>
 <ul>
-<li><strong><code>if(typeof client !== 'undefined')</code>:</strong> This condition checks if the <code>client</code> variable is defined and not <code>undefined</code>. This ensures the code only executes if a valid WebDriver client object exists.</li>
-<li><strong><code>client.endAll();</code>:</strong> This line calls the <code>endAll()</code> method on the <code>client</code> object. This method sends a signal to the WebDriver server to close all open browser windows or tabs associated with that client.</li>
+<li>The code requires two modules:
+<ul>
+<li><code>../Core</code>: a custom module containing utility functions</li>
+<li><code>webdriverio</code>: a Node.js driver for Selenium WebDriver</li>
+</ul></li>
+<li>It imports the following functions from the <code>../Core</code> module:
+<ul>
+<li><code>getSessions</code></li>
+<li><code>onlyOneWindow</code></li>
+<li><code>getAllSessionUrls</code></li>
+</ul></li>
+<li>It also defines a constant <code>MAX_SESSIONS</code> with a value of 4 (or 36 in a commented-out line)</li>
 </ul>
-<p><strong>In essence, this code snippet provides a clean way to terminate all WebDriver sessions associated with a specific client object.</strong></p>
+<h3>Function: createWebdriverClient</h3>
+<ul>
+<li>This function creates a WebdriverIO client configuration object</li>
+<li>It takes two arguments: <code>host</code> and <code>port</code>, which default to <code>localhost</code> and <code>4444</code> respectively</li>
+<li>The client configuration object has the following properties:
+<ul>
+<li><code>services</code>: an array of services to use (in this case, Selenium-Standalone and ChromeDriver)</li>
+<li><code>sync</code>: a boolean indicating whether the client should wait for the test to complete (set to <code>false</code>)</li>
+<li><code>debug</code>: a boolean indicating whether to enable debug logging (set to <code>false</code>)</li>
+<li><code>host</code> and <code>port</code>: the host and port to use for the client</li>
+<li><code>logLevel</code>: the log level to use (set to <code>silent</code>)</li>
+<li><code>baseUrl</code>: the base URL for the client (set to <code>https://webdriver.io</code>)</li>
+<li><code>pageLoadStrategy</code>: the page load strategy to use (set to <code>eager</code>)</li>
+<li><code>connectionRetryTimeout</code>: the timeout for retrying connections (set to <code>1000</code> ms)</li>
+<li><code>capabilities</code>: an object containing browser capabilities, including:
+<ul>
+<li><code>browserName</code>: the name of the browser to use (set to <code>chrome</code>)</li>
+<li><code>goog:chromeOptions</code>: an object containing Chrome-specific options
+<ul>
+<li><code>prefs</code>: an object containing Chrome preferences, including:
+<ul>
+<li><code>download.default_directory</code>: the directory to use for downloads (set to <code>/data/downloads</code>)</li>
+<li><code>profile.default_content_setting_values.notifications</code>: the notification setting for the profile (set to <code>2</code>)</li>
+<li><code>exited_cleanly</code>: a boolean indicating whether the browser should exit cleanly (set to <code>true</code>)</li>
+<li><code>exit_type</code>: the exit type to use (set to <code>None</code>)</li>
+</ul></li>
+<li><code>args</code>: an array of arguments to pass to the Chrome browser, including:
+<ul>
+<li><code>no-sandbox</code>: a flag indicating that the browser should not run in a sandboxed environment</li>
+<li><code>disable-session-crashed-bubble</code>: a flag indicating that the browser should not display a crashed session bubble</li>
+<li><code>disable-infobars</code>: a flag indicating that the browser should not display infobars</li>
+<li><code>new-window</code>: a flag indicating that the browser should open a new window</li>
+<li><code>disable-geolocation</code>: a flag indicating that the browser should not use geolocation</li>
+<li><code>disable-notifications</code>: a flag indicating that the browser should not display notifications</li>
+<li><code>show-saved-copy</code>: a flag indicating that the browser should show the saved copy of the page</li>
+<li><code>silent-debugger-extension-api</code>: a flag indicating that the browser should use the silent debugger extension API</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>

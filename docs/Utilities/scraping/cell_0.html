@@ -1,3 +1,5 @@
+<p>Here is a summary of the code breakdown in one or two sentences:</p>
+<p>This JavaScript code imports various modules and sets constants for a project directory, then defines two functions, <code>getLocations</code> and <code>getLocation</code>, which respectively retrieve a list of locations and extract specific data from each location's webpage. The <code>getLocation</code> function makes a GET request to a URL, extracts XPath expressions for elements containing day names, times, and deals, and then maps the results to an object with <code>dotw</code>, <code>time</code>, and <code>deals</code> properties.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -72,3 +74,90 @@ getLocations()
 
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Importing Modules and Setting Constants</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var util = require('util');
+var request = util.promisify(require('request'));
+var {JSDOM} = require('jsdom');
+var fs = require('fs');
+var path = require('path');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Collections/flagstaff-happy';
+</code></pre>
+<ul>
+<li>The code imports various modules, including a custom <code>Core</code> module, <code>util</code>, <code>request</code>, <code>jsdom</code>, <code>fs</code>, and <code>path</code>.</li>
+<li>It sets constants for the user's profile path and a project directory.</li>
+</ul>
+<h3>Defining Functions</h3>
+<pre><code class="language-javascript">var locations, getAllXPath;
+
+function getLocations() {
+    //...
+}
+
+function getLocation(l) {
+    //...
+}
+</code></pre>
+<ul>
+<li>Two functions are defined: <code>getLocations</code> and <code>getLocation</code>.</li>
+<li>The <code>locations</code> variable is declared, but not initialized.</li>
+</ul>
+<h3>getLocations Function</h3>
+<pre><code class="language-javascript">function getLocations() {
+    if(typeof locations!== 'undefined') {
+        return Promise.resolve(locations);
+    }
+    return request('https://web.archive.org/web/20160322001433/http://keepflaghappy.com/happy-hours/friday/')
+       .then(r =&gt; {
+            const getAllXPath = importer.import('all elements xpath from string')(r.body);
+            return getAllXPath([
+                '//a[contains(@href, &quot;by-location&quot;)]/@href',
+            ]);
+        })
+       .then(r =&gt; {
+            locations = r
+               .filter(l =&gt; l.match(/by-location\/[^#]+/ig))
+               .map(l =&gt; l.includes('archive.org')? l : 'https://web.archive.org' + l);
+            return locations;
+        });
+}
+</code></pre>
+<ul>
+<li>The <code>getLocations</code> function checks if the <code>locations</code> variable is already defined. If it is, it returns a resolved promise with the value of <code>locations</code>.</li>
+<li>If <code>locations</code> is not defined, it makes a GET request to a specific URL, extracts XPath expressions for links containing &quot;by-location&quot; in their href attributes, and then filters and maps the results to an array of URLs.</li>
+<li>The final URL is stored in the <code>locations</code> variable.</li>
+</ul>
+<h3>getLocation Function</h3>
+<pre><code class="language-javascript">function getLocation(l) {
+    console.log('Downloading'+ l);
+    return request(l)
+       .then(r =&gt; {
+            const getAllXPath = importer.import('all elements xpath from string')(r.body);
+            return getAllXPath([
+                '//h3[contains(., &quot;Mon&quot;) or contains(., &quot;Tue&quot;) or contains(., &quot;Wed&quot;) or contains(., &quot;Thu&quot;) or contains(., &quot;Fri&quot;) or contains(., &quot;Sat&quot;) or contains(., &quot;Sun&quot;)]',
+                {
+                    dotw: './text()',
+                    time: './following-sibling::p[count(./preceding-sibling::h3)=$i+1]//text()',
+                    deals: './following-sibling::ul[count(./preceding-sibling::h3)=$i+1]//text()'
+                }
+            ]);
+        })
+       .then(r =&gt; {
+            const happy = r.map(l =&gt; {
+                return {
+                    dotw: l.dotw,
+                    time: l.time,
+                    deals: l.deals.join('\n').trim().split(/\s*\n+\s*/ig)
+                };
+            });
+            //...
+        });
+}
+</code></pre>
+<ul>
+<li>The <code>getLocation</code> function makes a GET request to a specific URL, extracts XPath expressions for elements containing day names, times, and deals, and then maps the results to an object with <code>dotw</code>, <code>time</code>, and <code>deals</code> properties.</li>
+<li>The <code>happy</code> variable is an array of objects containing the extracted data.</li>
+</ul>

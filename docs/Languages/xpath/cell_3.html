@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>This code is an implementation of an XPath parser using the <code>ply</code> module, which defines the rules for parsing XPath expressions and creates an abstract syntax tree (AST) representation of the parsed expressions. The parser is composed of multiple grammar rules for basic expressions, path expressions, and paths, which are used to construct an AST representation of the parsed expressions.</p>
 
 
 <pre><code>"""XPath parsing rules.
@@ -353,3 +355,31 @@ def p_error(p):
     # However, stack trace should have enough information to identify the problem.
     raise RuntimeError("Syntax error at '%s'" % repr(p))</code></pre>
 
+<p><strong>Overview</strong></p>
+<p>This code is an implementation of an XPath parser using the <code>ply</code> module. It defines the rules for parsing XPath expressions and creates an abstract syntax tree (AST) representation of the parsed expressions.</p>
+<p><strong>Module Imports</strong></p>
+<p>The code imports the following modules:</p>
+<ul>
+<li><code>__future__.unicode_literals</code>: enables Unicode literals in Python 2.</li>
+<li><code>eulxml.xpath.ast</code>: provides the <code>ast</code> module for creating the abstract syntax tree representation of the parsed expressions.</li>
+<li><code>eulxml.xpath.lexrules</code>: provides the <code>tokens</code> module, which defines the tokens used in the parser.</li>
+</ul>
+<p><strong>Precedence Rules</strong></p>
+<p>The code defines the precedence rules for the parser using a tuple of tuples. The rules specify the operator precedence and associativity for each operator.</p>
+<p><strong>Grammar Rules</strong></p>
+<p>The code defines several grammar rules for the parser, which are used to parse XPath expressions. The rules are defined using the <code>p_</code> prefix and are grouped into three categories:</p>
+<ul>
+<li><strong>Basic Expressions</strong>: these rules parse basic expressions, such as <code>Expr</code>, <code>OR_OP</code>, <code>AND_OP</code>, etc. The <code>p_expr_boolean</code> function is used to parse boolean expressions, while the <code>p_expr_unary</code> function is used to parse unary expressions.</li>
+<li><strong>Path Expressions</strong>: these rules parse path expressions, such as <code>FilterExpr</code>, <code>RelativeLocationPath</code>, etc. The <code>p_path_expr_binary</code> function is used to parse binary path expressions, while the <code>p_path_expr_unary</code> function is used to parse unary path expressions.</li>
+<li><strong>Paths</strong>: these rules parse path expressions, such as <code>AbsoluteLocationPath</code>, <code>RelativeLocationPath</code>, etc. The <code>p_absolute_location_path_rootonly</code> function is used to parse absolute location paths, while the <code>p_absolute_location_path_subpath</code> function is used to parse subpaths.</li>
+</ul>
+<p><strong>AST Construction</strong></p>
+<p>The code uses the <code>ast</code> module to construct an abstract syntax tree (AST) representation of the parsed expressions. The AST nodes are created using the following functions:</p>
+<ul>
+<li><code>ast.BinaryExpression</code>: creates a binary expression node.</li>
+<li><code>ast.UnaryExpression</code>: creates a unary expression node.</li>
+<li><code>ast.AbsolutePath</code>: creates an absolute path node.</li>
+<li><code>p[0]</code>: assigns the parsed expression to the AST node.</li>
+</ul>
+<p><strong>Token Definitions</strong></p>
+<p>The code defines several tokens, such as <code>PATH_SEP</code>, <code>OR_OP</code>, <code>AND_OP</code>, etc., which are used in the parser rules. These tokens are imported from the <code>eulxml.xpath.lexrules</code> module.</p>

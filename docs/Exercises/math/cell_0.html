@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>The code generates all possible permutations of an input array and combines them with operator combinations to create mathematical equations in both standard and nested formats. It uses functions such as <code>spliceClone</code>, <code>permute</code>, <code>solve</code>, and <code>reduce</code> to generate and evaluate these equations, storing the results in variables like <code>permutations</code>, <code>operators</code>, and <code>equations</code>.</p>
 
 
 <pre><code>// permutation
@@ -79,3 +81,58 @@ for(var e of equations) { // .filter(e => e[12] === 24)) {
 }
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Function: <code>spliceClone(arr, i)</code></h3>
+<ul>
+<li>Creates a clone of the input array <code>arr</code> by splicing a single element at index <code>i</code> and concatenating the rest of the array.</li>
+<li>Returns a new array with the spliced element removed.</li>
+</ul>
+<h3>Function: <code>permute(array)</code></h3>
+<ul>
+<li>Generates all permutations of the input array using a recursive approach.</li>
+<li>Works by:
+<ol>
+<li>Removing each element from the array one by one.</li>
+<li>Recursively generating permutations of the remaining array.</li>
+<li>Combining the removed element with each permutation of the remaining array.</li>
+</ol></li>
+</ul>
+<h3>Variable: <code>permutations</code></h3>
+<ul>
+<li>Stores all permutations of the input array <code>[1, 3, 4, 6]</code>.</li>
+<li>Only includes permutations of length 4.</li>
+</ul>
+<h3>Function: <code>solve(op, p)</code></h3>
+<ul>
+<li>Evaluates a simple mathematical expression using the provided operator <code>op</code> and operands <code>p</code>.</li>
+<li>Supports basic arithmetic operators (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>^</code>).</li>
+</ul>
+<h3>Variable: <code>operators</code></h3>
+<ul>
+<li>Stores all possible operator combinations, including those where operators are nested.</li>
+<li>Filters to only include combinations with exactly 3 elements.</li>
+</ul>
+<h3>Function: <code>reduce</code> and <code>concat</code> Used in <code>operators</code> Generation</h3>
+<ul>
+<li>Generates nested operator combinations by mapping over the <code>op</code> array and combining operators in all possible ways.</li>
+<li>Uses <code>concat</code> to flatten the nested arrays.</li>
+</ul>
+<h3>Variable: <code>equations</code></h3>
+<ul>
+<li>Stores all possible equations generated using permutations and operator combinations.</li>
+<li>Includes equations in both standard and nested formats.</li>
+</ul>
+<h3>Function: <code>reduce</code> Used in <code>equations</code> Generation</h3>
+<ul>
+<li>Generates equations by mapping over the <code>permutations</code> array and combining permutations with operator combinations.</li>
+<li>Uses <code>concat</code> to flatten the nested arrays.</li>
+</ul>
+<h3>Equation Generation</h3>
+<ul>
+<li>Creates two types of equations:
+<ol>
+<li>Standard format: <code>a op1 b op2 c op3 d = result</code></li>
+<li>Nested format: <code>op1(a, op2(b, c, d)) = result</code></li>
+</ol></li>
+<li>Evaluates the equation using the <code>solve</code> function.</li>
+</ul>

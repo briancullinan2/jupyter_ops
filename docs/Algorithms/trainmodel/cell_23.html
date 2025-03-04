@@ -1,3 +1,4 @@
+<p>The <code>ef</code> function preprocesses an input image by converting it to grayscale and normalizing pixel values to the range [0, 1]. It returns a preprocessed image feature with shape (1, 48, 48, 1).</p>
 
 
 <pre><code>def ef(image):
@@ -7,3 +8,21 @@
     return feature/255.0
     </code></pre>
 
+<h2>Function: ef</h2>
+<h3>Purpose</h3>
+<p>Preprocesses an image by converting it to grayscale and normalizing pixel values.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>image</code>: The input image to be preprocessed.</li>
+</ul>
+<h3>Returns</h3>
+<ul>
+<li>A preprocessed image feature with shape (1, 48, 48, 1) and pixel values in the range [0, 1].</li>
+</ul>
+<h3>Implementation Details</h3>
+<ol>
+<li>Loads the image using <code>load_img</code> function, converting it to grayscale.</li>
+<li>Converts the image to a NumPy array.</li>
+<li>Reshapes the array to a 4D tensor with shape (1, 48, 48, 1).</li>
+<li>Normalizes the pixel values to the range [0, 1] by dividing by 255.0.</li>
+</ol>

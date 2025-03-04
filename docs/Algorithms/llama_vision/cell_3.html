@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary of the <code>llmVoice</code> function:<br />
+The <code>llmVoice</code> function generates voice output from a given text prompt using LLaMA, utilizing an optional pre-existing session or creating a new one if necessary. It exports the function as a module, allowing for use in other JavaScript files, and returns the resulting voice output.</p>
 
 
 <pre><code>
@@ -23,3 +25,20 @@ module.exports = llmVoice
 
 </code></pre>
 
+<h3>Function Description</h3>
+<p><code>llmVoice</code> is an asynchronous function that generates voice output from a given text prompt using LLaMA.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>prompt</code>: The text to be converted to voice output.</li>
+<li><code>session2</code>: The LLaMA session to use for voice generation. If <code>session2</code> is not provided, a new session will be created.</li>
+</ul>
+<h3>Function Flow</h3>
+<ol>
+<li>If <code>session2</code> is not provided, a new LLaMA session is created using the <code>createSession</code> function from the <code>llama vision</code> module.</li>
+<li>The <code>prompt</code> is sent to the LLaMA session using the <code>prompt</code> method.</li>
+<li>The <code>temperature</code>, <code>repetition_penalty</code>, and <code>onTextChunk</code> options are passed to the <code>prompt</code> method to customize the voice output.</li>
+<li>If the current session is the same as the created session, the chat history is reset using the <code>setChatHistory</code> method.</li>
+<li>The resulting voice output is returned.</li>
+</ol>
+<h3>Module Export</h3>
+<p>The <code>llmVoice</code> function is exported as a module, making it available for use in other JavaScript files.</p>

@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The <code>max_profit</code> function calculates the maximum possible profit from a list of stock prices by iterating through the list and adding up the differences between each pair of consecutive prices. The function returns 0 as the total profit if the input list is empty, contains only one price, or has prices in descending order.</p>
 
 
 <pre><code>def max_profit(prices):
@@ -14,3 +16,60 @@ assert max_profit([1,6,5,2,8,1,4,5]) == 15
 assert max_profit(range(100, 0, -1)) == 0
 print('All passed')</code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Function Definition</h4>
+<pre><code class="language-python">def max_profit(prices):
+</code></pre>
+<ul>
+<li>This line defines a function named <code>max_profit</code> that takes one argument: <code>prices</code>.</li>
+</ul>
+<h4>Function Documentation</h4>
+<pre><code class="language-python">&quot;&quot;&quot;Find maximum profit possible.&quot;&quot;&quot;
+</code></pre>
+<ul>
+<li>This is a docstring that provides a brief description of the function's purpose.</li>
+</ul>
+<h4>Variable Initialization</h4>
+<pre><code class="language-python">profit = 0
+</code></pre>
+<ul>
+<li>This line initializes a variable named <code>profit</code> and sets its value to 0. This variable will be used to store the total profit.</li>
+</ul>
+<h4>Loop Through Prices</h4>
+<pre><code class="language-python">for i in range(len(prices)-1):
+</code></pre>
+<ul>
+<li>This line begins a loop that will iterate over the indices of the <code>prices</code> list.</li>
+<li>The <code>-1</code> is used to prevent an <code>IndexError</code> when accessing <code>prices[i+1]</code>.</li>
+</ul>
+<h4>Calculate Profit</h4>
+<pre><code class="language-python">if prices[i+1] &gt; prices[i]:
+    profit += prices[i+1] - prices[i]
+</code></pre>
+<ul>
+<li>Within the loop, this line checks if the price at the next index (<code>prices[i+1]</code>) is greater than the current price (<code>prices[i]</code>).</li>
+<li>If the condition is true, it calculates the profit by subtracting the current price from the next price and adds it to the total profit.</li>
+</ul>
+<h4>Return Total Profit</h4>
+<pre><code class="language-python">return profit
+</code></pre>
+<ul>
+<li>After the loop completes, this line returns the total profit.</li>
+</ul>
+<h4>Test Cases</h4>
+<pre><code class="language-python">assert max_profit([]) == 0
+assert max_profit([100]) == 0
+assert max_profit([1,6,5,2,8,1,4,5]) == 15
+assert max_profit(range(100, 0, -1)) == 0
+print('All passed')
+</code></pre>
+<ul>
+<li>These lines test the <code>max_profit</code> function with different input scenarios:
+<ul>
+<li>An empty list.</li>
+<li>A list with a single price.</li>
+<li>A list with multiple prices.</li>
+<li>A list with prices in descending order.</li>
+</ul></li>
+<li>If all assertions pass, the message &quot;All passed&quot; is printed.</li>
+</ul>

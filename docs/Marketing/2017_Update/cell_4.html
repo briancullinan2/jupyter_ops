@@ -1,3 +1,5 @@
+<p>Here's a summary of the Graphviz DOT language breakdown in two sentences:</p>
+<p>The Graphviz DOT language is used to create graphical representations of nodes and edges, allowing for the definition of nodes, edges, clusters, and edge routing. The language provides various attributes for styling and appearance, including font, color, and style, to customize the look of the graph, as demonstrated in an example graph representing an Angular 2 application architecture.</p>
 
 
 <pre><code>%%
@@ -107,3 +109,36 @@ apply
 }
 </code></pre>
 
+<p><strong>Graphviz DOT Language Breakdown</strong></p>
+<p>This code is written in the Graphviz DOT language, used to create graphical representations of nodes and edges.</p>
+<h3>Code Structure</h3>
+<ul>
+<li>The code starts with a <code>digraph</code> statement, defining a directed graph.</li>
+<li>The graph has several subgraphs, each representing a cluster of nodes and edges.</li>
+<li>Each subgraph is defined using the <code>subgraph</code> statement, and is given a label using the <code>label</code> attribute.</li>
+</ul>
+<h3>Node and Edge Definition</h3>
+<ul>
+<li>Nodes are defined using the <code>node</code> statement, and can have shape, label, and other attributes.</li>
+<li>Edges are defined using the <code>edge</code> statement, and can have attributes such as label, color, and style.</li>
+<li>Edges can also be labeled using the <code>label</code> attribute.</li>
+</ul>
+<h3>Clusters</h3>
+<ul>
+<li>Clusters are used to group nodes and edges together.</li>
+<li>Clusters are defined using the <code>subgraph</code> statement, and can have a label using the <code>label</code> attribute.</li>
+<li>Clusters can be used to create hierarchical structures.</li>
+</ul>
+<h3>Edge Routing</h3>
+<ul>
+<li>Edge routing is used to specify the flow of edges between nodes.</li>
+<li>The <code>rank</code> attribute is used to specify the rank of nodes in a cluster.</li>
+<li>The <code>dir</code> attribute is used to specify the direction of an edge.</li>
+</ul>
+<h3>Style and Appearance</h3>
+<ul>
+<li>The <code>fontname</code>, <code>fontsize</code>, and <code>fontcolor</code> attributes are used to specify the style and appearance of nodes and edges.</li>
+<li>The <code>style</code> attribute is used to specify the style of edges (e.g. <code>invisible</code>, <code>solid</code>, etc.).</li>
+</ul>
+<h3>Example Graph</h3>
+<p>This code generates a graph representing the architecture of an Angular 2 application, with clusters for the web browser, Angular components, developer tools, and AWS.</p>

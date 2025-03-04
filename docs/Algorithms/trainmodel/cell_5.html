@@ -1,5 +1,27 @@
+<p>Here is a summary in two sentences:</p>
+<p>An empty DataFrame named <code>test</code> is created using pandas. Data is then assigned to two columns, <code>image</code> and <code>label</code>, from the results of the <code>createdataframe</code> function called with the <code>TEST_DIR</code> argument.</p>
 
 
 <pre><code>test = pd.DataFrame()
 test['image'], test['label'] = createdataframe(TEST_DIR)</code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Importing Libraries</h3>
+<p>The code snippet assumes that the pandas library (<code>pd</code>) has been imported.</p>
+<h3>Creating an Empty DataFrame</h3>
+<pre><code class="language-python">test = pd.DataFrame()
+</code></pre>
+<ul>
+<li>Creates an empty DataFrame named <code>test</code>.</li>
+</ul>
+<h3>Assigning Data to Columns</h3>
+<pre><code class="language-python">test['image'], test['label'] = createdataframe(TEST_DIR)
+</code></pre>
+<ul>
+<li>Calls the <code>createdataframe</code> function with the <code>TEST_DIR</code> argument.</li>
+<li>Assigns the returned values to two columns in the <code>test</code> DataFrame:
+<ul>
+<li><code>test['image']</code>: the first returned value from <code>createdataframe</code>.</li>
+<li><code>test['label']</code>: the second returned value from <code>createdataframe</code>.</li>
+</ul></li>
+</ul>

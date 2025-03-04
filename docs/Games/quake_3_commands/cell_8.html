@@ -1,3 +1,7 @@
+<p>Here is a one-sentence summary:</p>
+<p>This collection of batch scripts and commands is used to preprocess and convert Quake 2 maps, including converting <code>.bsp</code> and <code>.md2</code> files, normalizing vertices, and compiling hinted maps on both Windows and macOS platforms.</p>
+<p>Alternatively, if you'd like a two-sentence summary, here is one:</p>
+<p>The provided code consists of a series of batch scripts and commands designed to preprocess and convert Quake 2 maps, including Windows and macOS versions. These scripts handle tasks such as converting <code>.bsp</code> and <code>.md2</code> files, normalizing vertices, and compiling hinted maps, all essential steps in preparing Quake 2 maps for use.</p>
 
 
 <pre><code>
@@ -55,3 +59,79 @@ popd
 
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Overview</h3>
+<p>The provided code is a collection of batch scripts and commands used to preprocess and convert Quake 2 maps. It appears to be written for both Windows and macOS platforms.</p>
+<h3>Commands</h3>
+<h4>Windows</h4>
+<ol>
+<li>The first command uses <code>mbspc.exe</code> to convert <code>.bsp</code> files:
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>for /r %%v in (*.bsp) do (<br />
+cd &quot;%%~dpv&quot;<br />
+&quot;Z:\planet_quake_data\tools\mbspc.exe&quot; -bsp2map &quot;%%~nv.bsp&quot;)</p>
+<pre><code>   This loop iterates over all `.bsp` files in the current directory and its subdirectories.
+
+2. The second command uses `modelconv.exe` to convert `.md2` files:
+   ```bash
+for /r %%v in (*.md2) do &quot;Z:\planet_quake_data\tools\qwalk\modelconv.exe&quot; -i &quot;%%v&quot; &quot;%%~dpv%%~nv.md3&quot;
+</code></pre>
+<p>This loop iterates over all <code>.md2</code> files in the current directory and its subdirectories.</p>
+<ol start="3">
+<li>The third command uses <code>q3map2</code> to convert <code>.bsp</code> files:
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -convert -format map ~/planet_quake_data/quake3-baseq3/pak0.pk3dir/maps/q3tourney6.bsp</p>
+<pre><code>   This command converts a single `.bsp` file.
+
+4. The fourth and fifth commands use `q3map2` to convert `.bsp` files and normalize their vertices:
+   ```bash
+for i in $(find &quot;$(pwd -P)&quot; -iname '*.bsp'); \
+do if [! -f &quot;${i%.*}.map&quot; ]; \
+then pushd $(dirname &quot;$i&quot;); \
+/Users/briancullinan/netradiant-custom/tools/mbspc/build/macosx/mbspc -bsp2map $(basename &quot;$i&quot;); \
+popd; \
+fi; \
+done;
+
+# normalize brushes verteces using q3map2
+for i in $(find &quot;$(pwd -P)&quot; -iname '*.bsp'); \
+do if [! -f &quot;${i%.*}_converted.map&quot; ]; \
+then pushd $(dirname &quot;$i&quot;); \
+/Applications/NetRadiant.app/Contents/MacOS/install/q3map2.bin -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -convert -format map -readmap $(basename &quot;${i%.*}.map&quot;)
+popd; \
+fi; \
+done;
+</code></pre>
+<p>These loops iterate over all <code>.bsp</code> files in the current directory and its subdirectories, convert them, and then normalize their vertices.</p>
+<h4>macOS</h4>
+<p>The remaining commands are for macOS and appear to be performing similar operations to the Windows commands:</p>
+<ol>
+<li>The first command uses <code>mbspc</code> to convert <code>.bsp</code> files:
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>i=&quot;/Users/briancullinan/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base2.map&quot;; <br />
+pushd $(dirname &quot;$i&quot;); <br />
+/Users/briancullinan/planet_quake_data/tools/mbspc/build/macosx/mbspc -bsp2map $(basename &quot;${i%.*}.bsp&quot;); \</p>
+<pre><code>   This command converts a single `.bsp` file.
+
+2. The second command uses `q3map2` to convert `.bsp` files:
+   ```bash
+/Applications/GtkRadiant.app/Contents/MacOS/install/q3map2.bin -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -convert -format map -readmap $(basename &quot;${i%.*}.map&quot;);
+</code></pre>
+<p>This command converts a single <code>.bsp</code> file.</p>
+<ol start="3">
+<li>The third command uses <code>npm</code> to import and process the converted map:
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>pushd /Users/briancullinan/jupyter_ops/; <br />
+npm run import &quot;convert quake 2 map&quot; -- &quot;['${i%.<em>}_converted.map']&quot;; <br />
+npm run import &quot;split map hints&quot; -- &quot;['${i%.</em>}_converted.map']&quot;;</p>
+<pre><code>   This command imports and processes the converted map.
+
+4. The final command uses `q3map2` to compile hinted maps:
+   ```bash
+/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -meta _keeplights &quot;${i%.*}-a.map&quot;;
+</code></pre>
+<p>This command compiles a hinted map.</p>

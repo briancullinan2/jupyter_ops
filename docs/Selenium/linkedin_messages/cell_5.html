@@ -1,3 +1,5 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>The code imports a module and a specific function named <code>scrapeLinkedInThreads</code>, and then executes this function asynchronously using a promise chain to handle both successful and failed results. The <code>scrapeLinkedInThreads</code> function returns a promise that is resolved either by sending the result with <code>sendResult</code> or by sending an error with <code>sendError</code> if it fails.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -9,3 +11,16 @@ scrapeLinkedInThreads()
     .catch(e => $$.sendError(e));
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<ul>
+<li><code>var importer = require('../Core');</code>: Imports a module located at <code>../Core</code> and assigns it to the <code>importer</code> variable.</li>
+<li><code>var scrapeLinkedInThreads = importer.import('scrape linkedin threads')</code>: Imports a specific function or module named <code>scrapelinkedin threads</code> from the <code>importer</code> module and assigns it to the <code>scrapeLinkedInThreads</code> variable.</li>
+</ul>
+<h3>Executing the <code>scrapeLinkedInThreads</code> Function</h3>
+<ul>
+<li><code>$$.async()</code>: Starts an asynchronous operation (purpose unclear without context).</li>
+<li><code>scrapeLinkedInThreads()</code>: Executes the <code>scrapeLinkedInThreads</code> function, which is expected to return a promise.</li>
+<li><code>.then(r =&gt; $$.sendResult(r))</code>: If the promise is resolved, calls the <code>sendResult</code> function with the resolved result (<code>r</code>) as an argument.</li>
+<li><code>.catch(e =&gt; $$.sendError(e))</code>: If the promise is rejected, calls the <code>sendError</code> function with the rejected error (<code>e</code>) as an argument.</li>
+</ul>

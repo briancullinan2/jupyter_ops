@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary:</p>
+<p>This code imports a module and function using the <code>require</code> and <code>import</code> functions, and then uses the imported <code>runSeleniumCell</code> function to initiate an asynchronous operation to download passwords from Google. The code uses promise chaining with <code>then</code> and <code>catch</code> methods to handle the result and any errors that may occur during the operation.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -11,3 +13,38 @@ runSeleniumCell('download passwords from google')
 
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+</code></pre>
+<ul>
+<li>The <code>require</code> function is used to import a module from a separate file (<code>../Core</code>).</li>
+<li>The <code>importer</code> object has an <code>import</code> method, which is used to import a specific function or module from the imported module (<code>selenium cell</code>).</li>
+<li>The <code>runSeleniumCell</code> variable now holds a reference to the imported function.</li>
+</ul>
+<h4>Initializing Async Function</h4>
+<pre><code class="language-javascript">$$.async();
+</code></pre>
+<ul>
+<li>The <code>$$.async()</code> function is called to initiate an asynchronous operation.</li>
+</ul>
+<h4>Running Selenium Cell</h4>
+<pre><code class="language-javascript">runSeleniumCell('download passwords from google')
+   .then(downloadGooglePasswords =&gt; downloadGooglePasswords())
+   .then(r =&gt; $$.sendResult(r))
+   .catch(e =&gt; $$.sendError(e));
+</code></pre>
+<ul>
+<li>The <code>runSeleniumCell</code> function is called with the argument <code>'download passwords from google'</code>.</li>
+<li>The function returns a promise, which is chained with <code>then</code> and <code>catch</code> methods.</li>
+<li>The <code>then</code> methods specify the actions to be taken when the promise is resolved:
+<ul>
+<li>First <code>then</code> method calls the <code>downloadGooglePasswords</code> function and returns its result.</li>
+<li>Second <code>then</code> method calls the <code>$$.sendResult</code> function with the result as an argument.</li>
+</ul></li>
+<li>The <code>catch</code> method specifies the action to be taken when the promise is rejected:
+<ul>
+<li>It calls the <code>$$.sendError</code> function with the error as an argument.</li>
+</ul></li>
+</ul>

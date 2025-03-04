@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary of the code:</p>
+<p>This code loads an image using OpenCV, makes a prediction on it using a model, and prints the predicted label. The image is then displayed using Matplotlib, reshaped to a 48x48 matrix and mapped to grayscale colors.</p>
 
 
 <pre><code>image = 'images/train/sad/42.jpg'
@@ -8,3 +10,37 @@ pred_label = label[pred.argmax()]
 print("model prediction is ",pred_label)
 plt.imshow(img.reshape(48,48),cmap='gray')</code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Modules (Assumed)</h4>
+<pre><code class="language-python">import cv2 as ef  # Assuming 'ef' is an alias for OpenCV
+import matplotlib.pyplot as plt
+</code></pre>
+<h4>Code</h4>
+<pre><code class="language-python"># Load image from file
+image = 'images/train/sad/42.jpg'
+
+# Print original image label
+print(&quot;original image is of sad&quot;)
+
+# Load image using OpenCV
+img = ef.imread(image)
+
+# Make prediction using a model
+pred = model.predict(img)
+
+# Get predicted label
+pred_label = label[pred.argmax()]
+
+# Print predicted label
+print(&quot;model prediction is &quot;, pred_label)
+
+# Display image using Matplotlib
+plt.imshow(img.reshape(48,48), cmap='gray')
+</code></pre>
+<h3>Notes</h3>
+<ul>
+<li>The image is loaded using OpenCV's <code>imread</code> function.</li>
+<li>The model's prediction is made on the original image.</li>
+<li>The predicted label is obtained using the <code>argmax</code> method on the prediction output.</li>
+<li>The image is displayed using Matplotlib's <code>imshow</code> function, reshaped to a 48x48 matrix and with grayscale color mapping.</li>
+</ul>

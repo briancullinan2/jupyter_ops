@@ -1,3 +1,5 @@
+<p>Here is a summary of the CSS code in two sentences:</p>
+<p>The CSS code sets font styles for text and code cells, using 'Roboto' as the primary font for text cells and 'Roboto Mono' for code cells, both with a font size and line height of 18 pixels. This overrides any other line height styles to maintain consistency across the cells.</p>
 
 
 <pre><code>
@@ -22,3 +24,35 @@ div.terminal-app .terminal {
 
 </code></pre>
 
+<h3>Breakdown of CSS Code</h3>
+<h4>Font Styles for Text Cells</h4>
+<pre><code class="language-css">div.text_cell,
+div.text_cell_render pre,
+div.text_cell_render {
+  font-family: 'Roboto', Menlo, Monaco, 'Courier New', monospace;
+  font-size: 18px;
+  line-height: 18px!important;
+}
+</code></pre>
+<ul>
+<li>Sets the font family for text cells to 'Roboto' as the primary font, falling back to Menlo, Monaco, 'Courier New', and monospace if 'Roboto' is not available.</li>
+<li>Sets the font size to 18 pixels.</li>
+<li>Sets the line height to 18 pixels, overriding any other line height styles.</li>
+</ul>
+<h4>Font Styles for Code Cells</h4>
+<pre><code class="language-css">div.cell.text_cell.CodeMirror,
+div.cell.text_cell.CodeMirror pre,
+div.CodeMirror pre,
+div.CodeMirror-dialog,
+div.CodeMirror-dialog.CodeMirror-search-field,
+div.terminal-app.terminal {
+  font-family: 'Roboto Mono';
+  font-size: 18px;
+  line-height: 18px!important;
+}
+</code></pre>
+<ul>
+<li>Sets the font family for code cells to 'Roboto Mono' for a monospaced font.</li>
+<li>Sets the font size to 18 pixels.</li>
+<li>Sets the line height to 18 pixels, overriding any other line height styles.</li>
+</ul>

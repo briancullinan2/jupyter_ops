@@ -1,4 +1,5 @@
-<p>The code defines two asynchronous functions, <code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code>, that interact with a Large Language Model (LLM) to summarize and categorize user input. These functions are exported from the module, making them available for use in other parts of the application.</p>
+<p>Here's a two-sentence summary of the code:</p>
+<p>The code defines two asynchronous functions, <code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code>, which interact with a Large Language Model (LLM) to summarize and categorize input queries. These functions create an LLM session, prepend a prompt to the input query, log the user query and AI response, and return the LLM's response as a trimmed string.</p>
 
 
 <pre><code>
@@ -34,22 +35,28 @@ module.exports = {
 
 <h2>Code Breakdown</h2>
 <h3>Overview</h3>
-<p>The code defines two asynchronous functions <code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code> that interact with an LLM (Large Language Model) using the <code>llmPrompt</code> function. The functions export two methods that can be used to summarize and categorize user input.</p>
-<h3>askLlamaToSummerize Function</h3>
+<p>The code defines two asynchronous functions, <code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code>, which interact with a Large Language Model (LLM) using the <code>llmPrompt</code> function. The functions are designed to summarize and categorize input queries.</p>
+<h3>Function 1: <code>askLlamaToSummerize</code></h3>
 <ul>
-<li>Takes a <code>query</code> parameter as input, which is the text to be summarized.</li>
-<li>Creates a prompt by adding a request to summarize the query into one or two sentences.</li>
-<li>Logs the user's prompt to the console.</li>
-<li>Sends the prompt to the LLM using <code>llmPrompt</code> and logs the AI's response to the console.</li>
-<li>Returns the AI's response with leading/trailing whitespace removed.</li>
+<li>Takes a <code>query</code> string as input</li>
+<li>Creates an LLMS session using <code>importer.import('create llm session')</code></li>
+<li>Prepends a prompt to the input query to ask the LLM to summarize it in one or two sentences</li>
+<li>Logs the user query and the AI response to the console</li>
+<li>Returns the LLM's response, trimmed of any whitespace</li>
 </ul>
-<h3>askLlamaToGeneralize Function</h3>
+<h3>Function 2: <code>askLlamaToGeneralize</code></h3>
 <ul>
-<li>Takes a <code>query</code> parameter as input, which is the text to be categorized.</li>
-<li>Creates a prompt by adding a request to categorize the query in two or three words and return only the category.</li>
-<li>Logs the user's prompt to the console.</li>
-<li>Sends the prompt to the LLM using <code>llmPrompt</code> and logs the AI's response to the console.</li>
-<li>Returns the AI's response with leading/trailing whitespace removed.</li>
+<li>Takes a <code>query</code> string as input</li>
+<li>Creates an LLMS session using <code>importer.import('create llm session')</code></li>
+<li>Prepends a prompt to the input query to ask the LLM to categorize it in two or three words</li>
+<li>Logs the user query and the AI response to the console</li>
+<li>Returns the LLM's response, trimmed of any whitespace</li>
 </ul>
 <h3>Module Exports</h3>
-<p>The code exports an object with the two functions <code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code>, making them available for use in other modules.</p>
+<p>The code exports both functions as a module, allowing them to be imported and used by other parts of the application.</p>
+<h3>Assumptions</h3>
+<ul>
+<li>The <code>importer</code> object and <code>llmPrompt</code> function are defined elsewhere in the codebase.</li>
+<li>The <code>llmPrompt</code> function is asynchronous and returns a promise that resolves to the LLM's response.</li>
+<li>The <code>importer</code> object's <code>import</code> method is asynchronous and returns a promise that resolves to an object with an <code>llmPrompt</code> property.</li>
+</ul>

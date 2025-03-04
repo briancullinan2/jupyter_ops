@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary of the <code>merge(a, b)</code> function:</p>
+<p>The <code>merge(a, b)</code> function merges two sorted lists <code>a</code> and <code>b</code> in descending order into a single list, with a time complexity of O(n log n). It does this using a list comprehension that pops the largest element from either list at each iteration, as implemented by <code>return [max(a, b).pop(0) for _ in a+b]</code>.</p>
 
 
 <pre><code>def merge(a, b):
@@ -9,3 +11,25 @@ assert merge([1], [0]) == [1,0]
 assert merge([7,5,1], [2]) == [7,5,2,1]
 print('All passed!')</code></pre>
 
+<h3>Function: <code>merge(a, b)</code></h3>
+<h4>Purpose</h4>
+<p>Merge two lists <code>a</code> and <code>b</code>, each sorted in descending order, into a single list.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>a</code> (list): First list to merge, sorted in descending order.</li>
+<li><code>b</code> (list): Second list to merge, sorted in descending order.</li>
+</ul>
+<h4>Return Value</h4>
+<p>A new list containing the merged elements in descending order.</p>
+<h4>Implementation</h4>
+<pre><code class="language-python">return [max(a, b).pop(0) for _ in a+b]
+</code></pre>
+<p>This implementation uses a list comprehension to create a new list by popping the largest element from either <code>a</code> or <code>b</code> (determined by <code>max(a, b)</code>) at each iteration.</p>
+<h4>Example Use Cases</h4>
+<ul>
+<li><code>merge([], [])</code>: Returns an empty list.</li>
+<li><code>merge([1], [0])</code>: Returns <code>[1, 0]</code>.</li>
+<li><code>merge([7, 5, 1], [2])</code>: Returns <code>[7, 5, 2, 1]</code>.</li>
+</ul>
+<h4>Note</h4>
+<p>This implementation has a time complexity of O(n log n) due to the use of <code>max(a, b)</code> which has to iterate over both lists. A more efficient implementation could use a two-pointer technique to iterate over both lists simultaneously.</p>

@@ -1,3 +1,5 @@
+<p><strong>Code Breakdown</strong></p>
+<p>The code imports a module named <code>Core</code> and calls its <code>evalNotebook</code> method to evaluate a Jupyter Notebook file named <code>file system.ipynb</code>, passing a custom argument <code>'memory-fs' || 1</code>.</p>
 
 
 <pre><code>var importer = require('./Core');
@@ -11,3 +13,25 @@ var mountAndRewireAngular = importer.evalNotebook(
 
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Module</h3>
+<ul>
+<li><code>var importer = require('./Core');</code>
+<ul>
+<li>Imports a module named <code>Core</code> from the same directory.</li>
+<li>Assigns the imported module to a variable named <code>importer</code>.</li>
+</ul></li>
+</ul>
+<h3>Evaluating Notebook</h3>
+<ul>
+<li><code>var mountAndRewireAngular = importer.evalNotebook(... );</code>
+<ul>
+<li>Calls the <code>evalNotebook</code> method on the <code>importer</code> module.</li>
+<li>Passes two arguments:
+<ul>
+<li><code>'Utilities/file system.ipynb'</code>: The path to a Jupyter Notebook file named <code>file system.ipynb</code> in the <code>Utilities</code> directory.</li>
+<li><code>'memory-fs' || 1</code>: An expression that evaluates to either the string <code>'memory-fs'</code> or the number <code>1</code>.</li>
+</ul></li>
+<li>Assigns the result to a variable named <code>mountAndRewireAngular</code>.</li>
+</ul></li>
+</ul>

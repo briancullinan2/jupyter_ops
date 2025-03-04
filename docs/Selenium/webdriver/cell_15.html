@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary:</p>
+<p>The code checks if <code>client</code> and <code>$$</code> are defined, and if so, executes a block of code. It also contains functions to execute an asynchronous method and handle client window handles, including sending results or errors through the <code>$$</code> object.</p>
 
 
 <pre><code>if(typeof client !== 'undefined' && typeof $$ !== 'undefined') {
@@ -8,3 +10,28 @@
 }
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Conditional Statement</h4>
+<pre><code class="language-javascript">if (typeof client!== 'undefined' &amp;&amp; typeof $$!== 'undefined') {
+  // code to be executed if condition is true
+}
+</code></pre>
+<ul>
+<li>Checks if <code>client</code> and <code>$$</code> are defined. If both are defined, the code inside the block is executed.</li>
+</ul>
+<h4>Execution of Async Function</h4>
+<pre><code class="language-javascript">$$.async();
+</code></pre>
+<ul>
+<li>Calls the <code>async()</code> method on the <code>$$</code> object.</li>
+</ul>
+<h4>Client Window Handles</h4>
+<pre><code class="language-javascript">client.windowHandles()
+ .then(r =&gt; $$.sendResult(r))
+ .catch(e =&gt; $$.sendError(e));
+</code></pre>
+<ul>
+<li>Calls the <code>windowHandles()</code> method on the <code>client</code> object, which returns a promise.</li>
+<li><code>.then()</code> block: If the promise is resolved, calls <code>sendResult()</code> on the <code>$$</code> object with the result <code>r</code>.</li>
+<li><code>.catch()</code> block: If the promise is rejected, calls <code>sendError()</code> on the <code>$$</code> object with the error <code>e</code>.</li>
+</ul>

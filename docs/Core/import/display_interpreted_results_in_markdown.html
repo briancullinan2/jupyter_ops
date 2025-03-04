@@ -1,5 +1,5 @@
-<p>Here's a summary of the two functions in one or two sentences:</p>
-<p>The module contains two functions, <code>resultMarkdown</code> and <code>displayCell</code>, which format the result of a search into a markdown string. The <code>resultMarkdown</code> function takes an object as input, while the <code>displayCell</code> function takes an array of objects and uses either <code>resultMarkdown</code> or its own logic to generate a markdown-formatted string.</p>
+<p>Here is a summary of the code in one or two sentences:</p>
+<p>The code consists of two functions, <code>resultMarkdown</code> and <code>displayCell</code>, which convert arrays of results into strings in Markdown format. The <code>displayCell</code> function handles both single-cell and multi-cell results, reducing them into a single string using the <code>resultMarkdown</code> function.</p>
 
 
 <pre><code>function resultMarkdown(res) {
@@ -24,52 +24,74 @@ function displayCell(results) {
 module.exports.displayCell = displayCell
 </code></pre>
 
-<h3>Function Breakdown</h3>
-<h4>Function 1: <code>resultMarkdown(res)</code></h4>
+<h3>Code Breakdown</h3>
+<h4><code>resultMarkdown(res)</code> Function</h4>
+<p>This function takes an array of results as input and returns a string in Markdown format.</p>
 <ul>
-<li>This function formats the result of a search into a markdown string.</li>
-<li>It takes an object <code>res</code> as input and returns a markdown-formatted string.</li>
-</ul>
-<p><strong>Function Parameters</strong></p>
+<li>It calculates the number of matches found and appends the plural form of &quot;match&quot; accordingly.</li>
+<li>It joins the results array into a string with each result separated by &quot;, &quot; and appends the count of matches.</li>
+<li>If the results array is not empty, it:
 <ul>
-<li><code>res</code>: An object containing the result of a search, which includes:
-<ul>
-<li><code>length</code>: The number of matches found.</li>
-<li><code>markdown</code>: An array of markdown-formatted strings.</li>
-<li><code>code</code>: A string representing the code associated with the result.</li>
+<li>Joins the Markdown part of the results into a string with each result separated by a newline character.</li>
+<li>Appends the Markdown and code parts of the results with a code block.</li>
 </ul></li>
+<li>If the results array is empty, it returns an empty string.</li>
 </ul>
-<p><strong>Function Output</strong></p>
+<pre><code class="language-javascript">function resultMarkdown(res) {
+  // Calculate the number of matches
+  const matchCount = res.length;
+  const matchMessage = matchCount +'match' + (matchCount!== 1? 'es' : '') +'found';
+
+  // Join the results array into a string
+  const resultString = res.join(', ');
+
+  // Initialize the output string
+  let output = matchMessage + ':'+ resultString;
+
+  // If the results array is not empty
+  if (res.length &gt; 0) {
+    // Join the Markdown part of the results into a string
+    const markdownString = res.map((obj) =&gt; obj.markdown).join('\n');
+
+    // Append the Markdown and code parts to the output string
+    output += '\n\n\n' + markdownString + '\n\n\n' +
+              '```\n\n\n' + res[0].code + '\n\n\n```\n\n\n';
+  }
+
+  return output;
+};
+</code></pre>
+<h4><code>displayCell(results)</code> Function</h4>
+<p>This function takes an array of results as input and returns a string in Markdown format. It handles both single-cell and multi-cell results.</p>
 <ul>
-<li>A markdown-formatted string containing:
-<ul>
-<li>The number of matches found.</li>
-<li>A list of markdown-formatted strings.</li>
-<li>The code associated with the result.</li>
-</ul></li>
+<li>If the input array has at least one element and the element is not a string, it reduces the array into a string using the <code>resultMarkdown(res)</code> function.</li>
+<li>If the input array has at least one element and the element is a string, it simply calls <code>resultMarkdown(results)</code> directly.</li>
+<li>If the input array is empty, it calls <code>resultMarkdown(results)</code> directly.</li>
 </ul>
-<h4>Function 2: <code>displayCell(results)</code></h4>
-<ul>
-<li>This function formats an array of search results into a markdown string.</li>
-<li>It takes an array <code>results</code> as input and returns a markdown-formatted string.</li>
-</ul>
-<p><strong>Function Parameters</strong></p>
-<ul>
-<li><code>results</code>: An array of objects containing the result of a search.</li>
-</ul>
-<p><strong>Function Logic</strong></p>
-<ul>
-<li>If the array contains at least one object and its first element is not a string, it will:
-<ul>
-<li>Use the <code>reduce</code> function to concatenate the markdown-formatted strings for each result in the array.</li>
-</ul></li>
-<li>Otherwise, it will call <code>resultMarkdown</code> with the array as its argument.</li>
-</ul>
-<p><strong>Function Output</strong></p>
-<ul>
-<li>A markdown-formatted string containing the results of the search.</li>
-</ul>
-<h4>Module Exports</h4>
-<ul>
-<li>The <code>displayCell</code> function is exported as a module, making it available for use in other parts of the application.</li>
-</ul>
+<pre><code class="language-javascript">function displayCell(results) {
+  // If the input array has at least one element and the element is not a string
+  if (results.length &gt; 0 &amp;&amp; typeof results[0]!=='string') {
+    // Reduce the array into a string using the resultMarkdown function
+    return results.reduce((str, res) =&gt; {
+      str += resultMarkdown(res);
+      return str;
+    }, '');
+  }
+
+  // If the input array has at least one element and the element is a string
+  else if (results.length &gt; 0) {
+    // Simply call resultMarkdown with the input array
+    return resultMarkdown(results);
+  }
+
+  // If the input array is empty
+  else {
+    // Call resultMarkdown with the input array directly
+    return resultMarkdown(results);
+  }
+}
+</code></pre>
+<h4>Module Export</h4>
+<p>The <code>displayCell</code> function is exported as a module.</p>
+<pre><code class="language-javascript">module.exports.displayCell = displayCell;
+</code></pre>

@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary:</p>
+<p>This code provides four functions for filtering and searching Jupyter Notebook files (.ipynb) in a local environment, allowing users to search by filename, cell number, or query. The functions include <code>filterLocal</code>, <code>filterFilename</code>, <code>searchFiles</code>, and <code>searchQueryFiles</code>, which are exported as module exports for use in other applications.</p>
 
 
 <pre><code>var fs = require('fs')
@@ -48,3 +50,53 @@ module.exports.searchFiles = searchFiles
 module.exports.searchQueryFiles = searchQueryFiles
 </code></pre>
 
+<h3>Overview</h3>
+<p>This code is a set of four functions for filtering and searching notebooks (.ipynb files) in a local environment. It reads notebooks from files, extracts cells, and searches based on filename or query.</p>
+<h3>Functions</h3>
+<h4>filterLocal</h4>
+<ul>
+<li>Reads a notebook from a local file based on the provided query.</li>
+<li>The query is expected to be in the format <code>.ipynb[&lt;cell number&gt;]</code>.</li>
+<li>If the query is valid, it returns the notebook cells; otherwise, it returns an empty array.</li>
+</ul>
+<pre><code class="language-javascript">function filterLocal(query) {
+    //...
+}
+</code></pre>
+<h4>filterFilename</h4>
+<ul>
+<li>Filters an array of notebooks based on a file name.</li>
+<li>The file name is expected to be in the format <code>*.ipynb[&lt;cell number&gt;]</code>.</li>
+<li>It returns a sorted array of notebooks that match the file name.</li>
+</ul>
+<pre><code class="language-javascript">function filterFilename(arr, fname) {
+    //...
+}
+</code></pre>
+<h4>searchFiles</h4>
+<ul>
+<li>Searches for notebooks in the local environment based on a query.</li>
+<li>The query is expected to be in the format <code>*.ipynb[&lt;cell number&gt;]</code>.</li>
+<li>It returns a sorted array of notebooks that match the query.</li>
+</ul>
+<pre><code class="language-javascript">function searchFiles(query, cellCache) {
+    //...
+}
+</code></pre>
+<h4>searchQueryFiles</h4>
+<ul>
+<li>Searches for notebooks in the local environment based on a query.</li>
+<li>The query is expected to be in the format <code>[filename][&lt;cell number&gt;]</code>.</li>
+<li>If the query is numeric (i.e., it contains a cell number), it searches for the corresponding cell in the notebook; otherwise, it searches for the notebook based on the file name.</li>
+</ul>
+<pre><code class="language-javascript">function searchQueryFiles(query, cellCache) {
+    //...
+}
+</code></pre>
+<h3>Exports</h3>
+<p>The four functions are exported as module exports:</p>
+<pre><code class="language-javascript">module.exports.filterLocal = filterLocal
+module.exports.filterFilename = filterFilename
+module.exports.searchFiles = searchFiles
+module.exports.searchQueryFiles = searchQueryFiles
+</code></pre>

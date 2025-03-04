@@ -1,3 +1,5 @@
+<p>Here's a summary of the provided information in one to two sentences:</p>
+<p>The <code>ListNode</code> class represents a node in a singly linked list with attributes and methods for initialization, string representation, and equality comparison. The <code>reverse_list</code> function is a recursive function that reverses a singly linked list by updating the <code>next</code> attribute of each node to point to the previous node in the reversed list.</p>
 
 
 <pre><code>class ListNode(object):
@@ -39,3 +41,26 @@ rev.next.next = ListNode(1)
 assert reverse_list(head) == rev
 print('All passed!')</code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>ListNode Class</h3>
+<p>The <code>ListNode</code> class represents a node in a singly linked list. It has the following attributes and methods:</p>
+<ul>
+<li><code>__init__(self, x)</code>: Initializes a new <code>ListNode</code> with a value <code>x</code>. The <code>next</code> attribute is set to <code>None</code> by default.</li>
+<li><code>__str__(self)</code>: Returns a string representation of the node for debugging purposes.</li>
+<li><code>__eq__(self, other)</code>: Implements the equality operator to compare two nodes based on their attributes.</li>
+</ul>
+<h3>reverse_list Function</h3>
+<p>The <code>reverse_list</code> function recursively reverses a singly linked list. It takes two arguments:</p>
+<ul>
+<li><code>head</code>: The head of the list to be reversed.</li>
+<li><code>prev</code>: The previous node in the reversed list (default value is <code>None</code>).</li>
+</ul>
+<p>The function works as follows:</p>
+<ul>
+<li>If <code>head</code> is <code>None</code>, it returns <code>prev</code> (the new head of the reversed list).</li>
+<li>It stores the next node (<code>nxt</code>) in the original list.</li>
+<li>It sets the <code>next</code> attribute of the current node to <code>prev</code> (reversing the link).</li>
+<li>It recursively calls <code>reverse_list</code> with <code>nxt</code> as the new <code>head</code> and the current node as the new <code>prev</code>.</li>
+</ul>
+<h3>Test Cases</h3>
+<p>The code includes three test cases to verify the correctness of the <code>reverse_list</code> function. Each test case creates a linked list, reverses it using the <code>reverse_list</code> function, and asserts that the reversed list is correct. If all assertions pass, it prints 'All passed!'.</p>

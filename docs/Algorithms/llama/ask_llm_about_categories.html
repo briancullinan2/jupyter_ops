@@ -1,5 +1,5 @@
-<p>Here's a two-sentence summary of the <code>askLlamaAboutCategories</code> function:</p>
-<p>The <code>askLlamaAboutCategories</code> function asks the LLM about categories in the <code>functionCache</code> database and returns a list of notebook filenames that contain matching categories. It does this by listing all categories in the database, asking the LLM about them in batches, and then filtering notebook filenames with matching categories.</p>
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The <code>askLlamaAboutCategories</code> function is an asynchronous function that extracts categories from a cache object, asks the LLM about these categories in batches, and returns notebook filenames that contain matching categories. The function consists of three main steps: extracting categories, asking the LLM about the categories, and returning matching notebook filenames based on the LLM's responses.</p>
 
 
 <pre><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')
@@ -46,31 +46,53 @@ module.exports = {
 }
 </code></pre>
 
-<h3>Breakdown of <code>askLlamaAboutCategories</code> Function</h3>
-<h4>Imports</h4>
-<ul>
-<li><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')</code>: Imports <code>functionCache</code> from a module that caches RPC functions with LLM descriptions.</li>
-<li><code>const {askLlamaAboutFunctions} = importer.import('ask llm about functions')</code>: Imports <code>askLlamaAboutFunctions</code> from a module that asks the LLM about functions.</li>
-</ul>
-<h4>Function <code>askLlamaAboutCategories</code></h4>
-<ul>
-<li><strong>Purpose</strong>: Asks the LLM about categories in the <code>functionCache</code> and returns notebook filenames that contain matching categories.</li>
-<li><strong>Parameters</strong>: <code>query</code> - an object or string used to query the LLM.</li>
-<li><strong>Returns</strong>: An array of notebook filenames that contain matching categories.</li>
-</ul>
-<h4>Implementation</h4>
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<p>The code starts by importing two modules using the <code>importer.import()</code> function:</p>
+<pre><code class="language-markdown">const { functionCache } = importer.import('cache rpc functions with llm descriptions')
+const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
+</code></pre>
+<p>These imports are assigning the exported objects <code>functionCache</code> and <code>askLlamaAboutFunctions</code> from the respective imported modules.</p>
+<h3>askLlamaAboutCategories Function</h3>
+<p>The <code>askLlamaAboutCategories</code> function is an asynchronous function that takes a <code>query</code> parameter:</p>
+<pre><code class="language-markdown">async function askLlamaAboutCategories(query) {
+</code></pre>
+<p>This function appears to be responsible for finding categories in a database (implemented in <code>functionCache</code>), asking the LLM (using <code>askLlamaAboutFunctions</code>) about these categories, and returning notebook filenames that contain matching categories.</p>
+<h3>Function Steps</h3>
 <ol>
-<li><strong>List all categories in database</strong>: Retrieves keys from <code>functionCache</code> and maps them to categories.</li>
-<li><strong>Ask LLM about categories</strong>: Sends functions to the LLM in batches of 20 and collects all matches.</li>
-<li><strong>Return notebook filenames with matching categories</strong>: Filters <code>functionCache</code> to find notebook filenames containing matching categories.</li>
+<li><strong>Extracting categories</strong>: The function extracts categories from the <code>functionCache</code> object and filters out any duplicates or newline characters (<code>\n</code>).</li>
 </ol>
-<h4>TODOs</h4>
-<ul>
-<li>List all categories in the database.</li>
-<li>Ask the LLM about categories and return all matches.</li>
-<li>Return notebook filenames that contain matching categories.</li>
-</ul>
-<h4>Export</h4>
-<ul>
-<li><code>module.exports = { askLlamaAboutCategories }</code>: Exports the <code>askLlamaAboutCategories</code> function.</li>
-</ul>
+<pre><code class="language-markdown">let keys = Object.keys(functionCache)
+let categorys = keys.map(k =&gt; functionCache[k].categories)
+ .concat(keys.map(k =&gt; functionCache[k].category))
+ .filter((a, i, arr) =&gt; a &amp;&amp; arr.indexOf(a) == i &amp;&amp;!a.includes('\n'))
+</code></pre>
+<ol start="2">
+<li><strong>Asking LLM about categories</strong>: The function asks the LLM about the extracted categories in batches of 20. For each batch, it calls <code>askLlamaAboutFunctions</code> with the <code>query</code>, <code>functions</code> (the batch of categories), and other parameters. It then concatenates the results.</li>
+</ol>
+<pre><code class="language-markdown">for(let i = 0; i &lt; categorys.length; i++) {
+  let category = categorys[i]
+  functions[functions.length] = category
+
+  if(functions.length == 20) {
+    let result = await askLlamaAboutFunctions(query, functions, [], true)
+    functions = []
+    if(result)
+      returnValues = returnValues.concat(result)
+  }
+}
+</code></pre>
+<ol start="3">
+<li><strong>Returning matching notebook filenames</strong>: Finally, the function returns notebook filenames that contain the matching categories.</li>
+</ol>
+<pre><code class="language-markdown">let matching = keys.filter(k =&gt; returnValues.includes(functionCache[k].category) || returnValues.includes(functionCache[k].categories))
+ .map(k =&gt; k.replace(/\[[0-9]*\]/, ''))
+ .filter((a, i, arr) =&gt; a &amp;&amp; arr.indexOf(a) == i)
+return matching
+</code></pre>
+<h3>Exporting the Function</h3>
+<p>The <code>askLlamaAboutCategories</code> function is exported as a module:</p>
+<pre><code class="language-markdown">module.exports = {
+  askLlamaAboutCategories
+}
+</code></pre>

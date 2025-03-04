@@ -1,5 +1,31 @@
+<p>Here's a summary in one sentence:</p>
+<p>The command displays the names of the 10 largest files in the current directory, including their sizes, by using a pipeline of Unix utilities (<code>du</code>, <code>sort</code>, and <code>head</code>). The command includes file counting, numerical sorting, and reversing the order to show the largest files first.</p>
 
 
 <pre><code>du -a . | sort -n -r | head -n 10
 </code></pre>
 
+<p><strong>Command Overview</strong></p>
+<p>The given command is a pipeline of Unix utilities used to display the 10 largest files in the current directory.</p>
+<h3>Breakdown</h3>
+<ul>
+<li><p><code>du -a.</code>:</p>
+<ul>
+<li><code>du</code>: Displays information about file system disk usage.</li>
+<li><code>-a</code>: Includes counting the size of all files and directories.</li>
+<li><code>.</code>: The current directory is specified as the starting point.</li>
+</ul></li>
+<li><p><code>sort -n -r</code>:</p>
+<ul>
+<li><code>sort</code>: Sorts the input lines.</li>
+<li><code>-n</code>: Sorts numerically.</li>
+<li><code>-r</code>: Sorts in reverse order.</li>
+</ul></li>
+<li><p><code>head -n 10</code>:</p>
+<ul>
+<li><code>head</code>: Outputs the first few lines of a file.</li>
+<li><code>-n 10</code>: Specifies the number of lines to output, which is 10 in this case.</li>
+</ul></li>
+</ul>
+<p><strong>Effect</strong></p>
+<p>This command displays the names of the 10 largest files in the current directory, including their sizes.</p>

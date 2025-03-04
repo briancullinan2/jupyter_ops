@@ -1,4 +1,15 @@
+<p>The <code>fit</code> function is used to train a model on given input and output data, with options to adjust batch size and number of epochs.</p>
+<p>The <code>fit</code> function takes in the input data <code>x</code>, output data <code>y</code>, and additional parameters such as <code>batch_size</code>, <code>epochs</code>, and <code>validation_data</code>.</p>
 
 
 <pre><code>model.fit(x= x_train,y = y_train, batch_size = 128, epochs = 100, validation_data = (x_test,y_test)) </code></pre>
 
+<h3>Function: <code>fit</code></h3>
+<h4>Parameters:</h4>
+<ul>
+<li><code>x</code>: Input data for training.</li>
+<li><code>y</code>: Output data for training.</li>
+<li><code>batch_size</code>: Number of samples processed before updating the model's weights. (int)</li>
+<li><code>epochs</code>: Number of times the model sees the entire dataset. (int)</li>
+<li><code>validation_data</code>: Input and output data for validation. (tuple)</li>
+</ul>

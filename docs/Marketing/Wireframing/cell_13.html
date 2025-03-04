@@ -1,3 +1,7 @@
+<p>Here is a summary of the Graphviz code breakdown in one sentence:</p>
+<p>The provided Graphviz code is a directed graph written in DOT language, defining a process flow diagram with nodes and edges that represent stages and transitions in the process, and specifying various properties such as layout direction, font, and color.</p>
+<p>Alternatively, a two-sentence summary could be:</p>
+<p>The Graphviz code defines a directed graph with a specific layout direction and font properties, and it outlines a process flow diagram with nodes and edges representing various stages and transitions. The code also specifies default properties for nodes and edges, allowing for customization of the graph's appearance.</p>
 
 
 <pre><code>%%
@@ -61,3 +65,62 @@ apply
     facaccept -> letter
 }</code></pre>
 
+<p><strong>Graphviz Code Breakdown</strong></p>
+<p>This is a Graphviz code written in DOT language, which is used to create directed graphs.</p>
+<h3>Graph Definition</h3>
+<pre><code class="language-dot">digraph apply {
+   ...
+}
+</code></pre>
+<ul>
+<li><code>digraph</code> keyword specifies that the graph is directed.</li>
+<li><code>apply</code> is the name of the graph.</li>
+<li>The code block within the curly braces ({}) defines the graph's properties and nodes.</li>
+</ul>
+<h3>Graph Properties</h3>
+<pre><code class="language-dot">rankdir = BT;
+fontname = Helvetica
+</code></pre>
+<ul>
+<li><code>rankdir = BT;</code> specifies the direction of the graph's layout. BT stands for &quot;bottom-to-top&quot;.</li>
+<li><code>fontname = Helvetica</code> sets the font family for the graph to Helvetica.</li>
+</ul>
+<h3>Node Properties</h3>
+<pre><code class="language-dot">node[peripheries = 0, style = filled, fillcolor = blue, fontcolor = white, fontname = Helvetica, fixedsize = true, width = 1.8, height = 0.8]
+</code></pre>
+<ul>
+<li><code>node</code> keyword specifies the default properties for all nodes in the graph.</li>
+<li><code>peripheries = 0</code> removes the border around nodes.</li>
+<li><code>style = filled</code> fills the nodes with a color.</li>
+<li><code>fillcolor = blue</code> sets the fill color to blue.</li>
+<li><code>fontcolor = white</code> sets the text color to white.</li>
+<li><code>fontname = Helvetica</code> sets the font family to Helvetica.</li>
+<li><code>fixedsize = true</code> fixes the size of the nodes.</li>
+<li><code>width = 1.8</code> and <code>height = 0.8</code> set the width and height of the nodes, respectively.</li>
+</ul>
+<h3>Edge Properties</h3>
+<pre><code class="language-dot">edge[fontname = Helvetica, fontsize = 12, fontcolor = blue, labeldistance = 1.8]
+</code></pre>
+<ul>
+<li><code>edge</code> keyword specifies the default properties for all edges in the graph.</li>
+<li><code>fontname = Helvetica</code> sets the font family for the edge labels to Helvetica.</li>
+<li><code>fontsize = 12</code> sets the font size for the edge labels to 12.</li>
+<li><code>fontcolor = blue</code> sets the text color for the edge labels to blue.</li>
+<li><code>labeldistance = 1.8</code> sets the distance between the edge labels and the edge.</li>
+</ul>
+<h3>Subgraphs</h3>
+<p>The code defines four subgraphs: <code>cluster_student</code>, <code>cluster_admin</code>, <code>cluster_registrar</code>, and <code>cluster_faculty</code>. Each subgraph represents a stage in a process.</p>
+<h3>Nodes and Edges</h3>
+<p>Within each subgraph, nodes and edges are defined to represent the stages and transitions between them.</p>
+<p>For example:</p>
+<pre><code class="language-dot">submit -&gt; complete
+complete -&gt; submit     [headlabel = 'no']
+complete -&gt; min        [headlabel = 'yes']
+</code></pre>
+<ul>
+<li><code>submit</code> is a node in the <code>cluster_student</code> subgraph.</li>
+<li><code>complete</code> is a node in the <code>cluster_admin</code> subgraph.</li>
+<li><code>submit -&gt; complete</code> specifies an edge from <code>submit</code> to <code>complete</code>.</li>
+<li><code>headlabel = 'no'</code> and <code>headlabel = 'yes'</code> specify labels for the edges, which are used to indicate the direction of the flow (e.g., &quot;no&quot; indicates that the process should not proceed, while &quot;yes&quot; indicates that it should proceed).</li>
+</ul>
+<p>This code can be used to create a process flow diagram using Graphviz tools.</p>

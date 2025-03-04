@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code is a JavaScript function that uses the <code>async/await</code> syntax to handle asynchronous operations by calling the <code>addFacebookFriends</code> function and handling its result or error using the <code>then</code> and <code>catch</code> methods. The <code>addFacebookFriends</code> function returns a promise that is resolved by sending the result with <code>$$.sendResult(r)</code> or rejected by sending the error with <code>$$.sendError(e)</code>.</p>
 
 
 <pre><code>$$.async();
@@ -6,3 +8,32 @@ addFacebookFriends()
     .catch(e => $$.sendError(e))
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Overview</h4>
+<p>The code appears to be a JavaScript function that uses the <code>async/await</code> syntax to handle asynchronous operations. It calls a function <code>addFacebookFriends</code> and handles its result or error using the <code>then</code> and <code>catch</code> methods.</p>
+<h4>Breakdown</h4>
+<pre><code class="language-javascript">$$.async();
+</code></pre>
+<ul>
+<li><code>$</code> is likely a shortcut for a jQuery object.</li>
+<li><code>async</code> is a method that initializes the async functionality.</li>
+</ul>
+<pre><code class="language-javascript">addFacebookFriends()
+   .then(r =&gt; $$.sendResult(r))
+   .catch(e =&gt; $$.sendError(e))
+</code></pre>
+<ul>
+<li><code>addFacebookFriends</code> is a function that returns a promise.</li>
+<li><code>.then(r =&gt; $$.sendResult(r))</code>:
+<ul>
+<li><code>then</code> is a method that is called when the promise is resolved.</li>
+<li><code>r</code> is the resolved value.</li>
+<li><code>$$.sendResult(r)</code> sends the result to somewhere ( likely a server or UI component).</li>
+</ul></li>
+<li><code>.catch(e =&gt; $$.sendError(e))</code>:
+<ul>
+<li><code>catch</code> is a method that is called when the promise is rejected.</li>
+<li><code>e</code> is the error value.</li>
+<li><code>$$.sendError(e)</code> sends the error to somewhere ( likely a server or UI component).</li>
+</ul></li>
+</ul>

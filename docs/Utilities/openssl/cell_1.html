@@ -1,3 +1,7 @@
+<p>Here is a brief summary of the shell script in one sentence:</p>
+<p>This shell script creates a self-signed intermediate Certificate Authority (CA) using OpenSSL, generating a private key, CSR, and certificate, and creating a certificate chain with the root CA's certificate.</p>
+<p>Here is a two-sentence summary:</p>
+<p>This shell script creates a self-signed intermediate Certificate Authority (CA) using OpenSSL by generating a private key, CSR, and certificate. The script then creates a certificate chain by concatenating the intermediate CA's certificate and the root CA's certificate.</p>
 
 
 <pre><code>ROOT=/Users/briancullinan/jupytangular2/Utilities/ca
@@ -58,3 +62,44 @@ chmod 744 intermediate/certs/ca-chain.cert.pem
 
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<p>This shell script creates a self-signed intermediate Certificate Authority (CA) using OpenSSL. The script consists of the following sections:</p>
+<h3>1. Directory Setup</h3>
+<ul>
+<li>Creates a directory <code>intermediate</code> and its subdirectories <code>certs</code>, <code>crl</code>, <code>csr</code>, and <code>private</code> within it.</li>
+<li>Sets permissions for the <code>private</code> directory to 700.</li>
+<li>Creates two empty files <code>index.txt</code> and <code>serial</code> in the <code>intermediate</code> directory.</li>
+</ul>
+<h3>2. Intermediate Configuration</h3>
+<ul>
+<li>Copies the OpenSSL configuration file <code>openssl.cnf</code> from the root CA directory to the <code>intermediate</code> directory.</li>
+<li>Modifies the <code>openssl.cnf</code> file in the <code>intermediate</code> directory to specify the intermediate CA's directory, private key, certificate, and policy.</li>
+</ul>
+<h3>3. Intermediate Private Key and CSR</h3>
+<ul>
+<li>Generates a 4096-bit RSA private key for the intermediate CA using OpenSSL.</li>
+<li>Creates a Certificate Signing Request (CSR) for the intermediate CA using OpenSSL.</li>
+</ul>
+<h3>4. Signing Intermediate Certificate</h3>
+<ul>
+<li>Signs the intermediate CA's CSR with the root CA using OpenSSL.</li>
+</ul>
+<h3>5. Verification</h3>
+<ul>
+<li>Verifies the intermediate CA's certificate using OpenSSL.</li>
+</ul>
+<h3>6. Certificate Chain Creation</h3>
+<ul>
+<li>Creates a certificate chain by concatenating the intermediate CA's certificate and the root CA's certificate.</li>
+<li>Sets permissions for the certificate chain to 744.</li>
+</ul>
+<p>The script uses the following commands:</p>
+<ul>
+<li><code>mkdir</code>: Creates directories.</li>
+<li><code>cp</code>: Copies files.</li>
+<li><code>chmod</code>: Sets permissions.</li>
+<li><code>touch</code>: Creates empty files.</li>
+<li><code>echo</code>: Outputs text to a file.</li>
+<li><code>openssl</code>: Runs OpenSSL commands for key and certificate generation and signing.</li>
+</ul>
+<p>The script assumes that the OpenSSL configuration file <code>openssl.cnf</code> is present in the root CA directory and that the root CA's private key and certificate are available in the <code>certs</code> directory.</p>

@@ -1,5 +1,30 @@
+<p>Here is a two-sentence summary of the <code>wget</code> command:</p>
+<p>The <code>wget</code> command is used to download a website, specifically excluding directories <code>/forums</code>, <code>/files</code>, <code>/images</code>, <code>/gallery</code>, <code>/nc</code>, and <code>/diane</code>. The command uses options <code>--mirror</code>, <code>--convert-links</code>, <code>-nc</code>, and <code>-r</code> to retrieve the site recursively and handle links and failed downloads.</p>
 
 
 <pre><code> wget --mirror --convert-links -nc -r http://www.truecombatelite.com/mapdepot/ -X /forums -X /files -X /images -X /gallery -X /nc -X /diane
  </code></pre>
 
+<h2>wget Command Breakdown</h2>
+<h3>Description</h3>
+<p>This is a <code>wget</code> command used for downloading a website, specifically excluding certain directories.</p>
+<h3>Options</h3>
+<ul>
+<li><code>--mirror</code>: Recursively retrieve the entire site, including files and directories.</li>
+<li><code>--convert-links</code>: Convert links to point to local files, making them usable offline.</li>
+<li><code>-nc</code>: Do not continue if a single file fails to download (no continuation).</li>
+<li><code>-r</code>: Turn on recursive retrieving (similar to --mirror).</li>
+</ul>
+<h3>Excluded Directories</h3>
+<ul>
+<li><code>/forums</code></li>
+<li><code>/files</code></li>
+<li><code>/images</code></li>
+<li><code>/gallery</code></li>
+<li><code>/nc</code></li>
+<li><code>/diane</code></li>
+</ul>
+<h3>URL</h3>
+<pre><code class="language-bash">http://www.truecombatelite.com/mapdepot/
+</code></pre>
+<p>This is the URL to download from.</p>

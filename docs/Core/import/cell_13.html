@@ -1,3 +1,7 @@
+<p>Here is a summary of the <code>run</code> function in one sentence:</p>
+<p>The <code>run</code> function is an asynchronous command-line tool that processes command-line arguments to execute a result's <code>apply</code> method, returning the result after execution.</p>
+<p>Alternatively, here is a two-sentence summary:</p>
+<p>The <code>run</code> function is an asynchronous command-line tool that processes command-line arguments and executes a result's <code>apply</code> method. It returns the result of the execution, unless the result is the global object, in which case it returns immediately.</p>
 
 
 <pre><code>
@@ -69,3 +73,28 @@ async function run() {
 module.exports.run = run;
 </code></pre>
 
+<h3>Function <code>run</code></h3>
+<h4>Overview</h4>
+<p>The <code>run</code> function is an asynchronous function that appears to be part of a command-line tool. It takes two arguments, <code>process.argv[1]</code> and <code>process.argv[2]</code>, which are command-line arguments.</p>
+<h4>Importing Modules</h4>
+<p>The function imports two modules using <code>require</code>:</p>
+<ul>
+<li><code>importNotebook</code> and <code>interpret</code> from the <code>../Core</code> directory.</li>
+</ul>
+<h4>Getting Parameters</h4>
+<p>The function uses <code>importNotebook</code> to get notebook parameters. It then uses these parameters to get the result of the notebook.</p>
+<h4>Processing Parameters</h4>
+<p>The function processes the parameters by:</p>
+<ul>
+<li>Checking if the result has a <code>functions</code> property and, if so, extracting the first function.</li>
+<li>Checking if the result is an object with a function property and, if so, extracting the function.</li>
+<li>Getting the parameters from the result or, if not available, from the <code>getParameters</code> function.</li>
+</ul>
+<h4>Parsing Inputs</h4>
+<p>The function tries to parse the second command-line argument as an array of inputs using <code>eval</code>. If the parsing fails, it sets the inputs to an empty array. If the inputs are not an array, it wraps the single input in an array.</p>
+<h4>Getting Command-Line Arguments</h4>
+<p>The function iterates over the command-line arguments, checking for parameters specified in the <code>params</code> array. If a parameter is found, it extracts the value from the command-line argument and, if necessary, converts it to the correct type based on the result's <code>types</code> property.</p>
+<h4>Executing the Function</h4>
+<p>The function calls the result's <code>apply</code> method with the processed inputs and waits for the result.</p>
+<h4>Returning the Result</h4>
+<p>The function returns the result of the <code>apply</code> method, unless the result is the global object, in which case it returns immediately.</p>

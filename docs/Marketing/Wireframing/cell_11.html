@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The code initializes a process to convert a webpage to an image using the <code>wkhtmltoimage</code> command, with options such as quality and format, and logs the command-line arguments used. The process's output is then piped through a base64 encoder and logged, with the encoded output being passed to the <code>$TS.jpg()</code> function when complete.</p>
 
 
 <pre><code>$$.async();
@@ -13,3 +15,27 @@ var out = '';
 wk.stderr.on('data', (d) => console.log(d));
 wk.stdout.pipe(encode).on('data', d => out += d.toString()).on('finish', () => $TS.jpg(out));</code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Initialization</h3>
+<ul>
+<li><code>$$.async();</code>: Not a standard JavaScript function, likely a custom function for asynchronous operations.</li>
+<li><code>const url = 'act.com';</code>: Sets the target URL for the operation.</li>
+<li><code>const options = {... };</code>: Defines an object with options for the <code>wkhtmltoimage</code> command.</li>
+<li><code>const encode = require('base64-stream').encode();</code>: Imports and initializes a base64 stream encoder.</li>
+<li><code>const spawn = require('child_process').spawn;</code>: Imports the <code>child_process</code> module for spawning a new process.</li>
+</ul>
+<h3>Option Preparation</h3>
+<ul>
+<li><code>Object.keys(options || {}).map(k =&gt; ['--' + k, options[k]]);</code>: Extracts the keys from the <code>options</code> object and creates an array of command-line arguments.</li>
+<li><code>myOptions = [].concat.apply(['-q', '-f', 'jpeg'],...);</code>: Prepares an array of command-line arguments by concatenating the base arguments with the options.</li>
+</ul>
+<h3>Process Spawning</h3>
+<ul>
+<li><code>const wk = spawn('xvfb-run', ['-a', '-s', '-screen 0 640x480x16', 'wkhtmltoimage',...myOptions, url, '-']);</code>: Spawns a new process with the <code>xvfb-run</code> command, which runs the <code>wkhtmltoimage</code> command with the prepared options and URL.</li>
+</ul>
+<h3>Logging and Processing</h3>
+<ul>
+<li><code>console.log([...].join(' '));</code>: Logs the command-line arguments used for the process.</li>
+<li><code>wk.stderr.on('data', (d) =&gt; console.log(d));</code>: Logs any error messages from the process.</li>
+<li><code>wk.stdout.pipe(encode).on('data', d =&gt; out += d.toString()).on('finish', () =&gt; $TS.jpg(out));</code>: Pipes the output of the process through the base64 encoder, and when the encoding is complete, calls the <code>$TS.jpg()</code> function with the encoded output.</li>
+</ul>

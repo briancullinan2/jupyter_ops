@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary:</p>
+<p>This code defines a <code>clickElement</code> function that simulates a mouse click on an element with a specified <code>id</code> using the Chrome debugger, and exports it along with an Express router instance that listens for POST requests to click elements. The <code>clickElement</code> function uses a sequence of Chrome debugger commands to resolve the element, evaluate a promise, and simulate a mouse click at the resolved coordinates.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -43,3 +45,71 @@ module.exports = {
 }
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Requires and Dependencies</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+var express = require('express');
+var router = express.Router();
+</code></pre>
+<ul>
+<li>The code requires the <code>../Core</code> module and the <code>express</code> framework.</li>
+<li>An instance of the <code>express.Router</code> class is created.</li>
+</ul>
+<h4><code>clickElement</code> Function</h4>
+<pre><code class="language-javascript">function clickElement(id) {
+    // TODO: scroll page
+    return promisifyChrome('debugger.sendCommand', {
+        tabId: getTab()
+    }, 'DOM.resolveNode', {
+        objectId: id
+    })
+       .then(r =&gt; {
+        console.log(r);
+        promisifyChrome('debugger.sendCommand', {
+            tabId: getTab()
+        }, 'Runtime.evaluate', {
+            expression: `new window.BackupPromise(resolve =&gt; setTimeout(() =&gt; {
+resolve();
+}, 500))`,
+            awaitPromise: true
+        })})
+       .then(r =&gt; promisifyChrome('debugger.sendCommand', {
+            tabId: getTab()
+        }, 'Input.dispatchMouseEvent', {
+            type:'mousePressed', 
+            x: r.x,
+            y: r.y, 
+        }))
+       .catch(e =&gt; console.log(e))
+    // TODO: click center
+}
+</code></pre>
+<ul>
+<li>The <code>clickElement</code> function simulates a mouse click on an element with the specified <code>id</code>.</li>
+<li>The function uses the <code>promisifyChrome</code> function to send commands to the Chrome debugger.</li>
+<li>The sequence of commands includes:
+<ul>
+<li><code>DOM.resolveNode</code> to resolve the node with the specified <code>id</code>.</li>
+<li><code>Runtime.evaluate</code> to evaluate a promise that resolves after a 500ms delay.</li>
+<li><code>Input.dispatchMouseEvent</code> to simulate a mouse click at the coordinates of the resolved node.</li>
+</ul></li>
+<li>The function logs any errors that occur during execution.</li>
+</ul>
+<h4>Express Router Middleware</h4>
+<pre><code class="language-javascript">router.post('/session/:sessionId/element/:id/click', (req, res) =&gt; {
+    response(res, clickElement(parseInt(req.params['id'])))
+});
+</code></pre>
+<ul>
+<li>The code defines an Express router middleware that listens for POST requests to the <code>/session/:sessionId/element/:id/click</code> endpoint.</li>
+<li>The middleware calls the <code>clickElement</code> function with the <code>id</code> parameter from the request URL and passes the result to the <code>response</code> function.</li>
+</ul>
+<h4>Module Exports</h4>
+<pre><code class="language-javascript">module.exports = {
+    clickElement,
+    router
+}
+</code></pre>
+<ul>
+<li>The code exports the <code>clickElement</code> function and the Express router instance.</li>
+</ul>

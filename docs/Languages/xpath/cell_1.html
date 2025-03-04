@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>This Python module defines classes and functions for representing XPath expressions as Abstract Syntax Trees (ASTs) and serializing them into valid XPath expressions. The module includes classes for different types of expressions, such as unary and binary expressions, and functions for serializing the ASTs into strings.</p>
 
 
 <pre><code>'''Abstract Syntax Tree nodes for parsed XPath.
@@ -315,3 +317,31 @@ class FunctionCall(object):
                     yield tok
         yield ')'</code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<p>This is a Python module that defines classes and functions for representing and serializing XPath expressions as Abstract Syntax Trees (ASTs). Here's a concise overview:</p>
+<h3>Classes</h3>
+<ol>
+<li><strong>UnaryExpression</strong>: Represents a unary XPath expression, such as <code>-foo</code>.
+<ul>
+<li><code>__init__</code>: Initializes the expression with an operator (<code>op</code>) and the operand (<code>right</code>).</li>
+<li><code>__repr__</code>: Returns a string representation of the expression.</li>
+</ul></li>
+<li>(Other classes, like <code>BinaryExpression</code>, <code>PredicatedExpression</code>, etc.) are not shown in the code snippet.</li>
+</ol>
+<h3>Functions</h3>
+<ol>
+<li><code>serialize(xp_ast)</code>: Serializes an XPath AST to a valid XPath expression by concatenating the results of <code>_serialize(xp_ast)</code>.</li>
+<li><code>_serialize(xp_ast)</code>: Generates token strings that form a valid XPath serialization of the AST.
+<ul>
+<li>If the AST node has a <code>_serialize</code> method, calls it to generate tokens.</li>
+<li>If the AST node is a string, quotes it using <code>repr</code> and removes the leading <code>u</code> for Unicode strings.</li>
+<li>Otherwise, converts the AST node to a string using <code>str</code>.</li>
+</ul></li>
+</ol>
+<h3>Module metadata</h3>
+<ol>
+<li>The module imports <code>sys</code> and checks the Python version to determine whether to use <code>str</code> or <code>basestring</code> as the string type.</li>
+<li>The <code>__all__</code> list specifies which symbols (classes and functions) are exported by the module.</li>
+</ol>
+<h3>Note</h3>
+<p>The code seems to be part of a larger library, and the classes and functions are designed to work together to represent and manipulate XPath expressions. The code snippet is a small part of a larger module, and there may be additional classes, functions, and logic not shown here.</p>

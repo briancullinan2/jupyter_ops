@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the Dockerfile:</p>
+<p>This Dockerfile builds a PHP 7.0 Apache image with additional dependencies and configurations, including installing Composer, configuring Apache, and generating a self-signed SSL certificate. It also sets environment variables and copies web content and configuration files to the image, ultimately creating a customized PHP development environment.</p>
 
 
 <pre><code>FROM php:7.0-apache
@@ -41,3 +43,63 @@ RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR
 
 </code></pre>
 
+<p><strong>Dockerfile Breakdown</strong></p>
+<p>The provided code is a Dockerfile that builds a PHP 7.0 Apache image with additional dependencies and configurations.</p>
+<h3>Section 1: Install Dependencies</h3>
+<ul>
+<li><code>FROM php:7.0-apache</code>: Use the official PHP 7.0 Apache image as a base.</li>
+<li><code>RUN apt-get update &amp;&amp; apt-get install -y</code>: Update package list and install necessary packages.
+<ul>
+<li><code>libfreetype6-dev</code></li>
+<li><code>libjpeg62-turbo-dev</code></li>
+<li><code>libmcrypt-dev</code></li>
+<li><code>libpng12-dev</code></li>
+</ul></li>
+<li>Install PHP extensions:
+<ul>
+<li><code>docker-php-ext-install -j$(nproc) iconv mcrypt</code>: Install iconv and mcrypt extensions.</li>
+<li><code>docker-php-ext-configure gd</code>: Configure gd extension.</li>
+<li><code>docker-php-ext-install -j$(nproc) gd</code>: Install gd extension.</li>
+</ul></li>
+</ul>
+<h3>Section 2: Install Composer</h3>
+<ul>
+<li><code>RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer</code>: Install Composer using the official installer.</li>
+</ul>
+<h3>Section 3: Configure Apache</h3>
+<ul>
+<li>Remove unnecessary logs: <code>RUN rm -rf /var/www/html/logs/*</code></li>
+<li>Change ownership of /var/www/html: <code>RUN chown -R www-data:www-data /var/www/html</code></li>
+<li>Enable Apache modules:
+<ul>
+<li><code>RUN a2enmod ssl</code>: Enable SSL module.</li>
+<li><code>RUN a2enmod rewrite</code>: Enable rewrite module.</li>
+</ul></li>
+</ul>
+<h3>Section 4: Generate SSL Certificate</h3>
+<ul>
+<li>Generate a self-signed SSL certificate using OpenSSL: <code>RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj...</code></li>
+</ul>
+<h3>Section 5: Copy Files</h3>
+<ul>
+<li>Copy web content: <code>COPY./web /var/www/html</code></li>
+<li>Copy Apache configuration file: <code>COPY./site.conf.ini /etc/apache2/sites-enabled/000-default.conf</code></li>
+<li>Copy SSL certificates: <code>COPY chain.crt /etc/ssl/private/</code> and <code>COPY TrustedRoot.crt /etc/ssl/private/</code></li>
+</ul>
+<h3>Section 6: Set Environment Variables</h3>
+<ul>
+<li>Set environment variables for Apache:
+<ul>
+<li><code>APACHE_RUN_USER</code></li>
+<li><code>APACHE_RUN_GROUP</code></li>
+<li><code>APACHE_LOG_DIR</code></li>
+<li><code>APACHE_PID_FILE</code></li>
+<li><code>APACHE_RUN_DIR</code></li>
+<li><code>APACHE_LOCK_DIR</code></li>
+</ul></li>
+</ul>
+<h3>Section 7: Configure Apache</h3>
+<ul>
+<li>Add ServerName directive to Apache configuration: <code>RUN echo &quot;ServerName SCO-100001269.ad.swiftpage.com&quot; &gt;&gt; /etc/apache2/apache2.conf</code></li>
+<li>Create directories for Apache: <code>RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR</code></li>
+</ul>

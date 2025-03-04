@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code imports necessary modules and variables, including <code>lodash</code>, <code>fs</code>, and <code>importer</code>, and sets up a <code>PROFILE_PATH</code> variable to point to the user's home directory. It then defines a series of functions to query the Zuora API, including <code>getContact</code>, <code>getAccount</code>, and others, and provides an example of how to use these functions in an <code>async</code> function.</p>
 
 
 <pre><code>var _ = require('lodash');
@@ -81,3 +83,37 @@ $$.async();
 }
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<p><strong>Importing Modules and Variables</strong></p>
+<ul>
+<li>The code requires the following modules:
+<ul>
+<li><code>lodash</code> for utility functions</li>
+<li><code>fs</code> for file system operations</li>
+<li><code>importer</code> module from the parent directory (<code>../Core</code>)</li>
+</ul></li>
+<li>It also imports specific functions from the <code>importer</code> module:
+<ul>
+<li><code>request</code> (a polyfill for the <code>request</code> function)</li>
+<li><code>getAuthHeaders</code> (a function to generate authentication headers for Zuora)</li>
+</ul></li>
+<li>The code sets up the <code>PROFILE_PATH</code> variable to point to the user's home directory, using environment variables as a fallback.</li>
+</ul>
+<p><strong>Zuora Configuration and Query Functions</strong></p>
+<ul>
+<li>The code reads a JSON file from the specified profile path (<code>zuoraRest_production.json</code>) and parses it into a JavaScript object (<code>zuoraConfig</code>).</li>
+<li>It defines several functions to query the Zuora API using the <code>zuoraQuery</code> function:
+<ul>
+<li><code>getContact</code>: Retrieves a contact's information based on their email address</li>
+<li><code>getContactByAccount</code>: Retrieves a contact's information based on their account ID</li>
+<li><code>getAccountById</code>: Retrieves an account's information based on its ID</li>
+<li><code>getAccount</code>: Retrieves an account's information based on its account number</li>
+<li><code>getSubscription</code>: Retrieves a subscription's information based on the account ID</li>
+<li><code>getPaymentMethod</code>: Retrieves a payment method's information based on its ID</li>
+<li><code>getRatePlans</code>: Retrieves a list of rate plans based on a comma-separated list of subscription IDs</li>
+</ul></li>
+</ul>
+<p><strong>Example Usage</strong></p>
+<ul>
+<li>If the <code>$$</code> variable is defined and not <code>undefined</code>, the code calls the <code>async</code> function on it and assigns the results of <code>getContact</code> to <code>accountId</code> and <code>paymentId</code>.</li>
+</ul>

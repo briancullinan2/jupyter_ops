@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary:</p>
+<p>The code sends an HTTP request to an identity server, handling the response and any errors through asynchronous operations and result/error handling functions. The process involves initiating the request, sending a request to the identity server, and then handling the response or error through a then block and catch block respectively.</p>
 
 
 <pre><code>$$.async();
@@ -6,3 +8,19 @@ getIdentityServer()
     .catch(e => $$.sendError(e));
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Purpose</h4>
+<p>The code sends an HTTP request to an identity server, handling the response and any potential errors.</p>
+<h4>Functions Used</h4>
+<ul>
+<li><code>$$.async()</code>: Initiates an asynchronous operation.</li>
+<li><code>getIdentityServer()</code>: A function that makes an HTTP request to an identity server.</li>
+<li><code>$$.sendResult(r)</code> and <code>$$.sendError(e)</code> : Functions to handle the response and error respectively.</li>
+</ul>
+<h4>Flow</h4>
+<ol>
+<li><code>$$.async()</code> is called to initiate the request.</li>
+<li><code>getIdentityServer()</code> is called, sending a request to the identity server.</li>
+<li><code>then</code> block: If the request is successful, the response <code>r</code> is sent using <code>$$.sendResult(r)</code>.</li>
+<li><code>catch</code> block: If an error occurs, the error <code>e</code> is sent using <code>$$.sendError(e)</code>.</li>
+</ol>

@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary of the <code>connectSession</code> function:</p>
+<p>The <code>connectSession</code> function connects a client to a session by managing existing sessions, creating a new one if necessary, and configuring the client's connection retry timeout. It returns the client's session ID if successful, or throws an error if an issue occurs.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -55,3 +57,33 @@ function connectSession(client) {
 module.exports = connectSession;
 </code></pre>
 
+<p><strong>Function Breakdown: <code>connectSession</code></strong></p>
+<h3>Parameters</h3>
+<ul>
+<li><code>client</code>: An object representing a client that needs to be connected to a session.</li>
+</ul>
+<h3>Variables</h3>
+<ul>
+<li><code>importer</code>: An imported module that provides functions for loading and managing webdriver sessions.</li>
+<li><code>readSessions</code>: A function imported from <code>importer</code> that loads existing webdriver sessions.</li>
+<li><code>getSessions</code>, <code>lockPromise</code>, <code>updateOrAddSession</code>: Functions imported from <code>importer</code> that manage webdriver sessions.</li>
+<li><code>TIMEOUT</code>: A constant representing the connection retry timeout in milliseconds (10 seconds).</li>
+<li><code>MAX_SESSIONS</code>: A constant representing the maximum number of allowed sessions (4).</li>
+</ul>
+<h3>Function Flow</h3>
+<ol>
+<li>Acquires a lock using <code>lockPromise</code> to ensure exclusive access to session management.</li>
+<li>Retrieves existing valid sessions using <code>getSessions</code> and updates the <code>sessions</code> array.</li>
+<li>Checks if a session with the same ID already exists; if not, creates a new session index.</li>
+<li>Verifies that the number of sessions does not exceed the maximum allowed (<code>MAX_SESSIONS</code>).</li>
+<li>Configures the client's connection retry timeout using <code>client.options.connectionRetryTimeout</code>.</li>
+<li>Updates the client's session ID based on whether an existing session was found or a new one needs to be created.</li>
+<li>Queries the client's status using <code>client.status</code>.</li>
+<li>Updates the session in the session store using <code>updateOrAddSession</code>.</li>
+<li>Releases the lock using <code>lockPromise</code>.</li>
+<li>If an error occurred, throws the error; otherwise, returns the client's session ID.</li>
+</ol>
+<h3>Return Value</h3>
+<ul>
+<li>The client's session ID if the function executes successfully; otherwise, throws an error.</li>
+</ul>

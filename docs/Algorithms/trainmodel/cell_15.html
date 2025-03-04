@@ -1,5 +1,25 @@
+<p>The <code>to_categorical</code> function converts integer class vectors into binary class matrices, useful for classification problems. It takes integer class vectors and returns one-hot encoded matrices, where each row represents a sample and each column represents a class.</p>
 
 
 <pre><code>y_train = to_categorical(y_train,num_classes = 7)
 y_test = to_categorical(y_test,num_classes = 7)</code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Function: <code>to_categorical</code></h4>
+<p>The <code>to_categorical</code> function is used to convert integer class vectors to binary class matrices.</p>
+<h4>Usage:</h4>
+<pre><code class="language-python">y_train = to_categorical(y_train, num_classes=7)
+y_test = to_categorical(y_test, num_classes=7)
+</code></pre>
+<h4>Parameters:</h4>
+<ul>
+<li><code>y_train</code> and <code>y_test</code>: integer class vectors to be converted</li>
+<li><code>num_classes=7</code>: the number of classes in the classification problem</li>
+</ul>
+<h4>Result:</h4>
+<p>The function returns binary class matrices, where each row is a one-hot encoding of the corresponding class label. In this case, the classes are numbered from 0 to 6 (since the number of classes is 7). The resulting arrays are:</p>
+<ul>
+<li><code>y_train</code>: shape=(n_samples, 7), where n_samples is the number of training samples</li>
+<li><code>y_test</code>: shape=(n_samples, 7), where n_samples is the number of test samples</li>
+</ul>
+<p>Each column represents a class, and the value at each position is either 0 or 1, indicating whether the sample belongs to that class or not.</p>

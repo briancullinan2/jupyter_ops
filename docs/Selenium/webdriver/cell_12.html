@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the <code>getSessions</code> function:</p>
+<p>The <code>getSessions</code> function retrieves available sessions for a given client, filtering out inactive sessions based on the <code>lastActive</code> timestamp. It uses a multi-step process to verify sessions, including loading sessions, filtering, mapping, running promises, and deduplicating results.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -51,3 +53,27 @@ module.exports = {
 
 </code></pre>
 
+<h2>Function Breakdown</h2>
+<h3>getSessions Function</h3>
+<h3>Parameters</h3>
+<ul>
+<li><code>client</code>: Client object required for session verification.</li>
+<li><code>inactive</code> (optional): Flag to retrieve inactive sessions. Default is <code>false</code>.</li>
+</ul>
+<h3>Description</h3>
+<p>The <code>getSessions</code> function retrieves available sessions for a given client. It filters sessions based on their <code>lastActive</code> timestamp and returns the verified sessions.</p>
+<h3>Steps</h3>
+<ol>
+<li>Load sessions using <code>readSessions()</code> function.</li>
+<li>Filter active sessions based on the <code>inactive</code> flag. If <code>inactive</code> is <code>true</code>, filter sessions older than the specified <code>TIMEOUT</code> (10 seconds).</li>
+<li>Map sessions to a new array of promises, each resolving with a verified session.</li>
+<li>Run all promises using <code>importer.runAllPromises()</code> and wait for the results.</li>
+<li>If an inactive session is found, cancel the rest of the promises.</li>
+<li>Filter and deduplicate the verified sessions.</li>
+</ol>
+<h3>Exports</h3>
+<ul>
+<li><code>getSessions</code>: Function to retrieve sessions.</li>
+<li><code>lockPromise</code>: Function to lock a promise.</li>
+<li><code>updateOrAddSession</code>: Function to update or add a session.</li>
+</ul>

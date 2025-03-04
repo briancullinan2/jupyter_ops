@@ -1,3 +1,5 @@
+<p>Here is a 1-2 sentence summary of the QEMU command:</p>
+<p>The QEMU command creates a virtual machine with a Windows 10 ISO file, enables VirtIO drivers and networking, and configures various device settings. The command also allocates 6144 MB of memory and synchronizes the VM's clock with the host system's clock.</p>
 
 
 <pre><code>#!/bin/sh
@@ -12,3 +14,31 @@ qemu-system-x86_64 --enable-kvm -drive driver=raw,file=~/vm/win10.img,if=virtio 
 
 </code></pre>
 
+<p><strong>QEMU Command Breakdown</strong></p>
+<p>This is a QEMU system command that sets up a virtual machine (VM) environment. Here's a breakdown of the command:</p>
+<h3>Variables</h3>
+<ul>
+<li><code>WINIMG</code>: Path to the Windows 10 ISO file (<code>~/vm/Win10_1803_English_x64.iso</code>)</li>
+<li><code>VIRTIMG</code>: Path to the VirtIO ISO file (<code>~/vm/virtio-win-0.1.149.iso</code>)</li>
+</ul>
+<h3>Options</h3>
+<ul>
+<li><code>--enable-kvm</code>: Enables KVM acceleration</li>
+<li><code>-drive</code>: Specifies a drive to attach to the VM
+<ul>
+<li><code>driver=raw</code>: Drives are raw files</li>
+<li><code>file=~/vm/win10.img</code>: Points to the disk image file (<code>win10.img</code>)</li>
+<li><code>if=virtio</code>: Uses VirtIO interface</li>
+</ul></li>
+<li><code>-m</code>: Allocates 6144 MB of memory to the VM</li>
+<li><code>-net nic,model=virtio</code>: Configures a VirtIO network interface</li>
+<li><code>-net user</code>: Enables user-mode networking</li>
+<li><code>-cdrom ${WINIMG}</code>: Attaches the Windows 10 ISO file as a CD-ROM drive</li>
+<li><code>-drive file=${VIRTIMG},index=3,media=cdrom</code>: Attaches the VirtIO ISO file as a CD-ROM drive (index 3)</li>
+<li><code>-rtc base=localtime,clock=host</code>: Synchronizes the VM's clock with the host system's clock</li>
+<li><code>-smp cores=4,threads=8</code>: Configures the VM to use 4 cores and 8 threads</li>
+<li><code>-usb</code>: Enables USB support</li>
+<li><code>-device usb-tablet</code>: Attaches a USB tablet device</li>
+<li><code>-net user,smb=$HOME</code>: Maps the host's <code>$HOME</code> directory to a SMB share in the VM</li>
+</ul>
+<p>This command sets up a Windows 10 VM with VirtIO drivers and networking, and configures various device settings.</p>

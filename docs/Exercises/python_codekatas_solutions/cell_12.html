@@ -1,3 +1,4 @@
+<p>The mergesort algorithm is implemented through two main functions: <code>merge</code> which combines two sorted lists and <code>mergesort</code> which recursively sorts a list using the mergesort algorithm.</p>
 
 
 <pre><code>def mergesort(nums):
@@ -22,3 +23,28 @@ a = [2, 9, 2, 3, 5, 8, 1]
 assert mergesort(a) == [1, 2, 2, 3, 5, 8, 9]
 print('All passed!')</code></pre>
 
+<h2>Mergesort Implementation</h2>
+<h3>merge Function</h3>
+<ul>
+<li>Purpose: Merge two sorted lists into a single sorted list.</li>
+<li>Parameters:
+<ul>
+<li><code>a</code>: First sorted list.</li>
+<li><code>b</code>: Second sorted list.</li>
+</ul></li>
+<li>Returns: A new sorted list containing all elements from <code>a</code> and <code>b</code>.</li>
+</ul>
+<h3>mergesort Function</h3>
+<ul>
+<li>Purpose: Recursively sort a list using the mergesort algorithm.</li>
+<li>Parameters:
+<ul>
+<li><code>nums</code>: List to be sorted.</li>
+</ul></li>
+<li>Returns: A new sorted list containing all elements from <code>nums</code>.</li>
+</ul>
+<h3>Example Usage</h3>
+<ul>
+<li>The code defines a list <code>a</code> and asserts that its sorted version is <code>[1, 2, 2, 3, 5, 8, 9]</code>.</li>
+<li>If the assertion passes, it prints <code>'All passed!'</code>.</li>
+</ul>

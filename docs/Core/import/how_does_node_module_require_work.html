@@ -1,5 +1,5 @@
-<p>Here's a two-sentence summary:</p>
-<p>The provided code imports necessary Node.js modules, including <code>Module</code>, <code>path</code>, and <code>fs</code>, and defines two functions, <code>getCached</code> and <code>makeModule</code>, which manage module caching and creation, respectively. The <code>makeModule</code> function creates a new module instance, caches it if unchanged, and loads exports, while the <code>getCached</code> function checks the last modified time of a file to determine if a cached module exists.</p>
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>The <code>getCached</code> function checks if a cached version of a module exists at a given filepath and returns it if it's newer than the current file's modification time. The <code>makeModule</code> function creates or retrieves a module based on the given path and global context, using caching to reuse existing modules and store new ones for future use.</p>
 
 
 <pre><code>const Module = require('module').Module
@@ -96,40 +96,30 @@ function makeModule(code, pathToCode, ctxGlobal) {
 module.exports.makeModule = makeModule;
 </code></pre>
 
-<h3>Code Breakdown</h3>
-<h4>Importing Modules</h4>
-<pre><code class="language-javascript">const Module = require('module').Module
-const path = require('path')
-const fs = require('fs')
-</code></pre>
-<ul>
-<li>The code starts by importing the <code>Module</code> class from the built-in Node.js <code>module</code> module.</li>
-<li>It also imports the <code>path</code> and <code>fs</code> modules, which are used for working with file paths and the file system, respectively.</li>
-</ul>
-<h4><code>getCached</code> Function</h4>
+<p><strong>Code Breakdown</strong></p>
+<h3>getCached Function</h3>
 <pre><code class="language-javascript">function getCached(filepath) {
     //...
 }
 </code></pre>
-<ul>
-<li>This function takes a file path as an argument and checks if a cached version of the module exists.</li>
-<li>It checks the last modified time of the file and compares it with the build time of the cached module.</li>
-<li>If the file has not changed, it returns the cached module.</li>
-</ul>
-<h4><code>makeModule</code> Function</h4>
+<p>This function checks if there is a cached version of the module at the given <code>filepath</code>. It:</p>
+<ol>
+<li>Retrieves the last modification time (mtime) of the file.</li>
+<li>Checks if a cached version of the module exists in the <code>Module._cache</code> object.</li>
+<li>If a cached version exists and its build time is newer than the current file's mtime, it returns the cached version.</li>
+</ol>
+<h3>makeModule Function</h3>
 <pre><code class="language-javascript">function makeModule(code, pathToCode, ctxGlobal) {
     //...
 }
 </code></pre>
-<ul>
-<li>This function takes three arguments: code, path to code, and an optional context object (<code>ctxGlobal</code>).</li>
-<li>It creates a new module instance using the <code>Module</code> class and caches it if it has not changed since the last build.</li>
-<li>If the module is already cached, it loads the cached exports; otherwise, it creates a new module and loads the exports.</li>
-<li>The function returns the loaded exports.</li>
-</ul>
-<h3>Notes</h3>
-<ul>
-<li>The <code>getCached</code> function uses the <code>fs.statSync</code> method to get the last modified time of the file, which may not be the most efficient way to do this.</li>
-<li>The <code>makeModule</code> function uses the <code>Module._cache</code> object to cache modules, which is a built-in Node.js cache mechanism.</li>
-<li>The function also uses the <code>Module._nodeModulePaths</code> method to get the paths of the parent modules, which is used to resolve dependencies.</li>
-</ul>
+<p>This function creates or retrieves a module based on the given <code>pathToCode</code> and <code>ctxGlobal</code> object. It:</p>
+<ol>
+<li>Resolves the <code>pathToCode</code> to an absolute filepath.</li>
+<li>Checks if a cached version of the module exists using the <code>getCached</code> function.</li>
+<li>If a cached version exists and is loaded, it returns the module's exports.</li>
+<li>If the cached version is not loaded or doesn't exist, it creates a new module instance.</li>
+<li>Configures the new module with various properties (e.g., <code>importer</code>, <code>module</code>, <code>exports</code>, etc.).</li>
+<li>Stores the new module in the <code>Module._cache</code> object for future use.</li>
+</ol>
+<p>Note that this function also includes a TODO comment suggesting a potential optimization.</p>

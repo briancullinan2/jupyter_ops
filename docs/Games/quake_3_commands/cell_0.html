@@ -1,3 +1,5 @@
+<p>Here's a summary of the commands in 2 sentences:</p>
+<p>These commands allow you to remove the quarantine attribute from a file, install necessary headers for macOS development, and sign an application with a code signature. The commands are: <code>xattr -d com.apple.quarantine /Applications/ioquake3/ioquake3.app</code>, <code>open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg</code>, and <code>sudo codesign --force --deep --sign - path-to-app.app</code>.</p>
 
 
 <pre><code>xattr -d com.apple.quarantine /Applications/ioquake3/ioquake3.app
@@ -7,3 +9,31 @@ open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10
 sudo codesign --force --deep --sign - path-to-app.app
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Command 1: Remove Quarantine Attribute</h4>
+<pre><code class="language-bash">xattr -d com.apple.quarantine /Applications/ioquake3/ioquake3.app
+</code></pre>
+<ul>
+<li><code>xattr</code>: Command to manipulate extended attributes of a file.</li>
+<li><code>-d</code>: Option to delete an extended attribute.</li>
+<li><code>com.apple.quarantine</code>: Extended attribute to be deleted, which is associated with the quarantine flag.</li>
+<li><code>/Applications/ioquake3/ioquake3.app</code>: Path of the file from which the attribute is to be deleted.</li>
+</ul>
+<h4>Command 2: Install macOS SDK Headers</h4>
+<pre><code class="language-bash">open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+</code></pre>
+<ul>
+<li><code>open</code>: Command to open a file or folder in the default application.</li>
+<li><code>/Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg</code>: Path to the macOS SDK headers package.</li>
+</ul>
+<h4>Command 3: Sign an Application</h4>
+<pre><code class="language-bash">sudo codesign --force --deep --sign - path-to-app.app
+</code></pre>
+<ul>
+<li><code>sudo</code>: Command to run a command with superuser privileges.</li>
+<li><code>codesign</code>: Command to sign an application.</li>
+<li><code>--force</code>: Option to overwrite any existing signatures.</li>
+<li><code>--deep</code>: Option to sign all parts of the application, including its dependencies.</li>
+<li><code>--sign -</code>: Option to sign the application with no specific signature. This implies that the application will not have any signature.</li>
+<li><code>path-to-app.app</code>: Path to the application to be signed.</li>
+</ul>

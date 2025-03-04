@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the LZString library:</p>
+<p>The LZString library is a JavaScript implementation of the LZ77 compression algorithm, providing methods for compressing and decompressing strings using Base64 and UTF16 encoding schemes. It offers functions for converting strings to and from compressed formats, including compressing to and decompressing from Base64, as well as retrieving character indices in a given alphabet.</p>
 
 
 <pre><code>// Copyright (c) 2013 Pieroxy <pieroxy@pieroxy.net>
@@ -529,3 +531,27 @@ if (typeof define === 'function' && define.amd) {
         });
 }</code></pre>
 
+<p><strong>LZString Library Breakdown</strong></p>
+<p>The LZString library is a JavaScript implementation of the LZ77 compression algorithm. It provides methods for compressing and decompressing strings using Base64 and UTF16 encoding schemes.</p>
+<h3>Private Variables and Functions</h3>
+<ul>
+<li><code>f</code>: a function that converts a Unicode code to a character.</li>
+<li><code>keyStrBase64</code>: a string of Base64 characters.</li>
+<li><code>keyStrUriSafe</code>: a string of URI-safe characters.</li>
+<li><code>baseReverseDic</code>: an object that maps characters to their corresponding indices in the alphabet.</li>
+</ul>
+<h3>Public Functions</h3>
+<ul>
+<li><code>getBaseValue(alphabet, character)</code>: returns the index of a character in the given alphabet.</li>
+</ul>
+<h4>Compression Functions</h4>
+<ul>
+<li><code>compressToBase64(input)</code>: compresses the input string and returns it in Base64 format.</li>
+<li><code>compressToUTF16(input)</code>: not implemented (documentation only).</li>
+</ul>
+<h4>Decompression Functions</h4>
+<ul>
+<li><code>decompressFromBase64(input)</code>: decompresses the input Base64 string and returns the original string.</li>
+<li><code>_decompress(length, base, callback)</code>: a private decompression function.</li>
+<li><code>_compress(input, base, callback)</code>: a private compression function.</li>
+</ul>

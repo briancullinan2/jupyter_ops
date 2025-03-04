@@ -1,5 +1,5 @@
-<p>Here is a summary of the code in two sentences:</p>
-<p>The code imports required modules, defines several functions for path manipulation and cell processing, and exports a <code>getRpcSpecFromCells()</code> function that generates a REST API specification object. This function groups permissions by cell type, extracts metadata, and constructs API methods to create the specification object.</p>
+<p>Here is a 2-sentence summary of the code:</p>
+<p>The code imports required modules and defines utility functions to process Jupyter notebook cells and generate a JSON representation of a REST API specification. The <code>getRpcSpecFromCells</code> function groups cells by permission, extracts relevant information, and creates a nested object structure to represent the API specification.</p>
 
 
 <pre><code>var path = require('path')
@@ -67,31 +67,47 @@ function getRpcSpecFromCells(search) {
 module.exports = getRpcSpecFromCells;
 </code></pre>
 
-<p><strong>Code Breakdown</strong></p>
+<p>Here's a breakdown of the provided code:</p>
 <h3>Dependencies and Imports</h3>
-<p>The code starts by importing required modules:</p>
 <ul>
-<li><code>path</code> module for path manipulation</li>
-<li><code>package.json</code> file for package information</li>
-<li><code>Core</code> module with several functions imported using <code>importer.import()</code></li>
-</ul>
-<h3>Functions</h3>
-<h4><code>getTail()</code></h4>
-<p>A recursive function that takes a path and a context object as arguments. It splits the path by dots, traverses the context object, and returns the last element of the path.</p>
-<h4><code>getPathId()</code></h4>
-<p>A function that takes a cell object as an argument and returns a string representing the path ID. It:</p>
+<li>The code starts by importing required modules:
 <ul>
-<li>Gets the relative path from the current directory to the cell's file</li>
-<li>Removes file extensions and whitespace</li>
-<li>Replaces directory separators with <code>.resources.</code></li>
-<li>Converts the path to lowercase</li>
-</ul>
-<h4><code>getRpcSpecFromCells()</code></h4>
-<p>A function that takes a search object as an argument and returns a REST API specification object. It:</p>
+<li><code>path</code>: for manipulating file paths</li>
+<li><code>package</code>: the contents of the <code>package.json</code> file</li>
+<li><code>importer</code>: a custom module containing various utility functions</li>
+</ul></li>
+<li>Specific functions are imported from the <code>importer</code> module:
 <ul>
-<li>Groups permissions by cell type using <code>groupPermissions()</code></li>
-<li>Iterates over cell types, extracts metadata, and constructs API methods</li>
-<li>Returns a REST API specification object</li>
+<li><code>getRpcFromSpec</code></li>
+<li><code>getPermissions</code></li>
+<li><code>groupPermissions</code></li>
+<li><code>getParameters</code></li>
+</ul></li>
 </ul>
-<h3>Export</h3>
-<p>The code exports an object with the <code>getRpcSpecFromCells()</code> function.</p>
+<h3>Utility Functions</h3>
+<ul>
+<li><code>getTail(path, ctx)</code>: a recursive function that creates a nested object structure from a string representing a path.</li>
+<li><code>getPathId(cell)</code>: extracts a unique identifier from a cell's filename.</li>
+</ul>
+<h3><code>getRpcSpecFromCells(search)</code> Function</h3>
+<ul>
+<li>This function generates a JSON object representing a REST API specification based on Jupyter notebook cells.</li>
+<li>It takes a <code>search</code> parameter, which is not used within the function.</li>
+<li>The function:
+<ul>
+<li>Groups Jupyter notebook cells by their permission type using <code>groupPermissions</code>.</li>
+<li>Iterates over each cell, extracting its:
+<ul>
+<li>Path ID using <code>getPathId</code>.</li>
+<li>Parameters using <code>getParameters</code>.</li>
+<li>Function name and description.</li>
+<li>Permission scopes.</li>
+</ul></li>
+<li>Creates a nested object structure for each cell, containing its method, description, scopes, ID, and parameters.</li>
+</ul></li>
+<li>The function returns an object representing the API specification, including metadata (title, name, description) and the generated resources.</li>
+</ul>
+<h3>Module Exports</h3>
+<ul>
+<li>The code exports the <code>getRpcSpecFromCells</code> function.</li>
+</ul>

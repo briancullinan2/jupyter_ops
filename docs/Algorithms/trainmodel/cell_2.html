@@ -1,3 +1,4 @@
+<p>The <code>createdataframe</code> function takes a directory path as input and returns two lists: <code>image_paths</code> and <code>labels</code>, containing the paths to images and their corresponding labels, respectively. It traverses the directory structure to extract this information.</p>
 
 
 <pre><code>def createdataframe(dir):
@@ -11,3 +12,22 @@
     return image_paths,labels
 </code></pre>
 
+<h3>Function: <code>createdataframe</code></h3>
+<h4>Parameters</h4>
+<ul>
+<li><code>dir</code>: The path to the directory containing images and labels</li>
+</ul>
+<h4>Returns</h4>
+<ul>
+<li><code>image_paths</code>: A list of paths to the images</li>
+<li><code>labels</code>: A list of corresponding labels</li>
+</ul>
+<h4>Description</h4>
+<p>This function traverses a directory structure, extracting paths to images and their corresponding labels. It returns two lists: <code>image_paths</code> containing the paths to the images and <code>labels</code> containing the corresponding labels.</p>
+<h4>Implementation</h4>
+<ul>
+<li>It iterates over the subdirectories (labels) in the specified directory.</li>
+<li>For each subdirectory, it iterates over the image files and appends the full path to the image and the corresponding label to the <code>image_paths</code> and <code>labels</code> lists, respectively.</li>
+<li>It prints a message indicating the completion of each label.</li>
+<li>Finally, it returns the <code>image_paths</code> and <code>labels</code> lists.</li>
+</ul>

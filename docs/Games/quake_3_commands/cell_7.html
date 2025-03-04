@@ -1,3 +1,5 @@
+<p>Here is a summary of the provided commands in one sentence:</p>
+<p>The q3map2.exe/q3map2 tool is used to convert, optimize, and prepare 3D maps for Quake 3 Arena and Quake 2 games, with various commands available for tasks such as lighting, rendering, visualization, and meta information addition.</p>
 
 
 <pre><code>q3map2.exe -convert -light -format map -fs_basepath Z:\.q3a -game baseq3 -v Z:\.q3a\baseq3\acid3dm5.pk3dir\maps\acid3dm5.bsp
@@ -30,3 +32,65 @@ q3map2.exe -convert -light -format map -fs_basepath Z:\.quake2 -game baseq2 -v Z
 
 </code></pre>
 
+<h3>Overview of q3map2.exe/q3map2 Commands</h3>
+<p>The provided commands are used to convert, optimize, and prepare 3D maps for Quake 3 Arena games. These commands utilize the q3map2.exe/q3map2 tool.</p>
+<h3>Command Breakdown</h3>
+<h4>1. Converting and Lighting</h4>
+<ul>
+<li><code>q3map2.exe -convert -light -format map -fs_basepath Z:\.q3a -game baseq3 -v Z:\.q3a\baseq3\acid3dm5.pk3dir\maps\acid3dm5.bsp</code>
+<ul>
+<li>Converts and lights a Quake 3 Arena map.</li>
+</ul></li>
+</ul>
+<h4>2. Converting and Lighting (Quake 2)</h4>
+<ul>
+<li><code>q3map2.exe -convert -light -format map -fs_basepath Z:\.quake2 -game baseq2 -v Z:\.quake2\baseq2\pak0.pak\maps\base1.bsp</code>
+<ul>
+<li>Converts and lights a Quake 2 map.</li>
+</ul></li>
+</ul>
+<h4>3. Preparing Map for ioquake3</h4>
+<ul>
+<li><p><code>./q3map2 -meta -v -fs_basepath /Applications/ioquake3/unpacked -game baseq3 /Applications/ioquake3/unpacked/acid3dm5.pk3dir/maps/acid3dm5_converted.map</code></p>
+<ul>
+<li>Prepares the map for ioquake3 by adding meta information.</li>
+</ul></li>
+<li><p><code>./q3map2 -vis -v -fs_basepath /Applications/ioquake3/unpacked -game baseq3 /Applications/ioquake3/unpacked/acid3dm5.pk3dir/maps/acid3dm5_converted.map</code></p>
+<ul>
+<li>Prepares the map for rendering and visualization.</li>
+</ul></li>
+<li><p><code>./q3map2 -bsp -meta -patchmeta -v -fs_basepath /Applications/ioquake3/unpacked -game baseq3 /Applications/ioquake3/unpacked/acid3dm5.pk3dir/maps/acid3dm5_converted.map</code></p>
+<ul>
+<li>Prepares the map's bsp (binary space partitioning) and meta information.</li>
+</ul></li>
+<li><p><code>./q3map2 -convert ase -v -fs_basepath /Applications/ioquake3/unpacked -game baseq3 /Applications/ioquake3/unpacked/acid3dm5.pk3dir/maps/acid3dm5_converted.map</code></p>
+<ul>
+<li>Converts the map from bsp to ase (another 3D model format).</li>
+</ul></li>
+<li><p><code>./q3map2 -light -fast -patchshadows -samples 3 -bounce 8 -gamma 2 -compensate 4 -dirty -v -fs_basepath /Applications/ioquake3/unpacked -game baseq3 /Applications/ioquake3/unpacked/acid3dm5.pk3dir/maps/acid3dm5_converted.map</code></p>
+<ul>
+<li>Optimizes lighting for the map.</li>
+</ul></li>
+</ul>
+<h4>4. Preparing Map for Quake 2</h4>
+<ul>
+<li><p><code>/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -meta ~/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base1.map</code></p>
+<ul>
+<li>Prepares the map for Quake 2 by adding meta information.</li>
+</ul></li>
+<li><p><code>/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq3 -light _keeplights -fast ~/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base1.map</code></p>
+<ul>
+<li>Prepares the map for Quake 3 Arena by adding lighting and optimizing for fast rendering.</li>
+</ul></li>
+<li><p><code>/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq3 -vis _keeplights ~/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base1.map</code></p>
+<ul>
+<li>Prepares the map for visualization.</li>
+</ul></li>
+</ul>
+<h4>5. Normalizing BSP Vectors</h4>
+<ul>
+<li><code>/Applications/NetRadiant.app/Contents/MacOS/install/q3map2.bin -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -convert -format map -readmap ~/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base2.map</code>
+<ul>
+<li>Normalizes all bsp vectors in a map.</li>
+</ul></li>
+</ul>

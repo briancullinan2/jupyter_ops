@@ -1,3 +1,6 @@
+<p>Here is a summary of the code in one or two sentences:</p>
+<p>The code declares variables for a user's profile directory path and a project directory path, then calls an asynchronous function that searches for long functions in the project directory and sends the results or errors to <code>$().sendResult()</code> or <code>$().sendError()</code>.</p>
+<p>The purpose of <code>$().async()</code> and <code>$().sendResult()</code>/<code>$().sendError()</code> is unknown as it is not clearly documented.</p>
 
 
 <pre><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
@@ -12,3 +15,28 @@ if(typeof $$ !== 'undefined') {
 }
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Variable Declarations</h4>
+<ul>
+<li><code>PROFILE_PATH</code>: stores the path to the user's profile directory, prioritizing:
+<ol>
+<li><code>process.env.HOME</code></li>
+<li><code>process.env.HOMEPATH</code> (Windows)</li>
+<li><code>process.env.USERPROFILE</code> (Windows, alternative)</li>
+</ol></li>
+<li><code>project</code>: concatenates the <code>PROFILE_PATH</code> with the string <code>/Documents/asm</code>, representing a project directory path.</li>
+</ul>
+<h4>Async Function Call</h4>
+<ul>
+<li>Checks if <code>$</code> is defined:
+<ul>
+<li>If true, calls <code>$().async()</code> ( purpose unknown)</li>
+<li>Then, calls <code>findLongFunctions(project)</code>:
+<ul>
+<li>Returns a Promise that resolves to an array of objects (<code>e</code>)</li>
+<li>Maps each object to its <code>path</code> property</li>
+<li>Calls <code>$().sendResult()</code> with the mapped array</li>
+</ul></li>
+<li>Catches any errors (<code>e</code>) and calls <code>$().sendError(e)</code></li>
+</ul></li>
+</ul>

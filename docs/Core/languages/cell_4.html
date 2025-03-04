@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary of the code:</p>
+<p>This code imports modules and functions from a <code>Core</code> file, and uses a <code>replaceCore</code> function to manipulate a JavaScript code string. The manipulated code is then conditionally executed using the <code>mime</code> function on a global variable <code>$$</code>, if it is defined.</p>
 
 
 <pre><code>var importer = require('../Core')
@@ -20,3 +22,33 @@ var getArrayAST = importer.import('get ast path array');
 
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">var importer = require('../Core')
+var {replaceCore} = importer.import('replace core requirement')
+</code></pre>
+<ul>
+<li>The code imports a module from a file named <code>Core</code> located in the parent directory (<code>../Core</code>).</li>
+<li>It then imports a function named <code>replaceCore</code> from this module, which is a property of an object named <code>replaceCore</code> imported from the <code>import</code> function.</li>
+</ul>
+<h4>Code String</h4>
+<pre><code class="language-javascript">var code = `
+var importer = require('../Core');
+var getArrayAST = importer.import('get ast path array');
+`
+</code></pre>
+<ul>
+<li>This is a string representation of a JavaScript code snippet.</li>
+<li>It declares a variable <code>importer</code> and imports a module from <code>../Core</code> using <code>require</code>.</li>
+<li>It then imports a function named <code>getArrayAST</code> from this module.</li>
+</ul>
+<h4>Conditional Execution</h4>
+<pre><code class="language-javascript">if (typeof $$!= 'undefined') {
+    $$.mime({'text/plain': replaceCore(code)})
+}
+</code></pre>
+<ul>
+<li>The code checks if a global variable <code>$$</code> is defined.</li>
+<li>If <code>$$</code> is defined, it calls the <code>mime</code> function on <code>$$</code> with an object as an argument.</li>
+<li>The object has a property <code>text/plain</code> with a value obtained by calling the <code>replaceCore</code> function with the <code>code</code> string as an argument.</li>
+</ul>

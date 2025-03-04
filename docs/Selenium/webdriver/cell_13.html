@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>This code imports necessary modules, sets variables, and defines two primary functions: <code>addPlugins</code> and <code>verifySession</code>. The <code>addPlugins</code> function attaches event listeners to a client object and locks/unlocks promises to update or add session data, while the <code>verifySession</code> function verifies a session by setting the session ID, adding plugins, and interacting with the client object's promise chain.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -75,3 +77,46 @@ module.exports = {
 
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Variables and Function Imports</h3>
+<ul>
+<li><code>var importer = require('../Core');</code>: Imports a module from the <code>../Core</code> directory.</li>
+<li><code>var { updateOrAddSession, lockPromise } = importer.import('update session');</code>: Imports two functions, <code>updateOrAddSession</code> and <code>lockPromise</code>, from the <code>update session</code> module.</li>
+<li><code>var TIMEOUT = 10000;</code>: Sets a timeout value of 10 seconds.</li>
+<li><code>var scanning = false;</code>: Initializes a variable to track whether the system is currently scanning.</li>
+<li><code>var sessions = [];</code>: Initializes an empty array to store session data.</li>
+</ul>
+<h3><code>addPlugins</code> Function</h3>
+<ul>
+<li><code>function addPlugins(client) {... }</code>: Takes a <code>client</code> object as an argument.</li>
+<li><code>if (!first) {... }</code>: Checks if the <code>first</code> variable is <code>false</code>. If it is, sets <code>first</code> to <code>true</code>.</li>
+<li><code>client.on('result', (result) =&gt; {... });</code>: Attaches an event listener to the <code>client</code> object's <code>result</code> event.</li>
+<li>Inside the event listener:
+<ul>
+<li>Checks if <code>scanning</code> is <code>true</code>. If it is, returns immediately.</li>
+<li>Retrieves the current session ID from the <code>client</code>.</li>
+<li>Filters the <code>sessions</code> array to find the session with the matching ID.</li>
+<li>If the session is found and was updated within the last half of the <code>TIMEOUT</code> period, returns immediately.</li>
+<li>Calls <code>lockPromise(true)</code> to lock the promise, then updates or adds the session using <code>updateOrAddSession</code>, updates the <code>sessions</code> array, and unlocks the promise using <code>lockPromise(false)</code>.</li>
+</ul></li>
+</ul>
+<h3><code>verifySession</code> Function</h3>
+<ul>
+<li><code>function verifySession(client, session) {... }</code>: Takes a <code>client</code> object and a <code>session</code> object as arguments.</li>
+<li><code>client.sessionId = session[1];</code>: Sets the session ID on the <code>client</code> object.</li>
+<li><code>addPlugins(client);</code>: Calls the <code>addPlugins</code> function with the <code>client</code> object.</li>
+<li><code>scanning = true</code>: Sets the <code>scanning</code> variable to <code>true</code>.</li>
+<li>Inside the <code>client</code> object promise chain:
+<ul>
+<li>Retrieves the window handle using <code>client.getWindowHandle()</code>.</li>
+<li>Switches to the window using <code>client.switchToWindow(r)</code>.</li>
+<li>Retrieves the status using <code>client.status()</code>.</li>
+<li>Returns the session ID.</li>
+</ul></li>
+<li>If an error occurs, catches it and:
+<ul>
+<li>Sets <code>scanning</code> to <code>false</code> if it was <code>true</code>.</li>
+<li>If the error is a timeout or the session is unusable, logs a message and sets the session ID to an empty string.</li>
+<li>If the error is not a timeout or unusable session, logs the error message and throws the error.</li>
+</ul></li>
+</ul>

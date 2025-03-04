@@ -1,49 +1,57 @@
 <a href="./import_notebook.html">import notebook</a>
-
-<p>Here is a 2-sentence summary of the provided functions:</p>
-<p>The <code>getCellPath</code> function generates a unique path for a cell in a notebook, returning it as a string. The <code>importNotebook</code> function imports a notebook into a new module, interpreting the notebook's cells and creating a new module based on the cell's language.</p>
+<br /><br />
+<p>Here's a summary of the functions in one or two sentences:</p>
+<p>The <code>getCellPath(cell)</code> function generates a unique file path for a cell in a notebook by appending the cell ID and question (if present) to the notebook directory. The <code>importNotebook(notebook, ctx = {})</code> function imports a notebook and returns an object containing modules for each cell in the notebook, created using language-specific functions.</p>
 <a href="./how_does_node_module_require_work.html">how does node module require work</a>
-
-<p>Here's a two-sentence summary:</p>
-<p>The provided code imports necessary Node.js modules, including <code>Module</code>, <code>path</code>, and <code>fs</code>, and defines two functions, <code>getCached</code> and <code>makeModule</code>, which manage module caching and creation, respectively. The <code>makeModule</code> function creates a new module instance, caches it if unchanged, and loads exports, while the <code>getCached</code> function checks the last modified time of a file to determine if a cached module exists.</p>
+<br /><br />
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>The <code>getCached</code> function checks if a cached version of a module exists at a given filepath and returns it if it's newer than the current file's modification time. The <code>makeModule</code> function creates or retrieves a module based on the given path and global context, using caching to reuse existing modules and store new ones for future use.</p>
 <a href="./cell_2.html">Cell 2</a>
-
-<p>This code provides functions to format and display search results from a Jupyter notebook in a structured Markdown format, including summaries, matched content, and code snippets.</p>
+<br /><br />
+<p>Here is a two-sentence summary:</p>
+<p>The <code>runPythonModule</code> function runs a Python module with given parameters, while the <code>makePythonModule</code> function creates and executes a Python module from provided code. A cache is used to store compiled Python modules and avoid recompilation, and notebook parameters are imported using the <code>importNotebook</code> function.</p>
 <a href="./compile_an_es_module.html">compile an es module</a>
-
-<p>Here is a 2-sentence summary of the <code>makeESModule</code> function:</p>
-<p>The <code>makeESModule</code> function compiles and caches JavaScript code using the <code>vm</code> module, setting up an execution context and linking the module with its dependencies. If the module has not been compiled before, it logs a message to the console and returns the compiled module instance, otherwise it returns the already cached module.</p>
+<br /><br />
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code imports dependencies and defines an asynchronous <code>makeESModule</code> function that creates a virtual machine context and compiles code using the <code>vm</code> module. The function also defines a linker function that resolves and imports modules dynamically, allowing the code to be executed and exported as a virtual machine module.</p>
 <a href="./compile_a_csharp_file_into_a_DLL.html">compile a csharp file into a DLL</a>
-
-<p>Here is a 2-sentence summary of the provided code:</p>
-<p>The code consists of two functions, <code>buildDLL</code> and <code>makeDLL</code>, which are used to create and manage DLLs from Python code. The <code>buildDLL</code> function interprets and compiles the code, while the <code>makeDLL</code> function checks for an existing cached module and calls <code>buildDLL</code> to rebuild the DLL if necessary.</p>
+<br /><br />
+<p>Here's a two-sentence summary:</p>
+<p>This Node.js module builds and loads Dynamic Link Libraries (DLLs) from source code by interpreting, compiling, and caching DLLs based on source code changes. It utilizes various Node.js modules, custom modules, and notebooks to perform tasks such as interpreting source code, selecting ANTLR trees, and extracting class information.</p>
 <a href="./compile_a_dylib_from_source_cell.html">compile a dylib from source cell</a>
-
-<p>Here's a two-sentence summary of the code breakdown:</p>
-<p>The code consists of two main functions: <code>generateCallback</code> which generates a callback function for dynamic libraries, and <code>makeDylib</code> which compiles and loads a dynamic library from code. Both functions rely on several modules, including <code>path</code>, <code>ffi-rs</code>, and <code>../Core</code>, and use functions such as <code>importNotebook</code>, <code>interpret</code>, and <code>buildDylib</code> from these modules.</p>
+<br /><br />
+<p>Here's a 2-sentence summary of the code:</p>
+<p>This JavaScript code generates dynamic libraries using functions <code>generateCallback</code> and <code>makeDylib</code>, which create callbacks for library functions and compile code into dynamic libraries, respectively. The code relies on external dependencies such as <code>ffi-rs</code> and a core module, and includes unclear or missing parts indicated by <code>TODO</code> comments.</p>
 <a href="./display_interpreted_results_in_markdown.html">display interpreted results in markdown</a>
-
-<p>Here's a summary of the two functions in one or two sentences:</p>
-<p>The module contains two functions, <code>resultMarkdown</code> and <code>displayCell</code>, which format the result of a search into a markdown string. The <code>resultMarkdown</code> function takes an object as input, while the <code>displayCell</code> function takes an array of objects and uses either <code>resultMarkdown</code> or its own logic to generate a markdown-formatted string.</p>
+<br /><br />
+<p>Here is a summary of the code in one or two sentences:</p>
+<p>The code consists of two functions, <code>resultMarkdown</code> and <code>displayCell</code>, which convert arrays of results into strings in Markdown format. The <code>displayCell</code> function handles both single-cell and multi-cell results, reducing them into a single string using the <code>resultMarkdown</code> function.</p>
 <a href="./search_jupter_notebooks_for_questions_and_answers.html">search jupter notebooks for questions and answers</a>
-
-<p>Here is a two-sentence summary of the code:</p>
-<p>This code provides a database functionality with search capabilities using the Fuse.js library and a custom Levenshtein distance search, allowing for fuzzy string queries and cache management. It exports three functions: <code>createDatabase</code>, <code>queryDatabase</code>, and <code>lookupCell</code>, which can be imported and used in other parts of the application.</p>
+<br /><br />
+<p>Here's a two-sentence summary of the provided code breakdown:</p>
+<p>This code initializes and configures a database search system using Fuse.js or an alternative search function, creating two instances with tokenization enabled and disabled. It also exports functions to query the database with a search query and look up cells in the cache by their ID, allowing for seamless integration into other applications.</p>
 <a href="./search_notebook_questions.html">search notebook questions</a>
-
-<p>Here is a two-sentence summary of the code:</p>
-<p>This JavaScript code initializes a cache and loads various notebooks, including their cells and metadata, using asynchronous functions and imported modules. It also defines functions to search and query notebooks based on different types of queries, such as file paths, names, and extensions.</p>
+<br /><br />
+<p>Here's a 1-2 sentence summary of the provided code:</p>
+<p>The code initializes a cache by retrieving and caching cells from specified notebooks and creating a database, then defines the <code>interpret</code> function to process queries by filtering local files, searching notebooks, and querying the database. The <code>interpret</code> function checks if the cache has already been initialized and processes the queries accordingly, storing the results in the <code>searchResults</code> variable.</p>
 <a href="./cell_9.html">Cell 9</a>
-
+<br /><br />
+<p>Here is a two-sentence summary:</p>
+<p>This code provides four functions for filtering and searching Jupyter Notebook files (.ipynb) in a local environment, allowing users to search by filename, cell number, or query. The functions include <code>filterLocal</code>, <code>filterFilename</code>, <code>searchFiles</code>, and <code>searchQueryFiles</code>, which are exported as module exports for use in other applications.</p>
 <a href="./convert_regexp_matches_to_an_array.html">convert regexp matches to an array</a>
-
-<p>The <code>regexToArray</code> function takes a regular expression object and a string, and returns an array of arrays or numbers containing the index and length of each match. It can also return a single match at a specified index.</p>
+<br /><br />
+<p>The <code>regexToArray</code> function takes a regular expression object, a string to search, and an optional parameter to customize the return value. It returns an array of matches based on the provided parameters, such as the start position and length of each match, all match groups, or a specific match group.</p>
 <a href="./run_all_promises_sequentially.html">run all promises sequentially</a>
-
-<p>The <code>runAllPromises</code> function executes an array of promises in sequence, concatenating the results of each promise to produce a final array. It uses the <code>reduce</code> method to iterate over the promises array and returns a promise that resolves with the concatenated array of results.</p>
+<br /><br />
+<p>Here is a summary of the <code>runAllPromises</code> function in one sentence:<br />
+The <code>runAllPromises</code> function executes an array of functions that return promises, resolving and concatenating the results of each promise chain into a single array.</p>
 <a href="./parse_cells_from_a_notebook.html">parse cells from a notebook</a>
-
-<p>Here's a 2-sentence summary of the provided code:</p>
-<p>This code defines a module in Node.js that imports the <code>path</code> and <code>fs</code> modules and exports a <code>getCells</code> function, which retrieves and transforms cells from a Jupyter Notebook file. The <code>getCells</code> function takes a notebook path and an array of cell types as parameters, and returns a transformed array of cells with added properties such as language and filename.</p>
+<br /><br />
+<p>Here's a two-sentence summary of the provided code breakdown:</p>
+<p>The <code>getCells</code> function extracts cells from a Jupyter Notebook file, filtering and mapping cells based on specified types, and returns an array of extracted cells with additional metadata. The function is exported as a module using <code>module.exports.getCells = getCells;</code>, making it available for use in other Node.js applications.</p>
 <a href="./cell_13.html">Cell 13</a>
-
+<br /><br />
+<p>Here is a summary of the <code>run</code> function in one sentence:</p>
+<p>The <code>run</code> function is an asynchronous command-line tool that processes command-line arguments to execute a result's <code>apply</code> method, returning the result after execution.</p>
+<p>Alternatively, here is a two-sentence summary:</p>
+<p>The <code>run</code> function is an asynchronous command-line tool that processes command-line arguments and executes a result's <code>apply</code> method. It returns the result of the execution, unless the result is the global object, in which case it returns immediately.</p>

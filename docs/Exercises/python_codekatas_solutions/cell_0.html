@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary:</p>
+<p>The <code>palindrome(string)</code> function checks if the input string, with all lower-case characters, is the same when reversed. It does this by comparing characters from the start and end of the string, working its way towards the center, and returns <code>True</code> if no mismatches are found.</p>
 
 
 <pre><code>def palindrome(string):
@@ -14,3 +16,27 @@ assert palindrome('abba') == True
 assert palindrome('redivider') == True
 print('All passed!')</code></pre>
 
+<h2>Function Breakdown: <code>palindrome(string)</code></h2>
+<h3>Purpose</h3>
+<p>Checks if the input string (with all lower-case characters) is a palindrome.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>string</code>: The input string to be checked.</li>
+</ul>
+<h3>Return Values</h3>
+<ul>
+<li><code>True</code> if the input string is a palindrome.</li>
+<li><code>False</code> if the input string is not a palindrome.</li>
+</ul>
+<h3>Algorithm</h3>
+<ol>
+<li>Loops through the first half of the string indices using <code>range(len(string)//2)</code>.</li>
+<li>For each index <code>i</code>, checks if the character at index <code>i</code> is different from the character at the corresponding index from the end (<code>len(string)-i-1</code>).</li>
+<li>If any mismatch is found, immediately returns <code>False</code>.</li>
+<li>If the loop completes without finding any mismatches, returns <code>True</code>, indicating the string is a palindrome.</li>
+</ol>
+<h3>Edge Cases</h3>
+<ul>
+<li>An empty string is considered a palindrome (<code>palindrome('') == True</code>).</li>
+<li>A single character string is considered a palindrome (<code>palindrome('a') == True</code>).</li>
+</ul>

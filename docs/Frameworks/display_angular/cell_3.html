@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>This code sets up an HTTPS server using Express.js, configures it to use a private key and certificate, and initializes a sockify server to handle incoming connections. It also imports specific functions from the Core module, injects new modules into the sockify server, and calls various functions to set up the search provider and selenium server.</p>
 
 
 <pre><code>// TODO: move this to web extension code?
@@ -77,3 +79,43 @@ seleniumServer()
 
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<ul>
+<li><code>var importer = require('../Core');</code>: Imports a module named <code>Core</code> from a directory two levels up from the current directory.</li>
+<li><code>var fs = require('fs');</code>: Imports the built-in <code>fs</code> (file system) module.</li>
+<li><code>var https = require('https');</code>: Imports the built-in <code>https</code> module.</li>
+<li><code>var app = require('express')();</code>: Creates a new instance of the Express.js framework.</li>
+<li><code>var { searchProvider, sockify, seleniumServer } = importer.import([...]);</code>: Imports specific functions from the <code>Core</code> module using the <code>import</code> function.</li>
+</ul>
+<h4>HTTPS Server Configuration</h4>
+<ul>
+<li><code>var httpsOptions = {... };</code>: Defines options for the HTTPS server, including a private key, certificate, passphrase, and trust settings.</li>
+<li><code>var secureServer = require('https').createServer(httpsOptions, app);</code>: Creates a new HTTPS server instance using the Express.js app and the defined options.</li>
+<li><code>var trustedCa = [...];</code>: Defines an array of trusted certificates.</li>
+</ul>
+<h4>Configuring Global HTTPS Agent</h4>
+<ul>
+<li><code>https.globalAgent.options.ca = [];</code>: Resets the global HTTPS agent's certificate cache.</li>
+<li><code>for (const ca of trustedCa) {... }</code>: Iterates over the trusted certificates and adds them to the global HTTPS agent's certificate cache.</li>
+</ul>
+<h4>Sockify Configuration</h4>
+<ul>
+<li><code>sockify = r[1];</code>: Extracts the <code>sockify</code> module from an array <code>r</code>.</li>
+<li><code>searchProvider = r[0];</code>: Extracts the <code>searchProvider</code> module from the array <code>r</code>.</li>
+<li><code>seleniumServer = r[2];</code>: Extracts the <code>seleniumServer</code> module from the array <code>r</code>.</li>
+</ul>
+<h4>Listening and Sockify Initialization</h4>
+<ul>
+<li><code>var listener = secureServer.listen(8000);</code>: Starts the HTTPS server and listens on port 8000.</li>
+<li><code>sockify.sockifyServer(listener);</code>: Configures sockify to use the HTTPS server.</li>
+<li><code>sockify.sockifyRequire({...}, 'SearchService');</code>: Injects a new module into the sockify server.</li>
+<li><code>sockify.sockifyRequire({...}, 'BrowserService');</code>: Injects another new module into the sockify server.</li>
+<li><code>searchProvider();</code>: Calls the <code>searchProvider</code> function.</li>
+<li><code>$$.async();</code>: Calls an asynchronous function.</li>
+<li><code>seleniumServer().catch(e =&gt; $$.sendError(e));</code>: Calls the <code>seleniumServer</code> function and catches any errors that occur.</li>
+</ul>
+<h4>Comments</h4>
+<ul>
+<li>There are several commented-out code blocks and TODO comments that suggest the code is in development or has not been fully implemented.</li>
+</ul>

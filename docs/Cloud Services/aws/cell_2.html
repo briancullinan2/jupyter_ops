@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary:</p>
+<p>To interact with AWS Lambda using the AWS SDK in JavaScript, you can import the SDK, initialize an AWS Lambda client, and invoke a Lambda function with a custom payload. The AWS Lambda client handles potential errors and success cases by calling <code>context.done</code> in case of an error and <code>context.succeed</code> with the payload in case of a successful function call.</p>
 
 
 <pre><code>var aws = require('aws-sdk');
@@ -17,3 +19,36 @@ lambda.invoke({
   }
 });</code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Importing AWS SDK</h3>
+<pre><code class="language-javascript">var aws = require('aws-sdk');
+</code></pre>
+<p>Imports the AWS SDK.</p>
+<h3>Initializing AWS Lambda Client</h3>
+<pre><code class="language-javascript">var lambda = new aws.Lambda({
+  region: 'us-west-2' // change to your region
+});
+</code></pre>
+<p>Creates a new client instance for AWS Lambda in the specified region.</p>
+<h3>Invoking a Lambda Function</h3>
+<pre><code class="language-javascript">lambda.invoke({
+  FunctionName: 'name_of_your_lambda_function', // replace with your function name
+  Payload: JSON.stringify(event, null, 2) // pass params
+}, function(error, data) {
+ ...
+});
+</code></pre>
+<p>Invokes the specified Lambda function with the provided payload, which is a JSON stringified version of the <code>event</code> object.</p>
+<h3>Error and Success Handling</h3>
+<pre><code class="language-javascript">if (error) {
+  context.done('error', error);
+}
+if (data.Payload) {
+  context.succeed(data.Payload)
+}
+</code></pre>
+<p>Handles potential errors and success cases.</p>
+<ul>
+<li>If an error occurs, it calls <code>context.done</code> with an error message and the error object.</li>
+<li>If the function call is successful and returns a payload, it calls <code>context.succeed</code> with the payload.</li>
+</ul>

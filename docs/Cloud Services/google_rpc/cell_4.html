@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>This code imports modules and functions from <code>Core.js</code> and uses them to import specific functions from other modules, such as <code>selectAst</code> and <code>makeHandler</code>. The code then uses these functions to create a handler for a function named <code>load ckeditor</code> and leaves some commented out code that appears to have been used for testing or logging purposes.</p>
 
 
 <pre><code>var importer = require('../Core')
@@ -13,3 +15,36 @@ makeHandler('load ckeditor')
 
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">var importer = require('../Core')
+</code></pre>
+<ul>
+<li>This line imports a module from a file named <code>Core.js</code> located in a parent directory.</li>
+</ul>
+<h4>Importing Specific Functions</h4>
+<pre><code class="language-javascript">var {selectAst} = importer.import('select code tree')
+var {handler, makeHandler} = importer.import('generic gcloud function handler')
+</code></pre>
+<ul>
+<li>These lines import specific functions from the imported <code>importer</code> module.</li>
+<li><code>selectAst</code> is a function from the <code>select code tree</code> module imported by the <code>importer</code> module.</li>
+<li><code>handler</code> and <code>makeHandler</code> are functions from the <code>generic gcloud function handler</code> module imported by the <code>importer</code> module.</li>
+</ul>
+<h4>Unused Function Calls</h4>
+<pre><code class="language-javascript">//var testFunc = importer.interpret('load ckeditor')
+//console.log(handler.toString())
+//var doc = selectAst('.', handler.toString())
+//console.log(assignmentStmt[0].ownerDocument.toString(assignmentStmt[0]))
+</code></pre>
+<ul>
+<li>These lines contain commented out code that were likely used for testing purposes.</li>
+<li><code>importer.interpret('load ckeditor')</code> is a function call that is commented out.</li>
+<li>The following lines are commented out and appear to be related to logging and manipulating the abstract syntax tree (AST) of a code string.</li>
+</ul>
+<h4>Creating a Handler</h4>
+<pre><code class="language-javascript">makeHandler('load ckeditor')
+</code></pre>
+<ul>
+<li>This line creates a handler for a function named <code>load ckeditor</code> using the <code>makeHandler</code> function imported earlier.</li>
+</ul>

@@ -1,6 +1,22 @@
+<p>The <code>mdadm create</code> command is used to create a new linear RAID device, <code>/dev/md0</code>, using the device <code>/dev/sdb1</code>. The command is executed with options such as <code>--level=1</code>, <code>-n 1</code>, <code>-f</code>, and <code>--raid-disk=2</code> to specify RAID level and disk configuration.</p>
 
 
 <pre><code>mdadm --create /dev/md0 --level=1 -n 1 -f --raid-disk=2 /dev/sdb1
 
 </code></pre>
 
+<p><strong>MDADM Command</strong></p>
+<ul>
+<li>Command: <code>mdadm</code></li>
+<li>Subcommand: <code>create</code></li>
+<li>Options:
+<ul>
+<li><code>--level=1</code>: Specify the RAID level (1 for linear RAID)</li>
+<li><code>-n 1</code>: Specify the number of active devices</li>
+<li><code>-f</code>: Force creation, overwriting existing data</li>
+<li><code>--raid-disk=2</code>: Specify the starting disk number for the RAID (2)</li>
+<li><code>/dev/md0</code>: Specify the name of the new RAID device</li>
+<li><code>/dev/sdb1</code>: Specify the device to use as the RAID device</li>
+</ul></li>
+</ul>
+<p><strong>Creates a new linear RAID device <code>/dev/md0</code> using <code>/dev/sdb1</code> as the device</strong></p>

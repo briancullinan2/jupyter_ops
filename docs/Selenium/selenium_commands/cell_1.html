@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary:</p>
+<p>To start a Selenium server with Chrome browser in headless mode, the code sets the DISPLAY environment variable, runs the Java Virtual Machine, and specifies the path to the Selenium standalone JAR file. The command also sets JVM system properties to customize the Chrome browser's behavior, including running in full-screen, disabling sandboxing, and running in incognito mode.</p>
 
 
 <pre><code>export DISPLAY=:0 
@@ -5,3 +7,34 @@ java -Dwebdriver.chrome.driver="/usr/bin/chromedriver" -Dwebdriver.chrome.args="
 
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<p><strong>Purpose:</strong> Start a Selenium server with Chrome browser in headless mode.</p>
+<p><strong>Line-by-Line Explanation:</strong></p>
+<ol>
+<li><code>export DISPLAY=:0</code>
+<ul>
+<li>Sets the DISPLAY environment variable to &quot;:0&quot;, which allows the server to interact with the desktop.</li>
+</ul></li>
+<li><code>java</code>
+<ul>
+<li>Starts the Java Virtual Machine (JVM).</li>
+</ul></li>
+<li><code>-Dwebdriver.chrome.driver=&quot;/usr/bin/chromedriver&quot;</code>
+<ul>
+<li>Sets a JVM system property to the path of the ChromeDriver executable.</li>
+</ul></li>
+<li><code>-Dwebdriver.chrome.args=&quot;--start-fullscreen --no-sandbox --incognito&quot;</code>
+<ul>
+<li>Sets another JVM system property to the command-line arguments for the Chrome browser, including:
+<ul>
+<li><code>--start-fullscreen</code>: Runs the browser in full-screen mode.</li>
+<li><code>--no-sandbox</code>: Disables sandboxing, which allows the browser to run outside of a sandbox container.</li>
+<li><code>--incognito</code>: Runs the browser in incognito mode.</li>
+</ul></li>
+</ul></li>
+<li><code>-jar /opt/selenium/selenium-server-standalone.jar</code>
+<ul>
+<li>Specifies the path to the Selenium standalone JAR file, which is executed by the JVM.</li>
+<li>The JAR file contains the Selenium server code, which will start the server and begin listening for incoming requests.</li>
+</ul></li>
+</ol>

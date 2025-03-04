@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary of the code breakdown:</p>
+<p>The code imports a module and a function from it, then uses asynchronous execution to call the function, which returns a promise. The promise is handled with <code>.then</code> for success and <code>.catch</code> for errors, sending the result or error to the <code>$$.sendResult</code> or <code>$$.sendError</code> functions, respectively.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -9,3 +11,19 @@ syncLinkedInContacts()
 
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<ul>
+<li><code>var importer = require('../Core');</code>: Imports the <code>importer</code> module from the <code>../Core</code> directory.</li>
+<li><code>var syncLinkedInContacts = importer.import('sync linkedin contacts');</code>: Imports the <code>syncLinkedInContacts</code> function from the <code>importer</code> module, which is a dynamically-imported function with the name'sync linkedin contacts'.</li>
+</ul>
+<h3>Asynchronous Execution</h3>
+<ul>
+<li><code>$$.async();</code>: Begins asynchronous execution (the purpose of this function is not specified in the provided code).</li>
+</ul>
+<h3>Function Execution and Error Handling</h3>
+<ul>
+<li><code>syncLinkedInContacts()</code>: Calls the <code>syncLinkedInContacts</code> function, which returns a promise.</li>
+<li><code>.then(r =&gt; $$.sendResult(r))</code>: Handles the resolved promise by calling the <code>$$.sendResult</code> function with the returned result <code>r</code>.</li>
+<li><code>.catch(e =&gt; $$.sendError(e))</code>: Handles any rejected promises by calling the <code>$$.sendError</code> function with the error <code>e</code>.</li>
+</ul>

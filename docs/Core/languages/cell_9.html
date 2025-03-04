@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The code imports the Babel compiler and a custom importer module, then uses the importer to specify a preset for Babel transpilation. A test code string with a missing import statement is transpiled using Babel, and the resulting code is logged to the console, where it is equivalent to a completed import statement.</p>
 
 
 <pre><code>var babel = require('babel-core')
@@ -22,3 +24,42 @@ var addImports = require('./')
 */
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<pre><code class="language-javascript">var babel = require('babel-core')
+var importer = require('../Core')
+var babelTranspile = importer.import('babel transpiler')
+</code></pre>
+<ul>
+<li><code>babel-core</code> is imported, providing the Babel compiler.</li>
+<li><code>importer</code> is imported from a custom module located at <code>../Core</code>, which exports a function to import other modules.</li>
+<li><code>babelTranspile</code> is imported from <code>importer</code> specifically for the Babel transpiler.</li>
+</ul>
+<h4>Transpiling Code with Babel</h4>
+<pre><code class="language-javascript">var out = babel.transform(`
+// this code is missing an import
+addImports('// some test code')
+`, {
+    presets: [babelTranspile],
+    plugins: [/* 'estree' */],
+    filename: 'test_code.js'
+}).code;
+</code></pre>
+<ul>
+<li>Babel's <code>transform</code> method is called with a code string containing a missing import statement.</li>
+<li>An options object is passed with the following settings:
+<ul>
+<li><code>presets: [babelTranspile]</code>: uses the transpiler preset from <code>babelTranspile</code>.</li>
+<li><code>plugins: [/* 'estree' */]</code>: commented out, so it's not used.</li>
+<li><code>filename: 'test_code.js'</code>: provides the file path for the transpiled code.</li>
+</ul></li>
+<li>The transpiled code is assigned to the <code>out</code> variable.</li>
+</ul>
+<h4>Logging the Transpiled Code</h4>
+<pre><code class="language-javascript">console.log(out)
+</code></pre>
+<ul>
+<li>The transpiled code is logged to the console, which should be equivalent to:</li>
+</ul>
+<pre><code class="language-javascript">var addImports = require('./')
+</code></pre>

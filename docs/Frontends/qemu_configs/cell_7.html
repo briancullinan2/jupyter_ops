@@ -1,3 +1,5 @@
+<p>Here is a 2 sentence summary:</p>
+<p>This Bash script runs a QEMU virtual machine (VM) with various settings, such as enabling KVM acceleration, attaching a virtual disk, and allocating 1 GB of RAM. The script then connects to the VM using Remmina remote viewer, using the SpICE protocol over a specified port.</p>
 
 
 <pre><code>#!/bin/sh
@@ -18,3 +20,32 @@ exec remote-viewer --title Windows spice://127.0.0.1:${SPICE_PORT}
 
 </code></pre>
 
+<p><strong>Script Overview</strong></p>
+<p>This is a Bash script that runs a QEMU virtual machine (VM) and connects to it using the Remmina remote viewer.</p>
+<h3>QEMU Options</h3>
+<ul>
+<li><code>qemu-system-x86_64</code>: The QEMU binary to run.</li>
+<li><code>enable-kvm</code>: Enable KVM acceleration if available.</li>
+<li><code>daemonize</code>: Run QEMU in the background and detach from the console.</li>
+<li><code>cpu host</code>: Use the host CPU model.</li>
+<li><code>drive</code>: Attach a virtual disk image (<code>WindowsVM.img</code>) to the VM.</li>
+<li><code>net nic</code> and <code>net user</code>: Enable a network interface and provide a user-space networking backend.</li>
+<li><code>m 1G</code>: Allocate 1 GB of RAM to the VM.</li>
+<li><code>vga qxl</code>: Use the QXL graphics driver.</li>
+<li><code>spice</code>: Enable the SpICE protocol and listen on the specified port (<code>SPICE_PORT</code>).</li>
+<li><code>usbdevice tablet</code>: Attach a virtual tablet device to the VM.</li>
+<li><code>device virtio-serial</code>: Enable a virtio serial port.</li>
+<li><code>chardev spicevmc</code>: Create a character device for the SpICE VM console.</li>
+<li><code>device virtserialport</code>: Create a virtio serial port device.</li>
+</ul>
+<h3>Remote Viewer Connection</h3>
+<ul>
+<li><code>exec remote-viewer</code>: Run the remote viewer command.</li>
+<li><code>--title Windows</code>: Set the title of the remote viewer window.</li>
+<li><code>spice://127.0.0.1:${SPICE_PORT}</code>: Connect to the SpICE server on the specified port (<code>SPICE_PORT</code>).</li>
+</ul>
+<p><strong>Variables</strong></p>
+<ul>
+<li><code>SPICE_PORT</code>: The port number to use for the SpICE server.</li>
+<li><code>&quot;$@&quot;</code>: Pass any additional command-line arguments to the <code>remote-viewer</code> command.</li>
+</ul>

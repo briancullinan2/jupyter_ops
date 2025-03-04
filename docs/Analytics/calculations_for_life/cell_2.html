@@ -1,3 +1,5 @@
+<p>The <code>getSequenceNumeral</code> function generates a sequence numeral by calculating the sum of multiples of a given prefix <code>pre</code> at each power of 10, and adds the remainder of a count <code>count</code> divided by 10.</p>
+<p>The function takes two parameters: <code>pre</code> and <code>count</code>, and returns the generated sequence numeral, as demonstrated in the example <code>getSequenceNumeral(3, 1)</code>.</p>
 
 
 <pre><code>
@@ -12,3 +14,32 @@ function getSequenceNumeral(pre, count) {
 
 getSequenceNumeral(3, 1)</code></pre>
 
+<h3>Function: getSequenceNumeral</h3>
+<h4>Parameters</h4>
+<ul>
+<li><code>pre</code>: The prefix digit to be used in sequence generation.</li>
+<li><code>count</code>: The number of which the sequence numeral is to be generated.</li>
+</ul>
+<h4>Returns</h4>
+<p>The sequence numeral generated based on the provided <code>pre</code> and <code>count</code> values.</p>
+<h4>Description</h4>
+<p>This function generates a sequence numeral by calculating the sum of multiples of <code>pre</code> at each power of 10, up to the number of digits required to represent <code>count</code>. The final digit of the sequence numeral is the remainder of <code>count</code> divided by 10.</p>
+<h3>Function Implementation</h3>
+<pre><code class="language-javascript">function getSequenceNumeral(pre, count) {
+  // Calculate the number of digits required to represent count
+  var digitCount = Math.ceil(count / 10) + 1;
+
+  // Initialize the result variable
+  var result = 0;
+
+  // Calculate the sum of multiples of pre at each power of 10
+  for (var i = 1; i &lt; digitCount; i++) {
+    result += pre * Math.pow(10, i);
+  }
+
+  // Add the remainder of count divided by 10 to the result
+  return result + (count % 10);
+}
+
+getSequenceNumeral(3, 1);
+</code></pre>

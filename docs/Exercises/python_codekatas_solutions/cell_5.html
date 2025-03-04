@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the <code>create_max</code> function:<br />
+The <code>create_max</code> function takes an input number <code>num</code> as a string and an integer <code>k</code> as parameters, returning the maximum number that can be formed by removing digits from <code>num</code> and keeping at most <code>k</code> digits. The function uses a stack to iteratively select the largest digits from <code>num</code> until a maximum number of <code>k</code> digits have been chosen.</p>
 
 
 <pre><code>def create_max(num, k):
@@ -19,3 +21,28 @@ assert create_max(num, 4) == '9583'
 assert create_max(num, 5) == '92583'
 print('All passed!')</code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Function: <code>create_max</code></h3>
+<h4>Parameters</h4>
+<ul>
+<li><code>num</code>: the input number as a string</li>
+<li><code>k</code>: the number of digits to be kept</li>
+</ul>
+<h4>Description</h4>
+<p>The function <code>create_max</code> returns the maximum number that can be formed by removing digits from the input number <code>num</code> and keeping at most <code>k</code> digits.</p>
+<h4>Implementation</h4>
+<ol>
+<li>Convert the input number <code>num</code> to a list of digits.</li>
+<li>Initialize a stack to store the digits to be kept.</li>
+<li>Iterate over each digit in the list of digits.</li>
+<li>While the stack is not empty and the top of the stack is less than the current digit, and we still have digits to remove (<code>drop</code> is greater than 0):
+<ul>
+<li>Remove the top of the stack.</li>
+<li>Decrement <code>drop</code> by 1.</li>
+</ul></li>
+<li>Append the current digit to the stack.</li>
+<li>Repeat steps 4-5 until all digits have been processed.</li>
+<li>Return the maximum number that can be formed by joining the top <code>k</code> digits from the stack.</li>
+</ol>
+<h3>Example Usage</h3>
+<p>The code includes several assertions to test the function with different inputs and expected outputs. The function is then called with the input number <code>'912583'</code> and <code>k</code> values from 1 to 5, and the results are printed.</p>

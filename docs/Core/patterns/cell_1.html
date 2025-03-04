@@ -1,3 +1,4 @@
+<p>This code appears to be a function that evaluates templates or expressions and returns an array of results, which can be either plain results or objects with an <code>evaluate</code> method, depending on the input settings. The function takes an array of strings or an object with settings as input and returns an array of results based on the provided settings.</p>
 
 
 <pre><code>
@@ -25,3 +26,38 @@ result using the result as the new context for the object evaluation
 
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Functionality</h4>
+<p>This code appears to be a function or module that takes one or more inputs:</p>
+<ul>
+<li>The first input is an array of strings, where each string represents a template or expression to be evaluated.</li>
+<li>The second input is an optional object that contains settings or parameters for the evaluation.</li>
+</ul>
+<p>The function returns an array of results, which can be either plain results or objects with an <code>evaluate</code> method called on each result.</p>
+<h4>Input Parameters</h4>
+<ul>
+<li><code>input</code>: an array of strings or an object with settings.
+<ul>
+<li>String input: an array of template expressions to be evaluated.</li>
+<li>Object input: an array of objects with a <code>title</code> property, and a settings object that defines the evaluation behavior.</li>
+</ul></li>
+</ul>
+<h4>Output</h4>
+<ul>
+<li>An array of results, which can be either:
+<ul>
+<li>Plain results, if no settings object is provided.</li>
+<li>Objects with an <code>evaluate</code> method called on each result, if a settings object is provided.</li>
+</ul></li>
+</ul>
+<h3>Example Inputs and Outputs</h3>
+<ul>
+<li>Input: <code>['Item &gt; * &gt; Expression']</code>
+<ul>
+<li>Output: an array of results</li>
+</ul></li>
+<li>Input: <code>['Item &gt; * &gt; Expression', { title: '@title' }]</code>
+<ul>
+<li>Output: an array of objects with an <code>evaluate</code> method called on each result</li>
+</ul></li>
+</ul>

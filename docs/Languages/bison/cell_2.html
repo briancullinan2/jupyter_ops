@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>This JavaScript parser, created using the Jison library, takes an input string and generates an indented Abstract Syntax Tree (AST) from it. The parser defines a grammar and uses a parser instance to parse the input string, resulting in an AST with a specific structure, including a root node <code>hex_strings</code> and child nodes representing hex strings.</p>
 
 
 <pre><code>function jisonAST(name, x) { this.name = name; this.x = x; }
@@ -60,3 +62,53 @@ expects
 */
 </code></pre>
 
+<h2><strong>Overview</strong></h2>
+<p>This code defines a JavaScript parser using the Jison library. It creates an Abstract Syntax Tree (AST) from a given input string and outputs the indented AST.</p>
+<h2><strong>Function Breakdown</strong></h2>
+<h3><code>jisonAST</code> Function</h3>
+<pre><code class="language-javascript">function jisonAST(name, x) { this.name = name; this.x = x; }
+</code></pre>
+<p>Creates a new AST object with <code>name</code> and <code>x</code> properties.</p>
+<h3><code>get</code> Method</h3>
+<pre><code class="language-javascript">jisonAST.prototype.get = function(indent){
+  //...
+}
+</code></pre>
+<p>Returns the indented AST as a string. It takes an <code>indent</code> parameter, which specifies the level of indentation.</p>
+<h3><code>indentString</code> Function</h3>
+<pre><code class="language-javascript">function indentString(l) { var r=&quot;&quot;; for(var i=0;i&lt;l;i++){r+=&quot;  &quot;}; return r }
+</code></pre>
+<p>Creates a string with the specified number of indentation levels (represented by spaces).</p>
+<h3><code>o</code> Function</h3>
+<pre><code class="language-javascript">function o(s){
+    //...
+}
+</code></pre>
+<p>Generates a JSON object representing an AST node, given a string <code>s</code>.</p>
+<h3><code>Grammar</code> Object</h3>
+<pre><code class="language-javascript">var grammar = {
+  //...
+}
+</code></pre>
+<p>Defines a Jison grammar in JSON format, which consists of lexical rules and BNF rules.</p>
+<h3><code>Parser</code> Object</h3>
+<pre><code class="language-javascript">var parser = new Parser(grammar);
+</code></pre>
+<p>Creates a new parser instance using the <code>grammar</code> object.</p>
+<h3><code>parse</code> Method</h3>
+<pre><code class="language-javascript">console.log( parser.parse(&quot;adfe34bc e82a 43af&quot;).get(0) );
+</code></pre>
+<p>Parses the input string &quot;adfe34bc e82a 43af&quot; and returns the indented AST as a string.</p>
+<h2><strong>AST Structure</strong></h2>
+<p>The resulting AST has the following structure:</p>
+<ul>
+<li><code>hex_strings</code> (root node)
+<ul>
+<li><code>hex_strings</code> (child node)
+<ul>
+<li><code>HEX</code> (child node)</li>
+<li><code>e82a</code> (child node)</li>
+</ul></li>
+<li><code>43af</code> (child node)</li>
+</ul></li>
+</ul>

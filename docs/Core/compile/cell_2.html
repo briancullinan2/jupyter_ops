@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary:</p>
+<p>The <code>logger</code> function logs a message to the console and returns a closure that can be used to print additional messages, but with a prefix of &quot;wtf? &quot;. The <code>test</code> function demonstrates the usage of <code>logger</code> by calling it and logging &quot;wtf? undefined&quot; to the console.</p>
 
 
 <pre><code>var logger = (message) => {
@@ -13,3 +15,21 @@ test()
 
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>logger Function</h3>
+<ul>
+<li>A function <code>logger</code> is defined that takes a <code>message</code> parameter.</li>
+<li>It logs the <code>message</code> to the console using <code>console.log</code>.</li>
+<li>It returns an anonymous function (a closure) that takes a parameter <code>m</code>.</li>
+<li>The returned function concatenates the string &quot;wtf? &quot; with the <code>m</code> parameter and returns the result.</li>
+</ul>
+<h3>test Function</h3>
+<ul>
+<li>A function <code>test</code> is defined that returns the result of the expression <code>logger 'test' 'another'</code>.</li>
+<li>This expression calls the <code>logger</code> function with the arguments <code>'test'</code> and <code>'another'</code>.</li>
+<li>The returned function from <code>logger</code> (a closure) is then called with no arguments, which results in the string &quot;wtf? &quot; being concatenated with undefined (since no argument is passed to the closure), and the result &quot;wtf? undefined&quot; being logged to the console.</li>
+</ul>
+<h3>Usage</h3>
+<ul>
+<li>The <code>test</code> function is called, which logs &quot;wtf? undefined&quot; to the console.</li>
+</ul>

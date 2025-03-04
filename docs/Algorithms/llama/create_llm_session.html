@@ -1,5 +1,7 @@
-<p>Here's a two-sentence summary:</p>
-<p>This code initializes and manages a LLaMA (Large Language Model Application) chat session by importing necessary modules, setting environment variables, and defining functions to create and manage the session. It includes functions such as <code>initSession</code> and <code>createSession</code> to create and manage LLaMA chat sessions, and leverages asynchronous programming with async/await syntax.</p>
+<p>Here is a summary of the code in one sentence:</p>
+<p>The code initializes a chat session with the LLaMA model by importing necessary modules, defining variables and constants, and creating two asynchronous functions to initialize and create a new session.</p>
+<p>Or in two sentences:</p>
+<p>The code sets up a chat session with the LLaMA model by importing required modules and defining key variables and constants. Two asynchronous functions, <code>initSession</code> and <code>createSession</code>, are defined to handle the initialization and creation of new chat sessions.</p>
 
 
 <pre><code>import path from "path"
@@ -114,36 +116,36 @@ export default {
 }
 </code></pre>
 
-<p><strong>Overview</strong></p>
-<p>This code initializes and manages a LLaMA (Large Language Model Application) chat session. It imports necessary modules, sets environment variables, and defines functions to create and manage the session.</p>
-<p><strong>Imported Modules</strong></p>
+<p><strong>Breakdown of the Code</strong></p>
+<h3>Import Statements</h3>
+<p>The code starts by importing the following modules:</p>
 <ul>
-<li><code>path</code> for file path manipulation</li>
-<li><code>node-llama-cpp</code> for interacting with the LLaMA model</li>
-<li><code>process</code> for accessing environment variables</li>
+<li><code>path</code> from the <code>path</code> module for working with file paths</li>
+<li><code>getLlama</code> and <code>LlamaChatSession</code> from the <code>node-llama-cpp</code> module, which is a Node.js wrapper for the LLaMA (Large Language Model Applications) C++ library</li>
+<li><code>process</code> from the <code>process</code> module for accessing environment variables</li>
 </ul>
-<p><strong>Variables and Constants</strong></p>
+<h3>Variables and Constants</h3>
+<p>The code defines the following variables and constants:</p>
 <ul>
-<li><code>HOMEPATH</code> is set to the user's home directory based on their operating system</li>
-<li><code>llama</code>, <code>model</code>, <code>context</code>, <code>session</code>, and <code>initialChatHistory</code> are variables that store the LLaMA instance, model, context, session, and initial chat history, respectively</li>
+<li><code>HOMEPATH</code>: the user's home directory, which is obtained from environment variables <code>HOME</code>, <code>HOMEPATH</code>, and <code>USERPROFILE</code></li>
+<li><code>llama</code>: an instance of the LLaMA model</li>
+<li><code>model</code>: the loaded LLaMA model</li>
+<li><code>context</code>: the context for the LLaMA model</li>
+<li><code>session</code>: the chat session for the LLaMA model</li>
+<li><code>initialChatHistory</code>: the initial chat history for the session</li>
 </ul>
-<p><strong>Functions</strong></p>
-<h3><code>initSession(context, prompt)</code></h3>
+<h3>Functions</h3>
+<p>The code defines two asynchronous functions:</p>
 <ul>
-<li>Creates a new LLaMA chat session or reuses an existing one</li>
-<li>Sets the system prompt and chat history</li>
-<li>Returns the initialized session</li>
+<li><code>initSession(context2, prompt)</code>: initializes a new chat session with the given <code>context</code> and <code>prompt</code>. If <code>context2</code> is not provided, it creates a new context using the <code>model.createContext()</code> method.</li>
+<li><code>createSession(modelPath)</code>: creates a new instance of the LLaMA model using the <code>getLlama()</code> method and loads a model from the specified <code>modelPath</code>. If no <code>modelPath</code> is provided, it uses the <code>MODELPATH</code> environment variable or a default model path.</li>
 </ul>
-<h3><code>createSession(modelPath)</code></h3>
+<h3>Notes</h3>
 <ul>
-<li>Loads the LLaMA model from a specified path or an environment variable</li>
-<li>Initializes the LLaMA instance</li>
-<li>Creates a new LLaMA chat session</li>
-<li>Returns the initialized session</li>
-</ul>
-<p><strong>Notes</strong></p>
-<ul>
-<li>The <code>TODO</code> comment suggests that the model loading process can be customized in the future</li>
-<li>The <code>modePath</code> variable is set to an environment variable <code>MODELPATH</code> or a default path if not provided</li>
-<li>The code uses async/await syntax for asynchronous programming</li>
+<li>The code uses the <code>async/await</code> syntax to handle asynchronous operations.</li>
+<li>The <code>getLlama()</code> method is used to create an instance of the LLaMA model.</li>
+<li>The <code>loadModel()</code> method is used to load a model from the specified <code>modelPath</code>.</li>
+<li>The <code>createContext()</code> method is used to create a new context for the LLaMA model.</li>
+<li>The <code>LlamaChatSession</code> class is used to represent a chat session with the LLaMA model.</li>
+<li>The <code>setChatHistory()</code> method is used to reset the chat history for the session.</li>
 </ul>

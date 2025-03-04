@@ -1,3 +1,5 @@
+<p>Here is a 1-2 sentence summary of the code breakdown:</p>
+<p>The code imports the <code>Core</code> module, extracts the <code>collectFacebookProfiles</code> function, and sets up asynchronous execution using <code>$$.async()</code>. It then executes the <code>collectFacebookProfiles</code> function, handling the result and error using the <code>$$.sendResult()</code> and <code>$$.sendError()</code> functions.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -13,3 +15,37 @@ collectFacebookProfiles()
     .catch(e => $$.sendError(e))
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Core Module</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+</code></pre>
+<ul>
+<li>The <code>require</code> function is used to import the <code>Core</code> module from the parent directory (<code>../Core</code>).</li>
+<li>The imported module is assigned to the variable <code>importer</code>.</li>
+</ul>
+<h4>Importing <code>collectFacebookProfiles</code> Function</h4>
+<pre><code class="language-javascript">var collectFacebookProfiles = importer.import('collect facebook profiles')
+</code></pre>
+<ul>
+<li>The <code>importer</code> variable is used to import a function named <code>collectFacebookProfiles</code> from the <code>Core</code> module.</li>
+<li>The imported function is assigned to a variable with the same name.</li>
+</ul>
+<h4>Asynchronous Execution</h4>
+<pre><code class="language-javascript">$$.async();
+</code></pre>
+<ul>
+<li>The <code>$$.async()</code> function is called to start an asynchronous execution.</li>
+<li>The purpose of this function is unclear without more context, but it likely sets up an environment for asynchronous operations.</li>
+</ul>
+<h4>Executing <code>collectFacebookProfiles</code> Function</h4>
+<pre><code class="language-javascript">collectFacebookProfiles()
+   .then(r =&gt; $$.sendResult(r))
+   .catch(e =&gt; $$.sendError(e))
+</code></pre>
+<ul>
+<li>The <code>collectFacebookProfiles</code> function is executed.</li>
+<li>The resulting promise is handled with the <code>.then()</code> and <code>.catch()</code> methods.</li>
+<li>In the <code>.then()</code> method, the result (<code>r</code>) is passed to the <code>$$.sendResult()</code> function.</li>
+<li>In the <code>.catch()</code> method, the error (<code>e</code>) is passed to the <code>$$.sendError()</code> function.</li>
+<li>The functions <code>sendResult</code> and <code>sendError</code> are likely part of the <code>$$.</code> object and are used to handle the result and error accordingly.</li>
+</ul>

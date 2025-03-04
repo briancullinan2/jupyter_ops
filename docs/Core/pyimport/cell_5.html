@@ -1,3 +1,5 @@
+<p>Here's a summary of the code in two sentences:</p>
+<p>The <code>get_cells</code> function imports a Jupyter Notebook file, extracts cell metadata, and formats it into a list of dictionaries with language, filename, and unique ID information. The function takes two parameters: the notebook path and a list of cell types to extract, and returns the formatted list of cells.</p>
 
 
 <pre><code>import json
@@ -32,3 +34,64 @@ __all__ = {
 }
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Libraries</h4>
+<pre><code class="language-python">import json
+import os
+</code></pre>
+<p>This code imports two Python libraries:</p>
+<ul>
+<li><code>json</code>: for working with JSON data</li>
+<li><code>os</code>: for interacting with the operating system (e.g., getting absolute paths)</li>
+</ul>
+<h4>Function: <code>get_cells</code></h4>
+<pre><code class="language-python">def get_cells(notebook_path, types=['*', 'code']):
+</code></pre>
+<p>This function takes two parameters:</p>
+<ul>
+<li><code>notebook_path</code>: the path to a Jupyter Notebook file</li>
+<li><code>types</code>: a list of cell types to extract; default is <code>['*', 'code']</code></li>
+</ul>
+<h4>Function Implementation</h4>
+<pre><code class="language-python">notebook_path = os.path.abspath(notebook_path)
+
+with open(notebook_path, 'r', encoding='utf-8') as f:
+    notebook = json.load(f)
+</code></pre>
+<p>This code:</p>
+<ol>
+<li>Converts the <code>notebook_path</code> to its absolute path using <code>os.path.abspath</code>.</li>
+<li>Opens the Jupyter Notebook file at the specified path, reads its contents, and loads it as a JSON object using <code>json.load</code>.</li>
+</ol>
+<pre><code class="language-python">kernel = notebook.get('metadata', {}).get('kernelspec', {})
+</code></pre>
+<p>This line retrieves the kernel metadata from the notebook, which is nested several levels deep in the JSON object.</p>
+<pre><code class="language-python">cells = [
+    {
+        **cell,
+        &quot;language&quot;: (cell.get(&quot;metadata&quot;, {}).get(&quot;vscode&quot;, {}).get(&quot;languageId&quot;) or
+                     kernel.get(&quot;language&quot;) or
+                     notebook.get(&quot;metadata&quot;, {}).get(&quot;language_info&quot;, {}).get(&quot;name&quot;, &quot;&quot;)),
+        &quot;filename&quot;: notebook_path,
+        &quot;id&quot;: f&quot;{os.path.basename(notebook_path)}[{i}]&quot;
+    }
+    for i, cell in enumerate(notebook.get(&quot;cells&quot;, []))
+    if '*' in types or cell.get(&quot;cell_type&quot;) in types
+]
+</code></pre>
+<p>This code defines a list <code>cells</code>, which contains dictionaries representing individual cells in the notebook. Each dictionary includes:</p>
+<ul>
+<li><code>language</code>: determined based on several possible sources of language information</li>
+<li><code>filename</code>: the path to the notebook file</li>
+<li><code>id</code>: a unique identifier for the cell</li>
+</ul>
+<p>The list comprehension iterates over the cells in the notebook, filtering them based on the specified <code>types</code>.</p>
+<pre><code class="language-python">return cells
+</code></pre>
+<p>Finally, the function returns the list of cell dictionaries.</p>
+<h4>Exporting the Function</h4>
+<pre><code class="language-python">__all__ = {
+  &quot;get_cells&quot;: get_cells
+}
+</code></pre>
+<p>This line makes the <code>get_cells</code> function available for import using <code>from module import get_cells</code>.</p>

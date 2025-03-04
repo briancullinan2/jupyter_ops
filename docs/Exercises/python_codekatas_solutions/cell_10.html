@@ -1,3 +1,4 @@
+<p>The <code>string_permutations(s)</code> function generates all possible permutations of a given string <code>s</code> and returns them in a sorted list. If the input string is empty, it returns a list containing an empty string, otherwise it recursively generates all permutations of the string.</p>
 
 
 <pre><code>def string_permutations(s):
@@ -14,3 +15,24 @@ assert string_permutations('') == ['']
 assert string_permutations('abc') == ['abc','acb','bac','bca','cab','cba']
 print('All passed!')</code></pre>
 
+<h3>Function: <code>string_permutations(s)</code></h3>
+<h4>Description</h4>
+<p>Finds all possible permutations of a string <code>s</code>.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>s</code>: The input string.</li>
+</ul>
+<h4>Returns</h4>
+<p>A sorted list of all possible permutations of the input string.</p>
+<h4>Functionality</h4>
+<ul>
+<li>If the input string is empty, returns a list containing an empty string.</li>
+<li>Otherwise, recursively generates all permutations of the string without the first character.</li>
+<li>For each permutation, inserts the first character at every possible position to generate new permutations.</li>
+<li>Returns the sorted list of all permutations.</li>
+</ul>
+<h4>Example Use Cases</h4>
+<ul>
+<li><code>string_permutations('')</code> returns <code>['']</code>.</li>
+<li><code>string_permutations('abc')</code> returns <code>['abc', 'acb', 'bac', 'bca', 'cab', 'cba']</code>.</li>
+</ul>

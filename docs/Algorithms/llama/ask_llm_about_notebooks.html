@@ -1,7 +1,5 @@
-<p>Here's a summary of the code breakdown in one sentence:</p>
-<p>The code imports functions for listing project files and asking a large language model about functions, and defines two main functions: <code>findNotebooks</code> to locate Jupyter notebooks in a directory and its subdirectories, and <code>askLlamaAboutNotebooks</code> to extract function information from these notebooks and query a large language model for additional information.</p>
-<p>Alternatively, here's a two-sentence summary:</p>
-<p>The code begins by importing necessary functions to list project files and query a large language model. It then defines two main functions: <code>findNotebooks</code> to locate Jupyter notebooks and <code>askLlamaAboutNotebooks</code> to extract function information from these notebooks and query the LLM.</p>
+<p>Here is a 2-sentence summary of the code:</p>
+<p>This JavaScript code defines a function <code>askLlamaAboutNotebooks</code> that searches for Jupyter Notebook files in a directory, extracts information about them, and asks a Large Language Model (LLM) about these notebooks. The function is designed to interact with an LLM, sending queries and receiving results in batches of up to 20 queries at a time.</p>
 
 
 <pre><code>
@@ -55,39 +53,53 @@ module.exports = {
 
 </code></pre>
 
-<h3>Code Breakdown</h3>
-<h4>Importing Modules</h4>
-<p>The code begins by importing two functions from another module using the <code>importer</code> object:</p>
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">const path = require('path')
+const {listInProject} = importer.import('list project files');
+const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
+</code></pre>
 <ul>
-<li><code>listInProject</code>: used to list project files based on a given directory and pattern.</li>
-<li><code>askLlamaAboutFunctions</code>: used to ask a large language model (LLM) about functions.</li>
+<li>Import the <code>path</code> module for file system operations.</li>
+<li>Import the <code>listInProject</code> function and the <code>askLlamaAboutFunctions</code> function from the <code>importer</code> module.</li>
 </ul>
-<pre><code class="language-javascript">const { listInProject } = importer.import('list project files');
-const { askLlamaAboutFunctions } = importer.import('ask llm about functions');
-</code></pre>
-<h4>findNotebooks Function</h4>
-<p>The <code>findNotebooks</code> function takes a directory name as an argument and returns an array of file paths representing Jupyter notebooks located within that directory and its subdirectories. The function uses the <code>listInProject</code> function to find files matching the pattern <code>*.ipynb</code>.</p>
+<h3>findNotebooks Function</h3>
 <pre><code class="language-javascript">function findNotebooks(dirname) {
-  return listInProject(dirname, '{,*,*/,*/*/*,*/*/*/*}*.ipynb')
+    return listInProject(dirname, '{,*,*/,*/*/*,*/*/*/*}*.ipynb')
 }
 </code></pre>
-<h4>askLlamaAboutNotebooks Function</h4>
-<p>The <code>askLlamaAboutNotebooks</code> function is an asynchronous function that takes a query as an argument. It:</p>
-<ol>
-<li>Finds all Jupyter notebooks in the current directory and its subdirectories using the <code>findNotebooks</code> function.</li>
-<li>Creates arrays to store function names and descriptions.</li>
-<li>Loops through each notebook, extracting its name, camelCase name, and parent folder name. It then generates a function name and description based on these values.</li>
-<li>When the arrays of function names and descriptions reach a certain size (20), it calls the <code>askLlamaAboutFunctions</code> function with the current query, function names, and descriptions. If the LLM responds with a function name, it updates the arrays accordingly.</li>
-<li>After looping through all notebooks, it calls the <code>askLlamaAboutFunctions</code> function with the remaining function names and descriptions.</li>
-<li>Returns the array of function names.</li>
-</ol>
+<ul>
+<li>Define a function <code>findNotebooks</code> that takes a directory name as an argument.</li>
+<li>Use the <code>listInProject</code> function to find Jupyter Notebook files (<code>.ipynb</code>) in the specified directory and its subdirectories.</li>
+</ul>
+<h3>askLlamaAboutNotebooks Function</h3>
 <pre><code class="language-javascript">async function askLlamaAboutNotebooks(query) {
-  //...
+    //...
 }
 </code></pre>
-<h4>Exporting the Function</h4>
-<p>The <code>askLlamaAboutNotebooks</code> function is exported as a module:</p>
+<ul>
+<li>Define an asynchronous function <code>askLlamaAboutNotebooks</code> that takes a query as an argument.</li>
+<li>This function appears to be responsible for searching for Jupyter Notebooks, extracting information about them, and then asking a Large Language Model (LLM) about these notebooks.</li>
+</ul>
+<h3>Implementation Details</h3>
+<ul>
+<li>The function uses the <code>path</code> module to manipulate file paths and names.</li>
+<li>It iterates over the list of notebooks found in the <code>findNotebooks</code> function and creates a query for the LLM about each notebook.</li>
+<li>The query is constructed by combining the name of the notebook and its parent folder, with some modifications to make it more suitable for the LLM.</li>
+<li>The function sends the query to the LLM using the <code>askLlamaAboutFunctions</code> function and returns the result.</li>
+<li>The function appears to have a limit of 20 queries to the LLM at a time, to avoid exceeding a certain character limit.</li>
+</ul>
+<h3>Exporting the Function</h3>
 <pre><code class="language-javascript">module.exports = {
   askLlamaAboutNotebooks,
 }
 </code></pre>
+<ul>
+<li>Export the <code>askLlamaAboutNotebooks</code> function as a module.</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The <code>askLlamaAboutFunctions</code> function is not defined in this code snippet, but it is assumed to be a function that sends a query to an LLM and returns the result.</li>
+<li>The <code>importer</code> module is not defined in this code snippet, but it is assumed to be a module that provides functions for importing other modules.</li>
+<li>The code uses some outdated JavaScript syntax and structure, such as the use of <code>functions[functions.length]</code> instead of <code>functions.push()</code> or <code>functions.append()</code>.</li>
+</ul>

@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary of the code:</p>
+<p>The code imports a module named <code>Core</code> and a function named <code>selenium cell</code> from it, which is used to interact with the Selenium cell. It also defines an array of Facebook message URLs and includes a TODO comment to replace the current implementation with RPC commands.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -187,3 +189,31 @@ if(typeof $$ !== 'undefined') {
 }
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+</code></pre>
+<ul>
+<li>The code imports a module named <code>Core</code> from a relative path (<code>../Core</code>).</li>
+<li>It then imports a function named <code>selenium cell</code> from the imported <code>Core</code> module.</li>
+</ul>
+<h3>Friend URLs</h3>
+<pre><code class="language-javascript">var friends = [
+    'https://www.facebook.com/messages/t/patti.caudill',
+    'https://www.facebook.com/messages/t/andrei.darie.5',
+    'https://www.facebook.com/messages/t/setha.vanderhoof',
+    /*... */
+];
+</code></pre>
+<ul>
+<li>The code defines an array of URLs to Facebook messages.</li>
+<li>Each URL is in the format <code>https://www.facebook.com/messages/t/&lt;username&gt;</code>.</li>
+<li>The array is incomplete, with many entries commented out.</li>
+</ul>
+<h3>TODO Comment</h3>
+<pre><code class="language-javascript">// TODO: replace with rpc commands
+</code></pre>
+<ul>
+<li>The code includes a TODO comment, indicating that the current implementation should be replaced with RPC (Remote Procedure Call) commands.</li>
+</ul>

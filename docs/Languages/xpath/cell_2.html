@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>This code defines a lexer for XPath expressions using the <code>ply</code> module, specifying tokens and their corresponding regular expression patterns to recognize XPath operators, separators, and literal values. The lexer can be used as a foundation for building a parser that constructs an abstract syntax tree (AST) for further processing, making it a crucial component for XPath expression analysis.</p>
 
 
 <pre><code>"""XPath lexing rules.
@@ -127,3 +129,23 @@ def t_INTEGER(t):
 def t_error(t):
     raise TypeError("Unknown text '%s'" % (t.value,))</code></pre>
 
+<p><strong>Overview of the Code</strong></p>
+<p>This code is a lexer definition for XPath using the <code>ply</code> module. It defines a set of tokens and their corresponding regular expression patterns.</p>
+<p><strong>Structure</strong></p>
+<p>The code consists of the following sections:</p>
+<ol>
+<li><strong>Import statements</strong>: The code imports the <code>unicode_literals</code> module from <code>__future__</code> to ensure that strings are treated as Unicode literals.</li>
+<li><strong>Operator names</strong>: A dictionary <code>operator_names</code> is defined to map XPath operator names to their corresponding token names.</li>
+<li><strong>Token definitions</strong>: A list <code>tokens</code> is defined to specify the set of tokens that will be recognized by the lexer. This list includes token names and their corresponding regular expression patterns.</li>
+<li><strong>Regular expression patterns</strong>: Each token in the <code>tokens</code> list is assigned a regular expression pattern using the <code>t_</code> syntax.</li>
+<li><strong>Ignored characters</strong>: A regular expression pattern <code>t_ignore</code> is defined to specify characters that will be ignored by the lexer.</li>
+<li><strong>NCName characters</strong>: A section of code is included to handle characters that are not compatible with all versions of Python.</li>
+</ol>
+<p><strong>Key Concepts</strong></p>
+<ul>
+<li><strong>Tokens</strong>: A token is a basic unit of the language that the lexer will recognize. In this code, tokens include XPath operators, separators, and literal values.</li>
+<li><strong>Regular expressions</strong>: Regular expressions are used to define the patterns for each token.</li>
+<li><strong>Ply</strong>: The <code>ply</code> module is a Python implementation of the lex and yacc tools, which are used to build parsers and lexers.</li>
+</ul>
+<p><strong>Example Use Case</strong></p>
+<p>This code would be used as a foundation for building a parser that can understand XPath expressions. The parser would use the definitions in this code to recognize the tokens in the XPath expression and construct an abstract syntax tree (AST) that can be used for further processing.</p>

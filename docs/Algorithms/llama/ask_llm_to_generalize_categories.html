@@ -1,5 +1,5 @@
-<p>Here is a two-sentence summary of the <code>askLlamaGeneralizeCategories</code> function:</p>
-<p>The <code>askLlamaGeneralizeCategories</code> function is an asynchronous function that takes a list of categories, generalizes them, and returns a unique list of categories, with a maximum recursive depth of 100 to prevent infinite recursion. If no categories are provided, the function generates a list of unique categories from the <code>functionCache</code> object and stores the result in the cache after generalizing.</p>
+<p>Here is a two-sentence summary:</p>
+<p>The <code>askLlamaGeneralizeCategories</code> function takes an optional list of categories as input, generates a shorter list by asking the LLM to generalize, and recursively optimizes the list to a maximum of 100 items. The function also updates the <code>functionCache</code> object by asking the LLM to generalize categories for each function in the cache, if the <code>update</code> flag is set.</p>
 
 
 <pre><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')
@@ -51,32 +51,34 @@ module.exports = {
 </code></pre>
 
 <h2>Code Breakdown</h2>
-<h3>Function Overview</h3>
-<p>The <code>askLlamaGeneralizeCategories</code> function is an asynchronous function that takes a list of categories as input and returns a generalized list of unique categories.</p>
-<h3>Function Parameters</h3>
+<h3>Imported Functions</h3>
+<p>The code imports four functions from an <code>importer</code> module:</p>
 <ul>
-<li><code>categories</code>: An optional list of categories. If not provided, it will be automatically generated from the <code>functionCache</code> object.</li>
+<li><code>functionCache</code>: an object cache of functions with LLM descriptions</li>
+<li><code>askLlamaAboutFunctions</code>: a function to ask the LLM about a set of functions</li>
+<li><code>storeLlamaFunction</code>: a function to store a LLM function</li>
+<li><code>askLlamaToGeneralizeAll</code>: a function to ask the LLM for a shorter list of categories</li>
 </ul>
-<h3>Function Cache Import</h3>
-<p>The function imports several functions and variables from the <code>importer</code> module:</p>
-<ul>
-<li><code>functionCache</code>: An object containing cached function data with LLM descriptions.</li>
-<li><code>askLlamaAboutFunctions</code>: A function that asks the LLM about functions.</li>
-<li><code>storeLlamaFunction</code>: A function that stores a LLM function.</li>
-<li><code>askLlamaToGeneralizeAll</code>: A function that asks the LLM to generalize a list of categories.</li>
-</ul>
-<h3>Function Flow</h3>
+<h3><code>askLlamaGeneralizeCategories</code> Function</h3>
+<h4>Purpose</h4>
+<p>The <code>askLlamaGeneralizeCategories</code> function takes an optional <code>categories</code> array as input and returns a shorter list of categories.</p>
+<h4>Flow</h4>
 <ol>
-<li>If no categories are provided, the function generates a list of unique categories from the <code>functionCache</code> object.</li>
-<li>If the list of categories is empty, the function returns an empty list.</li>
-<li>The function asks the LLM to generalize the list of categories and stores the result in <code>uniqueValues</code>.</li>
-<li>If the length of <code>uniqueValues</code> exceeds 100, the function recursively calls itself with <code>uniqueValues</code> as the new list of categories.</li>
-<li>If the function was initially provided with a list of categories, the function updates the <code>functionCache</code> object with new category values and returns the updated <code>uniqueValues</code> list.</li>
-</ol>
-<h3>Export</h3>
-<p>The <code>askLlamaGeneralizeCategories</code> function is exported as a module.</p>
-<h3>Notes</h3>
+<li>If <code>categories</code> is not provided, it is generated from the <code>functionCache</code> object by:
 <ul>
-<li>The function uses recursion to generalize a list of categories.</li>
-<li>The function has a recursive depth limit of 100 to prevent infinite recursion.</li>
-</ul>
+<li>Mapping over the cache keys and their corresponding categories</li>
+<li>Filtering out empty or duplicate categories</li>
+<li>Setting <code>update</code> flag to <code>true</code></li>
+</ul></li>
+<li>If <code>categories</code> is empty, return an empty array</li>
+<li>Call <code>askLlamaToGeneralizeAll</code> to get a shorter list of categories from the LLM</li>
+<li>If the returned list has more than 100 items, recursively call <code>askLlamaGeneralizeCategories</code> on the result to further reduce the list</li>
+<li>If the <code>update</code> flag is set, iterate over the original <code>functionCache</code> keys and:
+<ul>
+<li>Ask the LLM to generalize the categories for each function using the updated <code>uniqueValues</code> list</li>
+<li>Store the updated function in the <code>functionCache</code> object</li>
+</ul></li>
+<li>Return the final <code>uniqueValues</code> list</li>
+</ol>
+<h4>Export</h4>
+<p>The <code>askLlamaGeneralizeCategories</code> function is exported as a module.</p>

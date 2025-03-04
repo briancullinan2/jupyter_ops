@@ -1,3 +1,5 @@
+<p>Here's a 1-2 sentence summary of the code:</p>
+<p>This code defines a JSON object with various commands that execute specific tasks using Node.js, including import, execution, interpretation, SSH connections, and Git automation. It utilizes Node.js variables and <code>npm run</code> to execute scripts and separate commands from arguments.</p>
 
 
 <pre><code>var json = {
@@ -98,3 +100,37 @@
 
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<p>This code defines a JSON object with various keys, each representing a command or action. The values associated with these keys are Node.js commands that execute specific tasks.</p>
+<p><strong>Commands</strong></p>
+<ol>
+<li><strong>import</strong>: Runs a Node.js script that imports a module and executes a function with command-line arguments.</li>
+<li><strong>exec</strong>: Runs a Node.js script that executes a function with the given argument.</li>
+<li><strong>interpret</strong>: Runs a Node.js script that interprets a JavaScript code string.</li>
+<li><strong>interpret:bash</strong>: Runs a Node.js script that interprets a bash command string.</li>
+<li><strong>ssh</strong>: Establishes an SSH connection to a remote server.</li>
+<li><strong>ssh:creds</strong>: Copies credentials for SSH connections using <code>npm run</code>.</li>
+<li><strong>ssh:install</strong>: Installs dependencies on a remote server using SSH.</li>
+<li><strong>ssh:deploy</strong>: Deploys code to a remote server using SSH.</li>
+<li><strong>ssh:git</strong>: Runs Git commands on a remote server using SSH.</li>
+<li><strong>git:auto</strong>: Automates Git commits using <code>npm run</code>.</li>
+<li><strong>git:rebase</strong>: Automates Git rebases using <code>npm run</code>.</li>
+<li><strong>start:express</strong>: Starts an Express.js server.</li>
+<li><strong>start:ng</strong>: Starts an Angular application server.</li>
+<li><strong>start:note</strong>: Starts a Jupyter Notebook server.</li>
+<li><strong>start:store</strong>: Starts a development server for a web application.</li>
+<li><strong>start:selenium</strong>: Starts a Selenium server.</li>
+<li><strong>start:study</strong>: Deploys a study application using Firebase.</li>
+<li><strong>export</strong>: Exports a deploy notebook.</li>
+<li><strong>export:firebase</strong>: Exports a Firebase application.</li>
+</ol>
+<p><strong>Node.js Variables</strong></p>
+<p>The code uses various Node.js variables, including:</p>
+<ul>
+<li><code>process.argv</code>: An array of command-line arguments passed to the Node.js script.</li>
+<li><code>require</code>: A function that loads modules and returns their exports.</li>
+<li><code>eval</code>: A function that executes a string as JavaScript code.</li>
+<li><code>console.log</code>: A function that logs output to the console.</li>
+</ul>
+<p><strong>npm Run</strong></p>
+<p>The code uses <code>npm run</code> to execute scripts defined in the <code>package.json</code> file. The <code>--</code> separator is used to separate the command from the arguments.</p>

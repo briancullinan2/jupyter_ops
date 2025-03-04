@@ -1,4 +1,15 @@
+<p>This code uses the <code>$TS.screen</code> function to simulate a browser screen and load the URL <code>act.com/en-uk</code>. The simulated screen is configured with a zoom level of 50%, a width of 680 pixels, and a cropped height of 400 pixels.</p>
 
 
 <pre><code>$TS.screen('act.com/en-uk', {zoom: .5, width: 680, 'crop-h': 400});</code></pre>
 
+<p>This code uses the <code>$TS.screen</code> function to simulate a browser screen.</p>
+<ul>
+<li><code>act.com/en-uk</code> represents the URL to be loaded in the simulated screen.</li>
+<li>The object passed as the second argument contains the following properties:
+<ul>
+<li><code>zoom</code>: sets the zoom level of the simulated screen to 0.5 (50%).</li>
+<li><code>width</code>: sets the width of the simulated screen to 680 pixels.</li>
+<li><code>'crop-h'</code>: sets the height of the simulated screen to 400 pixels, but since it's prefixed with a single quote, it's likely to be a CSS property for cropping the height.</li>
+</ul></li>
+</ul>

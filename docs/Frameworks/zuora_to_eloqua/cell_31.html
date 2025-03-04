@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code depends on various libraries and modules, including <code>lodash</code>, <code>xlsx</code>, and <code>fs</code>, and imports functions such as <code>getZuoraMonth</code> and <code>getCatalog</code> from other modules. The code initializes Zuora by checking for the existence of the <code>zuora</code> object, retrieving the current month, logging product rate plans, and catching any errors that occur during the process.</p>
 
 
 <pre><code>var _ = require('lodash');
@@ -28,3 +30,36 @@ if(typeof $$ !== 'undefined') {
 }
 </code></pre>
 
+<h1><strong>Code Breakdown</strong></h1>
+<h3>Dependencies</h3>
+<ul>
+<li><code>lodash</code> (<code>_</code>): a utility library for functional programming.</li>
+<li><code>assert</code>: not used in the provided code snippet.</li>
+<li><code>xlsx</code>: a library for working with Excel files.</li>
+<li><code>fs</code>: the File System module for interacting with the file system.</li>
+<li><code>importer</code>: a custom module for importing functions from other modules.</li>
+</ul>
+<h3>Function Imports</h3>
+<ul>
+<li><code>getZuoraMonth</code>: imports a function from <code>zuora export month</code> module, which returns the current Zuora month.</li>
+<li><code>calculatePrice</code>: imports a function from <code>calculate price</code> module, not used in the provided code snippet.</li>
+<li><code>getCatalog</code>: imports a function from <code>zuora to eloqua.ipynb[0]</code> module, which returns the catalog.</li>
+</ul>
+<h3>Variables</h3>
+<ul>
+<li><code>PROFILE_PATH</code>: the path to the user's profile directory.</li>
+<li><code>zuoraConfig</code>: the JSON configuration for Zuora, retrieved from the <code>.credentials</code> directory.</li>
+</ul>
+<h3>Zuora Initialization</h3>
+<ul>
+<li>If <code>$</code> is defined, it calls the <code>async</code> method and then:
+<ul>
+<li>If <code>zuora</code> is defined, it resolves to the existing <code>zuora</code> object. Otherwise:
+<ul>
+<li>It gets the current Zuora month using <code>getZuoraMonth</code> with <code>zuoraConfig</code> and a parameter <code>6</code>.</li>
+<li>It logs the length of the <code>zuora</code> object and a unique list of product rate plans using <code>_.uniqBy</code> from <code>lodash</code>.</li>
+<li>It sends the result to <code>$</code> using <code>sendResult</code>.</li>
+<li>It catches any errors and sends them to <code>$</code> using <code>sendError</code>.</li>
+</ul></li>
+</ul></li>
+</ul>

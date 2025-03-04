@@ -1,5 +1,5 @@
-<p>Here is a summary of the code in two sentences:</p>
-<p>The code defines two asynchronous functions, <code>askLlamaAboutConversation</code> and <code>askLlamaAboutCategory</code>, which use a large language model (LLM) to summarize and categorize a conversation. Both functions interact with the LLM by importing a session, creating a prompt, logging user and LLM responses, and returning the LLM's response after processing.</p>
+<p>Here's a summary of the code in two sentences:</p>
+<p>This JavaScript module exports two asynchronous functions, <code>askLlamaAboutConversation</code> and <code>askLlamaAboutCategory</code>, which use an LLM to summarize and categorize conversations, respectively. The functions import the <code>llmPrompt</code> function from a module, create a prompt string from the conversation history, and log the user's prompt and the AI's response to the console before returning a summarized or categorized response.</p>
 
 
 <pre><code>
@@ -31,39 +31,24 @@ module.exports = {
 </code></pre>
 
 <h2>Code Breakdown</h2>
-<h3>Overview</h3>
-<p>The provided code defines two asynchronous functions <code>askLlamaAboutConversation</code> and <code>askLlamaAboutCategory</code> that interact with a large language model (LLM) to gather information about a conversation.</p>
-<h3>Function 1: <code>askLlamaAboutConversation</code></h3>
-<h4>Purpose</h4>
-<p>Asks the LLM to summarize a conversation in two sentences.</p>
-<h4>Parameters</h4>
+<p>The provided code is a JavaScript module that exports two asynchronous functions: <code>askLlamaAboutConversation</code> and <code>askLlamaAboutCategory</code>.</p>
+<h3>Function: <code>askLlamaAboutConversation</code></h3>
 <ul>
-<li><code>currentMessages</code>: An array of messages in the conversation.</li>
+<li>This function takes an array of <code>currentMessages</code> and uses an LLM (Large Language Model) to summarize the conversation in two sentences.</li>
+<li>It imports the <code>llmPrompt</code> function from a module and creates a prompt string by joining the <code>currentMessages</code> with newline characters and formatting it for the LLM.</li>
+<li>It logs the user's prompt and the AI's response to the console, and then trims the response and returns it.</li>
 </ul>
-<h4>Flow</h4>
-<ol>
-<li>Imports the LLM session using <code>importer.import('create llm session')</code>.</li>
-<li>Creates a prompt asking the LLM to summarize the conversation.</li>
-<li>Logs the user's prompt to the console.</li>
-<li>Calls the LLM session with the prompt and retrieves the response.</li>
-<li>Logs the LLM's response to the console.</li>
-<li>Returns the LLM's response after trimming any unnecessary whitespace.</li>
-</ol>
-<h3>Function 2: <code>askLlamaAboutCategory</code></h3>
-<h4>Purpose</h4>
-<p>Asks the LLM to categorize a conversation in two or three words.</p>
-<h4>Parameters</h4>
+<h3>Function: <code>askLlamaAboutCategory</code></h3>
 <ul>
-<li><code>currentMessages</code>: An array of messages in the conversation.</li>
+<li>This function takes an array of <code>currentMessages</code> and uses an LLM to categorize the conversation into two or three words.</li>
+<li>It imports the <code>llmPrompt</code> function from a module and creates a prompt string by joining the <code>currentMessages</code> with newline characters, formatting it for the LLM, and specifying that only the category should be responded with.</li>
+<li>It logs the user's prompt and the AI's response to the console, trims the response, splits it by certain characters to extract the first word, and returns it.</li>
 </ul>
-<h4>Flow</h4>
-<ol>
-<li>Imports the LLM session using <code>importer.import('create llm session')</code>.</li>
-<li>Creates a prompt asking the LLM to categorize the conversation.</li>
-<li>Logs the user's prompt to the console.</li>
-<li>Calls the LLM session with the prompt and retrieves the response.</li>
-<li>Logs the LLM's response to the console.</li>
-<li>Returns the first word of the LLM's response after removing any unnecessary whitespace and punctuation.</li>
-</ol>
 <h3>Module Exports</h3>
-<p>The code exports both functions <code>askLlamaAboutConversation</code> and <code>askLlamaAboutCategory</code> as part of the <code>module.exports</code> object.</p>
+<p>The module exports an object with the two functions as properties, making them available for use in other scripts.</p>
+<h3>Assumptions</h3>
+<ul>
+<li>The <code>importer</code> module is assumed to be available and can import the <code>llmPrompt</code> function from a module named <code>create llm session</code>.</li>
+<li>The <code>llmPrompt</code> function is assumed to be asynchronous and returns a promise that resolves to the LLM's response.</li>
+<li>The <code>currentMessages</code> array is assumed to be an array of strings representing the conversation history.</li>
+</ul>

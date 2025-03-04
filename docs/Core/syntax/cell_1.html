@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary:</p>
+<p>This code imports a <code>getRequires</code> function from a module, uses it to extract required modules from a JavaScript code string, and exports the result as a module. The code is conditionally executed when a variable <code>$$</code> is defined in the global scope, printing the expected output: <code>../Core</code>, <code>glob</code>, and <code>path</code>.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -27,3 +29,49 @@ if(typeof $$ != 'undefined') {
 }
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {getRequires} = importer.import('get requires from source')
+</code></pre>
+<ul>
+<li>This code imports the <code>importer</code> module from <code>../Core</code> and extracts the <code>getRequires</code> function from it using the <code>import</code> method.</li>
+</ul>
+<h3>Sample Code String</h3>
+<pre><code class="language-javascript">var code = `
+var importer = require('../Core');
+var glob = require('glob');
+var path = require('path');
+`
+</code></pre>
+<ul>
+<li>This variable <code>code</code> contains a multi-line string of JavaScript code that is used as input to the <code>getRequires</code> function.</li>
+</ul>
+<h3>getRequires Function</h3>
+<pre><code class="language-javascript">function testGetRequires() {
+    return getRequires(code)
+}
+</code></pre>
+<ul>
+<li>This function <code>testGetRequires</code> calls the <code>getRequires</code> function with the <code>code</code> string as an argument and returns the result.</li>
+</ul>
+<h3>Exporting the Function</h3>
+<pre><code class="language-javascript">module.exports = testGetRequires
+</code></pre>
+<ul>
+<li>This line exports the <code>testGetRequires</code> function as a module, making it available for other scripts to import and use.</li>
+</ul>
+<h3>Conditional Execution</h3>
+<pre><code class="language-javascript">if(typeof $$!= 'undefined') {
+    testGetRequires()
+   ...
+}
+</code></pre>
+<ul>
+<li>This code checks if a variable <code>$$</code> is defined in the global scope. If it is, the <code>testGetRequires</code> function is called and the expected output is documented.</li>
+<li>The expected output is the list of required modules from the <code>code</code> string:</li>
+</ul>
+<pre><code class="language-javascript">../Core
+glob
+path
+</code></pre>

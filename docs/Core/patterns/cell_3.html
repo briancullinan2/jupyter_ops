@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary:</p>
+<p>This code is a JavaScript testing module that uses the <code>esprima</code> and <code>escodegen</code> libraries to parse and generate code, and the <code>assert</code> library to make assertions on the code's syntax. The module exports two test functions, <code>testProgram</code> and <code>testSelect</code>, which can be used to test the code's structure and behavior.</p>
 
 
 <pre><code>
@@ -56,3 +58,77 @@ if(typeof $$ !== 'undefined') {
 }
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Importing Dependencies</h3>
+<pre><code class="language-javascript">var esprima = require('esprima'); 
+var escodegen = require('escodegen');
+var assert = require('assert');
+</code></pre>
+<ul>
+<li><code>esprima</code> is a JSON-based abstract syntax tree (AST) parser for JavaScript code.</li>
+<li><code>escodegen</code> is a code generator that converts AST into JavaScript code.</li>
+<li><code>assert</code> is a module for making assertions in the code.</li>
+</ul>
+<h3>Code to Test</h3>
+<pre><code class="language-javascript">var code = `
+var importer = require('../Core');
+function name(params) {
+    return importer.interpret('this is a describe request');
+}
+console.log()
+`
+</code></pre>
+<ul>
+<li>This is an example JavaScript code that will be parsed and tested.</li>
+</ul>
+<h3>Test Functions</h3>
+<h4><code>testProgram</code></h4>
+<pre><code class="language-javascript">function testProgram(ctx) {
+    var node = selectTree('Program', ctx);
+    assert(node.type === 'Program', 'just a single node not a list');
+    return node;
+}
+</code></pre>
+<ul>
+<li>This function takes an AST context (<code>ctx</code>) and uses <code>selectTree</code> to find the root node (<code>Program</code>).</li>
+<li>It asserts that the node is a single node and not a list.</li>
+<li>The function returns the node.</li>
+</ul>
+<h4><code>testSelect</code></h4>
+<pre><code class="language-javascript">function testSelect(ctx) {
+    //...
+}
+</code></pre>
+<ul>
+<li>This function takes an AST context (<code>ctx</code>) and performs multiple <code>selectTree</code> queries to test its behavior.</li>
+<li>The queries are:
+<ul>
+<li>Select a list of root nodes and assert that there is only one node.</li>
+<li>Select a list of nodes that match <code>Identifier</code> or <code>CallExpression</code> and assert that there are more than 6 nodes.</li>
+<li>Select a list of nodes that match <code>Identifier</code> with <code>@type=&quot;Identifier&quot;</code> and assert that there are more than 3 nodes.</li>
+<li>Select a list of nodes that match <code>Identifier</code> with <code>@name</code> and assert that the third node is <code>'params'</code>.</li>
+</ul></li>
+</ul>
+<h3>Module Exports</h3>
+<pre><code class="language-javascript">module.exports = {
+    testProgram,
+    testSelect
+}
+</code></pre>
+<ul>
+<li>The module exports the two test functions: <code>testProgram</code> and <code>testSelect</code>.</li>
+</ul>
+<h3>Optional Code Execution</h3>
+<pre><code class="language-javascript">if(typeof $$!== 'undefined') {
+    var ctx = esprima.parse(code);
+    var output = testProgram(ctx);
+    testSelect(ctx);
+    var output = escodegen.generate(output);
+    console.log(output)
+}
+</code></pre>
+<ul>
+<li>This code checks if the <code>$$$</code> variable is defined.</li>
+<li>If it is, the code parses the example code with <code>esprima</code>, runs the <code>testProgram</code> and <code>testSelect</code> functions, and generates the output code with <code>escodegen</code>.</li>
+<li>The output code is logged to the console.</li>
+</ul>

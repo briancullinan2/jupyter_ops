@@ -1,3 +1,4 @@
+<p>To load a facial emotion recognition model, you need to open a JSON file, read its contents into a Keras model, and then load the model's weights from a corresponding HDF5 file. This process is typically performed using the steps outlined in the provided code breakdown.</p>
 
 
 <pre><code>json_file = open("facialemotionmodel.json", "r")
@@ -6,3 +7,25 @@ json_file.close()
 model = model_from_json(model_json)
 model.load_weights("facialemotionmodel.h5")</code></pre>
 
+<h3>Reading and Loading a JSON Model</h3>
+<h4>Description</h4>
+<p>Loads a facial emotion recognition model from a JSON file and its corresponding weights from a HDF5 file.</p>
+<h4>Code Breakdown</h4>
+<pre><code class="language-markdown">### Step 1: Open the JSON file
+* `open(&quot;facialemotionmodel.json&quot;, &quot;r&quot;)`: Opens the file &quot;facialemotionmodel.json&quot; in read-only mode.
+* Assigns the file object to `json_file`.
+
+### Step 2: Read the JSON contents
+* `json_file.read()`: Reads the contents of the file, including the JSON data.
+* Assigns the JSON data to `model_json`.
+
+### Step 3: Close the file
+* `json_file.close()`: Closes the file object to free up system resources.
+
+### Step 4: Load the model from JSON
+* `model_from_json(model_json)`: Creates a Keras model from the JSON data stored in `model_json`.
+* Assigns the loaded model to `model`.
+
+### Step 5: Load the model weights
+* `model.load_weights(&quot;facialemotionmodel.h5&quot;)`: Loads the model's weights from the HDF5 file &quot;facialemotionmodel.h5&quot;.
+</code></pre>

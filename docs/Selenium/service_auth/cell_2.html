@@ -1,3 +1,5 @@
+<p>Here's a summary of the code breakdown in two sentences:</p>
+<p>This code imports a module and a specific function from it, using Node.js's <code>require</code> function and the <code>import</code> method of the imported module. It then uses the imported function to save credentials, passing in an object with 'host', 'password', and 'username' properties, with the password masked for security.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -10,3 +12,29 @@ saveCredentials({
 });
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Importing Dependencies</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+</code></pre>
+<ul>
+<li>The <code>require</code> function is used to import modules in Node.js.</li>
+<li>The module located at <code>../Core</code> is imported and assigned to the <code>importer</code> variable.</li>
+</ul>
+<h3>Importing Specific Function</h3>
+<pre><code class="language-javascript">var saveCredentials = importer.import('add encrypted passwords.json');
+</code></pre>
+<ul>
+<li>The <code>importer</code> object has a method called <code>import</code> which imports a specific function (or object) from a file.</li>
+<li>The imported function is assigned to the <code>saveCredentials</code> variable.</li>
+</ul>
+<h3>Saving Credentials</h3>
+<pre><code class="language-javascript">saveCredentials({
+    host: 'linkedin.com',
+    password: '********',
+    username:'megamindbrian@gmail.com'
+});
+</code></pre>
+<ul>
+<li>The <code>saveCredentials</code> function is called with an object containing 'host', 'password', and 'username' properties.</li>
+<li>The password is masked with asterisks (<code>********</code>) for security reasons.</li>
+</ul>

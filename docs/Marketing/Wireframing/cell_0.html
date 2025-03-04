@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The code provides instructions for cloning a GitHub repository, building a Docker image, and running a Docker container to run a Jupyter notebook environment. The Docker container is run with interactive shell access, mapping port 8888 and mounting a directory to share files between the host machine and the container.</p>
 
 
 <pre><code>%%
@@ -38,3 +40,32 @@ jupytangular
 
 </code></pre>
 
+<h3>Breakdown of the Code</h3>
+<h4>Section 1: Clone a GitHub Repository</h4>
+<pre><code class="language-bash">git clone https://github.com/megamindbrian/jupytangular2
+</code></pre>
+<ul>
+<li>This line clones the repository located at <code>https://github.com/megamindbrian/jupytangular2</code> using the <code>git clone</code> command.</li>
+</ul>
+<h4>Section 2: Build a Docker Image</h4>
+<pre><code class="language-bash">docker build -t jupytangular.
+</code></pre>
+<ul>
+<li>This line builds a Docker image with the tag <code>jupytangular</code> from the current directory (<code>.</code>).</li>
+</ul>
+<h4>Section 3: Run a Docker Container</h4>
+<pre><code class="language-bash">docker run --name jupytangular -it -p 8888:8888 -v ~/jupytangular2/notebooks:/home/jovyan/notebooks jupytangular
+</code></pre>
+<ul>
+<li>This line runs a Docker container with the name <code>jupytangular</code> from the <code>jupytangular</code> image.</li>
+<li>The <code>-it</code> flag allows for interactive shell access.</li>
+<li>The <code>-p 8888:8888</code> flag maps port 8888 on the host machine to port 8888 in the container.</li>
+<li>The <code>-v</code> flag mounts the directory <code>~/jupytangular2/notebooks</code> on the host machine to <code>/home/jovyan/notebooks</code> in the container.</li>
+<li>The last part of the command, <code>jupytangular</code>, is the name of the Docker image to run.</li>
+</ul>
+<h4>Section 4: Run Another Docker Container (Same as Section 3)</h4>
+<pre><code class="language-bash">docker run --name jupytangular -it -p 8888:8888 -v 'C:\Users\brian.cullinan\Documents\jupytangular2\notebooks':/home/jovyan/notebooks jupytangular
+</code></pre>
+<ul>
+<li>This line is identical to the previous command, but with a different path for the mounted directory. The path is now in Windows format (<code>C:\Users\brian.cullinan\Documents\jupytangular2\notebooks</code>).</li>
+</ul>

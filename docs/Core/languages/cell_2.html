@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the provided code:</p>
+<p>The code defines a transpiler composition function that loads user input into a tree data structure and generates code using a visitor and generator. It then exports composed transpilers for JavaScript to Java and JavaScript to Python, making it possible to translate JavaScript code into these languages.</p>
 
 
 <pre><code>// Each composite transpiler instance has the ability to traverse the parse tree
@@ -52,3 +54,61 @@ module.exports = {
    ...
 }</code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Importing Dependencies</h3>
+<pre><code class="language-javascript">const getJavascriptVisitor = require('./codegeneration/javascript/Visitor');
+const getJavaGenerator = require('./codegeneration/java/Generator');
+const getPythonGenerator = require('./codegeneration/python/Generator');
+</code></pre>
+<p>These lines import functions for generating JavaScript visitors and Java and Python generators from their respective modules.</p>
+<h3>Defining the Load Tree Function</h3>
+<pre><code class="language-javascript">const loadJSTree = (input) =&gt; {
+    /* Lexing and parsing the user input */
+   ...
+};
+</code></pre>
+<p>This function is used to parse the user input into a tree data structure.</p>
+<h3>Composing a Transpiler</h3>
+<pre><code class="language-javascript">const composeTranspiler = (loadTree, visitor, generator) =&gt; {
+    const Transpiler = generator(visitor);
+    const transpiler = new Transpiler();
+
+    return {
+        compile: (input) =&gt; {
+            const tree = loadTree(input);
+            return transpiler.start(tree);
+        }
+    };
+};
+</code></pre>
+<p>This function takes in three parameters:</p>
+<ul>
+<li><code>loadTree</code>: a function that loads a tree from input</li>
+<li><code>visitor</code>: a visitor object</li>
+<li><code>generator</code>: a function that generates a transpiler</li>
+</ul>
+<p>It creates a new transpiler instance and returns a <code>compile</code> function that:</p>
+<ul>
+<li>Loads a tree from input using <code>loadTree</code></li>
+<li>Passes the tree to the transpiler's <code>start</code> method</li>
+<li>Returns the generated code</li>
+</ul>
+<h3>Exporting the Composed Transpilers</h3>
+<pre><code class="language-javascript">module.exports = {
+    javascript: {
+        java: composeTranspiler(
+            loadJSTree,
+            getJavascriptVisitor(JavascriptANTLRVisitor), // Visitor + ANTLR visitor
+            getJavaGenerator // Method that takes in a superclass, i.e. the visitor
+        ),
+        python: composeTranspiler(
+            loadJSTree,
+            getJavascriptVisitor(JavascriptANTLRVisitor)),
+            getPythonGenerator
+        ),
+       ...
+    },
+   ...
+};
+</code></pre>
+<p>This exports an object with a <code>javascript</code> property, which contains two properties: <code>java</code> and <code>python</code>. Each of these properties is a composed transpiler created by calling <code>composeTranspiler</code> with the corresponding <code>loadTree</code>, <code>visitor</code>, and <code>generator</code> functions.</p>

@@ -1,5 +1,5 @@
-<p>Here's a two-sentence summary of the code breakdown:</p>
-<p>The code consists of two main functions: <code>generateCallback</code> which generates a callback function for dynamic libraries, and <code>makeDylib</code> which compiles and loads a dynamic library from code. Both functions rely on several modules, including <code>path</code>, <code>ffi-rs</code>, and <code>../Core</code>, and use functions such as <code>importNotebook</code>, <code>interpret</code>, and <code>buildDylib</code> from these modules.</p>
+<p>Here's a 2-sentence summary of the code:</p>
+<p>This JavaScript code generates dynamic libraries using functions <code>generateCallback</code> and <code>makeDylib</code>, which create callbacks for library functions and compile code into dynamic libraries, respectively. The code relies on external dependencies such as <code>ffi-rs</code> and a core module, and includes unclear or missing parts indicated by <code>TODO</code> comments.</p>
 
 
 <pre><code>const path = require('path')
@@ -95,55 +95,39 @@ async function makeDylib(code, pathToCode, ctx) {
 module.exports.makeDylib = makeDylib
 </code></pre>
 
-<h2>Code Breakdown</h2>
-<h3>Module Dependencies and Constants</h3>
-<p>The code requires several modules:</p>
+<p><strong>Breakdown of the Code</strong></p>
+<p>The code is written in JavaScript and appears to be a part of a larger project that generates dynamic libraries. Here's a brief explanation of the code:</p>
+<h3>Functions</h3>
+<h4><code>generateCallback(libName, i, types, params)</code></h4>
+<p>This function generates a callback function that can be used to call a dynamic library function. It takes the following parameters:</p>
 <ul>
-<li><code>path</code> for working with file paths</li>
-<li><code>module</code> for accessing Node.js module functionality</li>
-<li><code>ffi-rs</code> for working with foreign function interfaces (FFI)</li>
-<li><code>../Core</code> for importing Core modules</li>
+<li><code>libName</code>: the name of the dynamic library</li>
+<li><code>i</code>: the index of the function to call</li>
+<li><code>types</code>: an array of function parameter types</li>
+<li><code>params</code>: an array of function parameter names</li>
 </ul>
-<p>Constants include:</p>
+<p>The function returns a callback function that takes the return value length and parameter values as arguments.</p>
+<h4><code>makeDylib(code, pathToCode, ctx)</code></h4>
+<p>This function generates a dynamic library from a given code and saves it to a file. It takes the following parameters:</p>
 <ul>
-<li><code>BUILD_DIRECTORY</code>, a directory path for building dynamic libraries</li>
-<li><code>typeToDataType</code>, a variable that stores a function imported from <code>../Core</code></li>
+<li><code>code</code>: the code to compile</li>
+<li><code>pathToCode</code>: the path to the code file</li>
+<li><code>ctx</code>: the context</li>
 </ul>
-<h3><code>generateCallback</code> Function</h3>
-<p>The <code>generateCallback</code> function takes four arguments:</p>
+<p>The function imports functions from a core module and returns the dynamic library.</p>
+<h3>Constants</h3>
+<h4><code>BUILD_DIRECTORY</code></h4>
+<p>This constant defines the directory where the dynamic libraries are built.</p>
+<h4><code>typeToDataType</code></h4>
+<p>This variable stores the <code>c type to data type</code> function imported from the core module.</p>
+<h3>External Dependencies</h3>
+<p>The code uses the following external dependencies:</p>
 <ul>
-<li><code>libName</code>, the name of the library</li>
-<li><code>i</code>, an index</li>
-<li><code>types</code>, an array of types</li>
-<li><code>params</code>, an array of function parameter information</li>
+<li><code>path</code>: for path manipulation</li>
+<li><code>module</code>: for module loading</li>
+<li><code>ffi-rs</code>: for dynamic library loading and interaction</li>
+<li><code>../Core</code>: for importing core functions</li>
+<li><code>../Core</code>: for importing core functions</li>
 </ul>
-<p>It returns a callback function that:</p>
-<ul>
-<li>Imports the <code>importNotebook</code> function from <code>../Core</code></li>
-<li>Checks if <code>typeToDataType</code> is initialized and imports it if not</li>
-<li>Defines an inner callback function that:
-<ul>
-<li>Gets the return type based on the <code>returnLength</code> and <code>types[0]</code></li>
-<li>Uses <code>load</code> from <code>ffi-rs</code> to load a function from the library</li>
-<li>Returns the loaded function</li>
-</ul></li>
-</ul>
-<h3><code>makeDylib</code> Function</h3>
-<p>The <code>makeDylib</code> function takes three arguments:</p>
-<ul>
-<li><code>code</code>, the code to be compiled</li>
-<li><code>pathToCode</code>, the path to the code</li>
-<li><code>ctx</code>, the execution context</li>
-</ul>
-<p>It returns a promise that resolves to a dynamic library object.</p>
-<p>The function:</p>
-<ul>
-<li>Imports <code>importNotebook</code> and <code>interpret</code> from <code>../Core</code></li>
-<li>Imports <code>open</code> from <code>ffi-rs</code></li>
-<li>Checks if the module is already cached and returns the cached module if it is</li>
-<li>Imports <code>buildDylib</code> from <code>../Core</code></li>
-<li>Calls <code>buildDylib</code> with the code, path, and context</li>
-<li>Opens a dynamic library using <code>open</code> from <code>ffi-rs</code></li>
-<li>Returns the loaded dynamic library object</li>
-</ul>
-<p>Note that the function has several TODO comments indicating areas where the code needs to be improved or completed.</p>
+<h3>Unclear or Missing Code</h3>
+<p>Some parts of the code are unclear or missing, including the <code>TODO</code> comments. These comments suggest that the code is still in development and may need to be completed or modified in the future.</p>

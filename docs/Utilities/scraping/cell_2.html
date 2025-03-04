@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>The code imports necessary modules and functions, sets environment variables, and defines two main functions: <code>loadLocations()</code> and <code>getAllLocationsData()</code>. These functions interact with file systems, Google Maps, and Selenium to load and update locations data, which is then written to a JSON file.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -124,3 +126,26 @@ if(typeof $$ !== 'undefined') {
 }
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules and Functions</h3>
+<p>The code starts by importing necessary modules and functions:</p>
+<ul>
+<li><code>importer</code> is a module that imports other modules and functions.</li>
+<li><code>fs</code> (File System) is a built-in Node.js module for interacting with the file system.</li>
+<li><code>path</code> is a built-in Node.js module for working with file paths.</li>
+<li><code>glob</code> is a module for working with file globbing patterns.</li>
+<li>Various functions are imported from <code>importer</code>, including:
+<ul>
+<li><code>placesNearby</code>, <code>placeDetails</code>, <code>runSeleniumCell</code>, <code>levDist</code>, and <code>levSort</code>.</li>
+</ul></li>
+</ul>
+<h3>Setting Environment Variables and Project Path</h3>
+<p>The code sets the <code>PROFILE_PATH</code> variable to the user's home directory (or equivalent on different operating systems). It also sets the <code>project</code> path to a specific directory (<code>Collections/flagstaff-happy</code>) within the user's home directory.</p>
+<h3>Functions</h3>
+<p>The code defines two main functions:</p>
+<ul>
+<li><strong><code>loadLocations()</code></strong>: Loads locations data from a JSON file if it exists, or fetches data from Google Maps using Selenium if the file does not exist.</li>
+<li><strong><code>getAllLocationsData()</code></strong>: Retrieves locations data and populates it with additional information (e.g., nearby places and details) using the imported functions. It writes the updated data to a JSON file.</li>
+</ul>
+<h3>Async Execution</h3>
+<p>The code checks if the <code>$</code> object is defined, and if so, executes the <code>async()</code> method on it. It then calls the <code>getAllLocationsData()</code> function, which returns a promise that resolves to the updated locations data.</p>

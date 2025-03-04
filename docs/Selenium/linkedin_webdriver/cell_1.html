@@ -1,3 +1,5 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>The <code>listConnections</code> function is an asynchronous module that retrieves a list of unique LinkedIn connections' URLs by utilizing Selenium to navigate to the user's my network page, check for login status, and retrieve connections until at least 10 unique connections are found. If no driver is provided, it creates a new instance using <code>getClient()</code> and logs in to LinkedIn using <code>loginLinkedIn()</code>, before proceeding with the connection retrieval process.</p>
 
 
 <pre><code>const fs = require('fs')
@@ -32,3 +34,45 @@ async function listConnections(driver) {
 module.exports = listConnections
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Dependencies and Import</h3>
+<ul>
+<li>The code starts by requiring the <code>fs</code> module and importing three functions from other modules using <code>importer.import()</code>:
+<ul>
+<li><code>getClient</code>: likely a function to obtain a Selenium client instance</li>
+<li><code>getAllUntil</code>: likely a function to retrieve elements from a Selenium client instance until a condition is met</li>
+<li><code>loginLinkedIn</code>: likely a function to log in to LinkedIn using the Selenium client</li>
+</ul></li>
+</ul>
+<h3>listConnections Function</h3>
+<h4>Args and Return Value</h4>
+<ul>
+<li><code>listConnections</code> is an asynchronous function that takes a <code>driver</code> argument and returns a list of unique LinkedIn connections' URLs.</li>
+</ul>
+<h4>Logic</h4>
+<ol>
+<li><strong>Check and Initialize Driver</strong>
+<ul>
+<li>If no <code>driver</code> is provided, it creates a new instance using <code>getClient()</code> and logs in to LinkedIn using <code>loginLinkedIn()</code>.</li>
+</ul></li>
+<li><strong>Get Current URL and Login If Necessary</strong>
+<ul>
+<li>Retrieves the current URL of the driver.</li>
+<li>Checks if the URL indicates that the user is logged in (contains <code>/mynetwork/</code>).</li>
+<li>If not logged in, navigates to the LinkedIn my network page (<code>https://www.linkedin.com/mynetwork/</code>) and waits for 4 seconds.</li>
+</ul></li>
+<li><strong>Get All Connections Until Condition Is Met</strong>
+<ul>
+<li>Calls <code>getAllUntil()</code> to retrieve an array of LinkedIn connections' URLs until it has retrieved 10 unique connections.</li>
+<li>The condition for stopping the retrieval is that the array has at least 10 unique connections.</li>
+</ul></li>
+<li><strong>Clean and Return Result</strong>
+<ul>
+<li>Filters the array of connections to remove duplicates.</li>
+<li>Returns the array of unique connections' URLs.</li>
+</ul></li>
+</ol>
+<h4>Export</h4>
+<ul>
+<li>The <code>listConnections</code> function is exported as a module, making it available for import in other files.</li>
+</ul>

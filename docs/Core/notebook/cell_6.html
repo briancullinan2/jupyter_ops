@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary of the code:</p>
+<p>The code imports specific functions from a <code>../Core</code> module and defines a string of JavaScript code, which is then used to replace imports using the imported <code>replaceCore</code> function. The replaced code is sent as a MIME message with a <code>text/plain</code> type, if the <code>$$</code> object is defined and has the required properties.</p>
 
 
 <pre><code>var importer = require('../Core')
@@ -24,3 +26,31 @@ var getArrayAST = importer.import('get ast path array');
 
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<p>The code imports modules from a file named <code>../Core</code> using the <code>require</code> function:</p>
+<pre><code class="language-javascript">var importer = require('../Core')
+</code></pre>
+<p>It then uses the <code>importer</code> object to import specific functions from the <code>../Core</code> module:</p>
+<pre><code class="language-javascript">var {
+    replaceImports, replaceCore
+} = importer.import(['replace notebook import','replace core requirement'])
+var {selectAst} = importer.import('select code tree')
+var {htmlToTree} = importer.import('html to tree')
+</code></pre>
+<p>These functions are imported with their respective names, which are used later in the code.</p>
+<h4>Defining Code</h4>
+<p>A string of JavaScript code is defined:</p>
+<pre><code class="language-javascript">var code = `
+var importer = require('../Core');
+var getArrayAST = importer.import('get ast path array');
+`
+</code></pre>
+<p>This code is used later in the script.</p>
+<h4>Replacing Imports</h4>
+<p>The code checks if the $$ object is defined, and if so, it uses the <code>replaceCore</code> function to replace imports in the <code>code</code> string:</p>
+<pre><code class="language-javascript">if(typeof $$!= 'undefined') {
+    $$.mime({'text/plain': replaceCore(code).ownerDocument.toString()})
+}
+</code></pre>
+<p>The <code>replaceCore</code> function is used to replace imports, and the result is converted to a string using <code>toString()</code> before being sent as the content of a MIME message with a <code>text/plain</code> type.</p>

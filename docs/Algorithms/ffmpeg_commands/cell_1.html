@@ -1,6 +1,37 @@
+<p>Here's a 2-sentence summary of the FFmpeg command:</p>
+<p>The FFmpeg command is used to stream video and audio from an RTMP source to YouTube Live, using the H.264 codec for video and the AAC codec for audio. The command sets various settings for video and audio encoding, including bitrate, frame rate, and sampling rate, and outputs the stream in FLV format at a specified URL.</p>
 
 
 <pre><code>
 ffmpeg -i http://192.168.4.22:8080/video -i http://192.168.4.22:8080/audio.wav -c:v libx264 -preset ultrafast -b:v 4500k -maxrate 4500k -bufsize 9000k -g 50 -c:a aac -b:a 128k -ar 44100 -f flv rtmp://a.rtmp.youtube.com/live2/dvqv-7eyf-72d5-vaw7-dvsb
 </code></pre>
 
+<h3>Command Breakdown</h3>
+<h4>FFmpeg Command</h4>
+<p><code>ffmpeg -i http://192.168.4.22:8080/video -i http://192.168.4.22:8080/audio.wav -c:v libx264 -preset ultrafast -b:v 4500k -maxrate 4500k -bufsize 9000k -g 50 -c:a aac -b:a 128k -ar 44100 -f flv rtmp://a.rtmp.youtube.com/live2/dvqv-7eyf-72d5-vaw7-dvsb</code></p>
+<h3>Options and Parameters</h3>
+<h4>Input Settings</h4>
+<ul>
+<li><code>http://192.168.4.22:8080/video</code>: Video input URL</li>
+<li><code>http://192.168.4.22:8080/audio.wav</code>: Audio input URL</li>
+</ul>
+<h4>Video Settings</h4>
+<ul>
+<li><code>-c:v libx264</code>: Use H.264 codec for video</li>
+<li><code>-preset ultrafast</code>: Use ultrafast preset for H.264 encoding</li>
+<li><code>-b:v 4500k</code>: Set video bitrate to 4500 kbps</li>
+<li><code>-maxrate 4500k</code>: Set maximum video bitrate to 4500 kbps</li>
+<li><code>-bufsize 9000k</code>: Set video buffer size to 9000 kbps</li>
+<li><code>-g 50</code>: Set GOP size to 50 frames</li>
+</ul>
+<h4>Audio Settings</h4>
+<ul>
+<li><code>-c:a aac</code>: Use AAC codec for audio</li>
+<li><code>-b:a 128k</code>: Set audio bitrate to 128 kbps</li>
+<li><code>-ar 44100</code>: Set audio sampling rate to 44.1 kHz</li>
+</ul>
+<h4>Output Settings</h4>
+<ul>
+<li><code>-f flv</code>: Set output format to FLV</li>
+<li><code>rtmp://a.rtmp.youtube.com/live2/dvqv-7eyf-72d5-vaw7-dvsb</code>: Output URL for RTMP streaming</li>
+</ul>

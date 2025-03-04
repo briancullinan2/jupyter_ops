@@ -1,3 +1,4 @@
+<p>The <code>last_word_length</code> function takes a string as input and returns the length of its last word. It does this by counting non-space characters from the end of the string until it encounters a space.</p>
 
 
 <pre><code>def last_word_length(text):
@@ -16,3 +17,24 @@ assert last_word_length('last   ') == 4
 assert last_word_length('string  of  words') == 5
 print('All passed!')</code></pre>
 
+<h2>last_word_length function</h2>
+<h3>Purpose</h3>
+<p>Returns the length of the last word in a given string.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>text</code> (str): A string of words separated by spaces.</li>
+</ul>
+<h3>Returns</h3>
+<p>The length of the last word in the string.</p>
+<h3>Functionality</h3>
+<ol>
+<li>It starts from the end of the string (<code>len(text)-1</code>) and moves backwards until it encounters a non-space character.</li>
+<li>It counts the number of non-space characters until it encounters a space.</li>
+<li>It returns this count, which represents the length of the last word.</li>
+</ol>
+<h3>Example Use Cases</h3>
+<ul>
+<li><code>last_word_length('')</code> returns 0, because there are no words.</li>
+<li><code>last_word_length('last ')</code> returns 4, because 'last' is the last word.</li>
+<li><code>last_word_length('string of words')</code> returns 5, because 'words' is the last word.</li>
+</ul>

@@ -1,5 +1,5 @@
-<p>Here is a two-sentence summary of the code:</p>
-<p>This JavaScript code initializes a cache and loads various notebooks, including their cells and metadata, using asynchronous functions and imported modules. It also defines functions to search and query notebooks based on different types of queries, such as file paths, names, and extensions.</p>
+<p>Here's a 1-2 sentence summary of the provided code:</p>
+<p>The code initializes a cache by retrieving and caching cells from specified notebooks and creating a database, then defines the <code>interpret</code> function to process queries by filtering local files, searching notebooks, and querying the database. The <code>interpret</code> function checks if the cache has already been initialized and processes the queries accordingly, storing the results in the <code>searchResults</code> variable.</p>
 
 
 <pre><code>var path = require('path')
@@ -86,88 +86,35 @@ module.exports.interpret = interpret;
 </code></pre>
 
 <p><strong>Code Breakdown</strong></p>
-<h3>Variables and Importing Modules</h3>
-<pre><code class="language-javascript">var path = require('path')
-var fs = require('fs')
-
-var first = true, cacheCells, cellCache;
-</code></pre>
+<p><strong>Requires</strong></p>
+<p>The code starts by requiring two Node.js modules: <code>path</code> and <code>fs</code>. However, <code>fs</code> is not used in the provided code snippet.</p>
+<p><strong>Initialization</strong></p>
+<p>The <code>initializeCache</code> function is defined as an asynchronous function. It:</p>
+<ol>
+<li>Imports functions from the <code>../Core</code> module.</li>
+<li>Defines an array of notebook paths to be used for caching.</li>
+<li>Retrieves the cache cells from the <code>cache.ipynb</code> notebook and filters them to only include cells with a function named <code>cacheCells</code>.</li>
+<li>Caches the cells from the specified notebooks and creates a database with the cached cells.</li>
+<li>Calls the <code>cacheAll</code> function from the <code>cache all</code> notebook and updates the cell cache.</li>
+<li>Creates a database with the updated cell cache.</li>
+</ol>
+<p><strong>Interpret Function</strong></p>
+<p>The <code>interpret</code> function takes <code>queries</code> as an argument and:</p>
+<ol>
+<li>Checks if the <code>initializeCache</code> function has already been called. If not, it initializes the cache.</li>
+<li>Determines if the <code>queries</code> argument is a string or an array. If it's a string, it's converted to an array.</li>
+<li>Iterates over the <code>queries</code> array and performs the following actions for each query:
 <ul>
-<li>The <code>require</code> function is used to import the <code>path</code> and <code>fs</code> modules.</li>
-<li>Two variables <code>first</code> and <code>cacheCells</code> are initialized, along with an assignment to <code>cellCache</code>.</li>
-</ul>
-<h3>Asynchronous Cache Initialization</h3>
-<pre><code class="language-javascript">async function initializeCache() {
-   ...
-}
-</code></pre>
+<li>If the query includes a file path, it uses the <code>filterLocal</code> function to filter local files.</li>
+<li>If the query is a notebook name (e.g., &quot;cell cache&quot;), it uses the <code>searchQueryFiles</code> function to search for notebooks.</li>
+<li>If the query is a file name with an <code>.ipynb</code> extension, it uses the <code>searchFiles</code> function to search for notebooks.</li>
+</ul></li>
+<li>The search results are stored in the <code>searchResults</code> variable.</li>
+</ol>
+<p><strong>Notes</strong></p>
 <ul>
-<li>An asynchronous function <code>initializeCache</code> is defined. This function is responsible for initializing the cache.</li>
-</ul>
-<h3>Importing Core Functions and Loading Notebooks</h3>
-<pre><code class="language-javascript">var {
-  getCells, importNotebook, createDatabase
-} = require('../Core')
-var coreNotebooks = [
-  path.resolve(__dirname, './files.ipynb'),
-  path.resolve(__dirname, './cache.ipynb'),
- ...
-];
-</code></pre>
-<ul>
-<li>The <code>getCells</code>, <code>importNotebook</code>, and <code>createDatabase</code> functions are imported from the <code>../Core</code> module.</li>
-<li>An array <code>coreNotebooks</code> is created, containing paths to various notebooks.</li>
-</ul>
-<h3>Loading Cache Cells and Creating Database</h3>
-<pre><code class="language-javascript">cacheCells = importNotebook(cacheLookup).cacheCells
-cellCache = [].concat
- .apply([], coreNotebooks.map(n =&gt; cacheCells(n)))
- .map(c =&gt; [
-    c.mtime,
-    path.join(path.dirname(c.filename), c.id),
-    c
-  ])
-createDatabase(cellCache)
-</code></pre>
-<ul>
-<li>The <code>cacheCells</code> function is called with a modified version of the <code>coreNotebooks</code> array, and the result is assigned to <code>cacheCells</code>.</li>
-<li>The <code>cellCache</code> array is created by concatenating the results of calling <code>cacheCells</code> on each notebook in <code>coreNotebooks</code>, and mapping the result to an array containing metadata about each cell.</li>
-<li>The <code>createDatabase</code> function is called with the <code>cellCache</code> array.</li>
-</ul>
-<h3>Searching and Querying Notebooks</h3>
-<pre><code class="language-javascript">function interpret(queries) {
- ...
-}
-</code></pre>
-<ul>
-<li>A function <code>interpret</code> is defined, which takes a <code>queries</code> parameter.</li>
-<li>The function checks if <code>first</code> is still <code>true</code>, and if so, calls the <code>initializeCache</code> function.</li>
-</ul>
-<h3>Checking Query Type and Searching Notebooks</h3>
-<pre><code class="language-javascript">const fileMode = typeof queries ==='string' &amp;&amp; queries.match(/\.ipynb$/ig)
-let searchResults = [].concat.apply([], (typeof queries ==='string'
- ? [queries]
-  : queries).map(query =&gt; {
-   ...
-  })
-</code></pre>
-<ul>
-<li>The function checks if <code>queries</code> is a string and if it matches the extension <code>.ipynb</code>.</li>
-<li>If <code>queries</code> is a string, it is wrapped in an array. If it's not a string, it remains as is.</li>
-<li>The <code>concat.apply</code> method is used to concatenate the results of mapping over the <code>queries</code> array.</li>
-</ul>
-<h3>Filtering and Searching Notebooks</h3>
-<pre><code class="language-javascript">if (query.includes('/')) {
-  searchResults = filterLocal(query)
-} else if (search.length === 3) {
-  searchResults = [searchQueryFiles(search, cellCache)[0]]
-} else if (search[0].match(/\.ipynb$/ig)) {
-  searchResults = searchFiles(search)
-}
-</code></pre>
-<ul>
-<li>The function checks the type of <code>query</code> and calls the corresponding function to search notebooks.</li>
-<li>If <code>query</code> includes a <code>/</code>, it is passed to the <code>filterLocal</code> function.</li>
-<li>If <code>search</code> has a length of 3, it is passed to the <code>searchQueryFiles</code> function.</li>
-<li>If <code>search</code> matches the extension <code>.ipynb</code>, it is passed to the <code>searchFiles</code> function.</li>
+<li>The <code>filterLocal</code>, <code>searchFiles</code>, <code>searchQueryFiles</code>, and <code>queryDatabase</code> functions are imported from the <code>../Core</code> module but are not defined in this code snippet.</li>
+<li>The <code>lookupCell</code> function is imported from the <code>../Core</code> module but is not used in this code snippet.</li>
+<li>The <code>createDatabase</code> function is imported from the <code>../Core</code> module but is used twice in the <code>initializeCache</code> function.</li>
+<li>The <code>cellCache</code> variable is an array of cached cells, and its contents are updated multiple times in the <code>initializeCache</code> function.</li>
 </ul>

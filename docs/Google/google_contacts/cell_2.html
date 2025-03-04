@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>This code imports a module from a file called <code>../Core</code> and uses a function <code>getSettings</code> to retrieve Google contact settings for a specified email address. The operation is handled asynchronously using Promises, with the result sent if successful and the error sent if failed.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -9,3 +11,31 @@ getSettings('megamindbrian@gmail.com')
     .catch(e => $$.sendError(e))
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var getSettings = importer.import('google contact settings');
+</code></pre>
+<ul>
+<li>The code imports a module from a file located at <code>../Core</code> using <code>require</code>.</li>
+<li>It then imports a function <code>getSettings</code> from the imported module, which is specific to &quot;google contact settings&quot;.</li>
+</ul>
+<h3>Asynchronous Operation</h3>
+<pre><code class="language-javascript">$$.async();
+</code></pre>
+<ul>
+<li>This line starts an asynchronous operation using a function <code>async()</code> from an object <code>$.$$</code>.</li>
+</ul>
+<h3>Getting Google Contact Settings</h3>
+<pre><code class="language-javascript">getSettings('megamindbrian@gmail.com')
+   .then(r =&gt; $$.sendResult(r))
+   .catch(e =&gt; $$.sendError(e))
+</code></pre>
+<ul>
+<li>The <code>getSettings</code> function is called with an email address <code>'megamindbrian@gmail.com'</code> as an argument.</li>
+<li>The result is handled using Promises:
+<ul>
+<li><code>.then(r =&gt; $$.sendResult(r))</code>: If the operation is successful, the result <code>r</code> is sent using <code>$.$$sendResult</code>.</li>
+<li><code>.catch(e =&gt; $.$$sendError(e))</code>: If the operation fails, the error <code>e</code> is sent using <code>$.$$sendError</code>.</li>
+</ul></li>
+</ul>

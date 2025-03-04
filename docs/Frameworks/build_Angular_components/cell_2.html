@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>This code creates a new Angular project called &quot;new-portal&quot; using <code>@angular/cli</code>, generates an &quot;AppServer&quot; module, and prepares the project for building and serving. The code also outlines missing functionality, including building in memory, integrating a sockify server, accepting logins and encrypting passwords, and sending mock responses to test interfaces.</p>
 
 
 <pre><code>//ng(path.dirname(project), ['new', '--skip-git', '--skip-install', 'new-portal'])
@@ -25,3 +27,50 @@
 // send mock responses to display all interfaces?  e.g. logging in displays redirect and error "you are already logged in" on login page at the same time
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Section 1: Creating a New Angular Project</h3>
+<ul>
+<li><code>ng(path.dirname(project), ['new', '--skip-git', '--skip-install', 'new-portal'])</code>:
+<ul>
+<li>Creates a new Angular project at the specified path using <code>@angular/cli</code>.</li>
+<li>Skips initializing a Git repository and skipping package installation.</li>
+<li>Names the project &quot;new-portal&quot;.</li>
+</ul></li>
+<li><code>then(() =&gt; ng(project, ['generate','module', '--spec', '--flat', 'AppServer']))</code>:
+<ul>
+<li>Generates a new Angular module named &quot;AppServer&quot; in the project directory.</li>
+<li>Specifies <code>--spec</code> and <code>--flat</code> options for module generation.</li>
+</ul></li>
+</ul>
+<h3>Section 2: Installing and Listing Dependencies</h3>
+<ul>
+<li>Unimplemented sections with TODO comments.</li>
+</ul>
+<h3>Section 3: Building and Serving the Project</h3>
+<ul>
+<li><code>convertNgUniversal(project)</code>:
+<ul>
+<li>Converts an Angular Universal project.</li>
+</ul></li>
+<li><code>ng(project, ['build', '--aot', '--prod'])</code>:
+<ul>
+<li>Builds the project in production mode with Ahead-of-Time (AOT) compilation.</li>
+</ul></li>
+<li><code>webpackAngularProject(project)</code>:
+<ul>
+<li>Builds and bundles the project using Webpack.</li>
+</ul></li>
+<li><code>then(() =&gt; {... })</code>:
+<ul>
+<li>Changes the current working directory to the project directory.</li>
+<li>Requires and logs the contents of the <code>.server/server.js</code> file.</li>
+</ul></li>
+</ul>
+<h3>Missing Functionality</h3>
+<p>The code has several TODO comments indicating missing functionality, including:</p>
+<ul>
+<li>Building the project in memory</li>
+<li>Integrating a sockify server to send logs</li>
+<li>Accepting logins and encrypting passwords</li>
+<li>Sending mock responses to test interfaces</li>
+</ul>

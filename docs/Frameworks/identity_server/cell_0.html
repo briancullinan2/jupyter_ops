@@ -1,3 +1,5 @@
+<p>Here is a summary of the code breakdown in one or two sentences:</p>
+<p>The code imports necessary modules, sets environment variables and file paths, and defines a helper function <code>bashToRun</code> to process code. The main function <code>identityDockerfile</code> creates a Dockerfile with a VNC connection by processing commands using the <code>importer</code> module and saving the processed code to the Dockerfile.</p>
 
 
 <pre><code>var path = require('path');
@@ -39,3 +41,34 @@ var identityDockerfile = (output) => {
 (identityDockerfile);
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Module Imports</h4>
+<ul>
+<li><code>path</code>: a built-in Node.js module for working with file paths.</li>
+<li><code>fs</code>: a built-in Node.js module for interacting with the file system.</li>
+<li><code>importer</code>: a custom module located at <code>../Core</code>.</li>
+<li>Imported <code>writeFileSync</code> function from <code>fs</code> to prevent modifying the original function.</li>
+</ul>
+<h4>Environment Variable and File Path</h4>
+<ul>
+<li><code>GITHUB_TOKEN</code>: a file path to a GitHub token stored in a local file named <code>github_token.txt</code> within a <code>.credentials</code> directory in the user's home directory.</li>
+</ul>
+<h4>Helper Function</h4>
+<ul>
+<li><code>bashToRun</code>: a function that takes a string of code as input and returns a modified string with <code>RUN</code> commands prepended to each line, replacing excessive whitespace.</li>
+</ul>
+<h4>Function <code>identityDockerfile</code></h4>
+<ul>
+<li>Creates a Dockerfile with a VNC connection.</li>
+<li><code>DOCKERFILE</code>: the resolved path to the Dockerfile.</li>
+<li>Returns a promise that resolves to the contents of the Dockerfile.</li>
+<li><code>importer.interpret</code>: a function from the <code>importer</code> module that takes an array of commands as input and returns a promise that resolves to an array of objects containing the command results.</li>
+<li>The function processes the results from <code>importer.interpret</code> by:
+<ul>
+<li>Prepending <code>RUN</code> to each line of the code for the first two commands.</li>
+<li>Replacing the <code>{username}</code> placeholder in the third command with the contents of the GitHub token file.</li>
+<li>Prepending <code>RUN</code> to each line of the code for the fourth command.</li>
+</ul></li>
+<li>The processed commands are joined into a single string, which is saved to the Dockerfile using <code>writeFileSync</code>.</li>
+<li>Returns the contents of the Dockerfile.</li>
+</ul>

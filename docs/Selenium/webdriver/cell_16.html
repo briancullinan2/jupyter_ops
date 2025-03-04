@@ -1,3 +1,5 @@
+<p>Here's a summary of the code snippet in two sentences:</p>
+<p>This JavaScript code checks if a <code>client</code> object exists and, if so, closes all connections to it by calling the <code>endAll()</code> method. If the <code>client</code> object does not exist, the code does nothing.</p>
 
 
 <pre><code>if(typeof client !== 'undefined') {
@@ -5,3 +7,21 @@
 }
 </code></pre>
 
+<h3>Code Snippet</h3>
+<h4>Purpose</h4>
+<p>Closes all connections to a client if it exists.</p>
+<h4>Syntax</h4>
+<pre><code class="language-javascript">if (typeof client!== 'undefined') {
+  client.endAll();
+}
+</code></pre>
+<h4>Parameters</h4>
+<ul>
+<li><code>client</code>: The client object to end all connections for.</li>
+</ul>
+<h4>Function</h4>
+<ul>
+<li>The function checks if the <code>client</code> variable is defined.</li>
+<li>If <code>client</code> is defined, it calls the <code>endAll()</code> method on it to close all connections.</li>
+<li>If <code>client</code> is not defined, the <code>endAll()</code> method is not called.</li>
+</ul>

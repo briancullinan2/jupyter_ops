@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code is designed to scrape Facebook events and send the result or error to a recipient, using a function <code>scrapeFacebookEvents()</code> that returns a promise and is called asynchronously. The code uses <code>then</code> and <code>catch</code> methods to handle the resolved promise and any errors that occur, respectively, and sends the result or error to a recipient using <code>sendResult(diff)</code> and <code>sendError(e)</code> functions.</p>
 
 
 <pre><code>$$.async();
@@ -7,3 +9,31 @@ scrapeFacebookEvents()
 
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Purpose</h4>
+<p>The code is designed to scrape Facebook events and send the result or error to a recipient.</p>
+<h4>Functions</h4>
+<ul>
+<li><p><code>scrapeFacebookEvents()</code>:</p>
+<ul>
+<li>This function is not shown in the code snippet, but it is assumed to scrape Facebook events and return a promise.</li>
+<li>It is called asynchronously.</li>
+</ul></li>
+<li><p><code>$$.async();</code>:</p>
+<ul>
+<li>This line starts an asynchronous operation. However, the context in which it is called is unclear, as <code>$</code> and <code>$$</code> are often prefix notation for jQuery or some other library. Without further context, it is difficult to determine the exact library or functionality being used.</li>
+</ul></li>
+</ul>
+<h4>Promises and Error Handling</h4>
+<ul>
+<li>The <code>then</code> method is used to handle the resolved promise.
+<ul>
+<li>It calls the function <code>sendResult(diff)</code> and passes the scraped event differences (<code>diff</code>) as an argument.</li>
+</ul></li>
+<li>The <code>catch</code> method is used to handle any errors that occur during the promise chain.
+<ul>
+<li>It calls the function <code>sendError(e)</code> and passes the error object (<code>e</code>) as an argument.</li>
+</ul></li>
+</ul>
+<h4>Unrelated Variables</h4>
+<p>The code snippet uses <code>$</code> and <code>$$</code> but the only function called is <code>scrapeFacebookEvents()</code>, <code>sendResult(diff)</code> and <code>sendError(e)</code>.</p>

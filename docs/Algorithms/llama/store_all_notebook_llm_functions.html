@@ -1,7 +1,5 @@
-<p>Here's a summary of the <code>storeAllLlamaFunctions</code> code in one sentence:</p>
-<p>The <code>storeAllLlamaFunctions</code> code stores information about all Llama functions in a notebook by checking for code changes, updating cached information, and retrieving new information from Llama as needed.</p>
-<p>Alternatively, here's a two-sentence summary:</p>
-<p>The <code>storeAllLlamaFunctions</code> code iterates through each notebook cell, checks for code changes, and updates its cached information accordingly. If cached information is incomplete or invalid, it retrieves new information from Llama to store.</p>
+<p>Here's a summary of the code breakdown in two sentences:</p>
+<p>The code imports several modules and functions, including LLM functions to summarize and generalize code, and uses an async function <code>storeAllLlamaFunctions</code> to store all LLM functions. The <code>storeAllLlamaFunctions</code> function retrieves code from the cache, checks conditions, and updates the cache using LLM functions when necessary, while also performing operations on a <code>functionCache</code> object to store cached descriptions and summaries.</p>
 
 
 <pre><code>const {askLlamaAboutCode} = importer.import('ask llm about code')
@@ -12,12 +10,12 @@ const { functionCache } = importer.import('cache rpc functions with llm descript
 const { storeLlamaFunction } = importer.import('store llama function')
 
 async function storeAllLlamaFunctions() {
-  const getParameters = await importNotebook('get c parameters')
-  const pythonParams = await importNotebook('python params in antlr')
+  const getParameters = await importer.import('get c parameters')
+  const pythonParams = await importer.import('python params in antlr')
   let cellCache = importer.import('cell cache').cellCache
   for(let i = 0; i < cellCache.length; i++) {
     let cell = cellCache[i]
-    if(!cell[2].questions || !cell[2].questions[0]) continue
+    //if(!cell[2].questions || !cell[2].questions[0]) continue
     let code = importer.lookupCell(cell[1], cacheCells)
     if(code.code.trim().length == 0) {
       storeLlamaFunction(cell[1], code.mtime, [], '', '', '', '')
@@ -88,34 +86,38 @@ module.exports = {
   storeAllLlamaFunctions
 }</code></pre>
 
-<p><strong>Function Breakdown</strong></p>
-<h3>storeAllLlamaFunctions</h3>
+<h3>Code Breakdown</h3>
+<h4>Imported Modules</h4>
+<p>The code imports several modules using the <code>importer</code> object:</p>
 <ul>
-<li><strong>Purpose:</strong> Stores information about all Llama functions in a notebook.</li>
-<li><strong>Returns:</strong> None (async function)</li>
+<li><code>askLlamaAboutCode</code>: a function to ask the LLM about code</li>
+<li><code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code>: functions to summarize and generalize code, respectively</li>
+<li><code>getExports</code>, <code>cacheCells</code>: functions to get exports and cache cells</li>
+<li><code>functionCache</code>: a function to cache RPC functions with LLM descriptions</li>
+<li><code>storeLlamaFunction</code>: a function to store LLM functions</li>
 </ul>
-<p><strong>Code Overview:</strong></p>
+<h4><code>storeAllLlamaFunctions</code> Function</h4>
+<p>The <code>storeAllLlamaFunctions</code> function is an asynchronous function that stores all LLM functions. It:</p>
 <ol>
-<li>Loads various functions and imports from <code>importer</code>.</li>
-<li>Iterates through each cell in the notebook cache.</li>
-<li>For each cell, checks if it has a code snippet and if not, skips it.</li>
-<li>Checks if the cell's code has changed and if so, updates its summary, shortened description, and RPC function.</li>
-<li>If the cell's code hasn't changed, retrieves its cached information.</li>
-<li>If the cached information is incomplete or invalid, asks Llama to generate a summary and retrieves the RPC function.</li>
+<li>Imports the <code>getParameters</code> and <code>pythonParams</code> modules.</li>
+<li>Retrieves the <code>cellCache</code> array from the <code>cell cache</code> module.</li>
+<li>Iterates through the <code>cellCache</code> array and for each cell:
+<ul>
+<li>Retrieves the code from the cache using <code>cacheCells</code>.</li>
+<li>Checks if the code is empty. If so, stores an empty LLM function.</li>
+<li>Retrieves summary, shortened code, RPC function, categories, and category from the <code>functionCache</code> object. If not found, sets flags to indicate a fresh cache.</li>
+<li>Checks if the retrieved summary, categories, or RPC function meet certain conditions (e.g., length, pattern matching). If not, updates the cache using the LLM functions.</li>
+</ul></li>
 </ol>
-<p><strong>Key Functions:</strong></p>
+<h4>Function Cache Operations</h4>
+<p>The code performs the following operations on the <code>functionCache</code> object:</p>
 <ul>
-<li><code>askLlamaAboutCode</code>: Asks Llama to provide a summary of a code snippet.</li>
-<li><code>askLlamaToSummerize</code>: Not used in this code snippet.</li>
-<li><code>askLlamaToGeneralize</code>: Not used in this code snippet.</li>
-<li><code>getExports</code>: Retrieves the exports of a source code.</li>
-<li><code>cacheCells</code>: Caches notebook cells.</li>
-<li><code>functionCache</code>: Stores cached information about Llama functions.</li>
-<li><code>storeLlamaFunction</code>: Stores information about a Llama function.</li>
-<li><code>storeAllLlamaFunctions</code>: Stores information about all Llama functions in a notebook.</li>
+<li>Retrieves the cached description, summary, RPC function, categories, and category for a cell.</li>
+<li>Updates the cache with a new description, summary, RPC function, categories, and category if the conditions are not met.</li>
 </ul>
-<p><strong>Cache Management:</strong></p>
+<h4>Notes</h4>
 <ul>
-<li>The code checks if the cell's code has changed and updates its cached information accordingly.</li>
-<li>It also checks if the cached information is incomplete or invalid and retrieves new information from Llama.</li>
+<li>The code contains TODO comments indicating areas that require cleanup or refactoring.</li>
+<li>The <code>functionCache</code> object appears to be used to cache RPC functions with LLM descriptions. However, the exact logic behind its usage is unclear without additional context.</li>
+<li>The <code>cellCache</code> array is used to iterate through cells, but its contents and structure are not explicitly described.</li>
 </ul>

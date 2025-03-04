@@ -1,3 +1,5 @@
+<p>Here is a summary of the instructions in one or two sentences:</p>
+<p>To build Docker images, use the provided commands, such as <code>docker build -t &lt;image_name&gt;:&lt;tag&gt; --target &lt;stage&gt;</code>, to create images with specific tags. To push Docker images to a registry, use the <code>docker push</code> command with the image name and tag, such as <code>docker push briancullinan/quake3e:&lt;tag&gt;</code>.</p>
 
 
 <pre><code>docker build -t briancullinan/quake3e:build-tools --target build-tools .
@@ -33,3 +35,188 @@ docker push briancullinan/quake3e:baseq3
 docker push briancullinan/quake3e:full
 </code></pre>
 
+<h1><strong>Docker Build and Push Commands</strong></h1>
+<h3>Build Commands</h3>
+<p>These commands build and create Docker images with specific tags.</p>
+<ol>
+<li><strong>Build Tools Image</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker build -t briancullinan/quake3e:build-tools --target build-tools.</p>
+<pre><code>   * Targets the `build-tools` stage in the Dockerfile.
+
+2. **Build Latest Image**
+   ```bash
+docker build -t briancullinan/quake3e:build-latest --no-cache --target build-latest.
+</code></pre>
+<ul>
+<li>Targets the <code>build-latest</code> stage in the Dockerfile.</li>
+<li>Does not use the cache for this build.</li>
+</ul>
+<ol start="3">
+<li><strong>Build Dedicated Server Image</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker build -t briancullinan/quake3e:build-ded --target build-ded.</p>
+<pre><code>   * Targets the `build-ded` stage in the Dockerfile.
+
+4. **Build JavaScript Image**
+   ```bash
+docker build -t briancullinan/quake3e:build-js --target build-js.
+</code></pre>
+<ul>
+<li>Targets the <code>build-js</code> stage in the Dockerfile.</li>
+</ul>
+<ol start="5">
+<li><strong>Serve Tools Image</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker build -t briancullinan/quake3e:serve-tools --no-cache --target serve-tools.</p>
+<pre><code>   * Targets the `serve-tools` stage in the Dockerfile.
+   * Does not use the cache for this build.
+
+6. **Serve Content Image**
+   ```bash
+docker build -t briancullinan/quake3e:serve-content --target serve-content.
+</code></pre>
+<ul>
+<li>Targets the <code>serve-content</code> stage in the Dockerfile.</li>
+</ul>
+<ol start="7">
+<li><strong>Serve Both Image</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker build -t briancullinan/quake3e:serve-both --target serve-both.</p>
+<pre><code>   * Targets the `serve-both` stage in the Dockerfile.
+
+8. **Repack Image**
+   ```bash
+docker build -t briancullinan/quake3e:repack --target repack.
+</code></pre>
+<ul>
+<li>Targets the <code>repack</code> stage in the Dockerfile.</li>
+</ul>
+<ol start="9">
+<li><strong>Latest Image</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker build -t briancullinan/quake3e:latest --target latest.</p>
+<pre><code>   * Targets the `latest` stage in the Dockerfile.
+
+10. **Full Image**
+    ```bash
+docker build -t briancullinan/quake3e:full --target full.
+</code></pre>
+<pre><code>* Targets the `full` stage in the Dockerfile.
+</code></pre>
+<h3>Run and Tag Commands</h3>
+<p>These commands run and tag a Docker container.</p>
+<ol>
+<li><strong>Run Repack Container</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker run -ti -v /Applications/ioquake3/baseq3:/home/baseq3 --name baseq3 briancullinan/quake3e:repack</p>
+<pre><code>   * Runs a container from the `repack` image.
+   * Maps the host directory `/Applications/ioquake3/baseq3` to the container directory `/home/baseq3`.
+   * Assigns the container name `baseq3`.
+
+2. **Commit Container**
+   ```bash
+docker commit baseq3
+</code></pre>
+<ul>
+<li>Commits the changes made in the <code>baseq3</code> container.</li>
+</ul>
+<ol start="3">
+<li><strong>Tag Container</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker tag baseq3 briancullinan/quake3e:baseq3</p>
+<pre><code>   * Tags the `baseq3` container with the `briancullinan/quake3e:baseq3` image.
+
+### Push Commands
+
+These commands push Docker images to a registry.
+
+1. **Push Build Tools Image**
+   ```bash
+docker push briancullinan/quake3e:build-tools
+</code></pre>
+<ul>
+<li>Pushes the <code>build-tools</code> image to the registry.</li>
+</ul>
+<ol start="2">
+<li><strong>Push Build Latest Image</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker push briancullinan/quake3e:build-latest</p>
+<pre><code>   * Pushes the `build-latest` image to the registry.
+
+3. **Push Build JavaScript Image**
+   ```bash
+docker push briancullinan/quake3e:build-js
+</code></pre>
+<ul>
+<li>Pushes the <code>build-js</code> image to the registry.</li>
+</ul>
+<ol start="4">
+<li><strong>Push Build Content Image</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker push briancullinan/quake3e:build-content</p>
+<pre><code>   * Pushes the `build-content` image to the registry.
+
+5. **Push Serve Tools Image**
+   ```bash
+docker push briancullinan/quake3e:serve-tools
+</code></pre>
+<ul>
+<li>Pushes the <code>serve-tools</code> image to the registry.</li>
+</ul>
+<ol start="6">
+<li><strong>Push Serve Content Image</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker push briancullinan/quake3e:serve-content</p>
+<pre><code>   * Pushes the `serve-content` image to the registry.
+
+7. **Push Serve Quake3e Image**
+   ```bash
+docker push briancullinan/quake3e:serve-quake3e
+</code></pre>
+<ul>
+<li>Pushes the <code>serve-quake3e</code> image to the registry.</li>
+</ul>
+<ol start="8">
+<li><strong>Push Serve Both Image</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker push briancullinan/quake3e:serve-both</p>
+<pre><code>   * Pushes the `serve-both` image to the registry.
+
+9. **Push Repack Image**
+   ```bash
+docker push briancullinan/quake3e:repack
+</code></pre>
+<ul>
+<li>Pushes the <code>repack</code> image to the registry.</li>
+</ul>
+<ol start="10">
+<li><strong>Push Latest Image</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker push briancullinan/quake3e:latest</p>
+<pre><code>    * Pushes the `latest` image to the registry.
+
+11. **Push Baseq3 Image**
+    ```bash
+docker push briancullinan/quake3e:baseq3
+</code></pre>
+<pre><code>* Pushes the `baseq3` image to the registry.
+</code></pre>
+<ol start="12">
+<li><strong>Push Full Image</strong>
+<pre><code class="language-bash"></code></pre></li>
+</ol>
+<p>docker push briancullinan/quake3e:full</p>
+<pre><code>    * Pushes the `full` image to the registry.</code></pre>

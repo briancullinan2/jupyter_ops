@@ -1,3 +1,7 @@
+<p>Here is a summary of the <code>readPasswordsHtm</code> function in one sentence:</p>
+<p>The <code>readPasswordsHtm</code> function reads an HTML file (<code>passwords.htm</code>), extracts host and credential information from each table row, and saves the encrypted credentials to a JSON file.</p>
+<p>Alternatively, you can also have a two-sentence summary:</p>
+<p>The <code>readPasswordsHtm</code> function reads an HTML file (<code>passwords.htm</code>), extracts host and credential information from each table row using regular expressions. The extracted credentials are then saved to a JSON file in an encrypted format using the <code>saveCredentials</code> function.</p>
 
 
 <pre><code>// add all passwords from passwords.html?
@@ -37,3 +41,28 @@ module.exports = readPasswordsHtm;
 
 </code></pre>
 
+<p><strong>Function Description</strong></p>
+<p>The <code>readPasswordsHtm</code> function reads passwords from an HTML file (<code>passwords.htm</code>) and extracts host and credential information from each table row.</p>
+<p><strong>Variables and Functions</strong></p>
+<ul>
+<li><code>importer</code>: An object that provides functions for importing and processing data.</li>
+<li><code>fs</code>: The built-in Node.js file system module.</li>
+<li><code>saveCredentials</code>: A function that saves encrypted passwords to a JSON file.</li>
+<li><code>PROJECT_PATH</code>: The path to the user's documents directory.</li>
+<li><code>project</code>: The path to the <code>passwords.htm</code> file.</li>
+</ul>
+<p><strong>Functionality</strong></p>
+<ol>
+<li>Reads the contents of <code>passwords.htm</code> file using <code>fs.readFileSync</code>.</li>
+<li>Uses regular expressions to extract table rows (<code>TBODY</code>) from the HTML content.</li>
+<li>For each table row:
+<ul>
+<li>Extracts the host using a regular expression.</li>
+<li>Extracts key-value pairs (credentials) using another regular expression.</li>
+<li>Creates an object to store the credentials.</li>
+<li>Saves the encrypted credentials to a JSON file using <code>saveCredentials</code>.</li>
+</ul></li>
+<li>Returns the saved credentials.</li>
+</ol>
+<p><strong>Export</strong></p>
+<p>The function is exported as a module using <code>module.exports = readPasswordsHtm;</code>.</p>

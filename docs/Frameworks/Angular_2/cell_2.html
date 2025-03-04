@@ -1,3 +1,4 @@
+<p>The command <code>npm run ng:build</code> executes a script named <code>ng:build</code> in the project's root directory, equivalent to running <code>ng build --prod --aot</code>.</p>
 
 
 <pre><code>%%
@@ -22,3 +23,18 @@ aot
 
 </code></pre>
 
+<p><strong>Command Breakdown</strong></p>
+<ul>
+<li><code>npm run ng:build</code>
+<ul>
+<li><code>npm</code>: Node Package Manager command to execute a script</li>
+<li><code>run</code>: Execute a script defined in the <code>scripts</code> section of the <code>package.json</code> file</li>
+<li><code>ng:build</code>: Script name defined in the <code>package.json</code> file ( assumes a script with this name exists)</li>
+</ul></li>
+</ul>
+<p><strong>Equivalent Command</strong></p>
+<p>This command is equivalent to running:</p>
+<pre><code class="language-bash">ng build --prod --aot
+</code></pre>
+<p><strong>Context</strong><br />
+The command is executed in the context of the project, meaning it is run from the project's root directory.</p>

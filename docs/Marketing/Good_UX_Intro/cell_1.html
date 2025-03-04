@@ -1,4 +1,18 @@
+<p>The <code>$TS.screen()</code> function takes a URL or domain (<code>act.com</code>) and an object with properties such as zoom level, width, and crop coordinates to capture a screenshot of a webpage. This function can be customized to capture a specific area of the webpage based on the provided parameters.</p>
 
 
 <pre><code>$TS.screen('act.com', {zoom: .5, width: 680, 'crop-y': 400, 'crop-h': 400});</code></pre>
 
+<p><strong>Function Call: $TS.screen()</strong></p>
+<ul>
+<li><strong>Parameters:</strong>
+<ul>
+<li><code>act.com</code>: URL or domain of the website to be screened.</li>
+<li>Object with the following properties:
+<ul>
+<li><code>zoom</code>: Zoom level of the webpage (0-1 range).</li>
+<li><code>width</code>: Width of the screenshot (in pixels).</li>
+<li><code>crop-y</code> and <code>crop-h</code>: Cropped area of the screenshot (y and height coordinates).</li>
+</ul></li>
+</ul></li>
+</ul>

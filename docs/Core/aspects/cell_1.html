@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>The code imports functions from a <code>Core</code> module and uses them to conditionally transpile a code snippet, adding missing imports if a variable <code>$$</code> is defined. If the condition is met, the transpiled code is output as plain text with the added imports.</p>
 
 
 <pre><code>var importer = require('../Core')
@@ -23,3 +25,39 @@ var addImports = importer.import('add missing imports')
 }
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<p>The code starts by importing a module named <code>Core</code> from a parent directory (<code>../Core</code>).</p>
+<pre><code class="language-javascript">var importer = require('../Core')
+</code></pre>
+<p>It then imports a function named <code>transpileInspect</code> from the imported <code>Core</code> module, specifically from the <code>inspect every statement</code> group.</p>
+<pre><code class="language-javascript">var {transpileInspect} = importer.import('inspect every statement')
+</code></pre>
+<h4>Code Definition</h4>
+<p>A code snippet is defined as a string:</p>
+<pre><code class="language-javascript">var code = `
+var importer = require('../Core');
+
+function addImports() {
+
+}
+`
+</code></pre>
+<p>This code snippet appears to be a JavaScript function that imports the <code>importer</code> function from the <code>Core</code> module but does not utilize it.</p>
+<h4>Conditional Execution</h4>
+<p>The code includes a conditional statement that checks if a variable named <code>$$</code> is defined.</p>
+<pre><code class="language-javascript">if(typeof $$!= 'undefined') {
+   ...
+}
+</code></pre>
+<p>This suggests that the code is part of a larger system or framework that utilizes a variable named <code>$$</code>. The condition is likely a placeholder for future development or specific use cases.</p>
+<h4>Mime Output</h4>
+<p>If the condition is met, the code transpiles the provided <code>code</code> string using the <code>transpileInspect</code> function and outputs it as <code>text/plain</code> mime type.</p>
+<pre><code class="language-javascript">$$.mime({'text/plain': transpileInspect(code, 'test_code.js')})
+</code></pre>
+<p>The expected output is a modified version of the original <code>code</code> string with the <code>add missing imports</code> function call added.</p>
+<pre><code class="language-javascript">/*
+expected output 
+var addImports = importer.import('add missing imports')
+*/
+</code></pre>

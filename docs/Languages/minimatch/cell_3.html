@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary:<br />
+The code imports the'minimatch' module, a third-party pattern matching library, using a custom 'import' function and tests two paths against specified patterns. The results of these tests are then output, indicating that both paths match their respective patterns.</p>
 
 
 <pre><code>var importer = require('../Core')
@@ -16,3 +18,24 @@ true
 */
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code imports two modules:</p>
+<ol>
+<li><code>../Core</code>: This is a custom module located in the <code>../Core</code> directory. It exports a function called <code>import</code> which is used to import other modules.</li>
+<li><code>minimatch</code>: This is a third-party module that provides pattern matching functionality. It is imported from the <code>../Core</code> module using the <code>import</code> function.</li>
+</ol>
+<h3>Loading <code>minimatch</code> Globally</h3>
+<p>Although not used in this code snippet, the commented line <code>//var mini = require('minimatch')</code> suggests that the <code>minimatch</code> module could be loaded globally using the <code>require</code> function. However, in this code, it is loaded using the custom <code>import</code> function.</p>
+<h3>Using <code>minimatch</code></h3>
+<p>The code uses the <code>minimatch</code> function to test whether a given path matches a specified pattern.</p>
+<ul>
+<li><code>minimatch('/some/file/to/test', '**/file/**')</code>: This line tests whether the path <code>/some/file/to/test</code> matches the pattern <code>**/file/**</code>. The <code>**</code> character is a wildcard that matches any characters.</li>
+<li><code>minimatch('/node_modules/@firebase', '**/node_modules/**')</code>: This line tests whether the path <code>/node_modules/@firebase</code> matches the pattern <code>**/node_modules/**</code>.</li>
+</ul>
+<h3>Example Usage</h3>
+<p>The code outputs the results of the <code>minimatch</code> function calls:</p>
+<pre><code class="language-markdown">true
+true
+</code></pre>
+<p>This indicates that both paths match their respective patterns.</p>

@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary of the QEMU System x86_64 Command:</p>
+<p>The <code>qemu-system-x86_64</code> command is used to launch a QEMU virtual machine with various settings and devices, including graphics, network, and storage configurations. By combining different options, such as CPU, memory, and device specifications, the command can be customized to create a virtual machine with specific hardware requirements.</p>
 
 
 <pre><code>qemu-system-x86_64 -vga std -nographic -vnc :1 -enable-kvm -m 3072 -cpu Penryn,kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on,$MY_OPTIONS\
@@ -19,3 +21,60 @@
           
           </code></pre>
 
+<p><strong>QEMU System x86_64 Command</strong></p>
+<h3>Overview</h3>
+<p>This command is used to launch a QEMU virtual machine with various settings and devices.</p>
+<h3>Breakdown</h3>
+<h4>General Options</h4>
+<ul>
+<li><code>qemu-system-x86_64</code>: The QEMU system x86_64 emulator.</li>
+<li><code>-vga std</code>: Use the standard VGA graphics adapter.</li>
+<li><code>-nographic</code>: Do not use the graphical display, but instead use a text console.</li>
+<li><code>-vnc :1</code>: Enable VNC on display 1.</li>
+</ul>
+<h4>Virtual Machine Options</h4>
+<ul>
+<li><code>-enable-kvm</code>: Enable the KVM accelerator.</li>
+<li><code>-m 3072</code>: Allocate 3072 MB of RAM to the virtual machine.</li>
+<li><code>-cpu Penryn,kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on,$MY_OPTIONS</code>: Specify the CPU model and features.</li>
+</ul>
+<h4>Machine Options</h4>
+<ul>
+<li><code>-machine pc-q35-2.11</code>: Use the pc-q35-2.11 machine type.</li>
+</ul>
+<h4>Virtual Hardware Options</h4>
+<ul>
+<li><code>-smp 4,cores=2</code>: Create a virtual machine with 4 CPUs and 2 cores.</li>
+<li><code>-usb</code>: Enable USB support.</li>
+<li><code>-device usb-kbd</code>: Add a virtual USB keyboard.</li>
+<li><code>-device usb-tablet</code>: Add a virtual USB tablet.</li>
+</ul>
+<h4>Apple-Specific Options</h4>
+<ul>
+<li><code>-device isa-applesmc,osk=&quot;ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc&quot;</code>: Add an Apple-specific device with an OSK (Operating System Key) string.</li>
+</ul>
+<h4>Firmware Options</h4>
+<ul>
+<li><code>-drive if=pflash,format=raw,readonly,file=OVMF_CODE.fd</code>: Load the OVMF code firmware from a file.</li>
+<li><code>-drive if=pflash,format=raw,file=OVMF_VARS-1024x768.fd</code>: Load the OVMF variables firmware from a file.</li>
+</ul>
+<h4>SMBIOS Options</h4>
+<ul>
+<li><code>-smbios type=2</code>: Set the SMBIOS type to 2 (Desktop).</li>
+</ul>
+<h4>IDE Options</h4>
+<ul>
+<li><code>-device ich9-intel-hda</code>: Add an Intel HDA (High Definition Audio) device.</li>
+<li><code>-device hda-duplex</code>: Add a HDA duplex device.</li>
+<li><code>-device ide-drive,bus=ide.2,drive=Clover</code>: Add an IDE drive with device Clover on bus ide.2.</li>
+<li><code>-drive id=Clover,if=none,snapshot=on,format=qcow2,file=./'Mojave/Clover.qcow2'</code>: Load the Clover drive image from a file.</li>
+<li><code>-device ide-drive,bus=ide.1,drive=MacHDD</code>: Add an IDE drive with device MacHDD on bus ide.1.</li>
+<li><code>-drive id=MacHDD,if=none,file=./mac_hdd.img,format=qcow2</code>: Load the MacHDD drive image from a file.</li>
+<li><code>-device ide-drive,bus=ide.0,drive=MacDVD</code>: Add an IDE drive with device MacDVD on bus ide.0.</li>
+<li><code>-drive id=MacDVD,if=none,snapshot=on,media=cdrom,file=./'Mojave.iso'</code>: Load the MacDVD drive image from a file.</li>
+</ul>
+<h4>Network Options</h4>
+<ul>
+<li><code>-netdev tap,id=net0,ifname=tap0,script=no,downscript=no</code>: Create a network device with TAP interface.</li>
+<li><code>-device vmxnet3,netdev=net0,id=net0,mac=52:54:00:AB:F8:B7</code>: Add a VMXNET3 network device with MAC address 52:54:00:AB:F8:B7.</li>
+</ul>

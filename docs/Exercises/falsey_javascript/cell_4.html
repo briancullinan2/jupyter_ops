@@ -1,4 +1,16 @@
+<p>Here is a 2-sentence summary:</p>
+<p>The provided code uses the logical OR operator (<code>||</code>) to return an object with a <code>default</code> property set to <code>true</code> if the left side (a <code>null</code> value) is falsy. In this case, the expression returns <code>{ default: true }</code> because <code>null</code> is considered falsy in JavaScript.</p>
 
 
 <pre><code>console.log(null || {default: true})</code></pre>
 
+<h2>Explanation</h2>
+<p>The provided code is a JavaScript expression that uses the logical OR operator (<code>||</code>) to return a value.</p>
+<h3>Breakdown</h3>
+<ul>
+<li><code>null</code> : The value to be evaluated on the left side of the operator.</li>
+<li><code>||</code>  : The logical OR operator, which returns the first &quot;truthy&quot; value it encounters.</li>
+<li><code>{ default: true }</code> : The value to be evaluated on the right side of the operator, and returned if the left side is falsy.</li>
+</ul>
+<h3>Output</h3>
+<p>The expression will return an object with the property <code>default</code> set to <code>true</code>, because <code>null</code> is considered falsy in JavaScript.</p>

@@ -1,3 +1,5 @@
+<p>Here's a summary of the Convolutional Neural Network (CNN) model architecture in two sentences:</p>
+<p>This CNN model architecture uses the Keras Sequential API and consists of multiple convolutional and pooling layers, followed by a flatten layer and fully connected layers to classify inputs into 7 categories. The model architecture includes 12 Conv2D layers with various filter sizes and ReLU activation, 4 Dropout layers for regularization, 3 Flatten layers, and 3 Dense layers with ReLU and softmax activation.</p>
 
 
 <pre><code>model = Sequential()
@@ -27,3 +29,33 @@ model.add(Dropout(0.3))
 # output layer
 model.add(Dense(7, activation='softmax'))</code></pre>
 
+<p><strong>Convolutional Neural Network (CNN) Model Architecture</strong></p>
+<p>This code defines a CNN model architecture using the Keras Sequential API. The model consists of multiple convolutional and pooling layers, followed by fully connected and output layers.</p>
+<h3>Convolutional Layers</h3>
+<ol>
+<li><code>Conv2D</code> layer with 128 filters, kernel size 3x3, and ReLU activation.</li>
+<li><code>MaxPooling2D</code> layer with pool size 2x2.</li>
+<li><code>Dropout</code> layer with rate 0.4.</li>
+<li><code>Conv2D</code> layer with 256 filters, kernel size 3x3, and ReLU activation.</li>
+<li><code>MaxPooling2D</code> layer with pool size 2x2.</li>
+<li><code>Dropout</code> layer with rate 0.4.</li>
+<li><code>Conv2D</code> layer with 512 filters, kernel size 3x3, and ReLU activation.</li>
+<li><code>MaxPooling2D</code> layer with pool size 2x2.</li>
+<li><code>Dropout</code> layer with rate 0.4.</li>
+<li><code>Conv2D</code> layer with 512 filters, kernel size 3x3, and ReLU activation.</li>
+<li><code>MaxPooling2D</code> layer with pool size 2x2.</li>
+<li><code>Dropout</code> layer with rate 0.4.</li>
+</ol>
+<h3>Flatten Layer</h3>
+<ol>
+<li><code>Flatten</code> layer to flatten the output of the convolutional layers.</li>
+</ol>
+<h3>Fully Connected Layers</h3>
+<ol>
+<li><code>Dense</code> layer with 512 units, ReLU activation, and dropout rate 0.4.</li>
+<li><code>Dense</code> layer with 256 units, ReLU activation, and dropout rate 0.3.</li>
+</ol>
+<h3>Output Layer</h3>
+<ol>
+<li><code>Dense</code> layer with 7 units, softmax activation.</li>
+</ol>

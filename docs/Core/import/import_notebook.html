@@ -1,5 +1,5 @@
-<p>Here is a 2-sentence summary of the provided functions:</p>
-<p>The <code>getCellPath</code> function generates a unique path for a cell in a notebook, returning it as a string. The <code>importNotebook</code> function imports a notebook into a new module, interpreting the notebook's cells and creating a new module based on the cell's language.</p>
+<p>Here's a summary of the functions in one or two sentences:</p>
+<p>The <code>getCellPath(cell)</code> function generates a unique file path for a cell in a notebook by appending the cell ID and question (if present) to the notebook directory. The <code>importNotebook(notebook, ctx = {})</code> function imports a notebook and returns an object containing modules for each cell in the notebook, created using language-specific functions.</p>
 
 
 <pre><code>var path = require('path');
@@ -132,34 +132,39 @@ module.exports.importNotebook = importNotebook;
 module.exports.import = importNotebook;
 </code></pre>
 
-<p><strong>Function Breakdown</strong></p>
+<h1><strong>Function Breakdown</strong></h1>
 <h3>getCellPath(cell)</h3>
+<p>This function generates a unique file path for a cell in a notebook.</p>
 <ul>
-<li>This function generates a unique path for a cell in a notebook.</li>
-<li>It takes a <code>cell</code> object as an argument.</li>
-<li>It returns a string representing the path to the cell.</li>
+<li>It takes a single argument <code>cell</code>, which is expected to have the following properties:
+<ul>
+<li><code>filename</code>: the path to the notebook file</li>
+<li><code>id</code>: a unique identifier for the cell</li>
+<li><code>questions</code>: an array of questions, which is used to generate a string to append to the file path</li>
+</ul></li>
+<li>It returns a string representing the file path, with the cell ID and question (if present) appended to the notebook directory.</li>
 </ul>
 <h3>importNotebook(notebook, ctx = {})</h3>
+<p>This function imports a notebook and returns a promise that resolves to an object.</p>
 <ul>
-<li>This function imports a notebook into a new module.</li>
-<li>It takes two arguments: <code>notebook</code> and <code>ctx</code> (optional).</li>
-<li>If <code>notebook</code> is not defined, it returns an empty Promise.</li>
-<li>Otherwise, it:
+<li>It takes two arguments:
 <ul>
-<li>Interprets the notebook using the <code>interpret</code> function.</li>
-<li>If the notebook has a single cell, it logs a message with the notebook name and cell ID.</li>
-<li>It then creates a new module based on the cell's language:
-<ul>
-<li>If the language is Python, it uses <code>makePythonModule</code> to create a Python module.</li>
-<li>If the language is C# (Csharp), it uses <code>makeDLL</code> to create a DLL.</li>
-<li>If the language is C, C++, or Objective-C, it uses <code>makeDylib</code> to create a dynamic library.</li>
+<li><code>notebook</code>: the notebook to import, which can be a single notebook or an array of notebooks</li>
+<li><code>ctx</code>: an optional object containing context information</li>
 </ul></li>
+<li>It checks if <code>notebook</code> is <code>undefined</code> and returns an empty object if so.</li>
+<li>It uses the <code>interpret</code> function to get the cells in the notebook.</li>
+<li>It then checks the language of each cell and calls the corresponding function to create a module:
+<ul>
+<li>For Python cells, it calls <code>makePythonModule</code>.</li>
+<li>For C# cells, it calls <code>makeDLL</code>.</li>
+<li>For C, C++, or Objective-C cells, it calls <code>makeDylib</code>.</li>
+<li>If the language is unknown, it logs a message and returns an empty object.</li>
 </ul></li>
-<li>The function is currently under development, as indicated by the TODO comments.</li>
 </ul>
-<p><strong>Function Parameters</strong></p>
+<p><strong>Notes</strong></p>
 <ul>
-<li><code>cell</code>: An object representing a cell in a notebook.</li>
-<li><code>notebook</code>: The notebook to be imported.</li>
-<li><code>ctx</code>: An optional object containing additional context for the import process.</li>
+<li>The function assumes that the <code>interpret</code> function returns an object with a <code>code</code> property that contains the cell's source code.</li>
+<li>The <code>makePythonModule</code>, <code>makeDLL</code>, and <code>makeDylib</code> functions are not defined in this code snippet, but they are expected to take the cell's source code, ID, and context as arguments.</li>
+<li>The function logs a message when importing a notebook with a single cell that is not in the <code>Core</code> directory.</li>
 </ul>

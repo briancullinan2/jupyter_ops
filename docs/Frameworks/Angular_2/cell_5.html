@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary of the CSS code breakdown:</p>
+<p>This CSS code defines two styles for HTML anchor tags, one using a direct hex code and the other using a CSS variable for a more scalable and maintainable design. The direct hex code sets the text color to <code>#fe5000</code>, while the variable assignment uses a CSS variable <code>@primary</code> to achieve the same result.</p>
 
 
 <pre><code>%%
@@ -18,3 +20,26 @@ a
 
 </code></pre>
 
+<p><strong>CSS Code Breakdown</strong></p>
+<p>This code defines two styles for HTML anchor tags (<code>a</code>) using CSS.</p>
+<h3>Rule 1: Direct Color Assignment</h3>
+<pre><code class="language-css">a {
+    color: #fe5000;
+}
+</code></pre>
+<ul>
+<li>Targets all HTML anchor tags (<code>a</code>)</li>
+<li>Sets the text color to the hex code <code>#fe5000</code></li>
+</ul>
+<h3>Rule 2: Variable Assignment and Usage</h3>
+<pre><code class="language-css">@primary: #fe5000;
+
+a {
+    color: @primary;
+}
+</code></pre>
+<ul>
+<li>Defines a CSS variable <code>@primary</code> and assigns it the value <code>#fe5000</code></li>
+<li>Targets all HTML anchor tags (<code>a</code>)</li>
+<li>Sets the text color to the value of the <code>@primary</code> variable, which is <code>#fe5000</code></li>
+</ul>

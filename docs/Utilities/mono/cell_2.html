@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary of the Dockerfile:</p>
+<p>This Dockerfile builds two types of images: one based on Mono for running a.NET application, and another based on ASP.NET Core 1.1 for running an ASP.NET Core application. The images install necessary dependencies, copy files, set the working directory, and define entry points to run the applications using respective runtimes.</p>
 
 
 <pre><code>#FROM
@@ -55,3 +57,146 @@ ENTRYPOINT ["/usr/bin/dotnet", "/app/publish/Subscription.Services.EloquaImport.
 
 </code></pre>
 
+<p><strong>Dockerfile Breakdown</strong></p>
+<h3>Mono-Based Image</h3>
+<h4>Base Image</h4>
+<pre><code class="language-dockerfile">#FROM
+mono:latest
+</code></pre>
+<ul>
+<li>Uses the latest Mono image as the base.</li>
+</ul>
+<h4>Installation and Verification</h4>
+<pre><code class="language-dockerfile">#RUN
+mono--
+version
+</code></pre>
+<ul>
+<li>Installs Mono and verifies it's installed correctly.</li>
+</ul>
+<h4>File System Inspection</h4>
+<pre><code class="language-dockerfile">#RUN
+ls - la
+</code></pre>
+<ul>
+<li>Lists the contents of the file system in detail.</li>
+</ul>
+<h4>Adding Files</h4>
+<pre><code class="language-dockerfile">#ADD.
+/subscription.services /
+home / src
+#ADD.
+/act.subscription.management.sln /
+home / src
+</code></pre>
+<ul>
+<li>Copies the <code>/subscription.services</code> directory and the <code>act.subscription.management.sls</code> file into the <code>/home/src</code> directory.</li>
+</ul>
+<h4>Setting Working Directory</h4>
+<pre><code class="language-dockerfile">#WORKDIR / home / src
+</code></pre>
+<ul>
+<li>Sets the working directory to <code>/home/src</code>.</li>
+</ul>
+<h4>Building and Running Application</h4>
+<pre><code class="language-dockerfile">#RUN
+msbuild.
+/subscription.services/
+Subscription.Services.EloquaImport / Subscription.Services.EloquaImport.csproj
+</code></pre>
+<ul>
+<li>Builds the <code>Subscription.Services.EloquaImport</code> project using MSBuild.</li>
+</ul>
+<pre><code class="language-dockerfile">#RUN
+mono
+Subscription.Services.EloquaImport.exe
+</code></pre>
+<ul>
+<li>Runs the <code>Subscription.Services.EloquaImport.exe</code> executable using Mono.</li>
+</ul>
+<h3>ASP.NET Core-Based Image</h3>
+<h4>Base Image</h4>
+<pre><code class="language-dockerfile">FROM
+microsoft / aspnetcore
+:
+1.1
+</code></pre>
+<ul>
+<li>Uses the ASP.NET Core 1.1 image as the base.</li>
+</ul>
+<h4>Base Image for Building</h4>
+<pre><code class="language-dockerfile">FROM
+microsoft / aspnetcore - build
+:
+1.0 - 1.1
+</code></pre>
+<ul>
+<li>Uses the ASP.NET Core Build 1.0-1.1 image as the base.</li>
+</ul>
+<h4>Setting Argument and Expose Port</h4>
+<pre><code class="language-dockerfile">ARG
+source
+EXPOSE
+80
+</code></pre>
+<ul>
+<li>Sets an argument <code>source</code> and exposes port 80.</li>
+</ul>
+<h4>Setting Working Directory</h4>
+<pre><code class="language-dockerfile">WORKDIR / app / src
+</code></pre>
+<ul>
+<li>Sets the working directory to <code>/app/src</code>.</li>
+</ul>
+<h4>Adding Files</h4>
+<pre><code class="language-dockerfile">ADD.
+/*.sln /app/src/
+ADD./subscription.services/Subscription.Services.EloquaImport/*.csproj /app/src/subscription.services/Subscription.Services.EloquaImport/
+ADD./subscription.services/Subscription.Services.ZuoraExport/*.csproj /app/src/subscription.services/Subscription.Services.ZuoraExport/
+ADD./*.dcproj /app/src/
+</code></pre>
+<ul>
+<li>Copies various files into the <code>/app/src</code> directory.</li>
+</ul>
+<h4>Restoring Dependencies</h4>
+<pre><code class="language-dockerfile">RUN /bin/bash -c &quot;dotnet restore./act.subscription.management.sln&quot;
+</code></pre>
+<ul>
+<li>Restores dependencies for the <code>act.subscription.management.sln</code> project using <code>dotnet restore</code>.</li>
+</ul>
+<h4>Copying Files</h4>
+<pre><code class="language-dockerfile">ADD. /app/src 
+</code></pre>
+<ul>
+<li>Copies the current directory into <code>/app/src</code>.</li>
+</ul>
+<h4>Building and Publishing Application</h4>
+<pre><code class="language-dockerfile">RUN /bin/bash -c &quot;dotnet restore./act.subscription.management.sln &amp;&amp; dotnet publish./act.subscription.management.sln -c Release -o./obj/Docker/publish&quot;
+</code></pre>
+<ul>
+<li>Restores dependencies and publishes the <code>act.subscription.management.sln</code> project using <code>dotnet publish</code>.</li>
+</ul>
+<h4>Copying Published Files</h4>
+<pre><code class="language-dockerfile">RUN cp -R ${source:-subscription.services/Subscription.Services.EloquaImport/obj/Docker/publish} /app
+</code></pre>
+<ul>
+<li>Copies the published files into the <code>/app</code> directory.</li>
+</ul>
+<h4>Setting Working Directory</h4>
+<pre><code class="language-dockerfile">WORKDIR /app/publish
+</code></pre>
+<ul>
+<li>Sets the working directory to <code>/app/publish</code>.</li>
+</ul>
+<h4>Exposing Port</h4>
+<pre><code class="language-dockerfile">EXPOSE 80
+</code></pre>
+<ul>
+<li>Exposes port 80.</li>
+</ul>
+<h4>Setting Entry Point</h4>
+<pre><code class="language-dockerfile">ENTRYPOINT [&quot;/usr/bin/dotnet&quot;, &quot;/app/publish/Subscription.Services.EloquaImport.dll&quot;]
+</code></pre>
+<ul>
+<li>Sets the entry point to run the <code>Subscription.Services.EloquaImport.dll</code> executable using <code>dotnet</code>.</li>
+</ul>

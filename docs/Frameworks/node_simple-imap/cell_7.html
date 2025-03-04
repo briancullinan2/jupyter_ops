@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>This code uses the <code>imap-simple</code> library to connect to an IMAP server and append a new email to the 'Drafts' mailbox. It requires the user's email address, password, and IMAP server hostname, and uses Transport Layer Security (TLS) encryption to establish a secure connection.</p>
 
 
 <pre><code>var imaps = require('imap-simple');
@@ -26,3 +28,54 @@ This is a test message
 
 </code></pre>
 
+<h3>Overview</h3>
+<p>This code connects to an IMAP server using the <code>imap-simple</code> library and appends a new email to the 'Drafts' mailbox.</p>
+<h3>Breakdown</h3>
+<h4>Importing Library</h4>
+<pre><code class="language-javascript">var imaps = require('imap-simple');
+</code></pre>
+<p>Imports the <code>imap-simple</code> library and assigns it to the <code>imaps</code> variable.</p>
+<h4>Configuring IMAP Connection</h4>
+<pre><code class="language-javascript">var config = {
+    imap: {
+        user: 'your@email.address',
+        password: 'yourpassword',
+        host: 'imap.gmail.com',
+        port: 993,
+        tls: true,
+        authTimeout: 3000
+    }
+};
+</code></pre>
+<p>Defines the IMAP connection configuration:</p>
+<ul>
+<li><code>user</code>: The email address used for authentication.</li>
+<li><code>password</code>: The password used for authentication.</li>
+<li><code>host</code>: The IMAP server hostname (in this case, Gmail's IMAP server).</li>
+<li><code>port</code>: The IMAP server port number (993 for Gmail).</li>
+<li><code>tls</code>: Whether to use Transport Layer Security (TLS) encryption (true in this case).</li>
+<li><code>authTimeout</code>: The authentication timeout in milliseconds (3000 in this case).</li>
+</ul>
+<h4>Connecting to IMAP Server</h4>
+<pre><code class="language-javascript">imaps.connect(config).then(function (connection) {
+    //...
+});
+</code></pre>
+<p>Establishes a connection to the IMAP server using the provided configuration.</p>
+<h4>Appending Email to Drafts Mailbox</h4>
+<pre><code class="language-javascript">const message = `Content-Type: text/plain
+To: jhannes@gmail.com
+Subject: Hello world
+ 
+Hi
+This is a test message
+`;
+connection.append(message.toString(), {mailbox: 'Drafts', flags: '\\Draft'});
+</code></pre>
+<p>Creates a new email message as a string and appends it to the 'Drafts' mailbox:</p>
+<ul>
+<li><code>message</code>: The email message string.</li>
+<li><code>connection.append()</code>: Appends the email message to the specified mailbox.</li>
+<li><code>mailbox: 'Drafts'</code>: Specifies the mailbox to append the email to (in this case, the 'Drafts' mailbox).</li>
+<li><code>flags: '\\Draft'</code>: Specifies the email flags (in this case, setting the email as a draft).</li>
+</ul>

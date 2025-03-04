@@ -1,94 +1,100 @@
 <a href="./zuora_export_service.html">zuora export service</a>
-
+<br /><br />
 <p>This code provides a set of functions to interact with the Zuora API, enabling users to initiate, track, and retrieve bulk data exports.</p>
 <a href="./zuora_export_catalog.html">zuora export catalog</a>
-
+<br /><br />
 <p>This code fetches a complete product catalog from the Zuora API, handling pagination to retrieve all products across multiple pages.</p>
 <a href="./zuora_export_service_test.html">zuora export service test</a>
-
+<br /><br />
 <p>This code unit tests a module responsible for interacting with the Zuora API to initiate, monitor, and retrieve data exports.  These tests use mocking to simulate API responses and verify the module's functionality in handling various export stages.</p>
 <a href="./zuora_renewals_query.html">zuora renewals query</a>
-
+<br /><br />
 <p>This code snippet constructs a SQL query to retrieve data about active subscriptions from a database, filtering by subscription status, date range, currency, and excluding specific rate plans and products.  The query is incomplete and requires further development to include additional filtering criteria.</p>
 <a href="./test_zuora_renewals_query.html">test zuora renewals query</a>
-
+<br /><br />
 <p>This code unit tests a function that generates a Zuora query for retrieving renewal data, ensuring it includes the correct start date based on the provided date range.</p>
 <a href="./eloqua_import_service.html">eloqua import service</a>
-
+<br /><br />
 <p>This code provides functions for authenticating with Eloqua using OAuth and making API requests, including a function specifically for checking the status of bulk imports.</p>
 <a href="./test_eloqua_import_service.html">test eloqua import service</a>
-
+<br /><br />
 <p>This code unit tests an Eloqua import service, verifying its ability to obtain a valid OAuth token, create a bulk import instance, and successfully upload data to Eloqua.  It uses Sinon.js for mocking dependencies and <code>assert</code> for making assertions about the test results.</p>
 <a href="./zuora_eloqua_mapper.html">zuora eloqua mapper</a>
-
+<br /><br />
 <p>This code processes subscription data by categorizing rate plans into product types and extracting account-specific information, including the latest charges and contact details.</p>
 <a href="./zuora_eloqua_mapper_test.html">zuora eloqua mapper test</a>
-
+<br /><br />
 <p>This code snippet tests the accuracy of data mapping from Zuora to Eloqua, verifying that contact information and account details are correctly transferred between the two systems.</p>
 <a href="./zuora_account_blueprints.html">zuora account blueprints</a>
-
+<br /><br />
 <p>The <code>getUniqueRatePlans</code> function provides a sample dataset of account and subscription information, likely for testing or demonstration purposes.  The data includes various details such as account IDs, contact information, rate plans, and billing details.</p>
 <a href="./eloqua_import_create_template.html">eloqua import create template</a>
-
+<br /><br />
 <p>This code provides reusable templates for interacting with a data system, enabling bulk data imports, record creation, and potentially temporary imports.  The templates use placeholders to dynamically reference fields and data sources.</p>
 <a href="./test_eloqua_import_create_template.html">test eloqua import create template</a>
-
+<br /><br />
 <p>This code tests a function that generates import definitions for Eloqua, ensuring it correctly includes the provided instance ID in the generated template.  The test uses a placeholder instance ID and asserts that it is present in the resulting JSON output.</p>
 <a href="./eloqua_import_blueprints.html">eloqua import blueprints</a>
-
+<br /><br />
 <p>This code provides mock data and configurations for testing interactions with Eloqua's API, simulating real-world scenarios without requiring live connections.</p>
 <a href="./eloqua_existing_import.html">eloqua existing import</a>
-
+<br /><br />
 <p>This code provides functions to retrieve a specific custom data object and its corresponding import definition from the Eloqua API, likely for managing renewal-related data imports.</p>
 <a href="./test_eloqua_existing_import.html">test eloqua existing import</a>
-
+<br /><br />
 <p>This code unit tests the <code>eloqua existing import</code> module, which checks for the existence of custom data objects and import definitions within the Eloqua API.  The tests use Sinon.js to mock API responses and assert the module's expected behavior.</p>
 <a href="./aws_entry_point.html">aws entry point</a>
-
+<br /><br />
 <p>This Lambda function automates the export of data from Zuora to Eloqua, handling data mapping and upload to Eloqua's system.</p>
 <a href="./test_aws_entry_point.html">test aws entry point</a>
-
+<br /><br />
 <p>This code uses unit tests to ensure that an AWS Lambda function correctly handles the process of uploading data from Zuora to Eloqua, including calling the necessary functions for data retrieval, mapping, and upload.  The tests use <code>sinon</code> to mock dependencies and <code>assert</code> to verify the function's behavior.</p>
 <a href="./notify_entry_point.html">notify entry point</a>
-
+<br /><br />
 <p>This AWS Lambda function processes events to retrieve Zuora account data and bulk upload it to Eloqua, handling errors and returning appropriate responses.  It requires additional development to implement features for import template creation and single record updates.</p>
 <a href="./test_notify_entry_point.html">test notify entry point</a>
-
+<br /><br />
 <p>This code unit tests an AWS Lambda function responsible for syncing data between Zuora and Eloqua, ensuring it correctly calls functions to export data from Zuora and upload it to Eloqua.  The tests use <code>sinon</code> to mock dependencies and <code>assert</code> to verify function calls and arguments.</p>
 <a href="./zuora_export_month.html">zuora export month</a>
-
+<br /><br />
 <p>This code provides a function to fetch renewal data from Zuora for a given time period and returns it in a usable JSON format.  It leverages modules for querying Zuora, exporting data, and converting CSV to JSON.</p>
 <a href="./test_zuora_export_month.html">test zuora export month</a>
-
+<br /><br />
 <p>This code unit tests the <code>exporter</code> module, which handles Zuora API interactions for data export, by mocking API responses and verifying expected behavior in retrieving queries and initiating exports.</p>
 <a href="./zuora_account_service.html">zuora account service</a>
-
+<br /><br />
 <p>This code provides a module for retrieving Zuora account information, including email addresses and the last four digits of associated credit cards, by making API calls and chaining promises to process the results.  The <code>getZuoraAccounts</code> function is the main entry point, accepting a list of email addresses and returning an array of account details.</p>
 <a href="./test_zuora_account_service.html">test zuora account service</a>
-
+<br /><br />
 <p>This code unit tests the <code>accounts</code> module's functionality to retrieve Zuora account information by mocking API calls and verifying that the correct query is sent to the Zuora API.</p>
 <a href="./bulk_upload_eloqua.html">bulk upload eloqua</a>
-
+<br /><br />
 <p>This code defines a function <code>bulkUploadEloqua</code> that securely authenticates with Eloqua, handles import definition setup, and then uploads account data in bulk to Eloqua. It's likely designed to be used within a Lambda function for serverless execution.</p>
 <a href="./test_bulk_upload_eloqua.html">test bulk upload eloqua</a>
-
+<br /><br />
 <p>This code unit tests the <code>bulkUploadEloqua</code> function within the <code>dataImporter</code> module, verifying its interaction with the Eloqua API by mocking API calls and asserting the correct function execution order.</p>
 <a href="./sync_zuora_eloqua_end_to_end.html">sync zuora eloqua end to end</a>
-
+<br /><br />
 <p>This code defines a set of test cases for a system integrating Zuora and Eloqua, focusing on data transfer and various subscription management scenarios.  The tests cover data export, product matching, end-to-end data flow, and a range of user interactions with subscriptions.</p>
 <a href="./calculate_price.html">calculate price</a>
-
+<br /><br />
 <p>This code calculates the total price of a subscription by retrieving product and pricing information from a catalog export and applying discounts, while also identifying areas for future improvement.</p>
 <a href="./calculate_price_test.html">calculate price test</a>
-
+<br /><br />
 <p>This code filters a set of Zuora subscription records based on various criteria, including Reseller of Record (ROR) and subscription details, and then calculates the total number of records that meet the specified conditions.</p>
 <a href="./readme.html">readme</a>
-
+<br /><br />
 <a href="./cell_29.html">Cell 29</a>
-
+<br /><br />
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code imports necessary modules and variables, including <code>lodash</code>, <code>fs</code>, and <code>importer</code>, and sets up a <code>PROFILE_PATH</code> variable to point to the user's home directory. It then defines a series of functions to query the Zuora API, including <code>getContact</code>, <code>getAccount</code>, and others, and provides an example of how to use these functions in an <code>async</code> function.</p>
 <a href="./cell_30.html">Cell 30</a>
-
+<br /><br />
+<p>Here is a two-sentence summary:</p>
+<p>The code retrieves an OAuth token and uses it to fetch data from Eloqua, then logs the result to the console and sends it to a component named <code>$$</code>. The code also includes error handling to catch any errors that occur during the promise chain and sends an error message to the <code>$$</code> component.</p>
 <a href="./cell_31.html">Cell 31</a>
-
+<br /><br />
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code depends on various libraries and modules, including <code>lodash</code>, <code>xlsx</code>, and <code>fs</code>, and imports functions such as <code>getZuoraMonth</code> and <code>getCatalog</code> from other modules. The code initializes Zuora by checking for the existence of the <code>zuora</code> object, retrieving the current month, logging product rate plans, and catching any errors that occur during the process.</p>
 <a href="./cell_32.html">Cell 32</a>
-
+<br /><br />

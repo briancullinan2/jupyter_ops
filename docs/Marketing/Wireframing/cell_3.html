@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the <code>npmls</code> function:</p>
+<p>The <code>npmls</code> function executes the <code>npm ls --json</code> command and logs the result as a JSON object. It takes a callback function as a parameter, which is executed when the command finishes, returning an error object if the command fails, or the output as a JSON string if it succeeds.</p>
 
 
 <pre><code>function npmls(cb) {
@@ -9,3 +11,24 @@
 
 npmls(console.log);</code></pre>
 
+<h3>Function: npmls</h3>
+<h4>Description</h4>
+<p>Executes <code>npm ls --json</code> command and logs the result as a JSON object.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>cb</code>: A callback function that will be executed when the command finishes.
+<ul>
+<li><code>err</code>: An error object if the command fails.</li>
+<li><code>stdout</code>: The output of the command as a JSON string.</li>
+<li><code>stderr</code>: The error output of the command.</li>
+</ul></li>
+</ul>
+<h4>Implementation</h4>
+<ol>
+<li>Requires the <code>child_process</code> module.</li>
+<li>Executes the <code>npm ls --json</code> command using <code>child_process.exec()</code>.</li>
+<li>If an error occurs, it calls the callback with the error.</li>
+<li>Otherwise, it parses the output as JSON and calls the callback with the result.</li>
+</ol>
+<h4>Usage</h4>
+<p>Passes <code>console.log</code> as the callback function to print the result directly to the console.</p>

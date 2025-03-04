@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the configuration objects:</p>
+<p>The code defines two configuration objects, <code>zuoraConfig</code> and <code>eloquaConfig</code>, which contain settings for Zuora and Eloqua APIs, respectively, and are populated using environment variables. Each object contains properties that store authentication credentials, API URLs, and other configuration settings necessary for making API requests.</p>
 
 
 <pre><code>const zuoraConfig = {
@@ -16,3 +18,46 @@ const eloquaConfig = {
     "rest_api_password": process.env.ELOQUA_API_PASS
 };</code></pre>
 
+<h3>Configuration Objects</h3>
+<h4>zuoraConfig</h4>
+<pre><code class="language-javascript">const zuoraConfig = {
+    &quot;rest_api_user&quot;: process.env.ZUORA_API_USER,
+    &quot;rest_api_password&quot;: process.env.ZUORA_API_PASS,
+    &quot;rest_api_url&quot;: process.env.ZUORA_API_URL
+};
+</code></pre>
+<ul>
+<li>A JSON object containing configuration settings for Zuora API.</li>
+<li>The object contains three properties:
+<ul>
+<li><code>rest_api_user</code>: The user to use for Zuora API requests.</li>
+<li><code>rest_api_password</code>: The password to use for Zuora API requests.</li>
+<li><code>rest_api_url</code>: The URL of the Zuora API.</li>
+</ul></li>
+</ul>
+<h4>eloquaConfig</h4>
+<pre><code class="language-javascript">const eloquaConfig = {
+    &quot;authorize_uri&quot;: process.env.ELOQUA_AUTHORIZE_URL,
+    &quot;token_uri&quot;: process.env.ELOQUA_TOKEN_URL,
+    &quot;rest_api_url&quot;: process.env.ELOQUA_API_URL,
+    &quot;rest_client_id&quot;: process.env.ELOQUA_CLIENT_ID,
+    &quot;rest_secret&quot;: process.env.ELOQUA_CLIENT_SECRET,
+    &quot;rest_api_company&quot;: process.env.ELOQUA_API_COMPANY,
+    &quot;rest_api_user&quot;: process.env.ELOQUA_API_USER,
+    &quot;rest_api_password&quot;: process.env.ELOQUA_API_PASS
+};
+</code></pre>
+<ul>
+<li>A JSON object containing configuration settings for Eloqua API.</li>
+<li>The object contains eight properties:
+<ul>
+<li><code>authorize_uri</code>: The authorization URI for Eloqua API requests.</li>
+<li><code>token_uri</code>: The token URI for Eloqua API requests.</li>
+<li><code>rest_api_url</code>: The URL of the Eloqua API.</li>
+<li><code>rest_client_id</code>: The client ID to use for Eloqua API requests.</li>
+<li><code>rest_secret</code>: The client secret to use for Eloqua API requests.</li>
+<li><code>rest_api_company</code>: The company ID to use for Eloqua API requests.</li>
+<li><code>rest_api_user</code>: The user to use for Eloqua API requests.</li>
+<li><code>rest_api_password</code>: The password to use for Eloqua API requests.</li>
+</ul></li>
+</ul>

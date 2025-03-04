@@ -1,3 +1,5 @@
+<p>Here is a 2 sentence summary of the code:</p>
+<p>This shell script uses <code>awk</code> to transform a MySQL dump file into a format compatible with SQLite, while preserving MySQL <code>KEY</code> clauses as separate commands. The script can be used by piping the MySQL dump file to the script, then piping the output to <code>sqlite3</code>, as shown in the example usage section.</p>
 
 
 <pre><code>#!/bin/sh
@@ -101,3 +103,34 @@ END {
 '
 exit 0</code></pre>
 
+<p><strong>Breakdown of the Code</strong></p>
+<h3>Overview</h3>
+<p>This is a shell script that utilizes <code>awk</code> to transform a MySQL dump file into a format compatible with SQLite. The script also extracts the MySQL <code>KEY</code> clauses and creates them as separate commands.</p>
+<h3>Script Structure</h3>
+<p>The script consists of:</p>
+<ol>
+<li>A shell script header that specifies the usage and an example command.</li>
+<li>A <code>mysqldump</code> command that generates the MySQL dump file, with options to make it compatible with SQLite and to skip extended inserts and compact the output.</li>
+<li>An <code>awk</code> script that processes the MySQL dump file.</li>
+</ol>
+<h3>Awk Script</h3>
+<p>The <code>awk</code> script consists of several sections:</p>
+<ol>
+<li><strong>Initialization</strong>: Sets the field separator to a comma and prints some SQLite-specific commands to disable synchronous writes and journal mode.</li>
+<li><strong>Create Trigger Handling</strong>: Identifies and removes comments from <code>CREATE TRIGGER</code> statements.</li>
+<li><strong>Insert Statement Handling</strong>: Prints <code>INSERT</code> statements, escaping any necessary characters.</li>
+<li><strong>Create Statement Handling</strong>: Prints <code>CREATE</code> statements and captures the table name.</li>
+<li><strong>Key Handling</strong>: Replaces <code>FULLTEXT KEY</code> or other <code>XXXXX KEY</code> clauses with <code>KEY</code>, and removes field lengths in <code>KEY</code> lines.</li>
+<li><strong>Field Definition Handling</strong>: Prints field definitions, excluding <code>KEY</code> lines and removing some MySQL-specific keywords.</li>
+</ol>
+<h3>Key Features</h3>
+<ul>
+<li>The script processes the MySQL dump file only once.</li>
+<li>It uses <code>awk</code> for its speed and portability.</li>
+<li>The script generates SQLite-specific commands to speed up the import process.</li>
+</ul>
+<h3>Example Usage</h3>
+<p>To use this script, simply pipe the MySQL dump file to the script, and then pipe the output to <code>sqlite3</code>:</p>
+<pre><code class="language-bash">./mysql2sqlite mysqldump-opts db-name | sqlite3 database.sqlite
+</code></pre>
+<p>This will transform the MySQL dump file into a format compatible with SQLite and import it into the specified database.</p>

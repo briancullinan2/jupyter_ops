@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>This code checks if two variables, <code>client</code> and <code>$$</code>, are defined, and if so, it creates a new Webdriver client instance and sends the result to the <code>$$</code> function. The code also catches any errors that occur during client creation and sends them to the <code>$$</code> function for handling.</p>
 
 
 <pre><code>if(typeof client !== 'undefined' && typeof $$ !== 'undefined') {
@@ -8,3 +10,40 @@
 }
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Conditional Statement</h4>
+<ul>
+<li>Checks if two variables are defined:
+<ul>
+<li><code>client</code>: A variable that stores a client object.</li>
+<li><code>$$</code>: A variable that is likely a function or object.</li>
+</ul></li>
+</ul>
+<h4>Block Inside Conditional Statement</h4>
+<ul>
+<li>If the variables are defined:
+<ol>
+<li>Calls the <code>async()</code> method of the <code>$$</code> function.</li>
+<li>Creates a new Webdriver client instance on <code>localhost</code> at port <code>4444</code>:</li>
+</ol>
+<ul>
+<li>Uses the <code>createWebdriverClient()</code> function to create a new client.</li>
+<li>Passes the result of the client creation to the <code>then()</code> method of a promise.</li>
+</ul>
+<ol start="3">
+<li>Sends the result of the client creation to the <code>$$</code> function:</li>
+</ol>
+<ul>
+<li>Uses the <code>sendResult()</code> method of the <code>$$</code> function to send the result.</li>
+</ul>
+<ol start="4">
+<li>Catches any errors that occur during client creation:</li>
+</ol>
+<ul>
+<li>Uses the <code>catch()</code> method of a promise to handle any errors.</li>
+<li>Sends the error to the <code>$$</code> function:
+<ul>
+<li>Uses the <code>sendError()</code> method of the <code>$$</code> function to send the error.</li>
+</ul></li>
+</ul></li>
+</ul>

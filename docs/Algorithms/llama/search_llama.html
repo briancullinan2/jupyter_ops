@@ -1,5 +1,5 @@
-<p>Here's a two-sentence summary of the <code>askLlamaMatchingFunction</code> code breakdown:</p>
-<p>The <code>askLlamaMatchingFunction</code> function searches for a matching function in a notebook by fetching all available functions, filtering them based on categories, and then using another function (<code>askLlamaAboutFunctions</code>) to narrow down the results. The function iterates through the cell cache, appends functions and their descriptions to arrays, and limits the number of calls to <code>askLlamaAboutFunctions</code> to improve efficiency and reduce excessive calls.</p>
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code imports necessary functions and variables, defines the <code>askLlamaMatchingFunction</code> function, and exports it for use in other modules. The <code>askLlamaMatchingFunction</code> function iteratively processes functions in the <code>cellCache</code> array, filtering and appending them to arrays based on categories and descriptions, and repeats this process until all functions have been processed.</p>
 
 
 <pre><code>const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
@@ -62,34 +62,39 @@ module.exports = {
 }
 </code></pre>
 
-<p><strong>askLlamaMatchingFunction Code Breakdown</strong></p>
-<h3>Overview</h3>
-<p>The <code>askLlamaMatchingFunction</code> function is designed to find a matching function in a notebook based on a query. It fetches all available functions, filters them based on categories, and then uses another function (<code>askLlamaAboutFunctions</code>) to narrow down the results.</p>
-<h3>Dependencies</h3>
-<p>The function uses several imported modules and functions:</p>
-<ul>
-<li><code>importer.import</code>: imports functions from other modules</li>
-<li><code>importer.lookupCell</code>: looks up a cell in the notebook</li>
-<li><code>importer.cacheCells</code>: caches notebook cells</li>
-<li><code>importer.cacheRpcFunctions</code>: caches functions with LLM descriptions</li>
-<li><code>importer.cellCache</code>: caches cell data</li>
-<li><code>importer.storeAllLlamaFunctions</code>: stores all notebook LLM functions</li>
-</ul>
-<h3>Function Flow</h3>
-<p>The function executes the following steps:</p>
+<h3>Code Breakdown</h3>
+<h4>Import Statements</h4>
+<p>The code begins by importing various functions and variables from other modules:</p>
+<pre><code class="language-javascript">const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
+const {askLlamaAboutCategories} = importer.import('ask llm about categories')
+const lookupCell = importer.lookupCell
+const { cacheCells } = importer.import('cache notebook')
+const { functionCache } = importer.import('cache rpc functions with llm descriptions')
+const { cellCache } = importer.import('cell cache')
+const {storeAllLlamaFunctions} = importer.import('store all notebook llm functions')
+</code></pre>
+<h4>askLlamaMatchingFunction Function</h4>
+<p>The <code>askLlamaMatchingFunction</code> function is defined:</p>
+<pre><code class="language-javascript">async function askLlamaMatchingFunction(query) {
+  //...
+}
+</code></pre>
+<p>This function takes a <code>query</code> parameter and returns an array of matching functions.</p>
+<h4>Function Flow</h4>
 <ol>
-<li><strong>Fetch all functions</strong>: Calls <code>storeAllLlamaFunctions</code> to fetch all available functions.</li>
-<li><strong>Fetch categories</strong>: Calls <code>askLlamaAboutCategories</code> to fetch categories related to the query.</li>
-<li><strong>Filter categories</strong>: If categories are available, it filters the functions based on the categories.</li>
-<li><strong>Loop through cell cache</strong>: Iterates through the cell cache to find matching functions.</li>
-<li><strong>Append functions and descriptions</strong>: Appends functions and their descriptions to arrays for later use.</li>
-<li><strong>Limit number of calls</strong>: Limits the number of calls to <code>askLlamaAboutFunctions</code> based on the filter categories.</li>
-<li><strong>Call askLlamaAboutFunctions</strong>: Calls <code>askLlamaAboutFunctions</code> to narrow down the results.</li>
-<li><strong>Return matching function</strong>: Returns the matching function.</li>
+<li>Store all Llama functions using <code>storeAllLlamaFunctions</code>.</li>
+<li>Ask Llama about categories related to the query using <code>askLlamaAboutCategories</code>.</li>
+<li>Iterate through the <code>cellCache</code> array.</li>
+<li>For each cell, check if it has a code and if the code has an export.</li>
+<li>Filter functions based on categories and limit the number of calls.</li>
+<li>Append functions and descriptions to arrays.</li>
+<li>Call <code>askLlamaAboutFunctions</code> to get a list of matching functions.</li>
+<li>Repeat steps 4-7 until all functions have been processed.</li>
 </ol>
-<h3>Implementation Details</h3>
-<ul>
-<li>The function uses two arrays (<code>functions</code> and <code>descriptions</code>) to store function data for later use.</li>
-<li>It uses a <code>limit</code> of 20 to avoid excessive calls to <code>askLlamaAboutFunctions</code>.</li>
-<li>It appends the results of <code>askLlamaAboutFunctions</code> to the <code>matchingFunction</code> array.</li>
-</ul>
+<h4>Export Statement</h4>
+<p>The <code>askLlamaMatchingFunction</code> function is exported:</p>
+<pre><code class="language-javascript">module.exports = {
+  askLlamaMatchingFunction
+}
+</code></pre>
+<p>This allows the function to be used in other modules.</p>

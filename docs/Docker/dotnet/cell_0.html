@@ -1,3 +1,5 @@
+<p>Here is a summary of the Dockerfile breakdown in two sentences:</p>
+<p>This Dockerfile uses a multi-stage build process to create a.NET Core image by first building the application with Mono and then building the.NET Core image with ASP.NET Core. The final image includes the published application files and exposes port 80 for the container to run.</p>
 
 
 <pre><code>#FROM mono:latest
@@ -33,3 +35,30 @@ ENTRYPOINT ["/usr/bin/dotnet", "/app/publish/Subscription.Services.EloquaImport.
 
 </code></pre>
 
+<p><strong>Dockerfile Breakdown</strong></p>
+<p>This Dockerfile is used to build a multi-stage image for a.NET Core application.</p>
+<h3>Stage 1: Building the Application</h3>
+<ul>
+<li><code>FROM mono:latest</code>: Uses the latest Mono image as a base.</li>
+<li><code>RUN mono --version</code>: Runs a command to check the Mono version.</li>
+<li><code>RUN ls -la</code>: Runs a command to list the current directory in detail.</li>
+<li><code>ADD</code> statements: Copies files from the current directory to the image.</li>
+<li><code>WORKDIR</code> statement: Sets the working directory to <code>/home/src</code>.</li>
+<li><code>RUN</code> statements: Builds and runs the application using MSBuild and Mono.</li>
+</ul>
+<h3>Stage 2: Building the.NET Core Image</h3>
+<ul>
+<li><code>FROM microsoft/aspnetcore-build:1.0-1.1</code>: Uses the ASP.NET Core build image as a base.</li>
+<li><code>ARG source</code>: Sets an argument <code>source</code> which can be used to specify the path to the application.</li>
+<li><code>EXPOSE 80</code>: Exposes port 80 for the container.</li>
+<li><code>WORKDIR</code> statement: Sets the working directory to <code>/app/src</code>.</li>
+<li><code>ADD</code> statements: Copies the solution file and project files to the image.</li>
+<li><code>RUN</code> statements: Restores and publishes the application using <code>dotnet</code>.</li>
+</ul>
+<h3>Final Stage</h3>
+<ul>
+<li><code>RUN</code> statements: Copies the published application files to the final image.</li>
+<li><code>WORKDIR</code> statement: Sets the working directory to <code>/app/publish</code>.</li>
+<li><code>EXPOSE 80</code>: Exposes port 80 for the container.</li>
+<li><code>ENTRYPOINT</code> statement: Specifies the command to run when the container starts.</li>
+</ul>

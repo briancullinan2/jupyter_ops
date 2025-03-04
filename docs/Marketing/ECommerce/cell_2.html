@@ -1,3 +1,5 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>This Graphviz DOT file defines a directed graph named <code>apply</code> with a specified font, direction, and node properties, and includes subgraphs for <code>cluster_available_plans</code> with nested subclusters. The graph has a hierarchical structure with a main graph and subclusters containing nodes with specific shapes and labels.</p>
 
 
 <pre><code>%%
@@ -35,3 +37,32 @@ apply
 
 }</code></pre>
 
+<p><strong>Code Breakdown: Graphviz DOT File</strong></p>
+<p>This is a Graphviz DOT file that defines a directed graph with nodes and edges. Here's a breakdown of the code:</p>
+<ul>
+<li><code>digraph apply {... }</code>: Defines a directed graph named <code>apply</code>.</li>
+<li><code>label = 'High level architecture'</code>: Sets the label for the graph.</li>
+<li><code>rankdir = LR</code>: Specifies the direction of the graph (left to right).</li>
+<li><code>fontname = Helvetica</code>: Sets the font family for the graph.</li>
+<li><code>node[fontname = Helvetica, width = 1.8, height = 0.8]</code>: Defines the properties for nodes in the graph (font family, width, and height).</li>
+<li><code>edge[fontname = Helvetica, fontsize = 12, fontcolor = blue, labeldistance = 1.8]</code>: Defines the properties for edges in the graph (font family, font size, font color, and label distance).</li>
+<li><code>subgraph cluster_available_plans {... }</code>: Defines a subgraph named <code>cluster_available_plans</code> and sets its label to <code>'ECommerce.Core'</code>.</li>
+<li>The <code>subgraph</code> statement is repeated with different labels for each subcluster: <code>'ECommerce.Entitlement'</code> and <code>'ECommerce.Identity'</code>.</li>
+<li>Within each subcluster, nodes are defined with their shapes and labels: <code>integrations</code> and <code>myact</code>.</li>
+</ul>
+<p><strong>Graph Structure</strong></p>
+<p>The graph has the following structure:</p>
+<ul>
+<li>Main graph: <code>apply</code></li>
+<li>Subcluster: <code>cluster_available_plans</code> (label: <code>ECommerce.Core</code>)
+<ul>
+<li>Subcluster: <code>cluster_available_plans</code> (label: <code>ECommerce.Entitlement</code>)
+<ul>
+<li>Subcluster: <code>cluster_available_plans</code> (label: <code>ECommerce.Identity</code>)
+<ul>
+<li>Node: <code>integrations</code> (shape: box, label: <code>ECommerce.Integrations</code>)</li>
+<li>Node: <code>myact</code> (shape: box, label: <code>ECommerce.MyAct</code>)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>

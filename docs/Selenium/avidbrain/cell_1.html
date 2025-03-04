@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>This code imports a module named <code>Core</code> and a function called <code>runSeleniumCell</code>, which is then used to execute a Selenium test with the argument <code>'test avidbrain'</code>. The test's result is handled asynchronously using <code>then()</code> and <code>catch()</code> methods, sending the outcome or any error that may occur as a result.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -10,3 +12,34 @@ runSeleniumCell('test avidbrain')
     .catch(e => $$.sendError(e));
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+</code></pre>
+<ul>
+<li>This code imports a module named <code>Core</code> from the parent directory.</li>
+<li>It then imports a function named <code>runSeleniumCell</code> from the imported <code>Core</code> module.</li>
+</ul>
+<h4>Asynchronous Execution</h4>
+<pre><code class="language-javascript">$$.async()
+</code></pre>
+<ul>
+<li>This line indicates the start of asynchronous execution using the <code>$.async()</code> function.</li>
+<li>The purpose of this function is not explicitly defined in the provided code snippet, but it is likely used to manage asynchronous operations.</li>
+</ul>
+<h4>Running Selenium Cell and Handling Results</h4>
+<pre><code class="language-javascript">runSeleniumCell('test avidbrain')
+   .then(testLogin =&gt; testLogin())
+   .then(r =&gt; $$.sendResult(r))
+   .catch(e =&gt; $$.sendError(e));
+</code></pre>
+<ul>
+<li>This code executes the <code>runSeleniumCell</code> function with the argument <code>'test avidbrain'</code>.</li>
+<li>The result of this function is resolved using <code>then()</code> methods:
+<ul>
+<li>The first <code>then()</code> method executes the <code>testLogin</code> function on the result, returning its outcome.</li>
+<li>The second <code>then()</code> method takes the result of the first <code>then()</code> method and sends it as a result using the <code>$$.sendResult()</code> function.</li>
+</ul></li>
+<li>If any error occurs during execution, it is caught by the <code>catch()</code> method, which sends the error using the <code>$$.sendError()</code> function.</li>
+</ul>

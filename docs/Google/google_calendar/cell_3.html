@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The code defines a test suite for a &quot;calendar service&quot; using the <code>describe</code> function, which includes a test named &quot;should list events from around today&quot; that asserts an array of events is not empty. The test logic involves calling two functions, <code>correctCalendarId</code> and <code>listEvents</code>, with specific parameters to retrieve a list of events around today.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -33,3 +35,63 @@ describe('calendar service', () => {
 })
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code starts by importing a module named <code>importer</code> from the <code>../Core</code> directory. The <code>importer</code> module is then used to import specific functions.</p>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {
+    listEvents,
+    correctCalendarId
+} = importer.import([
+    'list events',
+    'import google calendar api',
+    'lookup calendar name'
+]);
+</code></pre>
+<h3>Defining Test Options</h3>
+<p>The code then defines an empty object <code>options</code> that will be used to store test options.</p>
+<pre><code class="language-javascript">var options = {};
+</code></pre>
+<h3>Defining a Test Suite</h3>
+<p>The code defines a test suite for the &quot;calendar service&quot; using the <code>describe</code> function.</p>
+<pre><code class="language-javascript">describe('calendar service', () =&gt; {
+  //...
+});
+</code></pre>
+<h3>Defining a Before Each Hook</h3>
+<p>The <code>beforeEach</code> hook is defined but left empty. This hook is executed before each test in the test suite.</p>
+<pre><code class="language-javascript">beforeEach(() =&gt; {
+  // empty hook
+});
+</code></pre>
+<h3>Defining a Test</h3>
+<p>The code defines a test named &quot;should list events from around today&quot; using the <code>it</code> function. This test expects the <code>done</code> callback to be called after the test is complete.</p>
+<pre><code class="language-javascript">it('should list events from around today', (done) =&gt; {
+  //...
+});
+</code></pre>
+<h3>Test Logic</h3>
+<p>The test logic is as follows:</p>
+<ol>
+<li>It calls the <code>correctCalendarId</code> function with the <code>options</code> object and an additional property <code>calendarId</code> set to <code>'commands'</code>. This function returns a promise.</li>
+<li>It then calls the <code>listEvents</code> function with the <code>auth</code> property from the <code>options</code> object, the <code>calendarId</code> property from the <code>options</code> object, and specific time parameters.</li>
+<li>The <code>listEvents</code> function returns a promise that resolves to an array of events.</li>
+<li>The test then asserts that the array of events is not empty.</li>
+<li>Finally, the <code>done</code> callback is called to indicate that the test is complete.</li>
+</ol>
+<pre><code class="language-javascript">it('should list events from around today', (done) =&gt; {
+  return correctCalendarId(Object.assign(options, {
+    calendarId: 'commands'
+  }))
+ .then(() =&gt; listEvents({
+    auth: options.auth,
+    calendarId: options.calendarId,
+    timeMin: '12 AM today',
+    timeMax: 'next hour today'
+  }))
+ .then(r =&gt; {
+    assert(r.length &gt; 0)
+    done()
+  })
+})
+</code></pre>

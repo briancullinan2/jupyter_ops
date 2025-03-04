@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary of the Image Processing Script Breakdown:</p>
+<p>The scripts use ImageMagick commands to process an input image, removing extra space, resizing, rotating, and adding a watermark, with the final result being output to a new file. The scripts are identical in their functionality, but differ in their file paths and line endings, suggesting a possible Windows version (Script 2) alongside a Unix-based version (Script 1).</p>
 
 
 <pre><code>magick /Users/fred/desktop/PZImages/original/17201-33020@02.jpg -print "%f\n" \
@@ -16,3 +18,51 @@ magick path2originals\17201-33020@02.jpg -print "%f\n" -fuzz "10%" -trim +repage
 
 </code></pre>
 
+<p><strong>Image Processing Script Breakdown</strong></p>
+<p><strong>Script 1:</strong></p>
+<ol>
+<li><code>magick</code>: ImageMagick command to process images.</li>
+<li><code>/Users/fred/desktop/PZImages/original/17201-33020@02.jpg</code>: Input image file.</li>
+<li><code>-print &quot;%f\n&quot;</code>: Print the image's filename followed by a newline.</li>
+<li><code>-fuzz &quot;10%&quot;</code>: Set the fuzz tolerance to 10% for subsequent operations.</li>
+<li><code>-trim +repage</code>: Trim the image to its border and remove any extra space.</li>
+<li><code>-background &quot;white&quot;</code>: Set the background color to white.</li>
+<li><code>-resize &quot;650x650&quot;</code>: Resize the image to 650x650 pixels.</li>
+<li><code>-rotate &quot;90&lt;&quot;</code>: Rotate the image 90 degrees counterclockwise.</li>
+<li><code>-set option:dim &quot;%wx%h&quot;</code>: Set the option <code>dim</code> to the image's width and height.</li>
+<li><code>\(</code>: Begin a sub-command.</li>
+<li><code>/Users/fred/desktop/PZImages/WM_m.png</code>: Watermark image file.</li>
+<li><code>-resize &quot;%[dim]&quot;</code>: Resize the watermark to match the image's dimension.</li>
+<li><code>-gravity center</code>: Position the watermark at the image's center.</li>
+<li><code>-background none</code>: Remove the background color.</li>
+<li><code>-extent &quot;%[dim]&quot;</code>: Extend the watermark to match the image's dimension.</li>
+<li><code>\)</code> : End the sub-command.</li>
+<li><code>-gravity center</code>: Position the result at the image's center.</li>
+<li><code>-compose over</code>: Composite the watermark over the image.</li>
+<li><code>-composite</code>: Merge the image and watermark.</li>
+<li><code>/Users/fred/desktop/PZImages/fred_results/17201-33020@02.jpg</code>: Output image file.</li>
+</ol>
+<p><strong>Script 2:</strong></p>
+<p>This script is identical to Script 1, but with different paths and line endings (<code>\</code> vs <code>^</code>).</p>
+<ol>
+<li><code>magick</code>: ImageMagick command to process images.</li>
+<li><code>path2originals\17201-33020@02.jpg</code>: Input image file.</li>
+<li><code>-print &quot;%f\n&quot;</code>: Print the image's filename followed by a newline.</li>
+<li><code>-fuzz &quot;10%&quot;</code>: Set the fuzz tolerance to 10% for subsequent operations.</li>
+<li><code>-trim +repage</code>: Trim the image to its border and remove any extra space.</li>
+<li><code>-background &quot;white&quot;</code>: Set the background color to white.</li>
+<li><code>-resize &quot;650x650&quot;</code>: Resize the image to 650x650 pixels.</li>
+<li><code>-rotate &quot;90&lt;&quot;</code>: Rotate the image 90 degrees counterclockwise.</li>
+<li><code>-set option:dim &quot;%wx%h&quot;</code>: Set the option <code>dim</code> to the image's width and height.</li>
+<li><code>\(</code>: Begin a sub-command.</li>
+<li><code>path2towatermark\WM_m.png</code>: Watermark image file.</li>
+<li><code>-resize &quot;%[dim]&quot;</code>: Resize the watermark to match the image's dimension.</li>
+<li><code>-gravity center</code>: Position the watermark at the image's center.</li>
+<li><code>-background none</code>: Remove the background color.</li>
+<li><code>-extent &quot;%[dim]&quot;</code>: Extend the watermark to match the image's dimension.</li>
+<li><code>\)</code> : End the sub-command.</li>
+<li><code>-gravity center</code>: Position the result at the image's center.</li>
+<li><code>-compose over</code>: Composite the watermark over the image.</li>
+<li><code>-composite</code>: Merge the image and watermark.</li>
+<li><code>path2output\17201-33020@02.jpg</code>: Output image file.</li>
+</ol>

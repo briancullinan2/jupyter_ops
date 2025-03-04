@@ -1,3 +1,5 @@
+<p>Here is a summary of the code breakdown in one or two sentences:</p>
+<p>The code imports necessary modules and initializes a dictionary to store module instances, and then defines several functions for manipulating URLs, importing notebook modules, and building dynamic libraries. The <code>import_notebook</code> function imports notebook modules based on a query string and context, and uses different methods to import code depending on the language of the notebook.</p>
 
 
 <pre><code>import types
@@ -74,3 +76,46 @@ __all__ = {
 }
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules and Setting Up Variables</h3>
+<pre><code class="language-python">import types
+import ctypes
+import os
+import re
+
+modules = {}
+</code></pre>
+<ul>
+<li>The code starts by importing necessary modules: <code>types</code> for working with Python types, <code>ctypes</code> for C extensions, <code>os</code> for interacting with the operating system, and <code>re</code> for regular expression matching.</li>
+<li>An empty dictionary <code>modules</code> is initialized to store module instances.</li>
+</ul>
+<h3>Function: <code>safeurl(name)</code></h3>
+<pre><code class="language-python">def safeurl(name):
+    return re.sub(r'\W+', '_', name)
+</code></pre>
+<ul>
+<li>This function takes in a string <code>name</code> and replaces non-word characters (<code>\W+</code>) with underscores (<code>_</code>) using regular expressions.</li>
+</ul>
+<h3>Function: <code>import_notebook(query_str, ctx)</code></h3>
+<pre><code class="language-python">def import_notebook(query_str, ctx):
+    #...
+</code></pre>
+<ul>
+<li>This function imports a notebook module based on a query string <code>query_str</code> and a context <code>ctx</code>.</li>
+<li>It uses the <code>interpret</code> function (not shown in this code snippet) to search for matching notebooks in a Whoosh index.</li>
+<li>If a match is found, it checks if the corresponding module is already loaded in memory.</li>
+<li>If the module is loaded, it retrieves the variables from the module and adds them to the context <code>ctx</code>.</li>
+<li>If the module is not loaded, it creates a new module instance, imports the notebook code, and adds the functions or variables to the module.</li>
+<li>Depending on the language of the notebook (C, C++, Objective-C, or Python), it uses different methods to import the code:
+<ul>
+<li>For C, C++, or Objective-C notebooks, it builds a dynamic library using <code>build_dylib</code> and loads the library using <code>ctypes</code>.</li>
+<li>For Python notebooks, it executes the code using <code>exec</code>.</li>
+</ul></li>
+</ul>
+<h3>Other Notes</h3>
+<ul>
+<li>The <code>na</code> line is likely a leftover from a previous version of the code and can be removed.</li>
+<li>The <code>vars(module)['__all__']</code> line is used to access the <code>__all__</code> attribute of the module, which is a list of variable names that are exported by the module.</li>
+<li>The <code>build_dylib</code> function (not shown in this code snippet) is used to build a dynamic library from C++ code.</li>
+<li>The <code>get_functions</code> function (not shown in this code snippet) is used to extract function definitions from C++ code.</li>
+</ul>

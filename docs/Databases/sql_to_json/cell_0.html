@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>This code initializes a MySQL connection using credentials from a JSON file and defines several functions to interact with the database, including executing queries, showing tables, parsing data types, and selecting objects. The functions are designed to parse and manipulate data in a MySQL database, with features such as filtering out sensitive columns and converting data types.</p>
 
 
 <pre><code>var mysql = require('mysql');
@@ -120,3 +122,54 @@ new Promise((resolve, reject) => https.get(
     .catch(e => $$.sendError(e))
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<ul>
+<li><code>var mysql = require('mysql');</code>: Imports the MySQL module.</li>
+<li><code>var importer = require('../Core');</code>: Imports the <code>importer</code> module from the <code>Core</code> directory.</li>
+<li><code>var fs = require('fs');</code>: Imports the File System module.</li>
+<li><code>var path = require('path');</code>: Imports the Path module.</li>
+<li><code>var https = require('https');</code>: Imports the HTTPS module.</li>
+</ul>
+<h3>Setting Environment Variables and Paths</h3>
+<ul>
+<li><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;</code>: Sets the <code>PROFILE_PATH</code> variable to the user's profile directory, using environment variables.</li>
+<li><code>var project = PROFILE_PATH + '/Documents/studysauce4/data';</code>: Sets the <code>project</code> variable to the path of the project directory.</li>
+<li><code>var filename = path.join(project, 'cleaned.json');</code>: Sets the <code>filename</code> variable to the path of a JSON file named <code>cleaned.json</code> in the project directory.</li>
+<li><code>var credentials = path.join(PROFILE_PATH, 'credentials/studysaucedb.json');</code>: Sets the <code>credentials</code> variable to the path of a JSON file named <code>studysaucedb.json</code> in the user's profile directory.</li>
+</ul>
+<h3>Creating a MySQL Connection</h3>
+<ul>
+<li><code>var con = mysql.createConnection(fs.readFileSync(credentials).toString());</code>: Creates a MySQL connection using the credentials from the <code>studysaucedb.json</code> file.</li>
+</ul>
+<h3>Defining Functions</h3>
+<h4>mysqlQuery</h4>
+<ul>
+<li><code>function mysqlQuery(q) {... }</code>: Defines a function that executes a MySQL query and returns a Promise.</li>
+<li>The function takes a query string <code>q</code> as an argument.</li>
+<li>It executes the query using the <code>con.query()</code> method and resolves the Promise with the query result.</li>
+<li>If an error occurs, it rejects the Promise with the error.</li>
+</ul>
+<h4>showTables</h4>
+<ul>
+<li><code>function showTables() {... }</code>: Defines a function that shows the tables in the MySQL database.</li>
+<li>It calls the <code>mysqlQuery()</code> function with the query <code>SHOW TABLES</code>.</li>
+<li>It then filters the result to exclude certain tables (e.g. <code>acl_</code>, <code>rememberme</code>, <code>session</code>, etc.).</li>
+</ul>
+<h4>parseBool and parseString</h4>
+<ul>
+<li><code>var parseBool = r =&gt; r === 'true' || r === '0' || parseInt(r) &gt; 0;</code>: Defines a function that parses a string as a boolean value.</li>
+<li><code>var parseString = r =&gt; r + '';</code>: Defines a function that converts a value to a string.</li>
+</ul>
+<h4>describeTable</h4>
+<ul>
+<li><code>function describeTable(table) {... }</code>: Defines a function that describes a table in the MySQL database.</li>
+<li>It calls the <code>mysqlQuery()</code> function with the query <code>DESCRIBE &lt;table&gt;</code>.</li>
+<li>It then parses the result to create an object with column names as keys and parsing functions as values.</li>
+</ul>
+<h4>selectObjects</h4>
+<ul>
+<li><code>function selectObjects(table, descriptor, query = '') {... }</code>: Defines a function that selects objects from a table in the MySQL database.</li>
+<li>It calls the <code>mysqlQuery()</code> function with the query <code>SELECT * FROM &lt;table&gt; &lt;query&gt;</code>.</li>
+<li>It then maps the result to remove sensitive columns (e.g. <code>password</code>, <code>salt</code>, <code>confirmation_token</code>) and returns the result.</li>
+</ul>

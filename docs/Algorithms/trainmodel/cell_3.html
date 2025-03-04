@@ -1,5 +1,23 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>This code creates an empty Pandas DataFrame named <code>train</code> and initializes it with image and label data by calling the <code>createdataframe</code> function, which returns the training set data. The returned data is then unpacked and assigned as separate columns to the DataFrame.</p>
 
 
 <pre><code>train = pd.DataFrame()
 train['image'], train['label'] = createdataframe(TRAIN_DIR)</code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing and Initializing a Pandas DataFrame</h4>
+<pre><code class="language-python">train = pd.DataFrame()
+</code></pre>
+<ul>
+<li>Creates an empty Pandas DataFrame object named <code>train</code>.</li>
+</ul>
+<h4>Loading Data into the DataFrame</h4>
+<pre><code class="language-python">train['image'], train['label'] = createdataframe(TRAIN_DIR)
+</code></pre>
+<ul>
+<li>Calls the <code>createdataframe</code> function, passing the <code>TRAIN_DIR</code> directory as an argument.</li>
+<li>The function returns two values: <code>image</code> and <code>label</code>.</li>
+<li>These values are unpacked and assigned as separate columns to the <code>train</code> DataFrame: <code>image</code> and <code>label</code>.</li>
+<li>The <code>createdataframe</code> function is not shown in this code snippet, but it is assumed to return the image and label data for the training set.</li>
+</ul>

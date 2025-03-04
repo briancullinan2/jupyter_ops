@@ -1,3 +1,4 @@
+<p>Systemd service configuration files manage system services, including two specific services: <code>quake3-proxy</code> and <code>quake3-server</code>. These services are configured to restart automatically if they fail and are started when the system reaches the multi-user target.</p>
 
 
 <pre><code># quake3-proxy
@@ -27,3 +28,21 @@ WantedBy=multi-user.target
 
 </code></pre>
 
+<p><strong>Systemd Service Configuration Files</strong></p>
+<p>These configuration files are written in systemd format and are used to manage system services.</p>
+<p><strong>File 1: quake3-proxy.service</strong></p>
+<ul>
+<li>Describes a system service named <code>quake3-proxy</code>.</li>
+<li>Specifies that the service should be executed as a simple process (<code>Type=simple</code>).</li>
+<li>Sets the command to start the service to <code>/usr/bin/node /home/megamindbrian/proxy.js</code>.</li>
+<li>Configures the service to restart automatically if it fails (<code>Restart=on-failure</code>).</li>
+<li>Specifies that the service should be started when the multi-user target is reached (<code>WantedBy=multi-user.target</code>).</li>
+</ul>
+<p><strong>File 2: quake3-server.service</strong></p>
+<ul>
+<li>Describes a system service named <code>quake3-server</code>.</li>
+<li>Specifies that the service should be executed as a simple process (<code>Type=simple</code>).</li>
+<li>Sets the command to start the service to a Quake 3 server executable.</li>
+<li>Configures the service to restart automatically if it fails (<code>Restart=on-failure</code>).</li>
+<li>Specifies that the service should be started when the multi-user target is reached (<code>WantedBy=multi-user.target</code>).</li>
+</ul>

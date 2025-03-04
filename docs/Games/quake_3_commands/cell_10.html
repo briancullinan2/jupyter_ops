@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary:</p>
+<p>This script converts all <code>.wav</code> files in the current directory and its subdirectories to <code>.opus</code> format, using either a Windows command-line script or a Bash translation. The script can also be modified to simply echo the file paths instead of performing the conversion.</p>
 
 
 <pre><code>
@@ -10,3 +12,35 @@ for i in $(find . -iname '*.wav'); do opusenc "$i" "${i%.wav}".opus; done
 for i in $(find . -iname '*.wav'); do echo "$i"; done
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Windows Command-Line Script</h3>
+<pre><code class="language-batch">for /r %%v in (*.wav) do opusenc &quot;%%v&quot; &quot;%%~dpv%%~nv.opus&quot;
+</code></pre>
+<p>This is a Windows command-line script that loops through all <code>.wav</code> files in the current directory and its subdirectories.</p>
+<ul>
+<li><code>for /r</code> is used to recursively iterate through files in the current directory and its subdirectories.</li>
+<li><code>%%v</code> is the loop variable, which takes the value of each file name during each iteration.</li>
+<li><code>opusenc</code> is the command used to convert <code>.wav</code> files to <code>.opus</code> format.</li>
+<li><code>&quot;%%v&quot;</code> is the input file path, and <code>&quot;%%~dpv%%~nv.opus&quot;</code> is the output file path, where:
+<ul>
+<li><code>%%~dpv</code> gets the drive letter and directory path of the file.</li>
+<li><code>%%~nv</code> gets the file name without the extension.</li>
+</ul></li>
+</ul>
+<h3>Bash Translation</h3>
+<pre><code class="language-bash">for i in $(find. -iname '*.wav'); do opusenc &quot;$i&quot; &quot;${i%.wav}&quot;.opus; done
+</code></pre>
+<p>This is the equivalent Bash script for the above Windows command-line script.</p>
+<ul>
+<li><code>find. -iname '*.wav'</code> is used to find all <code>.wav</code> files in the current directory and its subdirectories.</li>
+<li><code>for i in...</code> loops over the files found.</li>
+<li><code>${i%.wav}</code> gets the file name without the extension.</li>
+<li><code>opusenc</code> is called with the original file path (<code>$i</code>) and the output file path (<code>${i%.wav}.opus</code>).</li>
+</ul>
+<h3>Echo Command</h3>
+<pre><code class="language-bash">for i in $(find. -iname '*.wav'); do echo &quot;$i&quot;; done
+</code></pre>
+<p>This script does the same as the previous one but instead of converting the files, it simply echoes the file paths.</p>
+<ul>
+<li>The <code>echo</code> command is used to print the file path to the console.</li>
+</ul>

@@ -1,3 +1,5 @@
+<p>Here's a summary of the code in two sentences:</p>
+<p>This code imports the <code>Core</code> module, invokes its <code>interpret</code> function with a list of keywords, and assigns the result to a variable. The result is then passed to a function named <code>sendResult</code> on a global object <code>$$</code>, but the purpose of this function is unclear without more context.</p>
 
 
 <pre><code>var importer = require('./Core');
@@ -13,3 +15,32 @@ $$.sendResult(interpret);
 
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('./Core');
+</code></pre>
+<ul>
+<li>Imports a module named <code>Core</code> from a file located in the current directory.</li>
+<li>Assigns the imported module to a variable named <code>importer</code>.</li>
+</ul>
+<h3>Function Invocation</h3>
+<pre><code class="language-javascript">var interpret = importer.interpret([
+    'docker selenium',
+    'docker vnc'
+]);
+</code></pre>
+<ul>
+<li>Invokes the <code>interpret</code> function from the <code>importer</code> module.</li>
+<li>Passes an array of strings to the <code>interpret</code> function.</li>
+<li>Assigns the result of the function call to a variable named <code>interpret</code>.</li>
+</ul>
+<h3>Functionality</h3>
+<p>The <code>interpret</code> function appears to be used for searching notebooks for specific keywords. However, without more context, it's unclear what this function does exactly.</p>
+<h3>Sending Results</h3>
+<pre><code class="language-javascript">$$.sendResult(interpret);
+</code></pre>
+<ul>
+<li>Invokes a function named <code>sendResult</code> on an object referred to by the global variable <code>$$</code>.</li>
+<li>Passes the result of the <code>interpret</code> function as an argument to <code>sendResult</code>.</li>
+<li>The purpose of <code>sendResult</code> is unknown without more context.</li>
+</ul>

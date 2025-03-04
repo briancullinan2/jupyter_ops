@@ -1,4 +1,5 @@
-<p>This code provides functions to format and display search results from a Jupyter notebook in a structured Markdown format, including summaries, matched content, and code snippets.</p>
+<p>Here is a two-sentence summary:</p>
+<p>The <code>runPythonModule</code> function runs a Python module with given parameters, while the <code>makePythonModule</code> function creates and executes a Python module from provided code. A cache is used to store compiled Python modules and avoid recompilation, and notebook parameters are imported using the <code>importNotebook</code> function.</p>
 
 
 <pre><code>const Module = require('module').Module
@@ -80,33 +81,39 @@ async function makePythonModule(code, filename, context) {
 module.exports.makePythonModule = makePythonModule
 </code></pre>
 
-<p>This code defines two functions for formatting and displaying search results from a Jupyter notebook context.</p>
-<p><strong>Here's a breakdown:</strong></p>
-<ol>
-<li><p><strong><code>resultMarkdown(res)</code> Function:</strong></p>
+<p><strong>Function Breakdown</strong></p>
+<h3><code>runPythonModule</code> Function</h3>
 <ul>
-<li>Takes an array <code>res</code> (presumably containing search results) as input.</li>
-<li>Constructs a Markdown string summarizing the results:
+<li>Purpose: Runs a Python module with the given parameters.</li>
+<li>Parameters:
 <ul>
-<li>Displays the number of matches found.</li>
-<li>Includes a pluralization for &quot;match&quot; based on the number of results.</li>
-<li>Lists the matched items (likely file paths or cell IDs).</li>
-<li>If there are matches, it also includes:
+<li><code>isOne</code> (not used): Unused parameter.</li>
+<li><code>cellId</code>: Cell ID for the Python module.</li>
+<li><code>signature</code>: Python function signature with parameters.</li>
+<li><code>...args</code>: Variable number of arguments to pass to the Python function.</li>
+</ul></li>
+<li>Returns: The result of the Python function execution as a JSON object.</li>
+</ul>
+<h3><code>makePythonModule</code> Function</h3>
 <ul>
-<li>A Markdown representation of the matched content.</li>
-<li>The raw code associated with the matches.</li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li><p><strong><code>displayCell(results)</code> Function:</strong></p>
+<li>Purpose: Creates a Python module and executes it with the given parameters.</li>
+<li>Parameters:
 <ul>
-<li>Takes an array <code>results</code> as input.</li>
-<li>Handles two scenarios:
+<li><code>code</code>: Code for the Python module.</li>
+<li><code>filename</code>: Name of the Python module file.</li>
+<li><code>context</code>: Context for the Python module (not used).</li>
+</ul></li>
+<li>Returns: The result of the Python module execution as a JSON object.</li>
+</ul>
+<p><strong>Key Components</strong></p>
 <ul>
-<li>If <code>results</code> contains objects (likely representing individual search results), it iterates through them, calling <code>resultMarkdown</code> for each result and concatenating the output into a single string.</li>
-<li>If <code>results</code> is a single string (possibly a single result), it directly calls <code>resultMarkdown</code> on it.</li>
-</ul></li>
-<li>Returns the formatted Markdown string.</li>
-</ul></li>
-</ol>
-<p>In essence, this code provides a way to present search results from a Jupyter notebook context in a structured and readable Markdown format.</p>
+<li><code>Module._cache</code>: A cache to store compiled Python modules to avoid recompilation.</li>
+<li><code>importNotebook</code>: A function to import notebook parameters for Python execution.</li>
+<li><code>runPythonModule</code>: A function to run a Python module with the given parameters.</li>
+</ul>
+<p><strong>Notes</strong></p>
+<ul>
+<li>The <code>runPythonModule</code> function uses <code>spawn</code> to execute the Python module and captures its output as JSON.</li>
+<li>The <code>makePythonModule</code> function uses the <code>importNotebook</code> function to retrieve notebook parameters and then executes the Python module using <code>runPythonModule</code>.</li>
+<li>The <code>Module._cache</code> is used to store compiled Python modules to avoid recompilation.</li>
+</ul>

@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary of the provided scripts:</p>
+<p>This document outlines three scripts: a CMake build script, an emcc compiler script, and a dpmaster script, which are used to build and compile various projects, including a C file and a Quake3Arena file. Each script utilizes specific flags and options to generate different output types, such as Unix Makefiles, WebAssembly code, and JavaScript files.</p>
 
 
 <pre><code>cmake -G "Unix Makefiles" -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/local/bin/gcc-9 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-9
@@ -10,3 +12,43 @@
 
 </code></pre>
 
+<h1><strong>CMake Build Script</strong></h1>
+<p>The first command is a CMake build script:</p>
+<pre><code class="language-bash">cmake -G &quot;Unix Makefiles&quot; -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/local/bin/gcc-9 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-9
+</code></pre>
+<p>This command:</p>
+<ul>
+<li>Uses the &quot;Unix Makefiles&quot; generator (<code>-G</code>)</li>
+<li>Specifies the current directory (<code>-H.</code>) as the source directory</li>
+<li>Specifies the <code>build</code> directory as the output directory (<code>-Bbuild</code>)</li>
+<li>Sets the CMake build type to &quot;Release&quot; (<code>-DCMAKE_BUILD_TYPE=Release</code>)</li>
+<li>Specifies the C compiler (<code>-DCMAKE_C_COMPILER=/usr/local/bin/gcc-9</code>)</li>
+<li>Specifies the C++ compiler (<code>-DCMAKE_CXX_COMPILER=/usr/local/bin/g++-9</code>)</li>
+</ul>
+<h1><strong>emcc Compiler Script</strong></h1>
+<p>The next two commands compile a C file using the emcc compiler from the Emscripten SDK:</p>
+<pre><code class="language-bash">./code/xquakejs/lib/emsdk/upstream/emscripten/emcc -O1 -s STANDALONE_WASM -s EXPORTED_FUNCTIONS=&quot;['_MSG_initHuffman', '_Huff_Decompress', '_Huff_Compress']&quot; -s EXPORT_NAME=&quot;huffman&quot;./code/xquakejs/lib/huffman.c -o./code/xquakejs/lib/huffman.js
+
+./code/xquakejs/lib/emsdk/upstream/emscripten/emcc -O1 -s SAFE_HEAP=1 -s WASM=0 -s EXTRA_EXPORTED_RUNTIME_METHODS=&quot;['getValue', 'allocate']&quot; -s EXPORTED_FUNCTIONS=&quot;['_MSG_initHuffman', '_Huff_Decompress', '_Huff_Compress', '_HuffmanGetSymbol']&quot; -s EXPORT_NAME=&quot;huffman&quot;./code/xquakejs/lib/huffman.c -o./code/xquakejs/lib/huffman.js
+</code></pre>
+<p>These commands:</p>
+<ul>
+<li>Compile the <code>huffman.c</code> file using emcc</li>
+<li>Specify optimization level 1 (<code>-O1</code>)</li>
+<li>Generate standalone WebAssembly code (<code>-s STANDALONE_WASM</code>)</li>
+<li>Export specific functions (<code>-s EXPORTED_FUNCTIONS</code>)</li>
+<li>Specify the export name (<code>-s EXPORT_NAME</code>)</li>
+<li>Compile the file to JavaScript (<code>-o./code/xquakejs/lib/huffman.js</code>)</li>
+</ul>
+<h1><strong>dpmaster Script</strong></h1>
+<p>The final command is a dpmaster script:</p>
+<pre><code class="language-bash">./dpmaster -L --log-file /Users/briancullinan/Downloads/dpmaster-2.2/dpmaster.log -v -g Quake3Arena options=send-empty-servers
+</code></pre>
+<p>This command:</p>
+<ul>
+<li>Runs the dpmaster tool with the <code>-L</code> option</li>
+<li>Specifies the log file (<code>--log-file</code>)</li>
+<li>Enables verbose mode (<code>-v</code>)</li>
+<li>Generates a Quake3Arena file (<code>-g Quake3Arena</code>)</li>
+<li>Specifies options (<code>options=send-empty-servers</code>)</li>
+</ul>

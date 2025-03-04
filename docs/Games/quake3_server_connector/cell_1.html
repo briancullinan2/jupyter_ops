@@ -1,4 +1,5 @@
-<p>This code snippet is a simple Discord bot example that demonstrates sending a message to a specific channel using the Discord API. It authenticates with Discord, sends the message &quot;beep boop&quot;, and then closes the connection.</p>
+<p>Here is a two-sentence summary of the code:</p>
+<p>The code imports necessary functions from custom modules, then defines an asynchronous function <code>syncCommands</code> that synchronizes Discord commands by authorizing the gateway, retrieving existing commands, and registering or deleting specific commands based on their presence. The function uses functions like <code>authorizeGateway</code>, <code>getCommands</code>, <code>registerCommand</code>, and <code>deleteCommand</code> to perform these tasks.</p>
 
 
 <pre><code>var importer = require('../Core')
@@ -98,27 +99,48 @@ async function syncCommands() {
 module.exports = syncCommands
 </code></pre>
 
-<p>This code snippet defines an asynchronous function <code>testMessage</code> that demonstrates a basic interaction with the Discord API.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong>Imports:</strong></p>
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core')
+var {authorizeGateway} = importer.import('authorize discord')
+var {registerCommand, getCommands, deleteCommand} = importer.import('discord api')
+</code></pre>
 <ul>
-<li>It imports two modules:
+<li>The code imports a custom module <code>importer</code> from <code>../Core</code>.</li>
+<li>It then uses the <code>importer</code> to import specific functions from two modules:
 <ul>
-<li><code>discordApi</code>: Likely provides functions for interacting with the Discord API (e.g., sending messages).</li>
-<li><code>authorizeDiscord</code>: Likely contains a function to authenticate with the Discord API.</li>
+<li><code>authorizeGateway</code> from <code>authorize discord</code>.</li>
+<li><code>registerCommand</code>, <code>getCommands</code>, and <code>deleteCommand</code> from <code>discord api</code>.</li>
 </ul></li>
-</ul></li>
-<li><p><strong><code>testMessage</code> Function:</strong></p>
+</ul>
+<h3>Syncing Commands Function</h3>
+<pre><code class="language-javascript">async function syncCommands() {
+    //...
+}
+</code></pre>
 <ul>
-<li>It uses <code>authorizeGateway()</code> from <code>authorizeDiscord</code> to establish a connection to the Discord API.</li>
-<li>It calls <code>discordApi.createMessage()</code> to send a message &quot;beep boop&quot; to a specific channel (ID: <code>752568660819837019</code>).</li>
-<li>It closes the Discord socket connection using <code>discordSocket.close()</code>.</li>
-</ul></li>
-<li><p><strong>Export:</strong></p>
+<li>The code defines an asynchronous function <code>syncCommands</code> that synchronizes Discord commands.</li>
+</ul>
+<h3>Authorizing Gateway and Retrieving Commands</h3>
+<pre><code class="language-javascript">await authorizeGateway()
+var commandResult = (await getCommands())
+var commands = commandResult.map(command =&gt; command.name)
+</code></pre>
 <ul>
-<li>The <code>testMessage</code> function is exported as a module, making it available for use in other parts of the application.</li>
-</ul></li>
-</ol>
-<p><strong>Purpose:</strong></p>
-<p>This code snippet serves as a simple example of how to send a message to a Discord channel using the Discord API. It demonstrates the basic steps involved in authentication, API interaction, and closing the connection.</p>
+<li>The function waits for the gateway to be authorized using <code>authorizeGateway</code>.</li>
+<li>It then retrieves the list of commands using <code>getCommands</code> and stores the result in <code>commandResult</code>.</li>
+<li>The code maps each command to its <code>name</code> and stores the result in the <code>commands</code> array.</li>
+</ul>
+<h3>Registering and Deleting Commands</h3>
+<pre><code class="language-javascript">if(commands.includes('hello-orbb'))
+    await deleteCommand(commandResult.filter(c =&gt; c.name == 'hello-orbb')[0].id)
+if(!commands.includes('hello'))
+    await registerCommand('hello', 'Check if Orbb is awake.')
+//...
+</code></pre>
+<ul>
+<li>The code checks if a command named <code>hello-orbb</code> exists in the <code>commands</code> array. If it does, the function deletes the command using <code>deleteCommand</code>.</li>
+<li>It then checks if a command named <code>hello</code> exists in the array. If it doesn't, the function registers a new command named <code>hello</code> with the specified description.</li>
+<li>The code repeats this process for the commands <code>challenge</code> and <code>connect</code>, registering them if they don't exist.</li>
+<li>Finally, it registers a command named <code>rcon</code> with an array of options.</li>
+</ul>

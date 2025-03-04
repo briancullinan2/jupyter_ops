@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary:</p>
+<p>This code imports dependencies for a Node.js application, sets up OAuth 2.0 credentials, and creates an instance of the <code>OAuth2Client</code> class to request an access token. The access token is requested using the <code>getToken</code> method of the <code>oauth2Client</code> instance, and the result is handled through a promise with a callback function for both successful and error cases.</p>
 
 
 <pre><code>var util = require('util');
@@ -19,3 +21,28 @@ util.promisify(oauth2Client.getToken.bind(oauth2Client))
 
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<ul>
+<li><code>util</code>: A built-in Node.js module providing utility functions.</li>
+<li><code>OAuth2Client</code>: A class from the <code>google-auth-library</code> package for handling OAuth 2.0 clients.</li>
+<li><code>path</code>: A built-in Node.js module for working with file paths.</li>
+<li><code>fs</code>: A built-in Node.js module for reading and writing file system operations.</li>
+</ul>
+<h4>Setting Up Credentials</h4>
+<ul>
+<li><code>TOKEN_DIR</code>: A constant representing the directory to store credentials.</li>
+<li><code>SECRET_PATH</code>: A constant representing the path to the client secret file.</li>
+<li><code>credentials</code>: An object containing the credentials read from the client secret file.</li>
+</ul>
+<h4>Creating an OAuth2 Client</h4>
+<ul>
+<li><code>oauth2Client</code>: An instance of <code>OAuth2Client</code> created with the client ID, client secret, and redirect URI from the credentials.</li>
+</ul>
+<h4>Requesting an Access Token</h4>
+<ul>
+<li><code>util.promisify(oauth2Client.getToken.bind(oauth2Client))</code>: Converts the <code>getToken</code> method of the <code>oauth2Client</code> instance into a promise-returning function.</li>
+<li><code>oauth2Client.getToken('4/QwGy62FM_KlubQwYvKLAu5z1xrT0cF85Zwb_3U7-IHvmm1gJZ-hj0Qo')</code>: Requests an access token with the given refresh token.</li>
+<li><code>.then(r =&gt; $$.sendResult(JSON.stringify(r)))</code>: Callback function to handle the result of the access token request.</li>
+<li><code>.catch(e =&gt; $$.sendError(e))</code>: Callback function to handle any errors that occur during the access token request.</li>
+</ul>

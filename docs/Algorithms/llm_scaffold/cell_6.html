@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the <code>decodeJupyterNotebook</code> function:</p>
+<p>The <code>decodeJupyterNotebook</code> function decodes the content of a Jupyter Notebook file by reading it into a string, parsing it as JSON, and logging the content of code cells. It takes a single argument, <code>filePath</code>, which is the path to the Jupyter Notebook file, and raises an error if there are any issues with file reading or parsing.</p>
 
 
 <pre><code>const fs = require('fs');
@@ -31,3 +33,27 @@ decodeJupyterNotebook('Untitled.ipynb');
 
 </code></pre>
 
+<h2>Function: decodeJupyterNotebook</h2>
+<h3>Description</h3>
+<p>Decodes the content of a Jupyter Notebook file.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>filePath</code>: Path to the Jupyter Notebook file to decode.</li>
+</ul>
+<h3>Functionality</h3>
+<ol>
+<li>Reads the file at <code>filePath</code> into a string using <code>fs.readFile</code>.</li>
+<li>Parses the file content as JSON using <code>JSON.parse</code>.</li>
+<li>Extracts the cells from the parsed notebook.</li>
+<li>Iterates through the cells and logs the content of code cells.</li>
+</ol>
+<h3>Error Handling</h3>
+<ol>
+<li>Catches any errors that occur during file reading.</li>
+<li>Catches any errors that occur during notebook parsing.</li>
+</ol>
+<h3>Usage</h3>
+<p>Call the <code>decodeJupyterNotebook</code> function with the path to a Jupyter Notebook file as an argument.</p>
+<h3>Example</h3>
+<pre><code class="language-javascript">decodeJupyterNotebook('Untitled.ipynb');
+</code></pre>

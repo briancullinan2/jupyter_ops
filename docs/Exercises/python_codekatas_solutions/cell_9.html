@@ -1,3 +1,4 @@
+<p>The <code>subsets</code> function generates all possible subsets of a given list by recursively building upon itself, removing and adding elements to create new subsets. It returns a list containing all possible subsets of the input list, including the empty set and the original list itself.</p>
 
 
 <pre><code>def subsets(s):
@@ -16,3 +17,27 @@ assert subsets('abc') == [[],['a'],['b'],['a','b'],['c'],['a','c'],['b','c'],['a
 assert subsets(['a','b','c']) == [[],['a'],['b'],['a','b'],['c'],['a','c'],['b','c'],['a','b','c']]
 print('All passed!')</code></pre>
 
+<h2>Function Breakdown</h2>
+<h3>Function Name: <code>subsets</code></h3>
+<h3>Purpose:</h3>
+<p>The <code>subsets</code> function generates all possible subsets of a given list.</p>
+<h3>Parameters:</h3>
+<ul>
+<li><code>s</code>: The input list for which subsets are to be generated.</li>
+</ul>
+<h3>Return Value:</h3>
+<p>A list containing all possible subsets of the input list.</p>
+<h3>Function Logic:</h3>
+<ol>
+<li>If the input list <code>s</code> is empty, return a list containing an empty list (<code>[[]]</code>).</li>
+<li>Initialize an empty list <code>res</code> to store the subsets.</li>
+<li>Recursively call <code>subsets</code> on the input list <code>s</code> with the first element removed (<code>s[1:]</code>).</li>
+<li>For each subset generated in the recursive call, append a copy of the subset to <code>res</code>, and append a new subset that includes the first element of the original list (<code>s[0]</code>) followed by the subset.</li>
+<li>Return the <code>res</code> list containing all subsets.</li>
+</ol>
+<h3>Examples:</h3>
+<ul>
+<li><code>subsets('')</code> returns <code>[[]]</code></li>
+<li><code>subsets('abc')</code> returns <code>[[], ['a'], ['b'], ['a', 'b'], ['c'], ['a', 'c'], ['b', 'c'], ['a', 'b', 'c']]</code></li>
+<li><code>subsets(['a', 'b', 'c'])</code> returns <code>[[], ['a'], ['b'], ['a', 'b'], ['c'], ['a', 'c'], ['b', 'c'], ['a', 'b', 'c']]</code></li>
+</ul>

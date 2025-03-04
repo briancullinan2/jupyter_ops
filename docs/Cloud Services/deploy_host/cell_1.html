@@ -1,4 +1,31 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The <code>powershell.exe</code> command launches the PowerShell command-line interface and allows for various switches to customize its behavior. The main command, <code>&amp; {... }</code>, executes a script block that imports a namespace, creates an array, and uses the <code>Compress-Archive</code> cmdlet to compress a file into an archive named <code>index.zip</code>.</p>
 
 
 <pre><code>powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; @('notify.bundle.js') | Compress-Archive -DestinationPath index.zip; }"</code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<p><strong>Command:</strong> <code>powershell.exe</code></p>
+<ul>
+<li>Launches the PowerShell command-line interface.</li>
+</ul>
+<p><strong>Switches:</strong></p>
+<ul>
+<li><code>-nologo</code>: Hides the PowerShell logo from displaying.</li>
+<li><code>-noprofile</code>: Skips loading the PowerShell profile files.</li>
+</ul>
+<p><strong>Main Command:</strong></p>
+<ul>
+<li><code>-command</code>: Specifies the command to execute in PowerShell.</li>
+</ul>
+<p><strong>Nested Command:</strong></p>
+<ul>
+<li><code>&amp; {... }</code>: Runs the enclosed script block as a PowerShell command.</li>
+</ul>
+<p><strong>Script Block:</strong></p>
+<ul>
+<li><code>Add-Type -A 'System.IO.Compression.FileSystem'</code>: Imports the <code>System.IO.Compression.FileSystem</code> namespace for working with archives.</li>
+<li><code>@('notify.bundle.js')</code>: Creates an array containing the file path <code>'notify.bundle.js'</code>.</li>
+<li><code>Compress-Archive</code>: Compresses the specified files into an archive.</li>
+<li><code>-DestinationPath index.zip</code>: Specifies the output path for the compressed archive, which will be named <code>index.zip</code>.</li>
+</ul>

@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary of the Bash script:</p>
+<p>This Bash script automates the conversion of Quake 3 map files (.bsp,.map) into other formats using tools such as <code>quake3e_q3map2</code> and Blender. The script searches for files with specified extensions, checks for file existence and size, and performs conversions and recompilations as necessary.</p>
 
 
 <pre><code>#bash
@@ -59,3 +61,29 @@ done;
 
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Overview</h3>
+<p>This is a Bash script that automates the conversion of Quake 3 map files (<code>.bsp</code>, <code>.map</code>) into other formats. It uses the <code>find</code> command to search for files with the specified extensions and then performs operations on each found file.</p>
+<h3>Script Structure</h3>
+<ol>
+<li>The script starts by finding all files with the extensions <code>.bsp</code> and <code>.map</code> in the current directory and its subdirectories using the <code>find</code> command.</li>
+<li>For each found file, it checks if the file is not in the <code>concepts/</code>, <code>autosave/</code>, or <code>quarantine/</code> directories.</li>
+<li>If the file is a <code>.bsp</code> file and a corresponding <code>.map</code> file does not exist, it converts the <code>.bsp</code> file into a <code>.map</code> file using the <code>quake3e_q3map2</code> tool.</li>
+<li>If the file is a <code>.map</code> file and its size is less than or equal to 100000 bytes, it appends metadata to the file and recompiles the <code>.bsp</code> file using the <code>quake3e_q3map2</code> tool.</li>
+<li>If the file is a <code>.bsp</code> file and its size is less than or equal to 900000 bytes, it attempts to convert the file into an MD3 model using the Blender tool (commented out in the script).</li>
+</ol>
+<h3>Tools Used</h3>
+<ul>
+<li><code>find</code> command to search for files with the specified extensions</li>
+<li><code>quake3e_q3map2</code> tool to convert <code>.bsp</code> files into <code>.map</code> files and to recompile <code>.map</code> files with metadata</li>
+<li><code>wc -c</code> command to get the size of a file in bytes</li>
+<li><code>Blender</code> tool to convert <code>.bsp</code> or <code>.map</code> files into an MD3 model (commented out in the script)</li>
+</ul>
+<h3>File Naming Conventions</h3>
+<p>The script uses the following file naming conventions:</p>
+<ul>
+<li><code>.bsp</code> files are the original map files</li>
+<li><code>.map</code> files are the converted map files</li>
+<li><code>.md3</code> files are the converted MD3 models</li>
+<li><code>*_converted.map</code> files are the intermediate files created during the conversion process</li>
+</ul>

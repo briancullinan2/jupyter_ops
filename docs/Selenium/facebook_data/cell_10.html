@@ -1,3 +1,5 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>This code imports dependencies and defines Selenium cell tasks to log in and unfollow everyone on Facebook using the <code>runSeleniumCell</code> function, which is executed asynchronously. The tasks are then executed sequentially using a promise chain, with the results sent to the <code>$$.sendResult</code> function and any errors sent to the <code>$$.sendError</code> function.</p>
 
 
 <pre><code>var importer = require('../Core');
@@ -21,3 +23,59 @@ runSeleniumCell([
     .catch(e => $$.sendError(e));
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Importing Dependencies</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+</code></pre>
+<ul>
+<li>The code begins by importing dependencies using the <code>require</code> function.</li>
+<li><code>importer</code> is an instance of the <code>Core</code> module, which is imported from a parent directory (<code>../Core</code>).</li>
+<li>The <code>importer.import</code> method is used to import a specific module named <code>'selenium cell'</code>, assigning it to the <code>runSeleniumCell</code> variable.</li>
+</ul>
+<h3>Defining Selenium Cell Tasks</h3>
+<pre><code class="language-javascript">// Unfollow everyone on facebook?
+
+// https://www.facebook.com/me/following
+var loginFacebook, unfollowFacebook;
+$$.async();
+runSeleniumCell([
+    'log in facebook',
+    'unfollow everyone facebook'
+])
+</code></pre>
+<ul>
+<li>Two variables, <code>loginFacebook</code> and <code>unfollowFacebook</code>, are declared but not initialized.</li>
+<li>The asynchronous functionality is enabled using <code>$$.async()</code>.</li>
+<li>A list of Selenium cell tasks is defined using <code>runSeleniumCell([... ])</code>, where each task is represented by a string:
+<ul>
+<li><code>'log in facebook'</code></li>
+<li><code>'unfollow everyone facebook'</code></li>
+</ul></li>
+</ul>
+<h3>Executing Selenium Cell Tasks</h3>
+<pre><code class="language-javascript">.then(r =&gt; {
+    loginFacebook = r[0];
+    unfollowFacebook = r[1];
+    return loginFacebook();
+})
+.then(() =&gt; unfollowFacebook())
+.then(r =&gt; $$.sendResult(r))
+.catch(e =&gt; $$.sendError(e));
+</code></pre>
+<ul>
+<li>The code utilizes the promise chain to execute the Selenium cell tasks sequentially.</li>
+<li>The <code>then</code> method is used to handle the resolution of the promise returned by <code>runSeleniumCell</code>.</li>
+<li>In the first <code>then</code> block:
+<ul>
+<li>The result of executing the Selenium cell tasks is an array <code>r</code> containing two functions: <code>loginFacebook</code> and <code>unfollowFacebook</code>.</li>
+<li>These functions are assigned to the corresponding variables: <code>loginFacebook = r[0]</code> and <code>unfollowFacebook = r[1]</code>.</li>
+<li>The <code>loginFacebook</code> function is executed by calling it with <code>return loginFacebook();</code>.</li>
+</ul></li>
+<li>In the second <code>then</code> block, the <code>unfollowFacebook</code> function is executed by calling it with <code>unfollowFacebook()</code>.</li>
+<li>In the final <code>then</code> block:
+<ul>
+<li>The result of executing the <code>unfollowFacebook</code> function is passed to the <code>$$.sendResult</code> function.</li>
+</ul></li>
+<li>The <code>catch</code> block is used to handle any errors that may occur during the execution of the Selenium cell tasks. If an error occurs, it is passed to the <code>$$.sendError</code> function.</li>
+</ul>

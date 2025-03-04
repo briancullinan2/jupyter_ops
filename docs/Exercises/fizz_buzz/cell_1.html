@@ -1,3 +1,5 @@
+<p>Here is a two-sentence summary of the <code>isFib</code> function:<br />
+The <code>isFib</code> function checks if a given number is a Fibonacci number by generating Fibonacci numbers until it finds a match or exceeds the input number. It returns <code>true</code> if the number is a Fibonacci number and <code>false</code> otherwise, as demonstrated in the provided example usage.</p>
 
 
 <pre><code>function isFib(num) {
@@ -22,3 +24,30 @@ isFib(4);
 
 </code></pre>
 
+<h2>Function: <code>isFib</code></h2>
+<h3>Purpose</h3>
+<p>Checks if a given number is a Fibonacci number.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>num</code>: The number to be checked.</li>
+</ul>
+<h3>Return Value</h3>
+<ul>
+<li><code>true</code> if the number is a Fibonacci number, <code>false</code> otherwise.</li>
+</ul>
+<h3>Algorithm</h3>
+<ol>
+<li>Initializes two variables: <code>last</code> and <code>next</code>, to the first two Fibonacci numbers (0 and 1).</li>
+<li>Enters a loop that continues as long as <code>next</code> is less than or equal to the input <code>num</code>.</li>
+<li>Inside the loop:
+<ul>
+<li>Calculates the next Fibonacci number as the sum of <code>last</code> and <code>next</code>.</li>
+<li>Checks if this new number is equal to the input <code>num</code>. If so, returns <code>true</code>.</li>
+<li>Updates <code>last</code> and <code>next</code> with the new values.</li>
+</ul></li>
+<li>If the loop completes without finding a match, returns <code>false</code>.</li>
+</ol>
+<h3>Example Usage</h3>
+<pre><code class="language-javascript">isFib(4); // Returns: false
+isFib(5); // Returns: true
+</code></pre>

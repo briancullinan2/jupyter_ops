@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The <code>sortDesc</code> function combines two arrays <code>arr1</code> and <code>arr2</code> and sorts the concatenated array in descending order. However, the code then attempts to check each element in the sorted array to ensure it is greater than the previous one, throwing an error if this condition is not met, which suggests a logical flaw in the code logic.</p>
 
 
 <pre><code>
@@ -21,3 +23,27 @@ result.forEach(r => {
 })
 </code></pre>
 
+<h3>Code Breakdown</h3>
+<h4>Variables</h4>
+<ul>
+<li><code>arr1</code>: an array of integers <code>[1, 3, 2, 7]</code></li>
+<li><code>arr2</code>: an array of integers <code>[9, 11, 4, 6]</code></li>
+</ul>
+<h4>Function</h4>
+<ul>
+<li><code>sortDesc(arr1, arr2)</code>: a function that sorts the concatenated arrays in descending order
+<ul>
+<li>Uses the <code>concat()</code> method to combine <code>arr1</code> and <code>arr2</code></li>
+<li>Uses the <code>sort()</code> method with a compare function <code>(a, b) =&gt; b-a</code> to sort the combined array in descending order</li>
+<li>Returns the sorted array</li>
+</ul></li>
+</ul>
+<h4>Logic</h4>
+<ul>
+<li><code>result</code>: the output of the <code>sortDesc()</code> function</li>
+<li><code>prev</code>: initialized to the maximum possible integer value (<code>Number.MAX_VALUE</code>)</li>
+<li>The code loops through each element of the <code>result</code> array and checks if it is greater than the previous element (<code>prev</code>)
+<ul>
+<li>If the current element is not greater than the previous element, it throws an error with the message <code>'this doesnt work'</code></li>
+</ul></li>
+</ul>

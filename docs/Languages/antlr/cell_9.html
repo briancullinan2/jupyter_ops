@@ -1,3 +1,5 @@
+<p>Here is a 2-sentence summary:</p>
+<p>The code imports modules from the <code>../Core</code> directory and uses the <code>selectAst</code> function to select a part of the Abstract Syntax Tree (AST) based on a specific pattern, then logs the resulting HTML tree to the console. The code expects to receive a specific output in the form of a JSON object representing the AST node, with three different expected outputs shown for different types of AST nodes.</p>
 
 
 <pre><code>var importer = require('../Core')
@@ -74,3 +76,22 @@ expects
 
 </code></pre>
 
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code starts by importing modules from the <code>../Core</code> directory using the <code>require</code> function.</p>
+<pre><code class="language-javascript">var importer = require('../Core')
+var {selectAst} = importer.import('select code tree')
+var {htmlToTree} = importer.import('html to tree')
+</code></pre>
+<h3>Selecting AST</h3>
+<p>The <code>selectAst</code> function is used to select a part of the Abstract Syntax Tree (AST) based on a specific pattern. In this case, it selects the AST node that matches the pattern <code>//Program</code>.</p>
+<pre><code class="language-javascript">var root = selectAst('//Program', `
+const val = ''
+`)
+</code></pre>
+<h3>Logging the HTML Tree</h3>
+<p>The <code>htmlToTree</code> function is used to convert the AST node to an HTML tree. The <code>body[0]</code> property of the resulting HTML tree is then logged to the console.</p>
+<pre><code class="language-javascript">console.log(htmlToTree(root).body[0])
+</code></pre>
+<h3>Expected Output</h3>
+<p>The code expects to receive a specific output in the form of a JSON object representing the AST node. There are three different expected outputs shown in the code, each representing a different type of AST node.</p>

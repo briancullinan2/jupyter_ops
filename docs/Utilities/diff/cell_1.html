@@ -1,3 +1,5 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>This code imports modules and variables, interprets functions, sets a project directory, and reads/displaying code. It uses various functions from the <code>importer</code> module to find and compare code snippets, and displays the differences using a custom <code>$$.html</code> function.</p>
 
 
 <pre><code>var importer = require('../Core')
@@ -15,3 +17,42 @@ right = fs.readFileSync(components[0]).toString();
 $$.html(diffTwoTexts(left, right))
 </code></pre>
 
+<h2>Code Breakdown</h2>
+<h3>Importing Modules and Variables</h3>
+<pre><code class="language-javascript">var importer = require('../Core')
+var left, right;
+</code></pre>
+<ul>
+<li>Imported the <code>importer</code> module from the <code>../Core</code> directory.</li>
+<li>Declared two variables <code>left</code> and <code>right</code> which will be used to store code snippets.</li>
+</ul>
+<h3>Interpreting and Importing Functions</h3>
+<pre><code class="language-javascript">var r = importer.interpret(['search notebook component', 'files in project', 'diff code blocks']);
+left = r[0].code;
+var listInProject = importer.import('files in project');
+var diffTwoTexts = importer.import('diff code blocks');
+</code></pre>
+<ul>
+<li>Called the <code>interpret</code> function on the <code>importer</code> module with an array of strings as arguments.</li>
+<li>Extracted the first element's code (<code>r[0].code</code>) and stored it in the <code>left</code> variable.</li>
+<li>Imported functions from the <code>importer</code> module: <code>listInProject</code> and <code>diffTwoTexts</code>.</li>
+</ul>
+<h3>Setting Path and Project Directory</h3>
+<pre><code class="language-javascript">var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/universal';
+</code></pre>
+<ul>
+<li>Set a path variable <code>PROFILE_PATH</code> by checking for environment variables <code>HOME</code>, <code>HOMEPATH</code>, and <code>USERPROFILE</code>.</li>
+<li>Constructed a project directory path by concatenating <code>PROFILE_PATH</code> with '/universal'.</li>
+</ul>
+<h3>Reading and Displaying Code</h3>
+<pre><code class="language-javascript">var components = listInProject(project, '**/search.component.ts');
+right = fs.readFileSync(components[0]).toString();
+$$.html(diffTwoTexts(left, right))
+</code></pre>
+<ul>
+<li>Used the <code>listInProject</code> function to find files in the project matching the pattern '**/search.component.ts' and stored the result in <code>components</code>.</li>
+<li>Read the first file from the result and stored its contents in the <code>right</code> variable.</li>
+<li>Called the <code>diffTwoTexts</code> function with <code>left</code> and <code>right</code> as arguments and passed the result to the <code>$$.html</code> function for display.</li>
+<li>Note: The <code>$$.html</code> function is not a standard Node.js function, it's likely a part of a custom framework or library.</li>
+</ul>

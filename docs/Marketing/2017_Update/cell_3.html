@@ -1,3 +1,5 @@
+<p>Here's a 2-sentence summary of the code:</p>
+<p>This Graphviz code creates a directed graph representing a purchase funnel flow with multiple stages, including a landing site, trial flow, and purchase funnel. The graph consists of four main clusters with nodes (represented by shapes) and edges (lines) that indicate the flow of customers between stages, including decision points and conditional labels.</p>
 
 
 <pre><code>%%
@@ -107,3 +109,28 @@ apply
 
 }</code></pre>
 
+<p>This code is written in Graphviz language, used to create directed graphs.</p>
+<p>Here's a short breakdown:</p>
+<ul>
+<li>The code defines a graph with multiple subgraphs, each representing a stage in a purchase funnel flow.</li>
+<li>The graph has four main clusters:
+<ol>
+<li><code>cluster_landing_site</code>: represents the landing site where customers first interact with the application.</li>
+<li><code>cluster_trial_flow</code>: represents the trial flow, where customers can opt-in for a trial version of the application.</li>
+<li><code>cluster_purchase_funnel</code>: represents the purchase funnel, where customers can make a purchase.</li>
+</ol></li>
+<li>Each cluster contains nodes (represented by shapes such as boxes, diamonds, etc.) that represent different stages in the flow.</li>
+<li>Edges (lines connecting nodes) represent the flow of customers between stages.</li>
+<li>Some nodes have conditional labels (e.g., &quot;Yes&quot; or &quot;No&quot;) that indicate a decision point in the flow.</li>
+</ul>
+<p>The specific elements of the code include:</p>
+<ul>
+<li><code>label = 'Purchase funnel flow'</code>: sets the title of the graph.</li>
+<li><code>rankdir = TB</code>: sets the rank direction of the graph to top-to-bottom.</li>
+<li><code>node[fontname = Helvetica, width = 1.8, height = 0.8]</code>: sets the properties of nodes in the graph.</li>
+<li><code>edge[fontname = Helvetica, fontsize = 12, fontcolor = blue, labeldistance = 1.8]</code>: sets the properties of edges in the graph.</li>
+<li><code>subgraph cluster_name {... }</code>: defines a subgraph with a given name.</li>
+<li><code>node shape = box, style = rounded, label = 'Customer lands on act.com'</code>: defines a node with a given shape, style, and label.</li>
+<li><code>start:s -&gt; hasaccount</code>: defines an edge from the <code>start</code> node to the <code>hasaccount</code> node.</li>
+<li><code>hasaccount:e -&gt; upgrade</code>: defines an edge from the <code>hasaccount</code> node to the <code>upgrade</code> node.</li>
+</ul>
