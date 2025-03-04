@@ -192,49 +192,22 @@ async function exportAll(query) {
     // TODO: generate parameter, return type descriptions
     
 
-    // TODO: export all the markdown
-
   }
 
+
+  // TODO: export all the markdown
 
   const paths = Object.keys(results)
   for (let i = 0; i < paths.length; i++) {
     // TODO: add navigation and full template
-    let output = javadocTemplate.code.replaceAll('${OUTPUT}', results[paths[i]].output)
-    output = output.replaceAll('export documentation', results[paths[i]].title)
-    output = output.replaceAll('<a href="../documentation/index.html">documentation</a>', results[paths[i]].parent)
+    let output = javadocTemplate.code
+    output = output.replaceAll('${TITLE}', results[paths[i]].title)
+    output = output.replaceAll('${PARENT}', results[paths[i]].parent)
     if(results[paths[i]].index)
-      output = output.replaceAll('<a href="./convert_notebook_to_open_api.html">convert notebook to open api</a>
-<br /><br />
-<a href="./test_convert_notebook_api.html">test convert notebook api</a>
-<br /><br />
-<a href="./convert_google_discovery_to_documentation.html">convert google discovery to documentation</a>
-<br /><br />
-<a href="./discover_well-known_apis.html">discover well-known apis</a>
-<br /><br />
-<a href="./export_documentation.html">export documentation</a>
-<br /><br />
-<a href="./highlight_js.html">highlight js</a>
-<br /><br />
-<a href="./javadoc_template.html">javadoc template</a>
-<br /><br />
-', results[results[paths[i]].index].indexOutput)
+      output = output.replaceAll('${CLASSES}', results[results[paths[i]].index].indexOutput)
     else
-      output = output.replaceAll('<a href="./convert_notebook_to_open_api.html">convert notebook to open api</a>
-<br /><br />
-<a href="./test_convert_notebook_api.html">test convert notebook api</a>
-<br /><br />
-<a href="./convert_google_discovery_to_documentation.html">convert google discovery to documentation</a>
-<br /><br />
-<a href="./discover_well-known_apis.html">discover well-known apis</a>
-<br /><br />
-<a href="./export_documentation.html">export documentation</a>
-<br /><br />
-<a href="./highlight_js.html">highlight js</a>
-<br /><br />
-<a href="./javadoc_template.html">javadoc template</a>
-<br /><br />
-', '')
+      output = output.replaceAll('${CLASSES}', '')
+    output = output.replaceAll('${OUTPUT}', results[paths[i]].output)
     fs.writeFileSync(paths[i], output)
   }
 

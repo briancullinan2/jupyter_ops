@@ -70,7 +70,7 @@
 <head>
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>javadoc template</title>
+  <title>${TITLE}</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
   <style>
@@ -106,26 +106,12 @@
 
 <body>
   <nav>
-    <a href="../documentation/index.html">documentation</a>
+    ${PARENT}
     <br /><br />
-    <a href="./convert_notebook_to_open_api.html">convert notebook to open api</a>
-<br /><br />
-<a href="./test_convert_notebook_api.html">test convert notebook api</a>
-<br /><br />
-<a href="./convert_google_discovery_to_documentation.html">convert google discovery to documentation</a>
-<br /><br />
-<a href="./discover_well-known_apis.html">discover well-known apis</a>
-<br /><br />
-<a href="./export_documentation.html">export documentation</a>
-<br /><br />
-<a href="./highlight_js.html">highlight js</a>
-<br /><br />
-<a href="./javadoc_template.html">javadoc template</a>
-<br /><br />
-
+    ${CLASSES}
   </nav>
   <header>
-    <a href="../documentation/index.html">documentation</a> ${PREV} ${NEXT}
+    ${PARENT} ${PREV} ${NEXT}
   </header>
 
   ${OUTPUT}
